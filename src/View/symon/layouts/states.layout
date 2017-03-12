@@ -1,0 +1,95 @@
+#
+# Layout to show pf usage
+
+group	name="State Statistics", pf_rrd=/var/www/htdocs/utmfw/View/symon/rrds/localhost/pf.rrd;
+# State addition and removals graph
+graph	template='-v states
+-w %width%
+-h %heigth%
+-s %start%
+-e %end%
+-t State Statistics
+DEF:s=%pf_rrd%:states_entries:AVERAGE
+DEF:si=%pf_rrd%:states_inserts:AVERAGE
+DEF:sr=%pf_rrd%:states_removals:AVERAGE
+DEF:ss=%pf_rrd%:states_searches:AVERAGE
+CDEF:msr=-1,sr,*
+COMMENT:                       min     avg     max     last\n
+AREA:s#00FF00:entries         
+GPRINT:s:MIN:%6.2lf
+GPRINT:s:AVERAGE:%6.2lf
+GPRINT:s:MAX:%6.2lf
+GPRINT:s:LAST:%6.2lf\n
+LINE1:msr#FF0000:removals        
+GPRINT:sr:MIN:%6.2lf
+GPRINT:sr:AVERAGE:%6.2lf
+GPRINT:sr:MAX:%6.2lf
+GPRINT:sr:LAST:%6.2lf\n
+LINE1:si#0000FF:inserts         
+GPRINT:si:MIN:%6.2lf
+GPRINT:si:AVERAGE:%6.2lf
+GPRINT:si:MAX:%6.2lf
+GPRINT:si:LAST:%6.2lf\n
+LINE2:ss#00FFFF:state searches 
+GPRINT:ss:MIN: %6.2lf
+GPRINT:ss:AVERAGE:%6.2lf
+GPRINT:ss:MAX:%6.2lf
+GPRINT:ss:LAST:%6.2lf\n
+';
+
+group	name="State Searches vs Packets", pf_rrd=/var/www/htdocs/utmfw/View/symon/rrds/localhost/pf.rrd,
+		   lan_rrd=/var/www/htdocs/utmfw/View/symon/rrds/localhost/if_lan0.rrd,
+		   wan_rrd=/var/www/htdocs/utmfw/View/symon/rrds/localhost/if_wan0.rrd,
+		   lo_rrd=/var/www/htdocs/utmfw/View/symon/rrds/localhost/if_lo0.rrd;
+
+# State searches + how many packets from which interfaces
+graph template='-v states
+-w %width%
+-h %heigth%
+-s %start%
+-e %end%
+-t State Searches vs Packets
+DEF:ss=%pf_rrd%:states_searches:AVERAGE
+DEF:iplan=%lan_rrd%:ipackets:AVERAGE
+DEF:iplo=%lo_rrd%:ipackets:AVERAGE
+DEF:ipwan=%wan_rrd%:ipackets:AVERAGE
+DEF:oplan=%lan_rrd%:opackets:AVERAGE
+DEF:oplo=%lo_rrd%:opackets:AVERAGE
+DEF:opwan=%wan_rrd%:opackets:AVERAGE
+COMMENT:packets via            min     avg     max     last\n
+AREA:iplan#98449E:lan in         
+GPRINT:iplan:MIN: %6.2lf
+GPRINT:iplan:AVERAGE:%6.2lf
+GPRINT:iplan:MAX:%6.2lf
+GPRINT:iplan:LAST:%6.2lf\n
+STACK:oplan#CC449E:lan out        
+GPRINT:oplan:MIN: %6.2lf
+GPRINT:oplan:AVERAGE:%6.2lf
+GPRINT:oplan:MAX:%6.2lf
+GPRINT:oplan:LAST:%6.2lf\n
+STACK:ipwan#80C2B6:wan in         
+GPRINT:ipwan:MIN: %6.2lf
+GPRINT:ipwan:AVERAGE:%6.2lf
+GPRINT:ipwan:MAX:%6.2lf
+GPRINT:ipwan:LAST:%6.2lf\n
+STACK:opwan#66C2B6:wan out        
+GPRINT:opwan:MIN: %6.2lf
+GPRINT:opwan:AVERAGE:%6.2lf
+GPRINT:opwan:MAX:%6.2lf
+GPRINT:opwan:LAST:%6.2lf\n
+STACK:iplo#688CC0:lo in          
+GPRINT:iplo:MIN: %6.2lf
+GPRINT:iplo:AVERAGE:%6.2lf
+GPRINT:iplo:MAX:%6.2lf
+GPRINT:iplo:LAST:%6.2lf\n
+STACK:oplo#338CCC:lo out         
+GPRINT:oplo:MIN: %6.2lf
+GPRINT:oplo:AVERAGE:%6.2lf
+GPRINT:oplo:MAX:%6.2lf
+GPRINT:oplo:LAST:%6.2lf\n
+LINE2:ss#00FFFF:state searches 
+GPRINT:ss:MIN: %6.2lf
+GPRINT:ss:AVERAGE:%6.2lf
+GPRINT:ss:MAX:%6.2lf
+GPRINT:ss:LAST:%6.2lf\n
+';

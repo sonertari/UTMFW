@@ -1,0 +1,90 @@
+# This is the right place to customize your installation of SpamAssassin.
+#
+# See 'perldoc Mail::SpamAssassin::Conf' for details of what can be
+# tweaked.
+#
+# Only a small subset of options are listed below
+#
+###########################################################################
+
+#   Add *****SPAM***** to the Subject header of spam e-mails
+#
+rewrite_header Subject *****UTMFW SPAM UYARISI*****
+
+
+#   Save spam messages as a message/rfc822 MIME attachment instead of
+#   modifying the original message (0: off, 2: use text/plain instead)
+#
+# report_safe 1
+
+
+#   Set which networks or hosts are considered 'trusted' by your mail
+#   server (i.e. not spammers)
+#
+# trusted_networks 212.17.35.
+
+
+#   Set file-locking method (flock is not safe over NFS, but is faster)
+#
+lock_method flock
+
+
+#   Set the threshold at which a message is considered spam (default: 5.0)
+#
+required_score 5.0
+
+
+#   Use Bayesian classifier (default: 1)
+#
+use_bayes 1
+bayes_path /var/db/spamassassin/.spamassassin/bayes
+
+#   Bayesian classifier auto-learning (default: 1)
+#
+bayes_auto_learn 1
+
+
+#   Set headers which may provide inappropriate cues to the Bayesian
+#   classifier
+#
+# bayes_ignore_header X-Bogosity
+# bayes_ignore_header X-Spam-Flag
+# bayes_ignore_header X-Spam-Status
+
+# Default template. Try to keep it under 78 columns (inside the the dots below).
+#      ........................................................................
+clear_report_template
+report_charset utf-8
+report UTMFW SPAM tarayıcısı ("_HOSTNAME_")
+report size gönderilen e-posta mesajı spam olarak tanımlamıştır.
+report Asıl mesaj bu e-postaya eklenmiştir. Sorularınızı lütfen
+report _CONTACTADDRESS_ yönlendiriniz.
+report
+report Özet içerik:
+report   _PREVIEW_
+report
+report İçerik analiz detayları:
+report (toplam puan: _SCORE_, gereken: _REQD_)
+report
+report "puan kural adı              tanım"
+report  ---- ---------------------- --------------------------------------------------
+report _SUMMARY_
+#      ........................................................................
+
+# A 'contact address' users should contact for more info. (replaces
+# _CONTACTADDRESS_ above if present)
+report_contact  UTMFW Sistem Yöneticisine
+
+###########################################################################
+
+# Unsafe-for-viewing message report template.
+#
+#             ......................................................................
+clear_unsafe_report_template
+unsafe_report Asıl mesaj bütünüyle text olmadığından size gelen e-postayı bazı e-posta
+unsafe_report programlarında açmak güvenli olmayabilir; özellikle, virüs içerebilir,
+unsafe_report veya adresinizin spam alabileceğini doğrulayabilir. İçeriğini görmek
+unsafe_report istiyorsanız, bir dosyaya saklayıp bu dosyayı açarak görmeniz daha
+unsafe_report güvenli olabilir.
+#             ......................................................................
+

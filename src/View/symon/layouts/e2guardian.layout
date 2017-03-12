@@ -1,0 +1,74 @@
+#group	name="Web Filter Load";
+#graph	rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/proc_e2guardian.rrd, title="Web Filter Load";
+
+group	name="Number of Processes", rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/proc_e2guardian.rrd;
+# Web Filter Load graph
+graph	template='-t Number of Processes
+-v processes/s
+-w %width%
+-h %heigth%
+-s %start%
+-e %end%
+DEF:number=%rrdfile%:number:AVERAGE
+DEF:procsz=%rrdfile%:procsz:AVERAGE
+DEF:rsssz=%rrdfile%:rsssz:AVERAGE
+CDEF:null=number,number,-
+CDEF:iprocsz=0,procsz,-
+CDEF:irsssz=0,rsssz,-
+CDEF:nodata=number,UN,0,*
+COMMENT:             min       avg       max       last\n
+LINE1:nodata#FF0000
+AREA:number#0000FF:number
+GPRINT:number:MIN:%6.0lf %s
+GPRINT:number:AVERAGE:%6.0lf %s
+GPRINT:number:MAX:%6.0lf %s
+GPRINT:number:LAST:%6.0lf %s\n
+COMMENT: procsz
+GPRINT:procsz:MIN: %6.2lf %s
+GPRINT:procsz:AVERAGE:%6.2lf %s
+GPRINT:procsz:MAX:%6.2lf %s
+GPRINT:procsz:LAST:%6.2lf %s\n
+COMMENT: rsssz
+GPRINT:rsssz:MIN:  %6.2lf %s
+GPRINT:rsssz:AVERAGE:%6.2lf %s
+GPRINT:rsssz:MAX:%6.2lf %s
+GPRINT:rsssz:LAST:%6.2lf %s\n
+';
+
+group	name="Process CPU Load", rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/proc_e2guardian.rrd;
+# Web Filter Load graph
+graph	template='-t Process CPU Load
+-v ticks/s
+-w %width%
+-h %heigth%
+-s %start%
+-e %end%
+DEF:number=%rrdfile%:number:AVERAGE
+DEF:uticks=%rrdfile%:uticks:AVERAGE
+DEF:sticks=%rrdfile%:sticks:AVERAGE
+DEF:iticks=%rrdfile%:iticks:AVERAGE
+DEF:cpusec=%rrdfile%:cpusec:AVERAGE
+CDEF:nodata=number,UN,0,*
+COMMENT:             min       avg       max       last\n
+LINE1:nodata#FF0000
+AREA:uticks#00FF00:uticks
+GPRINT:uticks:MIN:%6.2lf %s
+GPRINT:uticks:AVERAGE:%6.2lf %s
+GPRINT:uticks:MAX:%6.2lf %s
+GPRINT:uticks:LAST:%6.2lf %s\n
+STACK:sticks#DDA0DD:sticks
+GPRINT:sticks:MIN:%6.2lf %s
+GPRINT:sticks:AVERAGE:%6.2lf %s
+GPRINT:sticks:MAX:%6.2lf %s
+GPRINT:sticks:LAST:%6.2lf %s\n
+STACK:iticks#9932CC:iticks
+GPRINT:iticks:MIN:%6.2lf %s
+GPRINT:iticks:AVERAGE:%6.2lf %s
+GPRINT:iticks:MAX:%6.2lf %s
+GPRINT:iticks:LAST:%6.2lf %s\n
+COMMENT: cpusec
+GPRINT:cpusec:MIN: %6.2lf %s
+GPRINT:cpusec:AVERAGE:%6.2lf %s
+GPRINT:cpusec:MAX:%6.2lf %s
+GPRINT:cpusec:LAST:%6.2lf %s\n
+';

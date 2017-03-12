@@ -1,0 +1,325 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+# Soner Tari <sonertari@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-30 10:41+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: Turkish <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.0\n"
+
+msgid "1 minute average"
+msgstr "1分钟平均"
+
+msgid "15 minute average"
+msgstr "平均15分钟"
+
+msgid "5 minute average"
+msgstr "平均5分钟"
+
+msgid "Admin e-mail"
+msgstr "管理电子邮件"
+
+msgid "Archives"
+msgstr "档案"
+
+msgid "Automatic config"
+msgstr "自动配置"
+
+msgid "Business Days"
+msgstr "营业日"
+
+msgid "Business Hours"
+msgstr "营业时间"
+
+msgid "CPU Load"
+msgstr "CPU负载"
+
+msgid "CPUs"
+msgstr "处理器"
+
+msgid "Count"
+msgstr "伯爵"
+
+msgid "Data Transfer"
+msgstr "数据传输"
+
+msgid "Date"
+msgstr "日期"
+
+msgid "DateTime"
+msgstr "的DateTime"
+
+msgid "Day"
+msgstr "白天"
+
+msgid "Disabled Services"
+msgstr "残疾人服务"
+
+msgid "Disk I/O"
+msgstr "磁盘I / O"
+
+msgid "Disks"
+msgstr "磁盘"
+
+msgid "ERROR"
+msgstr "错误"
+
+msgid "Enabled Services"
+msgstr "启用服务"
+
+msgid "External Interface"
+msgstr "外部接口"
+
+msgid "External interface"
+msgstr "外部接口"
+
+msgid "Fan"
+msgstr "风扇"
+
+msgid "File"
+msgstr "文件"
+
+msgid "From"
+msgstr "自"
+
+msgid "Gateway"
+msgstr "网关"
+
+msgid "Graph files"
+msgstr "图形文件"
+
+msgid "Group"
+msgstr "组"
+
+msgid "Help boxes"
+msgstr "帮助盒"
+
+msgid "Holidays"
+msgstr "节假日"
+
+msgid "Horizontal"
+msgstr "水平"
+
+msgid "Hostname"
+msgstr "主机名"
+
+msgid "Hosts"
+msgstr "主机"
+
+msgid "Hour"
+msgstr "小时"
+
+msgid "Hourly"
+msgstr "每小时"
+
+msgid "INFORMATION"
+msgstr "信息"
+
+msgid "IP Forwarding"
+msgstr "IP转发"
+
+msgid "Interface"
+msgstr "接口"
+
+msgid "Internal Interface"
+msgstr "内部接口"
+
+msgid "Internal interface"
+msgstr "内部接口"
+
+msgid "Language"
+msgstr "语言"
+
+msgid "Level"
+msgstr "级别"
+
+msgid "Line"
+msgstr "线"
+
+msgid "Lines per page"
+msgstr "每页行数"
+
+msgid "Log"
+msgstr "日志"
+
+msgid "Log level"
+msgstr "日志级别"
+
+msgid "Logout"
+msgstr "注销"
+
+msgid "Logs"
+msgstr "日志"
+
+msgid "Loopback Interface"
+msgstr "环回接口"
+
+msgid "Machine"
+msgstr "机器"
+
+msgid "Mbuf Statistics"
+msgstr "Mbuf统计"
+
+msgid "Memory Usage"
+msgstr "内存使用"
+
+msgid "Month"
+msgstr "月"
+
+msgid "Motherboard"
+msgstr "主板"
+
+msgid "Nameserver"
+msgstr "域名服务器"
+
+msgid "Network Protocol Usage"
+msgstr "网络协议的使用"
+
+msgid "Number of Processes"
+msgstr "进程数"
+
+msgid "Number of processes"
+msgstr "进程数"
+
+msgid "Operating System"
+msgstr "操作系统"
+
+msgid "Partitions"
+msgstr "分区"
+
+msgid "Partitions Usages"
+msgstr "分区使用"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Password again"
+msgstr "再次输入密码"
+
+msgid "Physical Memory"
+msgstr "物理内存"
+
+msgid "Privileged IPs"
+msgstr "特权的IP"
+
+msgid "Process"
+msgstr "进程"
+
+msgid "Process CPU Load"
+msgstr "进程的CPU负载"
+
+msgid "Processor"
+msgstr "处理器"
+
+msgid "Refresh interval"
+msgstr "刷新间隔"
+
+msgid "Regexp"
+msgstr "正则表达式"
+
+msgid "Reload interval"
+msgstr "刷新间隔"
+
+msgid "Restart network"
+msgstr "重新启动网络"
+
+msgid "Restricted IPs"
+msgstr "受限制的IP地址"
+
+msgid "Rotate all log files"
+msgstr "轮转所有日志文件"
+
+msgid "Rule"
+msgstr "规则"
+
+msgid "Search site"
+msgstr "搜索网站"
+
+msgid "Secure Level"
+msgstr "安全等级"
+
+msgid "Selected"
+msgstr "选择"
+
+msgid "Serial Number"
+msgstr "序列号"
+
+msgid "Session timeout"
+msgstr "会话超时"
+
+msgid "Size"
+msgstr "大小"
+
+msgid "Size (KB)"
+msgstr "大小（KB）"
+
+msgid "Software Version"
+msgstr "软件版本"
+
+msgid "State Searches vs Packets"
+msgstr "状态包搜索"
+
+msgid "State Statistics"
+msgstr "状态统计"
+
+msgid "Statistics and uncompressed log files"
+msgstr "统计和压缩日志文件"
+
+msgid "System"
+msgstr "系统"
+
+msgid "Target"
+msgstr "目标"
+
+msgid "Temperature"
+msgstr "温度"
+
+msgid "Time"
+msgstr "时间"
+
+msgid "Time server"
+msgstr "时间服务器"
+
+msgid "To"
+msgstr "至"
+
+msgid "Uptime"
+msgstr "运行时间"
+
+msgid "User"
+msgstr "用户"
+
+msgid "User name"
+msgstr "用户名"
+
+msgid "Version"
+msgstr "版本"
+
+msgid "WARNING"
+msgstr "警告"
+
+msgid "When (h)"
+msgstr "时间（小时）"
+
+msgid "disabled"
+msgstr "禁用"
+
+msgid "enabled"
+msgstr "启用"
+
+msgid "is not running"
+msgstr "未运行"
+
+msgid "is running"
+msgstr "正在运行"
+
+msgid "secs"
+msgstr "秒"

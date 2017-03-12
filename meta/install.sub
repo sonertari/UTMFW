@@ -1,0 +1,1153 @@
+#!/bin/sh -
+#	$OpenBSD: install.sub,v 1.421 2007/08/02 03:23:37 david Exp $
+#	$NetBSD: install.sub,v 1.5.2.8 1996/09/02 23:25:02 pk Exp $
+#
+# Copyright (C) 2004-2017 Soner Tari.  All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. All advertising materials mentioning features or use of this
+#    software must display the following acknowledgement: This
+#    product includes software developed by Soner Tari
+#    and its contributors.
+# 4. Neither the name of Soner Tari nor the names of
+#    its contributors may be used to endorse or promote products
+#    derived from this software without specific prior written
+#    permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+# IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# Copyright (c) 1997-2007 Todd Miller, Theo de Raadt, Ken Westerback
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+# IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# Copyright (c) 1996 The NetBSD Foundation, Inc.
+# All rights reserved.
+#
+# This code is derived from software contributed to The NetBSD Foundation
+# by Jason R. Thorpe.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. All advertising materials mentioning features or use of this software
+#    must display the following acknowledgement:
+#        This product includes software developed by the NetBSD
+#        Foundation, Inc. and its contributors.
+# 4. Neither the name of The NetBSD Foundation nor the names of its
+#    contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+# ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+# TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+# PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
+
+# UTMFW install/upgrade script common subroutines and initialization code
+
+welcome() {
+	cat <<__EOT
+
+Welcome to the UTMFW $MODE program.
+
+This program will help you $MODE UTMFW. Default answers are shown
+in []'s and are selected by pressing RETURN. At any time you can exit this
+program by pressing Control-C, but exiting during an $MODE can leave your
+system in an inconsistent state.
+
+__EOT
+
+	cat <<__EOT
+IS YOUR DATA BACKED UP? As with anything that modifies disk contents, this
+program can cause SIGNIFICANT data loss.
+
+__EOT
+
+	[[ $MODE == upgrade ]] && \
+		cat <<__EOT
+NOTE: you will be given a chance to either overwrite existing configuration
+files or save the new files as <filename>.new. Once your system has been
+upgraded, you must manually merge any changes to files in the 'etc' set
+into the files already on your system.
+
+__EOT
+}
+
+scan_dmesg() {
+	bsort $(sed -ne "$1" /var/run/dmesg.boot)
+}
+
+scan_disknames() {
+	local _n _oifs=$IFS _disknames
+
+	_disknames=$(disknames)
+	[[ -z $_disknames ]] && _disknames="wd0,wd1,wd2,sd0,sd1,sd2,cd0,cd1,cd2"
+
+	IFS=","
+# 	bsort $(for _n in $(disknames); do echo "$_n "; done | sed -ne "$1")
+	bsort $(for _n in $_disknames; do echo "$_n "; done | sed -ne "$1")
+	IFS=$_oifs
+}
+
+get_drive() {
+	ask_which "$1" "contains the $MODE media" "$2"
+	[[ $resp == done ]] && return 1
+	makedev $resp || return 1
+	return 0
+}
+
+mount_mnt2() {
+	local _dev=$1 _opts _file=/tmp/parts.$1 _parts
+
+	disklabel $_dev 2>/dev/null | grep '^  [a-p]: '	\
+		| egrep -v "swap|unused" >$_file
+
+	_parts=$(sed -e 's/^  \(.\): .*/\1/' $_file)
+	set -- $_parts
+	[[ $# == 0 ]] && { echo "No filesystems found on $_dev" ; return 1 ; }
+
+	if isin "c" $_parts; then
+		# Don't ask questions if 'c' contains a filesystem.
+		resp=c
+	elif [[ $# == 1 ]]; then
+		# Don't ask questions if there's only one choice.
+		resp=$1
+	else
+		# Display partitions with filesystems and ask which to use.
+		cat /tmp/parts.$_dev
+		ask_which "$_dev partition" "has the $MODE sets" "$_parts"
+		[[ $resp == done ]] && return 1
+	fi
+
+	# Always mount msdos partitions with -s to get lower case names.
+	grep -q "^  $resp: .*MSDOS" $_file && _opts="-s"
+	mount -o ro,$_opts /dev/$_dev$resp /mnt2
+}
+
+# Ask for a password, saving the input in $resp.
+#    Display $1 as the prompt.
+#    *Don't* allow the '!' options that ask does.
+#    *Don't* echo input.
+askpass() {
+	set -o noglob
+	stty -echo
+	read resp?"$1 "
+	stty echo
+	set +o noglob
+	echo
+}
+
+# Ask for user input.
+#
+#    $1    = the question to ask the user
+#    $2    = the default answer
+#
+# Save the user input (or the default) in $resp.
+#
+# Allow the user to escape to shells ('!') or execute commands
+# ('!foo') before entering the input.
+ask() {
+	local _question=$1 _default=$2
+
+	set -o noglob
+	while :; do
+		echo -n "$_question "
+		[[ -z $_default ]] || echo -n "[$_default] "
+		read resp
+		case $resp in
+		!)	echo "Type 'exit' to return to install."
+			sh
+			;;
+		!*)	eval ${resp#?}
+			;;
+		*)	: ${resp:=$_default}
+			break
+			;;
+		esac
+	done
+	set +o noglob
+}
+
+# Ask for user input until a non-empty reply is entered.
+#
+#    $1    = the question to ask the user
+#    $2    = the default answer
+#
+# Save the user input (or the default) in $resp.
+ask_until() {
+	resp=
+	while [[ -z $resp ]] ; do
+		ask "$1" "$2"
+	done
+}
+
+# Ask the user for a y or n, and insist on 'y', 'yes', 'n' or 'no'.
+#
+#    $1    = the question to ask the user
+#    $2    = the default answer (assumed to be 'n' if empty).
+#
+# Return 'y' or 'n' in $resp.
+ask_yn() {
+	local _q=$1 _a=${2:-no} _resp
+	typeset -l _resp
+
+	while :; do
+		ask "$_q" "$_a"
+		_resp=$resp
+		case $_resp in
+		y|yes)	resp=y ; return ;;
+		n|no)	resp=n ; return ;;
+		esac
+	done
+ }
+
+# Ask the user for a y, n, or a, and insist on 'y', 'yes', 'n' or 'no', 'a' or 'all'.
+#
+#    $1    = the question to ask the user
+#    $2    = the default answer (assumed to be 'n' if empty).
+#
+# Return 'y', 'n', or 'a' in $resp.
+ask_yna() {
+	local _q=$1 _a=${2:-all} _resp
+	typeset -l _resp
+
+	while :; do
+		ask "$_q" "$_a"
+		_resp=$resp
+		case $_resp in
+		y|yes)	resp=y ; return ;;
+		n|no)	resp=n ; return ;;
+		a|all)	resp=a ; return ;;
+		esac
+	done
+ }
+
+# Ask for the user to select one value from a list, or 'done'.
+#
+# $1 = name of the list items (disk, cd, etc.)
+# $2 = question to ask
+# $3 = list of valid choices
+# $4 = default choice, if it is not specified use the first item in $3
+# $5 = error message if no items in $3, defaults to 'No $1s found.'
+#
+# At exit $resp holds selected item, or 'done'
+ask_which() {
+	local _name=$1 _query=$2 _list=$3 _def=$4 _err=$5
+
+	set -- $_list
+	if (( $# < 1 )); then
+		echo "${_err:=No ${_name}s found}."
+		resp=done
+		return
+	fi
+	: ${_def:=$1}
+
+	# Eliminate extraneous (especially trailing) whitespace in _list.
+	_list="$*"
+
+	while :; do
+		# Put both lines in ask prompt, rather than use a
+		# separate 'echo' to ensure the entire question is
+		# re-ask'ed after a '!' or '!foo' shell escape.
+		ask "Available ${_name}s are: $_list.\nWhich one $_query? (or 'done')" "$_def"
+
+		# Quote $resp to prevent user from confusing isin() by
+		# entering something like 'a a'.
+		isin "$resp" $_list done && break
+		echo "'$resp' is not a valid choice."
+	done
+}
+
+# test the first argument against the remaining ones, return success on a match
+isin() {
+	local	_a=$1 _b
+
+	shift
+	for _b; do
+		[[ $_a == $_b ]] && return 0
+	done
+	return 1
+}
+
+# add first argument to list formed by the remaining arguments
+# adds to the tail if the element does not already exist
+addel() {
+	local	_a=$1
+
+	shift
+
+	echo -n "$*"
+	isin "$_a" $* || echo -n " $_a"
+}
+
+# remove all occurrences of first argument from list formed by
+# the remaining arguments
+rmel() {
+	local	_a=$1 _b
+
+	shift
+	for _b; do
+		[[ $_a != $_b ]] && echo -n "$_b "
+	done
+}
+
+bsort() {
+	local _l _a=$1 _b
+
+	[[ $# -gt 0 ]] || return
+
+	shift
+	for _b; do
+		if [[ $_a != $_b ]] ; then
+			if [[ $_a > $_b ]] ; then
+				_l="$_a $_l"; _a=$_b
+			else
+				_l="$_b $_l"
+			fi
+		fi
+	done
+
+	# Output the smallest value found.
+	echo -n "$_a "
+
+	# Sort remaining values.
+	bsort $_l
+}
+
+# log in via ftp to host $1 as user $2 with password $3
+# and return a list of all files in the directory $4 on stdout
+ftp_list_files() {
+	ftp ${_ftp_active} -V -n "$1" <<__EOT
+user "$2" "$3"
+cd "$4"
+ls
+quit
+__EOT
+}
+
+# Create a device.
+#
+# $1 = name of the device to create.
+makedev() {
+	local _dev=$1
+
+# 	if [[ ! -a /dev/$_dev ]]; then
+# 		if [[ ! -r /dev/MAKEDEV ]] ; then
+# 			echo "MAKEDEV not found. Can't create device nodes."
+# 			return 1
+# 		fi
+# 
+# 		cd /dev ; sh MAKEDEV $_dev || return 1 ; cd - >/dev/null
+# 	fi
+	return 0
+}
+
+# Return fancy descriptions for packages
+GetPkgDesc() {
+
+	case $1 in
+		apache-httpd-openbsd-*) 				pkgdesc="Web Server" ;;
+		isc-bind-*) 				pkgdesc="DNS Server" ;;
+		clamav-*) 				pkgdesc="Virus Scanner" ;;
+		clamavdb.*) 			pkgdesc="Virus Database" ;;
+		p5-Mail-SpamAssassin-*) pkgdesc="SPAM Scanner" ;;
+		p3scan-*) 				pkgdesc="POP3 Proxy" ;;
+		smtp-gated-*) 			pkgdesc="SMTP Proxy" ;;
+		e2guardian-*) 		pkgdesc="Web Filter" ;;
+		blacklists.*) 			pkgdesc="Web Filter Blacklists" ;;
+		squid-*) 				pkgdesc="HTTP Proxy" ;;
+		snort-*) 				pkgdesc="Intrusion Detection" ;;
+		snortrules.*)			pkgdesc="Intrusion Detection Rules" ;;
+		snortips-*) 			pkgdesc="Intrution Prevention" ;;
+		imspector-*) 			pkgdesc="IM Proxy" ;;
+		openvpn-*) 				pkgdesc="OpenVPN" ;;
+		dante-*) 				pkgdesc="SOCKS Proxy" ;;
+		webalizer-*) 			pkgdesc="Web Server Logs Analyzer" ;;
+		symon-*) 				pkgdesc="System Monitoring" ;;
+		pmacct-*) 				pkgdesc="Network Monitoring" ;;
+		pftop-*) 				pkgdesc="Packet Filter Monitoring" ;;
+		php-*) 				pkgdesc="PHP" ;;
+		$CW_WEBIF_TARFILE) 		pkgdesc="Web Administration Interface" ;;
+		$CW_CONFIG_TARFILE) 	pkgdesc="Configuration Files" ;;
+		*) 						return 1 ;;
+	esac
+	return 0
+}
+
+# Show list of available sets and let the user select which sets to install.
+#
+# $1 = available sets
+# $2 = already selected sets
+#
+# Set $resp to list of selected sets.
+select_sets() {
+	local _avail=$1 _selected=$2 _next _f _action _pkgdesc
+
+	cat <<__EOT
+
+Select packages by entering a package file name (shown in parentheses),
+a file name pattern or 'all'. De-select packages by prepending
+a '-' to the package name, file name pattern or 'all'. Selected
+packages are labelled '[X]'.
+__EOT
+	while :; do
+		_action=
+		_next=
+		echo
+		for _f in $_avail; do
+			_pkgdesc=
+			if GetPkgDesc $_f; then
+				_pkgdesc="$pkgdesc -> "
+			fi
+
+			if isin $_f $_selected; then
+				echo "	[X] $_pkgdesc($_f)"
+			else
+				echo "	[ ] $_pkgdesc($_f)"
+				: ${_next:=$_f}
+			fi
+		done
+		: ${_next:=done}
+
+		ask "Package name? (or 'done')" "$_next"
+		case $resp in
+		done)	break ;;
+		-*)	_action=rmel ;;
+		esac
+
+		: ${_action:=addel}
+		resp=${resp#+|-}
+
+		case $resp in
+		"")	continue ;;
+		all)	resp=* ;;
+		esac
+
+		# Use @($resp) rather than just $resp to protect
+		# against silly user input that might cause syntax
+		# errors.
+		for _f in $_avail; do
+			eval "case $_f in
+			@($resp)) _selected=\`$_action $_f \$_selected\` ;;
+			esac"
+		done
+	done
+
+	resp=$_selected
+}
+# Backup configuration files that install/upgrade will overwrite
+backup_config_files() {
+	local _line _filepath
+
+	for _line in $(grep -e "^[^#].*$" $FILES); do
+		_filepath=$(echo $_line | cut -f1 -d',')
+		[[ ! -f $_filepath ]] && echo "No such file: $_filepath" && continue
+		[[ -f $DESTDIR/$_filepath ]] && cp -p $DESTDIR/$_filepath $BACKUPDIR/$_filepath
+	done
+
+	BACKUPFILE=utmfw${VMAJ}${VMIN}_config_backup-$(date +%Y%m%d%H%M).tar.gz
+	cd $BACKUPDIR
+	tar cpzf ../$BACKUPFILE *
+	cp ../$BACKUPFILE /root
+	cd -
+}
+
+
+# Install UTMFW configuration files
+install_config_files() {
+	local _line _filepath _mode _uname _gname
+
+	[[ $MODE == install ]] && resp=a
+	for _line in $(grep -e "^[^#].*$" $FILES); do
+		_filepath=$(echo $_line | cut -f1 -d',')
+		[[ ! -f $_filepath ]] && echo "No such file: $_filepath" && continue
+	
+		_mode=$(echo $_line | cut -f2 -d',')
+		_uname=$(echo $_line | cut -f3 -d',')
+		_gname=$(echo $_line | cut -f4 -d',')
+	
+		if [ -f $DESTDIR/$_filepath ]; then
+			[[ $resp == a ]] || ask_yna "Replace existing file: ${DESTDIR}$_filepath ? (y/n/a)"
+			if [[ $resp == n ]]; then
+				install -m $_mode -o $_uname -g $_gname $_filepath ${DESTDIR}$_filepath.new && \
+					echo "Saved as ${DESTDIR}$_filepath.new"
+				continue
+			else
+				cp ${DESTDIR}$_filepath ${DESTDIR}$_filepath.orig && \
+					echo "Saved old file as ${DESTDIR}$_filepath.orig"
+			fi
+		fi
+		install -m $_mode -o $_uname -g $_gname $_filepath $DESTDIR/$_filepath
+	done
+}
+
+# mtree does not set owner and permissions of a directory if the directory
+# already exists. This script forces that according to mtree file.
+set_dir_perms() {
+	local _currdir _owner uname uid gname gid _mode s S
+
+	S='[^[:blank:]]\{1,\}'
+	s='[[:blank:]]\{1,\}'
+	_currdir=$DESTDIR
+
+	echo 'Setting directory permissions'
+	while read _line ; do
+		if [[ $_line == ..* ]] ; then
+			_currdir=${_currdir%\/*}
+		fi
+		if [[ $_line == *type=dir* ]] ; then
+			_currdir=$_currdir/$(echo $_line | sed "s/^\($S\)${s}type=dir.*$/\1/")
+			_currdir=$(echo $_currdir | sed "s/\/\//\//g")
+			# flags=none is a UTMFW upgrade specific keyword
+			# to force this script to set owner and permissions
+			if [[ $_line == *flags=none* ]] ; then
+				_owner=
+				[[ $_line == *uname=* ]] && uname=$(echo $_line | sed "s/^.*${s}uname=\($S\)${s}.*$/\1/") && _owner=$uname
+				[[ $_line == *uid=* ]] && uid=$(echo $_line | sed "s/^.*${s}uid=\($S\)${s}.*$/\1/") && _owner=$uid
+				[[ $_line == *gname=* ]] && gname=$(echo $_line | sed "s/^.*${s}gname=\($S\)[[:blank:]]*.*$/\1/") && _owner=$_owner:$gname
+				[[ $_line == *gid=* ]] && gid=$(echo $_line | sed "s/^.*${s}gid=\($S\)[[:blank:]]*.*$/\1/") && _owner=$_owner:$gid
+				[[ ! -z $_owner ]] && echo chown -R $_owner $_currdir && chown -R $_owner $_currdir
+
+				_mode=
+				[[ $_line == *mode=* ]] && _mode=$(echo $_line | sed "s/^.*${s}mode=\($S\)${s}.*$/\1/")
+				[[ ! -z $_mode ]] && echo chmod $_mode $_currdir && chmod $_mode $_currdir
+			fi
+		fi
+	done <$MTREE
+}
+
+# Install a user-selected subset of the files in $2 from the source
+# named in $1. Display an error message for failed installs so the
+# user will know to try again.
+install_files() {
+	local _src=$1 _files=$2 _f _sets _get_sets _webifparent _webifdir _mtreedir _e2listsdir _listname _pkgaddopts _pkguser
+
+	# Initialize _sets to the list of sets found in _src, and initialize
+	# _get_sets to the intersection of _sets and DEFAULTSETS.
+	#
+	# Sets will be installed in the order given in THESETS to ensure proper
+	# installation.  So, to minimize user confusion display the sets in the
+	# order in which they will be installed.
+	for _f in $THESETS; do
+		isin $_f $_files || continue;
+		_sets=$(addel $_f $_sets)
+		isin $_f $DEFAULTSETS && \
+			_get_sets=$(addel $_f $_get_sets)
+	done
+
+	if [[ -z $_sets ]]; then
+		# Show $_src, but delete any ftp password.
+		cat <<__EOT
+No UTMFW sets were found at
+
+	$(echo $_src | sed -e 's/\(^ftp:\/\/[^/]*\)\(:[^/]*\)\(@.*\)/\1\3/')
+
+Package names are: $THESETS
+__EOT
+		return
+	fi
+
+	select_sets "$_sets" "$_get_sets"
+
+	[[ -n $resp ]] || return
+	_get_sets=$resp
+
+	ask_yn "Ready to $MODE packages?" yes
+	[[ $resp = n ]] && return
+
+	for _f in $THESETS ; do
+		isin $_f $_get_sets || continue
+		echo "Installing $_f ..."
+		case $_f in
+		*.tgz)
+			_pkgname=$_f
+
+			_pkgshortname=${_f%%-*}
+			case $_f in
+			#p5-Mail-SpamAssassin-3.2.5p1.tgz
+			p5-Mail-SpamAssassin-*)
+				_pkgshortname=${_f%-*}
+				;;
+			#smtp-gated-1.4.16.2.tgz
+			smtp-gated-*)
+				_pkgshortname=${_f%-*}
+				;;
+			esac
+
+			# Upgrade not supported on 5.9
+			#if [[ $MODE == upgrade ]] ;then
+			#fi
+
+			# Deleting partial-$_pkgshortname, if any...
+			pkg_delete partial-$_pkgshortname >/dev/null 2>&1
+
+			# Running: pkg_add $_pkgaddopts $_pkgname
+			pkg_add $_pkgaddopts $_pkgname
+
+			# Again deleting partial-$_pkgshortname, if any...
+			pkg_delete partial-$_pkgshortname >/dev/null 2>&1
+
+			# Running as last option: pkg_add $_pkgname
+			pkg_add $_pkgname
+
+			# Post-processing for the package
+			case $_f in
+			squid-*)	echo "Post-processing for $_f: Creating squid cache..."
+				/usr/local/sbin/squid -z
+				;;
+			p3scan-*|smtp-gated-*)	echo "Post-processing for $_f: Setting /dev/pf permissions..."
+				chmod a+r /dev/pf
+				;;
+			e2guardian-*)
+				chown -R _e2guardian:_e2guardian $DESTDIR/var/log/e2guardian/
+				;;
+			imspector-*)	echo "Post-processing for $_f: Setting /dev/pf permissions..."
+				chmod a+r /dev/pf
+				chmod g+w /dev/pf
+				;;
+			symon-*)	echo "Installing symux..."
+				pkg_add symux
+				;;
+			pmacct-*)	echo "Installing rrdtool..."
+				# For rrdtool 1.2.30
+				pkg_add libart
+				pkg_add rrdtool
+				;;
+			php-*)
+				ln -s /usr/local/bin/php-5.6 /usr/local/bin/php
+				pkg_add php-pcntl
+				pkg_add php-mcrypt
+				;;
+			esac
+			;;
+
+		clamavdb.*)
+			_clamavdbdir=$ROOTDIR/var/db/clamav
+
+			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_clamavdbdir && \
+			chown _clamav:_clamav $_clamavdbdir/*
+			;;
+
+		snortrules.*)
+			resp=y
+			_snortdir=$ROOTDIR/etc/snort
+			_listname=rules
+			[[ -d $_snortdir/$_listname ]] && \
+				ask_yn "Replace $_listname?" yes
+
+			if [[ $resp == y ]]; then
+				[[ -d $_snortdir/$_listname ]] && mv $_snortdir/$_listname $_snortdir/$_listname.orig
+				[[ -d $_snortdir/$_listname ]] || mkdir -p $_snortdir/$_listname
+				ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_snortdir
+			fi
+			;;
+
+		blacklists.*)
+			resp=y
+			_e2listsdir=$ROOTDIR/etc/e2guardian/lists
+			[[ $_f == blacklists.* ]] && _listname=blacklists
+
+			[[ -d $_e2listsdir/$_listname ]] && \
+				ask_yn "Replace $_listname?" yes
+
+			if [[ $resp == y ]]; then
+				[[ -d $_e2listsdir/$_listname ]] && mv $_e2listsdir/$_listname $_e2listsdir/$_listname.orig
+				[[ -d $_e2listsdir/$_listname ]] || mkdir -p $_e2listsdir/$_listname
+				ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_e2listsdir
+			fi
+			;;
+
+		$CW_CONFIG_TARFILE)
+			[[ ! -d $DESTDIR ]] && mkdir -p $DESTDIR
+			[[ ! -d $DESTDIR ]] && echo "No such directory: $DESTDIR" && continue
+
+			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C /tmp
+
+			[[ -d /tmp/config ]] || continue
+			cd /tmp/config
+		
+			MTREE=utmfw.mtree
+			FILES=utmfw.files
+		
+			BACKUPDIR=/tmp/backup
+			[[ ! -d $BACKUPDIR ]] && mkdir -p $BACKUPDIR
+			/usr/sbin/mtree -Uedqn -p $BACKUPDIR -f $MTREE && backup_config_files
+			/usr/sbin/mtree -Uedqn -p $DESTDIR -f $MTREE && install_config_files
+
+			_mtreedir=$DESTDIR/etc/mtree
+			[[ ! -d $_mtreedir ]] && mkdir -p $_mtreedir
+			cp $MTREE $_mtreedir
+
+			cd $DESTDIR/etc/mail/spamassassin/
+			ln -sf local-en.cf local.cf
+
+			cd $DESTDIR/etc/p3scan/
+			ln -sf p3scan-en.mail p3scan.mail
+
+			chmod 770 $DESTDIR/var/clamav/tmp/
+			;;
+
+		$CW_WEBIF_TARFILE)
+			resp=y
+			_webifparent=$ROOTDIR/var/www/htdocs
+			_webifdir=$ROOTDIR/var/www/htdocs/utmfw
+			
+			[[ -d $_webifdir ]] && mv $_webifdir $_webifdir.orig
+			[[ ! -d $_webifparent ]] && mkdir -p $_webifparent
+			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_webifparent
+			;;
+
+		*)	echo "Unknown file, skipping..."
+			;;
+		esac
+		if [ $? -ne 0 ]; then
+			echo "'$_f' did not install correctly."
+		else
+			DEFAULTSETS=$(rmel $_f $DEFAULTSETS)
+		fi
+	done
+}
+
+# Encode $1 as specified for usercodes and passwords in RFC 1738
+# section 3.1 and section 5.
+#
+# Escape everything between 0x20 and 0x7e to avoid both illegal url
+# characters and characters causing problems during script processing.
+#
+# *NOTE*
+#	1) quotes around $1 are required to preserve trailing or
+#	   embedded blanks in usercodes and passwords.
+#	2) substitute '%' FIRST so it doesn't eliminate '%' chars we insert.
+encode_for_url() {
+	echo "$1" | sed -e "
+s/%/%25/g
+s/ /%20/g
+s/!/%21/g
+s/\"/%22/g
+s/#/%23/g
+s/\\\$/%24/g
+s/&/%26/g
+s/'/%27/g
+s/(/%28/g
+s/)/%29/g
+s/\*/%2a/g
+s/+/%2b/g
+s/,/%2c/g
+s/-/%2d/g
+s/\./%2e/g
+s/\//%2f/g
+s/:/%3a/g
+s/;/%3b/g
+s/</%3c/g
+s/=/%3d/g
+s/>/%3e/g
+s/?/%3f/g
+s/@/%40/g
+s/\[/%5b/g
+s/\\\\/%5c/g
+s/]/%5d/g
+s/\^/%5e/g
+s/_/%5f/g
+s/\`/%60/g
+s/{/%7b/g
+s/|/%7c/g
+s/}/%7d/g
+s/~/%7e/g
+"
+}
+
+# Check for the presence of an error message in the output of the ftp commands
+# used to get the list of files in a directory.
+#
+# $1 = error message to look for
+# $2 = ftp command output
+ftp_error() {
+	if [[ -n $(echo "$2" | grep "$1") ]]; then
+		echo $1
+		return 0
+	fi
+	return 1
+}
+
+# Get several parameters from the user, and xfer
+# files from the server.
+# $1 = url type (ftp or http)
+# Note:	_ftp_server_ip, _ftp_server_dir, _ftp_server_login,
+#	and _ftp_active must be global.
+install_url() {
+	local _url_type=$1 _file_list _url_base _oifs _prompt _passwd
+
+	ask "HTTP/FTP proxy URL? (e.g. 'http://proxy:8080', or 'none')" \
+	    "${ftp_proxy:-none}"
+	unset ftp_proxy http_proxy
+	[[ $resp == none ]] || export ftp_proxy=$resp http_proxy=$resp
+
+	rm -f $SERVERLIST
+	ask_yn "Display the list of known $_url_type servers?"
+	if [[ $resp == y ]]; then
+		# ftp.openbsd.org == 129.128.5.191 and will remain at
+		# that address for the foreseeable future.
+		echo -n "Getting the list from 129.128.5.191 (ftp.openbsd.org)..."
+		ftp $_ftp_active -V -a -o - \
+			ftp://129.128.5.191/$FTPDIR/ftplist 2>/tmp/ftplisterr \
+			| sed -ne "/^${_url_type}:\/\//s///p" >$SERVERLIST
+		if [[ -s $SERVERLIST ]]; then
+			echo "done."
+			_prompt="Server? (IP address, hostname, list#, 'done' or '?')"
+			cat -n $SERVERLIST | less -XE
+		else
+			echo "FAILED."
+			cat /tmp/ftplisterr
+		fi
+	fi
+
+	# Get server IP address or hostname
+	: ${_prompt:="Server? (IP address, hostname or 'done')"}
+	while :; do
+		eval resp=\$_${_url_type}_server_ip
+		ask_until "$_prompt" "$resp"
+		case $resp in
+		done)	return ;;
+		"?")	[[ -s $SERVERLIST ]] || continue
+			cat -n $SERVERLIST | less -XE
+			;;
+		+([0-9]))
+			# A numeric hostname is ignored. A number is only used
+			# as a line number in $SERVERLIST.
+			[[ -s $SERVERLIST ]] || continue
+			set -- $(sed -ne "${resp}p" $SERVERLIST)
+			[[ $# -lt 1 ]] && { echo "There is no line $resp." ; continue ; }
+			echo "Using	$*"
+			eval _${_url_type}_server_ip=${1%%/*}
+			eval _${_url_type}_server_dir=${1#*/}/$SETDIR
+			# Repeat loop to get user to confirm server address.
+			;;
+		*)	eval _${_url_type}_server_ip=$resp
+			break
+			;;
+		esac
+	done
+
+	# Some older servers lie about their support for passive mode ftp, so
+	# ask the user if it worth trying passive mode to the chosen server.
+	# Irrelevant if using a proxy.
+	if [[ $_url_type == ftp && -z $ftp_proxy ]]; then
+		case $_ftp_active in
+		-A)	resp=no ;;
+		*)	resp=yes ;;
+		esac
+
+		unset _ftp_active
+		ask_yn "Does the server support passive mode ftp?" $resp
+		[[ $resp == n ]] && _ftp_active=-A
+	fi
+
+	# Get server directory
+	eval resp=\$_${_url_type}_server_dir
+	ask_until "Server directory?" "${resp:-pub/OpenBSD/$SETDIR}"
+	eval _${_url_type}_server_dir=$resp
+
+	if [[ $_url_type == ftp ]]; then
+		# Get login name, setting IFS to nothing so trailing or
+		# embedded blanks are preserved!
+		_oifs=$IFS
+		IFS=
+		ask_until "Login?" "${_ftp_server_login:=anonymous}"
+		_ftp_server_login=$resp
+
+		# Get password unless login in 'anonymous' or 'ftp'
+		if [[ $_ftp_server_login == @(anonymous|ftp) ]]; then
+			_passwd=root@`hostname`
+		else
+			resp=
+			while [[ -z $resp ]] ; do
+				askpass "Password? (will not echo)"
+			done
+			_passwd=$resp
+		fi
+		IFS=$_oifs
+	fi
+
+	# Build up the base url since it is so nasty...
+	_url_base=$_url_type://
+	if [[ $_url_type == ftp && $_ftp_server_login != anonymous ]]; then
+		_url_base=$_url_base$(encode_for_url "$_ftp_server_login"):$(encode_for_url "$_passwd")@
+	fi
+	eval _url_base=$_url_base\$_${_url_type}_server_ip/\$_${_url_type}_server_dir
+
+	# XXX Workaround for problems ftp'ing out from a v6 only host.
+	ifconfig lo0 127.0.0.1
+
+	# Get list of files from the server.
+	if [[ $_url_type == ftp && -z $ftp_proxy ]] ; then
+		_file_list=$(ftp_list_files "$_ftp_server_ip" "$_ftp_server_login" "$_passwd" "$_ftp_server_dir")
+		ftp_error "Login failed." "$_file_list" && return
+		ftp_error "No such file or directory." "$_file_list" && return
+	else
+		# Assumes index file is "index.txt" for http (or proxy)
+		# We can't use index.html since the format is server-dependent
+		_file_list=$(ftp -o - -V "$_url_base/index.txt" | sed 's/
+//')
+	fi
+
+	[[ ! -z $PKG_PATH ]] && PKG_PATH=:$PKG_PATH
+	export PKG_PATH=$_url_base$PKG_PATH
+	install_files "$_url_base" "$_file_list"
+}
+
+install_mounted_fs() {
+	local _dir
+
+	while :; do
+		ask_until "Pathname to the packages? (or 'done')" "$SETDIR"
+		[[ $resp == done ]] && return
+		# Accept a valid /mnt2 or /mnt relative path.
+		[[ -d /mnt2/$resp ]] && { _dir=/mnt2/$resp ; break ; }
+		[[ -d /mnt/$resp ]] && { _dir=/mnt/$resp ; break ; }
+		# Accept a valid absolute path.
+		[[ -d /$resp ]] && { _dir=/$resp ; break ; }
+		echo "The directory '$resp' does not exist."
+	done
+
+	[[ ! -z $PKG_PATH ]] && PKG_PATH=:$PKG_PATH
+	export PKG_PATH=$_dir$PKG_PATH
+	install_files "file://$_dir" "$(ls -l $_dir)"
+}
+
+install_cdrom() {
+	get_drive "CD-ROM" "$CDDEVS" || return
+	mount_mnt2 $resp || return
+
+	install_mounted_fs
+}
+
+install_disk() {
+	ask_yn "Is the disk partition already mounted?"
+	if [[ $resp == n ]]; then
+		get_drive "disk" "$DKDEVS" || return
+		mount_mnt2 $resp || return
+	fi
+
+	install_mounted_fs
+}
+
+install_nfs() {
+	local _tcp
+
+	# Get the IP address of the server.
+	ask_until "Server IP address or hostname?" "$NFS_ADDR"
+	NFS_ADDR=$resp
+
+	# Get the server path to mount.
+	ask_until "Filesystem on server to mount?" "$NFS_PATH"
+	NFS_PATH=$resp
+
+	# Determine use of TCP
+	ask_yn "Use TCP transport? (requires TCP-capable NFS server)"
+	[[ $resp == y ]] && _tcp=-T
+
+	# Mount the server
+	mount_nfs $_tcp -o ro $NFS_ADDR:$NFS_PATH /mnt2 || return
+
+	install_mounted_fs
+}
+
+# Check with the user that missing required sets were deliberately skipped.
+sane_install() {
+	local _s _m
+
+	for _s in $SANESETS; do
+		isin $_s $DEFAULTSETS || continue
+		ask_yn "'$_s' was not installed.\nAre you *SURE* your $MODE is complete without '$_s'?"
+		[[ $resp == n ]] && _m="$_m $_s"
+	done
+
+	[[ -n $_m ]] && return 1
+	return 0
+}
+
+# Ask the user for locations of sets, and then install whatever sets the
+# user selects from that location. Repeat as many times as the user
+# needs to get all desired sets.
+install_sets() {
+	local _d=disk _locs="disk ftp http"
+
+	[[ -n $CDDEVS ]] && { _locs="cd $_locs" ; _d=cd ; }
+	[[ -x /sbin/mount_nfs ]] && _locs="$_locs nfs"
+
+	echo "\nLet's $MODE the packages!"
+	while :; do
+		umount -f /mnt2 >/dev/null 2>&1
+		[[ -z $DEFAULTSETS ]] && _d=done
+
+		ask "Location of packages? ($_locs or 'done')" "$_d"
+		case $resp in
+		done)	sane_install && return ;;
+		c*|C*)	isin "cd" $_locs && install_cdrom ;;
+		d*|D*)	install_disk ;;
+		f*|F*)	isin "ftp" $_locs && install_url ftp ;;
+		h*|H*)	isin "http" $_locs && install_url http ;;
+		n*|N*)	isin "nfs" $_locs && install_nfs ;;
+		esac
+	done
+}
+
+finish_up() {
+
+	/sbin/ldconfig /usr/local/lib /usr/X11R6/lib/
+
+	if [[ -f /var/www/htdocs/utmfw/Installer/install.php ]]; then
+		echo "Running post-install script..."
+		/usr/local/bin/php /var/www/htdocs/utmfw/Installer/install.php
+	fi
+	
+	if [[ -d /var/www/htdocs/utmfw/View/symon/rrds/localhost ]]; then
+		cd /var/www/htdocs/utmfw/View/symon/rrds/localhost
+		if [[ -x /usr/local/share/examples/symon/c_smrrds.sh ]]; then
+			echo "Creating symon rrd files..."
+			/usr/local/share/examples/symon/c_smrrds.sh all
+		fi
+	fi
+	
+	if [[ -x /var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh ]]; then
+		echo "Creating pmacct rrd files..."
+		/var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh
+	fi
+
+	# Pat on the back.
+	cat <<__EOT
+
+CONGRATULATIONS! Your UTMFW $MODE has been successfully completed!
+__EOT
+
+	rmdir /mnt2
+}
+
+init() {
+	/sbin/ldconfig /usr/local/lib /usr/X11R6/lib/
+
+	cat <<__EOT
+
+After $MODE completes, full logs can be found at:
+/root/$LOG_FILENAME
+__EOT
+}
+
+# #######################################################################
+# Initial actions common to both installs and upgrades.
+# #######################################################################
+VERSION='5.9'
+ARCH=$(/usr/bin/machine)
+
+VMAJ=${VERSION%%\.*}
+VMIN=${VERSION##*\.}
+
+LOG_FILENAME=utmfw${VMAJ}${VMIN}_${ARCH}_install.log
+LOG_FILE=/tmp/$LOG_FILENAME
+
+ROOTDIR=
+DESTDIR=$ROOTDIR/
+
+CW_CONFIG_TARFILE=utmfw-config-${VMAJ}.${VMIN}.tar.gz
+CW_WEBIF_TARFILE=utmfw-webif-${VMAJ}.${VMIN}.tar.gz
+
+[[ -d /mnt2 ]] || mkdir /mnt2
+
+SETDIR=packages
+export PATH=$PATH:/usr/local/bin
+
+# Extract and save one boot's worth of dmesg
+dmesg | sed -ne '/^OpenBSD /h;/^OpenBSD /!H;${g;p;}' >/var/run/dmesg.boot
+
+# Scan /var/run/dmesg.boot for interesting devices.
+DKDEVS=$(scan_dmesg "${MDDKDEVS:-/^[sw]d[0-9][0-9]* /s/ .*//p}")
+[[ -z $DKDEVS ]] && DKDEVS="wd0,wd1,wd2,sd0,sd1,sd2"
+
+CDDEVS=$(scan_dmesg "${MDCDDEVS:-/^cd[0-9][0-9]* /s/ .*//p}")
+[[ -z $CDDEVS ]] && CDDEVS="cd0,cd1,cd2"
+
+# Selected sets will be installed in the order they are listed in $THESETS.
+THESETS="apache-httpd-openbsd-1.3.20140502p6.tgz \
+		isc-bind-9.10.3pl3.tgz \
+		clamav-0.99p0.tgz \
+		clamavdb.tar.gz \
+		p5-Mail-SpamAssassin-3.4.1p2.tgz \
+		p3scan-2.3.2.tgz \
+		smtp-gated-1.4.16.2.tgz \
+		e2guardian-3.5.1.tgz \
+		blacklists.tar.gz \
+		squid-3.5.14.tgz \
+		snort-2.9.7.3.tgz \
+		snortrules.tar.gz \
+		snortips-4.6.tgz \
+		imspector-0.9.tgz \
+		openvpn-2.3.10.tgz \
+		dante-1.4.1.tgz \
+		webalizer-2.23.08.30p4.tgz \
+		symon-2.87p3.tgz \
+		pmacct-1.5.0rc2p0.tgz \
+		pftop-0.7p15.tgz \
+		php-5.6.18.tgz \
+		$CW_WEBIF_TARFILE \
+		$CW_CONFIG_TARFILE"
+
+SANESETS="apache-httpd-openbsd-1.3.20140502p6.tgz \
+		php-5.6.18.tgz \
+		$CW_WEBIF_TARFILE"
+
+# Introduce ourselves.
+welcome 2>&1 | tee -a $LOG_FILE
+
+ask_yn "Proceed with $MODE?" yes
+if [[ $resp == n ]]; then
+	exit
+fi
+
+init 2>&1 | tee -a $LOG_FILE

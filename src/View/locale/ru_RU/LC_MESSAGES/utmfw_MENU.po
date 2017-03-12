@@ -1,0 +1,301 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Language: ru_RU\n"
+
+msgid "ACL"
+msgstr ""
+
+msgid "Access Logs"
+msgstr "Логи Доступа"
+
+msgid "Advanced"
+msgstr "Дополнительно"
+
+msgid "Alerts"
+msgstr "Оповещения"
+
+msgid "Archives"
+msgstr "Архивы"
+
+msgid "Badwords"
+msgstr "Стоп-лист слов"
+
+msgid "Basic"
+msgstr "Основные"
+
+msgid "Blacklists"
+msgstr "Чёрные списки"
+
+msgid "Blanket"
+msgstr "Общие запреты"
+
+msgid "Bypass"
+msgstr "Обход ограничений"
+
+msgid "UTMFW ADMINISTRATION INTERFACE"
+msgstr "ИНТЕРФЕЙС АДМИНИСТРИРОВАНИЯ UTMFW"
+
+msgid "CPUs"
+msgstr ""
+
+msgid "CTLR Logs"
+msgstr "Логи CTLR"
+
+msgid "Categories"
+msgstr "Категории"
+
+msgid "Charts"
+msgstr "Рейтинги"
+
+msgid "Clamd"
+msgstr ""
+
+msgid "UTMFW Administration Interface"
+msgstr "Интерфейс Администрирования UTMFW"
+
+msgid "Config"
+msgstr "Конфигурация"
+
+msgid "Credits"
+msgstr "Список разработчиков"
+
+msgid "DB"
+msgstr ""
+
+msgid "DB Logs"
+msgstr "Логи DB"
+
+msgid "DHCP"
+msgstr ""
+
+msgid "DM Exts"
+msgstr ""
+
+msgid "DM Mimes"
+msgstr ""
+
+msgid "DNS"
+msgstr ""
+
+msgid "Daily"
+msgstr "По дням"
+
+msgid "Disks"
+msgstr "Диски"
+
+msgid "Domains"
+msgstr "Домены"
+
+msgid "Downloads"
+msgstr "Загрузки"
+
+msgid "Email"
+msgstr ""
+
+msgid "Extensions"
+msgstr "Расширения"
+
+msgid "FTP PROXY"
+msgstr "FTP ПРОКСИ"
+
+msgid "Filter"
+msgstr "Фильтр"
+
+msgid "General"
+msgstr "Общие"
+
+msgid "Graphs"
+msgstr "Графики"
+
+msgid "Groups"
+msgstr "Группы"
+
+msgid "HTTP PROXY"
+msgstr "HTTP ПРОКСИ"
+
+msgid "Help"
+msgstr "Помощь"
+
+msgid "Hosts"
+msgstr "Хосты"
+
+msgid "Hourly"
+msgstr "По часам"
+
+msgid "IDS"
+msgstr ""
+
+msgid "IM Logs"
+msgstr "IM Логи"
+
+msgid "IM PROXY"
+msgstr "IM ПРОКСИ"
+
+msgid "IM Proxy Logs"
+msgstr "Логи IM Прокси"
+
+msgid "INFORMATION"
+msgstr "ИНФОРМАЦИЯ"
+
+msgid "IPS"
+msgstr ""
+
+msgid "Info"
+msgstr "Инфо"
+
+msgid "Init"
+msgstr "Системные"
+
+msgid "Interfaces"
+msgstr "Интерфейсы"
+
+msgid "Language"
+msgstr "Язык"
+
+msgid "Lists"
+msgstr "Списки"
+
+msgid "Live"
+msgstr ""
+
+msgid "Logs"
+msgstr "Логи"
+
+msgid "Logs Report"
+msgstr ""
+
+msgid "MONITORING"
+msgstr "МОНИТОРИНГ"
+
+msgid "Managed"
+msgstr "Обслуживание"
+
+msgid "Mbufs"
+msgstr ""
+
+msgid "Memory"
+msgstr "Память"
+
+msgid "Mimes"
+msgstr ""
+
+msgid "Network"
+msgstr "Сеть"
+
+msgid "OPENSSH"
+msgstr ""
+
+msgid "OPENVPN"
+msgstr ""
+
+msgid "PACKET FILTER"
+msgstr "ПАКЕТНЫЙ ФИЛЬТР"
+
+msgid "POP3 PROXY"
+msgstr "POP3 ПРОКСИ"
+
+msgid "Partitions"
+msgstr "Разделы"
+
+msgid "Phrases"
+msgstr "Фразы"
+
+msgid "Processes"
+msgstr "Процессы"
+
+msgid "Protocols"
+msgstr "Протоколы"
+
+msgid "Queues"
+msgstr ""
+
+msgid "Rules"
+msgstr "Правила"
+
+msgid "SMTP PROXY"
+msgstr "SMTP ПРОКСИ"
+
+msgid "SOCKS PROXY"
+msgstr "SOCKS ПРОКСИ"
+
+msgid "SPAM FILTER"
+msgstr "СПАМ ФИЛЬТР"
+
+msgid "SPAMD"
+msgstr ""
+
+msgid "SYSTEM"
+msgstr "СИСТЕМА"
+
+msgid "Scan"
+msgstr "Сканирование"
+
+msgid "Sensors"
+msgstr "Датчики"
+
+msgid "Sites"
+msgstr "Сайты"
+
+msgid "Source Docs"
+msgstr ""
+
+msgid "Spamd DB"
+msgstr ""
+
+msgid "Startup"
+msgstr "Запуск"
+
+msgid "States"
+msgstr ""
+
+msgid "Statistics"
+msgstr "Статистика"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Transfer"
+msgstr "Передача"
+
+msgid "URLs"
+msgstr ""
+
+msgid "VIRUS FILTER"
+msgstr "ВИРУСНЫЙ ФИЛЬТР"
+
+msgid "Virus Exts"
+msgstr ""
+
+msgid "Virus Mimes"
+msgstr ""
+
+msgid "Virus Sites"
+msgstr ""
+
+msgid "Virus URLs"
+msgstr ""
+
+msgid "WEB FILTER"
+msgstr "WEB ФИЛЬТР"
+
+msgid "WEB SERVER"
+msgstr "WEB СЕРВЕР"
+
+msgid "WUI"
+msgstr ""
+
+msgid "WUI Logs"
+msgstr "Логи WUI"

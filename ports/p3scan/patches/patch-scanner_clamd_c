@@ -1,0 +1,33 @@
+$ComixWall: patch-scanner_clamd_c,v 1.3 2009/07/25 09:55:30 soner Exp $
+--- scanner_clamd.c.orig	Mon Dec 12 17:05:01 2005
++++ scanner_clamd.c	Tue Nov 13 20:54:51 2007
+@@ -99,7 +99,8 @@ int check(struct proxycontext *p, char * filetoscan, c
+       loc2 = tmp-config->virusscanner+1;
+       len=strlen(config->virusscanner);
+       config->clamdport=substr(config->virusscanner,loc2,len);
+-      config->clamdserver=strndup(config->virusscanner,loc); //TODO: 6 bytes in 1 blocks are definitely lost in loss record 1 of 2
++      config->clamdserver=malloc(loc+1); 
++      strlcpy(config->clamdserver, config->virusscanner, loc+1);
+       do_log(LOG_DEBUG, "Reset ClamdServer to: %s Port: %s",config->clamdserver, config->clamdport);
+    }
+    bzero(&clamd_pri, sizeof(clamd_pri));
+@@ -262,7 +263,8 @@ static int init1(void){
+    char  *tmp=NULL;
+ 
+    if (strlen(NONULL(config->virusscanner))<1){
+-      tmp=strndup(DEFAULT_SERVER,strlen(DEFAULT_SERVER));
++      tmp=malloc(strlen(DEFAULT_SERVER)+1); 
++      strlcpy(tmp, DEFAULT_SERVER, strlen(DEFAULT_SERVER)+1);
+       strncat(tmp,":",1);
+       strncat(tmp,DEFAULT_PORT,4);
+       config->virusscanner=tmp;
+@@ -274,7 +276,8 @@ static int init1(void){
+       loc2 = tmp-config->virusscanner+1;
+       len=strlen(config->virusscanner);
+       config->clamdport=substr(config->virusscanner,loc2,len);
+-      config->clamdserver=strndup(config->virusscanner,loc); //TODO: 6 bytes in 1 blocks are definitely lost in loss record 1 of 2
++      config->clamdserver=malloc(loc+1); 
++      strlcpy(config->clamdserver, config->virusscanner, loc+1);
+       do_log(LOG_DEBUG, "Clamd init. Server: %s Port: %s",config->clamdserver, config->clamdport);
+    }else{
+       do_log(LOG_CRIT, "Clamd init unable to locate separator: %s",config->virusscanner);

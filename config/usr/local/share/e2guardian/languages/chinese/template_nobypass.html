@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<!--
+	Copyright (C) 2004-2017 Soner Tari
+
+	This file is part of UTMFW.
+
+	UTMFW is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	UTMFW is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
+	-->
+	<head>
+		<title>UTMFW</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="UTM Firewall" />
+		<meta name="author" content="Soner Tari"/>
+		<meta name="keywords" content="UTMFW, UTM, FW, Unified, Threat, Management, Firewall" />
+		<style type="text/css">
+			<!--
+			body
+			{
+				font-size: 75%;
+				background: gray;
+			}
+
+			table
+			{
+				width: 100%;
+				border: none black;
+				border-collapse: collapse;
+				overflow: visible;
+				text-align: left;
+			}
+
+			td
+			{
+				padding: 0;
+				overflow: visible;
+			}
+
+			img
+			{
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+
+			#window
+			{
+				width: auto;
+				background: white;
+				margin: 1px;
+				border: 2px solid #ccc;
+				border-bottom: 2px solid black;
+				border-right: 2px solid black;
+			}
+
+			.titlebar td
+			{
+				color: white;
+				font-weight: bold;
+				vertical-align: middle;
+			}
+
+			.comiximg
+			{
+				width: 1px;
+				background-color: white;
+				padding-left: 0.5em;
+				border: 2px solid white;
+				border-bottom: 2px solid #ddd;
+				border-right: 2px solid #ddd;
+			}
+
+			.titletext
+			{
+				background-color: #004a4a;
+				text-align: center;
+			}
+
+			.errorimg
+			{
+				width: 1px;
+				background-color: #004a4a;
+				text-align: right;
+			}
+
+			.middle td
+			{
+				width: 600px;
+				background-color: #ccc;
+				padding: 1em;
+				border-left: 2px solid white;
+				border-right: 1px solid black;
+				border-top: 1px solid gray;
+				border-bottom: 1px solid white;
+			}
+
+			#info td
+			{
+				padding: 0.25em;
+				margin: 0;
+				border: none;
+				border-top: 1px solid #ccc;
+				border-bottom: 1px solid #ccc;
+			}
+
+			#info .title
+			{
+				width: 20%;
+				text-align: right;
+				border-right: 3px solid #ccc;
+				background-color: #ddd;
+			}
+
+			#info .info
+			{
+				color: red;
+				font-weight: bold;
+				background-color: #ddd;
+			}
+
+			#info .boldnone
+			{
+				border: none;
+				font-weight: bold;
+			}
+
+			#info .none
+			{
+				border: none;
+			}
+
+			.bottombar td
+			{
+				color: white;
+				background-color: #004a4a;
+				padding: 1px;
+			}
+
+			.user
+			{
+				font-weight: bold;
+			}
+
+			.copyright
+			{
+				text-align: center;
+				font-size: 90%;
+			}
+
+			.group
+			{
+				text-align: right;
+				font-weight: bold;
+			}
+			-->
+		</style>
+	</head>
+	<body>
+		<table style="height: 400px;">
+			<tr>
+				<td>
+					<div align="center">
+						<table id="window">
+							<tr class="titlebar">
+								<td class="comiximg">
+									<a href="http://comixwall.org" name="UTMFW"><img alt="UTMFW" title="UTMFW" src="http://192.168.1.254/images/utmfw.png"></img></a>
+								</td>
+								<td class="titletext">
+									UTM Firewall
+								</td>
+								<td class="errorimg">
+									<img alt="Error" src="http://192.168.1.254/images/error.png"></img>
+								</td>
+							</tr>
+							<tr class="middle">
+								<td colspan="3">
+									<table id="info">
+										<tr>
+											<td class="boldnone" colspan="2">
+												访问被拒绝
+											</td>
+										</tr>
+										<tr>
+											<td class="title">
+												被拒绝页面:
+											</td>
+											<td class="info">-URL-</td>
+										</tr>
+										<tr>
+											<td class="title">
+												原因:
+											</td>
+											<td class="info">-REASONGIVEN-</td>
+										</tr>
+										<tr>
+											<td class="title">
+												类别:
+											</td>
+											<td class="info">-CATEGORIES-</td>
+										</tr>
+										<tr>
+											<td class="none" colspan="2">
+												你要访问的网页发现不适当的内容或者网页属于受系统限制的网站，如果您有任何疑问，请联络系统管理员。
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr class="bottombar">
+								<td colspan="3">
+									<table>
+										<tr>
+											<td class="user">-USER-</td>
+											<td class="copyright">
+												Copyright (C) 2004-2017 Soner Tari
+											</td>
+											<td class="group">-FILTERGROUP-</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>			
+					</div>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

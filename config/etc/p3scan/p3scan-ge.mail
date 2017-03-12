@@ -1,0 +1,38 @@
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+        charset="iso-8859-1"
+
+Guten Tag %USERNAME%.
+Diese Nachricht wurde automatisch von P3Scan generiert, welcher auf 
+%HOSTNAME%.%DOMAINNAME% läuft und alle eingehenden Emails auf Viren
+prüft.
+
+P3Scan hat den Inhalt der Email, die an Sie gesendet wurde ersetzt,
+da sie einen VIRUS enthalten hatte!
+
+Anstelle der infizierten Email wurde Ihnen diese Nachricht gesendet.
+
+Sie können den Header dieser Nachricht anschauen, um den kompletten
+Header der infizierten Nachricht zu analysieren.
+
+Virus Name:
+    %VIRUSNAME%
+Absender der Email:
+    %MAILFROM%
+Gesendet an:
+    %MAILTO%
+Datum:    
+    %MAILDATE%
+Betreff:
+    %SUBJECT%
+Verbindungsdetails:
+    %PROTOCOL% von %CLIENTIP%:%CLIENTPORT% nach %SERVERIP%:%SERVERPORT%
+Backupdatei der Email:
+    %P3SCANID%
+    
+    %VDINFO%
+-- 
+%PROGNAME% %VERSION%
+by Jack S. Lai <laitcg@cox.net>
+.

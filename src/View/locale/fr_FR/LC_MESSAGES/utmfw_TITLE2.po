@@ -1,0 +1,1189 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+# AGASSE Baptiste <baptiste.agasse@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-07 19:03+0100\n"
+"Last-Translator: AGASSE Baptiste <baptiste.agasse@gmail.com>\n"
+"Language-Team: French <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "%MEM"
+msgstr "%MEM"
+
+msgid "ACL"
+msgstr "ACL"
+
+msgid "AV Admin"
+msgstr "Admin AV"
+
+msgid "AV Subject"
+msgstr ""
+
+msgid "Access control list"
+msgstr "Access control list"
+
+msgid "Access denied address"
+msgstr ""
+
+msgid "Active IPs (arp table)"
+msgstr "IPs actives (table arp)"
+
+msgid "Address Family"
+msgstr "Famille d'adresse"
+
+msgid "Advanced Power Management"
+msgstr "Gestion avancée de l'énergie"
+
+msgid "After hours"
+msgstr ""
+
+msgid "All rights reserved."
+msgstr "Tous droits réservés"
+
+msgid "Allow localhost"
+msgstr "Autoriser localhost"
+
+msgid "Anonymize Logs"
+msgstr "Rendre anonyme les logs"
+
+msgid "Apply configuration"
+msgstr "Appliquer la configuration"
+
+msgid "Archive Block Encrypted"
+msgstr ""
+
+msgid "Archive Block Max"
+msgstr ""
+
+msgid "Archive Limit Memory Usage"
+msgstr ""
+
+msgid "Archive Max Compression Ratio"
+msgstr ""
+
+msgid "Archive Max File Size"
+msgstr ""
+
+msgid "Archive Max Files"
+msgstr ""
+
+msgid "Archive Max Recursion"
+msgstr ""
+
+msgid "Back Orifice detector"
+msgstr ""
+
+msgid "Badwords"
+msgstr ""
+
+msgid "Badwords block count"
+msgstr ""
+
+msgid "Badwords filtering"
+msgstr ""
+
+msgid "Badwords replace character"
+msgstr ""
+
+msgid "Banned image replacement"
+msgstr ""
+
+msgid "Banner"
+msgstr "Bannière"
+
+msgid "Bayes auto learn"
+msgstr "Apprentissage auto Bayes"
+
+msgid "Blacklist"
+msgstr "Liste noire"
+
+msgid "Blacklisted"
+msgstr ""
+
+msgid "Blanket Block"
+msgstr ""
+
+msgid "Blanket IP Block"
+msgstr ""
+
+msgid "Blanket SSL/CONNECT Block"
+msgstr ""
+
+msgid "Blanket SSL/CONNECT IP Block"
+msgstr ""
+
+msgid "Block Duration"
+msgstr "Temps de blocage"
+
+msgid "Block all filetransfers"
+msgstr "Bloquer tous les transferts de fichiers"
+
+msgid "Block downloads"
+msgstr "Bloquer les téléchargements"
+
+msgid "Block webcams"
+msgstr "Bloquer les webcams"
+
+msgid "Broadcast address"
+msgstr "Adresse de broadcast"
+
+msgid "Bytes Free"
+msgstr "Octets libres"
+
+msgid "COMMAND"
+msgstr "COMMANDE"
+
+msgid "CVS Tag"
+msgstr ""
+
+msgid "CTLR"
+msgstr ""
+
+msgid "Cache mgr"
+msgstr ""
+
+msgid "Category display threshold"
+msgstr ""
+
+msgid "Certificate"
+msgstr "Certificat"
+
+msgid "Cipher"
+msgstr "Cipher"
+
+msgid "Client netmask"
+msgstr "Masque réseau client"
+
+msgid "Compression"
+msgstr "Compression"
+
+msgid "Configuration"
+msgstr "Configuration"
+
+msgid "Content Admin"
+msgstr ""
+
+msgid "Content Subject"
+msgstr ""
+
+msgid "Content scan exceptions"
+msgstr ""
+
+msgid "Content scanner timeout"
+msgstr ""
+
+msgid "Content scanning web filter."
+msgstr ""
+
+msgid "Copyright"
+msgstr "Copyright"
+
+msgid "Create filter group"
+msgstr "Créer un groupe de filtre"
+
+msgid "Create list cache files"
+msgstr ""
+
+msgid "DHCP Server"
+msgstr "Serveur DHCP"
+
+msgid "DNS Database Info"
+msgstr "Info base de données DNS"
+
+msgid "DNS Server"
+msgstr "Serveur DNS"
+
+msgid "DNS_SERVERS"
+msgstr "DNS_SERVERS"
+
+msgid "Database Checks"
+msgstr "Vérifications de la base de données"
+
+msgid "Database Mirrors"
+msgstr "Miroirs de la base de données"
+
+msgid "De-facto standard IDS (Intrusion Detection System)."
+msgstr ""
+
+msgid "De-facto standard among HTTP proxies."
+msgstr ""
+
+msgid "Debug"
+msgstr "Debug"
+
+msgid "Debug options"
+msgstr "Options de debug"
+
+msgid "Delete downloaded temp files"
+msgstr "Effacer les fichers temporaires téléchargés"
+
+msgid "Deny others"
+msgstr "Refuser les autres"
+
+msgid "Desc"
+msgstr "Desc"
+
+msgid "Detect Broken Executables"
+msgstr "Détecter les exécutables cassés"
+
+msgid "Device"
+msgstr ""
+
+msgid "Diffie-Hellman params"
+msgstr ""
+
+msgid "Disable content scanning"
+msgstr "Désactver le scan de contenu"
+
+msgid "Disable decode alerts"
+msgstr ""
+
+msgid "Disable ipopt alerts"
+msgstr ""
+
+msgid "Disable logging process"
+msgstr ""
+
+msgid "Disable tcpopt alerts"
+msgstr ""
+
+msgid "Disable tcpopt experimental alerts"
+msgstr ""
+
+msgid "Disable tcpopt obsolete alerts"
+msgstr ""
+
+msgid "Disable tcpopt ttcp alerts"
+msgstr ""
+
+msgid "Disabled"
+msgstr "Désactivé"
+
+msgid "Disabled Rules"
+msgstr "Règles désactivées"
+
+msgid "EXTERNAL_NET"
+msgstr "EXTERNAL_NET"
+
+msgid "Embedded URL weighting"
+msgstr ""
+
+msgid "Enable Deep URL Analysis"
+msgstr ""
+
+msgid "Enable SSL/TLS"
+msgstr "Autoriser SSL/TLS"
+
+msgid "Enabled"
+msgstr "Activé"
+
+msgid "Enabled Rules"
+msgstr "Règles activées"
+
+msgid "Ext"
+msgstr "Ext"
+
+msgid "FTP Proxy"
+msgstr "Proxy FTP"
+
+msgid "Filter IP"
+msgstr "Filtrer IP"
+
+msgid "Filter Port"
+msgstr "Filtrer Port"
+
+msgid "Filter group mode"
+msgstr "Mode du groupe de filtre"
+
+msgid "Filter group name"
+msgstr "Nom du groupe de filtre"
+
+msgid "Filtered minutes"
+msgstr ""
+
+msgid "Filtered response"
+msgstr ""
+
+msgid "Follow Directory Symlinks"
+msgstr ""
+
+msgid "Follow File Symlinks"
+msgstr ""
+
+msgid "Force quick search"
+msgstr ""
+
+msgid "Forwarded for"
+msgstr ""
+
+msgid "Forwarders"
+msgstr ""
+
+msgid "Free OOP scripting language."
+msgstr ""
+
+#, php-format
+msgid ""
+"Free secure shell provides remote shell access to the system. It is believed "
+"that almost 90% of all secure shell traffic on the Internet is provided by "
+"OpenSSH. OpenSSH is developed by the OpenBSD project."
+msgstr ""
+
+msgid "Fri"
+msgstr "Ven"
+
+msgid "GG"
+msgstr ""
+
+msgid "GROUP"
+msgstr "GROUPE"
+
+msgid "Gateway"
+msgstr "Passerelle"
+
+msgid "Greylist"
+msgstr "Liste grise"
+
+msgid "Group"
+msgstr "Groupe"
+
+msgid "HOME_NET"
+msgstr "HOME_NET"
+
+msgid "HTTP Proxy"
+msgstr "Proxy HTTP"
+
+msgid "HTTP Proxy Password"
+msgstr "Mot de passe Proxy HTTP"
+
+msgid "HTTP Proxy Port"
+msgstr "Port Proxy HTTP"
+
+msgid "HTTP Proxy Server"
+msgstr "Serveur Proxy HTTP"
+
+msgid "HTTP Proxy Username"
+msgstr "Nom d'utilisateur Proxy HTTP"
+
+msgid "HTTP_PORTS"
+msgstr "HTTP_PORTS"
+
+msgid "HTTP_SERVERS"
+msgstr "HTTP_SERVERS"
+
+msgid "HTTPs"
+msgstr "HTTPs"
+
+msgid "Hex decode content"
+msgstr ""
+
+msgid "Host"
+msgstr "Hôte"
+
+msgid "Host IP"
+msgstr "IP hôte"
+
+msgid "Hostname Lookups"
+msgstr ""
+
+msgid "ICQ"
+msgstr "ICQ"
+
+msgid "IM Proxy"
+msgstr "Proxy IM"
+
+msgid "IP defragmentation support"
+msgstr ""
+
+msgid "IP or Net"
+msgstr "IP ou Net"
+
+msgid "IP range"
+msgstr "Intervalle IP"
+
+msgid "IRC"
+msgstr "IRC"
+
+msgid "Ignore errors"
+msgstr "Ignorer les erreurs"
+
+msgid "Include classification & priority settings"
+msgstr ""
+
+msgid "Include reference systems"
+msgstr ""
+
+msgid "Infection/Scan Error Bypass"
+msgstr ""
+
+msgid "Infection/Scan Error Bypass Secret Key"
+msgstr ""
+
+msgid "Infection/Scan Error Bypass on Scan Errors Only"
+msgstr ""
+
+msgid "Initial Trickle delay"
+msgstr ""
+
+msgid "Interface Configuration"
+msgstr "Interface de Configuration"
+
+msgid "Interfaces"
+msgstr "Interfaces"
+
+msgid "Intrusion Alerts"
+msgstr "Alertes d'Intrusion"
+
+msgid "Intrusion Detection"
+msgstr "Détection d'intrusion"
+
+msgid "Intrusion Prevention"
+msgstr "Prévention d'intrusion"
+
+msgid "Jabber"
+msgstr "Jabber"
+
+msgid "Just Delete"
+msgstr "Juste supprimer"
+
+msgid "Keep Alive"
+msgstr ""
+
+msgid "KeepAlive"
+msgstr ""
+
+msgid "KeepAlive Timeout"
+msgstr ""
+
+msgid "Keywords"
+msgstr "Mots clés"
+
+msgid "Language"
+msgstr "Langage"
+
+msgid "Leases"
+msgstr "Baux"
+
+msgid "Leave Temporary Files"
+msgstr ""
+
+msgid "Leave spool on"
+msgstr ""
+
+msgid "Listen Address"
+msgstr ""
+
+msgid "Local IP Address"
+msgstr "Adresse IP locale"
+
+msgid "Local IP address"
+msgstr "Adresse IP locale"
+
+msgid "Local User"
+msgstr "Utilisateur local"
+
+msgid "Locale"
+msgstr ""
+
+msgid "Lock duration"
+msgstr ""
+
+msgid "Lock on"
+msgstr ""
+
+msgid "Log Clean"
+msgstr ""
+
+msgid "Log Exception Hits"
+msgstr ""
+
+msgid "Log Level"
+msgstr "Niveau de log"
+
+msgid "Log Verbose"
+msgstr ""
+
+msgid "Log ad blocks"
+msgstr ""
+
+msgid "Log child process handling"
+msgstr ""
+
+msgid "Log client hostnames"
+msgstr ""
+
+msgid "Log connection handling errors"
+msgstr ""
+
+msgid "Log fqdn"
+msgstr ""
+
+msgid "Log helo"
+msgstr ""
+
+msgid "Log ip on direct"
+msgstr ""
+
+msgid "Log level"
+msgstr "Niveau de log"
+
+msgid "Log mail from"
+msgstr ""
+
+msgid "Log rcpt to"
+msgstr ""
+
+msgid "Log typing events"
+msgstr ""
+
+msgid "Logging Settings"
+msgstr ""
+
+msgid "Login Grace Time"
+msgstr ""
+
+msgid "MSN"
+msgstr "MSN"
+
+msgid "Mail Follow URLs"
+msgstr ""
+
+msgid "Mail From"
+msgstr "Mail De"
+
+msgid "Mail program"
+msgstr "Client mail"
+
+msgid "Managed extensions"
+msgstr "Extentions gérées"
+
+msgid "Managed mime types"
+msgstr "Mime types gérés"
+
+msgid "Max Attempts"
+msgstr ""
+
+msgid "Max Auth Tries"
+msgstr ""
+
+msgid "Max Block Duration"
+msgstr ""
+
+msgid "Max Childs"
+msgstr ""
+
+msgid "Max Clients"
+msgstr "Clients MAX"
+
+msgid "Max Directory Recursion"
+msgstr ""
+
+msgid "Max KeepAlive Requests"
+msgstr ""
+
+msgid "Max Log Item Length"
+msgstr ""
+
+msgid "Max Spare Servers"
+msgstr ""
+
+msgid "Max Threads"
+msgstr "Threads MAX"
+
+msgid "Max age children"
+msgstr ""
+
+msgid "Max children"
+msgstr ""
+
+msgid "Max content file cache scan size"
+msgstr ""
+
+msgid "Max content filter size"
+msgstr ""
+
+msgid "Max content ram cache scan size"
+msgstr ""
+
+msgid "Max ips"
+msgstr ""
+
+msgid "Max spare children"
+msgstr ""
+
+msgid "Max upload size"
+msgstr "Taille upload max"
+
+msgid "MaxStartups"
+msgstr ""
+
+msgid "Maximum connections"
+msgstr ""
+
+msgid "Maximum connections per host"
+msgstr ""
+
+msgid "Maximum download size"
+msgstr ""
+
+msgid "Maximum load"
+msgstr "Charge maximum"
+
+msgid "Maximum spam load"
+msgstr ""
+
+msgid "Maximum spam scan size"
+msgstr ""
+
+msgid "Maximum virus scan size"
+msgstr ""
+
+msgid "Mime"
+msgstr "Mime"
+
+msgid "Min Spare Servers"
+msgstr ""
+
+msgid "Min children"
+msgstr ""
+
+msgid "Min spare children"
+msgstr ""
+
+msgid "Modern virtual private networking."
+msgstr ""
+
+msgid "Mon"
+msgstr "Lun"
+
+msgid "Monitoring"
+msgstr ""
+
+msgid "NAT header type"
+msgstr ""
+
+msgid "Name server"
+msgstr "Serveur de nom"
+
+msgid "Naughtyness limit"
+msgstr ""
+
+msgid "Network Time"
+msgstr ""
+
+msgid "No bind"
+msgstr ""
+
+msgid "No cache"
+msgstr ""
+
+msgid "Non standard delimiter"
+msgstr ""
+
+msgid "Notice days"
+msgstr ""
+
+msgid "Notice response"
+msgstr ""
+
+msgid "Notice responses"
+msgstr ""
+
+msgid "Notify AV"
+msgstr ""
+
+msgid "Notify Content"
+msgstr ""
+
+msgid "Number of filter groups"
+msgstr "Nombre de groupes de filtre"
+
+msgid "Open source anti-spam software."
+msgstr "Logiciel anti-spam Open source"
+
+msgid "Open source anti-virus software."
+msgstr "Logiciel anti-virus Open source"
+
+msgid "OpenSSH"
+msgstr "OpenSSH"
+
+msgid "OpenVPN"
+msgstr "OpenVPN"
+
+msgid "PICS rating support"
+msgstr ""
+
+msgid "POP3 Proxy"
+msgstr "Proxy POP3"
+
+msgid "PRI"
+msgstr "PRI"
+
+msgid "Packet Filter"
+msgstr ""
+
+msgid "Permit Empty Passwords"
+msgstr "Autoriser mots de passe vide"
+
+msgid "Permit Root Login"
+msgstr "Autoriser les connections root"
+
+msgid "Persist Key"
+msgstr ""
+
+msgid "Persist Tun"
+msgstr ""
+
+msgid "Phrase filter mode"
+msgstr ""
+
+msgid "Ping"
+msgstr "Ping"
+
+msgid "Pmacct"
+msgstr ""
+
+msgid "Pmacct Network Monitoring"
+msgstr ""
+
+msgid "Port"
+msgstr "Port"
+
+msgid "Prefork children"
+msgstr ""
+
+msgid "Preserve case"
+msgstr "Préserver la casse"
+
+msgid "Print Last Log"
+msgstr ""
+
+msgid "Print Motd"
+msgstr ""
+
+msgid "Priority"
+msgstr "Priorité"
+
+msgid "Private Key"
+msgstr "Clé privée"
+
+msgid ""
+"Promiscuous mode accounting daemon collects IP based network usage "
+"information. Network usage graphs are generated based on pmacct data."
+msgstr ""
+
+msgid "Protocol"
+msgstr "Protocole"
+
+msgid "Protograph"
+msgstr ""
+
+msgid "Proxy IP"
+msgstr "Proxy IP"
+
+msgid "Proxy IP:Ports"
+msgstr "Proxy IP:Ports"
+
+msgid "Proxy Port"
+msgstr "Proxy Port"
+
+msgid "Quiet"
+msgstr "Silencieux"
+
+msgid "Re-check replaced URLs"
+msgstr ""
+
+msgid "Remote Server"
+msgstr "Serveur distant"
+
+msgid "Remote User"
+msgstr "Utilisateur distant"
+
+msgid "Report e-mail"
+msgstr ""
+
+msgid "Report language"
+msgstr ""
+
+msgid "Report safe"
+msgstr ""
+
+msgid "Reporting level"
+msgstr ""
+
+msgid "Required score"
+msgstr "Score requis"
+
+msgid "Resource not available"
+msgstr "Ressource non disponible"
+
+msgid "Response postfix"
+msgstr ""
+
+msgid "Response prefix"
+msgstr ""
+
+msgid "Reverse address lookups"
+msgstr ""
+
+msgid "Reverse client ip lookups"
+msgstr ""
+
+msgid "Rewrite header"
+msgstr ""
+
+msgid "Root Certificate"
+msgstr "Certificat racine"
+
+msgid "Route"
+msgstr "Route"
+
+msgid "SHELLCODE_PORTS"
+msgstr "SHELLCODE_PORTS"
+
+msgid "SMTP Proxy"
+msgstr "Proxy SMTP"
+
+msgid "SMTP_SERVERS"
+msgstr "SMTP_SERVERS"
+
+msgid "SNMP_SERVERS"
+msgstr "SNMP_SERVERS"
+
+msgid "SOCKS Proxy"
+msgstr ""
+
+msgid "SPAM Deferral"
+msgstr ""
+
+msgid "SPAM Filter"
+msgstr ""
+
+msgid "SQL_SERVERS"
+msgstr "SQL_SERVERS"
+
+msgid "SSH_PORTS"
+msgstr "SSH_PORTS"
+
+msgid "STARTED"
+msgstr ""
+
+msgid "Safe Browsing"
+msgstr ""
+
+msgid "Sat"
+msgstr "Sam"
+
+msgid "Scan Archive"
+msgstr ""
+
+msgid "Scan HTML"
+msgstr ""
+
+msgid "Scan Mail"
+msgstr ""
+
+msgid "Scan OLE2"
+msgstr ""
+
+msgid "Scan PE"
+msgstr ""
+
+msgid "Scan RAR"
+msgstr ""
+
+msgid "Scan Spam"
+msgstr ""
+
+msgid "Scan clean cache"
+msgstr ""
+
+msgid "Self Check"
+msgstr ""
+
+msgid "Server Admin"
+msgstr ""
+
+msgid "Server Key Bits"
+msgstr ""
+
+msgid "Server Mode"
+msgstr ""
+
+msgid "Session"
+msgstr "Session"
+
+msgid "Show weighted phrases found"
+msgstr ""
+
+msgid "Size"
+msgstr "Taille"
+
+msgid "Soft restart"
+msgstr ""
+
+msgid "Spam Filter"
+msgstr ""
+
+msgid "Spam threshold"
+msgstr ""
+
+msgid "Spamd Grey DB"
+msgstr ""
+
+msgid "Spamd Grey Listing"
+msgstr ""
+
+msgid "Spamd Logging"
+msgstr ""
+
+msgid "Spamd Spam Deferral"
+msgstr ""
+
+msgid "Spamd White DB"
+msgstr ""
+
+msgid "Start Servers"
+msgstr ""
+
+msgid "Subnet mask"
+msgstr ""
+
+msgid "Subsystem sftp"
+msgstr ""
+
+msgid "Sun"
+msgstr "Dim"
+
+msgid "Symon"
+msgstr ""
+
+msgid "Symon System Monitoring"
+msgstr ""
+
+msgid "Symux"
+msgstr ""
+
+msgid "Symux System Monitoring"
+msgstr ""
+
+msgid "Syslog Facility"
+msgstr ""
+
+msgid "System"
+msgstr ""
+
+msgid "System Administration Guides"
+msgstr ""
+
+msgid ""
+"System monitoring software. Most of the rrd based graphs are generated based "
+"on symon data."
+msgstr ""
+
+msgid "TCP Keep Alive"
+msgstr ""
+
+msgid "TELNET_SERVERS"
+msgstr "TELNET_SERVERS"
+
+msgid "TIME"
+msgstr ""
+
+msgid "TLS Auth"
+msgstr ""
+
+msgid "Telnet negotiation string normalizer"
+msgstr ""
+
+msgid "Temporary Denied Page Bypass"
+msgstr ""
+
+msgid "Temporary Denied Page Bypass Secret Key"
+msgstr ""
+
+msgid "The Free Software Foundation."
+msgstr ""
+
+msgid "The most famous web server."
+msgstr ""
+
+msgid ""
+"The most secure OS in the world. Underneath UTMFW is pure, untouched "
+"OpenBSD."
+msgstr ""
+
+msgid "Threshold"
+msgstr "Seuil"
+
+msgid "Threshold By User"
+msgstr "Seuil par utilisateur"
+
+msgid "Thu"
+msgstr "Jeu"
+
+msgid "Time to expire"
+msgstr "Temps d'expiration"
+
+msgid "Time to expire (secs)"
+msgstr "Temps d'expiration (secs)"
+
+msgid "Timeout"
+msgstr "Timeout"
+
+msgid "Timespan"
+msgstr ""
+
+msgid "Trickle delay"
+msgstr ""
+
+msgid "Trusted networks"
+msgstr "Réseaux de confiance"
+
+msgid "Tue"
+msgstr "Mar"
+
+msgid ""
+"Turns Snort IDS into an IPS (Intrusion Prevention System). Replaced by "
+"SnortIPS."
+msgstr ""
+
+msgid "USER"
+msgstr ""
+
+msgid "Unblock all blocked entries"
+msgstr ""
+
+msgid "Unblock selected"
+msgstr ""
+
+msgid "Url cache age"
+msgstr ""
+
+msgid "Url cache number"
+msgstr ""
+
+msgid "Use DNS"
+msgstr ""
+
+msgid "Use SMTP"
+msgstr ""
+
+msgid "Use bayes"
+msgstr ""
+
+msgid "Use xforwarded for"
+msgstr ""
+
+msgid "User agent regexp"
+msgstr ""
+
+msgid "Verbosity"
+msgstr "Verbosité"
+
+msgid "Violations"
+msgstr "Violations"
+
+msgid "Virus DB Update"
+msgstr ""
+
+msgid "Virus Filter"
+msgstr "Filtre Virus"
+
+msgid "Virus and spam scanning POP3 proxy."
+msgstr ""
+
+msgid "Virus and spam scanning SMTP proxy."
+msgstr ""
+
+msgid "WUI"
+msgstr "WUI"
+
+msgid "Web Access Denied Reporting"
+msgstr ""
+
+msgid "Web Filter"
+msgstr "Filtre Web"
+
+msgid "Web Filter Access"
+msgstr ""
+
+msgid "Web Server"
+msgstr "Serveur Web"
+
+msgid "Web Server (WUI)"
+msgstr ""
+
+msgid "Web Server Access"
+msgstr ""
+
+msgid "Web interface for configuring and monitoring OpenBSD/pf."
+msgstr ""
+
+msgid "Wed"
+msgstr "Mer"
+
+msgid "Weighted phrase list"
+msgstr ""
+
+msgid "Weighted phrase mode"
+msgstr ""
+
+msgid "Whitelist"
+msgstr "Liste blanche"
+
+msgid "Whitelisted"
+msgstr ""
+
+msgid "X-Bogosity"
+msgstr ""
+
+msgid "X-Spam-Flag"
+msgstr ""
+
+msgid "X-Spam-Status"
+msgstr ""
+
+msgid "Yahoo"
+msgstr "Yahoo"
+
+msgid "blacklisted"
+msgstr ""
+
+msgid "blocked"
+msgstr "bloqué"
+
+msgid "end"
+msgstr "fin"
+
+msgid "height"
+msgstr "hauteur"
+
+msgid "managed"
+msgstr "géré"
+
+msgid "size"
+msgstr "taille"
+
+msgid "start"
+msgstr "démarrer"
+
+msgid "timespan"
+msgstr ""
+
+msgid "total"
+msgstr "total"
+
+msgid "whitelisted"
+msgstr ""
+
+msgid "width"
+msgstr "largeur"

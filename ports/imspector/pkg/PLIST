@@ -1,0 +1,12 @@
+@comment $OpenBSD$
+@comment $ComixWall: PLIST,v 1.5 2009/11/03 11:02:45 soner Exp $
+@newgroup _imspector:702
+@newuser _imspector:702:702:daemon:IM proxy:/nonexistent:/sbin/nologin
+%%SHARED%%
+etc/
+etc/imspector/
+etc/imspector/acl.txt
+etc/imspector/badwords.txt
+etc/imspector/imspector.conf
+lib/imspector/
+@bin sbin/imspector

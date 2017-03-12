@@ -1,0 +1,130 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Language: ru_RU\n"
+
+msgid "< Previous"
+msgstr "< Предыдущая"
+
+msgid "<< First"
+msgstr "<< Первая"
+
+msgid "Add"
+msgstr "Добавить"
+
+msgid "Apply"
+msgstr "Применить"
+
+msgid "Block"
+msgstr "Блокировать"
+
+msgid "Change"
+msgstr "Изменить"
+
+msgid "Compressed"
+msgstr "Упакован"
+
+msgid "Copy"
+msgstr "Скопировать"
+
+msgid "Create"
+msgstr "Создать"
+
+msgid "Daily"
+msgstr "По дням"
+
+msgid "Defaults"
+msgstr "По-умолчанию"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Disable"
+msgstr "Отключить"
+
+msgid "Display"
+msgstr "Отобразить"
+
+msgid "Download"
+msgstr "Сохранить"
+
+msgid "Enable"
+msgstr "Включить"
+
+msgid "Horizontal"
+msgstr "Горизонтально"
+
+msgid "Hourly"
+msgstr "По часам"
+
+msgid "Last >>"
+msgstr "Последняя >>"
+
+msgid "Log in"
+msgstr "Войти"
+
+msgid "Make Dynamic"
+msgstr "Сделать динамическим"
+
+msgid "Make Static"
+msgstr "Сделать статическим"
+
+msgid "Move Down"
+msgstr "Вниз"
+
+msgid "Move Up"
+msgstr "Вверх"
+
+msgid "Next >"
+msgstr "Следующая >"
+
+msgid "Redraw"
+msgstr "Перерисовать"
+
+msgid "Reinitialize"
+msgstr "Переинициализировать"
+
+msgid "Reload"
+msgstr "Перегрузить"
+
+msgid "Restart"
+msgstr "Перезапустить"
+
+msgid "Rotate"
+msgstr "Архивировать"
+
+msgid "Rotate All"
+msgstr "Архивировать Все"
+
+msgid "Search"
+msgstr "Искать"
+
+msgid "Select"
+msgstr "Выбрать"
+
+msgid "Start"
+msgstr "Старт"
+
+msgid "Stop"
+msgstr "Стоп"
+
+msgid "Unblock"
+msgstr "Разблокировать"
+
+msgid "Unblock All"
+msgstr "Разблокировать всех"
+
+msgid "Vertical"
+msgstr "Вертикально"

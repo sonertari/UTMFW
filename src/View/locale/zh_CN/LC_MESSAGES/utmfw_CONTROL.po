@@ -1,0 +1,129 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "< Previous"
+msgstr "<向前"
+
+msgid "<< First"
+msgstr "<<第一"
+
+msgid "Add"
+msgstr "添加"
+
+msgid "Apply"
+msgstr "应用"
+
+msgid "Block"
+msgstr "块"
+
+msgid "Change"
+msgstr "变"
+
+msgid "Compressed"
+msgstr "压缩"
+
+msgid "Copy"
+msgstr "复制"
+
+msgid "Create"
+msgstr "创建"
+
+msgid "Daily"
+msgstr "日报"
+
+msgid "Defaults"
+msgstr "默认"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "Disable"
+msgstr "禁用"
+
+msgid "Display"
+msgstr "显示"
+
+msgid "Download"
+msgstr "下载"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "Horizontal"
+msgstr "水平"
+
+msgid "Hourly"
+msgstr "每小时"
+
+msgid "Last >>"
+msgstr "最后>>"
+
+msgid "Log in"
+msgstr "登录"
+
+msgid "Make Dynamic"
+msgstr "设置动态"
+
+msgid "Make Static"
+msgstr "设置静态"
+
+msgid "Move Down"
+msgstr "下移"
+
+msgid "Move Up"
+msgstr "上移"
+
+msgid "Next >"
+msgstr "下一步>"
+
+msgid "Redraw"
+msgstr "重绘"
+
+msgid "Reinitialize"
+msgstr "重新初始化"
+
+msgid "Reload"
+msgstr "重新载入"
+
+msgid "Restart"
+msgstr "重新启动"
+
+msgid "Rotate"
+msgstr "旋转"
+
+msgid "Rotate All"
+msgstr "旋转全部"
+
+msgid "Search"
+msgstr "搜索"
+
+msgid "Select"
+msgstr "选择"
+
+msgid "Start"
+msgstr "开始"
+
+msgid "Stop"
+msgstr "停止"
+
+msgid "Unblock"
+msgstr "解除阻止"
+
+msgid "Unblock All"
+msgstr "解除全部阻止"
+
+msgid "Vertical"
+msgstr "垂直"

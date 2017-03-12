@@ -1,0 +1,43 @@
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+       charset="iso-8859-1"
+
+Salve %USERNAME%.
+
+Il testo di questo messaggio è stato generato automaticamente da
+P3Scan, che è in esecuzione su %HOSTNAME%.%DOMAINNAME%
+per controllare la presenza di virus su tutta la posta in arrivo.
+
+Sostituisce il corpo del messaggio originario che è risultato
+contenere un VIRUS (invece della email infetta ti è stato
+recapitato questo messaggio).
+
+Gli header del messaggio originale sono stati lasciati invariati,
+quindi per avere informazioni complete sul messaggio originale
+puoi controllare gli header di questo.
+
+Ecco un rapporto sintetico sulla scansione (attenzione, tutti
+i virus recenti falsificano il mittente, che pertanto non è
+assolutamente attendibile):
+
+Nome virus:
+   %VIRUSNAME%
+Mittente:
+   %MAILFROM%
+Destinatario:
+   %MAILTO%
+Data del messaggio:
+   %MAILDATE%
+Subject:
+   %SUBJECT%
+Dati della connessione:
+   %PROTOCOL% from %CLIENTIP%:%CLIENTPORT% to %SERVERIP%:%SERVERPORT%
+File col messaggio:
+   %P3SCANID%
+
+   %VDINFO%
+-- 
+%PROGNAME% %VERSION%
+by Jack S. Lai <laitcg@cox.net>
+.

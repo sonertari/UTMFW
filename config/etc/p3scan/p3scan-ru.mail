@@ -1,0 +1,31 @@
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+        charset="utf-8"
+
+Здравствуйте %USERNAME%.
+Это сообщение было автоматически сгенерировано системой проверки входящего почтового трафика (P3Scan).
+%HOSTNAME%.%DOMAINNAME%.
+
+Вы получили это сообщение потому, что оригинальное сообщение заражено.
+Для более подробной информации смотрите заголовки письма.
+
+Название вируса:
+    %VIRUSNAME%
+Отправитель письма (предполагаемый):
+    %MAILFROM%
+Кому отправлено:
+    %MAILTO%
+Дата:
+    %MAILDATE%
+Тема:
+    %SUBJECT%
+Информация о соединении:
+    %PROTOCOL% from %CLIENTIP%:%CLIENTPORT% to %SERVERIP%:%SERVERPORT%
+Файл сообщения:
+    %P3SCANID%
+Virus Definition Info:
+    %VDINFO%
+-- 
+%PROGNAME% %VERSION%
+.

@@ -1,0 +1,1250 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+# Soner Tari <sonertari@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-08 13:59+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: Turkish <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "%MEM"
+msgstr "%BELLEK"
+
+msgid "ACL"
+msgstr "ACL"
+
+msgid "AV Admin"
+msgstr "AV yöneticisi"
+
+msgid "AV Subject"
+msgstr "AV konu başlığı"
+
+msgid "Access Denied Address"
+msgstr "Giriş engelleme adresi"
+
+msgid "Access control list"
+msgstr "Giriş kontrol listesi"
+
+msgid "Access denied address"
+msgstr "Giriş engelleme adresi"
+
+msgid "Active IPs (arp table)"
+msgstr "Geçerli IP'ler (arp tablosu)"
+
+msgid "Additional mime types"
+msgstr "Ek mime türleri"
+
+msgid "Address Family"
+msgstr "Adres ailesi"
+
+msgid "Advanced Power Management"
+msgstr "Gelişmiş Güç Yönetimi"
+
+msgid "After hours"
+msgstr "Mesai sonrası"
+
+msgid "All rights reserved."
+msgstr "Tüm hakları saklıdır."
+
+msgid "Allow localhost"
+msgstr "Yerel bilgisayara izin ver"
+
+msgid "Anonymize Logs"
+msgstr "Kayıtları anonimleştir"
+
+msgid "Apply configuration"
+msgstr "Yapılandırmayı uygula"
+
+msgid "Archive Block Encrypted"
+msgstr "Arşiv şifre engelleme"
+
+msgid "Archive Block Max"
+msgstr "Arşiv engelleme üst sınırı"
+
+msgid "Archive Limit Memory Usage"
+msgstr "Arşiv bellek kullanım sınırı"
+
+msgid "Archive Max Compression Ratio"
+msgstr "Arşiv sıkıştırma oranı üst sınırı"
+
+msgid "Archive Max File Size"
+msgstr "Arşiv dosya boyut üst sınırı"
+
+msgid "Archive Max Files"
+msgstr "Arşiv dosya üst sınırı"
+
+msgid "Archive Max Recursion"
+msgstr "Arşiv yineleme üst sınırı"
+
+msgid "Back Orifice detector"
+msgstr "Back Orifice algılayıcı"
+
+msgid "Badwords"
+msgstr "Uygunsuz kelimeler"
+
+msgid "Badwords block count"
+msgstr "Uygunsuz kelime engelleme sayısı"
+
+msgid "Badwords filtering"
+msgstr "Uygunsuz kelime eleği"
+
+msgid "Badwords replace character"
+msgstr "Uygunsuz kelime değiştirme harfi"
+
+msgid "Banned flash replacement"
+msgstr "Yasaklı flash değiştirme"
+
+msgid "Banned image replacement"
+msgstr "Yasaklı resim değiştirme"
+
+msgid "Banner"
+msgstr "Afiş"
+
+msgid "Bayes auto learn"
+msgstr "Bayes otomatik öğrenme"
+
+msgid "Blacklist"
+msgstr "Karaliste"
+
+msgid "Blacklisted"
+msgstr "Karalistelenmiş"
+
+msgid "Blanket Block"
+msgstr "Örtü engelleme"
+
+msgid "Blanket IP Block"
+msgstr "Örtü IP engelleme"
+
+msgid "Blanket SSL/CONNECT Block"
+msgstr "Örtü SSL/CONNECT engelleme"
+
+msgid "Blanket SSL/CONNECT IP Block"
+msgstr "Örtü SSL/CONNECT IP engelleme"
+
+msgid "Block Duration"
+msgstr "Engelleme süresi"
+
+msgid "Block all filetransfers"
+msgstr "Dosya aktarımlarını engelle"
+
+msgid "Block downloads"
+msgstr "İndirmeleri engelle"
+
+msgid "Block webcams"
+msgstr "Web kameraları engelle"
+
+msgid "Broadcast address"
+msgstr "Yayım adresi"
+
+msgid "Bytes Free"
+msgstr "Kalan baytlar"
+
+msgid "COMMAND"
+msgstr "KOMUT"
+
+msgid "CTLR"
+msgstr "CTLR"
+
+msgid "CVS Tag"
+msgstr "CVS Etiketi"
+
+msgid "Cache mgr"
+msgstr "Önbellek yöneticisi"
+
+msgid "Category display threshold"
+msgstr "Sınıf gösterim eşik değeri"
+
+msgid "Certificate"
+msgstr "Sertifika"
+
+msgid "Cipher"
+msgstr "Şifre"
+
+msgid "Client netmask"
+msgstr "İstemci ağ şablonu"
+
+msgid "Compression"
+msgstr "Sıkıştırma"
+
+msgid "Configuration"
+msgstr "Yapılandırma"
+
+msgid "Content Admin"
+msgstr "İçerik yöneticisi"
+
+msgid "Content Subject"
+msgstr "İçerik konusu"
+
+msgid "Content scan exceptions"
+msgstr "İçerik tarama istisnaları"
+
+msgid "Content scanner timeout"
+msgstr "İçerik tarama zaman aşım değeri"
+
+msgid "Content scanning web filter."
+msgstr "İçerik tarayan web eleği."
+
+msgid "Copyright"
+msgstr "Telif hakkı"
+
+msgid "Create filter group"
+msgstr "Elek grubu yarat"
+
+msgid "Create list cache files"
+msgstr "Liste önbellek dosyalarını yarat"
+
+msgid "DHCP Server"
+msgstr "DHCP Sunucu"
+
+msgid "DNS Database Info"
+msgstr "DNS veritabanı bilgisi"
+
+msgid "DNS Server"
+msgstr "DNS Sunucu"
+
+msgid "DNS_SERVERS"
+msgstr "DNS_SERVERS"
+
+msgid "Database Checks"
+msgstr "Veritabanı kontrolleri"
+
+msgid "Database Mirrors"
+msgstr "Veritabanı aynaları"
+
+msgid "De-facto standard IDS (Intrusion Detection System)."
+msgstr "Ölçüt kabul edilen Saldırı Tespit Sistemi (STS)."
+
+msgid "De-facto standard among HTTP proxies."
+msgstr "Ölçüt kabul edilen HTTP vekil."
+
+msgid "Debug"
+msgstr "Hata ayıklama"
+
+msgid "Debug options"
+msgstr "Hata ayıklama seçenekleri"
+
+msgid "Delete downloaded temp files"
+msgstr "İndirilen geçici dosyaları sil"
+
+msgid "Deny others"
+msgstr "Diğerlerini reddet"
+
+msgid "Desc"
+msgstr "Tanım"
+
+msgid "Detect Broken Executables"
+msgstr "Bozuk program dosyalarını algıla"
+
+msgid "Device"
+msgstr "Aygıt"
+
+msgid "Diffie-Hellman params"
+msgstr "Diffie-Hellman değişkenleri"
+
+msgid "Disable content scanning"
+msgstr "İçerik taramayı kapat"
+
+msgid "Disable decode alerts"
+msgstr "Deşifre uyarılarını kapat"
+
+msgid "Disable ipopt alerts"
+msgstr "Ipopt uyarılarını kapat"
+
+msgid "Disable logging process"
+msgstr "Kayıt sürecini kapat"
+
+msgid "Disable tcpopt alerts"
+msgstr "Tcpopt uyarılarını kapat"
+
+msgid "Disable tcpopt experimental alerts"
+msgstr "Deneysel tcpopt uyarılarını kapat"
+
+msgid "Disable tcpopt obsolete alerts"
+msgstr "Eski tcpopt uyarılarını kapat"
+
+msgid "Disable tcpopt ttcp alerts"
+msgstr "Tcpopt ttcp uyarılarını kapat"
+
+msgid "Disabled"
+msgstr "Kapalı"
+
+msgid "Disabled Rules"
+msgstr "Kapatılmış Kurallar"
+
+msgid "EXTERNAL_NET"
+msgstr "EXTERNAL_NET"
+
+msgid "Embedded URL weighting"
+msgstr "Gömülü URL ağırlıklı hesabı"
+
+msgid "Enable Deep URL Analysis"
+msgstr "Derin URL analizini aç"
+
+msgid "Enable MITM site certificate checking"
+msgstr "MITM site sertifika kontrolünü aç"
+
+msgid "Enable SSL/TLS"
+msgstr "SSL/TLS'yi aç"
+
+msgid "Enabled"
+msgstr "Açık"
+
+msgid "Enabled Rules"
+msgstr "Açık Kurallar"
+
+msgid "Ext"
+msgstr "Uznt"
+
+msgid "FTP Proxy"
+msgstr "FTP Vekil"
+
+msgid "Filter IP"
+msgstr "Elek IP adresi"
+
+msgid "Filter IP for xforwarded for"
+msgstr "Xforwarded for için filtre IP adresi"
+
+msgid "Filter Port"
+msgstr "Elek kapısı"
+
+msgid "Filter group mode"
+msgstr "Elek grup kipi"
+
+msgid "Filter group name"
+msgstr "Elek grup adı"
+
+msgid "Filtered minutes"
+msgstr "Elek uygulama süresi"
+
+msgid "Filtered response"
+msgstr "Elek uygulama cevabı"
+
+msgid "Follow Directory Symlinks"
+msgstr "Dizin sembolik bağlantılarını izle"
+
+msgid "Follow File Symlinks"
+msgstr "Dosya sembolik bağlantılarını izle"
+
+msgid "Force quick search"
+msgstr "Hızlı arama"
+
+msgid "Forwarded for"
+msgstr "İletim"
+
+msgid "Forwarders"
+msgstr "İletilenler"
+
+msgid "Free OOP scripting language."
+msgstr "Özgür Nesne Yönelimli betik dili."
+
+#, php-format
+msgid ""
+"Free secure shell provides remote shell access to the system. It is believed "
+"that almost 90% of all secure shell traffic on the Internet is provided by "
+"OpenSSH. OpenSSH is developed by the OpenBSD project."
+msgstr ""
+"Özgür güvenli kabuk sistem komut satırına uzaktan erişimi sağlar. "
+"İnternet'teki güvenli kabuk trafiğinin %90'ının OpenSSH tarafından "
+"sağlandığı tahmin edilmektedir. OpenSSH OpenBSD projesi tarafından "
+"geliştirilmektedir."
+
+msgid "Fri"
+msgstr "Cum"
+
+msgid "GG"
+msgstr "GG"
+
+msgid "GROUP"
+msgstr "GRUP"
+
+msgid "Gateway"
+msgstr "Ağ geçidi"
+
+msgid "Gentle child restart"
+msgstr "Dikkatli alt-süreç tekrar başlatma"
+
+msgid "Greylist"
+msgstr "Griliste"
+
+msgid "Group"
+msgstr "Grup"
+
+msgid "HOME_NET"
+msgstr "HOME_NET"
+
+msgid "HTTP Proxy"
+msgstr "HTTP Vekil"
+
+msgid "HTTP Proxy Password"
+msgstr "HTTP vekil şifresi"
+
+msgid "HTTP Proxy Port"
+msgstr "HTTP vekil kapısı"
+
+msgid "HTTP Proxy Server"
+msgstr "HTTP vekil sunucu"
+
+msgid "HTTP Proxy Username"
+msgstr "HTTP vekil kullanıcı adı"
+
+msgid "HTTP_PORTS"
+msgstr "HTTP_PORTS"
+
+msgid "HTTP_SERVERS"
+msgstr "HTTP_SERVERS"
+
+msgid "HTTPs"
+msgstr "HTTPs"
+
+msgid "Hex decode content"
+msgstr "Hex içerik deşifreleme"
+
+msgid "Host"
+msgstr "Bilgisayar"
+
+msgid "Host IP"
+msgstr "Bilgisayar IP adresi"
+
+msgid "Hostname Lookups"
+msgstr "Bilgisayar adı arama"
+
+msgid "ICQ"
+msgstr "ICQ"
+
+msgid "IM Proxy"
+msgstr "Mesajlaşma Vekili"
+
+msgid "IP defragmentation support"
+msgstr "IP birleştirme desteği"
+
+msgid "IP or Net"
+msgstr "IP veya Ağ"
+
+msgid "IP range"
+msgstr "IP aralığı"
+
+msgid "IRC"
+msgstr "IRC"
+
+msgid "Ignore errors"
+msgstr "Hataları yoksay"
+
+msgid "Include classification & priority settings"
+msgstr "Sınırlandırma ve öncelik ayarlarını ekle"
+
+msgid "Include reference systems"
+msgstr "İlgili sistemleri ekle"
+
+msgid "Infection/Scan Error Bypass"
+msgstr "Virüslü/Tarama hata kestirmesi"
+
+msgid "Infection/Scan Error Bypass Secret Key"
+msgstr "Virüslü/Tarama hata kestirmesi gizli anahtarı"
+
+msgid "Infection/Scan Error Bypass on Scan Errors Only"
+msgstr "Sadece tarama hatalarında virüslü/tarama hata kestirmesi"
+
+msgid "Initial Trickle delay"
+msgstr "Başlangıç süzülme gecikmesi"
+
+msgid "Interface Configuration"
+msgstr "Arayüz yapılandırma"
+
+msgid "Interfaces"
+msgstr "Arayüzler"
+
+msgid "Intrusion Alerts"
+msgstr "Saldırı Uyarıları"
+
+msgid "Intrusion Detection"
+msgstr "Saldırı Tespit"
+
+msgid "Intrusion Prevention"
+msgstr "Saldırı Engelleme"
+
+msgid "Jabber"
+msgstr "Jabber"
+
+msgid "Just Delete"
+msgstr "Sadece sil"
+
+msgid "Keep Alive"
+msgstr "Canlı tutma"
+
+msgid "KeepAlive"
+msgstr "Canlı tutma"
+
+msgid "KeepAlive Timeout"
+msgstr "Canlı tutma zaman aşımı"
+
+msgid "Keywords"
+msgstr "Anahtar kelimeler"
+
+msgid "Language"
+msgstr "Dil"
+
+msgid "Leases"
+msgstr "Kiralar"
+
+msgid "Leave Temporary Files"
+msgstr "Geçici dosyaları bırak"
+
+msgid "Leave spool on"
+msgstr "Kuyruğu bırak"
+
+msgid "Limit SSL MITM to sites in greysslsitelist(s)"
+msgstr "SSL MITM'i greysslsitelist(s) dosyasındaki sitelerle sınırla"
+
+msgid "Listen Address"
+msgstr "Dinleme adresi"
+
+msgid "Listen on"
+msgstr "Dinleme arayüzü"
+
+msgid "Local IP Address"
+msgstr "Yerel IP adresi"
+
+msgid "Local IP address"
+msgstr "Yerel IP adresi"
+
+msgid "Local User"
+msgstr "Yerel Kullanıcı"
+
+msgid "Locale"
+msgstr "Yöre"
+
+msgid "Lock duration"
+msgstr "Kilitleme süresi"
+
+msgid "Lock on"
+msgstr "Kilitleme nedeni"
+
+msgid "Log Clean"
+msgstr "Temizleri kaydet"
+
+msgid "Log Exception Hits"
+msgstr "İstisnaları kaydet"
+
+msgid "Log Level"
+msgstr "Kayıt seviyesi"
+
+msgid "Log Verbose"
+msgstr "Detaylı kayıt"
+
+msgid "Log ad blocks"
+msgstr "Reklam engellemelerini kaydet"
+
+msgid "Log child process handling"
+msgstr "Alt süreç yönetimini kaydet"
+
+msgid "Log client hostnames"
+msgstr "İstemci bilgisayar adlarını kaydet"
+
+msgid "Log connection handling errors"
+msgstr "Bağlantı yönetimi hatalarını kaydet"
+
+msgid "Log fqdn"
+msgstr "FQDN'i kaydet"
+
+msgid "Log helo"
+msgstr "Helo'yu kaydet"
+
+msgid "Log ip on direct"
+msgstr "Doğrudan IP'yi kaydet"
+
+msgid "Log level"
+msgstr "Kayıt seviyesi"
+
+msgid "Log mail from"
+msgstr "Kimden geldiğini kaydet"
+
+msgid "Log rcpt to"
+msgstr "Alıcıyı kaydet"
+
+msgid "Log ssl errors"
+msgstr "SSL hatalarını kaydet"
+
+msgid "Log typing events"
+msgstr "Yazma olaylarını kaydet"
+
+msgid "Logging Settings"
+msgstr "Kayıt ayarları"
+
+msgid "Login Grace Time"
+msgstr "Giriş vade süresi"
+
+msgid "MSN"
+msgstr "MSN"
+
+msgid "Mail Follow URLs"
+msgstr "URL'leri takipeden posta"
+
+msgid "Mail From"
+msgstr "Kimden"
+
+msgid "Mail program"
+msgstr "Posta programı"
+
+msgid "Managed extensions"
+msgstr "Yönetilen uzantılar"
+
+msgid "Managed mime types"
+msgstr "Yönetilen mime türleri"
+
+msgid "Max Attempts"
+msgstr "Deneme üst sınırı"
+
+msgid "Max Auth Tries"
+msgstr "Doğrulama deneme üst sınırı"
+
+msgid "Max Block Duration"
+msgstr "Engelleme süresi üst sınırı"
+
+msgid "Max Childs"
+msgstr "Alt süreç üst sınırı"
+
+msgid "Max Clients"
+msgstr "İstemci üst sınırı"
+
+msgid "Max Directory Recursion"
+msgstr "Dizin yenileme üst sınırı"
+
+msgid "Max KeepAlive Requests"
+msgstr "Canlı tutma istekleri üst sınırı"
+
+msgid "Max Log Item Length"
+msgstr "Kayıt öğesi uzunluk üst sınırı"
+
+msgid "Max Spare Servers"
+msgstr "Boşta sunucu üst sınırı"
+
+msgid "Max Threads"
+msgstr "İşparçacığı üst sınırı"
+
+msgid "Max age children"
+msgstr "Altsüreç yaşı üst sınırı"
+
+msgid "Max children"
+msgstr "Altsüreç üst sınırı"
+
+msgid "Max content file cache scan size"
+msgstr "İçerik dosya önbelleği tarama boyut üst sınırı"
+
+msgid "Max content filter size"
+msgstr "İçerik elek boyutu üst sınırı"
+
+msgid "Max content ram cache scan size"
+msgstr "İçerik ram önbellek tarama boyutu üst sınırı"
+
+msgid "Max ips"
+msgstr "IP üst sınırı"
+
+msgid "Max spare children"
+msgstr "Boşta alt süreç üst sınırı"
+
+msgid "Max upload size"
+msgstr "Karşıya yükleme boyut üst sınırı"
+
+msgid "MaxStartups"
+msgstr "Başlangıç üst sınırı"
+
+msgid "Maximum connections"
+msgstr "Bağlantı üst sınırı"
+
+msgid "Maximum connections per host"
+msgstr "Bilgisayar başına bağlantı üst sınırı"
+
+msgid "Maximum download size"
+msgstr "İndirme boyutu üst sınırı"
+
+msgid "Maximum load"
+msgstr "Yük üst sınırı"
+
+msgid "Maximum spam load"
+msgstr "Spam yükü üst sınırı"
+
+msgid "Maximum spam scan size"
+msgstr "Spam tarama boyutu üst sınırı"
+
+msgid "Maximum virus scan size"
+msgstr "Virüs tarama boyutu üst sınırı"
+
+msgid "Mime"
+msgstr "Mime"
+
+msgid "Min Spare Servers"
+msgstr "Boşta sunucu alt sınırı"
+
+msgid "Min children"
+msgstr "Alt süreç alt sınırı"
+
+msgid "Min spare children"
+msgstr "Boşta alt süreç alt sınırı"
+
+msgid "Modern virtual private networking."
+msgstr "Modern sanal özel ağ programı."
+
+msgid "Mon"
+msgstr "Pzt"
+
+msgid "Monitoring"
+msgstr "Gözlemleme"
+
+msgid "NAT header type"
+msgstr "NAT başlık türü"
+
+msgid "Name server"
+msgstr "Ad sunucusu"
+
+msgid "Naughtyness limit"
+msgstr "Uygunsuz içerik sınırı"
+
+msgid "Network Time"
+msgstr "Ağ Zamanı"
+
+msgid "No bind"
+msgstr "Bağlantısız"
+
+msgid "No cache"
+msgstr "Önbelleksiz"
+
+msgid "Non standard delimiter"
+msgstr "Standart olmayan ayraç"
+
+msgid "Notice days"
+msgstr "Uyarı günleri"
+
+msgid "Notice response"
+msgstr "Uyarı cevabı"
+
+msgid "Notice responses"
+msgstr "Uyarı cevapları"
+
+msgid "Notify AV"
+msgstr "AV'yi uyar"
+
+msgid "Notify Content"
+msgstr "İçerik uyarısı"
+
+msgid "Number of filter groups"
+msgstr "Elek grubu sayısı"
+
+msgid "Open source anti-spam software."
+msgstr "Açık kaynak istenmeyen e-posta engelleme yazılımı."
+
+msgid "Open source anti-virus software."
+msgstr "Açık kaynak virüs önleme yazılımı."
+
+msgid "OpenSSH"
+msgstr "OpenSSH"
+
+msgid "OpenVPN"
+msgstr "OpenVPN"
+
+msgid "PICS rating support"
+msgstr "PICS derecelendirme desteği"
+
+msgid "POP3 Proxy"
+msgstr "POP3 Vekil"
+
+msgid "PRI"
+msgstr "ÖNC"
+
+msgid "Packet Filter"
+msgstr "Paket Eleği"
+
+msgid "Pconn timeout"
+msgstr "Pconn zaman aşımı"
+
+msgid "Permit Empty Passwords"
+msgstr "Boş şifrelere izin ver"
+
+msgid "Permit Root Login"
+msgstr "Root girişine izin ver"
+
+msgid "Persist Key"
+msgstr "Anahtarı sürdür"
+
+msgid "Persist Tun"
+msgstr "Tun'ı sürdür"
+
+msgid "Phrase filter mode"
+msgstr "Tümce elek kipi"
+
+msgid "Ping"
+msgstr "Ping"
+
+msgid "Pmacct"
+msgstr "Pmacct"
+
+msgid "Pmacct Network Monitoring"
+msgstr "Pmacct Ağ Gözlemleme"
+
+msgid "Port"
+msgstr "Kapı"
+
+msgid "Prefork children"
+msgstr "Alt süreç ön başlatma"
+
+msgid "Preserve case"
+msgstr "Büyük/küçük harfi koru"
+
+msgid "Print Last Log"
+msgstr "Son kaydı yazdır"
+
+msgid "Print Motd"
+msgstr "Günün mesajını yazdır"
+
+msgid "Priority"
+msgstr "Öncelik"
+
+msgid "Private Key"
+msgstr "Özel anahtar"
+
+msgid ""
+"Promiscuous mode accounting daemon collects IP based network usage "
+"information. Network usage graphs are generated based on pmacct data."
+msgstr ""
+"Herşeyi dinleyen hesap tutma süreci IP tabanlı ağ kullanım bilgilerini "
+"toplar. Ağ kullanım grafikleri pmacct verisi üzerinden üretilir."
+
+msgid "Protocol"
+msgstr "Protokol"
+
+msgid "Protograph"
+msgstr "Protograph"
+
+msgid "Proxy IP"
+msgstr "Vekil IP adresi"
+
+msgid "Proxy IP:Ports"
+msgstr "Vekil IP:kapısı"
+
+msgid "Proxy Port"
+msgstr "Vekil kapısı"
+
+msgid "Proxy failure log interval"
+msgstr "Vekil hatası için kayıt zaman aralığı"
+
+msgid "Proxy header exchange"
+msgstr "Vekil başlık değişimi"
+
+msgid "Proxy timeout"
+msgstr "Vekil zaman aşımı"
+
+msgid "Quiet"
+msgstr "Sessiz"
+
+msgid "Re-check replaced URLs"
+msgstr "Değiştirilen URL'leri tekrar kontrol et"
+
+msgid "Redirect SSL denied page"
+msgstr "SSL engelleme sayfasını yönlendir"
+
+msgid "Remote Server"
+msgstr "Uzaktaki sunucu"
+
+msgid "Remote User"
+msgstr "Uzaktaki Kullanıcı"
+
+msgid "Report e-mail"
+msgstr "Bildirim e-posta adresi"
+
+msgid "Report language"
+msgstr "Bildirim dili"
+
+msgid "Report safe"
+msgstr "Güvenli bildirim"
+
+msgid "Reporting level"
+msgstr "Bildirim seviyesi"
+
+msgid "Required score"
+msgstr "Gerekli puan"
+
+msgid "Resource not available"
+msgstr "Kaynağa erişilemiyor"
+
+msgid "Response postfix"
+msgstr "Cevap soneki"
+
+msgid "Response prefix"
+msgstr "Cevap öneki"
+
+msgid "Reverse address lookups"
+msgstr "Ters adres arama"
+
+msgid "Reverse client ip lookups"
+msgstr "Ters istemci ip arama"
+
+msgid "Rewrite header"
+msgstr "Başlığı tekrar yaz"
+
+msgid "Root Certificate"
+msgstr "Kök sertifikası"
+
+msgid "Route"
+msgstr "Yol"
+
+msgid "SHELLCODE_PORTS"
+msgstr "SHELLCODE_PORTS"
+
+msgid "SMTP Proxy"
+msgstr "SMTP Vekil"
+
+msgid "SMTP_SERVERS"
+msgstr "SMTP_SERVERS"
+
+msgid "SNMP_SERVERS"
+msgstr "SNMP_SERVERS"
+
+msgid "SOCKS Proxy"
+msgstr "SOCKS Vekil"
+
+msgid "SPAM Deferral"
+msgstr "SPAM Geciktirme"
+
+msgid "SPAM Filter"
+msgstr "SPAM Eleği"
+
+msgid "SQL_SERVERS"
+msgstr "SQL_SERVERS"
+
+msgid "SSH_PORTS"
+msgstr "SSH_PORTS"
+
+msgid "SSL access denied address"
+msgstr "SSL giriş engelleme adresi"
+
+msgid "SSL certificate checking"
+msgstr "SSL sertifika kontrolü"
+
+msgid "SSL man in the middle"
+msgstr "SSL araya girme saldırısı"
+
+msgid "STARTED"
+msgstr "BAŞLANGIÇ"
+
+msgid "Safe Browsing"
+msgstr "Güvenli gezinme"
+
+msgid "Sat"
+msgstr "Cts"
+
+msgid "Scan Archive"
+msgstr "Arşivleri tara"
+
+msgid "Scan HTML"
+msgstr "HTML tara"
+
+msgid "Scan Mail"
+msgstr "E-postaları tara"
+
+msgid "Scan OLE2"
+msgstr "OLE2 tara"
+
+msgid "Scan PE"
+msgstr "PE tara"
+
+msgid "Scan RAR"
+msgstr "RAR tara"
+
+msgid "Scan Spam"
+msgstr "Spam tara"
+
+msgid "Scan clean cache"
+msgstr "Temiz önbelleğini tara"
+
+msgid "Self Check"
+msgstr "Kendini kontrol"
+
+msgid "Server Admin"
+msgstr "Sunucu yöneticisi"
+
+msgid "Server Key Bits"
+msgstr "Sunucu anahtar bitleri"
+
+msgid "Server Mode"
+msgstr "Sunucu kipi"
+
+msgid "Session"
+msgstr "Oturum"
+
+msgid "Show weighted phrases found"
+msgstr "Bulunan ağırlıklı tümceleri göster"
+
+msgid "Size"
+msgstr "Boyut"
+
+msgid "Soft restart"
+msgstr "Yumuşak tekrar başlatma"
+
+msgid "Spam Filter"
+msgstr "Spam Eleği"
+
+msgid "Spam threshold"
+msgstr "Spam eşiği"
+
+msgid "Spamd Grey DB"
+msgstr "Spamd Gri VT"
+
+msgid "Spamd Grey Listing"
+msgstr "Spamd Gri Listeleme"
+
+msgid "Spamd Logging"
+msgstr "Spamd kayıtalma"
+
+msgid "Spamd Spam Deferral"
+msgstr "Spamd Spam Geciktirme"
+
+msgid "Spamd White DB"
+msgstr "Spamd Beyaz VT"
+
+msgid "Start Servers"
+msgstr "Başlangıç sunucu sayısı"
+
+msgid "Subnet mask"
+msgstr "Altağ şablonu"
+
+msgid "Subsystem sftp"
+msgstr "Alt-sistem sftp"
+
+msgid "Sun"
+msgstr "Paz"
+
+msgid "Symon"
+msgstr "Symon"
+
+msgid "Symon System Monitoring"
+msgstr "Symon Sistem Gözlemleme"
+
+msgid "Symux"
+msgstr "Symux"
+
+msgid "Symux System Monitoring"
+msgstr "Symux Sistem Gözlemleme"
+
+msgid "Syslog Facility"
+msgstr "Syslog düzeneği"
+
+msgid "System"
+msgstr "Sistem"
+
+msgid "System Administration Guides"
+msgstr "Sistem Yönetici Klavuzları"
+
+msgid ""
+"System monitoring software. Most of the rrd based graphs are generated based "
+"on symon data."
+msgstr ""
+"Sistem gözlemleme yazılımı. Rrd tabanlı grafiklerin çoğu symon verisi "
+"üzerinden üretilmektedir."
+
+msgid "TCP Keep Alive"
+msgstr "TCP canlı tutma"
+
+msgid "TELNET_SERVERS"
+msgstr "TELNET_SERVERS"
+
+msgid "TIME"
+msgstr "SÜRE"
+
+msgid "TLS Auth"
+msgstr "TLS doğrulama"
+
+msgid "Telnet negotiation string normalizer"
+msgstr "Telnet anlaşma dize düzenleyici"
+
+msgid "Temporary Denied Page Bypass"
+msgstr "Geçici engelleme sayfası kestirmesi"
+
+msgid "Temporary Denied Page Bypass Secret Key"
+msgstr "Geçici engelleme sayfası kestirme gizli anahtarı"
+
+msgid "The Free Software Foundation."
+msgstr "Özgür Yazılım Derneği."
+
+msgid "The most famous web server."
+msgstr "En ünlü web sunucu."
+
+msgid ""
+"The most secure OS in the world. Underneath UTMFW is pure, untouched OpenBSD."
+msgstr ""
+"Dünyadaki en güvenli işletim sistemi. UTMFW'un altında saf, eldeğmemiş "
+"OpenBSD çalışmaktadır."
+
+msgid "Threshold"
+msgstr "Eşik"
+
+msgid "Threshold By User"
+msgstr "Kullanıcı başına eşik"
+
+msgid "Thu"
+msgstr "Per"
+
+msgid "Time to expire"
+msgstr "Süre bitiş zamanı"
+
+msgid "Time to expire (secs)"
+msgstr "Süre bitim zamanı (sn)"
+
+msgid "Timeout"
+msgstr "Zaman aşımı"
+
+msgid "Timespan"
+msgstr "Zaman aralığı"
+
+msgid "Trickle delay"
+msgstr "Süzülme geçiktirmesi"
+
+msgid "Trusted networks"
+msgstr "Güvenilen ağlar"
+
+msgid "Tue"
+msgstr "Sal"
+
+msgid ""
+"Turns Snort IDS into an IPS (Intrusion Prevention System). Replaced by "
+"SnortIPS."
+msgstr ""
+"Snort Saldırı Tespit Sistemini (STS) bir Saldırı Engelleme Sistemine (SES) "
+"dönüştürür. SnortIPS ile değiştirilmiştir."
+
+msgid "USER"
+msgstr "KULLANICI"
+
+msgid "Unblock all blocked entries"
+msgstr "Engellenmiş tüm öğeleri kaldır"
+
+msgid "Unblock selected"
+msgstr "Seçili öğelerin engellemelerini kaldır"
+
+msgid "Url cache age"
+msgstr "Url önbellek yaşı"
+
+msgid "Url cache number"
+msgstr "Url önbellek sayısı"
+
+msgid "Use DNS"
+msgstr "DNS kullan"
+
+msgid "Use SMTP"
+msgstr "SMTP kullan"
+
+msgid "Use bayes"
+msgstr "Bayes kullan"
+
+msgid "Use xforwarded for"
+msgstr "Xforwarded for kullan"
+
+msgid "User agent regexp"
+msgstr "Ajan düzenli ifadesi kullan"
+
+msgid "Verbosity"
+msgstr "Detay seviyesi"
+
+msgid "Violations"
+msgstr "İhlaller"
+
+msgid "Virus DB Update"
+msgstr "Virüs VT Güncelleme"
+
+msgid "Virus Filter"
+msgstr "Virüs Eleği"
+
+msgid "Virus and spam scanning POP3 proxy."
+msgstr "Virüs ve spam tarayan POP3 vekil."
+
+msgid "Virus and spam scanning SMTP proxy."
+msgstr "Virüs ve spam tarayan SMTP vekil."
+
+msgid "WUI"
+msgstr "Web Arayüzü"
+
+msgid "Web Access Denied Reporting"
+msgstr "Web girişi engelleme bildirimi"
+
+msgid "Web Filter"
+msgstr "Web Eleği"
+
+msgid "Web Filter Access"
+msgstr "Web Eleği Girişi"
+
+msgid "Web Server"
+msgstr "Web Sunucu"
+
+msgid "Web Server (WUI)"
+msgstr "Web Sunucu (Web Arayüzü)"
+
+msgid "Web Server Access"
+msgstr "Web Sunucu Girişi"
+
+msgid "Web interface for configuring and monitoring OpenBSD/pf."
+msgstr "OpenBSD/pf yapılandırma ve gözlemleme web arayüzü."
+
+msgid "Wed"
+msgstr "Çar"
+
+msgid "Weighted phrase list"
+msgstr "Ağırlıklı tümce listesi"
+
+msgid "Weighted phrase mode"
+msgstr "Ağırlıklı tümce kipi"
+
+msgid "Whitelist"
+msgstr "Beyazliste"
+
+msgid "Whitelisted"
+msgstr "Beyazlistelenmiş"
+
+msgid "X-Bogosity"
+msgstr "X-Bogosity"
+
+msgid "X-Spam-Flag"
+msgstr "X-Spam-Flag"
+
+msgid "X-Spam-Status"
+msgstr "X-Spam-Status"
+
+msgid "Yahoo"
+msgstr "Yahoo"
+
+msgid "blacklisted"
+msgstr "karalistelenmiş"
+
+msgid "blocked"
+msgstr "engellenmiş"
+
+msgid "end"
+msgstr "son"
+
+msgid "height"
+msgstr "yükseklik"
+
+msgid "managed"
+msgstr "yönetilen"
+
+msgid "size"
+msgstr "boyut"
+
+msgid "start"
+msgstr "başlangıç"
+
+msgid "timespan"
+msgstr "zaman aralığı"
+
+msgid "total"
+msgstr "toplam"
+
+msgid "whitelisted"
+msgstr "beyazlistelenmiş"
+
+msgid "width"
+msgstr "genişlik"

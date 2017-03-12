@@ -1,0 +1,261 @@
+# Hand-crafted mtree specification for UTMFW.
+# flags=none is UTMFW specific, to actually force
+# UTMFW upgrade script to set owner and permissions.
+
+var			type=dir mode=0755 uname=root gname=wheel
+clamav			type=dir mode=0755 uid=539 gid=539 flags=none
+quarantine		type=dir mode=0600 uid=539 gid=539 flags=none
+..	#var/clamav/quarantine
+tmp			type=dir mode=0770 uid=539 gid=539 flags=none
+..	#var/clamav/tmp
+..	#var/clamav
+cron			type=dir mode=0555 uname=root gname=wheel
+tabs			type=dir mode=01730 uname=root gname=crontab
+root			type=file mode=0600 uname=root gname=crontab
+..	#var/cron/tabs
+..	#var/cron
+db			type=dir mode=0755 uname=root gname=wheel
+clamav			type=dir mode=0755 uid=539 gid=539 flags=none
+daily.cvd		type=file mode=0644 uid=539 gid=539
+main.cvd		type=file mode=0644 uid=539 gid=539
+main.cld		type=file mode=0644 uid=539 gid=539
+..	#var/db/clamav
+imspector		type=dir mode=0755 uid=702 gid=702 flags=none
+..	#var/db/imspector
+spamassassin		type=dir mode=0755 uid=506 gid=506 flags=none
+tmp			type=dir mode=0755 uid=506 gid=506 flags=none
+..	#var/db/spamassassin/tmp
+..	#var/db/spamassassin
+..	#var/db
+log			type=dir mode=0755 uname=root gname=wheel
+doas			type=file mode=0600 uname=root gname=wheel
+e2guardian		type=dir mode=0755 uid=588 gid=588 flags=none
+e2guardian.log	type=file mode=0640 uname=root gname=wheel
+..	#var/log/e2guardian
+imspector		type=dir mode=0755 uid=702 gid=702 flags=none
+..	#var/log/imspector
+snort			type=dir mode=0755 uname=root gname=wheel flags=none
+snort.log		type=file mode=0640 uname=root gname=wheel
+alert.log		type=file mode=0640 uname=root gname=wheel
+..	#var/log/snort
+clamd.log		type=file mode=0640 uid=539 gname=wheel
+ctlr.log			type=file mode=0640 uname=root gname=wheel
+wui.log		type=file mode=0640 uname=root gname=wheel
+dhcpd.log		type=file mode=0640 uname=root gname=wheel
+freshclam.log		type=file mode=0640 uid=539 gname=wheel
+ftp-proxy.log		type=file mode=0640 uname=root gname=wheel
+imspector.log		type=file mode=0640 uname=root gname=wheel
+monitoring.log		type=file mode=0640 uname=root gname=wheel
+named.log		type=file mode=0640 uname=root gname=wheel
+openvpn.log		type=file mode=0640 uname=root gname=wheel
+p3scan.log		type=file mode=0640 uname=root gname=wheel
+smtp-gated.log		type=file mode=0640 uname=root gname=wheel
+snortips.log		type=file mode=0640 uname=root gname=wheel
+spamd.log		type=file mode=0640 uname=root gname=wheel
+..	#var/log
+named			type=dir mode=0755 uname=root gname=_bind
+etc			type=dir mode=0750 uname=root gname=_bind
+named.conf		type=file mode=0640 uname=root gname=_bind
+..	#var/named/etc
+..	#var/named
+spool			type=dir mode=0755 uname=root gname=wheel
+p3scan			type=dir mode=0700 uid=701 gid=701 flags=none
+children		type=dir mode=0700 uid=701 gid=701 flags=none
+..	#var/spool/p3scan/children
+notify			type=dir mode=0700 uid=701 gid=701 flags=none
+..	#var/spool/p3scan/notify
+..	#var/spool/p3scan
+smtp-gated		type=dir mode=0770 uid=700 gid=539 flags=none
+lock			type=dir mode=0770 uid=700 gid=539 flags=none
+..	#var/spool/smtp-gated/lock
+msg			type=dir mode=0770 uid=700 gid=539 flags=none
+..	#var/spool/smtp-gated/msg
+..	#var/spool/smtp-gated
+..	#var/spool
+tmp			type=dir mode=0755 uname=root gname=wheel
+utmfw		type=dir mode=0755 uname=root gname=wheel flags=none
+..	#var/tmp/utmfw
+..	#var/tmp
+virusmails		type=dir mode=0700 uid=539 gid=539 flags=none
+..	#var/virusmails
+www			type=dir mode=0755 uname=root gname=daemon
+cgi-bin			type=dir mode=0755 uname=root gname=daemon
+man.cgi			type=file mode=0511 uname=root gname=bin
+..	#var/www/cgi-bin
+conf			type=dir mode=0755 uname=root gname=daemon
+modules			type=dir mode=0755 uname=root gname=daemon
+php-5.6.conf	type=file mode=0644 uname=root gname=daemon
+..	#var/www/conf/modules
+httpd.conf		type=file mode=0644 uname=root gname=daemon
+..	#var/www/conf
+htdocs			type=dir mode=0755 uname=root gname=wheel
+utmfw		type=dir mode=0755 uname=root gname=wheel
+View			type=dir mode=0755 uname=root gname=wheel
+symon			type=dir mode=0755 uname=root gname=wheel
+cache			type=dir mode=0777 uname=root gname=wheel flags=none
+..	#var/www/htdocs/utmfw/View/symon/cache
+rrds			type=dir mode=0755 uname=root gname=wheel flags=none
+localhost		type=dir mode=0755 uname=root gname=wheel flags=none
+..	#var/www/htdocs/utmfw/View/symon/rrds/localhost
+..	#var/www/htdocs/utmfw/View/symon/rrds
+..	#var/www/htdocs/utmfw/View/symon
+..	#var/www/htdocs/utmfw/View
+..	#var/www/htdocs/utmfw
+..	#var/www/htdocs
+logs			type=dir mode=0755 uname=root gname=daemon
+access_log		type=file mode=0644 uname=root gname=daemon
+..	#var/www/logs
+..	#var/www
+..	#var
+etc			type=dir mode=0755 uname=root gname=wheel
+e2guardian		type=dir mode=0755 uname=root gname=wheel
+downloadmanagers	type=dir mode=0755 uname=root gname=wheel
+fancy.conf		type=file mode=0644 uname=root gname=wheel
+..	#etc/e2guardian/downloadmanagers
+lists			type=dir mode=0755 uname=root gname=wheel
+bannedextensionlist4	type=file mode=0644 uname=root gname=wheel
+bannedmimetypelist4	type=file mode=0644 uname=root gname=wheel
+bannedsitelist		type=file mode=0644 uname=root gname=wheel
+bannedphraselist	type=file mode=0644 uname=root gname=wheel
+bannedurllist		type=file mode=0644 uname=root gname=wheel
+exceptionphraselist	type=file mode=0644 uname=root gname=wheel
+exceptionsitelist	type=file mode=0644 uname=root gname=wheel
+exceptionurllist	type=file mode=0644 uname=root gname=wheel
+greysitelist		type=file mode=0644 uname=root gname=wheel
+greyurllist		type=file mode=0644 uname=root gname=wheel
+weightedphraselist	type=file mode=0644 uname=root gname=wheel
+..	#etc/e2guardian/lists
+e2guardian.conf	type=file mode=0644 uname=root gname=wheel
+e2guardianf1.conf	type=file mode=0644 uname=root gname=wheel
+e2guardianf2.conf	type=file mode=0644 uname=root gname=wheel
+e2guardianf3.conf	type=file mode=0644 uname=root gname=wheel
+e2guardianf4.conf	type=file mode=0644 uname=root gname=wheel
+..	#etc/e2guardian
+imspector		type=dir mode=0755 uname=root gname=wheel
+acl.txt		type=file mode=0644 uname=root gname=wheel
+badwords.txt		type=file mode=0644 uname=root gname=wheel
+imspector.conf		type=file mode=0644 uname=root gname=wheel
+..	#etc/imspector
+mail			type=dir mode=0755 uname=root gname=wheel
+spamassassin		type=dir mode=0755 uname=root gname=wheel
+local.cf		type=link mode=0644 uname=root gname=wheel
+local-de.cf		type=file mode=0644 uname=root gname=wheel
+local-en.cf		type=file mode=0644 uname=root gname=wheel
+local-fr.cf		type=file mode=0644 uname=root gname=wheel
+local-it.cf		type=file mode=0644 uname=root gname=wheel
+local-nl.cf		type=file mode=0644 uname=root gname=wheel
+local-pl.cf		type=file mode=0644 uname=root gname=wheel
+local-pt_br.cf		type=file mode=0644 uname=root gname=wheel
+local-tr.cf		type=file mode=0644 uname=root gname=wheel
+..	#etc/mail/spamassassin
+aliases			type=file mode=0644 uname=root gname=wheel
+..	#etc/mail
+openvpn			type=dir mode=0755 uname=root gname=wheel
+ca.crt			type=file mode=0444 uname=root gname=wheel
+ca.key			type=file mode=0444 uname=root gname=wheel
+client.conf		type=file mode=0644 uname=root gname=wheel
+client.crt		type=file mode=0444 uname=root gname=wheel
+client.key		type=file mode=0400 uname=root gname=wheel
+dh1024.pem		type=file mode=0444 uname=root gname=wheel
+server.conf		type=file mode=0644 uname=root gname=wheel
+server.crt		type=file mode=0444 uname=root gname=wheel
+server.key		type=file mode=0400 uname=root gname=wheel
+..	#etc/openvpn
+p3scan			type=dir mode=0755 uname=root gname=wheel
+p3scan.mail		type=link mode=0644 uname=root gname=wheel
+p3scan-pt-br.mail	type=file mode=0644 uname=root gname=wheel
+p3scan-en.mail		type=file mode=0644 uname=root gname=wheel
+p3scan-fr.mail		type=file mode=0644 uname=root gname=wheel
+p3scan-ge.mail		type=file mode=0644 uname=root gname=wheel
+p3scan-it.mail		type=file mode=0644 uname=root gname=wheel
+p3scan-pl.mail		type=file mode=0644 uname=root gname=wheel
+p3scan-tr-iso88599.mail	type=file mode=0644 uname=root gname=wheel
+p3scan-ru.mail		type=file mode=0644 uname=root gname=wheel
+p3scan-sp.mail		type=file mode=0644 uname=root gname=wheel
+p3scan-tr-utf8.mail	type=file mode=0644 uname=root gname=wheel
+p3scan-nl.mail		type=file mode=0644 uname=root gname=wheel
+p3scan.conf		type=file mode=0644 uname=root gname=wheel
+..	#etc/p3scan
+pfre			type=dir mode=0755 uname=root gname=wheel
+..	#etc/pfre
+php-5.6			type=dir mode=0755 uname=root gname=wheel
+mcrypt.ini		type=file mode=0644 uname=root gname=wheel
+pcntl.ini		type=file mode=0644 uname=root gname=wheel
+..	#etc/php-5.6
+pmacct			type=dir mode=0755 uname=root gname=wheel
+pmacctd-pnrg.conf	type=file mode=0644 uname=root gname=wheel
+pmacctd-protograph.conf	type=file mode=0644 uname=root gname=wheel
+..	#etc/pmacct
+snort			type=dir mode=0755 uname=root gname=wheel
+snort.conf		type=file mode=0644 uname=root gname=wheel
+snortips.conf		type=file mode=0644 uname=root gname=wheel
+..	#etc/snort
+squid			type=dir mode=0755 uname=root gname=wheel
+squid.conf		type=file mode=0644 uname=root gname=wheel
+..	#etc/squid
+ssl			type=dir mode=0755 uname=root gname=wheel
+private			type=dir mode=0755 uname=root gname=wheel
+server.key		type=file mode=0644 uname=root gname=bin
+..	#etc/ssl/private
+server.crt		type=file mode=0644 uname=root gname=bin
+..	#etc/ssl
+clamd.conf		type=file mode=0644 uname=root gname=wheel
+dhcpd.conf		type=file mode=0644 uname=root gname=wheel
+doas.conf		type=file mode=0644 uname=root gname=wheel
+freshclam.conf		type=file mode=0644 uname=root gname=wheel
+motd			type=file mode=0664 uname=root gname=wheel
+newsyslog.conf		type=file mode=0644 uname=root gname=wheel
+pf.conf			type=file mode=0600 uname=root gname=wheel
+pf.conf.afterhours	type=file mode=0600 uname=root gname=wheel
+pf.restrictedips	type=file mode=0600 uname=root gname=wheel
+php-5.6.ini			type=file mode=0644 uname=root gname=wheel
+rc.conf.local		type=file mode=0644 uname=root gname=wheel
+rc.local		type=file mode=0644 uname=root gname=wheel
+rc.shutdown		type=file mode=0644 uname=root gname=wheel
+smtp-gated.conf		type=file mode=0644 uname=root gname=wheel
+sockd.conf		type=file mode=0644 uname=root gname=wheel
+symon.conf		type=file mode=0644 uname=root gname=wheel
+symux.conf		type=file mode=0644 uname=root gname=wheel
+sysctl.conf		type=file mode=0644 uname=root gname=wheel
+syslog.conf		type=file mode=0644 uname=root gname=wheel
+webalizer.conf		type=file mode=0644 uname=root gname=wheel
+..	#etc
+usr			type=dir mode=0755 uname=root gname=wheel
+local			type=dir mode=0755 uname=root gname=wheel
+share			type=dir mode=0755 uname=root gname=wheel
+e2guardian		type=dir mode=0755 uname=root gname=wheel
+languages		type=dir mode=0755 uname=root gname=wheel
+chinese			type=dir mode=0755 uname=root gname=wheel
+fancydmtemplate.html	type=file mode=0644 uname=root gname=wheel
+messages		type=file mode=0644 uname=root gname=wheel
+template.html		type=file mode=0644 uname=root gname=wheel
+template_nobypass.html	type=file mode=0644 uname=root gname=wheel
+..	#usr/local/share/e2guardian/languages/chinese
+dutch			type=dir mode=0755 uname=root gname=wheel
+fancydmtemplate.html	type=file mode=0644 uname=root gname=wheel
+messages		type=file mode=0644 uname=root gname=wheel
+template.html		type=file mode=0644 uname=root gname=wheel
+template_nobypass.html	type=file mode=0644 uname=root gname=wheel
+..	#usr/local/share/e2guardian/languages/dutch
+russian-utf8		type=dir mode=0755 uname=root gname=wheel
+fancydmtemplate.html	type=file mode=0644 uname=root gname=wheel
+messages		type=file mode=0644 uname=root gname=wheel
+template.html		type=file mode=0644 uname=root gname=wheel
+template_nobypass.html	type=file mode=0644 uname=root gname=wheel
+..	#usr/local/share/e2guardian/languages/russian-utf8
+turkish			type=dir mode=0755 uname=root gname=wheel
+fancydmtemplate.html	type=file mode=0644 uname=root gname=wheel
+messages		type=file mode=0644 uname=root gname=wheel
+template.html		type=file mode=0644 uname=root gname=wheel
+template_nobypass.html	type=file mode=0644 uname=root gname=wheel
+..	#usr/local/share/e2guardian/languages/turkish
+ukenglish		type=dir mode=0755 uname=root gname=wheel
+fancydmtemplate.html	type=file mode=0644 uname=root gname=wheel
+template.html		type=file mode=0644 uname=root gname=wheel
+template_nobypass.html	type=file mode=0644 uname=root gname=wheel
+..	#usr/local/share/e2guardian/languages/ukenglish
+..	#usr/local/share/e2guardian/languages
+..	#usr/local/share/e2guardian
+..	#usr/local/share
+..	#usr/local
+..	#usr

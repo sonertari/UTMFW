@@ -1,0 +1,5 @@
+#
+# Layout to show pf usage
+
+group	name="Data Transfer";
+graph   rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/pf.rrd, title="Data Transfer";

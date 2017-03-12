@@ -1,0 +1,45 @@
+<?php
+/*
+ * Copyright (C) 2004-2017 Soner Tari
+ *
+ * This file is part of UTMFW.
+ *
+ * UTMFW is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * UTMFW is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+require_once('../lib/vars.php');
+
+$Menu = array(
+    'help' => array(
+        'Name' => _MENU('Help'),
+        'Perms' => $ALL_USERS,
+		),
+    'docs' => array(
+        'Name' => _MENU('Source Docs'),
+        'Perms' => $ALL_USERS,
+		),
+	);
+
+class Docs extends View
+{
+	public $Model= 'docs';
+
+	function __construct()
+	{
+		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
+	}
+}
+
+$View= new Docs();
+?>

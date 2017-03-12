@@ -1,0 +1,11 @@
+This is a full-transparent proxy-server for email clients. It can
+be used to provide email scanning from the internet, to any internal
+network and is ideal for helping to protect your "Other OS" LAN
+from harm, especially when used in conjunction with a firewall and
+other Internet Proxy servers.
+
+It is designed to enable scanning of incoming/outgoing email messages
+for Virus's, Worms, Trojans, Spam (read as "Un-solicited Bulk
+Email"), and harmfull attachments. Because viewing HTML mail can
+enable a "Spammer" to validate an email address (via Web bugs), it
+can also provide HTML stripping.

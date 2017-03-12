@@ -1,0 +1,10 @@
+# Layout to show pf usage
+
+group   name="Internal Interface";
+graph   rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/if_lan0.rrd, title="Internal Interface (lan0)";
+
+group   name="External Interface";
+graph   rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/if_wan0.rrd, title="External Interface (wan0)";
+
+group   name="Loopback Interface";
+graph   rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/if_lo0.rrd, title="Loopback Interface";

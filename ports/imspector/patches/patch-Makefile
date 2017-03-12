@@ -1,0 +1,110 @@
+$ComixWall: patch-Makefile,v 1.7 2009/11/03 11:02:45 soner Exp $
+--- Makefile.orig	Mon Dec 22 14:03:15 2008
++++ Makefile	Mon Nov  2 19:11:26 2009
+@@ -1,32 +1,38 @@
+-DESTDIR = /
+-PREFIX = /usr
++#DESTDIR = /
++#PREFIX = /usr
+ 
+ ##########
+ # Comment this out if you dont want SSL
+-SSL = yes
++#SSL = yes
+ 
+ ##########
+ # Location of openssl installation
+-SSL_DIR = /usr
++SSL_DIR = /usr/local
+ 
+ ##########
+ # If using FreeBSD or OpenBSD COMMENT the below lines
+-LIBS = -ldl
++#LIBS = -ldl
+ 
+ # For any distro
+ #ADD_PLUGINS = mysqlloggingplugin.so sqliteloggingplugin.so postgresqlloggingplugin.so dbfilterplugin.so dbresponderplugin.so
+ ##########
+ 
+-ifdef SSL
++.ifdef SSL
+ SSL_LIBS = -L$(SSL_DIR)/lib -lssl
+ SSL_FLAGS = -I$(SSL_DIR)/include -DHAVE_SSL
+ SSL_OBJS = sslstate.o
+-endif
++.endif
+ 
+ CXX = g++
+ 
+ CXXFLAGS = -Wall -O2 -fPIC $(SSL_FLAGS)
+ 
++# Add location of iconv headers for OpenBSD
++ICONV_DIR = /usr/local
++CXXFLAGS += -I$(ICONV_DIR)/include
++OTHER_LDLIBS += -L$(ICONV_DIR)/lib -liconv
++LIBS += $(OTHER_LDLIBS)
++
+ PLUGIN_FLAGS = $(LIBS) -fPIC -shared -Wl,-soname,$@ -o $@
+ 
+ IMSPECTOR_OBJS = main.o protocolplugin.o loggingplugin.o filterplugin.o responderplugin.o $(SSL_OBJS)
+@@ -36,7 +42,7 @@ LIBIMSPECTOR_OBJS = socket.o options.o tools.o
+ PROTOCOL_PLUGINS = msnprotocolplugin.so icqprotocolplugin.so yahooprotocolplugin.so ircprotocolplugin.so ggprotocolplugin.so jabberprotocolplugin.so httpsprotocolplugin.so
+ LOGGING_PLUGINS = fileloggingplugin.so debugloggingplugin.so catsloggingplugin.so
+ FILTER_PLUGINS = badwordsfilterplugin.so aclfilterplugin.so miscfilterplugin.so censordfilterplugin.so
+-RESPONDER_PLUGINS = 
++RESPONDER_PLUGINS = dbresponderplugin.so
+ 
+ PLUGINS = $(PROTOCOL_PLUGINS) $(LOGGING_PLUGINS) $(CONTENT_PLUGINS) $(FILTER_PLUGINS) $(RESPONDER_PLUGINS) $(ADD_PLUGINS)
+ 
+@@ -160,33 +166,33 @@ dbresponderplugin.o: dbresponderplugin.cpp
+ 	$(CXX) $(CXXFLAGS) dbresponderplugin.cpp -c -I$(PREFIX)/include
+ 	
+ install: imspector libimspector.so $(PLUGINS)
+-	-mkdir -p $(DESTDIR)/$(PREFIX)/sbin
+-	-mkdir -p $(DESTDIR)/$(PREFIX)/lib/imspector
+-	-install imspector $(DESTDIR)/$(PREFIX)/sbin/imspector
+-	-install libimspector.so $(DESTDIR)/$(PREFIX)/lib/libimspector.so
++	-mkdir -p $(PREFIX)/sbin
++	-mkdir -p $(PREFIX)/lib/imspector
++	-install imspector $(PREFIX)/sbin/imspector
++	-install libimspector.so $(PREFIX)/lib/libimspector.so
+ 	-(for PLUGIN in $(PLUGINS) $(ADD_PLUGINS); do \
+-		install $$PLUGIN $(DESTDIR)/$(PREFIX)/lib/imspector/$$PLUGIN; \
++		install $$PLUGIN $(PREFIX)/lib/imspector/$$PLUGIN; \
+ 	done);
+-	-mkdir -p $(DESTDIR)/$(PREFIX)/etc/imspector
+-	-install imspector.conf $(DESTDIR)/$(PREFIX)/etc/imspector/imspector.conf
+-	-install badwords.txt $(DESTDIR)/$(PREFIX)/etc/imspector/badwords.txt
+-	-install acl.txt $(DESTDIR)/$(PREFIX)/etc/imspector/acl.txt
++	-mkdir -p $(PREFIX)/etc/imspector
++	-install imspector.conf $(PREFIX)/etc/imspector/imspector.conf
++	-install badwords.txt $(PREFIX)/etc/imspector/badwords.txt
++	-install acl.txt $(PREFIX)/etc/imspector/acl.txt
+ 	-mkdir -p /var/log/imspector
+ 	-mkdir -p /var/lib/imspector
+ 
+ install-cert:
+-	-mkdir -p $(DESTDIR)/$(PREFIX)/etc/imspector
++	-mkdir -p $(PREFIX)/etc/imspector
+ 	-openssl req -new -newkey rsa:1024 -days 365 -nodes -x509 \
+-		-keyout $(DESTDIR)/$(PREFIX)/etc/imspector/serverkey.pem \
+-		-out $(DESTDIR)/$(PREFIX)/etc/imspector/servercert.pem
++		-keyout $(PREFIX)/etc/imspector/serverkey.pem \
++		-out $(PREFIX)/etc/imspector/servercert.pem
+ 
+ install-ca-cert: install-cert
+ 	-openssl req -new -newkey rsa:1024 -days 365 -nodes -x509 \
+-		-keyout $(DESTDIR)/$(PREFIX)/etc/imspector/cakey.pem \
+-		-out $(DESTDIR)/$(PREFIX)/etc/imspector/cacert.pem
++		-keyout $(PREFIX)/etc/imspector/cakey.pem \
++		-out $(PREFIX)/etc/imspector/cacert.pem
+ 
+ uninstall:
+-	-rm -f $(DESTDIR)/$(PREFIX)/sbin/imspector
+-	-rm -f $(DESTDIR)/$(PREFIX)/lib/libimspector.so
+-	-rm -rf $(DESTDIR)/$(PREFIX)/usr/lib/imspector
+-	-rm -rf $(DESTDIR)/$(PREFIX)/etc/imspector
++	-rm -f $(PREFIX)/sbin/imspector
++	-rm -f $(PREFIX)/lib/libimspector.so
++	-rm -rf $(PREFIX)/usr/lib/imspector
++	-rm -rf $(PREFIX)/etc/imspector

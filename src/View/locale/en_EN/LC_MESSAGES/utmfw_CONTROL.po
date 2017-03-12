@@ -1,0 +1,126 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "< Previous"
+msgstr ""
+
+msgid "<< First"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "Block"
+msgstr ""
+
+msgid "Compressed"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Daily"
+msgstr ""
+
+msgid "Defaults"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Disable"
+msgstr ""
+
+msgid "Display"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "Enable"
+msgstr ""
+
+msgid "Horizontal"
+msgstr ""
+
+msgid "Hourly"
+msgstr ""
+
+msgid "Last >>"
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+msgid "Make Dynamic"
+msgstr ""
+
+msgid "Make Static"
+msgstr ""
+
+msgid "Move Down"
+msgstr ""
+
+msgid "Move Up"
+msgstr ""
+
+msgid "Next >"
+msgstr ""
+
+msgid "Redraw"
+msgstr ""
+
+msgid "Reinitialize"
+msgstr ""
+
+msgid "Reload"
+msgstr ""
+
+msgid "Restart"
+msgstr ""
+
+msgid "Rotate"
+msgstr ""
+
+msgid "Rotate All"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
+msgid "Stop"
+msgstr ""
+
+msgid "Unblock"
+msgstr ""
+
+msgid "Unblock All"
+msgstr ""
+
+msgid "Vertical"
+msgstr ""

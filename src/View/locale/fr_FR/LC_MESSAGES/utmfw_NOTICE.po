@@ -1,0 +1,100 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+# AGASSE Baptiste <baptiste.agasse@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-07 02:18+0100\n"
+"Last-Translator: AGASSE Baptiste <baptiste.agasse@gmail.com>\n"
+"Language-Team: French <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid ""
+"Analysis of statistical data may take a long time to process. Please be "
+"patient. Also note that if you refresh this page frequently, CPU load may "
+"increase considerably."
+msgstr ""
+"L'analyse de données statistiques peut prendre longtemps. Merci d'être "
+"patient. Veuillez noter que si vous rafraichissez cette page fréquemment, la "
+"charge CPU sera grandement augmentée."
+
+msgid "Are you sure you want to create a new group?"
+msgstr "Êtes vous sûr que vous voulez créer un nouveau groupe?"
+
+msgid "Are you sure you want to delete the configuration?"
+msgstr "Êtes vous sûr que vous voulez supprimer cette configuration?"
+
+msgid "Are you sure you want to delete the selected items?"
+msgstr "Êtes vous sûr de vouloir supprimer les éléments sélectionnés?"
+
+msgid "Are you sure you want to erase statistics files?"
+msgstr "Êtes vous sûr de vouloir supprimer les fichiers de statistiques?"
+
+msgid "Are you sure you want to reinitialize graph files?"
+msgstr "Êtes vous sûr de vouloir réinitialiser les fichiers de graphes?"
+
+msgid "Are you sure you want to restart the <NAME>?"
+msgstr "Êtes vous sûr de vouloir redémarrer le <NAME>?"
+
+msgid "Are you sure you want to restart the network?"
+msgstr "Êtes vous sûr de vouloir redémarrer le réseau?"
+
+msgid "Are you sure you want to rotate the logs?"
+msgstr "Êtes vous sûr de vouloir faire tourner les logs?"
+
+msgid "Are you sure you want to set the date?"
+msgstr "Êtes vous sûr de vouloir fixer la date?"
+
+msgid "Are you sure you want to start the <NAME>?"
+msgstr "Êtes vous sûr de vouloir démarrer le <NAME>?"
+
+msgid "Are you sure you want to stop the <NAME>?"
+msgstr "Êtes vous sûr de vouloir arrêter le <NAME>?"
+
+msgid ""
+"Automatic configuration completed. You might want to check the details now."
+msgstr ""
+"La configuration automatique est terminée. Vous devriez vouloir vérifier les "
+"détails maintenant."
+
+msgid "Automatic configuration failed."
+msgstr "La configuration automatique a échouée."
+
+msgid "UTMFW currently supports only admin and user usernames"
+msgstr "UTMFW currently supports only admin and user usernames"
+
+msgid "FAILED"
+msgstr "ÉCHOUÉ"
+
+msgid "Filter group not found"
+msgstr "Groupe de filtre non trouvé"
+
+msgid "Not a valid password"
+msgstr "N'est pas un mot de passe valide"
+
+msgid "Page start line"
+msgstr "Page start line"
+
+msgid "Passwords do not match"
+msgstr "Les mots de passes sont différents"
+
+msgid "System is going down..."
+msgstr "Système en cours d'arrêt..."
+
+msgid "System is restarting..."
+msgstr "Système en cours de redémarrage..."
+
+msgid "You should select at least one conf file to start the process"
+msgstr ""
+"Vous devriez sélectionner au minimum un fichier de conf pour démarrer le "
+"processus"
+
+msgid "You should select at least one interface to start IDS for"
+msgstr ""
+"Vous devriez sélectionner au minimum une interface pour démarrer l'IDS pour"

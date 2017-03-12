@@ -1,0 +1,340 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+# AGASSE Baptiste <baptiste.agasse@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-07 19:07+0100\n"
+"Last-Translator: AGASSE Baptiste <baptiste.agasse@gmail.com>\n"
+"Language-Team: French <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Account name"
+msgstr "Nom du compte"
+
+msgid "All alerts"
+msgstr "Toutes les alertes"
+
+msgid "All attempts"
+msgstr "Toutes les tentatives"
+
+msgid "All connections"
+msgstr "Toutes les connections"
+
+msgid "All queries"
+msgstr "Toutes les requêtes"
+
+msgid "All requests"
+msgstr "Toutes les requêtes"
+
+msgid "All sessions"
+msgstr "Toutes les sessions"
+
+msgid "All un/blocks and extensions"
+msgstr ""
+
+msgid "Allowed requests"
+msgstr "Requêtes autorisées"
+
+msgid "Attack Types"
+msgstr "Types d'attaques"
+
+msgid "Blacklists"
+msgstr "Listes noires"
+
+msgid "Blocked Hosts"
+msgstr "Hôtes bloqués"
+
+msgid "Blocked Time"
+msgstr "Temps de blocage"
+
+msgid "Blocked Times (min)"
+msgstr "Temps de blocage (min)"
+
+msgid "Blocked Times (sec)"
+msgstr "Temps de blocage (sec)"
+
+msgid "Blocked requests"
+msgstr "Requêtes bloquées"
+
+msgid "Bypassed denials"
+msgstr ""
+
+msgid "Bypassing IPs"
+msgstr ""
+
+msgid "Cache"
+msgstr "Cache"
+
+msgid "Client"
+msgstr "Client"
+
+msgid "Client IPs"
+msgstr "IPs client"
+
+msgid "Clients"
+msgstr "Clients"
+
+msgid "Closed by"
+msgstr "Fermé par"
+
+msgid "Connections by date"
+msgstr "Connections par date"
+
+msgid "Deferred IPs"
+msgstr ""
+
+msgid "Denied IPs"
+msgstr "IPs refusées"
+
+msgid "Denied categories"
+msgstr "Catégories refusées"
+
+msgid "Denied requests"
+msgstr "Requêtes refusées"
+
+msgid "Destination IPs"
+msgstr "IPs de destination"
+
+msgid "Destination addresses"
+msgstr "Adresses de destination"
+
+msgid "Destination ports"
+msgstr "Ports de destination"
+
+msgid "Domains"
+msgstr "Domaines"
+
+msgid "Downloaded (KB)"
+msgstr "Téléchargé (Ko)"
+
+msgid "E-mails per request"
+msgstr ""
+
+msgid "Exception IPs"
+msgstr ""
+
+msgid "Exception requests"
+msgstr ""
+
+msgid "Extended Hosts"
+msgstr ""
+
+msgid "Extended Times (min)"
+msgstr ""
+
+msgid "Failed attempts"
+msgstr "Tentatives échouées"
+
+msgid "Failed users"
+msgstr ""
+
+msgid "Failure reason"
+msgstr "Raison de l'échec"
+
+msgid "General Statistics"
+msgstr "Statistiques générales"
+
+msgid "HTTP Codes"
+msgstr "Codes HTTP"
+
+msgid "Ham"
+msgstr ""
+
+msgid "IPs"
+msgstr "IPs"
+
+msgid "IPs querying"
+msgstr ""
+
+msgid "Infected"
+msgstr "Infecté"
+
+msgid "Infected IPs"
+msgstr "IPs infectés"
+
+msgid "Infected e-mails"
+msgstr "Email infectés"
+
+msgid "Infected requests"
+msgstr "Requêtes infectées"
+
+msgid "Links"
+msgstr "Liens"
+
+msgid "Links visited"
+msgstr "Liens visités"
+
+msgid "Locked IPs"
+msgstr ""
+
+msgid "Logged in user"
+msgstr "Utilisateur connecté"
+
+msgid "Longest deferred (sec)"
+msgstr ""
+
+msgid "Matched requests"
+msgstr ""
+
+msgid "Methods"
+msgstr "Methodes"
+
+msgid "Number of e-mails"
+msgstr "Nombre d'email"
+
+msgid "Number of messages"
+msgstr "Nombre de messages"
+
+msgid "Packet types"
+msgstr "Type de paquet"
+
+msgid "Priorities"
+msgstr "Priorités"
+
+msgid "Priority"
+msgstr "Priorité"
+
+msgid "Processed (KB)"
+msgstr "Traité (Ko)"
+
+msgid "Processing time (sec)"
+msgstr "Temps de traitement (sec)"
+
+msgid "Query types"
+msgstr "Types de requêtes"
+
+msgid "Reasons"
+msgstr "Raisons"
+
+msgid "Received (KB)"
+msgstr "Reçu (Ko)"
+
+msgid "Recipients"
+msgstr "Destinataires"
+
+msgid "Relay results"
+msgstr ""
+
+msgid "Requests"
+msgstr "Requêtes"
+
+msgid "Requests by IP"
+msgstr "Requêtes par IP"
+
+msgid "Requests by date"
+msgstr "Requêtes par date"
+
+msgid "Requests bypassed"
+msgstr ""
+
+msgid "Requests denied"
+msgstr "Requêtes refusées"
+
+msgid "Requests infected"
+msgstr "Requêtes infectées"
+
+msgid "Requests scanned"
+msgstr "Requêtes scannées"
+
+msgid "Results"
+msgstr "Résultats"
+
+msgid "SSH version"
+msgstr "Version de SSH"
+
+msgid "Scan Results"
+msgstr "Résultats du scan"
+
+msgid "Scan Types"
+msgstr "Types de scan"
+
+msgid "Scanned IPs"
+msgstr "IPs scannés"
+
+msgid "Scanned requests"
+msgstr "Requêtes scannées"
+
+msgid "Senders"
+msgstr "Expéditeurs"
+
+msgid "Sent messages"
+msgstr "Messages envoyés"
+
+msgid "Server"
+msgstr "Serveur"
+
+msgid "Session Takeover"
+msgstr ""
+
+msgid "Size by IP (KB)"
+msgstr "Taille par IP (Ko)"
+
+msgid "Size by Link (KB)"
+msgstr "Taille par lien (Ko)"
+
+msgid "Size by Target (KB)"
+msgstr "Taille par cible (Ko)"
+
+msgid "Size by site (KB)"
+msgstr "Taille par site (Ko)"
+
+msgid "Soft inits"
+msgstr ""
+
+msgid "Soft inits (unblock all)"
+msgstr ""
+
+msgid "Source IPs"
+msgstr "IPs sources"
+
+msgid "Source Ports"
+msgstr "Ports source"
+
+msgid "Source addresses"
+msgstr "Adresse source"
+
+msgid "Spam"
+msgstr "Spam"
+
+msgid "Spam Scan Requests"
+msgstr "Requêtes Scan Spam"
+
+msgid "Successful logins"
+msgstr "Logins réussi"
+
+msgid "Target"
+msgstr "Cible"
+
+msgid "Target IPs"
+msgstr "IPs cibles"
+
+msgid "Target Ports"
+msgstr "Ports cibles"
+
+msgid "Total deferred time (sec)"
+msgstr ""
+
+msgid "Transmitted (KB)"
+msgstr "Transmis (Ko)"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Unblocked Hosts"
+msgstr "Hôtes débloqués"
+
+msgid "Users"
+msgstr "Utilisateurs"
+
+msgid "Virus"
+msgstr "Virus"
+
+msgid "Virus Scan Requests"
+msgstr "Requêtes Scan Virus"

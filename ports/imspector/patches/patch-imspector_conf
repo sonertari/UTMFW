@@ -1,0 +1,22 @@
+$ComixWall: patch-imspector_conf,v 1.4 2009/07/25 09:55:29 soner Exp $
+--- imspector.conf.orig	Tue Jul 29 01:10:42 2008
++++ imspector.conf	Mon Aug 11 00:56:04 2008
+@@ -1,14 +1,16 @@
+ # The listening port for redirected connections
+-#port=16667
++port=16667
+ # The HTTP CONNECT proxy port
+ #http_port=18080
+ 
+ # This is the default location of protocol and logging plugins.
+-#plugin_dir=/usr/lib/imspector
++plugin_dir=/usr/local/lib/imspector
+ 
+ # For dropping privs - you probably want to do this.
+ #user=imspector
+ #group=imspector
++user=_imspector
++group=_imspector
+ 
+ # SSL support?
+ #ssl=on

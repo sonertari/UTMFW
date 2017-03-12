@@ -1,0 +1,91 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid ""
+"Analysis of statistical data may take a long time to process. Please be "
+"patient. Also note that if you refresh this page frequently, CPU load may "
+"increase considerably."
+msgstr ""
+
+msgid "Are you sure you want to create a new group?"
+msgstr ""
+
+msgid "Are you sure you want to delete the configuration?"
+msgstr ""
+
+msgid "Are you sure you want to delete the selected items?"
+msgstr ""
+
+msgid "Are you sure you want to erase statistics files?"
+msgstr ""
+
+msgid "Are you sure you want to reinitialize graph files?"
+msgstr ""
+
+msgid "Are you sure you want to restart the <NAME>?"
+msgstr ""
+
+msgid "Are you sure you want to restart the network?"
+msgstr ""
+
+msgid "Are you sure you want to rotate the logs?"
+msgstr ""
+
+msgid "Are you sure you want to set the date?"
+msgstr ""
+
+msgid "Are you sure you want to start the <NAME>?"
+msgstr ""
+
+msgid "Are you sure you want to stop the <NAME>?"
+msgstr ""
+
+msgid ""
+"Automatic configuration completed. You might want to check the details now."
+msgstr ""
+
+msgid "Automatic configuration failed."
+msgstr ""
+
+msgid "UTMFW currently supports only admin and user usernames"
+msgstr ""
+
+msgid "FAILED"
+msgstr ""
+
+msgid "Filter group not found"
+msgstr ""
+
+msgid "Not a valid password"
+msgstr ""
+
+msgid "Page start line"
+msgstr ""
+
+msgid "Passwords do not match"
+msgstr ""
+
+msgid "System is going down..."
+msgstr ""
+
+msgid "System is restarting..."
+msgstr ""
+
+msgid "You should select at least one conf file to start the process"
+msgstr ""
+
+msgid "You should select at least one interface to start IDS for"
+msgstr ""

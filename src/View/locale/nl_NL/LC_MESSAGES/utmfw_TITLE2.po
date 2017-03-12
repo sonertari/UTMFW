@@ -1,0 +1,1198 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-01 09:37+0100\n"
+"Last-Translator: Wim Hoekman\n"
+"Language-Team: Dutch <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+
+msgid "%MEM"
+msgstr "%GEHEUGEN"
+
+msgid "ACL"
+msgstr ""
+
+msgid "AV Admin"
+msgstr "AV Beheer"
+
+msgid "AV Subject"
+msgstr "AV Onderwerp"
+
+msgid "Access Denied Address"
+msgstr "Toegang Geblokkeerd Adres"
+
+msgid "Access control list"
+msgstr ""
+
+msgid "Access denied address"
+msgstr "Toegang geblokkeerd adres"
+
+msgid "Active IPs (arp table)"
+msgstr "Aktieve IP adressen (arp tabel)"
+
+msgid "Address Family"
+msgstr "Adres Familie"
+
+msgid "Advanced Power Management"
+msgstr "Geavanceerd Stroom Beheer"
+
+msgid "After hours"
+msgstr "Buiten kantoortijden"
+
+msgid "All rights reserved."
+msgstr "Alle rechten voorbehouden."
+
+msgid "Allow localhost"
+msgstr "Toestaan lokale host "
+
+msgid "Anonymize Logs"
+msgstr "Logbestanden anonimiseren"
+
+msgid "Apply configuration"
+msgstr "Instellingen toepassen."
+
+msgid "Archive Block Encrypted"
+msgstr ""
+
+msgid "Archive Block Max"
+msgstr ""
+
+msgid "Archive Limit Memory Usage"
+msgstr "Archief Limiet Geheugen Gebruik"
+
+msgid "Archive Max Compression Ratio"
+msgstr "Archief Maximale Compressie Ratio"
+
+msgid "Archive Max File Size"
+msgstr "Archief Maximale Bestands Grootte"
+
+msgid "Archive Max Files"
+msgstr "Archief Maximum Aantal Bestanden"
+
+msgid "Archive Max Recursion"
+msgstr "Archief Maximaal Niveaus Recursie"
+
+msgid "Back Orifice detector"
+msgstr "Back Orifice detector"
+
+msgid "Badwords"
+msgstr ""
+
+msgid "Badwords block count"
+msgstr "Badwords aantal geblokkeerd"
+
+msgid "Badwords filtering"
+msgstr "Badwords filteren"
+
+msgid "Badwords replace character"
+msgstr "Badwords vervanging"
+
+msgid "Banned image replacement"
+msgstr "Geblokkeerd plaatje vervanging"
+
+msgid "Banner"
+msgstr "Banner"
+
+msgid "Bayes auto learn"
+msgstr "Bayes auto leer"
+
+msgid "Blacklist"
+msgstr "Blacklist"
+
+msgid "Blacklisted"
+msgstr "Blacklisted"
+
+msgid "Blanket Block"
+msgstr "Alles Blokkeren"
+
+msgid "Blanket IP Block"
+msgstr "Alles Blokkeren binnen IP reeks"
+
+msgid "Blanket SSL/CONNECT Block"
+msgstr ""
+
+msgid "Blanket SSL/CONNECT IP Block"
+msgstr ""
+
+msgid "Block Duration"
+msgstr "Blokkade tijdsduur"
+
+msgid "Block all filetransfers"
+msgstr "Blokkeer alle bestandsoverdrachten"
+
+msgid "Block downloads"
+msgstr "Blokkeer alle downloads"
+
+msgid "Block webcams"
+msgstr "Blokkeer webcams"
+
+msgid "Broadcast address"
+msgstr ""
+
+msgid "Bytes Free"
+msgstr "Bytes vrij"
+
+msgid "COMMAND"
+msgstr "COMMANDO"
+
+msgid "CVS Tag"
+msgstr "CVS Tag"
+
+msgid "CTLR"
+msgstr "CTLR"
+
+msgid "Cache mgr"
+msgstr "Cache beheerder"
+
+msgid "Category display threshold"
+msgstr "Categorie weergave drempel"
+
+msgid "Certificate"
+msgstr "Certificaat"
+
+msgid "Cipher"
+msgstr "Versleuteling"
+
+msgid "Client netmask"
+msgstr ""
+
+msgid "Compression"
+msgstr "Compressie"
+
+msgid "Configuration"
+msgstr "Configuratie"
+
+msgid "Content Admin"
+msgstr "Inhoud Beheer"
+
+msgid "Content Subject"
+msgstr "Inhoud Onderwerp"
+
+msgid "Content scan exceptions"
+msgstr "Inhoud scan uitzonderingen"
+
+msgid "Content scanner timeout"
+msgstr "Inhoud scanner time-out"
+
+msgid "Content scanning web filter."
+msgstr "Inhoud scanner web filter"
+
+msgid "Copyright"
+msgstr "Copyright"
+
+msgid "Create filter group"
+msgstr "Creëer filter groep"
+
+msgid "Create list cache files"
+msgstr "Creëer list cache bestanden"
+
+msgid "DHCP Server"
+msgstr ""
+
+msgid "DNS Database Info"
+msgstr ""
+
+msgid "DNS Server"
+msgstr ""
+
+msgid "DNS_SERVERS"
+msgstr ""
+
+msgid "Database Checks"
+msgstr "Database Controles"
+
+msgid "Database Mirrors"
+msgstr "Database kopieën"
+
+msgid "De-facto standard IDS (Intrusion Detection System)."
+msgstr ""
+
+msgid "De-facto standard among HTTP proxies."
+msgstr ""
+
+msgid "Debug"
+msgstr ""
+
+msgid "Debug options"
+msgstr "Debug opties"
+
+msgid "Delete downloaded temp files"
+msgstr "Verwijder tijdelijke download bestanden"
+
+msgid "Deny others"
+msgstr "Weiger anders"
+
+msgid "Desc"
+msgstr "Omschrijving"
+
+msgid "Detect Broken Executables"
+msgstr "Detecteer Beschadigde Executeerbare Bestanden"
+
+msgid "Device"
+msgstr ""
+
+msgid "Diffie-Hellman params"
+msgstr ""
+
+msgid "Disable content scanning"
+msgstr "Uitschakelen inhouds scanner"
+
+msgid "Disable decode alerts"
+msgstr ""
+
+msgid "Disable ipopt alerts"
+msgstr ""
+
+msgid "Disable logging process"
+msgstr "Uitschakelen log proces"
+
+msgid "Disable tcpopt alerts"
+msgstr ""
+
+msgid "Disable tcpopt experimental alerts"
+msgstr ""
+
+msgid "Disable tcpopt obsolete alerts"
+msgstr ""
+
+msgid "Disable tcpopt ttcp alerts"
+msgstr ""
+
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+msgid "Disabled Rules"
+msgstr "Uitgeschakelde Regels"
+
+msgid "EXTERNAL_NET"
+msgstr "EXTERN_NET"
+
+msgid "Embedded URL weighting"
+msgstr "Ingebedde URL weging"
+
+msgid "Enable Deep URL Analysis"
+msgstr "Inschakelen uitgebreide URL Analyse"
+
+msgid "Enable SSL/TLS"
+msgstr "Inschakelen SSL/TLS"
+
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+msgid "Enabled Rules"
+msgstr "Ingeschakelde Regels"
+
+msgid "Ext"
+msgstr "Extensie"
+
+msgid "FTP Proxy"
+msgstr ""
+
+msgid "Filter IP"
+msgstr ""
+
+msgid "Filter Port"
+msgstr ""
+
+msgid "Filter group mode"
+msgstr "Filter groep mode"
+
+msgid "Filter group name"
+msgstr "Filter groep naam"
+
+msgid "Filtered minutes"
+msgstr ""
+
+msgid "Filtered response"
+msgstr "Gefilterd antwoord"
+
+msgid "Follow Directory Symlinks"
+msgstr "Volg Map Symlinks"
+
+msgid "Follow File Symlinks"
+msgstr "Volg Bestand Symlinks"
+
+msgid "Force quick search"
+msgstr "Forceer snelle zoekopdracht"
+
+msgid "Forwarded for"
+msgstr "Doorgestuurd voor"
+
+msgid "Forwarders"
+msgstr ""
+
+msgid "Free OOP scripting language."
+msgstr ""
+
+#, php-format
+msgid ""
+"Free secure shell provides remote shell access to the system. It is believed "
+"that almost 90% of all secure shell traffic on the Internet is provided by "
+"OpenSSH. OpenSSH is developed by the OpenBSD project."
+msgstr ""
+
+msgid "Fri"
+msgstr "Vr"
+
+msgid "GG"
+msgstr ""
+
+msgid "GROUP"
+msgstr "GROEP"
+
+msgid "Gateway"
+msgstr "Gateway"
+
+msgid "Greylist"
+msgstr ""
+
+msgid "Group"
+msgstr "Groep"
+
+msgid "HOME_NET"
+msgstr "THUIS_NET"
+
+msgid "HTTP Proxy"
+msgstr ""
+
+msgid "HTTP Proxy Password"
+msgstr "HTTP Proxy Wachtwoord"
+
+msgid "HTTP Proxy Port"
+msgstr ""
+
+msgid "HTTP Proxy Server"
+msgstr ""
+
+msgid "HTTP Proxy Username"
+msgstr "HTTP Proxy Gebruikersnaam"
+
+msgid "HTTP_PORTS"
+msgstr ""
+
+msgid "HTTP_SERVERS"
+msgstr ""
+
+msgid "HTTPs"
+msgstr ""
+
+msgid "Hex decode content"
+msgstr "Hex decodeer inhoud"
+
+msgid "Host"
+msgstr "Systeem"
+
+msgid "Host IP"
+msgstr "Systeem IP adres"
+
+msgid "Hostname Lookups"
+msgstr "Systeem opzoeken"
+
+msgid "ICQ"
+msgstr ""
+
+msgid "IM Proxy"
+msgstr ""
+
+msgid "IP defragmentation support"
+msgstr "IP defragmentatie ondersteuning"
+
+msgid "IP or Net"
+msgstr "IP adres of Netwerk"
+
+msgid "IP range"
+msgstr "IP adres reeks"
+
+msgid "IRC"
+msgstr ""
+
+msgid "Ignore errors"
+msgstr "Negeer fouten"
+
+msgid "Include classification & priority settings"
+msgstr "Gebruik classificatie & prioriteit instellingen."
+
+msgid "Include reference systems"
+msgstr "Gebruik referentie systemen"
+
+msgid "Infection/Scan Error Bypass"
+msgstr "Infectie/Scan Fout Omleidingen"
+
+msgid "Infection/Scan Error Bypass Secret Key"
+msgstr "Infectie/Scan Fout Omleiding Geheime Sleutel"
+
+msgid "Infection/Scan Error Bypass on Scan Errors Only"
+msgstr "Infecite/Scan Fout Omleiding alleen bij Scan Fout"
+
+msgid "Initial Trickle delay"
+msgstr ""
+
+msgid "Interface Configuration"
+msgstr "Verbinding Configuratie"
+
+msgid "Interfaces"
+msgstr "Verbindingen"
+
+msgid "Intrusion Alerts"
+msgstr "Inbraak Alarm"
+
+msgid "Intrusion Detection"
+msgstr "Inbraak Detectie"
+
+msgid "Intrusion Prevention"
+msgstr "Inbraak Voorkoming"
+
+msgid "Jabber"
+msgstr ""
+
+msgid "Just Delete"
+msgstr "Gewoon verwijderen"
+
+msgid "Keep Alive"
+msgstr ""
+
+msgid "KeepAlive"
+msgstr ""
+
+msgid "KeepAlive Timeout"
+msgstr "KeepAlive Time-out"
+
+msgid "Keywords"
+msgstr "Sleutelwoorden"
+
+msgid "Language"
+msgstr "Taal"
+
+msgid "Leases"
+msgstr ""
+
+msgid "Leave Temporary Files"
+msgstr "Laat tijdelijke bestanden staan"
+
+msgid "Leave spool on"
+msgstr "Laat spool aan"
+
+msgid "Listen Address"
+msgstr "Luister Adres"
+
+msgid "Local IP Address"
+msgstr "Lokale IP Adres"
+
+msgid "Local IP address"
+msgstr "Lokale IP adres"
+
+msgid "Local User"
+msgstr "Lokale Gebruiker"
+
+msgid "Locale"
+msgstr ""
+
+msgid "Lock duration"
+msgstr ""
+
+msgid "Lock on"
+msgstr ""
+
+msgid "Log Clean"
+msgstr ""
+
+msgid "Log Exception Hits"
+msgstr ""
+
+msgid "Log Level"
+msgstr "Log Niveau"
+
+msgid "Log Verbose"
+msgstr "Log uitgebreid"
+
+msgid "Log ad blocks"
+msgstr "Log advertentie blokkades"
+
+msgid "Log child process handling"
+msgstr "Log kind proces afhandeling"
+
+msgid "Log client hostnames"
+msgstr "Log client hostnamen"
+
+msgid "Log connection handling errors"
+msgstr "Log verbinding afhandelings problemen"
+
+msgid "Log fqdn"
+msgstr "Log volledige systeemnaam"
+
+msgid "Log helo"
+msgstr ""
+
+msgid "Log ip on direct"
+msgstr ""
+
+msgid "Log level"
+msgstr "Log niveau"
+
+msgid "Log mail from"
+msgstr "Log mail van"
+
+msgid "Log rcpt to"
+msgstr ""
+
+msgid "Log typing events"
+msgstr ""
+
+msgid "Logging Settings"
+msgstr "Log Instellingen"
+
+msgid "Login Grace Time"
+msgstr ""
+
+msgid "MSN"
+msgstr ""
+
+msgid "Mail Follow URLs"
+msgstr ""
+
+msgid "Mail From"
+msgstr "Mail Van"
+
+msgid "Mail program"
+msgstr "Mail programma"
+
+msgid "Managed extensions"
+msgstr "Beheerde extenties"
+
+msgid "Managed mime types"
+msgstr "Beheerde mime types"
+
+msgid "Max Attempts"
+msgstr "Max Pogingen"
+
+msgid "Max Auth Tries"
+msgstr "Max Authorizatie Pogingen"
+
+msgid "Max Block Duration"
+msgstr "Max Blokkeer Tijdsduur"
+
+msgid "Max Childs"
+msgstr "Max Kinderen"
+
+msgid "Max Clients"
+msgstr ""
+
+msgid "Max Directory Recursion"
+msgstr "Max Map Recursie"
+
+msgid "Max KeepAlive Requests"
+msgstr "Max KeepAlive Verzoeken"
+
+msgid "Max Log Item Length"
+msgstr "Max Log Item Lengte"
+
+msgid "Max Spare Servers"
+msgstr "Max Reserve Servers"
+
+msgid "Max Threads"
+msgstr ""
+
+msgid "Max age children"
+msgstr "Max levenduur kinderen"
+
+msgid "Max children"
+msgstr "Max kinderen"
+
+msgid "Max content file cache scan size"
+msgstr "Max inhoud bestands cache scanner grootte"
+
+msgid "Max content filter size"
+msgstr "Max inhoud filter grootte"
+
+msgid "Max content ram cache scan size"
+msgstr ""
+
+msgid "Max ips"
+msgstr ""
+
+msgid "Max spare children"
+msgstr "Max reserve kinderen"
+
+msgid "Max upload size"
+msgstr "Max upload grootte"
+
+msgid "MaxStartups"
+msgstr ""
+
+msgid "Maximum connections"
+msgstr "Maximum verbindingen"
+
+msgid "Maximum connections per host"
+msgstr "Maximum verbindingen per host"
+
+msgid "Maximum download size"
+msgstr "Maximm download grootte"
+
+msgid "Maximum load"
+msgstr "Maximale belasting"
+
+msgid "Maximum spam load"
+msgstr "Maximale spam belasting"
+
+msgid "Maximum spam scan size"
+msgstr "Maximal spam scanner grootte"
+
+msgid "Maximum virus scan size"
+msgstr "Maximale virus scanner grootte"
+
+msgid "Mime"
+msgstr ""
+
+msgid "Min Spare Servers"
+msgstr "Min Reserve Servers"
+
+msgid "Min children"
+msgstr "Min kinderen"
+
+msgid "Min spare children"
+msgstr "Min reserve kinderen"
+
+msgid "Modern virtual private networking."
+msgstr ""
+
+msgid "Mon"
+msgstr "Ma"
+
+msgid "Monitoring"
+msgstr "Monitoren"
+
+msgid "NAT header type"
+msgstr ""
+
+msgid "Name server"
+msgstr ""
+
+msgid "Naughtyness limit"
+msgstr ""
+
+msgid "Network Time"
+msgstr ""
+
+msgid "No bind"
+msgstr "Geen binding"
+
+msgid "No cache"
+msgstr "Geen cache"
+
+msgid "Non standard delimiter"
+msgstr "Niet standaard scheidingsteken"
+
+msgid "Notice days"
+msgstr "Bericht dagen"
+
+msgid "Notice response"
+msgstr "Bericht antwoord"
+
+msgid "Notice responses"
+msgstr "Bericht antwoorden"
+
+msgid "Notify AV"
+msgstr "Bericht AV"
+
+msgid "Notify Content"
+msgstr "Bericht Inhoud"
+
+msgid "Number of filter groups"
+msgstr "Aantal filter groepen"
+
+msgid "Open source anti-spam software."
+msgstr ""
+
+msgid "Open source anti-virus software."
+msgstr ""
+
+msgid "OpenSSH"
+msgstr ""
+
+msgid "OpenVPN"
+msgstr ""
+
+msgid "PICS rating support"
+msgstr ""
+
+msgid "POP3 Proxy"
+msgstr ""
+
+msgid "PRI"
+msgstr ""
+
+msgid "Packet Filter"
+msgstr ""
+
+msgid "Permit Empty Passwords"
+msgstr "Sta Lege Wachtwoorden Toe"
+
+msgid "Permit Root Login"
+msgstr "Sta Root Login Toe"
+
+msgid "Persist Key"
+msgstr "Vaste Sleutel"
+
+msgid "Persist Tun"
+msgstr "Vaste Tunnel"
+
+msgid "Phrase filter mode"
+msgstr ""
+
+msgid "Ping"
+msgstr ""
+
+msgid "Pmacct"
+msgstr ""
+
+msgid "Pmacct Network Monitoring"
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "Prefork children"
+msgstr ""
+
+msgid "Preserve case"
+msgstr ""
+
+msgid "Print Last Log"
+msgstr "Print Laatste Log"
+
+msgid "Print Motd"
+msgstr ""
+
+msgid "Priority"
+msgstr "Prioriteit"
+
+msgid "Private Key"
+msgstr "Privé Sleutel"
+
+msgid ""
+"Promiscuous mode accounting daemon collects IP based network usage "
+"information. Network usage graphs are generated based on pmacct data."
+msgstr ""
+
+msgid "Protocol"
+msgstr ""
+
+msgid "Protograph"
+msgstr ""
+
+msgid "Proxy IP"
+msgstr ""
+
+msgid "Proxy IP:Ports"
+msgstr ""
+
+msgid "Proxy Port"
+msgstr ""
+
+msgid "Quiet"
+msgstr "Stil"
+
+msgid "Re-check replaced URLs"
+msgstr "Hercontroleer vervangen URLs"
+
+msgid "Remote Server"
+msgstr ""
+
+msgid "Remote User"
+msgstr ""
+
+msgid "Report e-mail"
+msgstr ""
+
+msgid "Report language"
+msgstr ""
+
+msgid "Report safe"
+msgstr ""
+
+msgid "Reporting level"
+msgstr ""
+
+msgid "Required score"
+msgstr "Vereiste score"
+
+msgid "Resource not available"
+msgstr "Resource niet beschikbaar"
+
+msgid "Response postfix"
+msgstr "Antwoord postfix"
+
+msgid "Response prefix"
+msgstr "Antwoord prefix"
+
+msgid "Reverse address lookups"
+msgstr ""
+
+msgid "Reverse client ip lookups"
+msgstr ""
+
+msgid "Rewrite header"
+msgstr ""
+
+msgid "Root Certificate"
+msgstr ""
+
+msgid "Route"
+msgstr ""
+
+msgid "SHELLCODE_PORTS"
+msgstr ""
+
+msgid "SMTP Proxy"
+msgstr ""
+
+msgid "SMTP_SERVERS"
+msgstr ""
+
+msgid "SNMP_SERVERS"
+msgstr ""
+
+msgid "SOCKS Proxy"
+msgstr ""
+
+msgid "SPAM Deferral"
+msgstr ""
+
+msgid "SPAM Filter"
+msgstr ""
+
+msgid "SQL_SERVERS"
+msgstr ""
+
+msgid "SSH_PORTS"
+msgstr ""
+
+msgid "STARTED"
+msgstr "GESTART"
+
+msgid "Safe Browsing"
+msgstr "Veilig Surfen"
+
+msgid "Sat"
+msgstr "Za"
+
+msgid "Scan Archive"
+msgstr "Scan Archief"
+
+msgid "Scan HTML"
+msgstr ""
+
+msgid "Scan Mail"
+msgstr ""
+
+msgid "Scan OLE2"
+msgstr ""
+
+msgid "Scan PE"
+msgstr ""
+
+msgid "Scan RAR"
+msgstr ""
+
+msgid "Scan Spam"
+msgstr ""
+
+msgid "Scan clean cache"
+msgstr ""
+
+msgid "Self Check"
+msgstr "Zelf Controle"
+
+msgid "Server Admin"
+msgstr ""
+
+msgid "Server Key Bits"
+msgstr ""
+
+msgid "Server Mode"
+msgstr ""
+
+msgid "Session"
+msgstr "Sessie"
+
+msgid "Show weighted phrases found"
+msgstr "Toon gevonden gewogen zinsnede "
+
+msgid "Size"
+msgstr ""
+
+msgid "Soft restart"
+msgstr ""
+
+msgid "Spam Filter"
+msgstr ""
+
+msgid "Spam threshold"
+msgstr ""
+
+msgid "Spamd Grey DB"
+msgstr ""
+
+msgid "Spamd Grey Listing"
+msgstr ""
+
+msgid "Spamd Logging"
+msgstr ""
+
+msgid "Spamd Spam Deferral"
+msgstr ""
+
+msgid "Spamd White DB"
+msgstr ""
+
+msgid "Start Servers"
+msgstr ""
+
+msgid "Subnet mask"
+msgstr ""
+
+msgid "Subsystem sftp"
+msgstr ""
+
+msgid "Sun"
+msgstr "Zo"
+
+msgid "Symon"
+msgstr ""
+
+msgid "Symon System Monitoring"
+msgstr ""
+
+msgid "Symux"
+msgstr ""
+
+msgid "Symux System Monitoring"
+msgstr ""
+
+msgid "Syslog Facility"
+msgstr ""
+
+msgid "System"
+msgstr "Systeem"
+
+msgid "System Administration Guides"
+msgstr "Systeem Beheer Handleidingen"
+
+msgid ""
+"System monitoring software. Most of the rrd based graphs are generated based "
+"on symon data."
+msgstr ""
+"Systeem monitoring software. De meeste van de rrd gebaseerde grafieken zijn "
+"gegenereerd op basis van symon data."
+
+msgid "TCP Keep Alive"
+msgstr "TCP Keep Alive"
+
+msgid "TELNET_SERVERS"
+msgstr "TELNET_SERVERS"
+
+msgid "TIME"
+msgstr "TIJD"
+
+msgid "TLS Auth"
+msgstr "TLS Auth"
+
+msgid "Telnet negotiation string normalizer"
+msgstr "Telnet onderhandeling string opschoner"
+
+msgid "Temporary Denied Page Bypass"
+msgstr "Tijdelijke Geblokkeerde Pagina Omleiding"
+
+msgid "Temporary Denied Page Bypass Secret Key"
+msgstr "Tijdelijke 'Geblokkeerde Pagina Omleiding' geheime sleutel"
+
+msgid "The Free Software Foundation."
+msgstr "he Free Software Foundation."
+
+msgid "The most famous web server."
+msgstr "De meest beroemde web server."
+
+msgid ""
+"The most secure OS in the world. Underneath UTMFW is pure, untouched "
+"OpenBSD."
+msgstr ""
+"Het meest veilige OS ter wereld. UTMFW draait op het standaard OpenBSD."
+
+msgid "Threshold"
+msgstr "Drempel"
+
+msgid "Threshold By User"
+msgstr "Drempel per gebruiker"
+
+msgid "Thu"
+msgstr "Do"
+
+msgid "Time to expire"
+msgstr "Geldigheids duur"
+
+msgid "Time to expire (secs)"
+msgstr "Geldigheids duur (seconden)"
+
+msgid "Timeout"
+msgstr "Time-out"
+
+msgid "Timespan"
+msgstr "Tijdsduur"
+
+msgid "Trickle delay"
+msgstr ""
+
+msgid "Trusted networks"
+msgstr "Vertrouwde netwerken"
+
+msgid "Tue"
+msgstr "Di"
+
+msgid ""
+"Turns Snort IDS into an IPS (Intrusion Prevention System). Replaced by "
+"SnortIPS."
+msgstr ""
+"Schakelt Snort IDS om naar een IPS (Intrusion Prevention System). Vervangen "
+"door SnortIPS."
+
+msgid "USER"
+msgstr "GEBRUIKER"
+
+msgid "Unblock all blocked entries"
+msgstr "Deblokkeer alle geblokkeerde items"
+
+msgid "Unblock selected"
+msgstr "Deblokkeer geselecteerde items"
+
+msgid "Url cache age"
+msgstr "Url cache levensduur"
+
+msgid "Url cache number"
+msgstr "Url cache nummer"
+
+msgid "Use DNS"
+msgstr "Use DNS"
+
+msgid "Use SMTP"
+msgstr "Gebruik SMTP"
+
+msgid "Use bayes"
+msgstr "Gebruik bayes"
+
+msgid "Use xforwarded for"
+msgstr "Gebruik xforwarded for"
+
+msgid "User agent regexp"
+msgstr "User agen regexp"
+
+msgid "Verbosity"
+msgstr ""
+
+msgid "Violations"
+msgstr "Overtredingen"
+
+msgid "Virus DB Update"
+msgstr "Virus DB Update"
+
+msgid "Virus Filter"
+msgstr "Virus Filter"
+
+msgid "Virus and spam scanning POP3 proxy."
+msgstr "Virus en spam scanner POP3 proxy."
+
+msgid "Virus and spam scanning SMTP proxy."
+msgstr "Virus en spam scanner SMTP proxy"
+
+msgid "WUI"
+msgstr "WUI"
+
+msgid "Web Access Denied Reporting"
+msgstr "Web Toegang Geblokkeerd Rapportage"
+
+msgid "Web Filter"
+msgstr "Web Filter"
+
+msgid "Web Filter Access"
+msgstr "Web Filter Toegang"
+
+msgid "Web Server"
+msgstr "Web Server"
+
+msgid "Web Server (WUI)"
+msgstr "Web Server (WUI)"
+
+msgid "Web Server Access"
+msgstr "Web Server Toegang"
+
+msgid "Web interface for configuring and monitoring OpenBSD/pf."
+msgstr "Web beheerspagina voor het instellen en monitoren van OpenBSD/pf."
+
+msgid "Wed"
+msgstr "Wo"
+
+msgid "Weighted phrase list"
+msgstr "Gewogen frase lijst"
+
+msgid "Weighted phrase mode"
+msgstr "Gewogen zinssnedes mode"
+
+msgid "Whitelist"
+msgstr ""
+
+msgid "Whitelisted"
+msgstr ""
+
+msgid "X-Bogosity"
+msgstr "X-Bogosity"
+
+msgid "X-Spam-Flag"
+msgstr "X-Spam-Flag"
+
+msgid "X-Spam-Status"
+msgstr "X-Spam-Status"
+
+msgid "Yahoo"
+msgstr "Yahoo"
+
+msgid "blacklisted"
+msgstr ""
+
+msgid "blocked"
+msgstr "geblokkeerd"
+
+msgid "end"
+msgstr "eind"
+
+msgid "height"
+msgstr "hoogte"
+
+msgid "managed"
+msgstr "beheert"
+
+msgid "size"
+msgstr "grootte"
+
+msgid "start"
+msgstr "start"
+
+msgid "timespan"
+msgstr "tijdsspanne"
+
+msgid "total"
+msgstr "totaal"
+
+msgid "whitelisted"
+msgstr ""
+
+msgid "width"
+msgstr "breedte"

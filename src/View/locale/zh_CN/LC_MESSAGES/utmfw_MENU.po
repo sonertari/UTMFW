@@ -1,0 +1,300 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "ACL"
+msgstr "ACL"
+
+msgid "Access Logs"
+msgstr "访问日志"
+
+msgid "Advanced"
+msgstr "高级"
+
+msgid "Alerts"
+msgstr "警报"
+
+msgid "Archives"
+msgstr "档案"
+
+msgid "Badwords"
+msgstr "坏词"
+
+msgid "Basic"
+msgstr "基本"
+
+msgid "Blacklists"
+msgstr "黑名单"
+
+msgid "Blanket"
+msgstr "毯子"
+
+msgid "Bypass"
+msgstr "绕道"
+
+msgid "UTMFW ADMINISTRATION INTERFACE"
+msgstr "UTMFW管理界面"
+
+msgid "CPUs"
+msgstr "CUPs"
+
+msgid "CTLR Logs"
+msgstr "CTLR 日志"
+
+msgid "Categories"
+msgstr "分类"
+
+msgid "Charts"
+msgstr "图表"
+
+msgid "Clamd"
+msgstr "Clamd"
+
+msgid "UTMFW Administration Interface"
+msgstr "UTMFW管理界面"
+
+msgid "Config"
+msgstr "配置"
+
+msgid "Credits"
+msgstr "鸣谢"
+
+msgid "DB"
+msgstr "数据库"
+
+msgid "DB Logs"
+msgstr "数据库日志"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "DM Exts"
+msgstr "DM Exts"
+
+msgid "DM Mimes"
+msgstr "DM矿"
+
+msgid "DNS"
+msgstr "DNS"
+
+msgid "Daily"
+msgstr "日报"
+
+msgid "Disks"
+msgstr "磁盘"
+
+msgid "Domains"
+msgstr "域"
+
+msgid "Downloads"
+msgstr "下载"
+
+msgid "Email"
+msgstr "电子邮件"
+
+msgid "Extensions"
+msgstr "扩展"
+
+msgid "FTP PROXY"
+msgstr "FTP代理"
+
+msgid "Filter"
+msgstr "过滤器"
+
+msgid "General"
+msgstr "常规"
+
+msgid "Graphs"
+msgstr "图"
+
+msgid "Groups"
+msgstr "组"
+
+msgid "HTTP PROXY"
+msgstr "HTTP代理"
+
+msgid "Help"
+msgstr "帮助"
+
+msgid "Hosts"
+msgstr "主机"
+
+msgid "Hourly"
+msgstr "每小时"
+
+msgid "IDS"
+msgstr "IDS"
+
+msgid "IM Logs"
+msgstr "即时通讯日志"
+
+msgid "IM PROXY"
+msgstr "即时通讯代理"
+
+msgid "IM Proxy Logs"
+msgstr "即时通讯代理日志"
+
+msgid "INFORMATION"
+msgstr "信息"
+
+msgid "IPS"
+msgstr "IPS"
+
+msgid "Info"
+msgstr "信息"
+
+msgid "Init"
+msgstr "初始化"
+
+msgid "Interfaces"
+msgstr "接口"
+
+msgid "Language"
+msgstr "语言"
+
+msgid "Lists"
+msgstr "列表"
+
+msgid "Live"
+msgstr "现场"
+
+msgid "Logs"
+msgstr "日志"
+
+msgid "Logs Report"
+msgstr "日志报告"
+
+msgid "MONITORING"
+msgstr "监测"
+
+msgid "Managed"
+msgstr "托管"
+
+msgid "Mbufs"
+msgstr "内存缓冲区"
+
+msgid "Memory"
+msgstr "内存"
+
+msgid "Mimes"
+msgstr "矿"
+
+msgid "Network"
+msgstr "网络"
+
+msgid "OPENSSH"
+msgstr "OPENSSH"
+
+msgid "OPENVPN"
+msgstr "OPENVPN"
+
+msgid "PACKET FILTER"
+msgstr "包过滤"
+
+msgid "POP3 PROXY"
+msgstr "POP3代理"
+
+msgid "Partitions"
+msgstr "分区"
+
+msgid "Phrases"
+msgstr "短语"
+
+msgid "Processes"
+msgstr "进程"
+
+msgid "Protocols"
+msgstr "协议"
+
+msgid "Queues"
+msgstr ""
+
+msgid "Rules"
+msgstr "规则"
+
+msgid "SMTP PROXY"
+msgstr "SMTP代理"
+
+msgid "SOCKS PROXY"
+msgstr "SOCKS代理"
+
+msgid "SPAM FILTER"
+msgstr "垃圾邮件过滤器"
+
+msgid "SPAMD"
+msgstr "SPAMD"
+
+msgid "SYSTEM"
+msgstr "系统"
+
+msgid "Scan"
+msgstr "扫描"
+
+msgid "Sensors"
+msgstr "传感器"
+
+msgid "Sites"
+msgstr "站点"
+
+msgid "Source Docs"
+msgstr "源文件"
+
+msgid "Spamd DB"
+msgstr "Spamd数据库"
+
+msgid "Startup"
+msgstr "启动"
+
+msgid "States"
+msgstr "状态"
+
+msgid "Statistics"
+msgstr "统计"
+
+msgid "Status"
+msgstr "状况"
+
+msgid "Transfer"
+msgstr "转移"
+
+msgid "URLs"
+msgstr "网址"
+
+msgid "VIRUS FILTER"
+msgstr "病毒过滤器"
+
+msgid "Virus Exts"
+msgstr "病毒分机"
+
+msgid "Virus Mimes"
+msgstr "病毒矿"
+
+msgid "Virus Sites"
+msgstr "病毒网站"
+
+msgid "Virus URLs"
+msgstr "病毒的网址"
+
+msgid "WEB FILTER"
+msgstr "Web筛选器"
+
+msgid "WEB SERVER"
+msgstr "Web服务器"
+
+msgid "WUI"
+msgstr "WUI"
+
+msgid "WUI Logs"
+msgstr "WUI日志"

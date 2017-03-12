@@ -1,0 +1,116 @@
+# Arquivo de configuração básica do SpamAssassin
+#
+# Tradução para portugues do Brazil v1.0 
+# Feita por Marcelo Cruzeta ZOE Informática
+#
+# <@LICENSE>
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to you under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at:
+# 
+#     http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# </@LICENSE>
+#
+###########################################################################
+# This is the right place to customize your installation of SpamAssassin.
+#
+# See 'perldoc Mail::SpamAssassin::Conf' for details of what can be
+# tweaked.
+#
+# Only a small subset of options are listed below
+#
+###########################################################################
+
+#   Add *****SPAM***** to the Subject header of spam e-mails
+#
+rewrite_header Subject *****UTMFW SPAM WARNING*****
+
+
+#   Save spam messages as a message/rfc822 MIME attachment instead of
+#   modifying the original message (0: off, 2: use text/plain instead)
+#
+# report_safe 1
+
+
+#   Set which networks or hosts are considered 'trusted' by your mail
+#   server (i.e. not spammers)
+#
+# trusted_networks 212.17.35.
+
+
+#   Set file-locking method (flock is not safe over NFS, but is faster)
+#
+lock_method flock
+
+
+#   Set the threshold at which a message is considered spam (default: 5.0)
+#
+required_score 5.0
+
+
+#   Use Bayesian classifier (default: 1)
+#
+use_bayes 1
+bayes_path /var/db/spamassassin/.spamassassin/bayes
+
+#   Bayesian classifier auto-learning (default: 1)
+#
+bayes_auto_learn 1
+
+
+#   Set headers which may provide inappropriate cues to the Bayesian
+#   classifier
+#
+# bayes_ignore_header X-Bogosity
+# bayes_ignore_header X-Spam-Flag
+# bayes_ignore_header X-Spam-Status
+
+
+# character set
+report_charset iso-8859-1
+
+# Modelo padrão. Tente manter menor que 78 colunas (dentro dos pontos abaixo).
+#      ........................................................................
+clear_report_template
+report O programa detetor de Spam ZOE, rodando no servidor "_HOSTNAME_",
+report identificou este e-mail como um spam.  A mensagem original foi atachada
+report  a este e-mail para ser lida, (caso não seja um spam) ou para bloquear 
+report e-mails futuros similares a este.  Caso tenha alguma pergunta, veja
+report _CONTACTADDRESS_ para detalhes.
+report 
+report Visualização Prévia:  _PREVIEW_
+report 
+report Detalhes da análise:   (_HITS_ points, _REQD_ required)
+report
+report " pts regra              descrição"
+report  ---- ---------------------- --------------------------------------------------
+report _SUMMARY_
+#      ........................................................................
+
+# um 'endereço de contato' que os usuários devem usar para mais info. (muda
+# _CONTACTADDRESS_ acima, se presente)
+report_contact	seu endereço para contato
+
+
+###########################################################################
+
+# Modelo para reportar mensagem insegura para ler.
+#
+#             ......................................................................
+clear_unsafe_report_template
+unsafe_report A mensagem original não é completamente texto, pode ser inseguro
+unsafe_report abrí-la com um programa de e-mail; é possível que possa conter virus,
+unsafe_report ou confirmar que seu endereço de e-mail possa receber spam.
+unsafe_report Caso queira lê-la, é mais seguro salvar como texto e abir com um editor.
+#             ......................................................................
+
+###########################################################################

@@ -1,0 +1,5687 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-13 15:02+0100\n"
+"Last-Translator: Wim Hoekman\n"
+"Language-Team: Dutch <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+
+msgid ""
+" This the limit over which the page will be blocked.  Each weighted phrase "
+"is given a value either positive or negative and the values added up.  "
+"Phrases to do with good subjects will have negative values, and bad subjects "
+"will have positive values.  See the weightedphraselist file for examples.\n"
+"As a guide:\n"
+"50 is for young children,  100 for old children,  160 for young adults."
+msgstr ""
+
+msgid ""
+"\"dev tun\" will create a routed IP tunnel, \"dev tap\" will create an "
+"ethernet tunnel. Use \"dev tap0\" if you are ethernet bridging and have "
+"precreated a tap0 virtual interface and bridged it with your ethernet "
+"interface. If you want to control access policies over the VPN, you must "
+"create firewall rules for the the TUN/TAP interface."
+msgstr ""
+
+msgid "%CPU"
+msgstr ""
+
+msgid "%MEM"
+msgstr "%GEHEUGEN"
+
+msgid ""
+"(only used with accessdeniedaddress)\n"
+"To help preserve the full banned URL, including parameters, the variables "
+"passed into the access denied CGI are separated using non-standard "
+"delimiters. This can be useful to ensure correct operation of the filter "
+"bypass modes. Parameters are split using \"::\" in place of \"&\", and \"=="
+"\" in place of \"=\".\n"
+"Default is enabled, but to go back to the standard mode, disable it."
+msgstr ""
+
+msgid ""
+"-1 = log, but do not block - Stealth mode\n"
+"0 = just say 'Access Denied'\n"
+"1 = report why but not what denied phrase\n"
+"2 = report fully\n"
+"3 = use HTML template file (accessdeniedaddress ignored) - recommended"
+msgstr ""
+
+msgid ""
+"-1 = log, but do not block - Stealth mode\n"
+"0 = just say Access Denied\n"
+"1 = report why but not what denied phrase\n"
+"2 = report fully\n"
+"3 = use HTML template file (accessdeniedaddress ignored) - recommended\n"
+"\n"
+"If defined, this overrides the global setting in dansguardian.conf for "
+"members of this filter group."
+msgstr ""
+
+msgid "0 = none  1 = just denied  2 = all text based  3 = all requests"
+msgstr ""
+
+msgid "1 minute average"
+msgstr "gemiddelde over 1 minuut"
+
+msgid "15 minute average"
+msgstr "gemiddelde over 15 minuten"
+
+msgid "5 minute average"
+msgstr "gemiddelde over 5 minuten"
+
+msgid "< Previous"
+msgstr "< Vorige"
+
+msgid "<< First"
+msgstr "<< Eerste"
+
+msgid ""
+"<b>Make sure you have applied your changes to network settings system-wide "
+"using automatic configuration button.</b>\n"
+"\n"
+"If you change the IP address of the network interface over which you are "
+"connected to this web user interface, and use the network restart button on "
+"this page, do not forget to change the URL on your web browser accordingly.\n"
+"\n"
+"It is not advised to configure the internal interface as dhcp."
+msgstr ""
+
+msgid ""
+"A netmask for client addresses in logfiles and cachemgr output.\n"
+"\t\tChange this to protect the privacy of your cache clients.\n"
+"\t\tA netmask of 255.255.255.0 will log all IP's in that range with the last "
+"digit set to '0'."
+msgstr ""
+
+msgid "ACL"
+msgstr "ACL"
+
+msgid "ACL gives you fine-grained control over who can access the IM proxy."
+msgstr ""
+
+msgid "AV Admin"
+msgstr "AV Beheer"
+
+msgid "AV Subject"
+msgstr "AV Onderwerp"
+
+msgid "Access Denied Address"
+msgstr "Toegang Geblokkeerd Adres"
+
+msgid "Access Logs"
+msgstr "Toegangs logbestanden"
+
+msgid "Access control list"
+msgstr ""
+
+msgid "Access denied address"
+msgstr "Toegang geblokkeerd adres"
+
+msgid "Account name"
+msgstr "Gebruikers naam"
+
+msgid "Active IPs (arp table)"
+msgstr "Aktieve IP adressen (arp tabel)"
+
+msgid "Active States"
+msgstr "Aktieve Statussen"
+
+msgid "Add"
+msgstr "Toevoegen"
+
+msgid "Add *****SPAM***** to the Subject header of spam e-mails"
+msgstr ""
+
+msgid "Add ACL"
+msgstr "ACL Toevoegen"
+
+msgid "Add DHCP interface"
+msgstr "DHCP interface toevoegen"
+
+msgid "Add HTTP proxy IP:port"
+msgstr "Toevoegen HTTP proxy IP:poort"
+
+msgid "Add IP"
+msgstr "Nieuw IP adres toevoegen"
+
+msgid "Add alert keyword"
+msgstr "Toevoegen alarm sleutelwoord"
+
+msgid "Add badword"
+msgstr "Nieuw niet gewenst woord toevoegen"
+
+msgid "Add database mirror"
+msgstr "Nieuwe database kopie toevoegen"
+
+msgid "Add ext/mime"
+msgstr "Nieuwe ext/mime toevoegen"
+
+msgid "Add filter group IP"
+msgstr "Nieuw filter group voor IP aanmaken"
+
+msgid "Add host"
+msgstr "Nieuwe host toevoegen"
+
+msgid "Add list item"
+msgstr "Nieuw onderdeel toevoegen"
+
+msgid "Add to IP list"
+msgstr "Nieuw IP adres toevoegen"
+
+msgid "Address Family"
+msgstr "Adres Familie"
+
+msgid "Admin e-mail"
+msgstr "Email adres van de beheerder"
+
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+msgid "Advanced Power Management"
+msgstr "Geavanceerd Stroom Beheer"
+
+msgid "Advert servers and banned URLs"
+msgstr ""
+
+msgid "After hours"
+msgstr "Buiten kantoortijden"
+
+msgid "Age"
+msgstr ""
+
+msgid ""
+"Age before they are stale and should be ignored in seconds\n"
+"0 = never\n"
+"900 = recommended = 15 mins"
+msgstr ""
+
+msgid "Alerts"
+msgstr "Meldingen"
+
+msgid "All alerts"
+msgstr "Alle alarmeringen"
+
+msgid "All attempts"
+msgstr "Alle pogingen"
+
+msgid "All connections"
+msgstr "Alle verbindingen"
+
+msgid "All monitoring processes write to the same log file."
+msgstr ""
+
+msgid "All queries"
+msgstr "Alle zoekopdrachten"
+
+msgid "All requests"
+msgstr "Alle verzoeken"
+
+msgid "All rights reserved."
+msgstr "Alle rechten voorbehouden."
+
+msgid "All sessions"
+msgstr "Alle sessies"
+
+msgid "All sport sites"
+msgstr ""
+
+msgid "All un/blocks and extensions"
+msgstr "Alle blokkeringen/deblokkades en verlengingen"
+
+msgid "Allow localhost"
+msgstr "Toestaan lokale host "
+
+msgid "Allowed requests"
+msgstr "Toegestane verzoeken"
+
+msgid ""
+"Also log clean files. Useful in debugging but drastically increases the log "
+"size.\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid ""
+"Although this is called a 'blacklist', the categories can be used as white "
+"or grey lists also. Being listed does not infer that the site is bad, these "
+"are just lists of sites.\n"
+"\n"
+msgstr ""
+
+msgid ""
+"Among web filter log messages are page denials, virus scan results, denial "
+"bypasses or exceptions. However, some details can be found in HTTP proxy "
+"logs only, such as the sizes of file downloads if the download manager is "
+"engaged."
+msgstr ""
+
+msgid ""
+"An important setting may be the rewrite header which is used on the subject "
+"line of an e-mail identified as spam. Note that spam identification is a "
+"guess based on statistical calculations, hence there may be false positives."
+msgstr ""
+
+msgid ""
+"Analysis of statistical data may take a long time to process. Please be "
+"patient. Also note that if you refresh this page frequently, CPU load may "
+"increase considerably."
+msgstr ""
+"Analyze van de statistieken kan lange tijd duren. Geduld a.u.b. Let up: als "
+"U deze pagina regelmatig ververst, zal dat de belasting van de processor in "
+"belangrijke mate verhogen."
+
+msgid "And finally deny all other access to this proxy"
+msgstr ""
+
+msgid "Anonymize Logs"
+msgstr "Logbestanden anonimiseren"
+
+msgid "Apply"
+msgstr "Toepassen"
+
+msgid "Apply AfterHours"
+msgstr "Maak AfterHours aktief"
+
+msgid "Apply configuration"
+msgstr "Instellingen toepassen."
+
+msgid "Apply pf rules"
+msgstr "Maak pf regels aktief"
+
+msgid "Archive Block Encrypted"
+msgstr ""
+
+msgid "Archive Block Max"
+msgstr ""
+
+msgid "Archive Limit Memory Usage"
+msgstr "Archief Limiet Geheugen Gebruik"
+
+msgid "Archive Max Compression Ratio"
+msgstr "Archief Maximale Compressie Ratio"
+
+msgid "Archive Max File Size"
+msgstr "Archief Maximale Bestands Grootte"
+
+msgid "Archive Max Files"
+msgstr "Archief Maximum Aantal Bestanden"
+
+msgid "Archive Max Recursion"
+msgstr "Archief Maximaal Niveaus Recursie"
+
+msgid "Archives"
+msgstr "Archieven"
+
+msgid ""
+"Are we connecting to a TCP or UDP server?  Use the same setting as on the "
+"server."
+msgstr ""
+
+msgid "Are you sure you want to create a new group?"
+msgstr "Weet U zeker dat U een nieuwe groep wilt maken?"
+
+msgid "Are you sure you want to delete the configuration?"
+msgstr "Weet U zeker dat U de configuratie wilt verwijderen?"
+
+msgid "Are you sure you want to delete the selected items?"
+msgstr "Weet U zeker dat U de geselecteerde onderdelen wilt verwijderen?"
+
+msgid "Are you sure you want to disable Packet Filter?"
+msgstr "Weet U zeker dat U Packet Filter (firewall) wilt uitschakelen?"
+
+msgid "Are you sure you want to erase statistics files?"
+msgstr "Weet U zeker dat U de statistiek bestanden wilt verwijderen?"
+
+msgid "Are you sure you want to reinitialize graph files?"
+msgstr "Weet U zeker dat U de grafieken opnieuw wilt initialiseren?"
+
+msgid "Are you sure you want to restart the <NAME>?"
+msgstr "Weet U zeker dat U <NAME> wilt herstarten?"
+
+msgid "Are you sure you want to restart the network?"
+msgstr "Weet U zeker dat U het netwerk wilt herstarten?"
+
+msgid "Are you sure you want to rotate the logs?"
+msgstr ""
+
+msgid "Are you sure you want to set the date?"
+msgstr "Weet U zeker dat U de datum wilt wijzigen?"
+
+msgid "Are you sure you want to start the <NAME>?"
+msgstr "Weet U zeker dat U <NAME> wilt starten?"
+
+msgid "Are you sure you want to stop the <NAME>?"
+msgstr "Weet U zeker dat U <NAME> wilt stoppen?"
+
+msgid "Arg type check failed"
+msgstr ""
+
+msgid "Art sites containing artistic nudity"
+msgstr ""
+
+msgid ""
+"As a matter of course, URLs undergo regular expression search/replace "
+"(urlregexplist) *after* checking the exception site/URL/regexpURL lists, but "
+"*before* checking against the banned site/URL lists, allowing certain "
+"requests that would be matched against the latter in their original state to "
+"effectively be converted into grey requests.\n"
+"With this option enabled, the exception site/URL/regexpURL lists are also re-"
+"checked after replacement, making it possible for URL replacement to trigger "
+"exceptions based on them.\n"
+"Defaults to off."
+msgstr ""
+
+msgid "Attack Types"
+msgstr "Aanvals types"
+
+msgid "Automatic config"
+msgstr "Automatische configuratie"
+
+msgid "Automatic configuration"
+msgstr "Automatisch configureren"
+
+msgid ""
+"Automatic configuration completed. You might want to check the details now."
+msgstr ""
+"Automatische configuratie is compleet. U zou de details nu kunnen "
+"kontroleren."
+
+msgid "Automatic configuration failed."
+msgstr "Automatische configuratie heeft gefaald."
+
+msgid "Back Orifice detector"
+msgstr "Back Orifice detector"
+
+msgid "Badwords"
+msgstr "Foute woorden"
+
+msgid "Badwords block count"
+msgstr "Badwords aantal geblokkeerd"
+
+msgid "Badwords filtering"
+msgstr "Badwords filteren"
+
+msgid "Badwords found are replaced with this single character"
+msgstr ""
+
+msgid "Badwords replace character"
+msgstr "Badwords vervanging"
+
+msgid "Banking websites"
+msgstr ""
+
+msgid "Banned image replacement"
+msgstr "Geblokkeerd plaatje vervanging"
+
+msgid "Banner"
+msgstr "Banner"
+
+msgid "Basic"
+msgstr "Basis"
+
+msgid "Bayes auto learn"
+msgstr "Bayes auto leer"
+
+msgid "Bayesian classifier auto-learning (default: 1)"
+msgstr ""
+
+msgid "Blacklist"
+msgstr "Blacklist"
+
+msgid "Blacklisted"
+msgstr "Blacklisted"
+
+msgid "Blacklisted IPs are always blocked."
+msgstr ""
+
+msgid "Blacklists"
+msgstr "Blacklists"
+
+msgid "Blanket"
+msgstr "Deken"
+
+msgid "Blanket Block"
+msgstr "Alles Blokkeren"
+
+msgid "Blanket IP Block"
+msgstr "Alles Blokkeren binnen IP reeks"
+
+msgid "Blanket SSL/CONNECT Block"
+msgstr ""
+
+msgid "Blanket SSL/CONNECT IP Block"
+msgstr ""
+
+msgid "Blanket block configuration is used to block all traffic for that rule."
+msgstr ""
+
+msgid ""
+"Blanket download blocking\n"
+"If enabled, all files will be blocked, unless they match the "
+"exceptionextensionlist or exceptionmimetypelist.\n"
+"These lists do not override any other content filtering or virus scanning.\n"
+"Exception lists defined above override all types of filtering, including the "
+"blanket download block.\n"
+"Defaults to disabled. (on | off)"
+msgstr ""
+
+msgid "Block"
+msgstr "Blokkeer"
+
+msgid "Block Duration"
+msgstr "Blokkade tijdsduur"
+
+msgid "Block IPs"
+msgstr "Blokkeren van IP addressen"
+
+msgid "Block all filetransfers"
+msgstr "Blokkeer alle bestandsoverdrachten"
+
+msgid "Block downloads"
+msgstr "Blokkeer alle downloads"
+
+msgid "Block webcams"
+msgstr "Blokkeer webcams"
+
+msgid "Blocked Hosts"
+msgstr "Geblokkeerde systemen"
+
+msgid "Blocked Time"
+msgstr "Tijd van blokkering"
+
+msgid "Blocked Times (min)"
+msgstr "Geblokkeerd tijden (min)"
+
+msgid "Blocked Times (sec)"
+msgstr "Geblokkeerd tijden (sec)"
+
+msgid "Blocked requests"
+msgstr "Geblokkeerde verzoeken"
+
+msgid "Broadcast address"
+msgstr ""
+
+msgid ""
+"Build bannedsitelist and bannedurllist cache files.\n"
+"This will compare the date stamp of the list file with the date stamp of the "
+"cache file and will recreate as needed.\n"
+"If a bsl or bul .processed file exists, then that will be used instead.\n"
+"It will increase process start speed by 300%.\n"
+"On slow computers this will be significant.\n"
+"Fast computers do not need this option.\n"
+"on | off"
+msgstr ""
+
+msgid "Business Days"
+msgstr "Werkdagen"
+
+msgid "Business Hours"
+msgstr "Kantooruren"
+
+msgid "Business days and holidays cannot overlap."
+msgstr "Werkdagen en vakanties kunnen elkaar niet overlappen."
+
+msgid ""
+"Buttons on this page should help you apply the new configuration system-wide "
+"when you change certain system settings or hardware.\n"
+"\n"
+"The web user interface stores statistics under /var/tmp/utmfw folder. "
+"The statistics are updated incrementally when new messages are appended to "
+"log files. When user selects a compressed log file for viewing or "
+"statistics, its uncompressed copy is saved under the same folder also. This "
+"strategy greatly improves the performance of Statistics and Logs pages, and "
+"enables other features of the web user interface. Since these statistics and "
+"uncompressed log files may take up a lot of disk space, you are advised to "
+"keep your /var partition as large as possible."
+msgstr ""
+
+msgid ""
+"By default, Clamd accepts virus scan requests from processes running on the "
+"system only, such as the web filter. Default settings should be suitable for "
+"most purposes."
+msgstr ""
+
+msgid "By default, FTP proxy logs connections but not all connection details."
+msgstr ""
+
+msgid ""
+"By default, a simple DNS configuration is provided; only one forwarders is "
+"configured, which you can modify on this page. There are no zone records "
+"defined, and caching is disabled. However, you can obtain a full-featured "
+"DNS server by modifying configuration files."
+msgstr ""
+
+msgid ""
+"By default, the Web Filter connects to the HTTP proxy over the loopback "
+"interface and at port 3128. If you do not want to use the Web Filter, you "
+"can change this Proxy IP:Port setting to the internal IP address of the "
+"system and port 8080. When you stop the Web Filter, all requests from the "
+"internal network should be directed to the HTTP proxy."
+msgstr ""
+
+msgid "Bypass"
+msgstr "Omzeilen"
+
+msgid "Bypassed denials"
+msgstr "Omgeleide weigeringen"
+
+msgid "Bypassing IPs"
+msgstr "Omgeleidde IP adressen"
+
+msgid "Bytes"
+msgstr ""
+
+msgid "Bytes Free"
+msgstr "Bytes vrij"
+
+msgid "UTMFW ADMINISTRATION INTERFACE"
+msgstr "UTMFW BEHEER PAGINA"
+
+msgid "COMMAND"
+msgstr "COMMANDO"
+
+msgid "CPU Load"
+msgstr "Processor belasting"
+
+msgid "CPUs"
+msgstr "Processoren"
+
+msgid "CVS Tag"
+msgstr "CVS Tag"
+
+msgid "CTLR"
+msgstr "CTLR"
+
+msgid "CTLR Logs"
+msgstr "CTLR Logbestanden"
+
+msgid "Cache"
+msgstr "Cache"
+
+msgid "Cache mgr"
+msgstr "Cache beheerder"
+
+msgid "Cannot add"
+msgstr ""
+
+msgid "Cannot find group configuration file"
+msgstr ""
+
+msgid "Cannot get pid"
+msgstr ""
+
+msgid "Cannot read config"
+msgstr ""
+
+msgid "Categories"
+msgstr "Categorieën"
+
+msgid ""
+"Categories in Weightedlist are blocked according to the sum of assigned "
+"weights to each phrase."
+msgstr ""
+
+msgid "Category"
+msgstr ""
+
+msgid "Category display threshold"
+msgstr "Categorie weergave drempel"
+
+msgid "Certificate"
+msgstr "Certificaat"
+
+msgid "Change p3scan report language"
+msgstr "Wijzig p3scan rapportage taal"
+
+msgid "Change spamassassin local"
+msgstr "Wijzig de taal voor spamassasin"
+
+msgid ""
+"Changes to system configuration should be applied system-wide.\n"
+"\n"
+"<b>If you modify basic or network settings, you are advised to use this "
+"button.</b>\n"
+"\n"
+"Internal and external physical interface names are obtained from packet "
+"filter configuration, i.e. int_if and ext_if macros."
+msgstr ""
+"Wijzigingen aan de systeem configuratie moeten systeem-wijd ingesteld "
+"worden.\n"
+"\n"
+"<b>Als u basis of netwerk instellingen wijzigt, is het raadzaam om deze knop "
+"te gebruiken.</b>\n"
+"\n"
+"Interne en externe fysieke netwerk verbindingsnamen worden afgeleid uit de "
+"packet filter configuratie, bijv. int_if en ext_if macros."
+
+msgid "Charts"
+msgstr "Grafieken"
+
+msgid "Check authentication"
+msgstr "Kontroleer authenticatie"
+
+msgid "Check if process running"
+msgstr "Kontroleer of een process aktief is"
+
+msgid "Chinese simplified"
+msgstr ""
+
+msgid "Cipher"
+msgstr "Versleuteling"
+
+msgid ""
+"ClamAV can scan within archives and compressed files.\n"
+"\t\tDefault: enabled"
+msgstr ""
+
+msgid "Clamd"
+msgstr "Clamd"
+
+msgid ""
+"Clamd logs virus scan results, virus database checks, and database reloads."
+msgstr ""
+
+msgid ""
+"Clean cache for content (AV) scan results.\n"
+"By default, to save CPU, files scanned and found to be clean are inserted "
+"into the clean cache and NOT scanned again for a while.  If you don't like "
+"this then choose to disable it.\n"
+"(on|off) default = on."
+msgstr ""
+
+msgid "Client"
+msgstr "Client"
+
+msgid "Client IPs"
+msgstr "Client IP adressen"
+
+msgid "Client netmask"
+msgstr ""
+
+msgid "Clients"
+msgstr "Clienten"
+
+msgid "Closed by"
+msgstr "Gesloten door"
+
+msgid "UTMFW Administration Interface"
+msgstr "UTMFW Beheer Pagina"
+
+msgid ""
+"UTMFW Web Filter uses URL lists categorized in different packages for "
+"your convenience. You can enable or disable categories you want on this page."
+msgstr ""
+
+msgid ""
+"UTMFW Web Filter uses phrase lists categorized in different packages for "
+"your convenience. You can enable or disable categories you want on this page."
+msgstr ""
+
+msgid ""
+"UTMFW Web Filter uses site lists categorized in different packages for "
+"your convenience. You can enable or disable categories you want on this page."
+msgstr ""
+
+msgid "UTMFW currently supports only admin and user usernames"
+msgstr ""
+"UTMFW ondersteund momenteel alleen beheerder en gebruiker gebruikersnamen"
+
+msgid ""
+"UTMFW logs errors, warnings, notices, and debug messages. Since also "
+"recorded are changes to configuration and passwords, you may want to monitor "
+"these logs carefully. These logs are also important while reporting issues "
+"related to the web user interface. Logs on this page are generated by the "
+"Controller and the Model, middle and bottom layers of software responsible "
+"for processing requests from the View."
+msgstr ""
+
+msgid ""
+"UTMFW logs errors, warnings, notices, and debug messages. Since also "
+"recorded are changes to configuration and passwords, you may want to monitor "
+"these logs carefully. These logs are also important while reporting issues "
+"related to the web user interface. Logs on this page are generated by the "
+"View, main module responsible for displaying the web user interface and "
+"interacting with the user."
+msgstr ""
+
+msgid ""
+"UTMFW runs many services or daemons in default installation. On this "
+"page you can configure these services to start at boot time.\n"
+"\n"
+"Note that if you modify startup configuration for some services, you may "
+"need to change packet filter rules or other related settings too."
+msgstr ""
+
+msgid ""
+"UTMFW sends warning and information messages to its system "
+"administrator. Here you can type in your own e-mail address."
+msgstr ""
+"UTMFW verstuurt waarschuwings en informatieve meldingen naar zijn "
+"systeem beheerder. Hier kunt U uw eigen email adres invullen"
+
+msgid ""
+"UTMFW uses ClamAV for all virus scanning purposes. Freshclam checks and "
+"updates ClamAV virus database periodically. By default, the database is "
+"updated every hour. You may not be able to stop or restart freshclam "
+"instance once it starts the update process; wait for a minute and try again."
+msgstr ""
+
+msgid ""
+"UTMFW would not be possible without the generous developers of many Free "
+"and Open Source Software (FOSS). UTMFW is developed using FOSS only. "
+"Software developed specifically for UTMFW, such as this web user "
+"interface and SnortIPS, are released under the BSD license, hence FOSS "
+"also.\n"
+"\n"
+"These credits may not cover all of the software UTMFW uses. If you think "
+"one is missing, I would happily add here.\n"
+"\n"
+"Thanks for the excellent work and good spirit."
+msgstr ""
+
+msgid "Compressed"
+msgstr "Gecomprimeerd"
+
+msgid "Compression"
+msgstr "Compressie"
+
+msgid "Config"
+msgstr "Configuratie"
+
+msgid "Configuration"
+msgstr "Configuratie"
+
+msgid "Configure an interface"
+msgstr "Configureer een interface"
+
+msgid "Configure client to use SSL/TLS."
+msgstr ""
+
+msgid ""
+"Configure server mode and supply a VPN subnet for OpenVPN to draw client "
+"addresses from. Comment this line out if you are ethernet bridging. See the "
+"man page for more info."
+msgstr ""
+
+msgid "Configure server to use SSL/TLS."
+msgstr ""
+
+msgid ""
+"Configure your server lists.  This allows snort to only look for attacks to "
+"systems that have a service up.  Why look for HTTP attacks if you are not "
+"running a web server?  This allows quick filtering based on IP addresses. "
+"These configurations MUST follow the same configuration scheme as defined "
+"above for $HOME_NET.\n"
+"List of DNS servers on your network"
+msgstr ""
+
+msgid "Connections by date"
+msgstr "Verbindingen per datum"
+
+#, php-format
+msgid "Contains site specifically 100% suitable for kids"
+msgstr ""
+
+msgid "Content Admin"
+msgstr "Inhoud Beheer"
+
+msgid "Content Subject"
+msgstr "Inhoud Onderwerp"
+
+msgid "Content scan exceptions"
+msgstr "Inhoud scan uitzonderingen"
+
+msgid "Content scanner timeout"
+msgstr "Inhoud scanner time-out"
+
+msgid "Content scanning web filter."
+msgstr "Inhoud scanner web filter"
+
+msgid "Copy"
+msgstr "Kopieer"
+
+msgid "Copy conf"
+msgstr "Kopieer configuratie"
+
+msgid "Copyright"
+msgstr "Copyright"
+
+msgid "Count"
+msgstr "Aantal"
+
+msgid "Create"
+msgstr "Creëer"
+
+msgid "Create filter group"
+msgstr "Creëer filter groep"
+
+msgid "Create list cache files"
+msgstr "Creëer list cache bestanden"
+
+msgid "Create new group"
+msgstr "Cre\"eer een nieuwe groep"
+
+msgid "Credits"
+msgstr "Credits"
+
+msgid "Customised filtered text (message text or filename follows in response)"
+msgstr ""
+
+msgid "Customised notice text"
+msgstr ""
+
+msgid "DB"
+msgstr "DB"
+
+msgid "DB Logs"
+msgstr "DB Logbestanden"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "DHCP Server"
+msgstr ""
+
+msgid ""
+"DHCP dynamic configuration is used by clients in the internal network to "
+"obtain an IP address and network settings."
+msgstr ""
+
+msgid "DHCP server logs the details of communications with DHCP clients."
+msgstr ""
+
+msgid ""
+"DHCP server supports both dynamic dhcp and bootp protocols. Dynamic leases "
+"can be monitored on this page."
+msgstr ""
+
+msgid "DM Exts"
+msgstr "DM Extensies"
+
+msgid "DM Mimes"
+msgstr "DM Mime types"
+
+msgid "DNS"
+msgstr "DNS"
+
+msgid "DNS Database Info"
+msgstr ""
+
+msgid "DNS Server"
+msgstr ""
+
+msgid ""
+"DNS server logs all name lookups. You should see many requests from the "
+"system itself along with those from internal clients."
+msgstr ""
+
+msgid "DNS_SERVERS"
+msgstr ""
+
+msgid "Daily"
+msgstr "Dagelijks"
+
+msgid "Data Transfer"
+msgstr "Data overdracht"
+
+msgid "Database Checks"
+msgstr "Database Controles"
+
+msgid "Database Mirrors"
+msgstr "Database kopieën"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "DateTime"
+msgstr "Datum/tijd"
+
+msgid "Datetime wrong"
+msgstr "Fout in de Datum/tijd"
+
+msgid "Day"
+msgstr "Dag"
+
+msgid "De-facto standard IDS (Intrusion Detection System)."
+msgstr ""
+
+msgid "De-facto standard among HTTP proxies."
+msgstr ""
+
+msgid "Debug"
+msgstr ""
+
+msgid "Debug options"
+msgstr "Debug opties"
+
+msgid "Defaults"
+msgstr "Standaard instellingen"
+
+msgid "Defaults to disabled (on | off)"
+msgstr ""
+
+msgid "Deferred IPs"
+msgstr "Uitgestelde IP adressen"
+
+msgid ""
+"Definition of after hours can be set here. If you modify any of these "
+"definitions, you should click the Apply button.\n"
+"\n"
+"Note that when you enable Business Days or Holidays, the related rules will "
+"become active according to these definitions. If you don't want to use the "
+"after hours feature of UTMFW, make sure these definitions are disabled.\n"
+"\n"
+"Business hours configuration is meaningful only for business days."
+msgstr ""
+"De definitie van 'buiten kantoortijden' kan hier ingevuld worden. Als één "
+"van deze definities gewijzigd wordt, moet op de 'Apply' knop geklikt "
+"worden.\n"
+"\n"
+"Let op: Als u de 'Werkdagen' of 'Vakanties' aanzet, worden de gerelateerde "
+"regels aktief volgens deze definities. Als U de 'buiten kantoortijden' "
+"feature van UTMFW niet gebruiken wilt, moet U deze definities "
+"uitschakelen.\n"
+"\n"
+"Kantoortijden instellingen zijn alleen zinvol voor werkdagen."
+
+msgid "Delete"
+msgstr "Verwijderen"
+
+msgid "Delete ACL"
+msgstr "Verwijder ACL"
+
+msgid "Delete DHCP interface"
+msgstr "Verwijder DHCP interface"
+
+msgid "Delete HTTP proxy IP:port"
+msgstr "Verwijder HTTP proxy IP:port"
+
+msgid "Delete IP"
+msgstr "Verwijder IP adres"
+
+msgid "Delete IP from list"
+msgstr "Verwijder IP adres van lijst"
+
+msgid "Delete PF allowed"
+msgstr "Verwijder PF toegestaan"
+
+msgid "Delete PF restricted"
+msgstr "Verwijder PF beperkt"
+
+msgid "Delete alert keywords"
+msgstr "Verwijder alarm sleutelworden"
+
+msgid "Delete badword"
+msgstr "Verwijder badword"
+
+msgid "Delete conf"
+msgstr "Verwijder configuratie"
+
+msgid "Delete database mirror"
+msgstr "Verwijder database kopie"
+
+msgid "Delete downloaded temp files"
+msgstr "Verwijder tijdelijke download bestanden"
+
+msgid "Delete ext/mime"
+msgstr "Verwijder extensie/mime"
+
+msgid ""
+"Delete file cache after user completes download\n"
+"When a file gets save to temp it stays there until it is deleted.\n"
+"You can choose to have the file deleted when the user makes a sucessful "
+"download. This will mean if they click on the link to download from the temp "
+"store a second time it will give a 404 error.\n"
+"You should configure something to delete old files in temp to stop it "
+"filling up.\n"
+"on|off ( defaults to on )"
+msgstr ""
+
+msgid "Delete filter group IP"
+msgstr "Verwijder filter groep IP"
+
+msgid "Delete host"
+msgstr "Verwijder systeem"
+
+msgid "Delete list item"
+msgstr "Verwijder lijst onderdeel"
+
+msgid "Denied IPs"
+msgstr "Geweigerde IP adressen"
+
+msgid "Denied categories"
+msgstr "Geweigerde categoriën"
+
+msgid "Denied requests"
+msgstr "Geweigerde verzoeken"
+
+msgid "Deny others"
+msgstr "Weiger anders"
+
+msgid "Desc"
+msgstr "Omschrijving"
+
+msgid "Description"
+msgstr ""
+
+msgid "Dest"
+msgstr ""
+
+msgid "Destination IPs"
+msgstr "Bestemmings IP adressen"
+
+msgid "Destination addresses"
+msgstr "Bestemmings adres"
+
+msgid "Destination ports"
+msgstr "Bestemmings poort"
+
+msgid ""
+"Detailed results of spam content scans are recorded by SpamAssassin, such as "
+"spam scores and their reasons."
+msgstr ""
+
+msgid "Detect Broken Executables"
+msgstr "Detecteer Beschadigde Executeerbare Bestanden"
+
+msgid "Detects Back Orifice traffic on the network."
+msgstr ""
+
+msgid "Device"
+msgstr ""
+
+msgid "Diffie-Hellman params"
+msgstr ""
+
+msgid "Dir"
+msgstr ""
+
+msgid "Disable"
+msgstr "Uitzetten"
+
+msgid "Disable AfterHours"
+msgstr "Uitschakelen AfterHours"
+
+msgid "Disable AfterHours business days"
+msgstr "Uitschakelen Afterhours werkdagen"
+
+msgid "Disable AfterHours holidays"
+msgstr "Uitschakelen Afterhours vakanties"
+
+msgid "Disable config"
+msgstr "Uitschakelen configuratie"
+
+msgid "Disable content scanning"
+msgstr "Uitschakelen inhouds scanner"
+
+msgid "Disable decode alerts"
+msgstr ""
+
+msgid "Disable ext/mime"
+msgstr "Uitschakelen extensie/mime"
+
+msgid "Disable ipopt alerts"
+msgstr ""
+
+msgid "Disable logging process"
+msgstr "Uitschakelen log proces"
+
+msgid ""
+"Disable reporting of normal operating messages. Only report errors or "
+"critical information.\n"
+"\t\tdefault: display all except debug info"
+msgstr ""
+
+msgid "Disable rule"
+msgstr "Uitschakelen van een pf regel"
+
+msgid "Disable tcpopt alerts"
+msgstr ""
+
+msgid "Disable tcpopt experimental alerts"
+msgstr ""
+
+msgid "Disable tcpopt obsolete alerts"
+msgstr ""
+
+msgid "Disable tcpopt ttcp alerts"
+msgstr ""
+
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+msgid "Disabled Rules"
+msgstr "Uitgeschakelde Regels"
+
+msgid "Disabled Services"
+msgstr "Uitgeschakelde diensten"
+
+msgid "Disk I/O"
+msgstr "Schijven dataoverdracht"
+
+msgid "Disks"
+msgstr "Schijven"
+
+msgid "Display"
+msgstr "Scherm"
+
+msgid "Display remote time"
+msgstr "Toon tijd op afstand"
+
+msgid ""
+"Do not remove temporary files (for debug purposes).\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid "Domains"
+msgstr "Domeinen"
+
+msgid "Download"
+msgstr "Download"
+
+msgid ""
+"Download Manager is responsible for downloading the content requested. The "
+"mime types it manages are in Enabled list. Other mime types are handled by "
+"the user's browser. During download, Fancy Download Manager reports the "
+"progress via a progress bar and status information."
+msgstr ""
+
+msgid ""
+"Download Manager is responsible for downloading the files requested. The "
+"file extensions it manages are in Enabled list. Other files extensions are "
+"handled by the user's browser. During download, Fancy Download Manager "
+"reports the progress via a progress bar and status information."
+msgstr ""
+
+msgid "Downloaded (KB)"
+msgstr "Gedownload (KB)"
+
+msgid "Downloads"
+msgstr "Downloads"
+
+msgid "Drug related sites"
+msgstr ""
+
+msgid ""
+"Due to license issues libclamav does not support RAR 3.0 archives (only the "
+"old 2.0 format is supported). Because some users report stability problems "
+"with unrarlib it's disabled by default and you must uncomment the directive "
+"below to enable RAR 2.0 support.\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid "Dutch"
+msgstr ""
+
+msgid "E-mail address wrong"
+msgstr "Fout in het E-mail adres"
+
+msgid "E-mails per request"
+msgstr "E-mails per verzoek"
+
+msgid "ERROR"
+msgstr "FOUT"
+
+msgid "EXTERNAL_NET"
+msgstr "EXTERN_NET"
+
+msgid "Email"
+msgstr "Email"
+
+msgid ""
+"Email-address of local cache manager who will receive mail if the cache "
+"dies. The default is \"webmaster\"."
+msgstr ""
+
+msgid "Embedded URL weighting"
+msgstr "Ingebedde URL weging"
+
+msgid "Enable"
+msgstr "Aanzetten"
+
+msgid "Enable AfterHours"
+msgstr "Inschakelen AfterHours"
+
+msgid "Enable AfterHours business days"
+msgstr "Inschakelen Afterhours werkdagen"
+
+msgid "Enable AfterHours holidays"
+msgstr "Inschakelen AfterHours vakanties"
+
+msgid "Enable UTMFW as a non-caching proxy for the local network."
+msgstr ""
+
+msgid "Enable Deep URL Analysis"
+msgstr "Inschakelen uitgebreide URL Analyse"
+
+msgid "Enable SSL/TLS"
+msgstr "Inschakelen SSL/TLS"
+
+msgid ""
+"Enable compression on the VPN link. Don't enable this unless it is also "
+"enabled in the server config file."
+msgstr ""
+
+msgid ""
+"Enable compression on the VPN link. If you enable it here, you must also "
+"enable it in the client config file."
+msgstr ""
+
+msgid "Enable config"
+msgstr "Inschakelen configuratie"
+
+msgid ""
+"Enable debug messages in libclamav.\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid "Enable ext/mime"
+msgstr "Inschakelen extensie/mime"
+
+msgid ""
+"Enable internal e-mail scanner.\n"
+"\t\tDefault: enabled"
+msgstr ""
+
+msgid ""
+"Enable logging of \"ADs\" category blocks\n"
+"on|off (defaults to off)"
+msgstr ""
+
+msgid "Enable or disable ACL"
+msgstr ""
+
+msgid ""
+"Enable or disable automated responses configured below. You need to enable "
+"either Notice days or Filtered minutes too."
+msgstr ""
+
+msgid "Enable or disable badwords filtering"
+msgstr ""
+
+msgid "Enable protocols"
+msgstr ""
+
+msgid "Enable rule"
+msgstr "Inschakelen regel"
+
+msgid ""
+"Enable this option to allow infectionbypass links only when virus scanning "
+"fails, not when a file is found to contain a virus.\n"
+"on = enable (default and highly recommended)\n"
+"off = disable"
+msgstr ""
+
+msgid ""
+"Enable verbose logging.\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+msgid "Enabled Rules"
+msgstr "Ingeschakelde Regels"
+
+msgid "Enabled Services"
+msgstr "Ingeschakelde diensten"
+
+msgid "English"
+msgstr "Engels"
+
+msgid "Erase statistics files"
+msgstr "Verwijder statistiek bestanden"
+
+msgid "Exception IPs"
+msgstr "Uitzonderings IP adressen"
+
+msgid "Exception requests"
+msgstr "Uitzonderings verzoeken"
+
+msgid "Expr"
+msgstr ""
+
+msgid "Ext"
+msgstr "Extensie"
+
+msgid "Extended Hosts"
+msgstr "Uitgestelde systemen"
+
+msgid "Extended Times (min)"
+msgstr "Uitgestelde tijden (min)"
+
+msgid "Extension wrong"
+msgstr "Fout in de Extensie"
+
+msgid "Extensions"
+msgstr "Suffix"
+
+msgid "External Interface"
+msgstr "Externe netwerk verbinding"
+
+msgid "External interface"
+msgstr "Externe netwerk verbinding"
+
+msgid "FAILED"
+msgstr "GEFAALD"
+
+msgid "FATAL ERRORS in creating new group"
+msgstr ""
+
+msgid "FTP PROXY"
+msgstr "FTP PROXY"
+
+msgid "FTP Proxy"
+msgstr ""
+
+msgid "Failed attempts"
+msgstr "Gefaalde pogingen"
+
+msgid "Failed users"
+msgstr "Gefaalde gebruikers"
+
+msgid "Failure reason"
+msgstr "Reden voor het falen"
+
+msgid "Fan"
+msgstr "Ventilator"
+
+msgid ""
+"Fancy download manager is designed to provide download status to the user "
+"via a progress bar and text information. Therefore, it expects a web browser "
+"as user agent by default. Otherwise, downloads are handled by the default "
+"download manager."
+msgstr ""
+
+msgid "File"
+msgstr "Bestand"
+
+msgid "Filepath wrong"
+msgstr "Fout in het bestandspad"
+
+msgid "Files with extensions in the Whitelist are not scanned for viruses."
+msgstr ""
+
+msgid "Files with mime types in the Whitelist are not scanned for viruses."
+msgstr ""
+
+msgid "Filter"
+msgstr "Filter"
+
+msgid "Filter IP"
+msgstr ""
+
+msgid "Filter Port"
+msgstr ""
+
+msgid "Filter group mode"
+msgstr "Filter groep mode"
+
+msgid "Filter group name"
+msgstr "Filter groep naam"
+
+msgid "Filter group not found"
+msgstr "Filter groep niet gevonden"
+
+msgid "Filtered minutes"
+msgstr ""
+
+msgid "Filtered response"
+msgstr "Gefilterd antwoord"
+
+msgid "Follow Directory Symlinks"
+msgstr "Volg Map Symlinks"
+
+msgid "Follow File Symlinks"
+msgstr "Volg Bestand Symlinks"
+
+msgid ""
+"Follow directory symlinks.\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid ""
+"Follow regular file symlinks.\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid ""
+"For extra security beyond that provided by SSL/TLS, create an \"HMAC firewall"
+"\" to help block DoS attacks and UDP port flooding.\n"
+"\n"
+"Generate with:\n"
+"  openvpn --genkey --secret ta.key\n"
+"\n"
+"The server and each client must have a copy of this key. The second "
+"parameter should be 0 on the server and 1 on the clients. This file is "
+"secret."
+msgstr ""
+
+msgid ""
+"Force Quick Search rather than DFA search algorithm.\n"
+"The current DFA implementation is not totally 16-bit character compatible "
+"but is used by default as it handles large phrase lists much faster.\n"
+"If you wish to use a large number of 16-bit character phrases then enable "
+"this option.\n"
+"0 = off (default)\n"
+"1 = on (Big5 compatible)"
+msgstr ""
+
+msgid "Force quick search"
+msgstr "Forceer snelle zoekopdracht"
+
+msgid "Forwarded for"
+msgstr "Doorgestuurd voor"
+
+msgid ""
+"Forwarder is the IP address of a DNS server that the system itself queries. "
+"In simple setups, this is usually the IP address of a DSL modem which "
+"functions as gateway to the Internet."
+msgstr ""
+
+msgid "Forwarders"
+msgstr ""
+
+msgid "Free OOP scripting language."
+msgstr ""
+
+#, php-format
+msgid ""
+"Free secure shell provides remote shell access to the system. It is believed "
+"that almost 90% of all secure shell traffic on the Internet is provided by "
+"OpenSSH. OpenSSH is developed by the OpenBSD project."
+msgstr ""
+
+msgid "French"
+msgstr ""
+
+msgid ""
+"Freshclam logs details of each virus update session. Version warnings may "
+"not be critical as mentioned in the logs as well."
+msgstr ""
+
+msgid "Fri"
+msgstr "Vr"
+
+msgid "From"
+msgstr "Van"
+
+msgid "GG"
+msgstr ""
+
+msgid "GROUP"
+msgstr "GROEP"
+
+msgid "Gambling sites including stocks and shares"
+msgstr ""
+
+msgid "Gardening sites"
+msgstr ""
+
+msgid "Gateway"
+msgstr "Gateway"
+
+msgid "General"
+msgstr "Algemeen"
+
+msgid "General Statistics"
+msgstr "Algemene Statistieken"
+
+msgid ""
+"Generate your own with:\n"
+"   openssl dhparam -out dh1024.pem 1024\n"
+"Substitute 2048 for 1024 if you are using 2048 bit keys."
+msgstr ""
+
+msgid "Get ACL"
+msgstr "Opvragen ACL"
+
+msgid "Get AfterHour pf rules"
+msgstr "Opvragen AfterHour pf regels"
+
+msgid "Get AfterHours"
+msgstr "Opvragen AfterHours"
+
+msgid "Get DHCP IP range"
+msgstr "Opvragen DHCP IP adres reeks"
+
+msgid "Get DHCP interfaces"
+msgstr "Opvragen DHCP interfaces"
+
+msgid "Get DHCP option"
+msgstr "Opvragen DHCP optie"
+
+msgid "Get DNS forwarders"
+msgstr "Opvragen DNS forwarders"
+
+msgid "Get HTTP proxy IP:port"
+msgstr "Opvragen HTTP proxy IP:poort"
+
+msgid "Get IPS info"
+msgstr "Opvragen IPS info"
+
+msgid "Get PF allowed"
+msgstr "Opvragen PF toegestaan"
+
+msgid "Get PF restricted"
+msgstr "Opvragen PF beperkt"
+
+msgid "Get active cats"
+msgstr "Opvragen aktieve categoriën"
+
+msgid "Get alert keywords"
+msgstr "Opvragen alarm sleutelwoorden"
+
+msgid "Get all stats"
+msgstr "Opvragen alle statistieken"
+
+msgid "Get arp table"
+msgstr "Opvragen arp tabel"
+
+msgid "Get auth ip list"
+msgstr "Opvragen auth IP lijst"
+
+msgid "Get badwords"
+msgstr "Opvragen badwords"
+
+msgid "Get config values"
+msgstr "Opvragen configatie waardes"
+
+msgid "Get configuration"
+msgstr "Opvragen configuratie"
+
+msgid "Get confs"
+msgstr "Opvragen configuratie"
+
+msgid "Get current locale"
+msgstr "Opvragen regionale instellingen"
+
+msgid "Get database mirrors"
+msgstr "Opvragen database kopieën"
+
+msgid "Get dhcp leases"
+msgstr "Opvragen dhcp leases"
+
+msgid "Get disabled rules"
+msgstr "Opvragen uitgeschakelde regels"
+
+msgid "Get ext/mime list"
+msgstr "Opvragen ext/mime lijst"
+
+msgid "Get ext_if"
+msgstr "Opvragen ext_if"
+
+msgid "Get group count"
+msgstr "Opvragen aantal groepen"
+
+msgid "Get group ip list"
+msgstr "Opvragen group ip lijst"
+
+msgid "Get host graphs"
+msgstr "Opvragen host grafieken"
+
+msgid "Get if config"
+msgstr "Opvragen verbinding configuratie"
+
+msgid "Get im log file"
+msgstr "Opvragen IM logbestand"
+
+msgid "Get inactive cats"
+msgstr "Opvragen niet aktieve categorieën"
+
+msgid "Get int_if"
+msgstr "Opvragen int_if"
+
+msgid "Get lines"
+msgstr "Opvragen regels van logbestand"
+
+msgid "Get list"
+msgstr "Opvragen lijst"
+
+msgid "Get listed ips"
+msgstr "Opvragen getoonde IPs"
+
+msgid "Get local users"
+msgstr "Opvragen lokale gebruikers"
+
+msgid "Get locales"
+msgstr "Opvragen regionale instellingen"
+
+msgid "Get log file"
+msgstr "Opvragen logbestand"
+
+msgid "Get log files list"
+msgstr "Opvragen lijst van logbestanden"
+
+msgid "Get log start date"
+msgstr "Opvragen log start datum"
+
+msgid "Get logs configuration"
+msgstr "Opvragen logbestanden configuratie"
+
+msgid "Get partition list"
+msgstr "Opvragen partitie lijst"
+
+msgid "Get pf state count"
+msgstr ""
+
+msgid "Get pf states"
+msgstr ""
+
+msgid "Get pfw commandwrapper -conntest"
+msgstr "Opvragen pfw hulp commando -conntest"
+
+msgid "Get pfw commandwrapper -info"
+msgstr "Opvragen pfw hulp commando -info"
+
+msgid "Get pfw commandwrapper -log"
+msgstr "Opvragen pfw hulp commando -log"
+
+msgid "Get pfw commandwrapper -pfinfo"
+msgstr "Opvragen pfw hulp commando -pfinfo"
+
+msgid "Get pfw commandwrapper -pfmem"
+msgstr "Opvragen pfw hulp commando -pfmem"
+
+msgid "Get pfw commandwrapper -pfstates"
+msgstr "Opvragen pfw hulp commando -pfstates"
+
+msgid "Get pfw commandwrapper -queues"
+msgstr "Opvragen pfw hulp commando -queues"
+
+msgid "Get pfw packetfilter -i"
+msgstr "Opvragen pfw packetfilter -i"
+
+msgid "Get pfw packetfilter -r"
+msgstr "Opvragen pfw packetfilter -r"
+
+msgid "Get pfw packetfilter -t"
+msgstr "Opvragen pfw packetfilter -t"
+
+msgid "Get process list"
+msgstr "Vraag de proces lijst op"
+
+msgid "Get protocols"
+msgstr "Vraag protocollen op"
+
+msgid "Get remote time"
+msgstr "Opvragen tijd op afstand"
+
+msgid "Get remote users"
+msgstr "Opvragen gebruikers op afstand"
+
+msgid "Get rules"
+msgstr "Vraag regels op"
+
+msgid "Get service start status"
+msgstr "Vraag service start status op"
+
+msgid "Get service status"
+msgstr "Vraag service status op"
+
+msgid "Get sessions"
+msgstr "Vraag sessies op"
+
+msgid "Get software version"
+msgstr "Vraag software versie op"
+
+msgid "Get source file CVS tag"
+msgstr "Opvragen bronbestand CVS tag"
+
+msgid "Get spamd blacklist"
+msgstr "Vraag spamd blacklist op"
+
+msgid "Get spamd whitelist"
+msgstr "Vraag spamd whitelist op"
+
+msgid "Get stat lines"
+msgstr "Opvragen statistiek info van statistiek logbestand"
+
+msgid "Get stats"
+msgstr "Vraag statistieken op"
+
+msgid "Get sysctl values"
+msgstr "Opvragen sysctl instellingen"
+
+msgid "Get system admin e-mail address"
+msgstr "Opvragen systeembeheerder e-mail adres"
+
+msgid "Get system gateway"
+msgstr "Vraag systeem gateway op"
+
+msgid "Get system information"
+msgstr "Vraag systeem informatie op"
+
+msgid "Get tail"
+msgstr "Opvragen laatste deel van het logbestand"
+
+msgid "Gets line count"
+msgstr "Opvragen aantal regels van logbestand"
+
+msgid "Graph files"
+msgstr "Grafiek bestanden"
+
+msgid "Graphs"
+msgstr "Grafieken"
+
+msgid ""
+"Graphs on this web user interface are generated by these monitoring "
+"processes. Settings of these software are handled by automatic configuration."
+msgstr ""
+
+msgid "Greylist"
+msgstr ""
+
+msgid "Group"
+msgstr "Groep"
+
+msgid "Group created successfully"
+msgstr ""
+
+msgid "Group exists"
+msgstr "Groep bestaat"
+
+msgid ""
+"Group users are allowed unrestricted access to Whitelisted sites or urls. "
+"Whitelisted entries are not checked for viruses either. Therefore, Whitelist "
+"should be used with caution. In contrast to Whitelist, Greylisted entries "
+"are checked for viruses. If possible, Greylist should be preferred over "
+"Whitelist. Access to blacklisted entries is denied."
+msgstr ""
+
+msgid ""
+"Group users can download files with extensions not in the Blacklist only. If "
+"you are having problems downloading files with some extensions, you may need "
+"to disable that file type from Blacklist. If the problem persists, you may "
+"need to disable the appropriate mime type on the Mimes configuration page "
+"too."
+msgstr ""
+
+msgid ""
+"Group users can download files with mime types not in the Blacklist only. If "
+"you are having problems downloading files, you may need to disable the "
+"file's mime type from the BlackList. If the problem persists, you may need "
+"to disable the appropriate file extension on the Extensions configuration "
+"page too."
+msgstr ""
+
+msgid "Groups"
+msgstr "Groepen"
+
+msgid ""
+"Groups are used to grant or revoke certain privileges to IPs, such as which "
+"web sites or file types to allow or deny. UTMFW comes with 4 predefined "
+"groups by default. However, the web filter is capable of having any number "
+"of IP groups.\n"
+"\n"
+"Predefined groups and their basic features are as follows:\n"
+"Filter Group 1:\n"
+"<ul class='nomargin'><li class='nomargin'>All IPs not defined in other "
+"groups are considered in this group by default,</li><li "
+"class='nomargin'>Group members are allowed to browse the web according to "
+"group configuration,</li><li class='nomargin'>If not specifically disabled, "
+"all files are scanned for viruses.</li></ul>\n"
+"Filter Group 2:\n"
+"<ul class='nomargin'><li class='nomargin'>Members of this group have "
+"unrestricted access to the web,</li><li class='nomargin'>File downloads are "
+"not scanned for viruses.</li></ul>\n"
+"Filter Group 3:\n"
+"<ul class='nomargin'><li class='nomargin'>Members of this group are "
+"completely denied of any web access.</li></ul>\n"
+"Filter Group 4:\n"
+"<ul class='nomargin'><li class='nomargin'>Members of this group have more "
+"privileges than Group 1 members, because they can download files without any "
+"restrictions,</li><li class='nomargin'>Rest of the configuration for this "
+"group is similar to Group 1.</li></ul>\n"
+"You can add IP or network addresses to groups. If there is another group "
+"with the same entry, it is deleted from that group first, i.e. an IP address "
+"can be a member of only one group.\n"
+" \n"
+"The format of ip ranges is Start IP address-End IP address, such as "
+"192.168.1.1-192.168.1.253. And that of subnets is IP address/Subnet mask, "
+"such as 192.168.1.0/255.255.255.0.\n"
+"\n"
+"White and black lists give you other methods of allowing or denying certain "
+"IP addresses access to the web without needing to add them to any group.\n"
+"\n"
+"This web interface does not provide an option to delete filter groups. But "
+"you can always delete groups on the command line."
+msgstr ""
+
+msgid "HOME_NET"
+msgstr "THUIS_NET"
+
+msgid "HTTP Codes"
+msgstr "HTTP Codes"
+
+msgid "HTTP PROXY"
+msgstr "HTTP Proxy"
+
+msgid "HTTP Proxy"
+msgstr ""
+
+msgid "HTTP Proxy Password"
+msgstr "HTTP Proxy Wachtwoord"
+
+msgid "HTTP Proxy Port"
+msgstr ""
+
+msgid "HTTP Proxy Server"
+msgstr ""
+
+msgid "HTTP Proxy Username"
+msgstr "HTTP Proxy Gebruikersnaam"
+
+msgid ""
+"HTTP Proxy runs in front of the web filter and is responsible for fetching "
+"all web requests. Therefore, if this proxy is not running, the web filter "
+"cannot access the web, hence all web access is effectively blocked."
+msgstr ""
+
+msgid "HTTP_PORTS"
+msgstr ""
+
+msgid "HTTP_SERVERS"
+msgstr ""
+
+msgid "HTTPs"
+msgstr ""
+
+msgid "Hacking/cracking information"
+msgstr ""
+
+msgid "Ham"
+msgstr "Ham (geen spam)"
+
+msgid "Help"
+msgstr "Help"
+
+msgid "Help boxes"
+msgstr "Help paneel"
+
+msgid ""
+"Here are the definitions of a few terms used in the logs:<ul "
+"class='nomargin'><li class='nomargin'>Blocking a host means adding it to IPS "
+"pf table as blocked</li><li class='nomargin'>Unblocking means deleting a "
+"blocked host from the table</li><li class='nomargin'>Deblocking means adding "
+"a whitelisted host to the table</li><li class='nomargin'>Undeblocking means "
+"deleting a whitelisted host from the table</li></ul>\n"
+"\t\tFailure to block a host does not necessarily indicate an error; the host "
+"may be in the table already."
+msgstr ""
+
+msgid "Here you can change the language used in the spam reports."
+msgstr ""
+
+msgid ""
+"Here you can change the web administration interface passwords for admin and "
+"user. Passwords should have at least 8 alphanumeric characters."
+msgstr ""
+"Hier kunt U de beheerspagina wachtwoorden voor admin en gebruiken wijzigen. "
+"Wachtwoorden dienen tenminste 8 alfanummerieke tekens te hebben."
+
+msgid ""
+"Here you can enable or disable the Packet Filter. Note that most services "
+"depend on packet filter being enabled."
+msgstr ""
+"Hier kunt U het Packet Filter in- of uitschakelen. Let op: de meeste "
+"diensten zijn afhankelijk van het packet filter!"
+
+msgid ""
+"Here you can enter db.XY.clamav.net for a mirror close to you. Replace XY "
+"with your country code. See http://www.iana.org/cctld/cctld-whois.htm for "
+"the full list.\n"
+"\n"
+"Not shown in this list is database.clamav.net, which is a round-robin record "
+"and points to ClamAV's most reliable mirrors. It is used as a fall back in "
+"case db.XY.clamav.net is not working."
+msgstr ""
+
+msgid ""
+"Here you can reinitialize, hence erase all accumulated data in graph source "
+"files.\n"
+"\n"
+"This may be necessary if these files are corrupted and you cannot see any "
+"graphs displayed, such as when the system clock is set to a very distant "
+"time."
+msgstr ""
+"Hier kunt U de grafieken opnieuw initialiseren. Hierdoor raakt U alle "
+"verzamelde data in de grafieken kwijt.\n"
+"\n"
+"Dit kan noodzakelijk zijn als deze grafieken corrupt zijn geraakt, en geen "
+"grafiek meer wordt weergegeven. Dit kan bijvoorbeeld komen doordat de "
+"systeemklok grote sprongen heeft gemaakt."
+
+msgid ""
+"Here you can rotate all log files manually. Note that this action forcefully "
+"rotates all log files irrespective of the configuration displayed on this "
+"page. Normally this should not be necessary."
+msgstr ""
+"Hier kunt U alle logbestanden handmatig roteren. Dit wordt geforceerd, "
+"onafhankelijk van de instellingen op deze pagina. Normaal gesproken is dit "
+"niet noodzakelijk om te doen."
+
+msgid ""
+"Here you can search sites and urls in category listings. Regexp below can "
+"help you further refine your search."
+msgstr ""
+
+msgid ""
+"Here you can select the configuration file to view or modify. Also, you can "
+"delete the selected configuration file or copy it under another name. Only "
+"file names with .conf extention are displayed."
+msgstr ""
+
+msgid ""
+"Here you can set the report language in emails sent to client, instead of "
+"infected e-mails."
+msgstr ""
+
+msgid ""
+"Here you should select configuration file(s) to start or stop the process "
+"with. Instance with the selected configuration is restarted if it is already "
+"running. Only the files with .conf extention are displayed."
+msgstr ""
+
+msgid ""
+"Here you should select the interface(s) the IDS listens to. Instance with "
+"the selected interface is restarted if it is already running."
+msgstr ""
+
+msgid "Hex decode content"
+msgstr "Hex decodeer inhoud"
+
+#, php-format
+msgid ""
+"Hex decoding options.\n"
+"When a document is scanned it can optionally convert %XX to chars.\n"
+"If you find documents are getting past the phrase filtering due to encoding "
+"then enable. However this can break Big5 and other 16-bit texts.\n"
+"0 = disabled (default)\n"
+"1 = enabled"
+msgstr ""
+
+msgid "Holidays"
+msgstr "Vakanties"
+
+msgid "Horizontal"
+msgstr "Horizontaal"
+
+msgid "Host"
+msgstr "Systeem"
+
+msgid "Host IP"
+msgstr "Systeem IP adres"
+
+msgid "Host wrong"
+msgstr "Fout in de systeem naam"
+
+msgid "Hostname"
+msgstr "Systeemnaam"
+
+msgid "Hostname Lookups"
+msgstr "Systeem opzoeken"
+
+msgid "Hosts"
+msgstr "Systemen"
+
+msgid "Hour"
+msgstr "Uur"
+
+msgid "Hourly"
+msgstr "Elk uur"
+
+msgid ""
+"How many attempts to make before giving up.\n"
+"\t\tDefault: 3 (per mirror)"
+msgstr ""
+
+msgid "ICQ"
+msgstr ""
+
+msgid ""
+"ICQ/AIM protocol does not support notice responses. Make sure only the "
+"relevant protocols are enabled."
+msgstr ""
+
+msgid "IDS"
+msgstr "IDS"
+
+msgid "IM Logs"
+msgstr "IM Logbestanden"
+
+msgid "IM PROXY"
+msgstr "IM PROXY"
+
+msgid "IM Proxy"
+msgstr ""
+
+msgid "IM Proxy Logs"
+msgstr "IM Proxy logbestanden"
+
+msgid ""
+"IM logs are categorized by protocols. After you select the protocol, you "
+"need to select the local user. Local user sessions are further categorized "
+"by remote users connected. Finally, sessions with remote users are "
+"categorized by date. IM proxy can log group chats as well.\n"
+"\n"
+"You can find these logs under /var/log/imspector/."
+msgstr ""
+
+msgid "IM proxy logs contain process errors and notices."
+msgstr ""
+
+msgid ""
+"IMSpector supports MSN, ICQ/AIM, Yahoo, and IRC protocols. IM Proxy can log "
+"all messages exchanged in text conversations."
+msgstr ""
+
+msgid "INFORMATION"
+msgstr "INFORMATIE"
+
+msgid "IP Forwarding"
+msgstr "IP Forwarding"
+
+msgid "IP address or port wrong"
+msgstr "Fout in het IP adres of de poort"
+
+msgid "IP address wrong"
+msgstr "Fout in het IP adres"
+
+msgid ""
+"IP and port configuration here are fundamental to the correct functioning of "
+"the web filter."
+msgstr ""
+
+msgid "IP defragmentation support"
+msgstr "IP defragmentatie ondersteuning"
+
+msgid "IP or IP list wrong"
+msgstr "Fout in het IP adres of de IP adres lijst"
+
+msgid "IP or Net"
+msgstr "IP adres of Netwerk"
+
+msgid "IP or network address fixed"
+msgstr ""
+
+msgid "IP range"
+msgstr "IP adres reeks"
+
+msgid "IP range wrong"
+msgstr "Fout in de IP adres reeks"
+
+msgid "IPS"
+msgstr "IPS"
+
+msgid "IPs"
+msgstr "IP Adressen"
+
+msgid "IPs querying"
+msgstr "IP adressen met verzoeken"
+
+msgid "IPv4"
+msgstr ""
+
+msgid "IPv6"
+msgstr ""
+
+msgid "IRC"
+msgstr ""
+
+msgid ""
+"If 'on' exception sites, urls, users etc will be scanned\n"
+"This is probably not desirable behavour as exceptions are supposed to be "
+"trusted and will increase load.\n"
+"Correct use of grey lists are a better idea.\n"
+"(on|off) default = off"
+msgstr ""
+
+msgid ""
+"If a file in an archive is compressed more than ArchiveMaxCompressionRatio "
+"times it will be marked as a virus (Oversized.ArchiveType, e.g. Oversized."
+"Zip)\n"
+"\t\tValue of 0 disables the limit.\n"
+"\t\tDefault: 250"
+msgstr ""
+
+msgid ""
+"If a message contains more then this many bad words then the message will be "
+"completely blocked, not just replaced"
+msgstr ""
+
+msgid ""
+"If a tls-auth key is used on the server then every client must also have the "
+"key."
+msgstr ""
+
+msgid ""
+"If an email contains URLs ClamAV can download and scan them.\n"
+"\t\tWARNING: This option may open your system to a DoS attack.\n"
+"\t\tNever use it on loaded servers.\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid ""
+"If an outgoing e-mail is determined to be infected or identified as spam, "
+"the client trying to send that e-mail is blocked from sending any e-mails "
+"for a period of time defined by lock duration. You can enter your e-mail "
+"address in report e-mail option."
+msgstr ""
+
+msgid "If client conf"
+msgstr ""
+
+msgid ""
+"If enabled then the phrases found that made up the total which excedes the "
+"naughtyness limit will be logged and, if the reporting level is high enough, "
+"reported. on | off"
+msgstr ""
+
+msgid ""
+"If enabled, will scan for Spam before scanning for a virus. You should start "
+"spamd before running p3scan."
+msgstr ""
+
+msgid ""
+"If on it adds an X-Forwarded-For: <clientip> to the HTTP request header. "
+"This may help solve some problem sites that need to know the source ip. on | "
+"off"
+msgstr ""
+
+msgid ""
+"If on it uses the X-Forwarded-For: <clientip> to determine the client IP. "
+"This is for when you have squid between the clients and DansGuardian.\n"
+"Warning - headers are easily spoofed. on | off"
+msgstr ""
+
+msgid ""
+"If on, this causes DG to write to the log file whenever child processes are "
+"created or destroyed (other than by crashes). This information can help in "
+"understanding and tuning the following parameters, but is not generally "
+"useful in production."
+msgstr ""
+
+msgid ""
+"If on, will enable system wide events to be reported by email.\n"
+"need to configure mail program (see 'mailer' in global config) and email "
+"recipients\n"
+"default usesmtp = off"
+msgstr ""
+
+msgid ""
+"If you are not seeing as many number of lines as you were expecting, this "
+"may be because the log file has turned over and put in a compressed archive "
+"file.\n"
+"\n"
+"You can search the logs by entering keywords or extended regular expressions "
+"in Regexp box. Regular expressions are de-facto standard for text searching."
+msgstr ""
+
+msgid ""
+"If you don't want to control access to a site completely, you can use URL "
+"lists to define finer access rights."
+msgstr ""
+
+msgid ""
+"If you enable this option you will disable content scanning for this group.\n"
+"Content scanning primarily is AV scanning (if enabled) but could include "
+"other types.\n"
+"(on|off) default = off."
+msgstr ""
+
+msgid ""
+"If you modify network configuration, you can use this button to restart the "
+"network."
+msgstr ""
+"Als U de netwerk instellingen wijzigt, kunt U deze knop gebruiken om het "
+"netwerk te herstarten."
+
+msgid ""
+"If your system has a multi-core CPU or more than one CPU, you can run the "
+"SMP kernel. If this page does not display multiple graphs, one for each CPU, "
+"after you switch to the SMP kernel, go to system configuration pages, apply "
+"automatic configuration, and reinitialize graph files."
+msgstr ""
+
+msgid "Ignore errors"
+msgstr "Negeer fouten"
+
+msgid ""
+"Images that are banned due to domain/url/etc reasons including those in the "
+"adverts blacklists can be replaced by an image.  This will, for example, "
+"hide images from advert sites and remove broken image icons from banned "
+"domains.\n"
+"0 = off\n"
+"1 = on (default)"
+msgstr ""
+
+msgid ""
+"In these manual pages, you can find extensive information about the system "
+"and services."
+msgstr ""
+
+msgid "Include classification & priority settings"
+msgstr "Gebruik classificatie & prioriteit instellingen."
+
+msgid "Include reference systems"
+msgstr "Gebruik referentie systemen"
+
+msgid "Infected"
+msgstr ""
+
+msgid "Infected IPs"
+msgstr "Geïnfecteerde IP adressen"
+
+msgid "Infected e-mails"
+msgstr ""
+
+msgid "Infected requests"
+msgstr "Geïnfecteerde verzoeken"
+
+msgid "Infection/Scan Error Bypass"
+msgstr "Infectie/Scan Fout Omleidingen"
+
+msgid "Infection/Scan Error Bypass Secret Key"
+msgstr "Infectie/Scan Fout Omleiding Geheime Sleutel"
+
+msgid "Infection/Scan Error Bypass on Scan Errors Only"
+msgstr "Infecite/Scan Fout Omleiding alleen bij Scan Fout"
+
+msgid "Info"
+msgstr "Info"
+
+msgid ""
+"Inform of a blocked event, but upto a max of every N mins (default is never)"
+msgstr ""
+
+msgid "Inform parties that chats are monitored every N days (default is never)"
+msgstr ""
+
+msgid "Init"
+msgstr "Initialisatie"
+
+msgid "Init graphs"
+msgstr "Initialiseer grafieken"
+
+msgid "Initial Trickle delay"
+msgstr ""
+
+msgid ""
+"Instead of keeping an infected message in the Virus Directory, delete it "
+"after reporting it to the user.\n"
+"\t\tdefault: Keep infected messages in Virus Directory"
+msgstr ""
+
+msgid "Interface"
+msgstr "Netwerk verbinding"
+
+msgid "Interface Configuration"
+msgstr "Verbinding Configuratie"
+
+msgid "Interfaces"
+msgstr "Verbindingen"
+
+msgid "Internal Interface"
+msgstr "Interne netwerk verbinding"
+
+msgid ""
+"Internal clients connect to FTP servers on the external network via this FTP "
+"proxy. Since FTP protocol makes use of ports other than the ftp ports, "
+"allowing requests to ftp ports only is not enough. You need to run an FTP "
+"proxy."
+msgstr ""
+
+msgid "Internal interface"
+msgstr "Interne netwerk verbinding"
+
+msgid "Intrusion Alerts"
+msgstr "Inbraak Alarm"
+
+msgid "Intrusion Detection"
+msgstr "Inbraak Detectie"
+
+msgid "Intrusion Prevention"
+msgstr "Inbraak Voorkoming"
+
+msgid ""
+"Intrusion alerts produced by the IDS are guesses, hence there may be false "
+"positives or wrong alarms. Since the IPS depends on alerts produced by the "
+"IDS, you may want to make sure some IP addresses are never blocked "
+"accidentally, such as the internal and external IP addresses of the system, "
+"or the IP address of the computer you use to access this web administration "
+"interface.\n"
+"\n"
+"You can enter individual IPs or network addresses. IP and network addresses "
+"can overlap. For example, you can blacklist 10.0.0.0/24, but whitelist "
+"10.0.0.1."
+msgstr ""
+
+msgid "Invalid value"
+msgstr "Ongeldige waarde"
+
+msgid "Jabber"
+msgstr ""
+
+msgid "Just Delete"
+msgstr "Gewoon verwijderen"
+
+msgid "Just webmail sites"
+msgstr ""
+
+msgid "Keep Alive"
+msgstr ""
+
+msgid "KeepAlive"
+msgstr ""
+
+msgid "KeepAlive Timeout"
+msgstr "KeepAlive Time-out"
+
+msgid "Keywords"
+msgstr "Sleutelwoorden"
+
+msgid "Language"
+msgstr "Taal"
+
+msgid "Last >>"
+msgstr "Laatste >>"
+
+msgid "Leases"
+msgstr ""
+
+msgid "Leave Temporary Files"
+msgstr "Laat tijdelijke bestanden staan"
+
+msgid "Leave spool on"
+msgstr "Laat spool aan"
+
+msgid "Level"
+msgstr "Niveau"
+
+msgid ""
+"Limit on total number of servers running, i.e., limit on the number of "
+"clients who can simultaneously connect --- if this limit is ever reached, "
+"clients will be LOCKED OUT, so it should NOT BE SET TOO LOW. It is intended "
+"mainly as a brake to keep a runaway server from taking the system with it as "
+"it spirals down..."
+msgstr ""
+
+msgid "Line"
+msgstr "Lijn"
+
+msgid "Lines per page"
+msgstr "Regels per pagina"
+
+msgid "Links"
+msgstr "Links"
+
+msgid "Links visited"
+msgstr "Bezochte links"
+
+msgid ""
+"List format is:\n"
+"allow|deny localid|all [groupchat|remoteid1 ... remoteidN]\n"
+"\n"
+"Order of the access rules is important. For example, if deny all is the "
+"first rule, all access is effectively blocked, so make sure the deny all "
+"rule, if any, is at the bottom."
+msgstr ""
+
+msgid "List hosts"
+msgstr "Toon systeemnamen"
+
+msgid "List of SMTP servers on your network"
+msgstr ""
+
+msgid "List of snmp servers on your network"
+msgstr ""
+
+msgid "List of sql servers on your network"
+msgstr ""
+
+msgid "List of telnet servers on your network"
+msgstr ""
+
+msgid "List of web servers on your network"
+msgstr ""
+
+msgid "List physical interfaces"
+msgstr "Toon physieke verbindingen"
+
+msgid "Listen Address"
+msgstr "Luister Adres"
+
+msgid "Lists"
+msgstr "Lijsten"
+
+msgid "Live"
+msgstr "Live"
+
+msgid "Local IP Address"
+msgstr "Lokale IP Adres"
+
+msgid "Local IP address"
+msgstr "Lokale IP adres"
+
+msgid "Local User"
+msgstr "Lokale Gebruiker"
+
+msgid "Local and remote VPN endpoint IP addresses."
+msgstr ""
+
+msgid "Locale"
+msgstr ""
+
+msgid "Lock duration"
+msgstr ""
+
+msgid "Lock on"
+msgstr ""
+
+msgid "Locked IPs"
+msgstr "Afgeschermde IP adressen"
+
+msgid "Log"
+msgstr "Log"
+
+msgid "Log Clean"
+msgstr ""
+
+msgid "Log Exception Hits"
+msgstr ""
+
+msgid "Log Level"
+msgstr "Log Niveau"
+
+msgid "Log Verbose"
+msgstr "Log uitgebreid"
+
+msgid "Log ad blocks"
+msgstr "Log advertentie blokkades"
+
+msgid "Log child process handling"
+msgstr "Log kind proces afhandeling"
+
+msgid "Log client hostnames"
+msgstr "Log client hostnamen"
+
+msgid "Log connection handling errors"
+msgstr "Log verbinding afhandelings problemen"
+
+msgid ""
+"Log files are rotated according to two main criteria: size and time, "
+"whichever is reached first. When a log file is rotated, it is renamed and "
+"compressed, and a new one is opened for writing.\n"
+"<ul><li>Count is the maximum number of compressed log files to keep.</"
+"li><li>Size is the maximum file size. The log file will be rotated when its "
+"file size reaches this value. The unit is KB.</li><li>When defines the "
+"frequency interval of rotation. This is in hours. For example, 168 means "
+"once each week. This web user interface supports only interval format, not "
+"time format for this setting.</li></ul>Asterisk (*) means don't care.\n"
+"\n"
+"Note that log files contain very important information about system and "
+"network activity. Statistics are generated over these log files."
+msgstr ""
+
+msgid "Log fqdn"
+msgstr "Log volledige systeemnaam"
+
+msgid "Log helo"
+msgstr ""
+
+msgid ""
+"Log if an exception (user, ip, URL, phrase) is matched and so the page gets "
+"let through.  Can be useful for diagnosing why a site gets through the "
+"filter.  on | off"
+msgstr ""
+
+msgid "Log in"
+msgstr "Inloggen"
+
+msgid "Log ip on direct"
+msgstr ""
+
+msgid ""
+"Log keeping capacity of UTMFW is limited only by the size of the disks "
+"on your system.\n"
+"\n"
+"If you are not seeing as many number of lines as you were expecting, this "
+"may be because the log file has turned over and put in a compressed archive "
+"file. The default maximum number of archive files for most services is 100, "
+"and can be configured on the system configuration pages. Depending on how "
+"busy a service it is, this many log archives may mean months of logging in "
+"most cases. You can download the log files using the Download button.\n"
+"\n"
+"You can search the logs by entering keywords or extended regular expressions "
+"in Regexp box. Regular expressions are de-facto standard for text searching."
+msgstr ""
+
+msgid "Log level"
+msgstr "Log niveau"
+
+msgid "Log mail from"
+msgstr "Log mail van"
+
+msgid "Log rcpt to"
+msgstr ""
+
+msgid ""
+"Log the destination IP address in the hierarchy log tag when going direct. "
+"Earlier Squid versions logged the hostname here. If you prefer the old way "
+"set this to off."
+msgstr ""
+
+msgid ""
+"Log the names of clients or just their IP addresses e.g., www.apache.org "
+"(on) or 204.62.129.132 (off).\n"
+"\t\tThe default is off because it'd be overall better for the net if people "
+"had to knowingly turn this feature on, since enabling it means that each "
+"client request will result in AT LEAST one lookup request to the nameserver."
+msgstr ""
+
+msgid "Log typing events"
+msgstr ""
+
+msgid ""
+"LogLevel: Control the number of messages logged to the error_log.\n"
+"\t\tPossible values include: debug, info, notice, warn, error, crit, alert, "
+"emerg."
+msgstr ""
+
+msgid "Logged in user"
+msgstr "Ingelogde gebruiker"
+
+msgid "Logging Settings"
+msgstr "Log Instellingen"
+
+msgid ""
+"Logging options are set as section,level where each source file is assigned "
+"a unique section.  Lower levels result in less output,  Full debugging "
+"(level 9) can result in a very large log file, so be careful.  The magic "
+"word \"ALL\" sets debugging levels for all sections.  We recommend normally "
+"running with \"ALL,1\"."
+msgstr ""
+
+msgid "Login Grace Time"
+msgstr ""
+
+msgid "Logout"
+msgstr "Uitloggen"
+
+msgid "Logs"
+msgstr "Log bestanden"
+
+msgid "Logs Report"
+msgstr "Logbestanden Rapport"
+
+msgid "Longest deferred (sec)"
+msgstr "Langst uitgesteld (sec)"
+
+msgid "Loopback Interface"
+msgstr "Loopback Verbinding"
+
+msgid "Loopback is a logical interface."
+msgstr ""
+
+msgid ""
+"Lower casing options.\n"
+"When a document is scanned the uppercase letters are converted to lower case "
+"in order to compare them with the phrases.  However this can break Big5 and "
+"other 16-bit texts.  If needed preserve the case.  As of version 2.7.0 "
+"accented characters are supported.\n"
+"0 = force lower case (default)\n"
+"1 = do not change case"
+msgstr ""
+
+msgid "MONITORING"
+msgstr "MONITOREN"
+
+msgid "MSN"
+msgstr ""
+
+msgid "MSN via HTTP proxy needs https"
+msgstr ""
+
+msgid "Machine"
+msgstr "Machine"
+
+msgid "Mail Follow URLs"
+msgstr ""
+
+msgid "Mail From"
+msgstr "Mail Van"
+
+msgid "Mail program"
+msgstr "Mail programma"
+
+msgid "Make Dynamic"
+msgstr "Dynamisch maken"
+
+msgid "Make Static"
+msgstr "Statisch maken"
+
+msgid "Make system gateway dynamic"
+msgstr "Maak systeem gateway dynamisch"
+
+msgid "Make system gateway static"
+msgstr "Maak systeem gateway statisch"
+
+msgid "Managed"
+msgstr "Beheerd"
+
+msgid "Managed extensions"
+msgstr "Beheerde extenties"
+
+msgid "Managed mime types"
+msgstr "Beheerde mime types"
+
+msgid ""
+"Mark archives as viruses (e.g. RAR.ExceededFileSize, Zip.ExceededFilesLimit) "
+"if ArchiveMaxFiles, ArchiveMaxFileSize, or ArchiveMaxRecursion limit is "
+"reached.\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid ""
+"Mark encrypted archives as viruses (Encrypted.Zip, Encrypted.RAR).\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid "Matched requests"
+msgstr ""
+
+msgid "Max Attempts"
+msgstr "Max Pogingen"
+
+msgid "Max Auth Tries"
+msgstr "Max Authorizatie Pogingen"
+
+msgid "Max Block Duration"
+msgstr "Max Blokkeer Tijdsduur"
+
+msgid "Max Childs"
+msgstr "Max Kinderen"
+
+msgid "Max Clients"
+msgstr ""
+
+msgid "Max Directory Recursion"
+msgstr "Max Map Recursie"
+
+msgid "Max KeepAlive Requests"
+msgstr "Max KeepAlive Verzoeken"
+
+msgid "Max Log Item Length"
+msgstr "Max Log Item Lengte"
+
+msgid "Max Spare Servers"
+msgstr "Max Reserve Servers"
+
+msgid "Max Threads"
+msgstr ""
+
+msgid "Max age children"
+msgstr "Max levenduur kinderen"
+
+msgid "Max children"
+msgstr "Max kinderen"
+
+msgid "Max content file cache scan size"
+msgstr "Max inhoud bestands cache scanner grootte"
+
+msgid "Max content filter size"
+msgstr "Max inhoud filter grootte"
+
+msgid "Max content ram cache scan size"
+msgstr ""
+
+msgid "Max ips"
+msgstr ""
+
+msgid "Max spare children"
+msgstr "Max reserve kinderen"
+
+msgid "Max upload size"
+msgstr "Max upload grootte"
+
+msgid "MaxStartups"
+msgstr ""
+
+msgid ""
+"Maximal depth directories are scanned at.\n"
+"\t\tDefault: 15"
+msgstr ""
+
+msgid ""
+"Maximal number of threads running at the same time.\n"
+"\t\tDefault: 10"
+msgstr ""
+
+msgid "Maximum connections"
+msgstr "Maximum verbindingen"
+
+msgid "Maximum connections per host"
+msgstr "Maximum verbindingen per host"
+
+msgid "Maximum download size"
+msgstr "Maximm download grootte"
+
+msgid "Maximum load"
+msgstr "Maximale belasting"
+
+msgid "Maximum spam load"
+msgstr "Maximale spam belasting"
+
+msgid "Maximum spam scan size"
+msgstr "Maximal spam scanner grootte"
+
+msgid "Maximum virus scan size"
+msgstr "Maximale virus scanner grootte"
+
+msgid "Mbuf Statistics"
+msgstr "Mbuf statistieken"
+
+msgid "Mbufs"
+msgstr "Mbufs"
+
+msgid "Mbufs indicate kernel memory management for networking."
+msgstr ""
+
+msgid "Memory"
+msgstr "Geheugen"
+
+msgid "Memory Usage"
+msgstr "Geheugen gebruik"
+
+msgid "Messages from all OpenVPN processes are recorded in the same log file."
+msgstr ""
+
+msgid "Method does not exist"
+msgstr ""
+
+msgid "Methods"
+msgstr "Methodes"
+
+msgid "Military and schools etc"
+msgstr ""
+
+msgid "Mime"
+msgstr ""
+
+msgid "Mime type wrong"
+msgstr "Fout in het Mime type"
+
+msgid "Mimes"
+msgstr "Mime types"
+
+msgid "Min Spare Servers"
+msgstr "Min Reserve Servers"
+
+msgid "Min children"
+msgstr "Min kinderen"
+
+msgid "Min spare children"
+msgstr "Min reserve kinderen"
+
+msgid "Modern virtual private networking."
+msgstr ""
+
+msgid "Mon"
+msgstr "Ma"
+
+msgid "Monitoring"
+msgstr "Monitoren"
+
+msgid "Month"
+msgstr "Maand"
+
+msgid "Most clients don't need to bind to a specific local port number."
+msgstr ""
+
+msgid "Motherboard"
+msgstr "Moederbord"
+
+msgid "Move ACL Down"
+msgstr "Verplaats ACL naar beneden"
+
+msgid "Move ACL Up"
+msgstr "Verplaats ACL naar boven"
+
+msgid "Move Down"
+msgstr "Omlaag verplaatsen"
+
+msgid "Move Up"
+msgstr "Omhoog verplaatsen"
+
+msgid "Move rule down"
+msgstr ""
+
+msgid "Move rule up"
+msgstr ""
+
+msgid "NA"
+msgstr ""
+
+msgid "NAT header type"
+msgstr ""
+
+msgid "NI"
+msgstr ""
+
+msgid "Name server"
+msgstr ""
+
+msgid "Name wrong"
+msgstr "Fout in de naam"
+
+msgid "Nameserver"
+msgstr "Nameserver"
+
+msgid "Naughtyness limit"
+msgstr ""
+
+msgid ""
+"Nested archives are scanned recursively, e.g. if a Zip archive contains a "
+"RAR file, all files within it will also be scanned. This options specifies "
+"how deep the process should be continued.\n"
+"\t\tValue of 0 disables the limit.\n"
+"\t\tDefault: 8"
+msgstr ""
+
+msgid "Network"
+msgstr "Netwerk"
+
+msgid "Network Protocol Usage"
+msgstr "Netwerk Protocol gebruik"
+
+msgid "Network Time"
+msgstr ""
+
+msgid ""
+"Network interfaces are listed here. You can configure an interface as dhcp "
+"or inet. Changes made here do not take effect until you restart the network "
+"or reboot the system."
+msgstr ""
+"Hier worden de netwerk verbindingen getoond. U kunt een verbinding als dhcp "
+"of als inet definieëren. Wijzigingen hebben geen effect, totdat het netwerk "
+"of het systeem geherstart worden."
+
+msgid ""
+"New system hostname does not fully take effect until after reboot.\n"
+"\n"
+"Messages to the system administrator are directly transfered to the mail "
+"server hosting the e-mail address you have provided above. The remote mail "
+"server may consider e-mails sent from this system as spam, and move them "
+"into your spam or junk folder."
+msgstr ""
+
+msgid "News sites"
+msgstr ""
+
+msgid "Next >"
+msgstr "Volgende >"
+
+msgid "No bind"
+msgstr "Geen binding"
+
+msgid "No cache"
+msgstr "Geen cache"
+
+msgid "No default banner path"
+msgstr ""
+
+msgid "No such file"
+msgstr ""
+
+msgid "Non standard delimiter"
+msgstr "Niet standaard scheidingsteken"
+
+msgid "Not a valid password"
+msgstr "Geen gelding wachtwoord"
+
+msgid "Not asterisk"
+msgstr "Geen sterretje"
+
+msgid "Not comma separated digits"
+msgstr "Geen door komma gescheiden cijfers"
+
+msgid "Not config name"
+msgstr "Geen  configuratie naam"
+
+msgid "Not empty string"
+msgstr "Geen lege string"
+
+msgid "Not enough args"
+msgstr ""
+
+msgid "Not running command"
+msgstr ""
+
+msgid "Not serialized array"
+msgstr ""
+
+msgid "Not sha1 encrypted string"
+msgstr ""
+
+msgid "Notice days"
+msgstr "Bericht dagen"
+
+msgid "Notice response"
+msgstr "Bericht antwoord"
+
+msgid "Notice responses"
+msgstr "Bericht antwoorden"
+
+msgid "Notify AV"
+msgstr "Bericht AV"
+
+msgid "Notify Content"
+msgstr "Bericht Inhoud"
+
+msgid "Number of Processes"
+msgstr "Aantal processen"
+
+msgid ""
+"Number of database checks per day.\n"
+"\t\tDefault: 12 (every two hours)"
+msgstr ""
+
+msgid "Number of e-mails"
+msgstr "Aantal emails"
+
+msgid ""
+"Number of files to be scanned within an archive.\n"
+"\t\tValue of 0 disables the limit.\n"
+"\t\tDefault: 1000"
+msgstr ""
+
+msgid "Number of filter groups"
+msgstr "Aantal filter groepen"
+
+msgid "Number of messages"
+msgstr "Aantal berichten"
+
+msgid "Number of processes"
+msgstr "Aantal processen"
+
+msgid ""
+"Number of seconds to wait for the next request from the same client on the "
+"same connection."
+msgstr ""
+
+msgid ""
+"Number of servers to start initially --- should be a reasonable ballpark "
+"figure."
+msgstr ""
+
+msgid ""
+"Number of violations before notification. Setting to 0 will never trigger a "
+"notification"
+msgstr ""
+
+msgid "Number wrong"
+msgstr "Fout in het nummer"
+
+msgid "OPENSSH"
+msgstr "OPENSSH"
+
+msgid "OPENVPN"
+msgstr "OPENVPN"
+
+msgid "Obsoletes QuietMode and FascistLogging"
+msgstr ""
+
+msgid "On this page are web administration interface access statistics."
+msgstr ""
+
+msgid ""
+"One or more actions failed while creating new group\n"
+"Examine the report above to make sure this is the intended result!"
+msgstr ""
+
+msgid "Online auctions"
+msgstr ""
+
+msgid "Online gaming sites"
+msgstr ""
+
+msgid "Online payment sites"
+msgstr ""
+
+msgid "Only webcam sessions on Yahoo are recognized and blocked"
+msgstr ""
+
+msgid "Open source anti-spam software."
+msgstr ""
+
+msgid "Open source anti-virus software."
+msgstr ""
+
+msgid ""
+"OpenBSD/spamd is a spam deferral daemon, a fake sendmail-like daemon which "
+"rejects false mail. You can run spamd if there is a mail server in the "
+"internal network. Thanks to OpenBSD/spamd, you can not only prevent unwanted "
+"e-mails but also torture spammers."
+msgstr ""
+
+msgid "OpenSSH"
+msgstr ""
+
+msgid ""
+"OpenSSH is the de-facto standard secure shell. If you stop OpenSSH, you "
+"cannot establish shell connections to the system remotely."
+msgstr ""
+
+msgid ""
+"OpenSSH logs detailed information on all connections, successful logins and "
+"failures. Also provided are warnings based on reverse DNS lookups."
+msgstr ""
+
+msgid "OpenVPN"
+msgstr ""
+
+msgid ""
+"OpenVPN is a virtual private networking solution based on OpenSSL. You "
+"should create different configuration for servers and clients, and start "
+"OpenVPN accordingly."
+msgstr ""
+
+msgid "Operating System"
+msgstr "Besturings systeem"
+
+msgid "Override default of no subsystems"
+msgstr ""
+
+msgid "PACKET FILTER"
+msgstr "PACKET FILTER"
+
+msgid ""
+"PE stands for Portable Executable - it's an executable file format used in "
+"all 32-bit versions of Windows operating systems. This option allows ClamAV "
+"to perform a deeper analysis of executable files and it's also required for "
+"decompression of popular executable packers such as UPX, FSG, and Petite.\n"
+"\t\tDefault: enabled"
+msgstr ""
+
+msgid "PICS rating support"
+msgstr ""
+
+msgid "PID"
+msgstr ""
+
+msgid "POP3 PROXY"
+msgstr "POP3 PROXY"
+
+msgid "POP3 Proxy"
+msgstr ""
+
+msgid ""
+"POP3 proxy is used to scan incoming e-mails for viruses and spam. Make sure "
+"virus and spam scanners are running before starting this proxy."
+msgstr ""
+
+msgid "POP3 proxy logs connection information and process exit status."
+msgstr ""
+
+msgid ""
+"POST protection (web upload and forms) does not block forms without any file "
+"upload, i.e. this is just for blocking or limiting uploads measured in "
+"kibibytes after MIME encoding and header bumph\n"
+"use 0 for a complete block\n"
+"use higher (e.g. 512 = 512Kbytes) for limiting\n"
+"use -1 for no blocking"
+msgstr ""
+
+msgid "PRI"
+msgstr ""
+
+msgid "Packet Filter"
+msgstr ""
+
+msgid "Packet types"
+msgstr "Pakket types"
+
+msgid "Packets"
+msgstr ""
+
+msgid "Page start line"
+msgstr "Pagina start regel"
+
+msgid "Partitions"
+msgstr "Partities"
+
+msgid "Partitions Usages"
+msgstr "Partitie gebruik"
+
+msgid "Password"
+msgstr "Wachtwoord"
+
+msgid "Password again"
+msgstr "Wachtwoord (opnieuw)"
+
+msgid "Passwords do not match"
+msgstr "Wachtwoorden komen niet overeen"
+
+msgid ""
+"Path (sendmail-compatible) email program, with options.\n"
+"Not used if usesmtp is disabled (filtergroup specific)."
+msgstr ""
+
+msgid ""
+"Perform HTML normalisation and decryption of MS Script Encoder code.\n"
+"\t\tDefault: enabled"
+msgstr ""
+
+msgid ""
+"Perform internal sanity check (database integrity and freshness).\n"
+"\t\tDefault: 1800 (30 min)"
+msgstr ""
+
+msgid ""
+"Perform reverse lookups on client IPs for successful requests.\n"
+"If set to on, DansGuardian will look up the forward DNS for the IP of the "
+"connecting computer, and log host names (where available) rather than IPs "
+"against requests.\n"
+"This is not dependent on reverseclientiplookups being enabled; however, if "
+"it is, enabling this option does not incur any additional forward DNS "
+"requests."
+msgstr ""
+
+msgid "Permit Empty Passwords"
+msgstr "Sta Lege Wachtwoorden Toe"
+
+msgid "Permit Root Login"
+msgstr "Sta Root Login Toe"
+
+msgid "Persist Key"
+msgstr "Vaste Sleutel"
+
+msgid "Persist Tun"
+msgstr "Vaste Tunnel"
+
+msgid "Personal finance sites"
+msgstr ""
+
+msgid "Pet sites"
+msgstr ""
+
+msgid "Pfctl output does not match"
+msgstr ""
+
+msgid "Phrase filter mode"
+msgstr ""
+
+msgid "Phrase modes and cache settings determine how content scan works."
+msgstr ""
+
+msgid "Phrases"
+msgstr "frases"
+
+msgid "Physical Memory"
+msgstr "Fysiek Geheugen"
+
+msgid "Ping"
+msgstr ""
+
+msgid "Pmacct"
+msgstr ""
+
+msgid "Pmacct Network Monitoring"
+msgstr ""
+
+msgid "Pornography"
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "Ports you run secure shell on."
+msgstr ""
+
+msgid ""
+"Ports you run web servers on.\n"
+"\n"
+"Please note:  [80,8080] does not work.\n"
+"If you wish to define multiple HTTP ports, port lists must either be "
+"continuous [eg 80:8080], or a single port [eg 80].\n"
+"We will add support for a real list of ports in the future."
+msgstr ""
+
+msgid "Ports you want to look for SHELLCODE on."
+msgstr ""
+
+msgid ""
+"Positive (clean) result caching for URLs Caches good pages so they don't "
+"need to be scanned again.\n"
+"It also works with AV plugins.\n"
+"0 = off (recommended for ISPs with users with disimilar browsing)\n"
+"1000 = recommended for most users\n"
+"5000 = suggested max upper limit\n"
+"If you're using an AV plugin then use at least 5000."
+msgstr ""
+
+msgid "Postfix to all responses using all responder plugins"
+msgstr ""
+
+msgid "Prefix to all responses using all responder plugins"
+msgstr ""
+
+msgid "Prefork children"
+msgstr ""
+
+msgid "Prepare file for download"
+msgstr "Voorbereiden bestand voor downloaden"
+
+msgid "Preserve case"
+msgstr ""
+
+msgid "Print Last Log"
+msgstr "Print Laatste Log"
+
+msgid "Print Motd"
+msgstr ""
+
+msgid "Priorities"
+msgstr "Prioriteiten"
+
+msgid "Priority"
+msgstr "Prioriteit"
+
+msgid "Private Key"
+msgstr "Privé Sleutel"
+
+msgid "Privileged IPs"
+msgstr "Bevoorrechte IP adressen"
+
+msgid ""
+"Privileged IPs have access to more services than other IPs, such as instant "
+"messaging and file sharing. Normally, the ports of such services should "
+"remain blocked for users who do not need them."
+msgstr ""
+"Bevoorrechte IP adressen hebben toegang tot meer diensten dan andere IP "
+"adressen, zoals bijvoorbeeld instant messenging of file sharing. Normaal "
+"gesproken zouden de poorten voor deze diensten gesloten moeten blijven voor "
+"mensen die deze diensten niet gebruiken."
+
+msgid "Process"
+msgstr "Proces"
+
+msgid "Process CPU Load"
+msgstr "Processor belasting per Proces"
+
+msgid "Processed (KB)"
+msgstr "Verwerkt (KB)"
+
+msgid "Processes"
+msgstr "Processen"
+
+msgid "Processing time (sec)"
+msgstr "Verwerkingstijd (sec)"
+
+msgid "Processor"
+msgstr "Processor"
+
+msgid ""
+"Promiscuous mode accounting daemon collects IP based network usage "
+"information. Network usage graphs are generated based on pmacct data."
+msgstr ""
+
+msgid "Proto"
+msgstr ""
+
+msgid "Protocol"
+msgstr ""
+
+msgid "Protocols"
+msgstr "Protocollen"
+
+msgid "Protograph"
+msgstr ""
+
+msgid "Proxy IP"
+msgstr ""
+
+msgid "Proxy IP:Ports"
+msgstr ""
+
+msgid "Proxy Port"
+msgstr ""
+
+msgid ""
+"Proxy settings\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid "Query types"
+msgstr "Verzoek types"
+
+msgid "Queues"
+msgstr ""
+
+msgid "Quiet"
+msgstr "Stil"
+
+msgid "RSS"
+msgstr ""
+
+msgid ""
+"Rather than generating a random key you can specify one. It must be more "
+"than 8 chars.\n"
+"'' = generate a random one (recommended and default)\n"
+"'Mary had a little lamb.' = an example\n"
+"'76b42abc1cd0fdcaf6e943dcbc93b826' = an example\n"
+"Please note: manually entered keys are converted to all lowercase before use."
+msgstr ""
+
+msgid "Re-check replaced URLs"
+msgstr "Hercontroleer vervangen URLs"
+
+msgid "Read system gateway"
+msgstr "Opvragen systeem gateway"
+
+msgid "Read system hostname"
+msgstr "Opvragen systeemnaam"
+
+msgid "Read system nameserver"
+msgstr "Opvragen systeem nameserver"
+
+msgid "Reasons"
+msgstr "Redenen"
+
+msgid "Received (KB)"
+msgstr "Ontvangen (KB)"
+
+msgid "Recipients"
+msgstr "Ontvangers"
+
+msgid "Redraw"
+msgstr "Opnieuw tekenen"
+
+msgid "Refresh interval"
+msgstr "Ververs interval"
+
+msgid "Regexp"
+msgstr "Reguliere expressie"
+
+msgid ""
+"Regular expression for matching user agents\n"
+"When not defined, matches all agents.\n"
+"\n"
+"'mozilla' also matches firefox, IE, etc."
+msgstr ""
+
+msgid "Regular expression wrong"
+msgstr "Fout in de reguliere expressie"
+
+msgid "Reinitialize"
+msgstr "Opnieuw initialiseren"
+
+msgid "Relay results"
+msgstr "Relay resultaten"
+
+msgid "Reload"
+msgstr "Opnieuw laden"
+
+msgid "Reload "
+msgstr "Ververs"
+
+msgid "Reload interval"
+msgstr "Herlaad interval"
+
+msgid "Remote Server"
+msgstr ""
+
+msgid "Remote User"
+msgstr ""
+
+msgid "Report e-mail"
+msgstr ""
+
+msgid "Report language"
+msgstr ""
+
+msgid "Report safe"
+msgstr ""
+
+msgid "Reporting level"
+msgstr ""
+
+msgid "Requests"
+msgstr "Verzoeken"
+
+msgid "Requests by IP"
+msgstr "Verzoeken per IP adres"
+
+msgid "Requests by date"
+msgstr "Verzoeken per datum"
+
+msgid "Requests bypassed"
+msgstr "Omgeleide verzoeken"
+
+msgid "Requests denied"
+msgstr "Verzoeken afgewezen"
+
+msgid "Requests infected"
+msgstr "Verzoeken geïnfecteerd"
+
+msgid "Requests scanned"
+msgstr "Gescande verzoeken"
+
+msgid "Required score"
+msgstr "Vereiste score"
+
+msgid "Resource not available"
+msgstr "Resource niet beschikbaar"
+
+msgid "Response postfix"
+msgstr "Antwoord postfix"
+
+msgid "Response prefix"
+msgstr "Antwoord prefix"
+
+msgid "Restart"
+msgstr "Herstart"
+
+msgid "Restart "
+msgstr "Herstart"
+
+msgid "Restart network"
+msgstr "Herstart het netwerk"
+
+msgid "Restricted IPs"
+msgstr "Gelimiteerde IP adressen"
+
+msgid "Results"
+msgstr "Resultaten"
+
+msgid ""
+"Results are only predictable with user authenticated configs, if enabled the "
+"violation/threshold count is kept track of by the user"
+msgstr ""
+
+msgid "Reverse address lookups"
+msgstr ""
+
+msgid "Reverse client ip lookups"
+msgstr ""
+
+msgid ""
+"Reverse lookups for banned and exception IP lists.\n"
+"If set to on, DansGuardian will look up the forward DNS for the IP of the "
+"connecting computer.  This means you can put in hostnames in the "
+"exceptioniplist and bannediplist.\n"
+"If a client computer is matched against an IP given in the lists, then the "
+"IP will be recorded in any log entries; if forward DNS is successful and a "
+"match occurs against a hostname, the hostname will be logged instead.\n"
+"It will reduce searching speed somewhat so unless you have a local DNS "
+"server, leave it off."
+msgstr ""
+
+msgid ""
+"Reverse lookups for banned site and URLs.\n"
+"If set to on, DansGuardian will look up the forward DNS for an IP URL "
+"address and search for both in the banned site and URL lists. This would "
+"prevent a user from simply entering the IP for a banned address.\n"
+"It will reduce searching speed somewhat so unless you have a local caching "
+"DNS server, leave it off and use the Blanket IP Block option in the "
+"bannedsitelist file instead."
+msgstr ""
+
+msgid "Rewrite header"
+msgstr ""
+
+msgid "Root Certificate"
+msgstr ""
+
+msgid "Rotate"
+msgstr "Roteer"
+
+msgid "Rotate All"
+msgstr "Alles roteren"
+
+msgid "Rotate all log files"
+msgstr "Roteren van alle log bestanden"
+
+msgid "Rotate log file"
+msgstr "Roteer log bestand"
+
+msgid "Route"
+msgstr ""
+
+msgid "Rule"
+msgstr "Regel"
+
+msgid "Rule to be added to the routing table."
+msgstr ""
+
+msgid "Rules"
+msgstr "Regels"
+
+msgid "Russian"
+msgstr "Russisch"
+
+msgid "SHELLCODE_PORTS"
+msgstr ""
+
+msgid "SMTP PROXY"
+msgstr "SMTP PROXY"
+
+msgid "SMTP Proxy"
+msgstr ""
+
+msgid ""
+"SMTP proxy is used to scan outgoing e-mails for viruses and spam. Make sure "
+"virus and spam scanners are running before starting this proxy."
+msgstr ""
+
+msgid "SMTP_SERVERS"
+msgstr ""
+
+msgid "SNMP_SERVERS"
+msgstr ""
+
+msgid "SOCKS PROXY"
+msgstr "SOCKS PROXY"
+
+msgid "SOCKS Proxy"
+msgstr ""
+
+msgid ""
+"SOCKS proxy is used by clients which support SOCKS protocol, such as file "
+"sharing applications. If you do not plan on providing support for SOCKS-"
+"enabled applications, you can stop this proxy. Some client applications fail "
+"to use the SOCKS proxy fully, even if they are configured correctly. Check "
+"the packet filter logs for blocked packets."
+msgstr ""
+
+msgid "SOCKS proxy logs connection status and failures."
+msgstr ""
+
+msgid "SPAM Deferral"
+msgstr ""
+
+msgid "SPAM FILTER"
+msgstr "SPAM FILTER"
+
+msgid "SPAM Filter"
+msgstr ""
+
+msgid "SPAMD"
+msgstr "SPAMD"
+
+msgid "SQL_SERVERS"
+msgstr ""
+
+msgid "SSH version"
+msgstr "SSH versie"
+
+msgid "SSH_PORTS"
+msgstr ""
+
+msgid ""
+"SSL/TLS parms. See the server config file for more description.  It's best "
+"to use a separate .crt/.key file pair for each client.  A single ca file can "
+"be used for all clients."
+msgstr ""
+
+msgid ""
+"SSL/TLS root certificate (ca), certificate (cert), and private key (key).  "
+"Each client and the server must have their own cert and key file. The server "
+"and all clients will use the same ca file.\n"
+"Any X509 key management system can be used. OpenVPN can also use a PKCS #12 "
+"formatted key file (see \"pkcs12\" directive in man page)."
+msgstr ""
+
+msgid "STARTED"
+msgstr "GESTART"
+
+msgid "STAT"
+msgstr ""
+
+msgid "SUCCESS"
+msgstr ""
+
+msgid "SYSTEM"
+msgstr "SYSTEEM"
+
+msgid "Safe Browsing"
+msgstr "Veilig Surfen"
+
+msgid "Same as the 'bypasskey' option, but used for infection bypass mode."
+msgstr ""
+
+msgid ""
+"Sample client and server configuration are provided to get you started. You "
+"may want to replace the default SSL certificates with yours."
+msgstr ""
+
+msgid "Sat"
+msgstr "Za"
+
+msgid ""
+"Save spam messages as a message/rfc822 MIME attachment instead of modifying "
+"the original message (0: off, 2: use text/plain instead)"
+msgstr ""
+
+msgid "Scan"
+msgstr "Scan"
+
+msgid "Scan Archive"
+msgstr "Scan Archief"
+
+msgid "Scan HTML"
+msgstr ""
+
+msgid "Scan Mail"
+msgstr ""
+
+msgid "Scan OLE2"
+msgstr ""
+
+msgid "Scan PE"
+msgstr ""
+
+msgid "Scan RAR"
+msgstr ""
+
+msgid "Scan Results"
+msgstr "Scan resultaten"
+
+msgid "Scan Spam"
+msgstr ""
+
+msgid "Scan Types"
+msgstr "Scan types"
+
+msgid "Scan clean cache"
+msgstr ""
+
+msgid "Scanned IPs"
+msgstr "Gescande IP adressen"
+
+msgid "Scanned requests"
+msgstr "Gescande verzoeken"
+
+msgid "Search"
+msgstr "Zoeken"
+
+msgid "Search engines such as google"
+msgstr ""
+
+msgid "Search site"
+msgstr "Doorzoek de site"
+
+msgid "Secure Level"
+msgstr "Beveiligd Niveau"
+
+msgid "Select"
+msgstr "Selecteer"
+
+msgid ""
+"Select a cryptographic cipher. If the cipher option is used on the server "
+"then you must also specify it here."
+msgstr ""
+
+msgid ""
+"Select a cryptographic cipher. This config item must be copied to the client "
+"config file as well."
+msgstr ""
+
+msgid "Select an IP to view its network usage graphs."
+msgstr ""
+
+msgid "Select log file"
+msgstr "Kies log bestand"
+
+msgid "Selected"
+msgstr "Geselecteerde"
+
+msgid "Self Check"
+msgstr "Zelf Controle"
+
+msgid ""
+"Send a UDP ping to remote once every given seconds to keep stateful firewall "
+"connection alive."
+msgstr ""
+
+msgid "Senders"
+msgstr "Zenders"
+
+msgid "Sensors"
+msgstr "Sensoren"
+
+msgid "Sent messages"
+msgstr "Verzonden berichten"
+
+msgid "Serial Number"
+msgstr "Serienummer"
+
+msgid "Server"
+msgstr "Server"
+
+msgid "Server Admin"
+msgstr ""
+
+msgid "Server Key Bits"
+msgstr ""
+
+msgid "Server Mode"
+msgstr ""
+
+msgid ""
+"Server-pool size regulation.\n"
+"\t\tRather than making you guess how many server processes you need, Apache "
+"dynamically adapts to the load it sees --- that is, it tries to maintain "
+"enough server processes to handle the current load, plus a few spare servers "
+"to handle transient load spikes (e.g., multiple simultaneous requests from a "
+"single Netscape browser).\n"
+"\n"
+"\t\tIt does this by periodically checking how many servers are waiting for a "
+"request.  If there are fewer than MinSpareServers, it creates a new spare.  "
+"If there are more than MaxSpareServers, some of the spares die off.  The "
+"default values in httpd.conf-dist are probably OK for most sites."
+msgstr ""
+
+msgid ""
+"ServerAdmin: Your address, where problems with the server should be e-"
+"mailed.\n"
+"\t\tThis address appears on some server-generated pages, such as error "
+"documents."
+msgstr ""
+
+msgid "Session"
+msgstr "Sessie"
+
+msgid "Session Takeover"
+msgstr "Sessie overname"
+
+msgid "Session timeout"
+msgstr "Sessie timeout"
+
+msgid "Set DNS forwarders"
+msgstr "Instellen DNS forwarders"
+
+msgid "Set PF allowed"
+msgstr "Instellen PF allowed"
+
+msgid "Set PF restricted"
+msgstr "Instellen PF restricted"
+
+msgid "Set afterhours if"
+msgstr "Instellen afterhours verbinding"
+
+msgid "Set configuration"
+msgstr "Instellen configuratie"
+
+msgid "Set dhcpd conf"
+msgstr "Instellen dhcpd configuratie"
+
+msgid "Set e-mail address"
+msgstr "Instellen e-mail adres"
+
+msgid ""
+"Set headers which may provide inappropriate cues to the Bayesian classifier"
+msgstr ""
+
+msgid "Set help boxes"
+msgstr "Instellen help panelen"
+
+msgid "Set ifs"
+msgstr "Instellen verbindingen"
+
+msgid "Set interfaces"
+msgstr "Instellen verbindingen"
+
+msgid "Set internal net"
+msgstr "Instellen interne netwerk"
+
+msgid "Set locale"
+msgstr ""
+
+msgid "Set log level"
+msgstr "Instellen log niveau"
+
+msgid "Set logs configuration"
+msgstr "Instellen log configuratie"
+
+msgid "Set man.cgi home"
+msgstr ""
+
+msgid "Set name value pair"
+msgstr "Instellen naam waarde paar"
+
+msgid "Set pmacct if"
+msgstr "Set pmacct verbinding"
+
+msgid "Set pmacct net"
+msgstr "Instellen pmacct netwerk"
+
+msgid "Set reload rate"
+msgstr "Instellen ververs ratio"
+
+msgid "Set remote time"
+msgstr "Instellen tijd op afstand"
+
+msgid "Set session timeout"
+msgstr "Instellen sessie time-out"
+
+msgid "Set startup if"
+msgstr "Instellen opstart verbinding"
+
+msgid "Set startup ifs"
+msgstr "Instellen opstart verbindingen"
+
+msgid "Set symon conf"
+msgstr "Instellen symon configuratie"
+
+msgid "Set symon cpus"
+msgstr "Instellen symon processoren"
+
+msgid "Set symon ifs"
+msgstr "Instellen symon verbindingen"
+
+msgid "Set symon partitions"
+msgstr "Instellen symon partities"
+
+msgid "Set symon sensors"
+msgstr "Instellen symon sensoren"
+
+msgid "Set system clock"
+msgstr "Instellen systeem klok"
+
+msgid "Set system gateway"
+msgstr "Instellen systeem gateway"
+
+msgid "Set system hostname"
+msgstr "Instellen systeem naam"
+
+msgid "Set system nameserver"
+msgstr "Instellen systeem nameserver"
+
+msgid "Set template ips"
+msgstr ""
+
+msgid ""
+"Set the appropriate level of log file verbosity.\n"
+"0 is silent, except for fatal errors\n"
+"4 is reasonable for general usage\n"
+"5 and 6 can help to debug connection problems\n"
+"9 is extremely verbose"
+msgstr ""
+
+msgid "Set the threshold at which a message is considered spam (default: 5.0)"
+msgstr ""
+
+msgid ""
+"Set up the external network addresses as well.  A good start may be \"any\""
+msgstr ""
+
+msgid "Set user password"
+msgstr "Instellen gebruikers wachtwoord"
+
+msgid "Set webalizer hostname"
+msgstr "Instellen webalizer systeemnaam"
+
+msgid ""
+"Set which networks or hosts are considered 'trusted' by your mail server (i."
+"e. not spammers)"
+msgstr ""
+
+msgid ""
+"Sets the maximum age of a child process before it croaks it.\n"
+"This is the number of connections they handle before exiting.\n"
+"On large sites you might want to try 10000."
+msgstr ""
+
+msgid ""
+"Sets the maximum number client IP addresses allowed to connect at once.\n"
+"Use this to set a hard limit on the number of users allowed to concurrently "
+"browse the web. Set to 0 for no limit, and to disable the IP cache process."
+msgstr ""
+
+msgid ""
+"Sets the maximum number of processes to have doing nothing.\n"
+"When this many are spare it will cull some of them.\n"
+"On large sites you might want to try 64."
+msgstr ""
+
+msgid ""
+"Sets the maximum number of processes to spawn to handle the incoming "
+"connections.  Max value usually 250 depending on OS.\n"
+"On large sites you might want to try 180."
+msgstr ""
+
+msgid ""
+"Sets the minimum number of processes to be kept ready to handle "
+"connections.\n"
+"On large sites you might want to try 8."
+msgstr ""
+
+msgid ""
+"Sets the minimum number of processes to spawn to handle the incoming "
+"connections.\n"
+"On large sites you might want to try 32."
+msgstr ""
+
+msgid ""
+"Sets the minimum number of processes to spawn when it runs out.\n"
+"On large sites you might want to try 10."
+msgstr ""
+
+msgid "Show weighted phrases found"
+msgstr "Toon gevonden gewogen zinsnede "
+
+msgid ""
+"Similar to the 'bypass' setting, but specifically for bypassing files "
+"scanned and found to be infected, or files that trigger scanner errors - for "
+"example, archive types with recognised but unsupported compression schemes, "
+"or corrupt archives.\n"
+"The option specifies the number of seconds for which the bypass link will be "
+"valid.\n"
+"300 = enable for 5 minutes\n"
+"0 = disable (default)\n"
+"-1 = enable, but require a separate program/CGI to generate a valid link"
+msgstr ""
+
+msgid "Similar to violence but more promoting than depicting"
+msgstr ""
+
+msgid ""
+"Since Freshclam wakes up periodically, this page displays graphs for Clamd "
+"process only."
+msgstr ""
+
+msgid ""
+"Since this web administration interface depends on the Apache web server, "
+"you should be careful while modifying these options. By default, the web "
+"server is configured to serve this web interface only, hence the default "
+"values should suffice for most purposes. However, OpenBSD/httpd is a full-"
+"featured HTTP server, and you can configure it to serve web sites too."
+msgstr ""
+
+msgid "Sites"
+msgstr "Pagina's"
+
+msgid "Sites about and selling clothing"
+msgstr ""
+
+msgid "Sites about and selling jewelry"
+msgstr ""
+
+msgid "Sites about cooking et al"
+msgstr ""
+
+msgid "Sites about dating"
+msgstr ""
+
+msgid "Sites about going on holiday"
+msgstr ""
+
+msgid "Sites about home repair"
+msgstr ""
+
+msgid "Sites about hygiene and other personal grooming related stuff"
+msgstr ""
+
+msgid "Sites attempting to trick people into giving out private information."
+msgstr ""
+
+msgid "Sites containing adult material such as swearing but not porn"
+msgstr ""
+
+msgid "Sites containing ring tones, games, pictures and other"
+msgstr ""
+
+msgid ""
+"Sites containing screen savers, backgrounds, cursers, pointers. desktop "
+"themes and similar timewasting and potentially dangerous content"
+msgstr ""
+
+msgid "Sites containing violence"
+msgstr ""
+
+msgid "Sites dedicated to sexuality, possibly including adult material"
+msgstr ""
+
+msgid "Sites detailing or selling weapons"
+msgstr ""
+
+msgid "Sites for finding jobs"
+msgstr ""
+
+msgid ""
+"Sites in the Whitelist are not scanned for viruses. You can omit the leading "
+"www. or http://"
+msgstr ""
+
+msgid "Sites kids often waste time on"
+msgstr ""
+
+msgid "Sites promoting religion"
+msgstr ""
+
+msgid ""
+"Sites that contain messenger client download and web-based messaging sites"
+msgstr ""
+
+msgid "Sites that contain nude pictures and/or promote a nude lifestyle"
+msgstr ""
+
+msgid "Sites that promote movies, books, magazine, humor"
+msgstr ""
+
+msgid "Sites that provide online shopping"
+msgstr ""
+
+msgid "Sites that remove spyware"
+msgstr ""
+
+msgid "Sites to do with childcare"
+msgstr ""
+
+msgid "Sites to do with french education"
+msgstr ""
+
+msgid "Sites where software updates are downloaded from including virus sigs"
+msgstr ""
+
+msgid "Sites who host virus infected files"
+msgstr ""
+
+msgid "Sites who run or have spyware software to download"
+msgstr ""
+
+msgid "Sites with audio or video downloads"
+msgstr ""
+
+msgid "Sites with beer or liquors for sale"
+msgstr ""
+
+msgid "Sites with chat rooms etc"
+msgstr ""
+
+msgid "Sites with dialers such as those for pornography or trojans"
+msgstr ""
+
+msgid "Sites with illegal pirate software"
+msgstr ""
+
+msgid "Sites with information only on beer or liquors"
+msgstr ""
+
+msgid "Sites with proxies to bypass filters"
+msgstr ""
+
+msgid "Size"
+msgstr "Grootte"
+
+msgid "Size (KB)"
+msgstr "Grootte (KB)"
+
+msgid "Size by IP (KB)"
+msgstr "Grootte per IP adres"
+
+msgid "Size by Link (KB)"
+msgstr "Grootte per link"
+
+msgid "Size by Target (KB)"
+msgstr "Grootte per bestemming"
+
+msgid "Size by site (KB)"
+msgstr "Grootte per site (KB)"
+
+msgid ""
+"Smart, Raw and Meta/Title phrase content filtering options.\n"
+"Smart is where the multiple spaces and HTML are removed before phrase "
+"filtering.\n"
+"Raw is where the raw HTML including meta tags are phrase filtered.\n"
+"Meta/Title is where only meta and title tags are phrase filtered (v. "
+"quick).\n"
+"CPU usage can be effectively halved by using setting 0 or 1 compared to 2.\n"
+"0 = raw only\n"
+"1 = smart only\n"
+"2 = both of the above (default)\n"
+"3 = meta/title"
+msgstr ""
+
+msgid ""
+"Snort's decoder will alert on lots of things such as header truncation or "
+"options of unusual length or infrequently used tcp options.\n"
+"Stop generic decode events:"
+msgstr ""
+
+msgid ""
+"SnortIPS is a perl process. These graphs display data from all perl "
+"processes."
+msgstr ""
+
+msgid "Soft inits"
+msgstr ""
+
+msgid "Soft inits (unblock all)"
+msgstr ""
+
+msgid "Soft restart"
+msgstr ""
+
+msgid "Software Version"
+msgstr "Software Versie"
+
+msgid ""
+"Some of the content scanners support using a timeout value to stop "
+"processing (eg AV scanning) the file if it takes too long.\n"
+"If supported this will be used.\n"
+"The default of 60 seconds is probably reasonable."
+msgstr ""
+
+msgid ""
+"Sometimes web servers label binary files as text which can be very large "
+"which causes a huge drain on memory and cpu resources.\n"
+"To counter this, you can limit the size of the document to be filtered and "
+"get it to just pass it straight through.\n"
+"This setting also applies to content regular expression modification.\n"
+"The value must not be higher than maxcontentramcachescansize\n"
+"The size is in Kibibytes - eg 2048 = 2Mb\n"
+"use 0 to set it to maxcontentramcachescansize"
+msgstr ""
+
+msgid "Source"
+msgstr ""
+
+msgid "Source Docs"
+msgstr "Bron Documentatie"
+
+msgid ""
+"Source IP of all the requests on this page is the loopback interface, i.e. "
+"127.0.0.1, hence not listed here. If the HTTP proxy is configured as non-"
+"caching proxy, you should see TCP_MISS on the Cache column."
+msgstr ""
+
+msgid "Source IPs"
+msgstr "Bron IP adressen"
+
+msgid "Source Ports"
+msgstr "Bron poorten"
+
+msgid "Source addresses"
+msgstr "Bron adressen"
+
+msgid "Spam"
+msgstr "Spam"
+
+msgid "Spam Filter"
+msgstr ""
+
+msgid "Spam Scan Requests"
+msgstr "Spam scan verzoeken"
+
+msgid "Spam threshold"
+msgstr ""
+
+msgid ""
+"SpamAssassin is a bayesian content scanner and is used in scanning incoming "
+"POP3 and outgoing SMTP e-mails for spam content. If SpamAssassin identifies "
+"an e-mail as spam, it marks the subject line with a warning message and "
+"provides a list of reasons in the body of the e-mail."
+msgstr ""
+
+msgid ""
+"SpamAssassin is a perl process. These graphs display data from all perl "
+"processes."
+msgstr ""
+
+msgid "Spamd DB"
+msgstr "Spamd DB"
+
+msgid "Spamd Grey DB"
+msgstr ""
+
+msgid "Spamd Grey Listing"
+msgstr ""
+
+msgid "Spamd Logging"
+msgstr ""
+
+msgid "Spamd Spam Deferral"
+msgstr ""
+
+msgid "Spamd White DB"
+msgstr ""
+
+msgid ""
+"Spamd logs connections from spam sources and greylisted clients. Also "
+"recorded is length of time the client remained connected to spamd."
+msgstr ""
+
+msgid "Spanish"
+msgstr ""
+
+msgid "Sport news sites"
+msgstr ""
+
+msgid "Start"
+msgstr "Start"
+
+msgid "Start "
+msgstr "Start"
+
+msgid "Start OpenVPN process"
+msgstr "Start OpenVPN proces"
+
+msgid "Start Servers"
+msgstr ""
+
+msgid "Start snort"
+msgstr "Start Snort"
+
+msgid "Startup"
+msgstr "Opstarten"
+
+msgid "State"
+msgstr ""
+
+msgid "State Searches vs Packets"
+msgstr "Status zoekakties ten opzichte van pakketten"
+
+msgid "State Statistics"
+msgstr "Status Statistieken"
+
+msgid ""
+"State operations are perhaps the most meaningful measure of packet filter "
+"load."
+msgstr ""
+
+msgid "States"
+msgstr "Statussen"
+
+msgid "Statistics"
+msgstr "Statistieken"
+
+msgid "Statistics and uncompressed log files"
+msgstr "Statistieken en ongecomprimeerde log bestanden"
+
+msgid ""
+"Statistics collection entirely depends on what and how logs are recorded in "
+"the log files. So do not change these settings unless necessary."
+msgstr ""
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Stop"
+msgstr "Stop"
+
+msgid "Stop "
+msgstr "Stop"
+
+msgid ""
+"Stop Alerts on T/TCP alerts\n"
+"\n"
+"In snort 2.0.1 and above, this only alerts when a TCP option is detected "
+"that shows T/TCP being actively used on the network.  If this is normal "
+"behavior for your network, disable the next option."
+msgstr ""
+
+msgid "Stop Alerts on all other TCPOption type events"
+msgstr ""
+
+msgid "Stop Alerts on experimental TCP options"
+msgstr ""
+
+msgid "Stop Alerts on invalid ip options"
+msgstr ""
+
+msgid "Stop Alerts on obsolete TCP options"
+msgstr ""
+
+msgid "Stop OpenVPN instance"
+msgstr "Stop OpenVPN proces"
+
+msgid "Stop Snort instance"
+msgstr "Stop Snort proces"
+
+msgid "String wrong"
+msgstr "Fout in de string"
+
+msgid ""
+"Subject of the email sent when a virus is caught.\n"
+"Only applicable if notifyav is on.\n"
+"default avsubject = 'dansguardian virus block'"
+msgstr ""
+
+msgid ""
+"Subject of the email sent when violation thresholds are exceeded default "
+"contentsubject = 'dansguardian violation'"
+msgstr ""
+
+msgid "Subnet mask"
+msgstr ""
+
+msgid "Subsystem sftp"
+msgstr ""
+
+msgid "Successful logins"
+msgstr "Succesvolle logins"
+
+msgid "Sun"
+msgstr "Zo"
+
+msgid "Symon"
+msgstr ""
+
+msgid "Symon System Monitoring"
+msgstr ""
+
+msgid "Symux"
+msgstr ""
+
+msgid "Symux System Monitoring"
+msgstr ""
+
+msgid "Syslog Facility"
+msgstr ""
+
+msgid "System"
+msgstr "Systeem"
+
+msgid "System Administration Guides"
+msgstr "Systeem Beheer Handleidingen"
+
+msgid "System is going down..."
+msgstr "Het systeem wordt gestopt..."
+
+msgid "System is restarting..."
+msgstr "Het systeem wordt geherstart..."
+
+msgid ""
+"System monitoring software. Most of the rrd based graphs are generated based "
+"on symon data."
+msgstr ""
+"Systeem monitoring software. De meeste van de rrd gebaseerde grafieken zijn "
+"gegenereerd op basis van symon data."
+
+msgid "System restart"
+msgstr "Systeem herstart"
+
+msgid "System shutdown"
+msgstr "Systeem uitschakelen"
+
+msgid "TCP Keep Alive"
+msgstr "TCP Keep Alive"
+
+msgid "TCP or UDP server?"
+msgstr ""
+
+msgid "TELNET_SERVERS"
+msgstr "TELNET_SERVERS"
+
+msgid "TIME"
+msgstr "TIJD"
+
+msgid "TLS Auth"
+msgstr "TLS Auth"
+
+msgid "Target"
+msgstr "Bestemming"
+
+msgid "Target IPs"
+msgstr "Bestemmings IP adressen"
+
+msgid "Target Ports"
+msgstr "Bestemmings poorten"
+
+msgid "Telnet negotiation string normalizer"
+msgstr "Telnet onderhandeling string opschoner"
+
+msgid "Temperature"
+msgstr "Temperatuur"
+
+msgid "Temporary Denied Page Bypass"
+msgstr "Tijdelijke Geblokkeerde Pagina Omleiding"
+
+msgid "Temporary Denied Page Bypass Secret Key"
+msgstr "Tijdelijke 'Geblokkeerde Pagina Omleiding' geheime sleutel"
+
+msgid "Temporary block duration in seconds on each alert."
+msgstr ""
+
+msgid ""
+"Thanks to OpenSSH, remote root login to the system is permitted by default. "
+"TCP Keep Alive and Use DNS options may help you resolve some issues."
+msgstr ""
+
+msgid "The Free Software Foundation."
+msgstr "he Free Software Foundation."
+
+msgid ""
+"The IDS produces many alerts. Some alerts may be more serious than others, "
+"hence most alerts have priorities. You can configure the IPS to block only "
+"alerts at a certain priority and up. Each alert also contains log and "
+"classification text. You can add keywords to match within such text. The IP "
+"in the matching alert is blocked. If the alert does not contain an IP "
+"address, no action is taken."
+msgstr ""
+
+msgid ""
+"The IDS uses rules categorized in different packages. Note that you cannot "
+"obtain a 'better' IDS by enabling all the rules. In fact, irrelevant rules "
+"may trigger false alarms.\n"
+"\n"
+"Updated Snort rules for your version of the software are released "
+"periodically. Make sure you have appropriate rules installed on your system."
+msgstr ""
+
+msgid ""
+"The IP that DansGuardian listens on.  If left blank DansGuardian will listen "
+"on all IPs.  That would include all NICs, loopback, modem, etc.\n"
+"Normally you would have your firewall protecting this, but if you want you "
+"can limit it to a certain IP. To bind to multiple interfaces, specify each "
+"IP on an individual filterip line."
+msgstr ""
+
+msgid ""
+"The Intrusion Prevention System (IPS) depends on alerts generated by the "
+"Intrusion Detection System (IDS). Make sure the IDS is running before "
+"starting the IPS."
+msgstr ""
+
+msgid ""
+"The keepalive directive causes ping-like messages to be sent back and forth "
+"over the link so that each side knows when the other side has gone down. If "
+"for example \"10 120\", ping every 10 seconds, assume that remote peer is "
+"down if no ping received during a 120 second time period."
+msgstr ""
+
+msgid "The maximum number of concurrently connected clients we want to allow."
+msgstr ""
+
+msgid ""
+"The maximum number of connections we will handle at once. Any further "
+"connections will be dropped. Keep in mind that a number of 10 also means "
+"that 10 viruscanner can run at once."
+msgstr ""
+
+msgid ""
+"The maximum number of requests to allow during a persistent connection. Set "
+"to 0 to allow an unlimited amount. We recommend you leave this number high, "
+"for maximum performance."
+msgstr ""
+
+msgid "The most famous web server."
+msgstr "De meest beroemde web server."
+
+msgid ""
+"The most secure OS in the world. Underneath UTMFW is pure, untouched "
+"OpenBSD."
+msgstr ""
+"Het meest veilige OS ter wereld. UTMFW draait op het standaard OpenBSD."
+
+msgid ""
+"The number of KB's there must be free before processing any mail. If there "
+"is less than this amount, p3scan will terminate any connections until the "
+"problem is resolved.\n"
+"\t\tdefault: 100MB"
+msgstr ""
+
+msgid "The number of seconds before receives and sends time out."
+msgstr ""
+
+msgid ""
+"The number of web filter processes depends on the number of requests from "
+"internal network. Minimum and maximum number of processes can be adjusted on "
+"the configuration pages.\n"
+"\n"
+"If you modify the configuration of the web filter, you must restart the web "
+"filter for the changes to take effect."
+msgstr ""
+
+msgid ""
+"The options below protect your system against Denial of Service attacks "
+"using archive bombs.\n"
+"\n"
+"\t\tFiles in archives larger than this limit won't be scanned.\n"
+"\t\tValue of 0 disables the limit.\n"
+"\t\tDefault: 10M"
+msgstr ""
+
+msgid ""
+"The options here are for the Denied page which the user receives instead of "
+"the page requested."
+msgstr ""
+
+msgid ""
+"The options on this page determine basic features of the group. Group name "
+"shows on the Denied page and logs."
+msgstr ""
+
+msgid ""
+"The persist options will try to avoid accessing certain resources on restart "
+"that may no longer be accessible because of the privilege downgrade."
+msgstr ""
+
+msgid "The process is taking too long, thus will run in the background."
+msgstr ""
+"Het proces duurt te lang, daarom wordt het in de achtergrond voortgezet."
+
+msgid "The settings on this page are valid filter-wide."
+msgstr ""
+
+msgid ""
+"The strategy used for options in the default sshd_config shipped with "
+"OpenSSH is to specify options with their default value where possible, but "
+"leave them commented.  Uncommented options change a default value."
+msgstr ""
+
+msgid ""
+"The web filter can report incidents via e-mails. You can setup which "
+"incidents to be reported based on violation types and thresholds. Do not "
+"forget the single quotes around e-mail addresses and strings."
+msgstr ""
+
+msgid ""
+"The web filter on UTMFW uses weighted phrase lists to scan the content "
+"of web pages, hence the name Content Scanning Web Filter. This feature of "
+"the web filter is different from and in addition to site or url lists, "
+"blacklists, and related categories."
+msgstr ""
+
+msgid ""
+"There are 3 possible modes of operation:\n"
+"0 = off = do not use the weighted phrase feature.\n"
+"1 = on, normal = normal weighted phrase operation.\n"
+"2 = on, singular = each weighted phrase found only counts once on a page."
+msgstr ""
+
+msgid ""
+"These advanced options can help you tune the performance of the web filter. "
+"For example, you can increase the maximum number of child processes if your "
+"internal network is large. However, the maximum number of processes a daemon "
+"user can start is restricted in login.conf file of the operating system. So "
+"make sure you adjust both settings accordingly."
+msgstr ""
+
+msgid ""
+"These are access logs of the Apache web server. Logs contain logged-in "
+"users, client IP addresses, and pages accessed."
+msgstr ""
+
+msgid ""
+"These are intrusion alerts. Note that these alerts can be considered as "
+"guesses at best. While configuring the IPS, make use of priorities and "
+"keywords."
+msgstr ""
+
+msgid ""
+"These are keywords to match in alert messages. If alerts contain such words, "
+"the IP in that alert will be blocked."
+msgstr ""
+
+msgid ""
+"These defaults are permanently stored in web user interface settings, i.e. "
+"they are <em>not</em> specific to your current session only."
+msgstr ""
+
+msgid ""
+"These graphs show network usage per host. From top to bottom, host usage "
+"graphs are for the last hour, last 8-hour, daily, weekly, and monthly usages."
+msgstr ""
+
+msgid ""
+"These lists allow or block all of a site. You can omit the leading www. or "
+"http://"
+msgstr ""
+
+msgid ""
+"These logs contain messages from all IDS process. Alerts are duplicated here "
+"as well."
+msgstr ""
+
+msgid "These logs may be important for diagnosing web filter related problems."
+msgstr ""
+
+msgid "These logs may be important for diagnosing web server related problems."
+msgstr ""
+
+msgid "These settings apply to currently active group only."
+msgstr ""
+
+msgid ""
+"This button allows you to <b>manually</b> enable or disable after hours "
+"rules. Note that the rules are activated or deactivated immediately, "
+"irrespective of the after hours definitions below. For example, you can use "
+"this button to shutdown after hours rules in case of an emergency."
+msgstr ""
+"Deze knop stelt U in staan om <b>handmatig</b> 'buiten kantoortijden' in of "
+"uit te schakelen. Let op: deze regels worden direct aktief of gedeactiveerd, "
+"onafhankelijk van de 'buiten kantoortijden' definities hieronder. U kunt dit "
+"gebruiken om bijvoorbeeld 'buiten kantoortijden' uit te zetten in geval van "
+"een noodgeval."
+
+msgid ""
+"This button allows you to delete all the statistics and uncompressed log "
+"files created by this user interface. Note that deleting these files does "
+"not mean that accumulated statistics are lost forever. <b>Original log files "
+"under /var/log folder are not affected by this action</b> either. These "
+"files will be recreated, and statistics will be recollected, the next time "
+"you access Statistics or Logs pages."
+msgstr ""
+"Deze knop stelt U in staat om alle statistieken en ongecomprimeerde "
+"logbestanden die geassocieerd zijn met deze beheerders pagina te "
+"verwijderen. Let op dat dit niet betekent dat alle historische verzamelde "
+"statistieken verloren gaan. <b>De originele logbestanden te vinden in de /"
+"var/log map worden niet verwijderd</b>. De bestanden worden opnieuw "
+"aangemaakt, zodra U de 'Statistieken' of 'Logbestanden' pagina's weer "
+"bezoekt."
+
+msgid ""
+"This button creates a new web filter group identical to the active group."
+msgstr ""
+
+msgid ""
+"This graph shows overall network usage based on certain protocols. Note that "
+"each protocol may cover more than one port."
+msgstr ""
+
+msgid ""
+"This graph shows the data transfer rate of packet filter. The transfer is "
+"between interfaces."
+msgstr ""
+
+msgid ""
+"This is in seconds. If 'violations' occur in 'threshold' seconds, then a "
+"notification is made.\n"
+"If this is set to 0, then whenever the set number of violations are made a "
+"notifaction will be sent."
+msgstr ""
+
+msgid ""
+"This is only used if you use a content scanner plugin such as AV\n"
+"This is the max size of file that DG will download and cache in RAM.  After "
+"this limit is reached it will cache to disk.\n"
+"This value must be less than or equal to maxcontentfilecachescansize.\n"
+"The size is in Kibibytes - eg 10240 = 10Mb\n"
+"use 0 to set it to maxcontentfilecachescansize\n"
+"This option may be ignored by the configured download manager."
+msgstr ""
+
+msgid ""
+"This is only used if you use a content scanner plugin such as AV.\n"
+"This is the max size file that DG will download so that it can be scanned or "
+"virus checked.\n"
+"This value must be greater or equal to maxcontentramcachescansize.\n"
+"The size is in Kibibytes - eg 10240 = 10Mb"
+msgstr ""
+
+msgid ""
+"This is the DNS server internal clients use. The default is the internal IP "
+"address of the system."
+msgstr ""
+
+msgid "This is the IP and port over which the proxy accepts connections."
+msgstr ""
+
+msgid ""
+"This is the address of your web server to which the cgi dansguardian "
+"reporting script was copied. Only used in reporting levels 1 and 2.\n"
+"\n"
+"This webserver must be either:\n"
+" 1. Non-proxied. Either a machine on the local network, or listed as an "
+"exception in your browser's proxy configuration.\n"
+" 2. Added to the exceptionsitelist. Option 1 is preferable; this option is "
+"only for users using both transparent proxying and a non-local server to "
+"host this script.\n"
+"\n"
+"Individual filter groups can override this setting in their own "
+"configuration."
+msgstr ""
+
+msgid ""
+"This is the default gateway used by the system to reach the Internet, and "
+"may have been assigned dynamically. You can make your gateway configuration "
+"static or dynamic. If you make dynamic, static gateway file will be deleted. "
+"If you make static, it will be recreated with the current default gateway."
+msgstr ""
+"Dit is de standaard gateway voor het systeem om het Internet te bereiken, en "
+"kan dynamisch toegewezen worden. U kunt de gateway configuratie statisch of "
+"dynamisch maken. Als U het dynamisch maakt, zal de statische gateway "
+"instellingen bestand verwijderd worden. Als U het statisch maakt, zal het "
+"opnieuw aangemaakt worden met de huidige standaard gateway."
+
+msgid "This is the default language for the WUI."
+msgstr ""
+
+msgid ""
+"This is the default refresh value in seconds for pages which reload "
+"periodically, such as Live pages for logs and statistics. The new value "
+"takes effect only for newly created sessions. Note that logging out of the "
+"web user interface does not erase your session values."
+msgstr ""
+"Dit is de standaard ververs waarde in seconden voor pagina's die zichzelf "
+"regelmatig verversen, zoals de 'Live' pagina's voor logbestanden en "
+"statistieken. De nieuwe waarde wordt pas aktief voor nieuw gecreëerde "
+"sessies. Let op dat uitloggen van de beheers pagina's uw sessie waardes niet "
+"verwijderd."
+
+msgid ""
+"This is the gateway internal clients use to reach the external network. The "
+"default is the internal IP address of the system."
+msgstr ""
+
+msgid ""
+"This is the list of interfaces DHCP server listens and distributes IP "
+"leases. Here you should add the interface(s) to start the DHCP server for."
+msgstr ""
+
+msgid ""
+"This is the log level for the UTMFW web interface. Logs at this level "
+"and up will be recorded in WUI and CTLR log files. This setting does not "
+"effect other services."
+msgstr ""
+"Dit is het logniveau voor de UTMFW beheer pagina's. Berichten op dit en "
+"hoger niveau zullen in WUIC en CTLR logbestanden gelogt worden. Deze "
+"instelling heeft geen invloed op andere diensten."
+
+msgid ""
+"This is the name server used by the system. You can use the DNS server on "
+"the system, i.e. enter 127.0.0.1 here."
+msgstr ""
+"Dit is de name server die gebruikt wordt door het systeem. U kunt de DNS "
+"server op het systeem gebruiken, vul hiervoor 127.0.0.1 in."
+
+msgid ""
+"This is the number of seconds a browser connection is left waiting before "
+"being sent more *something* to keep it alive. The *something* depends on the "
+"download manager chosen.\n"
+"This may be ignored by the configured download manager."
+msgstr ""
+
+msgid ""
+"This is the number of seconds a browser connection is left waiting before "
+"first being sent *something* to keep it alive. The *something* depends on "
+"the download manager chosen.\n"
+"Do not choose a value too low or normal web pages will be affected.\n"
+"A value between 20 and 110 would be sensible.\n"
+"This may be ignored by the configured download manager."
+msgstr ""
+
+msgid ""
+"This is the opposite of Privileged IPs. You can enter IP ranges as well, e."
+"g. 192.168.1.0/24."
+msgstr ""
+"Dit is het tegengestelde van Bevoorrechte IP adressen. U kunt IP reeksen "
+"gebruiken, bijvoorbeeld 192.168.1.0/24."
+
+msgid ""
+"This is the priority in the alerts. Alerts at this priority and up will be "
+"used to block IPs."
+msgstr ""
+
+msgid ""
+"This is the system name. If you change the hostname, use automatic "
+"configuration button to apply it system-wide, and reboot the system."
+msgstr ""
+"Dit is de systeem naam. Als U deze wijzigt, gebruik dan de 'automatische "
+"configuratie' knop om dit systeem breed in te stellen, en herstart het "
+"systeem."
+
+msgid ""
+"This name server is a BIND 9 compatible DNS server, which runs in a chroot "
+"jail."
+msgstr ""
+
+msgid ""
+"This option determines whether members of this group have their web access "
+"unfiltered, filtered, or banned. This mechanism replaces the \"banneduserlist"
+"\" and \"exceptionuserlist\" files from previous versions.\n"
+"\n"
+"0 = banned\n"
+"1 = filtered\n"
+"2 = unfiltered (exception)\n"
+"\n"
+"Only filter groups with a mode of 1 need to define phrase, URL, site, "
+"extension, mimetype and PICS lists; in other modes, these options are "
+"ignored to conserve memory.\n"
+"\n"
+"Defaults to 0 if unspecified.\n"
+"Unauthenticated users are treated as being in the first filter group."
+msgstr ""
+
+msgid ""
+"This option enables scanning of Microsoft Office document macros.\n"
+"\t\tDefault: enabled"
+msgstr ""
+
+msgid ""
+"This option enables support for Google Safe Browsing. When activated for the "
+"first time, freshclam will download a new database file (safebrowsing.cvd) "
+"which will be automatically loaded by clamd and clamscan during the next "
+"reload, provided that the heuristic phishing detection is turned on. This "
+"database includes information about websites that may be phishing sites or "
+"possible sources of malware. When using this option, it's mandatory to run "
+"freshclam at least every 30 minutes.\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid ""
+"This option only applies to pages blocked by weighted phrase filtering.\n"
+"Defines the minimum score that must be accumulated within a particular "
+"category in order for it to show up on the block pages' category list.\n"
+"All categories under which the page scores positively will be logged; those "
+"that were not displayed to the user appear in brackets.\n"
+"\n"
+"-1 = display only the highest scoring category\n"
+"0 = display all categories (default)\n"
+"> 0 = minimum score for a category to be displayed"
+msgstr ""
+
+msgid ""
+"This page displays statistical data collected over the log files of this "
+"module.\n"
+"\n"
+"You can change the date of statistics using drop-down boxes. An empty value "
+"means match-all. For example, if you choose 3 for month and empty value for "
+"day fields, the charts and lists display statistics for all the days in "
+"March. Choosing empty value for month means empty value for day field as "
+"well.\n"
+"\n"
+"For single dates, Horizontal chart direction is assumed. For date ranges, "
+"default graph style is Daily, and direction is Vertical. Graph style can be "
+"changed to Hourly for date ranges, where cumulative hourly statistics are "
+"shown. In Daily style, horizontal direction is not possible."
+msgstr ""
+
+msgid "This page displays the I/O graphs of all the disks in your system."
+msgstr ""
+
+msgid ""
+"This page displays the graph for shared memory and swap area usage. If the "
+"swap area usage is too high, you may consider adding more RAM. For higher "
+"system performance, you want to have no swap usage at all."
+msgstr ""
+
+msgid ""
+"This page displays the graphs of all temperature and fan sensors in your "
+"system. You may have multiple sensors depending on your hardware. Virtual "
+"machines may not provide any sensors at all."
+msgstr ""
+
+msgid ""
+"This page displays the hosts managed by the IPS, i.e. blocked or unblocked "
+"IPs or networks. You can temporarily block hosts for a period of time. If "
+"expiration time is not provided, the default duration is used. You can enter "
+"individual IPs or network addresses. IP and network addresses can overlap.\n"
+"\n"
+"This page reloads automatically to update the managed list. If the IPS is "
+"not running, the page displays blank."
+msgstr ""
+
+msgid ""
+"This page displays the usage graphs of all the partitions on your disks."
+msgstr ""
+
+msgid ""
+"This page lists Spamd database entries. Definitions of the columns are as "
+"follows:\n"
+"<ul class=\"nomargin\"><li class=\"nomargin\">Source IP: IP address the "
+"connection originated from</li><li class=\"nomargin\">From: envelope-from "
+"address for GREY (empty for WHITE entries)</li><li class=\"nomargin\">To: "
+"envelope-to address for GREY (empty for WHITE entries)</li><li class="
+"\"nomargin\">First: time the entry was first seen</li><li class=\"nomargin"
+"\">Listed: time the entry passed from being GREY to being WHITE</li><li "
+"class=\"nomargin\">Expire: time the entry will expire and be removed from "
+"the database</li><li class=\"nomargin\">#Block: number of times a "
+"corresponding connection received a temporary failure from spamd(8)</li><li "
+"class=\"nomargin\">#Passed: number of times a corresponding connection has "
+"been seen to pass to the real MTA by spamlogd(8)</li></ul>\n"
+"E-mails originating from Whitelist entries are allowed until expiration "
+"date.\n"
+"\n"
+"Greylist entries are currently active entries according to grey-listing mode "
+"of spamd."
+msgstr ""
+
+msgid ""
+"This page provides basic Packet Filter configuration. Packet filter rules "
+"can be modified under the Rules tab.\n"
+"\n"
+"OpenBSD/pf is a powerful and flexible stateful packet filter. Among many "
+"advanced features of pf are:<ul><li>Stateful inspection</li><li>Network "
+"Address Translation (NAT)</li><li>Packet normalization</li><li>Spoof "
+"protection</li><li>Packet queueing and bandwidth management</li><li>Traffic "
+"shaping</li><li>Policy routing</li><li>Load balancing, and much more</li></"
+"ul>You can add an IP range to the restricted IPs list, and enter individual "
+"IP addresses or subnets to privileged IPs list, to define exceptions over "
+"the restricted IP range. Or visa-versa."
+msgstr ""
+
+msgid ""
+"This page shows system-wide logs. Most services on UTMFW write to their "
+"own log files, but a few processes may log messages to this system file. Pay "
+"special attention to error messages."
+msgstr ""
+
+msgid ""
+"This preprocessor \"normalizes\" telnet negotiation strings from telnet and "
+"ftp traffic.  It works in much the same way as the http_decode preprocessor, "
+"searching for traffic that breaks up the normal data stream of a protocol "
+"and replacing it with a normalized representation of that traffic so that "
+"the \"content\" pattern matching keyword can work without requiring "
+"modifications."
+msgstr ""
+
+msgid ""
+"This preprocessor performs IP defragmentation.  This plugin will also detect "
+"people launching fragmentation attacks (usually DoS) against hosts. Maximum "
+"number of frag trackers that may be active at once."
+msgstr ""
+
+msgid ""
+"This provides a link on the denied page to bypass the ban for a few "
+"minutes.  To be secure it uses a random hashed secret generated at daemon "
+"startup.  You define the number of seconds the bypass will function for "
+"before the deny will appear again.\n"
+"To allow the link on the denied page to appear you will need to edit the "
+"template.html or dansguardian.pl file for your language.\n"
+"300 = enable for 5 minutes\n"
+"0 = disable ( defaults to 0 )\n"
+"-1 = enable but you require a separate program/CGI to generate a valid link"
+msgstr ""
+
+msgid ""
+"This setting enables or disables help boxes, such as this one and the help "
+"window at the bottom. Disabling help boxes does not disable error or warning "
+"help windows."
+msgstr ""
+"Deze instelling schakelt de help panelen zoals deze of het help paneel "
+"onderaan in of uit. Het uitschakelen van de help panelen schakelt de "
+"foutmelding of help vensters niet uit."
+
+msgid ""
+"This shows the active group for this page. Use this form to change the "
+"active group."
+msgstr ""
+
+msgid ""
+"This web administration interface is served by Apache web server, OpenBSD/"
+"httpd. If you stop the web server, you will lose your connection to this web "
+"interface. You can restart it on the command line."
+msgstr ""
+
+msgid ""
+"This will send a notification, if usesmtp is on, based on thresholds below"
+msgstr ""
+
+msgid ""
+"This will send a notification, if usesmtp/notifyav is on, any time an "
+"infection is found.\n"
+"Important: If this option is off, viruses will still be recorded like a "
+"content infection."
+msgstr ""
+
+msgid "Threshold"
+msgstr "Drempel"
+
+msgid "Threshold By User"
+msgstr "Drempel per gebruiker"
+
+msgid ""
+"Thresholds and settings here are related with the content scanning feature "
+"of the web filter."
+msgstr ""
+
+msgid "Thu"
+msgstr "Do"
+
+msgid "Time"
+msgstr "Tijd"
+
+msgid "Time server"
+msgstr "Tijd server"
+
+msgid "Time to expire"
+msgstr "Geldigheids duur"
+
+msgid "Time to expire (secs)"
+msgstr "Geldigheids duur (seconden)"
+
+msgid "Timeout"
+msgstr "Time-out"
+
+msgid "Timespan"
+msgstr "Tijdsduur"
+
+msgid "To"
+msgstr "Aan"
+
+msgid ""
+"To block all SSL and CONNECT tunnels except to addresses in the "
+"exceptionsitelist and greysitelist files"
+msgstr ""
+
+msgid "To block all SSL and CONNECT tunnels to sites specified only as an IP"
+msgstr ""
+
+msgid ""
+"To block all sites except those in the exceptionsitelist and greysitelist "
+"files"
+msgstr ""
+
+msgid "To block all sites specified only as an IP"
+msgstr ""
+
+msgid "Too many args, truncating"
+msgstr ""
+
+msgid "Total deferred time (sec)"
+msgstr "Totaal uitgestelde tijd (sec)"
+
+msgid "Total of block extensions cannot be higher than this value."
+msgstr ""
+
+msgid "Transfer"
+msgstr "Overdracht"
+
+msgid "Transmitted (KB)"
+msgstr "Verzonden (KB)"
+
+msgid "Trickle delay"
+msgstr ""
+
+msgid "Trusted networks"
+msgstr "Vertrouwde netwerken"
+
+msgid "Try to preserve some state across restarts."
+msgstr ""
+
+msgid "Tue"
+msgstr "Di"
+
+msgid "Turkish"
+msgstr "Turks"
+
+msgid "Turn off cats"
+msgstr "Uitzetten categoriën"
+
+msgid "Turn off service"
+msgstr "Uitzetten service"
+
+msgid "Turn on cats"
+msgstr "Aanzetten van categoriën"
+
+msgid "Turn on debugging."
+msgstr ""
+
+msgid "Turn on service"
+msgstr "Aanzetten van een service"
+
+msgid ""
+"Turn this on if you wish to log fully qualified domain names in the access."
+"log. To do this Squid does a DNS lookup of all IP's connecting to it. This "
+"can (in some situations) increase latency, which makes your cache seem "
+"slower for interactive browsing."
+msgstr ""
+
+msgid ""
+"Turns Snort IDS into an IPS (Intrusion Prevention System). Replaced by "
+"SnortIPS."
+msgstr ""
+"Schakelt Snort IDS om naar een IPS (Intrusion Prevention System). Vervangen "
+"door SnortIPS."
+
+msgid "Type"
+msgstr "Type"
+
+msgid "URLs"
+msgstr "Adressen"
+
+msgid ""
+"URLs in the Whitelist are not scanned for viruses. You can omit the leading "
+"www. or http://"
+msgstr ""
+
+msgid "USER"
+msgstr "GEBRUIKER"
+
+msgid "Unblock"
+msgstr "Deblokkeer"
+
+msgid "Unblock All"
+msgstr "Alles deblokkeren"
+
+msgid "Unblock IPs"
+msgstr "Ongedaan maken blokkade IP adressen"
+
+msgid "Unblock all"
+msgstr "Ongedaan maken alle blokkade's"
+
+msgid "Unblock all blocked entries"
+msgstr "Deblokkeer alle geblokkeerde items"
+
+msgid "Unblock selected"
+msgstr "Deblokkeer geselecteerde items"
+
+msgid "Unblocked Hosts"
+msgstr "Niet geblokkeerde systemen"
+
+msgid "Unconfigure an interface"
+msgstr ""
+
+msgid "Unknown"
+msgstr "Onbekend"
+
+msgid "Unsupported command"
+msgstr ""
+
+msgid "Unsupported interface configuration"
+msgstr "Niet ondersteunde interface configuratie"
+
+msgid "Update mail aliases"
+msgstr "Ververs mail aliassen"
+
+msgid "Uptime"
+msgstr "Uptime"
+
+msgid "Url cache age"
+msgstr "Url cache levensduur"
+
+msgid "Url cache number"
+msgstr "Url cache nummer"
+
+msgid "Url wrong"
+msgstr "Fout in de URL"
+
+msgid "Use Bayesian classifier (default: 1)"
+msgstr ""
+
+msgid "Use DNS"
+msgstr "Use DNS"
+
+msgid ""
+"Use DNS to verify virus database version. Freshclam uses DNS TXT records to "
+"verify database and software versions. With this directive you can change "
+"the database verification domain.\n"
+"\t\tDefault: enabled, pointing to current.cvd.clamav.net"
+msgstr ""
+
+msgid "Use SMTP"
+msgstr "Gebruik SMTP"
+
+msgid ""
+"Use aaa.bbb.ccc.ddd as client address for downloading databases. Useful for "
+"multi-homed systems.\n"
+"\t\tDefault: Use OS'es default outgoing IP address."
+msgstr ""
+
+msgid "Use bayes"
+msgstr "Gebruik bayes"
+
+msgid ""
+"Use slower but memory efficient decompression algorithm.\n"
+"\t\tOnly affects the bzip2 decompressor.\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid ""
+"Use the same setting as you are using on the server. On most systems, the "
+"VPN will not function unless you partially or fully disable the firewall for "
+"the TUN/TAP interface."
+msgstr ""
+
+msgid "Use xforwarded for"
+msgstr "Gebruik xforwarded for"
+
+msgid ""
+"Used to fill in the -FILTERGROUP- placeholder in the HTML template file, and "
+"to name the group in the access logs\n"
+"Defaults to empty string"
+msgstr ""
+
+msgid "User"
+msgstr "Gebruiker"
+
+msgid "User agent regexp"
+msgstr "User agen regexp"
+
+msgid "User name"
+msgstr "Gebruikers naam"
+
+msgid ""
+"User sessions expire after an idle period defined by this value. The unit is "
+"in seconds. You cannot set a value less than 10 seconds."
+msgstr ""
+"Gebruikers sessies verlopen na een inaktieve periode, de tijd hiervoor kunt "
+"U hier instellen. U kunt geen waarde van minder dan 10 seconden instellen."
+
+msgid "Users"
+msgstr "Gebruikers"
+
+msgid ""
+"Usually the network time daemon adjusts the system clock according to "
+"Internet time servers gradually. But if the clock is too out of sync with "
+"the time servers, you are advised to set the system clock to Internet time "
+"manually. You can use your own time server if you like."
+msgstr ""
+"Normaal gesproken zal de netwerk tijd daemon de systeem klok in kleine "
+"stapjes aanpassen aan de Internet tijd servers. Maar als het tijdverschil te "
+"groot is, kunt U het beste de systeem klok handmatig instellen. U kunt uw "
+"eigen tijd server gebruiken als U wilt."
+
+msgid "VIRUS FILTER"
+msgstr "VIRUS FILTER"
+
+msgid "VSZ"
+msgstr ""
+
+msgid "Verbosity"
+msgstr ""
+
+msgid "Version"
+msgstr "Versie"
+
+msgid "Vertical"
+msgstr "Vertikaal"
+
+msgid "Violations"
+msgstr "Overtredingen"
+
+msgid "Virus"
+msgstr "Virus"
+
+msgid "Virus DB Update"
+msgstr "Virus DB Update"
+
+msgid "Virus Exts"
+msgstr "Virus Extensies"
+
+msgid "Virus Filter"
+msgstr "Virus Filter"
+
+msgid "Virus Mimes"
+msgstr "Virus Mime types"
+
+msgid "Virus Scan Requests"
+msgstr "Virus scan verzoeken"
+
+msgid "Virus Sites"
+msgstr "Virus Sites"
+
+msgid "Virus URLs"
+msgstr "Virus adressen"
+
+msgid "Virus and spam scanning POP3 proxy."
+msgstr "Virus en spam scanner POP3 proxy."
+
+msgid "Virus and spam scanning SMTP proxy."
+msgstr "Virus en spam scanner SMTP proxy"
+
+msgid "WARNING"
+msgstr "WAARSCHUWING"
+
+msgid "WEB FILTER"
+msgstr "WEB FILTER"
+
+msgid "WEB SERVER"
+msgstr "WEB SERVER"
+
+msgid "WUI"
+msgstr "WUI"
+
+msgid "WUI Logs"
+msgstr "WUI Logbestanden"
+
+msgid "Weather news sites and weather related"
+msgstr ""
+
+msgid "Web Access Denied Reporting"
+msgstr "Web Toegang Geblokkeerd Rapportage"
+
+msgid "Web Filter"
+msgstr "Web Filter"
+
+msgid "Web Filter Access"
+msgstr "Web Filter Toegang"
+
+msgid "Web Filter IP range wrong"
+msgstr "Fout in de Web Filter IP reeks"
+
+msgid "Web Server"
+msgstr "Web Server"
+
+msgid "Web Server (WUI)"
+msgstr "Web Server (WUI)"
+
+msgid "Web Server Access"
+msgstr "Web Server Toegang"
+
+msgid "Web interface for configuring and monitoring OpenBSD/pf."
+msgstr "Web beheerspagina voor het instellen en monitoren van OpenBSD/pf."
+
+msgid "Webmail and email sites"
+msgstr ""
+
+msgid "Wed"
+msgstr "Wo"
+
+msgid "Weighted phrase list"
+msgstr "Gewogen frase lijst"
+
+msgid "Weighted phrase mode"
+msgstr "Gewogen zinssnedes mode"
+
+msgid ""
+"What is recorded in packet filter logs is determined by pf rules you can "
+"configure under Rules tab."
+msgstr ""
+
+msgid "When (h)"
+msgstr "Wanneer (uur)"
+
+msgid ""
+"When a file with unknown content length gets handled by the fancy DM, "
+"something must be done in the case that the file is found to be too large to "
+"scan (i.e. larger than maxcontentfilecachescansize).\n"
+"As of 2.9.7.0, a warning will be issued to the user that the fancy DM may "
+"not be able to cache the entire file, and the file will continue to be "
+"downloaded to disk (but not scanned) until it reaches this size, at which "
+"point the user will simply have to re-download the file (the URL won't be "
+"scanned again).\n"
+"The size is in kibibytes (i.e. 10240 = 10Mb)"
+msgstr ""
+
+msgid ""
+"When enabled, DG looks for URLs within URLs, checking against the "
+"bannedsitelist and bannedurllist. This can be used, for example, to block "
+"images originating from banned sites from appearing in Google Images search "
+"results, as the original URLs are embedded in the thumbnail GET requests.\n"
+"(on|off) default = off"
+msgstr ""
+
+msgid ""
+"When on this disables the forced killing off all processes in the process "
+"group.\n"
+"This is not to be confused with the -g run time option - they are not "
+"related.\n"
+"on|off ( defaults to off )"
+msgstr ""
+
+msgid ""
+"When set to something greater than zero, this option causes URLs embedded "
+"within a page's HTML (from links, image tags, etc.) to be extracted and "
+"checked against the bannedsitelist and bannedurllist. Each link to a banned "
+"page causes the amount set here to be added to the page's weighting.\n"
+"The behaviour of this option with regards to multiple occurrences of a site/"
+"URL is affected by the weightedphrasemode setting.\n"
+"\n"
+"Set to 0 to disable.\n"
+"Defaults to 0.\n"
+"WARNING: This option is highly CPU intensive!"
+msgstr ""
+
+msgid ""
+"Whether or not to allow persistent connections (more than one request per "
+"connection). Set to \"Off\" to deactivate."
+msgstr ""
+
+msgid ""
+"Which TCP/UDP port should OpenVPN listen on? If you want to run multiple "
+"OpenVPN instances on the same machine, use a different port number for each "
+"one.  You will need to open up this port on your firewall."
+msgstr ""
+
+msgid "Which local IP address should OpenVPN listen on? (optional)."
+msgstr ""
+
+msgid "White and black list entries should not be identical"
+msgstr ""
+
+msgid "Whitelist"
+msgstr ""
+
+msgid ""
+"Whitelist entries are allowed. Greylist entries are allowed, and scanned for "
+"viruses. Blacklist entries are denied."
+msgstr ""
+
+msgid "Whitelisted"
+msgstr ""
+
+msgid ""
+"Whitelisted IPs are never blocked, even if IDS produces alerts for them. "
+"Make sure you have internal and external IP addresses of the system "
+"whitelisted here. Otherwise, false positives may block access to the system "
+"from the network."
+msgstr ""
+
+msgid ""
+"Who the content emails go to (when thresholds are exceeded) and "
+"contentnotify is on\n"
+"example: contentadmin = 'admin@mycompany.com'"
+msgstr ""
+
+msgid ""
+"Who the email would come from\n"
+"example: mailfrom = 'dansguardian@mycompany.com'"
+msgstr ""
+
+msgid ""
+"Who the virus emails go to (if notify av is on)\n"
+"example: avadmin = 'admin@mycompany.com'"
+msgstr ""
+
+msgid ""
+"With this option clamav will try to detect broken executables and mark them "
+"as Broken.Executable\n"
+"\t\tDefault: disabled"
+msgstr ""
+
+msgid "Won't delete database.clamav.net entry."
+msgstr ""
+
+msgid "X-Bogosity"
+msgstr "X-Bogosity"
+
+msgid "X-Spam-Flag"
+msgstr "X-Spam-Flag"
+
+msgid "X-Spam-Status"
+msgstr "X-Spam-Status"
+
+msgid "Yahoo"
+msgstr "Yahoo"
+
+msgid ""
+"You can apply configuration changes without restarting currently running "
+"process."
+msgstr ""
+
+msgid ""
+"You can browse the Doxygen source documentation of this web user interface "
+"on this page."
+msgstr ""
+
+msgid "You can change the timespan and size of the graphs."
+msgstr ""
+
+msgid ""
+"You can customize your rule sets here. Include only the relevant rule sets.\n"
+"\n"
+"Some of rule sets are disabled by default. These rules are either site "
+"policy specific or require tuning in order to not generate false positive "
+"alerts in most environments."
+msgstr ""
+
+msgid ""
+"You can modify the hosts file here. Format of a hosts entry is: IP hostname "
+"alias [alias [...]]"
+msgstr ""
+"U kunt het 'hosts' bestand hier aanpassen. Het formaat van een 'hosts' "
+"ingang is: IP hostnaam alias [alias [...]]"
+
+msgid "You can restart or stop the system using these buttons."
+msgstr "U kunt het systeem met deze knoppen herstarten, of stoppen."
+
+msgid ""
+"You can run multiple Intrusion Detection processes, one for each network "
+"interface."
+msgstr ""
+
+msgid "You can search categories on this page."
+msgstr ""
+
+msgid ""
+"You can set the system clock here. Format is day.month.year-hour:minute.\n"
+"\n"
+"<b>You must be very careful when setting the system clock, significant hops "
+"in system time may cause system malfunction.</b>"
+msgstr ""
+"U kunt de systeem klok hier instellen. Het formaat is dag.maand.jaar-uur:"
+"minuut.\n"
+"\n"
+"<b>U moet hier erg voorzichtig zijn met het instellen van de systeem klok, "
+"grote sprongen in systeem tijd kan ervoor zorgen dat het systeem niet langer "
+"werkt.</b>"
+
+msgid "You cannot delete system IP address"
+msgstr ""
+
+msgid ""
+"You may want to customize the frequency of database checks. Also make sure "
+"you have chosen a database mirror close to you."
+msgstr ""
+
+msgid ""
+"You may want to set the report language for your locale. By default, POP3 "
+"proxy scans for both spam and viruses."
+msgstr ""
+
+msgid ""
+"You may want to watch these logs carefully to determine infected clients in "
+"the internal network."
+msgstr ""
+
+msgid ""
+"You must change the following variables to reflect your local network. The "
+"variable is currently setup for an RFC 1918 address space."
+msgstr ""
+
+msgid ""
+"You should configure the IDS based on the services running on your network."
+msgstr ""
+
+msgid "You should select at least one conf file to start the process"
+msgstr ""
+"U moet tenminste 1 configuratie bestand selecteren om het proces te starten"
+
+msgid "You should select at least one interface to start IDS for"
+msgstr ""
+"U moet tenminste 1 netwerk verbinding selecteren waarvoor IDS gestart moet "
+"worden"
+
+msgid ""
+"You should take into account that there may be computers with static IP "
+"addresses or using BOOTP protocol, and choose a range accordingly."
+msgstr ""
+
+msgid "anonymize logs (blank out usernames & IPs)"
+msgstr ""
+
+msgid "blacklisted"
+msgstr ""
+
+msgid "blocked"
+msgstr "geblokkeerd"
+
+msgid "disabled"
+msgstr "uitgeschakeld"
+
+msgid "enabled"
+msgstr "ingeschakeld"
+
+msgid "end"
+msgstr "eind"
+
+msgid "h"
+msgstr "h"
+
+msgid "height"
+msgstr "hoogte"
+
+msgid ""
+"if on it logs some debug info regarding fork()ing and accept()ing which can "
+"usually be ignored.  These are logged by syslog.  It is safe to leave it on "
+"or off"
+msgstr ""
+
+msgid "is not running"
+msgstr "is niet aktief"
+
+msgid "is running"
+msgstr "is aktief"
+
+msgid "language to use from languagedir, e.g. 'ukenglish'"
+msgstr ""
+
+msgid "managed"
+msgstr "beheert"
+
+msgid "min"
+msgstr "min"
+
+msgid "non-news related radio and television"
+msgstr ""
+
+msgid "on|off ( defaults to off )"
+msgstr ""
+
+msgid "sec"
+msgstr "sec"
+
+msgid "secs"
+msgstr "seconden"
+
+msgid "size"
+msgstr "grootte"
+
+msgid "start"
+msgstr "start"
+
+msgid "stuff for mobile/cell phones"
+msgstr ""
+
+msgid "the ip of the proxy (default is the loopback - i.e. this server)"
+msgstr ""
+
+msgid "the port DansGuardian connects to proxy on"
+msgstr ""
+
+msgid "the port that DansGuardian listens to."
+msgstr ""
+
+msgid "timespan"
+msgstr "tijdsspanne"
+
+msgid "total"
+msgstr "totaal"
+
+msgid "truncate large items in log lines"
+msgstr ""
+
+msgid "unconfigured"
+msgstr ""
+
+msgid "whitelisted"
+msgstr ""
+
+msgid "width"
+msgstr "breedte"

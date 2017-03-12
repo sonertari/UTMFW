@@ -1,0 +1,74 @@
+pnrg is Copyright (C) 2006 by Pedro Sanchez
+
+1. Prerequisites
+
+a) A working pmacct installation. pnrg interacts only with pmacct client and
+   expects to find it as /usr/local/bin/pmacct
+   http://www.pmacct.net/
+
+b) A working RRDtool installation. pnrg interacts with both rrdtool exec and
+   rrdcgi. It expects to find a RRDtool installation under /usr/local/rrdtool
+   http://oss.oetiker.ch/rrdtool/
+
+c) A working web server with support for CGIs. Apache is highly recommended.
+   pnrg doesn't interact in any way with the web server, but in order to work
+   correctly, it's expected the spool directory to be browseable (and because
+   of the CGIs, executable aswell) by a web browser. 
+   http://httpd.apache.org/
+
+
+2. Installation and configuration
+
+a) after unpacking pnrg's tarball, copy all its content under /usr/local/pnrg
+   By default the package expects to run under such path. 
+
+b) launch your pmacct daemon (ie. either pmacctd, nfacctd or sfacctd; examples 
+   and commandlines in this document will focus on pmacctd but pnrg's behaviour
+   isn't somehow related to the daemon). contribs/pmacctd-nrg.conf is a sample
+   configuration. pnrg expects to get data by reading /tmp/pmacct_in.pipe and
+   /tmp/pmacct_out.pipe sockets. 
+
+   shell> /usr/local/sbin/pmacctd -f /usr/local/pnrg/contribs/pmacctd-nrg.conf
+
+c) insert pnrg's wrapper script in your crontab, executing each five minutes. 
+   It will automatically create RRD, CGI, DESC and corollary HTML files for you.
+
+   */5 * * * * ( cd /usr/local/pnrg/; ./pnrg-wrapper.sh )
+
+d) It's time to configure your Apache. These instructions are OK if you have 
+   just downloaded and installed a vanilla Apache 2 distribution - under the
+   usual /usr/local/apache2 tree. Add the following section to your httpd.conf
+   file and make the web server to load the new configuration:
+
+   <Directory /usr/local/apache2/htdocs/pnrg>
+   	Options Indexes ExecCGI
+        AllowOverride None
+	Order allow,deny
+	Allow from all
+   </Directory>
+
+   Then, symbolic link the following locations:
+
+   shell> ln -s /usr/local/pnrg/spool /usr/local/apache2/htdocs/pnrg
+
+e) That's it. Now, wait a few minutes, get a cup of coffee and point your web
+   browser to http://host/pnrg . If your pmacct daemon collected some traffic
+   in the meanwhile, you should see appearing the "AutoDiscovery" tree in the
+   lateral menu. Uncompress such tree, browse, play and enjoy!
+
+
+3. Customizing the package
+
+a) Many paths are hardcoded. This will hopefully change in the future. If you
+   need to change any of the default paths, the best way to do it is grepping
+   them through the source code, ie.
+
+   shell> grep -R /usr/local/rrdtool * 
+   shell> grep -R /usr/local *
+   shell> grep /tmp/pmacct_ *
+
+b) Keeping all discovered entries under the "AutoDiscovery" tree is not ideal.
+   Editing the specific DESC files in the spool directory is the proper way to 
+   logically group set of entries in distinct sub-folders. Currently, multiple
+   folding levels are not supported; once again, hopefully, this will change. 
+

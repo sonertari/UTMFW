@@ -1,0 +1,111 @@
+# SpamAssassin translations: Polish
+#
+# Polish translation based on work started by <radek at alter dot pl>
+# rewrite for version 2.60: Jerzy Szczud³owski <jerzy at jedwab dot net dot pl >
+# (v0.2)
+#
+# Ten program   jest  darmowy;  mo¿na  go rozprowadzaæ i/lub  modyfikowaæ  na
+# warunkach Licencji    Artystycznej lub Powszechnej Licencji Publicznej  GNU
+# publikowanej  przez Free  Software  Foundation;   zarówno   w wersji 1 lub,
+# którejkolwiek  pó¼niejszej. Szczegó³y w pliku "License",  znajduj±cym siê w
+# g³ównym katalogu ze ¼ród³ami SpamAssassina.
+#
+#
+# U¿ycie:
+# - ustaw w /etc/procmailrc (lub lokalnie w ~/.procmailrc) zmienn± LANG=pl_PL
+# - w konfiguracji SpamAssassina (globalnie local.cf, lokalnie user_prefs)
+#   dodaj opcjê: report_charset iso-8859-2
+#
+###########################################################################
+# This is the right place to customize your installation of SpamAssassin.
+#
+# See 'perldoc Mail::SpamAssassin::Conf' for details of what can be
+# tweaked.
+#
+# Only a small subset of options are listed below
+#
+###########################################################################
+
+#   Add *****SPAM***** to the Subject header of spam e-mails
+#
+rewrite_header Subject *****UTMFW SPAM WARNING*****
+
+
+#   Save spam messages as a message/rfc822 MIME attachment instead of
+#   modifying the original message (0: off, 2: use text/plain instead)
+#
+# report_safe 1
+
+
+#   Set which networks or hosts are considered 'trusted' by your mail
+#   server (i.e. not spammers)
+#
+# trusted_networks 212.17.35.
+
+
+#   Set file-locking method (flock is not safe over NFS, but is faster)
+#
+lock_method flock
+
+
+#   Set the threshold at which a message is considered spam (default: 5.0)
+#
+required_score 5.0
+
+
+#   Use Bayesian classifier (default: 1)
+#
+use_bayes 1
+bayes_path /var/db/spamassassin/.spamassassin/bayes
+
+#   Bayesian classifier auto-learning (default: 1)
+#
+bayes_auto_learn 1
+
+
+#   Set headers which may provide inappropriate cues to the Bayesian
+#   classifier
+#
+# bayes_ignore_header X-Bogosity
+# bayes_ignore_header X-Spam-Flag
+# bayes_ignore_header X-Spam-Status
+
+# character set used in the following texts
+report_charset iso-8859-2
+
+############## ........................................................................
+clear_report_template
+report ----------------- AUTOMATYCZNY raport antySPAMowy ----------------------
+report Oprogramowanie  do  wykrywania  spamu,  dzia³aj±ce  na  serwerze:
+report *** "_HOSTNAME_" ***,
+report zidentyfikowa³o  ten email  jako prawdopodobny  spam. Oryginalna  wiadomo¶æ
+report zosta³a do³±czona    do tej, aby mo¿na by³o j± przejrzeæ, zweryfikowaæ  lub
+report zablokowaæ na  przysz³o¶æ. Je¿eli masz jakie¶ w±tpliwo¶ci, to kieruj je pod
+report adres _CONTACTADDRESS_
+report
+report Przegl±d zawarto¶ci:  _PREVIEW_
+report 
+report Szczegó³y analizy zawarto¶ci: (_HITS_ zaliczonych, _REQD_ wymaganych)
+report
+report "pkt  nazwa regu³y           krótki opis"
+report  ---- ---------------------- -------------------------------------------
+report _SUMMARY_
+############## ........................................................................
+
+# A 'contact address' users should contact for more info. (replaces
+# _CONTACTADDRESS_ above if present)
+report_contact  UTMFW System Admin
+
+###########################################################################
+# szablon raportu wiadomo¶ci niebezpieczne-do-wgl±du 
+#
+##################### ......................................................................
+clear_unsafe_report_template
+unsafe_report Oryginalna wiadomo¶æ nie by³a w ca³o¶ci  tekstowa, w zwi±zku z tym otwarcie
+unsafe_report jej za  pomoc± niektórych  programów pocztowych   mo¿e  nie  byæ ca³kowicie
+unsafe_report bezpieczne; w  szczególno¶ci,   przesy³ka  mo¿e   zawieraæ  wirusa  lub kod
+unsafe_report informuj±cy spamera, ¿e twój adres pocztowy jest  prawid³owy    i mo¿na  na
+unsafe_report niego przysy³aæ wiêcej spamu.  Je¿eli  chcesz    j± przejrzeæ, bezpieczniej
+unsafe_report bêdzie zapisaæ j± najpierw na dysk, a nastêpnie otworzyæ edytorem tekstu.
+##################### ......................................................................
+

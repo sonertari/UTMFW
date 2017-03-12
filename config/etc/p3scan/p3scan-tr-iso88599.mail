@@ -1,0 +1,35 @@
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+        charset="iso-8859-9"
+
+Sayýn %USERNAME%,
+
+Bu e-posta UTMFW virüs ve spam tarayýcýsý tarafýndan
+otomatik olarak gönderilmiþtir.
+
+%HOSTNAME%.%DOMAINNAME%
+
+Size gönderilen bir e-postada virüs bulundu.
+
+Virus adý:
+    %VIRUSNAME%
+Gönderen:
+    %MAILFROM%
+Sent To:
+    %MAILTO%
+On Date:
+    %MAILDATE%
+Konu basligi:
+    %SUBJECT%
+Baðlantý:
+    %PROTOCOL% from %CLIENTIP%:%CLIENTPORT% to %SERVERIP%:%SERVERPORT%
+Mesaj dosyasý:
+    %P3SCANID%
+Virus Definition Info:
+    %VDINFO%
+
+Virüslü e-posta yerine bu uyarý gönderilmiþtir.
+--
+%PROGNAME% %VERSION%
+.

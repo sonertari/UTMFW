@@ -1,0 +1,118 @@
+# SpamAssassin translations: Française
+#
+# Written by Michel Bouissou <michel@bouissou.net> for SpamAssassin 2.60
+# Latest revision: 2003/11/14
+#
+# <@LICENSE>
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to you under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at:
+# 
+#     http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# </@LICENSE>
+#
+###########################################################################
+# This is the right place to customize your installation of SpamAssassin.
+#
+# See 'perldoc Mail::SpamAssassin::Conf' for details of what can be
+# tweaked.
+#
+# Only a small subset of options are listed below
+#
+###########################################################################
+
+#   Add *****SPAM***** to the Subject header of spam e-mails
+#
+rewrite_header Subject *****UTMFW NOTICE de SPAM*****
+
+
+#   Save spam messages as a message/rfc822 MIME attachment instead of
+#   modifying the original message (0: off, 2: use text/plain instead)
+#
+# report_safe 1
+
+
+#   Set which networks or hosts are considered 'trusted' by your mail
+#   server (i.e. not spammers)
+#
+# trusted_networks 212.17.35.
+
+
+#   Set file-locking method (flock is not safe over NFS, but is faster)
+#
+lock_method flock
+
+
+#   Set the threshold at which a message is considered spam (default: 5.0)
+#
+required_score 5.0
+
+
+#   Use Bayesian classifier (default: 1)
+#
+use_bayes 1
+bayes_path /var/db/spamassassin/.spamassassin/bayes
+
+#   Bayesian classifier auto-learning (default: 1)
+#
+bayes_auto_learn 1
+
+
+#   Set headers which may provide inappropriate cues to the Bayesian
+#   classifier
+#
+# bayes_ignore_header X-Bogosity
+# bayes_ignore_header X-Spam-Flag
+# bayes_ignore_header X-Spam-Status
+
+#      ......................................................................
+clear-report-template
+report ------------------ Début de Rapport SpamAssassin ---------------------
+report Ce message est probablement du SPAM (message non sollicité envoyé en
+report masse, publicité, escroquerie...).
+report
+report Cette notice a été ajoutée par le système d'analyse "SpamAssassin" sur
+report votre serveur de courrier "_HOSTNAME_", pour vous
+report aider à identifier ce type de messages.
+report
+report Le système SpamAssassin ajoute un en-tête "X-Spam-Flag: YES" aux
+report messages qu'il considère comme étant probablement du Spam.
+report Vous pouvez si vous le souhaitez utiliser cette caractéristique
+report pour régler un filtre dans votre logiciel de lecture de courrier,
+report afin de détruire ou de classer à part ce type de message.
+report
+report Si ce robot a classifié incorrectement un message qui vous était
+report destiné, ou pour toute question, veuillez contacter l'administrateur
+report du système.
+report
+report Voir http://spamassassin.apache.org/tag/ pour plus de détails (en anglais).
+report
+report Détails de l'analyse du message:   (_SCORE_ points, _REQD_ requis)
+report _SUMMARY_
+report -------------------- Fin de Rapport SpamAssassin ---------------------
+
+#      ......................................................................
+# Vous devriez changer "report_contact" dans le fichier 10_misc.cf.
+# _CONTACTADDRESS_ est remplacée par ce texte.
+#      ......................................................................
+
+#                     ......................................................................
+clear-unsafe-report-template
+unsafe-report Le message original n'étant pas au format text brut, il est peut-être
+unsafe-report dangereux de l'ouvrir avec votre logiciel e-mail ; en particulier il
+unsafe-report pourrait contenir un virus, ou confirmer à l'expéditeur que votre
+unsafe-report adresse e-mail est active, et peut recevoir du spam. Si vous voulez
+unsafe-report lire ce message, et n'êtes pas certain de la sécurité de votre logiciel
+unsafe-report e-mail, il est plus prudent d'enregistrer ce message sur votre disque
+unsafe-report dur, et de l'afficher ensuite avec un éditeur de texte.
+#                     ......................................................................
+

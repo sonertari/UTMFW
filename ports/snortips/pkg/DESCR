@@ -1,0 +1,6 @@
+The snortips daemon parses snort(8)'s alertfile (syslog) and blocks the naughty 
+hosts for a specific amount of time using pfctl.  It also handles alertfile 
+rotation.  By default it inserts hosts in the snortips table.  Snortips is able 
+to recover previously blocked hosts when starting.  It will assign them the 
+default block duration.  Snortips relies completely on pfctl output, and 
+corrects its behavior and hosts tables accordingly.

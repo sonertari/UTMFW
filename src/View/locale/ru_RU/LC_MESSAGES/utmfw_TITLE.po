@@ -1,0 +1,319 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Language: ru_RU\n"
+
+msgid "1 minute average"
+msgstr "среднее за 1 минуту"
+
+msgid "15 minute average"
+msgstr "среднее за 15 минут"
+
+msgid "5 minute average"
+msgstr "среднее за 5 минут"
+
+msgid "Admin e-mail"
+msgstr "e-mail Администратора"
+
+msgid "Archives"
+msgstr "Архивы"
+
+msgid "Automatic config"
+msgstr "Автоматическая настройка"
+
+msgid "Business Days"
+msgstr "Рабочие дни"
+
+msgid "Business Hours"
+msgstr "Рабочие часы"
+
+msgid "CPU Load"
+msgstr "Загрузка CPU"
+
+msgid "CPUs"
+msgstr ""
+
+msgid "Count"
+msgstr ""
+
+msgid "Data Transfer"
+msgstr "Передача данных"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "DateTime"
+msgstr ""
+
+msgid "Day"
+msgstr "День"
+
+msgid "Disabled Services"
+msgstr "Отключенные службы"
+
+msgid "Disk I/O"
+msgstr "Дисковый ввод/вывод"
+
+msgid "Disks"
+msgstr "Диски"
+
+msgid "ERROR"
+msgstr "ОШИБКА"
+
+msgid "Enabled Services"
+msgstr "Включенные службы"
+
+msgid "External Interface"
+msgstr "Внешний интерфейс"
+
+msgid "External interface"
+msgstr "Внешний интерфейс"
+
+msgid "Fan"
+msgstr "Куллер"
+
+msgid "File"
+msgstr "Файл"
+
+msgid "From"
+msgstr "От"
+
+msgid "Gateway"
+msgstr "Шлюз"
+
+msgid "Graph files"
+msgstr "Элементы графиков (изображения)"
+
+msgid "Group"
+msgstr "Группа"
+
+msgid "Help boxes"
+msgstr "Подсказки"
+
+msgid "Holidays"
+msgstr "Выходные"
+
+msgid "Hostname"
+msgstr "Имя хоста"
+
+msgid "Hosts"
+msgstr ""
+
+msgid "Hour"
+msgstr "Час"
+
+msgid "INFORMATION"
+msgstr "ИНФОРМАЦИЯ"
+
+msgid "IP Forwarding"
+msgstr "IP переадресация"
+
+msgid "Interface"
+msgstr "Интерфейс"
+
+msgid "Internal Interface"
+msgstr "Внутренний интерфейс"
+
+msgid "Internal interface"
+msgstr "Внутренний интерфейс"
+
+msgid "Language"
+msgstr ""
+
+msgid "Level"
+msgstr "Уровень"
+
+msgid "Line"
+msgstr "Строка"
+
+msgid "Lines per page"
+msgstr "Строк на страницу"
+
+msgid "Log"
+msgstr "Лог"
+
+msgid "Log level"
+msgstr "Уровень детализации логов"
+
+msgid "Logout"
+msgstr ""
+
+msgid "Logs"
+msgstr "Логи"
+
+msgid "Loopback Interface"
+msgstr "Интерфейс петля"
+
+msgid "Machine"
+msgstr "Платформа"
+
+msgid "Mbuf Statistics"
+msgstr "Статистика Mbuf"
+
+msgid "Memory Usage"
+msgstr "Использование памяти"
+
+msgid "Month"
+msgstr "Месяц"
+
+msgid "Motherboard"
+msgstr "Материнская плата"
+
+msgid "Nameserver"
+msgstr "Сервер имён (DNS)"
+
+msgid "Network Protocol Usage"
+msgstr "Использование сети (по протоколам)"
+
+msgid "Number of Processes"
+msgstr "Количество Процессов"
+
+msgid "Number of processes"
+msgstr "Количество процессов"
+
+msgid "Operating System"
+msgstr "Операционная Система"
+
+msgid "Partitions"
+msgstr "Разделы"
+
+msgid "Partitions Usages"
+msgstr "Использование разделов"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Password again"
+msgstr "Повторить пароль"
+
+msgid "Physical Memory"
+msgstr "Физическая память"
+
+msgid "Privileged IPs"
+msgstr "Привилигированные IP"
+
+msgid "Process"
+msgstr "Процесс"
+
+msgid "Process CPU Load"
+msgstr "Загрузка CPU данным процессом"
+
+msgid "Processor"
+msgstr "Процессор"
+
+msgid "Refresh interval"
+msgstr "Интервал обновления"
+
+msgid "Regexp"
+msgstr ""
+
+msgid "Reload interval"
+msgstr "Интервал перегрузки"
+
+msgid "Restart network"
+msgstr "Перезапустить сеть"
+
+msgid "Restricted IPs"
+msgstr "Ограниченные IP"
+
+msgid "Rotate all log files"
+msgstr "Архивирование всех лог файлов"
+
+msgid "Rule"
+msgstr "Правило"
+
+msgid "Search site"
+msgstr "Искать сайт"
+
+msgid "Secure Level"
+msgstr "Уровень безопасности"
+
+msgid "Selected"
+msgstr "Выбрано"
+
+msgid "Serial Number"
+msgstr "Серийный номер"
+
+msgid "Session timeout"
+msgstr "Таймаут сессии"
+
+msgid "Size"
+msgstr "Размер"
+
+msgid "Size (KB)"
+msgstr "Размер (KB)"
+
+msgid "Software Version"
+msgstr "Версия программы"
+
+msgid "State Searches vs Packets"
+msgstr ""
+
+msgid "State Statistics"
+msgstr ""
+
+msgid "Statistics and uncompressed log files"
+msgstr "Несжатые файлы логов и статистики"
+
+msgid "System"
+msgstr "Система"
+
+msgid "Target"
+msgstr "Назначение"
+
+msgid "Temperature"
+msgstr "Температура"
+
+msgid "Time"
+msgstr "Время"
+
+msgid "Time server"
+msgstr "Сервер времени"
+
+msgid "To"
+msgstr "До"
+
+msgid "Uptime"
+msgstr "Время непрерывной работы"
+
+msgid "User"
+msgstr "Пользователь"
+
+msgid "User name"
+msgstr "Имя пользователя"
+
+msgid "Version"
+msgstr "Версия"
+
+msgid "WARNING"
+msgstr "ПРЕДУПРЕЖДЕНИЕ"
+
+msgid "When (h)"
+msgstr "Когда (ч.)"
+
+msgid "disabled"
+msgstr "отключено"
+
+msgid "enabled"
+msgstr "включено"
+
+msgid "is not running"
+msgstr "не запущен"
+
+msgid "is running"
+msgstr "выполняется"
+
+msgid "secs"
+msgstr "сек"

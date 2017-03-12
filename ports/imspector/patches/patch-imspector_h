@@ -1,0 +1,12 @@
+$ComixWall: patch-imspector_h,v 1.6 2009/07/25 09:55:29 soner Exp $
+--- imspector.h.orig	Thu Oct  2 18:28:28 2008
++++ imspector.h	Sat Mar 14 14:39:41 2009
+@@ -63,7 +63,7 @@
+ #define STRING_SIZE 1024
+ #define BUFFER_SIZE 65536
+ 
+-#define TRACE_DIR "/tmp/trace"
++#define TRACE_DIR "/tmp/imspector/trace"
+ 
+ #ifndef UNIX_PATH_MAX
+ #define UNIX_PATH_MAX 108

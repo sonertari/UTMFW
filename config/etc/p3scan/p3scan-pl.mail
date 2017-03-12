@@ -1,0 +1,35 @@
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+     charset="iso-8859-2"
+
+Witaj %USERNAME%.
+Ta wiadomo?? zosta?a wygenerowana automatycznie przez program P3Scan,
+który dzia?a na serwerze %HOSTNAME%.%DOMAINNAME%
+i skanuje poczt? pod k?tem wirusów i spamu.
+
+W wiadomo?ci wys?anej do ciebie zosta? znaleziony WIRUS!
+
+Ta wiadomo?? zosta?a wys?ana do ciebie zamiast zainfekowanego e-maila.
+
+Mo?esz przejrze? ?ród?o tej wiadomo?ci, je?li chcesz zobaczy? nag?ówki zainfekowanego emaila.
+
+Nazwa wirusa:
+ %VIRUSNAME%
+(Rzekomy) nadawca:
+ %MAILFROM%
+Odbiorca:
+ %MAILTO%
+Data:
+ %MAILDATE%
+Temat:
+ %SUBJECT%
+Dane po??czenia:
+ %PROTOCOL% z %CLIENTIP%:%CLIENTPORT% do %SERVERIP%:%SERVERPORT%
+Plik wiadomo?ci:
+ %P3SCANID%
+
+ %VDINFO%
+-- 
+%PROGNAME% %VERSION%
+by Jack S. Lai <laitcg@cox.net>

@@ -1,0 +1,102 @@
+#URLs in grey list
+#Don't bother with the http:// or the www
+
+#The greyurllist is for partly unblocking PART of a site
+#The greysitelist is for partly unblocking ALL of a site
+
+#The 'grey' lists override the 'banned' lists.
+#The 'exception' lists override the 'banned' lists also.
+#The difference is that the 'exception' lists completely switch
+#off *all* other filtering for the match.  'grey' lists only
+#stop the URL filtering and allow the normal filtering to work.
+
+#An example of grey list use is when in Blanket Block (whitelist)
+#mode and you want to allow some sites but still filter as normal
+#on their content
+
+#Another example of grey list use is when you ban a site but want
+#to allow part of it.
+
+#To include additional files in this list use this example:
+## .Include</etc/e2guardian/anotherurllist>
+
+#You can have multiple #.Includes.
+
+#List other URLs to block:
+
+#members.home.net/nice
+
+#.Include</etc/e2guardian/lists/blacklists/adv/urls>
+#.Include</etc/e2guardian/lists/blacklists/aggressive/urls>
+#.Include</etc/e2guardian/lists/blacklists/alcohol/urls>
+#.Include</etc/e2guardian/lists/blacklists/anonvpn/urls>
+#.Include</etc/e2guardian/lists/blacklists/automobile_bikes/urls>
+#.Include</etc/e2guardian/lists/blacklists/automobile_boats/urls>
+#.Include</etc/e2guardian/lists/blacklists/automobile_cars/urls>
+#.Include</etc/e2guardian/lists/blacklists/automobile_planes/urls>
+#.Include</etc/e2guardian/lists/blacklists/chat/urls>
+#.Include</etc/e2guardian/lists/blacklists/costtraps/urls>
+#.Include</etc/e2guardian/lists/blacklists/dating/urls>
+#.Include</etc/e2guardian/lists/blacklists/downloads/urls>
+#.Include</etc/e2guardian/lists/blacklists/drugs/urls>
+#.Include</etc/e2guardian/lists/blacklists/dynamic/urls>
+#.Include</etc/e2guardian/lists/blacklists/education_schools/urls>
+#.Include</etc/e2guardian/lists/blacklists/finance_banking/urls>
+#.Include</etc/e2guardian/lists/blacklists/finance_insurance/urls>
+#.Include</etc/e2guardian/lists/blacklists/finance_moneylending/urls>
+#.Include</etc/e2guardian/lists/blacklists/finance_other/urls>
+#.Include</etc/e2guardian/lists/blacklists/finance_realestate/urls>
+#.Include</etc/e2guardian/lists/blacklists/finance_trading/urls>
+#.Include</etc/e2guardian/lists/blacklists/fortunetelling/urls>
+#.Include</etc/e2guardian/lists/blacklists/forum/urls>
+#.Include</etc/e2guardian/lists/blacklists/gamble/urls>
+#.Include</etc/e2guardian/lists/blacklists/government/urls>
+#.Include</etc/e2guardian/lists/blacklists/hacking/urls>
+#.Include</etc/e2guardian/lists/blacklists/hobby_cooking/urls>
+#.Include</etc/e2guardian/lists/blacklists/hobby_games-misc/urls>
+#.Include</etc/e2guardian/lists/blacklists/hobby_games-online/urls>
+#.Include</etc/e2guardian/lists/blacklists/hobby_gardening/urls>
+#.Include</etc/e2guardian/lists/blacklists/hobby_pets/urls>
+#.Include</etc/e2guardian/lists/blacklists/homestyle/urls>
+#.Include</etc/e2guardian/lists/blacklists/hospitals/urls>
+#.Include</etc/e2guardian/lists/blacklists/imagehosting/urls>
+#.Include</etc/e2guardian/lists/blacklists/isp/urls>
+#.Include</etc/e2guardian/lists/blacklists/jobsearch/urls>
+#.Include</etc/e2guardian/lists/blacklists/library/urls>
+#.Include</etc/e2guardian/lists/blacklists/military/urls>
+#.Include</etc/e2guardian/lists/blacklists/models/urls>
+#.Include</etc/e2guardian/lists/blacklists/movies/urls>
+#.Include</etc/e2guardian/lists/blacklists/music/urls>
+#.Include</etc/e2guardian/lists/blacklists/news/urls>
+#.Include</etc/e2guardian/lists/blacklists/podcasts/urls>
+#.Include</etc/e2guardian/lists/blacklists/politics/urls>
+#.Include</etc/e2guardian/lists/blacklists/porn/urls>
+#.Include</etc/e2guardian/lists/blacklists/radiotv/urls>
+#.Include</etc/e2guardian/lists/blacklists/recreation_humor/urls>
+#.Include</etc/e2guardian/lists/blacklists/recreation_martialarts/urls>
+#.Include</etc/e2guardian/lists/blacklists/recreation_restaurants/urls>
+#.Include</etc/e2guardian/lists/blacklists/recreation_sports/urls>
+#.Include</etc/e2guardian/lists/blacklists/recreation_travel/urls>
+#.Include</etc/e2guardian/lists/blacklists/recreation_wellness/urls>
+#.Include</etc/e2guardian/lists/blacklists/redirector/urls>
+#.Include</etc/e2guardian/lists/blacklists/religion/urls>
+#.Include</etc/e2guardian/lists/blacklists/remotecontrol/urls>
+#.Include</etc/e2guardian/lists/blacklists/ringtones/urls>
+#.Include</etc/e2guardian/lists/blacklists/science_astronomy/urls>
+#.Include</etc/e2guardian/lists/blacklists/science_chemistry/urls>
+#.Include</etc/e2guardian/lists/blacklists/searchengines/urls>
+#.Include</etc/e2guardian/lists/blacklists/sex_education/urls>
+#.Include</etc/e2guardian/lists/blacklists/sex_lingerie/urls>
+#.Include</etc/e2guardian/lists/blacklists/shopping/urls>
+#.Include</etc/e2guardian/lists/blacklists/socialnet/urls>
+#.Include</etc/e2guardian/lists/blacklists/spyware/urls>
+#.Include</etc/e2guardian/lists/blacklists/tracker/urls>
+#.Include</etc/e2guardian/lists/blacklists/updatesites/urls>
+#.Include</etc/e2guardian/lists/blacklists/urlshortener/urls>
+#.Include</etc/e2guardian/lists/blacklists/violence/urls>
+#.Include</etc/e2guardian/lists/blacklists/warez/urls>
+#.Include</etc/e2guardian/lists/blacklists/weapons/urls>
+#.Include</etc/e2guardian/lists/blacklists/webmail/urls>
+#.Include</etc/e2guardian/lists/blacklists/webphone/urls>
+#.Include</etc/e2guardian/lists/blacklists/webradio/urls>
+#.Include</etc/e2guardian/lists/blacklists/webtv/urls>

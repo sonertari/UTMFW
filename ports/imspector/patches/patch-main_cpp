@@ -1,0 +1,12 @@
+$ComixWall: patch-main_cpp,v 1.5 2009/07/25 09:55:29 soner Exp $
+--- main.cpp.orig	Fri Oct 31 12:45:18 2008
++++ main.cpp	Sat Mar 14 14:39:41 2009
+@@ -10,7 +10,7 @@
+ #include "imspector.h"
+ 
+ #define DEFAULT_CONFIG "/usr/etc/imspector/imspector.conf"
+-#define LOGGING_SOCKET "/tmp/.imspectorlog"
++#define LOGGING_SOCKET "/tmp/imspector/.imspectorlog"
+ #define DEFAULT_PLUGIN_DIR "/usr/lib/imspector"
+ 
+ #define DEFAULT_RESPONSE_PREFIX "Message from IMSpector: -="

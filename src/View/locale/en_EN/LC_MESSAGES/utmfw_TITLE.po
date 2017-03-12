@@ -1,0 +1,318 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "1 minute average"
+msgstr ""
+
+msgid "15 minute average"
+msgstr ""
+
+msgid "5 minute average"
+msgstr ""
+
+msgid "Admin e-mail"
+msgstr ""
+
+msgid "Archives"
+msgstr ""
+
+msgid "Automatic config"
+msgstr ""
+
+msgid "Business Days"
+msgstr ""
+
+msgid "Business Hours"
+msgstr ""
+
+msgid "CPU Load"
+msgstr ""
+
+msgid "CPUs"
+msgstr ""
+
+msgid "Count"
+msgstr ""
+
+msgid "Data Transfer"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "DateTime"
+msgstr ""
+
+msgid "Day"
+msgstr ""
+
+msgid "Disabled Services"
+msgstr ""
+
+msgid "Disk I/O"
+msgstr ""
+
+msgid "Disks"
+msgstr ""
+
+msgid "ERROR"
+msgstr ""
+
+msgid "Enabled Services"
+msgstr ""
+
+msgid "External Interface"
+msgstr ""
+
+msgid "External interface"
+msgstr ""
+
+msgid "Fan"
+msgstr ""
+
+msgid "File"
+msgstr ""
+
+msgid "From"
+msgstr ""
+
+msgid "Gateway"
+msgstr ""
+
+msgid "Graph files"
+msgstr ""
+
+msgid "Group"
+msgstr ""
+
+msgid "Help boxes"
+msgstr ""
+
+msgid "Holidays"
+msgstr ""
+
+msgid "Hostname"
+msgstr ""
+
+msgid "Hosts"
+msgstr ""
+
+msgid "Hour"
+msgstr ""
+
+msgid "INFORMATION"
+msgstr ""
+
+msgid "IP Forwarding"
+msgstr ""
+
+msgid "Interface"
+msgstr ""
+
+msgid "Internal Interface"
+msgstr ""
+
+msgid "Internal interface"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Level"
+msgstr ""
+
+msgid "Line"
+msgstr ""
+
+msgid "Lines per page"
+msgstr ""
+
+msgid "Log"
+msgstr ""
+
+msgid "Log level"
+msgstr ""
+
+msgid "Logout"
+msgstr ""
+
+msgid "Logs"
+msgstr ""
+
+msgid "Loopback Interface"
+msgstr ""
+
+msgid "Machine"
+msgstr ""
+
+msgid "Mbuf Statistics"
+msgstr ""
+
+msgid "Memory Usage"
+msgstr ""
+
+msgid "Month"
+msgstr ""
+
+msgid "Motherboard"
+msgstr ""
+
+msgid "Nameserver"
+msgstr ""
+
+msgid "Network Protocol Usage"
+msgstr ""
+
+msgid "Number of Processes"
+msgstr ""
+
+msgid "Number of processes"
+msgstr ""
+
+msgid "Operating System"
+msgstr ""
+
+msgid "Partitions"
+msgstr ""
+
+msgid "Partitions Usages"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password again"
+msgstr ""
+
+msgid "Physical Memory"
+msgstr ""
+
+msgid "Privileged IPs"
+msgstr ""
+
+msgid "Process"
+msgstr ""
+
+msgid "Process CPU Load"
+msgstr ""
+
+msgid "Processor"
+msgstr ""
+
+msgid "Refresh interval"
+msgstr ""
+
+msgid "Regexp"
+msgstr ""
+
+msgid "Reload interval"
+msgstr ""
+
+msgid "Restart network"
+msgstr ""
+
+msgid "Restricted IPs"
+msgstr ""
+
+msgid "Rotate all log files"
+msgstr ""
+
+msgid "Rule"
+msgstr ""
+
+msgid "Search site"
+msgstr ""
+
+msgid "Secure Level"
+msgstr ""
+
+msgid "Selected"
+msgstr ""
+
+msgid "Serial Number"
+msgstr ""
+
+msgid "Session timeout"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
+msgid "Size (KB)"
+msgstr ""
+
+msgid "Software Version"
+msgstr ""
+
+msgid "State Searches vs Packets"
+msgstr ""
+
+msgid "State Statistics"
+msgstr ""
+
+msgid "Statistics and uncompressed log files"
+msgstr ""
+
+msgid "System"
+msgstr ""
+
+msgid "Target"
+msgstr ""
+
+msgid "Temperature"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Time server"
+msgstr ""
+
+msgid "To"
+msgstr ""
+
+msgid "Uptime"
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "User name"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "WARNING"
+msgstr ""
+
+msgid "When (h)"
+msgstr ""
+
+msgid "disabled"
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "is not running"
+msgstr ""
+
+msgid "is running"
+msgstr ""
+
+msgid "secs"
+msgstr ""

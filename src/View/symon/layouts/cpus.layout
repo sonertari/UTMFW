@@ -1,0 +1,2 @@
+group	name="CPU Load";
+graph	rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/cpu0.rrd, title="CPU 0";

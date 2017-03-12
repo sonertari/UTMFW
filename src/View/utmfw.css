@@ -1,0 +1,1137 @@
+/*
+ * Copyright (C) 2004-2017 Soner Tari
+ *
+ * This file is part of UTMFW.
+ *
+ * UTMFW is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * UTMFW is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*
+ * Defaults
+ */
+h1
+{
+	font-size: 150%;
+}
+
+h2
+{
+	font-size: 130%;
+	margin: 1em 0 0.3em 0;
+}
+
+h3
+{
+	font-size: 110%;
+}
+
+body
+{
+	font-size: 75%;
+}
+
+fieldset
+{
+	border: 0;
+	margin-top: 0em;
+}
+
+table
+{
+	width: 100%;
+	border: none black;
+	border-collapse: collapse;
+	overflow: visible;
+}
+
+th
+{
+	color: white;
+	background: #004a4a;
+	padding: 0.25em;
+	border: 1px solid white;
+	font-size: 90%;
+}
+
+td
+{
+	padding: 0.5em;
+}
+
+form
+{
+	padding: 0;
+	margin: 0;
+}
+
+code, pre
+{
+	padding-left: 1em;
+	font-size: 120%;
+}
+
+a
+{
+	text-decoration: none;
+}
+
+a:hover
+{
+ 	color: red;
+	background: white;
+}
+
+/*
+ * Main display area
+ */
+#infobox
+{
+	text-align: left;
+}
+
+td.infobox
+{
+	padding: 0;
+	padding-left: 0.5em;
+	margin: 0;
+	vertical-align: top;
+}
+
+#main td {
+	border: 1px solid #CCC;
+	padding: 1px;
+	font-size: 95%;
+}
+
+/*
+ * Top menu
+ */
+#menu
+{
+ 	margin-top: 3px;
+	padding-bottom: 0.2em;
+}
+
+#menu #tabs
+{
+	padding: 0;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#menu ul, #menu li
+{
+	padding: 0;
+	list-style: none;
+	margin: 0;
+	display: inline;
+	vertical-align: bottom;
+}
+
+#menu #tabs a
+{
+	padding: 0;
+	padding: 0.2em 0.6em;
+	color: white;
+	font-weight: bold;
+	border-top: 1px solid gray;
+	border-right: 1px solid gray;
+	border-left: 1px solid gray;
+	background-color: #b0b0b0;
+}
+
+#menu #tabs a:hover
+{
+	background-color: #505050;
+}
+
+#menu #tabs li.active a
+{
+	color: white;
+	font-weight: bold;
+  	background-color: #004a4a;
+	border-top: 1px solid black;
+	border-right: 1px solid black;
+	border-left: 1px solid black;
+}
+
+#menu .links
+{
+}
+
+#menu .links li
+{
+	margin-left: 0.5em;
+}
+
+#menu #links a, #menu #links a:hover
+{
+	color: black;
+	background-color: black;
+}
+
+#top td
+{
+	padding: 0;
+}
+
+.topmenu
+{
+	background: #f0f0f0;
+}
+
+#top .title
+{
+	color: #004a4a;
+	text-align: center;
+}
+
+#menuunderline
+{
+	padding: 0.25em;
+	background: #004a4a;
+}
+
+#topmenu td
+{
+	padding: 0;
+	padding-bottom: 0.25em;
+	margin: 0;
+	height: auto;
+}
+
+#topmenu div
+{
+	padding: 0;
+	margin: 0;
+	height: auto;
+}
+
+#topmenu ul, #topmenu li
+{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	display: inline;
+}
+
+#topmenu #tabs a, #topmenu #tabs a:hover
+{
+	padding: 0em 0.3em 0.1em 0.3em;
+	color: black;
+	border: 1px none white;
+	border-right: 1px solid #004a4a;
+	border-left: 1px solid #004a4a;
+	border-bottom: 1px solid #004a4a;
+}
+
+#topmenu #tabs a:hover
+{
+	background-color: #bfbfbf;
+}
+
+#topmenu #tabs li.active a
+{
+	color: white;
+	font-weight: bold;
+	background-color: #004a4a;
+	border: 1px none black;
+	border-right: 1px solid #004a4a;
+	border-left: 1px solid #004a4a;
+	border-bottom: 1px solid #004a4a;
+}
+
+#topmenu .links
+{
+	margin-top: 0;
+	padding-bottom: 0.2em;
+}
+
+#topmenu .links li
+{
+	margin-left: 0.1em;
+}
+
+#topmenu #links a, #topmenu #links a:hover
+{
+	color: black;
+}
+
+#submenu a
+{
+	color: #ebebeb;
+	border-top: none;
+	font-weight: bold;
+}
+
+#submenu li.active a
+{
+	color: white;
+}
+
+#submenu a:hover
+{
+	color: white;
+}
+
+#submenu ul, #submenu li
+{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	display: inline;
+}
+
+#submenu li
+{
+	padding-right: 0.25em;
+}
+
+#status
+{
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+}
+
+#status .image
+{
+	width: 1%;
+	padding: 0;
+}
+
+/*
+ * Page footer
+ */
+#bottomhelpregion
+{
+	padding: 0em 0em 0.5em 0.5em;
+	vertical-align: bottom;
+}
+
+#footer td
+{
+	padding: 0.2em 0.6em;
+	border-top: 1px solid #004a4a;
+	text-align: right;
+	text-decoration: none;
+	background-color: #f0f0f0;
+}
+
+#footer .user
+{
+	color: red;
+	text-align: left;
+}
+
+/*
+ * Login page
+ */
+#window
+{
+	width: auto;
+	background: white;
+	border-top: 2px solid #ccc;
+	border-left: 2px solid #ccc;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+}
+
+#window .titlebar
+{
+	text-align: center;
+	color: white;
+	background: #004a4a;
+	font-weight: bold;
+}
+
+#window .authbox
+{
+	text-align: center;
+}
+
+#window td.button
+{
+	text-align: right;
+}
+
+#window input.button
+{
+	font-weight: bold;
+}
+
+#authbox
+{
+	width: auto;
+	margin-top: 0.5em;
+	padding: 1px 1px 1px 1px;
+	background: #ccc;
+	border: 1px solid #eee;
+	border-bottom: 1px solid gray;
+	border-right: 1px solid gray;
+}
+
+#authbox .label
+{
+ 	text-align: right;
+	font-weight: bold;
+}
+
+#authbox td.textbox
+{
+	text-align: left;
+}
+
+#authbox input.textbox
+{
+	width: 200px;
+}
+
+/*
+ * Rules page
+ */
+.block
+{
+	background-color: #FF6264;
+}
+
+.pass
+{
+	background-color: #64FF62;
+}
+
+.match
+{
+	background-color: #fff79f;
+}
+
+.comment
+{
+	border-bottom: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	background-color: #ffddc0;
+	padding-left: 1em;
+	padding-right: 1em;
+	text-align: left;
+}
+
+.include
+{
+	border-bottom: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	background-color: #c2c2ff;
+	padding-left: 1em;
+	padding-right: 1em;
+	text-align: left;
+}
+
+.blank
+{
+	border-bottom: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	background-color: #ffffff;
+	padding-left: 1em;
+	padding-right: 1em;
+	text-align: left;
+}
+
+.category
+{
+	background-color: #ffffff;
+}
+
+.edit
+{
+	background-color: white;
+	border: none;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.editoddline
+{
+	background-color: #ebebeb;
+	border: none;
+	text-align: center;
+	white-space: nowrap;
+}
+
+/*
+ * Edit pages
+ */
+.add
+{
+	border-top: 1px solid #CCC;
+	margin-top: 1em;
+	padding-top: 0.2em;
+}
+
+.buttons
+{
+	margin-top: 1em;
+	text-align: left;
+}
+
+/*
+ * Setup page
+ */
+#nvp
+{
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+}
+
+#nvp td
+{
+	padding: 0.25em;
+	margin: 0;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+#nvp .title
+{
+	text-align: right;
+	border-right: 3px solid #ccc;
+ 	width: 15%;
+}
+
+#nvp .optitle
+{
+	text-align: left;
+	padding: 0.1em;
+	border: none;
+}
+
+#nvp .evenline
+{
+	background: white;
+}
+
+#nvp .oddline
+{
+	background: #f0f0f0;
+}
+
+#nvp .none
+{
+	border: none;
+	background: white;
+}
+
+#nvp .ifs
+{
+	padding: 0.1em;
+	border: none;
+}
+
+#nvp .titlegrouptop
+{
+	text-align: right;
+	border-right: 3px solid #ccc;
+	border-bottom: 0;
+	padding-bottom: 0;
+ 	width: 15%;
+}
+
+#nvp .titlegroupmiddle
+{
+	text-align: right;
+	border: 0;
+	border-right: 3px solid #ccc;
+	padding-bottom: 0;
+}
+
+#nvp .titlegroupbottom
+{
+	text-align: right;
+	border-top: 0;
+	border-right: 3px solid #ccc;
+}
+
+#nvp .valuegrouptop
+{
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+#nvp .valuegroupmiddle
+{
+	border: 0;
+	padding-bottom: 0;
+}
+
+#nvp .valuegroupbottom
+{
+	border-top: 0;
+}
+
+#nvp .rowspanhelp
+{
+	padding: 0;
+	background: white;
+	border: none;
+}
+
+#nvp .iftitle
+{
+	text-align: right;
+	padding: 0.1em;
+	border: none;
+ 	width: 15%;
+}
+
+#nvp .pfafterhours
+{
+	padding: 0;
+	border: none;
+}
+
+#nvp .pfafterhoursbutton
+{
+	padding: 0;
+	border: none;
+	text-align: right;
+}
+
+#ifselect td.title
+{
+	width: 15%;
+	text-align: right;
+}
+
+#ifselect td.help
+{
+	width: 50%;
+}
+
+.center
+{
+	text-align: center;
+}
+
+.top
+{
+	vertical-align: top;
+}
+
+/*
+ * Help box with title
+ */
+#mainhelpbox
+{
+	text-align: left;
+	font-size: 90%;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-bottom: 1px solid gray;
+	border-right: 1px solid gray;
+	background: #ffede4;
+	margin-top: 0.25em;
+}
+
+#mainhelpbox th
+{
+	color: white;
+  	background: #004a4a;
+	font-size: 100%;
+	border: none;
+	padding: 0.25em 0.25em 0.25em 5px;
+}
+
+#mainhelpbox td
+{
+	padding: 1em 1em 1em 0em;
+}
+
+#mainhelpbox .image
+{
+	vertical-align: top;
+	width: 0;
+	padding: 0;
+}
+
+#mainhelpbox .table td
+{
+	padding: 2px;
+}
+
+/*
+ * Help box (on the right)
+ */
+#helpbox
+{
+	text-align: left;
+	vertical-align: top;
+	font-size: 90%;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-bottom: 1px solid gray;
+	border-right: 1px solid gray;
+	background: #ffede4;
+}
+
+#helpbox td
+{
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+#helpbox td.leftbar
+{
+	width: 3px;
+	background: #004a4a;
+	padding: 0;
+}
+
+#status .version
+{
+	width: 50%;
+	text-align: right;
+	background-color: #ccc;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-bottom: 1px solid gray;
+	border-right: 1px solid gray;
+}
+
+/*
+ * Log header and lines
+ */
+#logline td
+{
+	padding: 1px;
+	font-size: 90%;
+	border: 1px solid #ccc;
+}
+
+#logline th
+{
+	color: white;
+	background: #004a4a;
+	border: 1px solid white; 
+	line-height: 1em;
+	text-align: center;
+}
+
+.green
+{
+	background: #8eff78;
+}
+
+.yellow
+{
+	background: #fff79f;
+}
+
+.red
+{
+	color: white;
+	background: #ff6666;
+}
+
+.evenline
+{
+	background: white;
+}
+
+.oddline
+{
+	background: #ebebeb;
+}
+
+#logline td.center
+{
+	text-align: center;
+}
+
+#logline td.right
+{
+	text-align: right;
+}
+
+#ipsmanaged td
+{
+	padding: 1px;
+}
+
+#ipsmanaged th
+{
+	color: white;
+	background: #004a4a;
+	border: none; 
+	line-height: 1em;
+	text-align: left;
+}
+
+#ipsmanaged .whitelisted
+{
+	color: green;
+	border-bottom: 1px solid gray;
+	font-size: 90%;
+}
+
+#ipsmanaged .blacklisted
+{
+	color: red;
+	border-bottom: 1px solid gray;
+	font-size: 90%;
+}
+
+#ipsmanaged .blocked
+{
+	color: red;
+	font-weight: bold;
+	border-bottom: 1px solid gray;
+	font-size: 90%;
+}
+
+.enablebutton
+{
+	color: green;
+}
+
+.disablebutton
+{
+	color: red;
+}
+
+/*
+ * IM proxy messages table
+ */
+.imselectbox
+{
+	width: 25%;
+}
+
+.imselected
+{
+	font-size: 90%;
+}
+
+.imlocaluser
+{
+	color: white;
+	background: gray;
+	padding: 2px;
+}
+ 
+#imlogs td
+{
+	padding: 1px;
+	font-size: 90%;
+	border: 1px solid #ccc;
+}
+
+#imlogs th
+{
+	color: white;
+	background: #004a4a;
+	border: 1px solid #004a4a;
+	line-height: 1em;
+	text-align: center;
+}
+
+.intext td
+{
+	color: black;
+}
+
+.outtext td
+{
+	color: white;
+	background: gray;
+}
+
+.infilexfer td
+{
+	color: white;
+	background: #ff6666;
+}
+
+.outfilexfer td
+{
+	color: white;
+	background: blue;
+}
+
+/*
+ * Statistics table and graph
+ */
+#stats
+{
+	font-size: 90%;
+}
+
+#stats td.name
+{
+	padding: 0em 0.25em 1px 0.25em;
+	width: 80%;
+}
+
+#stats td.value
+{
+	width: 5%;
+	text-align: right;
+	background: gray;
+	color: white;
+	padding: 0em 0.25em 1px 0.25em;
+	border-bottom: 1px solid white;
+}
+
+#statsgraph
+{
+	height: 10px;
+	border: 1px solid #ccc;
+	background: white;
+}
+
+#statsgraph tr.hgraph
+{
+	height: 100px;
+}
+
+#bar td
+{
+	color: white;
+	padding: 0;
+	margin: 0;
+	width: 5px;
+	font-size: 90%;
+	text-align: center;
+	vertical-align: top;
+	border-right: 1px solid white;
+	text-decoration: none;
+}
+
+#statsgraph td
+{
+	width: auto;
+	padding: 0;
+	margin: 0;
+	vertical-align: bottom;
+}
+
+#statsgraph td.bartop
+{
+	width: 5px;
+	text-align: center;
+	text-decoration: none;
+	border-right: 1px solid white;
+	font-size: 90%;
+}
+
+#statsgraph td.legend
+{
+	width: 5px;
+	text-align: center;
+	text-decoration: none;
+	border-right: 1px solid white;
+	font-size: 90%;
+	color: white;
+	background-color: black;
+}
+
+#statsgraph td.hlegend
+{
+	width: 10%;
+}
+
+#statset
+{
+	padding: 1px 5px 1px 5px;
+	margin: 10px 1px 1px 1px;
+	background-color: #f0f0f0;
+}
+
+#statset td.nvps
+{
+	vertical-align: top;
+}
+
+#hbar td
+{
+	color: white;
+	padding: 0;
+	margin: 0;
+	font-size: 90%;
+	border-top: 1px solid white;
+	text-decoration: none;
+}
+
+#hbar td.value
+{
+	color: black;
+}
+
+#hbar td.valuezero
+{
+	width: 100%;
+}
+
+/*
+ * Exts and mimes
+ */
+#extadd
+{
+	width: auto;
+	margin: 0;
+	padding: 0;
+}
+
+#extadd td
+{
+	margin: 0;
+	padding: 0;
+}
+
+#extadd .title
+{
+	text-align: right;
+}
+
+/*
+ * Filter groups
+ */
+#groupbox td
+{
+	border: 3px solid white;
+}
+
+#groupbox .group
+{
+	background-color: #eee;
+}
+
+#cat
+{
+	border-right: 1px dotted gray;
+	text-align: right;
+	border-bottom: 1px dotted gray;
+}
+
+#catdesc
+{
+	border-bottom: 1px dotted gray;
+}
+
+/*
+ * Link properties
+ */
+a
+{
+	text-decoration: none;
+}
+
+a:hover
+{
+ 	color: red;
+	background: white;
+}
+
+/*
+ * Main (left) menu
+ */
+
+#leftmenutext table
+{
+	width: auto;
+}
+
+#leftmenutext td
+{
+	vertical-align: top;
+	padding: 0;
+}
+
+#leftmenutext .value
+{
+	text-align: right;
+	padding-right: 3px;
+}
+
+#leftmenutext .unit
+{
+	padding-right: 1px;
+}
+
+#mainmenuframe
+{
+	width: 155px;
+	color: gray;
+	background: #f0f0f0;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+ 	border-right: 0.5em solid #004a4a;
+	font-weight: bold;
+}
+
+#mainmenuframe .fixed
+{
+	width: 155px;
+}
+
+#mainmenu
+{
+	margin: 0;
+	padding: 0;
+}
+
+#mainmenu ul
+{
+	list-style: none;
+	margin: 0;
+	margin-bottom: 1px;
+	padding: 0;
+	border: none;
+}
+		
+#mainmenu li
+{
+	margin: 0;
+	border-bottom: 1px solid #eee;
+}
+
+#mainmenu li a
+{
+	color: #f0f0f0;
+	background: gray;
+	margin: 0;
+	padding: 1px;
+	border-left: 8px solid black;
+	border-right: 8px solid #aaa;
+	text-decoration: none;
+	display: block;
+}
+
+#mainmenu li a:hover
+{
+	color: #f0f0f0;
+	background: #505050;
+	border-left: 8px solid #aaa;
+	border-right: 8px solid black;
+}
+
+#mainmenu li.active a
+{
+  	background: #004a4a;
+	border-right: 8px solid #004a4a;
+	border-left: 8px solid #aaa;
+}
+
+#mainmenu img
+{
+	border: 0;
+	vertical-align: middle;
+}

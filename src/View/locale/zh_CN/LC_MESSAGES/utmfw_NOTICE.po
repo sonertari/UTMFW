@@ -1,0 +1,93 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid ""
+"Analysis of statistical data may take a long time to process. Please be "
+"patient. Also note that if you refresh this page frequently, CPU load may "
+"increase considerably."
+msgstr ""
+"统计数据分析，可能需要很长时间来处理。请耐心等待。此外请注意，如果您频繁刷新"
+"此页，CPU的负载可能大大增加。"
+
+msgid "Are you sure you want to create a new group?"
+msgstr "你确定要创建一个新组？"
+
+msgid "Are you sure you want to delete the configuration?"
+msgstr "你确定要删除配置？"
+
+msgid "Are you sure you want to delete the selected items?"
+msgstr "你确定要删除所选的项目？"
+
+msgid "Are you sure you want to erase statistics files?"
+msgstr "你确定你想要删除的统计数据文件吗？"
+
+msgid "Are you sure you want to reinitialize graph files?"
+msgstr "你确定要重新初始化图形文件吗？"
+
+msgid "Are you sure you want to restart the <NAME>?"
+msgstr "你确定要重新启动的<NAME>？"
+
+msgid "Are you sure you want to restart the network?"
+msgstr "你确定要重新启动网络？"
+
+msgid "Are you sure you want to rotate the logs?"
+msgstr ""
+
+msgid "Are you sure you want to set the date?"
+msgstr "你确定要设置日期？"
+
+msgid "Are you sure you want to start the <NAME>?"
+msgstr "你确定要启动<NAME>？"
+
+msgid "Are you sure you want to stop the <NAME>?"
+msgstr "你确定要停止<NAME>？"
+
+msgid ""
+"Automatic configuration completed. You might want to check the details now."
+msgstr "自动配置完成。您可能需要检查的细节了。"
+
+msgid "Automatic configuration failed."
+msgstr "自动配置失败。"
+
+msgid "UTMFW currently supports only admin and user usernames"
+msgstr "UTMFW目前仅支持管理员和用户的用户名"
+
+msgid "FAILED"
+msgstr "失败"
+
+msgid "Filter group not found"
+msgstr "找不到过滤组"
+
+msgid "Not a valid password"
+msgstr "不是一个有效的密码"
+
+msgid "Page start line"
+msgstr "页面起始线"
+
+msgid "Passwords do not match"
+msgstr "密码不匹配"
+
+msgid "System is going down..."
+msgstr "系统正在关机..."
+
+msgid "System is restarting..."
+msgstr "系统正在重新启动..."
+
+msgid "You should select at least one conf file to start the process"
+msgstr "你应该选择至少一个conf文件，以启动这一进程"
+
+msgid "You should select at least one interface to start IDS for"
+msgstr "你应该选择至少一个接口以开始IDS系统"

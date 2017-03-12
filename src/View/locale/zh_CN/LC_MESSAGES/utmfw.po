@@ -1,0 +1,6455 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid ""
+" This the limit over which the page will be blocked.  Each weighted phrase "
+"is given a value either positive or negative and the values added up.  "
+"Phrases to do with good subjects will have negative values, and bad subjects "
+"will have positive values.  See the weightedphraselist file for examples.\n"
+"As a guide:\n"
+"50 is for young children,  100 for old children,  160 for young adults."
+msgstr ""
+"这是网页将被封锁的限制。每个加权短语给定一个正值或负值并加起来。好短语有负"
+"值，而坏短语有正值看到例子weightedphraselist文件。\n"
+"作为一个指南：\n"
+"小孩50，大孩子100， 青少年160 。"
+
+msgid ""
+"\"dev tun\" will create a routed IP tunnel, \"dev tap\" will create an "
+"ethernet tunnel. Use \"dev tap0\" if you are ethernet bridging and have "
+"precreated a tap0 virtual interface and bridged it with your ethernet "
+"interface. If you want to control access policies over the VPN, you must "
+"create firewall rules for the the TUN/TAP interface."
+msgstr ""
+"\"dev tun\"将创建一个路由的IP隧道，\"dev tap\"将创建一个以太网隧道。使用"
+"\"dev tap0\"如果你是以太网桥接，并事先设立tap0虚拟接口和桥接它与您的网卡接"
+"口。如果你想控制的VPN接入的政策，你必须创建防火墙规则的TUN / TAP接口。"
+
+msgid "%CPU"
+msgstr "％CPU"
+
+msgid "%MEM"
+msgstr "％MEM"
+
+msgid ""
+"(only used with accessdeniedaddress)\n"
+"To help preserve the full banned URL, including parameters, the variables "
+"passed into the access denied CGI are separated using non-standard "
+"delimiters. This can be useful to ensure correct operation of the filter "
+"bypass modes. Parameters are split using \"::\" in place of \"&\", and \"=="
+"\" in place of \"=\".\n"
+"Default is enabled, but to go back to the standard mode, disable it."
+msgstr ""
+"（只用于accessdeniedaddress）\n"
+"为了帮助保持完整禁止URL，包括参数，变量通过将被拒绝访问CGI是分开使用非标准分"
+"隔符。这可有助于确保过滤器的正确操作旁路模式。参数是分割使用 \"::\"代替\"&\","
+"和\"==\" 代替\"=\".\n"
+"默认被启用，而是返回到标准模式，禁用它。"
+
+msgid ""
+"-1 = log, but do not block - Stealth mode\n"
+"0 = just say 'Access Denied'\n"
+"1 = report why but not what denied phrase\n"
+"2 = report fully\n"
+"3 = use HTML template file (accessdeniedaddress ignored) - recommended"
+msgstr ""
+"-1 =日志，但不会阻止-隐形模式\n"
+"0 =只说‘访问被拒绝’\n"
+"1 =报告为什么，但不是拒绝短语\n"
+"2 =报告全部\n"
+"3 =使用HTML模板文件（accessdeniedaddress忽略） -推荐"
+
+msgid ""
+"-1 = log, but do not block - Stealth mode\n"
+"0 = just say Access Denied\n"
+"1 = report why but not what denied phrase\n"
+"2 = report fully\n"
+"3 = use HTML template file (accessdeniedaddress ignored) - recommended\n"
+"\n"
+"If defined, this overrides the global setting in dansguardian.conf for "
+"members of this filter group."
+msgstr ""
+"-1 =日志，但不会阻止-隐形模式\n"
+"0 =只说拒绝访问\n"
+"1 =报告为什么，但不是否认短语\n"
+"2 =报告充分\n"
+"3 =使用HTML模板文件（accessdeniedaddress忽略） -推荐\n"
+"\n"
+"如果定义，这将覆盖全局的dansguardian.conf设置此过滤器的成员组。"
+
+msgid "0 = none  1 = just denied  2 = all text based  3 = all requests"
+msgstr "0 =无1 = 2 =刚否认所有文字= 3的所有要求"
+
+msgid "1 minute average"
+msgstr "1分钟平均"
+
+msgid "15 minute average"
+msgstr "平均15分钟"
+
+msgid "5 minute average"
+msgstr "平均5分钟"
+
+msgid "< Previous"
+msgstr "<向前"
+
+msgid "<< First"
+msgstr "<<第一"
+
+msgid ""
+"<b>Make sure you have applied your changes to network settings system-wide "
+"using automatic configuration button.</b>\n"
+"\n"
+"If you change the IP address of the network interface over which you are "
+"connected to this web user interface, and use the network restart button on "
+"this page, do not forget to change the URL on your web browser accordingly.\n"
+"\n"
+"It is not advised to configure the internal interface as dhcp."
+msgstr ""
+"<b>请确保您已应用的更改全系统网络设置使用自动配置按钮。</b>\n"
+"\n"
+"如果你改变了连接到本网站的用户界面网络接口，并使用这个页面的网络启动按钮，不"
+"要忘记更改您的网页浏览器中相应的URL。\n"
+"\n"
+"不建议配置内部接口为DHCP。"
+
+msgid ""
+"A netmask for client addresses in logfiles and cachemgr output.\n"
+"\t\tChange this to protect the privacy of your cache clients.\n"
+"\t\tA netmask of 255.255.255.0 will log all IP's in that range with the last "
+"digit set to '0'."
+msgstr ""
+"在一个日志文件和cachemgr输出客户端地址掩码。\n"
+"\t\t改变是为了保护您的缓存客户的隐私。\n"
+"\t\t网掩码为255.255.255.0电讯将记录所有的知识产权在与范围内的最后数字设置"
+"为‘0’。"
+
+msgid "ACL"
+msgstr "ACL"
+
+msgid "ACL gives you fine-grained control over who can access the IM proxy."
+msgstr "ACL让您精细控制谁可以访问IM代理服务器。"
+
+msgid "AV Admin"
+msgstr "杀毒管理"
+
+msgid "AV Subject"
+msgstr "杀毒主题"
+
+msgid "Access Denied Address"
+msgstr "访问被拒绝地址"
+
+msgid "Access Logs"
+msgstr "访问日志"
+
+msgid "Access control list"
+msgstr "访问控制列表"
+
+msgid "Access denied address"
+msgstr "访问被拒绝地址"
+
+msgid "Account name"
+msgstr "帐户名称"
+
+msgid "Active IPs (arp table)"
+msgstr "（ARP表主动IP地址）"
+
+msgid "Active States"
+msgstr "激活状态"
+
+msgid "Add"
+msgstr "添加"
+
+msgid "Add *****SPAM***** to the Subject header of spam e-mails"
+msgstr "垃圾邮件主题添加 *****SPAM***** "
+
+msgid "Add ACL"
+msgstr "添加ACL"
+
+msgid "Add DHCP interface"
+msgstr "添加DHCP接口"
+
+msgid "Add HTTP proxy IP:port"
+msgstr "HTTP代理服务器的IP地址：端口"
+
+msgid "Add IP"
+msgstr "添加IP"
+
+msgid "Add alert keyword"
+msgstr "添加提醒关键字"
+
+msgid "Add badword"
+msgstr "添加不当字词"
+
+msgid "Add database mirror"
+msgstr "添加数据库镜像"
+
+msgid "Add ext/mime"
+msgstr "添加扩展名/MIME"
+
+msgid "Add filter group IP"
+msgstr "组IP地址过滤"
+
+msgid "Add host"
+msgstr "添加主机"
+
+msgid "Add list item"
+msgstr "添加列表项"
+
+msgid "Add to IP list"
+msgstr "添加到IP清单"
+
+msgid "Address Family"
+msgstr "家庭地址"
+
+msgid "Admin e-mail"
+msgstr "管理电子邮件"
+
+msgid "Advanced"
+msgstr "高级"
+
+msgid "Advanced Power Management"
+msgstr "高级电源管理"
+
+msgid "Advert servers and banned URLs"
+msgstr "广告服务器和禁止的网址"
+
+msgid "After hours"
+msgstr "业余时间"
+
+msgid "Age"
+msgstr ""
+
+msgid ""
+"Age before they are stale and should be ignored in seconds\n"
+"0 = never\n"
+"900 = recommended = 15 mins"
+msgstr ""
+"年龄之前，陈旧的，应在几秒钟内被忽略\n"
+"0 =永远\n"
+"900 =推荐= 15分钟"
+
+msgid "Alerts"
+msgstr "警报"
+
+msgid "All alerts"
+msgstr "所有报警"
+
+msgid "All attempts"
+msgstr "所有尝试"
+
+msgid "All connections"
+msgstr "所有连接"
+
+msgid "All monitoring processes write to the same log file."
+msgstr "所有监测进程写入相同的日志文件。"
+
+msgid "All queries"
+msgstr "所有查询"
+
+msgid "All requests"
+msgstr "所有请求"
+
+msgid "All rights reserved."
+msgstr "保留所有权利。"
+
+msgid "All sessions"
+msgstr "所有会话"
+
+msgid "All sport sites"
+msgstr "所有的体育网站"
+
+msgid "All un/blocks and extensions"
+msgstr "所有启用/禁用扩展"
+
+msgid "Allow localhost"
+msgstr "允许本地主机"
+
+msgid "Allowed requests"
+msgstr "允许的请求"
+
+msgid ""
+"Also log clean files. Useful in debugging but drastically increases the log "
+"size.\n"
+"\t\tDefault: disabled"
+msgstr ""
+"还干净的档案记录。有用的调试，但大大增加日志大小。\n"
+"\t\t 省缺：停用"
+
+msgid ""
+"Although this is called a 'blacklist', the categories can be used as white "
+"or grey lists also. Being listed does not infer that the site is bad, these "
+"are just lists of sites.\n"
+"\n"
+msgstr ""
+"虽然这是所谓的'黑名单'，类别可以用来为白色或者也灰名单。列在名单中并非暗示该"
+"网站是不好的，这些是的网站只是名单。\n"
+"\n"
+
+msgid ""
+"Among web filter log messages are page denials, virus scan results, denial "
+"bypasses or exceptions. However, some details can be found in HTTP proxy "
+"logs only, such as the sizes of file downloads if the download manager is "
+"engaged."
+msgstr ""
+"在网页过滤日志消息有拒绝的页，病毒扫描结果，拒绝绕道或例外。但是，一些细节中"
+"可以找到HTTP代理记录，如下载文件的大小，如果下载经理被使用。"
+
+msgid ""
+"An important setting may be the rewrite header which is used on the subject "
+"line of an e-mail identified as spam. Note that spam identification is a "
+"guess based on statistical calculations, hence there may be false positives."
+msgstr ""
+"一个重要的设置可能会重写标头，这是关于这一主题的使用的电子邮件为垃圾邮件确"
+"定。请注意，是一个垃圾邮件识别猜测根据统计计算，因此可能有误报。"
+
+msgid ""
+"Analysis of statistical data may take a long time to process. Please be "
+"patient. Also note that if you refresh this page frequently, CPU load may "
+"increase considerably."
+msgstr ""
+"统计数据分析，可能需要很长时间来处理。请耐心等待。此外请注意，如果您频繁刷新"
+"此页，CPU的负载可能大大增加。"
+
+msgid "And finally deny all other access to this proxy"
+msgstr "最后否认此代理的所有其它访问"
+
+msgid "Anonymize Logs"
+msgstr "匿名日志"
+
+msgid "Apply"
+msgstr "应用"
+
+msgid "Apply AfterHours"
+msgstr "应用非工作时间"
+
+msgid "Apply configuration"
+msgstr "应用配置"
+
+msgid "Apply pf rules"
+msgstr "应用PF规则"
+
+msgid "Archive Block Encrypted"
+msgstr "档案块加密"
+
+msgid "Archive Block Max"
+msgstr "档案块最大"
+
+msgid "Archive Limit Memory Usage"
+msgstr "档案限制内存使用"
+
+msgid "Archive Max Compression Ratio"
+msgstr "档案最大压缩比"
+
+msgid "Archive Max File Size"
+msgstr "档案最大文件大小"
+
+msgid "Archive Max Files"
+msgstr "存档最大文件"
+
+msgid "Archive Max Recursion"
+msgstr "档案最大递归"
+
+msgid "Archives"
+msgstr "档案"
+
+msgid ""
+"Are we connecting to a TCP or UDP server?  Use the same setting as on the "
+"server."
+msgstr "我们连接到TCP或UDP服务器？使用于相同的设置服务器。"
+
+msgid "Are you sure you want to create a new group?"
+msgstr "你确定要创建一个新组？"
+
+msgid "Are you sure you want to delete the configuration?"
+msgstr "你确定要删除配置？"
+
+msgid "Are you sure you want to delete the selected items?"
+msgstr "你确定要删除所选的项目？"
+
+msgid "Are you sure you want to erase statistics files?"
+msgstr "你确定你想要删除的统计数据文件吗？"
+
+msgid "Are you sure you want to reinitialize graph files?"
+msgstr "你确定要重新初始化图形文件吗？"
+
+msgid "Are you sure you want to restart the <NAME>?"
+msgstr "你确定要重新启动的<NAME>？"
+
+msgid "Are you sure you want to restart the network?"
+msgstr "你确定要重新启动网络？"
+
+msgid "Are you sure you want to rotate the logs?"
+msgstr ""
+
+msgid "Are you sure you want to set the date?"
+msgstr "你确定要设置日期？"
+
+msgid "Are you sure you want to start the <NAME>?"
+msgstr "你确定要启动<NAME>？"
+
+msgid "Are you sure you want to stop the <NAME>?"
+msgstr "你确定要停止<NAME>？"
+
+msgid "Arg type check failed"
+msgstr ""
+
+msgid "Art sites containing artistic nudity"
+msgstr "艺术网站包含的艺术裸露"
+
+msgid ""
+"As a matter of course, URLs undergo regular expression search/replace "
+"(urlregexplist) *after* checking the exception site/URL/regexpURL lists, but "
+"*before* checking against the banned site/URL lists, allowing certain "
+"requests that would be matched against the latter in their original state to "
+"effectively be converted into grey requests.\n"
+"With this option enabled, the exception site/URL/regexpURL lists are also re-"
+"checked after replacement, making it possible for URL replacement to trigger "
+"exceptions based on them.\n"
+"Defaults to off."
+msgstr ""
+"作为一个理所当然的网址进行正则表达式查找/替换（urlregexplist）* *检查后，除网"
+"站/网址/，regexpURL清单，但* *前对禁止现场检查/网址列表，允许某些这将是对在其"
+"原始状态的要求，后者匹配有效地转换成灰色的请求。\n"
+"使用该选项启用例外网站/网址/ regexpURL名单也再次检查后，更换，从而使更换网址"
+"触发根据这些例外。\n"
+"默认为关闭。"
+
+msgid "Attack Types"
+msgstr "攻击类型"
+
+msgid "Automatic config"
+msgstr "自动配置"
+
+msgid "Automatic configuration"
+msgstr "自动配置"
+
+msgid ""
+"Automatic configuration completed. You might want to check the details now."
+msgstr "自动配置完成。您可能需要检查的细节了。"
+
+msgid "Automatic configuration failed."
+msgstr "自动配置失败。"
+
+msgid "Back Orifice detector"
+msgstr "木马后门探测器"
+
+msgid "Badwords"
+msgstr "坏词"
+
+msgid "Badwords block count"
+msgstr "坏字眼块计数"
+
+msgid "Badwords filtering"
+msgstr "坏字眼过滤"
+
+msgid "Badwords found are replaced with this single character"
+msgstr "坏字眼发现与此单个字符替换"
+
+msgid "Badwords replace character"
+msgstr "坏字眼替换字符"
+
+msgid "Banking websites"
+msgstr "银行网站"
+
+msgid "Banned image replacement"
+msgstr "替换被禁止图片"
+
+msgid "Banner"
+msgstr "旗帜"
+
+msgid "Basic"
+msgstr "基本"
+
+msgid "Bayes auto learn"
+msgstr "贝叶斯自动学习"
+
+msgid "Bayesian classifier auto-learning (default: 1)"
+msgstr "贝叶斯分类器自动学习（默认是：1）"
+
+msgid "Blacklist"
+msgstr "黑名单"
+
+msgid "Blacklisted"
+msgstr "列入黑名单"
+
+msgid "Blacklisted IPs are always blocked."
+msgstr "列入黑名单的IP总是被阻止。"
+
+msgid "Blacklists"
+msgstr "黑名单"
+
+msgid "Blanket"
+msgstr "毯子"
+
+msgid "Blanket Block"
+msgstr "毛毯块"
+
+msgid "Blanket IP Block"
+msgstr "毛毯的IP块"
+
+msgid "Blanket SSL/CONNECT Block"
+msgstr "毛毯的SSL /连接座"
+
+msgid "Blanket SSL/CONNECT IP Block"
+msgstr "毛毯的SSL /连接IP块"
+
+msgid "Blanket block configuration is used to block all traffic for that rule."
+msgstr "毛毯块配置是用来阻止该规则的所有交通。"
+
+msgid ""
+"Blanket download blocking\n"
+"If enabled, all files will be blocked, unless they match the "
+"exceptionextensionlist or exceptionmimetypelist.\n"
+"These lists do not override any other content filtering or virus scanning.\n"
+"Exception lists defined above override all types of filtering, including the "
+"blanket download block.\n"
+"Defaults to disabled. (on | off)"
+msgstr ""
+"Blanket下载阻止\n"
+"如果启用，所有文件将被封锁，除非他们符合exceptionextensionlist或"
+"exceptionmimetypelist。\n"
+"这些名单并不凌驾于其他任何内容过滤和病毒扫描。\n"
+"上述定义例外清单重写所有类型的过滤，包括Blanket下载块。\n"
+"默认为禁用。 （开｜关）"
+
+msgid "Block"
+msgstr "块"
+
+msgid "Block Duration"
+msgstr "块时间"
+
+msgid "Block IPs"
+msgstr "封锁IP地址"
+
+msgid "Block all filetransfers"
+msgstr "阻止所有filetransfers"
+
+msgid "Block downloads"
+msgstr "块下载"
+
+msgid "Block webcams"
+msgstr "禁用摄像头"
+
+msgid "Blocked Hosts"
+msgstr "被封锁主机"
+
+msgid "Blocked Time"
+msgstr "被阻止时间"
+
+msgid "Blocked Times (min)"
+msgstr "被阻止时间（分钟）"
+
+msgid "Blocked Times (sec)"
+msgstr "被阻止时间（秒）"
+
+msgid "Blocked requests"
+msgstr "被阻止请求"
+
+msgid "Broadcast address"
+msgstr "广播地址"
+
+msgid ""
+"Build bannedsitelist and bannedurllist cache files.\n"
+"This will compare the date stamp of the list file with the date stamp of the "
+"cache file and will recreate as needed.\n"
+"If a bsl or bul .processed file exists, then that will be used instead.\n"
+"It will increase process start speed by 300%.\n"
+"On slow computers this will be significant.\n"
+"Fast computers do not need this option.\n"
+"on | off"
+msgstr ""
+"建立bannedsitelist和bannedurllist缓存文件。\n"
+"这会比较清单与文件的日期戳日期戳缓存文件，并根据需要重新创建。\n"
+"如果bsl或弗。处理的文件存在，那么这将被用来代替。\n"
+"这将增加300％进程开始加快。\n"
+"在这将是计算机的显着放缓。\n"
+"快速的计算机不需要这个选项。\n"
+"开｜关"
+
+msgid "Business Days"
+msgstr "营业日"
+
+msgid "Business Hours"
+msgstr "营业时间"
+
+msgid "Business days and holidays cannot overlap."
+msgstr "商务日和节假日不能重叠。"
+
+msgid ""
+"Buttons on this page should help you apply the new configuration system-wide "
+"when you change certain system settings or hardware.\n"
+"\n"
+"The web user interface stores statistics under /var/tmp/utmfw folder. "
+"The statistics are updated incrementally when new messages are appended to "
+"log files. When user selects a compressed log file for viewing or "
+"statistics, its uncompressed copy is saved under the same folder also. This "
+"strategy greatly improves the performance of Statistics and Logs pages, and "
+"enables other features of the web user interface. Since these statistics and "
+"uncompressed log files may take up a lot of disk space, you are advised to "
+"keep your /var partition as large as possible."
+msgstr ""
+"在此网页按钮应该可以帮助您应用新的配置全系统当您更改某些系统设置或硬件。\n"
+"\n"
+"该网站的用户界面商店统计在/var/tmp/utmfw文件夹中。最新的统计数据增量新邮"
+"件时追加到日志文件。当用户选择一个供浏览或压缩档统计，其压缩的副本保存在同一"
+"文件夹中也。这个战略大大提高了统计和日志页性能可通过这些网络用户界面的其他功"
+"能。由于这些统计和压缩日志文件可能占用大量的磁盘空间，建议您保持你的/var分区"
+"尽可能大。"
+
+msgid ""
+"By default, Clamd accepts virus scan requests from processes running on the "
+"system only, such as the web filter. Default settings should be suitable for "
+"most purposes."
+msgstr ""
+"默认情况下，Clamd只接受正在运行的系统进程病毒扫描要求，如网页过滤器。默认设置"
+"应该是适合大多数的目的。"
+
+msgid "By default, FTP proxy logs connections but not all connection details."
+msgstr "默认情况下，FTP代理日志连接，但并非所有连接的详细信息。"
+
+msgid ""
+"By default, a simple DNS configuration is provided; only one forwarders is "
+"configured, which you can modify on this page. There are no zone records "
+"defined, and caching is disabled. However, you can obtain a full-featured "
+"DNS server by modifying configuration files."
+msgstr ""
+"默认情况下，简单的DNS配置提供，只有一个转发器是配置，您可以修改此页。没有区域"
+"记录定义，缓存被禁用。但是，您可以得到一个全功能的DNS服务器通过修改配置文件。"
+
+msgid ""
+"By default, the Web Filter connects to the HTTP proxy over the loopback "
+"interface and at port 3128. If you do not want to use the Web Filter, you "
+"can change this Proxy IP:Port setting to the internal IP address of the "
+"system and port 8080. When you stop the Web Filter, all requests from the "
+"internal network should be directed to the HTTP proxy."
+msgstr ""
+"默认情况下，Web过滤器连接到HTTP代理对回环接口和端口3128。如果你不想使用Web过"
+"滤，你可以改变这个代理IP地址：端口设置的内部IP地址的系统和端口8080。当你停止"
+"Web过滤，从所有请求内部网络，可向HTTP代理。"
+
+msgid "Bypass"
+msgstr "绕道"
+
+msgid "Bypassed denials"
+msgstr "绕过拒绝"
+
+msgid "Bypassing IPs"
+msgstr "绕过IP地址"
+
+msgid "Bytes"
+msgstr ""
+
+msgid "Bytes Free"
+msgstr "字节免费"
+
+msgid "UTMFW ADMINISTRATION INTERFACE"
+msgstr "UTMFW管理界面"
+
+msgid "COMMAND"
+msgstr "命令"
+
+msgid "CPU Load"
+msgstr "CPU负载"
+
+msgid "CPUs"
+msgstr "CUPs"
+
+msgid "CVS Tag"
+msgstr "CVS的标签"
+
+msgid "CTLR"
+msgstr "CTLR"
+
+msgid "CTLR Logs"
+msgstr "CTLR 日志"
+
+msgid "Cache"
+msgstr "缓存"
+
+msgid "Cache mgr"
+msgstr "缓存经理"
+
+msgid "Cannot add"
+msgstr ""
+
+msgid "Cannot find group configuration file"
+msgstr ""
+
+msgid "Cannot get pid"
+msgstr ""
+
+msgid "Cannot read config"
+msgstr ""
+
+msgid "Categories"
+msgstr "分类"
+
+msgid ""
+"Categories in Weightedlist are blocked according to the sum of assigned "
+"weights to each phrase."
+msgstr "在被封锁Weightedlist分类按分配数额每个短语权重。"
+
+msgid "Category"
+msgstr "分类"
+
+msgid "Category display threshold"
+msgstr "分类显示阈值"
+
+msgid "Certificate"
+msgstr "证书"
+
+msgid "Change"
+msgstr "变"
+
+msgid "Change p3scan report language"
+msgstr "更改p3scan报告的语言"
+
+msgid "Change spamassassin local"
+msgstr "更改过虑地方"
+
+msgid ""
+"Changes to system configuration should be applied system-wide.\n"
+"\n"
+"<b>If you modify basic or network settings, you are advised to use this "
+"button.</b>\n"
+"\n"
+"Internal and external physical interface names are obtained from packet "
+"filter configuration, i.e. int_if and ext_if macros."
+msgstr ""
+"更改系统配置应适用于全系统。 <b>如果您修改基本的或网络设置，建议您使用这个按"
+"钮。</b>内部和外部物理接口名称是获得数据包筛选器配置，即int_if和ext_if宏。"
+
+msgid "Charts"
+msgstr "图表"
+
+msgid "Check authentication"
+msgstr "检查认证"
+
+msgid "Check if process running"
+msgstr "检查进程是否运行"
+
+msgid "Chinese simplified"
+msgstr ""
+
+msgid "Cipher"
+msgstr "密码"
+
+msgid ""
+"ClamAV can scan within archives and compressed files.\n"
+"\t\tDefault: enabled"
+msgstr ""
+"ClamAV的扫描可以在档案和压缩文件。\n"
+"\t\t默认：启用"
+
+msgid "Clamd"
+msgstr "Clamd"
+
+msgid ""
+"Clamd logs virus scan results, virus database checks, and database reloads."
+msgstr "Clamd记录病毒扫描结果，检查病毒数据库，数据库加载。"
+
+msgid ""
+"Clean cache for content (AV) scan results.\n"
+"By default, to save CPU, files scanned and found to be clean are inserted "
+"into the clean cache and NOT scanned again for a while.  If you don't like "
+"this then choose to disable it.\n"
+"(on|off) default = on."
+msgstr ""
+"清洁内容缓存（视听）扫描结果。\n"
+"默认情况下，为了节省CPU的，文件扫描，发现干净的插入到干净的缓存和NOT再次扫描"
+"一段时间。如果你不喜欢这个然后选择禁用它。\n"
+"（开|关）默认=开。"
+
+msgid "Client"
+msgstr "客户端"
+
+msgid "Client IPs"
+msgstr "客户端IP地址"
+
+msgid "Client netmask"
+msgstr "客户子网掩码"
+
+msgid "Clients"
+msgstr "客户端"
+
+msgid "Closed by"
+msgstr "关闭"
+
+msgid "UTMFW Administration Interface"
+msgstr "UTMFW管理界面"
+
+msgid ""
+"UTMFW Web Filter uses URL lists categorized in different packages for "
+"your convenience. You can enable or disable categories you want on this page."
+msgstr ""
+"UTMFW网页过滤网址列表中使用不同的包分类的方便您。您可以启用或你想在此网页"
+"禁用类别。"
+
+msgid ""
+"UTMFW Web Filter uses phrase lists categorized in different packages for "
+"your convenience. You can enable or disable categories you want on this page."
+msgstr ""
+"UTMFW网页过滤系统使用不同的组合，分类的短语列表方便您。您可以启用或你想在"
+"此网页禁用类别。"
+
+msgid ""
+"UTMFW Web Filter uses site lists categorized in different packages for "
+"your convenience. You can enable or disable categories you want on this page."
+msgstr ""
+"UTMFW网页过滤系统使用不同的组合分类的网站列表方便您。您可以启用或你想在此"
+"网页禁用类别。"
+
+msgid "UTMFW currently supports only admin and user usernames"
+msgstr "UTMFW目前仅支持管理员和用户的用户名"
+
+msgid ""
+"UTMFW logs errors, warnings, notices, and debug messages. Since also "
+"recorded are changes to configuration and passwords, you may want to monitor "
+"these logs carefully. These logs are also important while reporting issues "
+"related to the web user interface. Logs on this page are generated by the "
+"Controller and the Model, middle and bottom layers of software responsible "
+"for processing requests from the View."
+msgstr ""
+"UTMFW记录错误，警告，通知和调试消息。由于还记录的是配置和密码更改，您可能"
+"想要监控这些日志小心。这些记录也很重要，而报告的问题有关网络用户接口。在此页"
+"面日志的生成控制器和模型，中，负责软件底层从视图处理请求。"
+
+msgid ""
+"UTMFW logs errors, warnings, notices, and debug messages. Since also "
+"recorded are changes to configuration and passwords, you may want to monitor "
+"these logs carefully. These logs are also important while reporting issues "
+"related to the web user interface. Logs on this page are generated by the "
+"View, main module responsible for displaying the web user interface and "
+"interacting with the user."
+msgstr ""
+"UTMFW记录错误，警告，通知和调试消息。由于还记录的是配置和密码更改，您可能"
+"想要监控这些日志小心。这些记录也很重要，而报告的问题有关网络用户接口。在此页"
+"面日志的生成查看，主模块用于显示网页的用户界面和负责与用户互动。"
+
+msgid ""
+"UTMFW runs many services or daemons in default installation. On this "
+"page you can configure these services to start at boot time.\n"
+"\n"
+"Note that if you modify startup configuration for some services, you may "
+"need to change packet filter rules or other related settings too."
+msgstr ""
+"UTMFW运行的许多服务在默认安装或守护进程进程。在这页面可以配置这些服务在引"
+"导时启动。\n"
+"\n"
+"请注意，如果您修改了一些服务的启动配置，您可能需要更改的数据包过滤规则或其他"
+"相关设置了。"
+
+msgid ""
+"UTMFW sends warning and information messages to its system "
+"administrator. Here you can type in your own e-mail address."
+msgstr ""
+"UTMFW发送预警和信息至其系统管理员。在这里您可以输入您自己的电子邮件地址。"
+
+msgid ""
+"UTMFW uses ClamAV for all virus scanning purposes. Freshclam checks and "
+"updates ClamAV virus database periodically. By default, the database is "
+"updated every hour. You may not be able to stop or restart freshclam "
+"instance once it starts the update process; wait for a minute and try again."
+msgstr ""
+"UTMFW使用所有扫描病毒ClamAV的目的。 freshclam的检查和更新ClamAV的病毒库，"
+"定期。默认情况下，数据库每小时更新一次。您可能无法停止或重新启动freshclam的例"
+"如一旦启动更新过程，等待一分钟，然后再试一次。"
+
+msgid ""
+"UTMFW would not be possible without the generous developers of many Free "
+"and Open Source Software (FOSS). UTMFW is developed using FOSS only. "
+"Software developed specifically for UTMFW, such as this web user "
+"interface and SnortIPS, are released under the BSD license, hence FOSS "
+"also.\n"
+"\n"
+"These credits may not cover all of the software UTMFW uses. If you think "
+"one is missing, I would happily add here.\n"
+"\n"
+"Thanks for the excellent work and good spirit."
+msgstr ""
+"UTMFW是不可能的，没有许多开发者和开放源码软件（FOSS）。 UTMFW只使用开"
+"放源码软件。专门开发的软件，如本网站的UTMFW，用户接口和SnortIPS，是遵照"
+"BSD许可证，因此也是开放源码软件。\n"
+"\n"
+"这些贡献列表可能不包括所有UTMFW使用的软件。如果您发现任何遗漏，我会高兴地"
+"在这里补充。\n"
+"\n"
+"感谢出色的工作和良好的精神。"
+
+msgid "Compressed"
+msgstr "压缩"
+
+msgid "Compression"
+msgstr "压缩"
+
+msgid "Config"
+msgstr "配置"
+
+msgid "Configuration"
+msgstr "配置"
+
+msgid "Configure an interface"
+msgstr "配置接口"
+
+msgid "Configure client to use SSL/TLS."
+msgstr "配置客户端以使用SSL / TLS。"
+
+msgid ""
+"Configure server mode and supply a VPN subnet for OpenVPN to draw client "
+"addresses from. Comment this line out if you are ethernet bridging. See the "
+"man page for more info."
+msgstr ""
+"配置服务器模式和供应OpenVPN的一个子网的VPN客户端提请从地址。评论这一行了，如"
+"果你是以太网桥接。见手册页更多信息。"
+
+msgid "Configure server to use SSL/TLS."
+msgstr "配置服务器以使用SSL / TLS。"
+
+msgid ""
+"Configure your server lists.  This allows snort to only look for attacks to "
+"systems that have a service up.  Why look for HTTP attacks if you are not "
+"running a web server?  This allows quick filtering based on IP addresses. "
+"These configurations MUST follow the same configuration scheme as defined "
+"above for $HOME_NET.\n"
+"List of DNS servers on your network"
+msgstr ""
+"配置您的服务器列表。这使得SNORT只寻找袭击系统有一个服务了。为什么看HTTP的攻"
+"击，如果你不运行Web服务器？这允许快速筛选基于IP地址。这些配置必须遵循同样的配"
+"置模式定义以上$ HOME_NET。\n"
+"DNS服务器的网络上的名单"
+
+msgid "Connections by date"
+msgstr "连接按日期"
+
+#, php-format
+msgid "Contains site specifically 100% suitable for kids"
+msgstr "包含的网站100％特别适合孩子"
+
+msgid "Content Admin"
+msgstr "内容管理"
+
+msgid "Content Subject"
+msgstr "内容主题"
+
+msgid "Content scan exceptions"
+msgstr "内容扫描异常"
+
+msgid "Content scanner timeout"
+msgstr "内容扫描超时"
+
+msgid "Content scanning web filter."
+msgstr "内容扫描网页过滤器。"
+
+msgid "Copy"
+msgstr "复制"
+
+msgid "Copy conf"
+msgstr "复制配置"
+
+msgid "Copyright"
+msgstr "版权所有"
+
+msgid "Count"
+msgstr "伯爵"
+
+msgid "Create"
+msgstr "创建"
+
+msgid "Create filter group"
+msgstr "创建过滤器组"
+
+msgid "Create list cache files"
+msgstr "创建列表缓存文件"
+
+msgid "Create new group"
+msgstr "创建新组"
+
+msgid "Credits"
+msgstr "鸣谢"
+
+msgid "Customised filtered text (message text or filename follows in response)"
+msgstr "定制过滤文本（消息文本或文件名如下回应）"
+
+msgid "Customised notice text"
+msgstr "定制通知文字"
+
+msgid "DB"
+msgstr "数据库"
+
+msgid "DB Logs"
+msgstr "数据库日志"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "DHCP Server"
+msgstr "DHCP服务器"
+
+msgid ""
+"DHCP dynamic configuration is used by clients in the internal network to "
+"obtain an IP address and network settings."
+msgstr "DHCP动态配置的客户所采用的内部网络获得IP地址和网络设置。"
+
+msgid "DHCP server logs the details of communications with DHCP clients."
+msgstr "DHCP服务器日志与DHCP客户端通信的细节。"
+
+msgid ""
+"DHCP server supports both dynamic dhcp and bootp protocols. Dynamic leases "
+"can be monitored on this page."
+msgstr "同时支持DHCP服务器的动态DHCP和BOOTP协议。动态租赁可以在此页上监视。"
+
+msgid "DM Exts"
+msgstr "DM Exts"
+
+msgid "DM Mimes"
+msgstr "DM矿"
+
+msgid "DNS"
+msgstr "DNS"
+
+msgid "DNS Database Info"
+msgstr "DNS数据库信息"
+
+msgid "DNS Server"
+msgstr "DNS服务器"
+
+msgid ""
+"DNS server logs all name lookups. You should see many requests from the "
+"system itself along with those from internal clients."
+msgstr ""
+"DNS服务器记录所有的名称查找。您应该看到的许多要求系统本身以及来自内部客户端"
+"的。"
+
+msgid "DNS_SERVERS"
+msgstr "DNSSERVERS"
+
+msgid "Daily"
+msgstr "日报"
+
+msgid "Data Transfer"
+msgstr "数据传输"
+
+msgid "Database Checks"
+msgstr "数据库检查"
+
+msgid "Database Mirrors"
+msgstr "数据库镜像"
+
+msgid "Date"
+msgstr "日期"
+
+msgid "DateTime"
+msgstr "的DateTime"
+
+msgid "Datetime wrong"
+msgstr "日期时间错误"
+
+msgid "Day"
+msgstr "白天"
+
+msgid "De-facto standard IDS (Intrusion Detection System)."
+msgstr "事实上的标准的IDS（入侵检测系统）。"
+
+msgid "De-facto standard among HTTP proxies."
+msgstr "事实上的标准之间的HTTP代理。"
+
+msgid "Debug"
+msgstr "调试"
+
+msgid "Debug options"
+msgstr "调试选项"
+
+msgid "Defaults"
+msgstr "默认"
+
+msgid "Defaults to disabled (on | off)"
+msgstr "默认禁用（开|关）"
+
+msgid "Deferred IPs"
+msgstr "递延IP地址"
+
+msgid ""
+"Definition of after hours can be set here. If you modify any of these "
+"definitions, you should click the Apply button.\n"
+"\n"
+"Note that when you enable Business Days or Holidays, the related rules will "
+"become active according to these definitions. If you don't want to use the "
+"after hours feature of UTMFW, make sure these definitions are disabled.\n"
+"\n"
+"Business hours configuration is meaningful only for business days."
+msgstr ""
+"工余时间的定义可以设置在这里。如果您修改这些定义的，您应该单击Apply按钮。请注"
+"意，当您启用营业日或假日，根据这些定义相关规则将被激活。如果您不希望使用"
+"UTMFW工余时间功能，请确保这些定义都将被禁用。营业时间配置有意义的只有工作"
+"日。"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "Delete ACL"
+msgstr "删除ACL"
+
+msgid "Delete DHCP interface"
+msgstr "删除DHCP接口"
+
+msgid "Delete HTTP proxy IP:port"
+msgstr "删除HTTP代理服务器IP：端口"
+
+msgid "Delete IP"
+msgstr "删除IP"
+
+msgid "Delete IP from list"
+msgstr "从列表中删除IP"
+
+msgid "Delete PF allowed"
+msgstr "删除PF允许"
+
+msgid "Delete PF restricted"
+msgstr "删除PF限制"
+
+msgid "Delete alert keywords"
+msgstr "删除警报关键字"
+
+msgid "Delete badword"
+msgstr "删除坏字眼"
+
+msgid "Delete conf"
+msgstr "删除配置"
+
+msgid "Delete database mirror"
+msgstr "删除数据库镜像"
+
+msgid "Delete downloaded temp files"
+msgstr "删除下载的临时文件"
+
+msgid "Delete ext/mime"
+msgstr "删除扩展名/MIME"
+
+msgid ""
+"Delete file cache after user completes download\n"
+"When a file gets save to temp it stays there until it is deleted.\n"
+"You can choose to have the file deleted when the user makes a sucessful "
+"download. This will mean if they click on the link to download from the temp "
+"store a second time it will give a 404 error.\n"
+"You should configure something to delete old files in temp to stop it "
+"filling up.\n"
+"on|off ( defaults to on )"
+msgstr ""
+"删除文件缓存完成后，用户下载\n"
+"当一个文件被保存到临时停留，直到它被删除。\n"
+"你可以选择删除该文件，当用户作出sucessful下载。这将意味着，如果他们在点击链接"
+"下载从Temp商店第二次将给予404错误。\n"
+"您应该配置一些临时删除旧文件加以制止填满。\n"
+"开｜关（默认值为开）"
+
+msgid "Delete filter group IP"
+msgstr "删除滤波器组IP"
+
+msgid "Delete host"
+msgstr "删除主机"
+
+msgid "Delete list item"
+msgstr "删除列表项目"
+
+msgid "Denied IPs"
+msgstr "被拒绝IP地址"
+
+msgid "Denied categories"
+msgstr "拒绝类别"
+
+msgid "Denied requests"
+msgstr "拒绝请求"
+
+msgid "Deny others"
+msgstr "拒绝其它"
+
+msgid "Desc"
+msgstr "描述"
+
+msgid "Description"
+msgstr "描述"
+
+msgid "Dest"
+msgstr ""
+
+msgid "Destination IPs"
+msgstr "目的地IP地址"
+
+msgid "Destination addresses"
+msgstr "目的地址"
+
+msgid "Destination ports"
+msgstr "目标端口"
+
+msgid ""
+"Detailed results of spam content scans are recorded by SpamAssassin, such as "
+"spam scores and their reasons."
+msgstr ""
+"垃圾邮件的内容扫描的详细结果SpamAssassin的记录，例如垃圾邮件的状况和他们的理"
+"由。"
+
+msgid "Detect Broken Executables"
+msgstr "检测残破的可执行文件"
+
+msgid "Detects Back Orifice traffic on the network."
+msgstr "回到孔板检测网络上的流量。"
+
+msgid "Device"
+msgstr "设备"
+
+msgid "Diffie-Hellman params"
+msgstr "Diffie - Hellman 参数"
+
+msgid "Dir"
+msgstr ""
+
+msgid "Disable"
+msgstr "禁用"
+
+msgid "Disable AfterHours"
+msgstr "禁用非工作时间"
+
+msgid "Disable AfterHours business days"
+msgstr "禁用非工作日"
+
+msgid "Disable AfterHours holidays"
+msgstr "禁用假期"
+
+msgid "Disable config"
+msgstr "禁用配置"
+
+msgid "Disable content scanning"
+msgstr "禁用内容扫描"
+
+msgid "Disable decode alerts"
+msgstr "禁用解码警报"
+
+msgid "Disable ext/mime"
+msgstr "禁用扩展名/MIME"
+
+msgid "Disable ipopt alerts"
+msgstr "禁用ipopt警报"
+
+msgid "Disable logging process"
+msgstr "禁用日志记录进程"
+
+msgid "Disable pf"
+msgstr "禁用PF"
+
+msgid ""
+"Disable reporting of normal operating messages. Only report errors or "
+"critical information.\n"
+"\t\tdefault: display all except debug info"
+msgstr ""
+"禁用报告的正常经营信息。只有错误或报告关键信息。\n"
+"\t\t 默认:显示调试信息的除外"
+
+msgid "Disable rule"
+msgstr "禁用规则"
+
+msgid "Disable tcpopt alerts"
+msgstr "禁用tcpopt警报"
+
+msgid "Disable tcpopt experimental alerts"
+msgstr "禁用tcpopt实验警报"
+
+msgid "Disable tcpopt obsolete alerts"
+msgstr "禁用tcpopt过时的警示"
+
+msgid "Disable tcpopt ttcp alerts"
+msgstr "禁用tcpopt ttcp警报"
+
+msgid "Disabled"
+msgstr "被禁用"
+
+msgid "Disabled Rules"
+msgstr "禁用规则"
+
+msgid "Disabled Services"
+msgstr "残疾人服务"
+
+msgid "Disk I/O"
+msgstr "磁盘I / O"
+
+msgid "Disks"
+msgstr "磁盘"
+
+msgid "Display"
+msgstr "显示"
+
+msgid "Display remote time"
+msgstr "显示远程时间"
+
+msgid ""
+"Do not remove temporary files (for debug purposes).\n"
+"\t\tDefault: disabled"
+msgstr ""
+"不要删除临时文件（用于调试）。\n"
+"\t\t 默认:停用"
+
+msgid "Domains"
+msgstr "域"
+
+msgid "Download"
+msgstr "下载"
+
+msgid ""
+"Download Manager is responsible for downloading the content requested. The "
+"mime types it manages are in Enabled list. Other mime types are handled by "
+"the user's browser. During download, Fancy Download Manager reports the "
+"progress via a progress bar and status information."
+msgstr ""
+"下载管理器负责下载内容的要求。启用列表管理MIME类型。其他的MIME类型处理由用户"
+"的浏览器处理。下载时，Fancy下载管理器通过进度条报告进度和状态信息。"
+
+msgid ""
+"Download Manager is responsible for downloading the files requested. The "
+"file extensions it manages are in Enabled list. Other files extensions are "
+"handled by the user's browser. During download, Fancy Download Manager "
+"reports the progress via a progress bar and status information."
+msgstr ""
+"下载管理器负责下载文件的要求。它管理的文件扩展名在启用名单。其他文件扩展名由"
+"用户的浏览器处理。下载时，Fancy下载管理器通过进度条报告进度和状态信息。"
+
+msgid "Downloaded (KB)"
+msgstr "下载（KB）"
+
+msgid "Downloads"
+msgstr "下载"
+
+msgid "Drug related sites"
+msgstr "药品相关网站"
+
+msgid ""
+"Due to license issues libclamav does not support RAR 3.0 archives (only the "
+"old 2.0 format is supported). Because some users report stability problems "
+"with unrarlib it's disabled by default and you must uncomment the directive "
+"below to enable RAR 2.0 support.\n"
+"\t\tDefault: disabled"
+msgstr ""
+"由于许可证问题中的libclamav不支持的RAR 3.0档案（只旧的2.0格式的支持）。由于一"
+"些用户报告稳定性问题与unrarlib它的默认禁用，您必须取消注释指令下面，让的RAR "
+"2.0支持。\n"
+"\t\t 默认:停用"
+
+msgid "Dutch"
+msgstr ""
+
+msgid "E-mail address wrong"
+msgstr "电子邮件地址错误"
+
+msgid "E-mails per request"
+msgstr "电子每次请求邮件"
+
+msgid "ERROR"
+msgstr "错误"
+
+msgid "EXTERNAL_NET"
+msgstr "EXTERNALNET"
+
+msgid "Email"
+msgstr "电子邮件"
+
+msgid ""
+"Email-address of local cache manager who will receive mail if the cache "
+"dies. The default is \"webmaster\"."
+msgstr ""
+"电子邮件地址的本地高速缓存管理器将接收邮件谁如果缓存死亡。默认的是\"webmaster"
+"\"。"
+
+msgid "Embedded URL weighting"
+msgstr "嵌入式网址加权"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "Enable AfterHours"
+msgstr "启用非工作时间"
+
+msgid "Enable AfterHours business days"
+msgstr "启用非工作时日"
+
+msgid "Enable AfterHours holidays"
+msgstr "启用假期"
+
+msgid "Enable UTMFW as a non-caching proxy for the local network."
+msgstr "使作为非UTMFW缓存为本地网络代理。"
+
+msgid "Enable Deep URL Analysis"
+msgstr "启用深度URL分析"
+
+msgid "Enable SSL/TLS"
+msgstr "启用SSL/TLS"
+
+msgid ""
+"Enable compression on the VPN link. Don't enable this unless it is also "
+"enabled in the server config file."
+msgstr "启用VPN链路压缩。不要启用此，除非它也是在服务器上启用配置文件。"
+
+msgid ""
+"Enable compression on the VPN link. If you enable it here, you must also "
+"enable it in the client config file."
+msgstr "启用VPN链路压缩。如果你能够在这里，你还必须启用它在客户端配置文件。"
+
+msgid "Enable config"
+msgstr "启用配置"
+
+msgid ""
+"Enable debug messages in libclamav.\n"
+"\t\tDefault: disabled"
+msgstr ""
+"在启用调试信息中的libclamav。\n"
+"\t\t 默认:停用"
+
+msgid "Enable ext/mime"
+msgstr "启用扩展名/MIME"
+
+msgid ""
+"Enable internal e-mail scanner.\n"
+"\t\tDefault: enabled"
+msgstr ""
+"启用内部电子邮件扫描器。\n"
+"\t\t 默认:启用"
+
+msgid ""
+"Enable logging of \"ADs\" category blocks\n"
+"on|off (defaults to off)"
+msgstr ""
+"启用日志记录\"ADs\"类模块\n"
+"开｜关（默认为关闭）"
+
+msgid "Enable or disable ACL"
+msgstr "启用或禁用的ACL"
+
+msgid ""
+"Enable or disable automated responses configured below. You need to enable "
+"either Notice days or Filtered minutes too."
+msgstr "启用或禁用以下配置的自动响应。您需要启用要么通知之日起或筛选分钟了。"
+
+msgid "Enable or disable badwords filtering"
+msgstr "启用或禁用字词不当过滤"
+
+msgid "Enable pf"
+msgstr "启用PF"
+
+msgid "Enable protocols"
+msgstr "启用协议"
+
+msgid "Enable rule"
+msgstr "启用规则"
+
+msgid ""
+"Enable this option to allow infectionbypass links only when virus scanning "
+"fails, not when a file is found to contain a virus.\n"
+"on = enable (default and highly recommended)\n"
+"off = disable"
+msgstr ""
+"启用此选项以允许infectionbypass链接只有当病毒扫描失败，而不是当一个文件被发现"
+"含有病毒。\n"
+"关于=启用（默认和强烈推荐）\n"
+"关闭=禁用"
+
+msgid ""
+"Enable verbose logging.\n"
+"\t\tDefault: disabled"
+msgstr ""
+"启用详细日志记录。\n"
+"\t\t 默认:停用"
+
+msgid "Enabled"
+msgstr "被启用"
+
+msgid "Enabled Rules"
+msgstr "启用规则"
+
+msgid "Enabled Services"
+msgstr "启用服务"
+
+msgid "English"
+msgstr "英语"
+
+msgid "Erase statistics files"
+msgstr "清除统计数据文件"
+
+msgid "Exception IPs"
+msgstr "异常IP地址"
+
+msgid "Exception requests"
+msgstr "豁免申请"
+
+msgid "Expr"
+msgstr ""
+
+msgid "Ext"
+msgstr "分机"
+
+msgid "Extended Hosts"
+msgstr "扩展主机"
+
+msgid "Extended Times (min)"
+msgstr "延期时间（分钟）"
+
+msgid "Extension wrong"
+msgstr "扩展错误"
+
+msgid "Extensions"
+msgstr "扩展"
+
+msgid "External Interface"
+msgstr "外部接口"
+
+msgid "External interface"
+msgstr "外部接口"
+
+msgid "FAILED"
+msgstr "失败"
+
+msgid "FATAL ERRORS in creating new group"
+msgstr ""
+
+msgid "FTP PROXY"
+msgstr "FTP代理"
+
+msgid "FTP Proxy"
+msgstr "FTP代理"
+
+msgid "Failed attempts"
+msgstr "失败的尝试"
+
+msgid "Failed users"
+msgstr "失败用户"
+
+msgid "Failure reason"
+msgstr "失败的原因"
+
+msgid "Fan"
+msgstr "风扇"
+
+msgid ""
+"Fancy download manager is designed to provide download status to the user "
+"via a progress bar and text information. Therefore, it expects a web browser "
+"as user agent by default. Otherwise, downloads are handled by the default "
+"download manager."
+msgstr ""
+"Fancy下载管理器旨在提供下载到用户的状态信息通过进度条和文本信息。因此，预计网"
+"络浏览器默认情况下为用户代理。否则，是默认的下载管理器。"
+
+msgid "File"
+msgstr "文件"
+
+msgid "Filepath wrong"
+msgstr "文件路径错误"
+
+msgid "Files with extensions in the Whitelist are not scanned for viruses."
+msgstr "在白名单中的扩展文件不进行病毒扫描。"
+
+msgid "Files with mime types in the Whitelist are not scanned for viruses."
+msgstr "在白名单中的文件MIME类型不进行病毒扫描。"
+
+msgid "Filter"
+msgstr "过滤器"
+
+msgid "Filter IP"
+msgstr "过滤器IP"
+
+msgid "Filter Port"
+msgstr "过滤器端口"
+
+msgid "Filter group mode"
+msgstr "过滤器组模式"
+
+msgid "Filter group name"
+msgstr "过滤器组的名称"
+
+msgid "Filter group not found"
+msgstr "找不到过滤组"
+
+msgid "Filtered minutes"
+msgstr "筛选分钟"
+
+msgid "Filtered response"
+msgstr "滤波响应"
+
+msgid ""
+"Filtergroups sets the number of filter groups. A filter group is a set of "
+"content filtering options you can apply to a group of users.  The value must "
+"be 1 or more.\n"
+"DansGuardian will automatically look for dansguardianfN.conf where N is the "
+"filter group. To assign users to groups use the filtergroupslist option.  "
+"All users default to filter group 1.  You must have some sort of "
+"authentication to be able to map users to a group.  The more filter groups "
+"the more copies of the lists will be in RAM so use as few as possible."
+msgstr ""
+"Filtergroups设置过滤器组数。过滤器组是一组内容过滤选项可以应用到一组用户。该"
+"值必须是1个或多个。\n"
+"dansguardian的会自动寻找dansguardianfN.conf其中N是过滤器组。要指定用户集团利"
+"用filtergroupslist选项。所有用户的默认筛选组1。您必须有某种形式的认证能够映射"
+"到一组用户。更滤波器组在列出了更多的副本将在内存中，以便使用尽可能少。"
+
+msgid "Follow Directory Symlinks"
+msgstr "跟随目录符号链接"
+
+msgid "Follow File Symlinks"
+msgstr "跟随文件符号链接"
+
+msgid ""
+"Follow directory symlinks.\n"
+"\t\tDefault: disabled"
+msgstr ""
+"按照目录的符号链接。\n"
+"\t\t 默认:停用"
+
+msgid ""
+"Follow regular file symlinks.\n"
+"\t\tDefault: disabled"
+msgstr ""
+"按照常规文件符号。\n"
+"\t\t 默认:停用"
+
+msgid ""
+"For extra security beyond that provided by SSL/TLS, create an \"HMAC firewall"
+"\" to help block DoS attacks and UDP port flooding.\n"
+"\n"
+"Generate with:\n"
+"  openvpn --genkey --secret ta.key\n"
+"\n"
+"The server and each client must have a copy of this key. The second "
+"parameter should be 0 on the server and 1 on the clients. This file is "
+"secret."
+msgstr ""
+"除此之外，对于所提供的SSL / TLS，创建一个额外的\"HMAC firewall\"安全以帮助阻"
+"止DoS攻击和恶意攻击。\n"
+"\n"
+"生成具有：\n"
+"  openvpn --genkey --secret ta.key\n"
+"\n"
+"服务器和每个客户端必须具有的一个关键副本。第二参数应为0的服务器和客户端1。此"
+"文件秘密。"
+
+msgid ""
+"Force Quick Search rather than DFA search algorithm.\n"
+"The current DFA implementation is not totally 16-bit character compatible "
+"but is used by default as it handles large phrase lists much faster.\n"
+"If you wish to use a large number of 16-bit character phrases then enable "
+"this option.\n"
+"0 = off (default)\n"
+"1 = on (Big5 compatible)"
+msgstr ""
+"强制快速搜索，而不是DFA的搜索算法。\n"
+"当前DFA的实现是不完全的16位字符兼容但默认情况下使用，因为它处理大型短语列表快"
+"得多。\n"
+"如果你想使用大量的16位字符短语，然后启用此选项。\n"
+"0 =关闭（默认）\n"
+"1 =打开（繁体兼容）"
+
+msgid "Force quick search"
+msgstr "强制快速搜索"
+
+msgid "Forwarded for"
+msgstr "转交"
+
+msgid ""
+"Forwarder is the IP address of a DNS server that the system itself queries. "
+"In simple setups, this is usually the IP address of a DSL modem which "
+"functions as gateway to the Internet."
+msgstr ""
+"转发器是一个DNS服务器，这个制度本身查询的IP地址。在简单的设置，这通常是DSL调"
+"制解调器的IP地址职能的Internet网关。"
+
+msgid "Forwarders"
+msgstr "转发"
+
+msgid "Free OOP scripting language."
+msgstr "免费面向对象的脚本语言。"
+
+#, php-format
+msgid ""
+"Free secure shell provides remote shell access to the system. It is believed "
+"that almost 90% of all secure shell traffic on the Internet is provided by "
+"OpenSSH. OpenSSH is developed by the OpenBSD project."
+msgstr ""
+"安全控制台免费提供该系统的远程shell访问。据认为，近90互联网上所有安全控制台％"
+"的流量是由OpenSSH的提供。 OpenSSH是OpenBSD的开发项目。"
+
+msgid "French"
+msgstr ""
+
+msgid ""
+"Freshclam logs details of each virus update session. Version warnings may "
+"not be critical as mentioned in the logs as well."
+msgstr ""
+"freshclam的记录每次病毒更新细节。版本警告可能（在日志中）可能并不重要。"
+
+msgid "Fri"
+msgstr "Fri"
+
+msgid "From"
+msgstr "自"
+
+msgid "GG"
+msgstr "GG"
+
+msgid "GROUP"
+msgstr "组"
+
+msgid "Gambling sites including stocks and shares"
+msgstr "股票或赌博网站"
+
+msgid "Gardening sites"
+msgstr "园艺网站"
+
+msgid "Gateway"
+msgstr "网关"
+
+msgid "General"
+msgstr "常规"
+
+msgid "General Statistics"
+msgstr "综合统计"
+
+msgid ""
+"Generate your own with:\n"
+"   openssl dhparam -out dh1024.pem 1024\n"
+"Substitute 2048 for 1024 if you are using 2048 bit keys."
+msgstr ""
+"生成您自己的：\n"
+"   openssl dhparam -out dh1024.pem 1024\n"
+"取代1024 2048如果您使用的2048位密钥。"
+
+msgid "Get ACL"
+msgstr "获得ACL"
+
+msgid "Get AfterHour pf rules"
+msgstr "获得AfterHourPF规则"
+
+msgid "Get AfterHours"
+msgstr "获得非工作时间"
+
+msgid "Get DHCP IP range"
+msgstr "获得的DHCP IP地址范围"
+
+msgid "Get DHCP interfaces"
+msgstr "获得DHCP接口"
+
+msgid "Get DHCP option"
+msgstr "获得DHCP选项"
+
+msgid "Get DNS forwarders"
+msgstr "获取DNS转发器"
+
+msgid "Get HTTP proxy IP:port"
+msgstr "获取HTTP代理服务器IP：端口"
+
+msgid "Get IPS info"
+msgstr "获取IPS信息"
+
+msgid "Get PF allowed"
+msgstr "获得PF允许"
+
+msgid "Get PF restricted"
+msgstr "获得PF限制"
+
+msgid "Get active cats"
+msgstr "获得使用中的类别"
+
+msgid "Get alert keywords"
+msgstr "获得警报关键字"
+
+msgid "Get all stats"
+msgstr "获得所有统计"
+
+msgid "Get arp table"
+msgstr "获取ARP表"
+
+msgid "Get auth ip list"
+msgstr "获得授权IP列表"
+
+msgid "Get badwords"
+msgstr "获取坏字眼"
+
+msgid "Get config values"
+msgstr "获取配置价值"
+
+msgid "Get configuration"
+msgstr "获取配置"
+
+msgid "Get confs"
+msgstr "获得confs"
+
+msgid "Get current locale"
+msgstr "获取当前区域"
+
+msgid "Get database mirrors"
+msgstr "获取数据库镜像"
+
+msgid "Get dhcp leases"
+msgstr "获取DHCP租约"
+
+msgid "Get disabled rules"
+msgstr "获得禁用规则"
+
+msgid "Get ext/mime list"
+msgstr "获得EXT/MIME的列表"
+
+msgid "Get ext_if"
+msgstr "获得ext_if"
+
+msgid "Get group count"
+msgstr "获得小组计数器"
+
+msgid "Get group ip list"
+msgstr "获得小组IP列表"
+
+msgid "Get host graphs"
+msgstr "获取主机图"
+
+msgid "Get if config"
+msgstr "获得网络接口配置"
+
+msgid "Get im log file"
+msgstr "获得IM日志文件"
+
+msgid "Get inactive cats"
+msgstr "获得非使用中的类别"
+
+msgid "Get int_if"
+msgstr "获得int_if"
+
+msgid "Get lines"
+msgstr "获取日志文件行"
+
+msgid "Get list"
+msgstr "获取清单"
+
+msgid "Get listed ips"
+msgstr "获取IPS清单"
+
+msgid "Get local users"
+msgstr "获得本地用户"
+
+msgid "Get locales"
+msgstr "获得语言环境"
+
+msgid "Get log file"
+msgstr "获取日志文件"
+
+msgid "Get log files list"
+msgstr "获取日志文件列表"
+
+msgid "Get log start date"
+msgstr "获取日志的开始日期"
+
+msgid "Get logs configuration"
+msgstr "获取日志配置"
+
+msgid "Get partition list"
+msgstr "获得分区列表"
+
+msgid "Get pf state count"
+msgstr ""
+
+msgid "Get pf states"
+msgstr ""
+
+msgid "Get pfw commandwrapper -conntest"
+msgstr "获得PFW应用commandwrapper，conntest"
+
+msgid "Get pfw commandwrapper -info"
+msgstr "获得PFW应用commandwrapper信息表"
+
+msgid "Get pfw commandwrapper -log"
+msgstr "获得PFW应用commandwrapper日志"
+
+msgid "Get pfw commandwrapper -pfinfo"
+msgstr "获得PFW应用commandwrapper，pfinfo"
+
+msgid "Get pfw commandwrapper -pfmem"
+msgstr "获得PFW应用commandwrapper，pfmem"
+
+msgid "Get pfw commandwrapper -pfstates"
+msgstr "获得PFW应用commandwrapper，pfstates"
+
+msgid "Get pfw commandwrapper -queues"
+msgstr "获得PFW应用commandwrapper，龙"
+
+msgid "Get pfw packetfilter -i"
+msgstr "获得PFW应用包过滤，我"
+
+msgid "Get pfw packetfilter -r"
+msgstr "获得PFW应用包过滤，反"
+
+msgid "Get pfw packetfilter -t"
+msgstr "获得PFW应用包过滤，吨"
+
+msgid "Get process list"
+msgstr "获取进程列表"
+
+msgid "Get protocols"
+msgstr "获取协议"
+
+msgid "Get remote time"
+msgstr "获取远程时间"
+
+msgid "Get remote users"
+msgstr "获取远程用户"
+
+msgid "Get rules"
+msgstr "获取规则"
+
+msgid "Get service start status"
+msgstr "获得服务的启动状态"
+
+msgid "Get service status"
+msgstr "获得服务的状态"
+
+msgid "Get sessions"
+msgstr "获得会话"
+
+msgid "Get software version"
+msgstr "获取软件版本"
+
+msgid "Get source file CVS tag"
+msgstr "获取源文件CVS的标记"
+
+msgid "Get spamd blacklist"
+msgstr "获得spamd黑列表"
+
+msgid "Get spamd whitelist"
+msgstr "获得spamd白列表"
+
+msgid "Get stat lines"
+msgstr "获取统计线"
+
+msgid "Get stats"
+msgstr "获取统计"
+
+msgid "Get sysctl values"
+msgstr "获得sysctl值"
+
+msgid "Get system admin e-mail address"
+msgstr "获得系统管理员的电子邮件地址"
+
+msgid "Get system gateway"
+msgstr "获取系统网关"
+
+msgid "Get system information"
+msgstr "获取系统信息"
+
+msgid "Get tail"
+msgstr "获得日志尾部"
+
+msgid "Gets line count"
+msgstr "获取行计数"
+
+msgid "Graph files"
+msgstr "图形文件"
+
+msgid "Graphs"
+msgstr "图"
+
+msgid ""
+"Graphs on this web user interface are generated by these monitoring "
+"processes. Settings of these software are handled by automatic configuration."
+msgstr "本网站的图形用户界面由这些监测进程生成。这些软件的设置是自动配置处理。"
+
+msgid "Greylist"
+msgstr "灰名单"
+
+msgid "Group"
+msgstr "组"
+
+msgid "Group created successfully"
+msgstr ""
+
+msgid "Group exists"
+msgstr "组存在"
+
+msgid ""
+"Group users are allowed unrestricted access to Whitelisted sites or urls. "
+"Whitelisted entries are not checked for viruses either. Therefore, Whitelist "
+"should be used with caution. In contrast to Whitelist, Greylisted entries "
+"are checked for viruses. If possible, Greylist should be preferred over "
+"Whitelist. Access to blacklisted entries is denied."
+msgstr ""
+"组用户可以不受限制地访问列入白名单的网站或网址。白名单项目没有任何病毒检查。"
+"因此，白名单应谨慎使用。相对于白名单，灰名单项被检查病毒。如果可能的话，灰名"
+"单应优先于白名单。访问列入黑名单的项目将被拒绝。"
+
+msgid ""
+"Group users can download files with extensions not in the Blacklist only. If "
+"you are having problems downloading files with some extensions, you may need "
+"to disable that file type from Blacklist. If the problem persists, you may "
+"need to disable the appropriate mime type on the Mimes configuration page "
+"too."
+msgstr ""
+"组用户可以仅可以下载扩展名不在黑名单的文件。如果您下载一些扩展名的文件有问"
+"题，您可能需要从黑名单禁用此文件类型。如果问题仍然存在，您可能还需要禁用相应"
+"的MIME类型。"
+
+msgid ""
+"Group users can download files with mime types not in the Blacklist only. If "
+"you are having problems downloading files, you may need to disable the "
+"file's mime type from the BlackList. If the problem persists, you may need "
+"to disable the appropriate file extension on the Extensions configuration "
+"page too."
+msgstr ""
+"组用户可以仅可以下载MIME类型不在黑名单的文件。如果您下载文件有问题，您可能需"
+"要禁用黑名单的文件的MIME类型。如果问题仍然存在，您可能需要还需要禁用适当的文"
+"件扩展名。"
+
+msgid "Groups"
+msgstr "组"
+
+msgid ""
+"Groups are used to grant or revoke certain privileges to IPs, such as which "
+"web sites or file types to allow or deny. UTMFW comes with 4 predefined "
+"groups by default. However, the web filter is capable of having any number "
+"of IP groups.\n"
+"\n"
+"Predefined groups and their basic features are as follows:\n"
+"Filter Group 1:\n"
+"<ul class='nomargin'><li class='nomargin'>All IPs not defined in other "
+"groups are considered in this group by default,</li><li "
+"class='nomargin'>Group members are allowed to browse the web according to "
+"group configuration,</li><li class='nomargin'>If not specifically disabled, "
+"all files are scanned for viruses.</li></ul>\n"
+"Filter Group 2:\n"
+"<ul class='nomargin'><li class='nomargin'>Members of this group have "
+"unrestricted access to the web,</li><li class='nomargin'>File downloads are "
+"not scanned for viruses.</li></ul>\n"
+"Filter Group 3:\n"
+"<ul class='nomargin'><li class='nomargin'>Members of this group are "
+"completely denied of any web access.</li></ul>\n"
+"Filter Group 4:\n"
+"<ul class='nomargin'><li class='nomargin'>Members of this group have more "
+"privileges than Group 1 members, because they can download files without any "
+"restrictions,</li><li class='nomargin'>Rest of the configuration for this "
+"group is similar to Group 1.</li></ul>\n"
+"You can add IP or network addresses to groups. If there is another group "
+"with the same entry, it is deleted from that group first, i.e. an IP address "
+"can be a member of only one group.\n"
+" \n"
+"The format of ip ranges is Start IP address-End IP address, such as "
+"192.168.1.1-192.168.1.253. And that of subnets is IP address/Subnet mask, "
+"such as 192.168.1.0/255.255.255.0.\n"
+"\n"
+"White and black lists give you other methods of allowing or denying certain "
+"IP addresses access to the web without needing to add them to any group.\n"
+"\n"
+"This web interface does not provide an option to delete filter groups. But "
+"you can always delete groups on the command line."
+msgstr ""
+"组是用来授予或撤销某些特权的IP，如哪些网站或文件类型允许或拒绝。 UTMFW预"
+"定4个默认组。但是，Web过滤器能够有任何数目IP组。\n"
+"\n"
+"预定义的组，其基本特点如下：\n"
+"过滤器组1：\n"
+"<ul class='nomargin'><li class='nomargin'>所有的IP没有定义其它组被认为是在这"
+"一组，默认情况下， </li><liclass='nomargin'>组成员可浏览网页按组配置， </"
+"li><li class='nomargin'>如果没有明确禁用，所有文件都进行病毒扫描。 </li></"
+"ul> \n"
+"过滤器组2：\n"
+"<ul class='nomargin'><li class='nomargin'>该组的成员有不受限制地进入网络， </"
+"li><li class='nomargin'>文件下载，没有进行病毒扫描。 </li></ul> \n"
+"过滤器组3：\n"
+"<ul class='nomargin'><li class='nomargin'>该组的成员是完全没有任何网络接入。 "
+"</li></ul> \n"
+"过滤器组4：\n"
+"<ul class='nomargin'><li class='nomargin'>该组的成员有更多的比1组成员的特权，"
+"因为他们可以没有任何下载文件限制， </li><li class='nomargin'>其余部分为这种配"
+"置组类似于第1组。 </li></ul> \n"
+"您可以添加或网络的IP地址组。如果有另一组相同的项目，它将被删除从该组第一，即"
+"一个IP地址可以是一个只有一个组的成员。\n"
+"\n"
+"IP范围的格式是起始IP地址，结束IP地址，例如192.168.1.1-192.168.1.253。这就是子"
+"网的IP地址/子网掩码，例如192.168.1.0/255.255.255.0。\n"
+"\n"
+"白名单和黑名单给你的允许或拒绝某些IP地址，而不需要将它们添加到任何组访问网"
+"络。\n"
+"\n"
+"该网络接口不提供一个选项以删除过滤器组。但是您可以随时在命令行删除组。"
+
+msgid "HOME_NET"
+msgstr "家庭网络"
+
+msgid "HTTP Codes"
+msgstr "HTTP代码"
+
+msgid "HTTP PROXY"
+msgstr "HTTP代理"
+
+msgid "HTTP Proxy"
+msgstr "HTTP代理"
+
+msgid "HTTP Proxy Password"
+msgstr "HTTP代理密码"
+
+msgid "HTTP Proxy Port"
+msgstr "HTTP代理端口"
+
+msgid "HTTP Proxy Server"
+msgstr "HTTP代理服务器"
+
+msgid "HTTP Proxy Username"
+msgstr "HTTP代理用户名"
+
+msgid ""
+"HTTP Proxy runs in front of the web filter and is responsible for fetching "
+"all web requests. Therefore, if this proxy is not running, the web filter "
+"cannot access the web, hence all web access is effectively blocked."
+msgstr ""
+"HTTP代理运行在Web筛选器前面，是为了抓取负责所有网页的请求。因此，如果这个代理"
+"没有运行，网络过滤器无法访问该网页，因此所有网络接入有效地阻止。"
+
+msgid "HTTP_PORTS"
+msgstr "HTTPPORTS"
+
+msgid "HTTP_SERVERS"
+msgstr "HTTPSERVERS"
+
+msgid "HTTPs"
+msgstr "安全HTTP"
+
+msgid "Hacking/cracking information"
+msgstr "骇客/破解信息"
+
+msgid "Ham"
+msgstr "Ham"
+
+msgid "Help"
+msgstr "帮助"
+
+msgid "Help boxes"
+msgstr "帮助盒"
+
+msgid ""
+"Here are the definitions of a few terms used in the logs:<ul "
+"class='nomargin'><li class='nomargin'>Blocking a host means adding it to IPS "
+"pf table as blocked</li><li class='nomargin'>Unblocking means deleting a "
+"blocked host from the table</li><li class='nomargin'>Deblocking means adding "
+"a whitelisted host to the table</li><li class='nomargin'>Undeblocking means "
+"deleting a whitelisted host from the table</li></ul>\n"
+"\t\tFailure to block a host does not necessarily indicate an error; the host "
+"may be in the table already."
+msgstr ""
+"下面是在日志中使用的一些术语的定义： <ulclass='nomargin'> <li "
+"class='nomargin'>阻止主机及添加它到IPSpf表</li><li class='nomargin'>解封及从"
+"pf表删除</li><li class='nomargin'>通行及加入一白名单主机表</li><li "
+"class='nomargin'> 禁止通行及删除列入白名单的主机</li></ul> \n"
+"\t\t无法阻止主机并不一定表示错误;主机可在表中。"
+
+msgid "Here you can change the language used in the spam reports."
+msgstr "在这里你可以更改垃圾邮件报告所采用的语言。"
+
+msgid ""
+"Here you can change the web administration interface passwords for admin and "
+"user. Passwords should have at least 8 alphanumeric characters."
+msgstr ""
+"在这里，您可以更改管理员和用户的Web管理接口密码。密码应至少有8个字母数字字"
+"符。"
+
+msgid ""
+"Here you can enable or disable the Packet Filter. Note that most services "
+"depend on packet filter being enabled."
+msgstr ""
+"在这里您可以启用或禁用数据包筛选器。请注意，大多数服务依赖于数据包过滤器。"
+
+msgid ""
+"Here you can enter db.XY.clamav.net for a mirror close to you. Replace XY "
+"with your country code. See http://www.iana.org/cctld/cctld-whois.htm for "
+"the full list.\n"
+"\n"
+"Not shown in this list is database.clamav.net, which is a round-robin record "
+"and points to ClamAV's most reliable mirrors. It is used as a fall back in "
+"case db.XY.clamav.net is not working."
+msgstr ""
+"在这里您可以输入靠近你的镜像。替换XY与您的国家代码。见http://www.iana.org/"
+"cctld/cctld-whois.htm 中的完整的清单。\n"
+"\n"
+"database.clamav.net未显示在此列表，这是一个循环纪录并指向ClamAV的最可靠的镜像"
+"点。它是作为失败备份（db.XY.clamav.net不通）。"
+
+msgid ""
+"Here you can reinitialize, hence erase all accumulated data in graph source "
+"files.\n"
+"\n"
+"This may be necessary if these files are corrupted and you cannot see any "
+"graphs displayed, such as when the system clock is set to a very distant "
+"time."
+msgstr ""
+"在这里你可以重新初始化，从而抹去图源文件的所有积累的数据。这可能是必要的，如"
+"果这些文件已损坏，你不能看到任何图形显示，例如当系统时钟设置为一个非常遥远的"
+"时间。"
+
+msgid ""
+"Here you can rotate all log files manually. Note that this action forcefully "
+"rotates all log files irrespective of the configuration displayed on this "
+"page. Normally this should not be necessary."
+msgstr ""
+"在这里您可以手动轮换所有日志文件。请注意，这一操作强行轮换所有的日志文件，不"
+"论在此网页上显示的配置。通常情况下这不应该是必要的。"
+
+msgid ""
+"Here you can search sites and urls in category listings. Regexp below can "
+"help you further refine your search."
+msgstr ""
+"在这里您可以搜索网站和类别列表网址。下面正则表达式可帮助您进一步缩小搜索范"
+"围。"
+
+msgid ""
+"Here you can select the configuration file to view or modify. Also, you can "
+"delete the selected configuration file or copy it under another name. Only "
+"file names with .conf extention are displayed."
+msgstr ""
+"在这里你可以选择配置文件来查看或修改。此外，您可以删除选定的配置文件或复制了"
+"其他的名字。仅仅文件名的。机密延伸显示。"
+
+msgid ""
+"Here you can set the report language in emails sent to client, instead of "
+"infected e-mails."
+msgstr ""
+"在这里您可以设置在发送到客户端的电子邮件报告的语言，而不是受感染的电子邮件。"
+
+msgid ""
+"Here you should select configuration file(s) to start or stop the process "
+"with. Instance with the selected configuration is restarted if it is already "
+"running. Only the files with .conf extention are displayed."
+msgstr ""
+"在这里，您应该选择的配置文件（S）以启动或停止的过程带有。与选定的配置实例重新"
+"启动，如果它已经运行。仅在文件处理。机密延伸显示。"
+
+msgid ""
+"Here you should select the interface(s) the IDS listens to. Instance with "
+"the selected interface is restarted if it is already running."
+msgstr ""
+"在这里，您应该选择接口（S）的入侵检测系统监听。例如处理选定的接口重新启动，如"
+"果它已在运行。"
+
+msgid "Hex decode content"
+msgstr "Hex解码内容"
+
+#, php-format
+msgid ""
+"Hex decoding options.\n"
+"When a document is scanned it can optionally convert %XX to chars.\n"
+"If you find documents are getting past the phrase filtering due to encoding "
+"then enable. However this can break Big5 and other 16-bit texts.\n"
+"0 = disabled (default)\n"
+"1 = enabled"
+msgstr ""
+"六角解码选项。\n"
+"当一个文件进行扫描，可以选择转换％二十至字符。\n"
+"如果您发现该文件是过去的筛选，由于越来越词组编码然后启用。然而，这可以打破"
+"Big5和其他16位文本。\n"
+"0 =禁用（默认值）\n"
+"1 =启用"
+
+msgid "Holidays"
+msgstr "节假日"
+
+msgid "Horizontal"
+msgstr "水平"
+
+msgid "Host"
+msgstr "主机"
+
+msgid "Host IP"
+msgstr "主机IP"
+
+msgid "Host wrong"
+msgstr "主机错误"
+
+msgid "Hostname"
+msgstr "主机名"
+
+msgid "Hostname Lookups"
+msgstr "主机名查找"
+
+msgid "Hosts"
+msgstr "主机"
+
+msgid "Hour"
+msgstr "小时"
+
+msgid "Hourly"
+msgstr "每小时"
+
+msgid ""
+"How many attempts to make before giving up.\n"
+"\t\tDefault: 3 (per mirror)"
+msgstr ""
+"放弃前多少企图。\n"
+"\t\t 默认:3（每镜）"
+
+msgid "ICQ"
+msgstr "ICQ"
+
+msgid ""
+"ICQ/AIM protocol does not support notice responses. Make sure only the "
+"relevant protocols are enabled."
+msgstr "聊天/目的协议不支持的通知的反应。请确保有关协议已启用。"
+
+msgid "IDS"
+msgstr "IDS"
+
+msgid "IM Logs"
+msgstr "即时通讯日志"
+
+msgid "IM PROXY"
+msgstr "即时通讯代理"
+
+msgid "IM Proxy"
+msgstr "IM通讯代理"
+
+msgid "IM Proxy Logs"
+msgstr "即时通讯代理日志"
+
+msgid ""
+"IM logs are categorized by protocols. After you select the protocol, you "
+"need to select the local user. Local user sessions are further categorized "
+"by remote users connected. Finally, sessions with remote users are "
+"categorized by date. IM proxy can log group chats as well.\n"
+"\n"
+"You can find these logs under /var/log/imspector/."
+msgstr ""
+"IM日志进行分类的协议。在您选择的协议，您要选择本地用户。本地用户会话进一步分"
+"类由连接的远程用户。最后，远程用户会话按日期分类。即时代理可以登录群聊以"
+"及。\n"
+"\n"
+"您可以找到这些日志在/var/log/imspector/。"
+
+msgid "IM proxy logs contain process errors and notices."
+msgstr "即时代理日志包含过程中发生错误和通告。"
+
+msgid ""
+"IMSpector supports MSN, ICQ/AIM, Yahoo, and IRC protocols. IM Proxy can log "
+"all messages exchanged in text conversations."
+msgstr ""
+"IMSpector支持的MSN，ICQ的/ AIM，雅虎通，和IRC协议。即时代理可以登录在文字交谈"
+"交换的所有邮件。"
+
+msgid "INFORMATION"
+msgstr "信息"
+
+msgid "IP Forwarding"
+msgstr "IP转发"
+
+msgid "IP address or port wrong"
+msgstr "IP地址或端口错误"
+
+msgid "IP address wrong"
+msgstr "IP地址错误"
+
+msgid ""
+"IP and port configuration here are fundamental to the correct functioning of "
+"the web filter."
+msgstr "IP和端口配置这里是基本正确的运作网页过滤器。"
+
+msgid "IP defragmentation support"
+msgstr "支持的IP碎片整理"
+
+msgid "IP or IP list wrong"
+msgstr "IP或IP地址列表错"
+
+msgid "IP or Net"
+msgstr "IP或网"
+
+msgid "IP or network address fixed"
+msgstr ""
+
+msgid "IP range"
+msgstr "IP范围"
+
+msgid "IP range wrong"
+msgstr "IP地址范围错误"
+
+msgid "IPS"
+msgstr "IPS"
+
+msgid "IPs"
+msgstr "IP地址"
+
+msgid "IPs querying"
+msgstr "IP地址查询"
+
+msgid "IPv4"
+msgstr "IPv4"
+
+msgid "IPv6"
+msgstr "IPv6"
+
+msgid "IRC"
+msgstr "IRC"
+
+msgid ""
+"If 'on' exception sites, urls, users etc will be scanned\n"
+"This is probably not desirable behavour as exceptions are supposed to be "
+"trusted and will increase load.\n"
+"Correct use of grey lists are a better idea.\n"
+"(on|off) default = off"
+msgstr ""
+"如果'on'例外的网站，网址，用户等将被扫描\n"
+"这可能是不可取的例外应该是行为信任，会增加负载。\n"
+"灰名单的正确使用是一个更好的主意。\n"
+"（开｜关）默认=关"
+
+msgid ""
+"If a file in an archive is compressed more than ArchiveMaxCompressionRatio "
+"times it will be marked as a virus (Oversized.ArchiveType, e.g. Oversized."
+"Zip)\n"
+"\t\tValue of 0 disables the limit.\n"
+"\t\tDefault: 250"
+msgstr ""
+"如果在一个存档文件的压缩比ArchiveMaxCompressionRatio有时会被标示为病毒"
+"（Oversized.ArchiveType，如超大。邮编）\n"
+"\t\t 0将禁用限制。\n"
+"\t\t 默认:250"
+
+msgid ""
+"If a message contains more then this many bad words then the message will be "
+"completely blocked, not just replaced"
+msgstr "如果邮件包含的那么多恶劣的词，然后该邮件将被完全阻断，而不仅仅是更换"
+
+msgid ""
+"If a tls-auth key is used on the server then every client must also have the "
+"key."
+msgstr "如果TLS的认证密钥是用来在服务器上，然后每一位客户还必须钥匙。"
+
+msgid ""
+"If an email contains URLs ClamAV can download and scan them.\n"
+"\t\tWARNING: This option may open your system to a DoS attack.\n"
+"\t\tNever use it on loaded servers.\n"
+"\t\tDefault: disabled"
+msgstr ""
+"如果电子邮件中包含的网址ClamAV的可以下载并扫描到它们。\n"
+"\t\t 警告：此选项可能会打开你的系统DoS攻击。\n"
+"\t\t 不要使用于加载的服务器上。\n"
+"\t\t 默认:停用"
+
+msgid ""
+"If an outgoing e-mail is determined to be infected or identified as spam, "
+"the client trying to send that e-mail is blocked from sending any e-mails "
+"for a period of time defined by lock duration. You can enter your e-mail "
+"address in report e-mail option."
+msgstr ""
+"如果发送的电子邮件被确定为感染或确定为垃圾邮件，客户端试图发送的电子邮件发送"
+"任何电子邮件封锁一个由锁确定的时间内持续。您可以输入您的电子邮件在报告的邮件"
+"地址选择。"
+
+msgid "If client conf"
+msgstr "网络接口客户配置"
+
+msgid ""
+"If enabled then the phrases found that made up the total which excedes the "
+"naughtyness limit will be logged and, if the reporting level is high enough, "
+"reported. on | off"
+msgstr ""
+"如果启用词组则发现总的超过正常限制将被记录，如果报告水平足够高，报告。开｜关"
+
+msgid ""
+"If enabled, will scan for Spam before scanning for a virus. You should start "
+"spamd before running p3scan."
+msgstr ""
+"如果启用，将扫描的垃圾邮件，病毒扫描的。你应该开始spamd之前运行p3scan。"
+
+msgid ""
+"If on it adds an X-Forwarded-For: <clientip> to the HTTP request header. "
+"This may help solve some problem sites that need to know the source ip. on | "
+"off"
+msgstr ""
+"如果它增加了一个X -转发为： <clientip>到HTTP请求头。这可能有助于解决一些问题"
+"的网站，需要知道源IP。开|关"
+
+msgid ""
+"If on it uses the X-Forwarded-For: <clientip> to determine the client IP. "
+"This is for when you have squid between the clients and DansGuardian.\n"
+"Warning - headers are easily spoofed. on | off"
+msgstr ""
+"如果在它使用的X -转发为： <clientip>确定客户端的IP。这是因为当你与客户和"
+"dansguardian的SQUID。\n"
+"警告-头很容易伪造。开｜关"
+
+msgid ""
+"If on, this causes DG to write to the log file whenever child processes are "
+"created or destroyed (other than by crashes). This information can help in "
+"understanding and tuning the following parameters, but is not generally "
+"useful in production."
+msgstr ""
+"如果在，这将导致危险品写入日志文件时，子进程创建或销毁（除崩溃）。此信息可以"
+"帮助了解和调整以下参数，但一般不有用的生产。"
+
+msgid ""
+"If on, will enable system wide events to be reported by email.\n"
+"need to configure mail program (see 'mailer' in global config) and email "
+"recipients\n"
+"default usesmtp = off"
+msgstr ""
+"如果在，使全系统活动，通过电子邮件报告。\n"
+"需要配置邮件程序（见'mailer'在全局配置）和电子邮件受助\n"
+"默认usesmtp =关"
+
+msgid ""
+"If you are not seeing as many number of lines as you were expecting, this "
+"may be because the log file has turned over and put in a compressed archive "
+"file.\n"
+"\n"
+"You can search the logs by entering keywords or extended regular expressions "
+"in Regexp box. Regular expressions are de-facto standard for text searching."
+msgstr ""
+"如果您没有看到很多行的数目，您所期望的，这可能是因为日志文件已翻过来放在一个"
+"压缩的存档文件。\n"
+"\n"
+"您可以通过输入搜索关键字或扩展正则表达式的日志在正则表达式中。正则表达式是事"
+"实上的全文检索的标准。"
+
+msgid ""
+"If you don't want to control access to a site completely, you can use URL "
+"lists to define finer access rights."
+msgstr ""
+"如果你不想要控制访问一个网站完全，可以使用网址名单确定更精细的访问权限。"
+
+msgid ""
+"If you enable this option you will disable content scanning for this group.\n"
+"Content scanning primarily is AV scanning (if enabled) but could include "
+"other types.\n"
+"(on|off) default = off."
+msgstr ""
+"如果您启用此选项将禁用这个组别的内容扫描。\n"
+"内容扫描，主要是AV扫描（如果已启用），但可以包括其他类型。\n"
+"（开｜关）默认=关闭。"
+
+msgid ""
+"If you modify network configuration, you can use this button to restart the "
+"network."
+msgstr "如果您修改网络配置，您可以使用此键，重新启动网络。"
+
+msgid ""
+"If your system has a multi-core CPU or more than one CPU, you can run the "
+"SMP kernel. If this page does not display multiple graphs, one for each CPU, "
+"after you switch to the SMP kernel, go to system configuration pages, apply "
+"automatic configuration, and reinitialize graph files."
+msgstr ""
+"如果你的系统拥有多核心CPU或一个以上的CPU，您可以运行SMP内核。如果此页没有显示"
+"多个图形，每个处理器之一，在您切换到SMP内核，进入系统配置页面，申请自动配置和"
+"初始化图形文件。"
+
+msgid "Ignore errors"
+msgstr "忽略错误"
+
+msgid ""
+"Images that are banned due to domain/url/etc reasons including those in the "
+"adverts blacklists can be replaced by an image.  This will, for example, "
+"hide images from advert sites and remove broken image icons from banned "
+"domains.\n"
+"0 = off\n"
+"1 = on (default)"
+msgstr ""
+"被禁止的图像由于域/网址包括那些/等原因广告黑名单可以取代的形象。这将，例如，"
+"隐藏广告网站的形象，消除无效的图片图标从禁止域。\n"
+"0 =关闭\n"
+"1 =开（默认）"
+
+msgid ""
+"In these manual pages, you can find extensive information about the system "
+"and services."
+msgstr "在这些手册，您可以找到有关该系统的广泛信息和服务。"
+
+msgid "Include classification & priority settings"
+msgstr "包括分类和优先级设置"
+
+msgid "Include reference systems"
+msgstr "包括参考系统"
+
+msgid "Infected"
+msgstr ""
+
+msgid "Infected IPs"
+msgstr "受感染的IP地址"
+
+msgid "Infected e-mails"
+msgstr ""
+
+msgid "Infected requests"
+msgstr "受感染的请求"
+
+msgid "Infection/Scan Error Bypass"
+msgstr "感染/扫描错误绕道"
+
+msgid "Infection/Scan Error Bypass Secret Key"
+msgstr "感染/扫描错误绕道秘密钥匙"
+
+msgid "Infection/Scan Error Bypass on Scan Errors Only"
+msgstr "感染/扫描错误绕道只有在扫描错误"
+
+msgid "Info"
+msgstr "信息"
+
+msgid ""
+"Inform of a blocked event, but upto a max of every N mins (default is never)"
+msgstr "通知被阻止的事件，但upto的每N分钟（默认最大从不）"
+
+msgid "Inform parties that chats are monitored every N days (default is never)"
+msgstr "通知各方的聊天监控每N天（默认是从不）"
+
+msgid "Init"
+msgstr "初始化"
+
+msgid "Init graphs"
+msgstr "初始化图"
+
+msgid "Initial Trickle delay"
+msgstr "初步涓流延迟"
+
+msgid ""
+"Instead of keeping an infected message in the Virus Directory, delete it "
+"after reporting it to the user.\n"
+"\t\tdefault: Keep infected messages in Virus Directory"
+msgstr ""
+"而是留在病毒感染的信息目录，删除它在报告给用户。\n"
+"\t\t 默认:请病毒感染的邮件目录"
+
+msgid "Interface"
+msgstr "接口"
+
+msgid "Interface Configuration"
+msgstr "接口配置"
+
+msgid "Interfaces"
+msgstr "接口"
+
+msgid "Internal Interface"
+msgstr "内部接口"
+
+msgid ""
+"Internal clients connect to FTP servers on the external network via this FTP "
+"proxy. Since FTP protocol makes use of ports other than the ftp ports, "
+"allowing requests to ftp ports only is not enough. You need to run an FTP "
+"proxy."
+msgstr ""
+"内部客户端连接到外部网络的FTP服务器通过此FTP代理。由于FTP协议使港口的FTP端口"
+"比其他用途，允许FTP端口的请求只能是不够的。你需要运行一个FTP代理。"
+
+msgid "Internal interface"
+msgstr "内部接口"
+
+msgid "Intrusion Alerts"
+msgstr "入侵警报"
+
+msgid "Intrusion Detection"
+msgstr "入侵检测"
+
+msgid "Intrusion Prevention"
+msgstr "入侵防护"
+
+msgid ""
+"Intrusion alerts produced by the IDS are guesses, hence there may be false "
+"positives or wrong alarms. Since the IPS depends on alerts produced by the "
+"IDS, you may want to make sure some IP addresses are never blocked "
+"accidentally, such as the internal and external IP addresses of the system, "
+"or the IP address of the computer you use to access this web administration "
+"interface.\n"
+"\n"
+"You can enter individual IPs or network addresses. IP and network addresses "
+"can overlap. For example, you can blacklist 10.0.0.0/24, but whitelist "
+"10.0.0.1."
+msgstr ""
+"入侵警报的入侵检测系统生产的猜测，因此可能有假阳性或错误警报。由于新闻通讯社"
+"取决于所生产的警报入侵检测系统，您可能需要确保某些IP地址不会阻止意外，如内部"
+"和外部IP地址的系统，或者您使用的计算机访问此网站的IP地址管理接口。\n"
+"\n"
+"您可以输入单个IP或网络地址。 IP和网络地址可以重叠。例如，您可以黑名单"
+"10.0.0.0/24，但白名单10.0.0.1。"
+
+msgid "Invalid value"
+msgstr "无效的值"
+
+msgid "Jabber"
+msgstr "闲聊"
+
+msgid "Just Delete"
+msgstr "只要删除"
+
+msgid "Just webmail sites"
+msgstr "只WEB邮件的网站"
+
+msgid "Keep Alive"
+msgstr "保持通讯"
+
+msgid "KeepAlive"
+msgstr "保持通讯"
+
+msgid "KeepAlive Timeout"
+msgstr "保持通讯超时"
+
+msgid "Keywords"
+msgstr "关键词"
+
+msgid "Language"
+msgstr "语言"
+
+msgid "Last >>"
+msgstr "最后>>"
+
+msgid "Leases"
+msgstr "租赁"
+
+msgid "Leave Temporary Files"
+msgstr "保持临时文件"
+
+msgid "Leave spool on"
+msgstr "保持后台开"
+
+msgid "Level"
+msgstr "级别"
+
+msgid ""
+"Limit on total number of servers running, i.e., limit on the number of "
+"clients who can simultaneously connect --- if this limit is ever reached, "
+"clients will be LOCKED OUT, so it should NOT BE SET TOO LOW. It is intended "
+"mainly as a brake to keep a runaway server from taking the system with it as "
+"it spirals down..."
+msgstr ""
+"对正在运行的服务器，即限人数限制人数客户端可以同时连接谁---如果这都达到极限，"
+"客户将被锁定，因此，它不应该定得太低。其目的是这主要是因为制动，以防止它正与"
+"系统作为一个离家出走的服务器它螺旋下来..."
+
+msgid "Line"
+msgstr "线"
+
+msgid "Lines per page"
+msgstr "每页行数"
+
+msgid "Links"
+msgstr "链接"
+
+msgid "Links visited"
+msgstr "链接访问"
+
+msgid ""
+"List format is:\n"
+"allow|deny localid|all [groupchat|remoteid1 ... remoteidN]\n"
+"\n"
+"Order of the access rules is important. For example, if deny all is the "
+"first rule, all access is effectively blocked, so make sure the deny all "
+"rule, if any, is at the bottom."
+msgstr ""
+"列表格式是：\n"
+"allow|deny localid|all [groupchat|remoteid1 ... remoteidN]\n"
+"\n"
+"在访问规则的顺序是重要的。例如，如果拒绝所有是第一条规则，所有的访问是有效地"
+"阻止了，所以一定要确保拒绝所有规则，如果有的话，在底部。"
+
+msgid "List hosts"
+msgstr "列表主机"
+
+msgid "List of SMTP servers on your network"
+msgstr "名单的SMTP服务器在您的网络"
+
+msgid "List of snmp servers on your network"
+msgstr "服务器的SNMP网络上的名单"
+
+msgid "List of sql servers on your network"
+msgstr "SQL服务器的网络上的名单"
+
+msgid "List of telnet servers on your network"
+msgstr "Telnet服务器的网络上的名单"
+
+msgid "List of web servers on your network"
+msgstr "Web服务器的网络上的名单"
+
+msgid "List physical interfaces"
+msgstr "列表物理接口"
+
+msgid "Listen Address"
+msgstr "听地址"
+
+msgid "Lists"
+msgstr "列表"
+
+msgid "Live"
+msgstr "现场"
+
+msgid "Local IP Address"
+msgstr "本地IP地址"
+
+msgid "Local IP address"
+msgstr "本地IP地址"
+
+msgid "Local User"
+msgstr "本地用户"
+
+msgid "Local and remote VPN endpoint IP addresses."
+msgstr "本地和远程VPN端点的IP地址。"
+
+msgid "Locale"
+msgstr "区域设置"
+
+msgid "Lock duration"
+msgstr "锁定时间"
+
+msgid "Lock on"
+msgstr "锁定"
+
+msgid "Locked IPs"
+msgstr "锁定IP地址"
+
+msgid "Log"
+msgstr "日志"
+
+msgid "Log Clean"
+msgstr "日志清除"
+
+msgid "Log Exception Hits"
+msgstr "日志异常点击"
+
+msgid "Log Level"
+msgstr "日志级别"
+
+msgid "Log Verbose"
+msgstr "日志详细"
+
+msgid "Log ad blocks"
+msgstr "日志广告块"
+
+msgid "Log child process handling"
+msgstr "子进程处理登录"
+
+msgid "Log client hostnames"
+msgstr "登录客户端主机名"
+
+msgid "Log connection handling errors"
+msgstr "日志连接处理错误"
+
+msgid ""
+"Log files are rotated according to two main criteria: size and time, "
+"whichever is reached first. When a log file is rotated, it is renamed and "
+"compressed, and a new one is opened for writing.\n"
+"<ul><li>Count is the maximum number of compressed log files to keep.</"
+"li><li>Size is the maximum file size. The log file will be rotated when its "
+"file size reaches this value. The unit is KB.</li><li>When defines the "
+"frequency interval of rotation. This is in hours. For example, 168 means "
+"once each week. This web user interface supports only interval format, not "
+"time format for this setting.</li></ul>Asterisk (*) means don't care.\n"
+"\n"
+"Note that log files contain very important information about system and "
+"network activity. Statistics are generated over these log files."
+msgstr ""
+"旋转日志文件根据两个主要标准：规模和时间，先达到者为准。当一个日志文件旋转，"
+"它被改名压缩，一个新的，是写打开。\n"
+"<ul><li>数目是压缩日志文件的最大数量保持。 </李“ <li>大小是最大文件大小。日志"
+"文件时，将其旋转文件大小达到此值。该单位是50KB左右。 </li><li>当定义频率间隔"
+"旋转。这是小时。例如，168指每星期一次。该网络的用户界面只支持间隔格式，而不是"
+"时间格式此设置。 </li></ul>星号（*）指不关心。\n"
+"\n"
+"请注意，日志文件包含了非常重要的有关系统和信息网络活动。统计数字，产生了这些"
+"日志文件。"
+
+msgid "Log fqdn"
+msgstr "日志的FQDN"
+
+msgid "Log helo"
+msgstr "日志helo"
+
+msgid ""
+"Log if an exception (user, ip, URL, phrase) is matched and so the page gets "
+"let through.  Can be useful for diagnosing why a site gets through the "
+"filter.  on | off"
+msgstr ""
+"如果一个异常日志（用户，IP，URL，短语）的匹配，以便页面获得让我们通过。可有助"
+"于诊断，为什么网站获得通过过滤器。开｜关"
+
+msgid "Log in"
+msgstr "登录"
+
+msgid "Log ip on direct"
+msgstr "直接登录的IP"
+
+msgid ""
+"Log keeping capacity of UTMFW is limited only by the size of the disks "
+"on your system.\n"
+"\n"
+"If you are not seeing as many number of lines as you were expecting, this "
+"may be because the log file has turned over and put in a compressed archive "
+"file. The default maximum number of archive files for most services is 100, "
+"and can be configured on the system configuration pages. Depending on how "
+"busy a service it is, this many log archives may mean months of logging in "
+"most cases. You can download the log files using the Download button.\n"
+"\n"
+"You can search the logs by entering keywords or extended regular expressions "
+"in Regexp box. Regular expressions are de-facto standard for text searching."
+msgstr ""
+"记录保持UTMFW能力有限，只有磁盘的大小在你的系统。\n"
+"\n"
+"如果您没有看到很多行的数目，您所期望的，这可能是因为日志文件已翻过来放在一个"
+"压缩的存档文件。归档文件的默认最大大部分服务号码是100，并且可以配置系统配置页"
+"面。根据如何忙碌的服务是，这么多的记录档案可能意味着在几个月的日志大多数情况"
+"下。您可以下载使用日志文件下载按钮。\n"
+"\n"
+"您可以通过输入搜索关键字或扩展正则表达式的日志在正则表达式中。正则表达式是事"
+"实上的全文检索的标准。"
+
+msgid "Log level"
+msgstr "日志级别"
+
+msgid "Log mail from"
+msgstr "登录邮件"
+
+msgid "Log rcpt to"
+msgstr "日志的RCPT TO"
+
+msgid ""
+"Log the destination IP address in the hierarchy log tag when going direct. "
+"Earlier Squid versions logged the hostname here. If you prefer the old way "
+"set this to off."
+msgstr ""
+"日志的目标IP层次结构中的日志标签地址时，会直接。较早版本的SQUID在这里记录的主"
+"机名。如果你喜欢旧的方式设置为关闭。"
+
+msgid ""
+"Log the names of clients or just their IP addresses e.g., www.apache.org "
+"(on) or 204.62.129.132 (off).\n"
+"\t\tThe default is off because it'd be overall better for the net if people "
+"had to knowingly turn this feature on, since enabling it means that each "
+"client request will result in AT LEAST one lookup request to the nameserver."
+msgstr ""
+"记录客户的姓名或只是它们的IP地址，例如，www.apache.org（开）或204.62.129.132"
+"（关闭）。\n"
+"\t\t写法默认是关闭的，因为这将会是整体的净更好的人故意打开了此功能的，因为它"
+"意味着使每客户端的请求将导致至少在一个查找请求的域名服务器。"
+
+msgid "Log typing events"
+msgstr "记录输入事件"
+
+msgid ""
+"LogLevel: Control the number of messages logged to the error_log.\n"
+"\t\tPossible values include: debug, info, notice, warn, error, crit, alert, "
+"emerg."
+msgstr ""
+"LogLevel：控制的记录到error_log邮件的数量。\n"
+"\t\t tPossible值包括：调试，信息，通知，警告，错误，击，警报，emerg。"
+
+msgid "Logged in user"
+msgstr "登录用户"
+
+msgid "Logging Settings"
+msgstr "日志设置"
+
+msgid ""
+"Logging options are set as section,level where each source file is assigned "
+"a unique section.  Lower levels result in less output,  Full debugging "
+"(level 9) can result in a very large log file, so be careful.  The magic "
+"word \"ALL\" sets debugging levels for all sections.  We recommend normally "
+"running with \"ALL,1\"."
+msgstr ""
+"日志记录选项被设置为第，水平，每个源文件分配一个独特的部分。下级导致更少的输"
+"出，全部调试（9级）会导致一个非常大的日志文件，所以要小心。神奇的词 \"ALL\"调"
+"试级别设置为所有部分。我们通常建议运行 \"ALL\"。"
+
+msgid "Login Grace Time"
+msgstr "登录有效时间"
+
+msgid "Logout"
+msgstr "注销"
+
+msgid "Logs"
+msgstr "日志"
+
+msgid "Logs Report"
+msgstr "日志报告"
+
+msgid "Longest deferred (sec)"
+msgstr "最长延迟（秒）"
+
+msgid "Loopback Interface"
+msgstr "环回接口"
+
+msgid "Loopback is a logical interface."
+msgstr "环回是一个逻辑接口。"
+
+msgid ""
+"Lower casing options.\n"
+"When a document is scanned the uppercase letters are converted to lower case "
+"in order to compare them with the phrases.  However this can break Big5 and "
+"other 16-bit texts.  If needed preserve the case.  As of version 2.7.0 "
+"accented characters are supported.\n"
+"0 = force lower case (default)\n"
+"1 = do not change case"
+msgstr ""
+"下套管的选择。\n"
+"当一个文件被扫描的大写字母被转换为小写为了比较的词组。然而，这可以打破Big5和"
+"其他16位文本。如果需要保留的情况。从版本2.7.0重音字符的支持。\n"
+"0 =力小写（默认）\n"
+"1 =不改变的情况"
+
+msgid "MONITORING"
+msgstr "监测"
+
+msgid "MSN"
+msgstr "MSN"
+
+msgid "MSN via HTTP proxy needs https"
+msgstr "通过HTTP代理MSN需要通过https"
+
+msgid "Machine"
+msgstr "机器"
+
+msgid "Mail Follow URLs"
+msgstr "邮件跟踪网址"
+
+msgid "Mail From"
+msgstr "发件人"
+
+msgid "Mail program"
+msgstr "邮件程序"
+
+msgid "Make Dynamic"
+msgstr "设置动态"
+
+msgid "Make Static"
+msgstr "设置静态"
+
+msgid "Make system gateway dynamic"
+msgstr "设置动态系统网关"
+
+msgid "Make system gateway static"
+msgstr "设置静态系统网关"
+
+msgid "Managed"
+msgstr "托管"
+
+msgid "Managed extensions"
+msgstr "托管扩展"
+
+msgid "Managed mime types"
+msgstr "管理MIME类型"
+
+msgid ""
+"Mark archives as viruses (e.g. RAR.ExceededFileSize, Zip.ExceededFilesLimit) "
+"if ArchiveMaxFiles, ArchiveMaxFileSize, or ArchiveMaxRecursion limit is "
+"reached.\n"
+"\t\tDefault: disabled"
+msgstr ""
+"标记档案的病毒（例如RAR.ExceededFileSize，Zip.ExceededFilesLimit）如果"
+"ArchiveMaxFiles，ArchiveMaxFileSize，限制或ArchiveMaxRecursion达成。\n"
+"\t\t 默认:停用"
+
+msgid ""
+"Mark encrypted archives as viruses (Encrypted.Zip, Encrypted.RAR).\n"
+"\t\tDefault: disabled"
+msgstr ""
+"标记加密的病毒档案（Encrypted.Zip，Encrypted.RAR）。\n"
+"\t\t 默认:停用"
+
+msgid "Matched requests"
+msgstr "符合的请求"
+
+msgid "Max Attempts"
+msgstr "最多尝试次数"
+
+msgid "Max Auth Tries"
+msgstr "最多授权尝试次数"
+
+msgid "Max Block Duration"
+msgstr "最大块时间"
+
+msgid "Max Childs"
+msgstr "最大子结点数"
+
+msgid "Max Clients"
+msgstr "最大客户数"
+
+msgid "Max Directory Recursion"
+msgstr "最大目录递归数"
+
+msgid "Max KeepAlive Requests"
+msgstr "最大的KeepAlive请求"
+
+msgid "Max Log Item Length"
+msgstr "最大记录长度项"
+
+msgid "Max Spare Servers"
+msgstr "最大备用服务器"
+
+msgid "Max Threads"
+msgstr "最大主题"
+
+msgid "Max age children"
+msgstr "最大年龄的子结点"
+
+msgid "Max children"
+msgstr "最大的子结点"
+
+msgid "Max content file cache scan size"
+msgstr "最大扫描内容文件缓存的大小"
+
+msgid "Max content filter size"
+msgstr "最大内容过滤器的大小"
+
+msgid "Max content ram cache scan size"
+msgstr "最大扫描内容RAM缓存大小"
+
+msgid "Max ips"
+msgstr "最大的IPS"
+
+msgid "Max spare children"
+msgstr "最大备用子结点"
+
+msgid "Max upload size"
+msgstr "最大上传大小"
+
+msgid "MaxStartups"
+msgstr "MaxStartups"
+
+msgid ""
+"Maximal depth directories are scanned at.\n"
+"\t\tDefault: 15"
+msgstr ""
+"最大深度扫描目录时。\n"
+"\t\t 默认:15"
+
+msgid ""
+"Maximal number of threads running at the same time.\n"
+"\t\tDefault: 10"
+msgstr ""
+"最大数量的同时运行的线程。\n"
+"\t\t 默认:10"
+
+msgid "Maximum connections"
+msgstr "最大连接"
+
+msgid "Maximum connections per host"
+msgstr "每个主机最大连接数"
+
+msgid "Maximum download size"
+msgstr "最大下载大小"
+
+msgid "Maximum load"
+msgstr "最大负载"
+
+msgid "Maximum spam load"
+msgstr "最大垃圾邮件负载"
+
+msgid "Maximum spam scan size"
+msgstr "规模最大垃圾邮件扫描"
+
+msgid "Maximum virus scan size"
+msgstr "规模最大的病毒扫描"
+
+msgid "Mbuf Statistics"
+msgstr "Mbuf统计"
+
+msgid "Mbufs"
+msgstr "内存缓冲区"
+
+msgid "Mbufs indicate kernel memory management for networking."
+msgstr "mbuf的显示为网络内核的内存管理。"
+
+msgid "Memory"
+msgstr "内存"
+
+msgid "Memory Usage"
+msgstr "内存使用"
+
+msgid "Messages from all OpenVPN processes are recorded in the same log file."
+msgstr "OpenVPN的过程中所有的邮件都记录在相同的日志文件。"
+
+msgid "Method does not exist"
+msgstr ""
+
+msgid "Methods"
+msgstr "方法"
+
+msgid "Military and schools etc"
+msgstr "军队和学校等"
+
+msgid "Mime"
+msgstr "Mime"
+
+msgid "Mime type wrong"
+msgstr "MIME类型错误"
+
+msgid "Mimes"
+msgstr "矿"
+
+msgid "Min Spare Servers"
+msgstr "最小备用服务器数"
+
+msgid "Min children"
+msgstr "最小子结点"
+
+msgid "Min spare children"
+msgstr "最小备用子结点"
+
+msgid "Modern virtual private networking."
+msgstr "现代虚拟专用网络。"
+
+msgid "Mon"
+msgstr "Mon"
+
+msgid "Monitoring"
+msgstr "监测"
+
+msgid "Month"
+msgstr "月"
+
+msgid "Most clients don't need to bind to a specific local port number."
+msgstr "大多数客户不需要绑定到一个特定的本地端口号。"
+
+msgid "Motherboard"
+msgstr "主板"
+
+msgid "Move ACL Down"
+msgstr "向下移动ACL"
+
+msgid "Move ACL Up"
+msgstr "向上移动ACL"
+
+msgid "Move Down"
+msgstr "下移"
+
+msgid "Move Up"
+msgstr "上移"
+
+msgid "Move rule down"
+msgstr ""
+
+msgid "Move rule up"
+msgstr ""
+
+msgid "NA"
+msgstr "不适用"
+
+msgid "NAT header type"
+msgstr "NAT报头类型"
+
+msgid "NI"
+msgstr "网络接口"
+
+msgid "Name server"
+msgstr "名称服务器"
+
+msgid "Name wrong"
+msgstr "名称错误"
+
+msgid "Nameserver"
+msgstr "域名服务器"
+
+msgid "Naughtyness limit"
+msgstr "Naughtyness限制"
+
+msgid ""
+"Nested archives are scanned recursively, e.g. if a Zip archive contains a "
+"RAR file, all files within it will also be scanned. This options specifies "
+"how deep the process should be continued.\n"
+"\t\tValue of 0 disables the limit.\n"
+"\t\tDefault: 8"
+msgstr ""
+"嵌套档案是递归扫描，例如，如果一个Zip档案包含RAR文件，在其中的所有文件也将被"
+"扫描。这个选项指定有多深的进程应该继续下去。\n"
+"\t\t 0将禁用限制。\n"
+"\t\t 默认:8"
+
+msgid "Network"
+msgstr "网络"
+
+msgid "Network Protocol Usage"
+msgstr "网络协议的使用"
+
+msgid "Network Time"
+msgstr "网络时代"
+
+msgid ""
+"Network interfaces are listed here. You can configure an interface as dhcp "
+"or inet. Changes made here do not take effect until you restart the network "
+"or reboot the system."
+msgstr ""
+"网络接口这里列出。您可以配置一个接口作为DHCP或inet的。这里所做的更改不会生"
+"效，直到您重新启动网络或重新启动系统。"
+
+msgid ""
+"New system hostname does not fully take effect until after reboot.\n"
+"\n"
+"Messages to the system administrator are directly transfered to the mail "
+"server hosting the e-mail address you have provided above. The remote mail "
+"server may consider e-mails sent from this system as spam, and move them "
+"into your spam or junk folder."
+msgstr ""
+"新系统的主机没有充分考虑重新启动后才生效。\n"
+"\n"
+"系统管理员的邮件直接转移到邮件服务器托管的电子邮件地址，您提供的以上。远程邮"
+"件服务器可以考虑的电子邮件从一个发送垃圾邮件系统，并将其移动到您的垃圾邮件或"
+"垃圾邮件文件夹。"
+
+msgid "News sites"
+msgstr "新闻网站"
+
+msgid "Next >"
+msgstr "下一步>"
+
+msgid "No bind"
+msgstr "没有绑定"
+
+msgid "No cache"
+msgstr "无缓存"
+
+msgid "No default banner path"
+msgstr "没有默认旗帜路径"
+
+msgid "No such file"
+msgstr ""
+
+msgid "Non standard delimiter"
+msgstr "非标定界符"
+
+msgid "Not a valid password"
+msgstr "不是一个有效的密码"
+
+msgid "Not asterisk"
+msgstr "不是星号"
+
+msgid "Not comma separated digits"
+msgstr "不以逗号分隔数字"
+
+msgid "Not config name"
+msgstr "不会配置名称"
+
+msgid "Not empty string"
+msgstr "不会清空字符串"
+
+msgid "Not enough args"
+msgstr ""
+
+msgid "Not running command"
+msgstr ""
+
+msgid "Not serialized array"
+msgstr "不会序列化数组"
+
+msgid "Not sha1 encrypted string"
+msgstr "不sha1加密字符串"
+
+msgid "Notice days"
+msgstr "通知日"
+
+msgid "Notice response"
+msgstr "通知答复"
+
+msgid "Notice responses"
+msgstr "通知回应"
+
+msgid "Notify AV"
+msgstr "通知影音"
+
+msgid "Notify Content"
+msgstr "通知内容"
+
+msgid "Number of Processes"
+msgstr "进程数"
+
+msgid ""
+"Number of database checks per day.\n"
+"\t\tDefault: 12 (every two hours)"
+msgstr ""
+"每天数数据库的检查。\n"
+"\t\t 默认:12（每两个小时）"
+
+msgid "Number of e-mails"
+msgstr "电子邮件数量"
+
+msgid ""
+"Number of files to be scanned within an archive.\n"
+"\t\tValue of 0 disables the limit.\n"
+"\t\tDefault: 1000"
+msgstr ""
+"文件数目，扫描存档内。\n"
+"\t\t 0将禁用限制tValue。\n"
+"\t\t 默认:1000"
+
+msgid "Number of filter groups"
+msgstr "过滤组数"
+
+msgid "Number of messages"
+msgstr "消息数量"
+
+msgid "Number of processes"
+msgstr "进程数"
+
+msgid ""
+"Number of seconds to wait for the next request from the same client on the "
+"same connection."
+msgstr "秒数等待来自同一客户端上的下一个请求相同的连接。"
+
+msgid ""
+"Number of servers to start initially --- should be a reasonable ballpark "
+"figure."
+msgstr "服务器的数量，开始初步---应该是一个合理的球场数字。"
+
+msgid ""
+"Number of violations before notification. Setting to 0 will never trigger a "
+"notification"
+msgstr "侵犯数目，然后通知。设置为0不会触发通知"
+
+msgid "Number wrong"
+msgstr "号码错误"
+
+msgid "OPENSSH"
+msgstr "OPENSSH"
+
+msgid "OPENVPN"
+msgstr "OPENVPN"
+
+msgid "Obsoletes QuietMode and FascistLogging"
+msgstr "废弃QuietMode和FascistLogging"
+
+msgid "On this page are web administration interface access statistics."
+msgstr "在此网页上的Web管理接口访问统计。"
+
+msgid ""
+"One or more actions failed while creating new group\n"
+"Examine the report above to make sure this is the intended result!"
+msgstr ""
+
+msgid "Online auctions"
+msgstr "网上拍卖"
+
+msgid "Online gaming sites"
+msgstr "在线游戏网站"
+
+msgid "Online payment sites"
+msgstr "在线支付网站"
+
+msgid "Only webcam sessions on Yahoo are recognized and blocked"
+msgstr "雅虎只有摄像头会得到承认和封锁"
+
+msgid "Open source anti-spam software."
+msgstr "开源反垃圾邮件软件。"
+
+msgid "Open source anti-virus software."
+msgstr "开源的反病毒软件。"
+
+msgid ""
+"OpenBSD/spamd is a spam deferral daemon, a fake sendmail-like daemon which "
+"rejects false mail. You can run spamd if there is a mail server in the "
+"internal network. Thanks to OpenBSD/spamd, you can not only prevent unwanted "
+"e-mails but also torture spammers."
+msgstr ""
+"OpenBSD系统/ spamd是一个垃圾邮件推迟守护进程，像Sendmail的守护进程，而拒绝虚"
+"假邮件。您可以运行spamd如果有一个邮件服务器内部网络。感谢OpenBSD/ spamd，您不"
+"仅可以防止意外电子邮件垃圾邮件，而且惩罚发送垃圾邮件的人。"
+
+msgid "OpenSSH"
+msgstr "OpenSSH"
+
+msgid ""
+"OpenSSH is the de-facto standard secure shell. If you stop OpenSSH, you "
+"cannot establish shell connections to the system remotely."
+msgstr ""
+"OpenSSH是事实上的标准，安全壳。如果您停止OpenSSH的，你不能建立外壳连接到远程"
+"系统。"
+
+msgid ""
+"OpenSSH logs detailed information on all connections, successful logins and "
+"failures. Also provided are warnings based on reverse DNS lookups."
+msgstr ""
+"OpenSSH的详细记录所有连接，成功登录和信息失败。还提供了上反向DNS查找的警告。"
+
+msgid "OpenVPN"
+msgstr "OpenVPN"
+
+msgid ""
+"OpenVPN is a virtual private networking solution based on OpenSSL. You "
+"should create different configuration for servers and clients, and start "
+"OpenVPN accordingly."
+msgstr ""
+"OpenVPN是一个虚拟专用网络解决方案OpenSSL的基础。您应为服务器和客户端不同的配"
+"置，并启动OpenVPN的相应。"
+
+msgid "Operating System"
+msgstr "操作系统"
+
+msgid "Override default of no subsystems"
+msgstr "覆盖默认不子系统"
+
+msgid "Overview"
+msgstr "概述"
+
+msgid "PACKET FILTER"
+msgstr "包过滤"
+
+msgid ""
+"PE stands for Portable Executable - it's an executable file format used in "
+"all 32-bit versions of Windows operating systems. This option allows ClamAV "
+"to perform a deeper analysis of executable files and it's also required for "
+"decompression of popular executable packers such as UPX, FSG, and Petite.\n"
+"\t\tDefault: enabled"
+msgstr ""
+"体育代表可执行-这是一个可执行文件格式，用于在所有32位Windows操作系统版本。此"
+"选项允许ClamAV的执行可执行文件的更深入的分析，而且它也需要减压包装流行可执行"
+"文件，如UPX压缩，血糖，和小。\n"
+"\t\t 默认:启用"
+
+msgid "PICS rating support"
+msgstr "PICS评价支持"
+
+msgid "PID"
+msgstr "PID"
+
+msgid "POP3 PROXY"
+msgstr "POP3代理"
+
+msgid "POP3 Proxy"
+msgstr "POP3代理"
+
+msgid ""
+"POP3 proxy is used to scan incoming e-mails for viruses and spam. Make sure "
+"virus and spam scanners are running before starting this proxy."
+msgstr ""
+"POP3代理用于扫描传入的电子邮件病毒和垃圾邮件。确保病毒和垃圾邮件扫描仪是在开"
+"始运行此代理。"
+
+msgid "POP3 proxy logs connection information and process exit status."
+msgstr "POP3代理连接的信息记录和处理退出状态。"
+
+msgid ""
+"POST protection (web upload and forms) does not block forms without any file "
+"upload, i.e. this is just for blocking or limiting uploads measured in "
+"kibibytes after MIME encoding and header bumph\n"
+"use 0 for a complete block\n"
+"use higher (e.g. 512 = 512Kbytes) for limiting\n"
+"use -1 for no blocking"
+msgstr ""
+"邮政保护（网络上传和形式）不阻止未经任何文件形式上传，即这只是阻挠或限制测量"
+"上传kibibytes后MIME编码和头bumph \n"
+"使用0为一个完整的块\n"
+"使用较高的（如512 = 512Kbytes）限制\n"
+"使用-1不堵"
+
+msgid "PRI"
+msgstr "PRI"
+
+msgid "Packet Filter"
+msgstr "包过滤"
+
+msgid "Packet types"
+msgstr "包类型"
+
+msgid "Packets"
+msgstr ""
+
+msgid "Page start line"
+msgstr "页面起始线"
+
+msgid "Partitions"
+msgstr "分区"
+
+msgid "Partitions Usages"
+msgstr "分区使用"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Password again"
+msgstr "再次输入密码"
+
+msgid "Passwords do not match"
+msgstr "密码不匹配"
+
+msgid ""
+"Path (sendmail-compatible) email program, with options.\n"
+"Not used if usesmtp is disabled (filtergroup specific)."
+msgstr ""
+"路径（sendmail的兼容）的电子邮件程序，选择权交易。\n"
+"如果不使用禁用usesmtp（filtergroup具体）。"
+
+msgid ""
+"Perform HTML normalisation and decryption of MS Script Encoder code.\n"
+"\t\tDefault: enabled"
+msgstr ""
+"执行的HTML正常化和微软脚本编码器的代码解密。\n"
+"\t\t 默认:启用"
+
+msgid ""
+"Perform internal sanity check (database integrity and freshness).\n"
+"\t\tDefault: 1800 (30 min)"
+msgstr ""
+"执行内部完整性检查（数据库完整性和时效性）。\n"
+"\t\t 默认:1800（30分钟）"
+
+msgid ""
+"Perform reverse lookups on client IPs for successful requests.\n"
+"If set to on, DansGuardian will look up the forward DNS for the IP of the "
+"connecting computer, and log host names (where available) rather than IPs "
+"against requests.\n"
+"This is not dependent on reverseclientiplookups being enabled; however, if "
+"it is, enabling this option does not incur any additional forward DNS "
+"requests."
+msgstr ""
+"执行反向查找成功的请求对客户端的IP。\n"
+"如果设置为ON，将查找的dansguardian对知识产权的正向DNS连接电脑，并登录主机名"
+"（如果有的话），而不是IP地址反请求。\n"
+"这是不依赖于reverseclientiplookups被启用，但如果它是，启用这个选项不承担任何"
+"额外的正向DNS请求。"
+
+msgid "Permit Empty Passwords"
+msgstr "许可证空密码"
+
+msgid "Permit Root Login"
+msgstr "许可证根登录"
+
+msgid "Persist Key"
+msgstr "保持密匙"
+
+msgid "Persist Tun"
+msgstr "保持通道"
+
+msgid "Personal finance sites"
+msgstr "个人理财网站"
+
+msgid "Pet sites"
+msgstr "宠物网站"
+
+msgid "Pfctl output does not match"
+msgstr ""
+
+msgid "Phrase filter mode"
+msgstr "词组过滤模式"
+
+msgid "Phrase modes and cache settings determine how content scan works."
+msgstr "词组模式和高速缓存设置确定的内容扫描工作。"
+
+msgid "Phrases"
+msgstr "短语"
+
+msgid "Physical Memory"
+msgstr "物理内存"
+
+msgid "Ping"
+msgstr "Ping"
+
+msgid "Pmacct"
+msgstr "Pmacct"
+
+msgid "Pmacct Network Monitoring"
+msgstr "Pmacct网络监控"
+
+msgid "Pornography"
+msgstr "色情"
+
+msgid "Port"
+msgstr "端口"
+
+msgid "Ports you run secure shell on."
+msgstr "端口安全shell中运行的。"
+
+msgid ""
+"Ports you run web servers on.\n"
+"\n"
+"Please note:  [80,8080] does not work.\n"
+"If you wish to define multiple HTTP ports, port lists must either be "
+"continuous [eg 80:8080], or a single port [eg 80].\n"
+"We will add support for a real list of ports in the future."
+msgstr ""
+"端口运行的网络服务器上。\n"
+"\n"
+"请注意：[80,8080]不起作用。\n"
+"如果你想定义多个HTTP端口，端口列表必须是连续[例如80:8080]，或一个端口[例如"
+"80]。\n"
+"我们将增加一个端口在未来真正的列表支持。"
+
+msgid "Ports you want to look for SHELLCODE on."
+msgstr "你想寻找shellcode问题的端口。"
+
+msgid ""
+"Positive (clean) result caching for URLs Caches good pages so they don't "
+"need to be scanned again.\n"
+"It also works with AV plugins.\n"
+"0 = off (recommended for ISPs with users with disimilar browsing)\n"
+"1000 = recommended for most users\n"
+"5000 = suggested max upper limit\n"
+"If you're using an AV plugin then use at least 5000."
+msgstr ""
+"积极的（清洁）结果缓存的URL缓存好网页，以便他们不必须再次扫描。\n"
+"它也与影音插件。\n"
+"0 =关闭（建议互联网服务供应商与disimilar浏览用户）\n"
+"1000 =建议大多数用户\n"
+"5000 =建议的最大上限\n"
+"如果您使用的AV插件，然后使用至少5000。"
+
+msgid "Postfix to all responses using all responder plugins"
+msgstr "后缀的所有答复使用所有应答插件"
+
+msgid "Prefix to all responses using all responder plugins"
+msgstr "前缀的所有答复使用所有应答插件"
+
+msgid "Prefork children"
+msgstr "prefork子结点"
+
+msgid "Prepare file for download"
+msgstr "准备文件下载"
+
+msgid "Preserve case"
+msgstr "保留大小写"
+
+msgid "Print Last Log"
+msgstr "列印最后登录"
+
+msgid "Print Motd"
+msgstr "打印motd"
+
+msgid "Priorities"
+msgstr "优先级别"
+
+msgid "Priority"
+msgstr "优先"
+
+msgid "Private Key"
+msgstr "私人密码匙"
+
+msgid "Privileged IPs"
+msgstr "特权的IP"
+
+msgid ""
+"Privileged IPs have access to more services than other IPs, such as instant "
+"messaging and file sharing. Normally, the ports of such services should "
+"remain blocked for users who do not need them."
+msgstr ""
+"特权的IP获得比其他IP地址，如即时消息和文件，分享更多的服务。通常情况下，这种"
+"服务的端口应该继续对不需要的用户封锁。"
+
+msgid "Process"
+msgstr "进程"
+
+msgid "Process CPU Load"
+msgstr "进程的CPU负载"
+
+msgid "Processed (KB)"
+msgstr "加工（KB）"
+
+msgid "Processes"
+msgstr "进程"
+
+msgid "Processing time (sec)"
+msgstr "处理时间（秒）"
+
+msgid "Processor"
+msgstr "处理器"
+
+msgid ""
+"Promiscuous mode accounting daemon collects IP based network usage "
+"information. Network usage graphs are generated based on pmacct data."
+msgstr ""
+"混杂模式统计进程收集基于IP的网络使用情况的信息。使用网络图生成基于pmacct数"
+"据。"
+
+msgid "Proto"
+msgstr ""
+
+msgid "Protocol"
+msgstr "协议"
+
+msgid "Protocols"
+msgstr "协议"
+
+msgid "Protograph"
+msgstr "协议图"
+
+msgid "Proxy IP"
+msgstr "代理IP"
+
+msgid "Proxy IP:Ports"
+msgstr "代理IP地址：端口"
+
+msgid "Proxy Port"
+msgstr "代理端口"
+
+msgid ""
+"Proxy settings\n"
+"\t\tDefault: disabled"
+msgstr ""
+"代理设置\n"
+"\t\t 默认:停用"
+
+msgid "Query types"
+msgstr "查询类型"
+
+msgid "Queue Statistics"
+msgstr "队列统计"
+
+msgid "Queues"
+msgstr ""
+
+msgid "Quiet"
+msgstr "安静的"
+
+msgid "RSS"
+msgstr "RSS"
+
+msgid ""
+"Rather than generating a random key you can specify one. It must be more "
+"than 8 chars.\n"
+"'' = generate a random one (recommended and default)\n"
+"'Mary had a little lamb.' = an example\n"
+"'76b42abc1cd0fdcaf6e943dcbc93b826' = an example\n"
+"Please note: manually entered keys are converted to all lowercase before use."
+msgstr ""
+"而不是生成随机密钥，您可以指定一个。它必须超过8个字符。\n"
+"'' =生成一个随机（推荐和默认）\n"
+"'Mary had a little lamb.' =一个例子\n"
+"'76b42abc1cd0fdcaf6e943dcbc93b826'=一个例子\n"
+"请注意：手动输入密钥转换使用前全部使用小写。"
+
+msgid "Re-check replaced URLs"
+msgstr "重新检查更换网址"
+
+msgid "Read system gateway"
+msgstr "阅读系统网关"
+
+msgid "Read system hostname"
+msgstr "阅读系统主机"
+
+msgid "Read system nameserver"
+msgstr "阅读系统域名服务器"
+
+msgid "Reasons"
+msgstr "原因"
+
+msgid "Received (KB)"
+msgstr "收到（KB）"
+
+msgid "Recipients"
+msgstr "收件人"
+
+msgid "Redraw"
+msgstr "重绘"
+
+msgid "Refresh interval"
+msgstr "刷新间隔"
+
+msgid "Regexp"
+msgstr "正则表达式"
+
+msgid ""
+"Regular expression for matching user agents\n"
+"When not defined, matches all agents.\n"
+"\n"
+"'mozilla' also matches firefox, IE, etc."
+msgstr ""
+"正则表达式匹配用户代理\n"
+"当不明确，比赛的所有人员。\n"
+"\n"
+"'mozilla'匹配firefox, IE等"
+
+msgid "Regular expression wrong"
+msgstr "正则表达式错误"
+
+msgid "Reinitialize"
+msgstr "重新初始化"
+
+msgid "Relay results"
+msgstr "中继结果"
+
+msgid "Reload"
+msgstr "重新载入"
+
+msgid "Reload "
+msgstr "重新载入"
+
+msgid "Reload interval"
+msgstr "刷新间隔"
+
+msgid "Remote Server"
+msgstr "远程服务器"
+
+msgid "Remote User"
+msgstr "远程用户"
+
+msgid "Report e-mail"
+msgstr "报告电子邮件"
+
+msgid "Report language"
+msgstr "报告语言"
+
+msgid "Report safe"
+msgstr "安全报告"
+
+msgid "Reporting level"
+msgstr "报告水平"
+
+msgid "Requests"
+msgstr "请求"
+
+msgid "Requests by IP"
+msgstr "请求（按IP）"
+
+msgid "Requests by date"
+msgstr "请求（按日期）"
+
+msgid "Requests bypassed"
+msgstr "请求旁路绕过"
+
+msgid "Requests denied"
+msgstr "请求被拒绝"
+
+msgid "Requests infected"
+msgstr "请求被感染"
+
+msgid "Requests scanned"
+msgstr "请求被扫描"
+
+msgid "Required score"
+msgstr "需要评分"
+
+msgid "Resource not available"
+msgstr "资源不可用"
+
+msgid "Response postfix"
+msgstr "响应后缀"
+
+msgid "Response prefix"
+msgstr "回应前缀"
+
+msgid "Restart"
+msgstr "重新启动"
+
+msgid "Restart "
+msgstr "重新启动"
+
+msgid "Restart network"
+msgstr "重新启动网络"
+
+msgid "Restricted IPs"
+msgstr "受限制的IP地址"
+
+msgid "Results"
+msgstr "结果"
+
+msgid ""
+"Results are only predictable with user authenticated configs, if enabled the "
+"violation/threshold count is kept track of by the user"
+msgstr "结果是仅可预测的验证configs的用户，如果使违反/阈值计数追查由用户"
+
+msgid "Reverse address lookups"
+msgstr "反向地址查找"
+
+msgid "Reverse client ip lookups"
+msgstr "客户端IP反向查找"
+
+msgid ""
+"Reverse lookups for banned and exception IP lists.\n"
+"If set to on, DansGuardian will look up the forward DNS for the IP of the "
+"connecting computer.  This means you can put in hostnames in the "
+"exceptioniplist and bannediplist.\n"
+"If a client computer is matched against an IP given in the lists, then the "
+"IP will be recorded in any log entries; if forward DNS is successful and a "
+"match occurs against a hostname, the hostname will be logged instead.\n"
+"It will reduce searching speed somewhat so unless you have a local DNS "
+"server, leave it off."
+msgstr ""
+"反向查找禁止和异常的IP列表。\n"
+"如果设置为ON，将查找的dansguardian对知识产权的正向DNS连接电脑。这意味着您可以"
+"在主机放在exceptioniplist和bannediplist。\n"
+"如果客户端计算机中进行匹配的清单给一个IP，则IP将被记录在任何日志条目;如果正向"
+"DNS是成功的一比赛出现了一种主机，主机将被记录代替。\n"
+"这将降低搜索速度有所因此，除非你有一个本地DNS服务器，请将它关闭。"
+
+msgid ""
+"Reverse lookups for banned site and URLs.\n"
+"If set to on, DansGuardian will look up the forward DNS for an IP URL "
+"address and search for both in the banned site and URL lists. This would "
+"prevent a user from simply entering the IP for a banned address.\n"
+"It will reduce searching speed somewhat so unless you have a local caching "
+"DNS server, leave it off and use the Blanket IP Block option in the "
+"bannedsitelist file instead."
+msgstr ""
+"反向禁止的网站和网址查找。\n"
+"如果设置为on，dansguardian的的外观为一个IP地址的正向DNS地址和搜索都在被禁止的"
+"网站，网址列表。这将防止简单地输入一个禁止的IP地址的用户。\n"
+"这将降低搜索速度有所因此，除非你有一个本地缓存DNS服务器，保留其关闭，使用毯知"
+"识产权座选择bannedsitelist文件代替。"
+
+msgid "Rewrite header"
+msgstr "重写头"
+
+msgid "Root Certificate"
+msgstr "根证书"
+
+msgid "Rotate"
+msgstr "旋转"
+
+msgid "Rotate All"
+msgstr "旋转全部"
+
+msgid "Rotate all log files"
+msgstr "轮转所有日志文件"
+
+msgid "Rotate log file"
+msgstr "轮换日志文件"
+
+msgid "Route"
+msgstr "路线"
+
+msgid "Rule"
+msgstr "规则"
+
+msgid "Rule to be added to the routing table."
+msgstr "规则被添加到路由表。"
+
+msgid "Rules"
+msgstr "规则"
+
+msgid "Russian"
+msgstr "俄文"
+
+msgid "SHELLCODE_PORTS"
+msgstr "SHELLCODEPORTS"
+
+msgid "SMTP PROXY"
+msgstr "SMTP代理"
+
+msgid "SMTP Proxy"
+msgstr "SMTP代理"
+
+msgid ""
+"SMTP proxy is used to scan outgoing e-mails for viruses and spam. Make sure "
+"virus and spam scanners are running before starting this proxy."
+msgstr ""
+"SMTP代理用于扫描传出电子邮件病毒和垃圾邮件。确保病毒和垃圾邮件扫描仪是在开始"
+"运行此代理。"
+
+msgid "SMTP_SERVERS"
+msgstr "SMTP服务器"
+
+msgid "SNMP_SERVERS"
+msgstr "SNMP服务器"
+
+msgid "SOCKS PROXY"
+msgstr "SOCKS代理"
+
+msgid "SOCKS Proxy"
+msgstr "SOCKS代理"
+
+msgid ""
+"SOCKS proxy is used by clients which support SOCKS protocol, such as file "
+"sharing applications. If you do not plan on providing support for SOCKS-"
+"enabled applications, you can stop this proxy. Some client applications fail "
+"to use the SOCKS proxy fully, even if they are configured correctly. Check "
+"the packet filter logs for blocked packets."
+msgstr ""
+"使用SOCKS代理是由客户端的支持，如文件SOCKS协议，共享应用。如果你不提供对SOCKS"
+"支持计划的应用程序，您可以停止这个代理。有些客户端应用程序失败使用SOCKS代理充"
+"分，即使是正确配置。检查数据包筛选器日志阻止数据包。"
+
+msgid "SOCKS proxy logs connection status and failures."
+msgstr "SOCKS代理日志连接状态和失败。"
+
+msgid "SPAM Deferral"
+msgstr "垃圾邮件延期"
+
+msgid "SPAM FILTER"
+msgstr "垃圾邮件过滤器"
+
+msgid "SPAM Filter"
+msgstr "垃圾邮件过滤器"
+
+msgid "SPAMD"
+msgstr "SPAMD"
+
+msgid "SQL_SERVERS"
+msgstr "SQL服务器"
+
+msgid "SSH version"
+msgstr "SSH版本"
+
+msgid "SSH_PORTS"
+msgstr "SSH端口"
+
+msgid ""
+"SSL/TLS parms. See the server config file for more description.  It's best "
+"to use a separate .crt/.key file pair for each client.  A single ca file can "
+"be used for all clients."
+msgstr ""
+"SSL / TLS的parms。看到服务器配置更多的描述文件。这是最好的使用一个单独的."
+"crt / .key文件为每个客户对。单个核证文件可以可用于所有的客户。"
+
+msgid ""
+"SSL/TLS root certificate (ca), certificate (cert), and private key (key).  "
+"Each client and the server must have their own cert and key file. The server "
+"and all clients will use the same ca file.\n"
+"Any X509 key management system can be used. OpenVPN can also use a PKCS #12 "
+"formatted key file (see \"pkcs12\" directive in man page)."
+msgstr ""
+"SSL / TLS的根证书（CA）的，证书（证书）和私钥（键）。每个客户端和服务器必须有"
+"自己的证书和密钥文件。服务器所有的客户机将使用相同的CA文件。\n"
+"任何X509证书密钥管理系统都可以使用。 OpenVPN的也可以使用一个PKCS＃12格式的密"
+"钥文件（见 \"pkcs12\" 手册页指令）。"
+
+msgid "STARTED"
+msgstr "开始"
+
+msgid "STAT"
+msgstr "STAT"
+
+msgid "SUCCESS"
+msgstr ""
+
+msgid "SYSTEM"
+msgstr "系统"
+
+msgid "Safe Browsing"
+msgstr "安全浏览"
+
+msgid "Same as the 'bypasskey' option, but used for infection bypass mode."
+msgstr "一样的'bypasskey'选项，但感染旁路模式下使用。"
+
+msgid ""
+"Sample client and server configuration are provided to get you started. You "
+"may want to replace the default SSL certificates with yours."
+msgstr "样本客户端和服务器配置提供给您开始。您可能要替换你的默认SSL证书。"
+
+msgid "Sat"
+msgstr "Sat"
+
+msgid ""
+"Save spam messages as a message/rfc822 MIME attachment instead of modifying "
+"the original message (0: off, 2: use text/plain instead)"
+msgstr ""
+"保存作为message/rfc822 MIME附件的垃圾邮件，而不是修改原始邮件（0：关闭，2：使"
+"用文本/纯代替）"
+
+msgid "Scan"
+msgstr "扫描"
+
+msgid "Scan Archive"
+msgstr "扫描存档"
+
+msgid "Scan HTML"
+msgstr "扫描HTML"
+
+msgid "Scan Mail"
+msgstr "扫描邮件"
+
+msgid "Scan OLE2"
+msgstr "扫描OLE2"
+
+msgid "Scan PE"
+msgstr "扫描PE"
+
+msgid "Scan RAR"
+msgstr "扫描RAR"
+
+msgid "Scan Result"
+msgstr "扫描结果"
+
+msgid "Scan Results"
+msgstr "扫描结果"
+
+msgid "Scan Spam"
+msgstr "扫描垃圾邮件"
+
+msgid "Scan Types"
+msgstr "扫描类型"
+
+msgid "Scan clean cache"
+msgstr "扫描干净缓存"
+
+msgid "Scanned IPs"
+msgstr "扫描IP地址"
+
+msgid "Scanned requests"
+msgstr "扫描要求"
+
+msgid "Search"
+msgstr "搜索"
+
+msgid "Search engines such as google"
+msgstr "如搜索引擎谷歌"
+
+msgid "Search site"
+msgstr "搜索网站"
+
+msgid "Secure Level"
+msgstr "安全等级"
+
+msgid "Select"
+msgstr "选择"
+
+msgid ""
+"Select a cryptographic cipher. If the cipher option is used on the server "
+"then you must also specify it here."
+msgstr "选择一个密码加密。如果密码选项用于在服务器上那么您还必须在这里指定。"
+
+msgid ""
+"Select a cryptographic cipher. This config item must be copied to the client "
+"config file as well."
+msgstr "选择一个密码加密。此配置项必须复制到客户端配置文件以及。"
+
+msgid "Select an IP to view its network usage graphs."
+msgstr "选择一个IP来查看其网络使用情况图。"
+
+msgid "Select log file"
+msgstr "选择日志文件"
+
+msgid "Selected"
+msgstr "选择"
+
+msgid "Self Check"
+msgstr "自我检查"
+
+msgid ""
+"Send a UDP ping to remote once every given seconds to keep stateful firewall "
+"connection alive."
+msgstr "发送一个UDP平远程一次给秒保持状态防火墙连接活着。"
+
+msgid "Senders"
+msgstr "发件人"
+
+msgid "Sensors"
+msgstr "传感器"
+
+msgid "Sent messages"
+msgstr "发送的邮件"
+
+msgid "Serial Number"
+msgstr "序列号"
+
+msgid "Server"
+msgstr "服务器"
+
+msgid "Server Admin"
+msgstr "服务器管理"
+
+msgid "Server Key Bits"
+msgstr "服务器关键位"
+
+msgid "Server Mode"
+msgstr "服务器模式"
+
+msgid ""
+"Server-pool size regulation.\n"
+"\t\tRather than making you guess how many server processes you need, Apache "
+"dynamically adapts to the load it sees --- that is, it tries to maintain "
+"enough server processes to handle the current load, plus a few spare servers "
+"to handle transient load spikes (e.g., multiple simultaneous requests from a "
+"single Netscape browser).\n"
+"\n"
+"\t\tIt does this by periodically checking how many servers are waiting for a "
+"request.  If there are fewer than MinSpareServers, it creates a new spare.  "
+"If there are more than MaxSpareServers, some of the spares die off.  The "
+"default values in httpd.conf-dist are probably OK for most sites."
+msgstr ""
+"服务器池的大小调节。\n"
+"\t\t比让你有多少服务器tRather进程需要，阿帕奇动态适应负载它认为---也就是说，"
+"它试图维持足够的服务器进程来处理目前的负载，另外还有一些备用服务器处理瞬态负"
+"载尖峰（例如，从多个并发请求单Netscape浏览器）。\n"
+"\n"
+"\t\t针锋相对这是否通过定期多少台服务器的等待检查请求。如果少于MinSpareServers"
+"是，它会创建一个新的备用。如果有超过MaxSpareServers是，在一些零部件死光。那个"
+"默认值在httpd.conf，县可能对于大多数的网站确定。"
+
+msgid ""
+"ServerAdmin: Your address, where problems with the server should be e-"
+"mailed.\n"
+"\t\tThis address appears on some server-generated pages, such as error "
+"documents."
+msgstr ""
+"ServerAdmin：你的地址，在与服务器的问题应通过电子邮件邮寄。\n"
+"\t\t竞购地址显示在服务器上生成，如错误页面，文件。"
+
+msgid "Session"
+msgstr "会话"
+
+msgid "Session Takeover"
+msgstr "获取会话"
+
+msgid "Session timeout"
+msgstr "会话超时"
+
+msgid "Set DNS forwarders"
+msgstr "设置DNS转发器"
+
+msgid "Set PF allowed"
+msgstr "设置PF允许"
+
+msgid "Set PF restricted"
+msgstr "设置PF限制"
+
+msgid "Set afterhours if"
+msgstr "设置非工作时间网络接口"
+
+msgid "Set configuration"
+msgstr "设置配置"
+
+msgid "Set dhcpd conf"
+msgstr "设置dhcpd配置"
+
+msgid "Set e-mail address"
+msgstr "设置电子邮件地址"
+
+msgid ""
+"Set headers which may provide inappropriate cues to the Bayesian classifier"
+msgstr "标题设置不当，可能提供的线索贝叶斯分类器"
+
+msgid "Set help boxes"
+msgstr "设置帮助"
+
+msgid "Set ifs"
+msgstr "设置网络接口"
+
+msgid "Set interfaces"
+msgstr "设置接口"
+
+msgid "Set internal net"
+msgstr "设置内部网"
+
+msgid "Set locale"
+msgstr ""
+
+msgid "Set log level"
+msgstr "设置日志级别"
+
+msgid "Set logs configuration"
+msgstr "设置日志配置"
+
+msgid "Set man.cgi home"
+msgstr "设置man.cgi主页"
+
+msgid "Set name value pair"
+msgstr "设置名称值对"
+
+msgid "Set pmacct if"
+msgstr "设置pmacct网络接口"
+
+msgid "Set pmacct net"
+msgstr "设置pmacct网"
+
+msgid "Set reload rate"
+msgstr "设置重载率"
+
+msgid "Set remote time"
+msgstr "设置远程时间"
+
+msgid "Set session timeout"
+msgstr "设置会话超时"
+
+msgid "Set startup if"
+msgstr "设置启动网络接口"
+
+msgid "Set startup ifs"
+msgstr "设置多个启动网络接口"
+
+msgid "Set symon conf"
+msgstr "设置系统监测配置"
+
+msgid "Set symon cpus"
+msgstr "设置系统监测的CPU"
+
+msgid "Set symon ifs"
+msgstr "设置系统监测网络接口"
+
+msgid "Set symon partitions"
+msgstr "设置系统监测分区"
+
+msgid "Set symon sensors"
+msgstr "设置系统监测传感器"
+
+msgid "Set system clock"
+msgstr "设置系统时钟"
+
+msgid "Set system gateway"
+msgstr "设置系统网关"
+
+msgid "Set system hostname"
+msgstr "设置主机名"
+
+msgid "Set system nameserver"
+msgstr "设置系统域名服务器"
+
+msgid "Set template ips"
+msgstr "设置IPS模板"
+
+msgid ""
+"Set the appropriate level of log file verbosity.\n"
+"0 is silent, except for fatal errors\n"
+"4 is reasonable for general usage\n"
+"5 and 6 can help to debug connection problems\n"
+"9 is extremely verbose"
+msgstr ""
+"设置日志文件冗水平。\n"
+"0是沉默，除了致命错误\n"
+"4是合理的，一般使用\n"
+"5和6可以帮助调试连接问题\n"
+"9是非常冗长"
+
+msgid "Set the threshold at which a message is considered spam (default: 5.0)"
+msgstr "设置在该消息被视为垃圾邮件（默认是：5.0阈值）"
+
+msgid ""
+"Set up the external network addresses as well.  A good start may be \"any\""
+msgstr "建立外部网络地址以及设置。一个良好的开端可能是\"any\""
+
+msgid "Set user password"
+msgstr "设置用户密码"
+
+msgid "Set webalizer hostname"
+msgstr "设置Webalizer的主机名"
+
+msgid ""
+"Set which networks or hosts are considered 'trusted' by your mail server (i."
+"e. not spammers)"
+msgstr "一套网络或主机被认为是‘信任的邮件服务器’（不是垃圾邮件）"
+
+msgid ""
+"Sets the maximum age of a child process before it croaks it.\n"
+"This is the number of connections they handle before exiting.\n"
+"On large sites you might want to try 10000."
+msgstr ""
+"设置子进程的最大年龄退出之前。\n"
+"这是连接在退出之前，他们处理一些。\n"
+"在大型网站上，您可能需要尝试10000。"
+
+msgid ""
+"Sets the maximum number client IP addresses allowed to connect at once.\n"
+"Use this to set a hard limit on the number of users allowed to concurrently "
+"browse the web. Set to 0 for no limit, and to disable the IP cache process."
+msgstr ""
+"设置最多允许客户端IP地址进行连接一次。\n"
+"使用此设置允许的用户数目同时硬限制浏览网页。设置为0没有限制，并禁用IP缓存的过"
+"程。"
+
+msgid ""
+"Sets the maximum number of processes to have doing nothing.\n"
+"When this many are spare it will cull some of them.\n"
+"On large sites you might want to try 64."
+msgstr ""
+"设置最大进程数有什么都不做。\n"
+"当许多人纷纷将全力扑杀其中的一些。\n"
+"在大型网站上，您可能需要尝试64。"
+
+msgid ""
+"Sets the maximum number of processes to spawn to handle the incoming "
+"connections.  Max value usually 250 depending on OS.\n"
+"On large sites you might want to try 180."
+msgstr ""
+"设置最大进程数繁育处理传入连接。最高值通常250操作系统而定。\n"
+"在大型网站上，您可能需要尝试180。"
+
+msgid ""
+"Sets the minimum number of processes to be kept ready to handle "
+"connections.\n"
+"On large sites you might want to try 8."
+msgstr ""
+"设置进程的最低数目，随时做好准备，应付连接。\n"
+"在大型网站上，您可能需要尝试8。"
+
+msgid ""
+"Sets the minimum number of processes to spawn to handle the incoming "
+"connections.\n"
+"On large sites you might want to try 32."
+msgstr ""
+"设置最低数量的进程繁育处理传入连接。\n"
+"在大型网站上，您可能需要尝试32。"
+
+msgid ""
+"Sets the minimum number of processes to spawn when it runs out.\n"
+"On large sites you might want to try 10."
+msgstr ""
+"设置最低数量的进程繁育时耗尽。\n"
+"在大型网站上，您可能需要尝试10。"
+
+msgid "Show weighted phrases found"
+msgstr "结果显示加权短语"
+
+msgid ""
+"Similar to the 'bypass' setting, but specifically for bypassing files "
+"scanned and found to be infected, or files that trigger scanner errors - for "
+"example, archive types with recognised but unsupported compression schemes, "
+"or corrupt archives.\n"
+"The option specifies the number of seconds for which the bypass link will be "
+"valid.\n"
+"300 = enable for 5 minutes\n"
+"0 = disable (default)\n"
+"-1 = enable, but require a separate program/CGI to generate a valid link"
+msgstr ""
+"类似'bypass'设置，但专门为绕过文件扫描并发现受感染，或文件触发-为扫描仪的错误"
+"例如，与被确认，但不支持的存档类型的压缩方案，或损坏档案。\n"
+"该选项指定秒而绕道的链接将会被编号有效的。\n"
+"300 =启用5分钟\n"
+"0 =禁用（默认值）\n"
+"1 =启用，但需要一个单独的程序/ CGI的生成有效的链接"
+
+msgid "Similar to violence but more promoting than depicting"
+msgstr "类似的暴力，但超过描绘推广"
+
+msgid ""
+"Since Freshclam wakes up periodically, this page displays graphs for Clamd "
+"process only."
+msgstr "由于freshclam的定期醒来，这个页面显示图形的Clamd过程只。"
+
+msgid ""
+"Since this web administration interface depends on the Apache web server, "
+"you should be careful while modifying these options. By default, the web "
+"server is configured to serve this web interface only, hence the default "
+"values should suffice for most purposes. However, OpenBSD/httpd is a full-"
+"featured HTTP server, and you can configure it to serve web sites too."
+msgstr ""
+"由于此Web管理接口依赖于Apache Web服务器，你应该小心而修改这些选项。默认情况"
+"下，网络服务器配置为服务于这个网络界面只，因此默认值应该满足大多数的目的。然"
+"而，OpenBSD的/ httpd的是一个全HTTP服务器功能，您可以配置服务的网站了。"
+
+msgid "Sites"
+msgstr "站点"
+
+msgid "Sites about and selling clothing"
+msgstr "销售服装有关网站"
+
+msgid "Sites about and selling jewelry"
+msgstr "有关网站和销售珠宝"
+
+msgid "Sites about cooking et al"
+msgstr "烹饪等网站"
+
+msgid "Sites about dating"
+msgstr "约会网站"
+
+msgid "Sites about going on holiday"
+msgstr "度假网站"
+
+msgid "Sites about home repair"
+msgstr "维修站点"
+
+msgid "Sites about hygiene and other personal grooming related stuff"
+msgstr "网站关于卫生和其他有关材料的个人修饰"
+
+msgid "Sites attempting to trick people into giving out private information."
+msgstr "试图诱骗私人信息的网站。"
+
+msgid "Sites containing adult material such as swearing but not porn"
+msgstr "网站包含成人材料，但并非色情成人材料"
+
+msgid "Sites containing ring tones, games, pictures and other"
+msgstr "网站包含铃声，游戏，图片及其他"
+
+msgid ""
+"Sites containing screen savers, backgrounds, cursers, pointers. desktop "
+"themes and similar timewasting and potentially dangerous content"
+msgstr ""
+"网站包含屏幕保护程序，背景，光标，指针。桌面主题和类似费时和潜在危险内容"
+
+msgid "Sites containing violence"
+msgstr "网站包含暴力"
+
+msgid "Sites dedicated to sexuality, possibly including adult material"
+msgstr "专门性的网站，其中可能包括成人材料"
+
+msgid "Sites detailing or selling weapons"
+msgstr "网站详细介绍或出售武器"
+
+msgid "Sites for finding jobs"
+msgstr "寻找工作网站"
+
+msgid ""
+"Sites in the Whitelist are not scanned for viruses. You can omit the leading "
+"www. or http://"
+msgstr "在白名单的网站没有进行病毒扫描。您可以省略领先www.或http://"
+
+msgid "Sites kids often waste time on"
+msgstr "孩子常浪费时间的网站"
+
+msgid "Sites promoting religion"
+msgstr "推广宗教网站"
+
+msgid ""
+"Sites that contain messenger client download and web-based messaging sites"
+msgstr "网站包含Messenger客户端下载和基于Web的信息网站"
+
+msgid "Sites that contain nude pictures and/or promote a nude lifestyle"
+msgstr "网站包含的裸体照片和/或宣传裸体的生活方式"
+
+msgid "Sites that promote movies, books, magazine, humor"
+msgstr "推广电影的网站，书籍，杂志，幽默"
+
+msgid "Sites that provide online shopping"
+msgstr "网站，提供网上购物"
+
+msgid "Sites that remove spyware"
+msgstr "删除间谍软件的网站"
+
+msgid "Sites to do with childcare"
+msgstr "网站与育儿"
+
+msgid "Sites to do with french education"
+msgstr "网站与法国教育"
+
+msgid "Sites where software updates are downloaded from including virus sigs"
+msgstr "网站，下载软件更新，包括病毒的改进目标"
+
+msgid "Sites who host virus infected files"
+msgstr "网站谁主办病毒感染的文件"
+
+msgid "Sites who run or have spyware software to download"
+msgstr "谁的网站运行或有间谍软件下载"
+
+msgid "Sites with audio or video downloads"
+msgstr "网站的音频或视频下载"
+
+msgid "Sites with beer or liquors for sale"
+msgstr "啤酒或酒类网站出售"
+
+msgid "Sites with chat rooms etc"
+msgstr "与网站聊天室等"
+
+msgid "Sites with dialers such as those for pornography or trojans"
+msgstr "网站提供例如色情或木马的拨号器"
+
+msgid "Sites with illegal pirate software"
+msgstr "网站非法盗版软件"
+
+msgid "Sites with information only on beer or liquors"
+msgstr "网站只有在啤酒或酒类信息"
+
+msgid "Sites with proxies to bypass filters"
+msgstr "与代理站点绕过过滤器"
+
+msgid "Size"
+msgstr "大小"
+
+msgid "Size (KB)"
+msgstr "大小（KB）"
+
+msgid "Size by IP (KB)"
+msgstr "大小通过IP（KB）"
+
+msgid "Size by Link (KB)"
+msgstr "大小的连接（KB）"
+
+msgid "Size by Target (KB)"
+msgstr "大小的目标（KB）"
+
+msgid "Size by site (KB)"
+msgstr "大小按网站（KB）"
+
+msgid ""
+"Smart, Raw and Meta/Title phrase content filtering options.\n"
+"Smart is where the multiple spaces and HTML are removed before phrase "
+"filtering.\n"
+"Raw is where the raw HTML including meta tags are phrase filtered.\n"
+"Meta/Title is where only meta and title tags are phrase filtered (v. "
+"quick).\n"
+"CPU usage can be effectively halved by using setting 0 or 1 compared to 2.\n"
+"0 = raw only\n"
+"1 = smart only\n"
+"2 = both of the above (default)\n"
+"3 = meta/title"
+msgstr ""
+"智能，原材料和元/标题词组内容过滤选项。\n"
+"智能是其中多个空格和HTML，然后才短语删除过滤。\n"
+"原材料就是原始的HTML，包括元标记短语过滤。\n"
+"元/标题就是只有元和标题标记短语过滤（诉快）。\n"
+"CPU使用率可以有效地减少一半通过设置0或1比2使用。\n"
+"0 =原只\n"
+"1 =智能只\n"
+"2 =以上（默认两者）\n"
+"3 =元/题"
+
+msgid ""
+"Snort's decoder will alert on lots of things such as header truncation or "
+"options of unusual length or infrequently used tcp options.\n"
+"Stop generic decode events:"
+msgstr ""
+"Snort的解码器将警告对很多事情，如头截断或不寻常的长或不经常使用的TCP选项的选"
+"择。\n"
+"停止通用解码事件："
+
+msgid ""
+"SnortIPS is a perl process. These graphs display data from all perl "
+"processes."
+msgstr "SnortIPS是一个Perl的进程。这些图表显示来自所有Perl数据进程。"
+
+msgid "Soft inits"
+msgstr "软inits"
+
+msgid "Soft inits (unblock all)"
+msgstr "软inits（解锁所有）"
+
+msgid "Soft restart"
+msgstr "软启动"
+
+msgid "Software Version"
+msgstr "软件版本"
+
+msgid ""
+"Some of the content scanners support using a timeout value to stop "
+"processing (eg AV scanning) the file if it takes too long.\n"
+"If supported this will be used.\n"
+"The default of 60 seconds is probably reasonable."
+msgstr ""
+"内容扫描仪使用的是一些人的支持超时值停止处理（如AV扫描）的文件，如果时间过"
+"长。\n"
+"如果支持这项将被使用。\n"
+"在默认的60秒可能是合理的。"
+
+msgid ""
+"Sometimes web servers label binary files as text which can be very large "
+"which causes a huge drain on memory and cpu resources.\n"
+"To counter this, you can limit the size of the document to be filtered and "
+"get it to just pass it straight through.\n"
+"This setting also applies to content regular expression modification.\n"
+"The value must not be higher than maxcontentramcachescansize\n"
+"The size is in Kibibytes - eg 2048 = 2Mb\n"
+"use 0 to set it to maxcontentramcachescansize"
+msgstr ""
+"有时候，Web服务器标签二进制文件的文本，可以非常大这会导致对内存和CPU资源的大"
+"量流失。\n"
+"为了解决这个问题，您可以限制文件的大小和过滤得到它仅仅通过直接通过它。\n"
+"此设置也适用于正则表达式的修改内容。\n"
+"该值不得高于maxcontentramcachescansize \n"
+"大小是Kibibytes -例如2048 =功能的2Mb \n"
+"使用0将其设置为maxcontentramcachescansize"
+
+msgid "Source"
+msgstr ""
+
+msgid "Source Docs"
+msgstr "源文件"
+
+msgid ""
+"Source IP of all the requests on this page is the loopback interface, i.e. "
+"127.0.0.1, hence not listed here. If the HTTP proxy is configured as non-"
+"caching proxy, you should see TCP_MISS on the Cache column."
+msgstr ""
+"来源的所有关于这个页面的请求IP是环回接口，即127.0.0.1，因此此处未列出。如果"
+"HTTP代理服务器配置为不缓存代理，您应该看到的缓存列TCP_MISS。"
+
+msgid "Source IPs"
+msgstr "源IP地址"
+
+msgid "Source Ports"
+msgstr "源端口"
+
+msgid "Source addresses"
+msgstr "源地址"
+
+msgid "Spam"
+msgstr "垃圾邮件"
+
+msgid "Spam Filter"
+msgstr "垃圾邮件过滤器"
+
+msgid "Spam Scan Requests"
+msgstr "垃圾邮件扫描请求"
+
+msgid "Spam threshold"
+msgstr "垃圾邮件阈值"
+
+msgid ""
+"SpamAssassin is a bayesian content scanner and is used in scanning incoming "
+"POP3 and outgoing SMTP e-mails for spam content. If SpamAssassin identifies "
+"an e-mail as spam, it marks the subject line with a warning message and "
+"provides a list of reasons in the body of the e-mail."
+msgstr ""
+"SpamAssassin是一个贝叶斯内容扫描仪，并在使用扫描传入POP3和传出SMTP电子邮件为"
+"垃圾邮件的内容。如果SpamAssassin的标识电子邮件为垃圾邮件，它标志着一个警告消"
+"息和主题行提供了在电子邮件的正文原因列表。"
+
+msgid ""
+"SpamAssassin is a perl process. These graphs display data from all perl "
+"processes."
+msgstr "SpamAssassin是一个Perl的过程。这些图表显示来自所有Perl数据进程。"
+
+msgid "Spamd DB"
+msgstr "Spamd数据库"
+
+msgid "Spamd Grey DB"
+msgstr "Spamd灰色数据库"
+
+msgid "Spamd Grey Listing"
+msgstr "Spamd灰色清单"
+
+msgid "Spamd Logging"
+msgstr "Spamd记录"
+
+msgid "Spamd Spam Deferral"
+msgstr "Spamd垃圾延期"
+
+msgid "Spamd White DB"
+msgstr "Spamd白数据库"
+
+msgid ""
+"Spamd logs connections from spam sources and greylisted clients. Also "
+"recorded is length of time the client remained connected to spamd."
+msgstr ""
+"Spamd日志垃圾邮件的来源和灰名单客户端连接。也记录时间的长短是客户端仍连接到"
+"spamd。"
+
+msgid "Spanish"
+msgstr "西班牙语"
+
+msgid "Sport news sites"
+msgstr "体育新闻网站"
+
+msgid "Start"
+msgstr "开始"
+
+msgid "Start "
+msgstr "开始"
+
+msgid "Start OpenVPN process"
+msgstr "开始OpenVPN的过程"
+
+msgid "Start Servers"
+msgstr "启动服务器"
+
+msgid "Start snort"
+msgstr "开始snort"
+
+msgid "Startup"
+msgstr "启动"
+
+msgid "State"
+msgstr ""
+
+msgid "State Searches vs Packets"
+msgstr "状态包搜索"
+
+msgid "State Statistics"
+msgstr "状态统计"
+
+msgid ""
+"State operations are perhaps the most meaningful measure of packet filter "
+"load."
+msgstr "状态操作或许是最有意义的包过滤加载措施。"
+
+msgid "States"
+msgstr "状态"
+
+msgid "Statistics"
+msgstr "统计"
+
+msgid "Statistics and uncompressed log files"
+msgstr "统计和压缩日志文件"
+
+msgid ""
+"Statistics collection entirely depends on what and how logs are recorded in "
+"the log files. So do not change these settings unless necessary."
+msgstr ""
+"统计数据收集完全取决于什么和如何日志记录日志文件。所以，不要更改这些设置，除"
+"非必要的。"
+
+msgid "Status"
+msgstr "状况"
+
+msgid "Stop"
+msgstr "停止"
+
+msgid "Stop "
+msgstr "停止"
+
+msgid ""
+"Stop Alerts on T/TCP alerts\n"
+"\n"
+"In snort 2.0.1 and above, this only alerts when a TCP option is detected "
+"that shows T/TCP being actively used on the network.  If this is normal "
+"behavior for your network, disable the next option."
+msgstr ""
+"快讯停止对T / TCP的警报\n"
+"\n"
+"在SNORT2.0.1及以上，这只是提醒TCP选项时，发现显示吨/正在积极的TCP网络上使用。"
+"如果这是正常的为您的网络行为，禁用一个选项。"
+
+msgid "Stop Alerts on all other TCPOption type events"
+msgstr "所有其他类型的活动停止TCPOption快讯"
+
+msgid "Stop Alerts on experimental TCP options"
+msgstr "实验TCP选项停止快讯"
+
+msgid "Stop Alerts on invalid ip options"
+msgstr "对无效的IP选项停止快讯"
+
+msgid "Stop Alerts on obsolete TCP options"
+msgstr "对过时的TCP选项停止快讯"
+
+msgid "Stop OpenVPN instance"
+msgstr "停止OpenVPN的实例"
+
+msgid "Stop Snort instance"
+msgstr "停止Snort的实例"
+
+msgid "String wrong"
+msgstr "字符串错误"
+
+msgid ""
+"Subject of the email sent when a virus is caught.\n"
+"Only applicable if notifyav is on.\n"
+"default avsubject = 'dansguardian virus block'"
+msgstr ""
+"电子邮件的主题时发送病毒被捕获。\n"
+"只适用于notifyav是。\n"
+"默认avsubject ='dansguardian virus block'"
+
+msgid ""
+"Subject of the email sent when violation thresholds are exceeded default "
+"contentsubject = 'dansguardian violation'"
+msgstr ""
+"电子邮件的主题时发出违反超出阈值的默认contentsubject ='dansguardian "
+"violation'"
+
+msgid "Subnet mask"
+msgstr "子网掩码"
+
+msgid "Subsystem sftp"
+msgstr "子系统SFTP发布"
+
+msgid "Successful logins"
+msgstr "成功登录"
+
+msgid "Sun"
+msgstr "Sun"
+
+msgid "Symon"
+msgstr "系统监测"
+
+msgid "Symon System Monitoring"
+msgstr "系统监测监控"
+
+msgid "Symux"
+msgstr "Symux"
+
+msgid "Symux System Monitoring"
+msgstr "Symux系统监控"
+
+msgid "Syslog Facility"
+msgstr "系统日志设施"
+
+msgid "System"
+msgstr "系统"
+
+msgid "System Administration Guides"
+msgstr "系统管理指南"
+
+msgid "System is going down..."
+msgstr "系统正在关机..."
+
+msgid "System is restarting..."
+msgstr "系统正在重新启动..."
+
+msgid ""
+"System monitoring software. Most of the rrd based graphs are generated based "
+"on symon data."
+msgstr "系统监控软件。大部分rrd图表是基于系统监测的数据。"
+
+msgid "System restart"
+msgstr "系统重新启动"
+
+msgid "System shutdown"
+msgstr "系统关机"
+
+msgid "TCP Keep Alive"
+msgstr "保持活动的TCP"
+
+msgid "TCP or UDP server?"
+msgstr "TCP或UDP服务器？"
+
+msgid "TELNET_SERVERS"
+msgstr "TELNET服务器"
+
+msgid "TIME"
+msgstr "时间"
+
+msgid "TLS Auth"
+msgstr "TLS认证"
+
+msgid "Target"
+msgstr "目标"
+
+msgid "Target IPs"
+msgstr "目标IP地址"
+
+msgid "Target Ports"
+msgstr "目标端口"
+
+msgid "Telnet negotiation string normalizer"
+msgstr "远程登录握手正规化"
+
+msgid "Temperature"
+msgstr "温度"
+
+msgid "Temporary Denied Page Bypass"
+msgstr "临时拒绝页绕道"
+
+msgid "Temporary Denied Page Bypass Secret Key"
+msgstr "临时拒绝页绕道秘密钥匙"
+
+msgid "Temporary block duration in seconds on each alert."
+msgstr "临时在几秒钟时间每块警戒。"
+
+msgid ""
+"Thanks to OpenSSH, remote root login to the system is permitted by default. "
+"TCP Keep Alive and Use DNS options may help you resolve some issues."
+msgstr ""
+"感谢OpenSSH，远程root登录到系统默认情况下是允许的。保持活动的TCP和使用的DNS选"
+"项可以帮助您解决一些问题。"
+
+msgid "The Free Software Foundation."
+msgstr "自由软件基金会。"
+
+msgid ""
+"The IDS produces many alerts. Some alerts may be more serious than others, "
+"hence most alerts have priorities. You can configure the IPS to block only "
+"alerts at a certain priority and up. Each alert also contains log and "
+"classification text. You can add keywords to match within such text. The IP "
+"in the matching alert is blocked. If the alert does not contain an IP "
+"address, no action is taken."
+msgstr ""
+"入侵检测系统产生了许多警示。有些警示可能比其他人更为严重，因此，大多数警报的"
+"优先事项。您可以配置的IPS仅阻止警报在一些优先和行动。每个警报还包含日志分类文"
+"本。您可以添加关键字匹配在这样的文本。知识产权在匹配的警报被阻止。如果警报不"
+"包含一个IP地址，没有采取任何行动。"
+
+msgid ""
+"The IDS uses rules categorized in different packages. Note that you cannot "
+"obtain a 'better' IDS by enabling all the rules. In fact, irrelevant rules "
+"may trigger false alarms.\n"
+"\n"
+"Updated Snort rules for your version of the software are released "
+"periodically. Make sure you have appropriate rules installed on your system."
+msgstr ""
+"入侵检测系统使用了不同的包分类规则。请注意，您不能取得'好'，使所有的规则的"
+"IDS。事实上，不相关的规则可能引发假警报。\n"
+"\n"
+"Snort的更新您的软件版本发布规则定期。请确保您在您的系统上安装适当的规则。"
+
+msgid ""
+"The IP that DansGuardian listens on.  If left blank DansGuardian will listen "
+"on all IPs.  That would include all NICs, loopback, modem, etc.\n"
+"Normally you would have your firewall protecting this, but if you want you "
+"can limit it to a certain IP. To bind to multiple interfaces, specify each "
+"IP on an individual filterip line."
+msgstr ""
+"dansguardian侦听的IP。如果留空dansguardian的会听在所有的IP。这将包括所有的网"
+"卡，环回，调制解调器等\n"
+"通常你会你的防火墙保护，但如果你想你可以限制到一个特定IP。绑定到多个接口，指"
+"定每个知识产权个别filterip线。"
+
+msgid ""
+"The Intrusion Prevention System (IPS) depends on alerts generated by the "
+"Intrusion Detection System (IDS). Make sure the IDS is running before "
+"starting the IPS."
+msgstr ""
+"在入侵防御系统（IPS）取决于生成警报入侵检测系统（IDS）。请确保在入侵检测系统"
+"正在运行开始的IPS。"
+
+msgid ""
+"The keepalive directive causes ping-like messages to be sent back and forth "
+"over the link so that each side knows when the other side has gone down. If "
+"for example \"10 120\", ping every 10 seconds, assume that remote peer is "
+"down if no ping received during a 120 second time period."
+msgstr ""
+"原因是平保活指令类似邮件发送来回在这条连接，使每一方知道什么时候对方已经减"
+"少。如果例如，\"10 120\"，平每隔10秒，假设远程对等的如果没有向下平在1 120秒的"
+"时间内收到的。"
+
+msgid "The maximum number of concurrently connected clients we want to allow."
+msgstr "并发连接的客户，我们希望允许的最大数量。"
+
+msgid ""
+"The maximum number of connections we will handle at once. Any further "
+"connections will be dropped. Keep in mind that a number of 10 also means "
+"that 10 viruscanner can run at once."
+msgstr ""
+"的连接，我们将立即处理的最大数量。任何进一步的连接将被丢弃。请记住，名额不超"
+"过十名也意味着在10 viruscanner可以同时运行。"
+
+msgid ""
+"The maximum number of requests to allow during a persistent connection. Set "
+"to 0 to allow an unlimited amount. We recommend you leave this number high, "
+"for maximum performance."
+msgstr ""
+"的请求的最大数目，允许在一个持久连接。设置为0，以允许无限量。我们建议你离开这"
+"个数字高，以最高的性能。"
+
+msgid "The most famous web server."
+msgstr "最有名的Web服务器。"
+
+msgid ""
+"The most secure OS in the world. Underneath UTMFW is pure, untouched "
+"OpenBSD."
+msgstr "UTMFW是基于在世界上最安全的操作系统，OpenBSD。"
+
+msgid ""
+"The number of KB's there must be free before processing any mail. If there "
+"is less than this amount, p3scan will terminate any connections until the "
+"problem is resolved.\n"
+"\t\tdefault: 100MB"
+msgstr ""
+"前处理任何邮件数量的KB的存在必须是自由的。如果有是低于这一数字，p3scan将终"
+"止，直至任何连接问题得到解决。\n"
+"\t\t 默认:100MB的"
+
+msgid "The number of seconds before receives and sends time out."
+msgstr "秒数的接收和发送前超时。"
+
+msgid ""
+"The number of web filter processes depends on the number of requests from "
+"internal network. Minimum and maximum number of processes can be adjusted on "
+"the configuration pages.\n"
+"\n"
+"If you modify the configuration of the web filter, you must restart the web "
+"filter for the changes to take effect."
+msgstr ""
+"网页过滤器的进程数取决于请求数量内部网络。最小和最大进程数就可以调整配置"
+"页。\n"
+"\n"
+"如果您修改了网页过滤器配置，您必须重新启动网络过滤器的更改生效。"
+
+msgid ""
+"The options below protect your system against Denial of Service attacks "
+"using archive bombs.\n"
+"\n"
+"\t\tFiles in archives larger than this limit won't be scanned.\n"
+"\t\tValue of 0 disables the limit.\n"
+"\t\tDefault: 10M"
+msgstr ""
+"以下选项中抵御DOS攻击系统使用档案炸弹。\n"
+"\n"
+"\t\t 比这限制更大的文件不会被扫描。\n"
+"\t\t 0将禁用限制。\n"
+"\t\t 默认:10M"
+
+msgid ""
+"The options here are for the Denied page which the user receives instead of "
+"the page requested."
+msgstr "这里的选项是为网页而被拒绝接收，而不是用户网页请求。"
+
+msgid ""
+"The options on this page determine basic features of the group. Group name "
+"shows on the Denied page and logs."
+msgstr "此页上的选项确定小组的基本特征。组名称显示网页上的拒绝和日志。"
+
+msgid ""
+"The persist options will try to avoid accessing certain resources on restart "
+"that may no longer be accessible because of the privilege downgrade."
+msgstr ""
+"在坚持选项将尽量避免在访问某些资源的重新启动这可能不再是由于访问特权降级。"
+
+msgid "The process is taking too long, thus will run in the background."
+msgstr "过程太长，因此将在后台运行。"
+
+msgid "The settings on this page are valid filter-wide."
+msgstr "此页上的设置是有效的筛选范围。"
+
+msgid ""
+"The strategy used for options in the default sshd_config shipped with "
+"OpenSSH is to specify options with their default value where possible, but "
+"leave them commented.  Uncommented options change a default value."
+msgstr ""
+"在sshd_config中附带的默认选项中采用的战略OpenSSH是他们指定的默认值的可行方"
+"案，但离开他们的评论。注释的选项更改默认值。"
+
+msgid ""
+"The web filter can report incidents via e-mails. You can setup which "
+"incidents to be reported based on violation types and thresholds. Do not "
+"forget the single quotes around e-mail addresses and strings."
+msgstr ""
+"该网站的过滤器可以通过电子邮件报告事件的邮件。您可以设置的事故须予报告的基础"
+"上违反类型和阈值。不要忘记围绕电子商务的单引号，电子邮件地址和字符串。"
+
+msgid ""
+"The web filter on UTMFW uses weighted phrase lists to scan the content "
+"of web pages, hence the name Content Scanning Web Filter. This feature of "
+"the web filter is different from and in addition to site or url lists, "
+"blacklists, and related categories."
+msgstr ""
+"关于UTMFW网页过滤器采用加权短语列出的内容扫描的网页，因此得名内容扫描网页"
+"过滤系统。此功能的网页过滤器不同，除了站点或URL列表，黑名单和相关类别。"
+
+msgid ""
+"There are 3 possible modes of operation:\n"
+"0 = off = do not use the weighted phrase feature.\n"
+"1 = on, normal = normal weighted phrase operation.\n"
+"2 = on, singular = each weighted phrase found only counts once on a page."
+msgstr ""
+"有三种可能的操作模式：\n"
+"0 =关闭不使用的加权短语功能。\n"
+"1 =开，正常=加权短语正常运作。\n"
+"2 =开，奇异=各占一语中只能算作一次页面上。"
+
+msgid ""
+"These advanced options can help you tune the performance of the web filter. "
+"For example, you can increase the maximum number of child processes if your "
+"internal network is large. However, the maximum number of processes a daemon "
+"user can start is restricted in login.conf file of the operating system. So "
+"make sure you adjust both settings accordingly."
+msgstr ""
+"这些高级选项可以帮助您调整的网页过滤性能。例如，您可以增加儿童的最大进程数，"
+"如果您的内部网络是很大的。然而，最大数量的进程守护进程用户可以启动限制在操作"
+"系统的login.conf中的文件。因此请务必同时设置相应的调整。"
+
+msgid ""
+"These are access logs of the Apache web server. Logs contain logged-in "
+"users, client IP addresses, and pages accessed."
+msgstr ""
+"这是Apache Web服务器访问日志。日志包含登录用户，客户端IP地址，和页面访问。"
+
+msgid ""
+"These are intrusion alerts. Note that these alerts can be considered as "
+"guesses at best. While configuring the IPS, make use of priorities and "
+"keywords."
+msgstr ""
+"这些入侵警报。请注意，这些警报也可以被视为猜测最多。虽然配置的IPS，请优先使用"
+"关键字。"
+
+msgid ""
+"These are keywords to match in alert messages. If alerts contain such words, "
+"the IP in that alert will be blocked."
+msgstr "这些关键字匹配的警报消息。如果警报含有这些话，在该警报的IP将被封锁。"
+
+msgid ""
+"These defaults are permanently stored in web user interface settings, i.e. "
+"they are <em>not</em> specific to your current session only."
+msgstr ""
+"这些默认设置是永久地存储在网络用户界面设置，即他们<em>不是</em>针对您的当前会"
+"话只。"
+
+msgid ""
+"These graphs show network usage per host. From top to bottom, host usage "
+"graphs are for the last hour, last 8-hour, daily, weekly, and monthly usages."
+msgstr ""
+"这些图表显示每台主机的网络使用。从上到下，主机使用图的最后一个小时是，最近8小"
+"时，每日，每周和每月的使用。"
+
+msgid ""
+"These lists allow or block all of a site. You can omit the leading www. or "
+"http://"
+msgstr "这些列表允许或封锁网站的所有。您可以省略www.或http://的前缀"
+
+msgid ""
+"These logs contain messages from all IDS process. Alerts are duplicated here "
+"as well."
+msgstr "这些日志包含所有入侵检测系统处理邮件。警报是在这里重复。"
+
+msgid "These logs may be important for diagnosing web filter related problems."
+msgstr "这些日志可能是重要的诊断网页过滤器相关的问题。"
+
+msgid "These logs may be important for diagnosing web server related problems."
+msgstr "这些日志可能是重要的诊断Web服务器有关的问题。"
+
+msgid "These settings apply to currently active group only."
+msgstr "这些设置只适用于当前的活动组。"
+
+msgid ""
+"This button allows you to <b>manually</b> enable or disable after hours "
+"rules. Note that the rules are activated or deactivated immediately, "
+"irrespective of the after hours definitions below. For example, you can use "
+"this button to shutdown after hours rules in case of an emergency."
+msgstr ""
+"此按钮允许你<b>手动</b>启用或禁用工余时间规则。请注意，规则立即激活或停用，不"
+"论下面工余时间的定义。例如，紧急情况下您可以使用此按钮来关闭工余时间的规则。"
+
+msgid ""
+"This button allows you to delete all the statistics and uncompressed log "
+"files created by this user interface. Note that deleting these files does "
+"not mean that accumulated statistics are lost forever. <b>Original log files "
+"under /var/log folder are not affected by this action</b> either. These "
+"files will be recreated, and statistics will be recollected, the next time "
+"you access Statistics or Logs pages."
+msgstr ""
+"此按钮允许您删除所有的用户界面创建的统计数据和压缩日志文件。请注意，删除这些"
+"文件并不意味着积累的统计数字永远失去了。 <b>原来的日志文件（在/var/log文件"
+"夹）不受这一行动不受影响</b> 。下次您访问统计或日志页这些文件将重新创建。"
+
+msgid ""
+"This button creates a new web filter group identical to the active group."
+msgstr "这个按钮创建一个新的网页过滤器组相同的活动小组。"
+
+msgid ""
+"This graph shows overall network usage based on certain protocols. Note that "
+"each protocol may cover more than one port."
+msgstr ""
+"这个图表显示整体的网络使用某些协议为基础。请注意每个协议可能包括多个端口。"
+
+msgid ""
+"This graph shows the data transfer rate of packet filter. The transfer is "
+"between interfaces."
+msgstr "该图显示的数据包筛选器的数据传输速率。转让的之间的接口。"
+
+msgid ""
+"This is in seconds. If 'violations' occur in 'threshold' seconds, then a "
+"notification is made.\n"
+"If this is set to 0, then whenever the set number of violations are made a "
+"notifaction will be sent."
+msgstr ""
+"这是秒。如果'violations'出现在'threshold'秒，然后一通知提出。\n"
+"如果此设置为0，那么每当违反规定多发了通知将被发送。"
+
+msgid ""
+"This is only used if you use a content scanner plugin such as AV\n"
+"This is the max size of file that DG will download and cache in RAM.  After "
+"this limit is reached it will cache to disk.\n"
+"This value must be less than or equal to maxcontentfilecachescansize.\n"
+"The size is in Kibibytes - eg 10240 = 10Mb\n"
+"use 0 to set it to maxcontentfilecachescansize\n"
+"This option may be ignored by the configured download manager."
+msgstr ""
+"这只是使用如果您使用诸如影音内容扫描插件\n"
+"这是文件的最大大小，危险品将下载和RAM缓存。后达到此限制，将缓存到磁盘中。\n"
+"此值必须小于或等于maxcontentfilecachescansize。\n"
+"大小是Kibibytes -例如10240 =为10Mb \n"
+"使用0将其设置为maxcontentfilecachescansize \n"
+"这个选项可以忽略配置的下载管理器。"
+
+msgid ""
+"This is only used if you use a content scanner plugin such as AV.\n"
+"This is the max size file that DG will download so that it can be scanned or "
+"virus checked.\n"
+"This value must be greater or equal to maxcontentramcachescansize.\n"
+"The size is in Kibibytes - eg 10240 = 10Mb"
+msgstr ""
+"这只是使用如果您使用诸如影音内容扫描插件。\n"
+"这是最大的大小文件，危险品将下载，以便它可以扫描或病毒检查。\n"
+"此值必须大于或等于maxcontentramcachescansize。\n"
+"大小是Kibibytes -例如10240 =为10Mb"
+
+msgid ""
+"This is the DNS server internal clients use. The default is the internal IP "
+"address of the system."
+msgstr "这是DNS服务器的内部客户端使用。默认值是内部IP报告的制度。"
+
+msgid "This is the IP and port over which the proxy accepts connections."
+msgstr "这是IP和端口对的代理接受连接。"
+
+msgid ""
+"This is the address of your web server to which the cgi dansguardian "
+"reporting script was copied. Only used in reporting levels 1 and 2.\n"
+"\n"
+"This webserver must be either:\n"
+" 1. Non-proxied. Either a machine on the local network, or listed as an "
+"exception in your browser's proxy configuration.\n"
+" 2. Added to the exceptionsitelist. Option 1 is preferable; this option is "
+"only for users using both transparent proxying and a non-local server to "
+"host this script.\n"
+"\n"
+"Individual filter groups can override this setting in their own "
+"configuration."
+msgstr ""
+"这是您的Web服务器的地址是CGI的dansguardian的报告脚本复制。在报告只用了1级和"
+"2。\n"
+"\n"
+"这个网络服务器必须是：\n"
+"1。非代理。无论是本地网络上的计算机，或者作为上市例外在浏览器的代理配置。\n"
+"2。添加到exceptionsitelist。选项1是可取的，这个选项只有为用户同时使用透明代理"
+"和非本地服务器主办此脚本。\n"
+"\n"
+"个人滤波器组可以在自己的覆盖此设置配置。"
+
+msgid ""
+"This is the default gateway used by the system to reach the Internet, and "
+"may have been assigned dynamically. You can make your gateway configuration "
+"static or dynamic. If you make dynamic, static gateway file will be deleted. "
+"If you make static, it will be recreated with the current default gateway."
+msgstr ""
+"这是系统使用的到达互联网的默认网关，可能是动态分配。你可以让你的网关配置静态"
+"或动态。如果你设置为动态，静态网关文件将被删除。如果你设置为静态的，将根据当"
+"前默认网关重新生成。"
+
+msgid "This is the default language for the WUI."
+msgstr "这是WUI默认语言。"
+
+msgid ""
+"This is the default refresh value in seconds for pages which reload "
+"periodically, such as Live pages for logs and statistics. The new value "
+"takes effect only for newly created sessions. Note that logging out of the "
+"web user interface does not erase your session values."
+msgstr ""
+"这是那些定期刷新，如用于记录和统计Live页面，刷新页面秒的默认值。新的值只需要"
+"为新创建的会话的影响。请注意，记录的Web用户界面出来也不能消除你的会话值。"
+
+msgid ""
+"This is the gateway internal clients use to reach the external network. The "
+"default is the internal IP address of the system."
+msgstr "这是内部客户端使用网关到达外部网络。那个默认的内部IP地址的系统。"
+
+msgid ""
+"This is the list of interfaces DHCP server listens and distributes IP "
+"leases. Here you should add the interface(s) to start the DHCP server for."
+msgstr ""
+"这是清单接口的DHCP服务器侦听和分配的IP租赁。在这里，您应该添加接口（S）以启动"
+"DHCP服务器。"
+
+msgid ""
+"This is the log level for the UTMFW web interface. Logs at this level "
+"and up will be recorded in WUI and CTLR log files. This setting does not "
+"effect other services."
+msgstr ""
+"这是网络接口的UTMFW日志级别。在这一级日志和行动将被记录在WUI和CTLR日志文"
+"件。此设置不影响其他服务。"
+
+msgid ""
+"This is the name server used by the system. You can use the DNS server on "
+"the system, i.e. enter 127.0.0.1 here."
+msgstr ""
+"这是服务器的名称由系统使用。您可以使用系统上的DNS服务器，也就是在这里输入"
+"127.0.0.1。"
+
+msgid ""
+"This is the number of seconds a browser connection is left waiting before "
+"being sent more *something* to keep it alive. The *something* depends on the "
+"download manager chosen.\n"
+"This may be ignored by the configured download manager."
+msgstr ""
+"这是秒数浏览器连接之前等待离开发送更多的*内容*保持它活着。 *内容*取决于下载管"
+"理器选择。\n"
+"这可能是忽略配置的下载管理器。"
+
+msgid ""
+"This is the number of seconds a browser connection is left waiting before "
+"first being sent *something* to keep it alive. The *something* depends on "
+"the download manager chosen.\n"
+"Do not choose a value too low or normal web pages will be affected.\n"
+"A value between 20 and 110 would be sensible.\n"
+"This may be ignored by the configured download manager."
+msgstr ""
+"这是秒数浏览器连接之前等待离开首先被送到*事*保持它活着。 * *的事情，取决于下"
+"载管理器的选择。\n"
+"不要选择一个值过低或正常的网页会受到影响。\n"
+"未来20到110的值是明智的做法。\n"
+"这可能是忽略配置的下载管理器。"
+
+msgid ""
+"This is the opposite of Privileged IPs. You can enter IP ranges as well, e."
+"g. 192.168.1.0/24."
+msgstr "这是非特权的IP。你可以输入IP范围，以及，如192.168.1.0/24。"
+
+msgid ""
+"This is the priority in the alerts. Alerts at this priority and up will be "
+"used to block IPs."
+msgstr "这是在提醒优先。在这一优先警报和行动将用来阻止IP地址。"
+
+msgid ""
+"This is the system name. If you change the hostname, use automatic "
+"configuration button to apply it system-wide, and reboot the system."
+msgstr ""
+"这是系统的名称。如果你改变了主机，使用自动配置按钮，将其应用于全系统，并重新"
+"启动系统。"
+
+msgid ""
+"This name server is a BIND 9 compatible DNS server, which runs in a chroot "
+"jail."
+msgstr "这是一个域名服务器的BIND 9兼容的DNS服务器，它运行在一个chroot环境。"
+
+msgid ""
+"This option determines whether members of this group have their web access "
+"unfiltered, filtered, or banned. This mechanism replaces the \"banneduserlist"
+"\" and \"exceptionuserlist\" files from previous versions.\n"
+"\n"
+"0 = banned\n"
+"1 = filtered\n"
+"2 = unfiltered (exception)\n"
+"\n"
+"Only filter groups with a mode of 1 need to define phrase, URL, site, "
+"extension, mimetype and PICS lists; in other modes, these options are "
+"ignored to conserve memory.\n"
+"\n"
+"Defaults to 0 if unspecified.\n"
+"Unauthenticated users are treated as being in the first filter group."
+msgstr ""
+"此选项确定是否该组的成员，其网络接入过滤，过滤，或禁止。这种机制取代"
+"\"banneduserlist\" 和 \"exceptionuserlist\" 以前版本的文件。\n"
+"\n"
+"0 =禁止\n"
+"1 =过滤\n"
+"2 =过滤（除外）\n"
+"\n"
+"为1的需要定义词组，网址，网站的模式，只有滤波器组，扩展的mimetype和PICS名单;"
+"在其他运输方式，这些选项忽视节约内存。\n"
+"\n"
+"缺省值为0，如果未具体说明。\n"
+"未经验证的用户被视为在被第一个过滤器组。"
+
+msgid ""
+"This option enables scanning of Microsoft Office document macros.\n"
+"\t\tDefault: enabled"
+msgstr ""
+"此选项可扫描Microsoft Office文档的宏。\n"
+"\t\t 默认:启用"
+
+msgid ""
+"This option enables support for Google Safe Browsing. When activated for the "
+"first time, freshclam will download a new database file (safebrowsing.cvd) "
+"which will be automatically loaded by clamd and clamscan during the next "
+"reload, provided that the heuristic phishing detection is turned on. This "
+"database includes information about websites that may be phishing sites or "
+"possible sources of malware. When using this option, it's mandatory to run "
+"freshclam at least every 30 minutes.\n"
+"\t\tDefault: disabled"
+msgstr ""
+"此选项可实现谷歌安全浏览的支持。当它被激活的第一次，freshclam的将下载一个新的"
+"数据库文件（safebrowsing.cvd）这会自动加载clamd和clamscan在未来重新加载，但前"
+"提是启发式的诈骗侦测处于打开状态。这个数据库包括有关网站的信息可能被仿冒的网"
+"站或恶意软件可能的来源。使用此选项时，它的强制执行freshclam的至少每30分钟一"
+"班。\n"
+"\t\t 默认:停用"
+
+msgid ""
+"This option only applies to pages blocked by weighted phrase filtering.\n"
+"Defines the minimum score that must be accumulated within a particular "
+"category in order for it to show up on the block pages' category list.\n"
+"All categories under which the page scores positively will be logged; those "
+"that were not displayed to the user appear in brackets.\n"
+"\n"
+"-1 = display only the highest scoring category\n"
+"0 = display all categories (default)\n"
+"> 0 = minimum score for a category to be displayed"
+msgstr ""
+"此选项只适用于加权短语过滤拦截网页。\n"
+"定义的最低分数，必须在特定的积累类别，以便它显示在块网页的类别列表。\n"
+"所有在该网页的成绩将被记录积极类别;者那些不向用户显示的方括号中。\n"
+"\n"
+"-1 =只显示得分最高的类别\n"
+"0 =显示所有类别（默认）\n"
+"“0 =为一类最低分数显示"
+
+msgid ""
+"This page displays statistical data collected over the log files of this "
+"module.\n"
+"\n"
+"You can change the date of statistics using drop-down boxes. An empty value "
+"means match-all. For example, if you choose 3 for month and empty value for "
+"day fields, the charts and lists display statistics for all the days in "
+"March. Choosing empty value for month means empty value for day field as "
+"well.\n"
+"\n"
+"For single dates, Horizontal chart direction is assumed. For date ranges, "
+"default graph style is Daily, and direction is Vertical. Graph style can be "
+"changed to Hourly for date ranges, where cumulative hourly statistics are "
+"shown. In Daily style, horizontal direction is not possible."
+msgstr ""
+"此页面显示了这个日志文件收集的统计数据模块。\n"
+"\n"
+"您可以更改使用的统计资料的日期下拉框。一个空值可以匹配，所有。例如，如果您选"
+"择一个月的空值3当天领域，并列出图表显示所有的日子统计3。选择在一个月空值意味"
+"着空的字段值为天好。\n"
+"\n"
+"因为，水平图表方向是假设单日期。对于日期范围，默认的图形样式的日报，方向是垂"
+"直的。图样式可以改为每小时的日期范围，在累积每小时统计所示。在日常的风格，水"
+"平方向是不可能的。"
+
+msgid "This page displays the I/O graphs of all the disks in your system."
+msgstr "此页显示的I / O中的所有系统磁盘的图形。"
+
+msgid ""
+"This page displays the graph for shared memory and swap area usage. If the "
+"swap area usage is too high, you may consider adding more RAM. For higher "
+"system performance, you want to have no swap usage at all."
+msgstr ""
+"此页显示共享内存和交换区使用的图形。如果交换区使用率过高，您可以考虑增加更多"
+"的RAM。对于高系统性能，你应该没有使用SWAP。"
+
+msgid ""
+"This page displays the graphs of all temperature and fan sensors in your "
+"system. You may have multiple sensors depending on your hardware. Virtual "
+"machines may not provide any sensors at all."
+msgstr ""
+"本页面显示所有传感器的温度和风扇在您的图表系统。您可能必须根据您的硬件的多个"
+"传感器。虚拟机器可以不提供任何传感器的。"
+
+msgid ""
+"This page displays the hosts managed by the IPS, i.e. blocked or unblocked "
+"IPs or networks. You can temporarily block hosts for a period of time. If "
+"expiration time is not provided, the default duration is used. You can enter "
+"individual IPs or network addresses. IP and network addresses can overlap.\n"
+"\n"
+"This page reloads automatically to update the managed list. If the IPS is "
+"not running, the page displays blank."
+msgstr ""
+"此页显示IPS管理的主机，即阻塞或畅通IP或网络。您可以暂时阻止了一段时间的主机。"
+"如果过期时间不提供，则默认使用的持续时间。您可以输入单个IP或网络地址。 IP和网"
+"络地址可以重叠。\n"
+"\n"
+"本页面重新加载自动更新管理清单。如果IPS是未运行，页面显示为空白。"
+
+msgid ""
+"This page displays the usage graphs of all the partitions on your disks."
+msgstr "该页面显示上的所有磁盘分区的使用图形。"
+
+msgid ""
+"This page lists Spamd database entries. Definitions of the columns are as "
+"follows:\n"
+"<ul class=\"nomargin\"><li class=\"nomargin\">Source IP: IP address the "
+"connection originated from</li><li class=\"nomargin\">From: envelope-from "
+"address for GREY (empty for WHITE entries)</li><li class=\"nomargin\">To: "
+"envelope-to address for GREY (empty for WHITE entries)</li><li class="
+"\"nomargin\">First: time the entry was first seen</li><li class=\"nomargin"
+"\">Listed: time the entry passed from being GREY to being WHITE</li><li "
+"class=\"nomargin\">Expire: time the entry will expire and be removed from "
+"the database</li><li class=\"nomargin\">#Block: number of times a "
+"corresponding connection received a temporary failure from spamd(8)</li><li "
+"class=\"nomargin\">#Passed: number of times a corresponding connection has "
+"been seen to pass to the real MTA by spamlogd(8)</li></ul>\n"
+"E-mails originating from Whitelist entries are allowed until expiration "
+"date.\n"
+"\n"
+"Greylist entries are currently active entries according to grey-listing mode "
+"of spamd."
+msgstr ""
+"此页面列出Spamd数据库条目。列的定义如下如下：\n"
+"<ul class=\"nomargin\"><li class=\"nomargin\">源IP：IP地址connection "
+"originated from</li><li class=\"nomargin\">From: envelope-from address for "
+"GREY (empty for WHITE entries)</li><li class=\"nomargin\">To: envelope-to "
+"address for GREY (empty for WHITE entries)</li><li class=\"nomargin\">第一："
+"时间进入第一次看到</li><li class=\"nomargin“上市：时间从被白灰色的通过录取</"
+"li><li\">Listed: time the entry passed from being GREY to being WHITE</"
+"li><li class=\"nomargin\">Expire: time the entry will expire and be removed "
+"from the database</li><li class=\"nomargin\">#Block: number of times a "
+"corresponding connection received a temporary failure from spamd(8)</li><li "
+"class=\"nomargin\">#Passed: number of times a corresponding connection has "
+"been seen to pass to the real MTA by spamlogd(8)</li></ul>\n"
+"E-mails originating from Whitelist entries are allowed until expiration "
+"date.\n"
+"\n"
+"灰名单条目目前正在按照灰模式对垃圾邮件。"
+
+msgid ""
+"This page provides basic Packet Filter configuration. Packet filter rules "
+"can be modified under the Rules tab.\n"
+"\n"
+"OpenBSD/pf is a powerful and flexible stateful packet filter. Among many "
+"advanced features of pf are:<ul><li>Stateful inspection</li><li>Network "
+"Address Translation (NAT)</li><li>Packet normalization</li><li>Spoof "
+"protection</li><li>Packet queueing and bandwidth management</li><li>Traffic "
+"shaping</li><li>Policy routing</li><li>Load balancing, and much more</li></"
+"ul>You can add an IP range to the restricted IPs list, and enter individual "
+"IP addresses or subnets to privileged IPs list, to define exceptions over "
+"the restricted IP range. Or visa-versa."
+msgstr ""
+"此网页提供的基本数据包过滤器的配置。包过滤规则可以修改规则选项卡下。\n"
+"\n"
+"OpenBSD系统/ PF是一个强大和灵活的状态包过滤器。在众多酚醛高级功能有： "
+"<ul><li>状态检查</li><li>网络地址转换（NAT） </li><li>分组正常化</li><li>欺骗"
+"保护</li><li>分组队列和带宽管理</li><li>交通整形</li><li>策略路由</li><li>负"
+"载平衡，以及更多</li></UL认证“，您可以添加一个IP地址范围受限制的IP地址列表，"
+"然后输入个人IP地址或子网的IP列出的特权，确定了例外情况受限制的IP范围。或签"
+"证，反之亦然。"
+
+msgid ""
+"This page shows system-wide logs. Most services on UTMFW write to their "
+"own log files, but a few processes may log messages to this system file. Pay "
+"special attention to error messages."
+msgstr ""
+"在这页上全系统日志。关于UTMFW大多数服务写信给他们的自己的日志文件，但几个"
+"进程可能会记录一个信息系统中的文件。特别留心特别注意的错误信息。"
+
+msgid ""
+"This preprocessor \"normalizes\" telnet negotiation strings from telnet and "
+"ftp traffic.  It works in much the same way as the http_decode preprocessor, "
+"searching for traffic that breaks up the normal data stream of a protocol "
+"and replacing it with a normalized representation of that traffic so that "
+"the \"content\" pattern matching keyword can work without requiring "
+"modifications."
+msgstr ""
+"这预处理 \"normalizes\" 从远程登录远程登录字符串和谈判FTP的流量。它工作在同样"
+"的方式为http_decode预处理，寻找交通，打破了正常的数据流协议并代之以代表的交通"
+"归它，以便在\"content\"模式匹配的关键字可以无需修改。"
+
+msgid ""
+"This preprocessor performs IP defragmentation.  This plugin will also detect "
+"people launching fragmentation attacks (usually DoS) against hosts. Maximum "
+"number of frag trackers that may be active at once."
+msgstr ""
+"这种处理器执行IP碎片整理。这个插件也将检测人发动攻击，碎片（通常的DoS）对主"
+"机。最大纤夫的片段数目可能在一次活动。"
+
+msgid ""
+"This provides a link on the denied page to bypass the ban for a few "
+"minutes.  To be secure it uses a random hashed secret generated at daemon "
+"startup.  You define the number of seconds the bypass will function for "
+"before the deny will appear again.\n"
+"To allow the link on the denied page to appear you will need to edit the "
+"template.html or dansguardian.pl file for your language.\n"
+"300 = enable for 5 minutes\n"
+"0 = disable ( defaults to 0 )\n"
+"-1 = enable but you require a separate program/CGI to generate a valid link"
+msgstr ""
+"这提供了一个网页上的链接，拒绝绕过几班分钟。为了安全，就使用随机散列秘密守护"
+"进程产生启动。你定义秒绕道数函数在否认将再次出现。\n"
+"为了让网页上的链接，拒绝出现在您将需要编辑template.html或dansguardian.pl您的"
+"语言文件。\n"
+"300 =启用5分钟\n"
+"0 =禁用（默认为0）\n"
+"1 =启用，但你需要一个单独的程序/ CGI的生成有效的链接"
+
+msgid ""
+"This setting enables or disables help boxes, such as this one and the help "
+"window at the bottom. Disabling help boxes does not disable error or warning "
+"help windows."
+msgstr ""
+"此设置启用或禁用像这样的和底部的帮助窗口的帮助盒。禁用帮助框不会禁用错误或警"
+"告的帮助窗口。"
+
+msgid ""
+"This shows the active group for this page. Use this form to change the "
+"active group."
+msgstr "这表明此网页的活跃的群体。使用此表来改变活跃的群体。"
+
+msgid ""
+"This web administration interface is served by Apache web server, OpenBSD/"
+"httpd. If you stop the web server, you will lose your connection to this web "
+"interface. You can restart it on the command line."
+msgstr ""
+"这是Web管理接口服务由Apache Web服务器，OpenBSD系统/httpd的。如果停止Web服务"
+"器，您将失去您连接到本网站接口。您可以重新启动的命令行。"
+
+msgid ""
+"This will send a notification, if usesmtp is on, based on thresholds below"
+msgstr "这将发送一个通知，如果usesmtp是，在阈值以下的"
+
+msgid ""
+"This will send a notification, if usesmtp/notifyav is on, any time an "
+"infection is found.\n"
+"Important: If this option is off, viruses will still be recorded like a "
+"content infection."
+msgstr ""
+"这将发送一个通知，如果usesmtp / notifyav上，任何时候是发现感染。\n"
+"重要：如果这个选项是关闭的，病毒仍然会被记录像内容感染。"
+
+msgid "Threshold"
+msgstr "阈值"
+
+msgid "Threshold By User"
+msgstr "阈值按用户"
+
+msgid ""
+"Thresholds and settings here are related with the content scanning feature "
+"of the web filter."
+msgstr "阈值和设置都与这里的扫描功能，内容该网页过滤器。"
+
+msgid "Thu"
+msgstr "Thu"
+
+msgid "Time"
+msgstr "时间"
+
+msgid "Time server"
+msgstr "时间服务器"
+
+msgid "Time to expire"
+msgstr "到期时间"
+
+msgid "Time to expire (secs)"
+msgstr "到期时间（秒）"
+
+msgid "Timeout"
+msgstr "超时"
+
+msgid "Timespan"
+msgstr "时间跨度"
+
+msgid "To"
+msgstr "至"
+
+msgid ""
+"To block all SSL and CONNECT tunnels except to addresses in the "
+"exceptionsitelist and greysitelist files"
+msgstr "要阻止的地址以外的所有SSL和连接隧道exceptionsitelist和greysitelist文件"
+
+msgid "To block all SSL and CONNECT tunnels to sites specified only as an IP"
+msgstr "阻止所有的SSL，并仅作为指定网站的IP隧道的CONNECT"
+
+msgid ""
+"To block all sites except those in the exceptionsitelist and greysitelist "
+"files"
+msgstr "要阻止除了在exceptionsitelist和greysitelist的所有网站文件"
+
+msgid "To block all sites specified only as an IP"
+msgstr "若要阻止只是作为一个指定的所有网站的IP"
+
+msgid "Too many args, truncating"
+msgstr ""
+
+msgid "Total deferred time (sec)"
+msgstr "总延迟时间（秒）"
+
+msgid "Total of block extensions cannot be higher than this value."
+msgstr "扩展块总不能高于此值。"
+
+msgid "Transfer"
+msgstr "转移"
+
+msgid "Transmitted (KB)"
+msgstr "已发送（KB）"
+
+msgid "Trickle delay"
+msgstr "涓流延迟"
+
+msgid "Trusted networks"
+msgstr "可信网络"
+
+msgid "Try to preserve some state across restarts."
+msgstr "尝试保留一些在重新启动状态。"
+
+msgid "Tue"
+msgstr "Tue"
+
+msgid "Turkish"
+msgstr "土耳其文"
+
+msgid "Turn off cats"
+msgstr "关闭类别"
+
+msgid "Turn off service"
+msgstr "关闭服务"
+
+msgid "Turn on cats"
+msgstr "打开类别"
+
+msgid "Turn on debugging."
+msgstr "打开调试。"
+
+msgid "Turn on service"
+msgstr "打开服务"
+
+msgid ""
+"Turn this on if you wish to log fully qualified domain names in the access."
+"log. To do this Squid does a DNS lookup of all IP's connecting to it. This "
+"can (in some situations) increase latency, which makes your cache seem "
+"slower for interactive browsing."
+msgstr ""
+"打开此如果你想登录访问完全合格的域名。日志。要做到这一点SQUID做了所有IP DNS查"
+"找的连接到它。这个可以（在某些情况下）增加延迟，这使得您的缓存看起来慢互动浏"
+"览。"
+
+msgid ""
+"Turns Snort IDS into an IPS (Intrusion Prevention System). Replaced by "
+"SnortIPS."
+msgstr "变成一个IPS（入侵防御系统）Snort的入侵检测系统。取代SnortIPS。"
+
+msgid "Type"
+msgstr "类型"
+
+msgid "URLs"
+msgstr "网址"
+
+msgid ""
+"URLs in the Whitelist are not scanned for viruses. You can omit the leading "
+"www. or http://"
+msgstr "在白名单网址对此进行病毒扫描。您可以省略领先www. 或http://"
+
+msgid "USER"
+msgstr "用户"
+
+msgid "Unblock"
+msgstr "解除阻止"
+
+msgid "Unblock All"
+msgstr "解除全部阻止"
+
+msgid "Unblock IPs"
+msgstr "解除阻止的IP"
+
+msgid "Unblock all"
+msgstr "解除阻止所有"
+
+msgid "Unblock all blocked entries"
+msgstr "封锁解除所有封锁"
+
+msgid "Unblock selected"
+msgstr "解除封锁选择"
+
+msgid "Unblocked Hosts"
+msgstr "解除阻塞主机"
+
+msgid "Unconfigure an interface"
+msgstr ""
+
+msgid "Unknown"
+msgstr "未知"
+
+msgid "Unsupported command"
+msgstr ""
+
+msgid "Unsupported interface configuration"
+msgstr "不支持的接口配置"
+
+msgid "Update mail aliases"
+msgstr "更新邮件别名"
+
+msgid "Uptime"
+msgstr "运行时间"
+
+msgid "Url cache age"
+msgstr "网址缓存年龄"
+
+msgid "Url cache number"
+msgstr "网址缓存数"
+
+msgid "Url wrong"
+msgstr "网址错误"
+
+msgid "Use Bayesian classifier (default: 1)"
+msgstr "使用贝叶斯分类器（默认是：1）"
+
+msgid "Use DNS"
+msgstr "使用DNS"
+
+msgid ""
+"Use DNS to verify virus database version. Freshclam uses DNS TXT records to "
+"verify database and software versions. With this directive you can change "
+"the database verification domain.\n"
+"\t\tDefault: enabled, pointing to current.cvd.clamav.net"
+msgstr ""
+"使用DNS来验证病毒库版本。 freshclam的使用DNS TXT记录的验证数据库和软件版本。"
+"有了这个指令可以更改数据库验证域。\n"
+"\t\t 默认:启用，指向current.cvd.clamav.net"
+
+msgid "Use SMTP"
+msgstr "使用SMTP"
+
+msgid ""
+"Use aaa.bbb.ccc.ddd as client address for downloading databases. Useful for "
+"multi-homed systems.\n"
+"\t\tDefault: Use OS'es default outgoing IP address."
+msgstr ""
+"使用aaa.bbb.ccc.ddd作为数据库的客户端下载地址。有用多宿主系统。\n"
+"\t\t 默认:使用OS默认传出的IP地址。"
+
+msgid "Use bayes"
+msgstr "使用bayes"
+
+msgid ""
+"Use slower but memory efficient decompression algorithm.\n"
+"\t\tOnly affects the bzip2 decompressor.\n"
+"\t\tDefault: disabled"
+msgstr ""
+"使用更慢，但内存使用效率，解压缩算法。\n"
+"\t\t 只影响bzip2压缩解压缩。\n"
+"\t\t 默认:停用"
+
+msgid ""
+"Use the same setting as you are using on the server. On most systems, the "
+"VPN will not function unless you partially or fully disable the firewall for "
+"the TUN/TAP interface."
+msgstr ""
+"使用相同的设置为您在服务器上使用。在大多数系统中，VPN将不起作用，除非您部分或"
+"完全禁用防火墙在TUN / TAP接口。"
+
+msgid "Use xforwarded for"
+msgstr "使用xforwarded"
+
+msgid ""
+"Used to fill in the -FILTERGROUP- placeholder in the HTML template file, and "
+"to name the group in the access logs\n"
+"Defaults to empty string"
+msgstr ""
+"用于填补- FILTERGROUP在占位符的HTML模板文件，的姓名，访问日志组\n"
+"默认为空字符串"
+
+msgid "User"
+msgstr "用户"
+
+msgid "User agent regexp"
+msgstr "用户代理正则表达式"
+
+msgid "User name"
+msgstr "用户名"
+
+msgid ""
+"User sessions expire after an idle period defined by this value. The unit is "
+"in seconds. You cannot set a value less than 10 seconds."
+msgstr ""
+"用户会话到期后，该值定义的空闲时间。该单位是秒。您不能设置一个值小于10秒。"
+
+msgid "Users"
+msgstr "用户"
+
+msgid ""
+"Usually the network time daemon adjusts the system clock according to "
+"Internet time servers gradually. But if the clock is too out of sync with "
+"the time servers, you are advised to set the system clock to Internet time "
+"manually. You can use your own time server if you like."
+msgstr ""
+"通常的网络时间守护调整据互联网时间服务器逐渐系统时钟。但如果过于时钟不同步的"
+"时间服务器，你应设置系统时钟上网时间手动。如果你喜欢你可以使用自己的时间服务"
+"器。"
+
+msgid "VIRUS FILTER"
+msgstr "病毒过滤器"
+
+msgid "VSZ"
+msgstr "VSZ"
+
+msgid "Verbosity"
+msgstr "冗长"
+
+msgid "Version"
+msgstr "版本"
+
+msgid "Vertical"
+msgstr "垂直"
+
+msgid "Violations"
+msgstr "违法"
+
+msgid "Virus"
+msgstr ""
+
+msgid "Virus DB Update"
+msgstr "病毒库更新"
+
+msgid "Virus Exts"
+msgstr "病毒分机"
+
+msgid "Virus Filter"
+msgstr "病毒过滤器"
+
+msgid "Virus Mimes"
+msgstr "病毒矿"
+
+msgid "Virus Scan Requests"
+msgstr "病毒扫描请求"
+
+msgid "Virus Sites"
+msgstr "病毒网站"
+
+msgid "Virus URLs"
+msgstr "病毒的网址"
+
+msgid "Virus and spam scanning POP3 proxy."
+msgstr "病毒和垃圾邮件扫描POP3代理。"
+
+msgid "Virus and spam scanning SMTP proxy."
+msgstr "病毒和垃圾邮件扫描SMTP代理。"
+
+msgid "WARNING"
+msgstr "警告"
+
+msgid "WEB FILTER"
+msgstr "Web筛选器"
+
+msgid "WEB SERVER"
+msgstr "Web服务器"
+
+msgid "WUI"
+msgstr "WUI"
+
+msgid "WUI Logs"
+msgstr "WUI日志"
+
+msgid "Weather news sites and weather related"
+msgstr "天气新闻网站和天气有关"
+
+msgid "Web Access Denied Reporting"
+msgstr "网络访问被拒绝报告"
+
+msgid "Web Filter"
+msgstr "网页过滤"
+
+msgid "Web Filter Access"
+msgstr "网页过滤访问"
+
+msgid "Web Filter IP range wrong"
+msgstr "网页过滤IP地址范围错误"
+
+msgid "Web Server"
+msgstr "Web服务器"
+
+msgid "Web Server (WUI)"
+msgstr "Web服务器（WUI）"
+
+msgid "Web Server Access"
+msgstr "Web服务器访问"
+
+msgid "Web interface for configuring and monitoring OpenBSD/pf."
+msgstr "Web界面的配置和监测OpenBSD系统/公积金。"
+
+msgid "Webmail and email sites"
+msgstr "邮件和电子邮件的网站"
+
+msgid "Wed"
+msgstr "Wed"
+
+msgid "Weighted phrase list"
+msgstr "加权词组列表"
+
+msgid "Weighted phrase mode"
+msgstr "加权短语模式"
+
+msgid ""
+"What is recorded in packet filter logs is determined by pf rules you can "
+"configure under Rules tab."
+msgstr "什么是记录在数据包筛选器日志是由规则确定的pf可以根据规则配置选项卡。"
+
+msgid "When (h)"
+msgstr "时间（小时）"
+
+msgid ""
+"When a file with unknown content length gets handled by the fancy DM, "
+"something must be done in the case that the file is found to be too large to "
+"scan (i.e. larger than maxcontentfilecachescansize).\n"
+"As of 2.9.7.0, a warning will be issued to the user that the fancy DM may "
+"not be able to cache the entire file, and the file will continue to be "
+"downloaded to disk (but not scanned) until it reaches this size, at which "
+"point the user will simply have to re-download the file (the URL won't be "
+"scanned again).\n"
+"The size is in kibibytes (i.e. 10240 = 10Mb)"
+msgstr ""
+"当内容长度不明文件被DM处理，必须采取行动，在该情况下，文件被发现过大，扫描"
+"（即超过maxcontentfilecachescansize大）。\n"
+"作为2.9.7.0，警告将发给用户一个DM可能无法缓存整个文件，该文件将继续下载到磁盘"
+"（但不扫描），直到达到如此规模，在这点用户将只需要重新下载文件（网址不会被再"
+"次扫描）。\n"
+"大小为（即10240 =的10Mb在kibibytes）"
+
+msgid ""
+"When enabled, DG looks for URLs within URLs, checking against the "
+"bannedsitelist and bannedurllist. This can be used, for example, to block "
+"images originating from banned sites from appearing in Google Images search "
+"results, as the original URLs are embedded in the thumbnail GET requests.\n"
+"(on|off) default = off"
+msgstr ""
+"当启用时，总干事在寻找网址的网址，对检查bannedsitelist和bannedurllist。这可以"
+"用来，例如，阻止图片来自于谷歌图片搜索出现被禁止的网站原结果，原来的网址在缩"
+"略图嵌入式GET请求。\n"
+"（开｜关）默认=关"
+
+msgid ""
+"When on this disables the forced killing off all processes in the process "
+"group.\n"
+"This is not to be confused with the -g run time option - they are not "
+"related.\n"
+"on|off ( defaults to off )"
+msgstr ""
+"当这将禁用被迫扼杀在这一过程中的所有进程组。\n"
+"这是不可使用 -g运行时选项-它们不有关。\n"
+"开｜关（默认为关闭）"
+
+msgid ""
+"When set to something greater than zero, this option causes URLs embedded "
+"within a page's HTML (from links, image tags, etc.) to be extracted and "
+"checked against the bannedsitelist and bannedurllist. Each link to a banned "
+"page causes the amount set here to be added to the page's weighting.\n"
+"The behaviour of this option with regards to multiple occurrences of a site/"
+"URL is affected by the weightedphrasemode setting.\n"
+"\n"
+"Set to 0 to disable.\n"
+"Defaults to 0.\n"
+"WARNING: This option is highly CPU intensive!"
+msgstr ""
+"当设置为大于零，此选项将导致嵌入网址在网页的HTML（从链接，图像标记等）进行提"
+"取和核对过bannedsitelist和bannedurllist。每一个被禁止的连接页面设置的原因这里"
+"的数额要添加到页面的比重。\n"
+"这种与选择行为的问候一个网站的多个实例/网址是受weightedphrasemode设置。\n"
+"\n"
+"设置为0来禁用。\n"
+"缺省值为0。\n"
+"警告：此选项是高度CPU密集！"
+
+msgid ""
+"Whether or not to allow persistent connections (more than one request per "
+"connection). Set to \"Off\" to deactivate."
+msgstr "是否允许持久连接（超过每一项请求连接）。设置为\"Off\"停用。"
+
+msgid ""
+"Which TCP/UDP port should OpenVPN listen on? If you want to run multiple "
+"OpenVPN instances on the same machine, use a different port number for each "
+"one.  You will need to open up this port on your firewall."
+msgstr ""
+"哪些TCP / UDP端口应该OpenVPN的监听？如果您想运行多个同一台机器上OpenVPN的情况"
+"下，为每一个使用不同的端口号一个。您需要打开防火墙上的这个端口。"
+
+msgid "Which local IP address should OpenVPN listen on? (optional)."
+msgstr "当地的IP地址应该OpenVPN的监听？ （可选）。"
+
+msgid "White and black list entries should not be identical"
+msgstr ""
+
+msgid "Whitelist"
+msgstr "白名单"
+
+msgid ""
+"Whitelist entries are allowed. Greylist entries are allowed, and scanned for "
+"viruses. Blacklist entries are denied."
+msgstr "白名单项是允许的。 灰名单项是允许的并扫描病毒。黑名单项被屏蔽。"
+
+msgid "Whitelisted"
+msgstr "白名单"
+
+msgid ""
+"Whitelisted IPs are never blocked, even if IDS produces alerts for them. "
+"Make sure you have internal and external IP addresses of the system "
+"whitelisted here. Otherwise, false positives may block access to the system "
+"from the network."
+msgstr ""
+"白名单的IP永远不会阻止，即使对他们产生入侵警报。请确保您有内部和外部IP地址的"
+"系统白名单这里。否则，假警报可能会阻止进入系统从网络。"
+
+msgid ""
+"Who the content emails go to (when thresholds are exceeded) and "
+"contentnotify is on\n"
+"example: contentadmin = 'admin@mycompany.com'"
+msgstr ""
+"邮件的内容发到（当超过阈值）和contentnotify是开\n"
+"例如：contentadmin ='admin@mycompany.com'"
+
+msgid ""
+"Who the email would come from\n"
+"example: mailfrom = 'dansguardian@mycompany.com'"
+msgstr ""
+"电子邮件将来自\n"
+"例如：mailfrom ='dansguardian@mycompany.com'"
+
+msgid ""
+"Who the virus emails go to (if notify av is on)\n"
+"example: avadmin = 'admin@mycompany.com'"
+msgstr ""
+"病毒的电子邮件发到（如果通知是在视听）\n"
+"例如：avadmin ='admin@mycompany.com'"
+
+msgid ""
+"With this option clamav will try to detect broken executables and mark them "
+"as Broken.Executable\n"
+"\t\tDefault: disabled"
+msgstr ""
+"利用该选项的clamav将试图打破检测它们的可执行文件和标志作为Broken."
+"Executable \n"
+"\t\t 默认:停用"
+
+msgid "Won't delete database.clamav.net entry."
+msgstr ""
+
+msgid "X-Bogosity"
+msgstr "X-Bogosity"
+
+msgid "X-Spam-Flag"
+msgstr "X光垃圾邮件旗"
+
+msgid "X-Spam-Status"
+msgstr "X光垃圾邮件状态"
+
+msgid "Yahoo"
+msgstr "雅虎"
+
+msgid ""
+"You can apply configuration changes without restarting currently running "
+"process."
+msgstr "你可以不重新启动应用当前运行的配置更改的过程。"
+
+msgid ""
+"You can browse the Doxygen source documentation of this web user interface "
+"on this page."
+msgstr "您可以浏览本网站的用户界面使用Doxygen源文件在此页。"
+
+msgid "You can change the timespan and size of the graphs."
+msgstr "您可以更改时间跨度及图表的大小。"
+
+msgid ""
+"You can customize your rule sets here. Include only the relevant rule sets.\n"
+"\n"
+"Some of rule sets are disabled by default. These rules are either site "
+"policy specific or require tuning in order to not generate false positive "
+"alerts in most environments."
+msgstr ""
+"您可以自定义规则集在这里。仅包括相关的规则集。\n"
+"\n"
+"规则集的一些默认禁用。这些规则以网站具体政策或需要调整，以便不产生假阳性警报"
+"在大多数环境。"
+
+msgid ""
+"You can modify the hosts file here. Format of a hosts entry is: IP hostname "
+"alias [alias [...]]"
+msgstr "您可以修改hosts文件在这里。一个主机输入格式为：IP主机别名[别名[...]]"
+
+msgid "You can restart or stop the system using these buttons."
+msgstr "您可以使用这些按钮重新启动或停止系统。"
+
+msgid ""
+"You can run multiple Intrusion Detection processes, one for each network "
+"interface."
+msgstr "你可以运行多个入侵检测程序，为每个网络接口。"
+
+msgid "You can search categories on this page."
+msgstr "您可以在此网页搜索类别。"
+
+msgid ""
+"You can set the system clock here. Format is day.month.year-hour:minute.\n"
+"\n"
+"<b>You must be very careful when setting the system clock, significant hops "
+"in system time may cause system malfunction.</b>"
+msgstr ""
+"您可以在这里设置系统时钟。格式是‘日.月.年-时:分’。 <b>你必须非常小心设置系统"
+"时钟，显著调整系统时间可能会导致系统故障。</b>"
+
+msgid "You cannot delete system IP address"
+msgstr ""
+
+msgid ""
+"You may want to customize the frequency of database checks. Also make sure "
+"you have chosen a database mirror close to you."
+msgstr ""
+"您可能需要自定义数据库的检查频率。另外，请确保你选择了一个数据库镜像靠近你。"
+
+msgid ""
+"You may want to set the report language for your locale. By default, POP3 "
+"proxy scans for both spam and viruses."
+msgstr ""
+"您可能需要为您的区域，报告的语言。通过默认设置，POP3对垃圾邮件和病毒的代理扫"
+"描。"
+
+msgid ""
+"You may want to watch these logs carefully to determine infected clients in "
+"the internal network."
+msgstr "您可能需要仔细观看这些日志，以确定内部网络感染的客户。"
+
+msgid ""
+"You must change the following variables to reflect your local network. The "
+"variable is currently setup for an RFC 1918 address space."
+msgstr ""
+"您必须更改以下变量，以反映您的本地网络。那个变量是目前一个RFC 1918地址空间设"
+"置。"
+
+msgid ""
+"You should configure the IDS based on the services running on your network."
+msgstr "您应该配置IDS的基础上，服务在您的网络上运行。"
+
+msgid "You should select at least one conf file to start the process"
+msgstr "你应该选择至少一个conf文件，以启动这一进程"
+
+msgid "You should select at least one interface to start IDS for"
+msgstr "你应该选择至少一个接口以开始IDS系统"
+
+msgid ""
+"You should take into account that there may be computers with static IP "
+"addresses or using BOOTP protocol, and choose a range accordingly."
+msgstr ""
+"你应该考虑到可能有静态IP的计算机地址或使用BOOTP协议，并选择相应的范围。"
+
+msgid ""
+"accessdeniedaddress is the address of your web server to which the cgi "
+"dansguardian reporting script was copied. Only used in reporting levels 1 "
+"and 2.\n"
+"\n"
+"This webserver must be either:\n"
+" 1. Non-proxied. Either a machine on the local network, or listed as an "
+"exception in your browser's proxy configuration.\n"
+" 2. Added to the exceptionsitelist. Option 1 is preferable; this option is "
+"only for users using both transparent proxying and a non-local server to "
+"host this script.\n"
+"\n"
+"If defined, this overrides the global setting in dansguardian.conf for "
+"members of this filter group."
+msgstr ""
+"accessdeniedaddress是您的Web服务器地址，该地址的CGIdansguardian的报告脚本复"
+"制。只用1级和2级的报告。\n"
+"\n"
+"这个网络服务器必须是：\n"
+"1。非代理。无论是本地网络上的计算机，或者作为例外在浏览器的代理配置。\n"
+"2。添加到exceptionsitelist。选项1是可取的，这个选项只有为用户同时使用透明代理"
+"和非本地服务器有此脚本。\n"
+"\n"
+"如果定义，这将覆盖全局的dansguardian.conf设置此过滤器的成员组。"
+
+msgid "anonymize logs (blank out usernames & IPs)"
+msgstr "匿名化日志（空出的用户名和IP地址）"
+
+msgid "blacklisted"
+msgstr "列入黑名单"
+
+msgid "blocked"
+msgstr "封锁"
+
+msgid "disabled"
+msgstr "禁用"
+
+msgid "enabled"
+msgstr "启用"
+
+msgid "end"
+msgstr "末端"
+
+msgid "h"
+msgstr "时"
+
+msgid "height"
+msgstr "高度"
+
+msgid ""
+"if on it logs some debug info regarding fork()ing and accept()ing which can "
+"usually be ignored.  These are logged by syslog.  It is safe to leave it on "
+"or off"
+msgstr ""
+"如果在日志中有一些调试信息关于fork()ing and accept()ing通常会被忽略。这些记录"
+"的系统记录。它是安全的，让它在或关闭"
+
+msgid "is not running"
+msgstr "未运行"
+
+msgid "is running"
+msgstr "正在运行"
+
+msgid "language to use from languagedir, e.g. 'ukenglish'"
+msgstr "语言使用languagedir，例如'ukenglish'"
+
+msgid "managed"
+msgstr "管理"
+
+msgid "min"
+msgstr "分"
+
+msgid "non-news related radio and television"
+msgstr "非新闻相关的电台和电视台"
+
+msgid "on|off ( defaults to off )"
+msgstr "开｜关（默认为关闭）"
+
+msgid "sec"
+msgstr "秒"
+
+msgid "secs"
+msgstr "秒"
+
+msgid "size"
+msgstr "大小"
+
+msgid "start"
+msgstr "开始"
+
+msgid "stuff for mobile/cell phones"
+msgstr "移动/手机有关内容"
+
+msgid "the ip of the proxy (default is the loopback - i.e. this server)"
+msgstr "该代理（默认是环回的IP -即此服务器）"
+
+msgid "the port DansGuardian connects to proxy on"
+msgstr "dansguardian的端口连接到代理服务器上"
+
+msgid "the port that DansGuardian listens to."
+msgstr "dansguardian的的端口监听。"
+
+msgid "timespan"
+msgstr "时间跨度"
+
+msgid "total"
+msgstr "总"
+
+msgid "truncate large items in log lines"
+msgstr "在日志截断线大项"
+
+msgid "unconfigured"
+msgstr ""
+
+msgid "whitelisted"
+msgstr "白名单"
+
+msgid "width"
+msgstr "宽度"

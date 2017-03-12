@@ -1,0 +1,12 @@
+$ComixWall: patch-icqprotocolplugin_cpp,v 1.5 2009/07/25 09:55:29 soner Exp $
+--- icqprotocolplugin.cpp.orig	Mon Aug 11 00:36:23 2008
++++ icqprotocolplugin.cpp	Mon Aug 11 00:36:32 2008
+@@ -13,7 +13,7 @@
+ #define PROTOCOL_NAME "ICQ-AIM"
+ #define PROTOCOL_PORT 5190
+ 
+-#define COOKIE_SOCKET "/tmp/.imspectoricqcookie"
++#define COOKIE_SOCKET "/tmp/imspector/.imspectoricqcookie"
+ 
+ extern "C"
+ {

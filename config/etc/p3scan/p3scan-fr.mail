@@ -1,0 +1,37 @@
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+       charset="iso-8859-1"
+
+Bonjour %USERNAME%.
+Ce corps de message a été généré automatiquement par P3Scan, qui fonctionne sur
+%HOSTNAME%.%DOMAINNAME% pour scanned tous les courriels entrants.
+
+Il replace le corps du message contenant un VIRUS qui vous était adressé!
+
+A la place du courriel infecté, ce message vous est envoyé.
+%FILESTATUS%
+
+Vous pouvez regarder les entêtes de ce message pour des informations
+complètes sur les entêtes du message infecté.
+
+Nom du virus:
+   %VIRUSNAME%
+Expéditeur du courriel:
+   %MAILFROM%
+Envoyé à:
+   %MAILTO%
+Date:
+   %MAILDATE%
+Object:
+   %SUBJECT%
+Informations de connexion:
+   %PROTOCOL% from %CLIENTIP%:%CLIENTPORT% to %SERVERIP%:%SERVERPORT%
+Fichier du message:
+   %P3SCANID%
+   
+   %VDINFO%
+-- 
+%PROGNAME% %VERSION%
+par Jack S. Lai <laitcg@cox.net>
+.

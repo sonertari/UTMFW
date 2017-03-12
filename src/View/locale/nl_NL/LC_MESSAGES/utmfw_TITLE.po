@@ -1,0 +1,326 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-01 07:52+0100\n"
+"Last-Translator: Wim Hoekman\n"
+"Language-Team: Dutch <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+
+msgid "1 minute average"
+msgstr "gemiddelde over 1 minuut"
+
+msgid "15 minute average"
+msgstr "gemiddelde over 15 minuten"
+
+msgid "5 minute average"
+msgstr "gemiddelde over 5 minuten"
+
+msgid "Admin e-mail"
+msgstr "Email adres van de beheerder"
+
+msgid "Archives"
+msgstr "Archieven"
+
+msgid "Automatic config"
+msgstr "Automatische configuratie"
+
+msgid "Business Days"
+msgstr "Werkdagen"
+
+msgid "Business Hours"
+msgstr "Kantooruren"
+
+msgid "CPU Load"
+msgstr "Processor belasting"
+
+msgid "CPUs"
+msgstr "Processoren"
+
+msgid "Count"
+msgstr "Aantal"
+
+msgid "Data Transfer"
+msgstr "Data overdracht"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "DateTime"
+msgstr "Datum/tijd"
+
+msgid "Day"
+msgstr "Dag"
+
+msgid "Disabled Services"
+msgstr "Uitgeschakelde diensten"
+
+msgid "Disk I/O"
+msgstr "Schijven dataoverdracht"
+
+msgid "Disks"
+msgstr "Schijven"
+
+msgid "ERROR"
+msgstr "FOUT"
+
+msgid "Enabled Services"
+msgstr "Ingeschakelde diensten"
+
+msgid "External Interface"
+msgstr "Externe netwerk verbinding"
+
+msgid "External interface"
+msgstr "Externe netwerk verbinding"
+
+msgid "Fan"
+msgstr "Ventilator"
+
+msgid "File"
+msgstr "Bestand"
+
+msgid "From"
+msgstr "Van"
+
+msgid "Gateway"
+msgstr "Gateway"
+
+msgid "Graph files"
+msgstr "Grafiek bestanden"
+
+msgid "Group"
+msgstr "Groep"
+
+msgid "Help boxes"
+msgstr "Help paneel"
+
+msgid "Holidays"
+msgstr "Vakanties"
+
+msgid "Horizontal"
+msgstr "Horizontaal"
+
+msgid "Hostname"
+msgstr "Systeemnaam"
+
+msgid "Hosts"
+msgstr "Systemen"
+
+msgid "Hour"
+msgstr "Uur"
+
+msgid "Hourly"
+msgstr "Elk uur"
+
+msgid "INFORMATION"
+msgstr "INFORMATIE"
+
+msgid "IP Forwarding"
+msgstr "IP Forwarding"
+
+msgid "Interface"
+msgstr "Netwerk verbinding"
+
+msgid "Internal Interface"
+msgstr "Interne netwerk verbinding"
+
+msgid "Internal interface"
+msgstr "Interne netwerk verbinding"
+
+msgid "Language"
+msgstr ""
+
+msgid "Level"
+msgstr "Niveau"
+
+msgid "Line"
+msgstr "Lijn"
+
+msgid "Lines per page"
+msgstr "Regels per pagina"
+
+msgid "Log"
+msgstr "Log"
+
+msgid "Log level"
+msgstr "Log niveau"
+
+msgid "Logout"
+msgstr "Uitloggen"
+
+msgid "Logs"
+msgstr "Log bestanden"
+
+msgid "Loopback Interface"
+msgstr "Loopback Verbinding"
+
+msgid "Machine"
+msgstr "Machine"
+
+msgid "Mbuf Statistics"
+msgstr "Mbuf statistieken"
+
+msgid "Memory Usage"
+msgstr "Geheugen gebruik"
+
+msgid "Month"
+msgstr "Maand"
+
+msgid "Motherboard"
+msgstr "Moederbord"
+
+msgid "Nameserver"
+msgstr "Nameserver"
+
+msgid "Network Protocol Usage"
+msgstr "Netwerk Protocol gebruik"
+
+msgid "Number of Processes"
+msgstr "Aantal processen"
+
+msgid "Number of processes"
+msgstr "Aantal processen"
+
+msgid "Operating System"
+msgstr "Besturings systeem"
+
+msgid "Partitions"
+msgstr "Partities"
+
+msgid "Partitions Usages"
+msgstr "Partitie gebruik"
+
+msgid "Password"
+msgstr "Wachtwoord"
+
+msgid "Password again"
+msgstr "Wachtwoord (opnieuw)"
+
+msgid "Physical Memory"
+msgstr "Fysiek Geheugen"
+
+msgid "Privileged IPs"
+msgstr "Bevoorrechte IP adressen"
+
+msgid "Process"
+msgstr "Proces"
+
+msgid "Process CPU Load"
+msgstr "Processor belasting per Proces"
+
+msgid "Processor"
+msgstr "Processor"
+
+msgid "Refresh interval"
+msgstr "Ververs interval"
+
+msgid "Regexp"
+msgstr "Reguliere expressie"
+
+msgid "Reload interval"
+msgstr "Herlaad interval"
+
+msgid "Restart network"
+msgstr "Herstart het netwerk"
+
+msgid "Restricted IPs"
+msgstr "Gelimiteerde IP adressen"
+
+msgid "Rotate all log files"
+msgstr "Roteren van alle log bestanden"
+
+msgid "Rule"
+msgstr "Regel"
+
+msgid "Search site"
+msgstr "Doorzoek de site"
+
+msgid "Secure Level"
+msgstr "Beveiligd Niveau"
+
+msgid "Selected"
+msgstr "Geselecteerde"
+
+msgid "Serial Number"
+msgstr "Serienummer"
+
+msgid "Session timeout"
+msgstr "Sessie timeout"
+
+msgid "Size"
+msgstr "Grootte"
+
+msgid "Size (KB)"
+msgstr "Grootte (KB)"
+
+msgid "Software Version"
+msgstr "Software Versie"
+
+msgid "State Searches vs Packets"
+msgstr "Status zoekakties ten opzichte van pakketten"
+
+msgid "State Statistics"
+msgstr "Status Statistieken"
+
+msgid "Statistics and uncompressed log files"
+msgstr "Statistieken en ongecomprimeerde log bestanden"
+
+msgid "System"
+msgstr "Systeem"
+
+msgid "Target"
+msgstr "Doel"
+
+msgid "Temperature"
+msgstr "Temperatuur"
+
+msgid "Time"
+msgstr "Tijd"
+
+msgid "Time server"
+msgstr "Tijd server"
+
+msgid "To"
+msgstr "Aan"
+
+msgid "Uptime"
+msgstr "Uptime"
+
+msgid "User"
+msgstr "Gebruiker"
+
+msgid "User name"
+msgstr "Gebruikers naam"
+
+msgid "Version"
+msgstr "Versie"
+
+msgid "WARNING"
+msgstr "WAARSCHUWING"
+
+msgid "When (h)"
+msgstr "Wanneer (uur)"
+
+msgid "disabled"
+msgstr "uitgeschakeld"
+
+msgid "enabled"
+msgstr "ingeschakeld"
+
+msgid "is not running"
+msgstr "is niet aktief"
+
+msgid "is running"
+msgstr "is aktief"
+
+msgid "secs"
+msgstr "seconden"

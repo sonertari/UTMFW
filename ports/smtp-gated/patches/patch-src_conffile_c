@@ -1,0 +1,13 @@
+$ComixWall: patch-src_conffile_c,v 1.1 2016/07/12 09:29:40 soner Exp $
+--- src/conffile.c.orig	Tue Jul 12 12:13:03 2016
++++ src/conffile.c	Tue Jul 12 12:13:35 2016
+@@ -272,7 +272,8 @@ static int parse_value(struct config_option *option, c
+ int read_config(struct config_option config_options[], char *filename)
+ {
+ 	FILE *f;
+-	int res, line, len, found;
++	int res, line, found;
++	size_t len;
+ 	struct config_option *option;
+ 	char *value, *valend, *valend_space;
+ 	char *buf, *name;

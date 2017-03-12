@@ -1,0 +1,126 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-01 02:29+0100\n"
+"Last-Translator: Ricardo Martin <r.martin@te-sistemas.es>\n"
+"Language-Team: Spanish <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "< Previous"
+msgstr "< Anterior"
+
+msgid "<< First"
+msgstr "<< Primero"
+
+msgid "Add"
+msgstr "Agregar"
+
+msgid "Apply"
+msgstr "Aplicar"
+
+msgid "Block"
+msgstr "Bloquear"
+
+msgid "Compressed"
+msgstr "Comprimido"
+
+msgid "Copy"
+msgstr "Copiar"
+
+msgid "Create"
+msgstr "Crear"
+
+msgid "Daily"
+msgstr "Diario"
+
+msgid "Defaults"
+msgstr "Predeterminados"
+
+msgid "Delete"
+msgstr "Eliminar"
+
+msgid "Disable"
+msgstr "Desactivar"
+
+msgid "Display"
+msgstr "Mostrar"
+
+msgid "Download"
+msgstr "Descargar"
+
+msgid "Enable"
+msgstr "Activar"
+
+msgid "Horizontal"
+msgstr "Horizaontal"
+
+msgid "Hourly"
+msgstr "Cada hora"
+
+msgid "Last >>"
+msgstr "Ultimo >>"
+
+msgid "Log in"
+msgstr "Iniciar sesión"
+
+msgid "Make Dynamic"
+msgstr "Convertir en dinámico"
+
+msgid "Make Static"
+msgstr "Convertir en estático"
+
+msgid "Move Down"
+msgstr "Bajar"
+
+msgid "Move Up"
+msgstr "Subir"
+
+msgid "Next >"
+msgstr "Siguiente >"
+
+msgid "Redraw"
+msgstr "Redibujar"
+
+msgid "Reinitialize"
+msgstr "Reinicializar"
+
+msgid "Reload"
+msgstr "Recargar"
+
+msgid "Restart"
+msgstr "Reiniciar"
+
+msgid "Rotate"
+msgstr "Rotar"
+
+msgid "Rotate All"
+msgstr "Rotar todo"
+
+msgid "Search"
+msgstr "Buscar"
+
+msgid "Select"
+msgstr "Seleccionar"
+
+msgid "Start"
+msgstr "Iniciar"
+
+msgid "Stop"
+msgstr "Detener"
+
+msgid "Unblock"
+msgstr "Desbloquear"
+
+msgid "Unblock All"
+msgstr "Desbloquear todo"
+
+msgid "Vertical"
+msgstr "Vertical"

@@ -1,0 +1,36 @@
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+        charset="iso-8859-1"
+
+Hola %USERNAME%.
+El texto de este mensaje ha sido generado automáticamente por P3Scan, que
+corre en %HOSTNAME%.%DOMAINNAME% para limpiar de virus los mails entrantes.
+
+Se ha reemplazado el cuerpo de un mensaje que contenía un VIRUS.
+
+En lugar del mensaje infectado, se envía este aviso.
+
+La cabecera de este mensaje contiene la informacion original del
+mensaje infectado.
+
+Nombre del virus:
+    %VIRUSNAME%
+Enviado por:
+    %MAILFROM%
+Enviado a:
+    %MAILTO%
+Fecha:
+    %MAILDATE%
+Asunto:
+    %SUBJECT%
+Datos de la conexión:
+    %PROTOCOL% from %CLIENTIP%:%CLIENTPORT% to %SERVERIP%:%SERVERPORT%
+Archivo del mensaje:
+    %P3SCANID%
+    
+    %VDINFO%
+-- 
+%PROGNAME% %VERSION%
+by Jack S. Lai <laitcg@cox.net>
+.

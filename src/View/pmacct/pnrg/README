@@ -1,0 +1,26 @@
+pnrg is Copyright (C) 2006 by Pedro Sanchez
+
+
+PNRG, the pmacct's Network Resource Grapher
+
+PNRG is a package for maintaining and visualizing network data, particularly
+suited for historical trend analysis of network resources. PNRG doesn't need
+any explicit configuration and is able to auto-discover, mantain and graph
+new resources (either IPv4/IPv6 end hosts, network segments, MAC addresses,
+Autonomous Systems, etc.) as soon as they produce a traffic footprint. 
+
+PNRG at a glance:
+* Easily displays network data collected through pmacct, regardless of the
+  data source, ie. the network itself, NetFlow or sFlow.
+* From a couple of pmacct's memory plugins straight to your preferred web
+  browser, without the need to configure or define anything. 
+* No need to rotate, mantain or update anything once the package is in place.  
+* Just a working installation of pmacct, RRDtool and an Apache supporting
+  execution of CGIs are required.
+
+While it has been over-simplified, specifically tailored to network usage and
+written from the scratch, most of its concepts are deeply rooted inside the
+NRG project ( http://nrg.hep.wisc.edu/ ). For the task, PNRG gets data from
+a couple of pmacct's memory plugins and relies over RRDTool for graphs and
+CGIs.
+

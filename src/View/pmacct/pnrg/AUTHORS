@@ -1,0 +1,10 @@
+pnrg is Copyright (C) 2006 by Pedro Sanchez
+
+Author: 
+	Pedro Sanchez <pedro.v.sanchez@gmail.com>
+
+
+Acknowledgements:
+	Paolo Lucente <paolo@pmacct.net>		Main contributor of ideas, concepts and software design
+	Michal Suchon <msuchon@gmail.com>		For the number of fresh ideas exchanged with Paolo about network monitoring software 
+	Alexander Krogloth <alex@krogloth.de>		For his implementation of gradients inside a RRDTool schema

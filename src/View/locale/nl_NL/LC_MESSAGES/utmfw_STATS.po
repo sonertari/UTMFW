@@ -1,0 +1,341 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-01 07:56+0100\n"
+"Last-Translator: Wim Hoekman\n"
+"Language-Team: Dutch <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+
+msgid "Account name"
+msgstr "Gebruikers naam"
+
+msgid "All alerts"
+msgstr "Alle alarmeringen"
+
+msgid "All attempts"
+msgstr "Alle pogingen"
+
+msgid "All connections"
+msgstr "Alle verbindingen"
+
+msgid "All queries"
+msgstr "Alle zoekopdrachten"
+
+msgid "All requests"
+msgstr "Alle verzoeken"
+
+msgid "All sessions"
+msgstr "Alle sessies"
+
+msgid "All un/blocks and extensions"
+msgstr "Alle blokkeringen/deblokkades en verlengingen"
+
+msgid "Allowed requests"
+msgstr "Toegestane verzoeken"
+
+msgid "Attack Types"
+msgstr "Aanvals types"
+
+msgid "Blacklists"
+msgstr "Zwarte lijsten"
+
+msgid "Blocked Hosts"
+msgstr "Geblokkeerde systemen"
+
+msgid "Blocked Time"
+msgstr "Tijd van blokkering"
+
+msgid "Blocked Times (min)"
+msgstr "Geblokkeerd tijden (min)"
+
+msgid "Blocked Times (sec)"
+msgstr "Geblokkeerd tijden (sec)"
+
+msgid "Blocked requests"
+msgstr "Geblokkeerde verzoeken"
+
+msgid "Bypassed denials"
+msgstr "Omgeleide weigeringen"
+
+msgid "Bypassing IPs"
+msgstr "Omgeleidde IP adressen"
+
+msgid "Cache"
+msgstr "Cache"
+
+msgid "Client"
+msgstr "Client"
+
+msgid "Client IPs"
+msgstr "Client IP adressen"
+
+msgid "Clients"
+msgstr "Clienten"
+
+msgid "Closed by"
+msgstr "Gesloten door"
+
+msgid "Connections by date"
+msgstr "Verbindingen per datum"
+
+msgid "Deferred IPs"
+msgstr "Uitgestelde IP adressen"
+
+msgid "Denied IPs"
+msgstr "Geweigerde IP adressen"
+
+msgid "Denied categories"
+msgstr "Geweigerde categoriën"
+
+msgid "Denied requests"
+msgstr "Geweigerde verzoeken"
+
+msgid "Destination IPs"
+msgstr "Bestemmings IP adressen"
+
+msgid "Destination addresses"
+msgstr "Bestemmings adres"
+
+msgid "Destination ports"
+msgstr "Bestemmings poort"
+
+msgid "Domains"
+msgstr "Domein"
+
+msgid "Downloaded (KB)"
+msgstr "Gedownload (KB)"
+
+msgid "E-mails per request"
+msgstr "E-mails per verzoek"
+
+msgid "Exception IPs"
+msgstr "Uitzonderings IP adressen"
+
+msgid "Exception requests"
+msgstr "Uitzonderings verzoeken"
+
+msgid "Extended Hosts"
+msgstr "Uitgestelde systemen"
+
+msgid "Extended Times (min)"
+msgstr "Uitgestelde tijden (min)"
+
+msgid "Failed attempts"
+msgstr "Gefaalde pogingen"
+
+msgid "Failed users"
+msgstr "Gefaalde gebruikers"
+
+msgid "Failure reason"
+msgstr "Reden voor het falen"
+
+msgid "General Statistics"
+msgstr "Algemene Statistieken"
+
+msgid "HTTP Codes"
+msgstr "HTTP Codes"
+
+msgid "Ham"
+msgstr "Ham (geen spam)"
+
+msgid "IPs"
+msgstr "IP Adressen"
+
+msgid "IPs querying"
+msgstr "IP adressen met verzoeken"
+
+msgid "Infected"
+msgstr ""
+
+msgid "Infected IPs"
+msgstr "Geïnfecteerde IP adressen"
+
+msgid "Infected e-mails"
+msgstr ""
+
+msgid "Infected requests"
+msgstr "Geïnfecteerde verzoeken"
+
+msgid "Links"
+msgstr "Links"
+
+msgid "Links visited"
+msgstr "Bezochte links"
+
+msgid "Locked IPs"
+msgstr "Afgeschermde IP adressen"
+
+msgid "Logged in user"
+msgstr "Ingelogde gebruiker"
+
+msgid "Longest deferred (sec)"
+msgstr "Langst uitgesteld (sec)"
+
+msgid "Matched requests"
+msgstr ""
+
+msgid "Methods"
+msgstr "Methodes"
+
+msgid "Number of e-mails"
+msgstr "Aantal emails"
+
+msgid "Number of messages"
+msgstr "Aantal berichten"
+
+msgid "Packet types"
+msgstr "Pakket types"
+
+msgid "Priorities"
+msgstr "Prioriteiten"
+
+msgid "Priority"
+msgstr "Prioriteit"
+
+msgid "Processed (KB)"
+msgstr "Verwerkt (KB)"
+
+msgid "Processing time (sec)"
+msgstr "Verwerkingstijd (sec)"
+
+msgid "Query types"
+msgstr "Verzoek types"
+
+msgid "Reasons"
+msgstr "Redenen"
+
+msgid "Received (KB)"
+msgstr "Ontvangen (KB)"
+
+msgid "Recipients"
+msgstr "Ontvangers"
+
+msgid "Relay results"
+msgstr "Relay resultaten"
+
+msgid "Requests"
+msgstr "Verzoeken"
+
+msgid "Requests by IP"
+msgstr "Verzoeken per IP adres"
+
+msgid "Requests by date"
+msgstr "Verzoeken per datum"
+
+msgid "Requests bypassed"
+msgstr "Omgeleide verzoeken"
+
+msgid "Requests denied"
+msgstr "Verzoeken afgewezen"
+
+msgid "Requests infected"
+msgstr "Verzoeken geïnfecteerd"
+
+msgid "Requests scanned"
+msgstr "Gescande verzoeken"
+
+msgid "Results"
+msgstr "Resultaten"
+
+msgid "SSH version"
+msgstr "SSH versie"
+
+msgid "Scan Results"
+msgstr "Scan resultaten"
+
+msgid "Scan Types"
+msgstr "Scan types"
+
+msgid "Scanned IPs"
+msgstr "Gescande IP adressen"
+
+msgid "Scanned requests"
+msgstr "Gescande verzoeken"
+
+msgid "Senders"
+msgstr "Zenders"
+
+msgid "Sent messages"
+msgstr "Verzonden berichten"
+
+msgid "Server"
+msgstr "Server"
+
+msgid "Session Takeover"
+msgstr "Sessie overname"
+
+msgid "Size by IP (KB)"
+msgstr "Grootte per IP adres"
+
+msgid "Size by Link (KB)"
+msgstr "Grootte per link"
+
+msgid "Size by Target (KB)"
+msgstr "Grootte per bestemming"
+
+msgid "Size by site (KB)"
+msgstr "Grootte per site (KB)"
+
+msgid "Soft inits"
+msgstr ""
+
+msgid "Soft inits (unblock all)"
+msgstr ""
+
+msgid "Source IPs"
+msgstr "Bron IP adressen"
+
+msgid "Source Ports"
+msgstr "Bron poorten"
+
+msgid "Source addresses"
+msgstr "Bron adressen"
+
+msgid "Spam"
+msgstr "Spam"
+
+msgid "Spam Scan Requests"
+msgstr "Spam scan verzoeken"
+
+msgid "Successful logins"
+msgstr "Succesvolle logins"
+
+msgid "Target"
+msgstr "Bestemming"
+
+msgid "Target IPs"
+msgstr "Bestemmings IP adressen"
+
+msgid "Target Ports"
+msgstr "Bestemmings poorten"
+
+msgid "Total deferred time (sec)"
+msgstr "Totaal uitgestelde tijd (sec)"
+
+msgid "Transmitted (KB)"
+msgstr "Verzonden (KB)"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Unblocked Hosts"
+msgstr "Niet geblokkeerde systemen"
+
+msgid "Users"
+msgstr "Gebruikers"
+
+msgid "Virus"
+msgstr "Virus"
+
+msgid "Virus Scan Requests"
+msgstr "Virus scan verzoeken"

@@ -1,0 +1,20 @@
+pnrg is Copyright (C) 2006 by Pedro Sanchez
+
+* Create an automatic sub-foldering mechanism to be applied to the spool directory in
+  order to scatter entries among multiple dirs. Such mechanism should not be tailored
+  to work only with IP addresses (as. graphed resources may include MAC addresses, AS
+  numbers, tags, etc.)
+
+* Improve the logical sub-foldering mechanism actually in place in pnrg-indexmaker.pl
+  as it should allow for an arbitrary number of nestings.
+
+* Remove hardcodings, introducing better flexibility, bearing in mind that one of the
+  objectives of this project it to avoid complicating excessively package usability by
+  from an end-user perspective. 
+
+* Themes: the actual package layout is hopefully "cozy". Someone might like the whole
+  project idea but is looking for something more sober and professional.  
+
+* Templates. Related to the previous point, but more generic. Themes could be intended
+  as layout templates. Templatizing a whole package is an art. This is a priority goal
+  of the project. At some stage in the future. Hopefully, near future.

@@ -1,0 +1,342 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Account name"
+msgstr "帐户名称"
+
+msgid "All alerts"
+msgstr "所有报警"
+
+msgid "All attempts"
+msgstr "所有尝试"
+
+msgid "All connections"
+msgstr "所有连接"
+
+msgid "All queries"
+msgstr "所有查询"
+
+msgid "All requests"
+msgstr "所有请求"
+
+msgid "All sessions"
+msgstr "所有会话"
+
+msgid "All un/blocks and extensions"
+msgstr "所有启用/禁用扩展"
+
+msgid "Allowed requests"
+msgstr "允许的请求"
+
+msgid "Attack Types"
+msgstr "攻击类型"
+
+msgid "Blacklists"
+msgstr "黑名单"
+
+msgid "Blocked Hosts"
+msgstr "被封锁主机"
+
+msgid "Blocked Time"
+msgstr "被阻止时间"
+
+msgid "Blocked Times (min)"
+msgstr "被阻止时间（分钟）"
+
+msgid "Blocked Times (sec)"
+msgstr "被阻止时间（秒）"
+
+msgid "Blocked requests"
+msgstr "被阻止请求"
+
+msgid "Bypassed denials"
+msgstr "绕过拒绝"
+
+msgid "Bypassing IPs"
+msgstr "绕过IP地址"
+
+msgid "Cache"
+msgstr "缓存"
+
+msgid "Client"
+msgstr "客户端"
+
+msgid "Client IPs"
+msgstr "客户端IP地址"
+
+msgid "Clients"
+msgstr "客户端"
+
+msgid "Closed by"
+msgstr "关闭"
+
+msgid "Connections by date"
+msgstr "连接按日期"
+
+msgid "Deferred IPs"
+msgstr "递延IP地址"
+
+msgid "Denied IPs"
+msgstr "被拒绝IP地址"
+
+msgid "Denied categories"
+msgstr "拒绝类别"
+
+msgid "Denied requests"
+msgstr "拒绝请求"
+
+msgid "Destination IPs"
+msgstr "目的地IP地址"
+
+msgid "Destination addresses"
+msgstr "目的地址"
+
+msgid "Destination ports"
+msgstr "目标端口"
+
+msgid "Domains"
+msgstr "域名"
+
+msgid "Downloaded (KB)"
+msgstr "下载（KB）"
+
+msgid "E-mails per request"
+msgstr "电子每次请求邮件"
+
+msgid "Exception IPs"
+msgstr "异常IP地址"
+
+msgid "Exception requests"
+msgstr "豁免申请"
+
+msgid "Extended Hosts"
+msgstr "扩展主机"
+
+msgid "Extended Times (min)"
+msgstr "延期时间（分钟）"
+
+msgid "Failed attempts"
+msgstr "失败的尝试"
+
+msgid "Failed users"
+msgstr "失败用户"
+
+msgid "Failure reason"
+msgstr "失败的原因"
+
+msgid "General Statistics"
+msgstr "综合统计"
+
+msgid "HTTP Codes"
+msgstr "HTTP代码"
+
+msgid "Ham"
+msgstr "Ham"
+
+msgid "IPs"
+msgstr "IP地址"
+
+msgid "IPs querying"
+msgstr "IP地址查询"
+
+msgid "Infected"
+msgstr ""
+
+msgid "Infected IPs"
+msgstr "受感染的IP地址"
+
+msgid "Infected e-mails"
+msgstr ""
+
+msgid "Infected requests"
+msgstr "受感染的请求"
+
+msgid "Links"
+msgstr "链接"
+
+msgid "Links visited"
+msgstr "链接访问"
+
+msgid "Locked IPs"
+msgstr "锁定IP地址"
+
+msgid "Logged in user"
+msgstr "登录用户"
+
+msgid "Longest deferred (sec)"
+msgstr "最长延迟（秒）"
+
+msgid "Matched requests"
+msgstr "符合的请求"
+
+msgid "Methods"
+msgstr "方法"
+
+msgid "Number of e-mails"
+msgstr "电子邮件数量"
+
+msgid "Number of messages"
+msgstr "消息数量"
+
+msgid "Packet types"
+msgstr "包类型"
+
+msgid "Priorities"
+msgstr "优先级别"
+
+msgid "Priority"
+msgstr "优先"
+
+msgid "Processed (KB)"
+msgstr "加工（KB）"
+
+msgid "Processing time (sec)"
+msgstr "处理时间（秒）"
+
+msgid "Query types"
+msgstr "查询类型"
+
+msgid "Reasons"
+msgstr "原因"
+
+msgid "Received (KB)"
+msgstr "收到（KB）"
+
+msgid "Recipients"
+msgstr "收件人"
+
+msgid "Relay results"
+msgstr "中继结果"
+
+msgid "Requests"
+msgstr "请求"
+
+msgid "Requests by IP"
+msgstr "请求（按IP）"
+
+msgid "Requests by date"
+msgstr "请求（按日期）"
+
+msgid "Requests bypassed"
+msgstr "请求旁路绕过"
+
+msgid "Requests denied"
+msgstr "请求被拒绝"
+
+msgid "Requests infected"
+msgstr "请求被感染"
+
+msgid "Requests scanned"
+msgstr "请求被扫描"
+
+msgid "Results"
+msgstr "结果"
+
+msgid "SSH version"
+msgstr "SSH版本"
+
+msgid "Scan Result"
+msgstr "扫描结果"
+
+msgid "Scan Results"
+msgstr "扫描结果"
+
+msgid "Scan Types"
+msgstr "扫描类型"
+
+msgid "Scanned IPs"
+msgstr "扫描IP地址"
+
+msgid "Scanned requests"
+msgstr "扫描要求"
+
+msgid "Senders"
+msgstr "发件人"
+
+msgid "Sent messages"
+msgstr "发送的邮件"
+
+msgid "Server"
+msgstr "服务器"
+
+msgid "Session Takeover"
+msgstr "获取会话"
+
+msgid "Size by IP (KB)"
+msgstr "大小通过IP（KB）"
+
+msgid "Size by Link (KB)"
+msgstr "大小的连接（KB）"
+
+msgid "Size by Target (KB)"
+msgstr "大小的目标（KB）"
+
+msgid "Size by site (KB)"
+msgstr "大小按网站（KB）"
+
+msgid "Soft inits"
+msgstr "软inits"
+
+msgid "Soft inits (unblock all)"
+msgstr "软inits（解锁所有）"
+
+msgid "Source IPs"
+msgstr "源IP地址"
+
+msgid "Source Ports"
+msgstr "源端口"
+
+msgid "Source addresses"
+msgstr "源地址"
+
+msgid "Spam"
+msgstr "垃圾邮件"
+
+msgid "Spam Scan Requests"
+msgstr "垃圾邮件扫描请求"
+
+msgid "Successful logins"
+msgstr "成功登录"
+
+msgid "Target"
+msgstr "目标"
+
+msgid "Target IPs"
+msgstr "目标IP地址"
+
+msgid "Target Ports"
+msgstr "目标端口"
+
+msgid "Total deferred time (sec)"
+msgstr "总延迟时间（秒）"
+
+msgid "Transmitted (KB)"
+msgstr "已发送（KB）"
+
+msgid "Type"
+msgstr "类型"
+
+msgid "Unblocked Hosts"
+msgstr "解除阻塞主机"
+
+msgid "Users"
+msgstr "用户"
+
+msgid "Virus"
+msgstr ""
+
+msgid "Virus Scan Requests"
+msgstr "病毒扫描请求"

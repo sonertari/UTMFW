@@ -1,0 +1,1220 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Language: ru_RU\n"
+
+msgid "%MEM"
+msgstr ""
+
+msgid "ACL"
+msgstr ""
+
+msgid "AV Admin"
+msgstr "E-mail для уведоблений (AV)"
+
+msgid "AV Subject"
+msgstr "Тема в уведомительных письмах (AV)"
+
+msgid "Access Denied Address"
+msgstr "Переопределение страницы 'Доступ запрещён'"
+
+msgid "Access control list"
+msgstr "Список контроля доступа (ACL)"
+
+msgid "Access denied address"
+msgstr "Переопределение страницы 'Доступ запрещён'"
+
+msgid "Active IPs (arp table)"
+msgstr "Активные IP (arp-таблица)"
+
+msgid "Address Family"
+msgstr "Семейство адресов"
+
+msgid "Advanced Power Management"
+msgstr "Расширенное управление питанием (APM)"
+
+msgid "After hours"
+msgstr "Послерабочие часы"
+
+msgid "All rights reserved."
+msgstr "Все права защищены."
+
+msgid "Allow localhost"
+msgstr "Разрешить localhost"
+
+msgid "Anonymize Logs"
+msgstr "Обезличить логи"
+
+msgid "Apply configuration"
+msgstr "Применить конфигурацию"
+
+msgid "Archive Block Encrypted"
+msgstr "Блокировать защищённые архивы"
+
+msgid "Archive Block Max"
+msgstr "Блокировать крупные архивы"
+
+msgid "Archive Limit Memory Usage"
+msgstr "Режим экономиии RAM"
+
+msgid "Archive Max Compression Ratio"
+msgstr "Допустимый уровень сжатия объектов"
+
+msgid "Archive Max File Size"
+msgstr "Предельный размер файла внутри архива"
+
+msgid "Archive Max Files"
+msgstr "Кол-во файлов внутри архива"
+
+msgid "Archive Max Recursion"
+msgstr "Кол-во уровней вложенности архива"
+
+msgid "Back Orifice detector"
+msgstr "Детектор Back Orifice"
+
+msgid "Badwords"
+msgstr "Стоп-лист слов"
+
+msgid "Badwords block count"
+msgstr ""
+
+msgid "Badwords filtering"
+msgstr "Фильрация слов"
+
+msgid "Badwords replace character"
+msgstr "Символ для подмены нежелательных слов"
+
+msgid "Banned image replacement"
+msgstr "Подмена блокированных изображений"
+
+msgid "Banner"
+msgstr "Баннер"
+
+msgid "Bayes auto learn"
+msgstr "Автообучение фильтра Байеса"
+
+msgid "Blacklist"
+msgstr "Чёрный список"
+
+msgid "Blacklisted"
+msgstr "Запрещённые"
+
+msgid "Blanket Block"
+msgstr "Общая блокировка"
+
+msgid "Blanket IP Block"
+msgstr "Общая блокировка IP"
+
+msgid "Blanket SSL/CONNECT Block"
+msgstr "Общая блокировка SSL/CONNECT"
+
+msgid "Blanket SSL/CONNECT IP Block"
+msgstr "Общая IP блокировка SSL/CONNECT"
+
+msgid "Block Duration"
+msgstr "Длительнсть блокировки"
+
+msgid "Block all filetransfers"
+msgstr "Блокировать любую пересылку файлов"
+
+msgid "Block downloads"
+msgstr "Блокировать загрузки"
+
+msgid "Block webcams"
+msgstr "Блокировать веб-камеры"
+
+msgid "Broadcast address"
+msgstr "Широковещательный адрес"
+
+msgid "Bytes Free"
+msgstr "Байт свободно"
+
+msgid "COMMAND"
+msgstr "КОМАНДА"
+
+msgid "CVS Tag"
+msgstr "CVS Тег"
+
+msgid "CTLR"
+msgstr "CTLR"
+
+msgid "Cache mgr"
+msgstr "Кеш-менеджер"
+
+msgid "Category display threshold"
+msgstr "Порог отображения рейтинга категорий"
+
+msgid "Certificate"
+msgstr "Сертификат"
+
+msgid "Cipher"
+msgstr "Шифр"
+
+msgid "Client netmask"
+msgstr "Маска сети клиента"
+
+msgid "Compression"
+msgstr "Сжатие"
+
+msgid "Configuration"
+msgstr "Конфигурация"
+
+msgid "Content Admin"
+msgstr "E-mail для уведомлений (Web)"
+
+msgid "Content Subject"
+msgstr "Тема в уведомительных письмах (Web)"
+
+msgid "Content scan exceptions"
+msgstr "Исключения контент-сканера"
+
+msgid "Content scanner timeout"
+msgstr "Таймаут контент-сканера"
+
+msgid "Content scanning web filter."
+msgstr "Контентный веб-фильтр."
+
+msgid "Copyright"
+msgstr ""
+
+msgid "Create filter group"
+msgstr "Создать новую группу "
+
+msgid "Create list cache files"
+msgstr "Создание списка кэш-файлов"
+
+msgid "DHCP Server"
+msgstr "DHCP Сервер"
+
+msgid "DNS Database Info"
+msgstr "Инфо из базы DNS"
+
+msgid "DNS Server"
+msgstr "DNS Сервер"
+
+msgid "DNS_SERVERS"
+msgstr "DNS_СЕРВЕРЫ"
+
+msgid "Database Checks"
+msgstr "Проверки БД"
+
+msgid "Database Mirrors"
+msgstr "Зеркала БД"
+
+msgid "De-facto standard IDS (Intrusion Detection System)."
+msgstr "Фактически стандарт IDS (система обнаружения вторжений)."
+
+msgid "De-facto standard among HTTP proxies."
+msgstr "Фактически стандарт среди HTTP-проксей."
+
+msgid "Debug"
+msgstr "Отладка"
+
+msgid "Debug options"
+msgstr "Параметры отладки"
+
+msgid "Delete downloaded temp files"
+msgstr "Удалять временные файлы"
+
+msgid "Deny others"
+msgstr "Запретить другое"
+
+msgid "Desc"
+msgstr "Опис."
+
+msgid "Detect Broken Executables"
+msgstr "Определять порченные исполняемые файлы"
+
+msgid "Device"
+msgstr "Имя интерфейса"
+
+msgid "Diffie-Hellman params"
+msgstr "Параметры алгоритма Диффи — Хеллмана"
+
+msgid "Disable content scanning"
+msgstr "Отключить контент-сканирование"
+
+msgid "Disable decode alerts"
+msgstr "Отключить разбор оповещений"
+
+msgid "Disable ipopt alerts"
+msgstr "Отключить оповещения ipopt"
+
+msgid "Disable logging process"
+msgstr "Отключить создание логов"
+
+msgid "Disable tcpopt alerts"
+msgstr "Отключить оповещения tcpopt"
+
+msgid "Disable tcpopt experimental alerts"
+msgstr "Отключить эксперементальные предупреждения tcpopt"
+
+msgid "Disable tcpopt obsolete alerts"
+msgstr "Отключить устаревшие оповещения tcpopt"
+
+msgid "Disable tcpopt ttcp alerts"
+msgstr "Отключить оповещения tcpopt ttcp"
+
+msgid "Disabled"
+msgstr "Отключено"
+
+msgid "Disabled Rules"
+msgstr "Отключенные правила"
+
+msgid "EXTERNAL_NET"
+msgstr "ВНЕШНЯЯ_СЕТЬ"
+
+msgid "Embedded URL weighting"
+msgstr "Анализ ссылочных объектов (URL)"
+
+msgid "Enable Deep URL Analysis"
+msgstr "Включить дополнительный анализ URL"
+
+msgid "Enable SSL/TLS"
+msgstr "Включить SSL/TLS"
+
+msgid "Enabled"
+msgstr "Включено"
+
+msgid "Enabled Rules"
+msgstr "Включенные правила"
+
+msgid "English"
+msgstr "Английский"
+
+msgid "Ext"
+msgstr ""
+
+msgid "FTP Proxy"
+msgstr "FTP Прокси"
+
+msgid "Filter IP"
+msgstr "IP Фильтра"
+
+msgid "Filter Port"
+msgstr "Порт фильтра"
+
+msgid "Filter group mode"
+msgstr "Режим работы группы"
+
+msgid "Filter group name"
+msgstr "Имя группы"
+
+msgid "Filtered minutes"
+msgstr ""
+
+msgid "Filtered response"
+msgstr ""
+
+msgid "Follow Directory Symlinks"
+msgstr "Следовать по симлинками на каталоги"
+
+msgid "Follow File Symlinks"
+msgstr "Следовать по симлинками на файлы"
+
+msgid "Force quick search"
+msgstr "Использовать быструю проверку"
+
+msgid "Forwarded for"
+msgstr "Добавлять к заголовку X-Forwarded-For"
+
+msgid "Forwarders"
+msgstr "Пересылка"
+
+msgid "Free OOP scripting language."
+msgstr "Открытый объектно-ориентированный скриптовый язык ."
+
+#, php-format
+msgid ""
+"Free secure shell provides remote shell access to the system. It is believed "
+"that almost 90% of all secure shell traffic on the Internet is provided by "
+"OpenSSH. OpenSSH is developed by the OpenBSD project."
+msgstr ""
+"Набор программ, предоставляющих шифрование сеансов связи по компьютерным "
+"сетям с использованием протокола SSH. 90% SSH трафика обеспечивается "
+"средствами OpenSSH. Разработан и поддерживается сообществом проекта OpenBSD."
+
+msgid "Fri"
+msgstr "Пт"
+
+msgid "GG"
+msgstr ""
+
+msgid "GROUP"
+msgstr "ГРУППА"
+
+msgid "Gateway"
+msgstr "Шлюз"
+
+msgid "Greylist"
+msgstr "Серый список"
+
+msgid "Group"
+msgstr "Группа"
+
+msgid "HOME_NET"
+msgstr "ДОМАШНЯЯ_СЕТЬ"
+
+msgid "HTTP Proxy"
+msgstr "HTTP Прокси"
+
+msgid "HTTP Proxy Password"
+msgstr "Пароль HTTP Прокси"
+
+msgid "HTTP Proxy Port"
+msgstr "Порт HTTP Прокси"
+
+msgid "HTTP Proxy Server"
+msgstr "HTTP Прокси"
+
+msgid "HTTP Proxy Username"
+msgstr "Имя пользователя HTTP Прокси"
+
+msgid "HTTP_PORTS"
+msgstr "HTTP_ПОРТЫ"
+
+msgid "HTTP_SERVERS"
+msgstr "HTTP_СЕРВЕРЫ"
+
+msgid "HTTPs"
+msgstr ""
+
+msgid "Hex decode content"
+msgstr "Декодировать Hex-содержимое"
+
+msgid "Host"
+msgstr "Хост"
+
+msgid "Host IP"
+msgstr "IP хоста"
+
+msgid "Hostname Lookups"
+msgstr "Разрешение имён"
+
+msgid "ICQ"
+msgstr ""
+
+msgid "IM Proxy"
+msgstr "IM Прокси"
+
+msgid "IP defragmentation support"
+msgstr "Поддержка IP дефрагментации"
+
+msgid "IP or Net"
+msgstr "IP или Net"
+
+msgid "IP range"
+msgstr "IP диапазон"
+
+msgid "IRC"
+msgstr ""
+
+msgid "Ignore errors"
+msgstr "Игнорировать ошибки"
+
+msgid "Include classification & priority settings"
+msgstr "Выводить в лог классификацию и приоритет"
+
+msgid "Include reference systems"
+msgstr "Выводить доп. информацию"
+
+msgid "Infection/Scan Error Bypass"
+msgstr "Таймаут игнорирования Заражённых/Проблемных объектов"
+
+msgid "Infection/Scan Error Bypass Secret Key"
+msgstr "Пароль для игнорирования Заражённых/Проблемных объектов"
+
+msgid "Infection/Scan Error Bypass on Scan Errors Only"
+msgstr "Игнорировать только при невозможности сканирования"
+
+msgid "Initial Trickle delay"
+msgstr "Начать поддержку соединения через"
+
+msgid "Interface Configuration"
+msgstr "Настройка интерфейса"
+
+msgid "Interfaces"
+msgstr "Интерфейсы"
+
+msgid "Intrusion Alerts"
+msgstr "Оповещения о Вторжении"
+
+msgid "Intrusion Detection"
+msgstr "Обнаружение Вторжений"
+
+msgid "Intrusion Prevention"
+msgstr "Предотвращение Вторжений"
+
+msgid "Jabber"
+msgstr ""
+
+msgid "Just Delete"
+msgstr "Удалять заражённые"
+
+msgid "Keep Alive"
+msgstr ""
+
+msgid "KeepAlive"
+msgstr ""
+
+msgid "KeepAlive Timeout"
+msgstr "Таймаут KeepAlive"
+
+msgid "Keywords"
+msgstr "Ключивые слова"
+
+msgid "Language"
+msgstr "Язык"
+
+msgid "Leases"
+msgstr "Аренда"
+
+msgid "Leave Temporary Files"
+msgstr "Оставлять временные файлы"
+
+msgid "Leave spool on"
+msgstr ""
+
+msgid "Listen Address"
+msgstr "Слушать на адресе"
+
+msgid "Local IP Address"
+msgstr "Локальный IP Адрес"
+
+msgid "Local IP address"
+msgstr "Локальный IP Адрес"
+
+msgid "Local User"
+msgstr "Локальный пользователь"
+
+msgid "Locale"
+msgstr "Локаль"
+
+msgid "Lock duration"
+msgstr "Длительность блокировки"
+
+msgid "Lock on"
+msgstr "Блокировать при"
+
+msgid "Log Clean"
+msgstr "Записывать в лог о чистых объектах"
+
+msgid "Log Exception Hits"
+msgstr "Записывать в лог о срабатывании исключений"
+
+msgid "Log Level"
+msgstr "Режим Логгирования"
+
+msgid "Log Verbose"
+msgstr "Подробность логгирования"
+
+msgid "Log ad blocks"
+msgstr "Записывать в лог блокировку рекламы"
+
+msgid "Log child process handling"
+msgstr "Записывать в лог действия с процессами-потомками"
+
+msgid "Log client hostnames"
+msgstr "Записывать имена клиентских компьютеров "
+
+msgid "Log connection handling errors"
+msgstr "Записывать проблемы связи"
+
+msgid "Log fqdn"
+msgstr "Записывать fqdn"
+
+msgid "Log helo"
+msgstr "Записывать helo"
+
+msgid "Log ip on direct"
+msgstr "Записывать IP при соединениях напрямую"
+
+msgid "Log level"
+msgstr "Режим логгирования"
+
+msgid "Log mail from"
+msgstr "Записывать mail from"
+
+msgid "Log rcpt to"
+msgstr "Записывать rcpt to"
+
+msgid "Log typing events"
+msgstr "Записывать typing events"
+
+msgid "Logging Settings"
+msgstr "Настройки Логгирования"
+
+msgid "Login Grace Time"
+msgstr "Времени под процесс регистрации"
+
+msgid "MSN"
+msgstr ""
+
+msgid "Mail Follow URLs"
+msgstr "Следовать по ссылкам в письмах"
+
+msgid "Mail From"
+msgstr "Отправлять от имени"
+
+msgid "Mail program"
+msgstr "Команда для отправки писем"
+
+msgid "Managed extensions"
+msgstr "Обслуживаемые расширения файлов"
+
+msgid "Managed mime types"
+msgstr "Обслуживаемые типы mime"
+
+msgid "Max Attempts"
+msgstr "Попытки (макс.)"
+
+msgid "Max Auth Tries"
+msgstr "Кол-во попыток входа (макс.)"
+
+msgid "Max Block Duration"
+msgstr "Длительность блокировки (макс.)"
+
+msgid "Max Childs"
+msgstr "Потомков (макс.)"
+
+msgid "Max Clients"
+msgstr "Кол-во клиентов (макс.)"
+
+msgid "Max Directory Recursion"
+msgstr "Уровни вложенности каталогов (макс.)"
+
+msgid "Max KeepAlive Requests"
+msgstr "Кол-во запросов KeepAlive (макс.)"
+
+msgid "Max Log Item Length"
+msgstr "Длина элементов лога (макс.)"
+
+msgid "Max Spare Servers"
+msgstr "Число резервных процессов-потомков (макс.)"
+
+msgid "Max Threads"
+msgstr "Кол-во потоков (макс.)"
+
+msgid "Max age children"
+msgstr "Время жизни потомков (макс.)"
+
+msgid "Max children"
+msgstr "Кол-во потомков (макс.)"
+
+msgid "Max content file cache scan size"
+msgstr "Размер кэшируемых на диск файлов (макс.)"
+
+msgid "Max content filter size"
+msgstr "Размер аназизируемых текстовых элементов (макс.)"
+
+msgid "Max content ram cache scan size"
+msgstr "Размер кэшируемых в RAM файлов (макс.)"
+
+msgid "Max ips"
+msgstr "Кол-во IP (макс.)"
+
+msgid "Max spare children"
+msgstr "Число резервных процессов-потомков (макс.)"
+
+msgid "Max upload size"
+msgstr ""
+
+msgid "MaxStartups"
+msgstr "Одновременно неавторизованных сессий (макс.)"
+
+msgid "Maximum connections"
+msgstr "Максимально соединений"
+
+msgid "Maximum connections per host"
+msgstr "Максимально соединений на 1 хост"
+
+msgid "Maximum download size"
+msgstr "Максимальный размер закачки"
+
+msgid "Maximum load"
+msgstr ""
+
+msgid "Maximum spam load"
+msgstr ""
+
+msgid "Maximum spam scan size"
+msgstr ""
+
+msgid "Maximum virus scan size"
+msgstr ""
+
+msgid "Mime"
+msgstr ""
+
+msgid "Min Spare Servers"
+msgstr "Число резервных процессов-потомков (мин.)"
+
+msgid "Min children"
+msgstr "Кол-во потомков (мин.)"
+
+msgid "Min spare children"
+msgstr "Число резервных процессов-потомков (мин.)"
+
+msgid "Modern virtual private networking."
+msgstr "Современная виртуальная частная сеть."
+
+msgid "Mon"
+msgstr "Пн"
+
+msgid "Monitoring"
+msgstr "Мониторинг"
+
+msgid "NAT header type"
+msgstr "Тип заголовка NAT"
+
+msgid "Name server"
+msgstr "Сервер имён"
+
+msgid "Naughtyness limit"
+msgstr "Лимит порочности пользователей"
+
+msgid "Network Time"
+msgstr ""
+"Сетевое \n"
+"Ввремя"
+
+msgid "No bind"
+msgstr ""
+
+msgid "No cache"
+msgstr "Без кэша"
+
+msgid "Non standard delimiter"
+msgstr "Нестандартный разделитель"
+
+msgid "Notice days"
+msgstr ""
+
+msgid "Notice response"
+msgstr ""
+
+msgid "Notice responses"
+msgstr ""
+
+msgid "Notify AV"
+msgstr "Уведомлять при обнаружении вируса"
+
+msgid "Notify Content"
+msgstr "Уведомлять о запрещённом контенте"
+
+msgid "Number of filter groups"
+msgstr "Количество групп фильтра"
+
+msgid "Open source anti-spam software."
+msgstr "Свободный пакет антиспам средств."
+
+msgid "Open source anti-virus software."
+msgstr "Свободный антивирусный пакет ПО."
+
+msgid "OpenSSH"
+msgstr ""
+
+msgid "OpenVPN"
+msgstr ""
+
+msgid "PF"
+msgstr ""
+
+msgid "PICS rating support"
+msgstr "Поддержка ранжирования PICS (внеш.)"
+
+msgid "POP3 Proxy"
+msgstr "POP3 Прокси"
+
+msgid "PRI"
+msgstr ""
+
+msgid "Packet Filter"
+msgstr "Пакетный фильтр"
+
+msgid "Permit Empty Passwords"
+msgstr "Разрешить пустые пароли"
+
+msgid "Permit Root Login"
+msgstr "Разрешить вход под рутом"
+
+msgid "Persist Key"
+msgstr "Постоянный ключ"
+
+msgid "Persist Tun"
+msgstr "Постоянный туннель"
+
+msgid "Phrase filter mode"
+msgstr "Режим фильтра фраз"
+
+msgid "Ping"
+msgstr ""
+
+msgid "Pmacct"
+msgstr ""
+
+msgid "Pmacct Network Monitoring"
+msgstr "Сетевой Мониторинг Pmacct"
+
+msgid "Port"
+msgstr "Порт"
+
+msgid "Prefork children"
+msgstr "Предсоздать потомков"
+
+msgid "Preserve case"
+msgstr "Сохранять регистр"
+
+msgid "Print Last Log"
+msgstr "Выводить инфо о последнем входе"
+
+msgid "Print Motd"
+msgstr "Показывать Motd"
+
+msgid "Priority"
+msgstr "Приоритет"
+
+msgid "Private Key"
+msgstr "Закрытый ключ"
+
+msgid ""
+"Promiscuous mode accounting daemon collects IP based network usage "
+"information. Network usage graphs are generated based on pmacct data."
+msgstr ""
+"Демон для сбора статистики использования сети. Графики сетевых отчётов "
+"создаютя на основе данных собранных pmacct."
+
+msgid "Protocol"
+msgstr "Протокол"
+
+msgid "Protograph"
+msgstr ""
+
+msgid "Proxy IP"
+msgstr "IP Прокси"
+
+msgid "Proxy IP:Ports"
+msgstr "Прокси IP:Ports"
+
+msgid "Proxy Port"
+msgstr "Порт прокси"
+
+msgid "Quiet"
+msgstr "Молчаливый режим"
+
+msgid "Re-check replaced URLs"
+msgstr "Перепроверка заменённого URL"
+
+msgid "Remote Server"
+msgstr "Удалённый сервер"
+
+msgid "Remote User"
+msgstr "Удалённый пользователь"
+
+msgid "Report e-mail"
+msgstr "E-mail для отчётов"
+
+msgid "Report language"
+msgstr "Язык отчётов"
+
+msgid "Report safe"
+msgstr ""
+
+msgid "Reporting level"
+msgstr "Режим отчёта"
+
+msgid "Required score"
+msgstr "Требуемый балл"
+
+msgid "Resource not available"
+msgstr "Ресурс недоступен"
+
+msgid "Response postfix"
+msgstr "Суффикс ответа"
+
+msgid "Response prefix"
+msgstr "Префикс ответа"
+
+msgid "Reverse address lookups"
+msgstr "Обратный DNS-запрос адресов"
+
+msgid "Reverse client ip lookups"
+msgstr "Обратный DNS-запрос ip клиентов"
+
+msgid "Rewrite header"
+msgstr "Переписать заголовок"
+
+msgid "Root Certificate"
+msgstr "Корневой сертификат"
+
+msgid "Route"
+msgstr "Маршрут"
+
+msgid "Russian"
+msgstr "Русский"
+
+msgid "SHELLCODE_PORTS"
+msgstr "SHELLCODE_ПОРТЫ"
+
+msgid "SMTP Proxy"
+msgstr "SMTP Прокси"
+
+msgid "SMTP_SERVERS"
+msgstr "SMTP_СЕРВЕРЫ"
+
+msgid "SNMP_SERVERS"
+msgstr "SNMP_СЕРВЕРЫ"
+
+msgid "SOCKS Proxy"
+msgstr "SOCKS Прокси"
+
+msgid "SPAM Deferral"
+msgstr ""
+
+msgid "SPAM Filter"
+msgstr "SPAM Фильтр"
+
+msgid "SQL_SERVERS"
+msgstr "SQL_СЕРВЕРЫ"
+
+msgid "SSH_PORTS"
+msgstr "SSH_ПОРТ"
+
+msgid "STARTED"
+msgstr "ЗАПУЩЕН"
+
+msgid "Safe Browsing"
+msgstr "Безопасный просмотр веб"
+
+msgid "Sat"
+msgstr "Сб"
+
+msgid "Scan Archive"
+msgstr "Сканировать архивы"
+
+msgid "Scan HTML"
+msgstr "Сканировать HTML"
+
+msgid "Scan Mail"
+msgstr "Сканировать почту"
+
+msgid "Scan OLE2"
+msgstr "Сканировать OLE2"
+
+msgid "Scan PE"
+msgstr "Сканировать исполняемые (PE) файлы"
+
+msgid "Scan RAR"
+msgstr "Сканировать RAR"
+
+msgid "Scan Spam"
+msgstr "Сканировать на спам"
+
+msgid "Scan clean cache"
+msgstr ""
+
+msgid "Self Check"
+msgstr "Самопроверка"
+
+msgid "Server Admin"
+msgstr "Администратор Сервера"
+
+msgid "Server Key Bits"
+msgstr "Длина ключа сервера"
+
+msgid "Server Mode"
+msgstr "Режим Сервера"
+
+msgid "Session"
+msgstr "Сессия"
+
+msgid "Show weighted phrases found"
+msgstr "Показывать найденные фразы"
+
+msgid "Size"
+msgstr "Размер"
+
+msgid "Soft restart"
+msgstr "Мягкий перезапуск"
+
+msgid "Spam Filter"
+msgstr "Спам фильтр"
+
+msgid "Spam threshold"
+msgstr "Пороговый балл для спама"
+
+msgid "Spamd Grey DB"
+msgstr "Spamd Серая DB"
+
+msgid "Spamd Grey Listing"
+msgstr "Spamd Серые Списки"
+
+msgid "Spamd Logging"
+msgstr "Spamd Логгирование "
+
+msgid "Spamd Spam Deferral"
+msgstr "Spamd Замедление Спама"
+
+msgid "Spamd White DB"
+msgstr "Spamd Белая DB"
+
+msgid "Spanish"
+msgstr "Испанский"
+
+msgid "Start Servers"
+msgstr "Запустить серверы"
+
+msgid "Subnet mask"
+msgstr "Маска подсети"
+
+msgid "Subsystem sftp"
+msgstr ""
+
+msgid "Sun"
+msgstr "Вс"
+
+msgid "Symon"
+msgstr ""
+
+msgid "Symon System Monitoring"
+msgstr "Symon Системный Мониторинг"
+
+msgid "Symux"
+msgstr ""
+
+msgid "Symux System Monitoring"
+msgstr "Symux Системный Мониторинг"
+
+msgid "Syslog Facility"
+msgstr "Возможности Syslog"
+
+msgid "System"
+msgstr "Система"
+
+msgid "System Administration Guides"
+msgstr "Руководства Системного Администратора"
+
+msgid ""
+"System monitoring software. Most of the rrd based graphs are generated based "
+"on symon data."
+msgstr ""
+"ПО для мониторинга системы. На основе данных symon'а  генерируются "
+"большинство rrd-графиков."
+
+msgid "TCP Keep Alive"
+msgstr ""
+
+msgid "TELNET_SERVERS"
+msgstr "TELNET_СЕРВЕРЫ"
+
+msgid "TIME"
+msgstr "ВРЕМЯ"
+
+msgid "TLS Auth"
+msgstr "Аутентификация TLS"
+
+msgid "Telnet negotiation string normalizer"
+msgstr "Нормализатор строки согласования Telnet"
+
+msgid "Temporary Denied Page Bypass"
+msgstr "Показывать ссылку игнорирования запрета страницы"
+
+msgid "Temporary Denied Page Bypass Secret Key"
+msgstr "Пароль для игнорирования запрета страницы"
+
+msgid "The Free Software Foundation."
+msgstr ""
+
+msgid "The most famous web server."
+msgstr "Один из наиболее популярных web-серверов в мире."
+
+msgid ""
+"The most secure OS in the world. Underneath UTMFW is pure, untouched "
+"OpenBSD."
+msgstr ""
+"Одна из самых безопасных операционных систем. Лежит в основе UTMFW'а как "
+"есть, без каких-либо модификаций."
+
+msgid "Threshold"
+msgstr "Интервал (сек.)"
+
+msgid "Threshold By User"
+msgstr "Отдельный интервал на пользователя"
+
+msgid "Thu"
+msgstr "Чт"
+
+msgid "Time to expire"
+msgstr "Время до окончания"
+
+msgid "Time to expire (secs)"
+msgstr "Время до окончания (сек.)"
+
+msgid "Timeout"
+msgstr "Таймаут"
+
+msgid "Timespan"
+msgstr "Промежуток времени"
+
+msgid "Trickle delay"
+msgstr "Интервал поддержки соединения"
+
+msgid "Trusted networks"
+msgstr "Доверенные сети"
+
+msgid "Tue"
+msgstr "Вт"
+
+msgid "Turkish"
+msgstr "Турецкий"
+
+msgid ""
+"Turns Snort IDS into an IPS (Intrusion Prevention System). Replaced by "
+"SnortIPS."
+msgstr ""
+"Превращает Snort IDS в IPS (Систему Предотвращения Вторжений). Заменено на "
+"SnortIPS."
+
+msgid "USER"
+msgstr "ПОЛЬЗОВАТЕЛЬ"
+
+msgid "Unblock all blocked entries"
+msgstr "Разлокировать всех"
+
+msgid "Unblock selected"
+msgstr "Разблокировать выбранных"
+
+msgid "Url cache age"
+msgstr "Возраст кэша Url"
+
+msgid "Url cache number"
+msgstr ""
+
+msgid "Use DNS"
+msgstr "Использовать DNS"
+
+msgid "Use SMTP"
+msgstr "Использовать SMTP"
+
+msgid "Use bayes"
+msgstr "Использовать фильтр Байеса"
+
+msgid "Use xforwarded for"
+msgstr "Использовать xforwarded for"
+
+msgid "User agent regexp"
+msgstr ""
+
+msgid "Verbosity"
+msgstr "Детализация логов"
+
+msgid "Violations"
+msgstr "Нарушения (шт.)"
+
+msgid "Virus DB Update"
+msgstr "Обновление Антивирусной Базы"
+
+msgid "Virus Filter"
+msgstr "Вирусный фильтр"
+
+msgid "Virus and spam scanning POP3 proxy."
+msgstr "Фильтрующий POP3-прокси сервер."
+
+msgid "Virus and spam scanning SMTP proxy."
+msgstr "Фильтрующий SMTP-прокси сервер."
+
+msgid "WUI"
+msgstr ""
+
+msgid "Web Access Denied Reporting"
+msgstr "Режим вывода страницы 'Доступ Запрещён'"
+
+msgid "Web Filter"
+msgstr "Веб фильтр"
+
+msgid "Web Filter Access"
+msgstr "Лог Доступа Web-фильтра"
+
+msgid "Web Server"
+msgstr "Веб сервер"
+
+msgid "Web Server (WUI)"
+msgstr "Web Сервер (WUI)"
+
+msgid "Web Server Access"
+msgstr "Доступ к Web-серверу"
+
+msgid "Web interface for configuring and monitoring OpenBSD/pf."
+msgstr "Web интерфейс для настройки и мониторинга OpenBSD/pf."
+
+msgid "Wed"
+msgstr "Ср"
+
+msgid "Weighted phrase list"
+msgstr "Список взвешеваемых фраз"
+
+msgid "Weighted phrase mode"
+msgstr "Режим взвешивания фраз"
+
+msgid "Whitelist"
+msgstr "Белый список"
+
+msgid "Whitelisted"
+msgstr "Разрешённые"
+
+msgid "X-Bogosity"
+msgstr ""
+
+msgid "X-Spam-Flag"
+msgstr ""
+
+msgid "X-Spam-Status"
+msgstr ""
+
+msgid "Yahoo"
+msgstr ""
+
+msgid "blacklisted"
+msgstr "отфильтрован"
+
+msgid "blocked"
+msgstr "блокирован"
+
+msgid "end"
+msgstr "конец"
+
+msgid "height"
+msgstr "высота"
+
+msgid "managed"
+msgstr ""
+
+msgid "size"
+msgstr "размер"
+
+msgid "start"
+msgstr "старт"
+
+msgid "timespan"
+msgstr "промежуток времени"
+
+msgid "total"
+msgstr "всего"
+
+msgid "whitelisted"
+msgstr "разрешён"
+
+msgid "width"
+msgstr "ширина"

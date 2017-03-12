@@ -1,0 +1,32 @@
+$ComixWall: patch-msnprotocolplugin_cpp,v 1.6 2009/11/03 11:02:45 soner Exp $
+--- msnprotocolplugin.cpp.orig	Tue Mar 17 22:31:48 2009
++++ msnprotocolplugin.cpp	Mon Nov  2 19:33:05 2009
+@@ -163,9 +163,9 @@ int processpacket(bool outgoing, class Socket &incomin
+ 	 * we presently don't do anything with it. */
+ 	if (
+ 		((command == "ADL" || command == "RML" || command == "UUN" ||
+-		command == "UBN" || command == "GCF" ||
+-		command == "UUX" || command == "UBX" ||
+-		command == "QRY" || command == "PAG" || command == "NOT")
++		command == "UBN" || command == "GCF" || command == "UUX" ||
++		command == "UBX" || command == "QRY" || command == "PAG" ||
++		command == "NOT" || command == "FQY")
+ 		&& argc > 1) ||
+ 		((command == "NOT")
+ 		&& argc)
+@@ -209,13 +209,13 @@ int generatemessagepacket(struct response &response, c
+ 	if (response.outgoing)
+ 	{
+ 		snprintf(replybuffer, BUFFER_SIZE - 1,
+-			"MSG 1 U %d\r\n" \
++			"MSG 1 U %ld\r\n" \
+ 			"%s", body.length(), body.c_str());
+ 	}
+ 	else
+ 	{
+ 		snprintf(replybuffer, BUFFER_SIZE - 1,
+-			"MSG %s %s %d\r\n" \
++			"MSG %s %s %ld\r\n" \
+ 			"%s", remoteid.c_str(), remoteid.c_str(), body.length(), body.c_str());
+ 	}
+ 	

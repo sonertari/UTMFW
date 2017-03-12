@@ -1,0 +1,869 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-01 13:14+0100\n"
+"Last-Translator: Wim Hoekman\n"
+"Language-Team: Dutch <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+
+msgid "%CPU"
+msgstr ""
+
+msgid "Active States"
+msgstr "Aktieve Statussen"
+
+msgid "Add ACL"
+msgstr "ACL Toevoegen"
+
+msgid "Add DHCP interface"
+msgstr "DHCP interface toevoegen"
+
+msgid "Add HTTP proxy IP:port"
+msgstr "Toevoegen HTTP proxy IP:poort"
+
+msgid "Add IP"
+msgstr "Nieuw IP adres toevoegen"
+
+msgid "Add alert keyword"
+msgstr "Toevoegen alarm sleutelwoord"
+
+msgid "Add badword"
+msgstr "Nieuw niet gewenst woord toevoegen"
+
+msgid "Add database mirror"
+msgstr "Nieuwe database kopie toevoegen"
+
+msgid "Add ext/mime"
+msgstr "Nieuwe ext/mime toevoegen"
+
+msgid "Add filter group IP"
+msgstr "Nieuw filter group voor IP aanmaken"
+
+msgid "Add host"
+msgstr "Nieuwe host toevoegen"
+
+msgid "Add list item"
+msgstr "Nieuw onderdeel toevoegen"
+
+msgid "Add to IP list"
+msgstr "Nieuw IP adres toevoegen"
+
+msgid "Age"
+msgstr ""
+
+msgid "Apply AfterHours"
+msgstr "Maak AfterHours aktief"
+
+msgid "Apply pf rules"
+msgstr "Maak pf regels aktief"
+
+msgid "Arg type check failed"
+msgstr ""
+
+msgid "Automatic configuration"
+msgstr "Automatisch configureren"
+
+msgid "Block IPs"
+msgstr "Blokkeren van IP addressen"
+
+msgid "Business days and holidays cannot overlap."
+msgstr "Werkdagen en vakanties kunnen elkaar niet overlappen."
+
+msgid "Bytes"
+msgstr ""
+
+msgid "Cannot add"
+msgstr ""
+
+msgid "Cannot find group configuration file"
+msgstr ""
+
+msgid "Cannot get pid"
+msgstr ""
+
+msgid "Cannot read config"
+msgstr ""
+
+msgid "Change p3scan report language"
+msgstr "Wijzig p3scan rapportage taal"
+
+msgid "Change spamassassin local"
+msgstr "Wijzig de taal voor spamassasin"
+
+msgid "Check authentication"
+msgstr "Kontroleer authenticatie"
+
+msgid "Check if process running"
+msgstr "Kontroleer of een process aktief is"
+
+msgid "Chinese simplified"
+msgstr ""
+
+msgid "Configure an interface"
+msgstr "Configureer een interface"
+
+msgid "Copy conf"
+msgstr "Kopieer configuratie"
+
+msgid "Create new group"
+msgstr "Cre\"eer een nieuwe groep"
+
+msgid "Datetime wrong"
+msgstr "Fout in de Datum/tijd"
+
+msgid "Delete ACL"
+msgstr "Verwijder ACL"
+
+msgid "Delete DHCP interface"
+msgstr "Verwijder DHCP interface"
+
+msgid "Delete HTTP proxy IP:port"
+msgstr "Verwijder HTTP proxy IP:port"
+
+msgid "Delete IP"
+msgstr "Verwijder IP adres"
+
+msgid "Delete IP from list"
+msgstr "Verwijder IP adres van lijst"
+
+msgid "Delete PF allowed"
+msgstr "Verwijder PF toegestaan"
+
+msgid "Delete PF restricted"
+msgstr "Verwijder PF beperkt"
+
+msgid "Delete alert keywords"
+msgstr "Verwijder alarm sleutelworden"
+
+msgid "Delete badword"
+msgstr "Verwijder badword"
+
+msgid "Delete conf"
+msgstr "Verwijder configuratie"
+
+msgid "Delete database mirror"
+msgstr "Verwijder database kopie"
+
+msgid "Delete ext/mime"
+msgstr "Verwijder extensie/mime"
+
+msgid "Delete filter group IP"
+msgstr "Verwijder filter groep IP"
+
+msgid "Delete host"
+msgstr "Verwijder systeem"
+
+msgid "Delete list item"
+msgstr "Verwijder lijst onderdeel"
+
+msgid "Dest"
+msgstr ""
+
+msgid "Dir"
+msgstr ""
+
+msgid "Disable AfterHours"
+msgstr "Uitschakelen AfterHours"
+
+msgid "Disable AfterHours business days"
+msgstr "Uitschakelen Afterhours werkdagen"
+
+msgid "Disable AfterHours holidays"
+msgstr "Uitschakelen Afterhours vakanties"
+
+msgid "Disable config"
+msgstr "Uitschakelen configuratie"
+
+msgid "Disable ext/mime"
+msgstr "Uitschakelen extensie/mime"
+
+msgid "Disable rule"
+msgstr "Uitschakelen van een pf regel"
+
+msgid "Display remote time"
+msgstr "Toon tijd op afstand"
+
+msgid "Dutch"
+msgstr ""
+
+msgid "E-mail address wrong"
+msgstr "Fout in het E-mail adres"
+
+msgid "Enable AfterHours"
+msgstr "Inschakelen AfterHours"
+
+msgid "Enable AfterHours business days"
+msgstr "Inschakelen Afterhours werkdagen"
+
+msgid "Enable AfterHours holidays"
+msgstr "Inschakelen AfterHours vakanties"
+
+msgid "Enable config"
+msgstr "Inschakelen configuratie"
+
+msgid "Enable ext/mime"
+msgstr "Inschakelen extensie/mime"
+
+msgid "Enable rule"
+msgstr "Inschakelen regel"
+
+msgid "English"
+msgstr "Engels"
+
+msgid "Erase statistics files"
+msgstr "Verwijder statistiek bestanden"
+
+msgid "Expr"
+msgstr ""
+
+msgid "Extension wrong"
+msgstr "Fout in de Extensie"
+
+msgid "FAILED"
+msgstr ""
+
+msgid "FATAL ERRORS in creating new group"
+msgstr ""
+
+msgid "Filepath wrong"
+msgstr "Fout in het bestandspad"
+
+msgid "French"
+msgstr ""
+
+msgid "Get ACL"
+msgstr "Opvragen ACL"
+
+msgid "Get AfterHour pf rules"
+msgstr "Opvragen AfterHour pf regels"
+
+msgid "Get AfterHours"
+msgstr "Opvragen AfterHours"
+
+msgid "Get DHCP IP range"
+msgstr "Opvragen DHCP IP adres reeks"
+
+msgid "Get DHCP interfaces"
+msgstr "Opvragen DHCP interfaces"
+
+msgid "Get DHCP option"
+msgstr "Opvragen DHCP optie"
+
+msgid "Get DNS forwarders"
+msgstr "Opvragen DNS forwarders"
+
+msgid "Get HTTP proxy IP:port"
+msgstr "Opvragen HTTP proxy IP:poort"
+
+msgid "Get IPS info"
+msgstr "Opvragen IPS info"
+
+msgid "Get PF allowed"
+msgstr "Opvragen PF toegestaan"
+
+msgid "Get PF restricted"
+msgstr "Opvragen PF beperkt"
+
+msgid "Get active cats"
+msgstr "Opvragen aktieve categoriën"
+
+msgid "Get alert keywords"
+msgstr "Opvragen alarm sleutelwoorden"
+
+msgid "Get all stats"
+msgstr "Opvragen alle statistieken"
+
+msgid "Get arp table"
+msgstr "Opvragen arp tabel"
+
+msgid "Get auth ip list"
+msgstr "Opvragen auth IP lijst"
+
+msgid "Get badwords"
+msgstr "Opvragen badwords"
+
+msgid "Get config values"
+msgstr "Opvragen configatie waardes"
+
+msgid "Get configuration"
+msgstr "Opvragen configuratie"
+
+msgid "Get confs"
+msgstr "Opvragen configuratie"
+
+msgid "Get current locale"
+msgstr "Opvragen regionale instellingen"
+
+msgid "Get database mirrors"
+msgstr "Opvragen database kopieën"
+
+msgid "Get dhcp leases"
+msgstr "Opvragen dhcp leases"
+
+msgid "Get disabled rules"
+msgstr "Opvragen uitgeschakelde regels"
+
+msgid "Get ext/mime list"
+msgstr "Opvragen ext/mime lijst"
+
+msgid "Get ext_if"
+msgstr "Opvragen ext_if"
+
+msgid "Get group count"
+msgstr "Opvragen aantal groepen"
+
+msgid "Get group ip list"
+msgstr "Opvragen group ip lijst"
+
+msgid "Get host graphs"
+msgstr "Opvragen host grafieken"
+
+msgid "Get if config"
+msgstr "Opvragen verbinding configuratie"
+
+msgid "Get im log file"
+msgstr "Opvragen IM logbestand"
+
+msgid "Get inactive cats"
+msgstr "Opvragen niet aktieve categorieën"
+
+msgid "Get int_if"
+msgstr "Opvragen int_if"
+
+msgid "Get lines"
+msgstr "Opvragen regels van logbestand"
+
+msgid "Get list"
+msgstr "Opvragen lijst"
+
+msgid "Get listed ips"
+msgstr "Opvragen getoonde IPs"
+
+msgid "Get local users"
+msgstr "Opvragen lokale gebruikers"
+
+msgid "Get locales"
+msgstr "Opvragen regionale instellingen"
+
+msgid "Get log file"
+msgstr "Opvragen logbestand"
+
+msgid "Get log files list"
+msgstr "Opvragen lijst van logbestanden"
+
+msgid "Get log start date"
+msgstr "Opvragen log start datum"
+
+msgid "Get logs configuration"
+msgstr "Opvragen logbestanden configuratie"
+
+msgid "Get partition list"
+msgstr "Opvragen partitie lijst"
+
+msgid "Get pf state count"
+msgstr ""
+
+msgid "Get pf states"
+msgstr ""
+
+msgid "Get pfw commandwrapper -conntest"
+msgstr "Opvragen pfw hulp commando -conntest"
+
+msgid "Get pfw commandwrapper -info"
+msgstr "Opvragen pfw hulp commando -info"
+
+msgid "Get pfw commandwrapper -log"
+msgstr "Opvragen pfw hulp commando -log"
+
+msgid "Get pfw commandwrapper -pfinfo"
+msgstr "Opvragen pfw hulp commando -pfinfo"
+
+msgid "Get pfw commandwrapper -pfmem"
+msgstr "Opvragen pfw hulp commando -pfmem"
+
+msgid "Get pfw commandwrapper -pfstates"
+msgstr "Opvragen pfw hulp commando -pfstates"
+
+msgid "Get pfw commandwrapper -queues"
+msgstr "Opvragen pfw hulp commando -queues"
+
+msgid "Get pfw packetfilter -i"
+msgstr "Opvragen pfw packetfilter -i"
+
+msgid "Get pfw packetfilter -r"
+msgstr "Opvragen pfw packetfilter -r"
+
+msgid "Get pfw packetfilter -t"
+msgstr "Opvragen pfw packetfilter -t"
+
+msgid "Get process list"
+msgstr "Vraag de proces lijst op"
+
+msgid "Get protocols"
+msgstr "Vraag protocollen op"
+
+msgid "Get remote time"
+msgstr "Opvragen tijd op afstand"
+
+msgid "Get remote users"
+msgstr "Opvragen gebruikers op afstand"
+
+msgid "Get rules"
+msgstr "Vraag regels op"
+
+msgid "Get service start status"
+msgstr "Vraag service start status op"
+
+msgid "Get service status"
+msgstr "Vraag service status op"
+
+msgid "Get sessions"
+msgstr "Vraag sessies op"
+
+msgid "Get software version"
+msgstr "Vraag software versie op"
+
+msgid "Get source file CVS tag"
+msgstr "Opvragen bronbestand CVS tag"
+
+msgid "Get spamd blacklist"
+msgstr "Vraag spamd blacklist op"
+
+msgid "Get spamd whitelist"
+msgstr "Vraag spamd whitelist op"
+
+msgid "Get stat lines"
+msgstr "Opvragen statistiek info van statistiek logbestand"
+
+msgid "Get stats"
+msgstr "Vraag statistieken op"
+
+msgid "Get sysctl values"
+msgstr "Opvragen sysctl instellingen"
+
+msgid "Get system admin e-mail address"
+msgstr "Opvragen systeembeheerder e-mail adres"
+
+msgid "Get system gateway"
+msgstr "Vraag systeem gateway op"
+
+msgid "Get system information"
+msgstr "Vraag systeem informatie op"
+
+msgid "Get tail"
+msgstr "Opvragen laatste deel van het logbestand"
+
+msgid "Gets line count"
+msgstr "Opvragen aantal regels van logbestand"
+
+msgid "Group created successfully"
+msgstr ""
+
+msgid "Group exists"
+msgstr "Groep bestaat"
+
+msgid "Horizontal"
+msgstr "Horizontaal"
+
+msgid "Host wrong"
+msgstr "Fout in de systeem naam"
+
+msgid "Hourly"
+msgstr "Per uur"
+
+msgid "IP address or port wrong"
+msgstr "Fout in het IP adres of de poort"
+
+msgid "IP address wrong"
+msgstr "Fout in het IP adres"
+
+msgid "IP or IP list wrong"
+msgstr "Fout in het IP adres of de IP adres lijst"
+
+msgid "IP or network address fixed"
+msgstr ""
+
+msgid "IP range wrong"
+msgstr "Fout in de IP adres reeks"
+
+msgid "IPv4"
+msgstr ""
+
+msgid "IPv6"
+msgstr ""
+
+msgid "If client conf"
+msgstr ""
+
+msgid "Init graphs"
+msgstr "Initialiseer grafieken"
+
+msgid "Invalid value"
+msgstr "Ongeldige waarde"
+
+msgid "Line"
+msgstr "Regel"
+
+msgid "List hosts"
+msgstr "Toon systeemnamen"
+
+msgid "List physical interfaces"
+msgstr "Toon physieke verbindingen"
+
+msgid "Make system gateway dynamic"
+msgstr "Maak systeem gateway dynamisch"
+
+msgid "Make system gateway static"
+msgstr "Maak systeem gateway statisch"
+
+msgid "Method does not exist"
+msgstr ""
+
+msgid "Mime type wrong"
+msgstr "Fout in het Mime type"
+
+msgid "Move ACL Down"
+msgstr "Verplaats ACL naar beneden"
+
+msgid "Move ACL Up"
+msgstr "Verplaats ACL naar boven"
+
+msgid "Move rule down"
+msgstr ""
+
+msgid "Move rule up"
+msgstr ""
+
+msgid "NA"
+msgstr ""
+
+msgid "NI"
+msgstr ""
+
+msgid "Name wrong"
+msgstr "Fout in de naam"
+
+msgid "No such file"
+msgstr ""
+
+msgid "Not asterisk"
+msgstr "Geen sterretje"
+
+msgid "Not comma separated digits"
+msgstr "Geen door komma gescheiden cijfers"
+
+msgid "Not config name"
+msgstr "Geen  configuratie naam"
+
+msgid "Not empty string"
+msgstr "Geen lege string"
+
+msgid "Not enough args"
+msgstr ""
+
+msgid "Not running command"
+msgstr ""
+
+msgid "Not serialized array"
+msgstr ""
+
+msgid "Not sha1 encrypted string"
+msgstr ""
+
+msgid "Number wrong"
+msgstr "Fout in het nummer"
+
+msgid ""
+"One or more actions failed while creating new group\n"
+"Examine the report above to make sure this is the intended result!"
+msgstr ""
+
+msgid "PID"
+msgstr ""
+
+msgid "Packets"
+msgstr ""
+
+msgid "Pfctl output does not match"
+msgstr ""
+
+msgid "Prepare file for download"
+msgstr "Voorbereiden bestand voor downloaden"
+
+msgid "Proto"
+msgstr ""
+
+msgid "RSS"
+msgstr ""
+
+msgid "Read system gateway"
+msgstr "Opvragen systeem gateway"
+
+msgid "Read system hostname"
+msgstr "Opvragen systeemnaam"
+
+msgid "Read system nameserver"
+msgstr "Opvragen systeem nameserver"
+
+msgid "Regular expression wrong"
+msgstr "Fout in de reguliere expressie"
+
+msgid "Reload "
+msgstr "Ververs"
+
+msgid "Requests by date"
+msgstr "Verzoeken per datum"
+
+msgid "Restart "
+msgstr "Herstart"
+
+msgid "Restart network"
+msgstr "Herstart netwerk"
+
+msgid "Rotate all log files"
+msgstr "Roteer alle log bestanden"
+
+msgid "Rotate log file"
+msgstr "Roteer log bestand"
+
+msgid "Russian"
+msgstr "Russisch"
+
+msgid "STAT"
+msgstr ""
+
+msgid "SUCCESS"
+msgstr ""
+
+msgid "Search site"
+msgstr "Doorzoek site"
+
+msgid "Select log file"
+msgstr "Kies log bestand"
+
+msgid "Set DNS forwarders"
+msgstr "Instellen DNS forwarders"
+
+msgid "Set PF allowed"
+msgstr "Instellen PF allowed"
+
+msgid "Set PF restricted"
+msgstr "Instellen PF restricted"
+
+msgid "Set afterhours if"
+msgstr "Instellen afterhours verbinding"
+
+msgid "Set configuration"
+msgstr "Instellen configuratie"
+
+msgid "Set dhcpd conf"
+msgstr "Instellen dhcpd configuratie"
+
+msgid "Set e-mail address"
+msgstr "Instellen e-mail adres"
+
+msgid "Set help boxes"
+msgstr "Instellen help panelen"
+
+msgid "Set ifs"
+msgstr "Instellen verbindingen"
+
+msgid "Set interfaces"
+msgstr "Instellen verbindingen"
+
+msgid "Set internal net"
+msgstr "Instellen interne netwerk"
+
+msgid "Set locale"
+msgstr ""
+
+msgid "Set log level"
+msgstr "Instellen log niveau"
+
+msgid "Set logs configuration"
+msgstr "Instellen log configuratie"
+
+msgid "Set man.cgi home"
+msgstr ""
+
+msgid "Set name value pair"
+msgstr "Instellen naam waarde paar"
+
+msgid "Set pmacct if"
+msgstr "Set pmacct verbinding"
+
+msgid "Set pmacct net"
+msgstr "Instellen pmacct netwerk"
+
+msgid "Set reload rate"
+msgstr "Instellen ververs ratio"
+
+msgid "Set remote time"
+msgstr "Instellen tijd op afstand"
+
+msgid "Set session timeout"
+msgstr "Instellen sessie time-out"
+
+msgid "Set startup if"
+msgstr "Instellen opstart verbinding"
+
+msgid "Set startup ifs"
+msgstr "Instellen opstart verbindingen"
+
+msgid "Set symon conf"
+msgstr "Instellen symon configuratie"
+
+msgid "Set symon cpus"
+msgstr "Instellen symon processoren"
+
+msgid "Set symon ifs"
+msgstr "Instellen symon verbindingen"
+
+msgid "Set symon partitions"
+msgstr "Instellen symon partities"
+
+msgid "Set symon sensors"
+msgstr "Instellen symon sensoren"
+
+msgid "Set system clock"
+msgstr "Instellen systeem klok"
+
+msgid "Set system gateway"
+msgstr "Instellen systeem gateway"
+
+msgid "Set system hostname"
+msgstr "Instellen systeem naam"
+
+msgid "Set system nameserver"
+msgstr "Instellen systeem nameserver"
+
+msgid "Set template ips"
+msgstr ""
+
+msgid "Set user password"
+msgstr "Instellen gebruikers wachtwoord"
+
+msgid "Set webalizer hostname"
+msgstr "Instellen webalizer systeemnaam"
+
+msgid "Source"
+msgstr ""
+
+msgid "Spanish"
+msgstr ""
+
+msgid "Start "
+msgstr "Start"
+
+msgid "Start OpenVPN process"
+msgstr "Start OpenVPN proces"
+
+msgid "Start snort"
+msgstr "Start Snort"
+
+msgid "State"
+msgstr ""
+
+msgid "Stop "
+msgstr "Stop"
+
+msgid "Stop OpenVPN instance"
+msgstr "Stop OpenVPN proces"
+
+msgid "Stop Snort instance"
+msgstr "Stop Snort proces"
+
+msgid "String wrong"
+msgstr "Fout in de string"
+
+msgid "System restart"
+msgstr "Systeem herstart"
+
+msgid "System shutdown"
+msgstr "Systeem uitschakelen"
+
+msgid "The process is taking too long, thus will run in the background."
+msgstr ""
+"Het proces duurt te lang, daarom wordt het in de achtergrond voortgezet."
+
+msgid "Too many args, truncating"
+msgstr ""
+
+msgid "Turkish"
+msgstr "Turks"
+
+msgid "Turn off cats"
+msgstr "Uitzetten categoriën"
+
+msgid "Turn off service"
+msgstr "Uitzetten service"
+
+msgid "Turn on cats"
+msgstr "Aanzetten van categoriën"
+
+msgid "Turn on service"
+msgstr "Aanzetten van een service"
+
+msgid "Unblock IPs"
+msgstr "Ongedaan maken blokkade IP adressen"
+
+msgid "Unblock all"
+msgstr "Ongedaan maken alle blokkade's"
+
+msgid "Unconfigure an interface"
+msgstr ""
+
+msgid "Unknown"
+msgstr "Onbekend"
+
+msgid "Unsupported command"
+msgstr ""
+
+msgid "Unsupported interface configuration"
+msgstr "Niet ondersteunde interface configuratie"
+
+msgid "Update mail aliases"
+msgstr "Ververs mail aliassen"
+
+msgid "Url wrong"
+msgstr "Fout in de URL"
+
+msgid "VSZ"
+msgstr ""
+
+msgid "Web Filter IP range wrong"
+msgstr "Fout in de Web Filter IP reeks"
+
+msgid "White and black list entries should not be identical"
+msgstr ""
+
+msgid "Won't delete database.clamav.net entry."
+msgstr ""
+
+msgid "You cannot delete system IP address"
+msgstr ""
+
+msgid "h"
+msgstr "h"
+
+msgid "min"
+msgstr "min"
+
+msgid "sec"
+msgstr "sec"
+
+msgid "total"
+msgstr "totaal"
+
+msgid "unconfigured"
+msgstr ""

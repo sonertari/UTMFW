@@ -1,0 +1,6 @@
+@comment $OpenBSD$
+@comment $ComixWall: PLIST,v 1.5 2009/10/25 20:06:05 soner Exp $
+@man man/man8/snortips.8
+sbin/snortips
+share/examples/snortips/
+share/examples/snortips/snortips.conf

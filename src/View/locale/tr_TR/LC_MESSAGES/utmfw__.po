@@ -1,0 +1,1109 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+# Soner Tari <sonertari@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-07 16:30+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: Turkish <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "%CPU"
+msgstr "%CPU"
+
+msgid "Add ACL"
+msgstr "ACL ekle"
+
+msgid "Add DHCP interface"
+msgstr "DHCP arayüzü ekle"
+
+msgid "Add HTTP proxy IP:port"
+msgstr "HTTP vekil IP:kapı ekle"
+
+msgid "Add IP"
+msgstr "IP ekle"
+
+msgid "Add alert keyword"
+msgstr "Uyarı anahtar kelimesi ekle"
+
+msgid "Add badword"
+msgstr "Uygunsuz kelime ekle"
+
+msgid "Add database mirror"
+msgstr "Veritabanı aynası ekle"
+
+msgid "Add ext/mime"
+msgstr "Uzt/mime ekle"
+
+msgid "Add filter group IP"
+msgstr "Elek grup IP adresi ekle"
+
+msgid "Add host"
+msgstr "Bilgisayar ekle"
+
+msgid "Add list item"
+msgstr "Liste öğesi ekle"
+
+msgid "Add to IP list"
+msgstr "IP listesine ekle"
+
+msgid "Age"
+msgstr "Süre"
+
+msgid "Apply AfterHours"
+msgstr "MesaiSonrasını uygula"
+
+msgid "Apply pf rules"
+msgstr "Pf kurallarını uygula"
+
+msgid "Arg type check failed"
+msgstr "Argüman tür kontrolü başarısız oldu"
+
+msgid "Automatic configuration"
+msgstr "Otomatik yapılandırma"
+
+msgid "Block IPs"
+msgstr "IP adreslerini engelle"
+
+msgid "Business days and holidays cannot overlap."
+msgstr "İş günleri ve tatiller örtüşemez."
+
+msgid "Bytes"
+msgstr "Bayt"
+
+msgid "Cannot add"
+msgstr "Eklenemiyor"
+
+msgid "Cannot find group configuration file"
+msgstr "Grup yapılandırma dosyası bulunamıyor"
+
+msgid "Cannot fork pfctl process"
+msgstr "Pfctl süreci fork edilemedi"
+
+msgid "Cannot get pid"
+msgstr "Pid alınamadı"
+
+msgid "Cannot install pf rule file"
+msgstr "Pf kural dosyası kurulamadı"
+
+msgid "Cannot load pf rules"
+msgstr "Pf kuralları yüklenemedi"
+
+msgid "Cannot read config"
+msgstr "Yapılandırma okunamadı"
+
+msgid "Cannot remove tmp pf file"
+msgstr "Geçici pf dosyası silinemedi"
+
+msgid "Cannot write to tmp pf file"
+msgstr "Geçici pf dosyasına yazılamadı"
+
+msgid "Change p3scan report language"
+msgstr "P3scan bildirim dilini değiştir"
+
+msgid "Change spamassassin local"
+msgstr "Spamassasin yöresini değiştir"
+
+msgid "Check authentication"
+msgstr "Kimlik doğrula"
+
+msgid "Check if process running"
+msgstr "Sürecin çalıştığını kontrol et"
+
+msgid "Chinese simplified"
+msgstr "Çince basitleştirilmiş"
+
+msgid "Cleared"
+msgstr "Temizlenme"
+
+msgid "Compressed"
+msgstr "Sıkıştırılmış"
+
+msgid "Configure an interface"
+msgstr "Arayüzü yapılandır"
+
+msgid "Copy conf"
+msgstr "Yapılandırmayı kopyala"
+
+msgid "Create new group"
+msgstr "Yeni grup yarat"
+
+msgid "Create user"
+msgstr "Kullanıcı yarat"
+
+msgid "Datetime wrong"
+msgstr "Tarih-saat hatalı"
+
+msgid "Delete ACL"
+msgstr "ACL'yi sil"
+
+msgid "Delete DHCP interface"
+msgstr "DHCP arayüzünü sil"
+
+msgid "Delete HTTP proxy IP:port"
+msgstr "HTTP vekil IP:kapısını sil"
+
+msgid "Delete IP"
+msgstr "IP adresini sil"
+
+msgid "Delete IP from list"
+msgstr "Listeden IP adresini sil"
+
+msgid "Delete PF allowed"
+msgstr "İzin verilen PF öğesini sil"
+
+msgid "Delete PF restricted"
+msgstr "Sınırlı PF öğesini sil"
+
+msgid "Delete alert keywords"
+msgstr "Uyarı anahtar kelimesini sil"
+
+msgid "Delete badword"
+msgstr "Uygunsuz kelime sil"
+
+msgid "Delete conf"
+msgstr "Yapılandırma sil"
+
+msgid "Delete database mirror"
+msgstr "Veritabanı aynasını sil"
+
+msgid "Delete ext/mime"
+msgstr "Uzt/mime sil"
+
+msgid "Delete filter group IP"
+msgstr "Elek grup IP adresini sil"
+
+msgid "Delete host"
+msgstr "Bilgisayar sil"
+
+msgid "Delete list item"
+msgstr "Liste öğesini sil"
+
+msgid "Delete pf rule file"
+msgstr "Pf kural dosyası silme"
+
+msgid "Dest"
+msgstr "Hedef"
+
+msgid "Dir"
+msgstr "Yön"
+
+msgid "Disable AfterHours"
+msgstr "MesaiSonrasını kapat"
+
+msgid "Disable AfterHours business days"
+msgstr "MesaiSonrası işgünlerini kapat"
+
+msgid "Disable AfterHours holidays"
+msgstr "MesaiSonrası tatil günlerini kapat"
+
+msgid "Disable config"
+msgstr "Yapılandırmayı kapat"
+
+msgid "Disable ext/mime"
+msgstr "Uzt/mime kapat"
+
+msgid "Disable rule"
+msgstr "Kuralı kapat"
+
+msgid "Display remote time"
+msgstr "Uzaktaki zamanı göster"
+
+msgid "Dropped Bytes"
+msgstr "Engellenen Baytlar"
+
+msgid "Dropped Packets"
+msgstr "Engellenen Paketler"
+
+msgid "Dutch"
+msgstr "Hollandaca"
+
+msgid "E-mail address wrong"
+msgstr "E-posta adresi hatalı"
+
+msgid "Enable AfterHours"
+msgstr "MesaiSonrasını aç"
+
+msgid "Enable AfterHours business days"
+msgstr "MesaiSonrası işgünlerini aç"
+
+msgid "Enable AfterHours holidays"
+msgstr "MesaiSonrası tatil günlerini aç"
+
+msgid "Enable config"
+msgstr "Yapılandırmayı aç"
+
+msgid "Enable ext/mime"
+msgstr "Uzt/mime aç"
+
+msgid "Enable rule"
+msgstr "Kuralı aç"
+
+msgid "English"
+msgstr "İngilizce"
+
+msgid "Erase statistics files"
+msgstr "İstatistik dosyalarını sil"
+
+msgid "Error in include file"
+msgstr "Eklenen dosyada hata"
+
+msgid "Error loading, rule load forced"
+msgstr "Yüklemede hata, kural hatalara rağmen yüklendi"
+
+msgid "Error loading, rule loaded partially"
+msgstr "Yüklemede hata, kural sorunlu olarak yüklendi"
+
+msgid "Evaluations"
+msgstr "Değerlendirme"
+
+msgid "Expr"
+msgstr "Aşım"
+
+msgid "Extension wrong"
+msgstr "Uzantı hatalı"
+
+msgid "FAILED"
+msgstr "BAŞARISIZ"
+
+msgid "FATAL ERRORS in creating new group"
+msgstr "Yeni grup yaratırken CİDDİ HATALAR oluştu"
+
+msgid "Failed creating or attaching to message queue"
+msgstr "Mesaj kuyruğu yaratılamadı veya bağlantı başarısız oldu"
+
+msgid "Failed loading pf rules"
+msgstr "Pf kural yüklemesi başarısız oldu"
+
+msgid "Failed removing message queue"
+msgstr "Mesaj kuyruğunun silinmesi başarısız oldu"
+
+msgid "Failed running pfctl command"
+msgstr "Pfctl komutu başarısız oldu"
+
+msgid "Failed testing pf rules"
+msgstr "Pf kurallarının testi başarısız oldu"
+
+msgid "Filename not accepted"
+msgstr "Dosya adı kabul edilmedi"
+
+msgid "Filepath wrong"
+msgstr "Dosya yolu yanlış"
+
+msgid "French"
+msgstr "Fransızca"
+
+msgid "Generate pf rule"
+msgstr "Pf kural üretimi"
+
+msgid "Generate pf rules"
+msgstr "Pf kural listesi üretimi"
+
+msgid "Get ACL"
+msgstr "ACL getir"
+
+msgid "Get AfterHour pf rules"
+msgstr "MesaiSonrası pf kurallarını getir"
+
+msgid "Get AfterHours"
+msgstr "MesaiSonrasını getir"
+
+msgid "Get DHCP IP range"
+msgstr "DHCP IP aralığını getir"
+
+msgid "Get DHCP interfaces"
+msgstr "DHCP arayüzlerini getir"
+
+msgid "Get DHCP option"
+msgstr "DHCP seçeneğini getir"
+
+msgid "Get DNS forwarders"
+msgstr "DNS yönlendirmelerini getir"
+
+msgid "Get HTTP proxy IP:port"
+msgstr "HTTP vekil IP:kapısını getir"
+
+msgid "Get IP DNS listens on"
+msgstr "DNS sunucunun dinlediği IP adresini getir"
+
+msgid "Get IPS info"
+msgstr "SES bilgisini getir"
+
+msgid "Get PF allowed"
+msgstr "İzin verilen PF öğelerini getir"
+
+msgid "Get PF restricted"
+msgstr "Sınırlı PF öğelerini getir"
+
+msgid "Get active cats"
+msgstr "Açık sınıflandırmaları getir"
+
+msgid "Get alert keywords"
+msgstr "Uyarı anahtar kelimelerini getir"
+
+msgid "Get all stats"
+msgstr "Tüm istatistikleri getir"
+
+msgid "Get arp table"
+msgstr "Arp tablosunu getir"
+
+msgid "Get auth ip list"
+msgstr "Auth IP listesini getir"
+
+msgid "Get badwords"
+msgstr "Uygunsuz kelimeleri getir"
+
+msgid "Get config values"
+msgstr "Yapılandırma değerlerini getir"
+
+msgid "Get configuration"
+msgstr "Yapılandırmayı getir"
+
+msgid "Get confs"
+msgstr "Yapılandırmaları getir"
+
+msgid "Get current locale"
+msgstr "Geçerli yöreyi getir"
+
+msgid "Get database mirrors"
+msgstr "Veritabanı aynalarını getir"
+
+msgid "Get datetime"
+msgstr "Tarih-saati getir"
+
+msgid "Get dhcp leases"
+msgstr "Kiralanan DHCP adreslerini getir"
+
+msgid "Get disabled rules"
+msgstr "Kapalı kuralları getir"
+
+msgid "Get ext/mime list"
+msgstr "Uzt/mime listesini getir"
+
+msgid "Get ext_if"
+msgstr "ext_if'i getir"
+
+msgid "Get group count"
+msgstr "Grup sayısını getir"
+
+msgid "Get group ip list"
+msgstr "Grup IP listesini getir"
+
+msgid "Get host graphs"
+msgstr "Bilgisayar grafiklerini getir"
+
+msgid "Get if config"
+msgstr "Arayüz yapılandırmasını getir"
+
+msgid "Get im log file"
+msgstr "Mesajlaşma kayıt dosyasını getir"
+
+msgid "Get inactive cats"
+msgstr "Kapalı sınıflandırmaları getir"
+
+msgid "Get int_if"
+msgstr "int_if'i getir"
+
+msgid "Get line count"
+msgstr "Satır sayısını getir"
+
+msgid "Get lines"
+msgstr "Satırları getir"
+
+msgid "Get list"
+msgstr "Listeyi getir"
+
+msgid "Get listed ips"
+msgstr "Listelenmiş IP adreslerini getir"
+
+msgid "Get local users"
+msgstr "Yerel kullanıcıları getir"
+
+msgid "Get locales"
+msgstr "Yöreleri getir"
+
+msgid "Get log file"
+msgstr "Kayıt dosyasını getir"
+
+msgid "Get log files list"
+msgstr "Kayıt dosyası listesini getir"
+
+msgid "Get log start date"
+msgstr "Kayıt başlangıç tarihini getir"
+
+msgid "Get logs configuration"
+msgstr "Kayıt yapılandırmasını getir"
+
+msgid "Get partition list"
+msgstr "Disk bölümü listesini getir"
+
+msgid "Get pf info"
+msgstr "Pf bilgisini getir"
+
+msgid "Get pf interface info"
+msgstr "Pf arayüz bilgisini getir"
+
+msgid "Get pf memory info"
+msgstr "Pf bellek bilgisini getir"
+
+msgid "Get pf queue info"
+msgstr "Pf kuyruk bilgisini getir"
+
+msgid "Get pf rule files"
+msgstr "Pf kural dosyalarını alma"
+
+msgid "Get pf rules"
+msgstr "Pf kurallarını alma"
+
+msgid "Get pf rules info"
+msgstr "Pf kural bilgisini getir"
+
+msgid "Get pf state count"
+msgstr "Pf durum sayısını getir"
+
+msgid "Get pf states"
+msgstr "Pf durumlarını getir"
+
+msgid "Get pf timeout info"
+msgstr "Pf zaman aşımı bilgisini getir"
+
+msgid "Get pfw commandwrapper -conntest"
+msgstr "Pfw commandwrapper -conntest çalıştır"
+
+msgid "Get pfw commandwrapper -info"
+msgstr "Pfw commandwrapper -info çalıştır"
+
+msgid "Get pfw commandwrapper -log"
+msgstr "Pfw commandwrapper -log çalıştır"
+
+msgid "Get pfw commandwrapper -pfinfo"
+msgstr "Pfw commandwrapper -pfinfo çalıştır"
+
+msgid "Get pfw commandwrapper -pfmem"
+msgstr "Pfw commandwrapper -pfmem çalıştır"
+
+msgid "Get pfw commandwrapper -pfstates"
+msgstr "Pfw commandwrapper -pfstates çalıştır"
+
+msgid "Get pfw commandwrapper -queues"
+msgstr "Pfw commandwrapper -queues çalıştır"
+
+msgid "Get pfw packetfilter -i"
+msgstr "Pfw packetfilter -i çalıştır"
+
+msgid "Get pfw packetfilter -r"
+msgstr "Pfw packetfilter -r çalıştır"
+
+msgid "Get pfw packetfilter -t"
+msgstr "Pfw packetfilter -t çalıştır"
+
+msgid "Get process list"
+msgstr "Süreç listesini getir"
+
+msgid "Get protocols"
+msgstr "Protokolleri getir"
+
+msgid "Get reload rate"
+msgstr "Tekrar yükleme süresini getir"
+
+msgid "Get remote time"
+msgstr "Uzaktaki zamanı getir"
+
+msgid "Get remote users"
+msgstr "Uzak kullanıcıyı getir"
+
+msgid "Get rules"
+msgstr "Kuralları getir"
+
+msgid "Get service start status"
+msgstr "Servis başlatma durumunu getir"
+
+msgid "Get service status"
+msgstr "Servis durumunu getir"
+
+msgid "Get sessions"
+msgstr "Oturumları getir"
+
+msgid "Get software version"
+msgstr "Yazılım sürümünü getir"
+
+msgid "Get source file CVS tag"
+msgstr "Kaynak dosyası CVS etiketini getir"
+
+msgid "Get spamd blacklist"
+msgstr "Spamd karalistesini getir"
+
+msgid "Get spamd whitelist"
+msgstr "Spamd beyazlistesini getir"
+
+msgid "Get stat lines"
+msgstr "İstatistik satırlarını getir"
+
+msgid "Get stats"
+msgstr "İstatistikleri getir"
+
+msgid "Get sysctl values"
+msgstr "Sysctl değerlerini getir"
+
+msgid "Get system admin e-mail address"
+msgstr "Sistem yöneticisi e-posta adresini getir"
+
+msgid "Get system gateway"
+msgstr "Sistem ağ geçidini getir"
+
+msgid "Get system information"
+msgstr "Sistem bilgisini getir"
+
+msgid "Get tail"
+msgstr "Kuyruğunu getir"
+
+msgid "Group created successfully"
+msgstr "Grup başarıyla yaratıldı"
+
+msgid "Group exists"
+msgstr "Grup kontrolü"
+
+msgid "Horizontal"
+msgstr "Yatay"
+
+msgid "Host wrong"
+msgstr "Bilgisayar öğesi hatalı"
+
+msgid "Hourly"
+msgstr "Saatlik"
+
+msgid "IP address or port wrong"
+msgstr "IP adresi veya kapı hatalı"
+
+msgid "IP address wrong"
+msgstr "IP adresi hatalı"
+
+msgid "IP or IP list wrong"
+msgstr "IP veya IP listesi hatalı"
+
+msgid "IP or network address fixed"
+msgstr "IP veya ağ adresi düzeltildi"
+
+msgid "IP range wrong"
+msgstr "IP aralığı hatalı"
+
+msgid "IPv4"
+msgstr "IPv4"
+
+msgid "IPv6"
+msgstr "IPv6"
+
+msgid "If client conf"
+msgstr "İstemci yapılandırması olduğunu kontrol et"
+
+msgid "In4 Block"
+msgstr "İçeri IP4 Engelleme"
+
+msgid "In4 Pass"
+msgstr "İçeri IP4 Geçirme"
+
+msgid "In6 Block"
+msgstr "İçeri IP6 Engelleme"
+
+msgid "In6 Pass"
+msgstr "İçeri IP6 Geçirme"
+
+msgid "Init graphs"
+msgstr "Grafikleri sıfırla"
+
+msgid "Inserted"
+msgstr "Eklenme"
+
+msgid "Install pf rules"
+msgstr "Pf kurallarını kurma"
+
+msgid "Invalid inline rules, parser output"
+msgstr "Geçersiz satıriçi kurallar, işleme çıktısı"
+
+msgid "Invalid value"
+msgstr "Geçersiz değer"
+
+msgid "Invalid value for"
+msgstr "Geçersiz değer"
+
+msgid "Line"
+msgstr "Satır"
+
+msgid "Lines per page"
+msgstr "Sayfa başına satır"
+
+msgid "List hosts"
+msgstr "Bilgisayarları listele"
+
+msgid "List physical interfaces"
+msgstr "Fiziksel arayüzleri listele"
+
+msgid "Load Error"
+msgstr "Yükleme Hatası"
+
+msgid "Make system gateway dynamic"
+msgstr "Sistem ağ geçidini dinamik yap"
+
+msgid "Make system gateway static"
+msgstr "Sistem ağ geçidini sabit yap"
+
+msgid "Method does not exist"
+msgstr "Yöntem bulunamadı"
+
+msgid "Mime type wrong"
+msgstr "Mime türü hatalı"
+
+msgid "Move ACL Down"
+msgstr "ACL'i aşağı kaydır"
+
+msgid "Move ACL Up"
+msgstr "ACL'yi yukarı kaydır"
+
+msgid "Move rule down"
+msgstr "Kuralı aşağı kaydır"
+
+msgid "Move rule up"
+msgstr "Kuralı yukarı kaydır"
+
+msgid "Multiple values not allowed for"
+msgstr "Birden fazla değer kullanılamaz"
+
+msgid "NA"
+msgstr "GÇZ"
+
+msgid "NI"
+msgstr "NI"
+
+msgid "Name"
+msgstr "Ad"
+
+msgid "Name wrong"
+msgstr "Ad yanlış"
+
+msgid "No regex or func def for"
+msgstr "Regex veya fonksiyon tanımlanmamış"
+
+msgid "No such file"
+msgstr "Böyle bir dosya yok"
+
+msgid "Not JSON encoded string"
+msgstr "JSON ile kodlanmış bir metin değil"
+
+msgid "Not asterisk"
+msgstr "Asterisk değil"
+
+msgid "Not boolean"
+msgstr "Boolean değir"
+
+msgid "Not comma separated digits"
+msgstr "Virgülle ayrılmış rakamlar değil"
+
+msgid "Not config name"
+msgstr "Yapılandırma adı değil"
+
+msgid "Not empty string"
+msgstr "Boş dizi değil"
+
+msgid "Not enough args"
+msgstr "Argüman sayısı yetersiz"
+
+msgid "Not running command"
+msgstr "Komut çalıştırılmadı"
+
+msgid "Not serialized array"
+msgstr "Serileştirilmiş tablo değil"
+
+msgid "Not sha1 encrypted string"
+msgstr "Sha1 ile şifrelenmiş bir metin değil"
+
+msgid "Number"
+msgstr "Sayı"
+
+msgid "Number wrong"
+msgstr "Sayı yanlış"
+
+msgid ""
+"One or more actions failed while creating new group\n"
+"Examine the report above to make sure this is the intended result!"
+msgstr ""
+"Yeni grup yaratılırken bir veya daha fazla işlem başarısız oldu\n"
+"Yukarıdaki raporu inceleyip bunun beklediğiniz gibi bir sonuç olduğundan "
+"emin olun!"
+
+msgid "Out4 Block"
+msgstr "Dışarı IP4 Engelleme"
+
+msgid "Out4 Pass"
+msgstr "Dışarı IP4 Geçirme"
+
+msgid "Out6 Block"
+msgstr "Dışarı IP6 Engelleme"
+
+msgid "Out6 Pass"
+msgstr "Dışarı IP6 Geçirme"
+
+msgid "Output not in correct format"
+msgstr "Çıktı doğru yapıda değil"
+
+msgid "Overview"
+msgstr "Genel Bakış"
+
+msgid "PID"
+msgstr "PID"
+
+msgid "Packets"
+msgstr "Paketler"
+
+msgid "Parse Error"
+msgstr "İşleme Hatası"
+
+msgid "Pfctl output does not match"
+msgstr "Pfctl çıktısı uyuşmuyor"
+
+msgid "Prepare file for download"
+msgstr "Dosyayı indirme için hazırla"
+
+msgid "Proto"
+msgstr "Proto"
+
+msgid "Queue Length"
+msgstr "Kuyruk Boyu"
+
+msgid "Queue Statistics"
+msgstr "Kuyruk İstatistikleri"
+
+msgid "RSS"
+msgstr "RSS"
+
+msgid "Reached max nesting for inline anchors"
+msgstr "Satıriçi çapalar için en fazla içiçe sayıya ulaşıldı"
+
+msgid "Read system gateway"
+msgstr "Sistem ağ geçidini getir"
+
+msgid "Read system hostname"
+msgstr "Sistem adını getir"
+
+msgid "Read system nameserver"
+msgstr "Sistem ad sunucusunu getir"
+
+msgid "Regexp"
+msgstr "Düzenli ifade"
+
+msgid "Regular expression wrong"
+msgstr "Düzenli ifade hatalı"
+
+msgid "Reload "
+msgstr "Tekrar yükle"
+
+msgid "Render layout"
+msgstr "Layout'u üret"
+
+msgid "Requests by date"
+msgstr "Tarihe göre istekler"
+
+msgid "Required element missing"
+msgstr "Gerekli eleman yok"
+
+msgid "Restart "
+msgstr "Tekrar başlat"
+
+msgid "Restart network"
+msgstr "Ağı tekrar başlat"
+
+msgid "Rotate all log files"
+msgstr "Bütün kayıt dosyalarını döndür"
+
+msgid "Rotate log file"
+msgstr "Kayıt dosyasını döndür"
+
+msgid "Rule"
+msgstr "Kural"
+
+msgid "Rules"
+msgstr "Kurallar"
+
+msgid "Ruleset contains errors"
+msgstr "Kural listesinde hata var"
+
+msgid "Russian"
+msgstr "Rusça"
+
+msgid "STAT"
+msgstr "DURUM"
+
+msgid "SUCCESS"
+msgstr "BAŞARILI"
+
+msgid "Search site"
+msgstr "Site sorgula"
+
+msgid "Select log file"
+msgstr "Kayıt dosyası seç"
+
+msgid "Set DNS forwarders"
+msgstr "DNS yönlendirmelerini ayarla"
+
+msgid "Set IP DNS listens on"
+msgstr "DNS sunucunun dinlediği IP adresini ayarla"
+
+msgid "Set PF allowed"
+msgstr "İzinli PF öğesi ekle"
+
+msgid "Set PF restricted"
+msgstr "Sınırlı PF öğesi ekle"
+
+msgid "Set afterhours if"
+msgstr "Mesaisonrası arayüzünü ayarla"
+
+msgid "Set configuration"
+msgstr "Yapılandırmayı ayarla"
+
+msgid "Set default locale"
+msgstr "Öntanımlı dili ayarla"
+
+msgid "Set dhcpd conf"
+msgstr "dhcpd.conf'u ayarla"
+
+msgid "Set e-mail address"
+msgstr "E-posta adresini ayarla"
+
+msgid "Set force HTTPs"
+msgstr "HTTPs uygulamayı ayarla"
+
+msgid "Set help boxes"
+msgstr "Yardım kutularını ayarla"
+
+msgid "Set ifs"
+msgstr "Arayüzleri ayarla"
+
+msgid "Set interfaces"
+msgstr "Arayüzleri ayarla"
+
+msgid "Set internal net"
+msgstr "İç ağı ayarla"
+
+msgid "Set locale"
+msgstr "Yöreyi ayarla"
+
+msgid "Set log level"
+msgstr "Kayıt seviyesini ayarla"
+
+msgid "Set logs configuration"
+msgstr "Kayıt yapılandırmasını ayarla"
+
+msgid "Set man.cgi home"
+msgstr "man.cgi adresini ayarla"
+
+msgid "Set max anchor nesting"
+msgstr "En fazla içiçe çapa sayısını ayarla"
+
+msgid "Set name value pair"
+msgstr "Ad değer çiftini ayarla"
+
+msgid "Set pfctl timeout"
+msgstr "Pfctl zaman aşımını ayarla"
+
+msgid "Set pmacct if"
+msgstr "Pmacct arayüzünü ayarla"
+
+msgid "Set pmacct net"
+msgstr "Pmacct ağını ayarla"
+
+msgid "Set reload rate"
+msgstr "Tekrar yükleme sıklığını ayarla"
+
+msgid "Set remote time"
+msgstr "Uzak zamanı ayarla"
+
+msgid "Set session timeout"
+msgstr "Oturum zaman aşımını ayarla"
+
+msgid "Set startup if"
+msgstr "Başlatma arayüzünü ayarla"
+
+msgid "Set startup ifs"
+msgstr "Başlatma arayüzlerini ayarla"
+
+msgid "Set symon conf"
+msgstr "Symon yapılandırmasını ayarla"
+
+msgid "Set symon cpus"
+msgstr "Symon işlemcilerini ayarla"
+
+msgid "Set symon ifs"
+msgstr "Symon arayüzlerini ayarla"
+
+msgid "Set symon partitions"
+msgstr "Symon disk bölümlerini ayarla"
+
+msgid "Set symon sensors"
+msgstr "Symon sensörlerini ayarla"
+
+msgid "Set system clock"
+msgstr "Sistem saatini ayarla"
+
+msgid "Set system gateway"
+msgstr "Sistem ağ geçidini ayarla"
+
+msgid "Set system hostname"
+msgstr "Sistem adını ayarla"
+
+msgid "Set system nameserver"
+msgstr "Sistem ad sunucusunu ayarla"
+
+msgid "Set template ips"
+msgstr "Kalıp IP adreslerini ayarla"
+
+msgid "Set use SSH"
+msgstr "SSH kullanımını ayarla"
+
+msgid "Set user password"
+msgstr "Kullanıcı parolasını ayarla"
+
+msgid "Set webalizer hostname"
+msgstr "Webalizer adını ayarla"
+
+msgid "Source"
+msgstr "Kaynak"
+
+msgid "Spanish"
+msgstr "İspanyolca"
+
+msgid "Start "
+msgstr "Başlangıç"
+
+msgid "Start OpenVPN process"
+msgstr "OpenVPN sürecini başlat"
+
+msgid "Start snort"
+msgstr "Snort başlat"
+
+msgid "State"
+msgstr "Durum"
+
+msgid "State Creations"
+msgstr "Yaratılan Durum"
+
+msgid "States"
+msgstr "Durumlar"
+
+msgid "Stop "
+msgstr "Durdur"
+
+msgid "Stop OpenVPN instance"
+msgstr "OpenVPN sürecini durdur"
+
+msgid "Stop Snort instance"
+msgstr "Snort sürecini durdur"
+
+msgid "String wrong"
+msgstr "Dizi hatalı"
+
+msgid "System restart"
+msgstr "Sistem tekrar başlatma"
+
+msgid "System shutdown"
+msgstr "Sistem kapatma"
+
+msgid "Tail number wrong"
+msgstr "Kuyruk sayısı yanlış"
+
+msgid "Test pf rules"
+msgstr "Pf kurallarını test et"
+
+msgid "The process is taking too long, thus will run in the background."
+msgstr "Sürecin işlemesi uzun zaman aldığından arka planda çalıştırılacaktır."
+
+msgid "Timed out running pfctl command"
+msgstr "Pfctl komutu zaman aşımına uğradı"
+
+msgid "Too many args, truncating"
+msgstr "Fazla argümanlar atıldı"
+
+msgid "Turkish"
+msgstr "Türkçe"
+
+msgid "Turn off cats"
+msgstr "Sınıfları kapat"
+
+msgid "Turn off service"
+msgstr "Servisleri kapat"
+
+msgid "Turn on cats"
+msgstr "Sınıfları aç"
+
+msgid "Turn on service"
+msgstr "Servisleri aç"
+
+msgid "Unblock IPs"
+msgstr "IP adreslerin engellemesini kaldır"
+
+msgid "Unblock all"
+msgstr "Tüm engellemeleri kaldır"
+
+msgid "Unconfigure an interface"
+msgstr "Arayüzünün yapılandırmasını kaldır"
+
+msgid "Unexpected elements"
+msgstr "Beklenmeyen elemanlar"
+
+msgid "Unknown"
+msgstr "Bilinmeyen"
+
+msgid "Unsupported command"
+msgstr "Desteklenmeyen komut"
+
+msgid "Unsupported interface configuration"
+msgstr "Desteklenmeyen arayüz yapılandırması"
+
+msgid "Update mail aliases"
+msgstr "Posta adresi adlarını güncelle"
+
+msgid "Url wrong"
+msgstr "Url hatalı"
+
+msgid "VSZ"
+msgstr "VSZ"
+
+msgid "Validation Error"
+msgstr "Doğrulama Hatası"
+
+msgid "Web Filter IP range wrong"
+msgstr "Web Eleği IP aralığı hatalı"
+
+msgid "White and black list entries should not be identical"
+msgstr "Beyaz ve kara liste öğeleri aynı olamaz"
+
+msgid "Will not load rules with errors"
+msgstr "Hatalı kurallar yüklenmez"
+
+msgid "Will not test rules with errors"
+msgstr "Hatalı kurallar test edilmez"
+
+msgid "Won't delete database.clamav.net entry."
+msgstr "database.clamav.net öğesi silinemez."
+
+msgid "You cannot delete system IP address"
+msgstr "Sistem IP adresini silemezsiniz"
+
+msgid "h"
+msgstr "s"
+
+msgid "min"
+msgstr "dak"
+
+msgid "sec"
+msgstr "sn"
+
+msgid "total"
+msgstr "toplam"
+
+msgid "unconfigured"
+msgstr "yapılandırılmamış"

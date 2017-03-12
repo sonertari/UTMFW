@@ -1,0 +1,300 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-01 02:12+0100\n"
+"Last-Translator: Ricardo Martin <r.martin@te-sistemas.es>\n"
+"Language-Team: Spanish <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "ACL"
+msgstr "Lista de control de acceso"
+
+msgid "Access Logs"
+msgstr "Registro de acceso"
+
+msgid "Advanced"
+msgstr "Avanzado"
+
+msgid "Alerts"
+msgstr "Alertas"
+
+msgid "Archives"
+msgstr "Archivos"
+
+msgid "Badwords"
+msgstr "Palabras clave"
+
+msgid "Basic"
+msgstr "Básico"
+
+msgid "Blacklists"
+msgstr "Listas negras"
+
+msgid "Blanket"
+msgstr ""
+
+msgid "Bypass"
+msgstr "Ignorar"
+
+msgid "UTMFW ADMINISTRATION INTERFACE"
+msgstr "UTMFW INTERFAZ DE ADMINISTRACION"
+
+msgid "CPUs"
+msgstr "CPUs"
+
+msgid "CTLR Logs"
+msgstr "Registro CTLR"
+
+msgid "Categories"
+msgstr "Categorias"
+
+msgid "Charts"
+msgstr "Gráficos"
+
+msgid "Clamd"
+msgstr "Clamd"
+
+msgid "UTMFW Administration Interface"
+msgstr "UTMFW Interfaz de Administración"
+
+msgid "Config"
+msgstr "Configuración"
+
+msgid "Credits"
+msgstr "Créditos"
+
+msgid "DB"
+msgstr "DB"
+
+msgid "DB Logs"
+msgstr "Registro DB"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "DM Exts"
+msgstr "DM Exts"
+
+msgid "DM Mimes"
+msgstr "DM Mimes"
+
+msgid "DNS"
+msgstr "DNS"
+
+msgid "Daily"
+msgstr "Diario"
+
+msgid "Disks"
+msgstr "Discos"
+
+msgid "Domains"
+msgstr "Dominios"
+
+msgid "Downloads"
+msgstr "Descargas"
+
+msgid "Email"
+msgstr "Correo"
+
+msgid "Extensions"
+msgstr "Extensiones"
+
+msgid "FTP PROXY"
+msgstr "PROXY FTP"
+
+msgid "Filter"
+msgstr "Filtro"
+
+msgid "General"
+msgstr "General"
+
+msgid "Graphs"
+msgstr "Gráficos"
+
+msgid "Groups"
+msgstr "Grupos"
+
+msgid "HTTP PROXY"
+msgstr "PROXY HTTP"
+
+msgid "Help"
+msgstr "Ayuda"
+
+msgid "Hosts"
+msgstr "Hosts"
+
+msgid "Hourly"
+msgstr "Cada hora"
+
+msgid "IDS"
+msgstr "IDS"
+
+msgid "IM Logs"
+msgstr "Registro IM"
+
+msgid "IM PROXY"
+msgstr "PROXY IM"
+
+msgid "IM Proxy Logs"
+msgstr "Registros Proxy IM"
+
+msgid "INFORMATION"
+msgstr "INFORMACION"
+
+msgid "IPS"
+msgstr "IPS"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Init"
+msgstr "Init"
+
+msgid "Interfaces"
+msgstr "Interfaz de red"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Lists"
+msgstr "Lista"
+
+msgid "Live"
+msgstr "Live"
+
+msgid "Logs"
+msgstr "Registros"
+
+msgid "Logs Report"
+msgstr "Informe de registros"
+
+msgid "MONITORING"
+msgstr "SUPERVISION"
+
+msgid "Managed"
+msgstr "Administrado"
+
+msgid "Mbufs"
+msgstr "Mbufs"
+
+msgid "Memory"
+msgstr "Memoria"
+
+msgid "Mimes"
+msgstr "Mimes"
+
+msgid "Network"
+msgstr "Red"
+
+msgid "OPENSSH"
+msgstr "OPENSSH"
+
+msgid "OPENVPN"
+msgstr "OPENVPN"
+
+msgid "PACKET FILTER"
+msgstr "FILTRO DE PAQUETES"
+
+msgid "POP3 PROXY"
+msgstr "PROXY POP3"
+
+msgid "Partitions"
+msgstr "Particiones"
+
+msgid "Phrases"
+msgstr "Frases"
+
+msgid "Processes"
+msgstr "Procesos"
+
+msgid "Protocols"
+msgstr "Protocolos"
+
+msgid "Queues"
+msgstr ""
+
+msgid "Rules"
+msgstr "Reglas"
+
+msgid "SMTP PROXY"
+msgstr "PROXY SMTP"
+
+msgid "SOCKS PROXY"
+msgstr "PROXY SOCKS"
+
+msgid "SPAM FILTER"
+msgstr "FILTRO SPAM"
+
+msgid "SPAMD"
+msgstr "SPAMD"
+
+msgid "SYSTEM"
+msgstr "SISTEMA"
+
+msgid "Scan"
+msgstr "Scaneo"
+
+msgid "Sensors"
+msgstr "Sensores"
+
+msgid "Sites"
+msgstr "Sitios"
+
+msgid "Source Docs"
+msgstr "Documentación"
+
+msgid "Spamd DB"
+msgstr "Spamd DB"
+
+msgid "Startup"
+msgstr "Inicio"
+
+msgid "States"
+msgstr "Estados"
+
+msgid "Statistics"
+msgstr "Estadísticas"
+
+msgid "Status"
+msgstr "Estatus"
+
+msgid "Transfer"
+msgstr "Transferencia"
+
+msgid "URLs"
+msgstr "URLs"
+
+msgid "VIRUS FILTER"
+msgstr "FILTRO VIRUS"
+
+msgid "Virus Exts"
+msgstr "Extensiones"
+
+msgid "Virus Mimes"
+msgstr "MIMEs"
+
+msgid "Virus Sites"
+msgstr "Sitios"
+
+msgid "Virus URLs"
+msgstr "URLs"
+
+msgid "WEB FILTER"
+msgstr "FILTRO WEB"
+
+msgid "WEB SERVER"
+msgstr "SERVIDOR WEB"
+
+msgid "WUI"
+msgstr "WUI"
+
+msgid "WUI Logs"
+msgstr "Registros WUI"

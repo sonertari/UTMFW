@@ -1,0 +1,19 @@
+UTMFW kurulumu oldukça rahat anlaşılır ve kolaydır, sadece ekrandaki açıklamaları takip edin ve soruları cevaplayın. Bütün sorular için önerilen cevapları kabul etmeniz tavsiye edilir. Nitekim, ilk sorudan sonuncuya kadar önerilen cevapları onaylayarak kurulumu tamamlayabilirsiniz. İstisnalar sadece ağ yapılandırma ve parola ayarlarıdır.
+
+Otomatik disk bölümlendirme özelliği sizin için bir disk düzeni önerecektir. Önerilen bölüm düzeni çoğu kurulum için yeterlidir, onaylayarak geçin.
+
+İki ağ arayüzü yapılandırdığınızdan emin olun. İç ve dış arayüzleri seçmeniz daha sonra istenecektir.
+
+Bütün kurulum setleri ve yazılım paketleri seçilmiş olarak gelir, onaylayarak geçin.
+
+Yenilenmesi gereken mevcut bir dosya bulunursa, eski dosya .orig uzantısıyla saklanır. Bütün böyle dosyaların yenilenmesini istiyorsanız, sorulduğunda önerilen 'a' cevabını onaylayın.
+
+Kurulum kayıtları /root dizini altında bulunabilir.
+
+Kurulum sırasında belirlediğiniz iç ağ arayüzünün IP adresi üzerinden web yönetim arayüzüne ulaşabilirsiniz. Sisteme iç ağdan ssh bağlantısı yapabilirsiniz.
+
+Web arayüzü kullanıcı adları admin ve user'dır. İkisinin parolası da kurulum sırasında girdiğiniz değere ayarlanmıştır.
+
+Kaynaklar:
+[1] Desteklenen donanımlar için bkz. http://openbsd.org/amd64.html
+[2] OpenBSD kurulum detayları için bkz. http://openbsd.org/faq/faq4.html

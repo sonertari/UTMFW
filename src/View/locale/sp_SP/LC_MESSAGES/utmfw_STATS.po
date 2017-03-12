@@ -1,0 +1,340 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+# Ricardo Martin <r.martin@te-sistemas.es>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-01 04:39+0100\n"
+"Last-Translator: Ricardo Martin <r.martin@te-sistemas.es>\n"
+"Language-Team: Spanish <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Account name"
+msgstr "Nombre de cuenta"
+
+msgid "All alerts"
+msgstr "Todas las alertas"
+
+msgid "All attempts"
+msgstr "Todos los intentos"
+
+msgid "All connections"
+msgstr "Todas las conexiones"
+
+msgid "All queries"
+msgstr "Todas las consultas"
+
+msgid "All requests"
+msgstr "Todas las peticiones"
+
+msgid "All sessions"
+msgstr "Todas las sesiones"
+
+msgid "All un/blocks and extensions"
+msgstr "Todas las (des)bloqueadas y extensiones"
+
+msgid "Allowed requests"
+msgstr "Peticiones permitidas"
+
+msgid "Attack Types"
+msgstr "Tipos de ataque"
+
+msgid "Blacklists"
+msgstr "Listas negras"
+
+msgid "Blocked Hosts"
+msgstr "Equipos bloqueados"
+
+msgid "Blocked Time"
+msgstr "Tiempo de bloqueo"
+
+msgid "Blocked Times (min)"
+msgstr "Tiempo de bloqueo (min)"
+
+msgid "Blocked Times (sec)"
+msgstr "Tiempo de bloqueo (seg)"
+
+msgid "Blocked requests"
+msgstr "Peticiones bloqueadas"
+
+msgid "Bypassed denials"
+msgstr "Denegaciones ignoradas"
+
+msgid "Bypassing IPs"
+msgstr "IPs ignoradas"
+
+msgid "Cache"
+msgstr "Cache"
+
+msgid "Client"
+msgstr "Cliente"
+
+msgid "Client IPs"
+msgstr "IPs de clientes"
+
+msgid "Clients"
+msgstr "Clientes"
+
+msgid "Closed by"
+msgstr "Cerrado por"
+
+msgid "Connections by date"
+msgstr "Conexiones por fecha"
+
+msgid "Deferred IPs"
+msgstr "IPs diferidas"
+
+msgid "Denied IPs"
+msgstr "IPs denegadas"
+
+msgid "Denied categories"
+msgstr "Categoria Denegados"
+
+msgid "Denied requests"
+msgstr "Peticiones denegadas"
+
+msgid "Destination IPs"
+msgstr "IPs de destino"
+
+msgid "Destination addresses"
+msgstr "Direcciones de destino"
+
+msgid "Destination ports"
+msgstr "Puertos de destino"
+
+msgid "Domains"
+msgstr "Dominios"
+
+msgid "Downloaded (KB)"
+msgstr "Descargado (KB)"
+
+msgid "E-mails per request"
+msgstr "Correos por petición"
+
+msgid "Exception IPs"
+msgstr "IPs exceptuadas"
+
+msgid "Exception requests"
+msgstr "Peticiones exceptuadas"
+
+msgid "Extended Hosts"
+msgstr "Equipos ampliados"
+
+msgid "Extended Times (min)"
+msgstr "Tiempo de extensión (min)"
+
+msgid "Failed attempts"
+msgstr "Intentos fallidos"
+
+msgid "Failed users"
+msgstr "Usuarios fallidos"
+
+msgid "Failure reason"
+msgstr "Razón del fallo"
+
+msgid "General Statistics"
+msgstr "Estadísticas generales"
+
+msgid "HTTP Codes"
+msgstr "Códigos HTTP"
+
+msgid "Ham"
+msgstr "Ham"
+
+msgid "IPs"
+msgstr "IPs"
+
+msgid "IPs querying"
+msgstr "IPs consultándose"
+
+msgid "Infected"
+msgstr ""
+
+msgid "Infected IPs"
+msgstr "IPs infectadas"
+
+msgid "Infected e-mails"
+msgstr ""
+
+msgid "Infected requests"
+msgstr "Peticiones infectadas"
+
+msgid "Links"
+msgstr "Enlances"
+
+msgid "Links visited"
+msgstr "Enlaces visitados"
+
+msgid "Locked IPs"
+msgstr "IPs bloqueadas"
+
+msgid "Logged in user"
+msgstr "Usuario en sistema"
+
+msgid "Longest deferred (sec)"
+msgstr "Máximo pospuesto (seg)"
+
+msgid "Matched requests"
+msgstr ""
+
+msgid "Methods"
+msgstr "Métodos"
+
+msgid "Number of e-mails"
+msgstr "Número de correos"
+
+msgid "Number of messages"
+msgstr "Número de mensajes"
+
+msgid "Packet types"
+msgstr "Tipo de paquetes"
+
+msgid "Priorities"
+msgstr "Prioridades"
+
+msgid "Priority"
+msgstr "Prioridad"
+
+msgid "Processed (KB)"
+msgstr "Procesados (KB)"
+
+msgid "Processing time (sec)"
+msgstr "Tiempo de proceso (seg)"
+
+msgid "Query types"
+msgstr "Tipo de consulta"
+
+msgid "Reasons"
+msgstr "Razones"
+
+msgid "Received (KB)"
+msgstr "Recibido (KB)"
+
+msgid "Recipients"
+msgstr "Destinatarios"
+
+msgid "Relay results"
+msgstr "Reenvío de resultados"
+
+msgid "Requests"
+msgstr "Peticiones"
+
+msgid "Requests by IP"
+msgstr "Peticiones por IP"
+
+msgid "Requests by date"
+msgstr "Peticiones por fecha"
+
+msgid "Requests bypassed"
+msgstr "Peticiones ignoradas"
+
+msgid "Requests denied"
+msgstr "Peticiones denegadas"
+
+msgid "Requests infected"
+msgstr "Peticiones infectadas"
+
+msgid "Requests scanned"
+msgstr "Peticiones escaneadas"
+
+msgid "Results"
+msgstr "Resultados"
+
+msgid "SSH version"
+msgstr "Version SSH"
+
+msgid "Scan Results"
+msgstr "Resultados Scan"
+
+msgid "Scan Types"
+msgstr "Tipo de Scan"
+
+msgid "Scanned IPs"
+msgstr "IPs escaneadas"
+
+msgid "Scanned requests"
+msgstr "Peticiones escaneadas"
+
+msgid "Senders"
+msgstr "Remitente"
+
+msgid "Sent messages"
+msgstr "Mensajes enviados"
+
+msgid "Server"
+msgstr "Servidor"
+
+msgid "Session Takeover"
+msgstr "Transferencia de sesión"
+
+msgid "Size by IP (KB)"
+msgstr "Tamaño por IP (KB)"
+
+msgid "Size by Link (KB)"
+msgstr "Tamaño por enlace (KB)"
+
+msgid "Size by Target (KB)"
+msgstr "Tamaño por destino (KB)"
+
+msgid "Size by site (KB)"
+msgstr "Tamaño por sitio (KB)"
+
+msgid "Soft inits"
+msgstr "Soft inits"
+
+msgid "Soft inits (unblock all)"
+msgstr "Soft inits (desbloquear todo)"
+
+msgid "Source IPs"
+msgstr "IPs de origen"
+
+msgid "Source Ports"
+msgstr "Puertos de Origen"
+
+msgid "Source addresses"
+msgstr "Direcciones de origen"
+
+msgid "Spam"
+msgstr "Spam"
+
+msgid "Spam Scan Requests"
+msgstr "Peticiones de scan de Spam"
+
+msgid "Successful logins"
+msgstr "Autentificación correctas"
+
+msgid "Target"
+msgstr "Destino"
+
+msgid "Target IPs"
+msgstr "IPs de destino"
+
+msgid "Target Ports"
+msgstr "Puertos de destino"
+
+msgid "Total deferred time (sec)"
+msgstr "Total de tiempo aplazado (seg)"
+
+msgid "Transmitted (KB)"
+msgstr "Transferido (KB)"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Unblocked Hosts"
+msgstr "Equipos desbloqueados"
+
+msgid "Users"
+msgstr "Usuarios"
+
+msgid "Virus"
+msgstr "Virus"
+
+msgid "Virus Scan Requests"
+msgstr "Peticiones de scan de virus"

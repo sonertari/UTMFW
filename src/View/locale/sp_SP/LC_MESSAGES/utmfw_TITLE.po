@@ -1,0 +1,324 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-01 03:30+0100\n"
+"Last-Translator: Ricardo Martin <r.martin@te-sistemas.es>\n"
+"Language-Team: Spanish <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "1 minute average"
+msgstr "Promedio 1 minuto"
+
+msgid "15 minute average"
+msgstr "Promedio 15 minutos"
+
+msgid "5 minute average"
+msgstr "Promedio 5 minutos"
+
+msgid "Admin e-mail"
+msgstr "Correo Admin"
+
+msgid "Archives"
+msgstr "Archivos"
+
+msgid "Automatic config"
+msgstr "Configuración automática"
+
+msgid "Business Days"
+msgstr "Días laborables"
+
+msgid "Business Hours"
+msgstr "Horas de oficina"
+
+msgid "CPU Load"
+msgstr "Carga de CPU"
+
+msgid "CPUs"
+msgstr "CPUs"
+
+msgid "Count"
+msgstr "Contador"
+
+msgid "Data Transfer"
+msgstr "Transferencia de datos"
+
+msgid "Date"
+msgstr "Fecha"
+
+msgid "DateTime"
+msgstr "FechaHora"
+
+msgid "Day"
+msgstr "Día"
+
+msgid "Disabled Services"
+msgstr "Desabilitar servicios"
+
+msgid "Disk I/O"
+msgstr "Disk I/O"
+
+msgid "Disks"
+msgstr "Discos"
+
+msgid "ERROR"
+msgstr "ERROR"
+
+msgid "Enabled Services"
+msgstr "Habilitar servicios"
+
+msgid "External Interface"
+msgstr "Interfaz externa"
+
+msgid "External interface"
+msgstr "Interfaz externa"
+
+msgid "Fan"
+msgstr "Ventilador"
+
+msgid "File"
+msgstr "Archivo"
+
+msgid "From"
+msgstr "De"
+
+msgid "Gateway"
+msgstr "Pasarela"
+
+msgid "Graph files"
+msgstr "Archivos de gráficos"
+
+msgid "Group"
+msgstr "Grupo"
+
+msgid "Help boxes"
+msgstr "Cuadros de información"
+
+msgid "Holidays"
+msgstr "Vacaciones"
+
+msgid "Horizontal"
+msgstr "Horizontal"
+
+msgid "Hostname"
+msgstr "Nombre del equipo"
+
+msgid "Hosts"
+msgstr "Equipos"
+
+msgid "Hour"
+msgstr "Hora"
+
+msgid "Hourly"
+msgstr "Cada hora"
+
+msgid "INFORMATION"
+msgstr "INFORMACION"
+
+msgid "IP Forwarding"
+msgstr "Reenvío IP"
+
+msgid "Interface"
+msgstr "Interfaz"
+
+msgid "Internal Interface"
+msgstr "Interfaz interna"
+
+msgid "Internal interface"
+msgstr "Interfaz interna"
+
+msgid "Language"
+msgstr ""
+
+msgid "Level"
+msgstr "Nivel"
+
+msgid "Line"
+msgstr "Línea"
+
+msgid "Lines per page"
+msgstr "Líneas por página"
+
+msgid "Log"
+msgstr "Registro"
+
+msgid "Log level"
+msgstr "Nivel de registro"
+
+msgid "Logout"
+msgstr ""
+
+msgid "Logs"
+msgstr "Registros"
+
+msgid "Loopback Interface"
+msgstr "Interfaz de bucle local"
+
+msgid "Machine"
+msgstr "Máquina"
+
+msgid "Mbuf Statistics"
+msgstr "Estadísticas Mbuf"
+
+msgid "Memory Usage"
+msgstr "Uso de memoria"
+
+msgid "Month"
+msgstr "Mes"
+
+msgid "Motherboard"
+msgstr "Placa"
+
+msgid "Nameserver"
+msgstr "Servidor de nombres"
+
+msgid "Network Protocol Usage"
+msgstr "Uso de protocolos de red"
+
+msgid "Number of Processes"
+msgstr "Número de procesos"
+
+msgid "Number of processes"
+msgstr "Número de procesos"
+
+msgid "Operating System"
+msgstr "Sistema Operativo"
+
+msgid "Partitions"
+msgstr "Particiones"
+
+msgid "Partitions Usages"
+msgstr "Uso de particiones"
+
+msgid "Password"
+msgstr "Contraseña"
+
+msgid "Password again"
+msgstr "Contraseña de nuevo"
+
+msgid "Physical Memory"
+msgstr "Memoria física"
+
+msgid "Privileged IPs"
+msgstr "IPs con privilegios"
+
+msgid "Process"
+msgstr "Proceso"
+
+msgid "Process CPU Load"
+msgstr "Proceso carga CPU"
+
+msgid "Processor"
+msgstr "Procesador"
+
+msgid "Refresh interval"
+msgstr "Intervalo de refresco"
+
+msgid "Regexp"
+msgstr "Regexp"
+
+msgid "Reload interval"
+msgstr "Intervalo de recarga"
+
+msgid "Restart network"
+msgstr "Reiniciar red"
+
+msgid "Restricted IPs"
+msgstr "IPs restringidas"
+
+msgid "Rotate all log files"
+msgstr "Rotar todos los archivos de registro"
+
+msgid "Rule"
+msgstr "Regla"
+
+msgid "Search site"
+msgstr "Buscar sitio"
+
+msgid "Secure Level"
+msgstr "Nivel de seguridad"
+
+msgid "Selected"
+msgstr "Selecionado"
+
+msgid "Serial Number"
+msgstr "Número de serie"
+
+msgid "Session timeout"
+msgstr "Tiempo de espera de sesión"
+
+msgid "Size"
+msgstr "Tamaño"
+
+msgid "Size (KB)"
+msgstr "Tamaño (KB)"
+
+msgid "Software Version"
+msgstr "Versión Software"
+
+msgid "State Searches vs Packets"
+msgstr "Búsquedas Estados vs. Paquetes"
+
+msgid "State Statistics"
+msgstr "Estadísticas de Estados"
+
+msgid "Statistics and uncompressed log files"
+msgstr "Archivos de Registro y estadísticas sin comprimir"
+
+msgid "System"
+msgstr "Sistema"
+
+msgid "Target"
+msgstr "Destino"
+
+msgid "Temperature"
+msgstr "Temperatura"
+
+msgid "Time"
+msgstr "Hora"
+
+msgid "Time server"
+msgstr "Servidor de hora"
+
+msgid "To"
+msgstr "A"
+
+msgid "Uptime"
+msgstr "Tiempo de funcionamiento"
+
+msgid "User"
+msgstr "Usuario"
+
+msgid "User name"
+msgstr "Nombre de usuario"
+
+msgid "Version"
+msgstr "Versión"
+
+msgid "WARNING"
+msgstr "ADVERTENCIA"
+
+msgid "When (h)"
+msgstr "Cuando (h)"
+
+msgid "disabled"
+msgstr "Desabilitado"
+
+msgid "enabled"
+msgstr "Habilitado"
+
+msgid "is not running"
+msgstr "no ejecutándose"
+
+msgid "is running"
+msgstr "ejecutándose"
+
+msgid "secs"
+msgstr "segs"

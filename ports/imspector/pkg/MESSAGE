@@ -1,0 +1,10 @@
+You also need pf rules to redirect IM traffic to IMSpector.
+
+To start imspector automatically, add these lines to /etc/rc.local
+
+if [ -x ${PREFIX}/sbin/imspector ]; then
+	mkdir /tmp/imspector
+	chown -R _imspector:_imspector /tmp/imspector
+	echo -n ' imspector';
+	${PREFIX}/sbin/imspector -c ${SYSCONFDIR}/imspector/imspector.conf &
+fi

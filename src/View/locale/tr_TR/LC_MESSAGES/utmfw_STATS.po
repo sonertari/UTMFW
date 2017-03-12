@@ -1,0 +1,339 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+# Soner Tari <sonertari@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-12-02 12:14+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: Turkish <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Account name"
+msgstr "Hesap adı"
+
+msgid "All alerts"
+msgstr "Tüm uyarılar"
+
+msgid "All attempts"
+msgstr "Tüm denemeler"
+
+msgid "All connections"
+msgstr "Tüm bağlantılar"
+
+msgid "All queries"
+msgstr "Tüm sorgular"
+
+msgid "All requests"
+msgstr "Tüm istekler"
+
+msgid "All sessions"
+msgstr "Tüm oturumlar"
+
+msgid "All un/blocks and extensions"
+msgstr "Tüm engelleme ve uzatmalar"
+
+msgid "Allowed requests"
+msgstr "İzin verilen istekler"
+
+msgid "Attack Types"
+msgstr "Saldırı türleri"
+
+msgid "Blacklists"
+msgstr "Karalisteler"
+
+msgid "Blocked Hosts"
+msgstr "Engellenenler"
+
+msgid "Blocked Time"
+msgstr "Engellenen Süre"
+
+msgid "Blocked Times (min)"
+msgstr "Engellenen Süre (dak)"
+
+msgid "Blocked Times (sec)"
+msgstr "Engellenen Süre (sn)"
+
+msgid "Blocked requests"
+msgstr "Engellenen istekler"
+
+msgid "Bypassed denials"
+msgstr "Atlanan engellemeler"
+
+msgid "Bypassing IPs"
+msgstr "Atlayan IP'ler"
+
+msgid "Cache"
+msgstr "Önbellek"
+
+msgid "Client"
+msgstr "İstemci"
+
+msgid "Client IPs"
+msgstr "İstemci IP'leri"
+
+msgid "Clients"
+msgstr "İstemciler"
+
+msgid "Closed by"
+msgstr "Kapatan"
+
+msgid "Connections by date"
+msgstr "Tarihe göre bağlantılar"
+
+msgid "Deferred IPs"
+msgstr "Geçiktirilen IP'ler"
+
+msgid "Denied IPs"
+msgstr "Engellenen IP'ler"
+
+msgid "Denied categories"
+msgstr "Engellenen kategoriler"
+
+msgid "Denied requests"
+msgstr "Engellenen istekler"
+
+msgid "Destination IPs"
+msgstr "Hedef IP'ler"
+
+msgid "Destination addresses"
+msgstr "Hedef adresler"
+
+msgid "Destination ports"
+msgstr "Hedef kapılar"
+
+msgid "Domains"
+msgstr "Alanadları"
+
+msgid "Downloaded (KB)"
+msgstr "İndirilen (KB)"
+
+msgid "E-mails per request"
+msgstr "İstek başına e-postalar"
+
+msgid "Exception IPs"
+msgstr "İstisna IP'ler"
+
+msgid "Exception requests"
+msgstr "İstisna istekler"
+
+msgid "Extended Hosts"
+msgstr "Uzatılanlar"
+
+msgid "Extended Times (min)"
+msgstr "Uzatılan Süre (dak)"
+
+msgid "Failed attempts"
+msgstr "Başarısız denemeler"
+
+msgid "Failed users"
+msgstr "Başarısız kullancıılar"
+
+msgid "Failure reason"
+msgstr "Başarısızlık sebebi"
+
+msgid "General Statistics"
+msgstr "Genel İstatistikler"
+
+msgid "HTTP Codes"
+msgstr "HTTP Kodu"
+
+msgid "Ham"
+msgstr "Ham"
+
+msgid "IPs"
+msgstr "IP'ler"
+
+msgid "IPs querying"
+msgstr "Sorgulayan IP'ler"
+
+msgid "Infected"
+msgstr "Virüslü"
+
+msgid "Infected IPs"
+msgstr "Virüslü IP'ler"
+
+msgid "Infected e-mails"
+msgstr "Virüslü e-postalar"
+
+msgid "Infected requests"
+msgstr "Virüslü istekler"
+
+msgid "Links"
+msgstr "Bağlantılar"
+
+msgid "Links visited"
+msgstr "Ziyaret edilen bağlantılar"
+
+msgid "Locked IPs"
+msgstr "Kilitlenen IP'ler"
+
+msgid "Logged in user"
+msgstr "Giriş yapmış kullanıcı"
+
+msgid "Longest deferred (sec)"
+msgstr "En uzun geciktirilen (sn)"
+
+msgid "Matched requests"
+msgstr "Eşleşen istekler"
+
+msgid "Methods"
+msgstr "Yöntemler"
+
+msgid "Number of e-mails"
+msgstr "E-posta sayısı"
+
+msgid "Number of messages"
+msgstr "Mesaj sayısı"
+
+msgid "Packet types"
+msgstr "Paket türleri"
+
+msgid "Priorities"
+msgstr "Öncelikler"
+
+msgid "Priority"
+msgstr "Öncelik"
+
+msgid "Processed (KB)"
+msgstr "İşlenen (KB)"
+
+msgid "Processing time (sec)"
+msgstr "İşleme süresi (sn)"
+
+msgid "Query types"
+msgstr "Sorgu türleri"
+
+msgid "Reasons"
+msgstr "Sebepler"
+
+msgid "Received (KB)"
+msgstr "Alınan (KB)"
+
+msgid "Recipients"
+msgstr "Alıcılar"
+
+msgid "Relay results"
+msgstr "İletim sonuçları"
+
+msgid "Requests"
+msgstr "İstekler"
+
+msgid "Requests by IP"
+msgstr "İstekte bulunan IP'ler"
+
+msgid "Requests by date"
+msgstr "Tarihe göre istekler"
+
+msgid "Requests bypassed"
+msgstr "Atlanan istekler"
+
+msgid "Requests denied"
+msgstr "Engellenen istekler"
+
+msgid "Requests infected"
+msgstr "Virüslü istekler"
+
+msgid "Requests scanned"
+msgstr "Taranan istekler"
+
+msgid "Results"
+msgstr "Sonuçlar"
+
+msgid "SSH version"
+msgstr "SSH sürümü"
+
+msgid "Scan Results"
+msgstr "Tarama sonuçları"
+
+msgid "Scan Types"
+msgstr "Tarama türleri"
+
+msgid "Scanned IPs"
+msgstr "Taranan IP'ler"
+
+msgid "Scanned requests"
+msgstr "Taranan istekler"
+
+msgid "Senders"
+msgstr "Göndericiler"
+
+msgid "Sent messages"
+msgstr "Gönderilen mesajlar"
+
+msgid "Server"
+msgstr "Sunucu"
+
+msgid "Session Takeover"
+msgstr "Bağlantı kesme"
+
+msgid "Size by IP (KB)"
+msgstr "IP başına boyut (KB) "
+
+msgid "Size by Link (KB)"
+msgstr "Bağlantı başına boyut (KB)"
+
+msgid "Size by Target (KB)"
+msgstr "Hedef başına boyut (KB)"
+
+msgid "Size by site (KB)"
+msgstr "Site başına boyut (KB)"
+
+msgid "Soft inits"
+msgstr "Tekrar başlatmalar"
+
+msgid "Soft inits (unblock all)"
+msgstr "Tekrar başlatmalar (engellemeleri kaldır)"
+
+msgid "Source IPs"
+msgstr "Kaynak IP'ler"
+
+msgid "Source Ports"
+msgstr "Kaynak kapılar"
+
+msgid "Source addresses"
+msgstr "Kaynak adresleri"
+
+msgid "Spam"
+msgstr "Spam"
+
+msgid "Spam Scan Requests"
+msgstr "Spam tarama istekleri"
+
+msgid "Successful logins"
+msgstr "Başarılı girişler"
+
+msgid "Target"
+msgstr "Hedef"
+
+msgid "Target IPs"
+msgstr "Hedef IP'ler"
+
+msgid "Target Ports"
+msgstr "Hedef kapılar"
+
+msgid "Total deferred time (sec)"
+msgstr "Toplam geciktirme süresi (sn)"
+
+msgid "Transmitted (KB)"
+msgstr "Aktarılan (KB)"
+
+msgid "Type"
+msgstr "Tür"
+
+msgid "Unblocked Hosts"
+msgstr "Engellemesi kaldırılanlar"
+
+msgid "Users"
+msgstr "Kullancılar"
+
+msgid "Virus"
+msgstr "Virüs"
+
+msgid "Virus Scan Requests"
+msgstr "Virüs tarama istekleri"

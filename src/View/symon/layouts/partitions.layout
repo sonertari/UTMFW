@@ -1,0 +1,3 @@
+
+group	name="Partitions Usages";
+graph	rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/df_wd0a.rrd, title="Partition wd0a (/)";

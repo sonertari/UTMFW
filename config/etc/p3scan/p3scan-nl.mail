@@ -1,0 +1,31 @@
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+        charset="iso-8859-1"
+
+Hallo %USERNAME%.
+Dit bericht is automatisch gegenereerd door P3Scan, wat op 
+%HOSTNAME%.%DOMAINNAME% draait voor het scannen van binnenkomende email.
+
+U heeft dit bericht ontvangen, omdat het originele bericht geinfecteerd is..
+Zie de bericht details voor meer info.
+
+Virus name:
+    %VIRUSNAME%
+(Zogenaamde) Verzender van het bericht:
+    %MAILFROM%
+Verzonden naar:
+    %MAILTO%
+Datum:
+    %MAILDATE%
+Onderwerp:
+    %SUBJECT%
+Verbindings data:
+    %PROTOCOL% van %CLIENTIP%:%CLIENTPORT% naar %SERVERIP%:%SERVERPORT%
+Bericht bestand:
+    %P3SCANID%
+Virus Info:
+    %VDINFO%
+-- 
+%PROGNAME% %VERSION%
+.

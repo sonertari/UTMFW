@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<!--
+	Copyright (C) 2004-2017 Soner Tari
+
+	This file is part of UTMFW.
+
+	UTMFW is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	UTMFW is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
+	-->
+	<head>
+		<title>UTMFW</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="UTM Firewall" />
+		<meta name="author" content="Soner Tari"/>
+		<meta name="keywords" content="UTMFW, UTM, FW, Unified, Threat, Management, Firewall" />
+		<style type="text/css">
+			<!--
+			body
+			{
+				font-size: 75%;
+				background: gray;
+			}
+
+			table
+			{
+				width: 100%;
+				border: none black;
+				border-collapse: collapse;
+				overflow: visible;
+				text-align: left;
+			}
+
+			td
+			{
+				padding: 0;
+				overflow: visible;
+			}
+
+			img
+			{
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+
+			#window
+			{
+				width: auto;
+				background: white;
+				margin: 1px;
+				border: 2px solid #ccc;
+				border-bottom: 2px solid black;
+				border-right: 2px solid black;
+			}
+
+			.titlebar td
+			{
+				color: white;
+				font-weight: bold;
+				vertical-align: middle;
+			}
+
+			.comiximg
+			{
+				width: 1px;
+				background-color: white;
+				padding-left: 0.5em;
+				border: 2px solid white;
+				border-bottom: 2px solid #ddd;
+				border-right: 2px solid #ddd;
+			}
+
+			.titletext
+			{
+				background-color: #004a4a;
+				text-align: center;
+			}
+
+			.infoimg
+			{
+				width: 1px;
+				background-color: #004a4a;
+				text-align: right;
+			}
+
+			.middle td
+			{
+				width: 500px;
+				background-color: #ccc;
+				padding: 1em;
+				border-left: 2px solid white;
+				border-right: 1px solid black;
+				border-top: 1px solid gray;
+				border-bottom: 1px solid white;
+			}
+
+			#info td
+			{
+				padding: 0.25em;
+				margin: 0;
+				border: none;
+				font-weight: bold;
+			}
+
+			#info .info
+			{
+				color: red;
+				border: none;
+			}
+
+			#info .boldnone
+			{
+				border: none;
+			}
+
+			#progressbar td
+			{
+				padding: 1px;
+				border: 1px solid black;
+				border-bottom: 1px solid white;
+				border-right: 1px solid white;
+			}
+
+			#progress td
+			{
+				height: 1.5em;
+				border: 1px solid #ccc;
+			}
+
+			.bottombar td
+			{
+				color: white;
+				background-color: #004a4a;
+				padding: 1px;
+			}
+
+			.copyright
+			{
+				text-align: center;
+				font-size: 90%;
+			}
+			-->
+		</style>
+	</head>
+	<body>
+		<table style="height: 400px;">
+			<tr>
+				<td>
+					<div align="center">
+						<table id="window">
+							<tr class="titlebar">
+								<td class="comiximg">
+									<a href="http://comixwall.org" name="UTMFW"><img alt="UTMFW" title="UTMFW" src="http://192.168.1.254/images/utmfw.png"></img></a>
+								</td>
+								<td class="titletext">
+									UTM Firewall
+								</td>
+								<td class="infoimg">
+									<img alt="Info" src="http://192.168.1.254/images/info.png"></img>
+								</td>
+							</tr>
+							<tr class="middle">
+								<td colspan="3">
+									<table id="info">
+										<tr>
+											<td class="boldnone">Downloading -FILENAME- (-FILESIZE- byte)</td>
+										</tr>
+										<tr id="progressbar">
+											<td>
+												<table id="progress">
+													<tr>
+														<td id='progress1'></td>
+														<td id='progress2'></td>
+														<td id='progress3'></td>
+														<td id='progress4'></td>
+														<td id='progress5'></td>
+														<td id='progress6'></td>
+														<td id='progress7'></td>
+														<td id='progress8'></td>
+														<td id='progress9'></td>
+														<td id='progress10'></td>
+														<td id='progress11'></td>
+														<td id='progress12'></td>
+														<td id='progress13'></td>
+														<td id='progress14'></td>
+														<td id='progress15'></td>
+														<td id='progress16'></td>
+														<td id='progress17'></td>
+														<td id='progress18'></td>
+														<td id='progress19'></td>
+														<td id='progress20'></td>
+														<td id='progress21'></td>
+														<td id='progress22'></td>
+														<td id='progress23'></td>
+														<td id='progress24'></td>
+														<td id='progress25'></td>
+														<td id='progress26'></td>
+														<td id='progress27'></td>
+														<td id='progress28'></td>
+														<td id='progress29'></td>
+														<td id='progress30'></td>
+														<td id='progress31'></td>
+														<td id='progress32'></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td class="boldnone">
+												<label id='message1'></label>
+											</td>
+										</tr>
+										<tr>
+											<td class="info">
+												<label id='message2'></label>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr class="bottombar">
+								<td class="copyright" colspan="3">
+									Copyright (C) 2004-2017 Soner Tari
+								</td>
+							</tr>
+						</table>			
+					</div>
+				</td>
+			</tr>
+		</table>
+		<script	language="javascript" type="text/javascript">
+			<!--
+			var scanned = 1;
+			var fs = -FILESIZE-;
+			function timestring(seconds) {
+				var hours = Math.floor(seconds/3600);
+				var minutes = Math.floor((seconds/60) - (hours*3600));
+				var seconds = seconds - (minutes*60) - (hours*3600);
+				var string = "";
+				if (hours > 0) {
+					if (hours < 10)
+						string = "0"+hours;
+					else
+						string = hours;
+					string += ":";
+				}
+				if (minutes > 0) {
+					if (minutes < 10)
+						string += "0"+minutes;
+					else
+						string += minutes;
+				} else {
+					string += "00";
+				}
+				string += ":";
+				if (seconds > 0) {
+					if (seconds < 10)
+						string += "0"+seconds;
+					else
+						string += seconds;
+				} else {
+					string += "00";
+				}
+				return string;
+			}
+			function filesizestring(bytes) {
+				var gb = Math.floor(bytes/1073741824);
+				if (gb > 0)
+					return gb.toString()+" Gb";
+				var mb = Math.floor(bytes/1048576);
+				if (mb > 0)
+					return mb.toString()+" Mb";
+				var kb = Math.floor(bytes/1024);
+				if (kb > 0)
+					return kb.toString()+" Kb";
+				return bytes.toString()+" bytes";
+			}
+			function progressupdate(got, speed) {
+				var msg;
+				if (fs > 0) {
+					var sofar = (got/fs)*32;
+					for (var i = 1; i <=sofar; i++)
+						document.getElementById('progress'+i).style.backgroundColor = 'blue';
+					msg = Math.round((got/-FILESIZE-)*100)+"%, ETA: "+timestring(Math.round((fs-got)/speed))+"; "+filesizestring(speed)+"/s; total downloaded: "+filesizestring(got);
+				} else {
+					msg = "ETA: unknown; "+filesizestring(speed)+"/s; total downloaded: "+filesizestring(got);
+				}
+				document.getElementById('message1').innerHTML = msg;
+			}
+			function nowscanning() {
+				for (var i = 1; i <=32; i++)
+					document.getElementById('progress'+i).style.backgroundColor = 'blue';
+				if (scanned == 1) {
+					var msg = "Download complete! Now scanning...";
+					document.getElementById('message1').innerHTML = msg;
+				}
+			}
+			function downloadlink(rawlink, prettylink, type) {
+				if (type == 0)
+					var msg = "File scanned";
+				else if (type == 1)
+					var msg = "File downloaded, but not scanned due to size limits";
+				else if (type == 2)
+					var msg = "File too large, please download directly";
+				document.getElementById('message1').innerHTML = msg;
+				if (type != 2)
+					document.getElementById('message2').innerHTML = "<a href='"+rawlink+"'>"+prettylink+"</a>";
+				else
+					document.getElementById('message2').innerHTML = "<a href='"+prettylink+"'>"+prettylink+"</a>";
+			}
+			function downloadwarning(sizelimit) {
+				scanned = 0;
+				document.getElementById('message2').innerHTML = "Warning: File is too large for content scanning. If you are sure that this file is smaller than "+filesizestring(sizelimit)+", refresh this page to download directly.";
+			}
+			//-->
+		</script>
+	</body>
+	<!--
+	The available variables are as follows:
+	- FILENAME- gives the name of the file being downloaded
+	- FILESIZE- gives the size of the file in bytes
+
+	- FILESIZE- of zero indicates that file size is not known
+
+	You need to remove the space between the - and the variable to use them
+	in your HTML.  They are there above so extra processing is not required.
+
+	The following JavaScript functions must be defined:
+
+	progressupdate(got, speed)
+		This is called when the page is initially displayed (i.e. after
+		initialtrickledelay has passed), and periodically afterwards to
+		update progress (once every trickledelay seconds).
+		Parameters:
+		got - how much of the file we have downloaded, in bytes.
+		speed - current estimate of download speed, in bytes per second.
+
+	nowscanning()
+		This is called once downloading is complete, and scanning has
+		begun. (Note: scanning has not actually begun if downloadwarning()
+		has been called at some point.)
+
+	downloadlink(rawlink, prettylink, type)
+		This is called after scanning has completed, and the file is
+		ready to be sent to the user.
+		Parameters:
+		rawlink - the URL from which the scanned file can be grabbed
+		prettylink - the original URL which triggered the fancy download manager
+		type - the status of the download/scan:
+			0 - downloaded & scanned
+			1 - downloaded, but too big to have been scanned
+			2 - too big to be completely downloaded
+		codes 1 and 2 can only be encountered on files for which the content
+		length is not known in advance. "rawlink" should be ignored for code 2.
+
+	downloadwarning(sizelimit)
+		This is called when a file with unknown content-length has exceeded
+		the configured maxcontentfilecachescansize. Used to warn the user
+		that the fancy DM may not be able to retrieve the entire file,
+		and that they should download directly (refresh the page; the URL will
+		have been added to DG's clean cache) if they know it to be larger
+		than sizelimit.
+		sizelimit - the value of the fancy DM's maxdownloadsize. If a file
+			exceeds this limit also, the fancy DM cannot continue
+			(will trigger downloadlink status type 2).
+
+	Please note that the fancy download manager also outputs content contained in
+	<noscript> tags, for browsers which disable or do not support javascript. If you
+	customise this template, you may wish to test its behaviour and appearance in
+	such circumstances.
+	-->
+</html>

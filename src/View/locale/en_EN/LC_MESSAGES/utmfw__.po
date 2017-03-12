@@ -1,0 +1,857 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "%CPU"
+msgstr ""
+
+msgid "Add ACL"
+msgstr ""
+
+msgid "Add DHCP interface"
+msgstr ""
+
+msgid "Add HTTP proxy IP:port"
+msgstr ""
+
+msgid "Add IP"
+msgstr ""
+
+msgid "Add alert keyword"
+msgstr ""
+
+msgid "Add badword"
+msgstr ""
+
+msgid "Add database mirror"
+msgstr ""
+
+msgid "Add ext/mime"
+msgstr ""
+
+msgid "Add filter group IP"
+msgstr ""
+
+msgid "Add host"
+msgstr ""
+
+msgid "Add list item"
+msgstr ""
+
+msgid "Add to IP list"
+msgstr ""
+
+msgid "Age"
+msgstr ""
+
+msgid "Apply AfterHours"
+msgstr ""
+
+msgid "Apply pf rules"
+msgstr ""
+
+msgid "Arg type check failed"
+msgstr ""
+
+msgid "Automatic configuration"
+msgstr ""
+
+msgid "Block IPs"
+msgstr ""
+
+msgid "Business days and holidays cannot overlap."
+msgstr ""
+
+msgid "Bytes"
+msgstr ""
+
+msgid "Cannot add"
+msgstr ""
+
+msgid "Cannot find group configuration file"
+msgstr ""
+
+msgid "Cannot get pid"
+msgstr ""
+
+msgid "Cannot read config"
+msgstr ""
+
+msgid "Change p3scan report language"
+msgstr ""
+
+msgid "Change spamassassin local"
+msgstr ""
+
+msgid "Check authentication"
+msgstr ""
+
+msgid "Check if process running"
+msgstr ""
+
+msgid "Chinese simplified"
+msgstr ""
+
+msgid "Configure an interface"
+msgstr ""
+
+msgid "Copy conf"
+msgstr ""
+
+msgid "Create new group"
+msgstr ""
+
+msgid "Datetime wrong"
+msgstr ""
+
+msgid "Delete ACL"
+msgstr ""
+
+msgid "Delete DHCP interface"
+msgstr ""
+
+msgid "Delete HTTP proxy IP:port"
+msgstr ""
+
+msgid "Delete IP"
+msgstr ""
+
+msgid "Delete IP from list"
+msgstr ""
+
+msgid "Delete PF allowed"
+msgstr ""
+
+msgid "Delete PF restricted"
+msgstr ""
+
+msgid "Delete alert keywords"
+msgstr ""
+
+msgid "Delete badword"
+msgstr ""
+
+msgid "Delete conf"
+msgstr ""
+
+msgid "Delete database mirror"
+msgstr ""
+
+msgid "Delete ext/mime"
+msgstr ""
+
+msgid "Delete filter group IP"
+msgstr ""
+
+msgid "Delete host"
+msgstr ""
+
+msgid "Delete list item"
+msgstr ""
+
+msgid "Dest"
+msgstr ""
+
+msgid "Dir"
+msgstr ""
+
+msgid "Disable AfterHours"
+msgstr ""
+
+msgid "Disable AfterHours business days"
+msgstr ""
+
+msgid "Disable AfterHours holidays"
+msgstr ""
+
+msgid "Disable config"
+msgstr ""
+
+msgid "Disable ext/mime"
+msgstr ""
+
+msgid "Disable rule"
+msgstr ""
+
+msgid "Display remote time"
+msgstr ""
+
+msgid "Dutch"
+msgstr ""
+
+msgid "E-mail address wrong"
+msgstr ""
+
+msgid "Enable AfterHours"
+msgstr ""
+
+msgid "Enable AfterHours business days"
+msgstr ""
+
+msgid "Enable AfterHours holidays"
+msgstr ""
+
+msgid "Enable config"
+msgstr ""
+
+msgid "Enable ext/mime"
+msgstr ""
+
+msgid "Enable rule"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Erase statistics files"
+msgstr ""
+
+msgid "Expr"
+msgstr ""
+
+msgid "Extension wrong"
+msgstr ""
+
+msgid "FAILED"
+msgstr ""
+
+msgid "FATAL ERRORS in creating new group"
+msgstr ""
+
+msgid "Filepath wrong"
+msgstr ""
+
+msgid "French"
+msgstr ""
+
+msgid "Get ACL"
+msgstr ""
+
+msgid "Get AfterHour pf rules"
+msgstr ""
+
+msgid "Get AfterHours"
+msgstr ""
+
+msgid "Get DHCP IP range"
+msgstr ""
+
+msgid "Get DHCP interfaces"
+msgstr ""
+
+msgid "Get DHCP option"
+msgstr ""
+
+msgid "Get DNS forwarders"
+msgstr ""
+
+msgid "Get HTTP proxy IP:port"
+msgstr ""
+
+msgid "Get IPS info"
+msgstr ""
+
+msgid "Get PF allowed"
+msgstr ""
+
+msgid "Get PF restricted"
+msgstr ""
+
+msgid "Get active cats"
+msgstr ""
+
+msgid "Get alert keywords"
+msgstr ""
+
+msgid "Get all stats"
+msgstr ""
+
+msgid "Get arp table"
+msgstr ""
+
+msgid "Get auth ip list"
+msgstr ""
+
+msgid "Get badwords"
+msgstr ""
+
+msgid "Get config values"
+msgstr ""
+
+msgid "Get configuration"
+msgstr ""
+
+msgid "Get confs"
+msgstr ""
+
+msgid "Get current locale"
+msgstr ""
+
+msgid "Get database mirrors"
+msgstr ""
+
+msgid "Get dhcp leases"
+msgstr ""
+
+msgid "Get disabled rules"
+msgstr ""
+
+msgid "Get ext/mime list"
+msgstr ""
+
+msgid "Get ext_if"
+msgstr ""
+
+msgid "Get group count"
+msgstr ""
+
+msgid "Get group ip list"
+msgstr ""
+
+msgid "Get host graphs"
+msgstr ""
+
+msgid "Get if config"
+msgstr ""
+
+msgid "Get im log file"
+msgstr ""
+
+msgid "Get inactive cats"
+msgstr ""
+
+msgid "Get int_if"
+msgstr ""
+
+msgid "Get lines"
+msgstr ""
+
+msgid "Get list"
+msgstr ""
+
+msgid "Get listed ips"
+msgstr ""
+
+msgid "Get local users"
+msgstr ""
+
+msgid "Get locales"
+msgstr ""
+
+msgid "Get log file"
+msgstr ""
+
+msgid "Get log files list"
+msgstr ""
+
+msgid "Get log start date"
+msgstr ""
+
+msgid "Get logs configuration"
+msgstr ""
+
+msgid "Get partition list"
+msgstr ""
+
+msgid "Get pf state count"
+msgstr ""
+
+msgid "Get pf states"
+msgstr ""
+
+msgid "Get pfw commandwrapper -conntest"
+msgstr ""
+
+msgid "Get pfw commandwrapper -info"
+msgstr ""
+
+msgid "Get pfw commandwrapper -log"
+msgstr ""
+
+msgid "Get pfw commandwrapper -pfinfo"
+msgstr ""
+
+msgid "Get pfw commandwrapper -pfmem"
+msgstr ""
+
+msgid "Get pfw commandwrapper -pfstates"
+msgstr ""
+
+msgid "Get pfw commandwrapper -queues"
+msgstr ""
+
+msgid "Get pfw packetfilter -i"
+msgstr ""
+
+msgid "Get pfw packetfilter -r"
+msgstr ""
+
+msgid "Get pfw packetfilter -t"
+msgstr ""
+
+msgid "Get process list"
+msgstr ""
+
+msgid "Get protocols"
+msgstr ""
+
+msgid "Get remote time"
+msgstr ""
+
+msgid "Get remote users"
+msgstr ""
+
+msgid "Get rules"
+msgstr ""
+
+msgid "Get service start status"
+msgstr ""
+
+msgid "Get service status"
+msgstr ""
+
+msgid "Get sessions"
+msgstr ""
+
+msgid "Get software version"
+msgstr ""
+
+msgid "Get source file CVS tag"
+msgstr ""
+
+msgid "Get spamd blacklist"
+msgstr ""
+
+msgid "Get spamd whitelist"
+msgstr ""
+
+msgid "Get stat lines"
+msgstr ""
+
+msgid "Get stats"
+msgstr ""
+
+msgid "Get sysctl values"
+msgstr ""
+
+msgid "Get system admin e-mail address"
+msgstr ""
+
+msgid "Get system gateway"
+msgstr ""
+
+msgid "Get system information"
+msgstr ""
+
+msgid "Get tail"
+msgstr ""
+
+msgid "Gets line count"
+msgstr ""
+
+msgid "Group created successfully"
+msgstr ""
+
+msgid "Group exists"
+msgstr ""
+
+msgid "Host wrong"
+msgstr ""
+
+msgid "Hourly"
+msgstr ""
+
+msgid "IP address or port wrong"
+msgstr ""
+
+msgid "IP address wrong"
+msgstr ""
+
+msgid "IP or IP list wrong"
+msgstr ""
+
+msgid "IP or network address fixed"
+msgstr ""
+
+msgid "IP range wrong"
+msgstr ""
+
+msgid "IPv4"
+msgstr ""
+
+msgid "IPv6"
+msgstr ""
+
+msgid "If client conf"
+msgstr ""
+
+msgid "Init graphs"
+msgstr ""
+
+msgid "Invalid value"
+msgstr ""
+
+msgid "Line"
+msgstr ""
+
+msgid "List hosts"
+msgstr ""
+
+msgid "List physical interfaces"
+msgstr ""
+
+msgid "Make system gateway dynamic"
+msgstr ""
+
+msgid "Make system gateway static"
+msgstr ""
+
+msgid "Method does not exist"
+msgstr ""
+
+msgid "Mime type wrong"
+msgstr ""
+
+msgid "Move ACL Down"
+msgstr ""
+
+msgid "Move ACL Up"
+msgstr ""
+
+msgid "Move rule down"
+msgstr ""
+
+msgid "Move rule up"
+msgstr ""
+
+msgid "NA"
+msgstr ""
+
+msgid "NI"
+msgstr ""
+
+msgid "Name wrong"
+msgstr ""
+
+msgid "No such file"
+msgstr ""
+
+msgid "Not asterisk"
+msgstr ""
+
+msgid "Not comma separated digits"
+msgstr ""
+
+msgid "Not config name"
+msgstr ""
+
+msgid "Not empty string"
+msgstr ""
+
+msgid "Not enough args"
+msgstr ""
+
+msgid "Not running command"
+msgstr ""
+
+msgid "Not serialized array"
+msgstr ""
+
+msgid "Not sha1 encrypted string"
+msgstr ""
+
+msgid "Number wrong"
+msgstr ""
+
+msgid ""
+"One or more actions failed while creating new group\n"
+"Examine the report above to make sure this is the intended result!"
+msgstr ""
+
+msgid "PID"
+msgstr ""
+
+msgid "Packets"
+msgstr ""
+
+msgid "Pfctl output does not match"
+msgstr ""
+
+msgid "Prepare file for download"
+msgstr ""
+
+msgid "Proto"
+msgstr ""
+
+msgid "RSS"
+msgstr ""
+
+msgid "Read system gateway"
+msgstr ""
+
+msgid "Read system hostname"
+msgstr ""
+
+msgid "Read system nameserver"
+msgstr ""
+
+msgid "Regular expression wrong"
+msgstr ""
+
+msgid "Reload "
+msgstr ""
+
+msgid "Requests by date"
+msgstr ""
+
+msgid "Restart "
+msgstr ""
+
+msgid "Restart network"
+msgstr ""
+
+msgid "Rotate all log files"
+msgstr ""
+
+msgid "Rotate log file"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "STAT"
+msgstr ""
+
+msgid "SUCCESS"
+msgstr ""
+
+msgid "Search site"
+msgstr ""
+
+msgid "Select log file"
+msgstr ""
+
+msgid "Set DNS forwarders"
+msgstr ""
+
+msgid "Set PF allowed"
+msgstr ""
+
+msgid "Set PF restricted"
+msgstr ""
+
+msgid "Set afterhours if"
+msgstr ""
+
+msgid "Set configuration"
+msgstr ""
+
+msgid "Set dhcpd conf"
+msgstr ""
+
+msgid "Set e-mail address"
+msgstr ""
+
+msgid "Set help boxes"
+msgstr ""
+
+msgid "Set ifs"
+msgstr ""
+
+msgid "Set interfaces"
+msgstr ""
+
+msgid "Set internal net"
+msgstr ""
+
+msgid "Set locale"
+msgstr ""
+
+msgid "Set log level"
+msgstr ""
+
+msgid "Set logs configuration"
+msgstr ""
+
+msgid "Set man.cgi home"
+msgstr ""
+
+msgid "Set name value pair"
+msgstr ""
+
+msgid "Set pmacct if"
+msgstr ""
+
+msgid "Set pmacct net"
+msgstr ""
+
+msgid "Set reload rate"
+msgstr ""
+
+msgid "Set remote time"
+msgstr ""
+
+msgid "Set session timeout"
+msgstr ""
+
+msgid "Set startup if"
+msgstr ""
+
+msgid "Set startup ifs"
+msgstr ""
+
+msgid "Set symon conf"
+msgstr ""
+
+msgid "Set symon cpus"
+msgstr ""
+
+msgid "Set symon ifs"
+msgstr ""
+
+msgid "Set symon partitions"
+msgstr ""
+
+msgid "Set symon sensors"
+msgstr ""
+
+msgid "Set system clock"
+msgstr ""
+
+msgid "Set system gateway"
+msgstr ""
+
+msgid "Set system hostname"
+msgstr ""
+
+msgid "Set system nameserver"
+msgstr ""
+
+msgid "Set template ips"
+msgstr ""
+
+msgid "Set user password"
+msgstr ""
+
+msgid "Set webalizer hostname"
+msgstr ""
+
+msgid "Source"
+msgstr ""
+
+msgid "Spanish"
+msgstr ""
+
+msgid "Start "
+msgstr ""
+
+msgid "Start OpenVPN process"
+msgstr ""
+
+msgid "Start snort"
+msgstr ""
+
+msgid "State"
+msgstr ""
+
+msgid "Stop "
+msgstr ""
+
+msgid "Stop OpenVPN instance"
+msgstr ""
+
+msgid "Stop Snort instance"
+msgstr ""
+
+msgid "String wrong"
+msgstr ""
+
+msgid "System restart"
+msgstr ""
+
+msgid "System shutdown"
+msgstr ""
+
+msgid "The process is taking too long, thus will run in the background."
+msgstr ""
+
+msgid "Too many args, truncating"
+msgstr ""
+
+msgid "Turkish"
+msgstr ""
+
+msgid "Turn off cats"
+msgstr ""
+
+msgid "Turn off service"
+msgstr ""
+
+msgid "Turn on cats"
+msgstr ""
+
+msgid "Turn on service"
+msgstr ""
+
+msgid "Unblock IPs"
+msgstr ""
+
+msgid "Unblock all"
+msgstr ""
+
+msgid "Unconfigure an interface"
+msgstr ""
+
+msgid "Unknown"
+msgstr ""
+
+msgid "Unsupported command"
+msgstr ""
+
+msgid "Unsupported interface configuration"
+msgstr ""
+
+msgid "Update mail aliases"
+msgstr ""
+
+msgid "Url wrong"
+msgstr ""
+
+msgid "VSZ"
+msgstr ""
+
+msgid "Web Filter IP range wrong"
+msgstr ""
+
+msgid "White and black list entries should not be identical"
+msgstr ""
+
+msgid "Won't delete database.clamav.net entry."
+msgstr ""
+
+msgid "You cannot delete system IP address"
+msgstr ""
+
+msgid "h"
+msgstr ""
+
+msgid "min"
+msgstr ""
+
+msgid "sec"
+msgstr ""
+
+msgid "unconfigured"
+msgstr ""

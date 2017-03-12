@@ -1,0 +1,127 @@
+#	$OpenBSD: rc.local,v 1.39 2006/07/28 20:19:46 sturm Exp $
+
+# Site-specific startup actions, daemons, and other things which
+# can be done AFTER your system goes into securemode.  For actions
+# which should be done BEFORE your system has gone into securemode
+# please see /etc/rc.securelevel.
+
+# Add your local startup actions here.
+
+/bin/mkdir -p /var/tmp/utmfw/
+
+/var/www/htdocs/utmfw/Installer/install.php -f
+# The line above should have been commented out after first boot
+
+echo '\nStarting UTMFW services...'
+
+# Start Apache Web server
+if [ -x /usr/local/sbin/httpd ]; then
+	echo 'Web server'
+	/usr/local/sbin/httpd -u -DSSL >/dev/null 2>&1
+fi
+
+# Start ISC DNS server
+if [ -x /usr/local/sbin/named ]; then
+	echo 'DNS server'
+	/usr/local/sbin/named -t /var/named
+fi
+
+echo -n 'Monitoring:'
+# Order of symux and symon process start-up is important.
+if [ -x /usr/local/libexec/symux ]; then
+	echo -n ' system'
+	/usr/local/libexec/symux
+
+	if [ -x /usr/local/libexec/symon ]; then
+		/usr/local/libexec/symon
+	fi
+fi
+
+if [ -x /usr/local/sbin/pmacctd ]; then
+	echo -n ', network'
+	/usr/local/sbin/pmacctd -f /etc/pmacct/pmacctd-pnrg.conf >/dev/null 2>&1
+	/usr/local/sbin/pmacctd -f /etc/pmacct/pmacctd-protograph.conf >/dev/null 2>&1
+fi
+
+echo -n '\nAnti-virus/spam:'
+# Start ClamAV and freshclam daemons
+mkdir /var/run/clamav
+chown _clamav:_clamav /var/run/clamav
+if [ -x /usr/local/sbin/clamd ]; then
+	echo -n ' virus'
+	/usr/local/sbin/clamd -c /etc/clamd.conf >/dev/null 2>&1
+
+	if [ -x /usr/local/bin/freshclam ]; then
+		/usr/local/bin/freshclam -d
+	fi
+fi
+
+# Start SpamAssassin
+if [ -x /usr/local/bin/spamd ]; then
+	echo -n ', spam'
+	/usr/local/bin/spamd -L -d -x -u _spamdaemon -r /var/run/spamassassin.pid
+fi
+
+echo -n '\nIntrusion detection and prevention:'
+# Start snort IDS for WAN and LAN
+if [ -x /usr/local/bin/snort ]; then
+	echo -n ' ids'
+	/usr/local/bin/snort -i lan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/snort/log >/dev/null 2>&1
+	/usr/local/bin/snort -i wan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/snort/log >/dev/null 2>&1
+fi
+
+# Start snort IPS
+if [ -x /usr/local/sbin/snortips ]; then
+	echo -n ', ips'
+	/usr/local/sbin/snortips
+fi
+
+echo -n '\nProxies:'
+# Start squid (disable DNS checks)
+if [ -x /usr/local/sbin/squid ]; then
+	echo -n ' http'
+	/usr/local/sbin/squid
+fi
+
+# Start p3scan: pop3 virus and spam filter
+if [ -x /usr/local/sbin/p3scan ]; then
+	echo -n ', pop3'
+	mkdir /var/run/p3scan
+	chown _p3scan /var/run/p3scan
+	/usr/local/sbin/p3scan -f /etc/p3scan/p3scan.conf
+fi
+
+# Start smtp-gated: smtp virus and spam filter
+if [ -x /usr/local/sbin/smtp-gated ]; then
+	mkdir /var/run/smtp-gated
+	chown _smtp-gated /var/run/smtp-gated
+	echo -n ', smtp'
+	/usr/local/sbin/smtp-gated /etc/smtp-gated.conf
+fi
+
+# Starting IM proxy
+if [ -x /usr/local/sbin/imspector ]; then
+	mkdir /tmp/imspector
+	chown -R _imspector:_imspector /tmp/imspector
+	echo -n ', im'
+	/usr/local/sbin/imspector -c /etc/imspector/imspector.conf
+fi
+
+# Start SOCKS proxy
+if [ -x /usr/local/sbin/sockd ]; then
+	echo -n ', socks'
+	/usr/local/sbin/sockd -D >/dev/null 2>&1
+fi
+
+# Start E2Guardian content filter
+if [ -x /usr/local/sbin/e2guardian ]; then
+	mkdir /tmp/e2guardian
+	chown -R _e2guardian:_clamav /tmp/e2guardian
+	echo -n '\nWeb filter'
+	/usr/local/sbin/e2guardian >/dev/null 2>&1
+fi
+
+echo ''
+banner utmfw
+echo 'is ready...\n'
+echo -n "a~a." > /dev/speaker &

@@ -1,0 +1,343 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Language: ru_RU\n"
+
+msgid "Account name"
+msgstr ""
+
+msgid "All alerts"
+msgstr "Все оповещения"
+
+msgid "All attempts"
+msgstr "Все попытки"
+
+msgid "All connections"
+msgstr "Все соединения"
+
+msgid "All queries"
+msgstr "Все запросы"
+
+msgid "All requests"
+msgstr "Все запросы"
+
+msgid "All sessions"
+msgstr "Все сессии"
+
+msgid "All un/blocks and extensions"
+msgstr ""
+
+msgid "Allowed requests"
+msgstr "Разрешённые запросы"
+
+msgid "Attack Types"
+msgstr "Типы Атак"
+
+msgid "Blacklists"
+msgstr "Черные списки"
+
+msgid "Blocked Hosts"
+msgstr "Заблокированные хосты"
+
+msgid "Blocked Time"
+msgstr "Период Блокировки"
+
+msgid "Blocked Times (min)"
+msgstr "Периоды Блокировок (мин)"
+
+msgid "Blocked Times (sec)"
+msgstr "Периоды Блокировок (сек)"
+
+msgid "Blocked requests"
+msgstr "Заблокированные запросы"
+
+msgid "Bypassed denials"
+msgstr "Обход запретов"
+
+msgid "Bypassing IPs"
+msgstr "Пропущено с IP"
+
+msgid "Cache"
+msgstr "Кэш"
+
+msgid "Client"
+msgstr "Клиент"
+
+msgid "Client IPs"
+msgstr "Клиентские IP"
+
+msgid "Clients"
+msgstr "Клиенты"
+
+msgid "Closed by"
+msgstr "Кем закрыто"
+
+msgid "Connections by date"
+msgstr "Соединения по дате"
+
+msgid "Deferred IPs"
+msgstr "Замедленные IPs"
+
+msgid "Denied IPs"
+msgstr "Запреты с IP"
+
+msgid "Denied categories"
+msgstr "Запрещенные категории"
+
+msgid "Denied requests"
+msgstr "Запрещённые запросы"
+
+msgid "Destination IPs"
+msgstr "IP назначения"
+
+msgid "Destination addresses"
+msgstr "Адреса назначения"
+
+msgid "Destination ports"
+msgstr "Порты назначения"
+
+msgid "Domains"
+msgstr "Домены"
+
+msgid "Downloaded (KB)"
+msgstr "Принято (KB)"
+
+msgid "E-mails per request"
+msgstr "Писем на запрос"
+
+msgid "Exception IPs"
+msgstr "Исключения с IP"
+
+msgid "Exception requests"
+msgstr "Исключённые запросы"
+
+msgid "Extended Hosts"
+msgstr ""
+
+msgid "Extended Times (min)"
+msgstr ""
+
+msgid "Failed attempts"
+msgstr "Неудачные попытки"
+
+msgid "Failed users"
+msgstr "Отказано пользователям"
+
+msgid "Failure reason"
+msgstr "Причина отказа"
+
+msgid "General Statistics"
+msgstr "Основная статистика"
+
+msgid "HTTP Codes"
+msgstr "Коды HTTP"
+
+msgid "Ham"
+msgstr "Не спам"
+
+msgid "IPs"
+msgstr ""
+
+msgid "IPs querying"
+msgstr "IP делавшие запросы"
+
+msgid "Infected"
+msgstr "Инфецированные"
+
+msgid "Infected IPs"
+msgstr "IP запросивших инфецированный контент"
+
+msgid "Infected e-mails"
+msgstr "Инфецированные e-mails"
+
+msgid "Infected requests"
+msgstr "Инфецированные запросы"
+
+msgid "Links"
+msgstr "Ссылки"
+
+msgid "Links visited"
+msgstr "Посещённые ссылки"
+
+msgid "Locked IPs"
+msgstr "Блокированные IP"
+
+msgid "Logged in user"
+msgstr "Входивший пользователь"
+
+msgid "Longest deferred (sec)"
+msgstr "Наибольшее замедление (сек.)"
+
+msgid "Matched requests"
+msgstr ""
+
+msgid "Methods"
+msgstr "Методы"
+
+msgid "Number of e-mails"
+msgstr "Количество писем"
+
+msgid "Number of messages"
+msgstr "Количество сообщений"
+
+msgid "Packet types"
+msgstr "Типы пакетов"
+
+msgid "Priorities"
+msgstr "Приоритеты"
+
+msgid "Priority"
+msgstr "Приоритет"
+
+msgid "Processed (KB)"
+msgstr "Обработано (KB)"
+
+msgid "Processing time (sec)"
+msgstr "Время обработки (сек)"
+
+msgid "Query types"
+msgstr "Типы запросов"
+
+msgid "Reasons"
+msgstr "Причины"
+
+msgid "Received (KB)"
+msgstr "Получено (KB)"
+
+msgid "Recipients"
+msgstr "Получатели"
+
+msgid "Relay results"
+msgstr "Результаты пересылки"
+
+msgid "Requests"
+msgstr "Запросы"
+
+msgid "Requests by IP"
+msgstr "Запросы по IP"
+
+msgid "Requests by date"
+msgstr "Запросов по датам"
+
+msgid "Requests bypassed"
+msgstr "Запросов в обход"
+
+msgid "Requests denied"
+msgstr "Запросов запрещено"
+
+msgid "Requests infected"
+msgstr "Запросов инфецировано"
+
+msgid "Requests scanned"
+msgstr "Запросов просканированно"
+
+msgid "Results"
+msgstr "Результаты"
+
+msgid "SSH version"
+msgstr "Версия SSH"
+
+msgid "Scan Result"
+msgstr "Результат сканирования"
+
+msgid "Scan Results"
+msgstr "Результаты сканирования"
+
+msgid "Scan Types"
+msgstr "Типы сканирования"
+
+msgid "Scanned IPs"
+msgstr "Просканированно IP"
+
+msgid "Scanned requests"
+msgstr "Просканированно запросов"
+
+msgid "Senders"
+msgstr "Отправители"
+
+msgid "Sent messages"
+msgstr "Послано сообщений"
+
+msgid "Server"
+msgstr "Сервер"
+
+msgid "Session Takeover"
+msgstr "Сессий обслужено"
+
+msgid "Size by IP (KB)"
+msgstr "Размер по IP (KB)"
+
+msgid "Size by Link (KB)"
+msgstr "Размер по Ссылке (KB)"
+
+msgid "Size by Target (KB)"
+msgstr "Размер по Цели (KB)"
+
+msgid "Size by site (KB)"
+msgstr "Размер по сайту"
+
+msgid "Soft inits"
+msgstr ""
+
+msgid "Soft inits (unblock all)"
+msgstr ""
+
+msgid "Source IPs"
+msgstr "IP источников"
+
+msgid "Source Ports"
+msgstr "Порты источников"
+
+msgid "Source addresses"
+msgstr "Адреса источников"
+
+msgid "Spam"
+msgstr "Спам"
+
+msgid "Spam Scan Requests"
+msgstr "Запросов к спам-сканеру"
+
+msgid "Successful logins"
+msgstr "Успешные попытки входа"
+
+msgid "Target"
+msgstr "Цель"
+
+msgid "Target IPs"
+msgstr "Целевые IP"
+
+msgid "Target Ports"
+msgstr "Целевые Порты"
+
+msgid "Total deferred time (sec)"
+msgstr "Общее время замедления (сек)"
+
+msgid "Transmitted (KB)"
+msgstr "Передано (KB)"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Unblocked Hosts"
+msgstr "Разблокированные хосты"
+
+msgid "Users"
+msgstr "Пользователи"
+
+msgid "Virus"
+msgstr ""
+
+msgid "Virus Scan Requests"
+msgstr "Запросов к антивирусу"

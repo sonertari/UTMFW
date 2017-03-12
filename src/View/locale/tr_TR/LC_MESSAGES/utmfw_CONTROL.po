@@ -1,0 +1,388 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+# Soner Tari <sonertari@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-16 23:57+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: Turkish <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, php-format
+msgid "0-100% or 0-1"
+msgstr "0-100% veya 0-1"
+
+msgid "< Previous"
+msgstr "< Önceki"
+
+msgid "<< First"
+msgstr "<< İlk"
+
+msgid "Add"
+msgstr "Ekle"
+
+msgid "Af Translate"
+msgstr "Af Çevirisi"
+
+msgid "All"
+msgstr "Hepsi"
+
+msgid "Anchor"
+msgstr "Çapa"
+
+msgid "Antispoof"
+msgstr "Taklit Engelleme"
+
+msgid "Apply"
+msgstr "Uygula"
+
+msgid "Are you sure you want to <BUTTON_VALUE> secure HTTP?"
+msgstr "Kriptolu HTTP <BUTTON_VALUE>ılacak, emin misiniz?"
+
+msgid "Are you sure you want to delete <RULE_TYPE> rule number <RULE_NUMBER>?"
+msgstr "<RULE_TYPE> kuralı numara <RULE_NUMBER> silinecek, emin misiniz?"
+
+msgid "Are you sure you want to delete the entire ruleset?"
+msgstr "Tüm kural listesi silinecek, emin misiniz?"
+
+msgid "Are you sure you want to delete the rule?"
+msgstr "Kural silinecek, emin misiniz?"
+
+msgid "Are you sure you want to delete the rules file?"
+msgstr "Kural dosyası silinecek, emin misiniz?"
+
+msgid "Binat"
+msgstr "Çift Yönlü Çeviri"
+
+msgid "Blank Line"
+msgstr "Boş Satır"
+
+msgid "Block"
+msgstr "Engelle"
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "Comment"
+msgstr "Yorum"
+
+msgid "Compressed"
+msgstr "Sıkıştırılmış"
+
+msgid "Copy"
+msgstr "Kopyala"
+
+msgid "Create"
+msgstr "Yarat"
+
+msgid "Daily"
+msgstr "Günlük"
+
+msgid "Defaults"
+msgstr "Öntanımlar"
+
+msgid "Delete"
+msgstr "Sil"
+
+msgid "Delete All"
+msgstr "Hepsini Sil"
+
+msgid "Delete rules file"
+msgstr "Kural dosyasını sil"
+
+msgid "Disable"
+msgstr "Kapat"
+
+msgid "Display"
+msgstr "Göster"
+
+msgid "Display line numbers"
+msgstr "Satır sayılarını göster"
+
+msgid "Display with errors"
+msgstr "Hatalara rağmen göster"
+
+msgid "Divert"
+msgstr "Yön Değiştirme"
+
+msgid "Divert Packet"
+msgstr "Paket Yön Değiştirme"
+
+msgid "Download"
+msgstr "İndir"
+
+msgid "Download ruleset"
+msgstr "Kural listesini indir"
+
+msgid "Download with errors"
+msgstr "Hatalara rağmen indir"
+
+msgid "Edit"
+msgstr "Düzenle"
+
+msgid "Enable"
+msgstr "Aç"
+
+msgid "Enter blank lines here"
+msgstr "Buraya boş satır girin"
+
+msgid "Enter comment here"
+msgstr "Buraya yorum girin"
+
+msgid "Enter inline rules here"
+msgstr "Buraya satıriçi kuralları girin"
+
+msgid "Filter"
+msgstr "Elek"
+
+msgid "Generate with errors"
+msgstr "Hatalara rağmen üret"
+
+msgid "Horizontal"
+msgstr "Yatay"
+
+msgid "Hourly"
+msgstr "Saatlik"
+
+msgid "Include"
+msgstr "Ekleme"
+
+msgid "Install"
+msgstr "Kur"
+
+msgid "Install as main ruleset"
+msgstr "Ana kural listesi olarak kur"
+
+msgid "Last >>"
+msgstr "Son >>"
+
+msgid "Limit"
+msgstr "Sınırlar"
+
+msgid "Load"
+msgstr "Yükle"
+
+msgid "Load Anchor"
+msgstr "Yükleme Çapası"
+
+msgid "Load rules from file"
+msgstr "Kuralları dosyadan yükle"
+
+msgid "Load with errors"
+msgstr "Hatalara rağmen yükle"
+
+msgid "Log in"
+msgstr "Gir"
+
+msgid "Macro"
+msgstr "Makro"
+
+msgid "Make Dynamic"
+msgstr "Dinamik Yap"
+
+msgid "Make Static"
+msgstr "Statik Yap"
+
+msgid "Move"
+msgstr "Taşı"
+
+msgid "Move Down"
+msgstr "Aşağı Kaydır"
+
+msgid "Move Up"
+msgstr "Yukarı Kaydır"
+
+msgid "Nat"
+msgstr "Adres Çevirisi"
+
+msgid "Next >"
+msgstr "Sonraki >"
+
+msgid "No Queues defined"
+msgstr "Kuyruk tanımlanmamış"
+
+msgid "Option"
+msgstr "Seçenekler"
+
+msgid "Queue"
+msgstr "Kuyruk"
+
+msgid "Redirect"
+msgstr "Tekrar Yönlendirme"
+
+msgid "Redraw"
+msgstr "Tekrar Üret"
+
+msgid "Reinitialize"
+msgstr "Sıfırla"
+
+msgid "Reload"
+msgstr "Tekrar Yükle"
+
+msgid "Reload main ruleset"
+msgstr "Ana kural listesini tekrar yükle"
+
+msgid "Restart"
+msgstr "Tekrar Başlat"
+
+msgid "Rotate"
+msgstr "Döndür"
+
+msgid "Rotate All"
+msgstr "Hepsini Döndür"
+
+msgid "Route"
+msgstr "Yönlendirme"
+
+msgid "Save"
+msgstr "Kaydet"
+
+msgid "Save ruleset to file"
+msgstr "Kural lıstesını dosyaya kaydet"
+
+msgid "Save with errors"
+msgstr "Hatalara rağmen kaydet"
+
+msgid "Scrub"
+msgstr "Kazıma"
+
+msgid "Search"
+msgstr "Ara"
+
+msgid "Select"
+msgstr "Seç"
+
+msgid "Show"
+msgstr "Göster"
+
+msgid "Start"
+msgstr "Başlat"
+
+msgid "State Defaults"
+msgstr "Durum Öntanımları"
+
+msgid "Stop"
+msgstr "Durdur"
+
+msgid "Table"
+msgstr "Tablo"
+
+msgid "Timeout"
+msgstr "Zaman Aşımları"
+
+msgid "Unblock"
+msgstr "Engellemeyi Kaldır"
+
+msgid "Unblock All"
+msgstr "Hepsini Kaldır"
+
+msgid "Upload"
+msgstr "Karşıya Yükle"
+
+msgid "Upload with errors"
+msgstr "Hatalara rağmen karşıya yükle"
+
+msgid "Vertical"
+msgstr "Dikey"
+
+msgid "add value"
+msgstr "değer ekle"
+
+msgid "as rule number"
+msgstr "kural numarası"
+
+msgid "defaults to S/SA"
+msgstr "öntanım S/SA"
+
+msgid "delete"
+msgstr "sil"
+
+msgid "enter comment, such as a description of the rule"
+msgstr "yorum girin, örneğin kural tanımı"
+
+msgid "filename"
+msgstr "dosya adı"
+
+msgid "groupname or groupid"
+msgstr "grup adı veya kimliği"
+
+msgid "host or network"
+msgstr "bilgisayar veya ağ"
+
+msgid "if or macro"
+msgstr "arayüz veya makro"
+
+msgid "interface"
+msgstr "arayüz"
+
+msgid "ip, host, table or macro"
+msgstr "ip, bilgisayar, tablo veya makro"
+
+msgid "label"
+msgstr "etiket"
+
+msgid "logging interface"
+msgstr "kayıt arayüzü"
+
+msgid "move to"
+msgstr "taşınacak yer"
+
+msgid "name, may be nested"
+msgstr "ad, içiçe olabilir"
+
+msgid "no"
+msgstr "hayır"
+
+msgid "none"
+msgstr "boş"
+
+msgid "number"
+msgstr "sayı"
+
+msgid "number 0-7"
+msgstr "0-7 arası sayı"
+
+msgid "number or abbrev."
+msgstr "sayı veya kısaltma"
+
+msgid "number or name"
+msgstr "sayı veya ad"
+
+msgid "number(ms)"
+msgstr "sayı(ms)"
+
+msgid "number, name, table or macro"
+msgstr "sayı, ad, tablo veya makro"
+
+msgid "number/number"
+msgstr "sayı/sayı"
+
+msgid "number[(K|M|G)]"
+msgstr "sayı[(K|M|G)]"
+
+msgid "os name or macro"
+msgstr "sistem adı veya makro"
+
+msgid "protocol"
+msgstr "protokol"
+
+msgid "string"
+msgstr "metin"
+
+msgid "string or number"
+msgstr "metin veya sayı"
+
+msgid "username or userid"
+msgstr "kullanıcı adı veya kimliği"
+
+msgid "valid string"
+msgstr "geçerli bir metin"
+
+msgid "yes"
+msgstr "evet"

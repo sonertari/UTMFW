@@ -1,0 +1,881 @@
+# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# This file is distributed under the same license as UTMFW.
+msgid ""
+msgstr ""
+"Project-Id-Version: UTMFW 5.9\n"
+"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
+"POT-Creation-Date: 2009-11-11 16:21+0200\n"
+"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "%CPU"
+msgstr "％CPU"
+
+msgid "Active States"
+msgstr "激活状态"
+
+msgid "Add ACL"
+msgstr "添加ACL"
+
+msgid "Add DHCP interface"
+msgstr "添加DHCP接口"
+
+msgid "Add HTTP proxy IP:port"
+msgstr "HTTP代理服务器的IP地址：端口"
+
+msgid "Add IP"
+msgstr "添加IP"
+
+msgid "Add alert keyword"
+msgstr "添加提醒关键字"
+
+msgid "Add badword"
+msgstr "添加不当字词"
+
+msgid "Add database mirror"
+msgstr "添加数据库镜像"
+
+msgid "Add ext/mime"
+msgstr "添加扩展名/MIME"
+
+msgid "Add filter group IP"
+msgstr "组IP地址过滤"
+
+msgid "Add host"
+msgstr "添加主机"
+
+msgid "Add list item"
+msgstr "添加列表项"
+
+msgid "Add to IP list"
+msgstr "添加到IP清单"
+
+msgid "Age"
+msgstr ""
+
+msgid "Apply AfterHours"
+msgstr "应用非工作时间"
+
+msgid "Apply pf rules"
+msgstr "应用PF规则"
+
+msgid "Arg type check failed"
+msgstr ""
+
+msgid "Automatic configuration"
+msgstr "自动配置"
+
+msgid "Block IPs"
+msgstr "封锁IP地址"
+
+msgid "Business days and holidays cannot overlap."
+msgstr "商务日和节假日不能重叠。"
+
+msgid "Bytes"
+msgstr ""
+
+msgid "Cannot add"
+msgstr ""
+
+msgid "Cannot find group configuration file"
+msgstr ""
+
+msgid "Cannot get pid"
+msgstr ""
+
+msgid "Cannot read config"
+msgstr ""
+
+msgid "Change p3scan report language"
+msgstr "更改p3scan报告的语言"
+
+msgid "Change spamassassin local"
+msgstr "更改过虑地方"
+
+msgid "Check authentication"
+msgstr "检查认证"
+
+msgid "Check if process running"
+msgstr "检查进程是否运行"
+
+msgid "Chinese simplified"
+msgstr ""
+
+msgid "Configure an interface"
+msgstr "配置接口"
+
+msgid "Copy conf"
+msgstr "复制配置"
+
+msgid "Create new group"
+msgstr "创建新组"
+
+msgid "Datetime wrong"
+msgstr "日期时间错误"
+
+msgid "Delete ACL"
+msgstr "删除ACL"
+
+msgid "Delete DHCP interface"
+msgstr "删除DHCP接口"
+
+msgid "Delete HTTP proxy IP:port"
+msgstr "删除HTTP代理服务器IP：端口"
+
+msgid "Delete IP"
+msgstr "删除IP"
+
+msgid "Delete IP from list"
+msgstr "从列表中删除IP"
+
+msgid "Delete PF allowed"
+msgstr "删除PF允许"
+
+msgid "Delete PF restricted"
+msgstr "删除PF限制"
+
+msgid "Delete alert keywords"
+msgstr "删除警报关键字"
+
+msgid "Delete badword"
+msgstr "删除坏字眼"
+
+msgid "Delete conf"
+msgstr "删除配置"
+
+msgid "Delete database mirror"
+msgstr "删除数据库镜像"
+
+msgid "Delete ext/mime"
+msgstr "删除扩展名/MIME"
+
+msgid "Delete filter group IP"
+msgstr "删除滤波器组IP"
+
+msgid "Delete host"
+msgstr "删除主机"
+
+msgid "Delete list item"
+msgstr "删除列表项目"
+
+msgid "Dest"
+msgstr ""
+
+msgid "Dir"
+msgstr ""
+
+msgid "Disable AfterHours"
+msgstr "禁用非工作时间"
+
+msgid "Disable AfterHours business days"
+msgstr "禁用非工作日"
+
+msgid "Disable AfterHours holidays"
+msgstr "禁用假期"
+
+msgid "Disable config"
+msgstr "禁用配置"
+
+msgid "Disable ext/mime"
+msgstr "禁用扩展名/MIME"
+
+msgid "Disable pf"
+msgstr "禁用PF"
+
+msgid "Disable rule"
+msgstr "禁用规则"
+
+msgid "Display remote time"
+msgstr "显示远程时间"
+
+msgid "Dutch"
+msgstr ""
+
+msgid "E-mail address wrong"
+msgstr "电子邮件地址错误"
+
+msgid "Enable AfterHours"
+msgstr "启用非工作时间"
+
+msgid "Enable AfterHours business days"
+msgstr "启用非工作时日"
+
+msgid "Enable AfterHours holidays"
+msgstr "启用假期"
+
+msgid "Enable config"
+msgstr "启用配置"
+
+msgid "Enable ext/mime"
+msgstr "启用扩展名/MIME"
+
+msgid "Enable pf"
+msgstr "启用PF"
+
+msgid "Enable rule"
+msgstr "启用规则"
+
+msgid "English"
+msgstr ""
+
+msgid "Erase statistics files"
+msgstr "清除统计数据文件"
+
+msgid "Expr"
+msgstr ""
+
+msgid "Extension wrong"
+msgstr "扩展错误"
+
+msgid "FAILED"
+msgstr ""
+
+msgid "FATAL ERRORS in creating new group"
+msgstr ""
+
+msgid "Filepath wrong"
+msgstr "文件路径错误"
+
+msgid "French"
+msgstr ""
+
+msgid "Get ACL"
+msgstr "获得ACL"
+
+msgid "Get AfterHour pf rules"
+msgstr "获得AfterHourPF规则"
+
+msgid "Get AfterHours"
+msgstr "获得非工作时间"
+
+msgid "Get DHCP IP range"
+msgstr "获得的DHCP IP地址范围"
+
+msgid "Get DHCP interfaces"
+msgstr "获得DHCP接口"
+
+msgid "Get DHCP option"
+msgstr "获得DHCP选项"
+
+msgid "Get DNS forwarders"
+msgstr "获取DNS转发器"
+
+msgid "Get HTTP proxy IP:port"
+msgstr "获取HTTP代理服务器IP：端口"
+
+msgid "Get IPS info"
+msgstr "获取IPS信息"
+
+msgid "Get PF allowed"
+msgstr "获得PF允许"
+
+msgid "Get PF restricted"
+msgstr "获得PF限制"
+
+msgid "Get active cats"
+msgstr "获得使用中的类别"
+
+msgid "Get alert keywords"
+msgstr "获得警报关键字"
+
+msgid "Get all stats"
+msgstr "获得所有统计"
+
+msgid "Get arp table"
+msgstr "获取ARP表"
+
+msgid "Get auth ip list"
+msgstr "获得授权IP列表"
+
+msgid "Get badwords"
+msgstr "获取坏字眼"
+
+msgid "Get config values"
+msgstr "获取配置价值"
+
+msgid "Get configuration"
+msgstr "获取配置"
+
+msgid "Get confs"
+msgstr "获得confs"
+
+msgid "Get current locale"
+msgstr "获取当前区域"
+
+msgid "Get database mirrors"
+msgstr "获取数据库镜像"
+
+msgid "Get dhcp leases"
+msgstr "获取DHCP租约"
+
+msgid "Get disabled rules"
+msgstr "获得禁用规则"
+
+msgid "Get ext/mime list"
+msgstr "获得EXT/MIME的列表"
+
+msgid "Get ext_if"
+msgstr "获得ext_if"
+
+msgid "Get group count"
+msgstr "获得小组计数器"
+
+msgid "Get group ip list"
+msgstr "获得小组IP列表"
+
+msgid "Get host graphs"
+msgstr "获取主机图"
+
+msgid "Get if config"
+msgstr "获得网络接口配置"
+
+msgid "Get im log file"
+msgstr "获得IM日志文件"
+
+msgid "Get inactive cats"
+msgstr "获得非使用中的类别"
+
+msgid "Get int_if"
+msgstr "获得int_if"
+
+msgid "Get lines"
+msgstr "获取日志文件行"
+
+msgid "Get list"
+msgstr "获取清单"
+
+msgid "Get listed ips"
+msgstr "获取IPS清单"
+
+msgid "Get local users"
+msgstr "获得本地用户"
+
+msgid "Get locales"
+msgstr "获得语言环境"
+
+msgid "Get log file"
+msgstr "获取日志文件"
+
+msgid "Get log files list"
+msgstr "获取日志文件列表"
+
+msgid "Get log start date"
+msgstr "获取日志的开始日期"
+
+msgid "Get logs configuration"
+msgstr "获取日志配置"
+
+msgid "Get partition list"
+msgstr "获得分区列表"
+
+msgid "Get pf state count"
+msgstr ""
+
+msgid "Get pf states"
+msgstr ""
+
+msgid "Get pfw commandwrapper -conntest"
+msgstr "获得PFW应用commandwrapper，conntest"
+
+msgid "Get pfw commandwrapper -info"
+msgstr "获得PFW应用commandwrapper信息表"
+
+msgid "Get pfw commandwrapper -log"
+msgstr "获得PFW应用commandwrapper日志"
+
+msgid "Get pfw commandwrapper -pfinfo"
+msgstr "获得PFW应用commandwrapper，pfinfo"
+
+msgid "Get pfw commandwrapper -pfmem"
+msgstr "获得PFW应用commandwrapper，pfmem"
+
+msgid "Get pfw commandwrapper -pfstates"
+msgstr "获得PFW应用commandwrapper，pfstates"
+
+msgid "Get pfw commandwrapper -queues"
+msgstr "获得PFW应用commandwrapper，龙"
+
+msgid "Get pfw packetfilter -i"
+msgstr "获得PFW应用包过滤，我"
+
+msgid "Get pfw packetfilter -r"
+msgstr "获得PFW应用包过滤，反"
+
+msgid "Get pfw packetfilter -t"
+msgstr "获得PFW应用包过滤，吨"
+
+msgid "Get process list"
+msgstr "获取进程列表"
+
+msgid "Get protocols"
+msgstr "获取协议"
+
+msgid "Get remote time"
+msgstr "获取远程时间"
+
+msgid "Get remote users"
+msgstr "获取远程用户"
+
+msgid "Get rules"
+msgstr "获取规则"
+
+msgid "Get service start status"
+msgstr "获得服务的启动状态"
+
+msgid "Get service status"
+msgstr "获得服务的状态"
+
+msgid "Get sessions"
+msgstr "获得会话"
+
+msgid "Get software version"
+msgstr "获取软件版本"
+
+msgid "Get source file CVS tag"
+msgstr "获取源文件CVS的标记"
+
+msgid "Get spamd blacklist"
+msgstr "获得spamd黑列表"
+
+msgid "Get spamd whitelist"
+msgstr "获得spamd白列表"
+
+msgid "Get stat lines"
+msgstr "获取统计线"
+
+msgid "Get stats"
+msgstr "获取统计"
+
+msgid "Get sysctl values"
+msgstr "获得sysctl值"
+
+msgid "Get system admin e-mail address"
+msgstr "获得系统管理员的电子邮件地址"
+
+msgid "Get system gateway"
+msgstr "获取系统网关"
+
+msgid "Get system information"
+msgstr "获取系统信息"
+
+msgid "Get tail"
+msgstr "获得日志尾部"
+
+msgid "Gets line count"
+msgstr "获取行计数"
+
+msgid "Group created successfully"
+msgstr ""
+
+msgid "Group exists"
+msgstr "组存在"
+
+msgid "Horizontal"
+msgstr "水平"
+
+msgid "Host wrong"
+msgstr "主机错误"
+
+msgid "Hourly"
+msgstr "每小时"
+
+msgid "IP address or port wrong"
+msgstr "IP地址或端口错误"
+
+msgid "IP address wrong"
+msgstr "IP地址错误"
+
+msgid "IP or IP list wrong"
+msgstr "IP或IP地址列表错"
+
+msgid "IP or network address fixed"
+msgstr ""
+
+msgid "IP range wrong"
+msgstr "IP地址范围错误"
+
+msgid "IPv4"
+msgstr "IPv4"
+
+msgid "IPv6"
+msgstr "IPv6"
+
+msgid "If client conf"
+msgstr "网络接口客户配置"
+
+msgid "Init graphs"
+msgstr "初始化图"
+
+msgid "Invalid value"
+msgstr "无效的值"
+
+msgid "Line"
+msgstr "线"
+
+msgid "Lines per page"
+msgstr "每页的行数"
+
+msgid "List hosts"
+msgstr "列表主机"
+
+msgid "List physical interfaces"
+msgstr "列表物理接口"
+
+msgid "Make system gateway dynamic"
+msgstr "设置动态系统网关"
+
+msgid "Make system gateway static"
+msgstr "设置静态系统网关"
+
+msgid "Method does not exist"
+msgstr ""
+
+msgid "Mime type wrong"
+msgstr "MIME类型错误"
+
+msgid "Move ACL Down"
+msgstr "向下移动ACL"
+
+msgid "Move ACL Up"
+msgstr "向上移动ACL"
+
+msgid "Move rule down"
+msgstr ""
+
+msgid "Move rule up"
+msgstr ""
+
+msgid "NA"
+msgstr "不适用"
+
+msgid "NI"
+msgstr "网络接口"
+
+msgid "Name wrong"
+msgstr "名称错误"
+
+msgid "No such file"
+msgstr ""
+
+msgid "Not asterisk"
+msgstr "不是星号"
+
+msgid "Not comma separated digits"
+msgstr "不以逗号分隔数字"
+
+msgid "Not config name"
+msgstr "不会配置名称"
+
+msgid "Not empty string"
+msgstr "不会清空字符串"
+
+msgid "Not enough args"
+msgstr ""
+
+msgid "Not running command"
+msgstr ""
+
+msgid "Not serialized array"
+msgstr "不会序列化数组"
+
+msgid "Not sha1 encrypted string"
+msgstr "不sha1加密字符串"
+
+msgid "Number wrong"
+msgstr "号码错误"
+
+msgid ""
+"One or more actions failed while creating new group\n"
+"Examine the report above to make sure this is the intended result!"
+msgstr ""
+
+msgid "Overview"
+msgstr "概述"
+
+msgid "PID"
+msgstr "PID"
+
+msgid "Packets"
+msgstr ""
+
+msgid "Pfctl output does not match"
+msgstr ""
+
+msgid "Prepare file for download"
+msgstr "准备文件下载"
+
+msgid "Proto"
+msgstr ""
+
+msgid "Queue Statistics"
+msgstr "队列统计"
+
+msgid "RSS"
+msgstr "RSS"
+
+msgid "Read system gateway"
+msgstr "阅读系统网关"
+
+msgid "Read system hostname"
+msgstr "阅读系统主机"
+
+msgid "Read system nameserver"
+msgstr "阅读系统域名服务器"
+
+msgid "Regexp"
+msgstr "正则表达式"
+
+msgid "Regular expression wrong"
+msgstr "正则表达式错误"
+
+msgid "Reload "
+msgstr "重新载入"
+
+msgid "Requests by date"
+msgstr "请求日期"
+
+msgid "Restart "
+msgstr "重新启动"
+
+msgid "Restart network"
+msgstr "重新启动网络"
+
+msgid "Rotate all log files"
+msgstr "轮换所有日志文件"
+
+msgid "Rotate log file"
+msgstr "轮换日志文件"
+
+msgid "Russian"
+msgstr ""
+
+msgid "STAT"
+msgstr "STAT"
+
+msgid "SUCCESS"
+msgstr ""
+
+msgid "Search site"
+msgstr "搜索网站"
+
+msgid "Select log file"
+msgstr "选择日志文件"
+
+msgid "Set DNS forwarders"
+msgstr "设置DNS转发器"
+
+msgid "Set PF allowed"
+msgstr "设置PF允许"
+
+msgid "Set PF restricted"
+msgstr "设置PF限制"
+
+msgid "Set afterhours if"
+msgstr "设置非工作时间网络接口"
+
+msgid "Set configuration"
+msgstr "设置配置"
+
+msgid "Set dhcpd conf"
+msgstr "设置dhcpd配置"
+
+msgid "Set e-mail address"
+msgstr "设置电子邮件地址"
+
+msgid "Set help boxes"
+msgstr "设置帮助"
+
+msgid "Set ifs"
+msgstr "设置网络接口"
+
+msgid "Set interfaces"
+msgstr "设置接口"
+
+msgid "Set internal net"
+msgstr "设置内部网"
+
+msgid "Set locale"
+msgstr ""
+
+msgid "Set log level"
+msgstr "设置日志级别"
+
+msgid "Set logs configuration"
+msgstr "设置日志配置"
+
+msgid "Set man.cgi home"
+msgstr "设置man.cgi主页"
+
+msgid "Set name value pair"
+msgstr "设置名称值对"
+
+msgid "Set pmacct if"
+msgstr "设置pmacct网络接口"
+
+msgid "Set pmacct net"
+msgstr "设置pmacct网"
+
+msgid "Set reload rate"
+msgstr "设置重载率"
+
+msgid "Set remote time"
+msgstr "设置远程时间"
+
+msgid "Set session timeout"
+msgstr "设置会话超时"
+
+msgid "Set startup if"
+msgstr "设置启动网络接口"
+
+msgid "Set startup ifs"
+msgstr "设置多个启动网络接口"
+
+msgid "Set symon conf"
+msgstr "设置系统监测配置"
+
+msgid "Set symon cpus"
+msgstr "设置系统监测的CPU"
+
+msgid "Set symon ifs"
+msgstr "设置系统监测网络接口"
+
+msgid "Set symon partitions"
+msgstr "设置系统监测分区"
+
+msgid "Set symon sensors"
+msgstr "设置系统监测传感器"
+
+msgid "Set system clock"
+msgstr "设置系统时钟"
+
+msgid "Set system gateway"
+msgstr "设置系统网关"
+
+msgid "Set system hostname"
+msgstr "设置主机名"
+
+msgid "Set system nameserver"
+msgstr "设置系统域名服务器"
+
+msgid "Set template ips"
+msgstr "设置IPS模板"
+
+msgid "Set user password"
+msgstr "设置用户密码"
+
+msgid "Set webalizer hostname"
+msgstr "设置Webalizer的主机名"
+
+msgid "Source"
+msgstr ""
+
+msgid "Spanish"
+msgstr ""
+
+msgid "Start "
+msgstr "开始"
+
+msgid "Start OpenVPN process"
+msgstr "开始OpenVPN的过程"
+
+msgid "Start snort"
+msgstr "开始snort"
+
+msgid "State"
+msgstr ""
+
+msgid "Stop "
+msgstr "停止"
+
+msgid "Stop OpenVPN instance"
+msgstr "停止OpenVPN的实例"
+
+msgid "Stop Snort instance"
+msgstr "停止Snort的实例"
+
+msgid "String wrong"
+msgstr "字符串错误"
+
+msgid "System restart"
+msgstr "系统重新启动"
+
+msgid "System shutdown"
+msgstr "系统关机"
+
+msgid "The process is taking too long, thus will run in the background."
+msgstr "过程太长，因此将在后台运行。"
+
+msgid "Too many args, truncating"
+msgstr ""
+
+msgid "Turkish"
+msgstr ""
+
+msgid "Turn off cats"
+msgstr "关闭类别"
+
+msgid "Turn off service"
+msgstr "关闭服务"
+
+msgid "Turn on cats"
+msgstr "打开类别"
+
+msgid "Turn on service"
+msgstr "打开服务"
+
+msgid "Unblock IPs"
+msgstr "解除阻止的IP"
+
+msgid "Unblock all"
+msgstr "解除阻止所有"
+
+msgid "Unconfigure an interface"
+msgstr ""
+
+msgid "Unknown"
+msgstr "未知"
+
+msgid "Unsupported command"
+msgstr ""
+
+msgid "Unsupported interface configuration"
+msgstr "不支持的接口配置"
+
+msgid "Update mail aliases"
+msgstr "更新邮件别名"
+
+msgid "Url wrong"
+msgstr "网址错误"
+
+msgid "VSZ"
+msgstr "VSZ"
+
+msgid "Web Filter IP range wrong"
+msgstr "网页过滤IP地址范围错误"
+
+msgid "White and black list entries should not be identical"
+msgstr ""
+
+msgid "Won't delete database.clamav.net entry."
+msgstr ""
+
+msgid "You cannot delete system IP address"
+msgstr ""
+
+msgid "h"
+msgstr "时"
+
+msgid "min"
+msgstr "分"
+
+msgid "sec"
+msgstr "秒"
+
+msgid "unconfigured"
+msgstr ""
