@@ -79,8 +79,8 @@ msgid ""
 "2 = report fully\n"
 "3 = use HTML template file (accessdeniedaddress ignored) - recommended\n"
 "\n"
-"If defined, this overrides the global setting in dansguardian.conf for "
-"members of this filter group."
+"If defined, this overrides the global setting in e2guardian.conf for members "
+"of this filter group."
 msgstr ""
 "-1 =日志，但不会阻止-隐形模式\n"
 "0 =只说拒绝访问\n"
@@ -88,10 +88,14 @@ msgstr ""
 "2 =报告充分\n"
 "3 =使用HTML模板文件（accessdeniedaddress忽略） -推荐\n"
 "\n"
-"如果定义，这将覆盖全局的dansguardian.conf设置此过滤器的成员组。"
+"如果定义，这将覆盖全局的e2guardian.conf设置此过滤器的成员组。"
 
 msgid "0 = none  1 = just denied  2 = all text based  3 = all requests"
 msgstr "0 =无1 = 2 =刚否认所有文字= 3的所有要求"
+
+#, php-format
+msgid "0-100% or 0-1"
+msgstr ""
 
 msgid "1 minute average"
 msgstr "1分钟平均"
@@ -107,6 +111,9 @@ msgstr "<向前"
 
 msgid "<< First"
 msgstr "<<第一"
+
+msgid "<RULE_TYPE> rule"
+msgstr ""
 
 msgid ""
 "<b>Make sure you have applied your changes to network settings system-wide "
@@ -163,11 +170,17 @@ msgstr "访问被拒绝地址"
 msgid "Account name"
 msgstr "帐户名称"
 
+msgid "Action"
+msgstr ""
+
 msgid "Active IPs (arp table)"
 msgstr "（ARP表主动IP地址）"
 
 msgid "Active States"
 msgstr "激活状态"
+
+msgid "Adaptive Timeouts"
+msgstr ""
 
 msgid "Add"
 msgstr "添加"
@@ -211,6 +224,9 @@ msgstr "添加列表项"
 msgid "Add to IP list"
 msgstr "添加到IP清单"
 
+msgid "Additional mime types"
+msgstr ""
+
 msgid "Address Family"
 msgstr "家庭地址"
 
@@ -225,6 +241,9 @@ msgstr "高级电源管理"
 
 msgid "Advert servers and banned URLs"
 msgstr "广告服务器和禁止的网址"
+
+msgid "Af Translate"
+msgstr ""
 
 msgid "After hours"
 msgstr "业余时间"
@@ -244,6 +263,20 @@ msgstr ""
 msgid "Alerts"
 msgstr "警报"
 
+msgid "All"
+msgstr ""
+
+msgid ""
+"All about advertising: This includes sites offering banners and banner "
+"creation as well as sites delivering banners to be shown in webpages and "
+"advertising companies."
+msgstr ""
+
+msgid ""
+"All about sports: sports teams, sport discussions as well as information "
+"about sports people and the various sports themselves."
+msgstr ""
+
 msgid "All alerts"
 msgstr "所有报警"
 
@@ -252,6 +285,9 @@ msgstr "所有尝试"
 
 msgid "All connections"
 msgstr "所有连接"
+
+msgid "All domains where people login obtaining a dynamic IP address."
+msgstr ""
 
 msgid "All monitoring processes write to the same log file."
 msgstr "所有监测进程写入相同的日志文件。"
@@ -268,11 +304,46 @@ msgstr "保留所有权利。"
 msgid "All sessions"
 msgstr "所有会话"
 
+msgid ""
+"All sites about astrology, horoscopes, numerology, palm reading and so on; "
+"sites that offer services to fortell the future."
+msgstr ""
+
+msgid ""
+"All sites related motorboats. Included are vendor sites, resellers, fan and "
+"hobby pages as well as and suppliers."
+msgstr ""
+
+msgid ""
+"All sites related to cars. Included are automobile companies and automotive "
+"suppliers."
+msgstr ""
+
+msgid ""
+"All sites related to motorcycles. Included are vendor sites, resellers, fan "
+"and hobby pages as well as and suppliers. Scooters included."
+msgstr ""
+
+msgid ""
+"All sites related to planes ranging from small one and two seaters up to the "
+"large traffic planes, old and new, private, commercial and military. Vendors "
+"and supplier are included (airports are not). Helicopter sites are included "
+"as well."
+msgstr ""
+
 msgid "All sport sites"
 msgstr "所有的体育网站"
 
+msgid ""
+"All topics concerning pets: description, breed, food, looks, fairs, favorite "
+"pet stories and so on."
+msgstr ""
+
 msgid "All un/blocks and extensions"
 msgstr "所有启用/禁用扩展"
+
+msgid "Allow Opts"
+msgstr ""
 
 msgid "Allow localhost"
 msgstr "允许本地主机"
@@ -323,11 +394,17 @@ msgstr ""
 "统计数据分析，可能需要很长时间来处理。请耐心等待。此外请注意，如果您频繁刷新"
 "此页，CPU的负载可能大大增加。"
 
+msgid "Anchor"
+msgstr ""
+
 msgid "And finally deny all other access to this proxy"
 msgstr "最后否认此代理的所有其它访问"
 
 msgid "Anonymize Logs"
 msgstr "匿名日志"
+
+msgid "Antispoof"
+msgstr ""
 
 msgid "Apply"
 msgstr "应用"
@@ -370,11 +447,26 @@ msgid ""
 "server."
 msgstr "我们连接到TCP或UDP服务器？使用于相同的设置服务器。"
 
+msgid "Are you sure you want to <BUTTON_VALUE> secure HTTP?"
+msgstr ""
+
 msgid "Are you sure you want to create a new group?"
 msgstr "你确定要创建一个新组？"
 
+msgid "Are you sure you want to delete <RULE_TYPE> rule number <RULE_NUMBER>?"
+msgstr ""
+
 msgid "Are you sure you want to delete the configuration?"
 msgstr "你确定要删除配置？"
+
+msgid "Are you sure you want to delete the entire ruleset?"
+msgstr ""
+
+msgid "Are you sure you want to delete the rule?"
+msgstr ""
+
+msgid "Are you sure you want to delete the rules file?"
+msgstr ""
 
 msgid "Are you sure you want to delete the selected items?"
 msgstr "你确定要删除所选的项目？"
@@ -427,6 +519,12 @@ msgstr ""
 "触发根据这些例外。\n"
 "默认为关闭。"
 
+msgid "Assign Priority"
+msgstr ""
+
+msgid "Assign Tag"
+msgstr ""
+
 msgid "Attack Types"
 msgstr "攻击类型"
 
@@ -461,8 +559,14 @@ msgstr "坏字眼发现与此单个字符替换"
 msgid "Badwords replace character"
 msgstr "坏字眼替换字符"
 
+msgid "Bandwidth"
+msgstr ""
+
 msgid "Banking websites"
 msgstr "银行网站"
+
+msgid "Banned flash replacement"
+msgstr ""
 
 msgid "Banned image replacement"
 msgstr "替换被禁止图片"
@@ -479,6 +583,9 @@ msgstr "贝叶斯自动学习"
 msgid "Bayesian classifier auto-learning (default: 1)"
 msgstr "贝叶斯分类器自动学习（默认是：1）"
 
+msgid "Binat"
+msgstr ""
+
 msgid "Blacklist"
 msgstr "黑名单"
 
@@ -490,6 +597,9 @@ msgstr "列入黑名单的IP总是被阻止。"
 
 msgid "Blacklists"
 msgstr "黑名单"
+
+msgid "Blank Line"
+msgstr ""
 
 msgid "Blanket"
 msgstr "毯子"
@@ -534,6 +644,12 @@ msgstr "块时间"
 msgid "Block IPs"
 msgstr "封锁IP地址"
 
+msgid "Block Option"
+msgstr ""
+
+msgid "Block Policy"
+msgstr ""
+
 msgid "Block all filetransfers"
 msgstr "阻止所有filetransfers"
 
@@ -557,6 +673,10 @@ msgstr "被阻止时间（秒）"
 
 msgid "Blocked requests"
 msgstr "被阻止请求"
+
+msgid ""
+"Break SSL protocol and redirect to another HTTPS website for denied page"
+msgstr ""
 
 msgid "Broadcast address"
 msgstr "广播地址"
@@ -592,22 +712,22 @@ msgid ""
 "Buttons on this page should help you apply the new configuration system-wide "
 "when you change certain system settings or hardware.\n"
 "\n"
-"The web user interface stores statistics under /var/tmp/utmfw folder. "
-"The statistics are updated incrementally when new messages are appended to "
-"log files. When user selects a compressed log file for viewing or "
-"statistics, its uncompressed copy is saved under the same folder also. This "
-"strategy greatly improves the performance of Statistics and Logs pages, and "
-"enables other features of the web user interface. Since these statistics and "
+"The web user interface stores statistics under /var/tmp/utmfw folder. The "
+"statistics are updated incrementally when new messages are appended to log "
+"files. When user selects a compressed log file for viewing or statistics, "
+"its uncompressed copy is saved under the same folder also. This strategy "
+"greatly improves the performance of Statistics and Logs pages, and enables "
+"other features of the web user interface. Since these statistics and "
 "uncompressed log files may take up a lot of disk space, you are advised to "
 "keep your /var partition as large as possible."
 msgstr ""
 "在此网页按钮应该可以帮助您应用新的配置全系统当您更改某些系统设置或硬件。\n"
 "\n"
-"该网站的用户界面商店统计在/var/tmp/utmfw文件夹中。最新的统计数据增量新邮"
-"件时追加到日志文件。当用户选择一个供浏览或压缩档统计，其压缩的副本保存在同一"
-"文件夹中也。这个战略大大提高了统计和日志页性能可通过这些网络用户界面的其他功"
-"能。由于这些统计和压缩日志文件可能占用大量的磁盘空间，建议您保持你的/var分区"
-"尽可能大。"
+"该网站的用户界面商店统计在/var/tmp/utmfw文件夹中。最新的统计数据增量新邮件时"
+"追加到日志文件。当用户选择一个供浏览或压缩档统计，其压缩的副本保存在同一文件"
+"夹中也。这个战略大大提高了统计和日志页性能可通过这些网络用户界面的其他功能。"
+"由于这些统计和压缩日志文件可能占用大量的磁盘空间，建议您保持你的/var分区尽可"
+"能大。"
 
 msgid ""
 "By default, Clamd accepts virus scan requests from processes running on the "
@@ -655,9 +775,6 @@ msgstr ""
 msgid "Bytes Free"
 msgstr "字节免费"
 
-msgid "UTMFW ADMINISTRATION INTERFACE"
-msgstr "UTMFW管理界面"
-
 msgid "COMMAND"
 msgstr "命令"
 
@@ -667,14 +784,14 @@ msgstr "CPU负载"
 msgid "CPUs"
 msgstr "CUPs"
 
-msgid "CVS Tag"
-msgstr "CVS的标签"
-
 msgid "CTLR"
 msgstr "CTLR"
 
 msgid "CTLR Logs"
 msgstr "CTLR 日志"
+
+msgid "CVS Tag"
+msgstr "CVS的标签"
 
 msgid "Cache"
 msgstr "缓存"
@@ -682,16 +799,37 @@ msgstr "缓存"
 msgid "Cache mgr"
 msgstr "缓存经理"
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Cannot add"
 msgstr ""
 
 msgid "Cannot find group configuration file"
 msgstr ""
 
+msgid "Cannot fork pfctl process"
+msgstr ""
+
+msgid "Cannot generate rule"
+msgstr ""
+
 msgid "Cannot get pid"
 msgstr ""
 
+msgid "Cannot install pf rule file"
+msgstr ""
+
+msgid "Cannot load pf rules"
+msgstr ""
+
 msgid "Cannot read config"
+msgstr ""
+
+msgid "Cannot remove tmp pf file"
+msgstr ""
+
+msgid "Cannot write to tmp pf file"
 msgstr ""
 
 msgid "Categories"
@@ -741,6 +879,11 @@ msgstr "检查认证"
 msgid "Check if process running"
 msgstr "检查进程是否运行"
 
+msgid ""
+"Check that ssl certificates for servers on https connections are valid and "
+"signed by a ca in the configured path."
+msgstr ""
+
 msgid "Chinese simplified"
 msgstr ""
 
@@ -773,6 +916,9 @@ msgstr ""
 "一段时间。如果你不喜欢这个然后选择禁用它。\n"
 "（开|关）默认=开。"
 
+msgid "Cleared"
+msgstr ""
+
 msgid "Client"
 msgstr "客户端"
 
@@ -788,106 +934,16 @@ msgstr "客户端"
 msgid "Closed by"
 msgstr "关闭"
 
-msgid "UTMFW Administration Interface"
-msgstr "UTMFW管理界面"
+msgid "Collection of search engines and directory sites."
+msgstr ""
 
 msgid ""
-"UTMFW Web Filter uses URL lists categorized in different packages for "
-"your convenience. You can enable or disable categories you want on this page."
+"Collection of sites offering programs to break licence keys, licence keys "
+"themselves, cracked software and other copyrighted material."
 msgstr ""
-"UTMFW网页过滤网址列表中使用不同的包分类的方便您。您可以启用或你想在此网页"
-"禁用类别。"
 
-msgid ""
-"UTMFW Web Filter uses phrase lists categorized in different packages for "
-"your convenience. You can enable or disable categories you want on this page."
+msgid "Comment"
 msgstr ""
-"UTMFW网页过滤系统使用不同的组合，分类的短语列表方便您。您可以启用或你想在"
-"此网页禁用类别。"
-
-msgid ""
-"UTMFW Web Filter uses site lists categorized in different packages for "
-"your convenience. You can enable or disable categories you want on this page."
-msgstr ""
-"UTMFW网页过滤系统使用不同的组合分类的网站列表方便您。您可以启用或你想在此"
-"网页禁用类别。"
-
-msgid "UTMFW currently supports only admin and user usernames"
-msgstr "UTMFW目前仅支持管理员和用户的用户名"
-
-msgid ""
-"UTMFW logs errors, warnings, notices, and debug messages. Since also "
-"recorded are changes to configuration and passwords, you may want to monitor "
-"these logs carefully. These logs are also important while reporting issues "
-"related to the web user interface. Logs on this page are generated by the "
-"Controller and the Model, middle and bottom layers of software responsible "
-"for processing requests from the View."
-msgstr ""
-"UTMFW记录错误，警告，通知和调试消息。由于还记录的是配置和密码更改，您可能"
-"想要监控这些日志小心。这些记录也很重要，而报告的问题有关网络用户接口。在此页"
-"面日志的生成控制器和模型，中，负责软件底层从视图处理请求。"
-
-msgid ""
-"UTMFW logs errors, warnings, notices, and debug messages. Since also "
-"recorded are changes to configuration and passwords, you may want to monitor "
-"these logs carefully. These logs are also important while reporting issues "
-"related to the web user interface. Logs on this page are generated by the "
-"View, main module responsible for displaying the web user interface and "
-"interacting with the user."
-msgstr ""
-"UTMFW记录错误，警告，通知和调试消息。由于还记录的是配置和密码更改，您可能"
-"想要监控这些日志小心。这些记录也很重要，而报告的问题有关网络用户接口。在此页"
-"面日志的生成查看，主模块用于显示网页的用户界面和负责与用户互动。"
-
-msgid ""
-"UTMFW runs many services or daemons in default installation. On this "
-"page you can configure these services to start at boot time.\n"
-"\n"
-"Note that if you modify startup configuration for some services, you may "
-"need to change packet filter rules or other related settings too."
-msgstr ""
-"UTMFW运行的许多服务在默认安装或守护进程进程。在这页面可以配置这些服务在引"
-"导时启动。\n"
-"\n"
-"请注意，如果您修改了一些服务的启动配置，您可能需要更改的数据包过滤规则或其他"
-"相关设置了。"
-
-msgid ""
-"UTMFW sends warning and information messages to its system "
-"administrator. Here you can type in your own e-mail address."
-msgstr ""
-"UTMFW发送预警和信息至其系统管理员。在这里您可以输入您自己的电子邮件地址。"
-
-msgid ""
-"UTMFW uses ClamAV for all virus scanning purposes. Freshclam checks and "
-"updates ClamAV virus database periodically. By default, the database is "
-"updated every hour. You may not be able to stop or restart freshclam "
-"instance once it starts the update process; wait for a minute and try again."
-msgstr ""
-"UTMFW使用所有扫描病毒ClamAV的目的。 freshclam的检查和更新ClamAV的病毒库，"
-"定期。默认情况下，数据库每小时更新一次。您可能无法停止或重新启动freshclam的例"
-"如一旦启动更新过程，等待一分钟，然后再试一次。"
-
-msgid ""
-"UTMFW would not be possible without the generous developers of many Free "
-"and Open Source Software (FOSS). UTMFW is developed using FOSS only. "
-"Software developed specifically for UTMFW, such as this web user "
-"interface and SnortIPS, are released under the BSD license, hence FOSS "
-"also.\n"
-"\n"
-"These credits may not cover all of the software UTMFW uses. If you think "
-"one is missing, I would happily add here.\n"
-"\n"
-"Thanks for the excellent work and good spirit."
-msgstr ""
-"UTMFW是不可能的，没有许多开发者和开放源码软件（FOSS）。 UTMFW只使用开"
-"放源码软件。专门开发的软件，如本网站的UTMFW，用户接口和SnortIPS，是遵照"
-"BSD许可证，因此也是开放源码软件。\n"
-"\n"
-"这些贡献列表可能不包括所有UTMFW使用的软件。如果您发现任何遗漏，我会高兴地"
-"在这里补充。\n"
-"\n"
-"感谢出色的工作和良好的精神。"
 
 msgid "Compressed"
 msgstr "压缩"
@@ -977,8 +1033,14 @@ msgstr "创建列表缓存文件"
 msgid "Create new group"
 msgstr "创建新组"
 
+msgid "Create user"
+msgstr ""
+
 msgid "Credits"
 msgstr "鸣谢"
+
+msgid "Current Password"
+msgstr ""
 
 msgid "Customised filtered text (message text or filename follows in response)"
 msgstr "定制过滤文本（消息文本或文件名如下回应）"
@@ -1072,6 +1134,9 @@ msgstr "调试"
 msgid "Debug options"
 msgstr "调试选项"
 
+msgid "Default"
+msgstr ""
+
 msgid "Defaults"
 msgstr "默认"
 
@@ -1092,15 +1157,17 @@ msgid ""
 "Business hours configuration is meaningful only for business days."
 msgstr ""
 "工余时间的定义可以设置在这里。如果您修改这些定义的，您应该单击Apply按钮。请注"
-"意，当您启用营业日或假日，根据这些定义相关规则将被激活。如果您不希望使用"
-"UTMFW工余时间功能，请确保这些定义都将被禁用。营业时间配置有意义的只有工作"
-"日。"
+"意，当您启用营业日或假日，根据这些定义相关规则将被激活。如果您不希望使用UTMFW"
+"工余时间功能，请确保这些定义都将被禁用。营业时间配置有意义的只有工作日。"
 
 msgid "Delete"
 msgstr "删除"
 
 msgid "Delete ACL"
 msgstr "删除ACL"
+
+msgid "Delete All"
+msgstr ""
 
 msgid "Delete DHCP interface"
 msgstr "删除DHCP接口"
@@ -1164,6 +1231,15 @@ msgstr "删除主机"
 msgid "Delete list item"
 msgstr "删除列表项目"
 
+msgid "Delete pf rule file"
+msgstr ""
+
+msgid "Delete rules file"
+msgstr ""
+
+msgid "Delete ruleset"
+msgstr ""
+
 msgid "Denied IPs"
 msgstr "被拒绝IP地址"
 
@@ -1185,8 +1261,14 @@ msgstr "描述"
 msgid "Dest"
 msgstr ""
 
+msgid "Destination"
+msgstr ""
+
 msgid "Destination IPs"
 msgstr "目的地IP地址"
+
+msgid "Destination Port"
+msgstr ""
 
 msgid "Destination addresses"
 msgstr "目的地址"
@@ -1214,6 +1296,9 @@ msgid "Diffie-Hellman params"
 msgstr "Diffie - Hellman 参数"
 
 msgid "Dir"
+msgstr ""
+
+msgid "Direction"
 msgstr ""
 
 msgid "Disable"
@@ -1281,6 +1366,11 @@ msgstr "禁用规则"
 msgid "Disabled Services"
 msgstr "残疾人服务"
 
+msgid ""
+"Discussion sites. Covers explicit forum sites and some blogs. Sites where "
+"people can discuss and share information in a non interactive/real-time way."
+msgstr ""
+
 msgid "Disk I/O"
 msgstr "磁盘I / O"
 
@@ -1290,8 +1380,32 @@ msgstr "磁盘"
 msgid "Display"
 msgstr "显示"
 
+msgid "Display & Install"
+msgstr ""
+
+msgid "Display line numbers"
+msgstr ""
+
 msgid "Display remote time"
 msgstr "显示远程时间"
+
+msgid "Display with errors"
+msgstr ""
+
+msgid "Divert"
+msgstr ""
+
+msgid "Divert Host"
+msgstr ""
+
+msgid "Divert Packet"
+msgstr ""
+
+msgid "Divert Port"
+msgstr ""
+
+msgid "Divert Reply"
+msgstr ""
 
 msgid ""
 "Do not remove temporary files (for debug purposes).\n"
@@ -1302,6 +1416,9 @@ msgstr ""
 
 msgid "Domains"
 msgstr "域"
+
+msgid "Domains and urls of TV and radio stations."
+msgstr ""
 
 msgid "Download"
 msgstr "下载"
@@ -1324,11 +1441,23 @@ msgstr ""
 "下载管理器负责下载文件的要求。它管理的文件扩展名在启用名单。其他文件扩展名由"
 "用户的浏览器处理。下载时，Fancy下载管理器通过进度条报告进度和状态信息。"
 
+msgid "Download ruleset"
+msgstr ""
+
+msgid "Download with errors"
+msgstr ""
+
 msgid "Downloaded (KB)"
 msgstr "下载（KB）"
 
 msgid "Downloads"
 msgstr "下载"
+
+msgid "Dropped Bytes"
+msgstr ""
+
+msgid "Dropped Packets"
+msgstr ""
 
 msgid "Drug related sites"
 msgstr "药品相关网站"
@@ -1360,6 +1489,15 @@ msgstr "错误"
 msgid "EXTERNAL_NET"
 msgstr "EXTERNALNET"
 
+msgid "Edit"
+msgstr ""
+
+msgid "Edit <RULE_TYPE> Rule <RULE_NUMBER>"
+msgstr ""
+
+msgid "Editor"
+msgstr ""
+
 msgid "Email"
 msgstr "电子邮件"
 
@@ -1385,14 +1523,20 @@ msgstr "启用非工作时日"
 msgid "Enable AfterHours holidays"
 msgstr "启用假期"
 
-msgid "Enable UTMFW as a non-caching proxy for the local network."
-msgstr "使作为非UTMFW缓存为本地网络代理。"
-
 msgid "Enable Deep URL Analysis"
 msgstr "启用深度URL分析"
 
+msgid "Enable MITM site certificate checking"
+msgstr ""
+
 msgid "Enable SSL/TLS"
 msgstr "启用SSL/TLS"
+
+msgid "Enable Source Track"
+msgstr ""
+
+msgid "Enable UTMFW as a non-caching proxy for the local network."
+msgstr "使作为非UTMFW缓存为本地网络代理。"
 
 msgid ""
 "Enable compression on the VPN link. Don't enable this unless it is also "
@@ -1478,17 +1622,44 @@ msgstr "启用规则"
 msgid "Enabled Services"
 msgstr "启用服务"
 
+msgid "Enforce TOS"
+msgstr ""
+
 msgid "English"
 msgstr "英语"
 
+msgid "Enter blank lines here"
+msgstr ""
+
+msgid "Enter comment here"
+msgstr ""
+
+msgid "Enter inline rules here"
+msgstr ""
+
 msgid "Erase statistics files"
 msgstr "清除统计数据文件"
+
+msgid "Error in include file"
+msgstr ""
+
+msgid "Error loading, rule load forced"
+msgstr ""
+
+msgid "Error loading, rule loaded partially"
+msgstr ""
+
+msgid "Evaluations"
+msgstr ""
 
 msgid "Exception IPs"
 msgstr "异常IP地址"
 
 msgid "Exception requests"
 msgstr "豁免申请"
+
+msgid "Export To pflow"
+msgstr ""
 
 msgid "Expr"
 msgstr ""
@@ -1529,6 +1700,42 @@ msgstr "FTP代理"
 msgid "Failed attempts"
 msgstr "失败的尝试"
 
+msgid "Failed creating or attaching to message queue"
+msgstr ""
+
+msgid "Failed deleting"
+msgstr ""
+
+msgid "Failed downloading, cannot generate pf rules"
+msgstr ""
+
+msgid "Failed loading"
+msgstr ""
+
+msgid "Failed loading main pf rules"
+msgstr ""
+
+msgid "Failed loading pf rules"
+msgstr ""
+
+msgid "Failed removing message queue"
+msgstr ""
+
+msgid "Failed running pfctl command"
+msgstr ""
+
+msgid "Failed saving"
+msgstr ""
+
+msgid "Failed testing pf rules"
+msgstr ""
+
+msgid "Failed testing ruleset"
+msgstr ""
+
+msgid "Failed uploading"
+msgstr ""
+
 msgid "Failed users"
 msgstr "失败用户"
 
@@ -1550,6 +1757,12 @@ msgstr ""
 msgid "File"
 msgstr "文件"
 
+msgid "File uploaded"
+msgstr ""
+
+msgid "Filename not accepted"
+msgstr ""
+
 msgid "Filepath wrong"
 msgstr "文件路径错误"
 
@@ -1564,6 +1777,9 @@ msgstr "过滤器"
 
 msgid "Filter IP"
 msgstr "过滤器IP"
+
+msgid "Filter IP for xforwarded for"
+msgstr ""
 
 msgid "Filter Port"
 msgstr "过滤器端口"
@@ -1587,7 +1803,7 @@ msgid ""
 "Filtergroups sets the number of filter groups. A filter group is a set of "
 "content filtering options you can apply to a group of users.  The value must "
 "be 1 or more.\n"
-"DansGuardian will automatically look for dansguardianfN.conf where N is the "
+"E2Guardian will automatically look for e2guardianfN.conf where N is the "
 "filter group. To assign users to groups use the filtergroupslist option.  "
 "All users default to filter group 1.  You must have some sort of "
 "authentication to be able to map users to a group.  The more filter groups "
@@ -1595,9 +1811,21 @@ msgid ""
 msgstr ""
 "Filtergroups设置过滤器组数。过滤器组是一组内容过滤选项可以应用到一组用户。该"
 "值必须是1个或多个。\n"
-"dansguardian的会自动寻找dansguardianfN.conf其中N是过滤器组。要指定用户集团利"
-"用filtergroupslist选项。所有用户的默认筛选组1。您必须有某种形式的认证能够映射"
-"到一组用户。更滤波器组在列出了更多的副本将在内存中，以便使用尽可能少。"
+"e2guardian的会自动寻找e2guardianfN.conf其中N是过滤器组。要指定用户集团利用"
+"filtergroupslist选项。所有用户的默认筛选组1。您必须有某种形式的认证能够映射到"
+"一组用户。更滤波器组在列出了更多的副本将在内存中，以便使用尽可能少。"
+
+msgid "Finance in general."
+msgstr ""
+
+msgid "Fingerprints File"
+msgstr ""
+
+msgid "Flag"
+msgstr ""
+
+msgid "Flags"
+msgstr ""
 
 msgid "Follow Directory Symlinks"
 msgstr "跟随目录符号链接"
@@ -1639,6 +1867,9 @@ msgstr ""
 "服务器和每个客户端必须具有的一个关键副本。第二参数应为0的服务器和客户端1。此"
 "文件秘密。"
 
+msgid "Force HTTPs"
+msgstr ""
+
 msgid ""
 "Force Quick Search rather than DFA search algorithm.\n"
 "The current DFA implementation is not totally 16-bit character compatible "
@@ -1658,6 +1889,11 @@ msgstr ""
 msgid "Force quick search"
 msgstr "强制快速搜索"
 
+msgid ""
+"Forge ssl certificates for all non-exception sites, decrypt the data then re "
+"encrypt it using a different private key. Used to filter ssl sites."
+msgstr ""
+
 msgid "Forwarded for"
 msgstr "转交"
 
@@ -1671,6 +1907,12 @@ msgstr ""
 
 msgid "Forwarders"
 msgstr "转发"
+
+msgid "Fragment"
+msgstr ""
+
+msgid "Frags"
+msgstr ""
 
 msgid "Free OOP scripting language."
 msgstr "免费面向对象的脚本语言。"
@@ -1699,6 +1941,9 @@ msgstr "Fri"
 msgid "From"
 msgstr "自"
 
+msgid "From Redirect Host"
+msgstr ""
+
 msgid "GG"
 msgstr "GG"
 
@@ -1720,6 +1965,15 @@ msgstr "常规"
 msgid "General Statistics"
 msgstr "综合统计"
 
+msgid "Generate pf rule"
+msgstr ""
+
+msgid "Generate pf rules"
+msgstr ""
+
+msgid "Generate with errors"
+msgstr ""
+
 msgid ""
 "Generate your own with:\n"
 "   openssl dhparam -out dh1024.pem 1024\n"
@@ -1728,6 +1982,9 @@ msgstr ""
 "生成您自己的：\n"
 "   openssl dhparam -out dh1024.pem 1024\n"
 "取代1024 2048如果您使用的2048位密钥。"
+
+msgid "Gentle child restart"
+msgstr ""
 
 msgid "Get ACL"
 msgstr "获得ACL"
@@ -1752,6 +2009,9 @@ msgstr "获取DNS转发器"
 
 msgid "Get HTTP proxy IP:port"
 msgstr "获取HTTP代理服务器IP：端口"
+
+msgid "Get IP DNS listens on"
+msgstr ""
 
 msgid "Get IPS info"
 msgstr "获取IPS信息"
@@ -1795,6 +2055,9 @@ msgstr "获取当前区域"
 msgid "Get database mirrors"
 msgstr "获取数据库镜像"
 
+msgid "Get datetime"
+msgstr ""
+
 msgid "Get dhcp leases"
 msgstr "获取DHCP租约"
 
@@ -1828,6 +2091,9 @@ msgstr "获得非使用中的类别"
 msgid "Get int_if"
 msgstr "获得int_if"
 
+msgid "Get line count"
+msgstr ""
+
 msgid "Get lines"
 msgstr "获取日志文件行"
 
@@ -1858,10 +2124,34 @@ msgstr "获取日志配置"
 msgid "Get partition list"
 msgstr "获得分区列表"
 
+msgid "Get pf info"
+msgstr ""
+
+msgid "Get pf interface info"
+msgstr ""
+
+msgid "Get pf memory info"
+msgstr ""
+
+msgid "Get pf queue info"
+msgstr ""
+
+msgid "Get pf rule files"
+msgstr ""
+
+msgid "Get pf rules"
+msgstr ""
+
+msgid "Get pf rules info"
+msgstr ""
+
 msgid "Get pf state count"
 msgstr ""
 
 msgid "Get pf states"
+msgstr ""
+
+msgid "Get pf timeout info"
 msgstr ""
 
 msgid "Get pfw commandwrapper -conntest"
@@ -1899,6 +2189,9 @@ msgstr "获取进程列表"
 
 msgid "Get protocols"
 msgstr "获取协议"
+
+msgid "Get reload rate"
+msgstr ""
 
 msgid "Get remote time"
 msgstr "获取远程时间"
@@ -2052,8 +2345,8 @@ msgid ""
 "This web interface does not provide an option to delete filter groups. But "
 "you can always delete groups on the command line."
 msgstr ""
-"组是用来授予或撤销某些特权的IP，如哪些网站或文件类型允许或拒绝。 UTMFW预"
-"定4个默认组。但是，Web过滤器能够有任何数目IP组。\n"
+"组是用来授予或撤销某些特权的IP，如哪些网站或文件类型允许或拒绝。 UTMFW预定4个"
+"默认组。但是，Web过滤器能够有任何数目IP组。\n"
 "\n"
 "预定义的组，其基本特点如下：\n"
 "过滤器组1：\n"
@@ -2132,6 +2425,9 @@ msgstr "Ham"
 msgid "Help"
 msgstr "帮助"
 
+msgid "Help Boxes"
+msgstr ""
+
 msgid "Help boxes"
 msgstr "帮助盒"
 
@@ -2162,10 +2458,27 @@ msgstr ""
 "符。"
 
 msgid ""
+"Here you can change the web administration interface passwords for admin and "
+"user. Passwords should have at least 8 alphanumeric characters.\n"
+"\n"
+"Admin can change the user password without knowing the current user "
+"password. But if you forget the admin password, you should login to the "
+"system as root and run the following on the command line to set the password "
+"to soner123:\n"
+"<code>/usr/bin/chpass -a \"admin:$(/usr/bin/encrypt `/bin/echo -n soner123 | "
+"sha1 -`):1000:1000::0:0:UTMFW admin:/home/admin:/bin/ksh\"</code>"
+msgstr ""
+
+msgid ""
 "Here you can enable or disable the Packet Filter. Note that most services "
 "depend on packet filter being enabled."
 msgstr ""
 "在这里您可以启用或禁用数据包筛选器。请注意，大多数服务依赖于数据包过滤器。"
+
+msgid ""
+"Here you can enable or disable the Packet Filter. Note that most services "
+"depend on the packet filter being enabled."
+msgstr ""
 
 msgid ""
 "Here you can enter db.XY.clamav.net for a mirror close to you. Replace XY "
@@ -2260,6 +2573,19 @@ msgstr ""
 msgid "Holidays"
 msgstr "节假日"
 
+msgid ""
+"Home page of banking companies are listed here. This is not restricted to "
+"online banking."
+msgstr ""
+
+msgid ""
+"Home pages of Internet Service Providers. Sites of companies offering "
+"webspace only are now being added, too"
+msgstr ""
+
+msgid "Home pages of schools, colleges and universities."
+msgstr ""
+
 msgid "Horizontal"
 msgstr "水平"
 
@@ -2268,6 +2594,9 @@ msgstr "主机"
 
 msgid "Host IP"
 msgstr "主机IP"
+
+msgid "Host Id"
+msgstr ""
 
 msgid "Host wrong"
 msgstr "主机错误"
@@ -2288,11 +2617,32 @@ msgid "Hourly"
 msgstr "每小时"
 
 msgid ""
+"How long a persistent connection will wait for other requests, squid "
+"apparently defaults to 1 minute (persistent_request_timeout), so wait "
+"slightly less than this to avoid duff pconns.\n"
+"Min 5 - Max 300"
+msgstr ""
+
+msgid ""
 "How many attempts to make before giving up.\n"
 "\t\tDefault: 3 (per mirror)"
 msgstr ""
 "放弃前多少企图。\n"
 "\t\t 默认:3（每镜）"
+
+msgid ""
+"Humorous pages, comic strips, funny stories, everything which makes people "
+"laugh."
+msgstr ""
+
+msgid "ICMP Timeouts"
+msgstr ""
+
+msgid "ICMP Type"
+msgstr ""
+
+msgid "ICMP6 Type"
+msgstr ""
 
 msgid "ICQ"
 msgstr "ICQ"
@@ -2394,6 +2744,12 @@ msgstr "IPv6"
 msgid "IRC"
 msgstr "IRC"
 
+msgid "Id"
+msgstr ""
+
+msgid "Identifier"
+msgstr ""
+
 msgid ""
 "If 'on' exception sites, urls, users etc will be scanned\n"
 "This is probably not desirable behavour as exceptions are supposed to be "
@@ -2460,6 +2816,13 @@ msgstr ""
 "如果启用词组则发现总的超过正常限制将被记录，如果报告水平足够高，报告。开｜关"
 
 msgid ""
+"If enabled, authentication pages are forced to use secure connections. Make "
+"sure you have a working SSL setup in the web server configuration, otherwise "
+"you cannot even log in to the web user interface. It is advised to use "
+"secure HTTP."
+msgstr ""
+
+msgid ""
 "If enabled, will scan for Spam before scanning for a virus. You should start "
 "spamd before running p3scan."
 msgstr ""
@@ -2475,15 +2838,15 @@ msgstr ""
 
 msgid ""
 "If on it uses the X-Forwarded-For: <clientip> to determine the client IP. "
-"This is for when you have squid between the clients and DansGuardian.\n"
+"This is for when you have squid between the clients and E2Guardian.\n"
 "Warning - headers are easily spoofed. on | off"
 msgstr ""
 "如果在它使用的X -转发为： <clientip>确定客户端的IP。这是因为当你与客户和"
-"dansguardian的SQUID。\n"
+"e2guardian的SQUID。\n"
 "警告-头很容易伪造。开｜关"
 
 msgid ""
-"If on, this causes DG to write to the log file whenever child processes are "
+"If on, this causes E2 to write to the log file whenever child processes are "
 "created or destroyed (other than by crashes). This information can help in "
 "understanding and tuning the following parameters, but is not generally "
 "useful in production."
@@ -2567,6 +2930,21 @@ msgid ""
 "and services."
 msgstr "在这些手册，您可以找到有关该系统的广泛信息和服务。"
 
+msgid "In4 Block"
+msgstr ""
+
+msgid "In4 Pass"
+msgstr ""
+
+msgid "In6 Block"
+msgstr ""
+
+msgid "In6 Pass"
+msgstr ""
+
+msgid "Include"
+msgstr ""
+
 msgid "Include classification & priority settings"
 msgstr "包括分类和优先级设置"
 
@@ -2613,6 +2991,32 @@ msgstr "初始化图"
 msgid "Initial Trickle delay"
 msgstr "初步涓流延迟"
 
+msgid "Inline Rules"
+msgstr ""
+
+msgid ""
+"Inline anchor rules can be nested. It is advised to limit the number of "
+"nesting allowed. Parsing and validation stop at this many number of nesting."
+msgstr ""
+
+msgid "Inline rules"
+msgstr ""
+
+msgid "Inserted"
+msgstr ""
+
+msgid "Install"
+msgstr ""
+
+msgid "Install as main ruleset"
+msgstr ""
+
+msgid "Install pf rules"
+msgstr ""
+
+msgid "Installed successfully"
+msgstr ""
+
 msgid ""
 "Instead of keeping an infected message in the Virus Directory, delete it "
 "after reporting it to the user.\n"
@@ -2623,6 +3027,9 @@ msgstr ""
 
 msgid "Interface"
 msgstr "接口"
+
+msgid "Interface Binding"
+msgstr ""
 
 msgid "Interface Configuration"
 msgstr "接口配置"
@@ -2644,6 +3051,9 @@ msgstr ""
 
 msgid "Internal interface"
 msgstr "内部接口"
+
+msgid "Interval"
+msgstr ""
 
 msgid "Intrusion Alerts"
 msgstr "入侵警报"
@@ -2673,8 +3083,20 @@ msgstr ""
 "您可以输入单个IP或网络地址。 IP和网络地址可以重叠。例如，您可以黑名单"
 "10.0.0.0/24，但白名单10.0.0.1。"
 
+msgid "Invalid destination rule number"
+msgstr ""
+
+msgid "Invalid inline rules, parser output"
+msgstr ""
+
+msgid "Invalid rule number"
+msgstr ""
+
 msgid "Invalid value"
 msgstr "无效的值"
+
+msgid "Invalid value for"
+msgstr ""
 
 msgid "Jabber"
 msgstr "闲聊"
@@ -2697,6 +3119,9 @@ msgstr "保持通讯超时"
 msgid "Keywords"
 msgstr "关键词"
 
+msgid "Label"
+msgstr ""
+
 msgid "Language"
 msgstr "语言"
 
@@ -2715,6 +3140,12 @@ msgstr "保持后台开"
 msgid "Level"
 msgstr "级别"
 
+msgid "Limit"
+msgstr ""
+
+msgid "Limit SSL MITM to sites in greysslsitelist(s)"
+msgstr ""
+
 msgid ""
 "Limit on total number of servers running, i.e., limit on the number of "
 "clients who can simultaneously connect --- if this limit is ever reached, "
@@ -2728,6 +3159,9 @@ msgstr ""
 
 msgid "Line"
 msgstr "线"
+
+msgid "Line number"
+msgstr ""
 
 msgid "Lines per page"
 msgstr "每页行数"
@@ -2773,14 +3207,41 @@ msgstr "Web服务器的网络上的名单"
 msgid "List physical interfaces"
 msgstr "列表物理接口"
 
+msgid "List to allow necessary downloads from vendors."
+msgstr ""
+
 msgid "Listen Address"
 msgstr "听地址"
+
+msgid "Listen on"
+msgstr ""
 
 msgid "Lists"
 msgstr "列表"
 
 msgid "Live"
 msgstr "现场"
+
+msgid "Load"
+msgstr ""
+
+msgid "Load & Save"
+msgstr ""
+
+msgid "Load Anchor"
+msgstr ""
+
+msgid "Load Error"
+msgstr ""
+
+msgid "Load rules from file"
+msgstr ""
+
+msgid "Load ruleset"
+msgstr ""
+
+msgid "Load with errors"
+msgstr ""
 
 msgid "Local IP Address"
 msgstr "本地IP地址"
@@ -2815,6 +3276,9 @@ msgstr "日志清除"
 msgid "Log Exception Hits"
 msgstr "日志异常点击"
 
+msgid "Log Interface"
+msgstr ""
+
 msgid "Log Level"
 msgstr "日志级别"
 
@@ -2832,6 +3296,9 @@ msgstr "登录客户端主机名"
 
 msgid "Log connection handling errors"
 msgstr "日志连接处理错误"
+
+msgid "Log detailed error info regarding SSL error returns."
+msgstr ""
 
 msgid ""
 "Log files are rotated according to two main criteria: size and time, "
@@ -2878,8 +3345,8 @@ msgid "Log ip on direct"
 msgstr "直接登录的IP"
 
 msgid ""
-"Log keeping capacity of UTMFW is limited only by the size of the disks "
-"on your system.\n"
+"Log keeping capacity of UTMFW is limited only by the size of the disks on "
+"your system.\n"
 "\n"
 "If you are not seeing as many number of lines as you were expecting, this "
 "may be because the log file has turned over and put in a compressed archive "
@@ -2910,6 +3377,9 @@ msgstr "登录邮件"
 msgid "Log rcpt to"
 msgstr "日志的RCPT TO"
 
+msgid "Log ssl errors"
+msgstr ""
+
 msgid ""
 "Log the destination IP address in the hierarchy log tag when going direct. "
 "Earlier Squid versions logged the hostname here. If you prefer the old way "
@@ -2925,8 +3395,8 @@ msgid ""
 "had to knowingly turn this feature on, since enabling it means that each "
 "client request will result in AT LEAST one lookup request to the nameserver."
 msgstr ""
-"记录客户的姓名或只是它们的IP地址，例如，www.apache.org（开）或204.62.129.132"
-"（关闭）。\n"
+"记录客户的姓名或只是它们的IP地址，例如，www.apache.org（开）或"
+"204.62.129.132（关闭）。\n"
 "\t\t写法默认是关闭的，因为这将会是整体的净更好的人故意打开了此功能的，因为它"
 "意味着使每客户端的请求将导致至少在一个查找请求的域名服务器。"
 
@@ -2943,6 +3413,9 @@ msgstr ""
 
 msgid "Logged in user"
 msgstr "登录用户"
+
+msgid "Logging"
+msgstr ""
 
 msgid "Logging Settings"
 msgstr "日志设置"
@@ -3006,6 +3479,9 @@ msgstr "通过HTTP代理MSN需要通过https"
 msgid "Machine"
 msgstr "机器"
 
+msgid "Macro"
+msgstr ""
+
 msgid "Mail Follow URLs"
 msgstr "邮件跟踪网址"
 
@@ -3014,6 +3490,9 @@ msgstr "发件人"
 
 msgid "Mail program"
 msgstr "邮件程序"
+
+msgid "Main pf rules reloaded"
+msgstr ""
 
 msgid "Make Dynamic"
 msgstr "设置动态"
@@ -3053,8 +3532,29 @@ msgstr ""
 "标记加密的病毒档案（Encrypted.Zip，Encrypted.RAR）。\n"
 "\t\t 默认:停用"
 
+msgid "Match All"
+msgstr ""
+
+msgid "Match Priority"
+msgstr ""
+
+msgid "Match TOS"
+msgstr ""
+
+msgid "Match Tagged"
+msgstr ""
+
 msgid "Matched requests"
 msgstr "符合的请求"
+
+msgid "Max"
+msgstr ""
+
+msgid "Max Addresses"
+msgstr ""
+
+msgid "Max Anchor Nesting"
+msgstr ""
 
 msgid "Max Attempts"
 msgstr "最多尝试次数"
@@ -3071,6 +3571,12 @@ msgstr "最大子结点数"
 msgid "Max Clients"
 msgstr "最大客户数"
 
+msgid "Max Connection"
+msgstr ""
+
+msgid "Max Connection Rate"
+msgstr ""
+
 msgid "Max Directory Recursion"
 msgstr "最大目录递归数"
 
@@ -3080,8 +3586,17 @@ msgstr "最大的KeepAlive请求"
 msgid "Max Log Item Length"
 msgstr "最大记录长度项"
 
+msgid "Max MSS"
+msgstr ""
+
+msgid "Max Single Host States"
+msgstr ""
+
 msgid "Max Spare Servers"
 msgstr "最大备用服务器"
+
+msgid "Max States"
+msgstr ""
 
 msgid "Max Threads"
 msgstr "最大主题"
@@ -3109,6 +3624,9 @@ msgstr "最大备用子结点"
 
 msgid "Max upload size"
 msgstr "最大上传大小"
+
+msgid "Max-mss"
+msgstr ""
 
 msgid "MaxStartups"
 msgstr "MaxStartups"
@@ -3184,14 +3702,28 @@ msgstr "MIME类型错误"
 msgid "Mimes"
 msgstr "矿"
 
+msgid "Min"
+msgstr ""
+
 msgid "Min Spare Servers"
 msgstr "最小备用服务器数"
+
+msgid "Min TTL"
+msgstr ""
 
 msgid "Min children"
 msgstr "最小子结点"
 
 msgid "Min spare children"
 msgstr "最小备用子结点"
+
+msgid "Min-ttl"
+msgstr ""
+
+msgid ""
+"Model agency, model and supermodel fan pages and other model sites "
+"presenting model photos. No porn pictures."
+msgstr ""
 
 msgid "Modern virtual private networking."
 msgstr "现代虚拟专用网络。"
@@ -3211,6 +3743,9 @@ msgstr "大多数客户不需要绑定到一个特定的本地端口号。"
 msgid "Motherboard"
 msgstr "主板"
 
+msgid "Move"
+msgstr ""
+
 msgid "Move ACL Down"
 msgstr "向下移动ACL"
 
@@ -3223,10 +3758,19 @@ msgstr "下移"
 msgid "Move Up"
 msgstr "上移"
 
+msgid "Move down"
+msgstr ""
+
 msgid "Move rule down"
 msgstr ""
 
 msgid "Move rule up"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
+msgid "Multiple values not allowed for"
 msgstr ""
 
 msgid "NA"
@@ -3238,6 +3782,9 @@ msgstr "NAT报头类型"
 msgid "NI"
 msgstr "网络接口"
 
+msgid "Name"
+msgstr ""
+
 msgid "Name server"
 msgstr "名称服务器"
 
@@ -3246,6 +3793,9 @@ msgstr "名称错误"
 
 msgid "Nameserver"
 msgstr "域名服务器"
+
+msgid "Nat"
+msgstr ""
 
 msgid "Naughtyness limit"
 msgstr "Naughtyness限制"
@@ -3279,6 +3829,12 @@ msgstr ""
 "网络接口这里列出。您可以配置一个接口作为DHCP或inet的。这里所做的更改不会生"
 "效，直到您重新启动网络或重新启动系统。"
 
+msgid "New Password"
+msgstr ""
+
+msgid "New Password Again"
+msgstr ""
+
 msgid ""
 "New system hostname does not fully take effect until after reboot.\n"
 "\n"
@@ -3299,6 +3855,9 @@ msgstr "新闻网站"
 msgid "Next >"
 msgstr "下一步>"
 
+msgid "No Queues defined"
+msgstr ""
+
 msgid "No bind"
 msgstr "没有绑定"
 
@@ -3308,17 +3867,29 @@ msgstr "无缓存"
 msgid "No default banner path"
 msgstr "没有默认旗帜路径"
 
+msgid "No pfsync"
+msgstr ""
+
+msgid "No regex or func def for"
+msgstr ""
+
 msgid "No such file"
 msgstr ""
 
 msgid "Non standard delimiter"
 msgstr "非标定界符"
 
+msgid "Not JSON encoded string"
+msgstr ""
+
 msgid "Not a valid password"
 msgstr "不是一个有效的密码"
 
 msgid "Not asterisk"
 msgstr "不是星号"
+
+msgid "Not boolean"
+msgstr ""
 
 msgid "Not comma separated digits"
 msgstr "不以逗号分隔数字"
@@ -3356,6 +3927,9 @@ msgstr "通知影音"
 msgid "Notify Content"
 msgstr "通知内容"
 
+msgid "Number"
+msgstr ""
+
 msgid "Number of Processes"
 msgstr "进程数"
 
@@ -3380,6 +3954,9 @@ msgstr ""
 
 msgid "Number of filter groups"
 msgstr "过滤组数"
+
+msgid "Number of lines"
+msgstr ""
 
 msgid "Number of messages"
 msgstr "消息数量"
@@ -3411,11 +3988,17 @@ msgstr "OPENSSH"
 msgid "OPENVPN"
 msgstr "OPENVPN"
 
+msgid "OS"
+msgstr ""
+
 msgid "Obsoletes QuietMode and FascistLogging"
 msgstr "废弃QuietMode和FascistLogging"
 
 msgid "On this page are web administration interface access statistics."
 msgstr "在此网页上的Web管理接口访问统计。"
+
+msgid "Once"
+msgstr ""
 
 msgid ""
 "One or more actions failed while creating new group\n"
@@ -3427,6 +4010,9 @@ msgstr "网上拍卖"
 
 msgid "Online gaming sites"
 msgstr "在线游戏网站"
+
+msgid "Online libraries and sites where you can read e-books."
+msgstr ""
 
 msgid "Online payment sites"
 msgstr "在线支付网站"
@@ -3479,6 +4065,36 @@ msgstr ""
 
 msgid "Operating System"
 msgstr "操作系统"
+
+msgid "Optimization"
+msgstr ""
+
+msgid "Option"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Other Timeouts"
+msgstr ""
+
+msgid "Out4 Block"
+msgstr ""
+
+msgid "Out4 Pass"
+msgstr ""
+
+msgid "Out6 Block"
+msgstr ""
+
+msgid "Out6 Pass"
+msgstr ""
+
+msgid "Output not in correct format"
+msgstr ""
+
+msgid "Overload"
+msgstr ""
 
 msgid "Override default of no subsystems"
 msgstr "覆盖默认不子系统"
@@ -3552,6 +4168,12 @@ msgstr ""
 msgid "Page start line"
 msgstr "页面起始线"
 
+msgid "Parent"
+msgstr ""
+
+msgid "Parse Error"
+msgstr ""
+
 msgid "Partitions"
 msgstr "分区"
 
@@ -3574,6 +4196,9 @@ msgstr ""
 "路径（sendmail的兼容）的电子邮件程序，选择权交易。\n"
 "如果不使用禁用usesmtp（filtergroup具体）。"
 
+msgid "Pconn timeout"
+msgstr ""
+
 msgid ""
 "Perform HTML normalisation and decryption of MS Script Encoder code.\n"
 "\t\tDefault: enabled"
@@ -3590,7 +4215,7 @@ msgstr ""
 
 msgid ""
 "Perform reverse lookups on client IPs for successful requests.\n"
-"If set to on, DansGuardian will look up the forward DNS for the IP of the "
+"If set to on, E2Guardian will look up the forward DNS for the IP of the "
 "connecting computer, and log host names (where available) rather than IPs "
 "against requests.\n"
 "This is not dependent on reverseclientiplookups being enabled; however, if "
@@ -3598,8 +4223,8 @@ msgid ""
 "requests."
 msgstr ""
 "执行反向查找成功的请求对客户端的IP。\n"
-"如果设置为ON，将查找的dansguardian对知识产权的正向DNS连接电脑，并登录主机名"
-"（如果有的话），而不是IP地址反请求。\n"
+"如果设置为ON，将查找的e2guardian对知识产权的正向DNS连接电脑，并登录主机名（如"
+"果有的话），而不是IP地址反请求。\n"
 "这是不依赖于reverseclientiplookups被启用，但如果它是，启用这个选项不承担任何"
 "额外的正向DNS请求。"
 
@@ -3621,11 +4246,32 @@ msgstr "个人理财网站"
 msgid "Pet sites"
 msgstr "宠物网站"
 
+msgid "Pf"
+msgstr ""
+
+msgid "Pfctl Timeout"
+msgstr ""
+
+msgid ""
+"Pfctl commands are executed in a separate process, which returns pfctl "
+"output in a message. Parent process times out waiting for an output message "
+"after this many seconds. This approach is necessary in case pfctl is stuck "
+"or taking too long (and it is on certain cases).\n"
+"\n"
+"<b>Setting this timeout to 0 may fail the execution of all pfctl commands, "
+"effectively disabling rule tests.<b>"
+msgstr ""
+
 msgid "Pfctl output does not match"
 msgstr ""
 
 msgid "Phrase filter mode"
 msgstr "词组过滤模式"
+
+msgid ""
+"Phrase filtering additional mime types.\n"
+"default text/*"
+msgstr ""
 
 msgid "Phrase modes and cache settings determine how content scan works."
 msgstr "词组模式和高速缓存设置确定的内容扫描工作。"
@@ -3650,6 +4296,11 @@ msgstr "色情"
 
 msgid "Port"
 msgstr "端口"
+
+msgid ""
+"Portals for job offers and job seekers as well as the career and work-for-us "
+"pages of companies."
+msgstr ""
 
 msgid "Ports you run secure shell on."
 msgstr "端口安全shell中运行的。"
@@ -3729,6 +4380,9 @@ msgstr ""
 "特权的IP获得比其他IP地址，如即时消息和文件，分享更多的服务。通常情况下，这种"
 "服务的端口应该继续对不需要的用户封锁。"
 
+msgid "Probability"
+msgstr ""
+
 msgid "Process"
 msgstr "进程"
 
@@ -3775,6 +4429,12 @@ msgstr "代理IP地址：端口"
 msgid "Proxy Port"
 msgstr "代理端口"
 
+msgid "Proxy failure log interval"
+msgstr ""
+
+msgid "Proxy header exchange"
+msgstr ""
+
 msgid ""
 "Proxy settings\n"
 "\t\tDefault: disabled"
@@ -3782,13 +4442,28 @@ msgstr ""
 "代理设置\n"
 "\t\t 默认:停用"
 
+msgid "Proxy timeout"
+msgstr ""
+
+msgid "Qlimit"
+msgstr ""
+
 msgid "Query types"
 msgstr "查询类型"
+
+msgid "Queue"
+msgstr ""
+
+msgid "Queue Length"
+msgstr ""
 
 msgid "Queue Statistics"
 msgstr "队列统计"
 
 msgid "Queues"
+msgstr ""
+
+msgid "Quick"
 msgstr ""
 
 msgid "Quiet"
@@ -3814,6 +4489,9 @@ msgstr ""
 msgid "Re-check replaced URLs"
 msgstr "重新检查更换网址"
 
+msgid "Reached max nesting for inline anchors"
+msgstr ""
+
 msgid "Read system gateway"
 msgstr "阅读系统网关"
 
@@ -3826,11 +4504,35 @@ msgstr "阅读系统域名服务器"
 msgid "Reasons"
 msgstr "原因"
 
+msgid "Reassemble"
+msgstr ""
+
 msgid "Received (KB)"
 msgstr "收到（KB）"
 
+msgid "Received on Interface"
+msgstr ""
+
 msgid "Recipients"
 msgstr "收件人"
+
+msgid "Redirect"
+msgstr ""
+
+msgid "Redirect Address Family"
+msgstr ""
+
+msgid "Redirect Host"
+msgstr ""
+
+msgid "Redirect Options"
+msgstr ""
+
+msgid "Redirect Port"
+msgstr ""
+
+msgid "Redirect SSL denied page"
+msgstr ""
 
 msgid "Redraw"
 msgstr "重绘"
@@ -3867,14 +4569,23 @@ msgstr "重新载入"
 msgid "Reload "
 msgstr "重新载入"
 
+msgid "Reload Rate"
+msgstr ""
+
 msgid "Reload interval"
 msgstr "刷新间隔"
+
+msgid "Reload main ruleset"
+msgstr ""
 
 msgid "Remote Server"
 msgstr "远程服务器"
 
 msgid "Remote User"
 msgstr "远程用户"
+
+msgid "Render layout"
+msgstr ""
 
 msgid "Report e-mail"
 msgstr "报告电子邮件"
@@ -3908,6 +4619,9 @@ msgstr "请求被感染"
 
 msgid "Requests scanned"
 msgstr "请求被扫描"
+
+msgid "Required element missing"
+msgstr ""
 
 msgid "Required score"
 msgstr "需要评分"
@@ -3949,7 +4663,7 @@ msgstr "客户端IP反向查找"
 
 msgid ""
 "Reverse lookups for banned and exception IP lists.\n"
-"If set to on, DansGuardian will look up the forward DNS for the IP of the "
+"If set to on, E2Guardian will look up the forward DNS for the IP of the "
 "connecting computer.  This means you can put in hostnames in the "
 "exceptioniplist and bannediplist.\n"
 "If a client computer is matched against an IP given in the lists, then the "
@@ -3959,24 +4673,24 @@ msgid ""
 "server, leave it off."
 msgstr ""
 "反向查找禁止和异常的IP列表。\n"
-"如果设置为ON，将查找的dansguardian对知识产权的正向DNS连接电脑。这意味着您可以"
-"在主机放在exceptioniplist和bannediplist。\n"
+"如果设置为ON，将查找的e2guardian对知识产权的正向DNS连接电脑。这意味着您可以在"
+"主机放在exceptioniplist和bannediplist。\n"
 "如果客户端计算机中进行匹配的清单给一个IP，则IP将被记录在任何日志条目;如果正向"
 "DNS是成功的一比赛出现了一种主机，主机将被记录代替。\n"
 "这将降低搜索速度有所因此，除非你有一个本地DNS服务器，请将它关闭。"
 
 msgid ""
 "Reverse lookups for banned site and URLs.\n"
-"If set to on, DansGuardian will look up the forward DNS for an IP URL "
-"address and search for both in the banned site and URL lists. This would "
-"prevent a user from simply entering the IP for a banned address.\n"
+"If set to on, E2Guardian will look up the forward DNS for an IP URL address "
+"and search for both in the banned site and URL lists. This would prevent a "
+"user from simply entering the IP for a banned address.\n"
 "It will reduce searching speed somewhat so unless you have a local caching "
 "DNS server, leave it off and use the Blanket IP Block option in the "
 "bannedsitelist file instead."
 msgstr ""
 "反向禁止的网站和网址查找。\n"
-"如果设置为on，dansguardian的的外观为一个IP地址的正向DNS地址和搜索都在被禁止的"
-"网站，网址列表。这将防止简单地输入一个禁止的IP地址的用户。\n"
+"如果设置为on，e2guardian的的外观为一个IP地址的正向DNS地址和搜索都在被禁止的网"
+"站，网址列表。这将防止简单地输入一个禁止的IP地址的用户。\n"
 "这将降低搜索速度有所因此，除非你有一个本地缓存DNS服务器，保留其关闭，使用毯知"
 "识产权座选择bannedsitelist文件代替。"
 
@@ -4001,14 +4715,44 @@ msgstr "轮换日志文件"
 msgid "Route"
 msgstr "路线"
 
+msgid "Route Host"
+msgstr ""
+
+msgid "Route Type"
+msgstr ""
+
+msgid "Routing Table"
+msgstr ""
+
 msgid "Rule"
 msgstr "规则"
+
+msgid "Rule number"
+msgstr ""
 
 msgid "Rule to be added to the routing table."
 msgstr "规则被添加到路由表。"
 
 msgid "Rules"
 msgstr "规则"
+
+msgid "Rules file"
+msgstr ""
+
+msgid "Rules file deleted"
+msgstr ""
+
+msgid "Rules loaded"
+msgstr ""
+
+msgid "Ruleset Optimization"
+msgstr ""
+
+msgid "Ruleset contains errors"
+msgstr ""
+
+msgid "Ruleset deleted"
+msgstr ""
 
 msgid "Russian"
 msgstr "俄文"
@@ -4076,6 +4820,23 @@ msgstr "SSH版本"
 msgid "SSH_PORTS"
 msgstr "SSH端口"
 
+msgid "SSL"
+msgstr ""
+
+msgid "SSL access denied address"
+msgstr ""
+
+msgid "SSL certificate checking"
+msgstr ""
+
+msgid "SSL man in the middle"
+msgstr ""
+
+msgid ""
+"SSL sites not matching greysslsitelist will be treat as if sslmitm is off.\n"
+"ignored if  sslmitm is off"
+msgstr ""
+
 msgid ""
 "SSL/TLS parms. See the server config file for more description.  It's best "
 "to use a separate .crt/.key file pair for each client.  A single ca file can "
@@ -4122,12 +4883,27 @@ msgstr "样本客户端和服务器配置提供给您开始。您可能要替换
 msgid "Sat"
 msgstr "Sat"
 
+msgid "Save"
+msgstr ""
+
+msgid "Save ruleset"
+msgstr ""
+
+msgid "Save ruleset to file"
+msgstr ""
+
 msgid ""
 "Save spam messages as a message/rfc822 MIME attachment instead of modifying "
 "the original message (0: off, 2: use text/plain instead)"
 msgstr ""
 "保存作为message/rfc822 MIME附件的垃圾邮件，而不是修改原始邮件（0：关闭，2：使"
 "用文本/纯代替）"
+
+msgid "Save with errors"
+msgstr ""
+
+msgid "Saved"
+msgstr ""
 
 msgid "Scan"
 msgstr "扫描"
@@ -4171,6 +4947,12 @@ msgstr "扫描IP地址"
 msgid "Scanned requests"
 msgstr "扫描要求"
 
+msgid "Scrub"
+msgstr ""
+
+msgid "Scrub Options"
+msgstr ""
+
 msgid "Search"
 msgstr "搜索"
 
@@ -4185,6 +4967,9 @@ msgstr "安全等级"
 
 msgid "Select"
 msgstr "选择"
+
+msgid "Select Option Type"
+msgstr ""
 
 msgid ""
 "Select a cryptographic cipher. If the cipher option is used on the server "
@@ -4274,11 +5059,17 @@ msgstr "会话"
 msgid "Session Takeover"
 msgstr "获取会话"
 
+msgid "Session Timeout"
+msgstr ""
+
 msgid "Session timeout"
 msgstr "会话超时"
 
 msgid "Set DNS forwarders"
 msgstr "设置DNS转发器"
+
+msgid "Set IP DNS listens on"
+msgstr ""
 
 msgid "Set PF allowed"
 msgstr "设置PF允许"
@@ -4292,11 +5083,17 @@ msgstr "设置非工作时间网络接口"
 msgid "Set configuration"
 msgstr "设置配置"
 
+msgid "Set default locale"
+msgstr ""
+
 msgid "Set dhcpd conf"
 msgstr "设置dhcpd配置"
 
 msgid "Set e-mail address"
 msgstr "设置电子邮件地址"
+
+msgid "Set force HTTPs"
+msgstr ""
 
 msgid ""
 "Set headers which may provide inappropriate cues to the Bayesian classifier"
@@ -4326,8 +5123,14 @@ msgstr "设置日志配置"
 msgid "Set man.cgi home"
 msgstr "设置man.cgi主页"
 
+msgid "Set max anchor nesting"
+msgstr ""
+
 msgid "Set name value pair"
 msgstr "设置名称值对"
+
+msgid "Set pfctl timeout"
+msgstr ""
 
 msgid "Set pmacct if"
 msgstr "设置pmacct网络接口"
@@ -4377,6 +5180,11 @@ msgstr "设置主机名"
 msgid "Set system nameserver"
 msgstr "设置系统域名服务器"
 
+msgid ""
+"Set tcp timeout between the Proxy and e2guardian \n"
+"Min 5 - Max 100"
+msgstr ""
+
 msgid "Set template ips"
 msgstr "设置IPS模板"
 
@@ -4397,8 +5205,16 @@ msgid "Set the threshold at which a message is considered spam (default: 5.0)"
 msgstr "设置在该消息被视为垃圾邮件（默认是：5.0阈值）"
 
 msgid ""
+"Set timeout between the Proxy and e2guardian \n"
+"Min 20 - Max 300"
+msgstr ""
+
+msgid ""
 "Set up the external network addresses as well.  A good start may be \"any\""
 msgstr "建立外部网络地址以及设置。一个良好的开端可能是\"any\""
+
+msgid "Set use SSH"
+msgstr ""
 
 msgid "Set user password"
 msgstr "设置用户密码"
@@ -4469,6 +5285,15 @@ msgstr ""
 "设置最低数量的进程繁育时耗尽。\n"
 "在大型网站上，您可能需要尝试10。"
 
+msgid ""
+"Sets the number of child process to kill/fork at each 5 sec interval, during "
+"gentle restart.\n"
+"Defaults to preforkchildren."
+msgstr ""
+
+msgid "Show"
+msgstr ""
+
 msgid "Show weighted phrases found"
 msgstr "结果显示加权短语"
 
@@ -4509,8 +5334,24 @@ msgstr ""
 "下，网络服务器配置为服务于这个网络界面只，因此默认值应该满足大多数的目的。然"
 "而，OpenBSD的/ httpd的是一个全HTTP服务器功能，您可以配置服务的网站了。"
 
+msgid "Site for real-time chatting and instant messaging."
+msgstr ""
+
 msgid "Sites"
 msgstr "站点"
+
+msgid ""
+"Sites about all kinds of sexual content ranging from bare bosoms to hardcore "
+"porn and sm."
+msgstr ""
+
+msgid ""
+"Sites about all types of real estate, buying and selling homes, finding "
+"apartments for rent."
+msgstr ""
+
+msgid "Sites about and related to stock exchange."
+msgstr ""
 
 msgid "Sites about and selling clothing"
 msgstr "销售服装有关网站"
@@ -4524,6 +5365,16 @@ msgstr "烹饪等网站"
 msgid "Sites about dating"
 msgstr "约会网站"
 
+msgid ""
+"Sites about everything need to create a cozy home (interior design and "
+"accessories)."
+msgstr ""
+
+msgid ""
+"Sites about gardening, growing plants, fighting bugs and everything related "
+"to gardening."
+msgstr ""
+
 msgid "Sites about going on holiday"
 msgstr "度假网站"
 
@@ -4533,8 +5384,32 @@ msgstr "维修站点"
 msgid "Sites about hygiene and other personal grooming related stuff"
 msgstr "网站关于卫生和其他有关材料的个人修饰"
 
+msgid ""
+"Sites about killing and harming people. Covers anything about brutality and "
+"beastiality."
+msgstr ""
+
+msgid "Sites about online games. The games are for fun only (no gambling)."
+msgstr ""
+
+msgid ""
+"Sites about treatments for feeling internally and externally healthy and "
+"beautiful again."
+msgstr ""
+
 msgid "Sites attempting to trick people into giving out private information."
 msgstr "试图诱骗私人信息的网站。"
+
+msgid "Sites belonging to the government of a country, county or city."
+msgstr ""
+
+msgid ""
+"Sites bringing people together (social networking) be it for friendship or "
+"for business."
+msgstr ""
+
+msgid "Sites concerning food and food preparation."
+msgstr ""
 
 msgid "Sites containing adult material such as swearing but not porn"
 msgstr "网站包含成人材料，但并非色情成人材料"
@@ -4551,11 +5426,21 @@ msgstr ""
 msgid "Sites containing violence"
 msgstr "网站包含暴力"
 
+msgid ""
+"Sites dedicated to martial arts such as: karate, kung fu, taek won do as "
+"well as fighting sports sites like ufc."
+msgstr ""
+
 msgid "Sites dedicated to sexuality, possibly including adult material"
 msgstr "专门性的网站，其中可能包括成人材料"
 
 msgid "Sites detailing or selling weapons"
 msgstr "网站详细介绍或出售武器"
+
+msgid ""
+"Sites explaining the biological functions of the body concerning sexuality "
+"as well as sexual health."
+msgstr ""
 
 msgid "Sites for finding jobs"
 msgstr "寻找工作网站"
@@ -4565,11 +5450,121 @@ msgid ""
 "www. or http://"
 msgstr "在白名单的网站没有进行病毒扫描。您可以省略领先www.或http://"
 
+msgid ""
+"Sites keeping an eye on where you surf and what you do in a passive manner. "
+"Covers web bugs, counters and other tracking mechanisms in web pages that do "
+"not interfere with the local computer yet collect information about the "
+"surfing person for later analysis."
+msgstr ""
+
 msgid "Sites kids often waste time on"
 msgstr "孩子常浪费时间的网站"
 
+msgid ""
+"Sites of breweries, wineries and destilleries. This category also covers "
+"sites that explain how to make beer, wines and spirits."
+msgstr ""
+
+msgid "Sites of hospitals and medical facilities."
+msgstr ""
+
+msgid ""
+"Sites of institutions as well as of amateurs about all topics of astronomy."
+msgstr ""
+
+msgid ""
+"Sites of institutions as well as of amateurs about all topics of chemistry."
+msgstr ""
+
+msgid ""
+"Sites of insurance companies, information about insurances and link "
+"collections concering this subject."
+msgstr ""
+
+msgid "Sites of military facilities or related to the armed forces."
+msgstr ""
+
+msgid ""
+"Sites of political parties, political organisations and associations; sites "
+"with political discussions."
+msgstr ""
+
+msgid ""
+"Sites of restaurants as well as restaurant descriptions and commentaries."
+msgstr ""
+
+msgid "Sites offering TV streams via Internet."
+msgstr ""
+
+msgid ""
+"Sites offering all kinds of weapons or accessories for weapons: Firearms, "
+"knifes, swords, bows, etc. Armory shops are included as well as sites "
+"holding general information about arms (manufacturing, usage)."
+msgstr ""
+
+msgid ""
+"Sites offering cinema programs, information about movies and actors. Sites "
+"for downloading video clips/movies (as long as it is legal) are included as "
+"well."
+msgstr ""
+
+msgid ""
+"Sites offering drugs or explain how to make drugs. Covers alcohol and "
+"tobacco as well as viagra and similar substances."
+msgstr ""
+
+msgid "Sites offering online shopping and price comparisons."
+msgstr ""
+
+msgid "Sites offering podcasts or podcast services, includes audio books."
+msgstr ""
+
+msgid "Sites offering short links for URLs. "
+msgstr ""
+
+msgid ""
+"Sites offering the possibility to win money. Poker, Casino, Bingo and other "
+"chance games as well as betting sites."
+msgstr ""
+
+msgid ""
+"Sites offering the service to remotely access computers, especially (but not "
+"limited to going) through firewalls. This does not cover traditional VPN."
+msgstr ""
+
+msgid ""
+"Sites one can apply for loans and mortgages or can obtain information about "
+"this business."
+msgstr ""
+
+msgid ""
+"Sites presenting news. Homepages from newspapers, magazines and journals as "
+"well as some blogs."
+msgstr ""
+
 msgid "Sites promoting religion"
 msgstr "推广宗教网站"
+
+msgid ""
+"Sites providing vpn services to the public. The focus is on vpn sites used "
+"to hide the origin of the traffic, f.e. tor nodes."
+msgstr ""
+
+msgid ""
+"Sites related to games. This includes descriptions, news and general "
+"information about games. No gambling sites."
+msgstr ""
+
+msgid "Sites selling and presenting sexy lingerie."
+msgstr ""
+
+msgid "Sites specialized on hosting images, photo galleries and so on."
+msgstr ""
+
+msgid ""
+"Sites that actively help to bypass url filters by accepting urls via form "
+"and play a proxing and redirecting role."
+msgstr ""
 
 msgid ""
 "Sites that contain messenger client download and web-based messaging sites"
@@ -4577,6 +5572,32 @@ msgstr "网站包含Messenger客户端下载和基于Web的信息网站"
 
 msgid "Sites that contain nude pictures and/or promote a nude lifestyle"
 msgstr "网站包含的裸体照片和/或宣传裸体的生活方式"
+
+msgid ""
+"Sites that enable user to phone via the Internet. Any site where users can "
+"voice-chat with each other."
+msgstr ""
+
+msgid ""
+"Sites that lure with free of charge services but then give then give you a "
+"costly subscription (written somewhere in tiny letters nearly unreadable)."
+msgstr ""
+
+msgid "Sites that offer listening to music and radio live streams."
+msgstr ""
+
+msgid ""
+"Sites that offer the download of music, information about music groups or "
+"music in general."
+msgstr ""
+
+msgid ""
+"Sites that offer the download of ringtones or present other information "
+"about ringtones."
+msgstr ""
+
+msgid "Sites that offer web-based email services."
+msgstr ""
 
 msgid "Sites that promote movies, books, magazine, humor"
 msgstr "推广电影的网站，书籍，杂志，幽默"
@@ -4586,6 +5607,17 @@ msgstr "网站，提供网上购物"
 
 msgid "Sites that remove spyware"
 msgstr "删除间谍软件的网站"
+
+msgid ""
+"Sites that try to actively install software or lure the user in doing so in "
+"order to spy the surfing behaviour (or worse). The home calling sites where "
+"the collected information is sent, are listed too."
+msgstr ""
+
+msgid ""
+"Sites to contact people for love and living together. He seeks her, she "
+"seeks him and so on."
+msgstr ""
 
 msgid "Sites to do with childcare"
 msgstr "网站与育儿"
@@ -4602,6 +5634,9 @@ msgstr "网站谁主办病毒感染的文件"
 msgid "Sites who run or have spyware software to download"
 msgstr "谁的网站运行或有间谍软件下载"
 
+msgid "Sites with aggressive content such as racism and hate speech."
+msgstr ""
+
 msgid "Sites with audio or video downloads"
 msgstr "网站的音频或视频下载"
 
@@ -4617,11 +5652,27 @@ msgstr "网站提供例如色情或木马的拨号器"
 msgid "Sites with illegal pirate software"
 msgstr "网站非法盗版软件"
 
+msgid ""
+"Sites with information about foreign countries, travel companies, travel "
+"fares, accommodations and everything else that has to do with travel."
+msgstr ""
+
+msgid ""
+"Sites with information and discussions about security weaknesses and how to "
+"exploit them. Sites offering exploits are listed as well as sites "
+"distributing programs that help to find security leaks."
+msgstr ""
+
 msgid "Sites with information only on beer or liquors"
 msgstr "网站只有在啤酒或酒类信息"
 
 msgid "Sites with proxies to bypass filters"
 msgstr "与代理站点绕过过滤器"
+
+msgid ""
+"Sites with religious content: all kind of churches, sects, religious "
+"interpretations, etc."
+msgstr ""
 
 msgid "Size"
 msgstr "大小"
@@ -4640,6 +5691,12 @@ msgstr "大小的目标（KB）"
 
 msgid "Size by site (KB)"
 msgstr "大小按网站（KB）"
+
+msgid "Skip Interfaces"
+msgstr ""
+
+msgid "Sloppy Tracker"
+msgstr ""
 
 msgid ""
 "Smart, Raw and Meta/Title phrase content filtering options.\n"
@@ -4736,11 +5793,20 @@ msgstr ""
 msgid "Source IPs"
 msgstr "源IP地址"
 
+msgid "Source Port"
+msgstr ""
+
 msgid "Source Ports"
 msgstr "源端口"
 
+msgid "Source Track Timeout"
+msgstr ""
+
 msgid "Source addresses"
 msgstr "源地址"
+
+msgid "Source->Destination"
+msgstr ""
 
 msgid "Spam"
 msgstr "垃圾邮件"
@@ -4800,6 +5866,9 @@ msgstr "西班牙语"
 msgid "Sport news sites"
 msgstr "体育新闻网站"
 
+msgid "Src Nodes"
+msgstr ""
+
 msgid "Start"
 msgstr "开始"
 
@@ -4821,6 +5890,15 @@ msgstr "启动"
 msgid "State"
 msgstr ""
 
+msgid "State Creations"
+msgstr ""
+
+msgid "State Defaults"
+msgstr ""
+
+msgid "State Policy"
+msgstr ""
+
 msgid "State Searches vs Packets"
 msgstr "状态包搜索"
 
@@ -4832,8 +5910,14 @@ msgid ""
 "load."
 msgstr "状态操作或许是最有意义的包过滤加载措施。"
 
+msgid "Stateful Filtering"
+msgstr ""
+
 msgid "States"
 msgstr "状态"
+
+msgid "Static Port"
+msgstr ""
 
 msgid "Statistics"
 msgstr "统计"
@@ -4893,18 +5977,17 @@ msgstr "字符串错误"
 msgid ""
 "Subject of the email sent when a virus is caught.\n"
 "Only applicable if notifyav is on.\n"
-"default avsubject = 'dansguardian virus block'"
+"default avsubject = 'e2guardian virus block'"
 msgstr ""
 "电子邮件的主题时发送病毒被捕获。\n"
 "只适用于notifyav是。\n"
-"默认avsubject ='dansguardian virus block'"
+"默认avsubject ='e2guardian virus block'"
 
 msgid ""
 "Subject of the email sent when violation thresholds are exceeded default "
-"contentsubject = 'dansguardian violation'"
+"contentsubject = 'e2guardian violation'"
 msgstr ""
-"电子邮件的主题时发出违反超出阈值的默认contentsubject ='dansguardian "
-"violation'"
+"电子邮件的主题时发出违反超出阈值的默认contentsubject ='e2guardian violation'"
 
 msgid "Subnet mask"
 msgstr "子网掩码"
@@ -4956,8 +6039,14 @@ msgstr "系统重新启动"
 msgid "System shutdown"
 msgstr "系统关机"
 
+msgid "TCP Flags"
+msgstr ""
+
 msgid "TCP Keep Alive"
 msgstr "保持活动的TCP"
+
+msgid "TCP Timeouts"
+msgstr ""
 
 msgid "TCP or UDP server?"
 msgstr "TCP或UDP服务器？"
@@ -4970,6 +6059,18 @@ msgstr "时间"
 
 msgid "TLS Auth"
 msgstr "TLS认证"
+
+msgid "Table"
+msgstr ""
+
+msgid "Table Entries"
+msgstr ""
+
+msgid "Tables"
+msgstr ""
+
+msgid "Tail number wrong"
+msgstr ""
 
 msgid "Target"
 msgstr "目标"
@@ -4994,6 +6095,9 @@ msgstr "临时拒绝页绕道秘密钥匙"
 
 msgid "Temporary block duration in seconds on each alert."
 msgstr "临时在几秒钟时间每块警戒。"
+
+msgid "Test pf rules"
+msgstr ""
 
 msgid ""
 "Thanks to OpenSSH, remote root login to the system is permitted by default. "
@@ -5031,15 +6135,18 @@ msgstr ""
 "\n"
 "Snort的更新您的软件版本发布规则定期。请确保您在您的系统上安装适当的规则。"
 
+msgid "The IP address that the DNS server listens on."
+msgstr ""
+
 msgid ""
-"The IP that DansGuardian listens on.  If left blank DansGuardian will listen "
-"on all IPs.  That would include all NICs, loopback, modem, etc.\n"
+"The IP that E2Guardian listens on.  If left blank E2Guardian will listen on "
+"all IPs.  That would include all NICs, loopback, modem, etc.\n"
 "Normally you would have your firewall protecting this, but if you want you "
 "can limit it to a certain IP. To bind to multiple interfaces, specify each "
 "IP on an individual filterip line."
 msgstr ""
-"dansguardian侦听的IP。如果留空dansguardian的会听在所有的IP。这将包括所有的网"
-"卡，环回，调制解调器等\n"
+"e2guardian侦听的IP。如果留空e2guardian的会听在所有的IP。这将包括所有的网卡，"
+"环回，调制解调器等\n"
 "通常你会你的防火墙保护，但如果你想你可以限制到一个特定IP。绑定到多个接口，指"
 "定每个知识产权个别filterip线。"
 
@@ -5050,6 +6157,32 @@ msgid ""
 msgstr ""
 "在入侵防御系统（IPS）取决于生成警报入侵检测系统（IDS）。请确保在入侵检测系统"
 "正在运行开始的IPS。"
+
+msgid ""
+"The address of your web server to which the static page e2guardian reporting "
+"was copied.\n"
+"With ssldeniedrewrite off it works only with firefox \n"
+"With ssldeniedrewrite on there are several limitations, SSL warning, basic "
+"page, etc, eg this webserver can't be listed as an exception in your "
+"browser's proxy configuration.\n"
+"Keep in mind, this is only a trick to avoid blank page, the best way still "
+"to use SSLMITM"
+msgstr ""
+
+msgid ""
+"The headers can be easily spoofed in order to fake the request origin by "
+"setting the X-Forwarded-For header. If you have the \"usexforwardedfor\" "
+"option enabled, you may want to specify the IPs from which this kind of "
+"header is allowed, such as another upstream proxy server for instance If you "
+"want authorize multiple IPs, specify each one on an individual "
+"xforwardedforfilterip line."
+msgstr ""
+
+msgid ""
+"The interval between log status entries when proxy is not responding minimum "
+"is proxytimeout - maximum 3600 (= 1 hour)\n"
+"default = 600  (= 10 mins)"
+msgstr ""
 
 msgid ""
 "The keepalive directive causes ping-like messages to be sent back and forth "
@@ -5084,8 +6217,7 @@ msgid "The most famous web server."
 msgstr "最有名的Web服务器。"
 
 msgid ""
-"The most secure OS in the world. Underneath UTMFW is pure, untouched "
-"OpenBSD."
+"The most secure OS in the world. Underneath UTMFW is pure, untouched OpenBSD."
 msgstr "UTMFW是基于在世界上最安全的操作系统，OpenBSD。"
 
 msgid ""
@@ -5159,6 +6291,11 @@ msgstr ""
 "案，但离开他们的评论。注释的选项更改默认值。"
 
 msgid ""
+"The web filter can decrypt SSL content, scan as if plain, and then re-"
+"encrypt."
+msgstr ""
+
+msgid ""
 "The web filter can report incidents via e-mails. You can setup which "
 "incidents to be reported based on violation types and thresholds. Do not "
 "forget the single quotes around e-mail addresses and strings."
@@ -5167,13 +6304,13 @@ msgstr ""
 "上违反类型和阈值。不要忘记围绕电子商务的单引号，电子邮件地址和字符串。"
 
 msgid ""
-"The web filter on UTMFW uses weighted phrase lists to scan the content "
-"of web pages, hence the name Content Scanning Web Filter. This feature of "
-"the web filter is different from and in addition to site or url lists, "
+"The web filter on UTMFW uses weighted phrase lists to scan the content of "
+"web pages, hence the name Content Scanning Web Filter. This feature of the "
+"web filter is different from and in addition to site or url lists, "
 "blacklists, and related categories."
 msgstr ""
-"关于UTMFW网页过滤器采用加权短语列出的内容扫描的网页，因此得名内容扫描网页"
-"过滤系统。此功能的网页过滤器不同，除了站点或URL列表，黑名单和相关类别。"
+"关于UTMFW网页过滤器采用加权短语列出的内容扫描的网页，因此得名内容扫描网页过滤"
+"系统。此功能的网页过滤器不同，除了站点或URL列表，黑名单和相关类别。"
 
 msgid ""
 "There are 3 possible modes of operation:\n"
@@ -5185,6 +6322,9 @@ msgstr ""
 "0 =关闭不使用的加权短语功能。\n"
 "1 =开，正常=加权短语正常运作。\n"
 "2 =开，奇异=各占一语中只能算作一次页面上。"
+
+msgid "There was an error while installing"
+msgstr ""
 
 msgid ""
 "These advanced options can help you tune the performance of the web filter. "
@@ -5203,6 +6343,9 @@ msgid ""
 msgstr ""
 "这是Apache Web服务器访问日志。日志包含登录用户，客户端IP地址，和页面访问。"
 
+msgid "These are interface statistics reported by pf."
+msgstr ""
+
 msgid ""
 "These are intrusion alerts. Note that these alerts can be considered as "
 "guesses at best. While configuring the IPS, make use of priorities and "
@@ -5215,6 +6358,14 @@ msgid ""
 "These are keywords to match in alert messages. If alerts contain such words, "
 "the IP in that alert will be blocked."
 msgstr "这些关键字匹配的警报消息。如果警报含有这些话，在该警报的IP将被封锁。"
+
+msgid "These are queue statistics reported by pf."
+msgstr ""
+
+msgid ""
+"These are the active rules loaded into pf. Note that the rule numbers "
+"reported here do not necessarily match with the numbers on the rule editor."
+msgstr ""
 
 msgid ""
 "These defaults are permanently stored in web user interface settings, i.e. "
@@ -5275,6 +6426,11 @@ msgid ""
 msgstr "这个按钮创建一个新的网页过滤器组相同的活动小组。"
 
 msgid ""
+"This covers mostly filesharing, p2p and torrent sites. Other download sites "
+"(for software, wallpapers, ..) are included as well."
+msgstr ""
+
+msgid ""
 "This graph shows overall network usage based on certain protocols. Note that "
 "each protocol may cover more than one port."
 msgstr ""
@@ -5296,7 +6452,7 @@ msgstr ""
 
 msgid ""
 "This is only used if you use a content scanner plugin such as AV\n"
-"This is the max size of file that DG will download and cache in RAM.  After "
+"This is the max size of file that E2 will download and cache in RAM.  After "
 "this limit is reached it will cache to disk.\n"
 "This value must be less than or equal to maxcontentfilecachescansize.\n"
 "The size is in Kibibytes - eg 10240 = 10Mb\n"
@@ -5312,7 +6468,7 @@ msgstr ""
 
 msgid ""
 "This is only used if you use a content scanner plugin such as AV.\n"
-"This is the max size file that DG will download so that it can be scanned or "
+"This is the max size file that E2 will download so that it can be scanned or "
 "virus checked.\n"
 "This value must be greater or equal to maxcontentramcachescansize.\n"
 "The size is in Kibibytes - eg 10240 = 10Mb"
@@ -5331,8 +6487,8 @@ msgid "This is the IP and port over which the proxy accepts connections."
 msgstr "这是IP和端口对的代理接受连接。"
 
 msgid ""
-"This is the address of your web server to which the cgi dansguardian "
-"reporting script was copied. Only used in reporting levels 1 and 2.\n"
+"This is the address of your web server to which the cgi e2guardian reporting "
+"script was copied. Only used in reporting levels 1 and 2.\n"
 "\n"
 "This webserver must be either:\n"
 " 1. Non-proxied. Either a machine on the local network, or listed as an "
@@ -5344,7 +6500,7 @@ msgid ""
 "Individual filter groups can override this setting in their own "
 "configuration."
 msgstr ""
-"这是您的Web服务器的地址是CGI的dansguardian的报告脚本复制。在报告只用了1级和"
+"这是您的Web服务器的地址是CGI的e2guardian的报告脚本复制。在报告只用了1级和"
 "2。\n"
 "\n"
 "这个网络服务器必须是：\n"
@@ -5389,12 +6545,18 @@ msgstr ""
 "DHCP服务器。"
 
 msgid ""
-"This is the log level for the UTMFW web interface. Logs at this level "
-"and up will be recorded in WUI and CTLR log files. This setting does not "
+"This is the log level for the UTMFW web interface. Logs at this level and up "
+"will be recorded in WUI and CTLR log files. This setting does not effect "
+"other services."
+msgstr ""
+"这是网络接口的UTMFW日志级别。在这一级日志和行动将被记录在WUI和CTLR日志文件。"
+"此设置不影响其他服务。"
+
+msgid ""
+"This is the log level for the utmfw web interface. Logs at this level and up "
+"will be recorded in WUI and Controller log files. This setting does not "
 "effect other services."
 msgstr ""
-"这是网络接口的UTMFW日志级别。在这一级日志和行动将被记录在WUI和CTLR日志文"
-"件。此设置不影响其他服务。"
 
 msgid ""
 "This is the name server used by the system. You can use the DNS server on "
@@ -5436,6 +6598,11 @@ msgid ""
 "This is the priority in the alerts. Alerts at this priority and up will be "
 "used to block IPs."
 msgstr "这是在提醒优先。在这一优先警报和行动将用来阻止IP地址。"
+
+msgid ""
+"This is the state table of the Packet Filter. All active stateful "
+"connections should appear in this list."
+msgstr ""
 
 msgid ""
 "This is the system name. If you change the hostname, use automatic "
@@ -5644,12 +6811,12 @@ msgstr ""
 "证，反之亦然。"
 
 msgid ""
-"This page shows system-wide logs. Most services on UTMFW write to their "
-"own log files, but a few processes may log messages to this system file. Pay "
+"This page shows system-wide logs. Most services on UTMFW write to their own "
+"log files, but a few processes may log messages to this system file. Pay "
 "special attention to error messages."
 msgstr ""
-"在这页上全系统日志。关于UTMFW大多数服务写信给他们的自己的日志文件，但几个"
-"进程可能会记录一个信息系统中的文件。特别留心特别注意的错误信息。"
+"在这页上全系统日志。关于UTMFW大多数服务写信给他们的自己的日志文件，但几个进程"
+"可能会记录一个信息系统中的文件。特别留心特别注意的错误信息。"
 
 msgid ""
 "This preprocessor \"normalizes\" telnet negotiation strings from telnet and "
@@ -5677,18 +6844,26 @@ msgid ""
 "startup.  You define the number of seconds the bypass will function for "
 "before the deny will appear again.\n"
 "To allow the link on the denied page to appear you will need to edit the "
-"template.html or dansguardian.pl file for your language.\n"
+"template.html or e2guardian.pl file for your language.\n"
 "300 = enable for 5 minutes\n"
 "0 = disable ( defaults to 0 )\n"
 "-1 = enable but you require a separate program/CGI to generate a valid link"
 msgstr ""
 "这提供了一个网页上的链接，拒绝绕过几班分钟。为了安全，就使用随机散列秘密守护"
 "进程产生启动。你定义秒绕道数函数在否认将再次出现。\n"
-"为了让网页上的链接，拒绝出现在您将需要编辑template.html或dansguardian.pl您的"
-"语言文件。\n"
+"为了让网页上的链接，拒绝出现在您将需要编辑template.html或e2guardian.pl您的语"
+"言文件。\n"
 "300 =启用5分钟\n"
 "0 =禁用（默认为0）\n"
 "1 =启用，但你需要一个单独的程序/ CGI的生成有效的链接"
+
+msgid ""
+"This setting allows you to choose the method used while running the "
+"controller. Controller commands can be executed using either of the "
+"following two methods: (1) Executing the controller directly on the command "
+"line or (2) Openning an SSH connection to the system and calling the "
+"controller over this secure channel."
+msgstr ""
 
 msgid ""
 "This setting enables or disables help boxes, such as this one and the help "
@@ -5750,6 +6925,9 @@ msgstr "到期时间"
 msgid "Time to expire (secs)"
 msgstr "到期时间（秒）"
 
+msgid "Timed out running pfctl command"
+msgstr ""
+
 msgid "Timeout"
 msgstr "超时"
 
@@ -5758,6 +6936,9 @@ msgstr "时间跨度"
 
 msgid "To"
 msgstr "至"
+
+msgid "To Redirect Host"
+msgstr ""
 
 msgid ""
 "To block all SSL and CONNECT tunnels except to addresses in the "
@@ -5838,6 +7019,9 @@ msgstr "变成一个IPS（入侵防御系统）Snort的入侵检测系统。取�
 msgid "Type"
 msgstr "类型"
 
+msgid "UDP Timeouts"
+msgstr ""
+
 msgid "URLs"
 msgstr "网址"
 
@@ -5848,6 +7032,115 @@ msgstr "在白名单网址对此进行病毒扫描。您可以省略领先www. �
 
 msgid "USER"
 msgstr "用户"
+
+msgid "UTM FIREWALL"
+msgstr ""
+
+msgid "UTM Firewall"
+msgstr ""
+
+msgid "UTMFW ADMINISTRATION INTERFACE"
+msgstr "UTMFW管理界面"
+
+msgid "UTMFW Administration Interface"
+msgstr "UTMFW管理界面"
+
+msgid ""
+"UTMFW Web Filter uses URL lists categorized in different packages for your "
+"convenience. You can enable or disable categories you want on this page."
+msgstr ""
+"UTMFW网页过滤网址列表中使用不同的包分类的方便您。您可以启用或你想在此网页禁用"
+"类别。"
+
+msgid ""
+"UTMFW Web Filter uses phrase lists categorized in different packages for "
+"your convenience. You can enable or disable categories you want on this page."
+msgstr ""
+"UTMFW网页过滤系统使用不同的组合，分类的短语列表方便您。您可以启用或你想在此网"
+"页禁用类别。"
+
+msgid ""
+"UTMFW Web Filter uses site lists categorized in different packages for your "
+"convenience. You can enable or disable categories you want on this page."
+msgstr ""
+"UTMFW网页过滤系统使用不同的组合分类的网站列表方便您。您可以启用或你想在此网页"
+"禁用类别。"
+
+msgid "UTMFW currently supports only admin and user usernames"
+msgstr "UTMFW目前仅支持管理员和用户的用户名"
+
+msgid ""
+"UTMFW logs errors, warnings, notices, and debug messages. Since also "
+"recorded are changes to configuration and passwords, you may want to monitor "
+"these logs carefully. These logs are also important while reporting issues "
+"related to the web user interface. Logs on this page are generated by the "
+"Controller and the Model, middle and bottom layers of software responsible "
+"for processing requests from the View."
+msgstr ""
+"UTMFW记录错误，警告，通知和调试消息。由于还记录的是配置和密码更改，您可能想要"
+"监控这些日志小心。这些记录也很重要，而报告的问题有关网络用户接口。在此页面日"
+"志的生成控制器和模型，中，负责软件底层从视图处理请求。"
+
+msgid ""
+"UTMFW logs errors, warnings, notices, and debug messages. Since also "
+"recorded are changes to configuration and passwords, you may want to monitor "
+"these logs carefully. These logs are also important while reporting issues "
+"related to the web user interface. Logs on this page are generated by the "
+"View, main module responsible for displaying the web user interface and "
+"interacting with the user."
+msgstr ""
+"UTMFW记录错误，警告，通知和调试消息。由于还记录的是配置和密码更改，您可能想要"
+"监控这些日志小心。这些记录也很重要，而报告的问题有关网络用户接口。在此页面日"
+"志的生成查看，主模块用于显示网页的用户界面和负责与用户互动。"
+
+msgid ""
+"UTMFW runs many services or daemons in default installation. On this page "
+"you can configure these services to start at boot time.\n"
+"\n"
+"Note that if you modify startup configuration for some services, you may "
+"need to change packet filter rules or other related settings too."
+msgstr ""
+"UTMFW运行的许多服务在默认安装或守护进程进程。在这页面可以配置这些服务在引导时"
+"启动。\n"
+"\n"
+"请注意，如果您修改了一些服务的启动配置，您可能需要更改的数据包过滤规则或其他"
+"相关设置了。"
+
+msgid ""
+"UTMFW sends warning and information messages to its system administrator. "
+"Here you can type in your own e-mail address."
+msgstr ""
+"UTMFW发送预警和信息至其系统管理员。在这里您可以输入您自己的电子邮件地址。"
+
+msgid ""
+"UTMFW uses ClamAV for all virus scanning purposes. Freshclam checks and "
+"updates ClamAV virus database periodically. By default, the database is "
+"updated every hour. You may not be able to stop or restart freshclam "
+"instance once it starts the update process; wait for a minute and try again."
+msgstr ""
+"UTMFW使用所有扫描病毒ClamAV的目的。 freshclam的检查和更新ClamAV的病毒库，定"
+"期。默认情况下，数据库每小时更新一次。您可能无法停止或重新启动freshclam的例如"
+"一旦启动更新过程，等待一分钟，然后再试一次。"
+
+msgid ""
+"UTMFW would not be possible without the generous developers of many Free and "
+"Open Source Software (FOSS). UTMFW is developed using FOSS only. Software "
+"developed specifically for UTMFW, such as this web user interface and "
+"SnortIPS, are released under the BSD license, hence FOSS also.\n"
+"\n"
+"These credits may not cover all of the software UTMFW uses. If you think one "
+"is missing, I would happily add here.\n"
+"\n"
+"Thanks for the excellent work and good spirit."
+msgstr ""
+"UTMFW是不可能的，没有许多开发者和开放源码软件（FOSS）。 UTMFW只使用开放源码软"
+"件。专门开发的软件，如本网站的UTMFW，用户接口和SnortIPS，是遵照BSD许可证，因"
+"此也是开放源码软件。\n"
+"\n"
+"这些贡献列表可能不包括所有UTMFW使用的软件。如果您发现任何遗漏，我会高兴地在这"
+"里补充。\n"
+"\n"
+"感谢出色的工作和良好的精神。"
 
 msgid "Unblock"
 msgstr "解除阻止"
@@ -5873,6 +7166,9 @@ msgstr "解除阻塞主机"
 msgid "Unconfigure an interface"
 msgstr ""
 
+msgid "Unexpected elements"
+msgstr ""
+
 msgid "Unknown"
 msgstr "未知"
 
@@ -5884,6 +7180,18 @@ msgstr "不支持的接口配置"
 
 msgid "Update mail aliases"
 msgstr "更新邮件别名"
+
+msgid "Upload"
+msgstr ""
+
+msgid "Upload rules file"
+msgstr ""
+
+msgid "Upload ruleset"
+msgstr ""
+
+msgid "Upload with errors"
+msgstr ""
 
 msgid "Uptime"
 msgstr "运行时间"
@@ -5915,6 +7223,9 @@ msgstr ""
 
 msgid "Use SMTP"
 msgstr "使用SMTP"
+
+msgid "Use SSH"
+msgstr ""
 
 msgid ""
 "Use aaa.bbb.ccc.ddd as client address for downloading databases. Useful for "
@@ -5964,6 +7275,9 @@ msgstr "用户代理正则表达式"
 msgid "User name"
 msgstr "用户名"
 
+msgid "User password changed"
+msgstr ""
+
 msgid ""
 "User sessions expire after an idle period defined by this value. The unit is "
 "in seconds. You cannot set a value less than 10 seconds."
@@ -5988,6 +7302,15 @@ msgstr "病毒过滤器"
 
 msgid "VSZ"
 msgstr "VSZ"
+
+msgid "Validation Error"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Values"
+msgstr ""
 
 msgid "Verbosity"
 msgstr "冗长"
@@ -6112,7 +7435,7 @@ msgstr ""
 "大小为（即10240 =的10Mb在kibibytes）"
 
 msgid ""
-"When enabled, DG looks for URLs within URLs, checking against the "
+"When enabled, E2 looks for URLs within URLs, checking against the "
 "bannedsitelist and bannedurllist. This can be used, for example, to block "
 "images originating from banned sites from appearing in Google Images search "
 "results, as the original URLs are embedded in the thumbnail GET requests.\n"
@@ -6204,10 +7527,10 @@ msgstr ""
 
 msgid ""
 "Who the email would come from\n"
-"example: mailfrom = 'dansguardian@mycompany.com'"
+"example: mailfrom = 'e2guardian@mycompany.com'"
 msgstr ""
 "电子邮件将来自\n"
-"例如：mailfrom ='dansguardian@mycompany.com'"
+"例如：mailfrom ='e2guardian@mycompany.com'"
 
 msgid ""
 "Who the virus emails go to (if notify av is on)\n"
@@ -6215,6 +7538,12 @@ msgid ""
 msgstr ""
 "病毒的电子邮件发到（如果通知是在视听）\n"
 "例如：avadmin ='admin@mycompany.com'"
+
+msgid "Will not load rules with errors"
+msgstr ""
+
+msgid "Will not test rules with errors"
+msgstr ""
 
 msgid ""
 "With this option clamav will try to detect broken executables and mark them "
@@ -6336,8 +7665,8 @@ msgstr ""
 
 msgid ""
 "accessdeniedaddress is the address of your web server to which the cgi "
-"dansguardian reporting script was copied. Only used in reporting levels 1 "
-"and 2.\n"
+"e2guardian reporting script was copied. Only used in reporting levels 1 and "
+"2.\n"
 "\n"
 "This webserver must be either:\n"
 " 1. Non-proxied. Either a machine on the local network, or listed as an "
@@ -6346,27 +7675,45 @@ msgid ""
 "only for users using both transparent proxying and a non-local server to "
 "host this script.\n"
 "\n"
-"If defined, this overrides the global setting in dansguardian.conf for "
-"members of this filter group."
+"If defined, this overrides the global setting in e2guardian.conf for members "
+"of this filter group."
 msgstr ""
-"accessdeniedaddress是您的Web服务器地址，该地址的CGIdansguardian的报告脚本复"
-"制。只用1级和2级的报告。\n"
+"accessdeniedaddress是您的Web服务器地址，该地址的CGIe2guardian的报告脚本复制。"
+"只用1级和2级的报告。\n"
 "\n"
 "这个网络服务器必须是：\n"
 "1。非代理。无论是本地网络上的计算机，或者作为例外在浏览器的代理配置。\n"
 "2。添加到exceptionsitelist。选项1是可取的，这个选项只有为用户同时使用透明代理"
 "和非本地服务器有此脚本。\n"
 "\n"
-"如果定义，这将覆盖全局的dansguardian.conf设置此过滤器的成员组。"
+"如果定义，这将覆盖全局的e2guardian.conf设置此过滤器的成员组。"
+
+msgid "add file"
+msgstr ""
+
+msgid "add host or network"
+msgstr ""
+
+msgid "add value"
+msgstr ""
 
 msgid "anonymize logs (blank out usernames & IPs)"
 msgstr "匿名化日志（空出的用户名和IP地址）"
+
+msgid "as rule number"
+msgstr ""
 
 msgid "blacklisted"
 msgstr "列入黑名单"
 
 msgid "blocked"
 msgstr "封锁"
+
+msgid "defaults to S/SA"
+msgstr ""
+
+msgid "delete"
+msgstr ""
 
 msgid "disabled"
 msgstr "禁用"
@@ -6377,11 +7724,23 @@ msgstr "启用"
 msgid "end"
 msgstr "末端"
 
+msgid "enter comment, such as a description of the rule"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+msgid "groupname or groupid"
+msgstr ""
+
 msgid "h"
 msgstr "时"
 
 msgid "height"
 msgstr "高度"
+
+msgid "host or network"
+msgstr ""
 
 msgid ""
 "if on it logs some debug info regarding fork()ing and accept()ing which can "
@@ -6391,14 +7750,32 @@ msgstr ""
 "如果在日志中有一些调试信息关于fork()ing and accept()ing通常会被忽略。这些记录"
 "的系统记录。它是安全的，让它在或关闭"
 
+msgid "if or macro"
+msgstr ""
+
+msgid "ignored if  sslmitm is off"
+msgstr ""
+
+msgid "interface"
+msgstr ""
+
+msgid "ip, host, table or macro"
+msgstr ""
+
 msgid "is not running"
 msgstr "未运行"
 
 msgid "is running"
 msgstr "正在运行"
 
+msgid "label"
+msgstr ""
+
 msgid "language to use from languagedir, e.g. 'ukenglish'"
 msgstr "语言使用languagedir，例如'ukenglish'"
+
+msgid "logging interface"
+msgstr ""
 
 msgid "managed"
 msgstr "管理"
@@ -6406,14 +7783,71 @@ msgstr "管理"
 msgid "min"
 msgstr "分"
 
+msgid "modified"
+msgstr ""
+
+msgid "move to"
+msgstr ""
+
+msgid "name, may be nested"
+msgstr ""
+
+msgid "negated"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
 msgid "non-news related radio and television"
 msgstr "非新闻相关的电台和电视台"
+
+msgid "none"
+msgstr ""
+
+msgid "number"
+msgstr ""
+
+msgid "number 0-7"
+msgstr ""
+
+msgid "number or abbrev."
+msgstr ""
+
+msgid "number or name"
+msgstr ""
+
+msgid "number(ms)"
+msgstr ""
+
+msgid "number, name, table or macro"
+msgstr ""
+
+msgid "number/number"
+msgstr ""
+
+msgid "number[(K|M|G)]"
+msgstr ""
 
 msgid "on|off ( defaults to off )"
 msgstr "开｜关（默认为关闭）"
 
+msgid "os name or macro"
+msgstr ""
+
+msgid "primary"
+msgstr ""
+
+msgid "protocol"
+msgstr ""
+
+msgid "ruleset has errors"
+msgstr ""
+
 msgid "sec"
 msgstr "秒"
+
+msgid "secondary"
+msgstr ""
 
 msgid "secs"
 msgstr "秒"
@@ -6424,20 +7858,29 @@ msgstr "大小"
 msgid "start"
 msgstr "开始"
 
+msgid "string"
+msgstr ""
+
+msgid "string or number"
+msgstr ""
+
 msgid "stuff for mobile/cell phones"
 msgstr "移动/手机有关内容"
 
 msgid "the ip of the proxy (default is the loopback - i.e. this server)"
 msgstr "该代理（默认是环回的IP -即此服务器）"
 
-msgid "the port DansGuardian connects to proxy on"
-msgstr "dansguardian的端口连接到代理服务器上"
+msgid "the port E2Guardian connects to proxy on"
+msgstr "e2guardian的端口连接到代理服务器上"
 
-msgid "the port that DansGuardian listens to."
-msgstr "dansguardian的的端口监听。"
+msgid "the port that E2Guardian listens to."
+msgstr "e2guardian的的端口监听。"
 
 msgid "timespan"
 msgstr "时间跨度"
+
+msgid "to"
+msgstr ""
 
 msgid "total"
 msgstr "总"
@@ -6448,8 +7891,23 @@ msgstr "在日志截断线大项"
 msgid "unconfigured"
 msgstr ""
 
+msgid "uploaded"
+msgstr ""
+
+msgid "username or userid"
+msgstr ""
+
+msgid "utmfw currently supports only admin and user usernames"
+msgstr ""
+
+msgid "valid string"
+msgstr ""
+
 msgid "whitelisted"
 msgstr "白名单"
 
 msgid "width"
 msgstr "宽度"
+
+msgid "yes"
+msgstr ""

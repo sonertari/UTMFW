@@ -24,14 +24,50 @@ msgstr "среднее за 15 минут"
 msgid "5 minute average"
 msgstr "среднее за 5 минут"
 
+msgid "<RULE_TYPE> rule"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "Adaptive Timeouts"
+msgstr ""
+
+msgid "Address Family"
+msgstr ""
+
 msgid "Admin e-mail"
 msgstr "e-mail Администратора"
+
+msgid "All rights reserved."
+msgstr ""
+
+msgid "Allow Opts"
+msgstr ""
+
+msgid "Anchor"
+msgstr ""
 
 msgid "Archives"
 msgstr "Архивы"
 
+msgid "Assign Priority"
+msgstr ""
+
+msgid "Assign Tag"
+msgstr ""
+
 msgid "Automatic config"
 msgstr "Автоматическая настройка"
+
+msgid "Bandwidth"
+msgstr ""
+
+msgid "Block Option"
+msgstr ""
+
+msgid "Block Policy"
+msgstr ""
 
 msgid "Business Days"
 msgstr "Рабочие дни"
@@ -45,7 +81,25 @@ msgstr "Загрузка CPU"
 msgid "CPUs"
 msgstr ""
 
+msgid "Category"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+msgid "Copyright"
+msgstr ""
+
 msgid "Count"
+msgstr ""
+
+msgid "Current Password"
+msgstr ""
+
+msgid "DHCP Server"
+msgstr ""
+
+msgid "DNS Server"
 msgstr ""
 
 msgid "Data Transfer"
@@ -60,6 +114,27 @@ msgstr ""
 msgid "Day"
 msgstr "День"
 
+msgid "Debug"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete ruleset"
+msgstr ""
+
+msgid "Destination"
+msgstr ""
+
+msgid "Destination Port"
+msgstr ""
+
+msgid "Direction"
+msgstr ""
+
 msgid "Disabled Services"
 msgstr "Отключенные службы"
 
@@ -69,11 +144,35 @@ msgstr "Дисковый ввод/вывод"
 msgid "Disks"
 msgstr "Диски"
 
+msgid "Divert Host"
+msgstr ""
+
+msgid "Divert Port"
+msgstr ""
+
+msgid "Divert Reply"
+msgstr ""
+
 msgid "ERROR"
 msgstr "ОШИБКА"
 
+msgid "Edit"
+msgstr ""
+
+msgid "Edit <RULE_TYPE> Rule <RULE_NUMBER>"
+msgstr ""
+
+msgid "Enable Source Track"
+msgstr ""
+
 msgid "Enabled Services"
 msgstr "Включенные службы"
+
+msgid "Enforce TOS"
+msgstr ""
+
+msgid "Export To pflow"
+msgstr ""
 
 msgid "External Interface"
 msgstr "Внешний интерфейс"
@@ -81,14 +180,38 @@ msgstr "Внешний интерфейс"
 msgid "External interface"
 msgstr "Внешний интерфейс"
 
+msgid "FTP Proxy"
+msgstr ""
+
 msgid "Fan"
 msgstr "Куллер"
 
 msgid "File"
 msgstr "Файл"
 
+msgid "Fingerprints File"
+msgstr ""
+
+msgid "Flag"
+msgstr ""
+
+msgid "Flags"
+msgstr ""
+
+msgid "Force HTTPs"
+msgstr ""
+
+msgid "Fragment"
+msgstr ""
+
+msgid "Frags"
+msgstr ""
+
 msgid "From"
 msgstr "От"
+
+msgid "From Redirect Host"
+msgstr ""
 
 msgid "Gateway"
 msgstr "Шлюз"
@@ -99,11 +222,20 @@ msgstr "Элементы графиков (изображения)"
 msgid "Group"
 msgstr "Группа"
 
+msgid "HTTP Proxy"
+msgstr ""
+
+msgid "Help Boxes"
+msgstr ""
+
 msgid "Help boxes"
 msgstr "Подсказки"
 
 msgid "Holidays"
 msgstr "Выходные"
+
+msgid "Host Id"
+msgstr ""
 
 msgid "Hostname"
 msgstr "Имя хоста"
@@ -114,14 +246,41 @@ msgstr ""
 msgid "Hour"
 msgstr "Час"
 
+msgid "ICMP Timeouts"
+msgstr ""
+
+msgid "ICMP Type"
+msgstr ""
+
+msgid "ICMP6 Type"
+msgstr ""
+
+msgid "IM Proxy"
+msgstr ""
+
 msgid "INFORMATION"
 msgstr "ИНФОРМАЦИЯ"
 
 msgid "IP Forwarding"
 msgstr "IP переадресация"
 
+msgid "Id"
+msgstr ""
+
+msgid "Identifier"
+msgstr ""
+
+msgid "Inline Rules"
+msgstr ""
+
+msgid "Inline rules"
+msgstr ""
+
 msgid "Interface"
 msgstr "Интерфейс"
+
+msgid "Interface Binding"
+msgstr ""
 
 msgid "Internal Interface"
 msgstr "Внутренний интерфейс"
@@ -129,23 +288,53 @@ msgstr "Внутренний интерфейс"
 msgid "Internal interface"
 msgstr "Внутренний интерфейс"
 
+msgid "Interval"
+msgstr ""
+
+msgid "Intrusion Detection"
+msgstr ""
+
+msgid "Intrusion Prevention"
+msgstr ""
+
+msgid "Label"
+msgstr ""
+
 msgid "Language"
 msgstr ""
 
 msgid "Level"
 msgstr "Уровень"
 
+msgid "Limit"
+msgstr ""
+
 msgid "Line"
 msgstr "Строка"
+
+msgid "Line number"
+msgstr ""
 
 msgid "Lines per page"
 msgstr "Строк на страницу"
 
+msgid "Load ruleset"
+msgstr ""
+
 msgid "Log"
 msgstr "Лог"
 
+msgid "Log Interface"
+msgstr ""
+
+msgid "Log Level"
+msgstr ""
+
 msgid "Log level"
 msgstr "Уровень детализации логов"
+
+msgid "Logging"
+msgstr ""
 
 msgid "Logout"
 msgstr ""
@@ -159,11 +348,59 @@ msgstr "Интерфейс петля"
 msgid "Machine"
 msgstr "Платформа"
 
+msgid "Match All"
+msgstr ""
+
+msgid "Match Priority"
+msgstr ""
+
+msgid "Match TOS"
+msgstr ""
+
+msgid "Match Tagged"
+msgstr ""
+
+msgid "Max"
+msgstr ""
+
+msgid "Max Addresses"
+msgstr ""
+
+msgid "Max Anchor Nesting"
+msgstr ""
+
+msgid "Max Connection"
+msgstr ""
+
+msgid "Max Connection Rate"
+msgstr ""
+
+msgid "Max MSS"
+msgstr ""
+
+msgid "Max Single Host States"
+msgstr ""
+
+msgid "Max States"
+msgstr ""
+
+msgid "Max-mss"
+msgstr ""
+
 msgid "Mbuf Statistics"
 msgstr "Статистика Mbuf"
 
 msgid "Memory Usage"
 msgstr "Использование памяти"
+
+msgid "Min"
+msgstr ""
+
+msgid "Min TTL"
+msgstr ""
+
+msgid "Min-ttl"
+msgstr ""
 
 msgid "Month"
 msgstr "Месяц"
@@ -171,20 +408,77 @@ msgstr "Месяц"
 msgid "Motherboard"
 msgstr "Материнская плата"
 
+msgid "Move down"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
 msgid "Nameserver"
 msgstr "Сервер имён (DNS)"
 
 msgid "Network Protocol Usage"
 msgstr "Использование сети (по протоколам)"
 
+msgid "New Password"
+msgstr ""
+
+msgid "New Password Again"
+msgstr ""
+
+msgid "No pfsync"
+msgstr ""
+
 msgid "Number of Processes"
 msgstr "Количество Процессов"
+
+msgid "Number of lines"
+msgstr ""
 
 msgid "Number of processes"
 msgstr "Количество процессов"
 
+msgid "OS"
+msgstr ""
+
+msgid "Once"
+msgstr ""
+
+msgid "OpenSSH"
+msgstr ""
+
+msgid "OpenVPN"
+msgstr ""
+
 msgid "Operating System"
 msgstr "Операционная Система"
+
+msgid "Optimization"
+msgstr ""
+
+msgid "Option"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Other Timeouts"
+msgstr ""
+
+msgid "Overload"
+msgstr ""
+
+msgid "POP3 Proxy"
+msgstr ""
+
+msgid "Packet Filter"
+msgstr ""
+
+msgid "Parent"
+msgstr ""
 
 msgid "Partitions"
 msgstr "Разделы"
@@ -198,11 +492,17 @@ msgstr "Пароль"
 msgid "Password again"
 msgstr "Повторить пароль"
 
+msgid "Pfctl Timeout"
+msgstr ""
+
 msgid "Physical Memory"
 msgstr "Физическая память"
 
 msgid "Privileged IPs"
 msgstr "Привилигированные IP"
+
+msgid "Probability"
+msgstr ""
 
 msgid "Process"
 msgstr "Процесс"
@@ -213,14 +513,53 @@ msgstr "Загрузка CPU данным процессом"
 msgid "Processor"
 msgstr "Процессор"
 
+msgid "Proto"
+msgstr ""
+
+msgid "Protocol"
+msgstr ""
+
+msgid "Qlimit"
+msgstr ""
+
+msgid "Queue"
+msgstr ""
+
+msgid "Quick"
+msgstr ""
+
+msgid "Reassemble"
+msgstr ""
+
+msgid "Received on Interface"
+msgstr ""
+
+msgid "Redirect Address Family"
+msgstr ""
+
+msgid "Redirect Host"
+msgstr ""
+
+msgid "Redirect Options"
+msgstr ""
+
+msgid "Redirect Port"
+msgstr ""
+
 msgid "Refresh interval"
 msgstr "Интервал обновления"
 
 msgid "Regexp"
 msgstr ""
 
+msgid "Reload Rate"
+msgstr ""
+
 msgid "Reload interval"
 msgstr "Интервал перегрузки"
+
+msgid "Resource not available"
+msgstr ""
 
 msgid "Restart network"
 msgstr "Перезапустить сеть"
@@ -231,8 +570,44 @@ msgstr "Ограниченные IP"
 msgid "Rotate all log files"
 msgstr "Архивирование всех лог файлов"
 
+msgid "Route Host"
+msgstr ""
+
+msgid "Route Type"
+msgstr ""
+
+msgid "Routing Table"
+msgstr ""
+
 msgid "Rule"
 msgstr "Правило"
+
+msgid "Rule number"
+msgstr ""
+
+msgid "Rules file"
+msgstr ""
+
+msgid "Ruleset Optimization"
+msgstr ""
+
+msgid "SMTP Proxy"
+msgstr ""
+
+msgid "SOCKS Proxy"
+msgstr ""
+
+msgid "SPAM Deferral"
+msgstr ""
+
+msgid "SPAM Filter"
+msgstr ""
+
+msgid "Save ruleset"
+msgstr ""
+
+msgid "Scrub Options"
+msgstr ""
 
 msgid "Search site"
 msgstr "Искать сайт"
@@ -240,11 +615,17 @@ msgstr "Искать сайт"
 msgid "Secure Level"
 msgstr "Уровень безопасности"
 
+msgid "Select Option Type"
+msgstr ""
+
 msgid "Selected"
 msgstr "Выбрано"
 
 msgid "Serial Number"
 msgstr "Серийный номер"
+
+msgid "Session Timeout"
+msgstr ""
 
 msgid "Session timeout"
 msgstr "Таймаут сессии"
@@ -255,8 +636,38 @@ msgstr "Размер"
 msgid "Size (KB)"
 msgstr "Размер (KB)"
 
+msgid "Skip Interfaces"
+msgstr ""
+
+msgid "Sloppy Tracker"
+msgstr ""
+
 msgid "Software Version"
 msgstr "Версия программы"
+
+msgid "Source"
+msgstr ""
+
+msgid "Source Port"
+msgstr ""
+
+msgid "Source Track Timeout"
+msgstr ""
+
+msgid "Source->Destination"
+msgstr ""
+
+msgid "Src Nodes"
+msgstr ""
+
+msgid "State"
+msgstr ""
+
+msgid "State Defaults"
+msgstr ""
+
+msgid "State Policy"
+msgstr ""
 
 msgid "State Searches vs Packets"
 msgstr ""
@@ -264,11 +675,35 @@ msgstr ""
 msgid "State Statistics"
 msgstr ""
 
+msgid "Stateful Filtering"
+msgstr ""
+
+msgid "States"
+msgstr ""
+
+msgid "Static Port"
+msgstr ""
+
 msgid "Statistics and uncompressed log files"
 msgstr "Несжатые файлы логов и статистики"
 
+msgid "Symon"
+msgstr ""
+
 msgid "System"
 msgstr "Система"
+
+msgid "TCP Flags"
+msgstr ""
+
+msgid "TCP Timeouts"
+msgstr ""
+
+msgid "Table Entries"
+msgstr ""
+
+msgid "Tables"
+msgstr ""
 
 msgid "Target"
 msgstr "Назначение"
@@ -282,11 +717,32 @@ msgstr "Время"
 msgid "Time server"
 msgstr "Сервер времени"
 
+msgid "Timeout"
+msgstr ""
+
 msgid "To"
 msgstr "До"
 
+msgid "To Redirect Host"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "UDP Timeouts"
+msgstr ""
+
+msgid "Upload rules file"
+msgstr ""
+
+msgid "Upload ruleset"
+msgstr ""
+
 msgid "Uptime"
 msgstr "Время непрерывной работы"
+
+msgid "Use SSH"
+msgstr ""
 
 msgid "User"
 msgstr "Пользователь"
@@ -294,14 +750,38 @@ msgstr "Пользователь"
 msgid "User name"
 msgstr "Имя пользователя"
 
+msgid "Value"
+msgstr ""
+
+msgid "Values"
+msgstr ""
+
 msgid "Version"
 msgstr "Версия"
+
+msgid "Virus DB Update"
+msgstr ""
+
+msgid "Virus Filter"
+msgstr ""
 
 msgid "WARNING"
 msgstr "ПРЕДУПРЕЖДЕНИЕ"
 
+msgid "Web Filter"
+msgstr ""
+
+msgid "Web Server"
+msgstr ""
+
 msgid "When (h)"
 msgstr "Когда (ч.)"
+
+msgid "add file"
+msgstr ""
+
+msgid "add host or network"
+msgstr ""
 
 msgid "disabled"
 msgstr "отключено"
@@ -315,5 +795,26 @@ msgstr "не запущен"
 msgid "is running"
 msgstr "выполняется"
 
+msgid "modified"
+msgstr ""
+
+msgid "negated"
+msgstr ""
+
+msgid "primary"
+msgstr ""
+
+msgid "secondary"
+msgstr ""
+
 msgid "secs"
 msgstr "сек"
+
+msgid "to"
+msgstr ""
+
+msgid "total"
+msgstr ""
+
+msgid "uploaded"
+msgstr ""

@@ -63,11 +63,15 @@ msgid ""
 "2 = report fully\n"
 "3 = use HTML template file (accessdeniedaddress ignored) - recommended\n"
 "\n"
-"If defined, this overrides the global setting in dansguardian.conf for "
-"members of this filter group."
+"If defined, this overrides the global setting in e2guardian.conf for members "
+"of this filter group."
 msgstr ""
 
 msgid "0 = none  1 = just denied  2 = all text based  3 = all requests"
+msgstr ""
+
+#, php-format
+msgid "0-100% or 0-1"
 msgstr ""
 
 msgid "1 minute average"
@@ -84,6 +88,9 @@ msgstr "< Предыдущая"
 
 msgid "<< First"
 msgstr "<< Первая"
+
+msgid "<RULE_TYPE> rule"
+msgstr ""
 
 msgid ""
 "<b>Make sure you have applied your changes to network settings system-wide "
@@ -130,8 +137,14 @@ msgstr "Переопределение страницы 'Доступ запре
 msgid "Account name"
 msgstr ""
 
+msgid "Action"
+msgstr ""
+
 msgid "Active IPs (arp table)"
 msgstr "Активные IP (arp-таблица)"
+
+msgid "Adaptive Timeouts"
+msgstr ""
 
 msgid "Add"
 msgstr "Добавить"
@@ -175,6 +188,9 @@ msgstr ""
 msgid "Add to IP list"
 msgstr ""
 
+msgid "Additional mime types"
+msgstr ""
+
 msgid "Address Family"
 msgstr "Семейство адресов"
 
@@ -188,6 +204,9 @@ msgid "Advanced Power Management"
 msgstr "Расширенное управление питанием (APM)"
 
 msgid "Advert servers and banned URLs"
+msgstr ""
+
+msgid "Af Translate"
 msgstr ""
 
 msgid "After hours"
@@ -205,6 +224,20 @@ msgstr ""
 msgid "Alerts"
 msgstr "Оповещения"
 
+msgid "All"
+msgstr ""
+
+msgid ""
+"All about advertising: This includes sites offering banners and banner "
+"creation as well as sites delivering banners to be shown in webpages and "
+"advertising companies."
+msgstr ""
+
+msgid ""
+"All about sports: sports teams, sport discussions as well as information "
+"about sports people and the various sports themselves."
+msgstr ""
+
 msgid "All alerts"
 msgstr "Все оповещения"
 
@@ -213,6 +246,9 @@ msgstr "Все попытки"
 
 msgid "All connections"
 msgstr "Все соединения"
+
+msgid "All domains where people login obtaining a dynamic IP address."
+msgstr ""
 
 msgid "All monitoring processes write to the same log file."
 msgstr ""
@@ -229,10 +265,45 @@ msgstr "Все права защищены."
 msgid "All sessions"
 msgstr "Все сессии"
 
+msgid ""
+"All sites about astrology, horoscopes, numerology, palm reading and so on; "
+"sites that offer services to fortell the future."
+msgstr ""
+
+msgid ""
+"All sites related motorboats. Included are vendor sites, resellers, fan and "
+"hobby pages as well as and suppliers."
+msgstr ""
+
+msgid ""
+"All sites related to cars. Included are automobile companies and automotive "
+"suppliers."
+msgstr ""
+
+msgid ""
+"All sites related to motorcycles. Included are vendor sites, resellers, fan "
+"and hobby pages as well as and suppliers. Scooters included."
+msgstr ""
+
+msgid ""
+"All sites related to planes ranging from small one and two seaters up to the "
+"large traffic planes, old and new, private, commercial and military. Vendors "
+"and supplier are included (airports are not). Helicopter sites are included "
+"as well."
+msgstr ""
+
 msgid "All sport sites"
 msgstr ""
 
+msgid ""
+"All topics concerning pets: description, breed, food, looks, fairs, favorite "
+"pet stories and so on."
+msgstr ""
+
 msgid "All un/blocks and extensions"
+msgstr ""
+
+msgid "Allow Opts"
 msgstr ""
 
 msgid "Allow localhost"
@@ -276,11 +347,17 @@ msgstr ""
 "будте терпеливы. Также имейте ввиду, что если Вы будете часто обновлять эту "
 "страницу, то это существенно скажется на загрузке процессора."
 
+msgid "Anchor"
+msgstr ""
+
 msgid "And finally deny all other access to this proxy"
 msgstr ""
 
 msgid "Anonymize Logs"
 msgstr "Обезличить логи"
+
+msgid "Antispoof"
+msgstr ""
 
 msgid "Apply"
 msgstr "Применить"
@@ -323,11 +400,26 @@ msgid ""
 "server."
 msgstr ""
 
+msgid "Are you sure you want to <BUTTON_VALUE> secure HTTP?"
+msgstr ""
+
 msgid "Are you sure you want to create a new group?"
 msgstr "Вы уверены,что хотите создать новую группу?"
 
+msgid "Are you sure you want to delete <RULE_TYPE> rule number <RULE_NUMBER>?"
+msgstr ""
+
 msgid "Are you sure you want to delete the configuration?"
 msgstr "Вы уверены,что хотите удалить конфигурацию?"
+
+msgid "Are you sure you want to delete the entire ruleset?"
+msgstr ""
+
+msgid "Are you sure you want to delete the rule?"
+msgstr ""
+
+msgid "Are you sure you want to delete the rules file?"
+msgstr ""
 
 msgid "Are you sure you want to delete the selected items?"
 msgstr "Вы уверены,что хотите удалить выбранные элементы?"
@@ -374,6 +466,12 @@ msgid ""
 "Defaults to off."
 msgstr ""
 
+msgid "Assign Priority"
+msgstr ""
+
+msgid "Assign Tag"
+msgstr ""
+
 msgid "Attack Types"
 msgstr "Типы Атак"
 
@@ -410,7 +508,13 @@ msgstr ""
 msgid "Badwords replace character"
 msgstr "Символ для подмены нежелательных слов"
 
+msgid "Bandwidth"
+msgstr ""
+
 msgid "Banking websites"
+msgstr ""
+
+msgid "Banned flash replacement"
 msgstr ""
 
 msgid "Banned image replacement"
@@ -428,6 +532,9 @@ msgstr "Автообучение фильтра Байеса"
 msgid "Bayesian classifier auto-learning (default: 1)"
 msgstr ""
 
+msgid "Binat"
+msgstr ""
+
 msgid "Blacklist"
 msgstr "Чёрный список"
 
@@ -439,6 +546,9 @@ msgstr ""
 
 msgid "Blacklists"
 msgstr "Чёрные списки"
+
+msgid "Blank Line"
+msgstr ""
 
 msgid "Blanket"
 msgstr "Общие запреты"
@@ -477,6 +587,12 @@ msgstr "Длительнсть блокировки"
 msgid "Block IPs"
 msgstr ""
 
+msgid "Block Option"
+msgstr ""
+
+msgid "Block Policy"
+msgstr ""
+
 msgid "Block all filetransfers"
 msgstr "Блокировать любую пересылку файлов"
 
@@ -500,6 +616,10 @@ msgstr "Периоды Блокировок (сек)"
 
 msgid "Blocked requests"
 msgstr "Заблокированные запросы"
+
+msgid ""
+"Break SSL protocol and redirect to another HTTPS website for denied page"
+msgstr ""
 
 msgid "Broadcast address"
 msgstr "Широковещательный адрес"
@@ -528,12 +648,12 @@ msgid ""
 "Buttons on this page should help you apply the new configuration system-wide "
 "when you change certain system settings or hardware.\n"
 "\n"
-"The web user interface stores statistics under /var/tmp/utmfw folder. "
-"The statistics are updated incrementally when new messages are appended to "
-"log files. When user selects a compressed log file for viewing or "
-"statistics, its uncompressed copy is saved under the same folder also. This "
-"strategy greatly improves the performance of Statistics and Logs pages, and "
-"enables other features of the web user interface. Since these statistics and "
+"The web user interface stores statistics under /var/tmp/utmfw folder. The "
+"statistics are updated incrementally when new messages are appended to log "
+"files. When user selects a compressed log file for viewing or statistics, "
+"its uncompressed copy is saved under the same folder also. This strategy "
+"greatly improves the performance of Statistics and Logs pages, and enables "
+"other features of the web user interface. Since these statistics and "
 "uncompressed log files may take up a lot of disk space, you are advised to "
 "keep your /var partition as large as possible."
 msgstr ""
@@ -577,9 +697,6 @@ msgstr ""
 msgid "Bytes Free"
 msgstr "Байт свободно"
 
-msgid "UTMFW ADMINISTRATION INTERFACE"
-msgstr "ИНТЕРФЕЙС АДМИНИСТРИРОВАНИЯ UTMFW"
-
 msgid "COMMAND"
 msgstr "КОМАНДА"
 
@@ -589,14 +706,14 @@ msgstr "Загрузка CPU"
 msgid "CPUs"
 msgstr ""
 
-msgid "CVS Tag"
-msgstr "CVS Тег"
-
 msgid "CTLR"
 msgstr "CTLR"
 
 msgid "CTLR Logs"
 msgstr "Логи CTLR"
+
+msgid "CVS Tag"
+msgstr "CVS Тег"
 
 msgid "Cache"
 msgstr "Кэш"
@@ -604,16 +721,37 @@ msgstr "Кэш"
 msgid "Cache mgr"
 msgstr "Кеш-менеджер"
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Cannot add"
 msgstr ""
 
 msgid "Cannot find group configuration file"
 msgstr ""
 
+msgid "Cannot fork pfctl process"
+msgstr ""
+
+msgid "Cannot generate rule"
+msgstr ""
+
 msgid "Cannot get pid"
 msgstr ""
 
+msgid "Cannot install pf rule file"
+msgstr ""
+
+msgid "Cannot load pf rules"
+msgstr ""
+
 msgid "Cannot read config"
+msgstr ""
+
+msgid "Cannot remove tmp pf file"
+msgstr ""
+
+msgid "Cannot write to tmp pf file"
 msgstr ""
 
 msgid "Categories"
@@ -668,6 +806,11 @@ msgstr ""
 msgid "Check if process running"
 msgstr ""
 
+msgid ""
+"Check that ssl certificates for servers on https connections are valid and "
+"signed by a ca in the configured path."
+msgstr ""
+
 msgid "Chinese simplified"
 msgstr ""
 
@@ -694,6 +837,9 @@ msgid ""
 "(on|off) default = on."
 msgstr ""
 
+msgid "Cleared"
+msgstr ""
+
 msgid "Client"
 msgstr "Клиент"
 
@@ -709,78 +855,15 @@ msgstr "Клиенты"
 msgid "Closed by"
 msgstr "Кем закрыто"
 
-msgid "UTMFW Administration Interface"
-msgstr "Интерфейс Администрирования UTMFW"
-
-msgid ""
-"UTMFW Web Filter uses URL lists categorized in different packages for "
-"your convenience. You can enable or disable categories you want on this page."
+msgid "Collection of search engines and directory sites."
 msgstr ""
 
 msgid ""
-"UTMFW Web Filter uses phrase lists categorized in different packages for "
-"your convenience. You can enable or disable categories you want on this page."
+"Collection of sites offering programs to break licence keys, licence keys "
+"themselves, cracked software and other copyrighted material."
 msgstr ""
 
-msgid ""
-"UTMFW Web Filter uses site lists categorized in different packages for "
-"your convenience. You can enable or disable categories you want on this page."
-msgstr ""
-
-msgid "UTMFW currently supports only admin and user usernames"
-msgstr "На текущий момент UTMFW поддерживает только имена admin и user"
-
-msgid ""
-"UTMFW logs errors, warnings, notices, and debug messages. Since also "
-"recorded are changes to configuration and passwords, you may want to monitor "
-"these logs carefully. These logs are also important while reporting issues "
-"related to the web user interface. Logs on this page are generated by the "
-"Controller and the Model, middle and bottom layers of software responsible "
-"for processing requests from the View."
-msgstr ""
-
-msgid ""
-"UTMFW logs errors, warnings, notices, and debug messages. Since also "
-"recorded are changes to configuration and passwords, you may want to monitor "
-"these logs carefully. These logs are also important while reporting issues "
-"related to the web user interface. Logs on this page are generated by the "
-"View, main module responsible for displaying the web user interface and "
-"interacting with the user."
-msgstr ""
-
-msgid ""
-"UTMFW runs many services or daemons in default installation. On this "
-"page you can configure these services to start at boot time.\n"
-"\n"
-"Note that if you modify startup configuration for some services, you may "
-"need to change packet filter rules or other related settings too."
-msgstr ""
-
-msgid ""
-"UTMFW sends warning and information messages to its system "
-"administrator. Here you can type in your own e-mail address."
-msgstr ""
-"UTMFW отсылает предупреждения и информационные сообщения своему "
-"системному администратору. Здесь Вы можете указать Ваш e-mail адрес."
-
-msgid ""
-"UTMFW uses ClamAV for all virus scanning purposes. Freshclam checks and "
-"updates ClamAV virus database periodically. By default, the database is "
-"updated every hour. You may not be able to stop or restart freshclam "
-"instance once it starts the update process; wait for a minute and try again."
-msgstr ""
-
-msgid ""
-"UTMFW would not be possible without the generous developers of many Free "
-"and Open Source Software (FOSS). UTMFW is developed using FOSS only. "
-"Software developed specifically for UTMFW, such as this web user "
-"interface and SnortIPS, are released under the BSD license, hence FOSS "
-"also.\n"
-"\n"
-"These credits may not cover all of the software UTMFW uses. If you think "
-"one is missing, I would happily add here.\n"
-"\n"
-"Thanks for the excellent work and good spirit."
+msgid "Comment"
 msgstr ""
 
 msgid "Compressed"
@@ -865,8 +948,14 @@ msgstr "Создание списка кэш-файлов"
 msgid "Create new group"
 msgstr ""
 
+msgid "Create user"
+msgstr ""
+
 msgid "Credits"
 msgstr "Список разработчиков"
+
+msgid "Current Password"
+msgstr ""
 
 msgid "Customised filtered text (message text or filename follows in response)"
 msgstr ""
@@ -958,6 +1047,9 @@ msgstr "Отладка"
 msgid "Debug options"
 msgstr "Параметры отладки"
 
+msgid "Default"
+msgstr ""
+
 msgid "Defaults"
 msgstr "По-умолчанию"
 
@@ -991,6 +1083,9 @@ msgid "Delete"
 msgstr "Удалить"
 
 msgid "Delete ACL"
+msgstr ""
+
+msgid "Delete All"
 msgstr ""
 
 msgid "Delete DHCP interface"
@@ -1049,6 +1144,15 @@ msgstr ""
 msgid "Delete list item"
 msgstr ""
 
+msgid "Delete pf rule file"
+msgstr ""
+
+msgid "Delete rules file"
+msgstr ""
+
+msgid "Delete ruleset"
+msgstr ""
+
 msgid "Denied IPs"
 msgstr "Запреты с IP"
 
@@ -1070,8 +1174,14 @@ msgstr ""
 msgid "Dest"
 msgstr ""
 
+msgid "Destination"
+msgstr ""
+
 msgid "Destination IPs"
 msgstr "IP назначения"
+
+msgid "Destination Port"
+msgstr ""
 
 msgid "Destination addresses"
 msgstr "Адреса назначения"
@@ -1097,6 +1207,9 @@ msgid "Diffie-Hellman params"
 msgstr "Параметры алгоритма Диффи — Хеллмана"
 
 msgid "Dir"
+msgstr ""
+
+msgid "Direction"
 msgstr ""
 
 msgid "Disable"
@@ -1159,6 +1272,11 @@ msgstr "Отключенные правила"
 msgid "Disabled Services"
 msgstr "Отключенные службы"
 
+msgid ""
+"Discussion sites. Covers explicit forum sites and some blogs. Sites where "
+"people can discuss and share information in a non interactive/real-time way."
+msgstr ""
+
 msgid "Disk I/O"
 msgstr "Дисковый ввод/вывод"
 
@@ -1168,7 +1286,31 @@ msgstr "Диски"
 msgid "Display"
 msgstr "Отобразить"
 
+msgid "Display & Install"
+msgstr ""
+
+msgid "Display line numbers"
+msgstr ""
+
 msgid "Display remote time"
+msgstr ""
+
+msgid "Display with errors"
+msgstr ""
+
+msgid "Divert"
+msgstr ""
+
+msgid "Divert Host"
+msgstr ""
+
+msgid "Divert Packet"
+msgstr ""
+
+msgid "Divert Port"
+msgstr ""
+
+msgid "Divert Reply"
 msgstr ""
 
 msgid ""
@@ -1178,6 +1320,9 @@ msgstr ""
 
 msgid "Domains"
 msgstr "Домены"
+
+msgid "Domains and urls of TV and radio stations."
+msgstr ""
 
 msgid "Download"
 msgstr "Сохранить"
@@ -1196,11 +1341,23 @@ msgid ""
 "reports the progress via a progress bar and status information."
 msgstr ""
 
+msgid "Download ruleset"
+msgstr ""
+
+msgid "Download with errors"
+msgstr ""
+
 msgid "Downloaded (KB)"
 msgstr "Принято (KB)"
 
 msgid "Downloads"
 msgstr "Загрузки"
+
+msgid "Dropped Bytes"
+msgstr ""
+
+msgid "Dropped Packets"
+msgstr ""
 
 msgid "Drug related sites"
 msgstr ""
@@ -1228,6 +1385,15 @@ msgstr "ОШИБКА"
 msgid "EXTERNAL_NET"
 msgstr "ВНЕШНЯЯ_СЕТЬ"
 
+msgid "Edit"
+msgstr ""
+
+msgid "Edit <RULE_TYPE> Rule <RULE_NUMBER>"
+msgstr ""
+
+msgid "Editor"
+msgstr ""
+
 msgid "Email"
 msgstr ""
 
@@ -1251,14 +1417,20 @@ msgstr ""
 msgid "Enable AfterHours holidays"
 msgstr ""
 
-msgid "Enable UTMFW as a non-caching proxy for the local network."
-msgstr ""
-
 msgid "Enable Deep URL Analysis"
 msgstr "Включить дополнительный анализ URL"
 
+msgid "Enable MITM site certificate checking"
+msgstr ""
+
 msgid "Enable SSL/TLS"
 msgstr "Включить SSL/TLS"
+
+msgid "Enable Source Track"
+msgstr ""
+
+msgid "Enable UTMFW as a non-caching proxy for the local network."
+msgstr ""
 
 msgid ""
 "Enable compression on the VPN link. Don't enable this unless it is also "
@@ -1329,10 +1501,34 @@ msgstr "Включенные правила"
 msgid "Enabled Services"
 msgstr "Включенные службы"
 
+msgid "Enforce TOS"
+msgstr ""
+
 msgid "English"
 msgstr "Английский"
 
+msgid "Enter blank lines here"
+msgstr ""
+
+msgid "Enter comment here"
+msgstr ""
+
+msgid "Enter inline rules here"
+msgstr ""
+
 msgid "Erase statistics files"
+msgstr ""
+
+msgid "Error in include file"
+msgstr ""
+
+msgid "Error loading, rule load forced"
+msgstr ""
+
+msgid "Error loading, rule loaded partially"
+msgstr ""
+
+msgid "Evaluations"
 msgstr ""
 
 msgid "Exception IPs"
@@ -1340,6 +1536,9 @@ msgstr "Исключения с IP"
 
 msgid "Exception requests"
 msgstr "Исключённые запросы"
+
+msgid "Export To pflow"
+msgstr ""
 
 msgid "Expr"
 msgstr ""
@@ -1380,6 +1579,42 @@ msgstr "FTP Прокси"
 msgid "Failed attempts"
 msgstr "Неудачные попытки"
 
+msgid "Failed creating or attaching to message queue"
+msgstr ""
+
+msgid "Failed deleting"
+msgstr ""
+
+msgid "Failed downloading, cannot generate pf rules"
+msgstr ""
+
+msgid "Failed loading"
+msgstr ""
+
+msgid "Failed loading main pf rules"
+msgstr ""
+
+msgid "Failed loading pf rules"
+msgstr ""
+
+msgid "Failed removing message queue"
+msgstr ""
+
+msgid "Failed running pfctl command"
+msgstr ""
+
+msgid "Failed saving"
+msgstr ""
+
+msgid "Failed testing pf rules"
+msgstr ""
+
+msgid "Failed testing ruleset"
+msgstr ""
+
+msgid "Failed uploading"
+msgstr ""
+
 msgid "Failed users"
 msgstr "Отказано пользователям"
 
@@ -1399,6 +1634,12 @@ msgstr ""
 msgid "File"
 msgstr "Файл"
 
+msgid "File uploaded"
+msgstr ""
+
+msgid "Filename not accepted"
+msgstr ""
+
 msgid "Filepath wrong"
 msgstr ""
 
@@ -1413,6 +1654,9 @@ msgstr "Фильтр"
 
 msgid "Filter IP"
 msgstr "IP Фильтра"
+
+msgid "Filter IP for xforwarded for"
+msgstr ""
 
 msgid "Filter Port"
 msgstr "Порт фильтра"
@@ -1436,11 +1680,23 @@ msgid ""
 "Filtergroups sets the number of filter groups. A filter group is a set of "
 "content filtering options you can apply to a group of users.  The value must "
 "be 1 or more.\n"
-"DansGuardian will automatically look for dansguardianfN.conf where N is the "
+"E2Guardian will automatically look for e2guardianfN.conf where N is the "
 "filter group. To assign users to groups use the filtergroupslist option.  "
 "All users default to filter group 1.  You must have some sort of "
 "authentication to be able to map users to a group.  The more filter groups "
 "the more copies of the lists will be in RAM so use as few as possible."
+msgstr ""
+
+msgid "Finance in general."
+msgstr ""
+
+msgid "Fingerprints File"
+msgstr ""
+
+msgid "Flag"
+msgstr ""
+
+msgid "Flags"
 msgstr ""
 
 msgid "Follow Directory Symlinks"
@@ -1471,6 +1727,9 @@ msgid ""
 "secret."
 msgstr ""
 
+msgid "Force HTTPs"
+msgstr ""
+
 msgid ""
 "Force Quick Search rather than DFA search algorithm.\n"
 "The current DFA implementation is not totally 16-bit character compatible "
@@ -1484,6 +1743,11 @@ msgstr ""
 msgid "Force quick search"
 msgstr "Использовать быструю проверку"
 
+msgid ""
+"Forge ssl certificates for all non-exception sites, decrypt the data then re "
+"encrypt it using a different private key. Used to filter ssl sites."
+msgstr ""
+
 msgid "Forwarded for"
 msgstr "Добавлять к заголовку X-Forwarded-For"
 
@@ -1495,6 +1759,12 @@ msgstr ""
 
 msgid "Forwarders"
 msgstr "Пересылка"
+
+msgid "Fragment"
+msgstr ""
+
+msgid "Frags"
+msgstr ""
 
 msgid "Free OOP scripting language."
 msgstr "Открытый объектно-ориентированный скриптовый язык ."
@@ -1523,6 +1793,9 @@ msgstr "Пт"
 msgid "From"
 msgstr "От"
 
+msgid "From Redirect Host"
+msgstr ""
+
 msgid "GG"
 msgstr ""
 
@@ -1544,10 +1817,22 @@ msgstr "Общие"
 msgid "General Statistics"
 msgstr "Основная статистика"
 
+msgid "Generate pf rule"
+msgstr ""
+
+msgid "Generate pf rules"
+msgstr ""
+
+msgid "Generate with errors"
+msgstr ""
+
 msgid ""
 "Generate your own with:\n"
 "   openssl dhparam -out dh1024.pem 1024\n"
 "Substitute 2048 for 1024 if you are using 2048 bit keys."
+msgstr ""
+
+msgid "Gentle child restart"
 msgstr ""
 
 msgid "Get ACL"
@@ -1572,6 +1857,9 @@ msgid "Get DNS forwarders"
 msgstr ""
 
 msgid "Get HTTP proxy IP:port"
+msgstr ""
+
+msgid "Get IP DNS listens on"
 msgstr ""
 
 msgid "Get IPS info"
@@ -1616,6 +1904,9 @@ msgstr ""
 msgid "Get database mirrors"
 msgstr ""
 
+msgid "Get datetime"
+msgstr ""
+
 msgid "Get dhcp leases"
 msgstr ""
 
@@ -1649,6 +1940,9 @@ msgstr ""
 msgid "Get int_if"
 msgstr ""
 
+msgid "Get line count"
+msgstr ""
+
 msgid "Get lines"
 msgstr ""
 
@@ -1679,10 +1973,34 @@ msgstr ""
 msgid "Get partition list"
 msgstr ""
 
+msgid "Get pf info"
+msgstr ""
+
+msgid "Get pf interface info"
+msgstr ""
+
+msgid "Get pf memory info"
+msgstr ""
+
+msgid "Get pf queue info"
+msgstr ""
+
+msgid "Get pf rule files"
+msgstr ""
+
+msgid "Get pf rules"
+msgstr ""
+
+msgid "Get pf rules info"
+msgstr ""
+
 msgid "Get pf state count"
 msgstr ""
 
 msgid "Get pf states"
+msgstr ""
+
+msgid "Get pf timeout info"
 msgstr ""
 
 msgid "Get pfw commandwrapper -conntest"
@@ -1719,6 +2037,9 @@ msgid "Get process list"
 msgstr ""
 
 msgid "Get protocols"
+msgstr ""
+
+msgid "Get reload rate"
 msgstr ""
 
 msgid "Get remote time"
@@ -1913,6 +2234,9 @@ msgstr "Не спам"
 msgid "Help"
 msgstr "Помощь"
 
+msgid "Help Boxes"
+msgstr ""
+
 msgid "Help boxes"
 msgstr "Подсказки"
 
@@ -1938,11 +2262,28 @@ msgstr ""
 "администратора. Пароль должен быть не менее 8-ми цифробуквенных символов. "
 
 msgid ""
+"Here you can change the web administration interface passwords for admin and "
+"user. Passwords should have at least 8 alphanumeric characters.\n"
+"\n"
+"Admin can change the user password without knowing the current user "
+"password. But if you forget the admin password, you should login to the "
+"system as root and run the following on the command line to set the password "
+"to soner123:\n"
+"<code>/usr/bin/chpass -a \"admin:$(/usr/bin/encrypt `/bin/echo -n soner123 | "
+"sha1 -`):1000:1000::0:0:UTMFW admin:/home/admin:/bin/ksh\"</code>"
+msgstr ""
+
+msgid ""
 "Here you can enable or disable the Packet Filter. Note that most services "
 "depend on packet filter being enabled."
 msgstr ""
 "Здесь Вы можете включить или выключить Пакетный Фильтр. Имейте ввиду, что "
 "большинство служб UTMFW'а зависят от работы пакетного фильтра."
+
+msgid ""
+"Here you can enable or disable the Packet Filter. Note that most services "
+"depend on the packet filter being enabled."
+msgstr ""
 
 msgid ""
 "Here you can enter db.XY.clamav.net for a mirror close to you. Replace XY "
@@ -2020,6 +2361,19 @@ msgstr ""
 msgid "Holidays"
 msgstr "Выходные"
 
+msgid ""
+"Home page of banking companies are listed here. This is not restricted to "
+"online banking."
+msgstr ""
+
+msgid ""
+"Home pages of Internet Service Providers. Sites of companies offering "
+"webspace only are now being added, too"
+msgstr ""
+
+msgid "Home pages of schools, colleges and universities."
+msgstr ""
+
 msgid "Horizontal"
 msgstr "Горизонтально"
 
@@ -2028,6 +2382,9 @@ msgstr "Хост"
 
 msgid "Host IP"
 msgstr "IP хоста"
+
+msgid "Host Id"
+msgstr ""
 
 msgid "Host wrong"
 msgstr ""
@@ -2048,8 +2405,29 @@ msgid "Hourly"
 msgstr "По часам"
 
 msgid ""
+"How long a persistent connection will wait for other requests, squid "
+"apparently defaults to 1 minute (persistent_request_timeout), so wait "
+"slightly less than this to avoid duff pconns.\n"
+"Min 5 - Max 300"
+msgstr ""
+
+msgid ""
 "How many attempts to make before giving up.\n"
 "\t\tDefault: 3 (per mirror)"
+msgstr ""
+
+msgid ""
+"Humorous pages, comic strips, funny stories, everything which makes people "
+"laugh."
+msgstr ""
+
+msgid "ICMP Timeouts"
+msgstr ""
+
+msgid "ICMP Type"
+msgstr ""
+
+msgid "ICMP6 Type"
 msgstr ""
 
 msgid "ICQ"
@@ -2145,6 +2523,12 @@ msgstr ""
 msgid "IRC"
 msgstr ""
 
+msgid "Id"
+msgstr ""
+
+msgid "Identifier"
+msgstr ""
+
 msgid ""
 "If 'on' exception sites, urls, users etc will be scanned\n"
 "This is probably not desirable behavour as exceptions are supposed to be "
@@ -2195,6 +2579,13 @@ msgid ""
 msgstr ""
 
 msgid ""
+"If enabled, authentication pages are forced to use secure connections. Make "
+"sure you have a working SSL setup in the web server configuration, otherwise "
+"you cannot even log in to the web user interface. It is advised to use "
+"secure HTTP."
+msgstr ""
+
+msgid ""
 "If enabled, will scan for Spam before scanning for a virus. You should start "
 "spamd before running p3scan."
 msgstr ""
@@ -2207,12 +2598,12 @@ msgstr ""
 
 msgid ""
 "If on it uses the X-Forwarded-For: <clientip> to determine the client IP. "
-"This is for when you have squid between the clients and DansGuardian.\n"
+"This is for when you have squid between the clients and E2Guardian.\n"
 "Warning - headers are easily spoofed. on | off"
 msgstr ""
 
 msgid ""
-"If on, this causes DG to write to the log file whenever child processes are "
+"If on, this causes E2 to write to the log file whenever child processes are "
 "created or destroyed (other than by crashes). This information can help in "
 "understanding and tuning the following parameters, but is not generally "
 "useful in production."
@@ -2277,6 +2668,21 @@ msgid ""
 "and services."
 msgstr ""
 
+msgid "In4 Block"
+msgstr ""
+
+msgid "In4 Pass"
+msgstr ""
+
+msgid "In6 Block"
+msgstr ""
+
+msgid "In6 Pass"
+msgstr ""
+
+msgid "Include"
+msgstr ""
+
 msgid "Include classification & priority settings"
 msgstr "Выводить в лог классификацию и приоритет"
 
@@ -2323,6 +2729,32 @@ msgstr ""
 msgid "Initial Trickle delay"
 msgstr "Начать поддержку соединения через"
 
+msgid "Inline Rules"
+msgstr ""
+
+msgid ""
+"Inline anchor rules can be nested. It is advised to limit the number of "
+"nesting allowed. Parsing and validation stop at this many number of nesting."
+msgstr ""
+
+msgid "Inline rules"
+msgstr ""
+
+msgid "Inserted"
+msgstr ""
+
+msgid "Install"
+msgstr ""
+
+msgid "Install as main ruleset"
+msgstr ""
+
+msgid "Install pf rules"
+msgstr ""
+
+msgid "Installed successfully"
+msgstr ""
+
 msgid ""
 "Instead of keeping an infected message in the Virus Directory, delete it "
 "after reporting it to the user.\n"
@@ -2331,6 +2763,9 @@ msgstr ""
 
 msgid "Interface"
 msgstr "Интерфейс"
+
+msgid "Interface Binding"
+msgstr ""
 
 msgid "Interface Configuration"
 msgstr "Настройка интерфейса"
@@ -2350,6 +2785,9 @@ msgstr ""
 
 msgid "Internal interface"
 msgstr "Внутренний интерфейс"
+
+msgid "Interval"
+msgstr ""
 
 msgid "Intrusion Alerts"
 msgstr "Оповещения о Вторжении"
@@ -2373,7 +2811,19 @@ msgid ""
 "10.0.0.1."
 msgstr ""
 
+msgid "Invalid destination rule number"
+msgstr ""
+
+msgid "Invalid inline rules, parser output"
+msgstr ""
+
+msgid "Invalid rule number"
+msgstr ""
+
 msgid "Invalid value"
+msgstr ""
+
+msgid "Invalid value for"
 msgstr ""
 
 msgid "Jabber"
@@ -2397,6 +2847,9 @@ msgstr "Таймаут KeepAlive"
 msgid "Keywords"
 msgstr "Ключивые слова"
 
+msgid "Label"
+msgstr ""
+
 msgid "Language"
 msgstr "Язык"
 
@@ -2415,6 +2868,12 @@ msgstr ""
 msgid "Level"
 msgstr "Уровень"
 
+msgid "Limit"
+msgstr ""
+
+msgid "Limit SSL MITM to sites in greysslsitelist(s)"
+msgstr ""
+
 msgid ""
 "Limit on total number of servers running, i.e., limit on the number of "
 "clients who can simultaneously connect --- if this limit is ever reached, "
@@ -2425,6 +2884,9 @@ msgstr ""
 
 msgid "Line"
 msgstr "Строка"
+
+msgid "Line number"
+msgstr ""
 
 msgid "Lines per page"
 msgstr "Строк на страницу"
@@ -2465,13 +2927,40 @@ msgstr ""
 msgid "List physical interfaces"
 msgstr ""
 
+msgid "List to allow necessary downloads from vendors."
+msgstr ""
+
 msgid "Listen Address"
 msgstr "Слушать на адресе"
+
+msgid "Listen on"
+msgstr ""
 
 msgid "Lists"
 msgstr "Списки"
 
 msgid "Live"
+msgstr ""
+
+msgid "Load"
+msgstr ""
+
+msgid "Load & Save"
+msgstr ""
+
+msgid "Load Anchor"
+msgstr ""
+
+msgid "Load Error"
+msgstr ""
+
+msgid "Load rules from file"
+msgstr ""
+
+msgid "Load ruleset"
+msgstr ""
+
+msgid "Load with errors"
 msgstr ""
 
 msgid "Local IP Address"
@@ -2507,6 +2996,9 @@ msgstr "Записывать в лог о чистых объектах"
 msgid "Log Exception Hits"
 msgstr "Записывать в лог о срабатывании исключений"
 
+msgid "Log Interface"
+msgstr ""
+
 msgid "Log Level"
 msgstr "Режим Логгирования"
 
@@ -2524,6 +3016,9 @@ msgstr "Записывать имена клиентских компьютер�
 
 msgid "Log connection handling errors"
 msgstr "Записывать проблемы связи"
+
+msgid "Log detailed error info regarding SSL error returns."
+msgstr ""
 
 msgid ""
 "Log files are rotated according to two main criteria: size and time, "
@@ -2559,8 +3054,8 @@ msgid "Log ip on direct"
 msgstr "Записывать IP при соединениях напрямую"
 
 msgid ""
-"Log keeping capacity of UTMFW is limited only by the size of the disks "
-"on your system.\n"
+"Log keeping capacity of UTMFW is limited only by the size of the disks on "
+"your system.\n"
 "\n"
 "If you are not seeing as many number of lines as you were expecting, this "
 "may be because the log file has turned over and put in a compressed archive "
@@ -2581,6 +3076,9 @@ msgstr "Записывать mail from"
 
 msgid "Log rcpt to"
 msgstr "Записывать rcpt to"
+
+msgid "Log ssl errors"
+msgstr ""
 
 msgid ""
 "Log the destination IP address in the hierarchy log tag when going direct. "
@@ -2607,6 +3105,9 @@ msgstr ""
 
 msgid "Logged in user"
 msgstr "Входивший пользователь"
+
+msgid "Logging"
+msgstr ""
 
 msgid "Logging Settings"
 msgstr "Настройки Логгирования"
@@ -2662,6 +3163,9 @@ msgstr ""
 msgid "Machine"
 msgstr "Платформа"
 
+msgid "Macro"
+msgstr ""
+
 msgid "Mail Follow URLs"
 msgstr "Следовать по ссылкам в письмах"
 
@@ -2670,6 +3174,9 @@ msgstr "Отправлять от имени"
 
 msgid "Mail program"
 msgstr "Команда для отправки писем"
+
+msgid "Main pf rules reloaded"
+msgstr ""
 
 msgid "Make Dynamic"
 msgstr "Сделать динамическим"
@@ -2704,7 +3211,28 @@ msgid ""
 "\t\tDefault: disabled"
 msgstr ""
 
+msgid "Match All"
+msgstr ""
+
+msgid "Match Priority"
+msgstr ""
+
+msgid "Match TOS"
+msgstr ""
+
+msgid "Match Tagged"
+msgstr ""
+
 msgid "Matched requests"
+msgstr ""
+
+msgid "Max"
+msgstr ""
+
+msgid "Max Addresses"
+msgstr ""
+
+msgid "Max Anchor Nesting"
 msgstr ""
 
 msgid "Max Attempts"
@@ -2722,6 +3250,12 @@ msgstr "Потомков (макс.)"
 msgid "Max Clients"
 msgstr "Кол-во клиентов (макс.)"
 
+msgid "Max Connection"
+msgstr ""
+
+msgid "Max Connection Rate"
+msgstr ""
+
 msgid "Max Directory Recursion"
 msgstr "Уровни вложенности каталогов (макс.)"
 
@@ -2731,8 +3265,17 @@ msgstr "Кол-во запросов KeepAlive (макс.)"
 msgid "Max Log Item Length"
 msgstr "Длина элементов лога (макс.)"
 
+msgid "Max MSS"
+msgstr ""
+
+msgid "Max Single Host States"
+msgstr ""
+
 msgid "Max Spare Servers"
 msgstr "Число резервных процессов-потомков (макс.)"
+
+msgid "Max States"
+msgstr ""
 
 msgid "Max Threads"
 msgstr "Кол-во потоков (макс.)"
@@ -2759,6 +3302,9 @@ msgid "Max spare children"
 msgstr "Число резервных процессов-потомков (макс.)"
 
 msgid "Max upload size"
+msgstr ""
+
+msgid "Max-mss"
 msgstr ""
 
 msgid "MaxStartups"
@@ -2831,14 +3377,28 @@ msgstr ""
 msgid "Mimes"
 msgstr ""
 
+msgid "Min"
+msgstr ""
+
 msgid "Min Spare Servers"
 msgstr "Число резервных процессов-потомков (мин.)"
+
+msgid "Min TTL"
+msgstr ""
 
 msgid "Min children"
 msgstr "Кол-во потомков (мин.)"
 
 msgid "Min spare children"
 msgstr "Число резервных процессов-потомков (мин.)"
+
+msgid "Min-ttl"
+msgstr ""
+
+msgid ""
+"Model agency, model and supermodel fan pages and other model sites "
+"presenting model photos. No porn pictures."
+msgstr ""
 
 msgid "Modern virtual private networking."
 msgstr "Современная виртуальная частная сеть."
@@ -2858,6 +3418,9 @@ msgstr ""
 msgid "Motherboard"
 msgstr "Материнская плата"
 
+msgid "Move"
+msgstr ""
+
 msgid "Move ACL Down"
 msgstr ""
 
@@ -2870,10 +3433,19 @@ msgstr "Вниз"
 msgid "Move Up"
 msgstr "Вверх"
 
+msgid "Move down"
+msgstr ""
+
 msgid "Move rule down"
 msgstr ""
 
 msgid "Move rule up"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
+msgid "Multiple values not allowed for"
 msgstr ""
 
 msgid "NA"
@@ -2885,6 +3457,9 @@ msgstr "Тип заголовка NAT"
 msgid "NI"
 msgstr ""
 
+msgid "Name"
+msgstr ""
+
 msgid "Name server"
 msgstr "Сервер имён"
 
@@ -2893,6 +3468,9 @@ msgstr ""
 
 msgid "Nameserver"
 msgstr "Сервер имён (DNS)"
+
+msgid "Nat"
+msgstr ""
 
 msgid "Naughtyness limit"
 msgstr "Лимит порочности пользователей"
@@ -2925,6 +3503,12 @@ msgstr ""
 "inet. Все изменения сделанные здесь вступят в силу только после рестарта "
 "сети или перезагрузки системы. "
 
+msgid "New Password"
+msgstr ""
+
+msgid "New Password Again"
+msgstr ""
+
 msgid ""
 "New system hostname does not fully take effect until after reboot.\n"
 "\n"
@@ -2940,6 +3524,9 @@ msgstr ""
 msgid "Next >"
 msgstr "Следующая >"
 
+msgid "No Queues defined"
+msgstr ""
+
 msgid "No bind"
 msgstr ""
 
@@ -2949,16 +3536,28 @@ msgstr "Без кэша"
 msgid "No default banner path"
 msgstr ""
 
+msgid "No pfsync"
+msgstr ""
+
+msgid "No regex or func def for"
+msgstr ""
+
 msgid "No such file"
 msgstr ""
 
 msgid "Non standard delimiter"
 msgstr "Нестандартный разделитель"
 
+msgid "Not JSON encoded string"
+msgstr ""
+
 msgid "Not a valid password"
 msgstr "Недопустимый пароль"
 
 msgid "Not asterisk"
+msgstr ""
+
+msgid "Not boolean"
 msgstr ""
 
 msgid "Not comma separated digits"
@@ -2997,6 +3596,9 @@ msgstr "Уведомлять при обнаружении вируса"
 msgid "Notify Content"
 msgstr "Уведомлять о запрещённом контенте"
 
+msgid "Number"
+msgstr ""
+
 msgid "Number of Processes"
 msgstr "Количество Процессов"
 
@@ -3016,6 +3618,9 @@ msgstr ""
 
 msgid "Number of filter groups"
 msgstr "Количество групп фильтра"
+
+msgid "Number of lines"
+msgstr ""
 
 msgid "Number of messages"
 msgstr "Количество сообщений"
@@ -3047,10 +3652,16 @@ msgstr ""
 msgid "OPENVPN"
 msgstr ""
 
+msgid "OS"
+msgstr ""
+
 msgid "Obsoletes QuietMode and FascistLogging"
 msgstr ""
 
 msgid "On this page are web administration interface access statistics."
+msgstr ""
+
+msgid "Once"
 msgstr ""
 
 msgid ""
@@ -3062,6 +3673,9 @@ msgid "Online auctions"
 msgstr ""
 
 msgid "Online gaming sites"
+msgstr ""
+
+msgid "Online libraries and sites where you can read e-books."
 msgstr ""
 
 msgid "Online payment sites"
@@ -3107,6 +3721,36 @@ msgstr ""
 
 msgid "Operating System"
 msgstr "Операционная Система"
+
+msgid "Optimization"
+msgstr ""
+
+msgid "Option"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Other Timeouts"
+msgstr ""
+
+msgid "Out4 Block"
+msgstr ""
+
+msgid "Out4 Pass"
+msgstr ""
+
+msgid "Out6 Block"
+msgstr ""
+
+msgid "Out6 Pass"
+msgstr ""
+
+msgid "Output not in correct format"
+msgstr ""
+
+msgid "Overload"
+msgstr ""
 
 msgid "Override default of no subsystems"
 msgstr ""
@@ -3169,6 +3813,12 @@ msgstr ""
 msgid "Page start line"
 msgstr "Начиная со строки"
 
+msgid "Parent"
+msgstr ""
+
+msgid "Parse Error"
+msgstr ""
+
 msgid "Partitions"
 msgstr "Разделы"
 
@@ -3189,6 +3839,9 @@ msgid ""
 "Not used if usesmtp is disabled (filtergroup specific)."
 msgstr ""
 
+msgid "Pconn timeout"
+msgstr ""
+
 msgid ""
 "Perform HTML normalisation and decryption of MS Script Encoder code.\n"
 "\t\tDefault: enabled"
@@ -3201,7 +3854,7 @@ msgstr ""
 
 msgid ""
 "Perform reverse lookups on client IPs for successful requests.\n"
-"If set to on, DansGuardian will look up the forward DNS for the IP of the "
+"If set to on, E2Guardian will look up the forward DNS for the IP of the "
 "connecting computer, and log host names (where available) rather than IPs "
 "against requests.\n"
 "This is not dependent on reverseclientiplookups being enabled; however, if "
@@ -3227,11 +3880,32 @@ msgstr ""
 msgid "Pet sites"
 msgstr ""
 
+msgid "Pf"
+msgstr ""
+
+msgid "Pfctl Timeout"
+msgstr ""
+
+msgid ""
+"Pfctl commands are executed in a separate process, which returns pfctl "
+"output in a message. Parent process times out waiting for an output message "
+"after this many seconds. This approach is necessary in case pfctl is stuck "
+"or taking too long (and it is on certain cases).\n"
+"\n"
+"<b>Setting this timeout to 0 may fail the execution of all pfctl commands, "
+"effectively disabling rule tests.<b>"
+msgstr ""
+
 msgid "Pfctl output does not match"
 msgstr ""
 
 msgid "Phrase filter mode"
 msgstr "Режим фильтра фраз"
+
+msgid ""
+"Phrase filtering additional mime types.\n"
+"default text/*"
+msgstr ""
 
 msgid "Phrase modes and cache settings determine how content scan works."
 msgstr ""
@@ -3256,6 +3930,11 @@ msgstr ""
 
 msgid "Port"
 msgstr "Порт"
+
+msgid ""
+"Portals for job offers and job seekers as well as the career and work-for-us "
+"pages of companies."
+msgstr ""
 
 msgid "Ports you run secure shell on."
 msgstr ""
@@ -3324,6 +4003,9 @@ msgstr ""
 "таких как обмен сообщениями (IM) или файлообмен (file sharing). Обычно порты "
 "таких сервисов блокируются для пользователей, не нуждающихся в них."
 
+msgid "Probability"
+msgstr ""
+
 msgid "Process"
 msgstr "Процесс"
 
@@ -3370,15 +4052,36 @@ msgstr "Прокси IP:Ports"
 msgid "Proxy Port"
 msgstr "Порт прокси"
 
+msgid "Proxy failure log interval"
+msgstr ""
+
+msgid "Proxy header exchange"
+msgstr ""
+
 msgid ""
 "Proxy settings\n"
 "\t\tDefault: disabled"
 msgstr ""
 
+msgid "Proxy timeout"
+msgstr ""
+
+msgid "Qlimit"
+msgstr ""
+
 msgid "Query types"
 msgstr "Типы запросов"
 
+msgid "Queue"
+msgstr ""
+
+msgid "Queue Length"
+msgstr ""
+
 msgid "Queues"
+msgstr ""
+
+msgid "Quick"
 msgstr ""
 
 msgid "Quiet"
@@ -3399,6 +4102,9 @@ msgstr ""
 msgid "Re-check replaced URLs"
 msgstr "Перепроверка заменённого URL"
 
+msgid "Reached max nesting for inline anchors"
+msgstr ""
+
 msgid "Read system gateway"
 msgstr ""
 
@@ -3411,11 +4117,35 @@ msgstr ""
 msgid "Reasons"
 msgstr "Причины"
 
+msgid "Reassemble"
+msgstr ""
+
 msgid "Received (KB)"
 msgstr "Получено (KB)"
 
+msgid "Received on Interface"
+msgstr ""
+
 msgid "Recipients"
 msgstr "Получатели"
+
+msgid "Redirect"
+msgstr ""
+
+msgid "Redirect Address Family"
+msgstr ""
+
+msgid "Redirect Host"
+msgstr ""
+
+msgid "Redirect Options"
+msgstr ""
+
+msgid "Redirect Port"
+msgstr ""
+
+msgid "Redirect SSL denied page"
+msgstr ""
 
 msgid "Redraw"
 msgstr "Перерисовать"
@@ -3448,14 +4178,23 @@ msgstr "Перегрузить"
 msgid "Reload "
 msgstr ""
 
+msgid "Reload Rate"
+msgstr ""
+
 msgid "Reload interval"
 msgstr "Интервал перегрузки"
+
+msgid "Reload main ruleset"
+msgstr ""
 
 msgid "Remote Server"
 msgstr "Удалённый сервер"
 
 msgid "Remote User"
 msgstr "Удалённый пользователь"
+
+msgid "Render layout"
+msgstr ""
 
 msgid "Report e-mail"
 msgstr "E-mail для отчётов"
@@ -3489,6 +4228,9 @@ msgstr "Запросов инфецировано"
 
 msgid "Requests scanned"
 msgstr "Запросов просканированно"
+
+msgid "Required element missing"
+msgstr ""
 
 msgid "Required score"
 msgstr "Требуемый балл"
@@ -3530,7 +4272,7 @@ msgstr "Обратный DNS-запрос ip клиентов"
 
 msgid ""
 "Reverse lookups for banned and exception IP lists.\n"
-"If set to on, DansGuardian will look up the forward DNS for the IP of the "
+"If set to on, E2Guardian will look up the forward DNS for the IP of the "
 "connecting computer.  This means you can put in hostnames in the "
 "exceptioniplist and bannediplist.\n"
 "If a client computer is matched against an IP given in the lists, then the "
@@ -3542,9 +4284,9 @@ msgstr ""
 
 msgid ""
 "Reverse lookups for banned site and URLs.\n"
-"If set to on, DansGuardian will look up the forward DNS for an IP URL "
-"address and search for both in the banned site and URL lists. This would "
-"prevent a user from simply entering the IP for a banned address.\n"
+"If set to on, E2Guardian will look up the forward DNS for an IP URL address "
+"and search for both in the banned site and URL lists. This would prevent a "
+"user from simply entering the IP for a banned address.\n"
 "It will reduce searching speed somewhat so unless you have a local caching "
 "DNS server, leave it off and use the Blanket IP Block option in the "
 "bannedsitelist file instead."
@@ -3571,14 +4313,44 @@ msgstr ""
 msgid "Route"
 msgstr "Маршрут"
 
+msgid "Route Host"
+msgstr ""
+
+msgid "Route Type"
+msgstr ""
+
+msgid "Routing Table"
+msgstr ""
+
 msgid "Rule"
 msgstr "Правило"
+
+msgid "Rule number"
+msgstr ""
 
 msgid "Rule to be added to the routing table."
 msgstr ""
 
 msgid "Rules"
 msgstr "Правила"
+
+msgid "Rules file"
+msgstr ""
+
+msgid "Rules file deleted"
+msgstr ""
+
+msgid "Rules loaded"
+msgstr ""
+
+msgid "Ruleset Optimization"
+msgstr ""
+
+msgid "Ruleset contains errors"
+msgstr ""
+
+msgid "Ruleset deleted"
+msgstr ""
 
 msgid "Russian"
 msgstr "Русский"
@@ -3641,6 +4413,23 @@ msgstr "Версия SSH"
 msgid "SSH_PORTS"
 msgstr "SSH_ПОРТ"
 
+msgid "SSL"
+msgstr ""
+
+msgid "SSL access denied address"
+msgstr ""
+
+msgid "SSL certificate checking"
+msgstr ""
+
+msgid "SSL man in the middle"
+msgstr ""
+
+msgid ""
+"SSL sites not matching greysslsitelist will be treat as if sslmitm is off.\n"
+"ignored if  sslmitm is off"
+msgstr ""
+
 msgid ""
 "SSL/TLS parms. See the server config file for more description.  It's best "
 "to use a separate .crt/.key file pair for each client.  A single ca file can "
@@ -3681,9 +4470,24 @@ msgstr ""
 msgid "Sat"
 msgstr "Сб"
 
+msgid "Save"
+msgstr ""
+
+msgid "Save ruleset"
+msgstr ""
+
+msgid "Save ruleset to file"
+msgstr ""
+
 msgid ""
 "Save spam messages as a message/rfc822 MIME attachment instead of modifying "
 "the original message (0: off, 2: use text/plain instead)"
+msgstr ""
+
+msgid "Save with errors"
+msgstr ""
+
+msgid "Saved"
 msgstr ""
 
 msgid "Scan"
@@ -3728,6 +4532,12 @@ msgstr "Просканированно IP"
 msgid "Scanned requests"
 msgstr "Просканированно запросов"
 
+msgid "Scrub"
+msgstr ""
+
+msgid "Scrub Options"
+msgstr ""
+
 msgid "Search"
 msgstr "Искать"
 
@@ -3742,6 +4552,9 @@ msgstr "Уровень безопасности"
 
 msgid "Select"
 msgstr "Выбрать"
+
+msgid "Select Option Type"
+msgstr ""
 
 msgid ""
 "Select a cryptographic cipher. If the cipher option is used on the server "
@@ -3821,10 +4634,16 @@ msgstr "Сессия"
 msgid "Session Takeover"
 msgstr "Сессий обслужено"
 
+msgid "Session Timeout"
+msgstr ""
+
 msgid "Session timeout"
 msgstr "Таймаут сессии"
 
 msgid "Set DNS forwarders"
+msgstr ""
+
+msgid "Set IP DNS listens on"
 msgstr ""
 
 msgid "Set PF allowed"
@@ -3839,10 +4658,16 @@ msgstr ""
 msgid "Set configuration"
 msgstr ""
 
+msgid "Set default locale"
+msgstr ""
+
 msgid "Set dhcpd conf"
 msgstr ""
 
 msgid "Set e-mail address"
+msgstr ""
+
+msgid "Set force HTTPs"
 msgstr ""
 
 msgid ""
@@ -3873,7 +4698,13 @@ msgstr ""
 msgid "Set man.cgi home"
 msgstr ""
 
+msgid "Set max anchor nesting"
+msgstr ""
+
 msgid "Set name value pair"
+msgstr ""
+
+msgid "Set pfctl timeout"
 msgstr ""
 
 msgid "Set pmacct if"
@@ -3924,6 +4755,11 @@ msgstr ""
 msgid "Set system nameserver"
 msgstr ""
 
+msgid ""
+"Set tcp timeout between the Proxy and e2guardian \n"
+"Min 5 - Max 100"
+msgstr ""
+
 msgid "Set template ips"
 msgstr ""
 
@@ -3939,7 +4775,15 @@ msgid "Set the threshold at which a message is considered spam (default: 5.0)"
 msgstr ""
 
 msgid ""
+"Set timeout between the Proxy and e2guardian \n"
+"Min 20 - Max 300"
+msgstr ""
+
+msgid ""
 "Set up the external network addresses as well.  A good start may be \"any\""
+msgstr ""
+
+msgid "Set use SSH"
 msgstr ""
 
 msgid "Set user password"
@@ -3994,6 +4838,15 @@ msgid ""
 "On large sites you might want to try 10."
 msgstr ""
 
+msgid ""
+"Sets the number of child process to kill/fork at each 5 sec interval, during "
+"gentle restart.\n"
+"Defaults to preforkchildren."
+msgstr ""
+
+msgid "Show"
+msgstr ""
+
 msgid "Show weighted phrases found"
 msgstr "Показывать найденные фразы"
 
@@ -4025,8 +4878,24 @@ msgid ""
 "featured HTTP server, and you can configure it to serve web sites too."
 msgstr ""
 
+msgid "Site for real-time chatting and instant messaging."
+msgstr ""
+
 msgid "Sites"
 msgstr "Сайты"
+
+msgid ""
+"Sites about all kinds of sexual content ranging from bare bosoms to hardcore "
+"porn and sm."
+msgstr ""
+
+msgid ""
+"Sites about all types of real estate, buying and selling homes, finding "
+"apartments for rent."
+msgstr ""
+
+msgid "Sites about and related to stock exchange."
+msgstr ""
 
 msgid "Sites about and selling clothing"
 msgstr ""
@@ -4040,6 +4909,16 @@ msgstr ""
 msgid "Sites about dating"
 msgstr ""
 
+msgid ""
+"Sites about everything need to create a cozy home (interior design and "
+"accessories)."
+msgstr ""
+
+msgid ""
+"Sites about gardening, growing plants, fighting bugs and everything related "
+"to gardening."
+msgstr ""
+
 msgid "Sites about going on holiday"
 msgstr ""
 
@@ -4049,7 +4928,31 @@ msgstr ""
 msgid "Sites about hygiene and other personal grooming related stuff"
 msgstr ""
 
+msgid ""
+"Sites about killing and harming people. Covers anything about brutality and "
+"beastiality."
+msgstr ""
+
+msgid "Sites about online games. The games are for fun only (no gambling)."
+msgstr ""
+
+msgid ""
+"Sites about treatments for feeling internally and externally healthy and "
+"beautiful again."
+msgstr ""
+
 msgid "Sites attempting to trick people into giving out private information."
+msgstr ""
+
+msgid "Sites belonging to the government of a country, county or city."
+msgstr ""
+
+msgid ""
+"Sites bringing people together (social networking) be it for friendship or "
+"for business."
+msgstr ""
+
+msgid "Sites concerning food and food preparation."
 msgstr ""
 
 msgid "Sites containing adult material such as swearing but not porn"
@@ -4066,10 +4969,20 @@ msgstr ""
 msgid "Sites containing violence"
 msgstr ""
 
+msgid ""
+"Sites dedicated to martial arts such as: karate, kung fu, taek won do as "
+"well as fighting sports sites like ufc."
+msgstr ""
+
 msgid "Sites dedicated to sexuality, possibly including adult material"
 msgstr ""
 
 msgid "Sites detailing or selling weapons"
+msgstr ""
+
+msgid ""
+"Sites explaining the biological functions of the body concerning sexuality "
+"as well as sexual health."
 msgstr ""
 
 msgid "Sites for finding jobs"
@@ -4080,10 +4993,120 @@ msgid ""
 "www. or http://"
 msgstr ""
 
+msgid ""
+"Sites keeping an eye on where you surf and what you do in a passive manner. "
+"Covers web bugs, counters and other tracking mechanisms in web pages that do "
+"not interfere with the local computer yet collect information about the "
+"surfing person for later analysis."
+msgstr ""
+
 msgid "Sites kids often waste time on"
 msgstr ""
 
+msgid ""
+"Sites of breweries, wineries and destilleries. This category also covers "
+"sites that explain how to make beer, wines and spirits."
+msgstr ""
+
+msgid "Sites of hospitals and medical facilities."
+msgstr ""
+
+msgid ""
+"Sites of institutions as well as of amateurs about all topics of astronomy."
+msgstr ""
+
+msgid ""
+"Sites of institutions as well as of amateurs about all topics of chemistry."
+msgstr ""
+
+msgid ""
+"Sites of insurance companies, information about insurances and link "
+"collections concering this subject."
+msgstr ""
+
+msgid "Sites of military facilities or related to the armed forces."
+msgstr ""
+
+msgid ""
+"Sites of political parties, political organisations and associations; sites "
+"with political discussions."
+msgstr ""
+
+msgid ""
+"Sites of restaurants as well as restaurant descriptions and commentaries."
+msgstr ""
+
+msgid "Sites offering TV streams via Internet."
+msgstr ""
+
+msgid ""
+"Sites offering all kinds of weapons or accessories for weapons: Firearms, "
+"knifes, swords, bows, etc. Armory shops are included as well as sites "
+"holding general information about arms (manufacturing, usage)."
+msgstr ""
+
+msgid ""
+"Sites offering cinema programs, information about movies and actors. Sites "
+"for downloading video clips/movies (as long as it is legal) are included as "
+"well."
+msgstr ""
+
+msgid ""
+"Sites offering drugs or explain how to make drugs. Covers alcohol and "
+"tobacco as well as viagra and similar substances."
+msgstr ""
+
+msgid "Sites offering online shopping and price comparisons."
+msgstr ""
+
+msgid "Sites offering podcasts or podcast services, includes audio books."
+msgstr ""
+
+msgid "Sites offering short links for URLs. "
+msgstr ""
+
+msgid ""
+"Sites offering the possibility to win money. Poker, Casino, Bingo and other "
+"chance games as well as betting sites."
+msgstr ""
+
+msgid ""
+"Sites offering the service to remotely access computers, especially (but not "
+"limited to going) through firewalls. This does not cover traditional VPN."
+msgstr ""
+
+msgid ""
+"Sites one can apply for loans and mortgages or can obtain information about "
+"this business."
+msgstr ""
+
+msgid ""
+"Sites presenting news. Homepages from newspapers, magazines and journals as "
+"well as some blogs."
+msgstr ""
+
 msgid "Sites promoting religion"
+msgstr ""
+
+msgid ""
+"Sites providing vpn services to the public. The focus is on vpn sites used "
+"to hide the origin of the traffic, f.e. tor nodes."
+msgstr ""
+
+msgid ""
+"Sites related to games. This includes descriptions, news and general "
+"information about games. No gambling sites."
+msgstr ""
+
+msgid "Sites selling and presenting sexy lingerie."
+msgstr ""
+
+msgid "Sites specialized on hosting images, photo galleries and so on."
+msgstr ""
+
+msgid ""
+"Sites that actively help to bypass url filters by accepting urls via form "
+"and play a proxing and redirecting role."
 msgstr ""
 
 msgid ""
@@ -4093,6 +5116,32 @@ msgstr ""
 msgid "Sites that contain nude pictures and/or promote a nude lifestyle"
 msgstr ""
 
+msgid ""
+"Sites that enable user to phone via the Internet. Any site where users can "
+"voice-chat with each other."
+msgstr ""
+
+msgid ""
+"Sites that lure with free of charge services but then give then give you a "
+"costly subscription (written somewhere in tiny letters nearly unreadable)."
+msgstr ""
+
+msgid "Sites that offer listening to music and radio live streams."
+msgstr ""
+
+msgid ""
+"Sites that offer the download of music, information about music groups or "
+"music in general."
+msgstr ""
+
+msgid ""
+"Sites that offer the download of ringtones or present other information "
+"about ringtones."
+msgstr ""
+
+msgid "Sites that offer web-based email services."
+msgstr ""
+
 msgid "Sites that promote movies, books, magazine, humor"
 msgstr ""
 
@@ -4100,6 +5149,17 @@ msgid "Sites that provide online shopping"
 msgstr ""
 
 msgid "Sites that remove spyware"
+msgstr ""
+
+msgid ""
+"Sites that try to actively install software or lure the user in doing so in "
+"order to spy the surfing behaviour (or worse). The home calling sites where "
+"the collected information is sent, are listed too."
+msgstr ""
+
+msgid ""
+"Sites to contact people for love and living together. He seeks her, she "
+"seeks him and so on."
 msgstr ""
 
 msgid "Sites to do with childcare"
@@ -4117,6 +5177,9 @@ msgstr ""
 msgid "Sites who run or have spyware software to download"
 msgstr ""
 
+msgid "Sites with aggressive content such as racism and hate speech."
+msgstr ""
+
 msgid "Sites with audio or video downloads"
 msgstr ""
 
@@ -4132,10 +5195,26 @@ msgstr ""
 msgid "Sites with illegal pirate software"
 msgstr ""
 
+msgid ""
+"Sites with information about foreign countries, travel companies, travel "
+"fares, accommodations and everything else that has to do with travel."
+msgstr ""
+
+msgid ""
+"Sites with information and discussions about security weaknesses and how to "
+"exploit them. Sites offering exploits are listed as well as sites "
+"distributing programs that help to find security leaks."
+msgstr ""
+
 msgid "Sites with information only on beer or liquors"
 msgstr ""
 
 msgid "Sites with proxies to bypass filters"
+msgstr ""
+
+msgid ""
+"Sites with religious content: all kind of churches, sects, religious "
+"interpretations, etc."
 msgstr ""
 
 msgid "Size"
@@ -4155,6 +5234,12 @@ msgstr "Размер по Цели (KB)"
 
 msgid "Size by site (KB)"
 msgstr "Размер по сайту"
+
+msgid "Skip Interfaces"
+msgstr ""
+
+msgid "Sloppy Tracker"
+msgstr ""
 
 msgid ""
 "Smart, Raw and Meta/Title phrase content filtering options.\n"
@@ -4226,11 +5311,20 @@ msgstr ""
 msgid "Source IPs"
 msgstr "IP источников"
 
+msgid "Source Port"
+msgstr ""
+
 msgid "Source Ports"
 msgstr "Порты источников"
 
+msgid "Source Track Timeout"
+msgstr ""
+
 msgid "Source addresses"
 msgstr "Адреса источников"
+
+msgid "Source->Destination"
+msgstr ""
 
 msgid "Spam"
 msgstr "Спам"
@@ -4285,6 +5379,9 @@ msgstr "Испанский"
 msgid "Sport news sites"
 msgstr ""
 
+msgid "Src Nodes"
+msgstr ""
+
 msgid "Start"
 msgstr "Старт"
 
@@ -4306,6 +5403,15 @@ msgstr "Запуск"
 msgid "State"
 msgstr ""
 
+msgid "State Creations"
+msgstr ""
+
+msgid "State Defaults"
+msgstr ""
+
+msgid "State Policy"
+msgstr ""
+
 msgid "State Searches vs Packets"
 msgstr ""
 
@@ -4317,7 +5423,13 @@ msgid ""
 "load."
 msgstr ""
 
+msgid "Stateful Filtering"
+msgstr ""
+
 msgid "States"
+msgstr ""
+
+msgid "Static Port"
 msgstr ""
 
 msgid "Statistics"
@@ -4372,12 +5484,12 @@ msgstr ""
 msgid ""
 "Subject of the email sent when a virus is caught.\n"
 "Only applicable if notifyav is on.\n"
-"default avsubject = 'dansguardian virus block'"
+"default avsubject = 'e2guardian virus block'"
 msgstr ""
 
 msgid ""
 "Subject of the email sent when violation thresholds are exceeded default "
-"contentsubject = 'dansguardian violation'"
+"contentsubject = 'e2guardian violation'"
 msgstr ""
 
 msgid "Subnet mask"
@@ -4432,7 +5544,13 @@ msgstr ""
 msgid "System shutdown"
 msgstr ""
 
+msgid "TCP Flags"
+msgstr ""
+
 msgid "TCP Keep Alive"
+msgstr ""
+
+msgid "TCP Timeouts"
 msgstr ""
 
 msgid "TCP or UDP server?"
@@ -4446,6 +5564,18 @@ msgstr "ВРЕМЯ"
 
 msgid "TLS Auth"
 msgstr "Аутентификация TLS"
+
+msgid "Table"
+msgstr ""
+
+msgid "Table Entries"
+msgstr ""
+
+msgid "Tables"
+msgstr ""
+
+msgid "Tail number wrong"
+msgstr ""
 
 msgid "Target"
 msgstr "Цель"
@@ -4469,6 +5599,9 @@ msgid "Temporary Denied Page Bypass Secret Key"
 msgstr "Пароль для игнорирования запрета страницы"
 
 msgid "Temporary block duration in seconds on each alert."
+msgstr ""
+
+msgid "Test pf rules"
 msgstr ""
 
 msgid ""
@@ -4497,9 +5630,12 @@ msgid ""
 "periodically. Make sure you have appropriate rules installed on your system."
 msgstr ""
 
+msgid "The IP address that the DNS server listens on."
+msgstr ""
+
 msgid ""
-"The IP that DansGuardian listens on.  If left blank DansGuardian will listen "
-"on all IPs.  That would include all NICs, loopback, modem, etc.\n"
+"The IP that E2Guardian listens on.  If left blank E2Guardian will listen on "
+"all IPs.  That would include all NICs, loopback, modem, etc.\n"
 "Normally you would have your firewall protecting this, but if you want you "
 "can limit it to a certain IP. To bind to multiple interfaces, specify each "
 "IP on an individual filterip line."
@@ -4509,6 +5645,32 @@ msgid ""
 "The Intrusion Prevention System (IPS) depends on alerts generated by the "
 "Intrusion Detection System (IDS). Make sure the IDS is running before "
 "starting the IPS."
+msgstr ""
+
+msgid ""
+"The address of your web server to which the static page e2guardian reporting "
+"was copied.\n"
+"With ssldeniedrewrite off it works only with firefox \n"
+"With ssldeniedrewrite on there are several limitations, SSL warning, basic "
+"page, etc, eg this webserver can't be listed as an exception in your "
+"browser's proxy configuration.\n"
+"Keep in mind, this is only a trick to avoid blank page, the best way still "
+"to use SSLMITM"
+msgstr ""
+
+msgid ""
+"The headers can be easily spoofed in order to fake the request origin by "
+"setting the X-Forwarded-For header. If you have the \"usexforwardedfor\" "
+"option enabled, you may want to specify the IPs from which this kind of "
+"header is allowed, such as another upstream proxy server for instance If you "
+"want authorize multiple IPs, specify each one on an individual "
+"xforwardedforfilterip line."
+msgstr ""
+
+msgid ""
+"The interval between log status entries when proxy is not responding minimum "
+"is proxytimeout - maximum 3600 (= 1 hour)\n"
+"default = 600  (= 10 mins)"
 msgstr ""
 
 msgid ""
@@ -4537,8 +5699,7 @@ msgid "The most famous web server."
 msgstr "Один из наиболее популярных web-серверов в мире."
 
 msgid ""
-"The most secure OS in the world. Underneath UTMFW is pure, untouched "
-"OpenBSD."
+"The most secure OS in the world. Underneath UTMFW is pure, untouched OpenBSD."
 msgstr ""
 "Одна из самых безопасных операционных систем. Лежит в основе UTMFW'а как "
 "есть, без каких-либо модификаций."
@@ -4599,15 +5760,20 @@ msgid ""
 msgstr ""
 
 msgid ""
+"The web filter can decrypt SSL content, scan as if plain, and then re-"
+"encrypt."
+msgstr ""
+
+msgid ""
 "The web filter can report incidents via e-mails. You can setup which "
 "incidents to be reported based on violation types and thresholds. Do not "
 "forget the single quotes around e-mail addresses and strings."
 msgstr ""
 
 msgid ""
-"The web filter on UTMFW uses weighted phrase lists to scan the content "
-"of web pages, hence the name Content Scanning Web Filter. This feature of "
-"the web filter is different from and in addition to site or url lists, "
+"The web filter on UTMFW uses weighted phrase lists to scan the content of "
+"web pages, hence the name Content Scanning Web Filter. This feature of the "
+"web filter is different from and in addition to site or url lists, "
 "blacklists, and related categories."
 msgstr ""
 
@@ -4616,6 +5782,9 @@ msgid ""
 "0 = off = do not use the weighted phrase feature.\n"
 "1 = on, normal = normal weighted phrase operation.\n"
 "2 = on, singular = each weighted phrase found only counts once on a page."
+msgstr ""
+
+msgid "There was an error while installing"
 msgstr ""
 
 msgid ""
@@ -4631,6 +5800,9 @@ msgid ""
 "users, client IP addresses, and pages accessed."
 msgstr ""
 
+msgid "These are interface statistics reported by pf."
+msgstr ""
+
 msgid ""
 "These are intrusion alerts. Note that these alerts can be considered as "
 "guesses at best. While configuring the IPS, make use of priorities and "
@@ -4640,6 +5812,14 @@ msgstr ""
 msgid ""
 "These are keywords to match in alert messages. If alerts contain such words, "
 "the IP in that alert will be blocked."
+msgstr ""
+
+msgid "These are queue statistics reported by pf."
+msgstr ""
+
+msgid ""
+"These are the active rules loaded into pf. Note that the rule numbers "
+"reported here do not necessarily match with the numbers on the rule editor."
 msgstr ""
 
 msgid ""
@@ -4701,6 +5881,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"This covers mostly filesharing, p2p and torrent sites. Other download sites "
+"(for software, wallpapers, ..) are included as well."
+msgstr ""
+
+msgid ""
 "This graph shows overall network usage based on certain protocols. Note that "
 "each protocol may cover more than one port."
 msgstr ""
@@ -4719,7 +5904,7 @@ msgstr ""
 
 msgid ""
 "This is only used if you use a content scanner plugin such as AV\n"
-"This is the max size of file that DG will download and cache in RAM.  After "
+"This is the max size of file that E2 will download and cache in RAM.  After "
 "this limit is reached it will cache to disk.\n"
 "This value must be less than or equal to maxcontentfilecachescansize.\n"
 "The size is in Kibibytes - eg 10240 = 10Mb\n"
@@ -4729,7 +5914,7 @@ msgstr ""
 
 msgid ""
 "This is only used if you use a content scanner plugin such as AV.\n"
-"This is the max size file that DG will download so that it can be scanned or "
+"This is the max size file that E2 will download so that it can be scanned or "
 "virus checked.\n"
 "This value must be greater or equal to maxcontentramcachescansize.\n"
 "The size is in Kibibytes - eg 10240 = 10Mb"
@@ -4744,8 +5929,8 @@ msgid "This is the IP and port over which the proxy accepts connections."
 msgstr ""
 
 msgid ""
-"This is the address of your web server to which the cgi dansguardian "
-"reporting script was copied. Only used in reporting levels 1 and 2.\n"
+"This is the address of your web server to which the cgi e2guardian reporting "
+"script was copied. Only used in reporting levels 1 and 2.\n"
 "\n"
 "This webserver must be either:\n"
 " 1. Non-proxied. Either a machine on the local network, or listed as an "
@@ -4794,13 +5979,19 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This is the log level for the UTMFW web interface. Logs at this level "
-"and up will be recorded in WUI and CTLR log files. This setting does not "
+"This is the log level for the UTMFW web interface. Logs at this level and up "
+"will be recorded in WUI and CTLR log files. This setting does not effect "
+"other services."
+msgstr ""
+"Уровень журналирования для Web-интерфейса UTMFW. Логи этого уровня и выше "
+"будут записываться в WUI и CTLR лог-файлы. Данная настройка не влияет на "
+"другие сервисы."
+
+msgid ""
+"This is the log level for the utmfw web interface. Logs at this level and up "
+"will be recorded in WUI and Controller log files. This setting does not "
 "effect other services."
 msgstr ""
-"Уровень журналирования для Web-интерфейса UTMFW. Логи этого уровня и "
-"выше будут записываться в WUI и CTLR лог-файлы. Данная настройка не влияет на "
-"другие сервисы."
 
 msgid ""
 "This is the name server used by the system. You can use the DNS server on "
@@ -4835,6 +6026,11 @@ msgstr ""
 msgid ""
 "This is the priority in the alerts. Alerts at this priority and up will be "
 "used to block IPs."
+msgstr ""
+
+msgid ""
+"This is the state table of the Packet Filter. All active stateful "
+"connections should appear in this list."
 msgstr ""
 
 msgid ""
@@ -4975,8 +6171,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This page shows system-wide logs. Most services on UTMFW write to their "
-"own log files, but a few processes may log messages to this system file. Pay "
+"This page shows system-wide logs. Most services on UTMFW write to their own "
+"log files, but a few processes may log messages to this system file. Pay "
 "special attention to error messages."
 msgstr ""
 
@@ -5001,10 +6197,18 @@ msgid ""
 "startup.  You define the number of seconds the bypass will function for "
 "before the deny will appear again.\n"
 "To allow the link on the denied page to appear you will need to edit the "
-"template.html or dansguardian.pl file for your language.\n"
+"template.html or e2guardian.pl file for your language.\n"
 "300 = enable for 5 minutes\n"
 "0 = disable ( defaults to 0 )\n"
 "-1 = enable but you require a separate program/CGI to generate a valid link"
+msgstr ""
+
+msgid ""
+"This setting allows you to choose the method used while running the "
+"controller. Controller commands can be executed using either of the "
+"following two methods: (1) Executing the controller directly on the command "
+"line or (2) Openning an SSH connection to the system and calling the "
+"controller over this secure channel."
 msgstr ""
 
 msgid ""
@@ -5064,6 +6268,9 @@ msgstr "Время до окончания"
 msgid "Time to expire (secs)"
 msgstr "Время до окончания (сек.)"
 
+msgid "Timed out running pfctl command"
+msgstr ""
+
 msgid "Timeout"
 msgstr "Таймаут"
 
@@ -5072,6 +6279,9 @@ msgstr "Промежуток времени"
 
 msgid "To"
 msgstr "До"
+
+msgid "To Redirect Host"
+msgstr ""
 
 msgid ""
 "To block all SSL and CONNECT tunnels except to addresses in the "
@@ -5151,6 +6361,9 @@ msgstr ""
 msgid "Type"
 msgstr "Тип"
 
+msgid "UDP Timeouts"
+msgstr ""
+
 msgid "URLs"
 msgstr ""
 
@@ -5161,6 +6374,88 @@ msgstr ""
 
 msgid "USER"
 msgstr "ПОЛЬЗОВАТЕЛЬ"
+
+msgid "UTM FIREWALL"
+msgstr ""
+
+msgid "UTM Firewall"
+msgstr ""
+
+msgid "UTMFW ADMINISTRATION INTERFACE"
+msgstr "ИНТЕРФЕЙС АДМИНИСТРИРОВАНИЯ UTMFW"
+
+msgid "UTMFW Administration Interface"
+msgstr "Интерфейс Администрирования UTMFW"
+
+msgid ""
+"UTMFW Web Filter uses URL lists categorized in different packages for your "
+"convenience. You can enable or disable categories you want on this page."
+msgstr ""
+
+msgid ""
+"UTMFW Web Filter uses phrase lists categorized in different packages for "
+"your convenience. You can enable or disable categories you want on this page."
+msgstr ""
+
+msgid ""
+"UTMFW Web Filter uses site lists categorized in different packages for your "
+"convenience. You can enable or disable categories you want on this page."
+msgstr ""
+
+msgid "UTMFW currently supports only admin and user usernames"
+msgstr "На текущий момент UTMFW поддерживает только имена admin и user"
+
+msgid ""
+"UTMFW logs errors, warnings, notices, and debug messages. Since also "
+"recorded are changes to configuration and passwords, you may want to monitor "
+"these logs carefully. These logs are also important while reporting issues "
+"related to the web user interface. Logs on this page are generated by the "
+"Controller and the Model, middle and bottom layers of software responsible "
+"for processing requests from the View."
+msgstr ""
+
+msgid ""
+"UTMFW logs errors, warnings, notices, and debug messages. Since also "
+"recorded are changes to configuration and passwords, you may want to monitor "
+"these logs carefully. These logs are also important while reporting issues "
+"related to the web user interface. Logs on this page are generated by the "
+"View, main module responsible for displaying the web user interface and "
+"interacting with the user."
+msgstr ""
+
+msgid ""
+"UTMFW runs many services or daemons in default installation. On this page "
+"you can configure these services to start at boot time.\n"
+"\n"
+"Note that if you modify startup configuration for some services, you may "
+"need to change packet filter rules or other related settings too."
+msgstr ""
+
+msgid ""
+"UTMFW sends warning and information messages to its system administrator. "
+"Here you can type in your own e-mail address."
+msgstr ""
+"UTMFW отсылает предупреждения и информационные сообщения своему системному "
+"администратору. Здесь Вы можете указать Ваш e-mail адрес."
+
+msgid ""
+"UTMFW uses ClamAV for all virus scanning purposes. Freshclam checks and "
+"updates ClamAV virus database periodically. By default, the database is "
+"updated every hour. You may not be able to stop or restart freshclam "
+"instance once it starts the update process; wait for a minute and try again."
+msgstr ""
+
+msgid ""
+"UTMFW would not be possible without the generous developers of many Free and "
+"Open Source Software (FOSS). UTMFW is developed using FOSS only. Software "
+"developed specifically for UTMFW, such as this web user interface and "
+"SnortIPS, are released under the BSD license, hence FOSS also.\n"
+"\n"
+"These credits may not cover all of the software UTMFW uses. If you think one "
+"is missing, I would happily add here.\n"
+"\n"
+"Thanks for the excellent work and good spirit."
+msgstr ""
 
 msgid "Unblock"
 msgstr "Разблокировать"
@@ -5186,6 +6481,9 @@ msgstr "Разблокированные хосты"
 msgid "Unconfigure an interface"
 msgstr ""
 
+msgid "Unexpected elements"
+msgstr ""
+
 msgid "Unknown"
 msgstr ""
 
@@ -5196,6 +6494,18 @@ msgid "Unsupported interface configuration"
 msgstr ""
 
 msgid "Update mail aliases"
+msgstr ""
+
+msgid "Upload"
+msgstr ""
+
+msgid "Upload rules file"
+msgstr ""
+
+msgid "Upload ruleset"
+msgstr ""
+
+msgid "Upload with errors"
 msgstr ""
 
 msgid "Uptime"
@@ -5225,6 +6535,9 @@ msgstr ""
 
 msgid "Use SMTP"
 msgstr "Использовать SMTP"
+
+msgid "Use SSH"
+msgstr ""
 
 msgid ""
 "Use aaa.bbb.ccc.ddd as client address for downloading databases. Useful for "
@@ -5265,6 +6578,9 @@ msgstr ""
 msgid "User name"
 msgstr "Имя пользователя"
 
+msgid "User password changed"
+msgstr ""
+
 msgid ""
 "User sessions expire after an idle period defined by this value. The unit is "
 "in seconds. You cannot set a value less than 10 seconds."
@@ -5290,6 +6606,15 @@ msgid "VIRUS FILTER"
 msgstr "ВИРУСНЫЙ ФИЛЬТР"
 
 msgid "VSZ"
+msgstr ""
+
+msgid "Validation Error"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Values"
 msgstr ""
 
 msgid "Verbosity"
@@ -5409,7 +6734,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"When enabled, DG looks for URLs within URLs, checking against the "
+"When enabled, E2 looks for URLs within URLs, checking against the "
 "bannedsitelist and bannedurllist. This can be used, for example, to block "
 "images originating from banned sites from appearing in Google Images search "
 "results, as the original URLs are embedded in the thumbnail GET requests.\n"
@@ -5480,12 +6805,18 @@ msgstr ""
 
 msgid ""
 "Who the email would come from\n"
-"example: mailfrom = 'dansguardian@mycompany.com'"
+"example: mailfrom = 'e2guardian@mycompany.com'"
 msgstr ""
 
 msgid ""
 "Who the virus emails go to (if notify av is on)\n"
 "example: avadmin = 'admin@mycompany.com'"
+msgstr ""
+
+msgid "Will not load rules with errors"
+msgstr ""
+
+msgid "Will not test rules with errors"
 msgstr ""
 
 msgid ""
@@ -5600,8 +6931,8 @@ msgstr ""
 
 msgid ""
 "accessdeniedaddress is the address of your web server to which the cgi "
-"dansguardian reporting script was copied. Only used in reporting levels 1 "
-"and 2.\n"
+"e2guardian reporting script was copied. Only used in reporting levels 1 and "
+"2.\n"
 "\n"
 "This webserver must be either:\n"
 " 1. Non-proxied. Either a machine on the local network, or listed as an "
@@ -5610,11 +6941,23 @@ msgid ""
 "only for users using both transparent proxying and a non-local server to "
 "host this script.\n"
 "\n"
-"If defined, this overrides the global setting in dansguardian.conf for "
-"members of this filter group."
+"If defined, this overrides the global setting in e2guardian.conf for members "
+"of this filter group."
+msgstr ""
+
+msgid "add file"
+msgstr ""
+
+msgid "add host or network"
+msgstr ""
+
+msgid "add value"
 msgstr ""
 
 msgid "anonymize logs (blank out usernames & IPs)"
+msgstr ""
+
+msgid "as rule number"
 msgstr ""
 
 msgid "blacklisted"
@@ -5622,6 +6965,12 @@ msgstr "отфильтрован"
 
 msgid "blocked"
 msgstr "блокирован"
+
+msgid "defaults to S/SA"
+msgstr ""
+
+msgid "delete"
+msgstr ""
 
 msgid "disabled"
 msgstr "отключено"
@@ -5632,16 +6981,40 @@ msgstr "включено"
 msgid "end"
 msgstr "конец"
 
+msgid "enter comment, such as a description of the rule"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+msgid "groupname or groupid"
+msgstr ""
+
 msgid "h"
 msgstr ""
 
 msgid "height"
 msgstr "высота"
 
+msgid "host or network"
+msgstr ""
+
 msgid ""
 "if on it logs some debug info regarding fork()ing and accept()ing which can "
 "usually be ignored.  These are logged by syslog.  It is safe to leave it on "
 "or off"
+msgstr ""
+
+msgid "if or macro"
+msgstr ""
+
+msgid "ignored if  sslmitm is off"
+msgstr ""
+
+msgid "interface"
+msgstr ""
+
+msgid "ip, host, table or macro"
 msgstr ""
 
 msgid "is not running"
@@ -5650,7 +7023,13 @@ msgstr "не запущен"
 msgid "is running"
 msgstr "выполняется"
 
+msgid "label"
+msgstr ""
+
 msgid "language to use from languagedir, e.g. 'ukenglish'"
+msgstr ""
+
+msgid "logging interface"
 msgstr ""
 
 msgid "managed"
@@ -5659,13 +7038,70 @@ msgstr ""
 msgid "min"
 msgstr ""
 
+msgid "modified"
+msgstr ""
+
+msgid "move to"
+msgstr ""
+
+msgid "name, may be nested"
+msgstr ""
+
+msgid "negated"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
 msgid "non-news related radio and television"
+msgstr ""
+
+msgid "none"
+msgstr ""
+
+msgid "number"
+msgstr ""
+
+msgid "number 0-7"
+msgstr ""
+
+msgid "number or abbrev."
+msgstr ""
+
+msgid "number or name"
+msgstr ""
+
+msgid "number(ms)"
+msgstr ""
+
+msgid "number, name, table or macro"
+msgstr ""
+
+msgid "number/number"
+msgstr ""
+
+msgid "number[(K|M|G)]"
 msgstr ""
 
 msgid "on|off ( defaults to off )"
 msgstr ""
 
+msgid "os name or macro"
+msgstr ""
+
+msgid "primary"
+msgstr ""
+
+msgid "protocol"
+msgstr ""
+
+msgid "ruleset has errors"
+msgstr ""
+
 msgid "sec"
+msgstr ""
+
+msgid "secondary"
 msgstr ""
 
 msgid "secs"
@@ -5677,20 +7113,29 @@ msgstr "размер"
 msgid "start"
 msgstr "старт"
 
+msgid "string"
+msgstr ""
+
+msgid "string or number"
+msgstr ""
+
 msgid "stuff for mobile/cell phones"
 msgstr ""
 
 msgid "the ip of the proxy (default is the loopback - i.e. this server)"
 msgstr ""
 
-msgid "the port DansGuardian connects to proxy on"
+msgid "the port E2Guardian connects to proxy on"
 msgstr ""
 
-msgid "the port that DansGuardian listens to."
+msgid "the port that E2Guardian listens to."
 msgstr ""
 
 msgid "timespan"
 msgstr "промежуток времени"
+
+msgid "to"
+msgstr ""
 
 msgid "total"
 msgstr "всего"
@@ -5701,8 +7146,23 @@ msgstr ""
 msgid "unconfigured"
 msgstr ""
 
+msgid "uploaded"
+msgstr ""
+
+msgid "username or userid"
+msgstr ""
+
+msgid "utmfw currently supports only admin and user usernames"
+msgstr ""
+
+msgid "valid string"
+msgstr ""
+
 msgid "whitelisted"
 msgstr "разрешён"
 
 msgid "width"
 msgstr "ширина"
+
+msgid "yes"
+msgstr ""

@@ -86,10 +86,25 @@ msgstr ""
 msgid "Cannot find group configuration file"
 msgstr ""
 
+msgid "Cannot fork pfctl process"
+msgstr ""
+
 msgid "Cannot get pid"
 msgstr ""
 
+msgid "Cannot install pf rule file"
+msgstr ""
+
+msgid "Cannot load pf rules"
+msgstr ""
+
 msgid "Cannot read config"
+msgstr ""
+
+msgid "Cannot remove tmp pf file"
+msgstr ""
+
+msgid "Cannot write to tmp pf file"
 msgstr ""
 
 msgid "Change p3scan report language"
@@ -107,6 +122,12 @@ msgstr "检查进程是否运行"
 msgid "Chinese simplified"
 msgstr ""
 
+msgid "Cleared"
+msgstr ""
+
+msgid "Compressed"
+msgstr ""
+
 msgid "Configure an interface"
 msgstr "配置接口"
 
@@ -115,6 +136,9 @@ msgstr "复制配置"
 
 msgid "Create new group"
 msgstr "创建新组"
+
+msgid "Create user"
+msgstr ""
 
 msgid "Datetime wrong"
 msgstr "日期时间错误"
@@ -164,6 +188,9 @@ msgstr "删除主机"
 msgid "Delete list item"
 msgstr "删除列表项目"
 
+msgid "Delete pf rule file"
+msgstr ""
+
 msgid "Dest"
 msgstr ""
 
@@ -193,6 +220,12 @@ msgstr "禁用规则"
 
 msgid "Display remote time"
 msgstr "显示远程时间"
+
+msgid "Dropped Bytes"
+msgstr ""
+
+msgid "Dropped Packets"
+msgstr ""
 
 msgid "Dutch"
 msgstr ""
@@ -227,6 +260,18 @@ msgstr ""
 msgid "Erase statistics files"
 msgstr "清除统计数据文件"
 
+msgid "Error in include file"
+msgstr ""
+
+msgid "Error loading, rule load forced"
+msgstr ""
+
+msgid "Error loading, rule loaded partially"
+msgstr ""
+
+msgid "Evaluations"
+msgstr ""
+
 msgid "Expr"
 msgstr ""
 
@@ -239,10 +284,34 @@ msgstr ""
 msgid "FATAL ERRORS in creating new group"
 msgstr ""
 
+msgid "Failed creating or attaching to message queue"
+msgstr ""
+
+msgid "Failed loading pf rules"
+msgstr ""
+
+msgid "Failed removing message queue"
+msgstr ""
+
+msgid "Failed running pfctl command"
+msgstr ""
+
+msgid "Failed testing pf rules"
+msgstr ""
+
+msgid "Filename not accepted"
+msgstr ""
+
 msgid "Filepath wrong"
 msgstr "文件路径错误"
 
 msgid "French"
+msgstr ""
+
+msgid "Generate pf rule"
+msgstr ""
+
+msgid "Generate pf rules"
 msgstr ""
 
 msgid "Get ACL"
@@ -268,6 +337,9 @@ msgstr "获取DNS转发器"
 
 msgid "Get HTTP proxy IP:port"
 msgstr "获取HTTP代理服务器IP：端口"
+
+msgid "Get IP DNS listens on"
+msgstr ""
 
 msgid "Get IPS info"
 msgstr "获取IPS信息"
@@ -311,6 +383,9 @@ msgstr "获取当前区域"
 msgid "Get database mirrors"
 msgstr "获取数据库镜像"
 
+msgid "Get datetime"
+msgstr ""
+
 msgid "Get dhcp leases"
 msgstr "获取DHCP租约"
 
@@ -344,6 +419,9 @@ msgstr "获得非使用中的类别"
 msgid "Get int_if"
 msgstr "获得int_if"
 
+msgid "Get line count"
+msgstr ""
+
 msgid "Get lines"
 msgstr "获取日志文件行"
 
@@ -374,10 +452,34 @@ msgstr "获取日志配置"
 msgid "Get partition list"
 msgstr "获得分区列表"
 
+msgid "Get pf info"
+msgstr ""
+
+msgid "Get pf interface info"
+msgstr ""
+
+msgid "Get pf memory info"
+msgstr ""
+
+msgid "Get pf queue info"
+msgstr ""
+
+msgid "Get pf rule files"
+msgstr ""
+
+msgid "Get pf rules"
+msgstr ""
+
+msgid "Get pf rules info"
+msgstr ""
+
 msgid "Get pf state count"
 msgstr ""
 
 msgid "Get pf states"
+msgstr ""
+
+msgid "Get pf timeout info"
 msgstr ""
 
 msgid "Get pfw commandwrapper -conntest"
@@ -415,6 +517,9 @@ msgstr "获取进程列表"
 
 msgid "Get protocols"
 msgstr "获取协议"
+
+msgid "Get reload rate"
+msgstr ""
 
 msgid "Get remote time"
 msgstr "获取远程时间"
@@ -509,11 +614,35 @@ msgstr "IPv6"
 msgid "If client conf"
 msgstr "网络接口客户配置"
 
+msgid "In4 Block"
+msgstr ""
+
+msgid "In4 Pass"
+msgstr ""
+
+msgid "In6 Block"
+msgstr ""
+
+msgid "In6 Pass"
+msgstr ""
+
 msgid "Init graphs"
 msgstr "初始化图"
 
+msgid "Inserted"
+msgstr ""
+
+msgid "Install pf rules"
+msgstr ""
+
+msgid "Invalid inline rules, parser output"
+msgstr ""
+
 msgid "Invalid value"
 msgstr "无效的值"
+
+msgid "Invalid value for"
+msgstr ""
 
 msgid "Line"
 msgstr "线"
@@ -526,6 +655,9 @@ msgstr "列表主机"
 
 msgid "List physical interfaces"
 msgstr "列表物理接口"
+
+msgid "Load Error"
+msgstr ""
 
 msgid "Make system gateway dynamic"
 msgstr "设置动态系统网关"
@@ -551,20 +683,35 @@ msgstr ""
 msgid "Move rule up"
 msgstr ""
 
+msgid "Multiple values not allowed for"
+msgstr ""
+
 msgid "NA"
 msgstr "不适用"
 
 msgid "NI"
 msgstr "网络接口"
 
+msgid "Name"
+msgstr ""
+
 msgid "Name wrong"
 msgstr "名称错误"
+
+msgid "No regex or func def for"
+msgstr ""
 
 msgid "No such file"
 msgstr ""
 
+msgid "Not JSON encoded string"
+msgstr ""
+
 msgid "Not asterisk"
 msgstr "不是星号"
+
+msgid "Not boolean"
+msgstr ""
 
 msgid "Not comma separated digits"
 msgstr "不以逗号分隔数字"
@@ -587,12 +734,30 @@ msgstr "不会序列化数组"
 msgid "Not sha1 encrypted string"
 msgstr "不sha1加密字符串"
 
+msgid "Number"
+msgstr ""
+
 msgid "Number wrong"
 msgstr "号码错误"
 
 msgid ""
 "One or more actions failed while creating new group\n"
 "Examine the report above to make sure this is the intended result!"
+msgstr ""
+
+msgid "Out4 Block"
+msgstr ""
+
+msgid "Out4 Pass"
+msgstr ""
+
+msgid "Out6 Block"
+msgstr ""
+
+msgid "Out6 Pass"
+msgstr ""
+
+msgid "Output not in correct format"
 msgstr ""
 
 msgid "Overview"
@@ -604,6 +769,9 @@ msgstr "PID"
 msgid "Packets"
 msgstr ""
 
+msgid "Parse Error"
+msgstr ""
+
 msgid "Pfctl output does not match"
 msgstr ""
 
@@ -613,11 +781,17 @@ msgstr "准备文件下载"
 msgid "Proto"
 msgstr ""
 
+msgid "Queue Length"
+msgstr ""
+
 msgid "Queue Statistics"
 msgstr "队列统计"
 
 msgid "RSS"
 msgstr "RSS"
+
+msgid "Reached max nesting for inline anchors"
+msgstr ""
 
 msgid "Read system gateway"
 msgstr "阅读系统网关"
@@ -637,8 +811,14 @@ msgstr "正则表达式错误"
 msgid "Reload "
 msgstr "重新载入"
 
+msgid "Render layout"
+msgstr ""
+
 msgid "Requests by date"
 msgstr "请求日期"
+
+msgid "Required element missing"
+msgstr ""
 
 msgid "Restart "
 msgstr "重新启动"
@@ -651,6 +831,15 @@ msgstr "轮换所有日志文件"
 
 msgid "Rotate log file"
 msgstr "轮换日志文件"
+
+msgid "Rule"
+msgstr ""
+
+msgid "Rules"
+msgstr ""
+
+msgid "Ruleset contains errors"
+msgstr ""
 
 msgid "Russian"
 msgstr ""
@@ -670,6 +859,9 @@ msgstr "选择日志文件"
 msgid "Set DNS forwarders"
 msgstr "设置DNS转发器"
 
+msgid "Set IP DNS listens on"
+msgstr ""
+
 msgid "Set PF allowed"
 msgstr "设置PF允许"
 
@@ -682,11 +874,17 @@ msgstr "设置非工作时间网络接口"
 msgid "Set configuration"
 msgstr "设置配置"
 
+msgid "Set default locale"
+msgstr ""
+
 msgid "Set dhcpd conf"
 msgstr "设置dhcpd配置"
 
 msgid "Set e-mail address"
 msgstr "设置电子邮件地址"
+
+msgid "Set force HTTPs"
+msgstr ""
 
 msgid "Set help boxes"
 msgstr "设置帮助"
@@ -712,8 +910,14 @@ msgstr "设置日志配置"
 msgid "Set man.cgi home"
 msgstr "设置man.cgi主页"
 
+msgid "Set max anchor nesting"
+msgstr ""
+
 msgid "Set name value pair"
 msgstr "设置名称值对"
+
+msgid "Set pfctl timeout"
+msgstr ""
 
 msgid "Set pmacct if"
 msgstr "设置pmacct网络接口"
@@ -766,6 +970,9 @@ msgstr "设置系统域名服务器"
 msgid "Set template ips"
 msgstr "设置IPS模板"
 
+msgid "Set use SSH"
+msgstr ""
+
 msgid "Set user password"
 msgstr "设置用户密码"
 
@@ -790,6 +997,12 @@ msgstr "开始snort"
 msgid "State"
 msgstr ""
 
+msgid "State Creations"
+msgstr ""
+
+msgid "States"
+msgstr ""
+
 msgid "Stop "
 msgstr "停止"
 
@@ -808,8 +1021,17 @@ msgstr "系统重新启动"
 msgid "System shutdown"
 msgstr "系统关机"
 
+msgid "Tail number wrong"
+msgstr ""
+
+msgid "Test pf rules"
+msgstr ""
+
 msgid "The process is taking too long, thus will run in the background."
 msgstr "过程太长，因此将在后台运行。"
+
+msgid "Timed out running pfctl command"
+msgstr ""
 
 msgid "Too many args, truncating"
 msgstr ""
@@ -838,6 +1060,9 @@ msgstr "解除阻止所有"
 msgid "Unconfigure an interface"
 msgstr ""
 
+msgid "Unexpected elements"
+msgstr ""
+
 msgid "Unknown"
 msgstr "未知"
 
@@ -856,10 +1081,19 @@ msgstr "网址错误"
 msgid "VSZ"
 msgstr "VSZ"
 
+msgid "Validation Error"
+msgstr ""
+
 msgid "Web Filter IP range wrong"
 msgstr "网页过滤IP地址范围错误"
 
 msgid "White and black list entries should not be identical"
+msgstr ""
+
+msgid "Will not load rules with errors"
+msgstr ""
+
+msgid "Will not test rules with errors"
 msgstr ""
 
 msgid "Won't delete database.clamav.net entry."

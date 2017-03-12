@@ -204,7 +204,7 @@ Content scanning primarily is AV scanning (if enabled) but could include other t
 		),
     'deepurlanalysis' => array(
         'title' => _TITLE2('Enable Deep URL Analysis'),
-        'info' => _HELPBOX2('When enabled, DG looks for URLs within URLs, checking against the bannedsitelist and bannedurllist. This can be used, for example, to block images originating from banned sites from appearing in Google Images search results, as the original URLs are embedded in the thumbnail GET requests.
+        'info' => _HELPBOX2('When enabled, E2 looks for URLs within URLs, checking against the bannedsitelist and bannedurllist. This can be used, for example, to block images originating from banned sites from appearing in Google Images search results, as the original URLs are embedded in the thumbnail GET requests.
 (on|off) default = off'),
 		),
     'textmimetypes' => array(
@@ -539,7 +539,7 @@ use 0 to set it to maxcontentramcachescansize'),
     'maxcontentramcachescansize' => array(
         'title' => _TITLE2('Max content ram cache scan size'),
         'info' => _HELPBOX2('This is only used if you use a content scanner plugin such as AV
-This is the max size of file that DG will download and cache in RAM.  After this limit is reached it will cache to disk.
+This is the max size of file that E2 will download and cache in RAM.  After this limit is reached it will cache to disk.
 This value must be less than or equal to maxcontentfilecachescansize.
 The size is in Kibibytes - eg 10240 = 10Mb
 use 0 to set it to maxcontentfilecachescansize
@@ -548,7 +548,7 @@ This option may be ignored by the configured download manager.'),
     'maxcontentfilecachescansize' => array(
         'title' => _TITLE2('Max content file cache scan size'),
         'info' => _HELPBOX2('This is only used if you use a content scanner plugin such as AV.
-This is the max size file that DG will download so that it can be scanned or virus checked.
+This is the max size file that E2 will download so that it can be scanned or virus checked.
 This value must be greater or equal to maxcontentramcachescansize.
 The size is in Kibibytes - eg 10240 = 10Mb'),
 		),
@@ -637,7 +637,7 @@ This is not dependent on reverseclientiplookups being enabled; however, if it is
 		),
     'logchildprocesshandling' => array(
         'title' => _TITLE2('Log child process handling'),
-        'info' => _HELPBOX2('If on, this causes DG to write to the log file whenever child processes are created or destroyed (other than by crashes). This information can help in understanding and tuning the following parameters, but is not generally useful in production.'),
+        'info' => _HELPBOX2('If on, this causes E2 to write to the log file whenever child processes are created or destroyed (other than by crashes). This information can help in understanding and tuning the following parameters, but is not generally useful in production.'),
 		),
     'logadblocks' => array(
         'title' => _TITLE2('Log ad blocks'),

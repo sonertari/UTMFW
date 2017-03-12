@@ -88,10 +88,25 @@ msgstr ""
 msgid "Cannot find group configuration file"
 msgstr ""
 
+msgid "Cannot fork pfctl process"
+msgstr ""
+
 msgid "Cannot get pid"
 msgstr ""
 
+msgid "Cannot install pf rule file"
+msgstr ""
+
+msgid "Cannot load pf rules"
+msgstr ""
+
 msgid "Cannot read config"
+msgstr ""
+
+msgid "Cannot remove tmp pf file"
+msgstr ""
+
+msgid "Cannot write to tmp pf file"
 msgstr ""
 
 msgid "Change p3scan report language"
@@ -109,6 +124,12 @@ msgstr "Kontroleer of een process aktief is"
 msgid "Chinese simplified"
 msgstr ""
 
+msgid "Cleared"
+msgstr ""
+
+msgid "Compressed"
+msgstr ""
+
 msgid "Configure an interface"
 msgstr "Configureer een interface"
 
@@ -117,6 +138,9 @@ msgstr "Kopieer configuratie"
 
 msgid "Create new group"
 msgstr "Cre\"eer een nieuwe groep"
+
+msgid "Create user"
+msgstr ""
 
 msgid "Datetime wrong"
 msgstr "Fout in de Datum/tijd"
@@ -166,6 +190,9 @@ msgstr "Verwijder systeem"
 msgid "Delete list item"
 msgstr "Verwijder lijst onderdeel"
 
+msgid "Delete pf rule file"
+msgstr ""
+
 msgid "Dest"
 msgstr ""
 
@@ -192,6 +219,12 @@ msgstr "Uitschakelen van een pf regel"
 
 msgid "Display remote time"
 msgstr "Toon tijd op afstand"
+
+msgid "Dropped Bytes"
+msgstr ""
+
+msgid "Dropped Packets"
+msgstr ""
 
 msgid "Dutch"
 msgstr ""
@@ -223,6 +256,18 @@ msgstr "Engels"
 msgid "Erase statistics files"
 msgstr "Verwijder statistiek bestanden"
 
+msgid "Error in include file"
+msgstr ""
+
+msgid "Error loading, rule load forced"
+msgstr ""
+
+msgid "Error loading, rule loaded partially"
+msgstr ""
+
+msgid "Evaluations"
+msgstr ""
+
 msgid "Expr"
 msgstr ""
 
@@ -235,10 +280,34 @@ msgstr ""
 msgid "FATAL ERRORS in creating new group"
 msgstr ""
 
+msgid "Failed creating or attaching to message queue"
+msgstr ""
+
+msgid "Failed loading pf rules"
+msgstr ""
+
+msgid "Failed removing message queue"
+msgstr ""
+
+msgid "Failed running pfctl command"
+msgstr ""
+
+msgid "Failed testing pf rules"
+msgstr ""
+
+msgid "Filename not accepted"
+msgstr ""
+
 msgid "Filepath wrong"
 msgstr "Fout in het bestandspad"
 
 msgid "French"
+msgstr ""
+
+msgid "Generate pf rule"
+msgstr ""
+
+msgid "Generate pf rules"
 msgstr ""
 
 msgid "Get ACL"
@@ -264,6 +333,9 @@ msgstr "Opvragen DNS forwarders"
 
 msgid "Get HTTP proxy IP:port"
 msgstr "Opvragen HTTP proxy IP:poort"
+
+msgid "Get IP DNS listens on"
+msgstr ""
 
 msgid "Get IPS info"
 msgstr "Opvragen IPS info"
@@ -307,6 +379,9 @@ msgstr "Opvragen regionale instellingen"
 msgid "Get database mirrors"
 msgstr "Opvragen database kopieën"
 
+msgid "Get datetime"
+msgstr ""
+
 msgid "Get dhcp leases"
 msgstr "Opvragen dhcp leases"
 
@@ -340,6 +415,9 @@ msgstr "Opvragen niet aktieve categorieën"
 msgid "Get int_if"
 msgstr "Opvragen int_if"
 
+msgid "Get line count"
+msgstr ""
+
 msgid "Get lines"
 msgstr "Opvragen regels van logbestand"
 
@@ -370,10 +448,34 @@ msgstr "Opvragen logbestanden configuratie"
 msgid "Get partition list"
 msgstr "Opvragen partitie lijst"
 
+msgid "Get pf info"
+msgstr ""
+
+msgid "Get pf interface info"
+msgstr ""
+
+msgid "Get pf memory info"
+msgstr ""
+
+msgid "Get pf queue info"
+msgstr ""
+
+msgid "Get pf rule files"
+msgstr ""
+
+msgid "Get pf rules"
+msgstr ""
+
+msgid "Get pf rules info"
+msgstr ""
+
 msgid "Get pf state count"
 msgstr ""
 
 msgid "Get pf states"
+msgstr ""
+
+msgid "Get pf timeout info"
 msgstr ""
 
 msgid "Get pfw commandwrapper -conntest"
@@ -411,6 +513,9 @@ msgstr "Vraag de proces lijst op"
 
 msgid "Get protocols"
 msgstr "Vraag protocollen op"
+
+msgid "Get reload rate"
+msgstr ""
 
 msgid "Get remote time"
 msgstr "Opvragen tijd op afstand"
@@ -505,11 +610,35 @@ msgstr ""
 msgid "If client conf"
 msgstr ""
 
+msgid "In4 Block"
+msgstr ""
+
+msgid "In4 Pass"
+msgstr ""
+
+msgid "In6 Block"
+msgstr ""
+
+msgid "In6 Pass"
+msgstr ""
+
 msgid "Init graphs"
 msgstr "Initialiseer grafieken"
 
+msgid "Inserted"
+msgstr ""
+
+msgid "Install pf rules"
+msgstr ""
+
+msgid "Invalid inline rules, parser output"
+msgstr ""
+
 msgid "Invalid value"
 msgstr "Ongeldige waarde"
+
+msgid "Invalid value for"
+msgstr ""
 
 msgid "Line"
 msgstr "Regel"
@@ -519,6 +648,9 @@ msgstr "Toon systeemnamen"
 
 msgid "List physical interfaces"
 msgstr "Toon physieke verbindingen"
+
+msgid "Load Error"
+msgstr ""
 
 msgid "Make system gateway dynamic"
 msgstr "Maak systeem gateway dynamisch"
@@ -544,20 +676,35 @@ msgstr ""
 msgid "Move rule up"
 msgstr ""
 
+msgid "Multiple values not allowed for"
+msgstr ""
+
 msgid "NA"
 msgstr ""
 
 msgid "NI"
 msgstr ""
 
+msgid "Name"
+msgstr ""
+
 msgid "Name wrong"
 msgstr "Fout in de naam"
+
+msgid "No regex or func def for"
+msgstr ""
 
 msgid "No such file"
 msgstr ""
 
+msgid "Not JSON encoded string"
+msgstr ""
+
 msgid "Not asterisk"
 msgstr "Geen sterretje"
+
+msgid "Not boolean"
+msgstr ""
 
 msgid "Not comma separated digits"
 msgstr "Geen door komma gescheiden cijfers"
@@ -580,6 +727,9 @@ msgstr ""
 msgid "Not sha1 encrypted string"
 msgstr ""
 
+msgid "Number"
+msgstr ""
+
 msgid "Number wrong"
 msgstr "Fout in het nummer"
 
@@ -588,10 +738,28 @@ msgid ""
 "Examine the report above to make sure this is the intended result!"
 msgstr ""
 
+msgid "Out4 Block"
+msgstr ""
+
+msgid "Out4 Pass"
+msgstr ""
+
+msgid "Out6 Block"
+msgstr ""
+
+msgid "Out6 Pass"
+msgstr ""
+
+msgid "Output not in correct format"
+msgstr ""
+
 msgid "PID"
 msgstr ""
 
 msgid "Packets"
+msgstr ""
+
+msgid "Parse Error"
 msgstr ""
 
 msgid "Pfctl output does not match"
@@ -603,7 +771,13 @@ msgstr "Voorbereiden bestand voor downloaden"
 msgid "Proto"
 msgstr ""
 
+msgid "Queue Length"
+msgstr ""
+
 msgid "RSS"
+msgstr ""
+
+msgid "Reached max nesting for inline anchors"
 msgstr ""
 
 msgid "Read system gateway"
@@ -621,8 +795,14 @@ msgstr "Fout in de reguliere expressie"
 msgid "Reload "
 msgstr "Ververs"
 
+msgid "Render layout"
+msgstr ""
+
 msgid "Requests by date"
 msgstr "Verzoeken per datum"
+
+msgid "Required element missing"
+msgstr ""
 
 msgid "Restart "
 msgstr "Herstart"
@@ -635,6 +815,15 @@ msgstr "Roteer alle log bestanden"
 
 msgid "Rotate log file"
 msgstr "Roteer log bestand"
+
+msgid "Rule"
+msgstr ""
+
+msgid "Rules"
+msgstr ""
+
+msgid "Ruleset contains errors"
+msgstr ""
 
 msgid "Russian"
 msgstr "Russisch"
@@ -654,6 +843,9 @@ msgstr "Kies log bestand"
 msgid "Set DNS forwarders"
 msgstr "Instellen DNS forwarders"
 
+msgid "Set IP DNS listens on"
+msgstr ""
+
 msgid "Set PF allowed"
 msgstr "Instellen PF allowed"
 
@@ -666,11 +858,17 @@ msgstr "Instellen afterhours verbinding"
 msgid "Set configuration"
 msgstr "Instellen configuratie"
 
+msgid "Set default locale"
+msgstr ""
+
 msgid "Set dhcpd conf"
 msgstr "Instellen dhcpd configuratie"
 
 msgid "Set e-mail address"
 msgstr "Instellen e-mail adres"
+
+msgid "Set force HTTPs"
+msgstr ""
 
 msgid "Set help boxes"
 msgstr "Instellen help panelen"
@@ -696,8 +894,14 @@ msgstr "Instellen log configuratie"
 msgid "Set man.cgi home"
 msgstr ""
 
+msgid "Set max anchor nesting"
+msgstr ""
+
 msgid "Set name value pair"
 msgstr "Instellen naam waarde paar"
+
+msgid "Set pfctl timeout"
+msgstr ""
 
 msgid "Set pmacct if"
 msgstr "Set pmacct verbinding"
@@ -750,6 +954,9 @@ msgstr "Instellen systeem nameserver"
 msgid "Set template ips"
 msgstr ""
 
+msgid "Set use SSH"
+msgstr ""
+
 msgid "Set user password"
 msgstr "Instellen gebruikers wachtwoord"
 
@@ -774,6 +981,12 @@ msgstr "Start Snort"
 msgid "State"
 msgstr ""
 
+msgid "State Creations"
+msgstr ""
+
+msgid "States"
+msgstr ""
+
 msgid "Stop "
 msgstr "Stop"
 
@@ -792,9 +1005,18 @@ msgstr "Systeem herstart"
 msgid "System shutdown"
 msgstr "Systeem uitschakelen"
 
+msgid "Tail number wrong"
+msgstr ""
+
+msgid "Test pf rules"
+msgstr ""
+
 msgid "The process is taking too long, thus will run in the background."
 msgstr ""
 "Het proces duurt te lang, daarom wordt het in de achtergrond voortgezet."
+
+msgid "Timed out running pfctl command"
+msgstr ""
 
 msgid "Too many args, truncating"
 msgstr ""
@@ -823,6 +1045,9 @@ msgstr "Ongedaan maken alle blokkade's"
 msgid "Unconfigure an interface"
 msgstr ""
 
+msgid "Unexpected elements"
+msgstr ""
+
 msgid "Unknown"
 msgstr "Onbekend"
 
@@ -841,10 +1066,19 @@ msgstr "Fout in de URL"
 msgid "VSZ"
 msgstr ""
 
+msgid "Validation Error"
+msgstr ""
+
 msgid "Web Filter IP range wrong"
 msgstr "Fout in de Web Filter IP reeks"
 
 msgid "White and black list entries should not be identical"
+msgstr ""
+
+msgid "Will not load rules with errors"
+msgstr ""
+
+msgid "Will not test rules with errors"
 msgstr ""
 
 msgid "Won't delete database.clamav.net entry."

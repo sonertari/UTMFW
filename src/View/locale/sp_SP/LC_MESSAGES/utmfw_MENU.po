@@ -44,9 +44,6 @@ msgstr ""
 msgid "Bypass"
 msgstr "Ignorar"
 
-msgid "UTMFW ADMINISTRATION INTERFACE"
-msgstr "UTMFW INTERFAZ DE ADMINISTRACION"
-
 msgid "CPUs"
 msgstr "CPUs"
 
@@ -61,9 +58,6 @@ msgstr "Gráficos"
 
 msgid "Clamd"
 msgstr "Clamd"
-
-msgid "UTMFW Administration Interface"
-msgstr "UTMFW Interfaz de Administración"
 
 msgid "Config"
 msgstr "Configuración"
@@ -95,11 +89,17 @@ msgstr "Diario"
 msgid "Disks"
 msgstr "Discos"
 
+msgid "Display & Install"
+msgstr ""
+
 msgid "Domains"
 msgstr "Dominios"
 
 msgid "Downloads"
 msgstr "Descargas"
+
+msgid "Editor"
+msgstr ""
 
 msgid "Email"
 msgstr "Correo"
@@ -170,6 +170,9 @@ msgstr "Lista"
 msgid "Live"
 msgstr "Live"
 
+msgid "Load & Save"
+msgstr ""
+
 msgid "Logs"
 msgstr "Registros"
 
@@ -209,6 +212,9 @@ msgstr "PROXY POP3"
 msgid "Partitions"
 msgstr "Particiones"
 
+msgid "Pf"
+msgstr ""
+
 msgid "Phrases"
 msgstr "Frases"
 
@@ -235,6 +241,9 @@ msgstr "FILTRO SPAM"
 
 msgid "SPAMD"
 msgstr "SPAMD"
+
+msgid "SSL"
+msgstr ""
 
 msgid "SYSTEM"
 msgstr "SISTEMA"
@@ -271,6 +280,18 @@ msgstr "Transferencia"
 
 msgid "URLs"
 msgstr "URLs"
+
+msgid "UTM FIREWALL"
+msgstr ""
+
+msgid "UTM Firewall"
+msgstr ""
+
+msgid "UTMFW ADMINISTRATION INTERFACE"
+msgstr "UTMFW INTERFAZ DE ADMINISTRACION"
+
+msgid "UTMFW Administration Interface"
+msgstr "UTMFW Interfaz de Administración"
 
 msgid "VIRUS FILTER"
 msgstr "FILTRO VIRUS"

@@ -14,6 +14,10 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#, php-format
+msgid "0-100% or 0-1"
+msgstr ""
+
 msgid "< Previous"
 msgstr "<向前"
 
@@ -23,14 +27,53 @@ msgstr "<<第一"
 msgid "Add"
 msgstr "添加"
 
+msgid "Af Translate"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Anchor"
+msgstr ""
+
+msgid "Antispoof"
+msgstr ""
+
 msgid "Apply"
 msgstr "应用"
+
+msgid "Are you sure you want to <BUTTON_VALUE> secure HTTP?"
+msgstr ""
+
+msgid "Are you sure you want to delete <RULE_TYPE> rule number <RULE_NUMBER>?"
+msgstr ""
+
+msgid "Are you sure you want to delete the entire ruleset?"
+msgstr ""
+
+msgid "Are you sure you want to delete the rule?"
+msgstr ""
+
+msgid "Are you sure you want to delete the rules file?"
+msgstr ""
+
+msgid "Binat"
+msgstr ""
+
+msgid "Blank Line"
+msgstr ""
 
 msgid "Block"
 msgstr "块"
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Change"
 msgstr "变"
+
+msgid "Comment"
+msgstr ""
 
 msgid "Compressed"
 msgstr "压缩"
@@ -50,17 +93,59 @@ msgstr "默认"
 msgid "Delete"
 msgstr "删除"
 
+msgid "Delete All"
+msgstr ""
+
+msgid "Delete rules file"
+msgstr ""
+
 msgid "Disable"
 msgstr "禁用"
 
 msgid "Display"
 msgstr "显示"
 
+msgid "Display line numbers"
+msgstr ""
+
+msgid "Display with errors"
+msgstr ""
+
+msgid "Divert"
+msgstr ""
+
+msgid "Divert Packet"
+msgstr ""
+
 msgid "Download"
 msgstr "下载"
 
+msgid "Download ruleset"
+msgstr ""
+
+msgid "Download with errors"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
 msgid "Enable"
 msgstr "启用"
+
+msgid "Enter blank lines here"
+msgstr ""
+
+msgid "Enter comment here"
+msgstr ""
+
+msgid "Enter inline rules here"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Generate with errors"
+msgstr ""
 
 msgid "Horizontal"
 msgstr "水平"
@@ -68,11 +153,38 @@ msgstr "水平"
 msgid "Hourly"
 msgstr "每小时"
 
+msgid "Include"
+msgstr ""
+
+msgid "Install"
+msgstr ""
+
+msgid "Install as main ruleset"
+msgstr ""
+
 msgid "Last >>"
 msgstr "最后>>"
 
+msgid "Limit"
+msgstr ""
+
+msgid "Load"
+msgstr ""
+
+msgid "Load Anchor"
+msgstr ""
+
+msgid "Load rules from file"
+msgstr ""
+
+msgid "Load with errors"
+msgstr ""
+
 msgid "Log in"
 msgstr "登录"
+
+msgid "Macro"
+msgstr ""
 
 msgid "Make Dynamic"
 msgstr "设置动态"
@@ -80,14 +192,32 @@ msgstr "设置动态"
 msgid "Make Static"
 msgstr "设置静态"
 
+msgid "Move"
+msgstr ""
+
 msgid "Move Down"
 msgstr "下移"
 
 msgid "Move Up"
 msgstr "上移"
 
+msgid "Nat"
+msgstr ""
+
 msgid "Next >"
 msgstr "下一步>"
+
+msgid "No Queues defined"
+msgstr ""
+
+msgid "Option"
+msgstr ""
+
+msgid "Queue"
+msgstr ""
+
+msgid "Redirect"
+msgstr ""
 
 msgid "Redraw"
 msgstr "重绘"
@@ -98,6 +228,9 @@ msgstr "重新初始化"
 msgid "Reload"
 msgstr "重新载入"
 
+msgid "Reload main ruleset"
+msgstr ""
+
 msgid "Restart"
 msgstr "重新启动"
 
@@ -107,17 +240,44 @@ msgstr "旋转"
 msgid "Rotate All"
 msgstr "旋转全部"
 
+msgid "Route"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save ruleset to file"
+msgstr ""
+
+msgid "Save with errors"
+msgstr ""
+
+msgid "Scrub"
+msgstr ""
+
 msgid "Search"
 msgstr "搜索"
 
 msgid "Select"
 msgstr "选择"
 
+msgid "Show"
+msgstr ""
+
 msgid "Start"
 msgstr "开始"
 
+msgid "State Defaults"
+msgstr ""
+
 msgid "Stop"
 msgstr "停止"
+
+msgid "Table"
+msgstr ""
+
+msgid "Timeout"
+msgstr ""
 
 msgid "Unblock"
 msgstr "解除阻止"
@@ -125,5 +285,107 @@ msgstr "解除阻止"
 msgid "Unblock All"
 msgstr "解除全部阻止"
 
+msgid "Upload"
+msgstr ""
+
+msgid "Upload with errors"
+msgstr ""
+
 msgid "Vertical"
 msgstr "垂直"
+
+msgid "add value"
+msgstr ""
+
+msgid "as rule number"
+msgstr ""
+
+msgid "defaults to S/SA"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "enter comment, such as a description of the rule"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+msgid "groupname or groupid"
+msgstr ""
+
+msgid "host or network"
+msgstr ""
+
+msgid "if or macro"
+msgstr ""
+
+msgid "interface"
+msgstr ""
+
+msgid "ip, host, table or macro"
+msgstr ""
+
+msgid "label"
+msgstr ""
+
+msgid "logging interface"
+msgstr ""
+
+msgid "move to"
+msgstr ""
+
+msgid "name, may be nested"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
+msgid "none"
+msgstr ""
+
+msgid "number"
+msgstr ""
+
+msgid "number 0-7"
+msgstr ""
+
+msgid "number or abbrev."
+msgstr ""
+
+msgid "number or name"
+msgstr ""
+
+msgid "number(ms)"
+msgstr ""
+
+msgid "number, name, table or macro"
+msgstr ""
+
+msgid "number/number"
+msgstr ""
+
+msgid "number[(K|M|G)]"
+msgstr ""
+
+msgid "os name or macro"
+msgstr ""
+
+msgid "protocol"
+msgstr ""
+
+msgid "string"
+msgstr ""
+
+msgid "string or number"
+msgstr ""
+
+msgid "username or userid"
+msgstr ""
+
+msgid "valid string"
+msgstr ""
+
+msgid "yes"
+msgstr ""

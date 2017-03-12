@@ -25,14 +25,50 @@ msgstr "gemiddelde over 15 minuten"
 msgid "5 minute average"
 msgstr "gemiddelde over 5 minuten"
 
+msgid "<RULE_TYPE> rule"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "Adaptive Timeouts"
+msgstr ""
+
+msgid "Address Family"
+msgstr ""
+
 msgid "Admin e-mail"
 msgstr "Email adres van de beheerder"
+
+msgid "All rights reserved."
+msgstr ""
+
+msgid "Allow Opts"
+msgstr ""
+
+msgid "Anchor"
+msgstr ""
 
 msgid "Archives"
 msgstr "Archieven"
 
+msgid "Assign Priority"
+msgstr ""
+
+msgid "Assign Tag"
+msgstr ""
+
 msgid "Automatic config"
 msgstr "Automatische configuratie"
+
+msgid "Bandwidth"
+msgstr ""
+
+msgid "Block Option"
+msgstr ""
+
+msgid "Block Policy"
+msgstr ""
 
 msgid "Business Days"
 msgstr "Werkdagen"
@@ -46,8 +82,26 @@ msgstr "Processor belasting"
 msgid "CPUs"
 msgstr "Processoren"
 
+msgid "Category"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+msgid "Copyright"
+msgstr ""
+
 msgid "Count"
 msgstr "Aantal"
+
+msgid "Current Password"
+msgstr ""
+
+msgid "DHCP Server"
+msgstr ""
+
+msgid "DNS Server"
+msgstr ""
 
 msgid "Data Transfer"
 msgstr "Data overdracht"
@@ -61,6 +115,27 @@ msgstr "Datum/tijd"
 msgid "Day"
 msgstr "Dag"
 
+msgid "Debug"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete ruleset"
+msgstr ""
+
+msgid "Destination"
+msgstr ""
+
+msgid "Destination Port"
+msgstr ""
+
+msgid "Direction"
+msgstr ""
+
 msgid "Disabled Services"
 msgstr "Uitgeschakelde diensten"
 
@@ -70,11 +145,35 @@ msgstr "Schijven dataoverdracht"
 msgid "Disks"
 msgstr "Schijven"
 
+msgid "Divert Host"
+msgstr ""
+
+msgid "Divert Port"
+msgstr ""
+
+msgid "Divert Reply"
+msgstr ""
+
 msgid "ERROR"
 msgstr "FOUT"
 
+msgid "Edit"
+msgstr ""
+
+msgid "Edit <RULE_TYPE> Rule <RULE_NUMBER>"
+msgstr ""
+
+msgid "Enable Source Track"
+msgstr ""
+
 msgid "Enabled Services"
 msgstr "Ingeschakelde diensten"
+
+msgid "Enforce TOS"
+msgstr ""
+
+msgid "Export To pflow"
+msgstr ""
 
 msgid "External Interface"
 msgstr "Externe netwerk verbinding"
@@ -82,14 +181,38 @@ msgstr "Externe netwerk verbinding"
 msgid "External interface"
 msgstr "Externe netwerk verbinding"
 
+msgid "FTP Proxy"
+msgstr ""
+
 msgid "Fan"
 msgstr "Ventilator"
 
 msgid "File"
 msgstr "Bestand"
 
+msgid "Fingerprints File"
+msgstr ""
+
+msgid "Flag"
+msgstr ""
+
+msgid "Flags"
+msgstr ""
+
+msgid "Force HTTPs"
+msgstr ""
+
+msgid "Fragment"
+msgstr ""
+
+msgid "Frags"
+msgstr ""
+
 msgid "From"
 msgstr "Van"
+
+msgid "From Redirect Host"
+msgstr ""
 
 msgid "Gateway"
 msgstr "Gateway"
@@ -100,6 +223,12 @@ msgstr "Grafiek bestanden"
 msgid "Group"
 msgstr "Groep"
 
+msgid "HTTP Proxy"
+msgstr ""
+
+msgid "Help Boxes"
+msgstr ""
+
 msgid "Help boxes"
 msgstr "Help paneel"
 
@@ -108,6 +237,9 @@ msgstr "Vakanties"
 
 msgid "Horizontal"
 msgstr "Horizontaal"
+
+msgid "Host Id"
+msgstr ""
 
 msgid "Hostname"
 msgstr "Systeemnaam"
@@ -121,14 +253,41 @@ msgstr "Uur"
 msgid "Hourly"
 msgstr "Elk uur"
 
+msgid "ICMP Timeouts"
+msgstr ""
+
+msgid "ICMP Type"
+msgstr ""
+
+msgid "ICMP6 Type"
+msgstr ""
+
+msgid "IM Proxy"
+msgstr ""
+
 msgid "INFORMATION"
 msgstr "INFORMATIE"
 
 msgid "IP Forwarding"
 msgstr "IP Forwarding"
 
+msgid "Id"
+msgstr ""
+
+msgid "Identifier"
+msgstr ""
+
+msgid "Inline Rules"
+msgstr ""
+
+msgid "Inline rules"
+msgstr ""
+
 msgid "Interface"
 msgstr "Netwerk verbinding"
+
+msgid "Interface Binding"
+msgstr ""
 
 msgid "Internal Interface"
 msgstr "Interne netwerk verbinding"
@@ -136,23 +295,53 @@ msgstr "Interne netwerk verbinding"
 msgid "Internal interface"
 msgstr "Interne netwerk verbinding"
 
+msgid "Interval"
+msgstr ""
+
+msgid "Intrusion Detection"
+msgstr ""
+
+msgid "Intrusion Prevention"
+msgstr ""
+
+msgid "Label"
+msgstr ""
+
 msgid "Language"
 msgstr ""
 
 msgid "Level"
 msgstr "Niveau"
 
+msgid "Limit"
+msgstr ""
+
 msgid "Line"
 msgstr "Lijn"
+
+msgid "Line number"
+msgstr ""
 
 msgid "Lines per page"
 msgstr "Regels per pagina"
 
+msgid "Load ruleset"
+msgstr ""
+
 msgid "Log"
 msgstr "Log"
 
+msgid "Log Interface"
+msgstr ""
+
+msgid "Log Level"
+msgstr ""
+
 msgid "Log level"
 msgstr "Log niveau"
+
+msgid "Logging"
+msgstr ""
 
 msgid "Logout"
 msgstr "Uitloggen"
@@ -166,11 +355,59 @@ msgstr "Loopback Verbinding"
 msgid "Machine"
 msgstr "Machine"
 
+msgid "Match All"
+msgstr ""
+
+msgid "Match Priority"
+msgstr ""
+
+msgid "Match TOS"
+msgstr ""
+
+msgid "Match Tagged"
+msgstr ""
+
+msgid "Max"
+msgstr ""
+
+msgid "Max Addresses"
+msgstr ""
+
+msgid "Max Anchor Nesting"
+msgstr ""
+
+msgid "Max Connection"
+msgstr ""
+
+msgid "Max Connection Rate"
+msgstr ""
+
+msgid "Max MSS"
+msgstr ""
+
+msgid "Max Single Host States"
+msgstr ""
+
+msgid "Max States"
+msgstr ""
+
+msgid "Max-mss"
+msgstr ""
+
 msgid "Mbuf Statistics"
 msgstr "Mbuf statistieken"
 
 msgid "Memory Usage"
 msgstr "Geheugen gebruik"
+
+msgid "Min"
+msgstr ""
+
+msgid "Min TTL"
+msgstr ""
+
+msgid "Min-ttl"
+msgstr ""
 
 msgid "Month"
 msgstr "Maand"
@@ -178,20 +415,77 @@ msgstr "Maand"
 msgid "Motherboard"
 msgstr "Moederbord"
 
+msgid "Move down"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
 msgid "Nameserver"
 msgstr "Nameserver"
 
 msgid "Network Protocol Usage"
 msgstr "Netwerk Protocol gebruik"
 
+msgid "New Password"
+msgstr ""
+
+msgid "New Password Again"
+msgstr ""
+
+msgid "No pfsync"
+msgstr ""
+
 msgid "Number of Processes"
 msgstr "Aantal processen"
+
+msgid "Number of lines"
+msgstr ""
 
 msgid "Number of processes"
 msgstr "Aantal processen"
 
+msgid "OS"
+msgstr ""
+
+msgid "Once"
+msgstr ""
+
+msgid "OpenSSH"
+msgstr ""
+
+msgid "OpenVPN"
+msgstr ""
+
 msgid "Operating System"
 msgstr "Besturings systeem"
+
+msgid "Optimization"
+msgstr ""
+
+msgid "Option"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Other Timeouts"
+msgstr ""
+
+msgid "Overload"
+msgstr ""
+
+msgid "POP3 Proxy"
+msgstr ""
+
+msgid "Packet Filter"
+msgstr ""
+
+msgid "Parent"
+msgstr ""
 
 msgid "Partitions"
 msgstr "Partities"
@@ -205,11 +499,17 @@ msgstr "Wachtwoord"
 msgid "Password again"
 msgstr "Wachtwoord (opnieuw)"
 
+msgid "Pfctl Timeout"
+msgstr ""
+
 msgid "Physical Memory"
 msgstr "Fysiek Geheugen"
 
 msgid "Privileged IPs"
 msgstr "Bevoorrechte IP adressen"
+
+msgid "Probability"
+msgstr ""
 
 msgid "Process"
 msgstr "Proces"
@@ -220,14 +520,53 @@ msgstr "Processor belasting per Proces"
 msgid "Processor"
 msgstr "Processor"
 
+msgid "Proto"
+msgstr ""
+
+msgid "Protocol"
+msgstr ""
+
+msgid "Qlimit"
+msgstr ""
+
+msgid "Queue"
+msgstr ""
+
+msgid "Quick"
+msgstr ""
+
+msgid "Reassemble"
+msgstr ""
+
+msgid "Received on Interface"
+msgstr ""
+
+msgid "Redirect Address Family"
+msgstr ""
+
+msgid "Redirect Host"
+msgstr ""
+
+msgid "Redirect Options"
+msgstr ""
+
+msgid "Redirect Port"
+msgstr ""
+
 msgid "Refresh interval"
 msgstr "Ververs interval"
 
 msgid "Regexp"
 msgstr "Reguliere expressie"
 
+msgid "Reload Rate"
+msgstr ""
+
 msgid "Reload interval"
 msgstr "Herlaad interval"
+
+msgid "Resource not available"
+msgstr ""
 
 msgid "Restart network"
 msgstr "Herstart het netwerk"
@@ -238,8 +577,44 @@ msgstr "Gelimiteerde IP adressen"
 msgid "Rotate all log files"
 msgstr "Roteren van alle log bestanden"
 
+msgid "Route Host"
+msgstr ""
+
+msgid "Route Type"
+msgstr ""
+
+msgid "Routing Table"
+msgstr ""
+
 msgid "Rule"
 msgstr "Regel"
+
+msgid "Rule number"
+msgstr ""
+
+msgid "Rules file"
+msgstr ""
+
+msgid "Ruleset Optimization"
+msgstr ""
+
+msgid "SMTP Proxy"
+msgstr ""
+
+msgid "SOCKS Proxy"
+msgstr ""
+
+msgid "SPAM Deferral"
+msgstr ""
+
+msgid "SPAM Filter"
+msgstr ""
+
+msgid "Save ruleset"
+msgstr ""
+
+msgid "Scrub Options"
+msgstr ""
 
 msgid "Search site"
 msgstr "Doorzoek de site"
@@ -247,11 +622,17 @@ msgstr "Doorzoek de site"
 msgid "Secure Level"
 msgstr "Beveiligd Niveau"
 
+msgid "Select Option Type"
+msgstr ""
+
 msgid "Selected"
 msgstr "Geselecteerde"
 
 msgid "Serial Number"
 msgstr "Serienummer"
+
+msgid "Session Timeout"
+msgstr ""
 
 msgid "Session timeout"
 msgstr "Sessie timeout"
@@ -262,8 +643,38 @@ msgstr "Grootte"
 msgid "Size (KB)"
 msgstr "Grootte (KB)"
 
+msgid "Skip Interfaces"
+msgstr ""
+
+msgid "Sloppy Tracker"
+msgstr ""
+
 msgid "Software Version"
 msgstr "Software Versie"
+
+msgid "Source"
+msgstr ""
+
+msgid "Source Port"
+msgstr ""
+
+msgid "Source Track Timeout"
+msgstr ""
+
+msgid "Source->Destination"
+msgstr ""
+
+msgid "Src Nodes"
+msgstr ""
+
+msgid "State"
+msgstr ""
+
+msgid "State Defaults"
+msgstr ""
+
+msgid "State Policy"
+msgstr ""
 
 msgid "State Searches vs Packets"
 msgstr "Status zoekakties ten opzichte van pakketten"
@@ -271,11 +682,35 @@ msgstr "Status zoekakties ten opzichte van pakketten"
 msgid "State Statistics"
 msgstr "Status Statistieken"
 
+msgid "Stateful Filtering"
+msgstr ""
+
+msgid "States"
+msgstr ""
+
+msgid "Static Port"
+msgstr ""
+
 msgid "Statistics and uncompressed log files"
 msgstr "Statistieken en ongecomprimeerde log bestanden"
 
+msgid "Symon"
+msgstr ""
+
 msgid "System"
 msgstr "Systeem"
+
+msgid "TCP Flags"
+msgstr ""
+
+msgid "TCP Timeouts"
+msgstr ""
+
+msgid "Table Entries"
+msgstr ""
+
+msgid "Tables"
+msgstr ""
 
 msgid "Target"
 msgstr "Doel"
@@ -289,11 +724,32 @@ msgstr "Tijd"
 msgid "Time server"
 msgstr "Tijd server"
 
+msgid "Timeout"
+msgstr ""
+
 msgid "To"
 msgstr "Aan"
 
+msgid "To Redirect Host"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "UDP Timeouts"
+msgstr ""
+
+msgid "Upload rules file"
+msgstr ""
+
+msgid "Upload ruleset"
+msgstr ""
+
 msgid "Uptime"
 msgstr "Uptime"
+
+msgid "Use SSH"
+msgstr ""
 
 msgid "User"
 msgstr "Gebruiker"
@@ -301,14 +757,38 @@ msgstr "Gebruiker"
 msgid "User name"
 msgstr "Gebruikers naam"
 
+msgid "Value"
+msgstr ""
+
+msgid "Values"
+msgstr ""
+
 msgid "Version"
 msgstr "Versie"
+
+msgid "Virus DB Update"
+msgstr ""
+
+msgid "Virus Filter"
+msgstr ""
 
 msgid "WARNING"
 msgstr "WAARSCHUWING"
 
+msgid "Web Filter"
+msgstr ""
+
+msgid "Web Server"
+msgstr ""
+
 msgid "When (h)"
 msgstr "Wanneer (uur)"
+
+msgid "add file"
+msgstr ""
+
+msgid "add host or network"
+msgstr ""
 
 msgid "disabled"
 msgstr "uitgeschakeld"
@@ -322,5 +802,26 @@ msgstr "is niet aktief"
 msgid "is running"
 msgstr "is aktief"
 
+msgid "modified"
+msgstr ""
+
+msgid "negated"
+msgstr ""
+
+msgid "primary"
+msgstr ""
+
+msgid "secondary"
+msgstr ""
+
 msgid "secs"
 msgstr "seconden"
+
+msgid "to"
+msgstr ""
+
+msgid "total"
+msgstr ""
+
+msgid "uploaded"
+msgstr ""

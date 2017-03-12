@@ -36,6 +36,9 @@ msgstr ""
 msgid "Active IPs (arp table)"
 msgstr "IPs actives (table arp)"
 
+msgid "Additional mime types"
+msgstr ""
+
 msgid "Address Family"
 msgstr "Famille d'adresse"
 
@@ -93,6 +96,9 @@ msgstr ""
 msgid "Badwords replace character"
 msgstr ""
 
+msgid "Banned flash replacement"
+msgstr ""
+
 msgid "Banned image replacement"
 msgstr ""
 
@@ -141,10 +147,10 @@ msgstr "Octets libres"
 msgid "COMMAND"
 msgstr "COMMANDE"
 
-msgid "CVS Tag"
+msgid "CTLR"
 msgstr ""
 
-msgid "CTLR"
+msgid "CVS Tag"
 msgstr ""
 
 msgid "Cache mgr"
@@ -279,6 +285,9 @@ msgstr ""
 msgid "Enable Deep URL Analysis"
 msgstr ""
 
+msgid "Enable MITM site certificate checking"
+msgstr ""
+
 msgid "Enable SSL/TLS"
 msgstr "Autoriser SSL/TLS"
 
@@ -296,6 +305,9 @@ msgstr "Proxy FTP"
 
 msgid "Filter IP"
 msgstr "Filtrer IP"
+
+msgid "Filter IP for xforwarded for"
+msgstr ""
 
 msgid "Filter Port"
 msgstr "Filtrer Port"
@@ -348,6 +360,9 @@ msgstr "GROUPE"
 
 msgid "Gateway"
 msgstr "Passerelle"
+
+msgid "Gentle child restart"
+msgstr ""
 
 msgid "Greylist"
 msgstr "Liste grise"
@@ -478,7 +493,13 @@ msgstr ""
 msgid "Leave spool on"
 msgstr ""
 
+msgid "Limit SSL MITM to sites in greysslsitelist(s)"
+msgstr ""
+
 msgid "Listen Address"
+msgstr ""
+
+msgid "Listen on"
 msgstr ""
 
 msgid "Local IP Address"
@@ -539,6 +560,9 @@ msgid "Log mail from"
 msgstr ""
 
 msgid "Log rcpt to"
+msgstr ""
+
+msgid "Log ssl errors"
 msgstr ""
 
 msgid "Log typing events"
@@ -730,6 +754,9 @@ msgstr "PRI"
 msgid "Packet Filter"
 msgstr ""
 
+msgid "Pconn timeout"
+msgstr ""
+
 msgid "Permit Empty Passwords"
 msgstr "Autoriser mots de passe vide"
 
@@ -795,10 +822,22 @@ msgstr "Proxy IP:Ports"
 msgid "Proxy Port"
 msgstr "Proxy Port"
 
+msgid "Proxy failure log interval"
+msgstr ""
+
+msgid "Proxy header exchange"
+msgstr ""
+
+msgid "Proxy timeout"
+msgstr ""
+
 msgid "Quiet"
 msgstr "Silencieux"
 
 msgid "Re-check replaced URLs"
+msgstr ""
+
+msgid "Redirect SSL denied page"
 msgstr ""
 
 msgid "Remote Server"
@@ -872,6 +911,15 @@ msgstr "SQL_SERVERS"
 
 msgid "SSH_PORTS"
 msgstr "SSH_PORTS"
+
+msgid "SSL access denied address"
+msgstr ""
+
+msgid "SSL certificate checking"
+msgstr ""
+
+msgid "SSL man in the middle"
+msgstr ""
 
 msgid "STARTED"
 msgstr ""
@@ -1017,8 +1065,7 @@ msgid "The most famous web server."
 msgstr ""
 
 msgid ""
-"The most secure OS in the world. Underneath UTMFW is pure, untouched "
-"OpenBSD."
+"The most secure OS in the world. Underneath UTMFW is pure, untouched OpenBSD."
 msgstr ""
 
 msgid "Threshold"

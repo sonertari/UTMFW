@@ -44,9 +44,6 @@ msgstr "毯子"
 msgid "Bypass"
 msgstr "绕道"
 
-msgid "UTMFW ADMINISTRATION INTERFACE"
-msgstr "UTMFW管理界面"
-
 msgid "CPUs"
 msgstr "CUPs"
 
@@ -61,9 +58,6 @@ msgstr "图表"
 
 msgid "Clamd"
 msgstr "Clamd"
-
-msgid "UTMFW Administration Interface"
-msgstr "UTMFW管理界面"
 
 msgid "Config"
 msgstr "配置"
@@ -95,11 +89,17 @@ msgstr "日报"
 msgid "Disks"
 msgstr "磁盘"
 
+msgid "Display & Install"
+msgstr ""
+
 msgid "Domains"
 msgstr "域"
 
 msgid "Downloads"
 msgstr "下载"
+
+msgid "Editor"
+msgstr ""
 
 msgid "Email"
 msgstr "电子邮件"
@@ -170,6 +170,9 @@ msgstr "列表"
 msgid "Live"
 msgstr "现场"
 
+msgid "Load & Save"
+msgstr ""
+
 msgid "Logs"
 msgstr "日志"
 
@@ -209,6 +212,9 @@ msgstr "POP3代理"
 msgid "Partitions"
 msgstr "分区"
 
+msgid "Pf"
+msgstr ""
+
 msgid "Phrases"
 msgstr "短语"
 
@@ -235,6 +241,9 @@ msgstr "垃圾邮件过滤器"
 
 msgid "SPAMD"
 msgstr "SPAMD"
+
+msgid "SSL"
+msgstr ""
 
 msgid "SYSTEM"
 msgstr "系统"
@@ -271,6 +280,18 @@ msgstr "转移"
 
 msgid "URLs"
 msgstr "网址"
+
+msgid "UTM FIREWALL"
+msgstr ""
+
+msgid "UTM Firewall"
+msgstr ""
+
+msgid "UTMFW ADMINISTRATION INTERFACE"
+msgstr "UTMFW管理界面"
+
+msgid "UTMFW Administration Interface"
+msgstr "UTMFW管理界面"
 
 msgid "VIRUS FILTER"
 msgstr "病毒过滤器"

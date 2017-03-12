@@ -66,14 +66,53 @@ msgstr ""
 msgid "Automatic configuration failed."
 msgstr "Сбой автоматической настройки."
 
-msgid "UTMFW currently supports only admin and user usernames"
-msgstr "На текущий момент UTMFW поддерживает только имена admin и user"
+msgid "Cannot generate rule"
+msgstr ""
+
+msgid "ERROR"
+msgstr ""
 
 msgid "FAILED"
 msgstr "СБОЙ"
 
+msgid "Failed deleting"
+msgstr ""
+
+msgid "Failed downloading, cannot generate pf rules"
+msgstr ""
+
+msgid "Failed loading"
+msgstr ""
+
+msgid "Failed loading main pf rules"
+msgstr ""
+
+msgid "Failed saving"
+msgstr ""
+
+msgid "Failed testing ruleset"
+msgstr ""
+
+msgid "Failed uploading"
+msgstr ""
+
+msgid "File uploaded"
+msgstr ""
+
 msgid "Filter group not found"
 msgstr "Группа фильтра не найдена"
+
+msgid "Installed successfully"
+msgstr ""
+
+msgid "Invalid destination rule number"
+msgstr ""
+
+msgid "Invalid rule number"
+msgstr ""
+
+msgid "Main pf rules reloaded"
+msgstr ""
 
 msgid "Not a valid password"
 msgstr "Недопустимый пароль"
@@ -84,14 +123,41 @@ msgstr "Начиная со строки"
 msgid "Passwords do not match"
 msgstr "Пароли не совпадают"
 
+msgid "Rules file deleted"
+msgstr ""
+
+msgid "Rules loaded"
+msgstr ""
+
+msgid "Ruleset deleted"
+msgstr ""
+
+msgid "Saved"
+msgstr ""
+
 msgid "System is going down..."
 msgstr "Система выключается..."
 
 msgid "System is restarting..."
 msgstr "Система перезагружается..."
 
+msgid "There was an error while installing"
+msgstr ""
+
+msgid "UTMFW currently supports only admin and user usernames"
+msgstr "На текущий момент UTMFW поддерживает только имена admin и user"
+
+msgid "User password changed"
+msgstr ""
+
 msgid "You should select at least one conf file to start the process"
 msgstr "Для запуска процесса Вы должны выбрать как минимум один conf-файл"
 
 msgid "You should select at least one interface to start IDS for"
 msgstr "Для запуска IDS Вы должны выбрать как минимум один интерфейс"
+
+msgid "ruleset has errors"
+msgstr ""
+
+msgid "utmfw currently supports only admin and user usernames"
+msgstr ""

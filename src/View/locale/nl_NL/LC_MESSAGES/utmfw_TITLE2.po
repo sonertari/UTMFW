@@ -40,6 +40,9 @@ msgstr "Toegang geblokkeerd adres"
 msgid "Active IPs (arp table)"
 msgstr "Aktieve IP adressen (arp tabel)"
 
+msgid "Additional mime types"
+msgstr ""
+
 msgid "Address Family"
 msgstr "Adres Familie"
 
@@ -97,6 +100,9 @@ msgstr "Badwords filteren"
 msgid "Badwords replace character"
 msgstr "Badwords vervanging"
 
+msgid "Banned flash replacement"
+msgstr ""
+
 msgid "Banned image replacement"
 msgstr "Geblokkeerd plaatje vervanging"
 
@@ -145,11 +151,11 @@ msgstr "Bytes vrij"
 msgid "COMMAND"
 msgstr "COMMANDO"
 
-msgid "CVS Tag"
-msgstr "CVS Tag"
-
 msgid "CTLR"
 msgstr "CTLR"
+
+msgid "CVS Tag"
+msgstr "CVS Tag"
 
 msgid "Cache mgr"
 msgstr "Cache beheerder"
@@ -283,6 +289,9 @@ msgstr "Ingebedde URL weging"
 msgid "Enable Deep URL Analysis"
 msgstr "Inschakelen uitgebreide URL Analyse"
 
+msgid "Enable MITM site certificate checking"
+msgstr ""
+
 msgid "Enable SSL/TLS"
 msgstr "Inschakelen SSL/TLS"
 
@@ -299,6 +308,9 @@ msgid "FTP Proxy"
 msgstr ""
 
 msgid "Filter IP"
+msgstr ""
+
+msgid "Filter IP for xforwarded for"
 msgstr ""
 
 msgid "Filter Port"
@@ -352,6 +364,9 @@ msgstr "GROEP"
 
 msgid "Gateway"
 msgstr "Gateway"
+
+msgid "Gentle child restart"
+msgstr ""
 
 msgid "Greylist"
 msgstr ""
@@ -482,8 +497,14 @@ msgstr "Laat tijdelijke bestanden staan"
 msgid "Leave spool on"
 msgstr "Laat spool aan"
 
+msgid "Limit SSL MITM to sites in greysslsitelist(s)"
+msgstr ""
+
 msgid "Listen Address"
 msgstr "Luister Adres"
+
+msgid "Listen on"
+msgstr ""
 
 msgid "Local IP Address"
 msgstr "Lokale IP Adres"
@@ -543,6 +564,9 @@ msgid "Log mail from"
 msgstr "Log mail van"
 
 msgid "Log rcpt to"
+msgstr ""
+
+msgid "Log ssl errors"
 msgstr ""
 
 msgid "Log typing events"
@@ -734,6 +758,9 @@ msgstr ""
 msgid "Packet Filter"
 msgstr ""
 
+msgid "Pconn timeout"
+msgstr ""
+
 msgid "Permit Empty Passwords"
 msgstr "Sta Lege Wachtwoorden Toe"
 
@@ -799,11 +826,23 @@ msgstr ""
 msgid "Proxy Port"
 msgstr ""
 
+msgid "Proxy failure log interval"
+msgstr ""
+
+msgid "Proxy header exchange"
+msgstr ""
+
+msgid "Proxy timeout"
+msgstr ""
+
 msgid "Quiet"
 msgstr "Stil"
 
 msgid "Re-check replaced URLs"
 msgstr "Hercontroleer vervangen URLs"
+
+msgid "Redirect SSL denied page"
+msgstr ""
 
 msgid "Remote Server"
 msgstr ""
@@ -875,6 +914,15 @@ msgid "SQL_SERVERS"
 msgstr ""
 
 msgid "SSH_PORTS"
+msgstr ""
+
+msgid "SSL access denied address"
+msgstr ""
+
+msgid "SSL certificate checking"
+msgstr ""
+
+msgid "SSL man in the middle"
 msgstr ""
 
 msgid "STARTED"
@@ -1023,8 +1071,7 @@ msgid "The most famous web server."
 msgstr "De meest beroemde web server."
 
 msgid ""
-"The most secure OS in the world. Underneath UTMFW is pure, untouched "
-"OpenBSD."
+"The most secure OS in the world. Underneath UTMFW is pure, untouched OpenBSD."
 msgstr ""
 "Het meest veilige OS ter wereld. UTMFW draait op het standaard OpenBSD."
 

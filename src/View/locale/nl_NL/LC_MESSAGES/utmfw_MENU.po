@@ -46,9 +46,6 @@ msgstr "Deken"
 msgid "Bypass"
 msgstr "Omzeilen"
 
-msgid "UTMFW ADMINISTRATION INTERFACE"
-msgstr "UTMFW BEHEER PAGINA"
-
 msgid "CPUs"
 msgstr "Processoren"
 
@@ -63,9 +60,6 @@ msgstr "Grafieken"
 
 msgid "Clamd"
 msgstr "Clamd"
-
-msgid "UTMFW Administration Interface"
-msgstr "UTMFW Beheer Pagina"
 
 msgid "Config"
 msgstr "Configuratie"
@@ -97,11 +91,17 @@ msgstr "Dagelijks"
 msgid "Disks"
 msgstr "Schijven"
 
+msgid "Display & Install"
+msgstr ""
+
 msgid "Domains"
 msgstr "Domeinen"
 
 msgid "Downloads"
 msgstr "Downloads"
+
+msgid "Editor"
+msgstr ""
 
 msgid "Email"
 msgstr "Email"
@@ -172,6 +172,9 @@ msgstr "Lijsten"
 msgid "Live"
 msgstr "Live"
 
+msgid "Load & Save"
+msgstr ""
+
 msgid "Logs"
 msgstr "Log bestanden"
 
@@ -211,6 +214,9 @@ msgstr "POP3 PROXY"
 msgid "Partitions"
 msgstr "Partities"
 
+msgid "Pf"
+msgstr ""
+
 msgid "Phrases"
 msgstr "frases"
 
@@ -237,6 +243,9 @@ msgstr "SPAM FILTER"
 
 msgid "SPAMD"
 msgstr "SPAMD"
+
+msgid "SSL"
+msgstr ""
 
 msgid "SYSTEM"
 msgstr "SYSTEEM"
@@ -273,6 +282,18 @@ msgstr "Overdracht"
 
 msgid "URLs"
 msgstr "Adressen"
+
+msgid "UTM FIREWALL"
+msgstr ""
+
+msgid "UTM Firewall"
+msgstr ""
+
+msgid "UTMFW ADMINISTRATION INTERFACE"
+msgstr "UTMFW BEHEER PAGINA"
+
+msgid "UTMFW Administration Interface"
+msgstr "UTMFW Beheer Pagina"
 
 msgid "VIRUS FILTER"
 msgstr "VIRUS FILTER"

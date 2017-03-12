@@ -66,14 +66,53 @@ msgstr ""
 msgid "Automatic configuration failed."
 msgstr "La configuration automatique a échouée."
 
-msgid "UTMFW currently supports only admin and user usernames"
-msgstr "UTMFW currently supports only admin and user usernames"
+msgid "Cannot generate rule"
+msgstr ""
+
+msgid "ERROR"
+msgstr ""
 
 msgid "FAILED"
 msgstr "ÉCHOUÉ"
 
+msgid "Failed deleting"
+msgstr ""
+
+msgid "Failed downloading, cannot generate pf rules"
+msgstr ""
+
+msgid "Failed loading"
+msgstr ""
+
+msgid "Failed loading main pf rules"
+msgstr ""
+
+msgid "Failed saving"
+msgstr ""
+
+msgid "Failed testing ruleset"
+msgstr ""
+
+msgid "Failed uploading"
+msgstr ""
+
+msgid "File uploaded"
+msgstr ""
+
 msgid "Filter group not found"
 msgstr "Groupe de filtre non trouvé"
+
+msgid "Installed successfully"
+msgstr ""
+
+msgid "Invalid destination rule number"
+msgstr ""
+
+msgid "Invalid rule number"
+msgstr ""
+
+msgid "Main pf rules reloaded"
+msgstr ""
 
 msgid "Not a valid password"
 msgstr "N'est pas un mot de passe valide"
@@ -84,11 +123,32 @@ msgstr "Page start line"
 msgid "Passwords do not match"
 msgstr "Les mots de passes sont différents"
 
+msgid "Rules file deleted"
+msgstr ""
+
+msgid "Rules loaded"
+msgstr ""
+
+msgid "Ruleset deleted"
+msgstr ""
+
+msgid "Saved"
+msgstr ""
+
 msgid "System is going down..."
 msgstr "Système en cours d'arrêt..."
 
 msgid "System is restarting..."
 msgstr "Système en cours de redémarrage..."
+
+msgid "There was an error while installing"
+msgstr ""
+
+msgid "UTMFW currently supports only admin and user usernames"
+msgstr "UTMFW currently supports only admin and user usernames"
+
+msgid "User password changed"
+msgstr ""
 
 msgid "You should select at least one conf file to start the process"
 msgstr ""
@@ -98,3 +158,9 @@ msgstr ""
 msgid "You should select at least one interface to start IDS for"
 msgstr ""
 "Vous devriez sélectionner au minimum une interface pour démarrer l'IDS pour"
+
+msgid "ruleset has errors"
+msgstr ""
+
+msgid "utmfw currently supports only admin and user usernames"
+msgstr ""

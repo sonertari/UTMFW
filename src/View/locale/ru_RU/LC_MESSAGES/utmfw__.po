@@ -70,10 +70,25 @@ msgstr ""
 msgid "Cannot find group configuration file"
 msgstr ""
 
+msgid "Cannot fork pfctl process"
+msgstr ""
+
 msgid "Cannot get pid"
 msgstr ""
 
+msgid "Cannot install pf rule file"
+msgstr ""
+
+msgid "Cannot load pf rules"
+msgstr ""
+
 msgid "Cannot read config"
+msgstr ""
+
+msgid "Cannot remove tmp pf file"
+msgstr ""
+
+msgid "Cannot write to tmp pf file"
 msgstr ""
 
 msgid "Change p3scan report language"
@@ -91,6 +106,12 @@ msgstr ""
 msgid "Chinese simplified"
 msgstr ""
 
+msgid "Cleared"
+msgstr ""
+
+msgid "Compressed"
+msgstr ""
+
 msgid "Configure an interface"
 msgstr ""
 
@@ -98,6 +119,9 @@ msgid "Copy conf"
 msgstr ""
 
 msgid "Create new group"
+msgstr ""
+
+msgid "Create user"
 msgstr ""
 
 msgid "Datetime wrong"
@@ -148,6 +172,9 @@ msgstr ""
 msgid "Delete list item"
 msgstr ""
 
+msgid "Delete pf rule file"
+msgstr ""
+
 msgid "Dest"
 msgstr ""
 
@@ -173,6 +200,12 @@ msgid "Disable rule"
 msgstr ""
 
 msgid "Display remote time"
+msgstr ""
+
+msgid "Dropped Bytes"
+msgstr ""
+
+msgid "Dropped Packets"
 msgstr ""
 
 msgid "Dutch"
@@ -205,6 +238,18 @@ msgstr ""
 msgid "Erase statistics files"
 msgstr ""
 
+msgid "Error in include file"
+msgstr ""
+
+msgid "Error loading, rule load forced"
+msgstr ""
+
+msgid "Error loading, rule loaded partially"
+msgstr ""
+
+msgid "Evaluations"
+msgstr ""
+
 msgid "Expr"
 msgstr ""
 
@@ -217,10 +262,34 @@ msgstr ""
 msgid "FATAL ERRORS in creating new group"
 msgstr ""
 
+msgid "Failed creating or attaching to message queue"
+msgstr ""
+
+msgid "Failed loading pf rules"
+msgstr ""
+
+msgid "Failed removing message queue"
+msgstr ""
+
+msgid "Failed running pfctl command"
+msgstr ""
+
+msgid "Failed testing pf rules"
+msgstr ""
+
+msgid "Filename not accepted"
+msgstr ""
+
 msgid "Filepath wrong"
 msgstr ""
 
 msgid "French"
+msgstr ""
+
+msgid "Generate pf rule"
+msgstr ""
+
+msgid "Generate pf rules"
 msgstr ""
 
 msgid "Get ACL"
@@ -245,6 +314,9 @@ msgid "Get DNS forwarders"
 msgstr ""
 
 msgid "Get HTTP proxy IP:port"
+msgstr ""
+
+msgid "Get IP DNS listens on"
 msgstr ""
 
 msgid "Get IPS info"
@@ -289,6 +361,9 @@ msgstr ""
 msgid "Get database mirrors"
 msgstr ""
 
+msgid "Get datetime"
+msgstr ""
+
 msgid "Get dhcp leases"
 msgstr ""
 
@@ -322,6 +397,9 @@ msgstr ""
 msgid "Get int_if"
 msgstr ""
 
+msgid "Get line count"
+msgstr ""
+
 msgid "Get lines"
 msgstr ""
 
@@ -352,10 +430,34 @@ msgstr ""
 msgid "Get partition list"
 msgstr ""
 
+msgid "Get pf info"
+msgstr ""
+
+msgid "Get pf interface info"
+msgstr ""
+
+msgid "Get pf memory info"
+msgstr ""
+
+msgid "Get pf queue info"
+msgstr ""
+
+msgid "Get pf rule files"
+msgstr ""
+
+msgid "Get pf rules"
+msgstr ""
+
+msgid "Get pf rules info"
+msgstr ""
+
 msgid "Get pf state count"
 msgstr ""
 
 msgid "Get pf states"
+msgstr ""
+
+msgid "Get pf timeout info"
 msgstr ""
 
 msgid "Get pfw commandwrapper -conntest"
@@ -392,6 +494,9 @@ msgid "Get process list"
 msgstr ""
 
 msgid "Get protocols"
+msgstr ""
+
+msgid "Get reload rate"
 msgstr ""
 
 msgid "Get remote time"
@@ -484,10 +589,34 @@ msgstr ""
 msgid "If client conf"
 msgstr ""
 
+msgid "In4 Block"
+msgstr ""
+
+msgid "In4 Pass"
+msgstr ""
+
+msgid "In6 Block"
+msgstr ""
+
+msgid "In6 Pass"
+msgstr ""
+
 msgid "Init graphs"
 msgstr ""
 
+msgid "Inserted"
+msgstr ""
+
+msgid "Install pf rules"
+msgstr ""
+
+msgid "Invalid inline rules, parser output"
+msgstr ""
+
 msgid "Invalid value"
+msgstr ""
+
+msgid "Invalid value for"
 msgstr ""
 
 msgid "Line"
@@ -500,6 +629,9 @@ msgid "List hosts"
 msgstr ""
 
 msgid "List physical interfaces"
+msgstr ""
+
+msgid "Load Error"
 msgstr ""
 
 msgid "Logout"
@@ -529,19 +661,34 @@ msgstr ""
 msgid "Move rule up"
 msgstr ""
 
+msgid "Multiple values not allowed for"
+msgstr ""
+
 msgid "NA"
 msgstr ""
 
 msgid "NI"
 msgstr ""
 
+msgid "Name"
+msgstr ""
+
 msgid "Name wrong"
+msgstr ""
+
+msgid "No regex or func def for"
 msgstr ""
 
 msgid "No such file"
 msgstr ""
 
+msgid "Not JSON encoded string"
+msgstr ""
+
 msgid "Not asterisk"
+msgstr ""
+
+msgid "Not boolean"
 msgstr ""
 
 msgid "Not comma separated digits"
@@ -565,6 +712,9 @@ msgstr ""
 msgid "Not sha1 encrypted string"
 msgstr ""
 
+msgid "Number"
+msgstr ""
+
 msgid "Number wrong"
 msgstr ""
 
@@ -573,10 +723,28 @@ msgid ""
 "Examine the report above to make sure this is the intended result!"
 msgstr ""
 
+msgid "Out4 Block"
+msgstr ""
+
+msgid "Out4 Pass"
+msgstr ""
+
+msgid "Out6 Block"
+msgstr ""
+
+msgid "Out6 Pass"
+msgstr ""
+
+msgid "Output not in correct format"
+msgstr ""
+
 msgid "PID"
 msgstr ""
 
 msgid "Packets"
+msgstr ""
+
+msgid "Parse Error"
 msgstr ""
 
 msgid "Pfctl output does not match"
@@ -588,7 +756,13 @@ msgstr ""
 msgid "Proto"
 msgstr ""
 
+msgid "Queue Length"
+msgstr ""
+
 msgid "RSS"
+msgstr ""
+
+msgid "Reached max nesting for inline anchors"
 msgstr ""
 
 msgid "Read system gateway"
@@ -609,7 +783,13 @@ msgstr ""
 msgid "Reload "
 msgstr ""
 
+msgid "Render layout"
+msgstr ""
+
 msgid "Requests by date"
+msgstr ""
+
+msgid "Required element missing"
 msgstr ""
 
 msgid "Restart "
@@ -622,6 +802,15 @@ msgid "Rotate all log files"
 msgstr ""
 
 msgid "Rotate log file"
+msgstr ""
+
+msgid "Rule"
+msgstr ""
+
+msgid "Rules"
+msgstr ""
+
+msgid "Ruleset contains errors"
 msgstr ""
 
 msgid "Russian"
@@ -642,6 +831,9 @@ msgstr ""
 msgid "Set DNS forwarders"
 msgstr ""
 
+msgid "Set IP DNS listens on"
+msgstr ""
+
 msgid "Set PF allowed"
 msgstr ""
 
@@ -654,10 +846,16 @@ msgstr ""
 msgid "Set configuration"
 msgstr ""
 
+msgid "Set default locale"
+msgstr ""
+
 msgid "Set dhcpd conf"
 msgstr ""
 
 msgid "Set e-mail address"
+msgstr ""
+
+msgid "Set force HTTPs"
 msgstr ""
 
 msgid "Set help boxes"
@@ -684,7 +882,13 @@ msgstr ""
 msgid "Set man.cgi home"
 msgstr ""
 
+msgid "Set max anchor nesting"
+msgstr ""
+
 msgid "Set name value pair"
+msgstr ""
+
+msgid "Set pfctl timeout"
 msgstr ""
 
 msgid "Set pmacct if"
@@ -738,6 +942,9 @@ msgstr ""
 msgid "Set template ips"
 msgstr ""
 
+msgid "Set use SSH"
+msgstr ""
+
 msgid "Set user password"
 msgstr ""
 
@@ -762,6 +969,12 @@ msgstr ""
 msgid "State"
 msgstr ""
 
+msgid "State Creations"
+msgstr ""
+
+msgid "States"
+msgstr ""
+
 msgid "Stop "
 msgstr ""
 
@@ -780,7 +993,16 @@ msgstr ""
 msgid "System shutdown"
 msgstr ""
 
+msgid "Tail number wrong"
+msgstr ""
+
+msgid "Test pf rules"
+msgstr ""
+
 msgid "The process is taking too long, thus will run in the background."
+msgstr ""
+
+msgid "Timed out running pfctl command"
 msgstr ""
 
 msgid "Too many args, truncating"
@@ -810,6 +1032,9 @@ msgstr ""
 msgid "Unconfigure an interface"
 msgstr ""
 
+msgid "Unexpected elements"
+msgstr ""
+
 msgid "Unknown"
 msgstr ""
 
@@ -828,10 +1053,19 @@ msgstr ""
 msgid "VSZ"
 msgstr ""
 
+msgid "Validation Error"
+msgstr ""
+
 msgid "Web Filter IP range wrong"
 msgstr ""
 
 msgid "White and black list entries should not be identical"
+msgstr ""
+
+msgid "Will not load rules with errors"
+msgstr ""
+
+msgid "Will not test rules with errors"
 msgstr ""
 
 msgid "Won't delete database.clamav.net entry."

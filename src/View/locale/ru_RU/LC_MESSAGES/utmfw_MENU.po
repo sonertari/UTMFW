@@ -45,9 +45,6 @@ msgstr "Общие запреты"
 msgid "Bypass"
 msgstr "Обход ограничений"
 
-msgid "UTMFW ADMINISTRATION INTERFACE"
-msgstr "ИНТЕРФЕЙС АДМИНИСТРИРОВАНИЯ UTMFW"
-
 msgid "CPUs"
 msgstr ""
 
@@ -62,9 +59,6 @@ msgstr "Рейтинги"
 
 msgid "Clamd"
 msgstr ""
-
-msgid "UTMFW Administration Interface"
-msgstr "Интерфейс Администрирования UTMFW"
 
 msgid "Config"
 msgstr "Конфигурация"
@@ -96,11 +90,17 @@ msgstr "По дням"
 msgid "Disks"
 msgstr "Диски"
 
+msgid "Display & Install"
+msgstr ""
+
 msgid "Domains"
 msgstr "Домены"
 
 msgid "Downloads"
 msgstr "Загрузки"
+
+msgid "Editor"
+msgstr ""
 
 msgid "Email"
 msgstr ""
@@ -171,6 +171,9 @@ msgstr "Списки"
 msgid "Live"
 msgstr ""
 
+msgid "Load & Save"
+msgstr ""
+
 msgid "Logs"
 msgstr "Логи"
 
@@ -210,6 +213,9 @@ msgstr "POP3 ПРОКСИ"
 msgid "Partitions"
 msgstr "Разделы"
 
+msgid "Pf"
+msgstr ""
+
 msgid "Phrases"
 msgstr "Фразы"
 
@@ -235,6 +241,9 @@ msgid "SPAM FILTER"
 msgstr "СПАМ ФИЛЬТР"
 
 msgid "SPAMD"
+msgstr ""
+
+msgid "SSL"
 msgstr ""
 
 msgid "SYSTEM"
@@ -272,6 +281,18 @@ msgstr "Передача"
 
 msgid "URLs"
 msgstr ""
+
+msgid "UTM FIREWALL"
+msgstr ""
+
+msgid "UTM Firewall"
+msgstr ""
+
+msgid "UTMFW ADMINISTRATION INTERFACE"
+msgstr "ИНТЕРФЕЙС АДМИНИСТРИРОВАНИЯ UTMFW"
+
+msgid "UTMFW Administration Interface"
+msgstr "Интерфейс Администрирования UTMFW"
 
 msgid "VIRUS FILTER"
 msgstr "ВИРУСНЫЙ ФИЛЬТР"

@@ -15,6 +15,10 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#, php-format
+msgid "0-100% or 0-1"
+msgstr ""
+
 msgid "< Previous"
 msgstr "< Précédent"
 
@@ -24,11 +28,50 @@ msgstr "<< Premier"
 msgid "Add"
 msgstr "Ajouter"
 
+msgid "Af Translate"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Anchor"
+msgstr ""
+
+msgid "Antispoof"
+msgstr ""
+
 msgid "Apply"
 msgstr "Appliquer"
 
+msgid "Are you sure you want to <BUTTON_VALUE> secure HTTP?"
+msgstr ""
+
+msgid "Are you sure you want to delete <RULE_TYPE> rule number <RULE_NUMBER>?"
+msgstr ""
+
+msgid "Are you sure you want to delete the entire ruleset?"
+msgstr ""
+
+msgid "Are you sure you want to delete the rule?"
+msgstr ""
+
+msgid "Are you sure you want to delete the rules file?"
+msgstr ""
+
+msgid "Binat"
+msgstr ""
+
+msgid "Blank Line"
+msgstr ""
+
 msgid "Block"
 msgstr "Bloquer"
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
 
 msgid "Compressed"
 msgstr "Compressé"
@@ -48,17 +91,59 @@ msgstr "Défauts"
 msgid "Delete"
 msgstr "Supprimer"
 
+msgid "Delete All"
+msgstr ""
+
+msgid "Delete rules file"
+msgstr ""
+
 msgid "Disable"
 msgstr "Désactiver"
 
 msgid "Display"
 msgstr "Afficher"
 
+msgid "Display line numbers"
+msgstr ""
+
+msgid "Display with errors"
+msgstr ""
+
+msgid "Divert"
+msgstr ""
+
+msgid "Divert Packet"
+msgstr ""
+
 msgid "Download"
 msgstr "Télécharger"
 
+msgid "Download ruleset"
+msgstr ""
+
+msgid "Download with errors"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
 msgid "Enable"
 msgstr "Activer"
+
+msgid "Enter blank lines here"
+msgstr ""
+
+msgid "Enter comment here"
+msgstr ""
+
+msgid "Enter inline rules here"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Generate with errors"
+msgstr ""
 
 msgid "Horizontal"
 msgstr "Horizontal"
@@ -66,11 +151,38 @@ msgstr "Horizontal"
 msgid "Hourly"
 msgstr "Par Heure"
 
+msgid "Include"
+msgstr ""
+
+msgid "Install"
+msgstr ""
+
+msgid "Install as main ruleset"
+msgstr ""
+
 msgid "Last >>"
 msgstr "Dernier >>"
 
+msgid "Limit"
+msgstr ""
+
+msgid "Load"
+msgstr ""
+
+msgid "Load Anchor"
+msgstr ""
+
+msgid "Load rules from file"
+msgstr ""
+
+msgid "Load with errors"
+msgstr ""
+
 msgid "Log in"
 msgstr "Connection"
+
+msgid "Macro"
+msgstr ""
 
 msgid "Make Dynamic"
 msgstr "Rendre dynamique"
@@ -78,14 +190,32 @@ msgstr "Rendre dynamique"
 msgid "Make Static"
 msgstr "Rendre statique"
 
+msgid "Move"
+msgstr ""
+
 msgid "Move Down"
 msgstr "Descendre"
 
 msgid "Move Up"
 msgstr "Monter"
 
+msgid "Nat"
+msgstr ""
+
 msgid "Next >"
 msgstr "Suivant >"
+
+msgid "No Queues defined"
+msgstr ""
+
+msgid "Option"
+msgstr ""
+
+msgid "Queue"
+msgstr ""
+
+msgid "Redirect"
+msgstr ""
 
 msgid "Redraw"
 msgstr "Redéssiner"
@@ -96,6 +226,9 @@ msgstr "Réinitialiser"
 msgid "Reload"
 msgstr "Recharger"
 
+msgid "Reload main ruleset"
+msgstr ""
+
 msgid "Restart"
 msgstr "Redémarrer"
 
@@ -105,17 +238,44 @@ msgstr "Tourner"
 msgid "Rotate All"
 msgstr "Tout Tourner"
 
+msgid "Route"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save ruleset to file"
+msgstr ""
+
+msgid "Save with errors"
+msgstr ""
+
+msgid "Scrub"
+msgstr ""
+
 msgid "Search"
 msgstr "Rechercher"
 
 msgid "Select"
 msgstr "Séléctionner"
 
+msgid "Show"
+msgstr ""
+
 msgid "Start"
 msgstr "Démarrer"
 
+msgid "State Defaults"
+msgstr ""
+
 msgid "Stop"
 msgstr "Arrêter"
+
+msgid "Table"
+msgstr ""
+
+msgid "Timeout"
+msgstr ""
 
 msgid "Unblock"
 msgstr "Débloquer"
@@ -123,5 +283,107 @@ msgstr "Débloquer"
 msgid "Unblock All"
 msgstr "Débloquer tout"
 
+msgid "Upload"
+msgstr ""
+
+msgid "Upload with errors"
+msgstr ""
+
 msgid "Vertical"
 msgstr "Vertical"
+
+msgid "add value"
+msgstr ""
+
+msgid "as rule number"
+msgstr ""
+
+msgid "defaults to S/SA"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "enter comment, such as a description of the rule"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+msgid "groupname or groupid"
+msgstr ""
+
+msgid "host or network"
+msgstr ""
+
+msgid "if or macro"
+msgstr ""
+
+msgid "interface"
+msgstr ""
+
+msgid "ip, host, table or macro"
+msgstr ""
+
+msgid "label"
+msgstr ""
+
+msgid "logging interface"
+msgstr ""
+
+msgid "move to"
+msgstr ""
+
+msgid "name, may be nested"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
+msgid "none"
+msgstr ""
+
+msgid "number"
+msgstr ""
+
+msgid "number 0-7"
+msgstr ""
+
+msgid "number or abbrev."
+msgstr ""
+
+msgid "number or name"
+msgstr ""
+
+msgid "number(ms)"
+msgstr ""
+
+msgid "number, name, table or macro"
+msgstr ""
+
+msgid "number/number"
+msgstr ""
+
+msgid "number[(K|M|G)]"
+msgstr ""
+
+msgid "os name or macro"
+msgstr ""
+
+msgid "protocol"
+msgstr ""
+
+msgid "string"
+msgstr ""
+
+msgid "string or number"
+msgstr ""
+
+msgid "username or userid"
+msgstr ""
+
+msgid "valid string"
+msgstr ""
+
+msgid "yes"
+msgstr ""

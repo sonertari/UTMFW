@@ -38,6 +38,9 @@ msgstr "访问被拒绝地址"
 msgid "Active IPs (arp table)"
 msgstr "（ARP表主动IP地址）"
 
+msgid "Additional mime types"
+msgstr ""
+
 msgid "Address Family"
 msgstr "家庭地址"
 
@@ -95,6 +98,9 @@ msgstr "坏字眼过滤"
 msgid "Badwords replace character"
 msgstr "坏字眼替换字符"
 
+msgid "Banned flash replacement"
+msgstr ""
+
 msgid "Banned image replacement"
 msgstr "替换被禁止图片"
 
@@ -143,11 +149,11 @@ msgstr "字节免费"
 msgid "COMMAND"
 msgstr "命令"
 
-msgid "CVS Tag"
-msgstr "CVS的标签"
-
 msgid "CTLR"
 msgstr "CTLR"
+
+msgid "CVS Tag"
+msgstr "CVS的标签"
 
 msgid "Cache mgr"
 msgstr "缓存经理"
@@ -281,6 +287,9 @@ msgstr "嵌入式网址加权"
 msgid "Enable Deep URL Analysis"
 msgstr "启用深度URL分析"
 
+msgid "Enable MITM site certificate checking"
+msgstr ""
+
 msgid "Enable SSL/TLS"
 msgstr "启用SSL/TLS"
 
@@ -301,6 +310,9 @@ msgstr "FTP代理"
 
 msgid "Filter IP"
 msgstr "过滤器IP"
+
+msgid "Filter IP for xforwarded for"
+msgstr ""
 
 msgid "Filter Port"
 msgstr "过滤器端口"
@@ -355,6 +367,9 @@ msgstr "组"
 
 msgid "Gateway"
 msgstr "网关"
+
+msgid "Gentle child restart"
+msgstr ""
 
 msgid "Greylist"
 msgstr "灰名单"
@@ -485,8 +500,14 @@ msgstr "保持临时文件"
 msgid "Leave spool on"
 msgstr "保持后台开"
 
+msgid "Limit SSL MITM to sites in greysslsitelist(s)"
+msgstr ""
+
 msgid "Listen Address"
 msgstr "听地址"
+
+msgid "Listen on"
+msgstr ""
 
 msgid "Local IP Address"
 msgstr "本地IP地址"
@@ -547,6 +568,9 @@ msgstr "登录邮件"
 
 msgid "Log rcpt to"
 msgstr "日志的RCPT TO"
+
+msgid "Log ssl errors"
+msgstr ""
 
 msgid "Log typing events"
 msgstr "记录输入事件"
@@ -737,6 +761,9 @@ msgstr "PRI"
 msgid "Packet Filter"
 msgstr "包过滤"
 
+msgid "Pconn timeout"
+msgstr ""
+
 msgid "Permit Empty Passwords"
 msgstr "许可证空密码"
 
@@ -804,11 +831,23 @@ msgstr "代理IP地址：端口"
 msgid "Proxy Port"
 msgstr "代理端口"
 
+msgid "Proxy failure log interval"
+msgstr ""
+
+msgid "Proxy header exchange"
+msgstr ""
+
+msgid "Proxy timeout"
+msgstr ""
+
 msgid "Quiet"
 msgstr "安静的"
 
 msgid "Re-check replaced URLs"
 msgstr "重新检查更换网址"
+
+msgid "Redirect SSL denied page"
+msgstr ""
 
 msgid "Remote Server"
 msgstr "远程服务器"
@@ -884,6 +923,15 @@ msgstr "SQL服务器"
 
 msgid "SSH_PORTS"
 msgstr "SSH端口"
+
+msgid "SSL access denied address"
+msgstr ""
+
+msgid "SSL certificate checking"
+msgstr ""
+
+msgid "SSL man in the middle"
+msgstr ""
 
 msgid "STARTED"
 msgstr "开始"
@@ -1032,8 +1080,7 @@ msgid "The most famous web server."
 msgstr "最有名的Web服务器。"
 
 msgid ""
-"The most secure OS in the world. Underneath UTMFW is pure, untouched "
-"OpenBSD."
+"The most secure OS in the world. Underneath UTMFW is pure, untouched OpenBSD."
 msgstr "UTMFW是基于在世界上最安全的操作系统，OpenBSD。"
 
 msgid "Threshold"
