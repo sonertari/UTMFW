@@ -123,7 +123,7 @@ class Squid extends View
 				'title' => _TITLE2('Cache mgr'),
 				'info' => _HELPBOX2('Email-address of local cache manager who will receive mail if the cache dies. The default is "webmaster".'),
 				),
-		);
+			);
 	}
 	
 	function PrintLogLine($cols, $linenum)

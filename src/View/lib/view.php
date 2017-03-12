@@ -488,6 +488,7 @@ class View
 	 *
 	 * @param string $datestr Date as string.
 	 * @param array $date Datetime output.
+	 * @return bool TRUE on success, FALSE on fail.
 	 */
 	function FormatDateArray($datestr, &$date)
 	{
@@ -635,6 +636,7 @@ function _HELPBOX2($str)
 	return _($str);
 }
 
+/// @todo Check if we need _STATS() in the View
 ///// For classifying gettext strings into files.
 //function _STATS($str)
 //{

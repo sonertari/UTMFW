@@ -117,7 +117,7 @@ class P3scan extends View
 				'info' => _HELPBOX2('Disable reporting of normal operating messages. Only report errors or critical information.
 		default: display all except debug info'),
 				),
-		);
+			);
 	}
 
 	function FormatLogCols(&$cols)

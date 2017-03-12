@@ -108,7 +108,7 @@ $basicConfig = array(
 	'log_typing_events' => array(
 		'title' => _TITLE2('Log typing events'),
 		),
-);
+	);
 
 $badwordsConfig = array(
 	'badwords_filename=.*' => array(
@@ -123,12 +123,12 @@ $badwordsConfig = array(
 		'title' => _TITLE2('Badwords block count'),
 		'info' => _HELPBOX2('If a message contains more then this many bad words then the message will be completely blocked, not just replaced'),
 		),
-);
+	);
 
 $aclConfig = array(
 	'acl_filename=.*' => array(
 		'title' => _TITLE2('Access control list'),
 		'info' => _HELPBOX2('Enable or disable ACL'),
 		),
-);
+	);
 ?>

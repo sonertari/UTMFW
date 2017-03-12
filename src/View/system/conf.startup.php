@@ -62,7 +62,6 @@ $ServiceDescs= array(
 	'apmd_flags'					=> _TITLE2('Advanced Power Management'),
 	);
 
-
 if ($View->Controller($Output, 'GetServiceStartStatus')) {
 	$StartStatus= json_decode($Output[0], TRUE);
 	?>

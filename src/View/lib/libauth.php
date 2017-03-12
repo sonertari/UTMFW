@@ -234,7 +234,6 @@ function SetSubmenu($default)
 
 	if (filter_has_var(INPUT_GET, 'submenu')) {
 		$submenu= filter_input(INPUT_GET, 'submenu');
-//		if (array_key_exists($submenu, $Menu[$View->Model][$TopMenu]['SubMenu'])) {
 		if (array_key_exists($submenu, $Menu[$TopMenu]['SubMenu'])) {
 			$_SESSION[$View->Model][$TopMenu]['submenu']= $submenu;
 		}

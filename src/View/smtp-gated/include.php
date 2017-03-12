@@ -142,7 +142,7 @@ class Smtpgated extends View
 			'locale' => array(
 				'title' => _TITLE2('Locale'),
 				),
-		);
+			);
 	}
 	
 	function FormatLogCols(&$cols)

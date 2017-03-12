@@ -25,14 +25,10 @@ $symon['layout_dir']='/symon';
 
 /* running OpenBSD, apache not chrooted:*/
 $symon['rrdtool_path']='/usr/local/bin/rrdtool';
-/*$symon['cache_dir']='/var/www/symon/cache';
-$symon['host_tree']='/var/www/symon/rrds';
-$symon['layout_dir']='/var/www/symon';*/
 $SYMON_PATH= dirname(__FILE__);
 $symon['cache_dir']=$SYMON_PATH.'/cache';
 $symon['host_tree']=$SYMON_PATH.'/rrds';
 $symon['layout_dir']=$SYMON_PATH.'/layouts';
-//$symon['layout_dir']='';
 
 /* running FreeBSD, apache not chrooted: 
 $symon['rrdtool_path']='/usr/local/bin/rrdtool';

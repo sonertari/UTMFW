@@ -99,7 +99,7 @@ class Freshclam extends View
 				'info' => _HELPBOX2('Enable debug messages in libclamav.
 		Default: disabled'),
 				),
-		);
+			);
 	}
 	
 	function FormatLogCols(&$cols)

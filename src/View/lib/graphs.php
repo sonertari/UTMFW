@@ -2,7 +2,7 @@
 /** @file
  * All graphs pages based on symon include this file.
  *
- * Part of symon/syweb. But needed some modification to integrate into UTMFW.
+ * This file is part of symon/syweb, but needed some modifications to integrate into UTMFW.
  * Licencing is the same as symon's.
  */
 

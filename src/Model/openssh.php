@@ -183,5 +183,5 @@ $ModelConfig = array(
 		),
     'Subsystem\s+sftp' => array(
 		),
-);
+	);
 ?>

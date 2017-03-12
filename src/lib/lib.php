@@ -31,6 +31,7 @@
  * @attention ? should never appear in regex patterns, this is better than using / or | chars.
  * 
  * @param string $filepath File path to validate.
+ * @return bool TRUE if valid.
  */
 function IsFilePath($filepath)
 {

@@ -43,7 +43,7 @@ $ruleCategoryNames = array(
     'include' => _CONTROL('Include'),
     'comment' => _CONTROL('Comment'),
     'blank' => _CONTROL('Blank Line'),
-);
+	);
 
 $ruleType2Class= array(
     'filter' => 'Filter',
@@ -68,7 +68,7 @@ $ruleType2Class= array(
     'include' => '_Include',
     'comment' => 'Comment',
     'blank' => 'Blank',
-);
+	);
 
 if (filter_has_var(INPUT_GET, 'sender') && array_key_exists(filter_input(INPUT_GET, 'sender'), $ruleCategoryNames)) {
     $edit= filter_input(INPUT_GET, 'sender');

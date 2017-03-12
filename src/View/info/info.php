@@ -19,4 +19,5 @@
  */
 
 header("Location: help.php");
+exit;
 ?>

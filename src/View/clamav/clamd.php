@@ -182,7 +182,7 @@ class Clamd extends View
 				'info' => _HELPBOX2('Mark archives as viruses (e.g. RAR.ExceededFileSize, Zip.ExceededFilesLimit) if ArchiveMaxFiles, ArchiveMaxFileSize, or ArchiveMaxRecursion limit is reached.
 		Default: disabled'),
 				),
-		);
+			);
 	}
 }
 

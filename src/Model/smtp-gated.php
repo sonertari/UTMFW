@@ -182,5 +182,5 @@ $ModelConfig = array(
 		),
     'locale' => array(
 		),
-);
+	);
 ?>

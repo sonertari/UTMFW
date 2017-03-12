@@ -35,7 +35,7 @@ class Dante extends Model
 	
 	public $PidFile= '/var/run/sockd.pid';
 	
-	function Dante()
+	function __construct()
 	{
 		global $TmpFile;
 		

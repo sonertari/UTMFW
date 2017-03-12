@@ -26,10 +26,10 @@ require_once('../lib/vars.php');
  * This array provides menu configuration parameters needed for each module.
  * Detailed behaviour of each module is defined thru the settings in this array.
  *
- * @param SubMenus			Each module page may have its own submenus (pages).
- *							These sub-fields also point to another array. The indeces
- *							of this array are used for $_GET method url, and are
- *							associated with the translatable title of sub-page.
+ * @param SubMenus	Each module page may have its own submenus (pages).
+ *					These sub-fields also point to another array. The indeces
+ *					of this array are used for $_GET method url, and are
+ *					associated with the translatable title of sub-page.
  */
 $Menu = array(
 	'info' => array(

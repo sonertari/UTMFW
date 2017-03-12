@@ -18,8 +18,6 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-//require_once('../lib/vars.php');
-
 $Submenu= SetSubmenu('archives');
 require_once("../lib/logs.$Submenu.php");
 ?>
