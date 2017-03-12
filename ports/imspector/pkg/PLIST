@@ -1,5 +1,3 @@
-@comment $OpenBSD$
-@comment $ComixWall: PLIST,v 1.5 2009/11/03 11:02:45 soner Exp $
 @newgroup _imspector:702
 @newuser _imspector:702:702:daemon:IM proxy:/nonexistent:/sbin/nologin
 %%SHARED%%

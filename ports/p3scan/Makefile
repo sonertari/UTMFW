@@ -1,4 +1,3 @@
-# $ComixWall: Makefile,v 1.6 2016/07/07 05:50:57 soner Exp $
 # Original from: Jack S. Lai <laitcg at cox dot net>
 
 COMMENT=		content scanning transparent POP3 proxy

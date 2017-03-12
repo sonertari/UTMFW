@@ -1,4 +1,3 @@
-$ComixWall: patch-msnprotocolplugin_cpp,v 1.6 2009/11/03 11:02:45 soner Exp $
 --- msnprotocolplugin.cpp.orig	Tue Mar 17 22:31:48 2009
 +++ msnprotocolplugin.cpp	Mon Nov  2 19:33:05 2009
 @@ -163,9 +163,9 @@ int processpacket(bool outgoing, class Socket &incomin

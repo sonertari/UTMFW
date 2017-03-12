@@ -1,4 +1,3 @@
-$ComixWall: patch-icqprotocolplugin_cpp,v 1.5 2009/07/25 09:55:29 soner Exp $
 --- icqprotocolplugin.cpp.orig	Mon Aug 11 00:36:23 2008
 +++ icqprotocolplugin.cpp	Mon Aug 11 00:36:32 2008
 @@ -13,7 +13,7 @@

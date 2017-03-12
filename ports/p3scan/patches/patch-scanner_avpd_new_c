@@ -1,4 +1,3 @@
-$ComixWall: patch-scanner_avpd_new_c,v 1.3 2009/07/25 09:55:30 soner Exp $
 --- scanner_avpd_new.c.orig	Mon Dec 12 17:05:01 2005
 +++ scanner_avpd_new.c	Fri Nov 16 17:51:16 2007
 @@ -44,7 +44,6 @@

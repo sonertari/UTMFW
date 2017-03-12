@@ -1,5 +1,3 @@
-# $ComixWall: Makefile,v 1.2 2016/07/27 03:02:59 soner Exp $
-
 COMMENT =	content scanning web filter
 V =		3.4.0.3
 DISTNAME =	e2guardian-${V}

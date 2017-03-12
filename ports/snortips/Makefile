@@ -1,5 +1,3 @@
-# $ComixWall: Makefile,v 1.10 2016/07/07 05:52:30 soner Exp $
-
 COMMENT=		turns Snort IDS into an IPS
 
 DISTNAME=		snortips-4.6

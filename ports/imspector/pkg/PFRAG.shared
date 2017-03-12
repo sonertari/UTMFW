@@ -1,5 +1,3 @@
-@comment $OpenBSD$
-@comment $ComixWall: PFRAG.shared,v 1.5 2009/11/03 11:02:45 soner Exp $
 lib/imspector/aclfilterplugin.so
 lib/imspector/badwordsfilterplugin.so
 lib/imspector/catsloggingplugin.so

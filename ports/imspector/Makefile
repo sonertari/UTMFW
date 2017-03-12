@@ -1,5 +1,3 @@
-# $ComixWall: Makefile,v 1.8 2016/07/07 05:51:53 soner Exp $
-
 COMMENT=		instant messaging transparent proxy
 DISTNAME=		imspector-0.9
 PKGNAME=		${DISTNAME}
