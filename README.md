@@ -1,6 +1,6 @@
 # UTMFW
 
-UTMFW is a UTM firewall running on OpenBSD 5.9. UTMFW is expected to be used on production systems. The UTMFW project provides a Web UI for monitoring and configuration. You can also use ([A4PFFW](https://github.com/sonertari/A4PFFW)) and ([W4PFFW](https://github.com/sonertari/W4PFFW)) for monitoring.
+UTMFW is a UTM firewall running on OpenBSD 5.9. UTMFW is expected to be used on production systems. The UTMFW project provides a Web UI for monitoring and configuration. You can also use [A4PFFW](https://github.com/sonertari/A4PFFW) and [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
 You can find a few screenshots on the [UTMFW](https://github.com/sonertari/UTMFW/wiki) wiki.
 
