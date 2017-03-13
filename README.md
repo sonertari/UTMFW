@@ -2,7 +2,7 @@
 
 UTMFW is a UTM firewall running on OpenBSD 5.9. UTMFW is expected to be used on production systems. The UTMFW project provides a Web UI for monitoring and configuration. You can also use [A4PFFW](https://github.com/sonertari/A4PFFW) and [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-You can find a few screenshots on the [UTMFW](https://github.com/sonertari/UTMFW/wiki) wiki.
+You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
 ## Features
 
@@ -46,7 +46,7 @@ A few notes about UTMFW installation:
 
 - Thanks to a modified auto-partitioner of OpenBSD 5.9, the disk can be partitioned with a recommended layout for UTMFW, so most users don't need to use the label editor at all.
 - All install sets including siteXY.tgz are selected by default, so you cannot 'not' install UTMFW by mistake.
-- OpenBSD installation questions are modified according to the UTMFW needs. For example, X11 related questions are never asked.
+- OpenBSD installation questions are modified according to the needs of UTMFW. For example, X11 related questions are never asked.
 
 UTMFW installation is very intuitive and easy, just follow the instructions on the screen and answer the questions asked. You are advised to accept the default answers to all the questions. In fact, the installation can be completed by accepting default answers all the way from the first question until the last. The only obvious exceptions are network configuration and password setup.
 
