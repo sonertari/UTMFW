@@ -54,11 +54,14 @@ function PrintRulesForms()
 				}
 				?>
 			</select>
+			<br />
 			<input type="submit" name="MoveUp" value="<?php echo _CONTROL('Move Up') ?>"/>
+			<br />
 			<input type="submit" name="MoveDown" value="<?php echo _CONTROL('Move Down') ?>"/>
 		</td>
 		<td class="center" style="width: 0;">
-			<input type="submit" name=">>" value=">>"/><br />
+			<input type="submit" name=">>" value=">>"/>
+			<br />
 			<input type="submit" name="&lt&lt" value="&lt&lt"/>
 		</td>
 		<td style="width: 0; vertical-align: top;">

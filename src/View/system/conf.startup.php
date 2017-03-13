@@ -87,6 +87,7 @@ if ($View->Controller($Output, 'GetServiceStartStatus')) {
 				</td>
 				<td style="width: 0;">
 					<input type="submit" name=">>" value=">>"/>
+					<br />
 					<input type="submit" name="&lt&lt" value="&lt&lt"/>
 				</td>
 				<td style="width: 0;">
