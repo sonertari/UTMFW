@@ -126,6 +126,7 @@ function PrintFilterExtMimeForm($list)
 										</td>
 										<td class="center" style="width: 0;">
 											<input type="submit" name=">>" value=">>"/>
+											<br />
 											<input type="submit" name="&lt&lt" value="&lt&lt"/>
 											<br />
 											<br />

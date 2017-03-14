@@ -375,7 +375,7 @@ class E2guardian extends Model
 	function AddExt($file, $ext, $cmt)
 	{
 		$this->DelExt($file, $ext);
-		return $this->AppendToFile($file, "$ext $this->COMC $cmt");
+		return $this->AppendToFile($file, $ext.($cmt == '' ? '' : " $this->COMC $cmt"));
 	}
 
 	function DelExt($file, $ext)
