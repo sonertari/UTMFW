@@ -1019,7 +1019,19 @@ class System extends Model
 	function DisableServiceRcLocal($service)
 	{
 		$service= Escape($service, '/');
-		return $this->ReplaceRegexp($this->confDir.'rc.local', "/^(\h*$service\b.*)$/m", '#${1}');
+
+		// Prevent infinite loop in case ReplaceRegexp() always returns TRUE
+		// We don't expect more than 10 lines
+		$count= 10;
+		$retval= FALSE;
+
+		/// @attention snort and pmacct have multiple lines in rc.local, hence the while loop
+		/// @attention $count should come first in the if condition to be decremented on each iteration of the loop
+		while ($count-- && $this->ReplaceRegexp($this->confDir.'rc.local', "/^(\h*$service\b.*)$/m", '#${1}')) {
+			$retval= TRUE;
+		}
+
+		return $retval;
 	}
 
 	/**
@@ -1035,6 +1047,8 @@ class System extends Model
 
 	/**
 	 * Turn on (enable) service startup in rc.local.
+	 * 
+	 * See the attention notes in DisableServiceRcLocal()
 	 *
 	 * @param string $service Service name in rc.local.
 	 * @return bool TRUE on success, FALSE on fail.
@@ -1042,7 +1056,15 @@ class System extends Model
 	function EnableServiceRcLocal($service)
 	{
 		$service= Escape($service, '/');
-		return $this->ReplaceRegexp($this->confDir.'rc.local', "/^\h*#(\h*$service\b.*)$/m", '${1}');
+
+		$count= 10;
+		$retval= FALSE;
+
+		while ($count-- && $this->ReplaceRegexp($this->confDir.'rc.local', "/^\h*#(\h*$service\b.*)$/m", '${1}')) {
+			$retval= TRUE;
+		}
+
+		return $retval;
 	}
 
 	/**
