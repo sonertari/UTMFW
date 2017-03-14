@@ -1126,7 +1126,10 @@ class System extends Model
 			$re= "/^(\s*$re_filepath\s+$re_owner\s*$re_mode\s+$re_count\s+$re_size\s+$re_when\s+.*)$/m";
 			if (preg_match($re, $contents, $match)) {
 				$line= $match[1];
-				$cmd= "/bin/echo '$line' | /usr/bin/newsyslog -vF -f -  > $TmpFile 2>&1 &";
+				/// @attention Do not use & at the end to send the command to background
+				/// Otherwise, gzip fails to compress the rotated file sometimes
+				/// This daemonized child process should not exit before newsyslog exits
+				$cmd= "/bin/echo '$line' | /usr/bin/newsyslog -vF -f -  > $TmpFile 2>&1";
 				exec($cmd, $output, $retval);
 				if ($retval === 0) {
 					return TRUE;
@@ -1178,8 +1181,9 @@ class System extends Model
 			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot fork');
 		}
 		else if ($pid) {
-			 // Parent should exit
-			return TRUE;
+			/// @attention Parent should exit, not return TRUE
+			/// Otherwise the Controller returns twice confusing the View
+			exit;
 		}
 		else {
 			// Make the child process a session leader
