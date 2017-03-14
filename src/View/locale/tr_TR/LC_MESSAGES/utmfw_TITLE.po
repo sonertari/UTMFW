@@ -765,7 +765,7 @@ msgid "Version"
 msgstr "Sürüm"
 
 msgid "Virus DB Update"
-msgstr "Virüz VT Güncelleme"
+msgstr "Virüs VT Güncelleme"
 
 msgid "Virus Filter"
 msgstr "Virüs Eleği"

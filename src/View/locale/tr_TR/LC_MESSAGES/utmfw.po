@@ -7749,7 +7749,7 @@ msgid "Virus"
 msgstr "Virüs"
 
 msgid "Virus DB Update"
-msgstr "Virüz VT Güncelleme"
+msgstr "Virüs VT Güncelleme"
 
 msgid "Virus Exts"
 msgstr "Virüs Uznt"
