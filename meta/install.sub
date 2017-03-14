@@ -482,6 +482,7 @@ __EOT
 
 	resp=$_selected
 }
+
 # Backup configuration files that install/upgrade will overwrite
 backup_config_files() {
 	local _line _filepath
@@ -498,7 +499,6 @@ backup_config_files() {
 	cp ../$BACKUPFILE /root
 	cd -
 }
-
 
 # Install UTMFW configuration files
 install_config_files() {

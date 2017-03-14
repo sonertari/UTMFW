@@ -93,8 +93,13 @@ ln -fs $ROOT_PATH/$TMP/$CONFIG_FILE $ROOT_PATH/$CD_PATH/$PKG_PATH/$CONFIG_FILE
 
 echo "Creating site install set: $SITE_FILE"
 
+mkdir $ROOT_PATH/$SITE_DIR
 cd $ROOT_PATH/$SITE_DIR
-rm -f *.tgz
+rm -rf *
+for site in $SITE_CONTENTS; do
+	cp -r $ROOT_PATH/meta/$site .
+done
+doas chown -R root:wheel *
 tar czhf $SITE_FILE $SITE_CONTENTS
 ln -fs $ROOT_PATH/$SITE_DIR/$SITE_FILE $ROOT_PATH/$CD_PATH/$INSTALL_SETS_PATH/$SITE_FILE
 
