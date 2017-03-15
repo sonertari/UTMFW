@@ -1,11 +1,10 @@
 COMMENT =	content scanning web filter
-V =		3.4.0.3
-DISTNAME =	e2guardian-${V}
+DISTNAME =	e2guardian-3.5.1
 CATEGORIES =	www net
 
 HOMEPAGE =	http://www.e2guardian.org/
 
-MAINTAINER =	Soner Tari <soner@comixwall.org>
+MAINTAINER =	Soner Tari <sonertari@gmail.com>
 
 # GPLv2+
 PERMIT_PACKAGE_CDROM =	Yes
@@ -14,9 +13,7 @@ WANTLIB =               c m pcre pcreposix stdc++ z
 
 # You may need to download the source package yourself,
 # and copy it under /usr/ports/distfiles/
-# https://github.com/e2guardian/e2guardian/archive/v3.4.0.3.tar.gz
-#MASTER_SITES=		https://github.com/e2guardian/e2guardian/archive/
-#DISTFILES =		v${V}.tar.gz
+MASTER_SITES=	https://github.com/e2guardian/e2guardian/releases/tag/v3.5.1/
 
 LIB_DEPENDS =           devel/pcre
 
