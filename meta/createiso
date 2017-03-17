@@ -95,7 +95,7 @@ echo "Creating site install set: $SITE_FILE"
 
 mkdir $ROOT_PATH/$SITE_DIR
 cd $ROOT_PATH/$SITE_DIR
-rm -rf *
+doas rm -rf *
 for site in $SITE_CONTENTS; do
 	cp -r $ROOT_PATH/meta/$site .
 done
