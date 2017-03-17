@@ -656,8 +656,6 @@ __EOT
 				pkg_add symux
 				;;
 			pmacct-*)	echo "Installing rrdtool..."
-				# For rrdtool 1.2.30
-				pkg_add libart
 				pkg_add rrdtool
 				;;
 			php-*)

@@ -1,0 +1,75 @@
+@comment $OpenBSD: PLIST-main,v 1.7 2016/04/21 23:46:47 sthen Exp $
+@conflict p5-RRD-*
+@pkgpath net/rrdtool,-perl
+@newgroup _rrdcached:726
+@newuser _rrdcached:726:_rrdcached:daemon:rrdcached user:/nonexistent:/sbin/nologin
+@extraunexec rm -f /var/db/rrd/*.rrd /var/db/rrd/journal/*
+@bin bin/rrdcached
+@bin bin/rrdcgi
+@bin bin/rrdtool
+include/rrd.h
+include/rrd_client.h
+include/rrd_format.h
+lib/librrd.a
+lib/librrd.la
+@lib lib/librrd.so.${LIBrrd_VERSION}
+lib/pkgconfig/librrd.pc
+libdata/perl5/site_perl/RRDp.pm
+libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/
+libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/RRDs.pm
+libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/auto/
+libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/auto/RRDs/
+libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/auto/RRDs/RRDs.so
+@man man/man1/bin_dec_hex.1
+@man man/man1/cdeftutorial.1
+@man man/man1/rpntutorial.1
+@man man/man1/rrd-beginners.1
+@man man/man1/rrdbuild.1
+@man man/man1/rrdcached.1
+@man man/man1/rrdcgi.1
+@man man/man1/rrddump.1
+@man man/man1/rrdfetch.1
+@man man/man1/rrdfirst.1
+@man man/man1/rrdflushcached.1
+@man man/man1/rrdgraph.1
+@man man/man1/rrdgraph_data.1
+@man man/man1/rrdgraph_examples.1
+@man man/man1/rrdgraph_graph.1
+@man man/man1/rrdgraph_rpn.1
+@man man/man1/rrdlast.1
+@man man/man1/rrdlastupdate.1
+@man man/man1/rrdresize.1
+@man man/man1/rrdrestore.1
+@man man/man1/rrdthreads.1
+@man man/man1/rrdtool.1
+@man man/man1/rrdtune.1
+@man man/man1/rrdtutorial.1
+@man man/man1/rrdxport.1
+@man man/man3/librrd.3
+@man man/man3p/RRDp.3p
+@man man/man3p/RRDs.3p
+share/doc/pkg-readmes/${FULLPKGNAME}
+share/doc/rrdtool/
+share/doc/rrdtool/CHANGES
+share/doc/rrdtool/COPYRIGHT
+share/doc/rrdtool/NEWS
+share/examples/rrdtool/
+share/examples/rrdtool/4charts.pl
+share/examples/rrdtool/bigtops.pl
+share/examples/rrdtool/cgi-demo.cgi
+share/examples/rrdtool/minmax.pl
+share/examples/rrdtool/perftest.pl
+share/examples/rrdtool/piped-demo.pl
+share/examples/rrdtool/rrdcached/
+share/examples/rrdtool/rrdcached/RRDCached.pm
+share/examples/rrdtool/rrdcached/rrdcached-size.pl
+share/examples/rrdtool/rrdtool-chroot
+share/examples/rrdtool/shared-demo.pl
+share/examples/rrdtool/stripes.pl
+@mode 750
+@owner _rrdcached
+@sample /var/db/rrd/
+@sample /var/db/rrd/journal/
+@mode
+@owner
+@rcscript ${RCDIR}/rrdcached
