@@ -4,6 +4,10 @@ UTMFW is a UTM firewall running on OpenBSD 5.9. UTMFW is expected to be used on 
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
+The installation iso file for the amd64 arch is available for download at [utmfw59\_20170317\_amd64.iso](https://drive.google.com/file/d/0B3F7Ueq0mFlYUUZudkVSWkd0QXM/view?usp=sharing). Make sure the md5 checksum is correct: fc73913f7bde39a3361d8c4cfadbfa1f.
+
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as PFRE, E2Guardian, and many fixes and improvements to the system and the WUI. Also note that UTMFW 5.9 comes with OpenBSD 5.9-stable including all updates until March 14th, 2017.
+
 ## Features
 
 UTMFW includes the following software, alongside what is already available in a basic OpenBSD 5.9 installation:
@@ -42,11 +46,14 @@ The web user interface of UTMFW helps you manage your firewall:
 
 ## How to install
 
+Download the installation iso file mentioned above and follow the instructions in the installation guide available in the iso file. Below are the same instructions.
+
 A few notes about UTMFW installation:
 
 - Thanks to a modified auto-partitioner of OpenBSD 5.9, the disk can be partitioned with a recommended layout for UTMFW, so most users don't need to use the label editor at all.
 - All install sets including siteXY.tgz are selected by default, so you cannot 'not' install UTMFW by mistake.
 - OpenBSD installation questions are modified according to the needs of UTMFW. For example, X11 related questions are never asked.
+- Make sure you have at least 2GB RAM. And an 8GB HD should be enough.
 
 UTMFW installation is very intuitive and easy, just follow the instructions on the screen and answer the questions asked. You are advised to accept the default answers to all the questions. In fact, the installation can be completed by accepting default answers all the way from the first question until the last. The only obvious exceptions are network configuration and password setup.
 
