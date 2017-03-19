@@ -87,7 +87,7 @@ The createiso script:
 - Prepares the site install set.
 - And finally creates the iso file.
 
-However, the source tree has links to OpenBSD install sets and packages, which should be broken, hence needs to be fixed when you first obtain the sources. Make sure you see those broken links now. So, before you can run createiso, you need to do a couple of things:
+However, the source tree has links to OpenBSD install sets and packages, which should be broken, hence need to be fixed when you first obtain the sources. Make sure you see those broken links now. So, before you can run createiso, you need to do a couple of things:
 
 - Install sets:
 	+ Obtain the sources of OpenBSD 5.9.
