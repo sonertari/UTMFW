@@ -1016,6 +1016,9 @@ $scanConfig = array(
     'textmimetypes' => array(
         'type' => STR_SING_QUOTED,
 		),
+    'maxuploadsize' => array(
+        'type' => INT_M1_0_UP,
+		),
 	);
 
 /**
@@ -1234,9 +1237,6 @@ $GeneralfilterConfig = array(
 		),
     'createlistcachefiles' => array(
         'type' => STR_on_off,
-		),
-    'maxuploadsize' => array(
-        'type' => INT_M1_0_UP,
 		),
 	);
 
