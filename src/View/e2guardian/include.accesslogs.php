@@ -92,7 +92,7 @@ class E2guardianlogs extends View
 	function FormatLogCols(&$cols)
 	{
 		$link= $cols['Link'];
-		if (preg_match('|^(http://[^/]*)|', $cols['Link'], $match)) {
+		if (preg_match('?^(http(|s)://[^/]*)?', $cols['Link'], $match)) {
 			$linkbase= $match[1];
 		}
 		$cols['Link']= '<a href="'.$link.'" title="'.$link.'">'.wordwrap($linkbase, 40, '<br />', TRUE).'</a>';
