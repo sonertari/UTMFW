@@ -148,8 +148,8 @@ class Squid extends Model
 	
 	function PostProcessCols(&$cols)
 	{
-		preg_match('|http://([^/]*)|', $cols['Link'], $match);
-		$cols['Link']= $match[1];
+		preg_match('?http(|s)://([^/]*)?', $cols['Link'], $match);
+		$cols['Link']= $match[2];
 	}
 }
 
