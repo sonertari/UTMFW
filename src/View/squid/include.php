@@ -57,6 +57,7 @@ $LogConf = array(
     'squid' => array(
         'Fields' => array(
             'DateTime',
+            'Client',
             'Target',
             'Link',
             'Size',
@@ -86,7 +87,7 @@ class Squid extends View
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
 		$this->Caption= _TITLE('HTTP Proxy');
 
-		$this->LogsHelpMsg= _HELPWINDOW('Source IP of all the requests on this page is the loopback interface, i.e. 127.0.0.1, hence not listed here. If the HTTP proxy is configured as non-caching proxy, you should see TCP_MISS on the Cache column.');
+		$this->LogsHelpMsg= _HELPWINDOW('If the HTTP proxy is configured as non-caching proxy, you should see TCP_MISS on the Cache column.');
 		$this->ConfHelpMsg= _HELPWINDOW('By default, the Web Filter connects to the HTTP proxy over the loopback interface and at port 3128. If you do not want to use the Web Filter, you can change this Proxy IP:Port setting to the internal IP address of the system and port 8080. When you stop the Web Filter, all requests from the internal network should be directed to the HTTP proxy.');
 	
 		$this->Config = array(
@@ -140,7 +141,7 @@ class Squid extends View
 		if (preg_match('?^(http(|s)://[^/]*)?', $cols['Link'], $match)) {
 			$linkbase= $match[1];
 		}
-		$cols['Link']= '<a href="'.$link.'" title="'.$link.'">'.wordwrap($linkbase, 40, '<br />', TRUE).'</a>';
+		$cols['Link']= '<a href="'.$link.'" title="'.$link.'">'.$linkbase.'</a>';
 	}
 }
 

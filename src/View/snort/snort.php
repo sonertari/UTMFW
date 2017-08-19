@@ -42,10 +42,6 @@ class Snort extends View
 		$this->Caption= _TITLE('Intrusion Detection');
 		$this->LogsHelpMsg= _HELPWINDOW('These logs contain messages from all IDS process. Alerts are duplicated here as well.');
 	}
-	
-	function FormatLogCols(&$cols)
-	{
-	}
 
 	/**
 	 * Wrapper for InterfaceSelectForm().

@@ -21,11 +21,11 @@
 require_once('include.php');
 
 $View->Model= 'symon';
-$View->ProcessRestartStopRequests();
+$View->ProcessStartStopRequests();
 $View->Model= 'symux';
-$View->ProcessRestartStopRequests();
+$View->ProcessStartStopRequests();
 $View->Model= 'pmacct';
-$View->ProcessRestartStopRequests();
+$View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');

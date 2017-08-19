@@ -20,7 +20,7 @@
 
 require_once('apache.php');
 
-$View->ProcessRestartStopRequests();
+$View->ProcessStartStopRequests();
 		
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');

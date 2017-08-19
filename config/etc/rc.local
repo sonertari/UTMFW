@@ -63,16 +63,18 @@ if [ -x /usr/local/bin/spamd ]; then
 fi
 
 echo -n '\nIntrusion detection and prevention:'
-# Start snort IDS for WAN and LAN
+# Start Snort IDS for WAN and LAN, and Snort IPS inline
 if [ -x /usr/local/bin/snort ]; then
 	echo -n ' ids'
 	/usr/local/bin/snort -i lan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/snort/log >/dev/null 2>&1
 	/usr/local/bin/snort -i wan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/snort/log >/dev/null 2>&1
+	echo -n ', inline mode ips'
+	/usr/local/bin/snort -D -d -Q -c /etc/snort/snortinline.conf -u _snort -g _snort -b -l /var/snort/log >/dev/null 2>&1
 fi
 
-# Start snort IPS
+# Start SnortIPS
 if [ -x /usr/local/sbin/snortips ]; then
-	echo -n ', ips'
+	echo -n ', passive mode ips'
 	/usr/local/sbin/snortips
 fi
 
@@ -119,6 +121,12 @@ if [ -x /usr/local/sbin/e2guardian ]; then
 	chown -R _e2guardian:_clamav /tmp/e2guardian
 	echo -n '\nWeb filter'
 	/usr/local/sbin/e2guardian >/dev/null 2>&1
+fi
+
+# Start SSLproxy
+if [ -x /usr/local/sbin/sslproxy ]; then
+	echo -n '\nSSL proxy'
+	/usr/local/sbin/sslproxy -d -f /etc/sslproxy/sslproxy.conf >/dev/null 2>&1
 fi
 
 echo ''

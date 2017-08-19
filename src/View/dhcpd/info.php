@@ -24,7 +24,7 @@
 
 require_once('include.php');
 
-$View->ProcessRestartStopRequests();
+$View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');

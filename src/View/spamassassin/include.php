@@ -125,7 +125,7 @@ class Spamassassin extends View
 	
 	function FormatLogCols(&$cols)
 	{
-		$cols['Log']= wordwrap(htmlspecialchars($cols['Log']), 80, '<br />', TRUE);
+		$cols['Log']= htmlspecialchars($cols['Log']);
 	}
 }
 

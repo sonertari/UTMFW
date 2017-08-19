@@ -117,7 +117,8 @@ class Squid extends Model
 		$re_cache= '(\S+)';
 		$re_code= '(\d+)';
 		$re_mtd= '(GET|POST|\S+)';
-		$re_link= '(\S+)';
+		// @attention https should come first, otherwise http always matches
+		$re_link= '((https|http)\S+)';
 		$re_direct= '(\S+)';
 		$re_targetip= "($Re_Ip|\S+|-)";
 		$re_type= '(\S+)';
@@ -128,15 +129,16 @@ class Squid extends Model
 			$cols['Date']= date("M", $match[1]).' '.$day;
 			$cols['Time']= date("H:i:s", $match[1]);
 			$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
-			$cols['ClientIP']= $match[2];
+			$cols['Client']= $match[2];
 			$cols['Cache']= $match[3];
 			$cols['Code']= $match[4];
 			$cols['Size']= $match[5];
 			$cols['Mtd']= $match[6];
 			$cols['Link']= $match[7];
-			$cols['Direct']= $match[8];
-			$cols['Target']= $match[9];
-			$cols['Type']= $match[10];
+			$cols['Proto']= $match[8];
+			$cols['Direct']= $match[9];
+			$cols['Target']= $match[10];
+			$cols['Type']= $match[11];
 			return TRUE;
 		}
 		else if ($this->ParseSyslogLine($logline, $cols)) {

@@ -47,6 +47,10 @@ $UTMFW_MODULES = array(
 		'Name' => _MENU('PACKET FILTER'),
 		'Perms' => $ALL_USERS,
 		),
+    'sslproxy' => array(
+		'Name' => _MENU('SSL PROXY'),
+		'Perms' => $ALL_USERS,
+		),
     'e2guardian' => array(
 		'Name' => _MENU('WEB FILTER'),
 		'Perms' => $ALL_USERS,

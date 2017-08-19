@@ -147,7 +147,7 @@ class Smtpgated extends View
 	
 	function FormatLogCols(&$cols)
 	{
-		$cols['Log']= wordwrap(htmlspecialchars($cols['Log']), 80, '<br />', TRUE);
+		$cols['Log']= htmlspecialchars($cols['Log']);
 		$cols['Sender']= htmlspecialchars($cols['Sender']);
 		$cols['Recipient']= htmlspecialchars($cols['Recipient']);
 	}

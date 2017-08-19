@@ -234,11 +234,11 @@ class View
 	}
 
 	/**
-	 * Processes user posts for process restart and stop.
+	 * Processes user posts for process start and stop.
 	 *
-	 * Used on all info pages.
+	 * Used on info pages.
 	 */
-	function ProcessRestartStopRequests()
+	function ProcessStartStopRequests()
 	{
 		if (filter_has_var(INPUT_POST, 'Model')) {
 			if (filter_input(INPUT_POST, 'Model') == $this->Model) {
@@ -578,9 +578,6 @@ class View
 	 */
 	function FormatLogCols(&$cols)
 	{
-		if (isset($cols['Log'])) {
-			$cols['Log']= wordwrap($cols['Log'], 80, '<br />', TRUE);
-		}
 	}
 
 	function SetSessionFilterGroup()

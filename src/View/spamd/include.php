@@ -116,8 +116,8 @@ function ParseSpamdDBLine($logline, &$cols)
 	$re= "/^GREY\|$re_srcip\|$re_domain\|$re_email\|$re_email\|$re_num\|$re_num\|$re_num\|$re_num\|$re_num$/";
 	if (preg_match($re, $logline, $match)) {
 		$cols['IP']= $match[1];
-		$cols['From']= wordwrap(str_replace(array('<', '>'), '', $match[3]), 30, '<br />', TRUE);
-		$cols['To']= wordwrap(str_replace(array('<', '>'), '', $match[4]), 30, '<br />', TRUE);
+		$cols['From']= str_replace(array('<', '>'), '', $match[3]);
+		$cols['To']= str_replace(array('<', '>'), '', $match[4]);
 		$cols['First']= date('d.m.Y H:i', $match[5]);
 		$cols['Listed']= date('d.m.Y H:i', $match[6]);
 		$cols['Expire']= date('d.m.Y H:i', $match[7]);

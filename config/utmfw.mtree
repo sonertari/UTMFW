@@ -52,6 +52,7 @@ p3scan.log		type=file mode=0640 uname=root gname=wheel
 smtp-gated.log		type=file mode=0640 uname=root gname=wheel
 snortips.log		type=file mode=0640 uname=root gname=wheel
 spamd.log		type=file mode=0640 uname=root gname=wheel
+sslproxy.log		type=file mode=0640 uname=root gname=wheel
 ..	#var/log
 named			type=dir mode=0755 uname=root gname=_bind
 etc			type=dir mode=0750 uname=root gname=_bind
@@ -199,10 +200,16 @@ server.key		type=file mode=0644 uname=root gname=bin
 ..	#etc/ssl/private
 server.crt		type=file mode=0644 uname=root gname=bin
 ..	#etc/ssl
+sslproxy			type=dir mode=0755 uname=root gname=wheel
+ca.crt		type=file mode=0644 uname=root gname=bin
+ca.key		type=file mode=0644 uname=root gname=bin
+sslproxy.conf		type=file mode=0644 uname=root gname=wheel
+..	#etc/sslproxy
 clamd.conf		type=file mode=0644 uname=root gname=wheel
 dhcpd.conf		type=file mode=0644 uname=root gname=wheel
 doas.conf		type=file mode=0644 uname=root gname=wheel
 freshclam.conf		type=file mode=0644 uname=root gname=wheel
+login.conf		type=file mode=0644 uname=root gname=wheel
 motd			type=file mode=0664 uname=root gname=wheel
 newsyslog.conf		type=file mode=0644 uname=root gname=wheel
 pf.conf			type=file mode=0600 uname=root gname=wheel
@@ -212,6 +219,7 @@ php-5.6.ini			type=file mode=0644 uname=root gname=wheel
 rc.conf.local		type=file mode=0644 uname=root gname=wheel
 rc.local		type=file mode=0644 uname=root gname=wheel
 rc.shutdown		type=file mode=0644 uname=root gname=wheel
+relayd.conf		type=file mode=0644 uname=root gname=wheel
 smtp-gated.conf		type=file mode=0644 uname=root gname=wheel
 sockd.conf		type=file mode=0644 uname=root gname=wheel
 symon.conf		type=file mode=0644 uname=root gname=wheel

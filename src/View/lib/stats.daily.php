@@ -187,9 +187,11 @@ foreach ($ViewStatsConf as $Name => $Conf) {
 	}
 }
 
-if (isset($ViewStatsConf['Total']['Counters'])) {
-	foreach ($ViewStatsConf['Total']['Counters'] as $Name => $Conf) {
-		PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle);
+foreach ($ViewStatsConf as $Name => $CurConf) {
+	if (isset($CurConf['Counters'])) {
+		foreach ($CurConf['Counters'] as $Name => $Conf) {
+			PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle);
+		}
 	}
 }
 

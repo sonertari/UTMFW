@@ -58,11 +58,6 @@ class Imlogs extends View
 		PrintLogCols($linenum, $cols);
 		echo '</tr>';
 	}
-
-	function FormatLogCols(&$cols)
-	{
-		$cols['Log']= wordwrap($cols['Log'], 100, '<br />', TRUE);
-	}
 }
 
 $View= new Imlogs();

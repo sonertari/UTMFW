@@ -68,11 +68,6 @@ class Apachelogs extends View
 		}
 		return FALSE;
 	}
-	
-	function FormatLogCols(&$cols)
-	{
-		$cols['Link']= wordwrap($cols['Link'], 50, '<br />', TRUE);
-	}
 }
 
 $View= new Apachelogs();

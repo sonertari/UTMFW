@@ -18,15 +18,19 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('include.php');
+require_once('include.php');
 
-$View->ProcessStartStopRequests();
+if (filter_has_var(INPUT_POST, 'Delete')) {
+	/// @attention Specs is an array, so filter_input() does not work here.
+	foreach ($_POST['Specs'] as $Specs) {
+		$View->Controller($Output, 'DelSpecs', $Specs);
+	}
+}
+if (filter_has_var(INPUT_POST, 'Add') && filter_has_var(INPUT_POST, 'SpecsToAdd')) {
+	$View->Controller($Output, 'AddSpecs', filter_input(INPUT_POST, 'SpecsToAdd'));
+}
 
-$Reload= TRUE;
-require_once($VIEW_PATH.'/header.php');
-		
-$View->PrintStatusForm();
+$CustomFunc= 'PrintProxySpecsForm';
 
-PrintHelpWindow(_HELPWINDOW('OpenBSD/spamd is a spam deferral daemon, a fake sendmail-like daemon which rejects false mail. You can run spamd if there is a mail server in the internal network. Thanks to OpenBSD/spamd, you can not only prevent unwanted e-mails but also torture spammers.'));
-require_once($VIEW_PATH.'/footer.php');
+require_once('../lib/conf.php');
 ?>

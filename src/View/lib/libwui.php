@@ -1175,8 +1175,9 @@ function PrintLogCols($linenum, $cols, $module= '')
 	</td>
 	<?php
 	foreach ($LogConf[$module]['Fields'] as $field) {
+		$nowrap = ($field == 'Date' || $field == 'DateTime') ? ' nowrap' : '';
 		?>
-		<td>
+		<td<?php echo $nowrap ?>>
 			<?php echo $cols[$field] ?>
 		</td>
 		<?php

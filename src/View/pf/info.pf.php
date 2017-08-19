@@ -20,7 +20,7 @@
 
 require_once('pf.php');
 
-$View->ProcessRestartStopRequests();
+$View->ProcessStartStopRequests();
 
 $View->Controller($Output, 'GetPfInfo');
 $PfInfo= implode("\n", $Output);

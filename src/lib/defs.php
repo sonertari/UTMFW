@@ -270,11 +270,15 @@ $StatsConf = array(
 			'NVPs' => array(
 				'Link' => _STATS('Requests'),
 				'IP' => _STATS('IPs'),
+				'Proto' => _STATS('Protocol'),
+				'Mtd' => _STATS('Methods'),
 				),
 			'BriefStats' => array(
 				'Date' => _STATS('Requests by date'),
 				'IP' => _STATS('Requests by IP'),
 				'Link' => _STATS('Links visited'),
+				'Proto' => _STATS('Protocol'),
+				'Mtd' => _STATS('Methods'),
 				'Cat' => _STATS('Denied categories'),
 				),
 			'Counters' => array(
@@ -286,6 +290,8 @@ $StatsConf = array(
 					'NVPs' => array(
 						'Link' => _STATS('Size by site (KB)'),
 						'IP' => _STATS('Size by IP (KB)'),
+						'Proto' => _STATS('Size by Protocol (KB)'),
+						'Mtd' => _STATS('Size by Method (KB)'),
 						),
 					),
 				),
@@ -297,6 +303,8 @@ $StatsConf = array(
 			'NVPs' => array(
 				'Link' => _STATS('Requests scanned'),
 				'IP' => _STATS('Scanned IPs'),
+				'Proto' => _STATS('Protocol'),
+				'Mtd' => _STATS('Methods'),
 				),
 			),
 		'Exception' => array(
@@ -306,6 +314,8 @@ $StatsConf = array(
 			'NVPs' => array(
 				'Link' => _STATS('Exception requests'),
 				'IP' => _STATS('Exception IPs'),
+				'Proto' => _STATS('Protocol'),
+				'Mtd' => _STATS('Methods'),
 				),
 			),
 		'Denied' => array(
@@ -316,6 +326,8 @@ $StatsConf = array(
 				'Link' => _STATS('Requests denied'),
 				'IP' => _STATS('Denied IPs'),
 				'Cat' => _STATS('Denied categories'),
+				'Proto' => _STATS('Protocol'),
+				'Mtd' => _STATS('Methods'),
 				),
 			),
 		'Infected' => array(
@@ -325,6 +337,8 @@ $StatsConf = array(
 			'NVPs' => array(
 				'Link' => _STATS('Requests infected'),
 				'IP' => _STATS('Infected IPs'),
+				'Proto' => _STATS('Protocol'),
+				'Mtd' => _STATS('Methods'),
 				),
 			),
 		'Bypassed' => array(
@@ -334,6 +348,8 @@ $StatsConf = array(
 			'NVPs' => array(
 				'Link' => _STATS('Requests bypassed'),
 				'IP' => _STATS('Bypassing IPs'),
+				'Proto' => _STATS('Protocol'),
+				'Mtd' => _STATS('Methods'),
 				),
 			),
 		),
@@ -430,6 +446,7 @@ $StatsConf = array(
 				'User' => _STATS('Account name'),
 				'SrcIP' => _STATS('Source IPs'),
 				'DstIP' => _STATS('Destination IPs'),
+				'Proto' => _STATS('Protocol'),
 				'Mails' => _STATS('E-mails per request'),
 				),
 			'Counters' => array(
@@ -458,6 +475,7 @@ $StatsConf = array(
 			'NVPs' => array(
 				'Date' => _STATS('Requests by date'),
 				'SrcIP' => _STATS('Source IPs'),
+				'Proto' => _STATS('Protocol'),
 				),
 			),
 		'Results' => array(
@@ -497,6 +515,7 @@ $StatsConf = array(
 				'Recipient' => _STATS('Recipients'),
 				'SrcIP' => _STATS('Source IPs'),
 				'LockedIP' => _STATS('Locked IPs'),
+				'Proto' => _STATS('Protocol'),
 				),
 			'Counters' => array(
 				'Xmted' => array(
@@ -736,12 +755,15 @@ $StatsConf = array(
 			'Color' => '#004a4a',
 			'NVPs' => array(
 				'Link' => _STATS('Links'),
-				'Mtd' => _STATS('Methods'),
 				'Target' => _STATS('Target'),
+				'Client' => _STATS('Client'),
+				'Proto' => _STATS('Protocol'),
+				'Mtd' => _STATS('Methods'),
 				'Code' => _STATS('HTTP Codes'),
 				),
 			'BriefStats' => array(
 				'Link' => _STATS('Links'),
+				'Proto' => _STATS('Protocol'),
 				'Mtd' => _STATS('Methods'),
 				'Code' => _STATS('HTTP Codes'),
 				'Cache' => _STATS('Cache'),
@@ -756,6 +778,9 @@ $StatsConf = array(
 					'NVPs' => array(
 						'Link' => _STATS('Size by Link (KB)'),
 						'Target' => _STATS('Size by Target (KB)'),
+						'Client' => _STATS('Size by Client (KB)'),
+						'Proto' => _STATS('Size by Protocol (KB)'),
+						'Mtd' => _STATS('Size by Method (KB)'),
 						),
 					),
 				),
@@ -828,11 +853,88 @@ $StatsConf = array(
 				),
 			),
 		),
+    'sslproxy' => array(
+		'Total' => array(
+			'Cmd' => '/bin/cat <LF>',
+			'BriefStats' => array(
+				'Proto' => _STATS('Protocols'),
+				'Error' => _STATS('Errors'),
+				'Warning' => _STATS('Warnings'),
+				'ExpiredSrcAddr' => _STATS('Expired Source Addresses'),
+				'ExpiredDstAddr' => _STATS('Expired Destination Addresses'),
+				'SrcAddr' => _STATS('Source Addresses'),
+				'DstAddr' => _STATS('Destination Addresses'),
+				'SProto' => _STATS('SSL Source Protocols'),
+				'DProto' => _STATS('SSL Destination Protocols'),
+				),
+			),
+		'Stats' => array(
+			'Needle' => 'STATS:',
+			'Counters' => array(
+				'DownloadBytes' => array(
+					'Field' => 'IntifOutBytes',
+					'Title' => _STATS('Downloads (KB)'),
+					'Color' => 'Blue',
+					'Divisor' => 1000,
+					),
+				'UploadBytes' => array(
+					'Field' => 'IntifInBytes',
+					'Title' => _STATS('Uploads (KB)'),
+					'Color' => 'Green',
+					'Divisor' => 1000,
+					),
+				'SetWatermarks' => array(
+					'Field' => 'SetWatermark',
+					'Title' => _STATS('Set watermarks'),
+					'Color' => 'Red',
+					),
+				),
+			),
+		'Connections' => array(
+			'Title' => _STATS('Connections'),
+			'Needle' => 'CONN:',
+			'Color' => '#004a4a',
+			'NVPs' => array(
+				'SrcAddr' => _STATS('Source Addresses'),
+				'DstAddr' => _STATS('Destination Addresses'),
+				'SProto' => _STATS('SSL Source Protocols'),
+				'DProto' => _STATS('SSL Destination Protocols'),
+				'Proto' => _STATS('Protocols'),
+				),
+			),
+		'Expired' => array(
+			'Title' => _STATS('Expired connections'),
+			'Needle' => 'EXPIRED:',
+			'Color' => 'Red',
+			'NVPs' => array(
+				'ExpiredSrcAddr' => _STATS('Source Addresses'),
+				'ExpiredDstAddr' => _STATS('Destination Addresses'),
+				'IdleTime' => _STATS('Idle Times'),
+				),
+			),
+		'Error' => array(
+			'Title' => _STATS('Errors'),
+			'Needle' => 'ERROR:',
+			'Color' => 'Red',
+			'NVPs' => array(
+				'Error' => _STATS('Reasons'),
+				),
+			),
+		'Warning' => array(
+			'Title' => _STATS('Warnings'),
+			'Needle' => 'WARNING:',
+			'Color' => 'Yellow',
+			'NVPs' => array(
+				'Warning' => _STATS('Reasons'),
+				),
+			),
+		),
 	);
 
 /// Models to get statuses
 $ModelsToStat= array(
 	'pf',
+	'sslproxy',
 	'e2guardian',
 	'squid',
 	'snort',

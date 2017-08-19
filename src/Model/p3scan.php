@@ -128,9 +128,10 @@ class P3scan extends Model
 				$re_clientip= "($Re_Ip)";
 				$re_num= '(\d+)';
 
-				$re= "/Connection from $re_clientip:$re_num$/";
+				$re= "/(POP3S|POP3) Connection from $re_clientip:$re_num$/";
 				if (preg_match($re, $logline, $match)) {
-					$cols['SrcIP']= $match[1];
+					$cols['Proto']= strtolower($match[1]);
+					$cols['SrcIP']= $match[2];
 				}
 				else {
 					$re= "/Real-server address is $re_clientip:$re_num$/";
@@ -148,11 +149,12 @@ class P3scan extends Model
 						}
 						else {
 							// POP3 from 192.168.10.2:47845 to 10.0.0.10:110 from Soner Tari <sonertari@gmail.com> to sonertari@gmail.com user: soner virus: Eicar-Test-Signature file: /p3scan.8c0Ph
-							$re= "/POP3 from $Re_Ip:\d+ to $Re_Ip:\d+ from (.+) to (.+) user: .+ virus: (.+) file:.*$/";
+							$re= "/(POP3S|POP3) from $Re_Ip:\d+ to $Re_Ip:\d+ from (.+) to (.+) user: .+ virus: (.+) file:.*$/";
 							if (preg_match($re, $logline, $match)) {
-								$cols['From']= $match[1];
-								$cols['To']= $match[2];
-								$cols['Virus']= $match[3];
+								$cols['Proto']= strtolower($match[1]);
+								$cols['From']= $match[2];
+								$cols['To']= $match[3];
+								$cols['Virus']= $match[4];
 							}
 						}
 					}

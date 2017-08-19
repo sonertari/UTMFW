@@ -18,15 +18,7 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include('include.php');
-
-$View->ProcessStartStopRequests();
-
-$Reload= TRUE;
-require_once($VIEW_PATH.'/header.php');
-		
-$View->PrintStatusForm();
-
-PrintHelpWindow(_HELPWINDOW('OpenBSD/spamd is a spam deferral daemon, a fake sendmail-like daemon which rejects false mail. You can run spamd if there is a mail server in the internal network. Thanks to OpenBSD/spamd, you can not only prevent unwanted e-mails but also torture spammers.'));
-require_once($VIEW_PATH.'/footer.php');
+require_once('../lib/vars.php');
+header('Location: '.SetTopMenu(basename(dirname($_SERVER['PHP_SELF']))));
+exit;
 ?>

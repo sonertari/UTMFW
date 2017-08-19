@@ -39,7 +39,7 @@ class E2guardianlogs extends E2guardian
 		$re_srcip= "($Re_Ip)";
 		$re_link= '(http:\/\/[^ \/]*|https:\/\/[^ \/]*)(\S*)';
 		$re_result= '(.*|)';
-		$re_mtd= '(GET|POST|HEAD|PROPFIND|PROPPATCH|CONNECT)';
+		$re_mtd= '(GET|PUT|ICY|COPY|HEAD|LOCK|MOVE|POLL|POST|BCOPY|BMOVE|MKCOL|TRACE|LABEL|MERGE|DELETE|SEARCH|UNLOCK|REPORT|UPDATE|NOTIFY|BDELETE|CONNECT|OPTIONS|CHECKIN|PROPFIND|CHECKOUT|CCM_POST|SUBSCRIBE|PROPPATCH|BPROPFIND|BPROPPATCH|UNCHECKOUT|MKACTIVITY|MKWORKSPACE|UNSUBSCRIBE|RPC_CONNECT|VERSION-CONTROL|BASELINE-CONTROL)';
 		$re_size= '(\d+)';
 		$re_ttl= '(-{0,1}\d+)';
 		$re_rest= '(.*)';
@@ -95,8 +95,10 @@ class E2guardianlogs extends E2guardian
 	
 	function PostProcessCols(&$cols)
 	{
-		preg_match('|http://([^/]*)|', $cols['Link'], $match);
-		$cols['Link']= $match[1];
+		if (preg_match('?(http|https)://([^/]*)?', $cols['Link'], $match)) {
+			$cols['Proto']= $match[1];
+			$cols['Link']= $match[2];
+		}
 
 		if (preg_match('/(\d+)\.(\d+)\.(\d+)/', $cols['Date'], $match)) {
 			$cols['Date']= $match[1].'.'.sprintf('%02d', $match[2]).'.'.sprintf('%02d', $match[3]);

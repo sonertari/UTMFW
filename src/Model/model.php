@@ -315,6 +315,11 @@ class Model
 					'argv'	=>	array(IPADR|IPRANGE),
 					'desc'	=>	_('Delete PF restricted'),
 					),
+
+				'SetRelaydExtAddr'	=> array(
+					'argv'	=> array(IPADR),
+					'desc'	=> _('Set IP Relayd listens on'),
+					),
 				)
 			);
 	}
@@ -1169,6 +1174,11 @@ class Model
 	 */
 	function GetLiveLogs($file, $count, $re= '')
 	{
+		return Output(json_encode($this->_getLiveLogs($file, $count, $re)));
+	}
+
+	function _getLiveLogs($file, $count, $re= '')
+	{
 		// Empty $re is not an issue for grep, greps all
 		$re= escapeshellarg($re);
 		$cmd= "/usr/bin/grep -a -E $re $file | /usr/bin/tail -$count";
@@ -1182,7 +1192,7 @@ class Model
 				$logs[]= $cols;
 			}
 		}
-		return Output(json_encode($logs));
+		return $logs;
 	}
 
 	/**
@@ -1341,24 +1351,26 @@ class Model
 
 		$stats= array();
 		foreach ($StatsConf[$this->Name] as $stat => $conf) {
-			if (isset($conf['Cmd'])) {
-				$cmd= $conf['Cmd'];
-				if (isset($conf['Needle'])) {
-					$cmd.= ' | /usr/bin/grep -a -E <NDL>';
+			if (isset($conf['Title'])) {
+				if (isset($conf['Cmd'])) {
+					$cmd= $conf['Cmd'];
+					if (isset($conf['Needle'])) {
+						$cmd.= ' | /usr/bin/grep -a -E <NDL>';
+						$cmd= preg_replace('/<NDL>/', escapeshellarg($conf['Needle']), $cmd);
+					}
+					$cmd.= ' | /usr/bin/wc -l';
+				}
+				else if (isset($conf['Needle'])) {
+					$cmd= '/usr/bin/grep -a -E <NDL> <LF> | /usr/bin/wc -l';
 					$cmd= preg_replace('/<NDL>/', escapeshellarg($conf['Needle']), $cmd);
 				}
-				$cmd.= ' | /usr/bin/wc -l';
+				if ($logfile == '') {
+					$logfile= $this->LogFile;
+				}
+				$cmd= preg_replace('/<LF>/', $logfile, $cmd);
+
+				$stats[$conf['Title']]= trim($this->RunShellCommand($cmd));
 			}
-			else if (isset($conf['Needle'])) {
-				$cmd= '/usr/bin/grep -a -E <NDL> <LF> | /usr/bin/wc -l';
-				$cmd= preg_replace('/<NDL>/', escapeshellarg($conf['Needle']), $cmd);
-			}
-			if ($logfile == '') {
-				$logfile= $this->LogFile;
-			}
-			$cmd= preg_replace('/<LF>/', $logfile, $cmd);
-			
-			$stats[$conf['Title']]= trim($this->RunShellCommand($cmd));
 		}
 		return Output(json_encode($stats));
 	}
@@ -1849,15 +1861,19 @@ class Model
 	{
 		$stats['Sum']+= 1;
 
-		if (isset($statsdefs['Total']['Counters'])) {
-			foreach ($statsdefs['Total']['Counters'] as $counter => $conf) {
-				$value= $values[$conf['Field']];
-				if (isset($value)) {
-					$stats[$counter]['Sum']+= $value;
+		foreach ($statsdefs as $stat => $statconf) {
+			if (isset($statconf['Counters'])) {
+				foreach ($statconf['Counters'] as $counter => $conf) {
+					$value= $values[$conf['Field']];
+					if (isset($value)) {
+						$stats[$counter]['Sum']+= $value;
 
-					foreach ($conf['NVPs'] as $name => $title) {
-						if (isset($values[$name])) {
-							$stats[$counter][$name][$values[$name]]+= $value;
+						if (isset($conf['NVPs'])) {
+							foreach ($conf['NVPs'] as $name => $title) {
+								if (isset($values[$name])) {
+									$stats[$counter][$name][$values[$name]]+= $value;
+								}
+							}
 						}
 					}
 				}
@@ -1869,9 +1885,11 @@ class Model
 				if (preg_match('/'.$conf['Needle'].'/', $line)) {
 					$stats[$stat]['Sum']+= 1;
 
-					foreach ($conf['NVPs'] as $name => $title) {
-						if (isset($values[$name])) {
-							$stats[$stat][$name][$values[$name]]+= 1;
+					if (isset($conf['NVPs'])) {
+						foreach ($conf['NVPs'] as $name => $title) {
+							if (isset($values[$name])) {
+								$stats[$stat][$name][$values[$name]]+= 1;
+							}
 						}
 					}
 				}
@@ -1897,10 +1915,12 @@ class Model
 		$minstats= &$hourstats['Mins'][$min];
 		$minstats['Sum']+= 1;
 
-		if (isset($statsdefs['Total']['Counters'])) {
-			foreach ($statsdefs['Total']['Counters'] as $counter => $conf) {
-				if (isset($values[$conf['Field']])) {
-					$minstats[$counter]+= $values[$conf['Field']];
+		foreach ($statsdefs as $stat => $statconf) {
+			if (isset($statconf['Counters'])) {
+				foreach ($statconf['Counters'] as $counter => $conf) {
+					if (isset($values[$conf['Field']])) {
+						$minstats[$counter]+= $values[$conf['Field']];
+					}
 				}
 			}
 		}
@@ -2558,11 +2578,23 @@ class Model
 		}
 		return FALSE;
 	}
+
+	/**
+	 * Sets the IP address that the relayd listens on for conns.
+	 *
+	 * @param string $addr IP address.
+	 * @return bool TRUE on success, FALSE on fail.
+	 */
+	function SetRelaydExtAddr($addr)
+	{
+		return $this->ReplaceRegexp('/etc/relayd.conf', "/^(\h*ext_addr\h*=\h*)(\S+)(.*)$/m", '${1}'.$addr.'${3}');
+	}
 }
 
 $ModelsToLogConfig= array(
 	'system',
 	'pf',
+	'sslproxy',
 	'e2guardian',
 	'e2guardianlogs',
 	'squid',

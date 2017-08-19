@@ -71,6 +71,10 @@ function ApplyConfig($auto)
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting pf restricted ip: $lancidr");
 		}
 
+		if (!$View->Controller($output, 'SetRelaydExtAddr', $lanip)) {
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting relayd ext addr: $lanip");
+		}
+		
 		$View->Model= 'named';
 		if (! $View->Controller($output, 'SetListenOn', $lanip)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting listen-on: $lanip");

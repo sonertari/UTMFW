@@ -47,7 +47,7 @@ class Blacklists extends View
 	function FormatLogCols(&$cols)
 	{
 		$link= 'http://'.$cols['Site'];
-		$cols['Site']= '<a href="'.$link.'">'.wordwrap($cols['Site'], 100, '<br />', TRUE).'</a>';
+		$cols['Site']= '<a href="'.$link.'">'.$cols['Site'].'</a>';
 	}
 }
 

@@ -38,6 +38,7 @@ require_once($VIEW_PATH.'/header.php');
 $ServiceDescs= array(
 	'/usr/local/sbin/httpd'			=> _TITLE2('Web Server (WUI)'),
 	'/usr/local/sbin/named'			=> _TITLE2('DNS Server'),
+	'/usr/local/sbin/sslproxy'		=> _TITLE2('SSL Proxy'),
 	'/usr/local/sbin/e2guardian'	=> _TITLE2('Web Filter'),
 	'/usr/local/sbin/squid'			=> _TITLE2('HTTP Proxy'),
 	'/usr/local/bin/snort'			=> _TITLE2('Intrusion Detection'),
@@ -54,6 +55,7 @@ $ServiceDescs= array(
 	'/usr/local/sbin/pmacctd'		=> _TITLE2('Pmacct Network Monitoring'),
 	'pf'							=> _TITLE2('Packet Filter'),
 	'dhcpd_flags'					=> _TITLE2('DHCP Server'),
+	'relayd_flags'					=> _TITLE2('Relayd'),
 	'ftpproxy_flags'				=> _TITLE2('FTP Proxy'),
 	'ntpd_flags'					=> _TITLE2('Network Time'),
 	'spamd_flags'					=> _TITLE2('Spamd Spam Deferral'),

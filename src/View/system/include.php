@@ -115,7 +115,7 @@ class System extends View
 	
 	function FormatLogCols(&$cols)
 	{
-		$cols['Log']= wordwrap($cols['Log'], 80, '<br />', TRUE);
+		$cols['Log']= wordwrap($cols['Log'], 150, '<br />', TRUE);
 	}
 }
 

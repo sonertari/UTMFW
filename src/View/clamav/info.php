@@ -20,11 +20,11 @@
 
 require_once('clamd.php');
 $Clamd= $View;
-$Clamd->ProcessRestartStopRequests();
+$Clamd->ProcessStartStopRequests();
 
 require_once('freshclam.php');
 $Freshclam= $View;
-$Freshclam->ProcessRestartStopRequests();
+$Freshclam->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');

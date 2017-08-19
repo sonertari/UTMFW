@@ -58,10 +58,14 @@ etc/snort/snortips.conf,644,root,wheel
 etc/squid/squid.conf,644,root,wheel
 etc/ssl/private/server.key,644,root,bin
 etc/ssl/server.crt,644,root,bin
+etc/sslproxy/sslproxy.conf,644,root,wheel
+etc/sslproxy/ca.crt,644,root,bin
+etc/sslproxy/ca.key,644,root,bin
 etc/clamd.conf,644,root,wheel
 etc/dhcpd.conf,644,root,wheel
 etc/doas.conf,644,root,wheel
 etc/freshclam.conf,644,root,wheel
+etc/login.conf,644,root,wheel
 etc/motd,664,root,wheel
 etc/newsyslog.conf,644,root,wheel
 etc/pf.conf,600,root,wheel
@@ -71,6 +75,7 @@ etc/php-5.6.ini,644,root,daemon
 etc/rc.conf.local,644,root,wheel
 etc/rc.local,644,root,wheel
 etc/rc.shutdown,644,root,wheel
+etc/relayd.conf,644,root,wheel
 etc/smtp-gated.conf,644,root,wheel
 etc/sockd.conf,644,root,wheel
 etc/symon.conf,644,root,wheel
@@ -116,6 +121,7 @@ var/log/p3scan.log,640,root,wheel
 var/log/smtp-gated.log,640,root,wheel
 var/log/snortips.log,640,root,wheel
 var/log/spamd.log,640,root,wheel
+var/log/sslproxy.log,640,root,wheel
 var/named/etc/named.conf,640,root,_bind
 var/www/cgi-bin/man.cgi,511,root,bin
 var/www/conf/modules/php-5.6.conf,644,root,daemon

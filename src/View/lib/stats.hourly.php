@@ -160,9 +160,11 @@ foreach ($ViewStatsConf as $Name => $Conf) {
 	}
 }
 
-if (isset($ViewStatsConf['Total']['Counters'])) {
-	foreach ($ViewStatsConf['Total']['Counters'] as $Name => $Conf) {
-		PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType);
+foreach ($ViewStatsConf as $Name => $CurConf) {
+	if (isset($CurConf['Counters'])) {
+		foreach ($CurConf['Counters'] as $Name => $Conf) {
+			PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType);
+		}
 	}
 }
 

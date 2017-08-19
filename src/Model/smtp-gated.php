@@ -59,7 +59,13 @@ class Smtpgated extends Model
 			$re_num= '(\d+)';
 			$re_srcip= "($Re_Ip)";
 			$re_result= '(.*|)';
-		
+
+			//NEW (1/0) on=127.0.0.1:9199, src=192.168.3.24:33262, ident=, dst=74.125.206.108:465, smtps, id=1501826099.14746
+			$re= "/NEW\s+.*,\s+(smtps|smtp),\s+.*$/";
+			if (preg_match($re, $logline, $match)) {
+				$cols['Proto']= $match[1];
+			}
+			
 			//SCAN:CLEAN size=1639, time=0, src=192.168.1.1, ident=
 			//SPAM:CLEAN size=337, time=0, src=192.168.1.1, ident=, score=2.900000
 			//SCAN:VIRUS size=1065, time=0, src=192.168.1.1, ident=, virus=Eicar-Test-Signature

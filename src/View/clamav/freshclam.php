@@ -101,11 +101,6 @@ class Freshclam extends View
 				),
 			);
 	}
-	
-	function FormatLogCols(&$cols)
-	{
-		$cols['Log']= wordwrap($cols['Log'], 100, '<br />', TRUE);
-	}
 }
 
 $View= new Freshclam();
