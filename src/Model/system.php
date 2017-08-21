@@ -61,7 +61,7 @@ class System extends Model
 		$this->rcLocalServices= array(
 			'/usr/local/sbin/httpd',
 			'/usr/local/sbin/named',
-			'/usr/local/sbin/sslproxy',
+			'/usr/local/bin/sslproxy',
 			'/usr/local/sbin/e2guardian',
 			'/usr/local/sbin/squid',
 			'/usr/local/bin/snort',

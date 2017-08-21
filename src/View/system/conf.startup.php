@@ -38,7 +38,7 @@ require_once($VIEW_PATH.'/header.php');
 $ServiceDescs= array(
 	'/usr/local/sbin/httpd'			=> _TITLE2('Web Server (WUI)'),
 	'/usr/local/sbin/named'			=> _TITLE2('DNS Server'),
-	'/usr/local/sbin/sslproxy'		=> _TITLE2('SSL Proxy'),
+	'/usr/local/bin/sslproxy'		=> _TITLE2('SSL Proxy'),
 	'/usr/local/sbin/e2guardian'	=> _TITLE2('Web Filter'),
 	'/usr/local/sbin/squid'			=> _TITLE2('HTTP Proxy'),
 	'/usr/local/bin/snort'			=> _TITLE2('Intrusion Detection and Prevention'),

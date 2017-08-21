@@ -124,9 +124,9 @@ if [ -x /usr/local/sbin/e2guardian ]; then
 fi
 
 # Start SSLproxy
-if [ -x /usr/local/sbin/sslproxy ]; then
+if [ -x /usr/local/bin/sslproxy ]; then
 	echo -n '\nSSL proxy'
-	/usr/local/sbin/sslproxy -d -f /etc/sslproxy/sslproxy.conf >/dev/null 2>&1
+	/usr/local/bin/sslproxy -d -f /etc/sslproxy/sslproxy.conf >/dev/null 2>&1
 fi
 
 echo ''

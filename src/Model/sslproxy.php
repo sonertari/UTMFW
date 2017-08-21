@@ -29,7 +29,7 @@ class Sslproxy extends Model
 	public $ConfFile= '/etc/sslproxy/sslproxy.conf';
 	public $LogFile= '/var/log/sslproxy.log';
 	
-	public $VersionCmd= '/usr/local/sbin/sslproxy -V 2>&1';
+	public $VersionCmd= '/usr/local/bin/sslproxy -V 2>&1';
 	
 	public $PidFile= '/var/run/sslproxy.pid';
 	
@@ -40,7 +40,7 @@ class Sslproxy extends Model
 		parent::__construct();
 		
 		$this->Proc= 'sslproxy';
-		$this->StartCmd= "/usr/local/sbin/sslproxy -d -f $this->ConfFile > $TmpFile 2>&1 &";
+		$this->StartCmd= "/usr/local/bin/sslproxy -d -f $this->ConfFile > $TmpFile 2>&1 &";
 
 		$this->Commands= array_merge(
 			$this->Commands,
