@@ -798,7 +798,7 @@ class System extends Model
 				break;
 			}
 			// Shell sleep command seems not affected by changes to clock
-			exec('/bin/sleep .1');
+			exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 		}
 		
 		if ($count < self::PROC_STAT_TIMEOUT) {

@@ -60,11 +60,11 @@ $UTMFW_MODULES = array(
 		'Perms' => $ALL_USERS,
 		),
     'snort' => array(
-		'Name' => _MENU('IDS'),
+		'Name' => _MENU('IDP'),
 		'Perms' => $ALL_USERS,
 		),
     'snortips' => array(
-		'Name' => _MENU('IPS'),
+		'Name' => _MENU('PASSIVE IPS'),
 		'Perms' => $ALL_USERS,
 		),
     'clamav' => array(

@@ -37,5 +37,6 @@ switch ($Submenu) {
 
 $ViewConfigName= $Submenu.'Config';
 $View->Config= ${$ViewConfigName};
+$PRINT_GROUP_FORM= TRUE;
 require_once('../lib/conf.php');
 ?>

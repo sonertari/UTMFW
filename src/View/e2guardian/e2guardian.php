@@ -54,7 +54,7 @@ class E2guardian extends View
 	 * Sets the DG filter group for the current session.
 	 *
 	 * @warning Group file should probably be checked only for $_POST method. But
-	 * there is no guarantie that session group will exist forever, or that Group 1 exists.
+	 * there is no guarantee that session group will exist forever, or that Group 1 exists.
 	 */
 	function SetSessionFilterGroup()
 	{
@@ -77,7 +77,7 @@ class E2guardian extends View
 	}
 
 	/**
-	 * Displays an edit box and a botton to change current group.
+	 * Displays an edit box and a button to change current group.
 	 */
 	function PrintFilterGroupForm()
 	{

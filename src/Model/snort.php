@@ -33,6 +33,8 @@ class Snort extends Model
 
 	private $re_RulePrefix= 'include\h*\$(RULE_PATH|PREPROC_RULE_PATH)\/';
 
+	protected $psCmd= '/bin/ps arwwx -o pid,start,%cpu,time,%mem,rss,vsz,stat,pri,nice,tty,user,group,command | /usr/bin/grep "\-i" | /usr/bin/grep -v -e grep | /usr/bin/grep -E <PROC>';
+
 	function __construct()
 	{
 		parent::__construct();
@@ -51,32 +53,32 @@ class Snort extends Model
 					),
 
 				'GetRules'		=>	array(
-					'argv'	=>	array(),
+					'argv'	=>	array(NUM),
 					'desc'	=>	_('Get rules'),
 					),
 				
 				'GetDisabledRules'=>	array(
-					'argv'	=>	array(),
+					'argv'	=>	array(NUM),
 					'desc'	=>	_('Get disabled rules'),
 					),
 
 				'DisableRule'	=>	array(
-					'argv'	=>	array(NAME),
+					'argv'	=>	array(NAME, NUM),
 					'desc'	=>	_('Disable rule'),
 					),
 
 				'EnableRule'	=>	array(
-					'argv'	=>	array(NAME),
+					'argv'	=>	array(NAME, NUM),
 					'desc'	=>	_('Enable rule'),
 					),
 
 				'MoveRuleUp'=>	array(
-					'argv'	=>	array(NAME),
+					'argv'	=>	array(NAME, NUM),
 					'desc'	=>	_('Move rule up'),
 					),
 
 				'MoveRuleDown'=>	array(
-					'argv'	=>	array(NAME),
+					'argv'	=>	array(NAME, NUM),
 					'desc'	=>	_('Move rule down'),
 					),
 
@@ -98,14 +100,15 @@ class Snort extends Model
 		global $TmpFile;
 
 		$cmd= "/usr/local/bin/snort -i $if -D -d -c $this->ConfFile -u _snort -g _snort -b -l /var/snort/log";
+		$this->RunShellCommand("$cmd > $TmpFile 2>&1");
+
 		$count= 0;
 		while ($count++ < self::PROC_STAT_TIMEOUT) {
 			if ($this->IsInstanceRunning($if)) {
 				return TRUE;
 			}
-			$this->RunShellCommand("$cmd > $TmpFile 2>&1");
 			/// @todo Check $TmpFile for error messages, if so break out instead
-			exec('/bin/sleep .1');
+			exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 		}
 
 		/// Start command is redirected to tmp file
@@ -130,7 +133,7 @@ class Snort extends Model
 			}
 			$this->RunShellCommand("$cmd > $TmpFile 2>&1");
 			/// @todo Check $TmpFile for error messages, if so break out instead
-			exec('/bin/sleep .1');
+			exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 		}
 
 		/// Kill command is redirected to tmp file
@@ -208,14 +211,25 @@ class Snort extends Model
 		$this->Config= ${$confname};
 	}
 
+	function GetConfFile($confname, $group)
+	{
+		if ($group == 1) {
+			return '/etc/snort/snortinline.conf';
+		}
+		else {
+			return $this->ConfFile;
+		}
+	}
+
 	/**
 	 * Get list of enabled/uncommented rules.
 	 *
 	 * @return Rule or list of rules.
 	 */
-	function GetRules()
+	function GetRules($group)
 	{
-		return Output($this->SearchFileAll($this->ConfFile, "/^\h*$this->re_RulePrefix([^#\s]+)\h*$/m", 2));
+		$file= $this->GetConfFile('', $group);
+		return Output($this->SearchFileAll($file, "/^\h*$this->re_RulePrefix([^#\s]+)\h*$/m", 2));
 	}
 
 	/**
@@ -223,31 +237,36 @@ class Snort extends Model
 	 *
 	 * @return Rule or list of rules.
 	 */
-	function GetDisabledRules()
+	function GetDisabledRules($group)
 	{
-		return Output($this->SearchFileAll($this->ConfFile, "/^\h*$this->COMC\h*$this->re_RulePrefix([^#\s]+)\b\h*$/m", 2));
+		$file= $this->GetConfFile('', $group);
+		return Output($this->SearchFileAll($file, "/^\h*$this->COMC\h*$this->re_RulePrefix([^#\s]+)\b\h*$/m", 2));
 	}
 
-	function EnableRule($rule)
+	function EnableRule($rule, $group)
 	{
-		return $this->EnableName($this->ConfFile, "$this->re_RulePrefix$rule");
+		$file= $this->GetConfFile('', $group);
+		return $this->EnableName($file, "$this->re_RulePrefix$rule");
 	}
 
-	function DisableRule($rule)
+	function DisableRule($rule, $group)
 	{
-		return $this->DisableName($this->ConfFile, "$this->re_RulePrefix$rule");
+		$file= $this->GetConfFile('', $group);
+		return $this->DisableName($file, "$this->re_RulePrefix$rule");
 	}
 
-	function MoveRuleUp($rule)
+	function MoveRuleUp($rule, $group)
 	{
+		$file= $this->GetConfFile('', $group);
 		$rule= Escape($rule, '/.');
-		return $this->ReplaceRegexp($this->ConfFile, "/^\h*(($this->re_RulePrefix[^\n]+)\n+($this->COMC\h*$this->re_RulePrefix[^\n]+\n+)*)\h*($this->re_RulePrefix$rule)\n/m", '${6}'."\n".'${1}');
+		return $this->ReplaceRegexp($file, "/^\h*(($this->re_RulePrefix[^\n]+)\n+($this->COMC\h*$this->re_RulePrefix[^\n]+\n+)*)\h*($this->re_RulePrefix$rule)\n/m", '${6}'."\n".'${1}');
 	}
 
-	function MoveRuleDown($rule)
+	function MoveRuleDown($rule, $group)
 	{
+		$file= $this->GetConfFile('', $group);
 		$rule= Escape($rule, '/.');
-		return $this->ReplaceRegexp($this->ConfFile, "/^\h*($this->re_RulePrefix$rule)\n+\h*(($this->COMC\h*$this->re_RulePrefix[^\n]+\n+)*($this->re_RulePrefix[^\n]+)\n+)/m", '${3}'.'${1}'."\n");
+		return $this->ReplaceRegexp($file, "/^\h*($this->re_RulePrefix$rule)\n+\h*(($this->COMC\h*$this->re_RulePrefix[^\n]+\n+)*($this->re_RulePrefix[^\n]+)\n+)/m", '${3}'.'${1}'."\n");
 	}
 
 	function SetStartupIfs($lanif, $wanif)

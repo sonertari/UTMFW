@@ -20,6 +20,8 @@
 
 require_once('include.php');
 
+$View->UploadLogFile();
+
 if (filter_has_var(INPUT_POST, 'Delete')) {
 	/// @attention Specs is an array, so filter_input() does not work here.
 	foreach ($_POST['Specs'] as $Specs) {
@@ -30,7 +32,7 @@ if (filter_has_var(INPUT_POST, 'Add') && filter_has_var(INPUT_POST, 'SpecsToAdd'
 	$View->Controller($Output, 'AddSpecs', filter_input(INPUT_POST, 'SpecsToAdd'));
 }
 
-$CustomFunc= 'PrintProxySpecsForm';
+$CustomFunc= 'PrintProxySpecsDownloadCACertForm';
 
 require_once('../lib/conf.php');
 ?>

@@ -211,11 +211,14 @@ class Sslproxy extends View
 $View= new Sslproxy();
 
 /**
- * Prints proxy specifications.
+ * Prints proxy specifications and download CA cert form.
  */
-function PrintProxySpecsForm()
+function PrintProxySpecsDownloadCACertForm()
 {
 	global $View, $Class;
+	
+	$View->Controller($output, 'GetCACertFileName');
+	$certFile= $output[0];
 	?>
 	<tr class="<?php echo $Class ?>">
 		<td class="title">
@@ -243,6 +246,22 @@ function PrintProxySpecsForm()
 		<td class="none">
 			<?php
 			PrintHelpBox(_HELPBOX2("Proxy specification format is type listenaddr+port up:utmport."));
+			?>
+		</td>
+	</tr>
+	<tr class="<?php echo $Class ?>">
+		<td class="title">
+			<?php echo _TITLE2('Download CA Cert').':' ?>
+		</td>
+		<td>
+			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+				<input type="submit" name="Download" value="<?php echo _CONTROL('Download') ?>"/>
+				<input type="hidden" name="LogFile" value="<?php echo $certFile ?>" />
+			</form>
+		</td>
+		<td class="none">
+			<?php
+			PrintHelpBox(_HELPBOX2("Download the CA cert file to install on client web browsers and mail programs."));
 			?>
 		</td>
 	</tr>

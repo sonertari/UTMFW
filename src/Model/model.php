@@ -40,6 +40,7 @@ class Model
 
 	/// Max number of iterations to try while starting or stopping processes.
 	const PROC_STAT_TIMEOUT= 100;
+	const PROC_STAT_SLEEP_TIME= .3;
 	
 	/**
 	 * Argument lists and descriptions of commands.
@@ -427,7 +428,7 @@ class Model
 				return TRUE;
 			}
 			/// @todo Check $TmpFile for error messages, if so break out instead
-			exec('/bin/sleep .1');
+			exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 		}
 
 		// Check one last time due to the last sleep in the loop
@@ -476,7 +477,7 @@ class Model
 			}
 			$this->RunShellCommand("$cmd > $TmpFile 2>&1");
 			/// @todo Check $TmpFile for error messages, if so break out instead
-			exec('/bin/sleep .1');
+			exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 		}
 
 		// Check one last time due to the last sleep in the loop
@@ -2222,7 +2223,7 @@ class Model
 				}
 				$this->RunShellCommand("$cmd > $TmpFile 2>&1");
 				/// @todo Check $TmpFile for error messages, if so break out instead
-				exec('/bin/sleep .1');
+				exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 			}
 
 			// Check one last time due to the last sleep in the loop
@@ -2262,7 +2263,7 @@ class Model
 			}
 			$this->RunShellCommand("$cmd > $TmpFile 2>&1");
 			/// @todo Check $TmpFile for error messages, if so break out instead
-			exec('/bin/sleep .1');
+			exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 		}
 
 		/// Kill command is redirected to tmp file

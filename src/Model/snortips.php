@@ -138,7 +138,7 @@ class Snortips extends Model
 						break;
 					}
 				}
-				exec('/bin/sleep .1');
+				exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 			}
 			
 			if ($eof) {

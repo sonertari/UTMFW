@@ -84,7 +84,7 @@ class Snortips extends View
 	function __construct()
 	{
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
-		$this->Caption= _TITLE('Intrusion Prevention');
+		$this->Caption= _TITLE('Passive Intrusion Prevention');
 
 		$this->LogsHelpMsg= _HELPWINDOW("Here are the definitions of a few terms used in the logs:<ul class='nomargin'><li class='nomargin'>Blocking a host means adding it to IPS pf table as blocked</li><li class='nomargin'>Unblocking means deleting a blocked host from the table</li><li class='nomargin'>Deblocking means adding a whitelisted host to the table</li><li class='nomargin'>Undeblocking means deleting a whitelisted host from the table</li></ul>
 		Failure to block a host does not necessarily indicate an error; the host may be in the table already.");

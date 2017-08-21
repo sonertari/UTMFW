@@ -69,6 +69,11 @@ class Sslproxy extends Model
 					'argv'	=>	array(NUM),
 					'desc'	=>	_('Get idle conns'),
 					),
+
+				'GetCACertFileName'	=> array(
+					'argv'	=>	array(),
+					'desc'	=>	_('Get CA cert filename'),
+					),
 				)
 			);
 	}
@@ -233,7 +238,7 @@ class Sslproxy extends Model
 
 	function GetMaxStats($interval)
 	{
-		$logs= $this->GetLastLogs("STATS:", $interval);
+		$logs= $this->GetLastLogs('STATS:', $interval);
 
 		$maxStats= array(
 			'Load' => 0,
@@ -278,7 +283,12 @@ class Sslproxy extends Model
 
 	function GetIdleConns($interval)
 	{
-		return Output(json_encode($this->GetLastLogs("IDLE:", $interval)));
+		return Output(json_encode($this->GetLastLogs('IDLE:', $interval)));
+	}
+
+	function GetCACertFileName()
+	{
+		return Output($this->GetNVP($this->ConfFile, 'CACert'));
 	}
 }
 

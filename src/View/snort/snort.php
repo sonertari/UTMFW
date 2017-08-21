@@ -40,7 +40,7 @@ class Snort extends View
 	{
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
 		$this->Caption= _TITLE('Intrusion Detection');
-		$this->LogsHelpMsg= _HELPWINDOW('These logs contain messages from all IDS process. Alerts are duplicated here as well.');
+		$this->LogsHelpMsg= _HELPWINDOW('These logs contain messages from all IDS processes. Alerts are duplicated here as well.');
 	}
 
 	/**
@@ -97,7 +97,57 @@ class Snort extends View
 			<br />
 			<input type="submit" name="Start" value="<?php echo _CONTROL('Start') ?>" onclick="return confirm('<?php echo $startconfirm ?>')"/>
 			<input type="submit" name="Stop" value="<?php echo _CONTROL('Stop') ?>" onclick="return confirm('<?php echo $stopconfirm ?>')"/>
+			<input type="hidden" name="Model" value=<?php echo $this->Model ?> />
 		</form>
+		<?php
+	}
+
+	/**
+	 * Sets the conf for the current session.
+	 */
+	function SetSessionFilterGroup()
+	{
+		if (filter_has_var(INPUT_POST, 'Group')) {
+			$group= filter_input(INPUT_POST, 'Group');
+		}
+		else if ($_SESSION[$this->Model]['Group']) {
+			$group= $_SESSION[$this->Model]['Group'];
+		}
+		else {
+			$group= 0;
+		}
+
+		$_SESSION[$this->Model]['Group']= $group;
+	}
+
+	/**
+	 * Displays an edit box and a button to change current conf file.
+	 */
+	function PrintFilterGroupForm()
+	{
+		// Print the form even if conf not found, so user can change it
+		$group= $_SESSION[$this->Model]['Group'];
+		?>
+		<table>
+			<tr>
+				<td>
+					<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+						<?php echo _TITLE('Configuration').':' ?>
+						<select name="Group">
+							<option <?php echo $group == 0 ? 'selected':''; ?> value="0"><?php echo _TITLE('IDS') ?></option>
+							<option <?php echo $group == 1 ? 'selected':''; ?> value="1"><?php echo _TITLE('Inline IPS') ?></option>
+						</select>
+						<input type="submit" name="ApplyConf" value="<?php echo _CONTROL('Apply') ?>"/>
+						<input type="hidden" name="Model" value=<?php echo $this->Model ?> />
+					</form>
+				</td>
+				<td>
+					<?php
+					PrintHelpBox(_HELPBOX2('This shows the active configuration for this page. Use this form to change the active configuration.'), 400);
+					?>
+				</td>
+			</tr>
+		</table>
 		<?php
 	}
 }

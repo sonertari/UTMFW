@@ -117,15 +117,15 @@ class Openvpn extends Model
 		global $TmpFile;
 
 		if ($this->StopProcess($conffile)) {
+			$cmd= "/usr/local/sbin/openvpn --config /etc/openvpn/$conffile --daemon --status /var/log/openvpn-status.log 5 > $TmpFile";
+			$this->RunShellCommand($cmd);
+
 			$count= 0;
 			while ($count++ < self::PROC_STAT_TIMEOUT) {
 				if ($this->FindPid($conffile) > -1) {
 					return TRUE;
 				}
-
-				$cmd= "/usr/local/sbin/openvpn --config /etc/openvpn/$conffile --daemon --status /var/log/openvpn-status.log 5 > $TmpFile";
-				$this->RunShellCommand($cmd);
-				exec('/bin/sleep .1');
+				exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 			}
 
 			/// Start command is redirected to tmp file

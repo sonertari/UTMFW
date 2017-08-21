@@ -67,6 +67,8 @@ class View
 			// Arg 0 is $output, skip it
 			$argv= array_slice($argv, 1);
 
+			$command= $argv[0];
+
 			if ($this->EscapeArgs($argv, $cmdline)) {
 				$locale= $_SESSION['Locale'];
 				$cmdline= "/usr/bin/doas $ctlr $locale $this->Model $cmdline";
@@ -89,8 +91,19 @@ class View
 
 					$ssh = new Net_SSH2(gethostname());
 
+					if ($command == 'Start' || $command == 'Restart' || $command == 'Stop') {
+						// Give more time to start/restart or stop requests, the default timeout is 10 seconds
+						$ssh->setTimeout(30);
+					}
+
 					if ($ssh->login($_SESSION['USER'], $passwd)) {
 						$outputArray[0]= $ssh->exec($cmdline);
+						if ($ssh->isTimeout()) {
+							$msg= 'SSH exec timed out';
+							wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "$msg, ($cmdline)");
+							PrintHelpWindow(_NOTICE('FAILED') . ":<br>$msg", 'auto', 'ERROR');
+							$executed= FALSE;
+						}
 					} else {
 						$msg= 'SSH login failed';
 						wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "$msg, ($cmdline)");

@@ -31,7 +31,7 @@ function PrintRulesForms()
 		<td style="width: 0;">
 			<?php
 			echo _TITLE2('Enabled Rules').':';
-			$View->Controller($output, 'GetRules');
+			$View->Controller($output, 'GetRules', $_SESSION[$View->Model]['Group']);
 			?>
 			<br />
 			<select name="RulesToChange[]" multiple style="width: 200px; height: 400px;">
@@ -67,7 +67,7 @@ function PrintRulesForms()
 		<td style="width: 0; vertical-align: top;">
 			<?php
 			echo _TITLE2('Disabled Rules').':';
-			$View->Controller($output, 'GetDisabledRules');
+			$View->Controller($output, 'GetDisabledRules', $_SESSION[$View->Model]['Group']);
 			sort($output);
 			?>
 			<br />
@@ -91,27 +91,31 @@ function PrintRulesForms()
 
 if (filter_has_var(INPUT_POST, '>>')) {
 	foreach ($_POST['RulesToChange'] as $Rule) {
-		$View->Controller($Output, 'DisableRule', $Rule);
+		$View->Controller($Output, 'DisableRule', $Rule, $_SESSION[$View->Model]['Group']);
 	}
 }
 else if (filter_has_var(INPUT_POST, '<<')) {
 	foreach ($_POST['RulesToChange'] as $Rule) {
-		$View->Controller($Output, 'EnableRule', $Rule);
+		$View->Controller($Output, 'EnableRule', $Rule, $_SESSION[$View->Model]['Group']);
 	}
 }
 else if (filter_has_var(INPUT_POST, 'MoveUp')) {
 	foreach ($_POST['RulesToChange'] as $Rule) {
-		$View->Controller($Output, 'MoveRuleUp', $Rule);
+		$View->Controller($Output, 'MoveRuleUp', $Rule, $_SESSION[$View->Model]['Group']);
 	}
 }
 else if (filter_has_var(INPUT_POST, 'MoveDown')) {
 	$SelectedRules= $_POST['RulesToChange'];
 	for ($i= count($SelectedRules) - 1; $i >= 0; $i--) {
-		$View->Controller($Output, 'MoveRuleDown', $SelectedRules[$i]);
+		$View->Controller($Output, 'MoveRuleDown', $SelectedRules[$i], $_SESSION[$View->Model]['Group']);
 	}
 }
 
+$View->SetSessionFilterGroup();
+
 require_once($VIEW_PATH.'/header.php');
+
+$View->PrintFilterGroupForm();
 ?>
 <table>
 	<tr>
