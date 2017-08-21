@@ -156,8 +156,8 @@ function PrintReloadConfigForm()
 	<?php
 }
 
-// Reset to 0 for non-Dansgardian modules, otherwise Controller complains about arg type of Group
-$Group= $_SESSION[$View->Model]['Group'] ? $_SESSION[$View->Model]['Group'] : 0;
+// Reset to 0 for modules other than E2guardian and Snort, otherwise Controller complains about arg type of Group
+$Group= $_SESSION[$View->Model]['ConfOpt'] ? $_SESSION[$View->Model]['ConfOpt'] : 0;
 
 if (count($_POST)) {
 	if (filter_has_var(INPUT_POST, 'Apply')) {
@@ -188,13 +188,13 @@ if (count($_POST)) {
 	}
 }
 
-$View->SetSessionFilterGroup();
+$View->SetSessionConfOpt();
 
 require_once($VIEW_PATH.'/header.php');
 
-if (isset($PRINT_GROUP_FORM) && $PRINT_GROUP_FORM) {
-	$View->PrintFilterGroupForm();
-	$Group= $_SESSION[$View->Model]['Group'];
+if (isset($PRINT_CONFOPT_FORM) && $PRINT_CONFOPT_FORM) {
+	$View->PrintConfOptForm();
+	$Group= $_SESSION[$View->Model]['ConfOpt'];
 }
 ?>
 <table id="nvp">

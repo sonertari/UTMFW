@@ -91,7 +91,7 @@ function PrintFilterExtMimeForm($list)
 	
 	if (array_key_exists($list, $lists)) {
 		foreach ($lists[$list] as $type => $conf) {
-			if ($View->Controller($output, 'GetExtMimeList', $_SESSION[$View->Model]['Group'], $list, $type)) {
+			if ($View->Controller($output, 'GetExtMimeList', $_SESSION[$View->Model]['ConfOpt'], $list, $type)) {
 				echo $conf['title'].':';
 				?>
 				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
@@ -192,31 +192,31 @@ function PrintFilterExtMimeForm($list)
 if (count($_POST)) {
 	if (filter_has_var(INPUT_POST, '>>')) {
 		foreach ($_POST['Items'] as $Ext) {
-			$View->Controller($Output, 'DisableExtMime', $_SESSION[$View->Model]['Group'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Ext);
+			$View->Controller($Output, 'DisableExtMime', $_SESSION[$View->Model]['ConfOpt'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Ext);
 		}
 	}
 	else if (filter_has_var(INPUT_POST, '<<')) {
 		foreach ($_POST['Items'] as $Ext) {
-			$View->Controller($Output, 'EnableExtMime', $_SESSION[$View->Model]['Group'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Ext);
+			$View->Controller($Output, 'EnableExtMime', $_SESSION[$View->Model]['ConfOpt'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Ext);
 		}
 	}
 	else if (filter_has_var(INPUT_POST, 'Delete')) {
 		foreach ($_POST['Items'] as $Ext) {
-			$View->Controller($Output, 'DelExtMime', $_SESSION[$View->Model]['Group'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Ext);
+			$View->Controller($Output, 'DelExtMime', $_SESSION[$View->Model]['ConfOpt'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Ext);
 		}
 	}
 	else if (filter_has_var(INPUT_POST, 'Add') && filter_has_var(INPUT_POST, 'ItemToAdd')) {
-		$View->Controller($Output, 'AddExtMime', $_SESSION[$View->Model]['Group'], $Submenu, filter_input(INPUT_POST, 'ListType'),
+		$View->Controller($Output, 'AddExtMime', $_SESSION[$View->Model]['ConfOpt'], $Submenu, filter_input(INPUT_POST, 'ListType'),
 				filter_input(INPUT_POST, 'ItemToAdd'), filter_input(INPUT_POST, 'CommentToAdd'));
 	}
 }
 
-$View->SetSessionFilterGroup();
+$View->SetSessionConfOpt();
 
 require_once($VIEW_PATH.'/header.php');
 
 if ($PrintGroupForm) {
-	$View->PrintFilterGroupForm();
+	$View->PrintConfOptForm();
 }
 PrintFilterExtMimeForm($Submenu);
 PrintHelpWindow($View->ConfHelpMsg."\n\n".$ListHelpMsg);

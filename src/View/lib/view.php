@@ -593,7 +593,7 @@ class View
 	{
 	}
 
-	function SetSessionFilterGroup()
+	function SetSessionConfOpt()
 	{
 	}
 }

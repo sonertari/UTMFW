@@ -31,7 +31,7 @@ function PrintRulesForms()
 		<td style="width: 0;">
 			<?php
 			echo _TITLE2('Enabled Rules').':';
-			$View->Controller($output, 'GetRules', $_SESSION[$View->Model]['Group']);
+			$View->Controller($output, 'GetRules', $_SESSION[$View->Model]['ConfOpt']);
 			?>
 			<br />
 			<select name="RulesToChange[]" multiple style="width: 200px; height: 400px;">
@@ -67,7 +67,7 @@ function PrintRulesForms()
 		<td style="width: 0; vertical-align: top;">
 			<?php
 			echo _TITLE2('Disabled Rules').':';
-			$View->Controller($output, 'GetDisabledRules', $_SESSION[$View->Model]['Group']);
+			$View->Controller($output, 'GetDisabledRules', $_SESSION[$View->Model]['ConfOpt']);
 			sort($output);
 			?>
 			<br />
@@ -91,31 +91,31 @@ function PrintRulesForms()
 
 if (filter_has_var(INPUT_POST, '>>')) {
 	foreach ($_POST['RulesToChange'] as $Rule) {
-		$View->Controller($Output, 'DisableRule', $Rule, $_SESSION[$View->Model]['Group']);
+		$View->Controller($Output, 'DisableRule', $Rule, $_SESSION[$View->Model]['ConfOpt']);
 	}
 }
 else if (filter_has_var(INPUT_POST, '<<')) {
 	foreach ($_POST['RulesToChange'] as $Rule) {
-		$View->Controller($Output, 'EnableRule', $Rule, $_SESSION[$View->Model]['Group']);
+		$View->Controller($Output, 'EnableRule', $Rule, $_SESSION[$View->Model]['ConfOpt']);
 	}
 }
 else if (filter_has_var(INPUT_POST, 'MoveUp')) {
 	foreach ($_POST['RulesToChange'] as $Rule) {
-		$View->Controller($Output, 'MoveRuleUp', $Rule, $_SESSION[$View->Model]['Group']);
+		$View->Controller($Output, 'MoveRuleUp', $Rule, $_SESSION[$View->Model]['ConfOpt']);
 	}
 }
 else if (filter_has_var(INPUT_POST, 'MoveDown')) {
 	$SelectedRules= $_POST['RulesToChange'];
 	for ($i= count($SelectedRules) - 1; $i >= 0; $i--) {
-		$View->Controller($Output, 'MoveRuleDown', $SelectedRules[$i], $_SESSION[$View->Model]['Group']);
+		$View->Controller($Output, 'MoveRuleDown', $SelectedRules[$i], $_SESSION[$View->Model]['ConfOpt']);
 	}
 }
 
-$View->SetSessionFilterGroup();
+$View->SetSessionConfOpt();
 
 require_once($VIEW_PATH.'/header.php');
 
-$View->PrintFilterGroupForm();
+$View->PrintConfOptForm();
 ?>
 <table>
 	<tr>

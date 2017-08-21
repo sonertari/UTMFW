@@ -56,20 +56,20 @@ class E2guardian extends View
 	 * @warning Group file should probably be checked only for $_POST method. But
 	 * there is no guarantee that session group will exist forever, or that Group 1 exists.
 	 */
-	function SetSessionFilterGroup()
+	function SetSessionConfOpt()
 	{
-		if (filter_has_var(INPUT_POST, 'Group')) {
-			$group= filter_input(INPUT_POST, 'Group');
+		if (filter_has_var(INPUT_POST, 'ConfOpt')) {
+			$group= filter_input(INPUT_POST, 'ConfOpt');
 		}
-		else if ($_SESSION[$this->Model]['Group']) {
-			$group= $_SESSION[$this->Model]['Group'];
+		else if ($_SESSION[$this->Model]['ConfOpt']) {
+			$group= $_SESSION[$this->Model]['ConfOpt'];
 		}
 		else {
 			$group= '1';
 		}
 
 		if ($this->Controller($output, 'GroupExists', $group)) {
-			$_SESSION[$this->Model]['Group']= $group;
+			$_SESSION[$this->Model]['ConfOpt']= $group;
 		}
 		else {
 			PrintHelpWindow(_NOTICE('Filter group not found').': '.$group, 'auto', 'ERROR');
@@ -79,7 +79,7 @@ class E2guardian extends View
 	/**
 	 * Displays an edit box and a button to change current group.
 	 */
-	function PrintFilterGroupForm()
+	function PrintConfOptForm()
 	{
 		// Print the group form even if group not found, so user can change it
 		?>
@@ -88,7 +88,7 @@ class E2guardian extends View
 				<td>
 					<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 						<?php echo _TITLE('Group').':' ?>
-						<input type="text" name="Group" style="width: 20px;" maxlength="2" value=<?php echo $_SESSION[$this->Model]['Group'] ?> />
+						<input type="text" name="ConfOpt" style="width: 20px;" maxlength="2" value=<?php echo $_SESSION[$this->Model]['ConfOpt'] ?> />
 						<input type="submit" name="ApplyGroup" value="<?php echo _CONTROL('Apply') ?>"/>
 					</form>
 				</td>

@@ -58,10 +58,18 @@ if ($View->Controller($Output, 'GetServiceStatus')) {
 							$Class= 'class="active" ';
 						}
 
-						if (in_array($Module, $ModelsToStat)) {
+						if (array_key_exists($Module, $ModelsToStat)) {
 							if (preg_match("/$Module=R/", $ServiceStatus)) {
 								$Image= 'run.png';
 								$Name= 'R';
+							}
+							else if (preg_match("/$Module=PR/", $ServiceStatus)) {
+								$Image= 'partialrun.png';
+								$Name= 'PR';
+							}
+							else if (preg_match("/$Module=E/", $ServiceStatus)) {
+								$Image= 'critical.png';
+								$Name= 'E';
 							}
 							else {
 								$Image= 'stop.png';

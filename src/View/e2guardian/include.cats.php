@@ -50,7 +50,7 @@ function PrintFilterCatForms($list)
 			),
 		);
 
-	$group= $_SESSION[$View->Model]['Group'];
+	$group= $_SESSION[$View->Model]['ConfOpt'];
 
 	$catlists= array(
 		'sites'		=> array('exception', 'gray', 'banned'),
@@ -126,19 +126,19 @@ if (filter_has_var(INPUT_POST, 'Cats')) {
 		$Cat= $CatArray[0];
 		$Subcat= $CatArray[1];
 		if (filter_has_var(INPUT_POST, 'Disable')) {
-			$View->Controller($Output, 'TurnOffCats', $_SESSION[$View->Model]['Group'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Cat, $Subcat);
+			$View->Controller($Output, 'TurnOffCats', $_SESSION[$View->Model]['ConfOpt'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Cat, $Subcat);
 		}
 		else if (filter_has_var(INPUT_POST, 'Enable')) {
-			$View->Controller($Output, 'TurnOnCats', $_SESSION[$View->Model]['Group'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Cat, $Subcat);
+			$View->Controller($Output, 'TurnOnCats', $_SESSION[$View->Model]['ConfOpt'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Cat, $Subcat);
 		}
 	}
 }
 
-$View->SetSessionFilterGroup();
+$View->SetSessionConfOpt();
 
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintFilterGroupForm();
+$View->PrintConfOptForm();
 PrintFilterCatForms($Submenu);
 
 PrintHelpWindow($View->ConfHelpMsg."\n\n".$ListHelpMsg.' '.$WeightedListHelpMsg);

@@ -56,6 +56,6 @@ $ViewConfigName= $Submenu.'Config';
 $View->Config= ${$ViewConfigName};
 /// conf.php included can print DG group change form.
 /// Default is FALSE.
-$PRINT_GROUP_FORM= TRUE;
+$PRINT_CONFOPT_FORM= TRUE;
 require_once('../lib/conf.php');
 ?>

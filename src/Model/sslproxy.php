@@ -70,6 +70,11 @@ class Sslproxy extends Model
 					'desc'	=>	_('Get idle conns'),
 					),
 
+				'GetCriticalErrors'	=> array(
+					'argv'	=>	array(),
+					'desc'	=>	_('Get critical errors'),
+					),
+
 				'GetCACertFileName'	=> array(
 					'argv'	=>	array(),
 					'desc'	=>	_('Get CA cert filename'),
@@ -105,7 +110,6 @@ class Sslproxy extends Model
 			// CONN: pop3s 192.168.3.24 46790 66.102.1.108 995 sni:pop.gmail.com names:- sproto:TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256 dproto:TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256 origcrt:- usedcrt:-
 			$re= "/^CONN:\s+(\S+)\s+(\S+)\s+(\d+)\s+(\S+)\s+(\d+)(\s+.*sproto:(\S+)\s+dproto:(\S+).*|)$/";
 			if (preg_match($re, $cols['Log'], $match)) {
-				$cols['Type']= 'connect';
 				$cols['Proto']= $match[1];
 				$cols['SrcAddr']= $match[2];
 				$cols['SrcPort']= $match[3];
@@ -117,7 +121,6 @@ class Sslproxy extends Model
 				// STATS: thr=1, mld=0, mfd=0, mat=0, mct=0, iib=0, iob=0, eib=0, eob=0, swm=0, uwm=0, to=0, err=0
 				$re= "/^STATS: thr=\d+, mld=(\d+), mfd=(\d+), mat=(\d+), mct=(\d+), iib=(\d+), iob=(\d+), eib=(\d+), eob=(\d+), swm=(\d+), uwm=(\d+), to=(\d+), err=(\d+), si=(\d+)$/";
 				if (preg_match($re, $cols['Log'], $match)) {
-					$cols['Type']= 'stats';
 					$cols['MaxLoad']= $match[1];
 					$cols['MaxFd']= $match[2];
 					$cols['MaxAccessTime']= $match[3];
@@ -133,21 +136,18 @@ class Sslproxy extends Model
 					$cols['StatsIdx']= $match[13];
 				} else {
 					// ERROR: Error from bufferevent: 0:- 336151570:1042:sslv3 alert bad certificate:20:SSL routines:148:SSL3_READ_BYTES
-					$re= "/^ERROR: (.*)$/";
+					$re= "/^(CRITICAL|ERROR): (.*)$/";
 					if (preg_match($re, $cols['Log'], $match)) {
-						$cols['Type']= 'error';
-						$cols['Error']= $match[1];
+						$cols['Error']= $match[2];
 					} else {
 						// WARNING: Received SIGPIPE; ignoring.
 						$re= "/^WARNING: (.*)$/";
 						if (preg_match($re, $cols['Log'], $match)) {
-							$cols['Type']= 'warning';
 							$cols['Warning']= $match[1];
 						} else {
 							// IDLE: thr=0, id=1, ce=1 cc=1, at=0 ct=0, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443
 							$re= "/^IDLE: thr=(\d+), id=(\d+),.*, at=(\d+) ct=(\d+)(, src_addr=((\S+):\d+)|)(, dst_addr=((\S+):\d+)|)$/";
 							if (preg_match($re, $cols['Log'], $match)) {
-								$cols['Type']= 'idle';
 								$cols['ThreadIdx']= $match[1];
 								$cols['ConnIdx']= $match[2];
 								$cols['IdleTime']= $match[3];
@@ -158,7 +158,6 @@ class Sslproxy extends Model
 								// EXPIRED: thr=1, time=0, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443
 								$re= "/^EXPIRED: thr=\d+, time=(\d+)(, src_addr=((\S+):\d+)|)(, dst_addr=((\S+):\d+)|)$/";
 								if (preg_match($re, $cols['Log'], $match)) {
-									$cols['Type']= 'expired';
 									$cols['IdleTime']= $match[1];
 									$cols['ExpiredSrcAddr']= $match[4];
 									$cols['ExpiredDstAddr']= $match[7];
@@ -166,7 +165,6 @@ class Sslproxy extends Model
 									// INFO:
 									$re= "/^INFO: (.*)$/";
 									if (preg_match($re, $cols['Log'], $match)) {
-										$cols['Type']= 'info';
 										$cols['Info']= $match[1];
 									}
 								}
@@ -198,7 +196,7 @@ class Sslproxy extends Model
 		return $this->ReplaceRegexp($this->ConfFile, "/^(ProxySpec\h+$specs\b.*(\s|))/m", '');
 	}
 	
-	function GetLastLogs($needle, $interval)
+	function GetLastLogs($needle, $interval= 60)
 	{
 		$lastLogs= array();
 
@@ -213,7 +211,8 @@ class Sslproxy extends Model
 			// Make sure we cover the requested interval, but limit the number of lines too
 			while ($lastTs - $firstTs < $interval) {
 				if ($lineCount > 1024) {
-					$logs= array();
+					// @todo Should we clear the logs?
+					//$logs= array();
 					break;
 				}
 
@@ -284,6 +283,29 @@ class Sslproxy extends Model
 	function GetIdleConns($interval)
 	{
 		return Output(json_encode($this->GetLastLogs('IDLE:', $interval)));
+	}
+
+	function GetCriticalErrors()
+	{
+		$logs= $this->_getCriticalErrors();
+		if (count($logs) > 0) {
+			$errorStr= '';
+			foreach ($logs as $l) {
+				$errorStr.= "\n" . $l['Log'];
+			}
+			Error(_('There are CRITICAL errors.')."$errorStr");
+		}
+		return TRUE;
+	}
+
+	function hasCriticalErrors()
+	{
+		return count($this->_getCriticalErrors()) > 0;
+	}
+
+	function _getCriticalErrors()
+	{
+		return $this->GetLastLogs('CRITICAL:');
 	}
 
 	function GetCACertFileName()

@@ -2309,29 +2309,51 @@ class Model
 		global $MODEL_PATH, $ModelFiles, $Models, $ModelsToStat;
 
 		$output= FALSE;
-		foreach ($ModelsToStat as $m) {
-			if (array_key_exists($m, $ModelFiles)) {
-				require_once($MODEL_PATH.'/'.$ModelFiles[$m]);
+		foreach ($ModelsToStat as $name => $modules) {
+			$stat= array();
+			foreach ($modules as $m) {
+				if (array_key_exists($m, $ModelFiles)) {
+					require_once($MODEL_PATH.'/'.$ModelFiles[$m]);
 
-				if (class_exists($Models[$m])) {
-					$model= new $Models[$m]();
-					
-					if ($model->IsRunning()) {
-						$output.= "$m=R\n";
+					if (class_exists($Models[$m])) {
+						$model= new $Models[$m]();
+						if ($model->hasCriticalErrors()) {
+							$stat[]= 'E';
+						} else {
+							$stat[]= $model->IsRunning();
+						}
 					}
 					else {
-						$output.= "$m=S\n";
+						ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in Models: $m");
 					}
 				}
 				else {
-					ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in Models: $m");
+					ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in ModelFiles: $m");
 				}
 			}
-			else {
-				ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in ModelFiles: $m");
+
+			if (in_array('E', $stat, TRUE)) {
+				$output.= "$name=E\n";
+			} else {
+				$true= in_array(TRUE, $stat, TRUE);
+				$false= in_array(FALSE, $stat, TRUE);
+				if ($true && !$false) {
+					$output.= "$name=R\n";
+				}
+				else if ($true && $false) {
+					$output.= "$name=PR\n";
+				}
+				else if (!$true && $false) {
+					$output.= "$name=S\n";
+				}
 			}
 		}
 		return Output($output);
+	}
+
+	function hasCriticalErrors()
+	{
+		return FALSE;
 	}
 
 	/**

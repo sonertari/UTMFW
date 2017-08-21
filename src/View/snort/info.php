@@ -63,6 +63,6 @@ $View->PrintStatusForm();
 
 PrintHelpWindow(_HELPWINDOW('You can run multiple Intrusion Detection processes, one for each network interface. The IDS listens to such interfaces in promiscuous mode.
 
-The Inline Intrusion Prevention (IPS) actively inspects the traffic passing through it. If the Inline IPS stops, the traffic it is supposed to inspect will effectively be blocked, such as plain and encrypted HTTP, POP3, and SMTP. So if you choose to stop the Inline IPS, you should disable the related pf rule which diverts such traffic to the Inline IPS as well.'));
+The Inline IPS is an active inline Intrusion Prevention System (IPS) which inspects the traffic passing through it and may decide to block the traffic using drop rules. If the Inline IPS is stopped, the traffic it is supposed to inspect will effectively be blocked, such as plain and encrypted HTTP, POP3, and SMTP traffic. So if you choose to stop the Inline IPS, you should disable the related pf rule which diverts such traffic to it as well.'));
 require_once($VIEW_PATH.'/footer.php');
 ?>

@@ -77,7 +77,7 @@ function PrintFilterConfForms($list)
 	<table style="width: auto;">
 	<?php
 	foreach ($lists[$list] as $type => $conf) {
-		if ($View->Controller($items, 'GetList', $_SESSION[$View->Model]['Group'], $list, $type)) {
+		if ($View->Controller($items, 'GetList', $_SESSION[$View->Model]['ConfOpt'], $list, $type)) {
 			?>
 			<tr>
 				<td style="background: <?php echo $conf['color'] ?>;">
@@ -110,19 +110,19 @@ function PrintFilterConfForms($list)
 
 if (filter_has_var(INPUT_POST, 'Delete')) {
 		foreach ($_POST['SitesToDelete'] as $Site) {
-			$View->Controller($Output, 'DelSiteUrl', $_SESSION[$View->Model]['Group'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Site);
+			$View->Controller($Output, 'DelSiteUrl', $_SESSION[$View->Model]['ConfOpt'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Site);
 		}
 }
 else if (filter_has_var(INPUT_POST, 'Add') && filter_has_var(INPUT_POST, 'SiteToAdd')) {
-	$View->Controller($Output, 'AddSiteUrl', $_SESSION[$View->Model]['Group'], $Submenu, filter_input(INPUT_POST, 'ListType'), filter_input(INPUT_POST, 'SiteToAdd'));
+	$View->Controller($Output, 'AddSiteUrl', $_SESSION[$View->Model]['ConfOpt'], $Submenu, filter_input(INPUT_POST, 'ListType'), filter_input(INPUT_POST, 'SiteToAdd'));
 }
 
-$View->SetSessionFilterGroup();
+$View->SetSessionConfOpt();
 
 require_once($VIEW_PATH.'/header.php');
 		
 if ($PrintGroupForm) {
-	$View->PrintFilterGroupForm();
+	$View->PrintConfOptForm();
 }
 PrintFilterConfForms($Submenu);
 

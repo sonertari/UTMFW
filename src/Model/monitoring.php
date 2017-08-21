@@ -23,24 +23,5 @@ require_once($MODEL_PATH.'/model.php');
 class Monitoring extends Model
 {
 	public $LogFile= '/var/log/monitoring.log';
-	
-	function IsRunning($proc= '')
-	{
-		global $MODEL_PATH;
-		
-		require_once($MODEL_PATH.'/symon.php');
-		$symon= new Symon();
-		$retval= $symon->IsRunning();
-		
-		require_once($MODEL_PATH.'/symux.php');
-		$symux= new Symux();
-		$retval&= $symux->IsRunning();
-		
-		require_once($MODEL_PATH.'/pmacct.php');
-		$pmacct= new Pmacct();
-		$retval&= $pmacct->IsRunning();
-		
-		return $retval;
-	}
 }
 ?>

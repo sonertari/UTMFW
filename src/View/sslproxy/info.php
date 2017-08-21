@@ -37,6 +37,8 @@ if ($ReportInterval < 10) {
 
 $_SESSION[$View->Model]['ReportInterval']= $ReportInterval;
 
+$View->Controller($Output, 'GetCriticalErrors');
+
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		

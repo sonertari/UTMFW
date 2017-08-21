@@ -105,37 +105,36 @@ class Snort extends View
 	/**
 	 * Sets the conf for the current session.
 	 */
-	function SetSessionFilterGroup()
+	function SetSessionConfOpt()
 	{
-		if (filter_has_var(INPUT_POST, 'Group')) {
-			$group= filter_input(INPUT_POST, 'Group');
+		if (filter_has_var(INPUT_POST, 'ConfOpt')) {
+			$conf= filter_input(INPUT_POST, 'ConfOpt');
 		}
-		else if ($_SESSION[$this->Model]['Group']) {
-			$group= $_SESSION[$this->Model]['Group'];
+		else if ($_SESSION[$this->Model]['ConfOpt']) {
+			$conf= $_SESSION[$this->Model]['ConfOpt'];
 		}
 		else {
-			$group= 0;
+			$conf= 0;
 		}
 
-		$_SESSION[$this->Model]['Group']= $group;
+		$_SESSION[$this->Model]['ConfOpt']= $conf;
 	}
 
 	/**
 	 * Displays an edit box and a button to change current conf file.
 	 */
-	function PrintFilterGroupForm()
+	function PrintConfOptForm()
 	{
-		// Print the form even if conf not found, so user can change it
-		$group= $_SESSION[$this->Model]['Group'];
+		$conf= $_SESSION[$this->Model]['ConfOpt'];
 		?>
 		<table>
 			<tr>
 				<td>
 					<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 						<?php echo _TITLE('Configuration').':' ?>
-						<select name="Group">
-							<option <?php echo $group == 0 ? 'selected':''; ?> value="0"><?php echo _TITLE('IDS') ?></option>
-							<option <?php echo $group == 1 ? 'selected':''; ?> value="1"><?php echo _TITLE('Inline IPS') ?></option>
+						<select name="ConfOpt">
+							<option <?php echo $conf == 0 ? 'selected':''; ?> value="0"><?php echo _TITLE('IDS') ?></option>
+							<option <?php echo $conf == 1 ? 'selected':''; ?> value="1"><?php echo _TITLE('Inline IPS') ?></option>
 						</select>
 						<input type="submit" name="ApplyConf" value="<?php echo _CONTROL('Apply') ?>"/>
 						<input type="hidden" name="Model" value=<?php echo $this->Model ?> />

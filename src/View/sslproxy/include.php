@@ -63,7 +63,7 @@ $LogConf = array(
     		),
         'HighlightLogs' => array(
             'REs' => array(
-                'red' => array('ERROR:', 'EXPIRED:'),
+                'red' => array('CRITICAL:', 'ERROR:', 'EXPIRED:'),
                 'yellow' => array('WARNING:', 'IDLE:'),
                 'green' => array('CONN:'),
         		),
@@ -93,7 +93,7 @@ class Sslproxy extends View
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
 		$this->Caption= _TITLE('SSL Proxy');
 
-		$this->LogsHelpMsg= _HELPWINDOW('The SSL proxy takes 5 different kinds of logs: (1) STATS for periodic statistics per thread, (2) CONN for connection details at establisment time, (3) IDLE for slow connections, (4) EXPIRED for timed-out connections which are closed by the SSL proxy, and (5) ERROR, WARNING, or INFO messages.');
+		$this->LogsHelpMsg= _HELPWINDOW('The SSL proxy takes 5 different kinds of logs: (1) STATS for periodic statistics per thread, (2) CONN for connection details at establisment time, (3) IDLE for slow connections, (4) EXPIRED for timed-out connections which are closed by the SSL proxy, and (5) CRITICAL, ERROR, WARNING, or INFO messages.');
 		
 		$this->GraphHelpMsg= _HELPWINDOW('The SSL proxy is an event-driven multithreaded program.');
 		

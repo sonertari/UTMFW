@@ -141,7 +141,7 @@ function PrintFilterAuthIPForms()
 
 if (filter_has_var(INPUT_POST, 'Create')) {
 	/// @attention Session group should be set before this point, always
-	$View->Controller($Output, 'CreateNewGroup', $_SESSION[$View->Model]['Group']);
+	$View->Controller($Output, 'CreateNewGroup', $_SESSION[$View->Model]['ConfOpt']);
 }
 else if (filter_has_var(INPUT_POST, 'Delete')) {
 	foreach ($_POST['IPs'] as $Ip) {
@@ -160,11 +160,11 @@ else if (filter_has_var(INPUT_POST, 'AddAuthIp') && filter_has_var(INPUT_POST, '
 	$View->Controller($Output, 'AddIp', filter_input(INPUT_POST, 'List'), filter_input(INPUT_POST, 'AuthIPToAdd'));
 }
 
-$View->SetSessionFilterGroup();
+$View->SetSessionConfOpt();
 
 require_once($VIEW_PATH.'/header.php');
 
-$View->PrintFilterGroupForm();
+$View->PrintConfOptForm();
 ?>
 <table id="nvp">
 	<tr class="oddline">
