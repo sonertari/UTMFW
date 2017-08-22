@@ -305,7 +305,9 @@ class Sslproxy extends Model
 
 	function _getCriticalErrors()
 	{
-		return $this->GetLastLogs('CRITICAL:');
+		global $CriticalErrorCheckInterval;
+
+		return $this->GetLastLogs('CRITICAL:', $CriticalErrorCheckInterval);
 	}
 
 	function GetCACertFileName()

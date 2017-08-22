@@ -366,7 +366,7 @@ Admin can change the user password without knowing the current user password. Bu
 		</td>
 		<td class="none">
 			<?php
-			PrintHelpBox(_HELPBOX('Pfctl commands are executed in a separate process, which returns pfctl output in a message. Parent process times out waiting for an output message after this many seconds. This approach is necessary in case pfctl is stuck or taking too long (and it is on certain cases).
+			PrintHelpBox(_HELPBOX('Pfctl commands are executed in a separate process, which returns pfctl output in a message. Parent process times out waiting for an output message after this many seconds. This approach is necessary in case pfctl is stuck or taking too long (and it is in certain cases).
 
 <b>Setting this timeout to 0 may fail the execution of all pfctl commands, effectively disabling rule tests.<b>'));
 			?>
