@@ -61,10 +61,10 @@ $View->PrintStatsMaxValues($ReportInterval);
 <?php
 $View->PrintIdleConns($ReportInterval);
 
-PrintHelpWindow(_HELPWINDOW('The SSL proxy decrypts the SSL/TLS encrypted traffic and feeds it into the UTM services. The inline IPS inspects the decrypted traffic for intrusion detection and prevention as well.
+PrintHelpWindow(_HELPWINDOW('The SSL proxy decrypts SSL/TLS encrypted traffic and feeds it into the UTM services. The inline IPS inspects the decrypted traffic for intrusion detection and prevention as well.
 
-The max statistics on this page represent the status of the SSL proxy process as a whole within the last report interval in seconds. The numbers here may give you an idea on the current load of the proxy. For example, if the max number of file descriptors is too high, you might want to increase the open files limit of the daemon class in login.conf.
+The max statistics displayed on this page represent the status of the SSL proxy process as a whole, within the last report interval in seconds. The numbers here may give you an idea on the current load of the proxy. For example, if the max number of file descriptors is too high, you might want to increase the open files limit of the daemon class in login.conf file.
 
-This page also reports certain connections as idle, because they were idle longer than the expired connection check interval of the SSL proxy. This does not mean that these connections have stalled; they may be just slow. Note that the SSL proxy does not allow for persistent HTTP connections, hence tries to close them as soon as possible. Therefore, it is desirable that the idle connections table be empty.'));
+This page also reports certain connections as idle, because they remained idle longer than the expired connection check interval of the SSL proxy. This does not mean that these connections have stalled; they may be just slow. Note that the SSL proxy does not allow for persistent HTTP connections, hence tries to close them as soon as possible. Therefore, it is desirable that the idle connections table be empty.'));
 require_once($VIEW_PATH.'/footer.php');
 ?>
