@@ -176,6 +176,7 @@ class Symon extends Model
 			'imspector',
 			'ftp-proxy',
 			'openvpn',
+			'sslproxy',
 		);
 		$procs= '';
 		foreach ($proclist as $p) {
