@@ -53,7 +53,7 @@ class Snortinline extends Snort
 	{
 		global $TmpFile;
 
-		$cmd= "/usr/local/bin/snort -D -d -Q -c $this->ConfFile -u _snort -g _snort -b -l /var/snort/log";
+		$cmd= "/usr/local/bin/snort -D -d -Q -c $this->ConfFile -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort";
 		$this->RunShellCommand("$cmd > $TmpFile 2>&1");
 
 		$count= 0;

@@ -99,7 +99,7 @@ class Snort extends Model
 	{
 		global $TmpFile;
 
-		$cmd= "/usr/local/bin/snort -i $if -D -d -c $this->ConfFile -u _snort -g _snort -b -l /var/snort/log";
+		$cmd= "/usr/local/bin/snort -i $if -D -d -c $this->ConfFile -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort";
 		$this->RunShellCommand("$cmd > $TmpFile 2>&1");
 
 		$count= 0;
