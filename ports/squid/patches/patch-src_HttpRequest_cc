@@ -1,0 +1,19 @@
+$OpenBSD$
+--- src/HttpRequest.cc.orig	Thu Aug  3 07:33:54 2017
++++ src/HttpRequest.cc	Thu Aug  3 07:34:55 2017
+@@ -76,6 +76,9 @@ HttpRequest::init()
+     auth_user_request = NULL;
+ #endif
+     port = 0;
++    sslproxy_addr = NULL;
++    sslproxy_port = 0;
++    sslproxy_client_addr.setEmpty();
+     canonical = NULL;
+     memset(&flags, '\0', sizeof(flags));
+     range = NULL;
+@@ -690,4 +693,5 @@ HttpRequest::storeId()
+ 
+     return urlCanonical(this);
+ }
++
+ 

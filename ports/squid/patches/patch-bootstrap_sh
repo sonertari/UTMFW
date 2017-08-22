@@ -1,0 +1,12 @@
+$OpenBSD: patch-bootstrap_sh,v 1.5 2016/02/16 13:21:07 sthen Exp $
+--- bootstrap.sh.orig	Mon Feb 15 13:59:11 2016
++++ bootstrap.sh	Tue Feb 16 11:45:32 2016
+@@ -130,7 +130,7 @@ do
+ 	    mkdir -p cfgaux
+ 
+             if test -n "$ltpath"; then
+-              acincludeflag="-I $ltpath/../share/aclocal"
++              acincludeflag="-I ${LOCALBASE}/share/aclocal"
+             else
+               acincludeflag=""
+             fi

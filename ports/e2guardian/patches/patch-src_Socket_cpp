@@ -1,0 +1,35 @@
+$OpenBSD$
+--- src/Socket.cpp.orig	Mon Jul 24 19:48:41 2017
++++ src/Socket.cpp	Mon Jul 24 19:51:47 2017
+@@ -129,12 +129,18 @@ std::string Socket::getLocalIP()
+ // find the ip of the client connecting to us
+ std::string Socket::getPeerIP()
+ {
++    if (!actualPeerAddr.empty()) {
++        return actualPeerAddr;
++    }
+     return inet_ntoa(peer_adr.sin_addr);
+ }
+ 
+ // find the port of the client connecting to us
+ int Socket::getPeerSourcePort()
+ {
++    if (actualPeerPort) {
++        return actualPeerPort;
++    }
+     return ntohs(peer_adr.sin_port);
+ }
+ int Socket::getPort()
+@@ -150,6 +156,12 @@ void Socket::setPort(int port)
+ unsigned long int Socket::getPeerSourceAddr()
+ {
+     return (unsigned long int)ntohl(peer_adr.sin_addr.s_addr);
++}
++
++void Socket::setActualPeerAddrPort(std::string addr, int port)
++{
++    actualPeerAddr = addr;
++    actualPeerPort = port;
+ }
+ 
+ // close connection & wipe address structs

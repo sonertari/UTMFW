@@ -1,0 +1,22 @@
+$OpenBSD$
+--- src/comm/Connection.h.orig	Thu Aug  3 07:07:56 2017
++++ src/comm/Connection.h	Thu Aug  3 07:08:19 2017
+@@ -115,6 +115,12 @@ class Connection : public RefCountable (public)
+     /** Address for the Remote end of a TCP link. */
+     Ip::Address remote;
+ 
++    /** Address for the SSLproxy end of a TCP link. */
++    Ip::Address sslproxy;
++
++    const char *sslproxy_addr;
++    unsigned short sslproxy_port;
++
+     /** Hierarchy code for this connection link */
+     hier_code peerType;
+ 
+@@ -177,4 +183,5 @@ operator << (std::ostream &os, const Comm::ConnectionP
+ }
+ 
+ #endif
++
+ 

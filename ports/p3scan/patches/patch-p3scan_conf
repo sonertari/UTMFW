@@ -1,5 +1,6 @@
---- p3scan.conf.orig	Mon Dec 12 17:05:01 2005
-+++ p3scan.conf	Fri Nov 16 17:32:53 2007
+$ComixWall: patch-p3scan_conf,v 1.3 2009/07/25 09:55:30 soner Exp $
+--- p3scan.conf.orig	Tue Aug  1 15:40:42 2017
++++ p3scan.conf	Tue Aug  1 15:40:42 2017
 @@ -6,43 +6,39 @@
  #                      all params are set to default                     #
  #                                                                        #
@@ -99,7 +100,7 @@
  #  Where to find spamc, the link to the Mail::SpamAssassin daemon spamd.
  #
 -# spamcheck = /usr/bin/spamc
-+# spamcheck = !!LOCALBASE!!/bin/spamc
++# spamcheck = /usr/local/bin/spamc
  
  #
  # DSPAM
@@ -108,7 +109,7 @@
  # footer = /usr/local/bin/f-prot -verno
  # Sample: ClamAV:
 -# footer = /usr/bin/clamdscan -V
-+# footer = !!LOCALBASE!!/bin/clamdscan -V
++# footer = /usr/local/bin/clamdscan -V
  
  #
  # TOP command processing

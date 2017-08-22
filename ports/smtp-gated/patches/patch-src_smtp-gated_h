@@ -1,0 +1,19 @@
+$OpenBSD$
+--- src/smtp-gated.h.orig	Wed Aug  2 08:10:36 2017
++++ src/smtp-gated.h	Wed Aug  2 19:16:50 2017
+@@ -226,9 +226,14 @@ struct session_t {
+ 
+ 	struct sockaddr_in origin;	// source (client/NAT) address+port
+ 	char origin_str[16];		// source (client/NAT) IP text-address
+-	
++
+ 	struct sockaddr_in target;	// target (SMTP server) address+port
+ 	char target_str[16];		// target (SMTP server) IP text-address
++
++	struct sockaddr_in actual_target;
++    int sslproxy_ssl;
++    int behind_sslproxy;
++	char *saved_line;
+ 
+ 	struct sockaddr_in local;	// source -> local address data
+ //	char local_str[16];			// local IP text-address

@@ -1,0 +1,20 @@
+$OpenBSD$
+--- src/FwdState.cc.orig	Thu Aug  3 07:26:32 2017
++++ src/FwdState.cc	Thu Aug  3 07:27:15 2017
+@@ -1227,6 +1227,10 @@ aclMapNfmark(acl_nfmark * head, ACLChecklist * ch)
+ void
+ getOutgoingAddress(HttpRequest * request, Comm::ConnectionPointer conn)
+ {
++	// transfer sslproxy info to conn
++	conn->sslproxy_addr = request->sslproxy_addr;
++	conn->sslproxy_port = request->sslproxy_port;
++
+     // skip if an outgoing address is already set.
+     if (!conn->local.isAnyAddr()) return;
+ 
+@@ -1306,4 +1310,5 @@ GetMarkingsToServer(HttpRequest * request, Comm::Conne
+     conn.nfmark = 0;
+ #endif
+ }
++
+ 

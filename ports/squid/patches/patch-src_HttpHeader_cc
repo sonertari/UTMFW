@@ -1,0 +1,17 @@
+$OpenBSD$
+--- src/HttpHeader.cc.orig	Thu Aug  3 07:29:03 2017
++++ src/HttpHeader.cc	Thu Aug  3 07:30:54 2017
+@@ -155,6 +155,7 @@ static const HttpHeaderFieldAttrs HeadersAttrs[] = {
+     {"FTP-Pre", HDR_FTP_PRE, ftStr},
+     {"FTP-Status", HDR_FTP_STATUS, ftInt},
+     {"FTP-Reason", HDR_FTP_REASON, ftStr},
++    {"SSLproxy", HDR_SSLPROXY, ftStr},
+     {"Other:", HDR_OTHER, ftStr}    /* ':' will not allow matches */
+ };
+ 
+@@ -1986,4 +1987,5 @@ HttpHeader::removeConnectionHeaderEntries()
+             refreshMask();
+     }
+ }
++
+ 

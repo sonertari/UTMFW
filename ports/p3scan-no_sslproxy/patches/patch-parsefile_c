@@ -1,0 +1,13 @@
+--- parsefile.c.orig	Mon Nov 12 19:58:43 2007
++++ parsefile.c	Mon Nov 12 19:50:41 2007
+@@ -69,9 +69,9 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <fcntl.h>
+-#include <malloc.h>
+ #include <string.h>
+ #include <sys/stat.h>
++#include <netinet/in.h>
+ #include "parsefile.h"
+ #include "getlinep3.h"
+ #include "p3scan.h"

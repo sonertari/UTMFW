@@ -17,6 +17,7 @@ MASTER_SITES=	https://github.com/e2guardian/e2guardian/releases/tag/v3.5.1/
 
 LIB_DEPENDS =           devel/pcre
 
+
 CONFIGURE_STYLE =	gnu
 AUTOCONF_VERSION =	2.69
 AUTOMAKE_VERSION =	1.15

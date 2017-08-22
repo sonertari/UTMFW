@@ -1,5 +1,6 @@
---- p3scan.c.orig	Mon Dec 12 17:00:00 2005
-+++ p3scan.c	Tue Jul 12 12:45:39 2016
+$ComixWall: patch-p3scan_c,v 1.6 2016/07/12 10:30:10 soner Exp $
+--- p3scan.c.orig	Tue Aug  1 15:40:42 2017
++++ p3scan.c	Thu Aug  3 22:45:20 2017
 @@ -44,33 +44,36 @@ TODO: Wanted: no iptables support
  #include <stdio.h>
  #include <stdlib.h>
@@ -146,9 +147,104 @@
                 p->clientbuf->linelen=GETLINE_LINE_NULL;
                 break;
              } else {
-@@ -1640,10 +1669,6 @@ int proxy(struct proxycontext *p){
+@@ -1638,12 +1667,100 @@ int proxy(struct proxycontext *p){
+             }
+          }
        }
-    } else {
+-   } else {
++   }
++
++   // Init buf at this point, so we can get any SSLproxy info from the client
++   if (!config->useurl) p->clientbuf=linebuf_init(4096);
++
++   // Sending initial OK to get SSLproxy info, if any
++   if (writeline(p->client_fd, WRITELINE_LEADING_RN,POK)){
++      do_log(LOG_CRIT, "ERR: Can't send +OK to client!");
++      return 1;
++   }
++
++   p->sslproxy_addr=NULL;
++   char *saved_line=NULL;
++   while(1){
++	   clientret=getlinep3(p->client_fd, p->clientbuf);
++	   if (clientret==GETLINE_OK){
++			// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[74.125.206.108]:465,s
++			if (!strncasecmp(p->clientbuf->line, "SSLproxy:", 9)) {
++				do_log(LOG_DEBUG, p->clientbuf->line);
++
++				char *ip_start = strchr(p->clientbuf->line, '[') + 1;
++				char *ip_end = strchr(ip_start, ']');
++				char *port_start = strchr(ip_end, ':') + 1;
++				char *port_end = strchr(port_start, ',');
++
++				if (!ip_start || !ip_end || !port_start || !port_end) {
++					do_log(LOG_CRIT, "Unable to find sslproxy addr fields: %s", p->clientbuf->line);
++					return SCANNER_RET_ERR;
++				}
++
++				int addr_len = ip_end - ip_start;
++				p->sslproxy_addr = malloc(addr_len+1);
++				strncpy(p->sslproxy_addr, ip_start, addr_len);
++				p->sslproxy_addr[addr_len] = '\0';
++
++				int port_len = port_end - port_start;
++				char *port = malloc(port_len + 1);
++				strncpy(port, port_start, port_len);
++				port[port_len] = '\0';
++				p->sslproxy_port=atoi(port);
++				
++				ip_start = strchr(port_end, '[') + 1;
++				ip_end = strchr(ip_start, ']');
++				port_start = strchr(ip_end, ':') + 1;
++				port_end = strchr(port_start, ',');
++
++				if (!ip_start || !ip_end || !port_start || !port_end) {
++					do_log(LOG_CRIT, "Unable to find sslproxy src addr fields: %s", p->clientbuf->line);
++					return SCANNER_RET_ERR;
++				}
++
++				addr_len = ip_end - ip_start;
++				p->sslproxy_src_addr = malloc(addr_len + 1);
++				strncpy(p->sslproxy_src_addr, ip_start, addr_len);
++				p->sslproxy_src_addr[addr_len] = '\0';
++
++				port_len = port_end - port_start;
++				p->sslproxy_src_port = malloc(port_len + 1);
++				strncpy(p->sslproxy_src_port, port_start, port_len);
++				p->sslproxy_src_port[port_len] = '\0';
++				
++				ip_start = strchr(port_end, '[') + 1;
++				ip_end = strchr(ip_start, ']');
++				port_start = strchr(ip_end, ':') + 1;
++				port_end = strchr(port_start, ',');
++				char *ssl_start = port_end + 1;
++
++				if (!ip_start || !ip_end || !port_start || !port_end) {
++					do_log(LOG_CRIT, "Unable to find sslproxy dst addr fields: %s", p->clientbuf->line);
++					return SCANNER_RET_ERR;
++				}
++
++				addr_len = ip_end - ip_start;
++				p->sslproxy_dst_addr = malloc(addr_len + 1);
++				strncpy(p->sslproxy_dst_addr, ip_start, addr_len);
++				p->sslproxy_dst_addr[addr_len] = '\0';
++
++				port_len = port_end - port_start;
++				p->sslproxy_dst_port = malloc(port_len + 1);
++				strncpy(p->sslproxy_dst_port, port_start, port_len);
++				p->sslproxy_dst_port[port_len] = '\0';
++
++				p->sslproxy_ssl = strchr(ssl_start, 's') ? 1 : 0;
++				break;
++			} else {
++			   do_log(LOG_DEBUG, "client said: %s", p->clientbuf->line);
++			   saved_line = p->clientbuf->line;
++			   break;
++			}
++	   }
++   }
++
++   if (!p->sslproxy_addr) {
        if (htonl(INADDR_ANY) == config->targetaddr.sin_addr.s_addr) {
 -         if (getsockopt(p->client_fd, SOL_IP, SO_ORIGINAL_DST, &p->server_addr, &p->socksize)){
 -            do_log(LOG_CRIT, "ERR: No IP-Conntrack-data (getsockopt failed)");
@@ -157,7 +253,89 @@
           /* try to avoid loop */
           if (((ntohl(p->server_addr.sin_addr.s_addr) == INADDR_LOOPBACK)
           && p->server_addr.sin_port == config->addr.sin_port )
-@@ -2800,7 +2825,7 @@ void parseoptions(int argc, char **argv){
+@@ -1658,6 +1775,7 @@ int proxy(struct proxycontext *p){
+          p->server_addr.sin_port = config->targetaddr.sin_port;
+       }
+    }
++   
+    /* open socket to 'real-server' */
+    if ((p->server_fd = socket(PF_INET, SOCK_STREAM, 0)) < 0){
+       do_log(LOG_CRIT, "ERR: Cannot open socket to real-server");
+@@ -1670,23 +1788,50 @@ int proxy(struct proxycontext *p){
+ #endif
+    p->serverbuf=linebuf_init(4096);
+    p->params=paramlist_init();
+-   if (!config->useurl) p->clientbuf=linebuf_init(4096);
++
+    /* Check connection type */
+    if (ntohs(p->server_addr.sin_port)==config->smtpport){
+       p->cksmtp=1;   /* Processing an SMTP message */
+       p->checksmtp=1;/* We should scan it */
+       do_log(LOG_NOTICE, "SMTP Connection from %s:%i", inet_ntoa(p->client_addr.sin_addr), ntohs(p->client_addr.sin_port));
+-   } else if(ntohs(p->server_addr.sin_port)==config->sslport){
+-      p->usessl=1;
+-      do_log(LOG_NOTICE, "POP3S Connection from %s:%i", inet_ntoa(p->client_addr.sin_addr), ntohs(p->client_addr.sin_port));
+    } else {
+-      do_log(LOG_NOTICE, "POP3 Connection from %s:%i", inet_ntoa(p->client_addr.sin_addr), ntohs(p->client_addr.sin_port));
++      if (!p->sslproxy_addr) {
++		if(ntohs(p->server_addr.sin_port)==config->sslport){
++		   p->usessl=1;
++		   do_log(LOG_NOTICE, "POP3S Connection from %s:%i", inet_ntoa(p->client_addr.sin_addr), ntohs(p->client_addr.sin_port));
++		} else {
++		   do_log(LOG_NOTICE, "POP3 Connection from %s:%i", inet_ntoa(p->client_addr.sin_addr), ntohs(p->client_addr.sin_port));
++		}
++	  } else {
++		// We are behind an SSLproxy
++		if(p->sslproxy_ssl){
++		   do_log(LOG_NOTICE, "POP3S Connection from %s:%s", p->sslproxy_src_addr, p->sslproxy_src_port);
++		} else {
++		   do_log(LOG_NOTICE, "POP3 Connection from %s:%s", p->sslproxy_src_addr, p->sslproxy_src_port);
++		}
++	  }
+    }
+-   do_log(LOG_NOTICE, "Real-server address is %s:%i", inet_ntoa(p->server_addr.sin_addr), ntohs(p->server_addr.sin_port));
++   if (!p->sslproxy_dst_addr) {
++	  do_log(LOG_NOTICE, "Real-server address is %s:%i", inet_ntoa(p->server_addr.sin_addr), ntohs(p->server_addr.sin_port));
++   } else {
++	  do_log(LOG_NOTICE, "Real-server address is %s:%s", p->sslproxy_dst_addr, p->sslproxy_dst_port);
++   }
+    if (p->usessl) ret=SSL_create_conn(p->server_fd, (struct sockaddr *) &p->server_addr, p->socksize, &p->ssl, &p->ctx, &p->sbio);
+-   else ret=connect(p->server_fd, (struct sockaddr *) &p->server_addr, p->socksize);
++   else {
++	   if (!p->sslproxy_addr) {
++			ret=connect(p->server_fd, (struct sockaddr *) &p->server_addr, p->socksize);
++	   } else {
++			// Since we are behind an SSLproxy, connect to it instead of the real server
++			do_log(LOG_DEBUG, "SSLproxy address is %s:%d", p->sslproxy_addr, p->sslproxy_port);
++			struct  sockaddr_in   sslproxy_addr;
++            sslproxy_addr.sin_family = AF_INET;
++			sslproxy_addr.sin_port=htons(p->sslproxy_port);
++			sslproxy_addr.sin_addr.s_addr = inet_addr(p->sslproxy_addr);
++			ret=connect(p->server_fd, (struct sockaddr *) &sslproxy_addr, p->socksize);
++	   }
++   }
+    if(ret) {
+-      do_log(LOG_CRIT, "ERR: Cannot connect to real-server: %s",inet_ntoa(p->server_addr.sin_addr));
++      do_log(LOG_CRIT, "ERR: Cannot connect to real-server: %s, %s",inet_ntoa(p->server_addr.sin_addr), strerror(errno));
+       return 1;
+    }
+    set_defaultparams(p);
+@@ -1700,7 +1845,13 @@ int proxy(struct proxycontext *p){
+    while (1){
+ 
+       /* read from client */
+-      clientret=getlinep3(p->client_fd, p->clientbuf);
++	  if (saved_line) {
++		  // We already have a line from the client, consume it first
++		  clientret = GETLINE_OK;
++		  saved_line = NULL;
++	  } else {
++		  clientret = getlinep3(p->client_fd, p->clientbuf);
++	  }
+       if (clientret<0){
+         if (clientret==GETLINE_TOO_LONG){
+           do_log(LOG_DEBUG, "Line too long: Getting rest of line.");
+@@ -2800,7 +2951,7 @@ void parseoptions(int argc, char **argv){
                          rest=line+i+ii+1;
                          if (rest && strlen(rest)>0 ){
                             pargv[pargc][strlen(pargv[pargc])]='=';
@@ -166,7 +344,7 @@
                          }
                       }
                    }
-@@ -2873,7 +2898,7 @@ int main(int argc, char ** argv){
+@@ -2873,7 +3024,7 @@ int main(int argc, char ** argv){
     int connfd=0, i=0, cuid=0;
     int abortfd=0;
     struct sockaddr_in  addr;
@@ -175,7 +353,7 @@
     pid_t pid;
     int stat=0;
     FILE * fp;
-@@ -2882,12 +2907,12 @@ int main(int argc, char ** argv){
+@@ -2882,12 +3033,12 @@ int main(int argc, char ** argv){
     char * responsemsg;
     int virusdirlen=0;
     char chownit[100];
@@ -190,7 +368,7 @@
  
     w_memory_init();                  // We need to initialize our memory allocation routines
  
-@@ -2931,11 +2956,14 @@ int main(int argc, char ** argv){
+@@ -2931,11 +3082,14 @@ int main(int argc, char ** argv){
        do_log(LOG_NOTICE, "Changing uid (we are root)");
        pws = getpwnam(config->runasuser);
        if (pws == NULL) do_log(LOG_EMERG,"ERR: Unknown User '%s'",config->runasuser);
@@ -206,7 +384,16 @@
     if (p3signal(SIGCHLD, do_sigchld)<0) do_log(LOG_EMERG, "ERR: Could not set signal handler SIGCHLD");
     if (p3signal(SIGTERM, do_sigterm_main)<0) do_log(LOG_EMERG, "ERR: Could not set signal handler SIGTERM main");
     if (p3signal(SIGINT, do_sigterm_main)<0) do_log(LOG_EMERG, "ERR: Could not set signal handler SIGINT main");
-@@ -3036,7 +3064,7 @@ int main(int argc, char ** argv){
+@@ -3024,7 +3178,7 @@ int main(int argc, char ** argv){
+          numprocs++;
+          do_log(LOG_DEBUG, "Forked, pid=%i, numprocs=%i", pid, numprocs);
+          close (connfd);
+-         /* wir brauchen die nicht, der childprocess kümmert sich drum
++         /* wir brauchen die nicht, der childprocess kmmert sich drum
+             we don't need "them" (connfd?), child process takes care of that */
+          if (numprocs>=config->maxchilds){
+             do_log(LOG_WARNING, "MAX_CHILDS (%i) reached!", config->maxchilds);
+@@ -3036,7 +3190,7 @@ int main(int argc, char ** argv){
        }else{
           /* child */
           config->child=1;

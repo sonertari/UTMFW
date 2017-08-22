@@ -1,0 +1,8 @@
+@newgroup _smtp-gated:700
+@newuser _smtp-gated:700:700:daemon:SMTP proxy:/nonexistent:/sbin/nologin
+@man man/man5/smtp-gated.conf.5
+@man man/man8/smtp-gated.8
+man/manh/
+man/manh/smtp-gated.conf.html
+man/manh/smtp-gated.html
+sbin/smtp-gated

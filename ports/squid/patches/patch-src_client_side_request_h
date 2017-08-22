@@ -1,0 +1,17 @@
+$OpenBSD$
+--- src/client_side_request.h.orig	Thu Aug  3 07:45:20 2017
++++ src/client_side_request.h	Thu Aug  3 07:45:54 2017
+@@ -69,6 +69,7 @@ class ClientHttpRequest (public)
+     HttpRequest *request;       /* Parsed URL ... */
+     char *uri;
+     char *log_uri;
++	int is_ssl;
+     String store_id; /* StoreID for transactions where the request member is nil */
+ 
+     struct {
+@@ -188,4 +189,5 @@ void tunnelStart(ClientHttpRequest *, int64_t *, int *
+ #endif
+ 
+ #endif /* SQUID_CLIENTSIDEREQUEST_H */
++
+ 

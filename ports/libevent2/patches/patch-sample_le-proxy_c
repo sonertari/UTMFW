@@ -1,0 +1,12 @@
+$OpenBSD$
+--- sample/le-proxy.c.orig	Wed Dec  7 00:13:44 2016
++++ sample/le-proxy.c	Tue Jul 25 15:48:57 2017
+@@ -259,7 +259,7 @@ main(int argc, char **argv)
+ 
+ 	if (use_ssl) {
+ 		int r;
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 		SSL_library_init();
+ 		ERR_load_crypto_strings();
+ 		SSL_load_error_strings();

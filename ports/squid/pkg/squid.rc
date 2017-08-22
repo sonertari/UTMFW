@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# $OpenBSD: squid.rc,v 1.7 2015/09/10 13:00:10 sthen Exp $
+
+daemon="${TRUEPREFIX}/sbin/squid"
+daemon_timeout="35"
+
+. /etc/rc.d/rc.subr
+
+rc_stop() {
+	${daemon} ${daemon_flags} -k shutdown
+}
+
+rc_reload() {
+	${daemon} ${daemon_flags} -k reconfigure
+}
+
+rc_cmd $1

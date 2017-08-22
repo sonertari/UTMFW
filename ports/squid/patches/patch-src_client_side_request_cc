@@ -1,0 +1,85 @@
+$OpenBSD$
+--- src/client_side_request.cc.orig	Thu Aug  3 07:41:29 2017
++++ src/client_side_request.cc	Thu Aug  3 07:44:50 2017
+@@ -579,6 +579,75 @@ ClientRequestContext::hostHeaderVerifyFailed(const cha
+ void
+ ClientRequestContext::hostHeaderVerify()
+ {
++    const char *sslProxyAddr = http->request->header.getStr(HDR_SSLPROXY);
++	if (sslProxyAddr) {
++		// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[74.125.206.108]:465,s
++		uint16_t sslProxyPort = 0;
++
++		char *sslPortStr = NULL;
++		char *sslProxyAddrB = xstrdup(sslProxyAddr);
++
++		sslProxyAddr = sslProxyAddrB;
++		if (sslProxyAddr[0] == '[') {
++			sslProxyAddr = &sslProxyAddr[1]; // strip the '['
++			// IPv6 literal.
++			sslPortStr = strchr(sslProxyAddrB, ']');
++			if (sslPortStr && *(++sslPortStr) != ':') {
++				sslPortStr = NULL;
++			}
++		} else {
++			// Domain or IPv4 literal with port
++			sslPortStr = strrchr(sslProxyAddrB, ':');
++		}
++
++		char *sslPortEnd = strchr(sslProxyAddrB, ',');
++		
++		char *srcAddr = strdup(sslPortEnd + 2);
++		char *srcAddrEnd = strchr(srcAddr, ']');
++		*srcAddrEnd = '\0';
++		http->request->sslproxy_client_addr = srcAddr;
++		safe_free(srcAddr);
++		
++		char *sslSrcEnd = strchr(sslPortEnd + 1, ',');
++		char *sslDstEnd = strchr(sslSrcEnd + 1, ',');
++		
++		http->is_ssl = (*(sslDstEnd + 1) == 's');
++		
++		*sslPortEnd = '\0'; // strip the rest
++
++		if (sslPortStr) {
++			*sslPortStr = '\0'; // strip the ':'
++			*(sslPortStr-1) = '\0'; // strip the ']'
++			if (*(++sslPortStr) != '\0') {
++				char *end = NULL;
++				int64_t ret = strtoll(sslPortStr, &end, 10);
++				if (end == sslPortStr || *end != '\0' || ret < 1 || ret > 0xFFFF) {
++					// invalid port details. Replace the ':'
++					*(--sslPortStr) = ':';
++					sslPortStr = NULL;
++				} else
++					sslProxyPort = (ret & 0xFFFF);
++			}
++		}
++
++		if (sslProxyPort == 0) {
++			// TODO: Is simply returning ok?
++	        http->doCallouts();
++			return;
++		}
++		
++		// Make sure we always have proper values for sslProxyAddr and sslProxyPort
++		http->request->sslproxy_addr = sslProxyAddr;
++		http->request->sslproxy_port = sslProxyPort;
++
++		// Update the log_uri now with is_ssl
++		setLogUri(http, http->uri,  true);
++	
++	} else {
++		http->request->sslproxy_addr = NULL;
++		http->request->sslproxy_port = 0;
++	}
++	
+     // Require a Host: header.
+     const char *host = http->request->header.getStr(HDR_HOST);
+ 
+@@ -2075,4 +2144,5 @@ ClientHttpRequest::handleAdaptationFailure(int errDeta
+ }
+ 
+ #endif
++
+ 

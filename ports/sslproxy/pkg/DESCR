@@ -1,0 +1,2 @@
+SSLproxy is a transparent proxy to decrypt SSL/TLS traffic and divert
+it to other programs.

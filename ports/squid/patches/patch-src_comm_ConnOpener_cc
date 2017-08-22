@@ -1,0 +1,29 @@
+$OpenBSD$
+--- src/comm/ConnOpener.cc.orig	Thu Aug  3 06:51:34 2017
++++ src/comm/ConnOpener.cc	Thu Aug  3 07:05:54 2017
+@@ -337,8 +337,18 @@ Comm::ConnOpener::doConnect()
+ 
+     ++ totalTries_;
+ 
+-    switch (comm_connect_addr(temporaryFd_, conn_->remote) ) {
++	conn_->sslproxy = conn_->sslproxy_addr;
++	conn_->sslproxy.port(conn_->sslproxy_port);
+ 
++	int ret;
++	if (conn_->sslproxy_addr == NULL) {
++		ret = comm_connect_addr(temporaryFd_, conn_->remote);
++	} else {
++		ret = comm_connect_addr(temporaryFd_, conn_->sslproxy);
++	}
++
++    switch (ret) {
++
+     case Comm::INPROGRESS:
+         debugs(5, 5, HERE << conn_ << ": Comm::INPROGRESS");
+         Comm::SetSelect(temporaryFd_, COMM_SELECT_WRITE, Comm::ConnOpener::InProgressConnectRetry, new Pointer(this), 0);
+@@ -479,4 +489,5 @@ Comm::ConnOpener::DelayedConnectRetry(void *data)
+     }
+     delete ptr;
+ }
++
+ 

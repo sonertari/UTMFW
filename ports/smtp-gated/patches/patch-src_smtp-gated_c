@@ -1,0 +1,198 @@
+$OpenBSD$
+--- src/smtp-gated.c.orig	Wed Aug  2 08:10:29 2017
++++ src/smtp-gated.c	Fri Aug  4 08:53:27 2017
+@@ -1796,7 +1796,7 @@ int target_connect(struct session_t *data)
+ 	switch (config.mode) {
+ 		case MODE_TPROXY:
+ #ifdef USE_NAT_TPROXY
+-			data->server = connect_host_tproxy(data->target, ntohs(data->target.sin_port),
++			data->server = connect_host_tproxy(data->actual_target, ntohs(data->actual_target.sin_port),
+ 					src, data->origin);
+ 			res = errno;
+ 			if (set_uid2euid() < 0)  {
+@@ -1821,7 +1821,7 @@ int target_connect(struct session_t *data)
+ 		case MODE_REMOTE:
+ 		case MODE_REMOTE_UDP:
+ 		default:
+-			data->server = connect_host(data->target, ntohs(data->target.sin_port), src);
++			data->server = connect_host(data->actual_target, ntohs(data->actual_target.sin_port), src);
+ 	}
+ 
+ 	if (data->server == -1) {
+@@ -2003,8 +2003,11 @@ void connection(struct session_t *data)
+ 
+ 	session_init_2(data);
+ 
+-	// dane serwera docelowego
+-	if (!target_lookup(data)) exit(1);
++    if (!data->behind_sslproxy) {
++    	// dane serwera docelowego
++	    if (!target_lookup(data)) exit(1);
++		data->actual_target = data->target;
++    }
+ 
+ 	if (lockfile_ident_present(data)) {
+ 		SHARED_STATS_INC(rejects_lock);
+@@ -2050,9 +2053,9 @@ void connection(struct session_t *data)
+ 	}
+ 	
+ 	// log
+-	log_action(LOG_NOTICE|LOG_ALWAYS, "NEW (%d/%d) on=%s:%d, src=%s:%d, ident=%s, dst=%s:%d, id=%" FORMAT_TIME_T ".%" FORMAT_PID_T, 
++	log_action(LOG_NOTICE|LOG_ALWAYS, "NEW (%d/%d) on=%s:%d, src=%s:%d, ident=%s, dst=%s:%d, %s, id=%" FORMAT_TIME_T ".%" FORMAT_PID_T, 
+ 		children, data->ident_count, inet_ntoa(data->local.sin_addr), ntohs(data->local.sin_port), data->origin_str, ntohs(data->origin.sin_port),
+-		data->ident, data->target_str, ntohs(data->target.sin_port), data->start_time, getpid());
++		data->ident, data->target_str, ntohs(data->target.sin_port), data->sslproxy_ssl ? "smtps" : "smtp", data->start_time, getpid());
+ 
+ 	// nie bedzie petli?
+ 	// dla testow wylacz (albo: wlacz jesli !fixed)
+@@ -2081,9 +2084,25 @@ void connection(struct session_t *data)
+ 			wait_for_quit(data, "%s", config.msg_fixed_xclient_fail);
+ 	}
+ 
+-	// not a real command, but we'll get initial greeting from MTA
+-	queue_command(COMMAND_OTHER, data);
++    if (!data->saved_line) {
++    	// not a real command, but we'll get initial greeting from MTA
++	    queue_command(COMMAND_OTHER, data);
++    } else {
++		fdprintf(data->server, "%s\r\n", data->saved_line);
+ 
++	    char buffer[1024], *line;
++		int bufsize = 0;
++        int offset = 0;
++    	SET_TIMEOUT(config.timeout_connect);
++	    if ((line = fdgetline(data->server, buffer, sizeof(buffer), &bufsize, &offset)) != NULL) {
++		    if (strncasecmp(line, "220 ", 4)) {
++                // Consume 220 reply, forward others to the client
++                fdprintf(data->client, "%s\r\n", line);
++            }
++        }
++    	CLEAR_TIMEOUT();
++    }
++
+ 	// deskryptor dla select-a
+ 	max_fd = (data->client > data->server) ? data->client : data->server;
+ 
+@@ -2594,7 +2613,107 @@ restart:
+ 		#warning MEMLEAK TESTING
+ 		malloc(MEMLEAK_TESTING);
+ #endif
++		// free previous context
++		session_free(&data);
++		session_init_1(&data, client, origin);
+ 
++		// Get SSLproxy info
++		fdprintf(data.client, "220 sslproxy - smtp\r\n");
++
++		char buffer[1024], *line;
++		int bufsize = 0;
++        int offset = 0;
++		data.saved_line = NULL;
++        data.behind_sslproxy = 0;
++
++    	SET_TIMEOUT(config.timeout_connect);
++		for (;;) {
++			if ((line = fdgetline(data.client, buffer, sizeof (buffer), &bufsize, &offset)) == NULL) {
++				log_action(LOG_INFO, "Done reading client");
++				break;
++			}
++			// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[74.125.206.108]:465,s
++			if (!strncasecmp(line, "SSLproxy:", 9)) {
++				log_action(LOG_DEBUG, line);
++                data.behind_sslproxy = 1;
++
++				char *ip_start = strchr(line, '[') + 1;
++				char *ip_end = strchr(ip_start, ']');
++				char *port_start = strchr(ip_end, ':') + 1;
++				char *port_end = strchr(port_start, ',');
++
++				if (!ip_start || !ip_end || !port_start || !port_end) {
++					log_action(LOG_CRIT, "Unable to find sslproxy addr fields: %s", line);
++					exit(0);
++				}
++
++				int addr_len = ip_end - ip_start;
++				char actual_target_str[16];
++				strncpy(actual_target_str, ip_start, addr_len);
++				actual_target_str[addr_len] = '\0';
++				inet_pton(AF_INET, actual_target_str, &(data.actual_target.sin_addr));
++
++				int port_len = port_end - port_start;
++				char *port = malloc(port_len + 1);
++				strncpy(port, port_start, port_len);
++				port[port_len] = '\0';
++				data.actual_target.sin_port = htons(atoi(port));
++				
++				ip_start = strchr(port_end, '[') + 1;
++				ip_end = strchr(ip_start, ']');
++				port_start = strchr(ip_end, ':') + 1;
++				port_end = strchr(port_start, ',');
++
++				if (!ip_start || !ip_end || !port_start || !port_end) {
++					log_action(LOG_CRIT, "Unable to find sslproxy src addr fields: %s", line);
++					exit(0);
++				}
++
++				addr_len = ip_end - ip_start;
++				strncpy(data.origin_str, ip_start, addr_len);
++				data.origin_str[addr_len] = '\0';
++				inet_pton(AF_INET, data.origin_str, &(data.origin.sin_addr));
++
++				port_len = port_end - port_start;
++				port = malloc(port_len + 1);
++				strncpy(port, port_start, port_len);
++				port[port_len] = '\0';
++				data.origin.sin_port = htons(atoi(port));
++				
++				origin = data.origin;
++
++				ip_start = strchr(port_end, '[') + 1;
++				ip_end = strchr(ip_start, ']');
++				port_start = strchr(ip_end, ':') + 1;
++				port_end = strchr(port_start, ',');
++				char *ssl_start = port_end + 1;
++
++				if (!ip_start || !ip_end || !port_start || !port_end) {
++					log_action(LOG_CRIT, "Unable to find sslproxy dst addr fields: %s", line);
++					exit(0);
++				}
++
++				addr_len = ip_end - ip_start;
++				strncpy(data.target_str, ip_start, addr_len);
++				data.target_str[addr_len] = '\0';
++				inet_pton(AF_INET, data.target_str, &(data.target.sin_addr));
++
++				port_len = port_end - port_start;
++				port = malloc(port_len + 1);
++				strncpy(port, port_start, port_len);
++				port[port_len] = '\0';
++				data.target.sin_port = htons(atoi(port));
++
++				data.sslproxy_ssl = strchr(ssl_start, 's') ? 1 : 0;
++			} else {
++				// @attention Client should not send multiple lines after 220, so grab the first one and continue.
++				//log_action(LOG_DEBUG, "Client said: %s", line);
++				data.saved_line = strdup(line);
++				break;
++			}
++		}
++    	CLEAR_TIMEOUT();
++
+ 		/* fast DoS checks */
+ 		if (children >= max_connections_real) {
+ 			log_action(LOG_INFO, "Rejecting (%d) connection from %s:%d", children, inet_ntoa(origin.sin_addr), ntohs(origin.sin_port));
+@@ -2622,9 +2741,11 @@ restart:
+ 			}
+ 		}
+ 
+-		// free previous context
+-		session_free(&data);
+-		session_init_1(&data, client, origin);
++		if (data.behind_sslproxy && data.lockfile) {
++			// Reinit the lockfile, if previously set
++			if (asprintf(&data.lockfile, "%s/%s", config.lock_path, data.origin_str) == -1)
++				data.lockfile = NULL;
++		}
+ 
+ 		if (host_count > config.max_per_host) {
+ 			log_action(LOG_INFO, "Rejecting (host %d) connection from %s:%d", host_count, inet_ntoa(origin.sin_addr), ntohs(origin.sin_port));

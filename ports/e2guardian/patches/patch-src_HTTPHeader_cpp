@@ -1,0 +1,63 @@
+$OpenBSD$
+--- src/HTTPHeader.cpp.orig	Mon Mar 13 18:05:36 2017
++++ src/HTTPHeader.cpp	Wed Aug  2 23:58:16 2017
+@@ -1140,6 +1140,14 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
+     } else {
+         answer = answer.before(" http/"); // just in case!
+     }
++    if (isssl) {
++        https = true;
++        if (answer.startsWith("http://")) {
++            answer = "https://" + answer.after("http://");
++        } else if (!answer.startsWith("https://")) {
++            answer = "https://" + answer;
++        }
++    }
+     if (requestType() == "CONNECT") {
+         https = true;
+         port = 443;
+@@ -1215,7 +1223,7 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
+ //	}
+ 
+ #ifdef DGDEBUG
+-    std::cout << "from header url:" << answer << std::endl;
++//    std::cout << "from header url:" << answer << std::endl;
+ #endif
+ 
+ //make sure ssl stuff is logged as https
+@@ -1303,7 +1311,10 @@ String HTTPHeader::getCookie(const char *cookie)
+         if (i->startsWithLower("cookie:")) {
+             line = i->after(": ");
+             if (line.contains(cookie)) { // We know we have the cookie
+-                line = line.after(cookie);
++                // There may be multiple cookies, use the last one
++                while (line.contains(cookie)) {
++                    line = line.after(cookie);
++                }
+                 line.lop(); // Get rid of the '='
+                 if (line.contains(";")) {
+                     line = line.before(";");
+@@ -1617,6 +1628,23 @@ String HTTPHeader::getReferer()
+     std::cout << "Found Referer URL:" << line << std::endl;
+ #endif
+     return line;
++}
++
++String HTTPHeader::getSSLproxyLine()
++{
++    for (std::deque<String>::iterator i = header.begin(); i != header.end(); i++) {
++		// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[74.125.206.108]:465,s
++        if (i->startsWith("SSLproxy:")) {
++            String line = i->after(",[");
++            line.removeWhiteSpace();
++            line = line.before("]") + line.after("]").before(",") + "," + line.after(",").after(",");
++#ifdef DGDEBUG
++	std::cout << "Found SSLproxy src addr: " << line << std::endl;
++#endif
++			return line;
++        }
++    }
++	return "";
+ }
+ 
+ // *

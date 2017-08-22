@@ -1,0 +1,19 @@
+$OpenBSD: patch-evutil_rand_c,v 1.3 2015/01/06 21:28:05 sthen Exp $
+OpenBSD does not need nor provide arc4random_addrandom anymore.
+And evutil_secure_rng_add_bytes is a bad API anyway.
+--- evutil_rand.c.orig	Tue Oct  4 22:55:31 2016
++++ evutil_rand.c	Tue Jul 25 14:39:35 2017
+@@ -193,13 +193,6 @@ evutil_secure_rng_get_bytes(void *buf, size_t n)
+ }
+ 
+ void
+-evutil_secure_rng_add_bytes(const char *buf, size_t n)
+-{
+-	arc4random_addrandom((unsigned char*)buf,
+-	    n>(size_t)INT_MAX ? INT_MAX : (int)n);
+-}
+-
+-void
+ evutil_free_secure_rng_globals_(void)
+ {
+     evutil_free_secure_rng_globals_locks();

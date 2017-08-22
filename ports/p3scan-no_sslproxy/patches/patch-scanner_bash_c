@@ -1,0 +1,13 @@
+--- scanner_bash.c.orig	Mon Nov 12 19:59:15 2007
++++ scanner_bash.c	Mon Nov 12 19:50:41 2007
+@@ -39,8 +39,9 @@
+ #include <sys/wait.h>
+ #include <sys/stat.h>
+ #include <errno.h>
+-#include <malloc.h>
++#include <stdlib.h>
+ #include <pcre.h>
++#include <netinet/in.h>
+ 
+ #include "p3scan.h"
+ #include "parsefile.h"

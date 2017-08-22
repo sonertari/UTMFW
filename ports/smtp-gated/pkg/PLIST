@@ -1,3 +1,4 @@
+@comment $ComixWall: PLIST,v 1.3 2009/07/25 09:55:30 soner Exp $
 @newgroup _smtp-gated:700
 @newuser _smtp-gated:700:700:daemon:SMTP proxy:/nonexistent:/sbin/nologin
 @man man/man5/smtp-gated.conf.5
