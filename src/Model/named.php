@@ -119,12 +119,18 @@ class Named extends Model
 			$re_domain= '(\S+)';
 			$re_type= '(.*)';
 
-			// client 127.0.0.1#31874: query: www.openbsd.org IN A +
-			$re= "/client\s+$re_clientip#$re_num:\s+query:\s+$re_domain\s+\S+\s+$re_type$/";
-			if (preg_match($re, $logline, $match)) {
+			// Old: client 127.0.0.1#31874: query: www.openbsd.org IN A +
+			// New: client 192.168.5.2#49585 (detectportal.firefox.com): query: detectportal.firefox.com IN AAAA + (192.168.5.1) 
+			$re= "/client\s+$re_clientip#$re_num(\h*\([^\)]*\)|):\s+query:\s+$re_domain\s+\S+\s+$re_type$/";
+			if (preg_match($re, $cols['Log'], $match)) {
 				$cols['IP']= $match[1];
-				$cols['Domain']= $match[3];
-				$cols['Type']= $match[4];
+				// Skip port
+				$cols['Domain']= $match[4];
+				// Type field is for statistics only, not shown on Logs pages
+				$cols['Type']= $match[5];
+				// Log field is displayed on the Log column on Logs pages
+				// Since we have further parsed the Log field now, update it with the Type value
+				$cols['Log']= $cols['Type'];
 			}
 			return TRUE;
 		}
