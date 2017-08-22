@@ -54,6 +54,7 @@ etc/php-5.6/pcntl.ini,644,root,bin
 etc/pmacct/pmacctd-pnrg.conf,644,root,wheel
 etc/pmacct/pmacctd-protograph.conf,644,root,wheel
 etc/snort/snort.conf,644,root,wheel
+etc/snort/snortinline.conf,644,root,wheel
 etc/snort/snortips.conf,644,root,wheel
 etc/squid/squid.conf,644,root,wheel
 etc/ssl/private/server.key,644,root,bin

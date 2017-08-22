@@ -395,6 +395,7 @@ GetPkgDesc() {
 	case $1 in
 		apache-httpd-openbsd-*) 				pkgdesc="Web Server" ;;
 		isc-bind-*) 				pkgdesc="DNS Server" ;;
+		sslproxy-*) 				pkgdesc="SSL Proxy" ;;
 		clamav-*) 				pkgdesc="Virus Scanner" ;;
 		clamavdb.*) 			pkgdesc="Virus Database" ;;
 		p5-Mail-SpamAssassin-*) pkgdesc="SPAM Scanner" ;;

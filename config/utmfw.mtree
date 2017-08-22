@@ -189,6 +189,7 @@ pmacctd-protograph.conf	type=file mode=0644 uname=root gname=wheel
 ..	#etc/pmacct
 snort			type=dir mode=0755 uname=root gname=wheel
 snort.conf		type=file mode=0644 uname=root gname=wheel
+snortinline.conf		type=file mode=0644 uname=root gname=wheel
 snortips.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/snort
 squid			type=dir mode=0755 uname=root gname=wheel
