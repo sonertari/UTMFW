@@ -143,6 +143,32 @@ class Squid extends View
 		}
 		$cols['Link']= '<a href="'.$link.'" title="'.$link.'">'.$linkbase.'</a>';
 	}
+	
+	function FormatDate($date)
+	{
+		global $MonthNames;
+		
+		return $date['Day'].'/'.$MonthNames[$date['Month']].'/'.date('Y');
+	}
+
+	function FormatDateArray($datestr, &$date)
+	{
+		global $MonthNumbers;
+
+		if (preg_match('/^(\d+)\/(\w+)\/(\d+)$/', $datestr, $match)) {
+			$date['Day']= $match[1];
+			$date['Month']= $MonthNumbers[$match[2]];
+			return TRUE;
+		}
+		else if (preg_match('/(\w+)\s+(\d+)/', $datestr, $match)) {
+			if (array_key_exists($match[1], $MonthNumbers)) {
+				$date['Month']= sprintf('%02d', $MonthNumbers[$match[1]]);
+				$date['Day']= sprintf('%02d', $match[2]);
+				return TRUE;
+			}
+		}
+		return FALSE;
+	}
 }
 
 $View= new Squid();
