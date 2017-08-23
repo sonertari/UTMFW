@@ -563,36 +563,40 @@ function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style)
 			<td>
 				<?php
 				$printfunc($data, $conf['Color'], _($conf['Title']));
-				?>
-				<table>
-					<?php
-					$count= 0;
-					foreach ($conf['NVPs'] as $name => $title) {
-						if (($count % $NvpColCount) == 0) {
+				if (count($conf['NVPs']) > 0) {
+					?>
+					<table>
+						<?php
+						$count= 0;
+						foreach ($conf['NVPs'] as $name => $title) {
+							if (($count % $NvpColCount) == 0) {
+								?>
+								<tr>
+								<?php
+							}
 							?>
-							<tr>
+							<td class="nvps">
+								<?php
+								$nvps= array();
+								FillNVPs($nvps, $stats, $date, $parent, $name, $style);
+								if (isset($conf['Divisor'])) {
+									DivideArrayData($nvps, $conf['Divisor']);
+								}
+								PrintNVPs($nvps, _($title), 10);
+								?>
+							</td>
 							<?php
+							if (($count++ % $NvpColCount) == ($NvpColCount - 1)) {
+								?>
+								</tr>
+								<?php
+							}
 						}
 						?>
-						<td class="nvps">
-							<?php
-							$nvps= array();
-							FillNVPs($nvps, $stats, $date, $parent, $name, $style);
-							if (isset($conf['Divisor'])) {
-								DivideArrayData($nvps, $conf['Divisor']);
-							}
-							PrintNVPs($nvps, _($title), 10);
-							?>
-						</td>
-						<?php
-						if (($count++ % $NvpColCount) == ($NvpColCount - 1)) {
-							?>
-							</tr>
-							<?php
-						}
-					}
-					?>
-				</table>
+					</table>
+					<?php
+				}
+				?>
 			</td>
 		</tr>
 	</table>
@@ -621,30 +625,34 @@ function PrintMinutesGraphNVPSet($stats, $parent, $conf, $type)
 			<td>
 				<?php
 				$PrintGraphFunc($data, $conf['Color'], _($conf['Title']));
-				?>
-				<table>
-					<tr>
-						<?php
-						/// @todo More than 2 or 3 NVPs under graph may be a problem
-						foreach ($conf['NVPs'] as $name => $title) {
-							if (isset($stats[$parent]) && isset($stats[$parent][$name])) {
-								?>
-								<td class="nvps">
-									<?php
-									unset($nvps);
-									$nvps= $stats[$parent][$name];
-									if (isset($conf['Divisor'])) {
-										DivideArrayData($nvps, $conf['Divisor']);
-									}
-									PrintNVPs($nvps, _($title), 10);
+				if (count($conf['NVPs']) > 0) {
+					?>
+					<table>
+						<tr>
+							<?php
+							/// @todo More than 2 or 3 NVPs under graph may be a problem
+							foreach ($conf['NVPs'] as $name => $title) {
+								if (isset($stats[$parent]) && isset($stats[$parent][$name])) {
 									?>
-								</td>
-								<?php
+									<td class="nvps">
+										<?php
+										unset($nvps);
+										$nvps= $stats[$parent][$name];
+										if (isset($conf['Divisor'])) {
+											DivideArrayData($nvps, $conf['Divisor']);
+										}
+										PrintNVPs($nvps, _($title), 10);
+										?>
+									</td>
+									<?php
+								}
 							}
-						}
-						?>
-					</tr>
-				</table>
+							?>
+						</tr>
+					</table>
+					<?php
+				}
+				?>
 			</td>
 		</tr>
 	</table>

@@ -358,7 +358,6 @@ $StatsConf = array(
 			'Title' => _STATS('All queries'),
 			'Cmd' => '/bin/cat <LF>',
 			'Needle' => '( query: )',
-			'NVPs' => array(),
 			'BriefStats' => array(
 				'Domain' => _STATS('Domains'),
 				'IP' => _STATS('IPs querying'),
@@ -439,7 +438,6 @@ $StatsConf = array(
 			'Title' => _STATS('All requests'),
 			'Cmd' => '/bin/cat <LF>',
 			'Needle' => '( p3scan\[)',
-			'NVPs' => array(),
 			'BriefStats' => array(
 				'Result' => _STATS('Results'),
 				'Virus' => _STATS('Infected'),
@@ -463,8 +461,6 @@ $StatsConf = array(
 					'Title' => _STATS('Processed (KB)'),
 					'Color' => '#FF8000',
 					'Divisor' => 1000,
-					'NVPs' => array(
-						),
 					),
 				),
 			),
@@ -699,7 +695,6 @@ $StatsConf = array(
 			'Title' => _STATS('All requests'),
 			'Cmd' => '/bin/cat <LF>',
 			'Needle' => '( spamd\[)',
-			'NVPs' => array(),
 			'BriefStats' => array(),
 			'Counters' => array(
 				'Ham' => array(
@@ -823,7 +818,6 @@ $StatsConf = array(
 			'Title' => _STATS('All connections'),
 			'Cmd' => '/bin/cat <LF>',
 			'Needle' => '( spamd\[)',
-			'NVPs' => array(),
 			'BriefStats' => array(
 				'List' => _STATS('Blacklists'),
 				'IP' => _STATS('Deferred IPs'),
