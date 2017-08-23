@@ -62,7 +62,7 @@ echo "Cloning $PROJECT_NAME git repo:"
 
 mkdir $ROOT_PATH/$TMP/
 cd $ROOT_PATH/$TMP/
-rm -rf .
+rm -rf *
 git clone $ROOT_PATH
 
 echo "Generating gettext translations:"
