@@ -1,18 +1,21 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009.
+# Soner Tari <sonertari@gmail.com>, 2009, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2009-11-16 23:57+0200\n"
+"PO-Revision-Date: 2017-08-25 01:58+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 msgid ""
 " This the limit over which the page will be blocked.  Each weighted phrase "
@@ -105,7 +108,7 @@ msgstr ""
 
 #, php-format
 msgid "0-100% or 0-1"
-msgstr "0-100% veya 0-1"
+msgstr "0-100% ya da 0-1"
 
 msgid "1 minute average"
 msgstr "1 dakikalık ortalama"
@@ -231,6 +234,9 @@ msgstr "Bilgisayar ekle"
 
 msgid "Add list item"
 msgstr "Liste öğesi ekle"
+
+msgid "Add proxy specs"
+msgstr "Vekil tanımları ekle"
 
 msgid "Add to IP list"
 msgstr "IP listesine ekle"
@@ -814,6 +820,12 @@ msgstr "Bayt"
 msgid "Bytes Free"
 msgstr "Kalan baytlar"
 
+msgid "CA Cert"
+msgstr "CA Sertifikası"
+
+msgid "CA Key"
+msgstr "CA Anahtarı"
+
 msgid "COMMAND"
 msgstr "KOMUT"
 
@@ -919,6 +931,11 @@ msgstr "Çizelgeler"
 msgid "Check authentication"
 msgstr "Kimlik doğrula"
 
+msgid "Check for expired connections every this many seconds."
+msgstr ""
+"Zaman aşımına uğramış bağlantıları buradaki saniye cinsinden sürede kontrol "
+"et."
+
 msgid "Check if process running"
 msgstr "Sürecin çalıştığını kontrol et"
 
@@ -926,7 +943,7 @@ msgid ""
 "Check that ssl certificates for servers on https connections are valid and "
 "signed by a ca in the configured path."
 msgstr ""
-"HTTPs bağlantısındaki sunucuların SSL sertifikalarının geçerli olduğunuve "
+"HTTPs bağlantısındaki sunucuların SSL sertifikalarının geçerli olduğunu ve "
 "ayarlardaki bir CA tarafından imzalandığını kontrol et."
 
 msgid "Chinese simplified"
@@ -979,6 +996,9 @@ msgstr "İstemci ağ şablonu"
 msgid "Clients"
 msgstr "İstemciler"
 
+msgid "Close connections after this many seconds of idle time."
+msgstr "Saniye cinsinden bu kadar süre durağan kalan bağlantıları kapat."
+
 msgid "Closed by"
 msgstr "Kapatan"
 
@@ -1003,7 +1023,7 @@ msgid "Config"
 msgstr "Ayarlar"
 
 msgid "Configuration"
-msgstr "Yapılandırma"
+msgstr "Ayarlar"
 
 msgid "Configure an interface"
 msgstr "Arayüzü yapılandır"
@@ -1037,6 +1057,18 @@ msgstr ""
 "hızlı bir eleme yapılmasını sağlar. Bu yapılandırmalar $HOME_NET için "
 "tanımlanan AYNI yapılandırma düzenini takip etmelidir.\n"
 "Ağınızdaki DNS sunucuların listesi."
+
+msgid "Connection Duration"
+msgstr "Bağlantı Süresi"
+
+msgid "Connection Idle Time"
+msgstr "Bağlantı Durağan Süresi"
+
+msgid "Connection Idle Timeout"
+msgstr "Durağan Bağlantı Zaman Aşım Süresi"
+
+msgid "Connections"
+msgstr "Bağlantılar"
 
 msgid "Connections by date"
 msgstr "Tarihe göre bağlantılar"
@@ -1298,6 +1330,9 @@ msgstr "Liste öğesini sil"
 msgid "Delete pf rule file"
 msgstr "Pf kural dosyası silme"
 
+msgid "Delete proxy specs"
+msgstr "Vekil tanımlarını sil"
+
 msgid "Delete rules file"
 msgstr "Kural dosyasını sil"
 
@@ -1327,6 +1362,9 @@ msgstr "Hedef"
 
 msgid "Destination"
 msgstr "Hedef"
+
+msgid "Destination Addresses"
+msgstr "Hedef Adresler"
 
 msgid "Destination IPs"
 msgstr "Hedef IP'ler"
@@ -1485,6 +1523,9 @@ msgstr ""
 msgid "Download"
 msgstr "İndir"
 
+msgid "Download CA Cert"
+msgstr "CA Sertifikasını İndir"
+
 msgid ""
 "Download Manager is responsible for downloading the content requested. The "
 "mime types it manages are in Enabled list. Other mime types are handled by "
@@ -1510,6 +1551,13 @@ msgstr ""
 msgid "Download ruleset"
 msgstr "Kural listesini indir"
 
+msgid ""
+"Download the CA cert file to install on client web browsers and mail "
+"programs."
+msgstr ""
+"CA sertifika dosyasını istemci web tarayıcıları ve e-posta programlarına "
+"kurmak için indir."
+
 msgid "Download with errors"
 msgstr "Hatalara rağmen indir"
 
@@ -1518,6 +1566,9 @@ msgstr "İndirilen (KB)"
 
 msgid "Downloads"
 msgstr "İndirme"
+
+msgid "Downloads (KB)"
+msgstr "İndirilen (KB)"
 
 msgid "Dropped Bytes"
 msgstr "Engellenen Baytlar"
@@ -1716,6 +1767,9 @@ msgstr "Yüklemede hata, kural hatalara rağmen yüklendi"
 msgid "Error loading, rule loaded partially"
 msgstr "Yüklemede hata, kural sorunlu olarak yüklendi"
 
+msgid "Errors"
+msgstr "Hatalar"
+
 msgid "Evaluations"
 msgstr "Değerlendirme"
 
@@ -1724,6 +1778,18 @@ msgstr "İstisna IP'ler"
 
 msgid "Exception requests"
 msgstr "İstisna istekler"
+
+msgid "Expired Connection Check Period"
+msgstr "Zaman Aşımna Uğramış Bağlantı Kontrol Periyodu"
+
+msgid "Expired Destination Addresses"
+msgstr "Zaman Aşımına Uğramış Hedef Adresler"
+
+msgid "Expired Source Addresses"
+msgstr "Zaman Aşımına Uğramış Kaynak Adresler"
+
+msgid "Expired connections"
+msgstr "Zaman aşımına uğramış bağlantılar"
 
 msgid "Export To pflow"
 msgstr "Pflow'a Aktar"
@@ -1825,6 +1891,9 @@ msgstr ""
 
 msgid "File"
 msgstr "Dosya"
+
+msgid "File Descriptors"
+msgstr "File Descriptors"
 
 msgid "File uploaded"
 msgstr "Dosya karşıya yüklendi"
@@ -2056,6 +2125,9 @@ msgstr "MesaiSonrası pf kurallarını getir"
 msgid "Get AfterHours"
 msgstr "MesaiSonrasını getir"
 
+msgid "Get CA cert filename"
+msgstr "CA sertifika dosya adını getir"
+
 msgid "Get DHCP IP range"
 msgstr "DHCP IP aralığını getir"
 
@@ -2110,6 +2182,9 @@ msgstr "Yapılandırmayı getir"
 msgid "Get confs"
 msgstr "Yapılandırmaları getir"
 
+msgid "Get critical errors"
+msgstr "Kritik hataları getir"
+
 msgid "Get current locale"
 msgstr "Geçerli yöreyi getir"
 
@@ -2139,6 +2214,9 @@ msgstr "Grup IP listesini getir"
 
 msgid "Get host graphs"
 msgstr "Bilgisayar grafiklerini getir"
+
+msgid "Get idle conns"
+msgstr "Durağan bağlantıları getir"
 
 msgid "Get if config"
 msgstr "Arayüz yapılandırmasını getir"
@@ -2181,6 +2259,9 @@ msgstr "Kayıt başlangıç tarihini getir"
 
 msgid "Get logs configuration"
 msgstr "Kayıt yapılandırmasını getir"
+
+msgid "Get max stats"
+msgstr "En fazla istatistikleri getir"
 
 msgid "Get partition list"
 msgstr "Disk bölümü listesini getir"
@@ -2250,6 +2331,9 @@ msgstr "Süreç listesini getir"
 
 msgid "Get protocols"
 msgstr "Protokolleri getir"
+
+msgid "Get proxy specs"
+msgstr "Vekil tanımlarını getir"
 
 msgid "Get reload rate"
 msgstr "Tekrar yükleme süresini getir"
@@ -2756,6 +2840,9 @@ msgstr ""
 "ICQ/AIM protokolü uyarı cevaplarını desteklemez. Sadece gerekli "
 "protokollerin açık olduğundan emin olun."
 
+msgid "IDP"
+msgstr "STE"
+
 msgid "IDS"
 msgstr "STS"
 
@@ -2833,9 +2920,6 @@ msgstr "IP aralığı"
 msgid "IP range wrong"
 msgstr "IP aralığı hatalı"
 
-msgid "IPS"
-msgstr "SES"
-
 msgid "IPs"
 msgstr "IP'ler"
 
@@ -2856,6 +2940,12 @@ msgstr "Kimlik"
 
 msgid "Identifier"
 msgstr "Tanımlayıcı"
+
+msgid "Idle Times"
+msgstr "Durağan Süreler"
+
+msgid "Idle connections"
+msgstr "Durağan bağlantılar"
 
 msgid ""
 "If 'on' exception sites, urls, users etc will be scanned\n"
@@ -2985,6 +3075,13 @@ msgstr ""
 "Posta programı ve alıcılar ayarlamış olmalıdır (bkz. genel ayarlardan "
 "mailer)\n"
 "öndeğer usesmtp = off"
+
+msgid ""
+"If the HTTP proxy is configured as non-caching proxy, you should see "
+"TCP_MISS on the Cache column."
+msgstr ""
+"HTTP vekil önbellek kullanmayacak şekilde ayarlanırsa Önbellek sütununda "
+"TCP_MISS görebilirsiniz."
 
 msgid ""
 "If you are not seeing as many number of lines as you were expecting, this "
@@ -3126,6 +3223,12 @@ msgstr "Grafikleri sıfırla"
 msgid "Initial Trickle delay"
 msgstr "Başlangıç süzülme gecikmesi"
 
+msgid "Inline IPS"
+msgstr "Inline SES"
+
+msgid "Inline Intrusion Prevention"
+msgstr "Inline Saldırı Engelleme"
+
 msgid "Inline Rules"
 msgstr "Aynısatır Kuralları"
 
@@ -3200,7 +3303,10 @@ msgid "Intrusion Alerts"
 msgstr "Saldırı Uyarıları"
 
 msgid "Intrusion Detection"
-msgstr "Saldırı Algılama"
+msgstr "Saldırı Tespit"
+
+msgid "Intrusion Detection and Prevention"
+msgstr "Saldırı Tespit ve Engelleme"
 
 msgid "Intrusion Prevention"
 msgstr "Saldırı Engelleme"
@@ -3429,6 +3535,9 @@ msgstr "Kayıt Arayüzü"
 msgid "Log Level"
 msgstr "Kayıt Seviyesi"
 
+msgid "Log Statistics"
+msgstr "İstatistikleri Kaydet"
+
 msgid "Log Verbose"
 msgstr "Detaylı kayıt"
 
@@ -3534,6 +3643,13 @@ msgstr "Alıcıyı kaydet"
 
 msgid "Log ssl errors"
 msgstr "SSL hatalarını kaydet"
+
+msgid "Log statistics every this many ExpiredConnCheckPeriod periods."
+msgstr ""
+"Bu sayıdaki ExpiredConnCheckPeriod periyodundan sonra istatistik logu al."
+
+msgid "Log statistics to syslog."
+msgstr "İstatistikleri syslog'a yaz."
 
 msgid ""
 "Log the destination IP address in the hierarchy log tag when going direct. "
@@ -3761,6 +3877,9 @@ msgstr "En Fazla Durum Sayısı"
 
 msgid "Max Threads"
 msgstr "İşparçacığı üst sınırı"
+
+msgid "Max Values"
+msgstr "En Yüksek Değerler"
 
 msgid "Max age children"
 msgstr "Altsüreç yaşı üst sınırı"
@@ -4281,6 +4400,9 @@ msgstr "Genel Bakış"
 msgid "PACKET FILTER"
 msgstr "PAKET ELEĞİ"
 
+msgid "PASSIVE IPS"
+msgstr "PASİF SES"
+
 msgid ""
 "PE stands for Portable Executable - it's an executable file format used in "
 "all 32-bit versions of Windows operating systems. This option allows ClamAV "
@@ -4360,6 +4482,9 @@ msgstr "Disk Bölümleri"
 
 msgid "Partitions Usages"
 msgstr "Disk Bölüm Kullanımları"
+
+msgid "Passive Intrusion Prevention"
+msgstr "Pasif Saldırı Engelleme"
 
 msgid "Password"
 msgstr "Parola"
@@ -4625,6 +4750,9 @@ msgstr "Vekil IP:kapısı"
 msgid "Proxy Port"
 msgstr "Vekil kapısı"
 
+msgid "Proxy Specifications"
+msgstr "Vekil Tanımları"
+
 msgid "Proxy failure log interval"
 msgstr "Vekil hatası için kayıt zaman aralığı"
 
@@ -4637,6 +4765,9 @@ msgid ""
 msgstr ""
 "Vekil ayarlarıdır.\n"
 "Öndeğer: kapalı"
+
+msgid "Proxy specification format is type listenaddr+port up:utmport."
+msgstr "Vekil tanımlama şablonu tip dinlenenadres+kapı up:utmkapı'dır"
 
 msgid "Proxy timeout"
 msgstr "Vekil zaman aşımı"
@@ -4761,6 +4892,9 @@ msgstr "Sıfırla"
 msgid "Relay results"
 msgstr "İletim sonuçları"
 
+msgid "Relayd"
+msgstr "Relayd"
+
 msgid "Reload"
 msgstr "Tekrar Yükle"
 
@@ -4782,8 +4916,23 @@ msgstr "Uzaktaki sunucu"
 msgid "Remote User"
 msgstr "Uzaktaki Kullanıcı"
 
+msgid "Remove HTTP Accept-Encoding"
+msgstr "HTTP Accept-Encoding'i Sil"
+
+msgid ""
+"Remove HTTP header line for Accept-Encoding. HTTP compression and encodings "
+"are disabled to make the content logs more readable. You can turn this off "
+"if content logging is disabled."
+msgstr ""
+"Accept-Encoding için HTTP başlık satırını sil. İçerik kayıtlarını daha "
+"okunaklı yapmak için HTTP sıkıştırma ve kodlama devre dışı bırakılır. Eğer "
+"içerik kayıtlarını yazdırmıyorsanız bu seçeneği kapatabilirsiniz."
+
 msgid "Render layout"
 msgstr "Layout'u üret"
+
+msgid "Report Interval"
+msgstr "Rapor Aralığı"
 
 msgid "Report e-mail"
 msgstr "Bildirim e-posta adresi"
@@ -4854,6 +5003,16 @@ msgid ""
 msgstr ""
 "Sonuçlar sadece kullanıcı kimlik doğrulama yapılandırması ile tahmin "
 "edilebilir, açıksa ihlal veya eşik değeri sayısı kullanıcı tarafından tutulur"
+
+msgid ""
+"Retry to shut ssl conns down after this many micro seconds. Increasing this "
+"delay may avoid dirty shutdowns on slow connections, but increases resource "
+"usage, such as file desriptors and memory."
+msgstr ""
+"Mikro saniye cinsinden bu kadar süreden sonra ssl bağlantıları tekrar "
+"kapatmaya çalış. Bu bekleme süresini artırmak yavaş bağlantılardaki kötü "
+"sonlandırmaları azaltabilir, ama file descriptor ve bellek gibi kaynak "
+"kullanımını artırır."
 
 msgid "Reverse address lookups"
 msgstr "Ters adres arama"
@@ -5029,6 +5188,21 @@ msgstr "SSH_PORTS"
 
 msgid "SSL"
 msgstr "SSL"
+
+msgid "SSL Destination Protocols"
+msgstr "SSL Hedef Protokoller"
+
+msgid "SSL PROXY"
+msgstr "SSL VEKİL"
+
+msgid "SSL Proxy"
+msgstr "SSL Vekil"
+
+msgid "SSL Shutdown Retry Delay"
+msgstr "SSL Sonlandırma Tekrar Deneme Aralığı"
+
+msgid "SSL Source Protocols"
+msgstr "SSL Kaynak Protokoller"
 
 msgid "SSL access denied address"
 msgstr "SSL giriş engelleme adresi"
@@ -5294,6 +5468,9 @@ msgstr "DNS yönlendirmelerini ayarla"
 msgid "Set IP DNS listens on"
 msgstr "DNS sunucunun dinlediği IP adresini ayarla"
 
+msgid "Set IP Relayd listens on"
+msgstr "Relayd'nin dinlediği IP'yi ayarla"
+
 msgid "Set PF allowed"
 msgstr "İzinli PF öğesi ekle"
 
@@ -5445,6 +5622,9 @@ msgstr "SSH kullanımını ayarla"
 
 msgid "Set user password"
 msgstr "Kullanıcı parolasını ayarla"
+
+msgid "Set watermarks"
+msgstr "Devreye giren watermarklar"
 
 msgid "Set webalizer hostname"
 msgstr "Webalizer adını ayarla"
@@ -5926,11 +6106,20 @@ msgstr "Boyut"
 msgid "Size (KB)"
 msgstr "Boyut (KB)"
 
+msgid "Size by Client (KB)"
+msgstr "İstemci başına boyut (KB)"
+
 msgid "Size by IP (KB)"
 msgstr "IP başına boyut (KB) "
 
 msgid "Size by Link (KB)"
 msgstr "Bağlantı başına boyut (KB)"
+
+msgid "Size by Method (KB)"
+msgstr "Metod başına boyut (KB)"
+
+msgid "Size by Protocol (KB)"
+msgstr "Protokol başına boyut (KB)"
 
 msgid "Size by Target (KB)"
 msgstr "Hedef başına boyut (KB)"
@@ -6030,17 +6219,11 @@ msgstr ""
 msgid "Source"
 msgstr "Kaynak"
 
+msgid "Source Addresses"
+msgstr "Kaynak adresleri"
+
 msgid "Source Docs"
 msgstr "Kaynak Belgeleri"
-
-msgid ""
-"Source IP of all the requests on this page is the loopback interface, i.e. "
-"127.0.0.1, hence not listed here. If the HTTP proxy is configured as non-"
-"caching proxy, you should see TCP_MISS on the Cache column."
-msgstr ""
-"Bu sayfadaki tüm isteklerin kaynak IP adresleri yerel arayüz, yani "
-"127.0.0.1'dir, bu nedenle burada gösterilmemektedir. HTTP vekil önbellek "
-"kullanmayacak şekilde ayarlanırsa Önbellek sütununda TCP_MISS görebilirsiniz."
 
 msgid "Source IPs"
 msgstr "Kaynak IP'ler"
@@ -6178,6 +6361,9 @@ msgstr "Sabit Kapı"
 
 msgid "Statistics"
 msgstr "İstatistikler"
+
+msgid "Statistics Period"
+msgstr "İstatistik Periyodu"
 
 msgid "Statistics and uncompressed log files"
 msgstr "İstatistik ve açılmış kayıt dosyaları"
@@ -6343,6 +6529,9 @@ msgstr "Hedef IP'ler"
 msgid "Target Ports"
 msgstr "Hedef kapılar"
 
+msgid "Targets"
+msgstr "Hedefler"
+
 msgid "Telnet negotiation string normalizer"
 msgstr "Telnet anlaşma dize düzenleyici"
 
@@ -6421,13 +6610,64 @@ msgstr ""
 "bağlanmak istiyorsanız, her IP'yi kendi filterip satırına yazın."
 
 msgid ""
-"The Intrusion Prevention System (IPS) depends on alerts generated by the "
-"Intrusion Detection System (IDS). Make sure the IDS is running before "
+"The Passive Intrusion Prevention System (IPS) depends on alerts generated by "
+"the Intrusion Detection System (IDS). Make sure the IDS is running before "
 "starting the IPS."
 msgstr ""
-"Saldırı Engelleme Sistemi (SES) Saldırı Tespit Sistemi (STS) tarafından "
-"üretilen uyarılara bağımlı çalışır. SES'yi başlatmadan önce STS'nin "
-"çalışıyor olduğundan emin olun."
+"Pasif Saldırı Engelleme Sistemi (SES) Saldırı Tespit Sistemi (STS) "
+"tarafından üretilen uyarılara bağımlı çalışır. SES'yi başlatmadan önce "
+"STS'nin çalışıyor olduğundan emin olun."
+
+msgid ""
+"The SSL proxy decrypts SSL/TLS encrypted traffic and feeds it into the UTM "
+"services. The inline IPS inspects the decrypted traffic for intrusion "
+"detection and prevention as well.\n"
+"\n"
+"The max statistics displayed on this page represent the status of the SSL "
+"proxy process as a whole, within the last report interval in seconds. The "
+"numbers here may give you an idea on the current load of the proxy. For "
+"example, if the max number of file descriptors is too high, you might want "
+"to increase the open files limit of the daemon class in login.conf file.\n"
+"\n"
+"This page may report certain connections as idle, because they remained idle "
+"longer than the expired connection check interval of the SSL proxy. This "
+"does not mean that these connections have stalled; they may be just slow. "
+"Note that the SSL proxy does not allow for persistent HTTP connections, "
+"hence tries to close them as soon as possible. Therefore, it is desirable "
+"that the idle connections table be empty."
+msgstr ""
+"SSL vekil SSL/TLS ile şifrelenmiş trafiği çözer ve UTM servislerine "
+"gönderir. Inline IPS de bu çözülmiş trafiği saldırı tespit ve engelleme "
+"amacıyla inceler.\n"
+"\n"
+"Bu sayfada gösterilen en yüksek istatistikleri SSL vekil sürecinin saniye "
+"cinsinden son raporlama aralığındaki durumunu temsil eder. Buradaki sayılar "
+"vekilin bu aralıktaki yükü hakkında bilgi verebilir. Örneğin, en fazla file "
+"descriptor istatistiği çok yüksekse, login.conf dosyasındaki daemon "
+"sınıfının açık dosya sınırını artırmak isteyebilirsiniz.\n"
+"\n"
+"Ayrıca, bu sayfa SSL vekilin zaman aşımına uğramış bağlantıları kontrol etme "
+"aralığından daha uzun süre hareketsiz kalmış bağlantıları durağan olarak "
+"gösterebilir.Bu rapor edilen bağlantıların durduğu anlamına gelmez; sadece "
+"yavaş olabilirler. SSL vekil kalıcı HTTP bağlantılara izin vermez, ve "
+"bunları hemen kapatmaya çalışır.Bu nedenle, durağan bağlantılar tablosunun "
+"boş olması tercih edilir."
+
+msgid "The SSL proxy is an event-driven multi-threaded program."
+msgstr "SSL vekil olaya dayalı çoklu parçacıklı bir programdır."
+
+msgid ""
+"The SSL proxy takes 5 different kinds of logs: (1) STATS for periodic "
+"statistics per thread, (2) CONN for connection details at establisment time, "
+"(3) IDLE for slow connections, (4) EXPIRED for timed-out connections which "
+"are closed by the SSL proxy, and (5) CRITICAL, ERROR, WARNING, or INFO "
+"messages."
+msgstr ""
+"SSL vekil 5 farklı çeşit kayıt alır: (1) parçacık başına periyodik "
+"istatistikler için STATS, (2) bağlantı başlangıcındaki detaylar için CONN, "
+"(3) yavaş bağlantılar için IDLE, (4) zaman aşımına uğradığı için SSL vekil "
+"tarafından kapatılan bağlantılar için EXPIRED ve  (5) CRITICAL, ERROR, "
+"WARNING veya INFO mesajları."
 
 msgid ""
 "The address of your web server to which the static page e2guardian reporting "
@@ -6626,6 +6866,9 @@ msgstr ""
 "2 = on, singular = sayfada bulunan her ağırlıklı tümce sadece bir defa "
 "sayılır."
 
+msgid "There are CRITICAL errors."
+msgstr "KRİTİK hatalar var."
+
 msgid "There was an error while installing"
 msgstr "Kurulum sırasında bir hata oluştu"
 
@@ -6703,8 +6946,8 @@ msgstr ""
 "www. veya http:// eklerini girmenize gerek yoktur."
 
 msgid ""
-"These logs contain messages from all IDS process. Alerts are duplicated here "
-"as well."
+"These logs contain messages from all IDS processes. Alerts are duplicated "
+"here as well."
 msgstr ""
 "Bu kayıtlar tüm STS süreçlerinden gelen mesajları içerir. Uyarılar burada da "
 "tekrarlanır."
@@ -7261,6 +7504,13 @@ msgstr ""
 "pencerelerini devredışı bırakmaz."
 
 msgid ""
+"This shows the active configuration for this page. Use this form to change "
+"the active configuration."
+msgstr ""
+"Bu sayfa için geçerli olan ayarlardır. Bu formu etkin ayarları değiştirmek "
+"için kullanın."
+
+msgid ""
 "This shows the active group for this page. Use this form to change the "
 "active group."
 msgstr ""
@@ -7356,6 +7606,12 @@ msgstr "Sadece IP adresi olarak tanımlanmış tüm siteleri engeller"
 
 msgid "Too many args, truncating"
 msgstr "Fazla argümanlar atıldı"
+
+msgid "Total Download (KB)"
+msgstr "Toplam İndirilen (KB)"
+
+msgid "Total Upload (KB)"
+msgstr "Toplam Yüklenen (KB"
 
 msgid "Total deferred time (sec)"
 msgstr "Toplam geciktirme süresi (sn)"
@@ -7608,6 +7864,9 @@ msgstr "Kural listesini karşıya yükle"
 msgid "Upload with errors"
 msgstr "Hatalara rağmen karşıya yükle"
 
+msgid "Uploads (KB)"
+msgstr "Yüklenen (KB)"
+
 msgid "Uptime"
 msgstr "Çalışma Süresi"
 
@@ -7622,6 +7881,15 @@ msgstr "Url hatalı"
 
 msgid "Use Bayesian classifier (default: 1)"
 msgstr "Bayes sınıflandırıcıyı kullanır. (öndeğer: 1)"
+
+msgid "Use CA cert (and key) to sign forged certs."
+msgstr ""
+"Üretilen sertifikaları imzalamak için bu CA sertifikasını (ve anahtarı) "
+"kullan."
+
+msgid "Use CA key (and cert) to sign forged certs."
+msgstr ""
+"Üretilen sertifikaları imzalamak için bu CA anahtarı (ve sertifikayı) kullan."
 
 msgid "Use DNS"
 msgstr "DNS kullan"
@@ -7789,6 +8057,9 @@ msgstr "Web Arayüzü"
 
 msgid "WUI Logs"
 msgstr "Arayüz Kayıtları"
+
+msgid "Warnings"
+msgstr "Uyarılar"
 
 msgid "Weather news sites and weather related"
 msgstr "Hava durumu ve ilgili siteleri"
@@ -8052,6 +8323,26 @@ msgid ""
 "interface."
 msgstr "Her ağ arayüzü için ayrı Saldırı Tespit süreci çalıştırabilirsiniz."
 
+msgid ""
+"You can run multiple Intrusion Detection processes, one for each network "
+"interface. The IDS listens to such interfaces in promiscuous mode.\n"
+"\n"
+"The Inline IPS is an active inline Intrusion Prevention System (IPS) which "
+"inspects the traffic passing through it and may decide to block the traffic "
+"using drop rules. If the Inline IPS is stopped, the traffic it is supposed "
+"to inspect will effectively be blocked, such as plain and encrypted HTTP, "
+"POP3, and SMTP traffic. So if you choose to stop the Inline IPS, you should "
+"disable the related pf rule which diverts such traffic to it as well."
+msgstr ""
+"Her ağ arayüzü için ayrı Saldırı Tespit süreci çalıştırabilirsiniz.\n"
+"\n"
+"Inline IPS üzerinden geçen trafiği inceleyip drop kurallarına göre engelleme "
+"kararı alabilen aktif araya giren bir Saldırı Engelleme Sistemidir (SES). "
+"Eğer Inline SES durdurulursa düz ve şifreli HTTP, POP3 ve SMTP gibi "
+"incelemesi gereken trafik engellenmiş olur. Yani eğer Inline IPS'i "
+"durdurursanız, ilgili trafiği yönlendiren pf kuralını da devre dışı "
+"bırakmalısınız."
+
 msgid "You can search categories on this page."
 msgstr "Bu sayfada sınıflandırmalar üzerinden arama yapabilirsiniz."
 
@@ -8102,6 +8393,9 @@ msgid ""
 "You should configure the IDS based on the services running on your network."
 msgstr ""
 "Ağınızda çalışan servisleri göz önünde tutarak STS'yi yapılandırmalısınız."
+
+msgid "You should restart the SSL proxy for the changes to take effect."
+msgstr "Değişikliklerin uygulanması için SSL vekili tekrar başlatmalısınız."
 
 msgid "You should select at least one conf file to start the process"
 msgstr "Süreci başlatmak için en az bir conf dosyası seçmelisiniz"

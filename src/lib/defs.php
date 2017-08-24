@@ -270,14 +270,14 @@ $StatsConf = array(
 			'NVPs' => array(
 				'Link' => _STATS('Requests'),
 				'IP' => _STATS('IPs'),
-				'Proto' => _STATS('Protocol'),
+				'Proto' => _STATS('Protocols'),
 				'Mtd' => _STATS('Methods'),
 				),
 			'BriefStats' => array(
 				'Date' => _STATS('Requests by date'),
 				'IP' => _STATS('Requests by IP'),
 				'Link' => _STATS('Links visited'),
-				'Proto' => _STATS('Protocol'),
+				'Proto' => _STATS('Protocols'),
 				'Mtd' => _STATS('Methods'),
 				'Cat' => _STATS('Denied categories'),
 				),
@@ -303,7 +303,7 @@ $StatsConf = array(
 			'NVPs' => array(
 				'Link' => _STATS('Requests scanned'),
 				'IP' => _STATS('Scanned IPs'),
-				'Proto' => _STATS('Protocol'),
+				'Proto' => _STATS('Protocols'),
 				'Mtd' => _STATS('Methods'),
 				),
 			),
@@ -314,7 +314,7 @@ $StatsConf = array(
 			'NVPs' => array(
 				'Link' => _STATS('Exception requests'),
 				'IP' => _STATS('Exception IPs'),
-				'Proto' => _STATS('Protocol'),
+				'Proto' => _STATS('Protocols'),
 				'Mtd' => _STATS('Methods'),
 				),
 			),
@@ -326,7 +326,7 @@ $StatsConf = array(
 				'Link' => _STATS('Requests denied'),
 				'IP' => _STATS('Denied IPs'),
 				'Cat' => _STATS('Denied categories'),
-				'Proto' => _STATS('Protocol'),
+				'Proto' => _STATS('Protocols'),
 				'Mtd' => _STATS('Methods'),
 				),
 			),
@@ -337,7 +337,7 @@ $StatsConf = array(
 			'NVPs' => array(
 				'Link' => _STATS('Requests infected'),
 				'IP' => _STATS('Infected IPs'),
-				'Proto' => _STATS('Protocol'),
+				'Proto' => _STATS('Protocols'),
 				'Mtd' => _STATS('Methods'),
 				),
 			),
@@ -348,7 +348,7 @@ $StatsConf = array(
 			'NVPs' => array(
 				'Link' => _STATS('Requests bypassed'),
 				'IP' => _STATS('Bypassing IPs'),
-				'Proto' => _STATS('Protocol'),
+				'Proto' => _STATS('Protocols'),
 				'Mtd' => _STATS('Methods'),
 				),
 			),
@@ -444,7 +444,7 @@ $StatsConf = array(
 				'User' => _STATS('Account name'),
 				'SrcIP' => _STATS('Source IPs'),
 				'DstIP' => _STATS('Destination IPs'),
-				'Proto' => _STATS('Protocol'),
+				'Proto' => _STATS('Protocols'),
 				'Mails' => _STATS('E-mails per request'),
 				),
 			'Counters' => array(
@@ -471,7 +471,7 @@ $StatsConf = array(
 			'NVPs' => array(
 				'Date' => _STATS('Requests by date'),
 				'SrcIP' => _STATS('Source IPs'),
-				'Proto' => _STATS('Protocol'),
+				'Proto' => _STATS('Protocols'),
 				),
 			),
 		'Results' => array(
@@ -511,7 +511,7 @@ $StatsConf = array(
 				'Recipient' => _STATS('Recipients'),
 				'SrcIP' => _STATS('Source IPs'),
 				'LockedIP' => _STATS('Locked IPs'),
-				'Proto' => _STATS('Protocol'),
+				'Proto' => _STATS('Protocols'),
 				),
 			'Counters' => array(
 				'Xmted' => array(
@@ -750,15 +750,15 @@ $StatsConf = array(
 			'Color' => '#004a4a',
 			'NVPs' => array(
 				'Link' => _STATS('Links'),
-				'Target' => _STATS('Target'),
-				'Client' => _STATS('Client'),
-				'Proto' => _STATS('Protocol'),
+				'Target' => _STATS('Targets'),
+				'Client' => _STATS('Clients'),
+				'Proto' => _STATS('Protocols'),
 				'Mtd' => _STATS('Methods'),
 				'Code' => _STATS('HTTP Codes'),
 				),
 			'BriefStats' => array(
 				'Link' => _STATS('Links'),
-				'Proto' => _STATS('Protocol'),
+				'Proto' => _STATS('Protocols'),
 				'Mtd' => _STATS('Methods'),
 				'Code' => _STATS('HTTP Codes'),
 				'Cache' => _STATS('Cache'),

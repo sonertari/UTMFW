@@ -1,18 +1,21 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009.
+# Soner Tari <sonertari@gmail.com>, 2009, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2009-12-07 16:30+0200\n"
+"PO-Revision-Date: 2017-08-25 02:08+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 msgid "%CPU"
 msgstr "%CPU"
@@ -49,6 +52,9 @@ msgstr "Bilgisayar ekle"
 
 msgid "Add list item"
 msgstr "Liste öğesi ekle"
+
+msgid "Add proxy specs"
+msgstr "Vekil tanımları ekle"
 
 msgid "Add to IP list"
 msgstr "IP listesine ekle"
@@ -128,6 +134,15 @@ msgstr "Sıkıştırılmış"
 msgid "Configure an interface"
 msgstr "Arayüzü yapılandır"
 
+msgid "Connection Duration"
+msgstr "Bağlantı Süresi"
+
+msgid "Connection Idle Time"
+msgstr "Bağlantı Durağan Süresi"
+
+msgid "Connections"
+msgstr "Bağlantı"
+
 msgid "Copy conf"
 msgstr "Yapılandırmayı kopyala"
 
@@ -187,6 +202,9 @@ msgstr "Liste öğesini sil"
 
 msgid "Delete pf rule file"
 msgstr "Pf kural dosyası silme"
+
+msgid "Delete proxy specs"
+msgstr "Vekil tanımlarını sil"
 
 msgid "Dest"
 msgstr "Hedef"
@@ -290,6 +308,9 @@ msgstr "Pfctl komutu başarısız oldu"
 msgid "Failed testing pf rules"
 msgstr "Pf kurallarının testi başarısız oldu"
 
+msgid "File Descriptors"
+msgstr "File Descriptor'lar"
+
 msgid "Filename not accepted"
 msgstr "Dosya adı kabul edilmedi"
 
@@ -313,6 +334,9 @@ msgstr "MesaiSonrası pf kurallarını getir"
 
 msgid "Get AfterHours"
 msgstr "MesaiSonrasını getir"
+
+msgid "Get CA cert filename"
+msgstr "CA sertifika dosya adını getir"
 
 msgid "Get DHCP IP range"
 msgstr "DHCP IP aralığını getir"
@@ -368,6 +392,9 @@ msgstr "Yapılandırmayı getir"
 msgid "Get confs"
 msgstr "Yapılandırmaları getir"
 
+msgid "Get critical errors"
+msgstr "Kritik hataları getir"
+
 msgid "Get current locale"
 msgstr "Geçerli yöreyi getir"
 
@@ -397,6 +424,9 @@ msgstr "Grup IP listesini getir"
 
 msgid "Get host graphs"
 msgstr "Bilgisayar grafiklerini getir"
+
+msgid "Get idle conns"
+msgstr "Durağan bağlantıları getir"
 
 msgid "Get if config"
 msgstr "Arayüz yapılandırmasını getir"
@@ -439,6 +469,9 @@ msgstr "Kayıt başlangıç tarihini getir"
 
 msgid "Get logs configuration"
 msgstr "Kayıt yapılandırmasını getir"
+
+msgid "Get max stats"
+msgstr "En fazla istatistikleri getir"
 
 msgid "Get partition list"
 msgstr "Disk bölümü listesini getir"
@@ -508,6 +541,9 @@ msgstr "Süreç listesini getir"
 
 msgid "Get protocols"
 msgstr "Protokolleri getir"
+
+msgid "Get proxy specs"
+msgstr "Vekil tanımlarını getir"
 
 msgid "Get reload rate"
 msgstr "Tekrar yükleme süresini getir"
@@ -623,6 +659,9 @@ msgstr "Eklenme"
 msgid "Install pf rules"
 msgstr "Pf kurallarını kurma"
 
+msgid "Intrusion Detection"
+msgstr "Saldırı Tespit"
+
 msgid "Invalid inline rules, parser output"
 msgstr "Geçersiz satıriçi kurallar, işleme çıktısı"
 
@@ -652,6 +691,9 @@ msgstr "Sistem ağ geçidini dinamik yap"
 
 msgid "Make system gateway static"
 msgstr "Sistem ağ geçidini sabit yap"
+
+msgid "Max Values"
+msgstr "En Yüksek Değerler"
 
 msgid "Method does not exist"
 msgstr "Yöntem bulunamadı"
@@ -853,6 +895,9 @@ msgstr "DNS yönlendirmelerini ayarla"
 msgid "Set IP DNS listens on"
 msgstr "DNS sunucunun dinlediği IP adresini ayarla"
 
+msgid "Set IP Relayd listens on"
+msgstr "Relayd'nin dinlediği IP'yi ayarla"
+
 msgid "Set PF allowed"
 msgstr "İzinli PF öğesi ekle"
 
@@ -994,6 +1039,9 @@ msgstr "Yaratılan Durum"
 msgid "States"
 msgstr "Durumlar"
 
+msgid "Statistics"
+msgstr "İstatistikler"
+
 msgid "Stop "
 msgstr "Durdur"
 
@@ -1021,11 +1069,20 @@ msgstr "Pf kurallarını test et"
 msgid "The process is taking too long, thus will run in the background."
 msgstr "Sürecin işlemesi uzun zaman aldığından arka planda çalıştırılacaktır."
 
+msgid "There are CRITICAL errors."
+msgstr "KRİTİK hatalar var."
+
 msgid "Timed out running pfctl command"
 msgstr "Pfctl komutu zaman aşımına uğradı"
 
 msgid "Too many args, truncating"
 msgstr "Fazla argümanlar atıldı"
+
+msgid "Total Download (KB)"
+msgstr "Toplam İndirilen (KB)"
+
+msgid "Total Upload (KB)"
+msgstr "Toplam Yüklenen (KB"
 
 msgid "Turkish"
 msgstr "Türkçe"

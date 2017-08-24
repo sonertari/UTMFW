@@ -57,7 +57,7 @@ class Sslproxy extends Model
 
 				'DelSpecs'=>	array(
 					'argv'	=>	array(STR),
-					'desc'	=>	_('Del proxy specs'),
+					'desc'	=>	_('Delete proxy specs'),
 					),
 
 				'GetMaxStats'	=> array(

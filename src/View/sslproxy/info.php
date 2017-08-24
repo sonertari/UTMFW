@@ -65,6 +65,6 @@ PrintHelpWindow(_HELPWINDOW('The SSL proxy decrypts SSL/TLS encrypted traffic an
 
 The max statistics displayed on this page represent the status of the SSL proxy process as a whole, within the last report interval in seconds. The numbers here may give you an idea on the current load of the proxy. For example, if the max number of file descriptors is too high, you might want to increase the open files limit of the daemon class in login.conf file.
 
-This page also reports certain connections as idle, because they remained idle longer than the expired connection check interval of the SSL proxy. This does not mean that these connections have stalled; they may be just slow. Note that the SSL proxy does not allow for persistent HTTP connections, hence tries to close them as soon as possible. Therefore, it is desirable that the idle connections table be empty.'));
+This page may report certain connections as idle, because they remained idle longer than the expired connection check interval of the SSL proxy. This does not mean that these connections have stalled; they may be just slow. Note that the SSL proxy does not allow for persistent HTTP connections, hence tries to close them as soon as possible. Therefore, it is desirable that the idle connections table be empty.'));
 require_once($VIEW_PATH.'/footer.php');
 ?>

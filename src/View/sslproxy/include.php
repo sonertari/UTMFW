@@ -95,7 +95,7 @@ class Sslproxy extends View
 
 		$this->LogsHelpMsg= _HELPWINDOW('The SSL proxy takes 5 different kinds of logs: (1) STATS for periodic statistics per thread, (2) CONN for connection details at establisment time, (3) IDLE for slow connections, (4) EXPIRED for timed-out connections which are closed by the SSL proxy, and (5) CRITICAL, ERROR, WARNING, or INFO messages.');
 		
-		$this->GraphHelpMsg= _HELPWINDOW('The SSL proxy is an event-driven multithreaded program.');
+		$this->GraphHelpMsg= _HELPWINDOW('The SSL proxy is an event-driven multi-threaded program.');
 		
 		$this->ConfHelpMsg= _HELPWINDOW('You should restart the SSL proxy for the changes to take effect.');
 	

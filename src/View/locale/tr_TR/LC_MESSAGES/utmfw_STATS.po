@@ -1,18 +1,21 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009.
+# Soner Tari <sonertari@gmail.com>, 2009, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2009-12-02 12:14+0200\n"
+"PO-Revision-Date: 2017-08-25 02:01+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 msgid "Account name"
 msgstr "Hesap adı"
@@ -83,6 +86,9 @@ msgstr "İstemciler"
 msgid "Closed by"
 msgstr "Kapatan"
 
+msgid "Connections"
+msgstr "Bağlantılar"
+
 msgid "Connections by date"
 msgstr "Tarihe göre bağlantılar"
 
@@ -97,6 +103,9 @@ msgstr "Engellenen kategoriler"
 
 msgid "Denied requests"
 msgstr "Engellenen istekler"
+
+msgid "Destination Addresses"
+msgstr "Hedef Adresler"
 
 msgid "Destination IPs"
 msgstr "Hedef IP'ler"
@@ -113,14 +122,29 @@ msgstr "Alanadları"
 msgid "Downloaded (KB)"
 msgstr "İndirilen (KB)"
 
+msgid "Downloads (KB)"
+msgstr "İndirilen (KB)"
+
 msgid "E-mails per request"
 msgstr "İstek başına e-postalar"
+
+msgid "Errors"
+msgstr "Hatalar"
 
 msgid "Exception IPs"
 msgstr "İstisna IP'ler"
 
 msgid "Exception requests"
 msgstr "İstisna istekler"
+
+msgid "Expired Destination Addresses"
+msgstr "Zaman Aşımına Uğramış Hedef Adresler"
+
+msgid "Expired Source Addresses"
+msgstr "Zaman Aşımına Uğramış Kaynak Adresler"
+
+msgid "Expired connections"
+msgstr "Zaman aşımına uğramış bağlantılar"
 
 msgid "Extended Hosts"
 msgstr "Uzatılanlar"
@@ -151,6 +175,9 @@ msgstr "IP'ler"
 
 msgid "IPs querying"
 msgstr "Sorgulayan IP'ler"
+
+msgid "Idle Times"
+msgstr "Durağan Süreler"
 
 msgid "Infected"
 msgstr "Virüslü"
@@ -206,6 +233,9 @@ msgstr "İşlenen (KB)"
 msgid "Processing time (sec)"
 msgstr "İşleme süresi (sn)"
 
+msgid "Protocols"
+msgstr "Protokoller"
+
 msgid "Query types"
 msgstr "Sorgu türleri"
 
@@ -248,6 +278,12 @@ msgstr "Sonuçlar"
 msgid "SSH version"
 msgstr "SSH sürümü"
 
+msgid "SSL Destination Protocols"
+msgstr "SSL Hedef Protokoller"
+
+msgid "SSL Source Protocols"
+msgstr "SSL Kaynak Protokoller"
+
 msgid "Scan Results"
 msgstr "Tarama sonuçları"
 
@@ -272,11 +308,23 @@ msgstr "Sunucu"
 msgid "Session Takeover"
 msgstr "Bağlantı kesme"
 
+msgid "Set watermarks"
+msgstr "Devreye giren watermarklar"
+
+msgid "Size by Client (KB)"
+msgstr "İstemci başına boyut (KB)"
+
 msgid "Size by IP (KB)"
 msgstr "IP başına boyut (KB) "
 
 msgid "Size by Link (KB)"
 msgstr "Bağlantı başına boyut (KB)"
+
+msgid "Size by Method (KB)"
+msgstr "Metod başına boyut (KB)"
+
+msgid "Size by Protocol (KB)"
+msgstr "Protokol başına boyut (KB)"
 
 msgid "Size by Target (KB)"
 msgstr "Hedef başına boyut (KB)"
@@ -289,6 +337,9 @@ msgstr "Tekrar başlatmalar"
 
 msgid "Soft inits (unblock all)"
 msgstr "Tekrar başlatmalar (engellemeleri kaldır)"
+
+msgid "Source Addresses"
+msgstr "Kaynak adresleri"
 
 msgid "Source IPs"
 msgstr "Kaynak IP'ler"
@@ -317,6 +368,9 @@ msgstr "Hedef IP'ler"
 msgid "Target Ports"
 msgstr "Hedef kapılar"
 
+msgid "Targets"
+msgstr "Hedefler"
+
 msgid "Total deferred time (sec)"
 msgstr "Toplam geciktirme süresi (sn)"
 
@@ -329,6 +383,9 @@ msgstr "Tür"
 msgid "Unblocked Hosts"
 msgstr "Engellemesi kaldırılanlar"
 
+msgid "Uploads (KB)"
+msgstr "Yüklenen (KB)"
+
 msgid "Users"
 msgstr "Kullancılar"
 
@@ -337,3 +394,6 @@ msgstr "Virüs"
 
 msgid "Virus Scan Requests"
 msgstr "Virüs tarama istekleri"
+
+msgid "Warnings"
+msgstr "Uyarılar"

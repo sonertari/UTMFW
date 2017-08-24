@@ -1,18 +1,21 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009.
+# Soner Tari <sonertari@gmail.com>, 2009, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2009-12-01 16:28+0200\n"
+"PO-Revision-Date: 2017-08-25 02:01+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 msgid "1 minute average"
 msgstr "1 dakikalık ortalama"
@@ -85,6 +88,9 @@ msgstr "Sınıf"
 
 msgid "Comment"
 msgstr "Yorum"
+
+msgid "Configuration"
+msgstr "Ayarlar"
 
 msgid "Copyright"
 msgstr "Telif hakkı"
@@ -260,6 +266,9 @@ msgstr "ICMP Türü"
 msgid "ICMP6 Type"
 msgstr "ICMP6 Türü"
 
+msgid "IDS"
+msgstr "STS"
+
 msgid "IM Proxy"
 msgstr "IM Vekil"
 
@@ -274,6 +283,12 @@ msgstr "Kimlik"
 
 msgid "Identifier"
 msgstr "Tanımlayıcı"
+
+msgid "Inline IPS"
+msgstr "Inline SES"
+
+msgid "Inline Intrusion Prevention"
+msgstr "Inline Saldırı Engelleme"
 
 msgid "Inline Rules"
 msgstr "Aynısatır Kuralları"
@@ -297,7 +312,7 @@ msgid "Interval"
 msgstr "Zaman Aralığı"
 
 msgid "Intrusion Detection"
-msgstr "Saldırı Algılama"
+msgstr "Saldırı Tespit"
 
 msgid "Intrusion Prevention"
 msgstr "Saldırı Engelleme"
@@ -491,6 +506,9 @@ msgstr "Disk Bölümleri"
 msgid "Partitions Usages"
 msgstr "Disk Bölüm Kullanımları"
 
+msgid "Passive Intrusion Prevention"
+msgstr "Pasif Saldırı Engelleme"
+
 msgid "Password"
 msgstr "Parola"
 
@@ -607,6 +625,9 @@ msgstr "SPAM Geciktirme"
 
 msgid "SPAM Filter"
 msgstr "SPAM Eleği"
+
+msgid "SSL Proxy"
+msgstr "SSL Vekil"
 
 msgid "Save ruleset"
 msgstr "Kural listesini kaydet"

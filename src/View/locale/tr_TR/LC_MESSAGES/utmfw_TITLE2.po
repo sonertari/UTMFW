@@ -1,18 +1,21 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009.
+# Soner Tari <sonertari@gmail.com>, 2009, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2009-12-08 13:59+0200\n"
+"PO-Revision-Date: 2017-08-25 02:02+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
+"Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 msgid "%MEM"
 msgstr "%BELLEK"
@@ -146,6 +149,12 @@ msgstr "Yayım adresi"
 msgid "Bytes Free"
 msgstr "Kalan baytlar"
 
+msgid "CA Cert"
+msgstr "CA Sertifikası"
+
+msgid "CA Key"
+msgstr "CA Anahtarı"
+
 msgid "COMMAND"
 msgstr "KOMUT"
 
@@ -175,6 +184,9 @@ msgstr "Sıkıştırma"
 
 msgid "Configuration"
 msgstr "Yapılandırma"
+
+msgid "Connection Idle Timeout"
+msgstr "Durağan Bağlantı Zaman Aşım Süresi"
 
 msgid "Content Admin"
 msgstr "İçerik yöneticisi"
@@ -278,6 +290,9 @@ msgstr "Kapalı"
 msgid "Disabled Rules"
 msgstr "Kapatılmış Kurallar"
 
+msgid "Download CA Cert"
+msgstr "CA Sertifikasını İndir"
+
 msgid "EXTERNAL_NET"
 msgstr "EXTERNAL_NET"
 
@@ -298,6 +313,9 @@ msgstr "Açık"
 
 msgid "Enabled Rules"
 msgstr "Açık Kurallar"
+
+msgid "Expired Connection Check Period"
+msgstr "Zaman Aşımna Uğramış Bağlantı Kontrol Periyodu"
 
 msgid "Ext"
 msgstr "Uznt"
@@ -433,6 +451,9 @@ msgstr "IP aralığı"
 msgid "IRC"
 msgstr "IRC"
 
+msgid "Idle connections"
+msgstr "Durağan bağlantılar"
+
 msgid "Ignore errors"
 msgstr "Hataları yoksay"
 
@@ -465,6 +486,9 @@ msgstr "Saldırı Uyarıları"
 
 msgid "Intrusion Detection"
 msgstr "Saldırı Tespit"
+
+msgid "Intrusion Detection and Prevention"
+msgstr "Saldırı Tespit ve Engelleme"
 
 msgid "Intrusion Prevention"
 msgstr "Saldırı Engelleme"
@@ -534,6 +558,9 @@ msgstr "İstisnaları kaydet"
 
 msgid "Log Level"
 msgstr "Kayıt seviyesi"
+
+msgid "Log Statistics"
+msgstr "İstatistikleri Kaydet"
 
 msgid "Log Verbose"
 msgstr "Detaylı kayıt"
@@ -760,6 +787,9 @@ msgstr "ÖNC"
 msgid "Packet Filter"
 msgstr "Paket Eleği"
 
+msgid "Passive Intrusion Prevention"
+msgstr "Pasif Saldırı Engelleme"
+
 msgid "Pconn timeout"
 msgstr "Pconn zaman aşımı"
 
@@ -830,6 +860,9 @@ msgstr "Vekil IP:kapısı"
 msgid "Proxy Port"
 msgstr "Vekil kapısı"
 
+msgid "Proxy Specifications"
+msgstr "Vekil Tanımları"
+
 msgid "Proxy failure log interval"
 msgstr "Vekil hatası için kayıt zaman aralığı"
 
@@ -848,11 +881,20 @@ msgstr "Değiştirilen URL'leri tekrar kontrol et"
 msgid "Redirect SSL denied page"
 msgstr "SSL engelleme sayfasını yönlendir"
 
+msgid "Relayd"
+msgstr "Relayd"
+
 msgid "Remote Server"
 msgstr "Uzaktaki sunucu"
 
 msgid "Remote User"
 msgstr "Uzaktaki Kullanıcı"
+
+msgid "Remove HTTP Accept-Encoding"
+msgstr "HTTP Accept-Encoding'i Sil"
+
+msgid "Report Interval"
+msgstr "Rapor Aralığı"
 
 msgid "Report e-mail"
 msgstr "Bildirim e-posta adresi"
@@ -919,6 +961,12 @@ msgstr "SQL_SERVERS"
 
 msgid "SSH_PORTS"
 msgstr "SSH_PORTS"
+
+msgid "SSL Proxy"
+msgstr "SSL Vekil"
+
+msgid "SSL Shutdown Retry Delay"
+msgstr "SSL Sonlandırma Tekrar Deneme Aralığı"
 
 msgid "SSL access denied address"
 msgstr "SSL giriş engelleme adresi"
@@ -1009,6 +1057,9 @@ msgstr "Spamd Beyaz VT"
 
 msgid "Start Servers"
 msgstr "Başlangıç sunucu sayısı"
+
+msgid "Statistics Period"
+msgstr "İstatistik Periyodu"
 
 msgid "Subnet mask"
 msgstr "Altağ şablonu"
