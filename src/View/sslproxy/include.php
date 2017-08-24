@@ -128,6 +128,10 @@ class Sslproxy extends View
 				'title' => _TITLE2('Statistics Period'),
 				'info' => _HELPBOX2('Log statistics every this many ExpiredConnCheckPeriod periods.'),
 				),
+			'RemoveHTTPAcceptEncoding' => array(
+				'title' => _TITLE2('Remove HTTP Accept-Encoding'),
+				'info' => _HELPBOX2('Remove HTTP header line for Accept-Encoding. HTTP compression and encodings are disabled to make the content logs more readable. You can turn this off if content logging is disabled.'),
+				),
 			);
 	}
 

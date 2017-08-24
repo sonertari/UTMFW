@@ -336,5 +336,8 @@ $ModelConfig = array(
     'StatsPeriod' => array(
         'type' => UINT,
 		),
+    'RemoveHTTPAcceptEncoding' => array(
+        'type' => STR_yes_no,
+		),
 	);
 ?>
