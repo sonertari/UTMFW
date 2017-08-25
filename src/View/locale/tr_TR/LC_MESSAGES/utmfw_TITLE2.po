@@ -185,8 +185,17 @@ msgstr "Sıkıştırma"
 msgid "Configuration"
 msgstr "Yapılandırma"
 
+msgid "Connection Duration"
+msgstr "Bağlantı Süresi"
+
+msgid "Connection Idle Time"
+msgstr "Bağlantı Durağan Süresi"
+
 msgid "Connection Idle Timeout"
 msgstr "Durağan Bağlantı Zaman Aşım Süresi"
+
+msgid "Connections"
+msgstr "Bağlantılar"
 
 msgid "Content Admin"
 msgstr "İçerik yöneticisi"
@@ -322,6 +331,9 @@ msgstr "Uznt"
 
 msgid "FTP Proxy"
 msgstr "FTP Vekil"
+
+msgid "File Descriptors"
+msgstr "File Descriptor'lar"
 
 msgid "Filter IP"
 msgstr "Elek IP adresi"
@@ -1151,6 +1163,12 @@ msgstr "Zaman aşımı"
 
 msgid "Timespan"
 msgstr "Zaman aralığı"
+
+msgid "Total Download (KB)"
+msgstr "Toplam İndirilen (KB)"
+
+msgid "Total Upload (KB)"
+msgstr "Toplam Yüklenen (KB)"
 
 msgid "Trickle delay"
 msgstr "Süzülme geçiktirmesi"

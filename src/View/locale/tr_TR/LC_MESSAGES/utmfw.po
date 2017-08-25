@@ -7611,7 +7611,7 @@ msgid "Total Download (KB)"
 msgstr "Toplam İndirilen (KB)"
 
 msgid "Total Upload (KB)"
-msgstr "Toplam Yüklenen (KB"
+msgstr "Toplam Yüklenen (KB)"
 
 msgid "Total deferred time (sec)"
 msgstr "Toplam geciktirme süresi (sn)"

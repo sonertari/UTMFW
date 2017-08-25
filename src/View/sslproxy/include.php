@@ -152,12 +152,12 @@ class Sslproxy extends View
 	function PrintStatsMaxValues($interval)
 	{
 		$key2Titles = array(
-			'Load' => _('Connections'),
-			'UploadKB' => _('Total Upload (KB)'),
-			'DownloadKB' => _('Total Download (KB)'),
-			'CreateTime' => _('Connection Duration'),
-			'AccessTime' => _('Connection Idle Time'),
-			'Fd' => _('File Descriptors'),
+			'Load' => _TITLE2('Connections'),
+			'UploadKB' => _TITLE2('Total Upload (KB)'),
+			'DownloadKB' => _TITLE2('Total Download (KB)'),
+			'CreateTime' => _TITLE2('Connection Duration'),
+			'AccessTime' => _TITLE2('Connection Idle Time'),
+			'Fd' => _TITLE2('File Descriptors'),
 			);
 		?>
 		<table id="logline" style="width: 10%;">

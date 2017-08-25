@@ -134,15 +134,6 @@ msgstr "Sıkıştırılmış"
 msgid "Configure an interface"
 msgstr "Arayüzü yapılandır"
 
-msgid "Connection Duration"
-msgstr "Bağlantı Süresi"
-
-msgid "Connection Idle Time"
-msgstr "Bağlantı Durağan Süresi"
-
-msgid "Connections"
-msgstr "Bağlantı"
-
 msgid "Copy conf"
 msgstr "Yapılandırmayı kopyala"
 
@@ -307,9 +298,6 @@ msgstr "Pfctl komutu başarısız oldu"
 
 msgid "Failed testing pf rules"
 msgstr "Pf kurallarının testi başarısız oldu"
-
-msgid "File Descriptors"
-msgstr "File Descriptor'lar"
 
 msgid "Filename not accepted"
 msgstr "Dosya adı kabul edilmedi"
@@ -1077,12 +1065,6 @@ msgstr "Pfctl komutu zaman aşımına uğradı"
 
 msgid "Too many args, truncating"
 msgstr "Fazla argümanlar atıldı"
-
-msgid "Total Download (KB)"
-msgstr "Toplam İndirilen (KB)"
-
-msgid "Total Upload (KB)"
-msgstr "Toplam Yüklenen (KB"
 
 msgid "Turkish"
 msgstr "Türkçe"

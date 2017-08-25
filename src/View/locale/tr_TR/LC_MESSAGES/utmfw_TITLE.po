@@ -158,6 +158,9 @@ msgstr "Yön Değiştirme Kapısı"
 msgid "Divert Reply"
 msgstr "Yön Değiştirmeye Cevap"
 
+msgid "Download ruleset"
+msgstr "Kural listesini indir"
+
 msgid "ERROR"
 msgstr "HATA"
 

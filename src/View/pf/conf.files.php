@@ -224,7 +224,7 @@ require_once($VIEW_PATH.'/header.php');
 
 <p>&nbsp;</p>
 
-<h2>Download ruleset</h2>
+<h2><?php echo _TITLE('Download ruleset') ?></h2>
 <br />
 <form action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF'); ?>" method="post">
 	<input type="submit" id="download" name="download" value="<?php echo _CONTROL('Download') ?>" />
