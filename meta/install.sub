@@ -404,9 +404,9 @@ GetPkgDesc() {
 		e2guardian-*) 		pkgdesc="Web Filter" ;;
 		blacklists.*) 			pkgdesc="Web Filter Blacklists" ;;
 		squid-*) 				pkgdesc="HTTP Proxy" ;;
-		snort-*) 				pkgdesc="Intrusion Detection" ;;
-		snortrules.*)			pkgdesc="Intrusion Detection Rules" ;;
-		snortips-*) 			pkgdesc="Intrution Prevention" ;;
+		snort-*) 				pkgdesc="IDP: IDS and Inline IPS" ;;
+		snortrules.*)			pkgdesc="IDP Rules" ;;
+		snortips-*) 			pkgdesc="Passive IPS" ;;
 		imspector-*) 			pkgdesc="IM Proxy" ;;
 		openvpn-*) 				pkgdesc="OpenVPN" ;;
 		dante-*) 				pkgdesc="SOCKS Proxy" ;;
