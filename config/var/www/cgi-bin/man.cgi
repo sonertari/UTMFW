@@ -109,11 +109,12 @@ $command{'man'} =     '/usr/bin/man'; # 8Bit clean man
 #$manLocalDir = '/usr/share/man';
 #$manLocalDir = '/usr/share/man:/usr/local/man';
 $manLocalDir = '/usr/local/man';
-$manPathDefault = 'OpenBSD';
+$manPathDefault = 'All';
 #$manPathDefault = '/usr/share/man';
 
 %manPath = 
     (
+     'All', '/usr/share/man:/usr/local/man',
      'OpenBSD', '/usr/share/man',
      'UTMFW', '/usr/local/man',
 );
@@ -202,7 +203,10 @@ sub do_man {
     }
 
     $name = $query = $form{'query'};
-    $section = $form{'sektion'};
+    # Do not set selected section for clicks on a man page: &from=mlnk
+    if (!$form{'from'}) {
+        $section = $form{'sektion'};
+    }
     $apropos = $form{'apropos'};
     $alttitle = $form{'title'};
     $manpath = $form{'manpath'};
@@ -511,7 +515,7 @@ sub mlnk {
     $section = &encode_url($section);
     local($manpath) = &encode_url($manpath);
     return qq{<A HREF="$BASE?query=$link} . 
-           qq{&sektion=$section&apropos=0&manpath=$manpath">$matched</A>};
+           qq{&sektion=$section&apropos=0&manpath=$manpath&from=mlnk">$matched</A>};
 }
 
 sub proc {
