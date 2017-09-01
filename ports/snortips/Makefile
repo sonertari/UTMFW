@@ -1,12 +1,12 @@
 COMMENT=		turns Snort IDS into an IPS
 
-DISTNAME=		snortips-4.6
+DISTNAME=		snortips-5.9
 PKGNAME=		${DISTNAME}
 CATEGORIES=		net security
 
 HOMEPAGE=		http://comixwall.org
 
-MAINTAINER=		Soner Tari <soner@comixwall.org>
+MAINTAINER=		Soner Tari <sonertari@gmail.com>
 
 # BSD
 PERMIT_PACKAGE_CDROM=	Yes

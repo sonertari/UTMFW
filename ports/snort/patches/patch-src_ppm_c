@@ -1,0 +1,21 @@
+$OpenBSD: patch-src_ppm_c,v 1.10 2015/01/24 03:52:53 lteo Exp $
+--- src/ppm.c.orig	Tue Jun 10 15:29:29 2014
++++ src/ppm.c	Sat Oct 25 16:32:17 2014
+@@ -518,7 +518,7 @@ void ppm_rule_log(ppm_cfg_t *ppm_cfg, uint64_t pktcnt,
+             int i;
+ 
+             if(!*timestamp)
+-                ts_print((struct timeval*)&p->pkth->ts, timestamp);
++                ts_print((struct sf_timeval32*)&p->pkth->ts, timestamp);
+ 
+             for (i=0; i< ppm_n_crules; i++)
+             {
+@@ -601,7 +601,7 @@ void ppm_rule_log(ppm_cfg_t *ppm_cfg, uint64_t pktcnt,
+             LogMessage(PPM_FMT_SUS_PKT, pktcnt, src, p->sp, dst, p->dp);
+ 
+             if(!*timestamp)
+-                ts_print((struct timeval*)&p->pkth->ts, timestamp);
++                ts_print((struct sf_timeval32*)&p->pkth->ts, timestamp);
+ 
+             for (i=0; i< ppm_n_rules; i++)
+             {

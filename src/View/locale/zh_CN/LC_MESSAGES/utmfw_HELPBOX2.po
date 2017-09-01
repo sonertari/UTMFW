@@ -1611,7 +1611,7 @@ msgstr ""
 "这可能是忽略配置的下载管理器。"
 
 msgid ""
-"This is the priority in the alerts. Alerts at this priority and up will be "
+"This is the priority in the alerts. Alerts at this severity and up will be "
 "used to block IPs."
 msgstr "这是在提醒优先。在这一优先警报和行动将用来阻止IP地址。"
 

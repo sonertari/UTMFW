@@ -1,0 +1,20 @@
+$OpenBSD: patch-src_util_h,v 1.7 2014/01/30 03:23:48 lteo Exp $
+--- src/util.h.orig	Tue Dec 31 17:07:54 2013
++++ src/util.h	Thu Jan 23 23:02:21 2014
+@@ -50,6 +50,7 @@
+ #include "sflsq.h"
+ #include "sfutil/sf_ipvar.h"
+ #include "ipv6_port.h"
++#include "pcap_pkthdr32.h"
+ 
+ /* Macros *********************************************************************/
+ 
+@@ -161,7 +162,7 @@ typedef struct _IntervalStats
+ void StoreSnortInfoStrings(void);
+ int DisplayBanner(void);
+ int gmt2local(time_t);
+-void ts_print(register const struct timeval *, char *);
++void ts_print(register const struct sf_timeval32 *, char *);
+ char *copy_argv(char **);
+ void strip(char *);
+ double CalcPct(uint64_t, uint64_t);

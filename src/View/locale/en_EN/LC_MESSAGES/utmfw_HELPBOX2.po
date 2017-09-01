@@ -1109,7 +1109,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This is the priority in the alerts. Alerts at this priority and up will be "
+"This is the priority in the alerts. Alerts at this severity and up will be "
 "used to block IPs."
 msgstr ""
 

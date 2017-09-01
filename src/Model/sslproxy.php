@@ -199,11 +199,12 @@ class Sslproxy extends Model
 	function GetLastLogs($needle, $interval= 60)
 	{
 		$lastLogs= array();
+		$dateTimeFormat= 'M d H:i:s';
 
 		$logs= $this->_getLiveLogs($this->LogFile, 1);
 		if (count($logs) == 1) {
 			$lastLine= $logs[0];
-			$lastTs= DateTime::createFromFormat('M d H:i:s', $lastLine['Date'].' '.$lastLine['Time'])->getTimestamp();
+			$lastTs= DateTime::createFromFormat($dateTimeFormat, $lastLine['Date'].' '.$lastLine['Time'])->getTimestamp();
 			$firstTs= $lastTs;
 			$lineCount= 32;
 
@@ -219,14 +220,14 @@ class Sslproxy extends Model
 				$logs= $this->_getLiveLogs($this->LogFile, $lineCount, $needle);
 				if (count($logs)) {
 					$firstLine= $logs[0];
-					$firstTs= DateTime::createFromFormat('M d H:i:s', $firstLine['Date'].' '.$firstLine['Time'])->getTimestamp();
+					$firstTs= DateTime::createFromFormat($dateTimeFormat, $firstLine['Date'].' '.$firstLine['Time'])->getTimestamp();
 				}
 
 				$lineCount*= 2;
 			}
 
 			foreach ($logs as $l) {
-				$ts= DateTime::createFromFormat('M d H:i:s', $l['Date'].' '.$l['Time'])->getTimestamp();
+				$ts= DateTime::createFromFormat($dateTimeFormat, $l['Date'].' '.$l['Time'])->getTimestamp();
 				if ($lastTs - $ts <= $interval) {
 					$lastLogs[]= $l;
 				}

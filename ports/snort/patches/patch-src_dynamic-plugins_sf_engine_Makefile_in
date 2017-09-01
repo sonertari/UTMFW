@@ -1,0 +1,12 @@
+$OpenBSD: patch-src_dynamic-plugins_sf_engine_Makefile_in,v 1.10 2016/05/02 02:29:58 lteo Exp $
+--- src/dynamic-plugins/sf_engine/Makefile.in.orig	Fri Mar 18 15:11:29 2016
++++ src/dynamic-plugins/sf_engine/Makefile.in	Fri Apr 29 11:02:26 2016
+@@ -376,7 +376,7 @@ top_srcdir = @top_srcdir@
+ AUTOMAKE_OPTIONS = foreign no-dependencies
+ dynamicengine_LTLIBRARIES = libsf_engine.la
+ dynamicenginedir = $(libdir)/snort_dynamicengine
+-libsf_engine_la_LDFLAGS = -export-dynamic -module @XCCFLAGS@
++libsf_engine_la_LDFLAGS = -export-dynamic -module -avoid-version @XCCFLAGS@
+ @BUILD_OPENSSL_MD5_TRUE@OPENSSL_MD5 = \
+ @BUILD_OPENSSL_MD5_TRUE@    md5.c md5.h 
+ 

@@ -96,7 +96,7 @@ class Snortips extends View
 		$this->Config = array(
 			'Priority' => array(
 				'title' => _TITLE2('Priority'),
-				'info' => _HELPBOX2('This is the priority in the alerts. Alerts at this priority and up will be used to block IPs.'),
+				'info' => _HELPBOX2('This is the priority in the alerts. Alerts at this severity and up will be used to block IPs.'),
 				),
 			'BlockDuration' => array(
 				'title' => _TITLE2('Block Duration'),
