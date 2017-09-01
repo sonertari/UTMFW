@@ -1124,7 +1124,7 @@ THESETS="apache-httpd-openbsd-1.3.20140502p6.tgz \
 		e2guardian-3.5.1.tgz \
 		blacklists.tar.gz \
 		squid-3.5.14.tgz \
-		snort-2.9.7.3.tgz \
+		snort-2.9.9.0p0.tgz \
 		snortrules.tar.gz \
 		snortips-5.9.tgz \
 		imspector-0.9.tgz \
