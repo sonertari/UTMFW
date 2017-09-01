@@ -1,4 +1,4 @@
-/*	$OpenBSD: relayd.h,v 1.222 2016/01/11 21:31:42 benno Exp $	*/
+/*	$OpenBSD: relayd.h,v 1.222.2.2 2016/08/07 07:54:07 benno Exp $	*/
 
 /*
  * Copyright (c) 2006 - 2015 Reyk Floeter <reyk@openbsd.org>
@@ -587,7 +587,9 @@ enum prototype {
 enum relay_result {
 	RES_DROP		= 0,
 	RES_PASS		= 1,
-	RES_FAIL		= -1
+	RES_FAIL		= -1,
+	RES_BAD			= -2,
+	RES_INTERNAL		= -3
 };
 
 enum rule_action {
@@ -1153,7 +1155,6 @@ int	 relay_session_cmp(struct rsession *, struct rsession *);
 int	 relay_load_certfiles(struct relay *);
 void	 relay_close(struct rsession *, const char *);
 void	 relay_natlook(int, short, void *);
-void	 relay_natlook2(int, short, void *);
 void	 relay_session(struct rsession *);
 int	 relay_from_table(struct rsession *);
 int	 relay_socket_af(struct sockaddr_storage *, in_port_t);
@@ -1271,6 +1272,7 @@ void		 purge_table(struct relayd *, struct tablelist *,
 void		 purge_relay(struct relayd *, struct relay *);
 char		*digeststr(enum digest_type, const u_int8_t *, size_t, char *);
 const char	*canonicalize_host(const char *, char *, size_t);
+int		 parse_url(const char *, char **, char **, char **);
 int		 map6to4(struct sockaddr_storage *);
 int		 map4to6(struct sockaddr_storage *, struct sockaddr_storage *);
 void		 imsg_event_add(struct imsgev *);
@@ -1284,7 +1286,7 @@ struct in6_addr *prefixlen2mask6(u_int8_t, u_int32_t *);
 u_int32_t	 prefixlen2mask(u_int8_t);
 int		 accept_reserve(int, struct sockaddr *, socklen_t *, int,
 		     volatile int *);
-struct kv	*kv_add(struct kvtree *, char *, char *);
+struct kv	*kv_add(struct kvtree *, char *, char *, int);
 int		 kv_set(struct kv *, char *, ...);
 int		 kv_setkey(struct kv *, char *, ...);
 void		 kv_delete(struct kvtree *, struct kv *);

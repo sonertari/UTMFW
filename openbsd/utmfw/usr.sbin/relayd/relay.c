@@ -1852,7 +1852,6 @@ relay_dispatch_pfe(int fd, struct privsep_proc *p, struct imsg *imsg)
 		bcopy(&cnl, con->se_cnl, sizeof(*con->se_cnl));
 		evtimer_del(&con->se_ev);
 		evtimer_set(&con->se_ev, relay_natlook, con);
-//		evtimer_set(&con->se_ev, relay_natlook2, con);
 		bzero(&tv, sizeof(tv));
 		evtimer_add(&con->se_ev, &tv);
 		break;
