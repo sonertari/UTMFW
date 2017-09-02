@@ -123,6 +123,13 @@ class Spamassassin extends View
 			);
 	}
 	
+	function FormatDate($date)
+	{
+		global $MonthNames;
+
+		return $MonthNames[$date['Month']].' '.sprintf('%02d', $date['Day']);
+	}
+
 	function FormatLogCols(&$cols)
 	{
 		$cols['Log']= htmlspecialchars($cols['Log']);
