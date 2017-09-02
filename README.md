@@ -1,25 +1,28 @@
 # UTMFW
 
-UTMFW is a UTM firewall running on OpenBSD 5.9. UTMFW is expected to be used on production systems. The UTMFW project provides a Web UI for monitoring and configuration. You can also use [A4PFFW](https://github.com/sonertari/A4PFFW) and [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
+UTMFW is a UTM firewall running on OpenBSD 5.9. UTMFW is expected to be used on production systems. The UTMFW project provides a Web UI for monitoring and configuration. UTMFW supports deep SSL inspection and inline intrusion prevention. You can also use [A4PFFW](https://github.com/sonertari/A4PFFW) and [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
 The installation iso file for the amd64 arch is available for download at [utmfw59\_20170317\_amd64.iso](https://drive.google.com/file/d/0B3F7Ueq0mFlYUUZudkVSWkd0QXM/view?usp=sharing). Make sure the md5 checksum is correct: fc73913f7bde39a3361d8c4cfadbfa1f.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as PFRE, E2Guardian, and many fixes and improvements to the system and the WUI. Also note that UTMFW 5.9 comes with OpenBSD 5.9-stable including all updates until March 14th, 2017.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, and many fixes and improvements to the system and the WUI. Also note that UTMFW 5.9 comes with OpenBSD 5.9-stable including all updates until March 14th, 2017.
+
+UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into UTM services: Web filter, HTTP Proxy, POP3 Proxy, SMTP Proxy, Virus Scanner, Spam Filter, and Snort Inline IPS. These UTM software are modified to support the mode of operation required by the SSLproxy.
 
 ## Features
 
 UTMFW includes the following software, alongside what is already available in a basic OpenBSD 5.9 installation:
 
+- SSLproxy: Transparent SSL/TLS proxy for deep SSL inspection
 - PFRE: Packet Filter Rule Editor
 - Apache Web server
 - PHP
 - ISC DNS server
 - Symon system monitoring software
 - E2Guardian: Web filter, anti-virus using ClamAV, blacklists
-- Snort: Intrusion detection system, with the latest rules
-- SnortIPS: Intrusion prevention software
+- Snort: Intrusion detection and inline prevention system, with the latest rules
+- SnortIPS: Passive intrusion prevention software
 - ClamAV: Virus scanner with periodic virus signature updates
 - SpamAssassin: Spam scanner
 - P3scan: Anti-virus/anti-spam transparent POP3 proxy
