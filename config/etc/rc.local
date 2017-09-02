@@ -69,7 +69,7 @@ if [ -x /usr/local/bin/snort ]; then
 	chown _snort /var/run/snort
 	echo -n ' ids'
 	/usr/local/bin/snort -i lan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort >/dev/null 2>&1
-	/usr/local/bin/snort -i wan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort >/dev/null 2>&1
+#	/usr/local/bin/snort -i wan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort >/dev/null 2>&1
 	echo -n ', inline ips'
 	/usr/local/bin/snort -D -d -Q -c /etc/snort/snortinline.conf -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort >/dev/null 2>&1
 fi
