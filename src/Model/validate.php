@@ -26,6 +26,7 @@ define('RE_BOOL', '^[01]$');
 define('RE_NAME', '^[\w_.-]{0,50}$');
 define('RE_NUM', '^\d{1,20}$');
 define('RE_SHA1', '^[a-f\d]{40}$');
+define('RE_DGSUBCAT', '^[\w/]{1,50}$');
 
 /// "Macro names must start with a letter, digit, or underscore, and may contain any of those characters"
 $RE_ID= '[\w_-]{1,50}';

@@ -230,12 +230,12 @@ class E2guardian extends Model
 					),
 
 				'TurnOnCats'	=>	array(
-					'argv'	=>	array(NUM, NAME, NAME, NAME, NAME),
+					'argv'	=>	array(NUM, NAME, NAME, NAME, DGSUBCAT),
 					'desc'	=>	_('Turn on cats'),
 					),
 
 				'TurnOffCats'	=>	array(
-					'argv'	=>	array(NUM, NAME, NAME, NAME, NAME),
+					'argv'	=>	array(NUM, NAME, NAME, NAME, DGSUBCAT),
 					'desc'	=>	_('Turn off cats'),
 					),
 
@@ -554,7 +554,7 @@ class E2guardian extends Model
 	function TurnOnCat($file, $cat, $subcat= '[^#\s]+')
 	{
 		/// @todo No need to send CAT and SUBCAT separately, escape slashes in PHP and send
-		return $this->ReplaceRegexp($file, "/^\h*$this->COMC(\s*\.Include.*lists\/$cat\/$subcat>.*)$/m", '${1}');
+		return $this->ReplaceRegexp($file, "|^\h*$this->COMC(\s*\.Include.*lists/$cat/$subcat>.*)$|m", '${1}');
 	}
 
 	/**
@@ -568,7 +568,7 @@ class E2guardian extends Model
 	function TurnOffCat($file, $cat, $subcat= '[^#\s]+')
 	{
 		/// @todo No need to send CAT and SUBCAT separately, escape slashes in View and send here
-		return $this->ReplaceRegexp($file, "/^(\h*\.Include.*lists\/$cat\/$subcat>.*)$/m", $this->COMC.'${1}');
+		return $this->ReplaceRegexp($file, "|^(\h*\.Include.*lists/$cat/$subcat>.*)$|m", $this->COMC.'${1}');
 	}
 
 	function GetList($group, $list, $type)

@@ -6419,6 +6419,9 @@ msgstr "Snort sürecini durdur"
 msgid "String wrong"
 msgstr "Dizi hatalı"
 
+msgid "Subcat wrong"
+msgstr "Alt sınıf yanlış"
+
 msgid ""
 "Subject of the email sent when a virus is caught.\n"
 "Only applicable if notifyav is on.\n"

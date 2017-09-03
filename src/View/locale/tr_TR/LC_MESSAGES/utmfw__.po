@@ -1042,6 +1042,9 @@ msgstr "Snort sürecini durdur"
 msgid "String wrong"
 msgstr "Dizi hatalı"
 
+msgid "Subcat wrong"
+msgstr "Alt sınıf yanlış"
+
 msgid "System restart"
 msgstr "Sistem tekrar başlatma"
 

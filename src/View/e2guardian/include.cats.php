@@ -122,9 +122,13 @@ function PrintFilterCatForms($list)
 
 if (filter_has_var(INPUT_POST, 'Cats')) {
 	foreach ($_POST['Cats'] as $CatSubcat) {
-		$CatArray= explode('/', $CatSubcat, 2);
+		$CatArray= explode('/', $CatSubcat, 3);
 		$Cat= $CatArray[0];
 		$Subcat= $CatArray[1];
+		if (isset($CatArray[2])) {
+			// shallalist has sub-subdirs now
+			$Subcat.= '/'.$CatArray[2];
+		}
 		if (filter_has_var(INPUT_POST, 'Disable')) {
 			$View->Controller($Output, 'TurnOffCats', $_SESSION[$View->Model]['ConfOpt'], $Submenu, filter_input(INPUT_POST, 'ListType'), $Cat, $Subcat);
 		}

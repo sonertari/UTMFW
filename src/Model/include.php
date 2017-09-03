@@ -92,6 +92,7 @@ define('EXT',	 		8388608);
 define('MIME',	 		16777216);
 define('IPPORT',		33554432);
 define('DGIPRANGE', 	67108864);
+define('DGSUBCAT',		134217728);
 
 $Output= '';
 $Error= '';

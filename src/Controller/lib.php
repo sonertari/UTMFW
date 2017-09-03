@@ -218,6 +218,10 @@ $ArgTypes= array(
 		'func'	=> 'IsAfterHours',
 		'desc'	=> _('Not comma separated digits'),
 		),
+	DGSUBCAT	=>	array(
+		'func'	=> 'IsDgSubCat',
+		'desc'	=> _('Subcat wrong'),
+		),
 );
 
 $MonthDays= array(
@@ -398,6 +402,12 @@ function IsTailNumber($str)
 		/// @attention Never allow large numbers here, otherwise the system becomes unusuable.
 		return $str < 1000;
 	}
+}
+
+function IsDgSubCat($str)
+{
+	// Subcats may contain / char
+	return preg_match('|' . RE_DGSUBCAT . '|', $str);
 }
 
 /**
