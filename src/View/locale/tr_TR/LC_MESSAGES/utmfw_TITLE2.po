@@ -905,6 +905,9 @@ msgstr "Uzaktaki Kullanıcı"
 msgid "Remove HTTP Accept-Encoding"
 msgstr "HTTP Accept-Encoding'i Sil"
 
+msgid "Remove HTTP Referer"
+msgstr "HTTP Referer'ı Sil"
+
 msgid "Report Interval"
 msgstr "Rapor Aralığı"
 

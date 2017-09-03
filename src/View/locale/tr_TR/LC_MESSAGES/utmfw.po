@@ -4919,6 +4919,9 @@ msgstr "Uzaktaki Kullanıcı"
 msgid "Remove HTTP Accept-Encoding"
 msgstr "HTTP Accept-Encoding'i Sil"
 
+msgid "Remove HTTP Referer"
+msgstr "HTTP Referer'ı Sil"
+
 msgid ""
 "Remove HTTP header line for Accept-Encoding. HTTP compression and encodings "
 "are disabled to make the content logs more readable. You can turn this off "
@@ -4927,6 +4930,13 @@ msgstr ""
 "Accept-Encoding için HTTP başlık satırını sil. İçerik kayıtlarını daha "
 "okunaklı yapmak için HTTP sıkıştırma ve kodlama devre dışı bırakılır. Eğer "
 "içerik kayıtlarını yazdırmıyorsanız bu seçeneği kapatabilirsiniz."
+
+msgid ""
+"Remove HTTP header line for Referer. The OWASP considers it a vulnerabilty, "
+"and it may cause redirection errors with SSLproxy."
+msgstr ""
+"Referer için HTTP başlık satırını sil. OWASP bu başlığı zafiyet olarak kabul "
+"eder, ve SSLproxy ile tekrar yönlendirme hatalarına sebep olabilir."
 
 msgid "Render layout"
 msgstr "Layout'u üret"

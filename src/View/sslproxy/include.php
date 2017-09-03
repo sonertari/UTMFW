@@ -132,6 +132,10 @@ class Sslproxy extends View
 				'title' => _TITLE2('Remove HTTP Accept-Encoding'),
 				'info' => _HELPBOX2('Remove HTTP header line for Accept-Encoding. HTTP compression and encodings are disabled to make the content logs more readable. You can turn this off if content logging is disabled.'),
 				),
+			'RemoveHTTPReferer' => array(
+				'title' => _TITLE2('Remove HTTP Referer'),
+				'info' => _HELPBOX2('Remove HTTP header line for Referer. The OWASP considers it a vulnerabilty, and it may cause redirection errors with SSLproxy.'),
+				),
 			);
 	}
 

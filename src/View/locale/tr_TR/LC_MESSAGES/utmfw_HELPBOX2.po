@@ -1136,6 +1136,13 @@ msgstr ""
 "içerik kayıtlarını yazdırmıyorsanız bu seçeneği kapatabilirsiniz."
 
 msgid ""
+"Remove HTTP header line for Referer. The OWASP considers it a vulnerabilty, "
+"and it may cause redirection errors with SSLproxy."
+msgstr ""
+"Referer için HTTP başlık satırını sil. OWASP bu başlığı zafiyet olarak kabul "
+"eder, ve SSLproxy ile tekrar yönlendirme hatalarına sebep olabilir."
+
+msgid ""
 "Results are only predictable with user authenticated configs, if enabled the "
 "violation/threshold count is kept track of by the user"
 msgstr ""

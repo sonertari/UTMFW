@@ -340,5 +340,8 @@ $ModelConfig = array(
     'RemoveHTTPAcceptEncoding' => array(
         'type' => STR_yes_no,
 		),
+    'RemoveHTTPReferer' => array(
+        'type' => STR_yes_no,
+		),
 	);
 ?>
