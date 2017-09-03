@@ -85,7 +85,14 @@ class Blacklists extends E2guardian
 	{
 		$re= "|^$this->blacklistsPath(\S+)/(\S+):(.*)$|";
 		if (preg_match($re, $logline, $match)) {
-			$cols['Category']= ucwords($match[1].' '.$match[2]);
+			$catArray= explode('/', $match[1], 2);
+			$cat= $catArray[0];
+			if (isset($catArray[1])) {
+				// shallalist has sub-subdirs now
+				$cat.= ' '.$catArray[1];
+			}
+
+			$cols['Category']= ucwords($cat.' '.$match[2]);
 			$cols['Site']= $match[3];
 			return TRUE;
 		}
