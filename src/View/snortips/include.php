@@ -290,6 +290,13 @@ class Snortips extends View
 		</td>
 		<?php
 	}
+	
+	function FormatDate($date)
+	{
+		global $MonthNames;
+
+		return $MonthNames[$date['Month']].' '.sprintf('%02d', $date['Day']);
+	}
 }
 
 $View= new Snortips();

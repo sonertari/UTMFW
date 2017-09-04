@@ -383,6 +383,25 @@ class Snortips extends Model
 		}
 		return FALSE;
 	}
+
+	function GetDateRegexp($date)
+	{
+		global $MonthNames;
+
+		if ($date['Month'] == '') {
+			$re= '.*';
+		}
+		else {
+			$re= $MonthNames[$date['Month']].'\s+';
+			if ($date['Day'] == '') {
+				$re.= '.*';
+			}
+			else {
+				$re.= sprintf('%02d', $date['Day']);
+			}
+		}
+		return $re;
+	}
 }
 
 $ModelConfig = array(

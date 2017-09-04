@@ -28,6 +28,12 @@ $Menu = array(
     'stats' => array(
         'Name' => _MENU('Statistics'),
         'Perms' => $ALL_USERS,
+		'SubMenu' => array(
+			'general' => _MENU('General'),
+			'daily' => _MENU('Daily'),
+			'hourly' => _MENU('Hourly'),
+			'live' => _MENU('Live'),
+			),
 		),
     'graphs' => array(
         'Name' => _MENU('Graphs'),
