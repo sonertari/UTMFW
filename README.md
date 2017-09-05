@@ -4,7 +4,7 @@ UTMFW is a UTM firewall running on OpenBSD 5.9. UTMFW is expected to be used on 
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
-The installation iso file for the amd64 arch is available for download at [utmfw59\_20170317\_amd64.iso](https://drive.google.com/file/d/0B3F7Ueq0mFlYUUZudkVSWkd0QXM/view?usp=sharing). Make sure the md5 checksum is correct: fc73913f7bde39a3361d8c4cfadbfa1f.
+The installation iso file for the amd64 arch is available for download at [utmfw59\_20170904\_amd64.iso](https://drive.google.com/file/d/0B3F7Ueq0mFlYenpkdDh5U2tRamc/view?usp=sharing). Make sure the SHA256 checksum is correct: 780db8ab5b2c144f83eb8205c1d4ca2474447a3f0de80631fa389922125c27e3.
 
 UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, and many fixes and improvements to the system and the WUI. Also note that UTMFW 5.9 comes with OpenBSD 5.9-stable including all updates until March 14th, 2017.
 
