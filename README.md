@@ -8,7 +8,7 @@ The installation iso file for the amd64 arch is available for download at [utmfw
 
 UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, and many fixes and improvements to the system and the WUI. Also note that UTMFW 5.9 comes with OpenBSD 5.9-stable including all updates until September 2nd, 2017.
 
-UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into UTM services: Web filter, HTTP Proxy, POP3 Proxy, SMTP Proxy, Virus Scanner, Spam Filter, and Snort Inline IPS. These UTM software are modified to support the mode of operation required by the SSLproxy.
+UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into UTM services: Web Filter, HTTP Proxy, POP3 Proxy, SMTP Proxy, Virus Scanner, Spam Filter, and Snort Inline IPS. These UTM software are modified to support the mode of operation required by the SSLproxy.
 
 ## Features
 
