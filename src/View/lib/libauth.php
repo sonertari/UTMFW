@@ -205,6 +205,7 @@ function HTMLHeader($color= 'white', $reloadRate= 0)
 				<?php
 			}
 			?>
+			<script type="text/javascript" src="../lib/d3.min.js"></script>
 		</head>
 		<body style="background: <?php echo $color ?>">
 			<table>

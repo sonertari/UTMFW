@@ -497,8 +497,9 @@ function PrintHGraph($data, $color= 'red', $title= '')
  * @param string $title Title.
  * @param int $maxcount Number of NVPs to print.
  */
-function PrintNVPs($nvps, $title, $maxcount= 100)
+function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE)
 {
+	global $IMG_PATH;
 	?>
 	<strong><?php echo $title ?></strong>
 	<table id="stats">
@@ -519,6 +520,14 @@ function PrintNVPs($nvps, $title, $maxcount= 100)
 						echo $name !== '' ? _(htmlspecialchars($name)):'';
 						?>
 					</td>
+					<?php
+					if ($count == 0 && $pie) {
+						?>
+						<img id="chart" class="chart-trigger" onclick="generateChart(<?php echo str_replace('"', "'", json_encode($nvps)); ?>, <?php echo "'$title'" ?>);"
+							src="<?php echo $IMG_PATH.'chart.png' ?>" name="<?php echo $title ?>" alt="<?php echo $title ?>" align="absmiddle" >
+						<?php
+					}
+					?>
 				</tr>
 				<?php
 				if (++$count >= $maxcount) {

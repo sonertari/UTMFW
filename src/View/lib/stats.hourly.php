@@ -102,6 +102,7 @@ $DateStats= $Stats['Date'];
 require_once($VIEW_PATH . '/header.php');
 
 PrintLogFileChooser($LogFile);
+PrintModalPieChart();
 ?>
 <table id="nvp">
 	<tr class="evenline">
@@ -168,6 +169,7 @@ foreach ($ViewStatsConf as $Name => $CurConf) {
 	}
 }
 
+DisplayChartTriggers();
 PrintHelpWindow(_($StatsWarningMsg), 'auto', 'WARN');
 PrintHelpWindow(_($StatsHelpMsg));
 require_once($VIEW_PATH . '/footer.php');

@@ -54,6 +54,7 @@ $Stats= json_decode($Output[0], TRUE);
 $DateStats= $Stats['Date'];
 
 require_once($VIEW_PATH . '/header.php');
+PrintModalPieChart();
 ?>
 <table>
 	<tr>
@@ -89,5 +90,6 @@ foreach ($ViewStatsConf as $Name => $CurConf) {
 	}
 }
 
+DisplayChartTriggers();
 require_once($VIEW_PATH . '/footer.php');
 ?>

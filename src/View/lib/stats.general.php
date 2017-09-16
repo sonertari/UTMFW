@@ -72,6 +72,7 @@ $DateStats= $Stats['Date'];
 require_once($VIEW_PATH . '/header.php');
 
 PrintLogFileChooser($LogFile);
+PrintModalPieChart();
 ?>
 <table>
 	<tr>
@@ -123,6 +124,7 @@ PrintLogFileChooser($LogFile);
 	</tr>
 </table>
 <?php
+DisplayChartTriggers();
 PrintHelpWindow(_($StatsWarningMsg), 'auto', 'WARN');
 PrintHelpWindow(_($StatsHelpMsg));
 require_once($VIEW_PATH . '/footer.php');

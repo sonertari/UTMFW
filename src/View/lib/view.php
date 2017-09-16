@@ -460,7 +460,7 @@ class View
 	{
 		$this->Controller($output, 'GetProcStatLines', $file);
 		$stats= json_decode($output[0], TRUE);
-		PrintNVPs($stats, _STATS('General Statistics'));
+		PrintNVPs($stats, _STATS('General Statistics'), 50, FALSE);
 	}
 
 	/**
