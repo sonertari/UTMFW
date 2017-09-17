@@ -431,7 +431,7 @@ function PrintVGraph($data, $color= 'red', $title= '')
 }
 
 /**
- * Prints horizontal graph accross the data range.
+ * Prints horizontal graph across the data range.
  *
  * @param array $data Data filled in elsewhere.
  * @param string $color Color of the bars.
