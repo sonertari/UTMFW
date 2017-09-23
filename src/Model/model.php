@@ -207,12 +207,12 @@ class Model
 					),
 
 				'GetFileLineCount'	=>	array(
-					'argv'	=>	array(FILEPATH, REGEXP|NONE),
+					'argv'	=>	array(FILEPATH, REGEXP|NONE, REGEXP|NONE, NUM|EMPTYSTR|NONE, NUM|EMPTYSTR|NONE, NUM|EMPTYSTR|NONE, NUM|EMPTYSTR|NONE),
 					'desc'	=>	_('Get line count'),
 					),
 
 				'GetLogs'	=>	array(
-					'argv'	=>	array(FILEPATH, NUM, TAIL, REGEXP|NONE),
+					'argv'	=>	array(FILEPATH, NUM, TAIL, REGEXP|NONE, REGEXP|NONE, NUM|EMPTYSTR|NONE, NUM|EMPTYSTR|NONE, NUM|EMPTYSTR|NONE, NUM|EMPTYSTR|NONE),
 					'desc'	=>	_('Get lines'),
 					),
 
@@ -1106,26 +1106,161 @@ class Model
 	}
 
 	/**
+	 * Generates the module specific datetime regexp for filtering logs.
+	 *
+	 * @param string $month Two-digit month, or empty string for match all.
+	 * @param string $day Two-digit day, or empty string for match all.
+	 * @param string $hour Two-digit hour, or empty string for match all.
+	 * @param string $minute Two-digit minute, or empty string for match all.
+	 * @return string Regexp to use as datetime filter.
+	 */
+	function formatDateHourRegexp($month, $day, $hour, $minute)
+	{
+		global $MonthNames, $Re_MonthNames;
+
+		// Sep  7 13:49:06
+		if ($month != '') {
+			$reMonth= $MonthNames[$month];
+		} else {
+			$reMonth= '('.$Re_MonthNames.')';
+		}
+
+		if ($day != '') {
+			$reDay= sprintf('% 2d', $day);
+		} else {
+			$reDay= '([[:digit:][:blank:]][[:digit:]])';
+		}
+
+		if ($hour != '') {
+			$reHour= $hour;
+		} else {
+			$reHour= '([[:digit:]][[:digit:]])';
+		}
+
+		if ($minute != '') {
+			$reMinute= $minute;
+		} else {
+			$reMinute= '([[:digit:]][[:digit:]])';
+		}
+
+		return "^$reMonth $reDay $reHour:$reMinute:";
+	}
+
+	function formatDateHourRegexpDayLeadingZero($month, $day, $hour, $minute)
+	{
+		global $MonthNames, $Re_MonthNames;
+
+		// Sep 07 13:49:06
+		if ($month != '') {
+			$reMonth= $MonthNames[$month];
+		} else {
+			$reMonth= '('.$Re_MonthNames.')';
+		}
+
+		if ($day != '') {
+			$reDay= $day;
+		} else {
+			$reDay= '([[:digit:]][[:digit:]])';
+		}
+
+		if ($hour != '') {
+			$reHour= $hour;
+		} else {
+			$reHour= '([[:digit:]][[:digit:]])';
+		}
+
+		if ($minute != '') {
+			$reMinute= $minute;
+		} else {
+			$reMinute= '([[:digit:]][[:digit:]])';
+		}
+		
+		return "^$reMonth $reDay $reHour:$reMinute:";
+	}
+
+	function formatDateHourRegexpWeekDays($month, $day, $hour, $minute)
+	{
+		global $MonthNames, $Re_MonthNames, $Re_WeekDays;
+
+		// Mon Sep  4 23:51:31
+		if ($month != '') {
+			$reMonth= $MonthNames[$month];
+		} else {
+			$reMonth= '('.$Re_MonthNames.')';
+		}
+
+		if ($day != '') {
+			$reDay= sprintf('% 2d', $day);
+		} else {
+			$reDay= '([[:digit:][:blank:]][[:digit:]])';
+		}
+
+		if ($hour != '') {
+			$reHour= $hour;
+		} else {
+			$reHour= '([[:digit:]][[:digit:]])';
+		}
+
+		if ($minute != '') {
+			$reMinute= $minute;
+		} else {
+			$reMinute= '([[:digit:]][[:digit:]])';
+		}
+
+		$reWeekDays= '('.$Re_WeekDays.')';
+
+		return "^$reWeekDays $reMonth $reDay $reHour:$reMinute:";
+	}
+
+	/**
 	 * Gets line count of the given log file.
 	 *
 	 * @param string $file Log file pathname.
 	 * @param string $re Regexp to get count of a restricted result set.
+	 * @param string $needle Optional regexp to use with a second grep over logs, used by Stats pages.
+	 * @param string $month Two-digit month, or empty string for match all.
+	 * @param string $day Two-digit day, or empty string for match all.
+	 * @param string $hour Two-digit hour, or empty string for match all.
+	 * @param string $minute Two-digit minute, or empty string for match all.
 	 * @return int Line count.
 	 */
-	function GetFileLineCount($file, $re= '')
+	function GetFileLineCount($file, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
-		return Output($this->_getFileLineCount($file, $re));
+		return Output($this->_getFileLineCount($file, $re, $needle, $month, $day, $hour, $minute));
 	}
 
-	function _getFileLineCount($file, $re= '')
+	function _getFileLineCount($file, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
-		if ($re == '') {
+		if ($re == '' && $needle == '' && $month == '' && $day == '' && $hour == '' && $minute == '') {
 			/// @warning Input redirection is necessary, otherwise wc adds file name to its output too
 			$cmd= "/usr/bin/wc -l < $file";
 		}
 		else {
-			$re= escapeshellarg($re);
-			$cmd= "/usr/bin/grep -a -E $re $file | /usr/bin/wc -l";
+			// Skip for speed, otherwise we could use datetime regexp for empty strings too
+			if ($month == '' && $day == '' && $hour == '' && $minute == '') {
+				$re= escapeshellarg($re);
+				if ($needle == '') {
+					$cmd= "/usr/bin/grep -a -E $re $file";
+				}
+				else {
+					$needle= escapeshellarg($needle);
+					$cmd= "/usr/bin/grep -a -E $needle $file | /usr/bin/grep -a -E $re";
+				}
+			}
+			else {
+				$cmd= '/usr/bin/grep -a -E "' . $this->formatDateHourRegexp($month, $day, $hour, $minute) . '" ' . $file;
+
+				$re= escapeshellarg($re);
+				if ($needle == '') {
+					$cmd.= " | /usr/bin/grep -a -E $re";
+				}
+				else {
+					$needle= escapeshellarg($needle);
+					$cmd.= " | /usr/bin/grep -a -E $needle | /usr/bin/grep -a -E $re";
+				}
+			}
+
+			$cmd.= ' | /usr/bin/wc -l';
 		}
 
 		// OpenBSD wc returns with leading blanks
@@ -1139,14 +1274,42 @@ class Model
 	 * @param int $end Head option, start line.
 	 * @param int $count Tail option, page line count.
 	 * @param string $re Regexp to restrict the result set.
+	 * @param string $needle Optional regexp to use with a second grep over logs, used by Stats pages.
+	 * @param string $month Two-digit month, or empty string for match all.
+	 * @param string $day Two-digit day, or empty string for match all.
+	 * @param string $hour Two-digit hour, or empty string for match all.
+	 * @param string $minute Two-digit minute, or empty string for match all.
 	 * @return array Log lines.
 	 */
-	function GetLogs($file, $end, $count, $re= '')
+	function GetLogs($file, $end, $count, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
 		// Empty $re is not an issue for grep, greps all
-		$re= escapeshellarg($re);
-		$cmd= "/usr/bin/grep -a -E $re $file | /usr/bin/head -$end | /usr/bin/tail -$count";
-		
+		// Skip for speed, otherwise we could use datetime regexp for empty strings too
+		if ($month == '' && $day == '' && $hour == '' && $minute == '') {
+			$re= escapeshellarg($re);
+			if ($needle == '') {
+				$cmd= "/usr/bin/grep -a -E $re $file";
+			}
+			else {
+				$needle= escapeshellarg($needle);
+				$cmd= "/usr/bin/grep -a -E $needle $file | /usr/bin/grep -a -E $re";
+			}
+		}
+		else {
+			$cmd= '/usr/bin/grep -a -E "' . $this->formatDateHourRegexp($month, $day, $hour, $minute) . '" ' . $file;
+
+			$re= escapeshellarg($re);
+			if ($needle == '') {
+				$cmd.= " | /usr/bin/grep -a -E $re";
+			}
+			else {
+				$needle= escapeshellarg($needle);
+				$cmd.= " | /usr/bin/grep -a -E $needle | /usr/bin/grep -a -E $re";
+			}
+		}
+
+		$cmd.= " | /usr/bin/head -$end | /usr/bin/tail -$count";
+
 		exec($cmd, $output, $retval);
 		
 		$logs= array();
@@ -1166,10 +1329,10 @@ class Model
 	 * of the lines grep'd.
 	 *
 	 * Difference from the archives method is that this one always gets
-	 * the tail of the log or grepped lines.
+	 * the tail of the log or grep'd lines.
 	 *
 	 * @param string $file Log file.
-	 * @param int $count Tail lenght, page line count.
+	 * @param int $count Tail length, page line count.
 	 * @param string $re Regexp to restrict the result set.
 	 * @return array Log lines.
 	 */
@@ -1428,7 +1591,18 @@ class Model
 	{
 		global $StatsConf;
 
-		$cmd= $StatsConf[$this->Name]['Total']['Cmd'];
+		$statsdefs= $StatsConf[$this->Name];
+
+		$needle= '';
+		if (isset($statsdefs['Total']['Needle'])) {
+			$needle= $statsdefs['Total']['Needle'];
+		}
+		
+		$cmd= $statsdefs['Total']['Cmd'];
+		if ($needle != '') {
+			$needle= escapeshellarg($needle);
+			$cmd.= " | /usr/bin/grep -a -E $needle";
+		}
 
 		if ($tail > -1) {
 			/// @attention Normally would never allow large $tail numbers here, but this $tail is computed in the code.
@@ -1538,11 +1712,18 @@ class Model
 	 */
 	function CountDiffLogLines($logfile, &$count)
 	{
+		global $StatsConf;
+
 		$count= -1;
 			
 		if ($this->GetStatsFileInfo($logfile, $oldlinecount, $oldfilestat)) {
+			$needle= '';
+			$statsdefs= $StatsConf[$this->Name];
+			if (isset($statsdefs) && isset($statsdefs['Total']['Needle'])) {
+				$needle= $statsdefs['Total']['Needle'];
+			}
 			
-			$newlinecount= $this->_getFileLineCount($logfile);
+			$newlinecount= $this->_getFileLineCount($logfile, $needle);
 			$origfile= $this->GetOrigFileName($logfile);
 
 			if (($newlinecount >= $oldlinecount) && !preg_match('/\.gz$/', $origfile)) {
@@ -1578,17 +1759,23 @@ class Model
 
 		$stats= array();
 		$briefstats= array();
+		$linecount= 0;
 
-		// Line count should be obtained here, see SaveStats() for explanation
-		$linecount= $this->_getFileLineCount($logfile);
-
-		if ($this->CountDiffLogLines($logfile, $tail)) {
-			$this->GetSavedStats($logfile, $stats, $briefstats);
-		}
-		
 		$statsdefs= $StatsConf[$this->Name];
 		
 		if (isset($statsdefs)) {
+			$needle= '';
+			if (isset($statsdefs['Total']['Needle'])) {
+				$needle= $statsdefs['Total']['Needle'];
+			}
+
+			// Line count should be obtained here, see SaveStats() for explanation
+			$linecount= $this->_getFileLineCount($logfile, $needle);
+
+			if ($this->CountDiffLogLines($logfile, $tail)) {
+				$this->GetSavedStats($logfile, $stats, $briefstats);
+			}
+		
 			$lines= $this->GetStatsLogLines($logfile, $tail);
 			
 			if ($lines !== '') {

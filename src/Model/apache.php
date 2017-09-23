@@ -103,6 +103,40 @@ class Apache extends Model
         $re= "/^(\h*HostName\h+)($Re_Ip|[\w\.]+)(\s+.*)/ms";
 		return $this->ReplaceRegexp('/etc/webalizer.conf', $re, '${1}'.$ip.'${3}');
 	}
+
+	function formatDateHourRegexp($month, $day, $hour, $minute)
+	{
+		global $MonthNames, $Re_MonthNames, $Re_WeekDays;
+
+		// [Mon Sep  4 23:51:13 2017]
+		if ($month != '') {
+			$reMonth= $MonthNames[$month];
+		} else {
+			$reMonth= '('.$Re_MonthNames.')';
+		}
+
+		if ($day != '') {
+			$reDay= sprintf('% 2d', $day);
+		} else {
+			$reDay= '([[:digit:][:blank:]][[:digit:]])';
+		}
+
+		if ($hour != '') {
+			$reHour= $hour;
+		} else {
+			$reHour= '([[:digit:]][[:digit:]])';
+		}
+
+		if ($minute != '') {
+			$reMinute= $minute;
+		} else {
+			$reMinute= '([[:digit:]][[:digit:]])';
+		}
+
+		$reWeekDays= '('.$Re_WeekDays.')';
+
+		return "^\[$reWeekDays $reMonth $reDay $reHour:$reMinute:";
+	}
 }
 
 /**

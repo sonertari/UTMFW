@@ -402,6 +402,11 @@ class Snortips extends Model
 		}
 		return $re;
 	}
+
+	function formatDateHourRegexp($month, $day, $hour, $minute)
+	{
+		return $this->formatDateHourRegexpDayLeadingZero($month, $day, $hour, $minute);
+	}
 }
 
 $ModelConfig = array(

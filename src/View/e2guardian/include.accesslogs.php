@@ -46,6 +46,7 @@ $LogConf = array(
 class E2guardianlogs extends View
 {
 	public $Model= 'e2guardianlogs';
+	public $LogsPage= 'accesslogs.php';
 
 	function __construct()
 	{
@@ -54,7 +55,7 @@ class E2guardianlogs extends View
 	}
 	
 	/**
-	 * Builds DG specific string from $date.
+	 * Builds a DG specific string from $date.
 	 *
 	 * The datetimes in log lines are different for each module.
 	 * Does the opposite of FormatDateArray()
@@ -64,25 +65,25 @@ class E2guardianlogs extends View
 	 */
 	function FormatDate($date)
 	{
-		return date('Y').'.'.$date['Month'].'.'.$date['Day'];
+		return date('Y').'.'.($date['Month'] + 0).'.'.($date['Day'] + 0);
 	}
 
 	/**
-	 * Builds DG specific $date from string.
+	 * Builds a DG specific $date from string.
 	 */
 	function FormatDateArray($datestr, &$date)
 	{
 		global $MonthNumbers;
 
 		if (preg_match('/^(\d+)\.(\d+)\.(\d+)$/', $datestr, $match)) {
-			$date['Month']= $match[2];
-			$date['Day']= $match[3];
+			$date['Month']= $match[2] + 0;
+			$date['Day']= $match[3] + 0;
 			return TRUE;
 		}
 		else if (preg_match('/(\w+)\s+(\d+)/', $datestr, $match)) {
 			if (array_key_exists($match[1], $MonthNumbers)) {
-				$date['Month']= sprintf('%02d', $MonthNumbers[$match[1]]);
-				$date['Day']= sprintf('%02d', $match[2]);
+				$date['Month']= $MonthNumbers[$match[1]] + 0;
+				$date['Day']= $match[2] + 0;
 				return TRUE;
 			}
 		}

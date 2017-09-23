@@ -198,7 +198,7 @@ PrintSiteCategorySearchForm($SearchSite);
 /// @attention $LogFile may be NULL too, not just FALSE or a string
 if ($LogFile) {
 	ProcessStartLine($StartLine);
-	UpdateLogsPageSessionVars($LinesPerPage, $SearchRegExp);
+	UpdateLogsPageSessionVars($LinesPerPage, $SearchRegExp, $SearchNeedle);
 
 	/// @todo GetLogs here, compute LogSize using Logs, this is double work otherwise
 	$View->Controller($Output, 'GetFileLineCount', $LogFile, $SearchRegExp);

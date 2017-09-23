@@ -105,7 +105,7 @@ function CheckPageActivation($active)
  * New lines are replaced with html breaks before displaying.
  *
  * @warning Checks if $msg is empty, because some automatized functions may
- * not pass a non-empth string (such as on configuration pages), thus the box
+ * not pass a non-empty string (such as on configuration pages), thus the box
  * should not be displayed. Just take debug logs.
  *
  * @param string $msg Message to display.
@@ -300,6 +300,9 @@ function PrintLogFileChooser($logfile)
 	<?php
 }
 
+/// Provides a unique form id for NVP and graph print functions
+$FormIdCount = 0;
+
 /**
  * Prints NVP graph vertically.
  *
@@ -309,25 +312,41 @@ function PrintLogFileChooser($logfile)
  */
 function PrintNVPsVGraph($data, $color= 'red', $title= '')
 {
+	global $FormIdCount;
+
 	if (!isset($data)) {
 		$data= array();
 	}
 
+	$dataValues= array_map(function ($a) { return $a['value']; }, $data);
+
 	$max= 0;
-	if (count($data) > 0) {
-		$max= max($data);
+	if (count($dataValues) > 0) {
+		$max= max($dataValues);
 	}
 	?>
-	<strong><?php echo $title ?></strong> <?php echo _TITLE('total').'= '.array_sum($data) ?>
+	<strong><?php echo $title ?></strong> <?php echo _TITLE('total').'= '.array_sum($dataValues) ?>
 	<table id="statsgraph">
 		<?php
-		foreach ($data as $name => $value) {
+		foreach ($data as $name => $valueArray) {
+			$value= $valueArray['value'];
+			$dateArray= $valueArray['date'];
+
+			$formId= 'form'.$FormIdCount++;
+
 			$width= 0;
 			if ($value > 0) {
 				$width= intval(100 * $value / $max);
 			}
 			?>
-			<tr>
+			<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="stats.php?submenu=daily" method="post">
+				<input type="hidden" name="Month" value="<?php echo $dateArray['Month'] ?>" />
+				<input type="hidden" name="Day" value="<?php echo $dateArray['Day'] ?>" />
+				<input type="hidden" name="Hour" value="<?php echo $dateArray['Hour'] ?>" />
+				<input type="hidden" name="Apply" value="Apply" />
+				<input type="hidden" name="Sender" value="Stats" />
+			</form>
+			<tr onclick="document.<?php echo $formId ?>.submit()" style="cursor: pointer;" title="<?php echo _TITLE('Click to search in the stats') ?>">
 				<td class="hlegend">
 					<table>
 						<tr id="hbar">
@@ -366,26 +385,33 @@ function PrintNVPsVGraph($data, $color= 'red', $title= '')
 }
 
 /**
- * Prints vertical graph accross the data range.
+ * Prints vertical graph across the data range.
  *
  * @todo Can combine with PrintNVPsVGraph()?
  *
  * @param array $data Data filled in elsewhere.
  * @param string $color Color of the bars.
  * @param string $title Graph title, if provided.
+ * @param boolean $minutesGraph TRUE if the caller is hourly stats page, used to jump to the correct page.
+ * @param string $needle Search regexp to filter the logs, used by hourly stats.
+ * @param string $logFile Current log file, used by live stats pages to set the log file to the active one.
  */
-function PrintVGraph($data, $color= 'red', $title= '')
+function PrintVGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $needle= '', $logFile= '')
 {
+	global $FormIdCount;
+
 	if (!isset($data)) {
 		$data= array();
 	}
 
+	$dataValues= array_map(function ($a) { return $a['value']; }, $data);
+
 	$max= 0;
-	if (count($data) > 0) {
-		$max= max($data);
+	if (count($dataValues) > 0) {
+		$max= max($dataValues);
 	}
 	?>
-	<strong><?php echo $title ?></strong> <?php echo _TITLE('total').'= '.array_sum($data) ?>
+	<strong><?php echo $title ?></strong> <?php echo _TITLE('total').'= '.array_sum($dataValues) ?>
 	<table id="statsgraph">
 		<tr>
 			<td>
@@ -394,23 +420,45 @@ function PrintVGraph($data, $color= 'red', $title= '')
 					$i= sprintf('%02d', $i);
 					$width= 0;
 					if (!isset($data[$i])) {
-						$data[$i]= 0;
+						$data[$i]['value']= 0;
 					}
-					if ($data[$i] > 0) {
-						$width= intval(100 * $data[$i] / $max);
+					if ($data[$i]['value'] > 0) {
+						$width= intval(100 * $data[$i]['value'] / $max);
 					}
+
+					$dateArray= $data[$i]['date'];
+
+					$formId= 'form'.$FormIdCount++;
+					$action= !$minutesGraph ? 'stats.php?submenu=hourly' : "$View->LogsPage?submenu=archives";
 					?>
+					<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $action ?>" method="post">
+						<input type="hidden" name="SearchRegExp" value="" />
+						<input type="hidden" name="SearchNeedle" value="<?php echo $needle ?>" />
+						<input type="hidden" name="Month" value="<?php echo $dateArray['Month'] ?>" />
+						<input type="hidden" name="Day" value="<?php echo $dateArray['Day'] ?>" />
+						<input type="hidden" name="Hour" value="<?php echo $dateArray['Hour'] ?>" />
+						<input type="hidden" name="Minute" value="<?php echo $dateArray['Minute'] ?>" />
+						<?php
+						if ($logFile != '') {
+							?>
+							<input type="hidden" name="LogFile" value="<?php echo $logFile ?>" />
+							<?php
+						}
+						?>
+						<input type="hidden" name="Apply" value="Apply" />
+						<input type="hidden" name="Sender" value="Stats" />
+					</form>
 					<table>
-						<tr id="hbar">
+						<tr id="hbar" onclick="document.<?php echo $formId ?>.submit()" style="cursor: pointer;" title="<?php echo _TITLE('Click to search in the stats') ?>">
 							<td class="legend">
 								<?php printf('%02d', $i) ?>
 							</td>
 							<td style="width: <?php echo $width ?>%; background-color: <?php echo $color ?>;">
 							</td>
 							<?php
-							if ($data[$i] > 0) {
+							if ($data[$i]['value'] > 0) {
 								?>
-								<td class="value"><?php echo $data[$i] ?></td>
+								<td class="value"><?php echo $data[$i]['value'] ?></td>
 								<?php
 							}
 							else {
@@ -436,37 +484,66 @@ function PrintVGraph($data, $color= 'red', $title= '')
  * @param array $data Data filled in elsewhere.
  * @param string $color Color of the bars.
  * @param string $title Graph title, if provided.
+ * @param boolean $minutesGraph TRUE if the caller is hourly stats page, used to jump to the correct page.
+ * @param string $needle Search regexp to filter the logs, used by hourly stats.
+ * @param string $logFile Current log file, used by live stats pages to set the log file to the active one.
  */
-function PrintHGraph($data, $color= 'red', $title= '')
+function PrintHGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $needle= '', $logFile= '')
 {
+	global $FormIdCount, $View;
+
 	if (!isset($data)) {
 		$data= array();
 	}
 
+	$dataValues= array_map(function ($a) { return $a['value']; }, $data);
+
 	$max= 0;
-	if (count($data) > 0) {
-		$max= max($data);
+	if (count($dataValues) > 0) {
+		$max= max($dataValues);
 	}
 	?>
-	<strong><?php echo $title ?></strong> <?php echo _TITLE('total').'= '.array_sum($data) ?>
+	<strong><?php echo $title ?></strong> <?php echo _TITLE('total').'= '.array_sum($dataValues) ?>
 	<table id="statsgraph">
 		<tr class="hgraph">
 			<?php
 			for ($i= 0; $i < count($data); $i++) {
 				$i= sprintf('%02d', $i);
+
+				$dateArray= $data[$i]['date'];
+
+				$formId= 'form'.$FormIdCount++;
+				$action= !$minutesGraph ? 'stats.php?submenu=hourly' : "$View->LogsPage?submenu=archives";
 				?>
-				<td>
+				<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $action ?>" method="post">
+					<input type="hidden" name="SearchRegExp" value="" />
+					<input type="hidden" name="SearchNeedle" value="<?php echo $needle ?>" />
+					<input type="hidden" name="Month" value="<?php echo $dateArray['Month'] ?>" />
+					<input type="hidden" name="Day" value="<?php echo $dateArray['Day'] ?>" />
+					<input type="hidden" name="Hour" value="<?php echo $dateArray['Hour'] ?>" />
+					<input type="hidden" name="Minute" value="<?php echo $dateArray['Minute'] ?>" />
+					<?php
+					if ($logFile != '') {
+						?>
+						<input type="hidden" name="LogFile" value="<?php echo $logFile ?>" />
+						<?php
+					}
+					?>
+					<input type="hidden" name="Apply" value="Apply" />
+					<input type="hidden" name="Sender" value="Stats" />
+				</form>
+				<td onclick="document.<?php echo $formId ?>.submit()" style="cursor: pointer;" title="<?php echo _TITLE('Click to search in the stats') ?>">
 					<table>
 						<tr>
 							<td class="bartop">
 								<?php
 								$height= 0;
 								if (!isset($data[$i])) {
-									$data[$i]= 0;
+									$data[$i]['value']= 0;
 								}
-								if ($data[$i] > 0) {
-									echo $data[$i];
-									$height= intval(100 * $data[$i] / $max);
+								if ($data[$i]['value'] > 0) {
+									echo $data[$i]['value'];
+									$height= intval(100 * $data[$i]['value'] / $max);
 								}
 								?>
 							</td>
@@ -493,13 +570,18 @@ function PrintHGraph($data, $color= 'red', $title= '')
 /**
  * Prints NVP statistics.
  *
- * @param array $nvps Name-Value-Pair to print.
+ * @param array $nvps Name-Value-Pairs to print.
  * @param string $title Title.
  * @param int $maxcount Number of NVPs to print.
+ * @param boolean $pie TRUE if we are to print pie chart trigger image.
+ * @param string $needle Search regexp to filter the logs.
+ * @param string $prefix Regexp to insert before the search string.
+ * @param string $postfix Regexp to insert after the search string.
+ * @param array $dateArray Datetime to restrict the searches.
  */
-function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE)
+function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE, $needle='', $prefix='', $postfix='', $dateArray=array())
 {
-	global $IMG_PATH;
+	global $IMG_PATH, $View, $FormIdCount;
 	?>
 	<strong><?php echo $title ?></strong>
 	<table id="stats">
@@ -508,7 +590,7 @@ function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE)
 			arsort($nvps);
 
 			$count= 0;
-			foreach ($nvps as $name => $value) {
+			foreach ($nvps as $n => $value) {
 				?>
 				<tr>
 					<td class="value">
@@ -517,7 +599,59 @@ function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE)
 					<td class="name">
 						<?php
 						// Empty strings print default gettext header lines otherwise
-						echo $name !== '' ? _(htmlspecialchars($name)):'';
+						$name= $n !== '' ? _(htmlspecialchars($n)):'-';
+						
+						// Needle can be used to disable log searches
+						if ($needle === FALSE) {
+							echo $name;
+						} else {
+							// Need unique ids for each form for submission to work
+							$formId = 'form'.$FormIdCount++;
+
+							// Need SearchRegExp and action URL supplied externally
+							// Regex should search for a case sensitive exact match, otherwise github matches live.github or GITHUB too
+
+							// Caveats of this regexp method:
+							// @todo Squid http code: Searches and finds 302 in all text, need a separate prefix, e.g. for TCP_MISS/302
+							// @todo P3scan Number of e-mails Clean Exit: Searches all, need a separate parser, e.g. for (Clean Exit). Mails: 1
+							// @todo P3scan pop3s: Cannot find pop3s, need to make POP3S lowercase
+							// @todo Smtp-gated Source IPs: Searches and finds all IPs, not just source (or destination), the same issue with other modules
+							// @todo Openssh briefstats password: Searches and finds all password words, not just failed attempts
+							// @todo syslog "last message repeated x times": Causes more date lines in brief stats than can be parsed, need -rr option in OpenBSD 6.x/syslog
+							// @todo Briefstats should use the Total Needle too, otherwise we cannot get general statistics for, say, spamassassin
+
+							// Use default pre/postfixes if not supplied by the caller
+							if ($prefix == '') {
+								// @attention Use [[:blank:]]+, [:blank:]+ does not work
+								$prefix= '([[:blank:]]+)';
+							}
+
+							if ($postfix == '') {
+								$postfix= '([^[:alnum:]]+)';
+							}
+
+							/// @attention Do not use the needle in the regexp, use it separately, or grep takes too long,
+							// ~30 secs if search name is long, as in SSLproxy error or warning messages. Two cascaded greps are very fast.
+							// Otherwise, the following would/could do the same job.
+							//$regexp= $needle == '' ?
+							//	"($prefix|^)${name}($postfix|$)" :
+							//	"(($prefix|^)${name}$postfix.*($needle)|($needle).*$prefix${name}($postfix|$))";
+
+							$regexp= "($prefix|^)".Escape($name, '()+?')."($postfix|$)";
+
+							/// @attention Do not use href in anchor, otherwise href overrides the onclick action sometimes, hence the cursor style
+							?>
+							<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $View->LogsPage ?>?submenu=archives" method="post">
+								<input type="hidden" name="SearchRegExp" value="<?php echo $regexp ?>" />
+								<input type="hidden" name="SearchNeedle" value="<?php echo $needle ?>" />
+								<input type="hidden" name="Month" value="<?php echo $dateArray['Month'] ?>" />
+								<input type="hidden" name="Day" value="<?php echo $dateArray['Day'] ?>" />
+								<input type="hidden" name="Hour" value="<?php echo $dateArray['Hour'] ?>" />
+								<input type="hidden" name="Sender" value="Stats" />
+							</form>
+							<a onclick="document.<?php echo $formId ?>.submit()" style="cursor: pointer;" title="<?php echo _TITLE('Click to search in the logs') ?>"><?php echo $name ?></a>
+							<?php
+						}
 						?>
 					</td>
 					<?php
@@ -549,18 +683,21 @@ function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE)
  * @param array $conf Attributes of graph, title and color.
  * @param string $type Graph direction, horizontal or vertical.
  * @param string $style Precision of graph.
+ * @param string $prefix Regexp to insert before the search string.
+ * @param string $postfix Regexp to insert after the search string.
  */
-function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style)
+function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style, $prefix, $postfix)
 {
 	global $NvpColCount;
 
-	$printfunc= ($type == 'Horizontal') ? 'PrintHGraph' : 'PrintVGraph';
+	// The default is Horizontal
+	$printFunc= ($type == 'Vertical') ? 'PrintVGraph' : 'PrintHGraph';
 	if ($style == 'Hourly') {
 		FillGraphDataRange($data, $stats, $date, 24, $parent);
 	}
 	else {
 		FillDatesGraphData($data, $stats, $date, 'Sum', $parent);
-		$printfunc= 'PrintNVPsVGraph';
+		$printFunc= 'PrintNVPsVGraph';
 	}
 
 	if (isset($conf['Divisor'])) {
@@ -571,7 +708,7 @@ function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style)
 		<tr>
 			<td>
 				<?php
-				$printfunc($data, $conf['Color'], _($conf['Title']));
+				$printFunc($data, $conf['Color'], _($conf['Title']));
 				if (count($conf['NVPs']) > 0) {
 					?>
 					<table>
@@ -591,7 +728,7 @@ function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style)
 								if (isset($conf['Divisor'])) {
 									DivideArrayData($nvps, $conf['Divisor']);
 								}
-								PrintNVPs($nvps, _($title), 10);
+								PrintNVPs($nvps, _($title), 10, TRUE, $conf['Needle'], $prefix, $postfix, $date);
 								?>
 							</td>
 							<?php
@@ -619,11 +756,16 @@ function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style)
  * @param string $parent Parent field name to get count field.
  * @param array $conf Attributes of graph, title and color.
  * @param string $type Graph direction, horizontal or vertical.
+ * @param string $prefix Regexp to insert before the search string.
+ * @param string $postfix Regexp to insert after the search string.
+ * @param array $dateArray Datetime to restrict the searches.
+ * @param string $logFile Current log file, used by live stats pages to set the log file to the active one.
  */
-function PrintMinutesGraphNVPSet($stats, $parent, $conf, $type)
+function PrintMinutesGraphNVPSet($stats, $parent, $conf, $type, $prefix, $postfix, $dateArray, $logFile='')
 {
-	$PrintGraphFunc= ($type == 'Horizontal') ? 'PrintHGraph' : 'PrintVGraph';
-	FillGraphData($data, $stats['Mins'], 60, $parent);
+	// The default is Horizontal
+	$printGraphFunc= ($type == 'Vertical') ? 'PrintVGraph' : 'PrintHGraph';
+	FillGraphData($data, $stats['Mins'], 60, $parent, '', $dateArray);
 
 	if (isset($conf['Divisor'])) {
 		DivideArrayData($data, $conf['Divisor']);
@@ -633,7 +775,7 @@ function PrintMinutesGraphNVPSet($stats, $parent, $conf, $type)
 		<tr>
 			<td>
 				<?php
-				$PrintGraphFunc($data, $conf['Color'], _($conf['Title']));
+				$printGraphFunc($data, $conf['Color'], _($conf['Title']), TRUE, $conf['Needle'], $logFile);
 				if (count($conf['NVPs']) > 0) {
 					?>
 					<table>
@@ -650,7 +792,7 @@ function PrintMinutesGraphNVPSet($stats, $parent, $conf, $type)
 										if (isset($conf['Divisor'])) {
 											DivideArrayData($nvps, $conf['Divisor']);
 										}
-										PrintNVPs($nvps, _($title), 10);
+										PrintNVPs($nvps, _($title), 10, TRUE, $conf['Needle'], $prefix, $postfix, $dateArray);
 										?>
 									</td>
 									<?php
@@ -680,7 +822,11 @@ function DivideArrayData(&$data, $divisor)
 {
 	if (isset($data) && ($divisor != 0)) {
 		foreach ($data as $name => $value) {
-			$data[$name]= ceil($value / $divisor);
+			if (is_array($value)) {
+				$data[$name]['value']= ceil($data[$name]['value'] / $divisor);
+			} else {
+				$data[$name]= ceil($value / $divisor);
+			}
 		}
 	}
 }
@@ -695,50 +841,55 @@ function DivideArrayData(&$data, $divisor)
  *
  * @param array $data Data used by graph functions.
  * @param array $stats Statistics collected elsewhere.
- * @param array $datearray Datetime struct.
+ * @param array $dateArray Datetime struct.
  * @param string $name Count field name in $stats array.
  * @param string $parent Parent field name in to get count field, if provided.
  */
-function FillDatesGraphData(&$data, $stats, $datearray, $name, $parent= '')
+function FillDatesGraphData(&$data, $stats, $dateArray, $name, $parent= '')
 {
-	global $View;
-
-	if ($datearray['Month'] == '') {
+	if ($dateArray['Month'] == '') {
 		for ($m= 1; $m <= 12; $m++) {
 			$m= sprintf('%02d', $m);
 			for ($d= 1; $d <= 31; $d++) {
 				$d= sprintf('%02d', $d);
-				$datearray['Month']= $m;
-				$datearray['Day']= $d;
-				$date= $View->FormatDate($datearray);
-				SetGraphData($data, $stats, $date, $name, $parent);
+				$dateArray['Month']= $m;
+				$dateArray['Day']= $d;
+				SetGraphData($data, $stats, $dateArray, $name, $parent);
 			}
 		}
 	}
-	else if ($datearray['Day'] == '') {
+	else if ($dateArray['Day'] == '') {
 		for ($d= 1; $d <= 31; $d++) {
 			$d= sprintf('%02d', $d);
-			$datearray['Day']= $d;
-			$date= $View->FormatDate($datearray);
-			SetGraphData($data, $stats, $date, $name, $parent);
+			$dateArray['Day']= $d;
+			SetGraphData($data, $stats, $dateArray, $name, $parent);
 		}
 	}
 	else {
-		$date= $View->FormatDate($datearray);
-		SetGraphData($data, $stats, $date, $name, $parent);
+		SetGraphData($data, $stats, $dateArray, $name, $parent);
 	}
 }
 
-function SetGraphData(&$data, $stats, $date, $name, $parent)
+function SetGraphData(&$data, $stats, $dateArray, $name, $parent)
 {
+	global $View;
+
+	$date= $View->FormatDate($dateArray);
+
 	if ($parent == '') {
 		if (isset($stats[$date][$name])) {
-			$data[$date]= $stats[$date][$name];
+			$data[$date]= array(
+				'value' => $stats[$date][$name],
+				'date' => $dateArray,
+				);
 		}
 	}
 	else {
 		if (isset($stats[$date][$parent][$name])) {
-			$data[$date]= $stats[$date][$parent][$name];
+			$data[$date]= array(
+				'value' => $stats[$date][$parent][$name],
+				'date' => $dateArray,
+				);
 		}
 	}
 }
@@ -753,37 +904,37 @@ function SetGraphData(&$data, $stats, $date, $name, $parent)
  *
  * @param array $data Data used by graph functions.
  * @param array $stats Statistics collected elsewhere.
- * @param array $datearray Datetime struct.
+ * @param array $dateArray Datetime struct.
  * @param string $range Size of the range, 24 or 60.
  * @param string $parent Parent field name in to get count field.
  */
-function FillGraphDataRange(&$data, $stats, $datearray, $range, $parent)
+function FillGraphDataRange(&$data, $stats, $dateArray, $range, $parent)
 {
 	global $View;
 
-	if ($datearray['Month'] == '') {
+	if ($dateArray['Month'] == '') {
 		for ($m= 1; $m <= 12; $m++) {
 			$m= sprintf('%02d', $m);
 			for ($d= 1; $d <= 31; $d++) {
 				$d= sprintf('%02d', $d);
-				$datearray['Month']= $m;
-				$datearray['Day']= $d;
-				$date= $View->FormatDate($datearray);
-				FillGraphData($data, $stats[$date]['Hours'], $range, $parent, 'Sum');
+				$dateArray['Month']= $m;
+				$dateArray['Day']= $d;
+				$date= $View->FormatDate($dateArray);
+				FillGraphData($data, $stats[$date]['Hours'], $range, $parent, 'Sum', $dateArray);
 			}
 		}
 	}
-	else if ($datearray['Day'] == '') {
+	else if ($dateArray['Day'] == '') {
 		for ($d= 1; $d <= 31; $d++) {
 			$d= sprintf('%02d', $d);
-			$datearray['Day']= $d;
-			$date= $View->FormatDate($datearray);
-			FillGraphData($data, $stats[$date]['Hours'], $range, $parent, 'Sum');
+			$dateArray['Day']= $d;
+			$date= $View->FormatDate($dateArray);
+			FillGraphData($data, $stats[$date]['Hours'], $range, $parent, 'Sum', $dateArray);
 		}
 	}
 	else {
-		$date= $View->FormatDate($datearray);
-		FillGraphData($data, $stats[$date]['Hours'], $range, $parent, 'Sum');
+		$date= $View->FormatDate($dateArray);
+		FillGraphData($data, $stats[$date]['Hours'], $range, $parent, 'Sum', $dateArray);
 	}
 }
 
@@ -794,15 +945,16 @@ function FillGraphDataRange(&$data, $stats, $datearray, $range, $parent)
  * FillGraphDataRange().
  *
  * Range is either 24 (Hours in a day) or 60 (Minutes in an hour).
- * Converts size number in to 2 digit string to index data array.
+ * Converts size number into 2 digit string to index data array.
  *
  * @param array $data Data used by graph functions.
  * @param array $stats Statistics collected elsewhere.
  * @param int $range Size of the range, 24 or 60.
  * @param string $parent Parent field name to get count field.
  * @param string $name Count field name in $stats array.
+ * @param array $dateArray Datetime to restrict the searches.
  */
-function FillGraphData(&$data, $stats, $range, $parent, $name= '')
+function FillGraphData(&$data, $stats, $range, $parent, $name= '', $dateArray=array())
 {
 	if (isset($stats)) {
 		for ($hm= 0; $hm < $range; $hm++) {
@@ -811,16 +963,25 @@ function FillGraphData(&$data, $stats, $range, $parent, $name= '')
 			/// @attention All hours and minutes should be initialized with 0,
 			/// even if there is no stats for them
 			// Such initialization is faster than any if condition
-			$data[$hm]+= 0;
+			$data[$hm]['value']+= 0;
+
+			if (!isset($data[$hm]['date'])) {
+				if ($range == 24) {
+					$dateArray['Hour']= $hm;
+				} else {
+					$dateArray['Minute']= $hm;
+				}
+				$data[$hm]['date']= $dateArray;
+			}
 
 			if ($name != '') {
 				if (isset($stats[$hm][$parent][$name])) {
-					$data[$hm]+= $stats[$hm][$parent][$name];
+					$data[$hm]['value']+= $stats[$hm][$parent][$name];
 				}
 			}
 			else {
 				if (isset($stats[$hm][$parent])) {
-					$data[$hm]+= $stats[$hm][$parent];
+					$data[$hm]['value']+= $stats[$hm][$parent];
 				}
 			}
 		}
@@ -1018,10 +1179,13 @@ function ProcessNavigationButtons($linesperpage, $total, &$startline, &$headstar
  * @param int $start First line to start listing.
  * @param int $total Number of lines in the logs (obtained somewhere else).
  * @param int $count Number of lines to list.
- * @param string $re Regexp to use in grep over logs.
+ * @param string $re Regexp to use with grep over logs.
  * @param string $hidden Some modules may need extra hidden inputs added to form.
+ * @param string $needle Optional regexp to use with a second grep over logs, used by Stats pages.
+ * @param boolean $showDateTimeSelect TRUE if we are to show datetime selection.
+ * @param array $dateArray Datetime to filter the logs.
  */
-function PrintLogHeaderForm($start, $total, $count, $re, $hidden)
+function PrintLogHeaderForm($start, $total, $count, $re, $hidden, $needle='', $showDateTimeSelect=FALSE, $dateArray=array())
 {
 	?>
 	<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
@@ -1039,15 +1203,82 @@ function PrintLogHeaderForm($start, $total, $count, $re, $hidden)
 					<?php echo _TITLE('Regexp').':' ?>
 					<input type="text" name="SearchRegExp" style="width: 300px;" maxlength="200" value="<?php echo $re ?>" />
 					<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
+					<?php
+					if ($needle !== '') {
+						echo _TITLE('Needle').": ($needle)";
+					}
+					?>
 				</td>
 			</tr>
 			<tr class="evenline">
-				<td class="center" colspan="5">
+				<td class="center" colspan="<?php echo $showDateTimeSelect ? 2:3 ?>">
 					<input type="submit" name="First" value="<?php echo _CONTROL('<< First') ?>"/>
 					<input type="submit" name="Previous" value="<?php echo _CONTROL('< Previous') ?>"/>
 					<input type="submit" name="Next" value="<?php echo _CONTROL('Next >') ?>"/>
 					<input type="submit" name="Last" value="<?php echo _CONTROL('Last >>') ?>"/>
 				</td>
+				<?php
+				if ($showDateTimeSelect) {
+					?>
+					<td>
+						<?php echo _TITLE('Month').':' ?>
+						<select name="Month" style="width: 50px;">
+							<option value=""></option>
+							<?php
+							for ($m= 1; $m <= 12; $m++) {
+								$m= sprintf('%02d', $m);
+								$selected= ($dateArray['Month'] == $m) ? 'selected' : '';
+								?>
+								<option <?php echo $selected ?> value="<?php echo $m ?>"><?php echo $m ?></option>
+								<?php
+							}
+							?>
+						</select>
+						<?php echo _TITLE('Day').':' ?>
+						<select name="Day" style="width: 50px;">
+							<option value=""></option>
+							<?php
+							for ($d= 1; $d <= 31; $d++) {
+								$d= sprintf('%02d', $d);
+								$selected= ($dateArray['Day'] == $d) ? 'selected' : '';
+								?>
+								<option <?php echo $selected ?> value="<?php echo $d ?>"><?php echo $d ?></option>
+								<?php
+							}
+							?>
+						</select>
+						<?php echo _TITLE('Hour').':' ?>
+						<select name="Hour">
+							<option value=""></option>
+							<?php
+							for ($h= 0; $h < 24; $h++) {
+								$h= sprintf('%02d', $h);
+								$selected= ($dateArray['Hour'] == $h) ? 'selected' : '';
+								?>
+								<option <?php echo $selected ?> value="<?php echo $h ?>"><?php echo $h ?></option>
+								<?php
+							}
+							?>
+						</select>
+						<?php echo _TITLE('Minute').':' ?>
+						<select name="Minute">
+							<option value=""></option>
+							<?php
+							for ($m= 0; $m < 60; $m++) {
+								$m= sprintf('%02d', $m);
+								$selected= ($dateArray['Minute'] == $m) ? 'selected' : '';
+								?>
+								<option <?php echo $selected ?> value="<?php echo $m ?>"><?php echo $m ?></option>
+								<?php
+							}
+							?>
+						</select>
+						<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
+						<input type="submit" name="Defaults" value="<?php echo _CONTROL('Defaults') ?>"/>
+					</td>
+					<?php
+				}
+				?>
 			</tr>
 		</table>
 		<?php
@@ -1093,8 +1324,9 @@ function PrintLiveLogHeaderForm()
  *
  * @param int $count Max line per log page.
  * @param string $re Regexp to use over logs file.
+ * @param string $needle Optional regexp to use with a second grep over logs, used by Stats pages.
  */
-function UpdateLogsPageSessionVars(&$count, &$re)
+function UpdateLogsPageSessionVars(&$count, &$re, &$needle)
 {
 	global $View;
 
@@ -1115,6 +1347,11 @@ function UpdateLogsPageSessionVars(&$count, &$re)
 		$_SESSION[$View->Model]['LinesPerPage']= $count;
 	}
 
+	// Reset the SearchNeedle if the user modifies the SearchRegExp
+	if ($_SESSION[$View->Model]['SearchRegExp'] !== filter_input(INPUT_POST, 'SearchRegExp')) {
+		$_SESSION[$View->Model]['SearchNeedle']= '';
+	}
+
 	// Empty regexp posted is used to clear the session regexp, use isset() here
 	if (filter_has_var(INPUT_POST, 'SearchRegExp')) {
 		$_SESSION[$View->Model]['SearchRegExp']= filter_input(INPUT_POST, 'SearchRegExp');
@@ -1126,6 +1363,18 @@ function UpdateLogsPageSessionVars(&$count, &$re)
 	}
 	else {
 		$re= '';
+	}
+
+	if (filter_has_var(INPUT_POST, 'SearchNeedle')) {
+		$_SESSION[$View->Model]['SearchNeedle']= filter_input(INPUT_POST, 'SearchNeedle');
+	}
+
+	if ($_SESSION[$View->Model]['SearchNeedle']) {
+		$needle= RemoveBackSlashes($_SESSION[$View->Model]['SearchNeedle']);
+		$_SESSION[$View->Model]['SearchNeedle']= $needle;
+	}
+	else {
+		$needle= '';
 	}
 }
 

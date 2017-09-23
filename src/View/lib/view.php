@@ -35,6 +35,7 @@ class View
 	public $ConfHelpMsg= '';
 
 	public $Layout= '';
+	public $LogsPage= 'logs.php';
 
 	/**
 	 * Configuration.
@@ -460,7 +461,7 @@ class View
 	{
 		$this->Controller($output, 'GetProcStatLines', $file);
 		$stats= json_decode($output[0], TRUE);
-		PrintNVPs($stats, _STATS('General Statistics'), 50, FALSE);
+		PrintNVPs($stats, _STATS('General Statistics'), 50, FALSE, FALSE);
 	}
 
 	/**

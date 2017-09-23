@@ -36,7 +36,7 @@ SetRefreshInterval();
 $View->Controller($Output, 'GetDefaultLogFile');
 $LogFile= $Output[0];
 
-UpdateLogsPageSessionVars($LinesPerPage, $SearchRegExp);
+UpdateLogsPageSessionVars($LinesPerPage, $SearchRegExp, $SearchNeedle);
 
 $View->Controller($Output, 'GetFileLineCount', $LogFile, $SearchRegExp);
 $LogSize= $Output[0];

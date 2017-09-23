@@ -82,7 +82,7 @@ PrintModalPieChart();
 
 			if (isset($ViewStatsConf['Total']['BriefStats'])) {
 				foreach ($ViewStatsConf['Total']['BriefStats'] as $Field => $Name) {
-					PrintNVPs($BriefStats[$Field], _($Name), 50);
+					PrintNVPs($BriefStats[$Field], _($Name), 50, TRUE, $ViewStatsConf['Total']['Needle'], $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix']);
 				}
 			}
 			?>
@@ -108,14 +108,14 @@ PrintModalPieChart();
 			<?php
 			foreach ($ViewStatsConf as $Name => $Conf) {
 				if (isset($Conf['Color'])) {
-					PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle);
+					PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix']);
 				}
 			}
 
 			foreach ($ViewStatsConf as $Name => $CurConf) {
 				if (isset($CurConf['Counters'])) {
 					foreach ($CurConf['Counters'] as $Name => $Conf) {
-						PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle);
+						PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix']);
 					}
 				}
 			}

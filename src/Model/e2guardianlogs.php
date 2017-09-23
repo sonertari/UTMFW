@@ -101,7 +101,7 @@ class E2guardianlogs extends E2guardian
 		}
 
 		if (preg_match('/(\d+)\.(\d+)\.(\d+)/', $cols['Date'], $match)) {
-			$cols['Date']= $match[1].'.'.sprintf('%02d', $match[2]).'.'.sprintf('%02d', $match[3]);
+			$cols['Date']= $match[1].'.'.($match[2] + 0).'.'.($match[3] + 0);
 		}
 
 		$time= explode(':', $cols['Time'], 3);
@@ -116,15 +116,49 @@ class E2guardianlogs extends E2guardian
 			$re.= '.*';
 		}
 		else {
-			$re.= $date['Month'].'\.';
+			$re.= ($date['Month'] + 0).'\.';
 			if ($date['Day'] == '') {
 				$re.= '.*';
 			}
 			else {
-				$re.= $date['Day'];
+				$re.= ($date['Day'] + 0);
 			}
 		}
 		return $re;
+	}
+
+	function formatDateHourRegexp($month, $day, $hour, $minute)
+	{
+		global $Re_MonthNumbersNoLeadingZeros, $Re_DaysNoLeadingZeros;
+
+		// 2017.9.7 1:06:16
+		$reYear= '20[[:digit:]][[:digit:]]';
+
+		if ($month != '') {
+			$reMonth= $month + 0;
+		} else {
+			$reMonth= '(' . $Re_MonthNumbersNoLeadingZeros . ')';
+		}
+
+		if ($day != '') {
+			$reDay= $day + 0;
+		} else {
+			$reDay= '(' . $Re_DaysNoLeadingZeros . ')';
+		}
+
+		if ($hour != '') {
+			$reHour= $hour + 0;
+		} else {
+			$reHour= '([[:digit:]]|[[:digit:]][[:digit:]])';
+		}
+
+		if ($minute != '') {
+			$reMinute= $minute;
+		} else {
+			$reMinute= '([[:digit:]][[:digit:]])';
+		}
+
+		return "^$reYear.$reMonth.$reDay $reHour:$reMinute:";
 	}
 }
 ?>

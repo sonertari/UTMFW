@@ -33,11 +33,11 @@ function PrintModalPieChart()
 	<!-- The Pie Slice Tooltip -->
 	<div id="slicetip" class="hidden">
 		<p><strong><span id="title"></span></strong></p>
-		<p><span id="key">200</span></p>
-		<p><span id="value">200</span></p>
+		<p><span id="key"></span></p>
+		<p><span id="value"></span></p>
 	</div>
 
-	<script type="text/javascript">
+	<script language="javascript" type="text/javascript">
 		// Get the modal
 		var modal = document.getElementById('modalPieChart');
 
@@ -51,24 +51,24 @@ function PrintModalPieChart()
 
 			var dataSum = d3.sum(values);
 
-			var modifiedDataset = JSON.parse('{}');
+			var chartDataset = {};
 			var curSum = 0;
 			for (var j = 0; j < keys.length; ++j) {
 				if (j > 10) {
-					modifiedDataset['others'] = dataSum - curSum;
+					chartDataset['others'] = dataSum - curSum;
 					break;
 				}
-				modifiedDataset[keys[j]] = values[j];
+				chartDataset[keys[j]] = values[j];
 				curSum += values[j];
 			}
 
-			var pie = d3.layout.pie();
+			var pie = d3.pie();
 			var w = 400;
 			var h = 400;
 			var outerRadius = w / 2;
 			var innerRadius = 0;
 
-			var arc = d3.svg.arc()
+			var arc = d3.arc()
 				.innerRadius(innerRadius)
 				.outerRadius(outerRadius);
 
@@ -82,13 +82,13 @@ function PrintModalPieChart()
 
 			// Set up groups
 			var arcs = svg.selectAll('g.arc')
-				.data(pie(d3.values(modifiedDataset)))
+				.data(pie(d3.values(chartDataset)))
 				.enter()
 				.append('g')
 				.attr('class', 'arc')
 				.attr('transform', 'translate(' + outerRadius + ', ' + outerRadius + ')');
 
-			var color = d3.scale.category10();
+			var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 			// Draw arc paths
 			arcs.append('path')
@@ -100,23 +100,24 @@ function PrintModalPieChart()
 					d3.select(this).style('opacity', 0.7);
 
 					// Get the mouse pointer's x/y values for the tooltip
-					var xPosition = d3.mouse(document.body)[0] + 25;
-					var yPosition = d3.mouse(document.body)[1] + 25;
+					var mousePos = d3.mouse(document.body);
+					var x = mousePos[0] + 25;
+					var y = mousePos[1] + 25;
 
 					// Update the tooltip position and contents
 					slicetip
-						.style('left', xPosition + 'px')
-						.style('top', yPosition + 'px')
+						.style('left', x + 'px')
+						.style('top', y + 'px')
 						.style('z-index', 1);
 					slicetip
 						.select('#title')
 						.text(title);
 					slicetip
 						.select('#key')
-						.text(d3.keys(modifiedDataset)[i]);
+						.text(d3.keys(chartDataset)[i]);
 					slicetip
 						.select('#value')
-						.text(d3.round(100 * d.value / dataSum) + '%: ' + d.value + '/' + dataSum);
+						.text(Math.round(100 * d.value / dataSum) + '%: ' + d.value + '/' + dataSum);
 
 					// Show the tooltip
 					slicetip.classed('hidden', false);
@@ -138,12 +139,12 @@ function PrintModalPieChart()
 				.attr('text-anchor', 'middle')
 				.attr('font-weight', 'bold')
 				.text(function (d, i) {
-					return (d.value / dataSum > .05) ? d3.keys(modifiedDataset)[i] : '';
+					return (d.value / dataSum > .05) ? d3.keys(chartDataset)[i] : '';
 				});
 		};
 
 		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName('close')[0];
+		var xbtn = document.getElementsByClassName('close')[0];
 
 		// When the user clicks on the modal or <span> (x), close the modal
 		function close() {
@@ -152,7 +153,7 @@ function PrintModalPieChart()
 			slicetip.classed('hidden', true);
 			modal.style.display = 'none';
 		}
-		span.onclick = close;
+		xbtn.onclick = close;
 		modal.onclick = close;
 	</script>
 	<?php
@@ -170,7 +171,7 @@ function PrintModalPieChart()
 function DisplayChartTriggers()
 {
 	?>
-	<script>
+	<script language="javascript" type="text/javascript">
 		var trigs = document.getElementsByClassName('chart-trigger');
 		for (var j = 0; j < trigs.length; ++j) {
 			trigs[j].style.display = 'inline';

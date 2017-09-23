@@ -36,6 +36,7 @@ $LogConf = array(
 class Apachelogs extends View
 {
 	public $Model= 'apachelogs';
+	public $LogsPage= 'accesslogs.php';
 
 	function __construct()
 	{

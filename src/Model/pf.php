@@ -1091,26 +1091,47 @@ class Pf extends Model
 		return $re;
 	}
 
-	function _getFileLineCount($file, $re= '')
+	function _getFileLineCount($file, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
 		global $TCPDUMP;
 		
 		$cmd= "$TCPDUMP $file";
+
+		if ($month != '' || $day != '' || $hour != '' || $minute != '') {
+			$cmd.= ' | /usr/bin/grep -a -E "' . $this->formatDateHourRegexp($month, $day, $hour, $minute) . '"';
+		}
+
+		if ($needle != '') {
+			$needle= escapeshellarg($needle);
+			$cmd.= " | /usr/bin/grep -a -E $needle";
+		}
+
 		if ($re !== '') {
 			$re= escapeshellarg($re);
 			$cmd.= " | /usr/bin/grep -a -E $re";
 		}
+
 		$cmd.= ' | /usr/bin/wc -l';
 		
 		// OpenBSD wc returns with leading blanks
 		return trim($this->RunShellCommand($cmd));
 	}
 	
-	function GetLogs($file, $end, $count, $re= '')
+	function GetLogs($file, $end, $count, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
 		global $TCPDUMP;
 
 		$cmd= "$TCPDUMP $file";
+
+		if ($month != '' || $day != '' || $hour != '' || $minute != '') {
+			$cmd.= ' | /usr/bin/grep -a -E "' . $this->formatDateHourRegexp($month, $day, $hour, $minute) . '"';
+		}
+
+		if ($needle != '') {
+			$needle= escapeshellarg($needle);
+			$cmd.= " | /usr/bin/grep -a -E $needle";
+		}
+
 		if ($re !== '') {
 			$re= escapeshellarg($re);
 			$cmd.= " | /usr/bin/grep -a -E $re";

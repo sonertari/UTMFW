@@ -35,7 +35,9 @@ $GraphType= 'Horizontal';
 $ApplyDefaults= TRUE;
 
 // Will apply defaults if log file changed
-if ($LogFile === $_SESSION[$View->Model][$Submenu]['PrevLogFile']) {
+if (!isset($_SESSION[$View->Model][$Submenu]['PrevLogFile']) || $LogFile === $_SESSION[$View->Model][$Submenu]['PrevLogFile'] ||
+		// Sender input indicates that the user has clicked on an item on a Stats page, so we should process what that page posts
+		filter_has_var(INPUT_POST, 'Sender')) {
 	if (count($_POST)) {
 		if (filter_has_var(INPUT_POST, 'Apply')) {
 			$DateArray['Month']= filter_input(INPUT_POST, 'Month');
@@ -117,7 +119,6 @@ $DateStats= $Stats['Date'];
 require_once($VIEW_PATH . '/header.php');
 
 PrintLogFileChooser($LogFile);
-PrintModalPieChart();
 ?>
 <table id="nvp">
 	<tr class="evenline">
@@ -182,16 +183,18 @@ PrintModalPieChart();
 	</tr>
 </table>
 <?php
+PrintModalPieChart();
+
 foreach ($ViewStatsConf as $Name => $Conf) {
 	if (isset($Conf['Color'])) {
-		PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle);
+		PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix']);
 	}
 }
 
 foreach ($ViewStatsConf as $Name => $CurConf) {
 	if (isset($CurConf['Counters'])) {
 		foreach ($CurConf['Counters'] as $Name => $Conf) {
-			PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle);
+			PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix']);
 		}
 	}
 }

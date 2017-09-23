@@ -979,6 +979,11 @@ td.infobox
 	width: 100%;
 }
 
+#hbar:hover, #bar:hover, .bartop:hover, .legend:hover
+{
+	opacity: .5;
+}
+
 /*
  * Exts and mimes
  */
@@ -1141,12 +1146,12 @@ a:hover
 /* Style the Image Used to Trigger the Modal */
 #chart
 {
-   border-radius: 5px;
-   cursor: pointer;
-   transition: 0.3s;
-   width: 24px;
-   height: 24px;
-   display: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.3s;
+	width: 24px;
+	height: 24px;
+	display: none;
 }
 
 #chart:hover
@@ -1157,78 +1162,78 @@ a:hover
 /* The Modal (background) */
 .modal
 {
-   display: none; /* Hidden by default */
-   position: fixed; /* Stay in place */
-   z-index: 1; /* Sit on top */
-   padding-top: 100px; /* Location of the box */
-   left: 0;
-   top: 0;
-   width: 100%; /* Full width */
-   height: 100%; /* Full height */
-   overflow: auto; /* Enable scroll if needed */
-   background-color: rgb(0,0,0); /* Fallback color */
-   background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
 }
 
 /* Modal content (chart) */
 .modal-content
 {
-   margin: auto;
-   display: block;
-   width: 80%;
-   max-width: 700px;
-   /* Add Animation - Zoom in the Modal */
-   -webkit-animation-name: zoom;
-   -webkit-animation-duration: 0.6s;
-   animation-name: zoom;
-   animation-duration: 0.6s;
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+	/* Add Animation - Zoom in the Modal */
+	-webkit-animation-name: zoom;
+	-webkit-animation-duration: 0.6s;
+	animation-name: zoom;
+	animation-duration: 0.6s;
 }
 
 @-webkit-keyframes zoom
 {
-   from {-webkit-transform:scale(0)}
-   to {-webkit-transform:scale(1)}
+	from {-webkit-transform:scale(0)}
+	to {-webkit-transform:scale(1)}
 }
 
 @keyframes zoom
 {
-   from {transform:scale(0)}
-   to {transform:scale(1)}
+	from {transform:scale(0)}
+	to {transform:scale(1)}
 }
 
 /* The Close button */
 .close
 {
-   position: absolute;
-   top: 15px;
-   right: 35px;
-   color: #f1f1f1;
-   font-size: 40px;
-   font-weight: bold;
-   transition: 0.3s;
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	color: #f1f1f1;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
 }
 
 .close:hover,
 .close:focus
 {
-   color: #bbb;
-   text-decoration: none;
-   cursor: pointer;
+	color: #bbb;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 /* 100% Width on Smaller Screens */
 @media only screen and (max-width: 700px)
 {
-   .modal-content
-   {
-	   width: 100%;
-   }
+	.modal-content
+	{
+		width: 100%;
+	}
 } 
 
 #slicetip
 {
 	position: absolute;
-	width: 200px;
+	width: 300px;
 	height: auto;
 	padding: 10px;
 	background-color: white;

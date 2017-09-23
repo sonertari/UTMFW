@@ -121,6 +121,21 @@ $MonthNumbers= array(
 	'Dec' => '12',
 	);
 
+$Re_MonthNames= implode('|', array_values($MonthNames));
+
+$MonthNumbersNoLeadingZeros = array_map(function ($str) { return $str + 0; }, array_keys($MonthNames));
+$Re_MonthNumbersNoLeadingZeros= implode('|', $MonthNumbersNoLeadingZeros);
+
+$DaysNoLeadingZeros = array(
+	'1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+	'11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+	'21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'
+	);
+$Re_DaysNoLeadingZeros= implode('|', $DaysNoLeadingZeros);
+
+$WeekDays= array('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
+$Re_WeekDays= implode('|', $WeekDays);
+
 /// General tcpdump command used everywhere.
 /// @todo All system binaries called should be defined like this.
 /// @attention Redirect stderr to /dev/null to hush tcpdump warning: "tcpdump: WARNING: snaplen raised from 116 to 160".
@@ -207,7 +222,9 @@ $StatsConf = array(
 		'Total' => array(
 			'Title' => _STATS('All requests'),
 			'Cmd' => $TCPDUMP.' <LF>',
+			// @attention An empty needle is needed while collecting stats, see IncStats()
 			'Needle' => '',
+			'SearchRegexpPrefix' => '([[:blank:]\|.]+)',
 			'Color' => '#004a4a',
 			'NVPs' => array(
 				'SrcIP' => _STATS('Source addresses'),
@@ -266,6 +283,7 @@ $StatsConf = array(
 			'Title' => _STATS('All requests'),
 			'Cmd' => '/bin/cat <LF>',
 			'Needle' => '',
+			'SearchRegexpPrefix' => '(https://|http://|[[:blank:]]+)',
 			'Color' => '#004a4a',
 			'NVPs' => array(
 				'Link' => _STATS('Requests'),
@@ -358,7 +376,9 @@ $StatsConf = array(
 			'Title' => _STATS('All queries'),
 			'Cmd' => '/bin/cat <LF>',
 			'Needle' => '( query: )',
+			'SearchRegexpPrefix' => '([[:blank:]]+)',
 			'BriefStats' => array(
+				'Date' => _STATS('Requests by date'),
 				'Domain' => _STATS('Domains'),
 				'IP' => _STATS('IPs querying'),
 				'Type' => _STATS('Query types'),
@@ -388,6 +408,7 @@ $StatsConf = array(
 				'Type' => _STATS('SSH version'),
 				),
 			'BriefStats' => array(
+				'Date' => _STATS('Requests by date'),
 				'Type' => _STATS('SSH version'),
 				'Reason' => _STATS('Failure reason'),
 				'IP' => _STATS('Client IPs'),
@@ -438,6 +459,8 @@ $StatsConf = array(
 			'Title' => _STATS('All requests'),
 			'Cmd' => '/bin/cat <LF>',
 			'Needle' => '( p3scan\[)',
+			'SearchRegexpPrefix' => "([[:blank:]'\(]+)",
+			'SearchRegexpPostfix' => '([^[:alnum:].]+)',
 			'BriefStats' => array(
 				'Result' => _STATS('Results'),
 				'Virus' => _STATS('Infected'),
@@ -452,6 +475,7 @@ $StatsConf = array(
 					'Field' => 'Mails',
 					'Title' => _STATS('Number of e-mails'),
 					'Color' => 'Blue',
+					'Needle' => '(. Mails: [1-9])',
 					'NVPs' => array(
 						'Result' => _STATS('Results'),
 						),
@@ -496,14 +520,8 @@ $StatsConf = array(
 		),
     'smtp-gated' => array(
 		'Total' => array(
-			'Title' => _STATS('All requests'),
 			'Cmd' => '/bin/cat <LF>',
-			'Needle' => '(CLOSE |SESSION TAKEOVER: |LOCK:LOCKED)',
-			'Color' => '#004a4a',
-			'NVPs' => array(
-				'SrcIP' => _STATS('Source IPs'),
-				'ClosedBy' => _STATS('Closed by'),
-				),
+			'SearchRegexpPrefix' => '([[:blank:]<=:]+)',
 			'BriefStats' => array(
 				'Scanner' => _STATS('Scan Types'),
 				'Result' => _STATS('Scan Results'),
@@ -513,11 +531,23 @@ $StatsConf = array(
 				'LockedIP' => _STATS('Locked IPs'),
 				'Proto' => _STATS('Protocols'),
 				),
+			),
+		'Requests' => array(
+			'Title' => _STATS('All requests'),
+			'Cmd' => '/bin/cat <LF>',
+			'Needle' => '(CLOSE |SESSION TAKEOVER: |LOCK:LOCKED)',
+			'Color' => '#004a4a',
+			'NVPs' => array(
+				'Date' => _STATS('Requests by date'),
+				'SrcIP' => _STATS('Source IPs'),
+				'ClosedBy' => _STATS('Closed by'),
+				),
 			'Counters' => array(
 				'Xmted' => array(
 					'Field' => 'Xmted',
 					'Title' => _STATS('Transmitted (KB)'),
 					'Color' => 'Blue',
+					'Needle' => '(CLOSE |SESSION TAKEOVER: |LOCK:LOCKED)',
 					'Divisor' => 1000,
 					'NVPs' => array(
 						'SrcIP' => _STATS('Source IPs'),
@@ -527,6 +557,7 @@ $StatsConf = array(
 					'Field' => 'Rcved',
 					'Title' => _STATS('Received (KB)'),
 					'Color' => '#FF8000',
+					'Needle' => '(CLOSE |SESSION TAKEOVER: |LOCK:LOCKED)',
 					'Divisor' => 1000,
 					'NVPs' => array(
 						'SrcIP' => _STATS('Source IPs'),
@@ -536,6 +567,7 @@ $StatsConf = array(
 					'Field' => 'Trns',
 					'Title' => _STATS('Number of messages'),
 					'Color' => 'Blue',
+					'Needle' => '(CLOSE |SESSION TAKEOVER: |LOCK:LOCKED)',
 					'NVPs' => array(
 						'SrcIP' => _STATS('Source IPs'),
 						),
@@ -544,6 +576,7 @@ $StatsConf = array(
 					'Field' => 'Rcpts',
 					'Title' => _STATS('Sent messages'),
 					'Color' => '#FF8000',
+					'Needle' => '(CLOSE |SESSION TAKEOVER: |LOCK:LOCKED)',
 					'NVPs' => array(
 						'SrcIP' => _STATS('Source IPs'),
 						),
@@ -693,14 +726,16 @@ $StatsConf = array(
     'spamassassin' => array(
 		'Total' => array(
 			'Title' => _STATS('All requests'),
-			'Cmd' => '/bin/cat <LF>',
-			'Needle' => '( spamd\[)',
+			'Cmd' => '/usr/bin/grep -a -E "( spamd\[)" <LF>',
+			'Needle' => ' bytes.',
+			'SearchRegexpPostfix' => '([^[:alnum:],]+)',
 			'BriefStats' => array(),
 			'Counters' => array(
 				'Ham' => array(
 					'Field' => 'Ham',
 					'Title' => _STATS('Ham'),
 					'Color' => 'Green',
+					'Needle' => ': clean message \(',
 					'NVPs' => array(
 						'User' => _STATS('Account name'),
 						),
@@ -717,6 +752,7 @@ $StatsConf = array(
 					'Field' => 'Bytes',
 					'Title' => _STATS('Processed (KB)'),
 					'Color' => '#FF8000',
+					'Needle' => ' seconds, ',
 					'Divisor' => 1000,
 					'NVPs' => array(
 						'User' => _STATS('Account name'),
@@ -726,6 +762,7 @@ $StatsConf = array(
 					'Field' => 'Seconds',
 					'Title' => _STATS('Processing time (sec)'),
 					'Color' => '#FF8000',
+					'Needle' => ' bytes.',
 					'NVPs' => array(
 						'User' => _STATS('Account name'),
 						),
@@ -738,6 +775,7 @@ $StatsConf = array(
 			'Needle' => ' bytes.',
 			'Color' => '#004a4a',
 			'NVPs' => array(
+				'Date' => _STATS('Requests by date'),
 				'User' => _STATS('Account name'),
 				),
 			),
@@ -747,6 +785,8 @@ $StatsConf = array(
 			'Title' => _STATS('All requests'),
 			'Cmd' => '/bin/cat <LF>',
 			'Needle' => '',
+			'SearchRegexpPrefix' => '(https://|http://|[A-Z]+/|[[:blank:]]+)',
+			'SearchRegexpPostfix' => '([^[:alnum:]_]+)',
 			'Color' => '#004a4a',
 			'NVPs' => array(
 				'Link' => _STATS('Links'),
@@ -757,6 +797,7 @@ $StatsConf = array(
 				'Code' => _STATS('HTTP Codes'),
 				),
 			'BriefStats' => array(
+				'Date' => _STATS('Requests by date'),
 				'Link' => _STATS('Links'),
 				'Proto' => _STATS('Protocols'),
 				'Mtd' => _STATS('Methods'),
@@ -786,6 +827,7 @@ $StatsConf = array(
 			'Title' => _STATS('All requests'),
 			'Cmd' => '/bin/cat <LF>',
 			'Needle' => '',
+			'SearchRegexpPrefix' => '([^[:alnum:]]+)',
 			'Color' => '#004a4a',
 			'NVPs' => array(
 				'IP' => _STATS('Clients'),
@@ -794,6 +836,7 @@ $StatsConf = array(
 				'Code' => _STATS('HTTP Codes'),
 				),
 			'BriefStats' => array(
+				'Date' => _STATS('Requests by date'),
 				'IP' => _STATS('Clients'),
 				'Mtd' => _STATS('Methods'),
 				'Code' => _STATS('HTTP Codes'),
@@ -850,6 +893,7 @@ $StatsConf = array(
     'sslproxy' => array(
 		'Total' => array(
 			'Cmd' => '/bin/cat <LF>',
+			'SearchRegexpPrefix' => '([[:blank:]=:]+)',
 			'BriefStats' => array(
 				'Proto' => _STATS('Protocols'),
 				'Error' => _STATS('Errors'),
@@ -894,6 +938,7 @@ $StatsConf = array(
 				'SProto' => _STATS('SSL Source Protocols'),
 				'DProto' => _STATS('SSL Destination Protocols'),
 				'Proto' => _STATS('Protocols'),
+				'Date' => _STATS('Requests by date'),
 				),
 			),
 		'Expired' => array(

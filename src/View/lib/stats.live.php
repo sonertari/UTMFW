@@ -54,7 +54,6 @@ $Stats= json_decode($Output[0], TRUE);
 $DateStats= $Stats['Date'];
 
 require_once($VIEW_PATH . '/header.php');
-PrintModalPieChart();
 ?>
 <table>
 	<tr>
@@ -76,16 +75,18 @@ PrintModalPieChart();
 	</tr>
 </table>
 <?php
+PrintModalPieChart();
+
 foreach ($ViewStatsConf as $Name => $Conf) {
 	if (isset($Conf['Color'])) {
-		PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType);
+		PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix'], $DateArray, $LogFile);
 	}
 }
 
 foreach ($ViewStatsConf as $Name => $CurConf) {
 	if (isset($CurConf['Counters'])) {
 		foreach ($CurConf['Counters'] as $Name => $Conf) {
-			PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType);
+			PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix'], $DateArray, $LogFile);
 		}
 	}
 }

@@ -32,13 +32,19 @@ $LogFile= GetLogFile();
 $ApplyDefaults= TRUE;
 
 // Will apply defaults if log file changed
-if ($LogFile === $_SESSION[$View->Model][$Submenu]['PrevLogFile']) {
+if (!isset($_SESSION[$View->Model][$Submenu]['PrevLogFile']) || $LogFile === $_SESSION[$View->Model][$Submenu]['PrevLogFile'] ||
+		// Sender input indicates that the user has clicked on an item on a Stats page, so we should process what that page posts
+		filter_has_var(INPUT_POST, 'Sender')) {
 	if (count($_POST)) {
 		if (filter_has_var(INPUT_POST, 'Apply')) {
 			$DateArray['Month']= filter_input(INPUT_POST, 'Month');
 			$DateArray['Day']= filter_input(INPUT_POST, 'Day');
 			$DateArray['Hour']= filter_input(INPUT_POST, 'Hour');
-			$GraphType= filter_input(INPUT_POST, 'GraphType');
+			if (filter_has_var(INPUT_POST, 'GraphType')) {
+				$GraphType= filter_input(INPUT_POST, 'GraphType');
+			} else {
+				$GraphType= 'Horizontal';
+			}
 			
 			$ApplyDefaults= FALSE;
 		}
@@ -102,7 +108,6 @@ $DateStats= $Stats['Date'];
 require_once($VIEW_PATH . '/header.php');
 
 PrintLogFileChooser($LogFile);
-PrintModalPieChart();
 ?>
 <table id="nvp">
 	<tr class="evenline">
@@ -145,8 +150,8 @@ PrintModalPieChart();
 					?>
 				</select>
 				<select name="GraphType">
-					<option <?php echo ($GraphType == 'Vertical') ? 'selected' : '' ?> value="<?php echo 'Vertical' ?>"><?php echo _CONTROL('Vertical') ?></option>
 					<option <?php echo ($GraphType == 'Horizontal') ? 'selected' : '' ?> value="<?php echo 'Horizontal' ?>"><?php echo _CONTROL('Horizontal') ?></option>
+					<option <?php echo ($GraphType == 'Vertical') ? 'selected' : '' ?> value="<?php echo 'Vertical' ?>"><?php echo _CONTROL('Vertical') ?></option>
 				</select>
 				<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
 				<input type="submit" name="Defaults" value="<?php echo _CONTROL('Defaults') ?>"/>
@@ -155,16 +160,18 @@ PrintModalPieChart();
 	</tr>
 </table>
 <?php
+PrintModalPieChart();
+
 foreach ($ViewStatsConf as $Name => $Conf) {
 	if (isset($Conf['Color'])) {
-		PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType);
+		PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix'], $DateArray);
 	}
 }
 
 foreach ($ViewStatsConf as $Name => $CurConf) {
 	if (isset($CurConf['Counters'])) {
 		foreach ($CurConf['Counters'] as $Name => $Conf) {
-			PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType);
+			PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix'], $DateArray);
 		}
 	}
 }

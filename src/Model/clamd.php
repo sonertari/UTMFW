@@ -63,6 +63,11 @@ class Clamd extends Model
 		}
 		return FALSE;
 	}
+
+	function formatDateHourRegexp($month, $day, $hour, $minute)
+	{
+		return $this->formatDateHourRegexpWeekDays($month, $day, $hour, $minute);
+	}
 }
 
 $ModelConfig = array(

@@ -175,6 +175,40 @@ class Squid extends Model
 		}
 		return $re;
 	}
+
+	function formatDateHourRegexp($month, $day, $hour, $minute)
+	{
+		global $MonthNames, $Re_MonthNames;
+
+		// 05/Sep/2017:00:05:11
+		$reYear= '20[[:digit:]][[:digit:]]';
+
+		if ($month != '') {
+			$reMonth= $MonthNames[$month];
+		} else {
+			$reMonth= '('.$Re_MonthNames.')';
+		}
+
+		if ($day != '') {
+			$reDay= $day;
+		} else {
+			$reDay= '([[:digit:]][[:digit:]])';
+		}
+
+		if ($hour != '') {
+			$reHour= $hour;
+		} else {
+			$reHour= '([[:digit:]][[:digit:]])';
+		}
+
+		if ($minute != '') {
+			$reMinute= $minute;
+		} else {
+			$reMinute= '([[:digit:]][[:digit:]])';
+		}
+
+		return "^$reDay/$reMonth/$reYear:$reHour:$reMinute:";
+	}
 }
 
 $ModelConfig = array(

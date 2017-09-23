@@ -272,7 +272,7 @@ function IsEmpty($str)
 function IsStr($str)
 {
 	/// @todo This is still too general?
-	return preg_match("/^[^\n]{0,200}$/", $str);
+	return preg_match("/^[^\n]{0,500}$/", $str);
 }
 
 function IsSerializedArray($str)

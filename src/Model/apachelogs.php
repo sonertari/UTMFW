@@ -95,5 +95,39 @@ class Apachelogs extends Apache
 		}
 		return $re;
 	}
+
+	function formatDateHourRegexp($month, $day, $hour, $minute)
+	{
+		global $MonthNames, $Re_MonthNames;
+
+		// 192.168.5.2 - - [04/Sep/2017:23:56:23 +0300]
+		$reYear= '20[[:digit:]][[:digit:]]';
+
+		if ($month != '') {
+			$reMonth= $MonthNames[$month];
+		} else {
+			$reMonth= '('.$Re_MonthNames.')';
+		}
+
+		if ($day != '') {
+			$reDay= $day;
+		} else {
+			$reDay= '([[:digit:]][[:digit:]])';
+		}
+
+		if ($hour != '') {
+			$reHour= $hour;
+		} else {
+			$reHour= '([[:digit:]][[:digit:]])';
+		}
+
+		if ($minute != '') {
+			$reMinute= $minute;
+		} else {
+			$reMinute= '([[:digit:]][[:digit:]])';
+		}
+
+		return "\[$reDay/$reMonth/$reYear:$reHour:$reMinute:";
+	}
 }
 ?>

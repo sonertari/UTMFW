@@ -78,26 +78,48 @@ class Openssh extends Model
 		return FALSE;
 	}
 	
-	function _getFileLineCount($file, $re= '')
+	function _getFileLineCount($file, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
 		$cmd= "/usr/bin/grep -a ' sshd\[' $file";
+
+		if ($month != '' || $day != '' || $hour != '' || $minute != '') {
+			$cmd.= ' | /usr/bin/grep -a -E "' . $this->formatDateHourRegexp($month, $day, $hour, $minute) . '"';
+		}
+
+		if ($needle != '') {
+			$needle= escapeshellarg($needle);
+			$cmd.= " | /usr/bin/grep -a -E $needle";
+		}
+
 		if ($re !== '') {
 			$re= escapeshellarg($re);
-			$cmd.= " | /usr/bin/grep -a $re";
+			$cmd.= " | /usr/bin/grep -a -E $re";
 		}
+
 		$cmd.= ' | /usr/bin/wc -l';
 		
 		// OpenBSD wc returns with leading blanks
 		return trim($this->RunShellCommand($cmd));
 	}
 
-	function GetLogs($file, $end, $count, $re= '')
+	function GetLogs($file, $end, $count, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
 		$cmd= "/usr/bin/grep -a ' sshd\[' $file";
+
+		if ($month != '' || $day != '' || $hour != '' || $minute != '') {
+			$cmd.= ' | /usr/bin/grep -a -E "' . $this->formatDateHourRegexp($month, $day, $hour, $minute) . '"';
+		}
+
+		if ($needle != '') {
+			$needle= escapeshellarg($needle);
+			$cmd.= " | /usr/bin/grep -a -E $needle";
+		}
+
 		if ($re !== '') {
 			$re= escapeshellarg($re);
-			$cmd.= " | /usr/bin/grep -a $re";
+			$cmd.= " | /usr/bin/grep -a -E $re";
 		}
+
 		$cmd.= " | /usr/bin/head -$end | /usr/bin/tail -$count";
 		
 		$lines= explode("\n", $this->RunShellCommand($cmd));

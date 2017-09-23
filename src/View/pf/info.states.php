@@ -21,7 +21,7 @@
 require_once('pf.php');
 
 ProcessStartLine($StartLine);
-UpdateLogsPageSessionVars($LinesPerPage, $SearchRegExp);
+UpdateLogsPageSessionVars($LinesPerPage, $SearchRegExp, $SearchNeedle);
 
 $View->Controller($Output, 'GetStateCount', $SearchRegExp);
 $StateCount= $Output[0];
