@@ -430,6 +430,7 @@ function PrintVGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $ne
 
 					$formId= 'form'.$FormIdCount++;
 					$action= !$minutesGraph ? 'stats.php?submenu=hourly' : "$View->LogsPage?submenu=archives";
+					$title= !$minutesGraph ? _TITLE('Click to search in the stats') : _TITLE('Click to search in the logs');
 					?>
 					<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $action ?>" method="post">
 						<input type="hidden" name="SearchRegExp" value="" />
@@ -449,7 +450,7 @@ function PrintVGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $ne
 						<input type="hidden" name="Sender" value="Stats" />
 					</form>
 					<table>
-						<tr id="hbar" onclick="document.<?php echo $formId ?>.submit()" style="cursor: pointer;" title="<?php echo _TITLE('Click to search in the stats') ?>">
+						<tr id="hbar" onclick="document.<?php echo $formId ?>.submit()" style="cursor: pointer;" title="<?php echo $title ?>">
 							<td class="legend">
 								<?php printf('%02d', $i) ?>
 							</td>
@@ -514,6 +515,7 @@ function PrintHGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $ne
 
 				$formId= 'form'.$FormIdCount++;
 				$action= !$minutesGraph ? 'stats.php?submenu=hourly' : "$View->LogsPage?submenu=archives";
+				$title= !$minutesGraph ? _TITLE('Click to search in the stats') : _TITLE('Click to search in the logs');
 				?>
 				<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $action ?>" method="post">
 					<input type="hidden" name="SearchRegExp" value="" />
@@ -532,7 +534,7 @@ function PrintHGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $ne
 					<input type="hidden" name="Apply" value="Apply" />
 					<input type="hidden" name="Sender" value="Stats" />
 				</form>
-				<td onclick="document.<?php echo $formId ?>.submit()" style="cursor: pointer;" title="<?php echo _TITLE('Click to search in the stats') ?>">
+				<td onclick="document.<?php echo $formId ?>.submit()" style="cursor: pointer;" title="<?php echo $title ?>">
 					<table>
 						<tr>
 							<td class="bartop">
