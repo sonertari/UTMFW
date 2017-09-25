@@ -675,7 +675,6 @@ __EOT
 			;;
 
 		snortrules.*)
-			resp=y
 			_snortdir=$ROOTDIR/etc/snort
 			_listname=rules
 
@@ -685,9 +684,8 @@ __EOT
 			;;
 
 		blacklists.*)
-			resp=y
 			_e2listsdir=$ROOTDIR/etc/e2guardian/lists
-			[[ $_f == blacklists.* ]] && _listname=blacklists
+			_listname=blacklists
 
 			[[ -d $_e2listsdir/$_listname ]] && mv $_e2listsdir/$_listname $_e2listsdir/$_listname.orig
 			[[ -d $_e2listsdir/$_listname ]] || mkdir -p $_e2listsdir/$_listname
