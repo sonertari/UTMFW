@@ -678,14 +678,10 @@ __EOT
 			resp=y
 			_snortdir=$ROOTDIR/etc/snort
 			_listname=rules
-			[[ -d $_snortdir/$_listname ]] && \
-				ask_yn "Replace $_listname?" yes
 
-			if [[ $resp == y ]]; then
-				[[ -d $_snortdir/$_listname ]] && mv $_snortdir/$_listname $_snortdir/$_listname.orig
-				[[ -d $_snortdir/$_listname ]] || mkdir -p $_snortdir/$_listname
-				ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_snortdir
-			fi
+			[[ -d $_snortdir/$_listname ]] && mv $_snortdir/$_listname $_snortdir/$_listname.orig
+			[[ -d $_snortdir/$_listname ]] || mkdir -p $_snortdir/$_listname
+			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_snortdir
 			;;
 
 		blacklists.*)
@@ -693,14 +689,9 @@ __EOT
 			_e2listsdir=$ROOTDIR/etc/e2guardian/lists
 			[[ $_f == blacklists.* ]] && _listname=blacklists
 
-			[[ -d $_e2listsdir/$_listname ]] && \
-				ask_yn "Replace $_listname?" yes
-
-			if [[ $resp == y ]]; then
-				[[ -d $_e2listsdir/$_listname ]] && mv $_e2listsdir/$_listname $_e2listsdir/$_listname.orig
-				[[ -d $_e2listsdir/$_listname ]] || mkdir -p $_e2listsdir/$_listname
-				ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_e2listsdir
-			fi
+			[[ -d $_e2listsdir/$_listname ]] && mv $_e2listsdir/$_listname $_e2listsdir/$_listname.orig
+			[[ -d $_e2listsdir/$_listname ]] || mkdir -p $_e2listsdir/$_listname
+			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_e2listsdir
 			;;
 
 		$CW_CONFIG_TARFILE)
