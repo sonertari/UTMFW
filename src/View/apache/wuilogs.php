@@ -25,7 +25,7 @@ $LogConf = array(
         'Fields' => array(
             'Date',
             'Time',
-            'LogLevel',
+            'Prio',
             'User',
             'IP',
             'File',
