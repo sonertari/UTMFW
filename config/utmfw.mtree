@@ -220,7 +220,7 @@ php-5.6.ini			type=file mode=0644 uname=root gname=wheel
 rc.conf.local		type=file mode=0644 uname=root gname=wheel
 rc.local		type=file mode=0644 uname=root gname=wheel
 rc.shutdown		type=file mode=0644 uname=root gname=wheel
-relayd.conf		type=file mode=0644 uname=root gname=wheel
+relayd.conf		type=file mode=0600 uname=root gname=wheel
 smtp-gated.conf		type=file mode=0644 uname=root gname=wheel
 sockd.conf		type=file mode=0644 uname=root gname=wheel
 symon.conf		type=file mode=0644 uname=root gname=wheel

@@ -59,6 +59,7 @@ $LogConf = array(
 			'Date',
 			'Time',
 			'Process',
+            'Prio',
 			'IP',
 			'Domain',
 			'Log',
