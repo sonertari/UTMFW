@@ -659,7 +659,7 @@ function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE, $needle='', $prefix
 					<?php
 					if ($count == 0 && $pie) {
 						?>
-						<img id="chart" class="chart-trigger" onclick="generateChart(<?php echo str_replace('"', "'", json_encode($nvps)); ?>, <?php echo "'$title'" ?>);"
+						<img id="chart" class="chart-trigger" onclick="generateChart(<?php echo str_replace('"', "'", str_replace("'", "\'", json_encode($nvps))); ?>, <?php echo "'$title'" ?>);"
 							src="<?php echo $IMG_PATH.'chart.png' ?>" name="<?php echo $title ?>" alt="<?php echo $title ?>" align="absmiddle" >
 						<?php
 					}
