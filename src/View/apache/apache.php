@@ -25,7 +25,7 @@ $LogConf = array(
         'Fields' => array(
             'Date',
             'Time',
-            'Level',
+            'Prio',
             'Log',
     		),
         'HighlightLogs' => array(

@@ -204,9 +204,9 @@ sub do_man {
 
     $name = $query = $form{'query'};
     # Do not set selected section for clicks on a man page: &from=mlnk
-    if (!$form{'from'}) {
+    #if (!$form{'from'}) {
         $section = $form{'sektion'};
-    }
+    #}
     $apropos = $form{'apropos'};
     $alttitle = $form{'title'};
     $manpath = $form{'manpath'};

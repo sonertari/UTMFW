@@ -45,6 +45,7 @@ $LogConf = array(
             'Date',
             'Time',
             'Process',
+            'Prio',
             'Log',
     		),
         'HighlightLogs' => array(

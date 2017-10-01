@@ -77,7 +77,7 @@ class Apache extends Model
 		if (preg_match($re, $logline, $match)) {
 			$cols['Date']= "$match[2] $match[3] $match[5]";
 			$cols['Time']= $match[4];
-			$cols['Level']= $match[6];
+			$cols['Prio']= $match[6];
 			$cols['Log']= $match[7];
 			return TRUE;
 		}

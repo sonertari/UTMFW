@@ -2578,7 +2578,7 @@ class Model
 	{
 		$re_datetime= '(\w+\s+\d+)\s+(\d+:\d+:\d+)';
 		$re_proc= '((\S+(\[\d+\]|)):|)';
-		$re_prio= '((EMERGENCY|ALERT|CRITICAL|ERROR|WARNING|NOTICE|INFO|DEBUG):|)';
+		$re_prio= '((EMERGENCY|ALERT|CRITICAL|ERROR|WARNING|NOTICE|INFO|DEBUG|emergency|alert|critical|error|warning|notice|info|debug):|)';
 		
 		$re= "/^$re_datetime\s+(\S+|)\s+$re_proc\s*$re_prio\s*(.*|)$/";
 		if (preg_match($re, $logline, $match)) {
