@@ -1643,8 +1643,8 @@ logmsg(int pri, char *msg, char *from, int flags)
 
 	int insert_pri_name = 0;
 	int j;
-	for (j = 0; j < 10; j++) {
-		if (msg[i + j] == ':') {
+	for (j = i; j < i + 10; j++) {
+		if (msg[j] == ':') {
 			insert_pri_name = 1;
 			break;
 		}
@@ -1654,23 +1654,23 @@ logmsg(int pri, char *msg, char *from, int flags)
 	if (insert_pri_name) {
 		char *pri_name = priority_names[prilev];
 		// +2 for ": "
-		int new_msg_len = strlen(msg) + strlen(pri_name) + 2 + 1;
+		int new_msglen = msglen + strlen(pri_name) + 2;
 
-		int head_len = i + j + 2;
-		char *tail = &msg[head_len];
+		int head_len = j + 2;
+		char *tail = msg + head_len;
 		logdebug("tail= %s\n", tail);
 
 		char *head = malloc(head_len + 1);
 		if (head) {
-			strlcpy(head, msg, head_len);		
+			strlcpy(head, msg, head_len);
 			head[head_len] = 0;
 			logdebug("head= %s\n", head);
 
-			new_msg = malloc(new_msg_len);
+			new_msg = malloc(new_msglen + 1);
 			if (new_msg) {
-				snprintf(new_msg, new_msg_len, "%s %s: %s", head, pri_name, tail);
+				snprintf(new_msg, new_msglen + 1, "%s %s: %s", head, pri_name, tail);
 				msg = new_msg;
-				msglen = new_msg_len;
+				msglen = new_msglen;
 				logdebug("new_msg= %s\n", new_msg);
 			}
 
