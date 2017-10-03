@@ -1,7 +1,17 @@
 $OpenBSD$
---- src/FwdState.cc.orig	Thu Aug  3 07:26:32 2017
-+++ src/FwdState.cc	Thu Aug  3 07:27:15 2017
-@@ -1227,6 +1227,10 @@ aclMapNfmark(acl_nfmark * head, ACLChecklist * ch)
+--- src/FwdState.cc.orig	Mon Feb 15 15:59:11 2016
++++ src/FwdState.cc	Thu Sep 28 15:53:58 2017
+@@ -866,7 +866,8 @@ FwdState::connectStart()
+     pconnRace = openedPconn ? racePossible : raceImpossible;
+ 
+     // if we found an open persistent connection to use. use it.
+-    if (openedPconn) {
++    // Always reconnect to the SSLproxy
++    if (request->sslproxy_addr == NULL && openedPconn) {
+         serverConn = temp;
+         flags.connected_okay = true;
+         debugs(17, 3, HERE << "reusing pconn " << serverConnection());
+@@ -1227,6 +1228,10 @@ aclMapNfmark(acl_nfmark * head, ACLChecklist * ch)
  void
  getOutgoingAddress(HttpRequest * request, Comm::ConnectionPointer conn)
  {
@@ -12,7 +22,7 @@ $OpenBSD$
      // skip if an outgoing address is already set.
      if (!conn->local.isAnyAddr()) return;
  
-@@ -1306,4 +1310,5 @@ GetMarkingsToServer(HttpRequest * request, Comm::Conne
+@@ -1306,4 +1311,5 @@ GetMarkingsToServer(HttpRequest * request, Comm::Conne
      conn.nfmark = 0;
  #endif
  }

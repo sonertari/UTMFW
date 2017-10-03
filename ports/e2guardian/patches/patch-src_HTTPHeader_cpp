@@ -1,7 +1,23 @@
 $OpenBSD$
 --- src/HTTPHeader.cpp.orig	Mon Mar 13 18:05:36 2017
-+++ src/HTTPHeader.cpp	Wed Aug  2 23:58:16 2017
-@@ -1140,6 +1140,14 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
++++ src/HTTPHeader.cpp	Thu Sep 28 10:59:39 2017
+@@ -1112,10 +1112,13 @@ void HTTPHeader::checkheader(bool allowpersistent)
+ 
+ String HTTPHeader::getLogUrl(bool withport, bool isssl)
+ {
+-
+     String answer = getUrl(withport, isssl);
+     if (mitm || isssl) {
+-        answer = "https://" + answer.after("://");
++        if (answer.contains("://")) {
++            answer = "https://" + answer.after("://");
++        } else {
++            answer = "https://" + answer;
++        }
+     }
+     return answer;
+ }
+@@ -1140,6 +1143,14 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
      } else {
          answer = answer.before(" http/"); // just in case!
      }
@@ -16,7 +32,32 @@ $OpenBSD$
      if (requestType() == "CONNECT") {
          https = true;
          port = 443;
-@@ -1215,7 +1223,7 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
+@@ -1174,11 +1185,20 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
+             // Squid doesn't like requests in this format. Work around the fact.
+             header.front() = requestType() + " " + answer + " HTTP/" + header.front().after(" HTTP/");
+         } else { // must be in the form GET http://foo.bar:80/ HTML/1.0
+-            if (!answer.after("://").contains("/")) {
+-                answer += "/"; // needed later on so correct host is extracted
+-            }
+             String protocol(answer.before("://"));
+-            hostname = answer.after("://");
++            if (answer.contains("://")) {
++                hostname = answer.after("://");
++                if (!answer.after("://").contains("/")) {
++                    answer += "/"; // needed later on so correct host is extracted
++                }
++            } else {
++                protocol = "https";
++                hostname = answer;
++                if (!answer.contains("/")) {
++                    answer += "/"; // needed later on so correct host is extracted
++                }
++            }
++
+             String url(hostname.after("/"));
+             url.removeWhiteSpace(); // remove rubbish like ^M and blanks
+             if (hostname.endsWith(".")) {
+@@ -1215,7 +1235,7 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
  //	}
  
  #ifdef DGDEBUG
@@ -25,7 +66,7 @@ $OpenBSD$
  #endif
  
  //make sure ssl stuff is logged as https
-@@ -1303,7 +1311,10 @@ String HTTPHeader::getCookie(const char *cookie)
+@@ -1303,7 +1323,10 @@ String HTTPHeader::getCookie(const char *cookie)
          if (i->startsWithLower("cookie:")) {
              line = i->after(": ");
              if (line.contains(cookie)) { // We know we have the cookie
@@ -37,7 +78,7 @@ $OpenBSD$
                  line.lop(); // Get rid of the '='
                  if (line.contains(";")) {
                      line = line.before(";");
-@@ -1617,6 +1628,23 @@ String HTTPHeader::getReferer()
+@@ -1617,6 +1640,23 @@ String HTTPHeader::getReferer()
      std::cout << "Found Referer URL:" << line << std::endl;
  #endif
      return line;
@@ -46,15 +87,15 @@ $OpenBSD$
 +String HTTPHeader::getSSLproxyLine()
 +{
 +    for (std::deque<String>::iterator i = header.begin(); i != header.end(); i++) {
-+		// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[74.125.206.108]:465,s
++        // SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[74.125.206.108]:465,s
 +        if (i->startsWith("SSLproxy:")) {
 +            String line = i->after(",[");
 +            line.removeWhiteSpace();
 +            line = line.before("]") + line.after("]").before(",") + "," + line.after(",").after(",");
 +#ifdef DGDEBUG
-+	std::cout << "Found SSLproxy src addr: " << line << std::endl;
++            std::cout << "Found SSLproxy header: " << line << std::endl;
 +#endif
-+			return line;
++            return line;
 +        }
 +    }
 +	return "";

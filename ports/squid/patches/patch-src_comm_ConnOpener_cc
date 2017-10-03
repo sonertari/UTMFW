@@ -1,7 +1,7 @@
 $OpenBSD$
---- src/comm/ConnOpener.cc.orig	Thu Aug  3 06:51:34 2017
-+++ src/comm/ConnOpener.cc	Thu Aug  3 07:05:54 2017
-@@ -337,8 +337,18 @@ Comm::ConnOpener::doConnect()
+--- src/comm/ConnOpener.cc.orig	Mon Feb 15 15:59:11 2016
++++ src/comm/ConnOpener.cc	Thu Sep 28 14:56:29 2017
+@@ -337,8 +337,20 @@ Comm::ConnOpener::doConnect()
  
      ++ totalTries_;
  
@@ -11,8 +11,10 @@ $OpenBSD$
  
 +	int ret;
 +	if (conn_->sslproxy_addr == NULL) {
++		debugs(44, 2, "CONNECT remote= " << conn_->remote);
 +		ret = comm_connect_addr(temporaryFd_, conn_->remote);
 +	} else {
++		debugs(44, 2, "CONNECT sslproxy= " << conn_->sslproxy);
 +		ret = comm_connect_addr(temporaryFd_, conn_->sslproxy);
 +	}
 +
@@ -21,7 +23,7 @@ $OpenBSD$
      case Comm::INPROGRESS:
          debugs(5, 5, HERE << conn_ << ": Comm::INPROGRESS");
          Comm::SetSelect(temporaryFd_, COMM_SELECT_WRITE, Comm::ConnOpener::InProgressConnectRetry, new Pointer(this), 0);
-@@ -479,4 +489,5 @@ Comm::ConnOpener::DelayedConnectRetry(void *data)
+@@ -479,4 +491,5 @@ Comm::ConnOpener::DelayedConnectRetry(void *data)
      }
      delete ptr;
  }

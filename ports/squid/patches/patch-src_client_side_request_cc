@@ -1,7 +1,7 @@
 $OpenBSD$
---- src/client_side_request.cc.orig	Thu Aug  3 07:41:29 2017
-+++ src/client_side_request.cc	Thu Aug  3 07:44:50 2017
-@@ -579,6 +579,75 @@ ClientRequestContext::hostHeaderVerifyFailed(const cha
+--- src/client_side_request.cc.orig	Mon Feb 15 15:59:11 2016
++++ src/client_side_request.cc	Thu Sep 28 14:34:55 2017
+@@ -579,6 +579,79 @@ ClientRequestContext::hostHeaderVerifyFailed(const cha
  void
  ClientRequestContext::hostHeaderVerify()
  {
@@ -66,18 +66,22 @@ $OpenBSD$
 +		http->request->sslproxy_addr = sslProxyAddr;
 +		http->request->sslproxy_port = sslProxyPort;
 +
++		debugs(44, 2, "Set SSLproxy address= " << sslProxyAddr << ":" << sslProxyPort);
++
 +		// Update the log_uri now with is_ssl
 +		setLogUri(http, http->uri,  true);
 +	
 +	} else {
 +		http->request->sslproxy_addr = NULL;
 +		http->request->sslproxy_port = 0;
++
++		debugs(44, 2, "CANNOT set SSLproxy address");
 +	}
 +	
      // Require a Host: header.
      const char *host = http->request->header.getStr(HDR_HOST);
  
-@@ -2075,4 +2144,5 @@ ClientHttpRequest::handleAdaptationFailure(int errDeta
+@@ -2075,4 +2148,5 @@ ClientHttpRequest::handleAdaptationFailure(int errDeta
  }
  
  #endif

@@ -1,7 +1,7 @@
 $OpenBSD$
 --- src/ConnectionHandler.cpp.orig	Mon Mar 13 18:05:36 2017
-+++ src/ConnectionHandler.cpp	Wed Aug  2 23:26:14 2017
-@@ -547,11 +547,19 @@ int ConnectionHandler::handleConnection(Socket &peerco
++++ src/ConnectionHandler.cpp	Thu Sep 28 10:53:21 2017
+@@ -547,11 +547,23 @@ int ConnectionHandler::handleConnection(Socket &peerco
                  checkme.reset();
              }
  
@@ -14,6 +14,10 @@ $OpenBSD$
 +                is_ssl = ismitm = (srcaddrport.after(",") == "s");
 +            }
 +
++            if (is_ssl && header.header.front().contains("http://")) {
++                header.header.front() = header.header.front().before("http://") + "https://" + header.header.front().after("http://");
++            }
++
              url = header.getUrl(false, ismitm);
              logurl = header.getLogUrl(false, ismitm);
              urld = header.decode(url);
@@ -22,7 +26,7 @@ $OpenBSD$
  
              //If proxy connction is not persistent...
              if (!persistProxy) {
-@@ -584,7 +592,7 @@ int ConnectionHandler::handleConnection(Socket &peerco
+@@ -584,7 +596,7 @@ int ConnectionHandler::handleConnection(Socket &peerco
              }
  
  #ifdef DGDEBUG
@@ -31,7 +35,7 @@ $OpenBSD$
  #endif
  
              // checks for bad URLs to prevent security holes/domain obfuscation.
-@@ -2359,6 +2367,16 @@ int ConnectionHandler::handleConnection(Socket &peerco
+@@ -2359,6 +2371,16 @@ int ConnectionHandler::handleConnection(Socket &peerco
                      std::cout << dbgPeerPort << " -header says close, so not persisting" << std::endl;
  #endif
  
@@ -48,7 +52,7 @@ $OpenBSD$
                  // if we're not careful, we can end up accidentally setting the bypass cookie twice.
                  // because of the code flow, this second cookie ends up with timestamp 0, and is always disallowed.
                  if (isbypass && !isvirusbypass && !iscookiebypass && !isexception) {
-@@ -2390,7 +2408,7 @@ int ConnectionHandler::handleConnection(Socket &peerco
+@@ -2390,7 +2412,7 @@ int ConnectionHandler::handleConnection(Socket &peerco
                  // don't even bother scan testing if the content-length header indicates the file is larger than the maximum size we'll scan
                  // - based on patch supplied by cahya (littlecahya@yahoo.de)
                  // be careful: contentLength is signed, and max_content_filecache_scan_size is unsigned
