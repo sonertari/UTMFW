@@ -92,10 +92,8 @@ class View
 
 					$ssh = new Net_SSH2(gethostname());
 
-					if ($command == 'Start' || $command == 'Restart' || $command == 'Stop') {
-						// Give more time to start/restart or stop requests, the default timeout is 10 seconds
-						$ssh->setTimeout(30);
-					}
+					// Give more time to all requests, the default timeout is 10 seconds
+					$ssh->setTimeout(30);
 
 					if ($ssh->login($_SESSION['USER'], $passwd)) {
 						$outputArray[0]= $ssh->exec($cmdline);
