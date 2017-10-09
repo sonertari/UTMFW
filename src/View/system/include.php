@@ -35,6 +35,10 @@ $Menu = array(
 	'info' => array(
 		'Name' => _MENU('Info'),
 		'Perms' => $ALL_USERS,
+		'SubMenu' => array(
+			'dashboard' => _MENU('Dashboard'),
+			'system' => _MENU('System'),
+			),
 		),
 	'graphs' => array(
 		'Name' => _MENU('Graphs'),

@@ -22,15 +22,17 @@
  * Network monitoring.
  */
 
-require_once($MODEL_PATH.'/model.php');
+require_once($MODEL_PATH.'/monitoring.php');
 
-class Pmacct extends Model
+class Pmacct extends Monitoring
 {
-	public $Name= 'pmacctd';
+	public $Name= 'pmacct';
 	public $User= 'root';
 	
 	public $VersionCmd= '/usr/local/sbin/pmacctd -v 2>&1';
 	
+	protected $LogFilter= 'pmacct';
+
 	function __construct()
 	{
 		global $TmpFile;

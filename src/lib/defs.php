@@ -970,28 +970,41 @@ $StatsConf = array(
 		),
 	);
 
+/// For classifying gettext strings into files.
+/// @attention Moved here to satisfy $ModelsToStat below
+function _TITLE($str)
+{
+	return _($str);
+}
+
 /// Models to get statuses
+/// @todo Code reuse issue: Titles are already available as class vars
 $ModelsToStat= array(
-	'pf' => array('pf'),
-	'sslproxy' => array('sslproxy'),
-	'e2guardian' => array('e2guardian'),
-	'squid' => array('squid'),
-	'snort' => array('snort', 'snortinline'),
-	'snortips' => array('snortips'),
-	'spamassassin' => array('spamassassin'),
-	'clamav' => array('clamd', 'freshclam'),
-	'p3scan' => array('p3scan'),
-	'smtp-gated' => array('smtp-gated'),
-	'imspector' => array('imspector'),
-	'dhcpd' => array('dhcpd'),
-	'named' => array('named'),
-	'openvpn' => array('openvpn'),
-	'openssh' => array('openssh'),
-	'ftp-proxy' => array('ftp-proxy'),
-	'dante' => array('dante'),
-	'spamd' => array('spamd'),
-	'apache' => array('apache'),
-	'monitoring' => array('symon', 'symux', 'pmacct'),
+	'system' => _TITLE('System'),
+	'pf' => _TITLE('Packet Filter'),
+	'sslproxy' => _TITLE('SSL Proxy'),
+	'e2guardian' => _TITLE('Web Filter'),
+	'squid' => _TITLE('HTTP Proxy'),
+	'snort' => _TITLE('IDS'),
+	'snortinline' => _TITLE('Inline IPS'),
+	'snortips' => _TITLE('Passive IPS'),
+	'spamassassin' => _TITLE('SPAM Filter'),
+	'clamd' => _TITLE('Virus Filter'),
+	'freshclam' => _TITLE('Virus DB Update'),
+	'p3scan' => _TITLE('POP3 Proxy'),
+	'smtp-gated' => _TITLE('SMTP Proxy'),
+	'imspector' => _TITLE('IM Proxy'),
+	'dhcpd' => _TITLE('DHCP Server'),
+	'named' => _TITLE('DNS Server'),
+	'openvpn' => _TITLE('OpenVPN'),
+	'openssh' => _TITLE('OpenSSH'),
+	'ftp-proxy' => _TITLE('FTP Proxy'),
+	'dante' => _TITLE('SOCKS Proxy'),
+	'spamd' => _TITLE('SPAM Deferral'),
+	'apache' => _TITLE('Web Server'),
+	'symon' => _TITLE('Symon'),
+	'symux' => _TITLE('Symux'),
+	'pmacct' => _TITLE('Pmacct'),
 	);
 
 $PF_CONFIG_PATH= '/etc/pfre';

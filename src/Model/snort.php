@@ -274,6 +274,12 @@ class Snort extends Model
         $re= '|(\h*/usr/local/bin/snort\h+.*-i\h+)(\w+\d+)(\h+.*\h+/usr/local/bin/snort\h+.*-i\h+)(\w+\d+)(\h+.*)|ms';
 		return $this->ReplaceRegexp('/etc/rc.local', $re, '${1}'.$lanif.'${3}'.$wanif.'${5}');
 	}
+
+	function isPrio($log, $prio)
+	{
+		$p= strtoupper($prio);
+		return $log['Prio'] == $p || preg_match("/$p:/", $log['Log']);
+	}
 }
 
 /**

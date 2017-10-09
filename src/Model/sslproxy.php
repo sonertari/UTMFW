@@ -70,11 +70,6 @@ class Sslproxy extends Model
 					'desc'	=>	_('Get idle conns'),
 					),
 
-				'GetCriticalErrors'	=> array(
-					'argv'	=>	array(),
-					'desc'	=>	_('Get critical errors'),
-					),
-
 				'GetCACertFileName'	=> array(
 					'argv'	=>	array(),
 					'desc'	=>	_('Get CA cert filename'),
@@ -196,46 +191,6 @@ class Sslproxy extends Model
 		return $this->ReplaceRegexp($this->ConfFile, "/^(ProxySpec\h+$specs\b.*(\s|))/m", '');
 	}
 	
-	function GetLastLogs($needle, $interval= 60)
-	{
-		$lastLogs= array();
-		$dateTimeFormat= 'M d H:i:s';
-
-		$logs= $this->_getLiveLogs($this->LogFile, 1);
-		if (count($logs) == 1) {
-			$lastLine= $logs[0];
-			$lastTs= DateTime::createFromFormat($dateTimeFormat, $lastLine['Date'].' '.$lastLine['Time'])->getTimestamp();
-			$firstTs= $lastTs;
-			$lineCount= 32;
-
-			$logs= array();
-			// Make sure we cover the requested interval, but limit the number of lines too
-			while ($lastTs - $firstTs < $interval) {
-				if ($lineCount > 1024) {
-					// @todo Should we clear the logs?
-					//$logs= array();
-					break;
-				}
-
-				$logs= $this->_getLiveLogs($this->LogFile, $lineCount, $needle);
-				if (count($logs)) {
-					$firstLine= $logs[0];
-					$firstTs= DateTime::createFromFormat($dateTimeFormat, $firstLine['Date'].' '.$firstLine['Time'])->getTimestamp();
-				}
-
-				$lineCount*= 2;
-			}
-
-			foreach ($logs as $l) {
-				$ts= DateTime::createFromFormat($dateTimeFormat, $l['Date'].' '.$l['Time'])->getTimestamp();
-				if ($lastTs - $ts <= $interval) {
-					$lastLogs[]= $l;
-				}
-			}
-		}
-		return $lastLogs;
-	}
-
 	function GetMaxStats($interval)
 	{
 		$logs= $this->GetLastLogs('STATS:', $interval);
@@ -284,31 +239,6 @@ class Sslproxy extends Model
 	function GetIdleConns($interval)
 	{
 		return Output(json_encode($this->GetLastLogs('IDLE:', $interval)));
-	}
-
-	function GetCriticalErrors()
-	{
-		$logs= $this->_getCriticalErrors();
-		if (count($logs) > 0) {
-			$errorStr= '';
-			foreach ($logs as $l) {
-				$errorStr.= "\n" . $l['Log'];
-			}
-			Error(_('There are CRITICAL errors.')."$errorStr");
-		}
-		return TRUE;
-	}
-
-	function hasCriticalErrors()
-	{
-		return count($this->_getCriticalErrors()) > 0;
-	}
-
-	function _getCriticalErrors()
-	{
-		global $CriticalErrorCheckInterval;
-
-		return $this->GetLastLogs('CRITICAL:', $CriticalErrorCheckInterval);
 	}
 
 	function GetCACertFileName()

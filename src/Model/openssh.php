@@ -134,12 +134,12 @@ class Openssh extends Model
 		return Output(json_encode($logs));
 	}
 	
-	function GetLiveLogs($file, $count, $re= '')
+	function _getLiveLogs($file, $count, $re= '')
 	{
 		$cmd= "/usr/bin/grep -a ' sshd\[' $file";
 		if ($re !== '') {
 			$re= escapeshellarg($re);
-			$cmd.= " | /usr/bin/grep -a $re";
+			$cmd.= " | /usr/bin/grep -a -E $re";
 		}
 		$cmd.= " | /usr/bin/tail -$count";
 
@@ -151,7 +151,7 @@ class Openssh extends Model
 				$logs[]= $cols;
 			}
 		}
-		return Output(json_encode($logs));
+		return $logs;
 	}
 }
 

@@ -1153,7 +1153,7 @@ class Pf extends Model
 		return Output(json_encode($logs));
 	}
 
-	function GetLiveLogs($file, $count, $re= '')
+	function _getLiveLogs($file, $count, $re= '')
 	{
 		global $TCPDUMP;
 		
@@ -1173,7 +1173,7 @@ class Pf extends Model
 				$logs[]= $Cols;
 			}
 		}
-		return Output(json_encode($logs));
+		return $logs;
 	}
 
 	/**

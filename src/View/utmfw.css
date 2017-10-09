@@ -1071,7 +1071,7 @@ a:hover
 
 #mainmenuframe
 {
-	width: 155px;
+	width: 120px;
 	color: gray;
 	background: #f0f0f0;
 	margin: 0;
@@ -1083,7 +1083,7 @@ a:hover
 
 #mainmenuframe .fixed
 {
-	width: 155px;
+	width: 120px;
 }
 
 #mainmenu
@@ -1112,7 +1112,8 @@ a:hover
 	color: #f0f0f0;
 	background: gray;
 	margin: 0;
-	padding: 1px;
+	padding: 3px;
+	padding-left: 6px;
 	border-left: 8px solid black;
 	border-right: 8px solid #aaa;
 	text-decoration: none;
@@ -1257,4 +1258,59 @@ a:hover
 	font-family: sans-serif;
 	font-size: 16px;
 	line-height: 20px;
+}
+
+/* Dashboard */
+#dashboard
+{
+	text-align: center;
+	color: white;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+#dashboard div
+{
+	width: 200px;
+	height: auto;
+	padding: 5px;
+	background-color: white;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	pointer-events: none;
+}
+
+#dashboard .count
+{
+	font-size: 50px;
+	padding: 0;
+}
+
+#dashboard .prio
+{
+	border-top: 1px solid white;
+	padding: 2px 0 0 0;
+}
+
+#modulestatus
+{
+	width: 150px;
+	height: auto;
+	padding: 5px;
+	background-color: #eaedef;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+#modulestatus td
+{
+	padding: 0;
 }

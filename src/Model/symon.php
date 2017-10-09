@@ -22,9 +22,9 @@
  * System monitoring.
  */
 
-require_once($MODEL_PATH.'/model.php');
+require_once($MODEL_PATH.'/monitoring.php');
 
-class Symon extends Model
+class Symon extends Monitoring
 {
 	public $Name= 'symon';
 	public $User= '_symon';
@@ -33,6 +33,8 @@ class Symon extends Model
 	private $rrdsPath= '/var/www/htdocs/utmfw/View/symon/rrds/localhost';
 	
 	public $VersionCmd= '/usr/local/libexec/symon -v 2>&1';
+
+	protected $LogFilter= 'symon';
 
 	function __construct()
 	{

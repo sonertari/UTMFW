@@ -32,6 +32,8 @@ class Apache extends Model
 	public $VersionCmd= '/usr/local/sbin/httpd -v';
 	private $phpVersionCmd= '/usr/local/bin/php -v';
 
+	protected $dateTimeFormat= 'M j Y H:i:s';
+
 	function __construct()
 	{
 		parent::__construct();

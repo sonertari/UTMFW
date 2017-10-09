@@ -31,11 +31,6 @@ while (FALSE !== ($DirName= readdir($DirHandle))) {
 	}
 }
 closedir($DirHandle);
-
-$ServiceStatus= '';
-if ($View->Controller($Output, 'GetServiceStatus')) {
-	$ServiceStatus= implode(',', $Output);
-}
 ?>
 <td id="mainmenuframe" rowspan=2>
 	<table class="fixed">
@@ -57,34 +52,9 @@ if ($View->Controller($Output, 'GetServiceStatus')) {
 						if (strpos($_SERVER['PHP_SELF'], "/$Module/") !== FALSE) {
 							$Class= 'class="active" ';
 						}
-
-						if (array_key_exists($Module, $ModelsToStat)) {
-							if (preg_match("/$Module=R/", $ServiceStatus)) {
-								$Image= 'run.png';
-								$Name= 'R';
-							}
-							else if (preg_match("/$Module=PR/", $ServiceStatus)) {
-								$Image= 'partialrun.png';
-								$Name= 'PR';
-							}
-							else if (preg_match("/$Module=E/", $ServiceStatus)) {
-								$Image= 'critical.png';
-								$Name= 'E';
-							}
-							else {
-								$Image= 'stop.png';
-								$Name= 'S';
-							}
-						}
-						else {
-							$Image= 'transparent.png';
-							$Name= ' ';
-						}
 						?>
 						<li <?php echo $Class ?>>
-							<a href="<?php echo "/$Module/index.php" ?>">
-								<img src="<?php echo $IMG_PATH.$Image ?>" name="<?php echo $Name ?>" alt="<?php echo $Name ?>" align="absmiddle"><?php echo _($ModuleConf['Name']) ?>
-							</a>
+							<a href="<?php echo "/$Module/index.php" ?>"><?php echo _($ModuleConf['Name']) ?></a>
 						</li>
 						<?php
 					}

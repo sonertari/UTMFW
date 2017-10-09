@@ -42,6 +42,7 @@ class Squid extends Model
 		global $TmpFile;
 		
 		parent::__construct();
+		$this->ErrorLogFile= '/var/log/messages';
 		
 		$this->StartCmd= "/usr/local/sbin/squid > $TmpFile 2>&1 &";
 		
@@ -208,6 +209,33 @@ class Squid extends Model
 		}
 
 		return "^$reDay/$reMonth/$reYear:$reHour:$reMinute:";
+	}
+
+	function getStatusLogs($file, $count, $re= '', $needle= '')
+	{
+		$cmd= "/usr/bin/grep -a ' squid\[' /var/log/messages";
+
+		$re= escapeshellarg($re);
+		if ($needle == '') {
+			$cmd.= " | /usr/bin/grep -a -E $re";
+		}
+		else {
+			$needle= escapeshellarg($needle);
+			$cmd.= " | /usr/bin/grep -a -E $needle | /usr/bin/grep -a -E $re";
+		}
+
+		$cmd.= " | /usr/bin/tail -$count";
+
+		exec($cmd, $output, $retval);
+		
+		$logs= array();
+		foreach ($output as $line) {
+			unset($cols);
+			if ($this->ParseLogLine($line, $cols)) {
+				$logs[]= $cols;
+			}
+		}
+		return $logs;
 	}
 }
 

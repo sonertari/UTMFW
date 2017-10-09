@@ -56,6 +56,7 @@ class Model
 	public $COMC= '#';
 
 	public $LogFile= '';
+	public $ErrorLogFile= '';
 	public $TmpLogsDir= '';
 
 	protected $rcConfLocal= '/etc/rc.conf.local';
@@ -72,7 +73,13 @@ class Model
 	public $PidFile= '';
 
 	protected $newSyslogConf= '/etc/newsyslog.conf';
-	
+
+	/// This datetime format is for error logs, not access logs.
+	/// Hence for example squid uses the default syslog format.
+	protected $dateTimeFormat= 'M j H:i:s';
+
+	protected $prios= array();
+
 	function __construct()
 	{
 		global $ModelConfig;
@@ -82,6 +89,13 @@ class Model
 		$this->TmpLogsDir= '/var/tmp/utmfw/logs/'.get_class($this).'/';
 
 		$this->Config= $ModelConfig;
+
+		$this->ErrorLogFile= $this->LogFile;
+		$this->prios= array(
+			'EMERGENCY|ALERT|CRITICAL' => _('<MODEL> has CRITICAL errors'),
+			'ERROR' => _('<MODEL> has ERRORs'),
+			'WARNING' => _('<MODEL> has WARNINGs')
+			);
 
 		$this->Commands= array_merge(
 			$this->Commands,
@@ -164,6 +178,11 @@ class Model
 				'SetPfctlTimeout'=>	array(
 					'argv'	=>	array(NUM),
 					'desc'	=>	_('Set pfctl timeout'),
+					),
+
+				'SetStatusCheckInterval'=>	array(
+					'argv'	=>	array(NUM),
+					'desc'	=>	_('Set status check interval'),
 					),
 
 				'GetReloadRate'=>	array(
@@ -320,6 +339,11 @@ class Model
 				'SetRelaydExtAddr'	=> array(
 					'argv'	=> array(IPADR),
 					'desc'	=> _('Set IP Relayd listens on'),
+					),
+
+				'GetStatus'	=> array(
+					'argv'	=>	array(),
+					'desc'	=>	_('Get critical errors'),
 					),
 				)
 			);
@@ -718,7 +742,25 @@ class Model
 		// Append semi-colon to new value, this setting is a PHP line
 		return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$PfctlTimeout', $timeout.';');
 	}
-	
+
+	/**
+	 * Sets status check interval.
+	 * 
+	 * @param int $interval Interval to check module statuses.
+	 * @return bool TRUE on success, FALSE on fail.
+	 */
+	function SetStatusCheckInterval($interval)
+	{
+		global $ROOT, $TEST_DIR_SRC;
+		
+		if ($interval < 10) {
+			$interval= 10;
+		}
+		
+		// Append semi-colon to new value, this setting is a PHP line
+		return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$StatusCheckInterval', $interval.';');
+	}
+
 	/**
 	 * Gets default reload rate.
 	 * 
@@ -1341,11 +1383,27 @@ class Model
 		return Output(json_encode($this->_getLiveLogs($file, $count, $re)));
 	}
 
-	function _getLiveLogs($file, $count, $re= '')
+	/**
+	 * Gets logs for live logs pages, the actual method.
+	 * 
+	 * A few modules share their log files with other processes.
+	 * So the $needle param is used to filter module log lines.
+	 * 
+	 * @param string $needle Second regexp to further restrict the result set.
+	 */
+	function _getLiveLogs($file, $count, $re= '', $needle= '')
 	{
 		// Empty $re is not an issue for grep, greps all
 		$re= escapeshellarg($re);
-		$cmd= "/usr/bin/grep -a -E $re $file | /usr/bin/tail -$count";
+		if ($needle == '') {
+			$cmd= "/usr/bin/grep -a -E $re $file";
+		}
+		else {
+			$needle= escapeshellarg($needle);
+			$cmd= "/usr/bin/grep -a -E $needle $file | /usr/bin/grep -a -E $re";
+		}
+
+		$cmd.= " | /usr/bin/tail -$count";
 
 		exec($cmd, $output, $retval);
 		
@@ -2495,52 +2553,171 @@ class Model
 	{
 		global $MODEL_PATH, $ModelFiles, $Models, $ModelsToStat;
 
-		$output= FALSE;
-		foreach ($ModelsToStat as $name => $modules) {
-			$stat= array();
-			foreach ($modules as $m) {
-				if (array_key_exists($m, $ModelFiles)) {
-					require_once($MODEL_PATH.'/'.$ModelFiles[$m]);
+		$output= array();
+		foreach ($ModelsToStat as $name => $caption) {
+			if (array_key_exists($name, $ModelFiles)) {
+				require_once($MODEL_PATH.'/'.$ModelFiles[$name]);
 
-					if (class_exists($Models[$m])) {
-						$model= new $Models[$m]();
-						if ($model->hasCriticalErrors()) {
-							$stat[]= 'E';
-						} else {
-							$stat[]= $model->IsRunning();
-						}
+				if (class_exists($Models[$name])) {
+					$model= new $Models[$name]();
+
+					// @attention Don't use long extended regexps with grep, grep takes too long
+					//$logs= $model->_getStatus('(EMERGENCY|emergency|ALERT|alert|CRITICAL|critical|ERROR|error|WARNING|warning):');
+					$logs= $model->_getStatus('');
+
+					$crits= $model->getCriticalErrors($logs);
+					$errs= $model->getErrors($logs);
+					$warns= $model->getWarnings($logs);
+
+					$errorStatus= 'N';
+					if (count($crits)) {
+						$errorStatus= 'C';
 					}
-					else {
-						ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in Models: $m");
+					else if (count($errs)) {
+						$errorStatus= 'E';
 					}
+					else if (count($warns)) {
+						$errorStatus= 'W';
+					}
+
+					$prioLogs= array_merge($crits, $errs, $warns);
+
+					$output[$name]= array(
+						'Status' => $model->IsRunning()? 'R':'S',
+						'ErrorStatus' => $errorStatus,
+						'Critical' => count($crits),
+						'Error' => count($errs),
+						'Warning' => count($warns),
+						'Logs' => $prioLogs,
+						);
 				}
 				else {
-					ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in ModelFiles: $m");
+					ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in Models: $name");
 				}
 			}
+			else {
+				ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in ModelFiles: $name");
+			}
+		}
+		return Output(json_encode($output));
+	}
 
-			if (in_array('E', $stat, TRUE)) {
-				$output.= "$name=E\n";
-			} else {
-				$true= in_array(TRUE, $stat, TRUE);
-				$false= in_array(FALSE, $stat, TRUE);
-				if ($true && !$false) {
-					$output.= "$name=R\n";
-				}
-				else if ($true && $false) {
-					$output.= "$name=PR\n";
-				}
-				else if (!$true && $false) {
-					$output.= "$name=S\n";
+	function GetLastLogs($needle, $interval= 60)
+	{
+		$lastLogs= array();
+
+		// @attention Get the last datetime in the logs, so do not use the $needle
+		$logs= $this->getStatusLogs($this->ErrorLogFile, 1);
+		if (count($logs) == 1) {
+			$lastLine= $logs[0];
+			$lastTs= DateTime::createFromFormat($this->dateTimeFormat, $lastLine['Date'].' '.$lastLine['Time'])->getTimestamp();
+
+			// @attention Don't get the logs in the last 60 seconds from now instead, otherwise the errors still important cannot be reported after 60 seconds.
+			// XXX: Setting the zone using a new DateTimeZone('UTC') with createFromFormat() does not help, hence this hack
+			//$lastTs= DateTime::createFromFormat('m d H:i:s', exec('/bin/date "+%m %d %H:%M:%S"'))->getTimestamp();
+
+			$logs= $this->getStatusLogs($this->ErrorLogFile, 1000, $needle);
+			if (count($logs)) {
+				// Loop in reverse order to break out asap
+				foreach (array_reverse($logs) as $l) {
+					$ts= DateTime::createFromFormat($this->dateTimeFormat, $l['Date'].' '.$l['Time'])->getTimestamp();
+					if ($lastTs - $ts <= $interval) {
+						$lastLogs[]= $l;
+					} else {
+						break;
+					}
 				}
 			}
 		}
-		return Output($output);
+		return $lastLogs;
 	}
 
-	function hasCriticalErrors()
+	function getStatusLogs($file, $count, $re= '', $needle= '')
 	{
-		return FALSE;
+		return $this->_getLiveLogs($file, $count, $re, $needle);		
+	}
+
+	function getCriticalErrors($logs)
+	{
+		return array_merge($this->getPrioLogs($logs, 'EMERGENCY'),
+				$this->getPrioLogs($logs, 'ALERT'),
+				$this->getPrioLogs($logs, 'CRITICAL'));
+	}
+
+	function getErrors($logs)
+	{
+		return $this->getPrioLogs($logs, 'ERROR');
+	}
+
+	function getWarnings($logs)
+	{
+		return $this->getPrioLogs($logs, 'WARNING');
+	}
+
+	function isPrio($log, $prio)
+	{
+		return strtoupper($log['Prio']) == $prio;
+	}
+
+	function getPrioLogs($logs, $needle)
+	{
+		$prioLogs= array();
+		foreach ($logs as $l) {
+			if ($this->isPrio($l, $needle)) {
+				$prioLogs[]= $l;
+			}
+		}
+		return $prioLogs;
+	}
+
+	function GetStatus()
+	{
+		global $ModelsToStat;
+
+		foreach ($this->prios as $p => $msg) {
+			$keys= explode('|', $p);
+			$needleArray= array();
+			foreach ($keys as $k) {
+				$needleArray[]= $k;
+				$needleArray[]= strtolower($k);
+			}
+			$needle= implode('|', $needleArray);
+
+			$logs= $this->_getStatus("($needle):");
+			if (count($logs) > 0) {
+				$errorStr= '';
+				$count= 0;
+				foreach ($logs as $l) {
+					$isPrio= FALSE;
+					foreach ($needleArray as $n) {
+						if ($this->isPrio($l, $n)) {
+							$isPrio= TRUE;
+							break;
+						}
+					}
+
+					if ($isPrio) {
+						$errorStr.= "\n" . $l['Log'];
+						$count++;
+						if ($count >= 5) {
+							$errorStr.= "\n" . str_replace('<COUNT>', count($logs) - $count, _('And <COUNT> others not shown.'));
+							break;
+						}
+					}
+				}
+				if ($count) {
+					Error(str_replace('<MODEL>', _($ModelsToStat[$this->Name]), _($msg)) . ':' . $errorStr);
+				}
+			}
+		}
+		return TRUE;
+	}
+
+	function _getStatus($needle)
+	{
+		global $StatusCheckInterval;
+
+		return $this->GetLastLogs($needle, $StatusCheckInterval);
 	}
 
 	/**

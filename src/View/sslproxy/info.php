@@ -22,23 +22,6 @@ require_once('include.php');
 
 $View->ProcessStartStopRequests();
 
-$ReportInterval= 60;
-if (isset($_SESSION[$View->Model]['ReportInterval'])) {
-	$ReportInterval= $_SESSION[$View->Model]['ReportInterval'];
-}
-
-if (filter_has_var(INPUT_POST, 'ReportInterval')) {
-	$ReportInterval= filter_input(INPUT_POST, 'ReportInterval');
-}
-
-if ($ReportInterval < 10) {
-	$ReportInterval= 10;
-}
-
-$_SESSION[$View->Model]['ReportInterval']= $ReportInterval;
-
-$View->Controller($Output, 'GetCriticalErrors');
-
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
@@ -46,20 +29,13 @@ $View->PrintStatusForm();
 ?>
 <br />
 <strong><?php echo _('Statistics') ?></strong>
-<br />
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-	<?php echo _TITLE2('Report Interval').':' ?>
-	<input type="text" name="ReportInterval" style="width: 50px;" maxlength="3" value="<?php echo $ReportInterval ?>"/>
-	<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
-</form>
-<br />
 <?php
-$View->PrintStatsMaxValues($ReportInterval);
+$View->PrintStatsMaxValues($StatusCheckInterval);
 ?>
 <br />
 <?php echo _TITLE2('Idle connections').':' ?>
 <?php
-$View->PrintIdleConns($ReportInterval);
+$View->PrintIdleConns($StatusCheckInterval);
 
 PrintHelpWindow(_HELPWINDOW('The SSL proxy decrypts SSL/TLS encrypted traffic and feeds it into the UTM services. The inline IPS inspects the decrypted traffic for intrusion detection and prevention as well.
 

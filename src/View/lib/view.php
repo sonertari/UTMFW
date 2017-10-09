@@ -100,13 +100,13 @@ class View
 						if ($ssh->isTimeout()) {
 							$msg= 'SSH exec timed out';
 							wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "$msg, ($cmdline)");
-							PrintHelpWindow(_NOTICE('FAILED') . ":<br>$msg", 'auto', 'ERROR');
+							PrintHelpWindow($msg, 'auto', 'ERROR');
 							$executed= FALSE;
 						}
 					} else {
 						$msg= 'SSH login failed';
 						wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "$msg, ($cmdline)");
-						PrintHelpWindow(_NOTICE('FAILED') . ":<br>$msg", 'auto', 'ERROR');
+						PrintHelpWindow($msg, 'auto', 'ERROR');
 						$executed= FALSE;
 					}
 				} else {
@@ -127,7 +127,7 @@ class View
 					} else {
 						$msg= "Failed decoding output: $outputArray[0]";
 						wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "$msg, ($cmdline)");
-						PrintHelpWindow(_NOTICE('FAILED') . ":<br>$msg", 'auto', 'ERROR');
+						PrintHelpWindow($msg, 'auto', 'ERROR');
 					}
 
 					// Show error, if any
@@ -135,7 +135,7 @@ class View
 						$error= explode("\n", $errorStr);
 
 						wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Shell command exit status: $retval: (" . implode(', ', $error) . "), ($cmdline)");
-						PrintHelpWindow(_NOTICE('FAILED') . ':<br>' . implode('<br>', $error), 'auto', 'ERROR');
+						PrintHelpWindow(implode('<br>', $error), 'auto', 'ERROR');
 					}
 
 					// (exit status 0 in shell) == (TRUE in php)
@@ -262,6 +262,7 @@ class View
 				}
 			}
 		}
+		$this->Controller($Output, 'GetStatus');
 	}
 
 	/**
@@ -611,12 +612,6 @@ function _CONTROL($str)
 
 /// For classifying gettext strings into files.
 function _NOTICE($str)
-{
-	return _($str);
-}
-
-/// For classifying gettext strings into files.
-function _TITLE($str)
 {
 	return _($str);
 }

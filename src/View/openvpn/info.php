@@ -70,6 +70,8 @@ else if (filter_has_var(INPUT_POST, 'Stop')) {
 	}
 }
 
+$View->Controller($Output, 'GetStatus');
+
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		

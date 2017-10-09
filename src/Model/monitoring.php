@@ -23,5 +23,11 @@ require_once($MODEL_PATH.'/model.php');
 class Monitoring extends Model
 {
 	public $LogFile= '/var/log/monitoring.log';
+	protected $LogFilter= '';
+
+	function _getLiveLogs($file, $count, $re= '')
+	{
+		return parent::_getLiveLogs($file, $count, $re, $this->LogFilter);
+	}
 }
 ?>

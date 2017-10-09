@@ -80,10 +80,6 @@ class Pf extends View
 		return $MonthNames[$date['Month']].' '.$date['Day'];
 	}
 	
-	function FormatLogCols(&$cols)
-	{
-	}
-
 	/**
 	 * Gets and lists pf states.
 	 */

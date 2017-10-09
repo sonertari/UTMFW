@@ -94,6 +94,13 @@ if (count($_POST)) {
 			require($SRC_ROOT . '/lib/setup.php');
 		}
 	}
+	else if (filter_has_var(INPUT_POST, 'StatusCheckInterval')) {
+		if ($View->Controller($Output, 'SetStatusCheckInterval', filter_input(INPUT_POST, 'StatusCheckInterval'))) {
+			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'StatusCheckInterval set: '.filter_input(INPUT_POST, 'StatusCheckInterval'));
+			// Reset $StatusCheckInterval to its new value
+			require($SRC_ROOT . '/lib/setup.php');
+		}
+	}
 	else {
 		if (filter_has_var(INPUT_POST, 'DisableHelpBoxes')) {
 			if ($View->Controller($Output, 'SetHelpBox', 'FALSE')) {
@@ -369,6 +376,22 @@ Admin can change the user password without knowing the current user password. Bu
 			PrintHelpBox(_HELPBOX('Pfctl commands are executed in a separate process, which returns pfctl output in a message. Parent process times out waiting for an output message after this many seconds. This approach is necessary in case pfctl is stuck or taking too long (and it is in certain cases).
 
 <b>Setting this timeout to 0 may fail the execution of all pfctl commands, effectively disabling rule tests.<b>'));
+			?>
+		</td>
+	</tr>
+	<tr class="oddline">
+		<td class="title">
+			<?php echo _TITLE('Status Check Interval').':' ?>
+		</td>
+		<td>
+			<form action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>" method="post">
+				<input type="text" name="StatusCheckInterval" style="width: 50px;" maxlength="3" value="<?php echo $StatusCheckInterval ?>"/>
+				<input type="submit" id="ApplyStatusCheckInterval" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
+			</form>
+		</td>
+		<td class="none">
+			<?php
+			PrintHelpBox(_HELPBOX('This is the time interval in seconds to check module statuses for displaying.'));
 			?>
 		</td>
 	</tr>

@@ -34,8 +34,8 @@ $MaxAnchorNesting= 2;
 /// Wait pfctl output for this many seconds before giving up.
 $PfctlTimeout= 5;
 
-/// Interval to check critical errors to display module status.
-$CriticalErrorCheckInterval= 60;
+/// Interval to check module status for displaying.
+$StatusCheckInterval= 60;
 
 /// Default locale for both View and Controller.
 $DefaultLocale= 'en_EN';

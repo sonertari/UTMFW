@@ -154,6 +154,11 @@ class Sslproxy extends View
 		echo '</tr>';
 	}
 	
+	function FormatLogCols(&$cols)
+	{
+		$cols['Log']= wordwrap($cols['Log'], 150, '<br />', TRUE);
+	}
+	
 	function PrintStatsMaxValues($interval)
 	{
 		$key2Titles = array(
