@@ -49,6 +49,8 @@ The web user interface of UTMFW helps you manage your firewall:
 - The web interface supports languages other than English: Turkish, Chinese, Dutch, Russian, French, Spanish.
 - The web interface configuration pages are designed so that changes you may have made to the configuration files on the command line (such as comments you might have added) remain intact after you configure a module using the web interface.
 
+![Dashboard](https://github.com/sonertari/UTMFW/blob/master/screenshots/Dashboard.png)
+
 ## How to install
 
 Download the installation iso file mentioned above and follow the instructions in the installation guide available in the iso file. Below are the same instructions.
