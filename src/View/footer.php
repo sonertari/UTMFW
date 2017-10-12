@@ -21,18 +21,11 @@
 /** @file
  * Page footer.
  */
-	
-	?>
-	</td>
-</tr>
-<tr>
-	<td id="bottomhelpregion">
-		<?php
-		$InHelpRegion= TRUE;
-		PrintHelpWindow('', 'auto', 'PRINT');
-		?>
-	</td>
-</tr>
-<?php
-AuthHTMLFooter();
+
+$InHelpRegion= TRUE;
+PrintHelpWindow('', 'auto', 'PRINT');
+
+echo _TITLE('Copyright') ?> (C) 2017 Soner Tari. <?php echo _TITLE('All rights reserved.');
 ?>
+	</body>
+</html>

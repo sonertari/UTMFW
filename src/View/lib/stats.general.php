@@ -77,17 +77,6 @@ PrintModalPieChart();
 <table>
 	<tr>
 		<td class="top">
-			<?php
-			$View->PrintStats($LogFile);
-
-			if (isset($ViewStatsConf['Total']['BriefStats'])) {
-				foreach ($ViewStatsConf['Total']['BriefStats'] as $Field => $Name) {
-					PrintNVPs($BriefStats[$Field], _($Name), 50, TRUE, $ViewStatsConf['Total']['Needle'], $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix']);
-				}
-			}
-			?>
-		</td>
-		<td class="top">
 			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 				<select name="GraphStyle">
 					<option <?php echo ($GraphStyle == 'Hourly') ? 'selected' : '' ?> value="<?php echo 'Hourly' ?>"><?php echo _CONTROL('Hourly') ?></option>
@@ -117,6 +106,17 @@ PrintModalPieChart();
 					foreach ($CurConf['Counters'] as $Name => $Conf) {
 						PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix']);
 					}
+				}
+			}
+			?>
+		</td>
+		<td class="top">
+			<?php
+			$View->PrintStats($LogFile);
+
+			if (isset($ViewStatsConf['Total']['BriefStats'])) {
+				foreach ($ViewStatsConf['Total']['BriefStats'] as $Field => $Name) {
+					PrintNVPs($BriefStats[$Field], _($Name), 50, TRUE, $ViewStatsConf['Total']['Needle'], $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix']);
 				}
 			}
 			?>

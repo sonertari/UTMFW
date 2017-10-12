@@ -37,6 +37,7 @@ function PrintModalPieChart()
 		<p><span id="value"></span></p>
 	</div>
 
+	<script type="text/javascript" src="../lib/d3.min.js"></script>
 	<script language="javascript" type="text/javascript">
 		// Get the modal
 		var modal = document.getElementById('modalPieChart');

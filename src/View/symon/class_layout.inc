@@ -293,7 +293,7 @@ class Layout {
 
 				if ($html) {
 					print '	<div class="group">
-							<h3 class="header"><a name="' . $group . '">' . _($LinkName) . '</a></h3>
+							<h3 class="header" style="margin: 4px 0 2px 0;"><a name="' . $group . '">' . _($LinkName) . '</a></h3>
 						</div>';
 				}
 

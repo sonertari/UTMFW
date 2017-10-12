@@ -94,7 +94,7 @@ $l = new Layout($View->Layout);
 $gts = $l->getgrouptitles();
 $n = count($gts);
 if ($n > 1) {
-	echo '<div class="groups" width="100%">', "\n";
+	echo '<div class="groups" style="width: 100%">', "\n";
 	for ($i = 0; $i < $n; $i++) {
 		echo '<a href="graphs.php#' . $gts[$i] . '">' . _($gts[$i]) . '</a>';
 		if ($i != $n - 1) {

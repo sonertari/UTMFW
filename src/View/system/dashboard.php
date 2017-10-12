@@ -18,6 +18,11 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// @attention The following three lines are for the case that the Dashboard is requested from the right menu, instead of System>Info>Dashboard
+require_once('include.php');
+$TopMenu= 'info';
+$Submenu= 'dashboard';
+
 $ServiceStatus= array();
 if ($View->Controller($Output, 'GetServiceStatus')) {
 	$ServiceStatus= json_decode($Output[0], TRUE);
@@ -70,10 +75,10 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 	$Warning+= $ServiceStatus[$Module]['Warning'];
 }
 ?>
-<table id="dashboard" style="width: 600px;">
+<table id="dashboard">
 	<tr>
 		<td>
-			<div style="background-color: #e72626;">
+			<div class="critical">
 				<table>
 					<tr>
 						<td class="count">
@@ -89,7 +94,7 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 			</div>
 		</td>
 		<td>
-			<div style="background-color: #ff802b;">
+			<div class="error">
 				<table>
 					<tr>
 						<td class="count">
@@ -105,7 +110,7 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 			</div>
 		</td>
 		<td>
-			<div style="background-color: #ffd323; color: black;">
+			<div class="warning">
 				<table>
 					<tr>
 						<td class="count">
@@ -113,7 +118,7 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 						</td>
 					</tr>
 					<tr>
-						<td class="prio" style="border-top: 1px solid black;">
+						<td class="prio">
 							<?php echo _('WARNING') ?>
 						</td>
 					</tr>
@@ -122,7 +127,7 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 		</td>
 	</tr>
 </table>
-<table style="width: 600px;">
+<table id="modulestatus">
 	<tr>
 		<td>
 			<strong><?php echo _('Module Status').':' ?></strong>
@@ -165,7 +170,6 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 					$ErrorCounts[]= _('Warning').': '.$Warning;
 				}
 				$ErrorCountsStr= implode(', ', $ErrorCounts);
-				//$ErrorCountsStr= $ErrorCountsStr == '' ? _('No Errors'):$ErrorCountsStr;
 
 				// XXX
 				$ServiceStatus[$Module]['Status']= '';
@@ -191,23 +195,23 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 					$SubmenuName= 'info';
 				}
 				?>
-				<td style="vertical-align: top;">
+				<td class="module">
 					<form id="<?php echo $FormId ?>" name="<?php echo $FormId ?>" action="<?php echo "/$ModuleName/info.php?submenu=$SubmenuName" ?>" method="post"></form>
-					<div id="modulestatus" onclick="document.<?php echo $FormId ?>.submit()" style="cursor: pointer;">
+					<div onclick="document.<?php echo $FormId ?>.submit()">
 						<table>
 							<tr>
-								<td style="height: 22px;width: 22px;">
-									<img src="<?php echo $IMG_PATH.$StatusImage ?>" name="<?php echo $RunStatus ?>" alt="<?php echo $RunStatus ?>" title="<?php echo $StatusTitles[$RunStatus] ?>" style="height: 22px;width: 22px;" align="absmiddle">
+								<td class="moduleimage">
+									<img src="<?php echo $IMG_PATH.$StatusImage ?>" name="<?php echo $RunStatus ?>" alt="<?php echo $RunStatus ?>" title="<?php echo $StatusTitles[$RunStatus] ?>" align="absmiddle">
 								</td>
-								<td style="height: 22px;width: 22px;">
-									<img src="<?php echo $IMG_PATH.$ErrorStatusImage ?>" name="<?php echo $ErrorStatus ?>" alt="<?php echo $ErrorStatus ?>" title="<?php echo $StatusTitles[$ErrorStatus] ?>" style="height: 22px;width: 22px;" align="absmiddle">
+								<td class="moduleimage">
+									<img src="<?php echo $IMG_PATH.$ErrorStatusImage ?>" name="<?php echo $ErrorStatus ?>" alt="<?php echo $ErrorStatus ?>" title="<?php echo $StatusTitles[$ErrorStatus] ?>" align="absmiddle">
 								</td>
-								<td style="padding-left: 2px;">
+								<td class="modulecaption">
 									<strong><?php echo _($Caption) ?></strong>
 								</td>
 							</tr>
 							<tr>
-								<td style="font-size: 90%; text-align: right;" colspan="3">
+								<td class="moduleerrorcounts" colspan="3">
 									<?php echo $ErrorCountsStr ?>
 								</td>
 							</tr>

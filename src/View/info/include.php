@@ -20,17 +20,6 @@
 
 require_once('../lib/vars.php');
 
-$Menu = array(
-    'help' => array(
-        'Name' => _MENU('Help'),
-        'Perms' => $ALL_USERS,
-		),
-    'docs' => array(
-        'Name' => _MENU('Source Docs'),
-        'Perms' => $ALL_USERS,
-		),
-	);
-
 class Docs extends View
 {
 	public $Model= 'docs';

@@ -123,10 +123,6 @@ $UTMFW_MODULES = array(
 		'Name' => _MENU('MONITORING'),
 		'Perms' => $ALL_USERS,
 		),
-    'info' => array(
-		'Name' => _MENU('INFORMATION'),
-		'Perms' => $ALL_USERS,
-		),
 	);
 
 require_once($VIEW_PATH . '/lib/libauth.php');

@@ -33,10 +33,11 @@ if (filter_has_var(INPUT_GET, 'logout')) {
 	LogUserOut();
 }
 
-if (filter_has_var(INPUT_POST, 'Locale')) {
-	$_SESSION['Locale'] = filter_input(INPUT_POST, 'Locale');
+if (filter_has_var(INPUT_GET, 'locale')) {
+	$_SESSION['Locale'] = filter_input(INPUT_GET, 'locale');
 	// To refresh the page after language change
-	header('Location: '.$_SERVER['REQUEST_URI']);
+	// @attention Remove the trailing locale, otherwise the page goes into a redirection loop
+	header('Location: '.preg_replace('/\?.*/', '', $_SERVER['REQUEST_URI'], -1));
 	exit;
 }
 
@@ -175,7 +176,7 @@ function Authentication($passwd)
 		unset($_SESSION['pf']);
 	}
 	
-	header('Location: /system/index.php');
+	header('Location: /system/dashboard.php');
 	exit;
 }
 
@@ -188,37 +189,26 @@ function Authentication($passwd)
 function HTMLHeader($color= 'white', $reloadRate= 0)
 {
 	global $LOCALES;
-	?>
-	<!DOCTYPE html>
-	<html>
-		<head>
-			<title><?php echo _MENU('UTM Firewall') ?></title>
-			<meta http-equiv="content-type" content="text/html; charset=<?php echo $LOCALES[$_SESSION['Locale']]['Codeset'] ?>" />
-			<meta name="description" content="UTM Firewall" />
-			<meta name="author" content="Soner Tari"/>
-			<meta name="keywords" content="UTM, Firewall, :)" />
-			<link rel="stylesheet" href="../utmfw.css" type="text/css" media="screen" />
-			<?php
-			if ($reloadRate !== 0) {
-				?>
-				<meta http-equiv="refresh" content="<?php echo $reloadRate ?>" />
-				<?php
-			}
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><?php echo _MENU('UTM Firewall') ?></title>
+		<meta http-equiv="content-type" content="text/html; charset=<?php echo $LOCALES[$_SESSION['Locale']]['Codeset'] ?>" />
+		<meta name="description" content="UTM Firewall" />
+		<meta name="author" content="Soner Tari"/>
+		<meta name="keywords" content="UTM, Firewall, :)" />
+		<link rel="stylesheet" href="../utmfw.css" type="text/css" media="screen" />
+		<?php
+		if ($reloadRate !== 0) {
 			?>
-			<script type="text/javascript" src="../lib/d3.min.js"></script>
-		</head>
-		<body style="background: <?php echo $color ?>">
-			<table>
+			<meta http-equiv="refresh" content="<?php echo $reloadRate ?>" />
 			<?php
-}
-
-function HTMLFooter()
-{
-			?>
-			</table>
-		</body>
-	</html>
-	<?php
+		}
+		?>
+	</head>
+	<body style="background: <?php echo $color ?>">
+<?php
 }
 
 /**

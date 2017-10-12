@@ -29,7 +29,7 @@
 			body
 			{
 				font-size: 75%;
-				background: gray;
+				background: whitesmoke;
 			}
 
 			table
@@ -59,9 +59,12 @@
 				width: auto;
 				background: white;
 				margin: 1px;
-				border: 2px solid #ccc;
-				border-bottom: 2px solid black;
-				border-right: 2px solid black;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+				-webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				-moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
 			}
 
 			.titlebar td
@@ -75,34 +78,34 @@
 			{
 				width: 1px;
 				background-color: white;
-				padding-left: 0.5em;
-				border: 2px solid white;
-				border-bottom: 2px solid #ddd;
-				border-right: 2px solid #ddd;
+				padding-left: 6px;
+				-webkit-border-radius: 10px 0px 0px 0px;
+				-moz-border-radius: 10px 0px 0px 0px;
+				border-radius: 10px 0px 0px 0px;
 			}
 
 			.titletext
 			{
-				background-color: #004a4a;
+				background-color: #01466b;
 				text-align: center;
+				font-size: large;
 			}
 
 			.errorimg
 			{
 				width: 1px;
-				background-color: #004a4a;
+				background-color: #01466b;
 				text-align: right;
+				-webkit-border-radius: 0px 10px 0px 0px;
+				-moz-border-radius: 0px 10px 0px 0px;
+				border-radius: 0px 10px 0px 0px;
 			}
 
 			.middle td
 			{
 				width: 600px;
-				background-color: #ccc;
+				background-color: #eaeff1;
 				padding: 1em;
-				border-left: 2px solid white;
-				border-right: 1px solid black;
-				border-top: 1px solid gray;
-				border-bottom: 1px solid white;
 			}
 
 			#info td
@@ -110,23 +113,23 @@
 				padding: 0.25em;
 				margin: 0;
 				border: none;
-				border-top: 1px solid #ccc;
-				border-bottom: 1px solid #ccc;
+				border-top: 2px solid #eaeff1;
+				border-bottom: 2px solid #eaeff1;
 			}
 
 			#info .title
 			{
 				width: 20%;
 				text-align: right;
-				border-right: 3px solid #ccc;
-				background-color: #ddd;
+				border-right: 4px solid #eaeff1;
+				background-color: whitesmoke;
 			}
 
 			#info .info
 			{
 				color: red;
 				font-weight: bold;
-				background-color: #ddd;
+				background-color: whitesmoke;
 			}
 
 			#info .boldnone
@@ -148,25 +151,35 @@
 			.bottombar td
 			{
 				color: white;
-				background-color: #004a4a;
-				padding: 1px;
 			}
 
 			.user
 			{
 				font-weight: bold;
+				background-color: #01466b;
+				padding: 4px;
+				-webkit-border-radius: 0px 0px 0px 10px;
+				-moz-border-radius: 0px 0px 0px 10px;
+				border-radius: 0px 0px 0px 10px;
 			}
 
 			.copyright
 			{
 				text-align: center;
 				font-size: 90%;
+				background-color: #01466b;
+				padding: 4px;
 			}
 
 			.group
 			{
 				text-align: right;
 				font-weight: bold;
+				background-color: #01466b;
+				padding: 4px;
+				-webkit-border-radius: 0px 0px 10px 0px;
+				-moz-border-radius: 0px 0px 10px 0px;
+				border-radius: 0px 0px 10px 0px;
 			}
 			-->
 		</style>

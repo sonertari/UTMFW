@@ -23,62 +23,6 @@
  */
 
 /**
- * Common HTML footer lines.
- *
- * @todo This could be in a separate file to include, not a function.
- */
-function AuthHTMLFooter()
-{
-	global $ADMIN, $SessionTimeout, $View;
-
-	$_SESSION['Timeout']= time() + $SessionTimeout;
-	?>
-	</table>
-	<table>
-		<tr id="footer">
-			<td class="user">
-				<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?logout"><?php echo _TITLE('Logout') ?></a>
-
-				(<label id="timeout"></label>)
-				<script language="javascript" type="text/javascript">
-					<!--
-					// Add one to session timeout start, to LogUserOut() after redirect below (it's PHP's task)
-					// Otherwise session timeout restarts from max
-					var timeout= <?php echo $_SESSION['Timeout'] - time() ?> + 1;
-					function countdown()
-					{
-						if (timeout > 0) {
-							timeout-= 1;
-							min= Math.floor(timeout / 60);
-							sec= timeout % 60;
-							// Pad left
-							if (sec.toString().length < 2) {
-								sec= "0" + sec;
-							}
-							document.getElementById("timeout").innerHTML= min + ":" + sec;
-						}
-						else {
-							// redirect
-							window.location= "/index.php";
-							return;
-						}
-						setTimeout("countdown()", 1000);
-					}
-					countdown();
-					// -->
-				</script>
-
-				<?php echo $_SESSION['USER'].'@'.filter_input(INPUT_SERVER, 'REMOTE_ADDR') ?>
-			</td>
-			<td>
-				<?php echo _TITLE('Copyright') ?> (C) 2017 Soner Tari. <?php echo _TITLE('All rights reserved.') ?>
-			</td>
-		</tr>
-	<?php
-	HTMLFooter();
-}
-
-/**
  * Checks and prints a warning if the page is not active.
  *
  * $active is set during left and top menu creation according to logged in user.
@@ -255,7 +199,7 @@ function PrintLogFileChooser($logfile)
 
 	$selectedlogs= '';
 	?>
-	<table>
+	<table style="width: auto;">
 		<tr>
 			<td>
 				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">

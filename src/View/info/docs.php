@@ -24,6 +24,13 @@
 
 require_once('include.php');
 
+$Menu = array(
+    'docs' => array(
+        'Name' => _MENU('Documentation'),
+        'Perms' => $ALL_USERS,
+		),
+	);
+
 require_once($VIEW_PATH.'/header.php');
 ?>
 <iframe frameborder=0 scrolling=auto marginheight=0 marginwidth=0 width="100%" height="700" src="/docs/html/index.html">
