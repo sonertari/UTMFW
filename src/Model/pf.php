@@ -1153,6 +1153,11 @@ class Pf extends Model
 		return Output(json_encode($logs));
 	}
 
+	function formatDateHourRegexp($month, $day, $hour, $minute)
+	{
+		return $this->formatDateHourRegexpDayLeadingZero($month, $day, $hour, $minute);
+	}
+
 	function _getLiveLogs($file, $count, $re= '')
 	{
 		global $TCPDUMP;
