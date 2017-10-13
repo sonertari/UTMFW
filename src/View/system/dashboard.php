@@ -30,16 +30,6 @@ if ($View->Controller($Output, 'GetServiceStatus')) {
 
 const COLUMN_COUNT= 4;
 
-// Also represents categories, so used for bundling too
-$Status2Images= array(
-	'C' => 'critical.png',
-	'E' => 'error2.png',
-	'W' => 'warning2.png',
-	'R' => 'running.png',
-	'S' => 'stop.png',
-	'N' => 'noerror.png',
-	);
-
 $StatusTitles= array(
 	'C' => _TITLE('Critical Error'),
 	'E' => _TITLE('Error'),

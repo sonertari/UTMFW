@@ -139,6 +139,11 @@ class Apache extends Model
 
 		return "^\[$reWeekDays $reMonth $reDay $reHour:$reMinute:";
 	}
+
+	function formatErrorNeedle($needle)
+	{
+		return "[$needle]";
+	}
 }
 
 /**

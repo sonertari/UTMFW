@@ -280,6 +280,11 @@ class Model
 					'desc'	=>	_('Get service status'),
 					),
 				
+				'GetModuleStatus'	=>	array(
+					'argv'	=>	array(),
+					'desc'	=>	_('Get module status'),
+					),
+				
 				'GetSysCtl'	=>	array(
 					'argv'	=>	array(NAME),
 					'desc'	=>	_('Get sysctl values'),
@@ -2560,36 +2565,7 @@ class Model
 
 				if (class_exists($Models[$name])) {
 					$model= new $Models[$name]();
-
-					// @attention Don't use long extended regexps with grep, grep takes too long
-					//$logs= $model->_getStatus('(EMERGENCY|emergency|ALERT|alert|CRITICAL|critical|ERROR|error|WARNING|warning):');
-					$logs= $model->_getStatus('');
-
-					$crits= $model->getCriticalErrors($logs);
-					$errs= $model->getErrors($logs);
-					$warns= $model->getWarnings($logs);
-
-					$errorStatus= 'N';
-					if (count($crits)) {
-						$errorStatus= 'C';
-					}
-					else if (count($errs)) {
-						$errorStatus= 'E';
-					}
-					else if (count($warns)) {
-						$errorStatus= 'W';
-					}
-
-					$prioLogs= array_merge($crits, $errs, $warns);
-
-					$output[$name]= array(
-						'Status' => $model->IsRunning()? 'R':'S',
-						'ErrorStatus' => $errorStatus,
-						'Critical' => count($crits),
-						'Error' => count($errs),
-						'Warning' => count($warns),
-						'Logs' => $prioLogs,
-						);
+					$output[$name]= $model->_getModuleStatus();
 				}
 				else {
 					ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in Models: $name");
@@ -2600,6 +2576,44 @@ class Model
 			}
 		}
 		return Output(json_encode($output));
+	}
+
+	function GetModuleStatus()
+	{
+		return Output(json_encode($this->_getModuleStatus()));
+	}
+
+	function _getModuleStatus()
+	{
+		// @attention Don't use long extended regexps with grep, grep takes too long
+		//$logs= $model->_getStatus('(EMERGENCY|emergency|ALERT|alert|CRITICAL|critical|ERROR|error|WARNING|warning):');
+		$logs= $this->_getStatus('');
+
+		$crits= $this->getCriticalErrors($logs);
+		$errs= $this->getErrors($logs);
+		$warns= $this->getWarnings($logs);
+
+		$errorStatus= 'N';
+		if (count($crits)) {
+			$errorStatus= 'C';
+		}
+		else if (count($errs)) {
+			$errorStatus= 'E';
+		}
+		else if (count($warns)) {
+			$errorStatus= 'W';
+		}
+
+		$prioLogs= array_merge($crits, $errs, $warns);
+
+		return array(
+			'Status' => $this->IsRunning()? 'R':'S',
+			'ErrorStatus' => $errorStatus,
+			'Critical' => count($crits),
+			'Error' => count($errs),
+			'Warning' => count($warns),
+			'Logs' => $prioLogs,
+			);
 	}
 
 	function GetLastLogs($needle, $interval= 60)
@@ -2683,7 +2697,7 @@ class Model
 			}
 			$needle= implode('|', $needleArray);
 
-			$logs= $this->_getStatus("($needle):");
+			$logs= $this->_getStatus($this->formatErrorNeedle($needle));
 			if (count($logs) > 0) {
 				$errorStr= '';
 				$count= 0;
@@ -2711,6 +2725,11 @@ class Model
 			}
 		}
 		return TRUE;
+	}
+
+	function formatErrorNeedle($needle)
+	{
+		return "($needle):";
 	}
 
 	function _getStatus($needle)

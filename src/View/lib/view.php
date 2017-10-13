@@ -273,10 +273,14 @@ class View
 	 */
 	function PrintStatusForm($printcount= FALSE, $showbuttons= TRUE)
 	{
-		global $IMG_PATH, $ADMIN;
+		global $IMG_PATH, $ADMIN, $Status2Images;
 
-		if ($running= $this->Controller($output, 'IsRunning')) {
-			$imgfile= 'run.png';
+		$this->Controller($output, 'GetModuleStatus');
+		$status= json_decode($output[0], TRUE);
+
+		$running= $status['Status'] == 'R';
+		$imgfile= $Status2Images[$status['Status']];
+		if ($running) {
 			$name= 'Running';
 			$info= _TITLE('is running');
 			$confirm= _NOTICE('Are you sure you want to stop the <NAME>?');
@@ -285,7 +289,6 @@ class View
 			}
 		}
 		else {
-			$imgfile= 'stop.png';
 			$name= 'Stopped';
 			$info= _TITLE('is not running');
 			$confirm= _NOTICE('Are you sure you want to start the <NAME>?');
@@ -293,12 +296,35 @@ class View
 				$button= 'Start';
 			}
 		}
+
+		$errorStatus= $status['ErrorStatus'];
+		$errorImgfile= $Status2Images[$errorStatus];
+		if ($errorStatus == 'C') {
+			$errorName= 'CriticalErrors';
+			$errorInfo= _TITLE('CRITICAL errors');
+		}
+		else if ($errorStatus == 'E') {
+			$errorName= 'Errors';
+			$errorInfo= _TITLE('ERRORs');
+		}
+		else if ($errorStatus == 'W') {
+			$errorName= 'Warnings';
+			$errorInfo= _TITLE('WARNINGs');
+		}
+		else if ($errorStatus == 'N') {
+			$errorName= 'No Errors';
+			$errorInfo= _TITLE('No Errors');
+		}
+
 		$confirm= preg_replace('/<NAME>/', $this->Caption, $confirm);
 		?>
 		<table id="status">
 			<tr>
 				<td class="image">
 					<img src="<?php echo $IMG_PATH.$imgfile ?>" name="<?php echo $name ?>" alt="<?php echo $name ?>" border="0">
+				</td>
+				<td class="image">
+					<img src="<?php echo $IMG_PATH.$errorImgfile ?>" name="<?php echo $errorInfo ?>" alt="<?php echo $errorInfo ?>" border="0" title="<?php echo $errorInfo ?>">
 				</td>
 				<td>
 					<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">

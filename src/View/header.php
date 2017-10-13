@@ -110,23 +110,29 @@ define('ACTIVE_A_STYLE', ' style="color: white;"');
 								?>
 								<li<?php echo $ActiveLiStyle ?>>
 									<a href="<?php echo $TopMenuName ?>.php"<?php echo $ActiveAStyle ?>><?php echo _($TopMenuConf['Name']) ?></a>
-									<ul>
 									<?php
-									foreach ($TopMenuConf['SubMenu'] as $SubMenuName => $Caption) {
-										$ActiveLiStyle= '';
-										$ActiveAStyle= '';
-										if (($TopMenu == $TopMenuName) && ($Submenu == $SubMenuName)) {
-											$ActiveLiStyle= ACTIVE_LI_STYLE;
-											$ActiveAStyle= ACTIVE_A_STYLE;
+									if (isset($TopMenuConf['SubMenu'])) {
+										?>
+										<ul>
+										<?php
+										foreach ($TopMenuConf['SubMenu'] as $SubMenuName => $Caption) {
+											$ActiveLiStyle= '';
+											$ActiveAStyle= '';
+											if (($TopMenu == $TopMenuName) && ($Submenu == $SubMenuName)) {
+												$ActiveLiStyle= ACTIVE_LI_STYLE;
+												$ActiveAStyle= ACTIVE_A_STYLE;
+											}
+											?>
+											<li<?php echo $ActiveLiStyle ?>>
+												<a href="<?php echo $TopMenuName ?>.php?submenu=<?php echo $SubMenuName ?>"<?php echo $ActiveAStyle ?>><?php echo _($Caption) ?></a>
+											</li>
+											<?php
 										}
 										?>
-										<li<?php echo $ActiveLiStyle ?>>
-											<a href="<?php echo $TopMenuName ?>.php?submenu=<?php echo $SubMenuName ?>"<?php echo $ActiveAStyle ?>><?php echo _($Caption) ?></a>
-										</li>
+										</ul>
 										<?php
 									}
 									?>
-									</ul>
 								</li>
 								<?php
 							}

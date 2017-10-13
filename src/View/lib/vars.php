@@ -143,6 +143,16 @@ if (!isset($_SESSION['USER']) || $_SESSION['USER'] == 'loggedout') {
 /// Path to image files used in help boxes and links.
 $IMG_PATH= '/images/';
 
+// Also represents categories, so used for bundling on the Dashboard too
+$Status2Images= array(
+	'C' => 'critical.png',
+	'E' => 'error2.png',
+	'W' => 'warning2.png',
+	'R' => 'running.png',
+	'S' => 'stop.png',
+	'N' => 'noerror.png',
+	);
+
 require_once($VIEW_PATH . '/lib/libwui.php');
 
 $TopMenu= str_replace('.php', '', basename(filter_input(INPUT_SERVER, 'PHP_SELF')));
