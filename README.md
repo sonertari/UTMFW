@@ -1,6 +1,6 @@
 # UTMFW
 
-UTMFW is a UTM firewall running on OpenBSD 5.9. UTMFW is expected to be used on production systems. The UTMFW project provides a Web UI for monitoring and configuration. UTMFW supports deep SSL inspection and inline intrusion prevention. You can also use [A4PFFW](https://github.com/sonertari/A4PFFW) and [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
+UTMFW is a UTM firewall running on OpenBSD 5.9. UTMFW is expected to be used on production systems. The UTMFW project provides a Web UI for monitoring and configuration. You can also use [A4PFFW](https://github.com/sonertari/A4PFFW) and [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring. UTMFW supports deep SSL inspection and inline intrusion prevention.
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
@@ -37,6 +37,7 @@ UTMFW includes the following software, alongside what is already available in a 
 
 The web user interface of UTMFW helps you manage your firewall:
 
+- Dashboard provides an overview of the system status.
 - System, network, and service configuration can be achieved on the web interface.
 - Pf rules are maintained using PFRE.
 - Information on hosts, interfaces, pf rules, states, and queues are provided in a tabular form.
@@ -85,12 +86,12 @@ References:
 
 ## How to build
 
-The purpose in this section will be to build the installation iso file using the createiso script at the root of the project source tree. You are expected to be doing these on an OpenBSD 5.9 and have installed git on it.
+The purpose in this section is to build the installation iso file using the createiso script at the root of the project source tree. You are expected to be doing these on an OpenBSD 5.9 and have installed git on it.
 
 The createiso script:
 
 - Clones the git repo of the project to a tmp folder.
-- Generates gettext translations.
+- Generates gettext translations and doxygen documentation.
 - Prepares the site install set.
 - And finally creates the iso file.
 
@@ -98,14 +99,15 @@ However, the source tree has links to OpenBSD install sets and packages, which s
 
 - Install sets:
 	+ Obtain the sources of OpenBSD 5.9.
-	+ Copy the UTMFW files under `openbsd/utmfw/distrib/miniroot` and `/openbsd/utmfw/sbin/disklabel` to the OpenBSD sources to replace the original files. You are advised to compare the original files with the UTMFW versions before replacing.
-	+ Build an OpenBSD 5.9 release, as described in [faq5](http://www.openbsd.org/faq/faq5.html).
+	+ Copy the files under `openbsd/utmfw` to the OpenBSD sources to replace the original files. You are advised to compare the original files with the UTMFW versions before replacing.
+	+ Build an OpenBSD 5.9 release, as described in [release(8)](https://man.openbsd.org/release) or [faq5](http://www.openbsd.org/faq/faq5.html).
 	+ Copy the required install sets to the appropriate locations to fix the broken links in the project.
 - Packages:
 	+ Download the required packages available on the OpenBSD mirrors.
-	+ Create the required packages which are not available on the OpenBSD mirrors, namely e2guardian, p3scan, smtp-gated, imspector, and snortips.
+	+ Create the packages which are not available on the OpenBSD mirrors: sslproxy, imspector, snortips, rrdtool 1.6.0 with patches, and libevent 2.1.8 (see `ports` and `ports/disfiles`).
+	+ Create the packages which have been modified specifically for UTMFW and/or are not available on the OpenBSD mirrors: e2guardian, squid, p3scan, smtp-gated, and snort (see `ports` and `ports/disfiles`).
 	+ Copy them to the appropriate locations to fix the broken links in the project.
 
-Note that you can strip down xbase and xfont install sets to reduce the size of the iso file. Copy or link them to the appropriate locations under `/openbsd/utmfw`.
+Note that you can strip down xbase and xfont install sets to reduce the size of the iso file. Copy or link them to the appropriate locations under `openbsd/utmfw`.
 
 Now you can run the createiso script which should produce an iso file in the same folder as itself.
