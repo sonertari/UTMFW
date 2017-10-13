@@ -40,14 +40,9 @@ $View->PrintStatusForm();
 	if ($View->Controller($Output, 'GetArpTable')) {
 		$ArpTable= json_decode($Output[0], TRUE);
 		$LineCount= 1;
+		$LastLineNum= count($ArpTable);
 		foreach ($ArpTable as $Cols) {
-			?>
-			<tr>
-			<?php
-			PrintLogCols($LineCount++, $Cols, 'arp');
-			?>
-			</tr>
-			<?php
+			PrintLogCols($LineCount++, $Cols, $LastLineNum, '', 'arp');
 		}
 	}
 	?>
@@ -61,14 +56,9 @@ $View->PrintStatusForm();
 	if ($View->Controller($Output, 'GetLeases')) {
 		$Leases= json_decode($Output[0], TRUE);
 		$LineCount= 1;
+		$LastLineNum= count($Leases);
 		foreach ($Leases as $Cols) {
-			?>
-			<tr>
-			<?php
-			PrintLogCols($LineCount++, $Cols, 'lease');
-			?>
-			</tr>
-			<?php
+			PrintLogCols($LineCount++, $Cols, $LastLineNum, '', 'lease');
 		}
 	}
 	?>

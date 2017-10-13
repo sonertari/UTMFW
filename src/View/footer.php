@@ -24,8 +24,9 @@
 
 $InHelpRegion= TRUE;
 PrintHelpWindow('', 'auto', 'PRINT');
-
-echo _TITLE('Copyright') ?> (C) 2017 Soner Tari. <?php echo _TITLE('All rights reserved.');
 ?>
+		<div>
+			<?php echo _TITLE('Copyright') ?> (C) 2017 Soner Tari. <?php echo _TITLE('All rights reserved.'); ?>
+		</div>
 	</body>
 </html>

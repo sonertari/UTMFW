@@ -36,6 +36,9 @@ require_once($VIEW_PATH . '/header.php');
 
 $View->PrintStatusForm();
 ?>
+<table class="shadowbox">
+	<tr>
+		<td>
 <pre>
 <?php echo $PfInfo ?>
 <br>
@@ -43,6 +46,9 @@ $View->PrintStatusForm();
 <br>
 <?php echo $PfTimeout ?>
 </pre>
+		</td>
+	</tr>
+</table>
 <?php
 PrintHelpWindow(_HELPWINDOW('Here you can enable or disable the Packet Filter. Note that most services depend on the packet filter being enabled.'));
 require_once($VIEW_PATH . '/footer.php');

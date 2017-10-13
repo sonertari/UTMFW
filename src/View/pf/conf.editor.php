@@ -152,57 +152,55 @@ $View->Controller($Output, 'TestPfRules', json_encode($View->RuleSet->rules));
 
 require_once($VIEW_PATH.'/header.php');
 ?>
-<div id="main">
-    <fieldset>
-        <form action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF'); ?>" method="post">
-            <input type="submit" name="show" value="<?php echo _CONTROL('Show') ?>" />
-            <select id="category" name="category">
-				<option value="all"><?php echo _CONTROL('All') ?></option>
-                <?php
-                foreach ($ruleCategoryNames as $category => $name) {
-                    ?>
-                    <option value="<?php echo $category; ?>" <?php echo (filter_input(INPUT_POST, 'category') == $category || $show == $category ? 'selected' : ''); ?>><?php echo $name; ?></option>
-                    <?php
-                }
-                ?>
-            </select>
-            <input type="submit" name="add" value="<?php echo _CONTROL('Add') ?>" />
-            <label for="ruleNumber"><?php echo _CONTROL('as rule number') ?>:</label>
-            <input type="text" name="ruleNumber" id="ruleNumber" size="5" value="<?php echo $View->RuleSet->nextRuleNumber(); ?>" placeholder="<?php echo _CONTROL('number') ?>" />
-            <input type="submit" name="edit" value="<?php echo _CONTROL('Edit') ?>" />
-            <input type="submit" name="delete" value="<?php echo _CONTROL('Delete') ?>" onclick="return confirm('<?php echo _CONTROL('Are you sure you want to delete the rule?') ?>')"/>
-            <input type="text" name="moveTo" id="moveTo" size="5" value="<?php echo filter_input(INPUT_POST, 'moveTo') ?>" placeholder="<?php echo _CONTROL('move to') ?>" />
-            <input type="submit" name="move" value="<?php echo _CONTROL('Move') ?>" />
-			<input type="submit" id="deleteAll" name="deleteAll" value="<?php echo _CONTROL('Delete All') ?>" onclick="return confirm('<?php echo _CONTROL('Are you sure you want to delete the entire ruleset?') ?>')"/>
-        </form>
-    </fieldset>
-	<?php
-	echo _TITLE('Rules file') . ': ' . $View->RuleSet->filename . ($View->RuleSet->uploaded ? ' (' . _TITLE('uploaded') . ')' : '');
-	?>
-    <table>
-        <tr>
-            <th><?php echo _TITLE('Rule') ?></th>
-            <th><?php echo _TITLE('Type') ?></th>
-            <th><?php echo _TITLE('Line') ?></th>
-            <th colspan="12"><?php echo _TITLE('Rule') ?></th>
-            <th><?php echo _TITLE('Comment') ?></th>
-            <th><?php echo _TITLE('Edit') ?></th>
-        </tr>
-        <?php
-        $ruleNumber= 0;
-		// Passed as a global var.
-		$lineNumber= 0;
-        $count = count($View->RuleSet->rules) - 1;
-        foreach ($View->RuleSet->rules as $rule) {
-			if ($show == 'all' || $ruleType2Class[$show] == $rule->cat) {
-				$rule->display($ruleNumber, $count);
+<fieldset>
+	<form action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF'); ?>" method="post">
+		<input type="submit" name="show" value="<?php echo _CONTROL('Show') ?>" />
+		<select id="category" name="category">
+			<option value="all"><?php echo _CONTROL('All') ?></option>
+			<?php
+			foreach ($ruleCategoryNames as $category => $name) {
+				?>
+				<option value="<?php echo $category; ?>" <?php echo (filter_input(INPUT_POST, 'category') == $category || $show == $category ? 'selected' : ''); ?>><?php echo $name; ?></option>
+				<?php
 			}
-			$ruleNumber++;
-			$lineNumber++;
-        }
-        ?>
-    </table>
-</div>
+			?>
+		</select>
+		<input type="submit" name="add" value="<?php echo _CONTROL('Add') ?>" />
+		<label for="ruleNumber"><?php echo _CONTROL('as rule number') ?>:</label>
+		<input type="text" name="ruleNumber" id="ruleNumber" size="5" value="<?php echo $View->RuleSet->nextRuleNumber(); ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+		<input type="submit" name="edit" value="<?php echo _CONTROL('Edit') ?>" />
+		<input type="submit" name="delete" value="<?php echo _CONTROL('Delete') ?>" onclick="return confirm('<?php echo _CONTROL('Are you sure you want to delete the rule?') ?>')"/>
+		<input type="text" name="moveTo" id="moveTo" size="5" value="<?php echo filter_input(INPUT_POST, 'moveTo') ?>" placeholder="<?php echo _CONTROL('move to') ?>" />
+		<input type="submit" name="move" value="<?php echo _CONTROL('Move') ?>" />
+		<input type="submit" id="deleteAll" name="deleteAll" value="<?php echo _CONTROL('Delete All') ?>" onclick="return confirm('<?php echo _CONTROL('Are you sure you want to delete the entire ruleset?') ?>')"/>
+	</form>
+</fieldset>
+<?php
+echo _TITLE('Rules file') . ': ' . $View->RuleSet->filename . ($View->RuleSet->uploaded ? ' (' . _TITLE('uploaded') . ')' : '');
+?>
+<table id="logline">
+	<tr>
+		<th><?php echo _TITLE('Rule') ?></th>
+		<th><?php echo _TITLE('Type') ?></th>
+		<th><?php echo _TITLE('Line') ?></th>
+		<th colspan="12"><?php echo _TITLE('Rule') ?></th>
+		<th><?php echo _TITLE('Comment') ?></th>
+		<th><?php echo _TITLE('Edit') ?></th>
+	</tr>
+	<?php
+	$ruleNumber= 0;
+	// Passed as a global var.
+	$lineNumber= 0;
+	$count = count($View->RuleSet->rules) - 1;
+	foreach ($View->RuleSet->rules as $rule) {
+		if ($show == 'all' || $ruleType2Class[$show] == $rule->cat) {
+			$rule->display($ruleNumber, $count);
+		}
+		$ruleNumber++;
+		$lineNumber++;
+	}
+	?>
+</table>
 <?php
 require_once($VIEW_PATH . '/footer.php');
 ?>

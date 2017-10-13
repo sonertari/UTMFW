@@ -26,34 +26,34 @@ $queues= json_decode($Output[0], TRUE);
 $Reload= TRUE;
 require_once($VIEW_PATH . '/header.php');
 ?>
-<div id="main">
-	<table id="logline">
+<table id="logline">
+	<tr>
+		<th><?php echo _('Name') ?></th>
+		<th><?php echo _('Packets') ?></th>
+		<th><?php echo _('Bytes') ?></th>
+		<th><?php echo _('Dropped Packets') ?></th>
+		<th><?php echo _('Dropped Bytes') ?></th>
+		<th><?php echo _('Queue Length') ?></th>
+	</tr>
+	<?php
+	$linenum= 0;
+	$totalLines= count($queues);
+	foreach ($queues as $q) {
+		$class= ($linenum++ % 2 == 0) ? 'evenline' : 'oddline';
+		$lastLine= $linenum == $totalLines;
+		?>
 		<tr>
-			<th><?php echo _('Name') ?></th>
-			<th><?php echo _('Packets') ?></th>
-			<th><?php echo _('Bytes') ?></th>
-			<th><?php echo _('Dropped Packets') ?></th>
-			<th><?php echo _('Dropped Bytes') ?></th>
-			<th><?php echo _('Queue Length') ?></th>
+			<td class="center <?php echo $class ?><?php echo $lastLine ? ' lastLineFirstCell':'' ?>"><?php echo $q['name'] ?></td>
+			<td class="right <?php echo $class ?>"><?php echo $q['pkts'] ?></td>
+			<td class="right <?php echo $class ?>"><?php echo $q['bytes'] ?></td>
+			<td class="right <?php echo $class ?>"><?php echo $q['droppedPkts'] ?></td>
+			<td class="right <?php echo $class ?>"><?php echo $q['droppedBytes'] ?></td>
+			<td class="center <?php echo $class ?><?php echo $lastLine ? ' lastLineLastCell':'' ?>"><?php echo $q['length'] ?></td>
 		</tr>
 		<?php
-		$linenum= 0;
-		foreach ($queues as $q) {
-			$class= ($linenum++ % 2 == 0) ? 'evenline' : 'oddline';
-			?>
-			<tr class="<?php echo $class ?>">
-				<td class="center" ><?php echo $q['name'] ?></td>
-				<td class="right" ><?php echo $q['pkts'] ?></td>
-				<td class="right" ><?php echo $q['bytes'] ?></td>
-				<td class="right" ><?php echo $q['droppedPkts'] ?></td>
-				<td class="right" ><?php echo $q['droppedBytes'] ?></td>
-				<td class="center" ><?php echo $q['length'] ?></td>
-			</tr>
-			<?php
-		}
-		?>
-	</table>
-</div>
+	}
+	?>
+</table>
 <?php
 PrintHelpWindow(_HELPWINDOW('These are queue statistics reported by pf.'));
 require_once($VIEW_PATH . '/footer.php');

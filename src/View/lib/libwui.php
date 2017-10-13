@@ -1367,9 +1367,11 @@ function PrintTableHeaders($view)
  *
  * @param int $linenum Line number of the log line
  * @param array $cols Parsed log line
+ * @param array $lastlinenum Last line number, used to detect the last line
+ * @param string $class Cell class, used for highlighting
  * @param string $module Module name if different from $View, $LogConf index
  */
-function PrintLogCols($linenum, $cols, $module= '')
+function PrintLogCols($linenum, $cols, $lastlinenum, $class= '', $module= '')
 {
 	global $LogConf, $View;
 
@@ -1380,20 +1382,32 @@ function PrintLogCols($linenum, $cols, $module= '')
 
 	$View->FormatLogCols($cols);
 
+	$lastLine= $linenum == $lastlinenum;
 	// Center the line number column
 	?>
-	<td class="center">
-		<?php echo $linenum ?>
-	</td>
-	<?php
-	foreach ($LogConf[$module]['Fields'] as $field) {
-		$nowrap = ($field == 'Date' || $field == 'DateTime') ? ' nowrap' : '';
-		?>
-		<td<?php echo $nowrap ?>>
-			<?php echo $cols[$field] ?>
+	<tr>
+		<td class="center<?php echo $lastLine ? ' lastLineFirstCell':'' ?><?php echo ($class == '') ? '':" $class" ?>">
+			<?php echo $linenum ?>
 		</td>
 		<?php
-	}
+		$totalCols= count($LogConf[$module]['Fields']);
+		$count= 1;
+		foreach ($LogConf[$module]['Fields'] as $field) {
+			$cellClass= $class;
+			if ($lastLine && $count++ == $totalCols) {
+				$cellClass.= ' lastLineLastCell';
+			}
+
+			$nowrap = ($field == 'Date' || $field == 'DateTime') ? ' nowrap' : '';
+			?>
+			<td<?php echo ($cellClass == '') ? '':' class="'.$cellClass.'"' ?><?php echo $nowrap ?>>
+				<?php echo $cols[$field] ?>
+			</td>
+			<?php
+		}
+		?>
+	</tr>
+	<?php
 }
 
 function RemoveBackSlashes($str) {

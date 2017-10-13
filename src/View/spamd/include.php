@@ -137,9 +137,6 @@ function ParseSpamdDBLine($logline, &$cols)
 function PrintSpamdDBLine($logline, $linenum)
 {
 	ParseSpamdDBLine($logline, $cols);
-
-	echo '<tr>';
 	PrintLogCols($linenum, $cols);
-	echo '</tr>';
 }
 ?>

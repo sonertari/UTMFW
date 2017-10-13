@@ -46,7 +46,7 @@ function PrintFilterCatForms($list)
 			),
 		'weighted'	=> array(
 			'title'	=> _TITLE2('Weighted phrase list'),
-			'color'	=> '#f4f3c2',
+			'color'	=> '#fff8f1',
 			),
 		);
 

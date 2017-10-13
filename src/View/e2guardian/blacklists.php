@@ -216,8 +216,9 @@ if ($LogFile) {
 		$Logs= json_decode($Output[0], TRUE);
 
 		$LineCount= $StartLine + 1;
+		$LastLineNum= $StartLine + min(array(count($Logs), $LinesPerPage));
 		foreach ($Logs as $Log) {
-			$View->PrintLogLine($Log, $LineCount++);
+			$View->PrintLogLine($Log, $LineCount++, $LastLineNum);
 		}
 		?>
 	</table>

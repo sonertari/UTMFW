@@ -88,8 +88,9 @@ PrintLogHeaderForm($StartLine, $LogSize, $LinesPerPage, $SearchRegExp, $CustomHi
 	$Logs= json_decode($Output[0], TRUE);
 	
 	$LineCount= $StartLine + 1;
+	$LastLineNum= $StartLine + min(array(count($Logs), $LinesPerPage));
 	foreach ($Logs as $Logline) {
-		$View->PrintLogLine($Logline, $LineCount++);
+		$View->PrintLogLine($Logline, $LineCount++, $LastLineNum);
 	}
 	?>
 </table>

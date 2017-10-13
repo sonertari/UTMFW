@@ -51,7 +51,7 @@ $View->Controller($Output, 'GetStatus');
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 ?>
-<table id="nvp" style="width: 600px;">
+<table id="nvp" class="shadowbox" style="width: 600px;">
 	<tr class="oddline">
 		<td class="title"><?php echo _TITLE('Version') ?></td>
 		<td>UTMFW <?php echo VERSION ?></td>
@@ -141,9 +141,9 @@ require_once($VIEW_PATH.'/header.php');
 		<td class="title"><?php echo _TITLE('Secure Level') ?></td>
 		<td><?php echo $System['securelevel'] ?></td>
 	</tr>
-	<tr class="evenline">
-		<td class="title"><?php echo _TITLE('IP Forwarding') ?></td>
-		<td>
+	<tr>
+		<td class="evenline lastLineFirstCell title" style="border-bottom: none;"><?php echo _TITLE('IP Forwarding') ?></td>
+		<td class="evenline lastLineLastCell" style="border-bottom: none;">
 		<?php
 			$Status= $System['ip4forward'] === '1' ? _TITLE('enabled'):_TITLE('disabled');
 			echo _('IPv4').' '.$Status;

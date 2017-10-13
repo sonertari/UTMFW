@@ -382,34 +382,44 @@ class View
 			}
 			?>
 			<table id="logline">
-			<?php
-			$this->PrintProcessTableHeader();
-			$linenum= 0;
-			foreach ($output as $cols) {
-				$class= ($linenum++ % 2 == 0) ? 'evenline' : 'oddline';
-				?>
-				<tr class="<?php echo $class ?>">
 				<?php
-				$count= 1;
-				foreach ($cols as $c) {
-					if (in_array($count++, array(8, 11, 12, 13))) {
-						// Left align stat, user, group, and command columns
-						$class= 'class="left"';
-					}
-					else {
-						$class= '';
-					}
+				$this->PrintProcessTableHeader();
+				$linenum= 0;
+				foreach ($output as $cols) {
+					$rowClass= ($linenum++ % 2 == 0) ? 'evenline' : 'oddline';
+					$lastLine= $linenum == $total;
 					?>
-					<td <?php echo $class ?>>
-						<?php echo $c ?>
-					</td>
+					<tr>
+						<?php
+						$totalCols= count($cols);
+						$count= 1;
+						foreach ($cols as $c) {
+							$cellClass= $rowClass;
+
+							if ($lastLine) {
+								if ($count == 1) {
+									$cellClass.= ' lastLineFirstCell';
+								} else if ($count == $totalCols) {
+									$cellClass.= ' lastLineLastCell';
+								}
+							}
+
+							if (in_array($count, array(8, 11, 12, 13))) {
+								// Left align stat, user, group, and command columns
+								$cellClass.= ' left';
+							}
+							?>
+							<td class="<?php echo $cellClass ?>">
+								<?php echo $c ?>
+							</td>
+							<?php
+							$count++;
+						}
+						?>
+					</tr>
 					<?php
 				}
 				?>
-				</tr>
-				<?php
-			}
-			?>
 			</table>
 			<?php
 		}
@@ -556,8 +566,9 @@ class View
 	 *
 	 * @param array $cols Parsed log line
 	 * @param int $linenum Line number of the log line
+	 * @param array $lastlinenum Last line number, used to detect the last line
 	 */
-	function PrintLogLine($cols, $linenum)
+	function PrintLogLine($cols, $linenum, $lastlinenum)
 	{
 		global $LogConf;
 
@@ -565,10 +576,8 @@ class View
 			$cols[$LogConf[$this->Model]['HighlightLogs']['Col']] :
 			implode(' ', $cols);
 
-		$this->PrintLogLineClass($logstr);
-
-		PrintLogCols($linenum, $cols);
-		echo '</tr>';
+		$class= $this->getLogLineClass($logstr);
+		PrintLogCols($linenum, $cols, $lastlinenum, $class);
 	}
 
 	/**
@@ -578,7 +587,7 @@ class View
 	 *
 	 * @param string $logstr Log string to search for keywords
 	 */
-	function PrintLogLineClass($logstr)
+	function getLogLineClass($logstr)
 	{
 		global $LogConf;
 
@@ -607,7 +616,7 @@ class View
 				break;
 			}
 		}
-		echo $class == '' ? '<tr>' : "<tr class=\"$class\">";
+		return $class;
 	}
 
 	/**

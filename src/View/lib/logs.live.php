@@ -57,8 +57,9 @@ PrintLiveLogHeaderForm();
 		$LineCount= $LogSize - $LinesPerPage + 1;
 	}
 
+	$LastLineNum= $LineCount + min(array($LogSize, $LinesPerPage)) - 1;
 	foreach ($Logs as $Logline) {
-		$View->PrintLogLine($Logline, $LineCount++);
+		$View->PrintLogLine($Logline, $LineCount++, $LastLineNum);
 	}
 	?>
 </table>

@@ -55,7 +55,7 @@ class Snortalerts extends View
 	 *
 	 * @param string $line Log string to search for keywords
 	 */
-	function PrintLogLineClass($line)
+	function getLogLineClass($line)
 	{
 		$class= '';
 		if (preg_match('/(\d+)/', $line, $match)) {
@@ -68,7 +68,7 @@ class Snortalerts extends View
 				$class= 'yellow';
 			}
 		}
-		echo $class == '' ? '<tr>' : "<tr class=\"$class\">";
+		return $class;
 	}
 }
 

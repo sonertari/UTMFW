@@ -115,13 +115,12 @@ class Snortips extends View
 	 *
 	 * @param array $cols Columns parsed.
 	 * @param int $linenum Line number to print as the first column.
+	 * @param array $lastlinenum Last line number, used to detect the last line
 	 */
-	function PrintLogLine($cols, $linenum)
+	function PrintLogLine($cols, $linenum, $lastlinenum)
 	{
-		$this->PrintLogLineClass($cols['Log']);
-
-		PrintLogCols($linenum, $cols);
-		echo '</tr>';
+		$class= $this->getLogLineClass($cols['Log']);
+		PrintLogCols($linenum, $cols, $lastlinenum, $class);
 	}
 
 	/**

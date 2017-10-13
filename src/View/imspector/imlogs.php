@@ -51,12 +51,10 @@ class Imlogs extends View
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
 	}
 
-	function PrintLogLine($cols, $linenum)
+	function PrintLogLine($cols, $linenum, $lastlinenum)
 	{
-		$this->PrintLogLineClass($cols['User']);
-
-		PrintLogCols($linenum, $cols);
-		echo '</tr>';
+		$class= $this->getLogLineClass($cols['User']);
+		PrintLogCols($linenum, $cols, $lastlinenum, $class);
 	}
 }
 
@@ -225,8 +223,9 @@ EOF;
 		$Logs= json_decode($Output[0], TRUE);
 
 		$LineCount= $StartLine + 1;
+		$LastLineNum= $StartLine + min(array(count($Logs), $LinesPerPage));
 		foreach ($Logs as $Log) {
-			$View->PrintLogLine($Log, $LineCount++);
+			$View->PrintLogLine($Log, $LineCount++, $LastLineNum);
 		}
 		?>
 	</table>

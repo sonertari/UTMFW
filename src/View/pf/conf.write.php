@@ -51,17 +51,20 @@ if ($testResult || $force) {
 
 require_once($VIEW_PATH.'/header.php');
 ?>
-<fieldset>
-	<form id="installForm" name="installForm" action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>" method="post">
-		<input type="checkbox" id="numbers" name="numbers" <?php echo $printNumbers ? 'checked' : '' ?> onclick="document.installForm.apply.click()" />
-		<label for="numbers"><?php echo _CONTROL('Display line numbers') ?></label>
-		<input type="checkbox" id="forcedisplay" name="forcedisplay" <?php echo filter_has_var(INPUT_POST, 'forcedisplay') ? 'checked' : ''; ?> <?php echo $testResult ? 'disabled' : ''; ?> onclick="document.installForm.apply.click()" />
-		<label for="forcedisplay"><?php echo _CONTROL('Display with errors') ?></label>
-		<input type="submit" id="apply" name="apply" value="<?php echo _CONTROL('Apply') ?>" />
-		<input type="submit" id="install" name="install" value="<?php echo _CONTROL('Install') ?>" <?php echo $testResult ? '' : 'disabled' ?> />
-		<label for="install"><?php echo _CONTROL('Install as main ruleset') ?>: /etc/pf.conf</label>
-	</form>
-</fieldset>
+<table class="shadowbox">
+	<tr>
+		<td>
+			<fieldset>
+				<form id="installForm" name="installForm" action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>" method="post">
+					<input type="checkbox" id="numbers" name="numbers" <?php echo $printNumbers ? 'checked' : '' ?> onclick="document.installForm.apply.click()" />
+					<label for="numbers"><?php echo _CONTROL('Display line numbers') ?></label>
+					<input type="checkbox" id="forcedisplay" name="forcedisplay" <?php echo filter_has_var(INPUT_POST, 'forcedisplay') ? 'checked' : ''; ?> <?php echo $testResult ? 'disabled' : ''; ?> onclick="document.installForm.apply.click()" />
+					<label for="forcedisplay"><?php echo _CONTROL('Display with errors') ?></label>
+					<input type="submit" id="apply" name="apply" value="<?php echo _CONTROL('Apply') ?>" />
+					<input type="submit" id="install" name="install" value="<?php echo _CONTROL('Install') ?>" <?php echo $testResult ? '' : 'disabled' ?> />
+					<label for="install"><?php echo _CONTROL('Install as main ruleset') ?>: /etc/pf.conf</label>
+				</form>
+			</fieldset>
 <?php
 echo _TITLE('Rules file') . ': ' . $View->RuleSet->filename . ($View->RuleSet->uploaded ? ' (' . _TITLE('uploaded') . ')' : '');
 ?>
@@ -74,6 +77,9 @@ if ($generated || $force) {
 }
 ?>
 </pre>
+		</td>
+	</tr>
+</table>
 <?php
 require_once($VIEW_PATH.'/footer.php');
 ?>

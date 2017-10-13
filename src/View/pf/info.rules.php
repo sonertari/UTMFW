@@ -26,38 +26,38 @@ $rules= json_decode($Output[0], TRUE);
 $Reload= TRUE;
 require_once($VIEW_PATH . '/header.php');
 ?>
-<div id="main">
-	<table id="logline">
+<table id="logline">
+	<tr>
+		<th><?php echo _('Number') ?></th>
+		<th><?php echo _('Evaluations') ?></th>
+		<th><?php echo _('Packets') ?></th>
+		<th><?php echo _('Bytes') ?></th>
+		<th><?php echo _('States') ?></th>
+		<th><?php echo _('State Creations') ?></th>
+		<th><?php echo _('Rule') ?></th>
+		<th><?php echo _('Inserted') ?></th>
+	</tr>
+	<?php
+	$linenum= 0;
+	$totalLines= count($rules);
+	foreach ($rules as $r) {
+		$class= ($linenum++ % 2 == 0) ? 'evenline' : 'oddline';
+		$lastLine= $linenum == $totalLines;
+		?>
 		<tr>
-			<th><?php echo _('Number') ?></th>
-			<th><?php echo _('Evaluations') ?></th>
-			<th><?php echo _('Packets') ?></th>
-			<th><?php echo _('Bytes') ?></th>
-			<th><?php echo _('States') ?></th>
-			<th><?php echo _('State Creations') ?></th>
-			<th><?php echo _('Rule') ?></th>
-			<th><?php echo _('Inserted') ?></th>
+			<td class="center <?php echo $class ?><?php echo $lastLine ? ' lastLineFirstCell':'' ?>"><?php echo $r['number'] ?></td>
+			<td class="right <?php echo $class ?>"><?php echo $r['evaluations'] ?></td>
+			<td class="right <?php echo $class ?>"><?php echo $r['packets'] ?></td>
+			<td class="right <?php echo $class ?>"><?php echo $r['bytes'] ?></td>
+			<td class="right <?php echo $class ?>"><?php echo $r['states'] ?></td>
+			<td class="right <?php echo $class ?>"><?php echo $r['stateCreations'] ?></td>
+			<td class="<?php echo $class ?>"><?php echo htmlentities($r['rule']) ?></td>
+			<td class="<?php echo $class ?><?php echo $lastLine ? ' lastLineLastCell':'' ?>"><?php echo $r['inserted'] ?></td>
 		</tr>
 		<?php
-		$linenum= 0;
-		foreach ($rules as $r) {
-			$class= ($linenum++ % 2 == 0) ? 'evenline' : 'oddline';
-			?>
-			<tr class="<?php echo $class ?>">
-				<td class="center" ><?php echo $r['number'] ?></td>
-				<td class="right" ><?php echo $r['evaluations'] ?></td>
-				<td class="right" ><?php echo $r['packets'] ?></td>
-				<td class="right" ><?php echo $r['bytes'] ?></td>
-				<td class="right" ><?php echo $r['states'] ?></td>
-				<td class="right" ><?php echo $r['stateCreations'] ?></td>
-				<td><?php echo htmlentities($r['rule']) ?></td>
-				<td><?php echo $r['inserted'] ?></td>
-			</tr>
-			<?php
-		}
-		?>
-	</table>
-</div>
+	}
+	?>
+</table>
 <?php
 PrintHelpWindow(_HELPWINDOW('These are the active rules loaded into pf. Note that the rule numbers reported here do not necessarily match with the numbers on the rule editor.'));
 require_once($VIEW_PATH . '/footer.php');

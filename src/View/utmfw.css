@@ -426,12 +426,12 @@ ul#navigation ul li a
  */
 .block
 {
-	background-color: #FF6264;
+	background-color: #ff6264;
 }
 
 .pass
 {
-	background-color: #64FF62;
+	background-color: #64ff62;
 }
 
 .match
@@ -443,7 +443,7 @@ ul#navigation ul li a
 {
 	border-bottom: 1px solid #CCC;
 	border-right: 1px solid #CCC;
-	background-color: #ffddc0;
+	background-color: #fff8f1;
 	padding-left: 1em;
 	padding-right: 1em;
 	text-align: left;
@@ -463,7 +463,7 @@ ul#navigation ul li a
 {
 	border-bottom: 1px solid #CCC;
 	border-right: 1px solid #CCC;
-	background-color: #ffffff;
+	background-color: white;
 	padding-left: 1em;
 	padding-right: 1em;
 	text-align: left;
@@ -471,7 +471,7 @@ ul#navigation ul li a
 
 .category
 {
-	background-color: #ffffff;
+	background-color: white;
 }
 
 .edit
@@ -795,14 +795,23 @@ table#logline
 	background: #ebebeb;
 }
 
-#logline td.center
-{
-	text-align: center;
-}
-
-#logline td.right
+.right
 {
 	text-align: right;
+}
+
+.lastLineFirstCell
+{
+	-webkit-border-radius: 0px 0px 0px 5px;
+	-moz-border-radius: 0px 0px 0px 5px;
+	border-radius: 0px 0px 0px 5px;
+}
+
+.lastLineLastCell
+{
+	-webkit-border-radius: 0px 0px 5px 0px;
+	-moz-border-radius: 0px 0px 5px 0px;
+	border-radius: 0px 0px 5px 0px;
 }
 
 #ipsmanaged td
@@ -1224,4 +1233,16 @@ table#logline
 {
 	width: 1%;
 	padding: 0;
+}
+
+.shadowbox
+{
+	width: auto;
+	display: inline-block;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
