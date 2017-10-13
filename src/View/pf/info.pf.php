@@ -36,7 +36,7 @@ require_once($VIEW_PATH . '/header.php');
 
 $View->PrintStatusForm();
 ?>
-<table class="shadowbox">
+<table class="shadowbox" style="padding-right: 12px;">
 	<tr>
 		<td>
 <pre>
