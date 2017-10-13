@@ -206,7 +206,7 @@ class Sslproxy extends View
 				$conns= json_decode($Output[0], TRUE);
 				$lineCount= 1;
 				foreach ($conns as $cols) {
-					PrintLogCols($lineCount++, $cols, '', 'idleconns');
+					PrintLogCols($lineCount++, $cols, -1, '', 'idleconns');
 				}
 			}
 			?>

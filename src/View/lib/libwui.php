@@ -1371,7 +1371,7 @@ function PrintTableHeaders($view)
  * @param string $class Cell class, used for highlighting
  * @param string $module Module name if different from $View, $LogConf index
  */
-function PrintLogCols($linenum, $cols, $lastlinenum, $class= '', $module= '')
+function PrintLogCols($linenum, $cols, $lastlinenum= -1, $class= '', $module= '')
 {
 	global $LogConf, $View;
 

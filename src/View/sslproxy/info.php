@@ -33,8 +33,8 @@ $View->PrintStatusForm();
 $View->PrintStatsMaxValues($StatusCheckInterval);
 ?>
 <br />
-<?php echo _TITLE2('Idle connections').':' ?>
 <?php
+echo _TITLE2('Idle connections').':';
 $View->PrintIdleConns($StatusCheckInterval);
 
 PrintHelpWindow(_HELPWINDOW('The SSL proxy decrypts SSL/TLS encrypted traffic and feeds it into the UTM services. The inline IPS inspects the decrypted traffic for intrusion detection and prevention as well.

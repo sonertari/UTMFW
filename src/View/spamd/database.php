@@ -53,11 +53,14 @@ require_once($VIEW_PATH.'/header.php');
 	echo '<strong>'._TITLE2('Spamd Grey DB').' : '.'</strong><br />';
 	PrintTableHeaders('spamdgreydb');
 
-	$View->Controller($SpamdDB, 'GetGreylist');
-	$View->Model= 'spamdgreydb';
-	$LineCount= 1;
-	foreach ($SpamdDB as $Line) {
-		PrintSpamdDBLine($Line, $LineCount++, $Cols);
+	$View->Controller($Output, 'GetGreylist');
+	$SpamdDB= explode("\n", $Output[0]);
+	if ($Output[0] != '' && $SpamdDB != FALSE) {
+		$View->Model= 'spamdgreydb';
+		$LineCount= 1;
+		foreach ($SpamdDB as $Line) {
+			PrintSpamdDBLine($Line, $LineCount++);
+		}
 	}
 	?>
 </table>
@@ -66,11 +69,14 @@ require_once($VIEW_PATH.'/header.php');
 	echo '<br /><strong>'._TITLE2('Spamd White DB').' : '.'</strong><br />';
 	PrintTableHeaders('spamdwhitedb');
 
-	$View->Controller($SpamdDB, 'GetWhitelist');
-	$View->Model= 'spamdwhitedb';
-	$LineCount= 1;
-	foreach ($SpamdDB as $Line) {
-		PrintSpamdDBLine($Line, $LineCount++, $Cols);
+	$View->Controller($Output, 'GetWhitelist');
+	$SpamdDB= explode("\n", $Output[0]);
+	if ($Output[0] != '' && $SpamdDB != FALSE) {
+		$View->Model= 'spamdwhitedb';
+		$LineCount= 1;
+		foreach ($SpamdDB as $Line) {
+			PrintSpamdDBLine($Line, $LineCount++);
+		}
 	}
 	?>
 </table>

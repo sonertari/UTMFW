@@ -2698,7 +2698,8 @@ class Model
 			$needle= implode('|', $needleArray);
 
 			$logs= $this->_getStatus($this->formatErrorNeedle($needle));
-			if (count($logs) > 0) {
+			$total= count($logs);
+			if ($total > 0) {
 				$errorStr= '';
 				$count= 0;
 				foreach ($logs as $l) {
@@ -2713,8 +2714,8 @@ class Model
 					if ($isPrio) {
 						$errorStr.= "\n" . $l['Log'];
 						$count++;
-						if ($count >= 5) {
-							$errorStr.= "\n" . str_replace('<COUNT>', count($logs) - $count, _('And <COUNT> others not shown.'));
+						if ($count >= 5 && $total - $count > 0) {
+							$errorStr.= "\n" . str_replace('<COUNT>', $total - $count, _('And <COUNT> others not shown.'));
 							break;
 						}
 					}
