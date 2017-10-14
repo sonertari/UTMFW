@@ -271,7 +271,7 @@ class View
 	 * @param boolean $printcount Whether to print number of running processes too
 	 * @param boolean $showbuttons Show Start/Stop buttons
 	 */
-	function PrintStatusForm($printcount= FALSE, $showbuttons= TRUE)
+	function PrintStatusForm($printcount= FALSE, $showbuttons= TRUE, $printprocs= TRUE)
 	{
 		global $IMG_PATH, $ADMIN, $Status2Images;
 
@@ -357,7 +357,7 @@ class View
 			</tr>
 		</table>
 		<?php
-		if ($running && $this->Model != 'pf') {
+		if ($running && $printprocs) {
 			$this->Controller($output, 'GetProcList');
 			$this->PrintProcessTable(json_decode($output[0], TRUE), $printcount);
 		}

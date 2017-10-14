@@ -34,7 +34,7 @@ $PfTimeout= implode("\n", $Output);
 $Reload= TRUE;
 require_once($VIEW_PATH . '/header.php');
 
-$View->PrintStatusForm();
+$View->PrintStatusForm(FALSE, TRUE, FALSE);
 ?>
 <table class="shadowbox" style="padding-right: 12px;">
 	<tr>

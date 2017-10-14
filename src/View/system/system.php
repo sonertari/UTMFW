@@ -50,6 +50,8 @@ $View->Controller($Output, 'GetStatus');
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
+
+$View->PrintStatusForm(FALSE, FALSE, FALSE);
 ?>
 <table id="nvp" class="shadowbox" style="width: 600px;">
 	<tr class="oddline">
