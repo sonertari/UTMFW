@@ -29,9 +29,9 @@ $LogConf = array(
     		),
         'HighlightLogs' => array(
             'REs' => array(
-                'red' => array('failed', 'ERROR'),
-                'yellow' => array('update process started at', 'Waiting to lock database directory'),
-                'green' => array('up to date', 'updated', '\bsuccess'),
+                'red' => array('failed', 'ERROR:'),
+                'yellow' => array('Waiting to lock database directory', 'WARNING:'),
+                'green' => array('update process started at', 'up to date', 'updated', '\bsuccess'),
         		),
     		),
 		),

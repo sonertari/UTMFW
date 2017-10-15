@@ -38,8 +38,7 @@ $LogConf = array(
             'Col' => 'LogLevel',
             'REs' => array(
                 'red' => array('LOG_EMERG', 'LOG_ALERT', 'LOG_CRIT', 'LOG_ERR'),
-                'yellow' => array('LOG_WARNING', 'LOG_NOTICE'),
-                'green' => array('LOG_INFO'),
+                'yellow' => array('LOG_WARNING'),
         		),
     		),
 		),

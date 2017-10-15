@@ -29,6 +29,12 @@ $LogConf = array(
             'Prio',
             'Log',
     		),
+        'HighlightLogs' => array(
+            'REs' => array(
+                'red' => array('failed', 'ERROR:'),
+                'yellow' => array('WARNING:'),
+        		),
+    		),
 		),
 	);
 

@@ -70,7 +70,6 @@ $LogConf = array(
         'HighlightLogs' => array(
             'REs' => array(
                 'red' => array('Blocking', 'already blocked', 'Exiting'),
-                'yellow' => array('Starting', 'Loaded'),
                 'green' => array('Unblocking'),
         		),
     		),
