@@ -81,7 +81,7 @@ class Sslproxy extends Model
 	function GetVersion()
 	{
 		$version= explode("\n", $this->RunShellCommand($this->VersionCmd));
-		return Output($version[0]."\n".$version[12]."\n".$version[22]);
+		return Output($version[0]."\n".$version[7]."\n".$version[17]);
 	}
 
 	function Stop()
@@ -130,40 +130,22 @@ class Sslproxy extends Model
 					$cols['StatsError']= $match[12];
 					$cols['StatsIdx']= $match[13];
 				} else {
-					// ERROR: Error from bufferevent: 0:- 336151570:1042:sslv3 alert bad certificate:20:SSL routines:148:SSL3_READ_BYTES
-					$re= "/^(CRITICAL|ERROR): (.*)$/";
+					// IDLE: thr=0, id=1, ce=1 cc=1, at=0 ct=0, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443
+					$re= "/^IDLE: thr=(\d+), id=(\d+),.*, at=(\d+) ct=(\d+)(, src_addr=((\S+):\d+)|)(, dst_addr=((\S+):\d+)|)$/";
 					if (preg_match($re, $cols['Log'], $match)) {
-						$cols['Error']= $match[2];
+						$cols['ThreadIdx']= $match[1];
+						$cols['ConnIdx']= $match[2];
+						$cols['IdleTime']= $match[3];
+						$cols['Duration']= $match[4];
+						$cols['SrcAddr']= $match[7];
+						$cols['DstAddr']= $match[10];
 					} else {
-						// WARNING: Received SIGPIPE; ignoring.
-						$re= "/^WARNING: (.*)$/";
+						// EXPIRED: thr=1, time=0, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443
+						$re= "/^EXPIRED: thr=\d+, time=(\d+)(, src_addr=((\S+):\d+)|)(, dst_addr=((\S+):\d+)|)$/";
 						if (preg_match($re, $cols['Log'], $match)) {
-							$cols['Warning']= $match[1];
-						} else {
-							// IDLE: thr=0, id=1, ce=1 cc=1, at=0 ct=0, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443
-							$re= "/^IDLE: thr=(\d+), id=(\d+),.*, at=(\d+) ct=(\d+)(, src_addr=((\S+):\d+)|)(, dst_addr=((\S+):\d+)|)$/";
-							if (preg_match($re, $cols['Log'], $match)) {
-								$cols['ThreadIdx']= $match[1];
-								$cols['ConnIdx']= $match[2];
-								$cols['IdleTime']= $match[3];
-								$cols['Duration']= $match[4];
-								$cols['SrcAddr']= $match[7];
-								$cols['DstAddr']= $match[10];
-							} else {
-								// EXPIRED: thr=1, time=0, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443
-								$re= "/^EXPIRED: thr=\d+, time=(\d+)(, src_addr=((\S+):\d+)|)(, dst_addr=((\S+):\d+)|)$/";
-								if (preg_match($re, $cols['Log'], $match)) {
-									$cols['IdleTime']= $match[1];
-									$cols['ExpiredSrcAddr']= $match[4];
-									$cols['ExpiredDstAddr']= $match[7];
-								} else {
-									// INFO:
-									$re= "/^INFO: (.*)$/";
-									if (preg_match($re, $cols['Log'], $match)) {
-										$cols['Info']= $match[1];
-									}
-								}
-							}
+							$cols['IdleTime']= $match[1];
+							$cols['ExpiredSrcAddr']= $match[4];
+							$cols['ExpiredDstAddr']= $match[7];
 						}
 					}
 				}

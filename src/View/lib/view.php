@@ -46,6 +46,26 @@ class View
 	 * @param	info	Info text displayed in help box on the right.
 	 */
 	public $Config= array();
+
+	var $genericREs= array(
+		'red' => array('\berror\b'),
+		'yellow' => array('\bwarning\b'),
+		'green' => array('\bsuccess'),
+		);
+
+	var $prioClasses= array(
+		'EMERGENCY' => 'red',
+		'emergency' => 'red',
+		'ALERT' => 'red',
+		'alert' => 'red',
+		'CRITICAL' => 'red',
+		'critical' => 'red',
+		'ERROR' => 'red',
+		'error' => 'red',
+		'WARNING' => 'yellow',
+		'warning' => 'yellow',
+		'warn' => 'yellow',
+		);
 	
 	/**
 	 * Calls the controller.
@@ -561,9 +581,6 @@ class View
 	/**
 	 * Generic parser, highlighter, and printer for the log line.
 	 *
-	 * If there is no PrintLogLine() defined in module's include file,
-	 * this one is used instead.
-	 *
 	 * @param array $cols Parsed log line
 	 * @param int $linenum Line number of the log line
 	 * @param array $lastlinenum Last line number, used to detect the last line
@@ -576,31 +593,33 @@ class View
 			$cols[$LogConf[$this->Model]['HighlightLogs']['Col']] :
 			implode(' ', $cols);
 
-		$class= $this->getLogLineClass($logstr);
+		$class= $this->getLogLineClass($logstr, $cols);
 		PrintLogCols($linenum, $cols, $lastlinenum, $class);
 	}
 
 	/**
-	 * Prints log line color tr tag.
+	 * Determines log line color class.
 	 *
 	 * Keywords are obtained from arrays in $LogConf.
 	 *
 	 * @param string $logstr Log string to search for keywords
+	 * @param array $cols Parsed log line
+	 * @return string Log line color class.
 	 */
-	function getLogLineClass($logstr)
+	function getLogLineClass($logstr, $cols)
 	{
 		global $LogConf;
 
-		$genericREs= array(
-			'red' => array('\berror\b'),
-			'yellow' => array('\bwarning\b'),
-			'green' => array('\bsuccess'),
-		);
+		$logREs= isset($LogConf[$this->Model]['HighlightLogs']['REs']) ? $LogConf[$this->Model]['HighlightLogs']['REs'] : $this->genericREs;
 
-		$logREs= isset($LogConf[$this->Model]['HighlightLogs']['REs']) ? $LogConf[$this->Model]['HighlightLogs']['REs'] : $genericREs;
+		$class= '';
+		if (array_key_exists('Prio', $cols)) {
+			if (array_key_exists($cols['Prio'], $this->prioClasses)) {
+				$class= $this->prioClasses[$cols['Prio']];
+			}
+		}
 
 		$done= FALSE;
-		$class= '';
 		foreach ($logREs as $color => $res) {
 			foreach ($res as $re) {
 				$r= Escape($re, '/');

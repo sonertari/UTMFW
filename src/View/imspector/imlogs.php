@@ -53,7 +53,7 @@ class Imlogs extends View
 
 	function PrintLogLine($cols, $linenum, $lastlinenum)
 	{
-		$class= $this->getLogLineClass($cols['User']);
+		$class= $this->getLogLineClass($cols['User'], $cols);
 		PrintLogCols($linenum, $cols, $lastlinenum, $class);
 	}
 }

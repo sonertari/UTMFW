@@ -55,7 +55,7 @@ class Snortalerts extends View
 	 *
 	 * @param string $line Log string to search for keywords
 	 */
-	function getLogLineClass($line)
+	function getLogLineClass($line, $cols)
 	{
 		$class= '';
 		if (preg_match('/(\d+)/', $line, $match)) {

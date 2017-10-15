@@ -149,7 +149,7 @@ class Sslproxy extends View
 	 */
 	function PrintLogLine($cols, $linenum, $lastlinenum)
 	{
-		$class= $this->getLogLineClass($cols['Log']);
+		$class= $this->getLogLineClass($cols['Log'], $cols);
 		PrintLogCols($linenum, $cols, $lastlinenum, $class);
 	}
 	

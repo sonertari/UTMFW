@@ -129,7 +129,7 @@ class Squid extends View
 	
 	function PrintLogLine($cols, $linenum, $lastlinenum)
 	{
-		$class= $this->getLogLineClass($cols['Cache']);
+		$class= $this->getLogLineClass($cols['Cache'], $cols);
 		PrintLogCols($linenum, $cols, $lastlinenum, $class);
 	}
 	

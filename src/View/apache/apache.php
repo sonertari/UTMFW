@@ -31,7 +31,7 @@ $LogConf = array(
         'HighlightLogs' => array(
             'REs' => array(
                 'red' => array('\berror\b'),
-                'yellow' => array('\bwarning\b', '\bnotice\b'),
+                'yellow' => array('\bwarning\b'),
                 'green' => array('\bsuccess'),
         		),
     		),
