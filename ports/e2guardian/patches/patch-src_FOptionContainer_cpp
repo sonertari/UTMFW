@@ -1,0 +1,12 @@
+$OpenBSD$
+--- src/FOptionContainer.cpp.orig	Sun Oct 15 07:09:05 2017
++++ src/FOptionContainer.cpp	Sun Oct 15 07:09:46 2017
+@@ -536,7 +536,7 @@ bool FOptionContainer::read(const char *filename)
+ 
+         if (reporting_level == 0) {
+             std::cerr << "Reporting_level is : " << reporting_level << " file " << filename << std::endl;
+-            syslog(LOG_ERR, "Reporting_level is : %d file %s", reporting_level, filename);
++            syslog(LOG_NOTICE, "Reporting_level is : %d file %s", reporting_level, filename);
+         }
+ 
+         long temp_max_upload_size;
