@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-08-25 02:01+0300\n"
+"PO-Revision-Date: 2017-10-16 22:30+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -25,6 +25,15 @@ msgstr "15 dakikalık ortalama"
 
 msgid "5 minute average"
 msgstr "5 dakikalık ortalama"
+
+msgid "<MODEL> has CRITICAL errors"
+msgstr "<MODEL>: ÖNEMLi hatalar var"
+
+msgid "<MODEL> has ERRORs"
+msgstr "<MODEL>: HATALAR var"
+
+msgid "<MODEL> has WARNINGs"
+msgstr "<MODEL>: UYARILAR var"
 
 msgid "<RULE_TYPE> rule"
 msgstr "<RULE_TYPE> kuralı"
@@ -49,6 +58,9 @@ msgstr "Seçeneklere İzin Ver"
 
 msgid "Anchor"
 msgstr "Çapa"
+
+msgid "And <COUNT> others not shown."
+msgstr "Ve <COUNT> adet gösterilmeyen var."
 
 msgid "Archives"
 msgstr "Arşivler"
@@ -83,8 +95,17 @@ msgstr "İşlemci Yükü"
 msgid "CPUs"
 msgstr "İşlemciler"
 
+msgid "CRITICAL"
+msgstr "ÖNEMLİ"
+
 msgid "Category"
 msgstr "Sınıf"
+
+msgid "Click to search in the logs"
+msgstr "Kayıtlarda aramak için tıklayın"
+
+msgid "Click to search in the stats"
+msgstr "İstatistiklerde aramak için tıklayın"
 
 msgid "Comment"
 msgstr "Yorum"
@@ -97,6 +118,12 @@ msgstr "Telif hakkı"
 
 msgid "Count"
 msgstr "Sayı"
+
+msgid "Critical"
+msgstr "Önemli"
+
+msgid "Critical Error"
+msgstr "Önemli Hata"
 
 msgid "Current Password"
 msgstr "Mevcut Parola"
@@ -179,6 +206,9 @@ msgstr "Açık Servisler"
 msgid "Enforce TOS"
 msgstr "TOS Uygula"
 
+msgid "Error"
+msgstr "Hata"
+
 msgid "Export To pflow"
 msgstr "Pflow'a Aktar"
 
@@ -236,14 +266,8 @@ msgstr "HTTP Vekil"
 msgid "Help Boxes"
 msgstr "Yardım Kutuları"
 
-msgid "Help boxes"
-msgstr "Yardım kutuları"
-
 msgid "Holidays"
 msgstr "Tatiller"
-
-msgid "Horizontal"
-msgstr "Yatay"
 
 msgid "Host Id"
 msgstr "Adres Kimliği"
@@ -256,9 +280,6 @@ msgstr "Bilgisayarlar"
 
 msgid "Hour"
 msgstr "Saat"
-
-msgid "Hourly"
-msgstr "Saatlik"
 
 msgid "ICMP Timeouts"
 msgstr "ICMP Zaman Aşımları"
@@ -317,9 +338,6 @@ msgstr "Zaman Aralığı"
 msgid "Intrusion Detection"
 msgstr "Saldırı Tespit"
 
-msgid "Intrusion Prevention"
-msgstr "Saldırı Engelleme"
-
 msgid "Label"
 msgstr "Etiket"
 
@@ -353,14 +371,8 @@ msgstr "Kayıt Arayüzü"
 msgid "Log Level"
 msgstr "Kayıt Seviyesi"
 
-msgid "Log level"
-msgstr "Kayıt seviyesi"
-
 msgid "Logging"
 msgstr "Kayıt"
-
-msgid "Logout"
-msgstr "Çıkış"
 
 msgid "Logs"
 msgstr "Kayıtlar"
@@ -425,6 +437,12 @@ msgstr "En düşük TTL"
 msgid "Min-ttl"
 msgstr "En düşük-ttl"
 
+msgid "Minute"
+msgstr "Dakika"
+
+msgid "Module Status"
+msgstr "Modül Durumu"
+
 msgid "Month"
 msgstr "Ay"
 
@@ -443,6 +461,9 @@ msgstr "Ad"
 msgid "Nameserver"
 msgstr "Ad sunucu"
 
+msgid "Needle"
+msgstr "Sorgu"
+
 msgid "Network Protocol Usage"
 msgstr "Ağ Protokol Kullanımı"
 
@@ -451,6 +472,9 @@ msgstr "Yeni Parola"
 
 msgid "New Password Again"
 msgstr "Tekrar Yeni Parola"
+
+msgid "No Errors"
+msgstr "Hata yok"
 
 msgid "No pfsync"
 msgstr "Pfsync olmadan"
@@ -509,20 +533,23 @@ msgstr "Disk Bölümleri"
 msgid "Partitions Usages"
 msgstr "Disk Bölüm Kullanımları"
 
+msgid "Passive IPS"
+msgstr "Pasif SES"
+
 msgid "Passive Intrusion Prevention"
 msgstr "Pasif Saldırı Engelleme"
 
 msgid "Password"
 msgstr "Parola"
 
-msgid "Password again"
-msgstr "Tekrar parola"
-
 msgid "Pfctl Timeout"
 msgstr "Pfctl Zaman Aşımı"
 
 msgid "Physical Memory"
 msgstr "Fiziksel Bellek"
+
+msgid "Pmacct"
+msgstr "Pmacct"
 
 msgid "Privileged IPs"
 msgstr "Öncelikli IP'ler"
@@ -581,9 +608,6 @@ msgstr "Düzenli ifade"
 msgid "Reload Rate"
 msgstr "Tekrar Yükleme Sıklığı"
 
-msgid "Reload interval"
-msgstr "Tekrar yükleme aralığı"
-
 msgid "Resource not available"
 msgstr "Kaynağa ulaşılamıyor"
 
@@ -616,6 +640,9 @@ msgstr "Kural dosyası"
 
 msgid "Ruleset Optimization"
 msgstr "Kural Listesi Optimizasyonu"
+
+msgid "Running"
+msgstr "Çalışıyor"
 
 msgid "SMTP Proxy"
 msgstr "SMTP Vekil"
@@ -655,9 +682,6 @@ msgstr "Seri Numarası"
 
 msgid "Session Timeout"
 msgstr "Oturum Zaman Aşımı"
-
-msgid "Session timeout"
-msgstr "Oturum zaman aşımı"
 
 msgid "Size"
 msgstr "Boyut"
@@ -716,8 +740,17 @@ msgstr "Sabit Kapı"
 msgid "Statistics and uncompressed log files"
 msgstr "İstatistik ve açılmış kayıt dosyaları"
 
+msgid "Status Check Interval"
+msgstr "Durum Kontrol Aralığı"
+
+msgid "Stopped"
+msgstr "Durmuş"
+
 msgid "Symon"
 msgstr "Symon"
+
+msgid "Symux"
+msgstr "Symux"
 
 msgid "System"
 msgstr "Sistem"
@@ -796,6 +829,9 @@ msgstr "Virüs Eleği"
 
 msgid "WARNING"
 msgstr "UYARI"
+
+msgid "Warning"
+msgstr "Uyarı"
 
 msgid "Web Filter"
 msgstr "Web Eleği"

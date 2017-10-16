@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-08-25 02:02+0300\n"
+"PO-Revision-Date: 2017-10-16 22:43+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -29,9 +29,6 @@ msgstr "AV yöneticisi"
 msgid "AV Subject"
 msgstr "AV konu başlığı"
 
-msgid "Access Denied Address"
-msgstr "Giriş engelleme adresi"
-
 msgid "Access control list"
 msgstr "Giriş kontrol listesi"
 
@@ -52,9 +49,6 @@ msgstr "Gelişmiş Güç Yönetimi"
 
 msgid "After hours"
 msgstr "Mesai sonrası"
-
-msgid "All rights reserved."
-msgstr "Tüm hakları saklıdır."
 
 msgid "Allow localhost"
 msgstr "Yerel bilgisayara izin ver"
@@ -158,12 +152,6 @@ msgstr "CA Anahtarı"
 msgid "COMMAND"
 msgstr "KOMUT"
 
-msgid "CTLR"
-msgstr "CTLR"
-
-msgid "CVS Tag"
-msgstr "CVS Etiketi"
-
 msgid "Cache mgr"
 msgstr "Önbellek yöneticisi"
 
@@ -209,12 +197,6 @@ msgstr "İçerik tarama istisnaları"
 msgid "Content scanner timeout"
 msgstr "İçerik tarama zaman aşım değeri"
 
-msgid "Content scanning web filter."
-msgstr "İçerik tarayan web eleği."
-
-msgid "Copyright"
-msgstr "Telif hakkı"
-
 msgid "Create filter group"
 msgstr "Elek grubu yarat"
 
@@ -238,12 +220,6 @@ msgstr "Veritabanı kontrolleri"
 
 msgid "Database Mirrors"
 msgstr "Veritabanı aynaları"
-
-msgid "De-facto standard IDS (Intrusion Detection System)."
-msgstr "Ölçüt kabul edilen Saldırı Tespit Sistemi (STS)."
-
-msgid "De-facto standard among HTTP proxies."
-msgstr "Ölçüt kabul edilen HTTP vekil."
 
 msgid "Debug"
 msgstr "Hata ayıklama"
@@ -371,20 +347,6 @@ msgstr "İletim"
 msgid "Forwarders"
 msgstr "İletilenler"
 
-msgid "Free OOP scripting language."
-msgstr "Özgür Nesne Yönelimli betik dili."
-
-#, php-format
-msgid ""
-"Free secure shell provides remote shell access to the system. It is believed "
-"that almost 90% of all secure shell traffic on the Internet is provided by "
-"OpenSSH. OpenSSH is developed by the OpenBSD project."
-msgstr ""
-"Özgür güvenli kabuk sistem komut satırına uzaktan erişimi sağlar. "
-"İnternet'teki güvenli kabuk trafiğinin %90'ının OpenSSH tarafından "
-"sağlandığı tahmin edilmektedir. OpenSSH OpenBSD projesi tarafından "
-"geliştirilmektedir."
-
 msgid "Fri"
 msgstr "Cum"
 
@@ -493,17 +455,8 @@ msgstr "Arayüz yapılandırma"
 msgid "Interfaces"
 msgstr "Arayüzler"
 
-msgid "Intrusion Alerts"
-msgstr "Saldırı Uyarıları"
-
-msgid "Intrusion Detection"
-msgstr "Saldırı Tespit"
-
 msgid "Intrusion Detection and Prevention"
 msgstr "Saldırı Tespit ve Engelleme"
-
-msgid "Intrusion Prevention"
-msgstr "Saldırı Engelleme"
 
 msgid "Jabber"
 msgstr "Jabber"
@@ -727,14 +680,8 @@ msgstr "Alt süreç alt sınırı"
 msgid "Min spare children"
 msgstr "Boşta alt süreç alt sınırı"
 
-msgid "Modern virtual private networking."
-msgstr "Modern sanal özel ağ programı."
-
 msgid "Mon"
 msgstr "Pzt"
-
-msgid "Monitoring"
-msgstr "Gözlemleme"
 
 msgid "NAT header type"
 msgstr "NAT başlık türü"
@@ -775,18 +722,6 @@ msgstr "İçerik uyarısı"
 msgid "Number of filter groups"
 msgstr "Elek grubu sayısı"
 
-msgid "Open source anti-spam software."
-msgstr "Açık kaynak istenmeyen e-posta engelleme yazılımı."
-
-msgid "Open source anti-virus software."
-msgstr "Açık kaynak virüs önleme yazılımı."
-
-msgid "OpenSSH"
-msgstr "OpenSSH"
-
-msgid "OpenVPN"
-msgstr "OpenVPN"
-
 msgid "PICS rating support"
 msgstr "PICS derecelendirme desteği"
 
@@ -823,9 +758,6 @@ msgstr "Tümce elek kipi"
 msgid "Ping"
 msgstr "Ping"
 
-msgid "Pmacct"
-msgstr "Pmacct"
-
 msgid "Pmacct Network Monitoring"
 msgstr "Pmacct Ağ Gözlemleme"
 
@@ -850,18 +782,8 @@ msgstr "Öncelik"
 msgid "Private Key"
 msgstr "Özel anahtar"
 
-msgid ""
-"Promiscuous mode accounting daemon collects IP based network usage "
-"information. Network usage graphs are generated based on pmacct data."
-msgstr ""
-"Herşeyi dinleyen hesap tutma süreci IP tabanlı ağ kullanım bilgilerini "
-"toplar. Ağ kullanım grafikleri pmacct verisi üzerinden üretilir."
-
 msgid "Protocol"
 msgstr "Protokol"
-
-msgid "Protograph"
-msgstr "Protograph"
 
 msgid "Proxy IP"
 msgstr "Vekil IP adresi"
@@ -908,9 +830,6 @@ msgstr "HTTP Accept-Encoding'i Sil"
 msgid "Remove HTTP Referer"
 msgstr "HTTP Referer'ı Sil"
 
-msgid "Report Interval"
-msgstr "Rapor Aralığı"
-
 msgid "Report e-mail"
 msgstr "Bildirim e-posta adresi"
 
@@ -925,9 +844,6 @@ msgstr "Bildirim seviyesi"
 
 msgid "Required score"
 msgstr "Gerekli puan"
-
-msgid "Resource not available"
-msgstr "Kaynağa erişilemiyor"
 
 msgid "Response postfix"
 msgstr "Cevap soneki"
@@ -959,17 +875,8 @@ msgstr "SMTP Vekil"
 msgid "SMTP_SERVERS"
 msgstr "SMTP_SERVERS"
 
-msgid "SNMP_SERVERS"
-msgstr "SNMP_SERVERS"
-
 msgid "SOCKS Proxy"
 msgstr "SOCKS Vekil"
-
-msgid "SPAM Deferral"
-msgstr "SPAM Geciktirme"
-
-msgid "SPAM Filter"
-msgstr "SPAM Eleği"
 
 msgid "SQL_SERVERS"
 msgstr "SQL_SERVERS"
@@ -1085,14 +992,8 @@ msgstr "Alt-sistem sftp"
 msgid "Sun"
 msgstr "Paz"
 
-msgid "Symon"
-msgstr "Symon"
-
 msgid "Symon System Monitoring"
 msgstr "Symon Sistem Gözlemleme"
-
-msgid "Symux"
-msgstr "Symux"
 
 msgid "Symux System Monitoring"
 msgstr "Symux Sistem Gözlemleme"
@@ -1102,16 +1003,6 @@ msgstr "Syslog düzeneği"
 
 msgid "System"
 msgstr "Sistem"
-
-msgid "System Administration Guides"
-msgstr "Sistem Yönetici Klavuzları"
-
-msgid ""
-"System monitoring software. Most of the rrd based graphs are generated based "
-"on symon data."
-msgstr ""
-"Sistem gözlemleme yazılımı. Rrd tabanlı grafiklerin çoğu symon verisi "
-"üzerinden üretilmektedir."
 
 msgid "TCP Keep Alive"
 msgstr "TCP canlı tutma"
@@ -1125,26 +1016,11 @@ msgstr "SÜRE"
 msgid "TLS Auth"
 msgstr "TLS doğrulama"
 
-msgid "Telnet negotiation string normalizer"
-msgstr "Telnet anlaşma dize düzenleyici"
-
 msgid "Temporary Denied Page Bypass"
 msgstr "Geçici engelleme sayfası kestirmesi"
 
 msgid "Temporary Denied Page Bypass Secret Key"
 msgstr "Geçici engelleme sayfası kestirme gizli anahtarı"
-
-msgid "The Free Software Foundation."
-msgstr "Özgür Yazılım Derneği."
-
-msgid "The most famous web server."
-msgstr "En ünlü web sunucu."
-
-msgid ""
-"The most secure OS in the world. Underneath UTMFW is pure, untouched OpenBSD."
-msgstr ""
-"Dünyadaki en güvenli işletim sistemi. UTMFW'un altında saf, eldeğmemiş "
-"OpenBSD çalışmaktadır."
 
 msgid "Threshold"
 msgstr "Eşik"
@@ -1181,13 +1057,6 @@ msgstr "Güvenilen ağlar"
 
 msgid "Tue"
 msgstr "Sal"
-
-msgid ""
-"Turns Snort IDS into an IPS (Intrusion Prevention System). Replaced by "
-"SnortIPS."
-msgstr ""
-"Snort Saldırı Tespit Sistemini (STS) bir Saldırı Engelleme Sistemine (SES) "
-"dönüştürür. SnortIPS ile değiştirilmiştir."
 
 msgid "USER"
 msgstr "KULLANICI"
@@ -1231,35 +1100,14 @@ msgstr "Virüs VT Güncelleme"
 msgid "Virus Filter"
 msgstr "Virüs Eleği"
 
-msgid "Virus and spam scanning POP3 proxy."
-msgstr "Virüs ve spam tarayan POP3 vekil."
-
-msgid "Virus and spam scanning SMTP proxy."
-msgstr "Virüs ve spam tarayan SMTP vekil."
-
-msgid "WUI"
-msgstr "Web Arayüzü"
-
 msgid "Web Access Denied Reporting"
 msgstr "Web girişi engelleme bildirimi"
 
 msgid "Web Filter"
 msgstr "Web Eleği"
 
-msgid "Web Filter Access"
-msgstr "Web Eleği Girişi"
-
-msgid "Web Server"
-msgstr "Web Sunucu"
-
 msgid "Web Server (WUI)"
 msgstr "Web Sunucu (Web Arayüzü)"
-
-msgid "Web Server Access"
-msgstr "Web Sunucu Girişi"
-
-msgid "Web interface for configuring and monitoring OpenBSD/pf."
-msgstr "OpenBSD/pf yapılandırma ve gözlemleme web arayüzü."
 
 msgid "Wed"
 msgstr "Çar"
@@ -1311,9 +1159,6 @@ msgstr "başlangıç"
 
 msgid "timespan"
 msgstr "zaman aralığı"
-
-msgid "total"
-msgstr "toplam"
 
 msgid "whitelisted"
 msgstr "beyazlistelenmiş"

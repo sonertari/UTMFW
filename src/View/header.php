@@ -174,19 +174,19 @@ define('ACTIVE_A_STYLE', ' style="color: white;"');
 							</a>
 							<ul>
 								<li>
-									<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?logout"><?php echo _TITLE('Logout') ?> <?php echo $_SESSION['USER'].'@'.filter_input(INPUT_SERVER, 'REMOTE_ADDR') ?></a>
+									<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?logout"><?php echo _MENU('Logout') ?> <?php echo $_SESSION['USER'].'@'.filter_input(INPUT_SERVER, 'REMOTE_ADDR') ?></a>
 								</li>
 								<li>
-									<a href="/system/dashboard.php"><?php echo _('Dashboard') ?></a>
+									<a href="/system/dashboard.php"><?php echo _MENU('Dashboard') ?></a>
 								</li>
 								<li>
-									<a href="/info/help.php"><?php echo _TITLE('Help') ?></a>
+									<a href="/info/help.php"><?php echo _MENU('Help') ?></a>
 								</li>
 								<li>
-									<a href="/info/docs.php"><?php echo _TITLE('Documentation') ?></a>
+									<a href="/info/docs.php"><?php echo _MENU('Documentation') ?></a>
 								</li>
 								<li>
-									<a href="#"><?php echo _TITLE('Language') ?></a>
+									<a href="#"><?php echo _MENU('Language') ?></a>
 									<ul>
 										<?php
 										foreach ($LOCALES as $Locale => $Conf) {

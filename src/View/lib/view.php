@@ -321,15 +321,15 @@ class View
 		$errorImgfile= $Status2Images[$errorStatus];
 		if ($errorStatus == 'C') {
 			$errorName= 'CriticalErrors';
-			$errorInfo= _TITLE('CRITICAL errors');
+			$errorInfo= _TITLE('Critical Error');
 		}
 		else if ($errorStatus == 'E') {
 			$errorName= 'Errors';
-			$errorInfo= _TITLE('ERRORs');
+			$errorInfo= _TITLE('Error');
 		}
 		else if ($errorStatus == 'W') {
 			$errorName= 'Warnings';
-			$errorInfo= _TITLE('WARNINGs');
+			$errorInfo= _TITLE('Warning');
 		}
 		else if ($errorStatus == 'N') {
 			$errorName= 'No Errors';

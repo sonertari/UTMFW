@@ -75,9 +75,6 @@ msgstr "İptal"
 msgid "Comment"
 msgstr "Yorum"
 
-msgid "Compressed"
-msgstr "Sıkıştırılmış"
-
 msgid "Copy"
 msgstr "Kopyala"
 

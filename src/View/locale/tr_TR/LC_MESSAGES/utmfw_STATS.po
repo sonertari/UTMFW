@@ -359,9 +359,6 @@ msgstr "Spam tarama istekleri"
 msgid "Successful logins"
 msgstr "Başarılı girişler"
 
-msgid "Target"
-msgstr "Hedef"
-
 msgid "Target IPs"
 msgstr "Hedef IP'ler"
 

@@ -1,18 +1,24 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
+# Soner Tari <sonertari@gmail.com>, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"PO-Revision-Date: 2017-10-16 23:13+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language-Team: LANGUAGE <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#, php-format
+msgid "0-100% or 0-1"
+msgstr ""
 
 msgid "< Previous"
 msgstr ""
@@ -23,13 +29,49 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
+msgid "Af Translate"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Anchor"
+msgstr ""
+
+msgid "Antispoof"
+msgstr ""
+
 msgid "Apply"
+msgstr ""
+
+msgid "Are you sure you want to <BUTTON_VALUE> secure HTTP?"
+msgstr ""
+
+msgid "Are you sure you want to delete <RULE_TYPE> rule number <RULE_NUMBER>?"
+msgstr ""
+
+msgid "Are you sure you want to delete the entire ruleset?"
+msgstr ""
+
+msgid "Are you sure you want to delete the rule?"
+msgstr ""
+
+msgid "Are you sure you want to delete the rules file?"
+msgstr ""
+
+msgid "Binat"
+msgstr ""
+
+msgid "Blank Line"
 msgstr ""
 
 msgid "Block"
 msgstr ""
 
-msgid "Compressed"
+msgid "Cancel"
+msgstr ""
+
+msgid "Comment"
 msgstr ""
 
 msgid "Copy"
@@ -47,16 +89,58 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+msgid "Delete All"
+msgstr ""
+
+msgid "Delete rules file"
+msgstr ""
+
 msgid "Disable"
 msgstr ""
 
 msgid "Display"
 msgstr ""
 
+msgid "Display line numbers"
+msgstr ""
+
+msgid "Display with errors"
+msgstr ""
+
+msgid "Divert"
+msgstr ""
+
+msgid "Divert Packet"
+msgstr ""
+
 msgid "Download"
 msgstr ""
 
+msgid "Download ruleset"
+msgstr ""
+
+msgid "Download with errors"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
 msgid "Enable"
+msgstr ""
+
+msgid "Enter blank lines here"
+msgstr ""
+
+msgid "Enter comment here"
+msgstr ""
+
+msgid "Enter inline rules here"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Generate with errors"
 msgstr ""
 
 msgid "Horizontal"
@@ -65,10 +149,37 @@ msgstr ""
 msgid "Hourly"
 msgstr ""
 
+msgid "Include"
+msgstr ""
+
+msgid "Install"
+msgstr ""
+
+msgid "Install as main ruleset"
+msgstr ""
+
 msgid "Last >>"
 msgstr ""
 
+msgid "Limit"
+msgstr ""
+
+msgid "Load"
+msgstr ""
+
+msgid "Load Anchor"
+msgstr ""
+
+msgid "Load rules from file"
+msgstr ""
+
+msgid "Load with errors"
+msgstr ""
+
 msgid "Log in"
+msgstr ""
+
+msgid "Macro"
 msgstr ""
 
 msgid "Make Dynamic"
@@ -77,13 +188,31 @@ msgstr ""
 msgid "Make Static"
 msgstr ""
 
+msgid "Move"
+msgstr ""
+
 msgid "Move Down"
 msgstr ""
 
 msgid "Move Up"
 msgstr ""
 
+msgid "Nat"
+msgstr ""
+
 msgid "Next >"
+msgstr ""
+
+msgid "No Queues defined"
+msgstr ""
+
+msgid "Option"
+msgstr ""
+
+msgid "Queue"
+msgstr ""
+
+msgid "Redirect"
 msgstr ""
 
 msgid "Redraw"
@@ -95,6 +224,9 @@ msgstr ""
 msgid "Reload"
 msgstr ""
 
+msgid "Reload main ruleset"
+msgstr ""
+
 msgid "Restart"
 msgstr ""
 
@@ -104,16 +236,43 @@ msgstr ""
 msgid "Rotate All"
 msgstr ""
 
+msgid "Route"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save ruleset to file"
+msgstr ""
+
+msgid "Save with errors"
+msgstr ""
+
+msgid "Scrub"
+msgstr ""
+
 msgid "Search"
 msgstr ""
 
 msgid "Select"
 msgstr ""
 
+msgid "Show"
+msgstr ""
+
 msgid "Start"
 msgstr ""
 
+msgid "State Defaults"
+msgstr ""
+
 msgid "Stop"
+msgstr ""
+
+msgid "Table"
+msgstr ""
+
+msgid "Timeout"
 msgstr ""
 
 msgid "Unblock"
@@ -122,5 +281,107 @@ msgstr ""
 msgid "Unblock All"
 msgstr ""
 
+msgid "Upload"
+msgstr ""
+
+msgid "Upload with errors"
+msgstr ""
+
 msgid "Vertical"
+msgstr ""
+
+msgid "add value"
+msgstr ""
+
+msgid "as rule number"
+msgstr ""
+
+msgid "defaults to S/SA"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "enter comment, such as a description of the rule"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+msgid "groupname or groupid"
+msgstr ""
+
+msgid "host or network"
+msgstr ""
+
+msgid "if or macro"
+msgstr ""
+
+msgid "interface"
+msgstr ""
+
+msgid "ip, host, table or macro"
+msgstr ""
+
+msgid "label"
+msgstr ""
+
+msgid "logging interface"
+msgstr ""
+
+msgid "move to"
+msgstr ""
+
+msgid "name, may be nested"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
+msgid "none"
+msgstr ""
+
+msgid "number"
+msgstr ""
+
+msgid "number 0-7"
+msgstr ""
+
+msgid "number or abbrev."
+msgstr ""
+
+msgid "number or name"
+msgstr ""
+
+msgid "number(ms)"
+msgstr ""
+
+msgid "number, name, table or macro"
+msgstr ""
+
+msgid "number/number"
+msgstr ""
+
+msgid "number[(K|M|G)]"
+msgstr ""
+
+msgid "os name or macro"
+msgstr ""
+
+msgid "protocol"
+msgstr ""
+
+msgid "string"
+msgstr ""
+
+msgid "string or number"
+msgstr ""
+
+msgid "username or userid"
+msgstr ""
+
+msgid "valid string"
+msgstr ""
+
+msgid "yes"
 msgstr ""

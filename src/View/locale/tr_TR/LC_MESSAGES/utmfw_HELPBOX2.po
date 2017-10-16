@@ -777,9 +777,6 @@ msgstr ""
 msgid "List of SMTP servers on your network"
 msgstr "Ağınızdaki SMTP sunucuların listesi."
 
-msgid "List of snmp servers on your network"
-msgstr "Ağınızdaki snmp sunucuların listesi."
-
 msgid "List of sql servers on your network"
 msgstr "Ağınızdaki sql sunucuların listesi."
 

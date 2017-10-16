@@ -92,9 +92,9 @@ class Model
 
 		$this->ErrorLogFile= $this->LogFile;
 		$this->prios= array(
-			'EMERGENCY|ALERT|CRITICAL' => _('<MODEL> has CRITICAL errors'),
-			'ERROR' => _('<MODEL> has ERRORs'),
-			'WARNING' => _('<MODEL> has WARNINGs')
+			'EMERGENCY|ALERT|CRITICAL' => _TITLE('<MODEL> has CRITICAL errors'),
+			'ERROR' => _TITLE('<MODEL> has ERRORs'),
+			'WARNING' => _TITLE('<MODEL> has WARNINGs')
 			);
 
 		$this->Commands= array_merge(
@@ -2719,7 +2719,7 @@ class Model
 						$errorStr.= "\n" . $l['Log'];
 						$count++;
 						if ($count >= 5 && $total - $count > 0) {
-							$errorStr.= "\n" . str_replace('<COUNT>', $total - $count, _('And <COUNT> others not shown.'));
+							$errorStr.= "\n" . str_replace('<COUNT>', $total - $count, _TITLE('And <COUNT> others not shown.'));
 							break;
 						}
 					}

@@ -1,17 +1,19 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
+# Soner Tari <sonertari@gmail.com>, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"PO-Revision-Date: 2017-10-16 23:07+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language-Team: LANGUAGE <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "ACL"
@@ -44,9 +46,6 @@ msgstr ""
 msgid "Bypass"
 msgstr ""
 
-msgid "UTMFW ADMINISTRATION INTERFACE"
-msgstr ""
-
 msgid "CPUs"
 msgstr ""
 
@@ -62,13 +61,7 @@ msgstr ""
 msgid "Clamd"
 msgstr ""
 
-msgid "UTMFW Administration Interface"
-msgstr ""
-
 msgid "Config"
-msgstr ""
-
-msgid "Credits"
 msgstr ""
 
 msgid "DB"
@@ -92,13 +85,25 @@ msgstr ""
 msgid "Daily"
 msgstr ""
 
+msgid "Dashboard"
+msgstr ""
+
 msgid "Disks"
+msgstr ""
+
+msgid "Display & Install"
+msgstr ""
+
+msgid "Documentation"
 msgstr ""
 
 msgid "Domains"
 msgstr ""
 
 msgid "Downloads"
+msgstr ""
+
+msgid "Editor"
 msgstr ""
 
 msgid "Email"
@@ -134,7 +139,7 @@ msgstr ""
 msgid "Hourly"
 msgstr ""
 
-msgid "IDS"
+msgid "IDP"
 msgstr ""
 
 msgid "IM Logs"
@@ -144,12 +149,6 @@ msgid "IM PROXY"
 msgstr ""
 
 msgid "IM Proxy Logs"
-msgstr ""
-
-msgid "INFORMATION"
-msgstr ""
-
-msgid "IPS"
 msgstr ""
 
 msgid "Info"
@@ -170,10 +169,13 @@ msgstr ""
 msgid "Live"
 msgstr ""
 
-msgid "Logs"
+msgid "Load & Save"
 msgstr ""
 
-msgid "Logs Report"
+msgid "Logout"
+msgstr ""
+
+msgid "Logs"
 msgstr ""
 
 msgid "MONITORING"
@@ -203,10 +205,16 @@ msgstr ""
 msgid "PACKET FILTER"
 msgstr ""
 
+msgid "PASSIVE IPS"
+msgstr ""
+
 msgid "POP3 PROXY"
 msgstr ""
 
 msgid "Partitions"
+msgstr ""
+
+msgid "Pf"
 msgstr ""
 
 msgid "Phrases"
@@ -236,6 +244,9 @@ msgstr ""
 msgid "SPAMD"
 msgstr ""
 
+msgid "SSL PROXY"
+msgstr ""
+
 msgid "SYSTEM"
 msgstr ""
 
@@ -246,9 +257,6 @@ msgid "Sensors"
 msgstr ""
 
 msgid "Sites"
-msgstr ""
-
-msgid "Source Docs"
 msgstr ""
 
 msgid "Spamd DB"
@@ -263,13 +271,19 @@ msgstr ""
 msgid "Statistics"
 msgstr ""
 
-msgid "Status"
+msgid "System"
 msgstr ""
 
 msgid "Transfer"
 msgstr ""
 
 msgid "URLs"
+msgstr ""
+
+msgid "UTM FIREWALL"
+msgstr ""
+
+msgid "UTM Firewall"
 msgstr ""
 
 msgid "VIRUS FILTER"

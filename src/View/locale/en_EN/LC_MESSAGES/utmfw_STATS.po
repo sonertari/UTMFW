@@ -1,17 +1,19 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
+# Soner Tari <sonertari@gmail.com>, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"PO-Revision-Date: 2017-10-16 23:01+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language-Team: LANGUAGE <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Account name"
@@ -83,6 +85,9 @@ msgstr ""
 msgid "Closed by"
 msgstr ""
 
+msgid "Connections"
+msgstr ""
+
 msgid "Connections by date"
 msgstr ""
 
@@ -96,6 +101,9 @@ msgid "Denied categories"
 msgstr ""
 
 msgid "Denied requests"
+msgstr ""
+
+msgid "Destination Addresses"
 msgstr ""
 
 msgid "Destination IPs"
@@ -113,13 +121,28 @@ msgstr ""
 msgid "Downloaded (KB)"
 msgstr ""
 
+msgid "Downloads (KB)"
+msgstr ""
+
 msgid "E-mails per request"
+msgstr ""
+
+msgid "Errors"
 msgstr ""
 
 msgid "Exception IPs"
 msgstr ""
 
 msgid "Exception requests"
+msgstr ""
+
+msgid "Expired Destination Addresses"
+msgstr ""
+
+msgid "Expired Source Addresses"
+msgstr ""
+
+msgid "Expired connections"
 msgstr ""
 
 msgid "Extended Hosts"
@@ -150,6 +173,9 @@ msgid "IPs"
 msgstr ""
 
 msgid "IPs querying"
+msgstr ""
+
+msgid "Idle Times"
 msgstr ""
 
 msgid "Infected"
@@ -206,6 +232,9 @@ msgstr ""
 msgid "Processing time (sec)"
 msgstr ""
 
+msgid "Protocols"
+msgstr ""
+
 msgid "Query types"
 msgstr ""
 
@@ -248,6 +277,12 @@ msgstr ""
 msgid "SSH version"
 msgstr ""
 
+msgid "SSL Destination Protocols"
+msgstr ""
+
+msgid "SSL Source Protocols"
+msgstr ""
+
 msgid "Scan Results"
 msgstr ""
 
@@ -272,10 +307,22 @@ msgstr ""
 msgid "Session Takeover"
 msgstr ""
 
+msgid "Set watermarks"
+msgstr ""
+
+msgid "Size by Client (KB)"
+msgstr ""
+
 msgid "Size by IP (KB)"
 msgstr ""
 
 msgid "Size by Link (KB)"
+msgstr ""
+
+msgid "Size by Method (KB)"
+msgstr ""
+
+msgid "Size by Protocol (KB)"
 msgstr ""
 
 msgid "Size by Target (KB)"
@@ -288,6 +335,9 @@ msgid "Soft inits"
 msgstr ""
 
 msgid "Soft inits (unblock all)"
+msgstr ""
+
+msgid "Source Addresses"
 msgstr ""
 
 msgid "Source IPs"
@@ -308,13 +358,13 @@ msgstr ""
 msgid "Successful logins"
 msgstr ""
 
-msgid "Target"
-msgstr ""
-
 msgid "Target IPs"
 msgstr ""
 
 msgid "Target Ports"
+msgstr ""
+
+msgid "Targets"
 msgstr ""
 
 msgid "Total deferred time (sec)"
@@ -329,6 +379,9 @@ msgstr ""
 msgid "Unblocked Hosts"
 msgstr ""
 
+msgid "Uploads (KB)"
+msgstr ""
+
 msgid "Users"
 msgstr ""
 
@@ -336,4 +389,7 @@ msgid "Virus"
 msgstr ""
 
 msgid "Virus Scan Requests"
+msgstr ""
+
+msgid "Warnings"
 msgstr ""

@@ -36,7 +36,7 @@ $StatusTitles= array(
 	'W' => _TITLE('Warning'),
 	'R' => _TITLE('Running'),
 	'S' => _TITLE('Stopped'),
-	'N' => _TITLE('No Error'),
+	'N' => _TITLE('No Errors'),
 	);
 
 $ModuleNames= array(
@@ -77,7 +77,7 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 					</tr>
 					<tr>
 						<td class="prio">
-							<?php echo _('CRITICAL') ?>
+							<?php echo _TITLE('CRITICAL') ?>
 						</td>
 					</tr>
 				</table>
@@ -93,7 +93,7 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 					</tr>
 					<tr>
 						<td class="prio">
-							<?php echo _('ERROR') ?>
+							<?php echo _TITLE('ERROR') ?>
 						</td>
 					</tr>
 				</table>
@@ -109,7 +109,7 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 					</tr>
 					<tr>
 						<td class="prio">
-							<?php echo _('WARNING') ?>
+							<?php echo _TITLE('WARNING') ?>
 						</td>
 					</tr>
 				</table>
@@ -120,7 +120,7 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 <table id="modulestatus">
 	<tr>
 		<td>
-			<strong><?php echo _('Module Status').':' ?></strong>
+			<strong><?php echo _TITLE('Module Status').':' ?></strong>
 		</td>
 	</tr>
 	<?php
@@ -151,13 +151,13 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 
 				$ErrorCounts= array();
 				if ($Critical) {
-					$ErrorCounts[]= _('Critical').': '.$Critical;
+					$ErrorCounts[]= _TITLE('Critical').': '.$Critical;
 				}
 				if ($Error) {
-					$ErrorCounts[]= _('Error').': '.$Error;
+					$ErrorCounts[]= _TITLE('Error').': '.$Error;
 				}
 				if ($Warning) {
-					$ErrorCounts[]= _('Warning').': '.$Warning;
+					$ErrorCounts[]= _TITLE('Warning').': '.$Warning;
 				}
 				$ErrorCountsStr= implode(', ', $ErrorCounts);
 

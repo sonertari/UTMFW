@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-08-25 02:01+0300\n"
+"PO-Revision-Date: 2017-10-16 22:38+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -65,9 +65,6 @@ msgstr "Clamd"
 msgid "Config"
 msgstr "Ayarlar"
 
-msgid "Credits"
-msgstr "Teşekkürler"
-
 msgid "DB"
 msgstr "VT"
 
@@ -89,11 +86,17 @@ msgstr "DNS"
 msgid "Daily"
 msgstr "Günlük"
 
+msgid "Dashboard"
+msgstr "Gösterge Paneli"
+
 msgid "Disks"
 msgstr "Diskler"
 
 msgid "Display & Install"
 msgstr "Görüntüle ve Kur"
+
+msgid "Documentation"
+msgstr "Belgeler"
 
 msgid "Domains"
 msgstr "Alanadları"
@@ -149,9 +152,6 @@ msgstr "MESAJ VEKİL"
 msgid "IM Proxy Logs"
 msgstr "MV Kayıtları"
 
-msgid "INFORMATION"
-msgstr "BİLGİ"
-
 msgid "Info"
 msgstr "Bilgi"
 
@@ -173,11 +173,11 @@ msgstr "Canlı"
 msgid "Load & Save"
 msgstr "Yükle ve Kaydet"
 
+msgid "Logout"
+msgstr "Çıkış"
+
 msgid "Logs"
 msgstr "Kayıtlar"
-
-msgid "Logs Report"
-msgstr "Kayıt Raporu"
 
 msgid "MONITORING"
 msgstr "GÖZLEMLEME"
@@ -245,9 +245,6 @@ msgstr "SPAM ELEĞİ"
 msgid "SPAMD"
 msgstr "SPAMD"
 
-msgid "SSL"
-msgstr "SSL"
-
 msgid "SSL PROXY"
 msgstr "SSL VEKİL"
 
@@ -263,9 +260,6 @@ msgstr "Sensörler"
 msgid "Sites"
 msgstr "Siteler"
 
-msgid "Source Docs"
-msgstr "Kaynak Belgeleri"
-
 msgid "Spamd DB"
 msgstr "Spamd VT"
 
@@ -278,8 +272,8 @@ msgstr "Durumlar"
 msgid "Statistics"
 msgstr "İstatistikler"
 
-msgid "Status"
-msgstr "Durum"
+msgid "System"
+msgstr "Sistem"
 
 msgid "Transfer"
 msgstr "Aktarım"
@@ -292,12 +286,6 @@ msgstr "UTM FIREWALL"
 
 msgid "UTM Firewall"
 msgstr "UTM Firewall"
-
-msgid "UTMFW ADMINISTRATION INTERFACE"
-msgstr "UTMFW YÖNETİM ARAYÜZÜ"
-
-msgid "UTMFW Administration Interface"
-msgstr "UTMFW Yönetim Arayüzü"
 
 msgid "VIRUS FILTER"
 msgstr "VİRÜS ELEĞİ"

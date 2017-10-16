@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-08-25 02:08+0300\n"
+"PO-Revision-Date: 2017-10-17 00:05+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.7\n"
 
 msgid "%CPU"
-msgstr "%CPU"
+msgstr "CPU%"
 
 msgid "Add ACL"
 msgstr "ACL ekle"
@@ -115,9 +115,6 @@ msgstr "P3scan bildirim dilini değiştir"
 
 msgid "Change spamassassin local"
 msgstr "Spamassasin yöresini değiştir"
-
-msgid "Check authentication"
-msgstr "Kimlik doğrula"
 
 msgid "Check if process running"
 msgstr "Sürecin çalıştığını kontrol et"
@@ -461,6 +458,9 @@ msgstr "Kayıt yapılandırmasını getir"
 msgid "Get max stats"
 msgstr "En fazla istatistikleri getir"
 
+msgid "Get module status"
+msgstr "Modül durumunu getir"
+
 msgid "Get partition list"
 msgstr "Disk bölümü listesini getir"
 
@@ -493,36 +493,6 @@ msgstr "Pf durumlarını getir"
 
 msgid "Get pf timeout info"
 msgstr "Pf zaman aşımı bilgisini getir"
-
-msgid "Get pfw commandwrapper -conntest"
-msgstr "Pfw commandwrapper -conntest çalıştır"
-
-msgid "Get pfw commandwrapper -info"
-msgstr "Pfw commandwrapper -info çalıştır"
-
-msgid "Get pfw commandwrapper -log"
-msgstr "Pfw commandwrapper -log çalıştır"
-
-msgid "Get pfw commandwrapper -pfinfo"
-msgstr "Pfw commandwrapper -pfinfo çalıştır"
-
-msgid "Get pfw commandwrapper -pfmem"
-msgstr "Pfw commandwrapper -pfmem çalıştır"
-
-msgid "Get pfw commandwrapper -pfstates"
-msgstr "Pfw commandwrapper -pfstates çalıştır"
-
-msgid "Get pfw commandwrapper -queues"
-msgstr "Pfw commandwrapper -queues çalıştır"
-
-msgid "Get pfw packetfilter -i"
-msgstr "Pfw packetfilter -i çalıştır"
-
-msgid "Get pfw packetfilter -r"
-msgstr "Pfw packetfilter -r çalıştır"
-
-msgid "Get pfw packetfilter -t"
-msgstr "Pfw packetfilter -t çalıştır"
 
 msgid "Get process list"
 msgstr "Süreç listesini getir"
@@ -557,9 +527,6 @@ msgstr "Oturumları getir"
 msgid "Get software version"
 msgstr "Yazılım sürümünü getir"
 
-msgid "Get source file CVS tag"
-msgstr "Kaynak dosyası CVS etiketini getir"
-
 msgid "Get spamd blacklist"
 msgstr "Spamd karalistesini getir"
 
@@ -592,9 +559,6 @@ msgstr "Grup başarıyla yaratıldı"
 
 msgid "Group exists"
 msgstr "Grup kontrolü"
-
-msgid "Horizontal"
-msgstr "Yatay"
 
 msgid "Host wrong"
 msgstr "Bilgisayar öğesi hatalı"
@@ -661,9 +625,6 @@ msgstr "Geçersiz değer"
 
 msgid "Line"
 msgstr "Satır"
-
-msgid "Lines per page"
-msgstr "Sayfa başına satır"
 
 msgid "List hosts"
 msgstr "Bilgisayarları listele"
@@ -781,9 +742,6 @@ msgstr "Dışarı IP6 Geçirme"
 msgid "Output not in correct format"
 msgstr "Çıktı doğru yapıda değil"
 
-msgid "Overview"
-msgstr "Genel Bakış"
-
 msgid "PID"
 msgstr "PID"
 
@@ -805,9 +763,6 @@ msgstr "Proto"
 msgid "Queue Length"
 msgstr "Kuyruk Boyu"
 
-msgid "Queue Statistics"
-msgstr "Kuyruk İstatistikleri"
-
 msgid "RSS"
 msgstr "RSS"
 
@@ -822,9 +777,6 @@ msgstr "Sistem adını getir"
 
 msgid "Read system nameserver"
 msgstr "Sistem ad sunucusunu getir"
-
-msgid "Regexp"
-msgstr "Düzenli ifade"
 
 msgid "Regular expression wrong"
 msgstr "Düzenli ifade hatalı"
@@ -964,6 +916,9 @@ msgstr "Başlatma arayüzünü ayarla"
 msgid "Set startup ifs"
 msgstr "Başlatma arayüzlerini ayarla"
 
+msgid "Set status check interval"
+msgstr "Durum kontrol aralığını ayarla"
+
 msgid "Set symon conf"
 msgstr "Symon yapılandırmasını ayarla"
 
@@ -1060,9 +1015,6 @@ msgstr "Pf kurallarını test et"
 msgid "The process is taking too long, thus will run in the background."
 msgstr "Sürecin işlemesi uzun zaman aldığından arka planda çalıştırılacaktır."
 
-msgid "There are CRITICAL errors."
-msgstr "KRİTİK hatalar var."
-
 msgid "Timed out running pfctl command"
 msgstr "Pfctl komutu zaman aşımına uğradı"
 
@@ -1143,9 +1095,6 @@ msgstr "dak"
 
 msgid "sec"
 msgstr "sn"
-
-msgid "total"
-msgstr "toplam"
 
 msgid "unconfigured"
 msgstr "yapılandırılmamış"

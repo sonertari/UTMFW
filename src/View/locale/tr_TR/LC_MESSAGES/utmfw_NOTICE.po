@@ -34,9 +34,6 @@ msgstr "Yapılandırmayı silmek istediğinizden emin misiniz?"
 msgid "Are you sure you want to delete the selected items?"
 msgstr "Seçili öğeleri silmek istediğinizden emin misiniz?"
 
-msgid "Are you sure you want to disable Packet Filter?"
-msgstr "Paket Eleğini kapatmak istediğinizden emin misiniz?"
-
 msgid "Are you sure you want to erase statistics files?"
 msgstr "İstatistik dosyalarını silmek istediğinizden emin misiniz?"
 
@@ -146,9 +143,6 @@ msgstr "Sistem tekrar başlıyor..."
 
 msgid "There was an error while installing"
 msgstr "Kurulum sırasında bir hata oluştu"
-
-msgid "UTMFW currently supports only admin and user usernames"
-msgstr "UTMFW sadece admin ve user kullanıcı adlarını destekler."
 
 msgid "User password changed"
 msgstr "Kullanıcı parolası değiştirildi"

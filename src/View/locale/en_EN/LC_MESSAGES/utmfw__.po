@@ -1,17 +1,19 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
+# Soner Tari <sonertari@gmail.com>, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"PO-Revision-Date: 2017-10-16 23:13+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language-Team: LANGUAGE <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "%CPU"
@@ -50,6 +52,9 @@ msgstr ""
 msgid "Add list item"
 msgstr ""
 
+msgid "Add proxy specs"
+msgstr ""
+
 msgid "Add to IP list"
 msgstr ""
 
@@ -83,10 +88,25 @@ msgstr ""
 msgid "Cannot find group configuration file"
 msgstr ""
 
+msgid "Cannot fork pfctl process"
+msgstr ""
+
 msgid "Cannot get pid"
 msgstr ""
 
+msgid "Cannot install pf rule file"
+msgstr ""
+
+msgid "Cannot load pf rules"
+msgstr ""
+
 msgid "Cannot read config"
+msgstr ""
+
+msgid "Cannot remove tmp pf file"
+msgstr ""
+
+msgid "Cannot write to tmp pf file"
 msgstr ""
 
 msgid "Change p3scan report language"
@@ -95,13 +115,16 @@ msgstr ""
 msgid "Change spamassassin local"
 msgstr ""
 
-msgid "Check authentication"
-msgstr ""
-
 msgid "Check if process running"
 msgstr ""
 
 msgid "Chinese simplified"
+msgstr ""
+
+msgid "Cleared"
+msgstr ""
+
+msgid "Compressed"
 msgstr ""
 
 msgid "Configure an interface"
@@ -111,6 +134,9 @@ msgid "Copy conf"
 msgstr ""
 
 msgid "Create new group"
+msgstr ""
+
+msgid "Create user"
 msgstr ""
 
 msgid "Datetime wrong"
@@ -161,6 +187,12 @@ msgstr ""
 msgid "Delete list item"
 msgstr ""
 
+msgid "Delete pf rule file"
+msgstr ""
+
+msgid "Delete proxy specs"
+msgstr ""
+
 msgid "Dest"
 msgstr ""
 
@@ -186,6 +218,12 @@ msgid "Disable rule"
 msgstr ""
 
 msgid "Display remote time"
+msgstr ""
+
+msgid "Dropped Bytes"
+msgstr ""
+
+msgid "Dropped Packets"
 msgstr ""
 
 msgid "Dutch"
@@ -218,6 +256,18 @@ msgstr ""
 msgid "Erase statistics files"
 msgstr ""
 
+msgid "Error in include file"
+msgstr ""
+
+msgid "Error loading, rule load forced"
+msgstr ""
+
+msgid "Error loading, rule loaded partially"
+msgstr ""
+
+msgid "Evaluations"
+msgstr ""
+
 msgid "Expr"
 msgstr ""
 
@@ -230,10 +280,34 @@ msgstr ""
 msgid "FATAL ERRORS in creating new group"
 msgstr ""
 
+msgid "Failed creating or attaching to message queue"
+msgstr ""
+
+msgid "Failed loading pf rules"
+msgstr ""
+
+msgid "Failed removing message queue"
+msgstr ""
+
+msgid "Failed running pfctl command"
+msgstr ""
+
+msgid "Failed testing pf rules"
+msgstr ""
+
+msgid "Filename not accepted"
+msgstr ""
+
 msgid "Filepath wrong"
 msgstr ""
 
 msgid "French"
+msgstr ""
+
+msgid "Generate pf rule"
+msgstr ""
+
+msgid "Generate pf rules"
 msgstr ""
 
 msgid "Get ACL"
@@ -243,6 +317,9 @@ msgid "Get AfterHour pf rules"
 msgstr ""
 
 msgid "Get AfterHours"
+msgstr ""
+
+msgid "Get CA cert filename"
 msgstr ""
 
 msgid "Get DHCP IP range"
@@ -258,6 +335,9 @@ msgid "Get DNS forwarders"
 msgstr ""
 
 msgid "Get HTTP proxy IP:port"
+msgstr ""
+
+msgid "Get IP DNS listens on"
 msgstr ""
 
 msgid "Get IPS info"
@@ -296,10 +376,16 @@ msgstr ""
 msgid "Get confs"
 msgstr ""
 
+msgid "Get critical errors"
+msgstr ""
+
 msgid "Get current locale"
 msgstr ""
 
 msgid "Get database mirrors"
+msgstr ""
+
+msgid "Get datetime"
 msgstr ""
 
 msgid "Get dhcp leases"
@@ -323,6 +409,9 @@ msgstr ""
 msgid "Get host graphs"
 msgstr ""
 
+msgid "Get idle conns"
+msgstr ""
+
 msgid "Get if config"
 msgstr ""
 
@@ -333,6 +422,9 @@ msgid "Get inactive cats"
 msgstr ""
 
 msgid "Get int_if"
+msgstr ""
+
+msgid "Get line count"
 msgstr ""
 
 msgid "Get lines"
@@ -362,7 +454,34 @@ msgstr ""
 msgid "Get logs configuration"
 msgstr ""
 
+msgid "Get max stats"
+msgstr ""
+
+msgid "Get module status"
+msgstr ""
+
 msgid "Get partition list"
+msgstr ""
+
+msgid "Get pf info"
+msgstr ""
+
+msgid "Get pf interface info"
+msgstr ""
+
+msgid "Get pf memory info"
+msgstr ""
+
+msgid "Get pf queue info"
+msgstr ""
+
+msgid "Get pf rule files"
+msgstr ""
+
+msgid "Get pf rules"
+msgstr ""
+
+msgid "Get pf rules info"
 msgstr ""
 
 msgid "Get pf state count"
@@ -371,40 +490,19 @@ msgstr ""
 msgid "Get pf states"
 msgstr ""
 
-msgid "Get pfw commandwrapper -conntest"
-msgstr ""
-
-msgid "Get pfw commandwrapper -info"
-msgstr ""
-
-msgid "Get pfw commandwrapper -log"
-msgstr ""
-
-msgid "Get pfw commandwrapper -pfinfo"
-msgstr ""
-
-msgid "Get pfw commandwrapper -pfmem"
-msgstr ""
-
-msgid "Get pfw commandwrapper -pfstates"
-msgstr ""
-
-msgid "Get pfw commandwrapper -queues"
-msgstr ""
-
-msgid "Get pfw packetfilter -i"
-msgstr ""
-
-msgid "Get pfw packetfilter -r"
-msgstr ""
-
-msgid "Get pfw packetfilter -t"
+msgid "Get pf timeout info"
 msgstr ""
 
 msgid "Get process list"
 msgstr ""
 
 msgid "Get protocols"
+msgstr ""
+
+msgid "Get proxy specs"
+msgstr ""
+
+msgid "Get reload rate"
 msgstr ""
 
 msgid "Get remote time"
@@ -426,9 +524,6 @@ msgid "Get sessions"
 msgstr ""
 
 msgid "Get software version"
-msgstr ""
-
-msgid "Get source file CVS tag"
 msgstr ""
 
 msgid "Get spamd blacklist"
@@ -456,9 +551,6 @@ msgid "Get system information"
 msgstr ""
 
 msgid "Get tail"
-msgstr ""
-
-msgid "Gets line count"
 msgstr ""
 
 msgid "Group created successfully"
@@ -497,10 +589,37 @@ msgstr ""
 msgid "If client conf"
 msgstr ""
 
+msgid "In4 Block"
+msgstr ""
+
+msgid "In4 Pass"
+msgstr ""
+
+msgid "In6 Block"
+msgstr ""
+
+msgid "In6 Pass"
+msgstr ""
+
 msgid "Init graphs"
 msgstr ""
 
+msgid "Inserted"
+msgstr ""
+
+msgid "Install pf rules"
+msgstr ""
+
+msgid "Intrusion Detection"
+msgstr ""
+
+msgid "Invalid inline rules, parser output"
+msgstr ""
+
 msgid "Invalid value"
+msgstr ""
+
+msgid "Invalid value for"
 msgstr ""
 
 msgid "Line"
@@ -512,10 +631,16 @@ msgstr ""
 msgid "List physical interfaces"
 msgstr ""
 
+msgid "Load Error"
+msgstr ""
+
 msgid "Make system gateway dynamic"
 msgstr ""
 
 msgid "Make system gateway static"
+msgstr ""
+
+msgid "Max Values"
 msgstr ""
 
 msgid "Method does not exist"
@@ -536,19 +661,34 @@ msgstr ""
 msgid "Move rule up"
 msgstr ""
 
+msgid "Multiple values not allowed for"
+msgstr ""
+
 msgid "NA"
 msgstr ""
 
 msgid "NI"
 msgstr ""
 
+msgid "Name"
+msgstr ""
+
 msgid "Name wrong"
+msgstr ""
+
+msgid "No regex or func def for"
 msgstr ""
 
 msgid "No such file"
 msgstr ""
 
+msgid "Not JSON encoded string"
+msgstr ""
+
 msgid "Not asterisk"
+msgstr ""
+
+msgid "Not boolean"
 msgstr ""
 
 msgid "Not comma separated digits"
@@ -572,6 +712,9 @@ msgstr ""
 msgid "Not sha1 encrypted string"
 msgstr ""
 
+msgid "Number"
+msgstr ""
+
 msgid "Number wrong"
 msgstr ""
 
@@ -580,10 +723,28 @@ msgid ""
 "Examine the report above to make sure this is the intended result!"
 msgstr ""
 
+msgid "Out4 Block"
+msgstr ""
+
+msgid "Out4 Pass"
+msgstr ""
+
+msgid "Out6 Block"
+msgstr ""
+
+msgid "Out6 Pass"
+msgstr ""
+
+msgid "Output not in correct format"
+msgstr ""
+
 msgid "PID"
 msgstr ""
 
 msgid "Packets"
+msgstr ""
+
+msgid "Parse Error"
 msgstr ""
 
 msgid "Pfctl output does not match"
@@ -595,7 +756,13 @@ msgstr ""
 msgid "Proto"
 msgstr ""
 
+msgid "Queue Length"
+msgstr ""
+
 msgid "RSS"
+msgstr ""
+
+msgid "Reached max nesting for inline anchors"
 msgstr ""
 
 msgid "Read system gateway"
@@ -613,7 +780,13 @@ msgstr ""
 msgid "Reload "
 msgstr ""
 
+msgid "Render layout"
+msgstr ""
+
 msgid "Requests by date"
+msgstr ""
+
+msgid "Required element missing"
 msgstr ""
 
 msgid "Restart "
@@ -626,6 +799,15 @@ msgid "Rotate all log files"
 msgstr ""
 
 msgid "Rotate log file"
+msgstr ""
+
+msgid "Rule"
+msgstr ""
+
+msgid "Rules"
+msgstr ""
+
+msgid "Ruleset contains errors"
 msgstr ""
 
 msgid "Russian"
@@ -646,6 +828,12 @@ msgstr ""
 msgid "Set DNS forwarders"
 msgstr ""
 
+msgid "Set IP DNS listens on"
+msgstr ""
+
+msgid "Set IP Relayd listens on"
+msgstr ""
+
 msgid "Set PF allowed"
 msgstr ""
 
@@ -658,10 +846,16 @@ msgstr ""
 msgid "Set configuration"
 msgstr ""
 
+msgid "Set default locale"
+msgstr ""
+
 msgid "Set dhcpd conf"
 msgstr ""
 
 msgid "Set e-mail address"
+msgstr ""
+
+msgid "Set force HTTPs"
 msgstr ""
 
 msgid "Set help boxes"
@@ -688,7 +882,13 @@ msgstr ""
 msgid "Set man.cgi home"
 msgstr ""
 
+msgid "Set max anchor nesting"
+msgstr ""
+
 msgid "Set name value pair"
+msgstr ""
+
+msgid "Set pfctl timeout"
 msgstr ""
 
 msgid "Set pmacct if"
@@ -710,6 +910,9 @@ msgid "Set startup if"
 msgstr ""
 
 msgid "Set startup ifs"
+msgstr ""
+
+msgid "Set status check interval"
 msgstr ""
 
 msgid "Set symon conf"
@@ -742,6 +945,9 @@ msgstr ""
 msgid "Set template ips"
 msgstr ""
 
+msgid "Set use SSH"
+msgstr ""
+
 msgid "Set user password"
 msgstr ""
 
@@ -766,6 +972,15 @@ msgstr ""
 msgid "State"
 msgstr ""
 
+msgid "State Creations"
+msgstr ""
+
+msgid "States"
+msgstr ""
+
+msgid "Statistics"
+msgstr ""
+
 msgid "Stop "
 msgstr ""
 
@@ -778,13 +993,25 @@ msgstr ""
 msgid "String wrong"
 msgstr ""
 
+msgid "Subcat wrong"
+msgstr ""
+
 msgid "System restart"
 msgstr ""
 
 msgid "System shutdown"
 msgstr ""
 
+msgid "Tail number wrong"
+msgstr ""
+
+msgid "Test pf rules"
+msgstr ""
+
 msgid "The process is taking too long, thus will run in the background."
+msgstr ""
+
+msgid "Timed out running pfctl command"
 msgstr ""
 
 msgid "Too many args, truncating"
@@ -814,6 +1041,9 @@ msgstr ""
 msgid "Unconfigure an interface"
 msgstr ""
 
+msgid "Unexpected elements"
+msgstr ""
+
 msgid "Unknown"
 msgstr ""
 
@@ -832,10 +1062,19 @@ msgstr ""
 msgid "VSZ"
 msgstr ""
 
+msgid "Validation Error"
+msgstr ""
+
 msgid "Web Filter IP range wrong"
 msgstr ""
 
 msgid "White and black list entries should not be identical"
+msgstr ""
+
+msgid "Will not load rules with errors"
+msgstr ""
+
+msgid "Will not test rules with errors"
 msgstr ""
 
 msgid "Won't delete database.clamav.net entry."

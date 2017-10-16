@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-08-25 01:58+0300\n"
+"PO-Revision-Date: 2017-10-17 00:36+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -46,7 +46,7 @@ msgstr ""
 "için paket eleği kuralları yaratmalısınız."
 
 msgid "%CPU"
-msgstr "%CPU"
+msgstr "CPU%"
 
 msgid "%MEM"
 msgstr "%BELLEK"
@@ -125,6 +125,15 @@ msgstr "< Önceki"
 msgid "<< First"
 msgstr "<< İlk"
 
+msgid "<MODEL> has CRITICAL errors"
+msgstr "<MODEL>: ÖNEMLi hatalar var"
+
+msgid "<MODEL> has ERRORs"
+msgstr "<MODEL>: HATALAR var"
+
+msgid "<MODEL> has WARNINGs"
+msgstr "<MODEL>: UYARILAR var"
+
 msgid "<RULE_TYPE> rule"
 msgstr "<RULE_TYPE> kuralı"
 
@@ -171,9 +180,6 @@ msgstr "AV yöneticisi"
 
 msgid "AV Subject"
 msgstr "AV konu başlığı"
-
-msgid "Access Denied Address"
-msgstr "Giriş engelleme adresi"
 
 msgid "Access Logs"
 msgstr "Giriş Kayıtları"
@@ -348,9 +354,6 @@ msgid ""
 "as well."
 msgstr ""
 
-msgid "All sport sites"
-msgstr "Spor siteleri"
-
 msgid ""
 "All topics concerning pets: description, breed, food, looks, fairs, favorite "
 "pet stories and so on."
@@ -418,6 +421,9 @@ msgstr ""
 
 msgid "Anchor"
 msgstr "Çapa"
+
+msgid "And <COUNT> others not shown."
+msgstr "Ve <COUNT> adet gösterilmeyen var."
 
 msgid "And finally deny all other access to this proxy"
 msgstr "Son olarak bu vekile yapılan tüm diğer girişleri engeller."
@@ -492,9 +498,6 @@ msgstr "Kural dosyası silinecek, emin misiniz?"
 
 msgid "Are you sure you want to delete the selected items?"
 msgstr "Seçili öğeleri silmek istediğinizden emin misiniz?"
-
-msgid "Are you sure you want to disable Packet Filter?"
-msgstr "Paket Eleğini kapatmak istediğinizden emin misiniz?"
 
 msgid "Are you sure you want to erase statistics files?"
 msgstr "İstatistik dosyalarını silmek istediğinizden emin misiniz?"
@@ -835,14 +838,11 @@ msgstr "İşlemci Yükü"
 msgid "CPUs"
 msgstr "İşlemciler"
 
-msgid "CTLR"
-msgstr "CTLR"
+msgid "CRITICAL"
+msgstr "ÖNEMLİ"
 
 msgid "CTLR Logs"
 msgstr "CTLR Kayıtları"
-
-msgid "CVS Tag"
-msgstr "CVS Etiketi"
 
 msgid "Cache"
 msgstr "Önbellek"
@@ -928,9 +928,6 @@ msgstr ""
 msgid "Charts"
 msgstr "Çizelgeler"
 
-msgid "Check authentication"
-msgstr "Kimlik doğrula"
-
 msgid "Check for expired connections every this many seconds."
 msgstr ""
 "Zaman aşımına uğramış bağlantıları buradaki saniye cinsinden sürede kontrol "
@@ -983,6 +980,12 @@ msgstr ""
 
 msgid "Cleared"
 msgstr "Temizlenme"
+
+msgid "Click to search in the logs"
+msgstr "Kayıtlarda aramak için tıklayın"
+
+msgid "Click to search in the stats"
+msgstr "İstatistiklerde aramak için tıklayın"
 
 msgid "Client"
 msgstr "İstemci"
@@ -1073,10 +1076,6 @@ msgstr "Bağlantılar"
 msgid "Connections by date"
 msgstr "Tarihe göre bağlantılar"
 
-#, php-format
-msgid "Contains site specifically 100% suitable for kids"
-msgstr "Çocuklar için %100 uygun siteler"
-
 msgid "Content Admin"
 msgstr "İçerik yöneticisi"
 
@@ -1088,9 +1087,6 @@ msgstr "İçerik tarama istisnaları"
 
 msgid "Content scanner timeout"
 msgstr "İçerik tarama zaman aşım değeri"
-
-msgid "Content scanning web filter."
-msgstr "İçerik tarayan web eleği."
 
 msgid "Copy"
 msgstr "Kopyala"
@@ -1119,8 +1115,11 @@ msgstr "Yeni grup yarat"
 msgid "Create user"
 msgstr "Kullanıcı yarat"
 
-msgid "Credits"
-msgstr "Teşekkürler"
+msgid "Critical"
+msgstr "Önemli"
+
+msgid "Critical Error"
+msgstr "Önemli Hata"
 
 msgid "Current Password"
 msgstr "Mevcut Parola"
@@ -1190,6 +1189,9 @@ msgstr "DNS_SERVERS"
 msgid "Daily"
 msgstr "Günlük"
 
+msgid "Dashboard"
+msgstr "Gösterge Paneli"
+
 msgid "Data Transfer"
 msgstr "Veri Aktarımı"
 
@@ -1210,12 +1212,6 @@ msgstr "Tarih-saat hatalı"
 
 msgid "Day"
 msgstr "Gün"
-
-msgid "De-facto standard IDS (Intrusion Detection System)."
-msgstr "Ölçüt kabul edilen Saldırı Tespit Sistemi (STS)."
-
-msgid "De-facto standard among HTTP proxies."
-msgstr "Ölçüt kabul edilen HTTP vekil."
 
 msgid "Debug"
 msgstr "Hata Ayıklama"
@@ -1514,6 +1510,9 @@ msgstr ""
 "Geçici dosyaları silmez (hata ayıklama amaçlı olarak).\n"
 "Öndeğer: kapalı"
 
+msgid "Documentation"
+msgstr "Belgeler"
+
 msgid "Domains"
 msgstr "Alanadları"
 
@@ -1757,6 +1756,9 @@ msgstr "Buraya satıriçi kuralları girin"
 
 msgid "Erase statistics files"
 msgstr "İstatistik dosyalarını sil"
+
+msgid "Error"
+msgstr "Hata"
 
 msgid "Error in include file"
 msgstr "Eklenen dosyada hata"
@@ -2041,20 +2043,6 @@ msgstr "Parça"
 msgid "Frags"
 msgstr "Parçalar"
 
-msgid "Free OOP scripting language."
-msgstr "Özgür Nesne Yönelimli betik dili."
-
-#, php-format
-msgid ""
-"Free secure shell provides remote shell access to the system. It is believed "
-"that almost 90% of all secure shell traffic on the Internet is provided by "
-"OpenSSH. OpenSSH is developed by the OpenBSD project."
-msgstr ""
-"Özgür güvenli kabuk sistem komut satırına uzaktan erişimi sağlar. "
-"İnternet'teki güvenli kabuk trafiğinin %90'ının OpenSSH tarafından "
-"sağlandığı tahmin edilmektedir. OpenSSH OpenBSD projesi tarafından "
-"geliştirilmektedir."
-
 msgid "French"
 msgstr "Fransızca"
 
@@ -2079,12 +2067,6 @@ msgstr "GG"
 
 msgid "GROUP"
 msgstr "GRUP"
-
-msgid "Gambling sites including stocks and shares"
-msgstr "Hisse senetleri dahil kumar siteleri"
-
-msgid "Gardening sites"
-msgstr "Bahçecilik siteleri"
 
 msgid "Gateway"
 msgstr "Ağ geçidi"
@@ -2263,6 +2245,9 @@ msgstr "Kayıt yapılandırmasını getir"
 msgid "Get max stats"
 msgstr "En fazla istatistikleri getir"
 
+msgid "Get module status"
+msgstr "Modül durumunu getir"
+
 msgid "Get partition list"
 msgstr "Disk bölümü listesini getir"
 
@@ -2296,36 +2281,6 @@ msgstr "Pf durumlarını getir"
 msgid "Get pf timeout info"
 msgstr "Pf zaman aşımı bilgisini getir"
 
-msgid "Get pfw commandwrapper -conntest"
-msgstr "Pfw commandwrapper -conntest çalıştır"
-
-msgid "Get pfw commandwrapper -info"
-msgstr "Pfw commandwrapper -info çalıştır"
-
-msgid "Get pfw commandwrapper -log"
-msgstr "Pfw commandwrapper -log çalıştır"
-
-msgid "Get pfw commandwrapper -pfinfo"
-msgstr "Pfw commandwrapper -pfinfo çalıştır"
-
-msgid "Get pfw commandwrapper -pfmem"
-msgstr "Pfw commandwrapper -pfmem çalıştır"
-
-msgid "Get pfw commandwrapper -pfstates"
-msgstr "Pfw commandwrapper -pfstates çalıştır"
-
-msgid "Get pfw commandwrapper -queues"
-msgstr "Pfw commandwrapper -queues çalıştır"
-
-msgid "Get pfw packetfilter -i"
-msgstr "Pfw packetfilter -i çalıştır"
-
-msgid "Get pfw packetfilter -r"
-msgstr "Pfw packetfilter -r çalıştır"
-
-msgid "Get pfw packetfilter -t"
-msgstr "Pfw packetfilter -t çalıştır"
-
 msgid "Get process list"
 msgstr "Süreç listesini getir"
 
@@ -2358,9 +2313,6 @@ msgstr "Oturumları getir"
 
 msgid "Get software version"
 msgstr "Yazılım sürümünü getir"
-
-msgid "Get source file CVS tag"
-msgstr "Kaynak dosyası CVS etiketini getir"
 
 msgid "Get spamd blacklist"
 msgstr "Spamd karalistesini getir"
@@ -2572,9 +2524,6 @@ msgstr "HTTP_SERVERS"
 msgid "HTTPs"
 msgstr "HTTPs"
 
-msgid "Hacking/cracking information"
-msgstr "Bilgisayar korsanlığı bilgisi"
-
 msgid "Ham"
 msgstr "Ham"
 
@@ -2583,9 +2532,6 @@ msgstr "Yardım"
 
 msgid "Help Boxes"
 msgstr "Yardım Kutuları"
-
-msgid "Help boxes"
-msgstr "Yardım kutuları"
 
 msgid ""
 "Here are the definitions of a few terms used in the logs:<ul "
@@ -3156,7 +3102,7 @@ msgid ""
 "In these manual pages, you can find extensive information about the system "
 "and services."
 msgstr ""
-"Klavuz sayfalarından sistem ve servislerle ilgili kapsamlı bilgiye "
+"Kılavuz sayfalarından sistem ve servislerle ilgili kapsamlı bilgiye "
 "ulaşabilirsiniz."
 
 msgid "In4 Block"
@@ -3299,17 +3245,11 @@ msgstr "Yerel arayüz"
 msgid "Interval"
 msgstr "Zaman Aralığı"
 
-msgid "Intrusion Alerts"
-msgstr "Saldırı Uyarıları"
-
 msgid "Intrusion Detection"
 msgstr "Saldırı Tespit"
 
 msgid "Intrusion Detection and Prevention"
 msgstr "Saldırı Tespit ve Engelleme"
-
-msgid "Intrusion Prevention"
-msgstr "Saldırı Engelleme"
 
 msgid ""
 "Intrusion alerts produced by the IDS are guesses, hence there may be false "
@@ -3353,9 +3293,6 @@ msgstr "Jabber"
 
 msgid "Just Delete"
 msgstr "Sadece sil"
-
-msgid "Just webmail sites"
-msgstr "Web posta siteleri"
 
 msgid "Keep Alive"
 msgstr "Canlı tutma"
@@ -3444,9 +3381,6 @@ msgstr "Bilgisayarları listele"
 
 msgid "List of SMTP servers on your network"
 msgstr "Ağınızdaki SMTP sunucuların listesi."
-
-msgid "List of snmp servers on your network"
-msgstr "Ağınızdaki snmp sunucuların listesi."
 
 msgid "List of sql servers on your network"
 msgstr "Ağınızdaki sql sunucuların listesi."
@@ -3715,9 +3649,6 @@ msgstr "Çıkış"
 msgid "Logs"
 msgstr "Kayıtlar"
 
-msgid "Logs Report"
-msgstr "Kayıt Raporu"
-
 msgid "Longest deferred (sec)"
 msgstr "En uzun geciktirilen (sn)"
 
@@ -3970,9 +3901,6 @@ msgstr "Yöntem bulunamadı"
 msgid "Methods"
 msgstr "Yöntemler"
 
-msgid "Military and schools etc"
-msgstr "Askeri ve okul benzerleri"
-
 msgid "Mime"
 msgstr "Mime"
 
@@ -4000,19 +3928,19 @@ msgstr "Boşta alt süreç alt sınırı"
 msgid "Min-ttl"
 msgstr "En düşük-ttl"
 
+msgid "Minute"
+msgstr "Dakika"
+
 msgid ""
 "Model agency, model and supermodel fan pages and other model sites "
 "presenting model photos. No porn pictures."
 msgstr ""
 
-msgid "Modern virtual private networking."
-msgstr "Modern sanal özel ağ programı."
+msgid "Module Status"
+msgstr "Modül Durumu"
 
 msgid "Mon"
 msgstr "Pzt"
-
-msgid "Monitoring"
-msgstr "Gözlemleme"
 
 msgid "Month"
 msgstr "Ay"
@@ -4081,6 +4009,9 @@ msgstr "Adres Çevirisi"
 msgid "Naughtyness limit"
 msgstr "Uygunsuz içerik sınırı"
 
+msgid "Needle"
+msgstr "Sorgu"
+
 msgid ""
 "Nested archives are scanned recursively, e.g. if a Zip archive contains a "
 "RAR file, all files within it will also be scanned. This options specifies "
@@ -4132,11 +4063,11 @@ msgstr ""
 "e-posta sunucusuna doğrudan iletilir. Uzaktaki e-posta sunucusu bu sistemden "
 "gönderilen e-postaları spam olarak kabul edip spam dizinine taşıyabilir."
 
-msgid "News sites"
-msgstr "Haber siteleri"
-
 msgid "Next >"
 msgstr "Sonraki >"
+
+msgid "No Errors"
+msgstr "Hata yok"
 
 msgid "No Queues defined"
 msgstr "Kuyruk tanımlanmamış"
@@ -4296,26 +4227,11 @@ msgstr ""
 "Yukarıdaki raporu inceleyip bunun beklediğiniz gibi bir sonuç olduğundan "
 "emin olun!"
 
-msgid "Online auctions"
-msgstr "Müzayede siteleri"
-
-msgid "Online gaming sites"
-msgstr "Oyun siteleri"
-
 msgid "Online libraries and sites where you can read e-books."
 msgstr ""
 
-msgid "Online payment sites"
-msgstr "Ödeme siteleri"
-
 msgid "Only webcam sessions on Yahoo are recognized and blocked"
 msgstr "Sadece Yahoo web kamera bağlantıları algılanabilir ve engellenir."
-
-msgid "Open source anti-spam software."
-msgstr "Açık kaynak istenmeyen e-posta engelleme yazılımı."
-
-msgid "Open source anti-virus software."
-msgstr "Açık kaynak virüs önleme yazılımı."
 
 msgid ""
 "OpenBSD/spamd is a spam deferral daemon, a fake sendmail-like daemon which "
@@ -4393,9 +4309,6 @@ msgstr "Aşırı yükleme"
 
 msgid "Override default of no subsystems"
 msgstr "Altsistem kullanılmamasını sağlayan öndeğeri değiştirir."
-
-msgid "Overview"
-msgstr "Genel Bakış"
 
 msgid "PACKET FILTER"
 msgstr "PAKET ELEĞİ"
@@ -4483,14 +4396,14 @@ msgstr "Disk Bölümleri"
 msgid "Partitions Usages"
 msgstr "Disk Bölüm Kullanımları"
 
+msgid "Passive IPS"
+msgstr "Pasif SES"
+
 msgid "Passive Intrusion Prevention"
 msgstr "Pasif Saldırı Engelleme"
 
 msgid "Password"
 msgstr "Parola"
-
-msgid "Password again"
-msgstr "Tekrar parola"
 
 msgid "Passwords do not match"
 msgstr "Parolalar uyuşmuyor"
@@ -4548,12 +4461,6 @@ msgstr "Anahtarı sürdür"
 msgid "Persist Tun"
 msgstr "Tun'ı sürdür"
 
-msgid "Personal finance sites"
-msgstr "Kişisel finans siteleri"
-
-msgid "Pet sites"
-msgstr "Evcil hayvan siteleri"
-
 msgid "Pf"
 msgstr "Pf"
 
@@ -4608,9 +4515,6 @@ msgstr "Pmacct"
 
 msgid "Pmacct Network Monitoring"
 msgstr "Pmacct Ağ Gözlemleme"
-
-msgid "Pornography"
-msgstr "Pornografi"
 
 msgid "Port"
 msgstr "Kapı"
@@ -4722,13 +4626,6 @@ msgstr "İşleme süresi (sn)"
 msgid "Processor"
 msgstr "İşlemci"
 
-msgid ""
-"Promiscuous mode accounting daemon collects IP based network usage "
-"information. Network usage graphs are generated based on pmacct data."
-msgstr ""
-"Herşeyi dinleyen hesap tutma süreci IP tabanlı ağ kullanım bilgilerini "
-"toplar. Ağ kullanım grafikleri pmacct verisi üzerinden üretilir."
-
 msgid "Proto"
 msgstr "Proto"
 
@@ -4737,9 +4634,6 @@ msgstr "Protokol"
 
 msgid "Protocols"
 msgstr "Protokoller"
-
-msgid "Protograph"
-msgstr "Protograph"
 
 msgid "Proxy IP"
 msgstr "Vekil IP adresi"
@@ -4783,9 +4677,6 @@ msgstr "Kuyruk"
 
 msgid "Queue Length"
 msgstr "Kuyruk Boyu"
-
-msgid "Queue Statistics"
-msgstr "Kuyruk İstatistikleri"
 
 msgid "Queues"
 msgstr "Kuyruklar"
@@ -4904,9 +4795,6 @@ msgstr "Tekrar yükle"
 msgid "Reload Rate"
 msgstr "Tekrar Yükleme Sıklığı"
 
-msgid "Reload interval"
-msgstr "Tekrar yükleme aralığı"
-
 msgid "Reload main ruleset"
 msgstr "Ana kural listesini tekrar yükle"
 
@@ -4940,9 +4828,6 @@ msgstr ""
 
 msgid "Render layout"
 msgstr "Layout'u üret"
-
-msgid "Report Interval"
-msgstr "Rapor Aralığı"
 
 msgid "Report e-mail"
 msgstr "Bildirim e-posta adresi"
@@ -5126,6 +5011,9 @@ msgstr "Kural listesinde hata var"
 msgid "Ruleset deleted"
 msgstr "Kural listesi silindi"
 
+msgid "Running"
+msgstr "Çalışıyor"
+
 msgid "Russian"
 msgstr "Rusça"
 
@@ -5148,9 +5036,6 @@ msgstr ""
 
 msgid "SMTP_SERVERS"
 msgstr "SMTP_SERVERS"
-
-msgid "SNMP_SERVERS"
-msgstr "SNMP_SERVERS"
 
 msgid "SOCKS PROXY"
 msgstr "SOCKS VEKİL"
@@ -5195,9 +5080,6 @@ msgstr "SSH sürümü"
 
 msgid "SSH_PORTS"
 msgstr "SSH_PORTS"
-
-msgid "SSL"
-msgstr "SSL"
 
 msgid "SSL Destination Protocols"
 msgstr "SSL Hedef Protokoller"
@@ -5354,9 +5236,6 @@ msgstr "Kazıma Seçenekleri"
 msgid "Search"
 msgstr "Ara"
 
-msgid "Search engines such as google"
-msgstr "Google gibi arama motorları"
-
 msgid "Search site"
 msgstr "Site ara"
 
@@ -5469,9 +5348,6 @@ msgstr "Bağlantı kesme"
 msgid "Session Timeout"
 msgstr "Oturum Zaman Aşımı"
 
-msgid "Session timeout"
-msgstr "Oturum zaman aşımı"
-
 msgid "Set DNS forwarders"
 msgstr "DNS yönlendirmelerini ayarla"
 
@@ -5562,6 +5438,9 @@ msgstr "Başlatma arayüzünü ayarla"
 
 msgid "Set startup ifs"
 msgstr "Başlatma arayüzlerini ayarla"
+
+msgid "Set status check interval"
+msgstr "Durum kontrol aralığını ayarla"
 
 msgid "Set symon conf"
 msgstr "Symon yapılandırmasını ayarla"
@@ -5742,9 +5621,6 @@ msgstr ""
 "0 = kapalı\n"
 "-1 = açıktır, ancak geçerli olması için ayrı bir program veya CGI gerekir."
 
-msgid "Similar to violence but more promoting than depicting"
-msgstr "Tasvirden çok teşvik eden şiddet siteleri"
-
 msgid ""
 "Since Freshclam wakes up periodically, this page displays graphs for Clamd "
 "process only."
@@ -5785,18 +5661,6 @@ msgstr ""
 msgid "Sites about and related to stock exchange."
 msgstr ""
 
-msgid "Sites about and selling clothing"
-msgstr "Giyim ile ilgili ve satış siteleri"
-
-msgid "Sites about and selling jewelry"
-msgstr "Mücevher ile ilgili ve satış siteleri"
-
-msgid "Sites about cooking et al"
-msgstr "Aşçılık ve benzeri siteler"
-
-msgid "Sites about dating"
-msgstr "Buluşma siteleri"
-
 msgid ""
 "Sites about everything need to create a cozy home (interior design and "
 "accessories)."
@@ -5806,15 +5670,6 @@ msgid ""
 "Sites about gardening, growing plants, fighting bugs and everything related "
 "to gardening."
 msgstr ""
-
-msgid "Sites about going on holiday"
-msgstr "Tatil siteleri"
-
-msgid "Sites about home repair"
-msgstr "Ev işleri siteleri"
-
-msgid "Sites about hygiene and other personal grooming related stuff"
-msgstr "Hijyen ve diğer kişisel temizlik siteleri"
 
 msgid ""
 "Sites about killing and harming people. Covers anything about brutality and "
@@ -5843,40 +5698,15 @@ msgstr ""
 msgid "Sites concerning food and food preparation."
 msgstr ""
 
-msgid "Sites containing adult material such as swearing but not porn"
-msgstr "Küfür içeren ama porno içermeyen yetişkin siteleri"
-
-msgid "Sites containing ring tones, games, pictures and other"
-msgstr "Cep telefonu sesi, oyunlar ve resimler içeren siteler"
-
-msgid ""
-"Sites containing screen savers, backgrounds, cursers, pointers. desktop "
-"themes and similar timewasting and potentially dangerous content"
-msgstr ""
-"Ekran koruyucu, arka plan resimleri, fare imleçleri, masaüstü temaları ve "
-"benzeri zaman öldürücü ve olasılıkla tehlikeli içerik bulunan siteler"
-
-msgid "Sites containing violence"
-msgstr "Şiddet içeren siteler"
-
 msgid ""
 "Sites dedicated to martial arts such as: karate, kung fu, taek won do as "
 "well as fighting sports sites like ufc."
 msgstr ""
 
-msgid "Sites dedicated to sexuality, possibly including adult material"
-msgstr "Yetişkin içerik de bulunabilen cinsellik siteleri"
-
-msgid "Sites detailing or selling weapons"
-msgstr "Silah bilgisi veren ya da satan siteler"
-
 msgid ""
 "Sites explaining the biological functions of the body concerning sexuality "
 "as well as sexual health."
 msgstr ""
-
-msgid "Sites for finding jobs"
-msgstr "İş arama siteleri"
 
 msgid ""
 "Sites in the Whitelist are not scanned for viruses. You can omit the leading "
@@ -5891,9 +5721,6 @@ msgid ""
 "not interfere with the local computer yet collect information about the "
 "surfing person for later analysis."
 msgstr ""
-
-msgid "Sites kids often waste time on"
-msgstr "Çocukların zaman harcadıkları siteler"
 
 msgid ""
 "Sites of breweries, wineries and destilleries. This category also covers "
@@ -5977,9 +5804,6 @@ msgid ""
 "well as some blogs."
 msgstr ""
 
-msgid "Sites promoting religion"
-msgstr "Dine teşvik eden siteler"
-
 msgid ""
 "Sites providing vpn services to the public. The focus is on vpn sites used "
 "to hide the origin of the traffic, f.e. tor nodes."
@@ -6000,13 +5824,6 @@ msgid ""
 "Sites that actively help to bypass url filters by accepting urls via form "
 "and play a proxing and redirecting role."
 msgstr ""
-
-msgid ""
-"Sites that contain messenger client download and web-based messaging sites"
-msgstr "Messenger istemci indirilen ve web tabanlı mesajlaşma siteleri"
-
-msgid "Sites that contain nude pictures and/or promote a nude lifestyle"
-msgstr "Çıplak resim içeren veya çıplaklığa teşvik eden siteler"
 
 msgid ""
 "Sites that enable user to phone via the Internet. Any site where users can "
@@ -6034,15 +5851,6 @@ msgstr ""
 msgid "Sites that offer web-based email services."
 msgstr ""
 
-msgid "Sites that promote movies, books, magazine, humor"
-msgstr "Film, kitap, dergi ve mizah tanıtan siteler"
-
-msgid "Sites that provide online shopping"
-msgstr "Alışveriş siteleri"
-
-msgid "Sites that remove spyware"
-msgstr "Casus yazılım silen siteler"
-
 msgid ""
 "Sites that try to actively install software or lure the user in doing so in "
 "order to spy the surfing behaviour (or worse). The home calling sites where "
@@ -6054,39 +5862,8 @@ msgid ""
 "seeks him and so on."
 msgstr ""
 
-msgid "Sites to do with childcare"
-msgstr "Çocuk bakımı ile ilgili siteler"
-
-msgid "Sites to do with french education"
-msgstr "Fransız eğitimi ile ilgili siteler"
-
-msgid "Sites where software updates are downloaded from including virus sigs"
-msgstr ""
-"Virüs imzaları dahil yazılım güncellemeleri ve indirmeleri içeren siteler"
-
-msgid "Sites who host virus infected files"
-msgstr "Virüslü dosyalar bulunduran siteler"
-
-msgid "Sites who run or have spyware software to download"
-msgstr "Casus yazılım çalıştıran veya indirilen siteler"
-
 msgid "Sites with aggressive content such as racism and hate speech."
 msgstr ""
-
-msgid "Sites with audio or video downloads"
-msgstr "Ses ve görüntü indirme siteleri"
-
-msgid "Sites with beer or liquors for sale"
-msgstr "Bira ve alkollü içecek satış siteleri"
-
-msgid "Sites with chat rooms etc"
-msgstr "Mesajlaşma odaları ve benzeri siteler"
-
-msgid "Sites with dialers such as those for pornography or trojans"
-msgstr "Pornografi veya truva atı yüklemek için telefon çeviren siteler"
-
-msgid "Sites with illegal pirate software"
-msgstr "Kanunsuz korsan yazılım siteleri"
 
 msgid ""
 "Sites with information about foreign countries, travel companies, travel "
@@ -6098,12 +5875,6 @@ msgid ""
 "exploit them. Sites offering exploits are listed as well as sites "
 "distributing programs that help to find security leaks."
 msgstr ""
-
-msgid "Sites with information only on beer or liquors"
-msgstr "Sadece bira ve alkollü içecek bilgisi olan siteler"
-
-msgid "Sites with proxies to bypass filters"
-msgstr "Web eleklerini atlamaya yarayan vekil siteleri"
 
 msgid ""
 "Sites with religious content: all kind of churches, sects, religious "
@@ -6232,9 +6003,6 @@ msgstr "Kaynak"
 msgid "Source Addresses"
 msgstr "Kaynak adresleri"
 
-msgid "Source Docs"
-msgstr "Kaynak Belgeleri"
-
 msgid "Source IPs"
 msgstr "Kaynak IP'ler"
 
@@ -6313,9 +6081,6 @@ msgstr ""
 msgid "Spanish"
 msgstr "İspanyolca"
 
-msgid "Sport news sites"
-msgstr "Spor haberleri siteleri"
-
 msgid "Src Nodes"
 msgstr "Kaynak Noktalar"
 
@@ -6386,8 +6151,8 @@ msgstr ""
 "kaydedildiğine bağımlı çalışır. Bu nedenle gerekmedikçe bu ayarları "
 "değiştirmeyin."
 
-msgid "Status"
-msgstr "Durum"
+msgid "Status Check Interval"
+msgstr "Durum Kontrol Aralığı"
 
 msgid "Stop"
 msgstr "Durdur"
@@ -6425,6 +6190,9 @@ msgstr "OpenVPN sürecini durdur"
 
 msgid "Stop Snort instance"
 msgstr "Snort sürecini durdur"
+
+msgid "Stopped"
+msgstr "Durmuş"
 
 msgid "String wrong"
 msgstr "Dizi hatalı"
@@ -6478,21 +6246,11 @@ msgstr "Syslog düzeneği"
 msgid "System"
 msgstr "Sistem"
 
-msgid "System Administration Guides"
-msgstr "Sistem Yönetici Klavuzları"
-
 msgid "System is going down..."
 msgstr "Sistem kapatılıyor..."
 
 msgid "System is restarting..."
 msgstr "Sistem tekrar başlıyor..."
-
-msgid ""
-"System monitoring software. Most of the rrd based graphs are generated based "
-"on symon data."
-msgstr ""
-"Sistem gözlemleme yazılımı. Rrd tabanlı grafiklerin çoğu symon verisi "
-"üzerinden üretilmektedir."
 
 msgid "System restart"
 msgstr "Sistem tekrar başlatma"
@@ -6545,9 +6303,6 @@ msgstr "Hedef kapılar"
 msgid "Targets"
 msgstr "Hedefler"
 
-msgid "Telnet negotiation string normalizer"
-msgstr "Telnet anlaşma dize düzenleyici"
-
 msgid "Temperature"
 msgstr "Sıcaklık"
 
@@ -6571,9 +6326,6 @@ msgstr ""
 "OpenSSH sayesinde sisteme uzaktan root girişine öndeğer olarak izin "
 "verilmektedir. TCP Canlı Tutma ve DNS Kullanma seçenekleri bazı sorunları "
 "çözmede yardımcı olabilir."
-
-msgid "The Free Software Foundation."
-msgstr "Özgür Yazılım Derneği."
 
 msgid ""
 "The IDS produces many alerts. Some alerts may be more serious than others, "
@@ -6755,15 +6507,6 @@ msgstr ""
 "Sınırsız olması için 0'a ayarlayın. Yüksek performans için bu değeri büyük "
 "bir değere ayarlamanız önerilir."
 
-msgid "The most famous web server."
-msgstr "En ünlü web sunucu."
-
-msgid ""
-"The most secure OS in the world. Underneath UTMFW is pure, untouched OpenBSD."
-msgstr ""
-"Dünyadaki en güvenli işletim sistemi. UTMFW'un altında saf, eldeğmemiş "
-"OpenBSD çalışmaktadır."
-
 msgid ""
 "The number of KB's there must be free before processing any mail. If there "
 "is less than this amount, p3scan will terminate any connections until the "
@@ -6878,9 +6621,6 @@ msgstr ""
 "1 = on, normal = normal ağırlıklı tümce kipi.\n"
 "2 = on, singular = sayfada bulunan her ağırlıklı tümce sadece bir defa "
 "sayılır."
-
-msgid "There are CRITICAL errors."
-msgstr "KRİTİK hatalar var."
 
 msgid "There was an error while installing"
 msgstr "Kurulum sırasında bir hata oluştu"
@@ -7218,6 +6958,11 @@ msgid ""
 msgstr ""
 "Bu sistem adıdır. Sistem adını değiştiriseniz, otomatik yapılandırma tuşu "
 "ile bunu sistemin geneline uygulayıp sistemi tekrar başlatın."
+
+msgid ""
+"This is the time interval in seconds to check module statuses for displaying."
+msgstr ""
+"Bu modül durumlarını göstermek için saniye cinsinden kontrol aralığıdır."
 
 msgid ""
 "This name server is a BIND 9 compatible DNS server, which runs in a chroot "
@@ -7679,13 +7424,6 @@ msgstr ""
 "bazı durumlarda gecikmeyi artırabilir, bu da gezinmeler sırasında önbelleğin "
 "yavaş görünmesine neden olur."
 
-msgid ""
-"Turns Snort IDS into an IPS (Intrusion Prevention System). Replaced by "
-"SnortIPS."
-msgstr ""
-"Snort Saldırı Tespit Sistemini (STS) bir Saldırı Engelleme Sistemine (SES) "
-"dönüştürür. SnortIPS ile değiştirilmiştir."
-
 msgid "Type"
 msgstr "Tür"
 
@@ -7711,12 +7449,6 @@ msgstr "UTM FIREWALL"
 msgid "UTM Firewall"
 msgstr "UTM Firewall"
 
-msgid "UTMFW ADMINISTRATION INTERFACE"
-msgstr "UTMFW YÖNETİM ARAYÜZÜ"
-
-msgid "UTMFW Administration Interface"
-msgstr "UTMFW Yönetim Arayüzü"
-
 msgid ""
 "UTMFW Web Filter uses URL lists categorized in different packages for your "
 "convenience. You can enable or disable categories you want on this page."
@@ -7740,9 +7472,6 @@ msgstr ""
 "UTMFW Web Eleği kolaylık olması için farklı paketlerde sınıflandırılmış site "
 "listeleri kullanır. Bu sayfada istediğiniz sınıflandırmaları açıp "
 "kapayabilirsiniz."
-
-msgid "UTMFW currently supports only admin and user usernames"
-msgstr "UTMFW sadece admin ve user kullanıcı adlarını destekler."
 
 msgid ""
 "UTMFW logs errors, warnings, notices, and debug messages. Since also "
@@ -7804,27 +7533,6 @@ msgstr ""
 "ClamAV virüs veritabanını periyodik olarak günceller. Öndeğer olarak "
 "veritabanı her saat güncellenir. Freshclam süreci başladıktan sonra programı "
 "durdurup başlatamayabilirsiniz; bir süre bekleyip tekrar deneyin."
-
-msgid ""
-"UTMFW would not be possible without the generous developers of many Free and "
-"Open Source Software (FOSS). UTMFW is developed using FOSS only. Software "
-"developed specifically for UTMFW, such as this web user interface and "
-"SnortIPS, are released under the BSD license, hence FOSS also.\n"
-"\n"
-"These credits may not cover all of the software UTMFW uses. If you think one "
-"is missing, I would happily add here.\n"
-"\n"
-"Thanks for the excellent work and good spirit."
-msgstr ""
-"UTMFW pekçok Özgür ve Açık Kaynak Yazılım (ÖAKY) projesinin cömert "
-"geliştiricileri olmadan gerçekleştirilemezdi. UTMFW sadece ÖAKY kullanılarak "
-"geliştirilmiştir. Bu web arayüzü ve SnortIPS gibi sadece UTMFW için "
-"geliştirilen yazılımlar da BSD lisansı ile dağıtılmaktadır, yani ÖAKY'dır.\n"
-"\n"
-"Buradaki teşekkür notları UTMFW'da kullanılan tüm yazılımları "
-"kapsamayabilir. Gözden kaçırdığım varsa buraya eklemekten mutluluk duyarım.\n"
-"\n"
-"Üstün çalışmalarınız ve iyi niyetiniz için teşekkürler."
 
 msgid "Unblock"
 msgstr "Engellemeyi Kaldır"
@@ -8050,12 +7758,6 @@ msgstr "Virüs Site"
 msgid "Virus URLs"
 msgstr "Virüs URL"
 
-msgid "Virus and spam scanning POP3 proxy."
-msgstr "Virüs ve spam tarayan POP3 vekil."
-
-msgid "Virus and spam scanning SMTP proxy."
-msgstr "Virüs ve spam tarayan SMTP vekil."
-
 msgid "WARNING"
 msgstr "UYARI"
 
@@ -8071,20 +7773,17 @@ msgstr "Web Arayüzü"
 msgid "WUI Logs"
 msgstr "Arayüz Kayıtları"
 
+msgid "Warning"
+msgstr "Uyarı"
+
 msgid "Warnings"
 msgstr "Uyarılar"
-
-msgid "Weather news sites and weather related"
-msgstr "Hava durumu ve ilgili siteleri"
 
 msgid "Web Access Denied Reporting"
 msgstr "Web girişi engelleme bildirimi"
 
 msgid "Web Filter"
 msgstr "Web Eleği"
-
-msgid "Web Filter Access"
-msgstr "Web Eleği Girişi"
 
 msgid "Web Filter IP range wrong"
 msgstr "Web Eleği IP aralığı hatalı"
@@ -8094,15 +7793,6 @@ msgstr "Web Sunucu"
 
 msgid "Web Server (WUI)"
 msgstr "Web Sunucu (Web Arayüzü)"
-
-msgid "Web Server Access"
-msgstr "Web Sunucu Girişi"
-
-msgid "Web interface for configuring and monitoring OpenBSD/pf."
-msgstr "OpenBSD/pf yapılandırma ve gözlemleme web arayüzü."
-
-msgid "Webmail and email sites"
-msgstr "Web posta ve e-posta siteleri"
 
 msgid "Wed"
 msgstr "Çar"
@@ -8333,11 +8023,6 @@ msgstr ""
 
 msgid ""
 "You can run multiple Intrusion Detection processes, one for each network "
-"interface."
-msgstr "Her ağ arayüzü için ayrı Saldırı Tespit süreci çalıştırabilirsiniz."
-
-msgid ""
-"You can run multiple Intrusion Detection processes, one for each network "
 "interface. The IDS listens to such interfaces in promiscuous mode.\n"
 "\n"
 "The Inline IPS is an active inline Intrusion Prevention System (IPS) which "
@@ -8534,9 +8219,6 @@ msgstr "ters çevir"
 msgid "no"
 msgstr "hayır"
 
-msgid "non-news related radio and television"
-msgstr "Haberle ilgili olmayan radyo ve televizyon siteleri"
-
 msgid "none"
 msgstr "boş"
 
@@ -8599,9 +8281,6 @@ msgstr "metin"
 
 msgid "string or number"
 msgstr "metin veya sayı"
-
-msgid "stuff for mobile/cell phones"
-msgstr "Cep telefonu ile ilgili siteler"
 
 msgid "the ip of the proxy (default is the loopback - i.e. this server)"
 msgstr "Vekilin ip adresidir (öndeğer yerel arayüz, yani bu sunucudur)"

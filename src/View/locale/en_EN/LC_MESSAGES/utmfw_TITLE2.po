@@ -1,17 +1,19 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
+# Soner Tari <sonertari@gmail.com>, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"PO-Revision-Date: 2017-10-16 22:58+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language-Team: LANGUAGE <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "%MEM"
@@ -35,6 +37,9 @@ msgstr ""
 msgid "Active IPs (arp table)"
 msgstr ""
 
+msgid "Additional mime types"
+msgstr ""
+
 msgid "Address Family"
 msgstr ""
 
@@ -42,9 +47,6 @@ msgid "Advanced Power Management"
 msgstr ""
 
 msgid "After hours"
-msgstr ""
-
-msgid "All rights reserved."
 msgstr ""
 
 msgid "Allow localhost"
@@ -92,6 +94,9 @@ msgstr ""
 msgid "Badwords replace character"
 msgstr ""
 
+msgid "Banned flash replacement"
+msgstr ""
+
 msgid "Banned image replacement"
 msgstr ""
 
@@ -137,13 +142,13 @@ msgstr ""
 msgid "Bytes Free"
 msgstr ""
 
+msgid "CA Cert"
+msgstr ""
+
+msgid "CA Key"
+msgstr ""
+
 msgid "COMMAND"
-msgstr ""
-
-msgid "CVS Tag"
-msgstr ""
-
-msgid "CTLR"
 msgstr ""
 
 msgid "Cache mgr"
@@ -167,6 +172,18 @@ msgstr ""
 msgid "Configuration"
 msgstr ""
 
+msgid "Connection Duration"
+msgstr ""
+
+msgid "Connection Idle Time"
+msgstr ""
+
+msgid "Connection Idle Timeout"
+msgstr ""
+
+msgid "Connections"
+msgstr ""
+
 msgid "Content Admin"
 msgstr ""
 
@@ -177,12 +194,6 @@ msgid "Content scan exceptions"
 msgstr ""
 
 msgid "Content scanner timeout"
-msgstr ""
-
-msgid "Content scanning web filter."
-msgstr ""
-
-msgid "Copyright"
 msgstr ""
 
 msgid "Create filter group"
@@ -207,12 +218,6 @@ msgid "Database Checks"
 msgstr ""
 
 msgid "Database Mirrors"
-msgstr ""
-
-msgid "De-facto standard IDS (Intrusion Detection System)."
-msgstr ""
-
-msgid "De-facto standard among HTTP proxies."
 msgstr ""
 
 msgid "Debug"
@@ -269,6 +274,9 @@ msgstr ""
 msgid "Disabled Rules"
 msgstr ""
 
+msgid "Download CA Cert"
+msgstr ""
+
 msgid "EXTERNAL_NET"
 msgstr ""
 
@@ -276,6 +284,9 @@ msgid "Embedded URL weighting"
 msgstr ""
 
 msgid "Enable Deep URL Analysis"
+msgstr ""
+
+msgid "Enable MITM site certificate checking"
 msgstr ""
 
 msgid "Enable SSL/TLS"
@@ -287,13 +298,22 @@ msgstr ""
 msgid "Enabled Rules"
 msgstr ""
 
+msgid "Expired Connection Check Period"
+msgstr ""
+
 msgid "Ext"
 msgstr ""
 
 msgid "FTP Proxy"
 msgstr ""
 
+msgid "File Descriptors"
+msgstr ""
+
 msgid "Filter IP"
+msgstr ""
+
+msgid "Filter IP for xforwarded for"
 msgstr ""
 
 msgid "Filter Port"
@@ -326,16 +346,6 @@ msgstr ""
 msgid "Forwarders"
 msgstr ""
 
-msgid "Free OOP scripting language."
-msgstr ""
-
-#, php-format
-msgid ""
-"Free secure shell provides remote shell access to the system. It is believed "
-"that almost 90% of all secure shell traffic on the Internet is provided by "
-"OpenSSH. OpenSSH is developed by the OpenBSD project."
-msgstr ""
-
 msgid "Fri"
 msgstr ""
 
@@ -346,6 +356,9 @@ msgid "GROUP"
 msgstr ""
 
 msgid "Gateway"
+msgstr ""
+
+msgid "Gentle child restart"
 msgstr ""
 
 msgid "Greylist"
@@ -411,6 +424,9 @@ msgstr ""
 msgid "IRC"
 msgstr ""
 
+msgid "Idle connections"
+msgstr ""
+
 msgid "Ignore errors"
 msgstr ""
 
@@ -438,13 +454,7 @@ msgstr ""
 msgid "Interfaces"
 msgstr ""
 
-msgid "Intrusion Alerts"
-msgstr ""
-
-msgid "Intrusion Detection"
-msgstr ""
-
-msgid "Intrusion Prevention"
+msgid "Intrusion Detection and Prevention"
 msgstr ""
 
 msgid "Jabber"
@@ -477,7 +487,13 @@ msgstr ""
 msgid "Leave spool on"
 msgstr ""
 
+msgid "Limit SSL MITM to sites in greysslsitelist(s)"
+msgstr ""
+
 msgid "Listen Address"
+msgstr ""
+
+msgid "Listen on"
 msgstr ""
 
 msgid "Local IP Address"
@@ -505,6 +521,9 @@ msgid "Log Exception Hits"
 msgstr ""
 
 msgid "Log Level"
+msgstr ""
+
+msgid "Log Statistics"
 msgstr ""
 
 msgid "Log Verbose"
@@ -538,6 +557,9 @@ msgid "Log mail from"
 msgstr ""
 
 msgid "Log rcpt to"
+msgstr ""
+
+msgid "Log ssl errors"
 msgstr ""
 
 msgid "Log typing events"
@@ -657,13 +679,7 @@ msgstr ""
 msgid "Min spare children"
 msgstr ""
 
-msgid "Modern virtual private networking."
-msgstr ""
-
 msgid "Mon"
-msgstr ""
-
-msgid "Monitoring"
 msgstr ""
 
 msgid "NAT header type"
@@ -705,18 +721,6 @@ msgstr ""
 msgid "Number of filter groups"
 msgstr ""
 
-msgid "Open source anti-spam software."
-msgstr ""
-
-msgid "Open source anti-virus software."
-msgstr ""
-
-msgid "OpenSSH"
-msgstr ""
-
-msgid "OpenVPN"
-msgstr ""
-
 msgid "PICS rating support"
 msgstr ""
 
@@ -727,6 +731,12 @@ msgid "PRI"
 msgstr ""
 
 msgid "Packet Filter"
+msgstr ""
+
+msgid "Passive Intrusion Prevention"
+msgstr ""
+
+msgid "Pconn timeout"
 msgstr ""
 
 msgid "Permit Empty Passwords"
@@ -745,9 +755,6 @@ msgid "Phrase filter mode"
 msgstr ""
 
 msgid "Ping"
-msgstr ""
-
-msgid "Pmacct"
 msgstr ""
 
 msgid "Pmacct Network Monitoring"
@@ -774,15 +781,7 @@ msgstr ""
 msgid "Private Key"
 msgstr ""
 
-msgid ""
-"Promiscuous mode accounting daemon collects IP based network usage "
-"information. Network usage graphs are generated based on pmacct data."
-msgstr ""
-
 msgid "Protocol"
-msgstr ""
-
-msgid "Protograph"
 msgstr ""
 
 msgid "Proxy IP"
@@ -794,16 +793,40 @@ msgstr ""
 msgid "Proxy Port"
 msgstr ""
 
+msgid "Proxy Specifications"
+msgstr ""
+
+msgid "Proxy failure log interval"
+msgstr ""
+
+msgid "Proxy header exchange"
+msgstr ""
+
+msgid "Proxy timeout"
+msgstr ""
+
 msgid "Quiet"
 msgstr ""
 
 msgid "Re-check replaced URLs"
 msgstr ""
 
+msgid "Redirect SSL denied page"
+msgstr ""
+
+msgid "Relayd"
+msgstr ""
+
 msgid "Remote Server"
 msgstr ""
 
 msgid "Remote User"
+msgstr ""
+
+msgid "Remove HTTP Accept-Encoding"
+msgstr ""
+
+msgid "Remove HTTP Referer"
 msgstr ""
 
 msgid "Report e-mail"
@@ -819,9 +842,6 @@ msgid "Reporting level"
 msgstr ""
 
 msgid "Required score"
-msgstr ""
-
-msgid "Resource not available"
 msgstr ""
 
 msgid "Response postfix"
@@ -854,22 +874,28 @@ msgstr ""
 msgid "SMTP_SERVERS"
 msgstr ""
 
-msgid "SNMP_SERVERS"
-msgstr ""
-
 msgid "SOCKS Proxy"
-msgstr ""
-
-msgid "SPAM Deferral"
-msgstr ""
-
-msgid "SPAM Filter"
 msgstr ""
 
 msgid "SQL_SERVERS"
 msgstr ""
 
 msgid "SSH_PORTS"
+msgstr ""
+
+msgid "SSL Proxy"
+msgstr ""
+
+msgid "SSL Shutdown Retry Delay"
+msgstr ""
+
+msgid "SSL access denied address"
+msgstr ""
+
+msgid "SSL certificate checking"
+msgstr ""
+
+msgid "SSL man in the middle"
 msgstr ""
 
 msgid "STARTED"
@@ -953,6 +979,9 @@ msgstr ""
 msgid "Start Servers"
 msgstr ""
 
+msgid "Statistics Period"
+msgstr ""
+
 msgid "Subnet mask"
 msgstr ""
 
@@ -962,13 +991,7 @@ msgstr ""
 msgid "Sun"
 msgstr ""
 
-msgid "Symon"
-msgstr ""
-
 msgid "Symon System Monitoring"
-msgstr ""
-
-msgid "Symux"
 msgstr ""
 
 msgid "Symux System Monitoring"
@@ -978,14 +1001,6 @@ msgid "Syslog Facility"
 msgstr ""
 
 msgid "System"
-msgstr ""
-
-msgid "System Administration Guides"
-msgstr ""
-
-msgid ""
-"System monitoring software. Most of the rrd based graphs are generated based "
-"on symon data."
 msgstr ""
 
 msgid "TCP Keep Alive"
@@ -1000,24 +1015,10 @@ msgstr ""
 msgid "TLS Auth"
 msgstr ""
 
-msgid "Telnet negotiation string normalizer"
-msgstr ""
-
 msgid "Temporary Denied Page Bypass"
 msgstr ""
 
 msgid "Temporary Denied Page Bypass Secret Key"
-msgstr ""
-
-msgid "The Free Software Foundation."
-msgstr ""
-
-msgid "The most famous web server."
-msgstr ""
-
-msgid ""
-"The most secure OS in the world. Underneath UTMFW is pure, untouched "
-"OpenBSD."
 msgstr ""
 
 msgid "Threshold"
@@ -1041,6 +1042,12 @@ msgstr ""
 msgid "Timespan"
 msgstr ""
 
+msgid "Total Download (KB)"
+msgstr ""
+
+msgid "Total Upload (KB)"
+msgstr ""
+
 msgid "Trickle delay"
 msgstr ""
 
@@ -1048,11 +1055,6 @@ msgid "Trusted networks"
 msgstr ""
 
 msgid "Tue"
-msgstr ""
-
-msgid ""
-"Turns Snort IDS into an IPS (Intrusion Prevention System). Replaced by "
-"SnortIPS."
 msgstr ""
 
 msgid "USER"
@@ -1097,34 +1099,13 @@ msgstr ""
 msgid "Virus Filter"
 msgstr ""
 
-msgid "Virus and spam scanning POP3 proxy."
-msgstr ""
-
-msgid "Virus and spam scanning SMTP proxy."
-msgstr ""
-
-msgid "WUI"
-msgstr ""
-
 msgid "Web Access Denied Reporting"
 msgstr ""
 
 msgid "Web Filter"
 msgstr ""
 
-msgid "Web Filter Access"
-msgstr ""
-
-msgid "Web Server"
-msgstr ""
-
 msgid "Web Server (WUI)"
-msgstr ""
-
-msgid "Web Server Access"
-msgstr ""
-
-msgid "Web interface for configuring and monitoring OpenBSD/pf."
 msgstr ""
 
 msgid "Wed"
@@ -1176,9 +1157,6 @@ msgid "start"
 msgstr ""
 
 msgid "timespan"
-msgstr ""
-
-msgid "total"
 msgstr ""
 
 msgid "whitelisted"

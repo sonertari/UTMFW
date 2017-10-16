@@ -1,17 +1,19 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
+# Soner Tari <sonertari@gmail.com>, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 5.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2009-11-11 16:24+0200\n"
+"PO-Revision-Date: 2017-10-16 23:03+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language-Team: LANGUAGE <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid ""
@@ -60,13 +62,52 @@ msgstr ""
 msgid "Automatic configuration failed."
 msgstr ""
 
-msgid "UTMFW currently supports only admin and user usernames"
+msgid "Cannot generate rule"
+msgstr ""
+
+msgid "ERROR"
 msgstr ""
 
 msgid "FAILED"
 msgstr ""
 
+msgid "Failed deleting"
+msgstr ""
+
+msgid "Failed downloading, cannot generate pf rules"
+msgstr ""
+
+msgid "Failed loading"
+msgstr ""
+
+msgid "Failed loading main pf rules"
+msgstr ""
+
+msgid "Failed saving"
+msgstr ""
+
+msgid "Failed testing ruleset"
+msgstr ""
+
+msgid "Failed uploading"
+msgstr ""
+
+msgid "File uploaded"
+msgstr ""
+
 msgid "Filter group not found"
+msgstr ""
+
+msgid "Installed successfully"
+msgstr ""
+
+msgid "Invalid destination rule number"
+msgstr ""
+
+msgid "Invalid rule number"
+msgstr ""
+
+msgid "Main pf rules reloaded"
 msgstr ""
 
 msgid "Not a valid password"
@@ -78,14 +119,38 @@ msgstr ""
 msgid "Passwords do not match"
 msgstr ""
 
+msgid "Rules file deleted"
+msgstr ""
+
+msgid "Rules loaded"
+msgstr ""
+
+msgid "Ruleset deleted"
+msgstr ""
+
+msgid "Saved"
+msgstr ""
+
 msgid "System is going down..."
 msgstr ""
 
 msgid "System is restarting..."
 msgstr ""
 
+msgid "There was an error while installing"
+msgstr ""
+
+msgid "User password changed"
+msgstr ""
+
 msgid "You should select at least one conf file to start the process"
 msgstr ""
 
 msgid "You should select at least one interface to start IDS for"
+msgstr ""
+
+msgid "ruleset has errors"
+msgstr ""
+
+msgid "utmfw currently supports only admin and user usernames"
 msgstr ""
