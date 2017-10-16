@@ -2624,21 +2624,25 @@ class Model
 		$logs= $this->getStatusLogs($this->ErrorLogFile, 1);
 		if (count($logs) == 1) {
 			$lastLine= $logs[0];
-			$lastTs= DateTime::createFromFormat($this->dateTimeFormat, $lastLine['Date'].' '.$lastLine['Time'])->getTimestamp();
+			// @attention Always check the retval of createFromFormat(), it may fail due to format mismatch, e.g. log rotation lines
+			$dt= DateTime::createFromFormat($this->dateTimeFormat, $lastLine['Date'].' '.$lastLine['Time']);
+			if ($dt) {
+				$lastTs= $dt->getTimestamp();
 
-			// @attention Don't get the logs in the last 60 seconds from now instead, otherwise the errors still important cannot be reported after 60 seconds.
-			// XXX: Setting the zone using a new DateTimeZone('UTC') with createFromFormat() does not help, hence this hack
-			//$lastTs= DateTime::createFromFormat('m d H:i:s', exec('/bin/date "+%m %d %H:%M:%S"'))->getTimestamp();
-
-			$logs= $this->getStatusLogs($this->ErrorLogFile, 1000, $needle);
-			if (count($logs)) {
-				// Loop in reverse order to break out asap
-				foreach (array_reverse($logs) as $l) {
-					$ts= DateTime::createFromFormat($this->dateTimeFormat, $l['Date'].' '.$l['Time'])->getTimestamp();
-					if ($lastTs - $ts <= $interval) {
-						$lastLogs[]= $l;
-					} else {
-						break;
+				// @attention Don't get the logs in the last 60 seconds from now instead, otherwise the errors still important cannot be reported after 60 seconds.
+				$logs= $this->getStatusLogs($this->ErrorLogFile, 1000, $needle);
+				if (count($logs)) {
+					// Loop in reverse order to break out asap
+					foreach (array_reverse($logs) as $l) {
+						$dt= DateTime::createFromFormat($this->dateTimeFormat, $l['Date'].' '.$l['Time']);
+						if ($dt) {
+							$ts= $dt->getTimestamp();
+							if ($lastTs - $ts <= $interval) {
+								$lastLogs[]= $l;
+							} else {
+								break;
+							}
+						}
 					}
 				}
 			}

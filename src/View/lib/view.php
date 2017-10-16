@@ -291,7 +291,7 @@ class View
 	 * @param boolean $printcount Whether to print number of running processes too
 	 * @param boolean $showbuttons Show Start/Stop buttons
 	 */
-	function PrintStatusForm($printcount= FALSE, $showbuttons= TRUE, $printprocs= TRUE)
+	function PrintStatusForm($printcount= FALSE, $showbuttons= TRUE, $printprocs= TRUE, $showrestartbutton= FALSE)
 	{
 		global $IMG_PATH, $ADMIN, $Status2Images;
 
@@ -351,10 +351,19 @@ class View
 						<strong><?php echo $this->Caption . " $info " ?></strong>
 						<?php
 						/// Only admin can start/stop the processes
-						if ($button && in_array($_SESSION['USER'], $ADMIN)) {
-							?>
-							<input type="submit" name="<?php echo $button ?>" value="<?php echo _($button) ?>" onclick="return confirm('<?php echo $confirm ?>')"/>
-							<?php
+						if (in_array($_SESSION['USER'], $ADMIN)) {
+							if ($button) {
+								?>
+								<input type="submit" name="<?php echo $button ?>" value="<?php echo _($button) ?>" onclick="return confirm('<?php echo $confirm ?>')"/>
+								<?php
+							}
+							if ($showrestartbutton) {
+								$restartConfirm= _NOTICE('Are you sure you want to restart the <NAME>?');
+								$restartConfirm= preg_replace('/<NAME>/', $this->Caption, $restartConfirm);
+								?>
+								<input type="submit" name="Restart" value="<?php echo _CONTROL('Restart') ?>" onclick="return confirm('<?php echo $restartConfirm ?>')"/>
+								<?php
+							}
 						}
 						?>
 						<input type="hidden" name="Model" value=<?php echo $this->Model ?> />
