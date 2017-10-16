@@ -178,6 +178,7 @@ p3scan-nl.mail		type=file mode=0644 uname=root gname=wheel
 p3scan.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/p3scan
 pfre			type=dir mode=0755 uname=root gname=wheel
+pf.conf.afterhours	type=file mode=0600 uname=root gname=wheel
 ..	#etc/pfre
 php-5.6			type=dir mode=0755 uname=root gname=wheel
 mcrypt.ini		type=file mode=0644 uname=root gname=wheel
@@ -214,7 +215,6 @@ login.conf		type=file mode=0644 uname=root gname=wheel
 motd			type=file mode=0664 uname=root gname=wheel
 newsyslog.conf		type=file mode=0644 uname=root gname=wheel
 pf.conf			type=file mode=0600 uname=root gname=wheel
-pf.conf.afterhours	type=file mode=0600 uname=root gname=wheel
 pf.restrictedips	type=file mode=0600 uname=root gname=wheel
 php-5.6.ini			type=file mode=0644 uname=root gname=wheel
 rc.conf.local		type=file mode=0644 uname=root gname=wheel

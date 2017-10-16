@@ -29,9 +29,9 @@ require_once('include.php');
  *
  * Sample After Hour lines in cron file:
  *
- * 30	19	*	*	1,2,3,4,5,6	/sbin/pfctl -a AfterHours -f /etc/pf.conf.afterhours
+ * 30	19	*	*	1,2,3,4,5,6	/sbin/pfctl -a AfterHours -f /etc/pfre/pf.conf.afterhours
  * 0	9	*	*	1,2,3,4,5,6	/sbin/pfctl -a AfterHours -Fr
- * *	*	*	*	7			/sbin/pfctl -a AfterHours -f /etc/pf.conf.afterhours
+ * *	*	*	*	7			/sbin/pfctl -a AfterHours -f /etc/pfre/pf.conf.afterhours
  */
 function PrintAfterHoursForm()
 {

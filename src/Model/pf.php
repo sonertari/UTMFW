@@ -41,7 +41,7 @@ class Pf extends Model
 	public $NVPS= '=';
 	public $ConfFile= '/etc/pf.restrictedips';
 
-	public $AfterHoursFile= '/etc/pf.conf.afterhours';
+	public $AfterHoursFile= '/etc/pfre/pf.conf.afterhours';
 
 	private $PNRG_IMG_DIR;
 
@@ -72,7 +72,7 @@ class Pf extends Model
 		$re_hour= '(\d+)';
 		$re_min= '(\d+)';
 
-		$re= "$re_min\s+$re_hour\s+\*\s+\*\s+$re_days\s+\/sbin\/pfctl -a AfterHours -f \/etc\/pf\.conf\.afterhours";
+		$re= "$re_min\s+$re_hour\s+\*\s+\*\s+$re_days\s+\/sbin\/pfctl -a AfterHours -f \/etc\/pfre\/pf\.conf\.afterhours";
 		$this->re_BusinessDays= "^$re$";
 		$this->re_DisabledBusinessDays= "^#$re$";
 
@@ -80,7 +80,7 @@ class Pf extends Model
 		$this->re_Flush= "^$re$";
 		$this->re_DisabledFlush= "^#$re$";
 
-		$re= "\*\s+\*\s+\*\s+\*\s+$re_days\s+\/sbin\/pfctl -a AfterHours -f \/etc\/pf\.conf\.afterhours";
+		$re= "\*\s+\*\s+\*\s+\*\s+$re_days\s+\/sbin\/pfctl -a AfterHours -f \/etc\/pfre\/pf\.conf\.afterhours";
 		$this->re_Holidays= "^$re$";
 		$this->re_DisabledHolidays= "^#$re$";
 		
@@ -1305,7 +1305,7 @@ class Pf extends Model
 	 */
 	function EnableAfterHours()
 	{
-		return $this->RunPfInfoCmd('/sbin/pfctl -a AfterHours -f /etc/pf.conf.afterhours');
+		return $this->RunPfInfoCmd("/sbin/pfctl -a AfterHours -f $this->AfterHoursFile");
 	}
 
 	/**
@@ -1435,12 +1435,12 @@ class Pf extends Model
 			$endhour= $eh + 0;
 			$endmin= $em + 0;
 
-			$re_replace= "$endmin	$endhour	*	*	$businessdayslist	/sbin/pfctl -a AfterHours -f /etc/pf.conf.afterhours";
+			$re_replace= "$endmin	$endhour	*	*	$businessdayslist	/sbin/pfctl -a AfterHours -f $this->AfterHoursFile";
 			if ($newcontents= preg_replace("/$this->re_BusinessDays/ms", $re_replace, $contents)) {
 				$contents= $newcontents;
 			}
 
-			$re_replace= "*	*	*	*	$holidayslist	/sbin/pfctl -a AfterHours -f /etc/pf.conf.afterhours";
+			$re_replace= "*	*	*	*	$holidayslist	/sbin/pfctl -a AfterHours -f $this->AfterHoursFile";
 			if ($newcontents= preg_replace("/$this->re_Holidays/ms", $re_replace, $contents)) {
 				$contents= $newcontents;
 			}
