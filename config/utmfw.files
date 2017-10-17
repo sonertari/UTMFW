@@ -33,7 +33,7 @@ etc/openvpn/ca.key,444,root,wheel
 etc/openvpn/client.conf,644,root,wheel
 etc/openvpn/client.crt,444,root,wheel
 etc/openvpn/client.key,400,root,wheel
-etc/openvpn/dh1024.pem,444,root,wheel
+etc/openvpn/dh2048.pem,444,root,wheel
 etc/openvpn/server.conf,644,root,wheel
 etc/openvpn/server.crt,444,root,wheel
 etc/openvpn/server.key,400,root,wheel

@@ -157,7 +157,7 @@ ca.key			type=file mode=0444 uname=root gname=wheel
 client.conf		type=file mode=0644 uname=root gname=wheel
 client.crt		type=file mode=0444 uname=root gname=wheel
 client.key		type=file mode=0400 uname=root gname=wheel
-dh1024.pem		type=file mode=0444 uname=root gname=wheel
+dh2048.pem		type=file mode=0444 uname=root gname=wheel
 server.conf		type=file mode=0644 uname=root gname=wheel
 server.crt		type=file mode=0444 uname=root gname=wheel
 server.key		type=file mode=0400 uname=root gname=wheel
