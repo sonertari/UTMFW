@@ -4,9 +4,9 @@ UTMFW is a UTM firewall running on OpenBSD 5.9. UTMFW is expected to be used on 
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
-The installation iso file for the amd64 arch is available for download at [utmfw59\_20170904\_amd64.iso](https://drive.google.com/file/d/0B3F7Ueq0mFlYenpkdDh5U2tRamc/view?usp=sharing). Make sure the SHA256 checksum is correct: 780db8ab5b2c144f83eb8205c1d4ca2474447a3f0de80631fa389922125c27e3.
+The installation iso file for the amd64 arch is available for download at [utmfw59\_20171017\_amd64.iso](https://drive.google.com/file/d/0B3F7Ueq0mFlYNkNseG5vblN0QjA/view?usp=sharing). Make sure the SHA256 checksum is correct: ec62bc4a5b94ed65d68645275b880a3dc227b57240c8787c86d23243e63fe579.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, and many fixes and improvements to the system and the WUI. Also note that UTMFW 5.9 comes with OpenBSD 5.9-stable including all updates until September 2nd, 2017.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, and many fixes and improvements to the system and the WUI. Also note that UTMFW 5.9 comes with OpenBSD 5.9-stable including all updates until October 17th, 2017.
 
 UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into UTM services: Web Filter, HTTP Proxy, POP3 Proxy, SMTP Proxy, Virus Scanner, Spam Filter, and Snort Inline IPS. These UTM software are modified to support the mode of operation required by the SSLproxy.
 
@@ -44,6 +44,7 @@ The web user interface of UTMFW helps you manage your firewall:
 - System, pf, network, and internal clients can be monitored via graphs.
 - Logs can be viewed and downloaded on the web interface. Compressed log files are supported too.
 - Statistics collected over logs are displayed in bar charts and top lists. Statistics over compressed log files are supported too.
+- Bar charts and top lists are clickable, so you don't need to touch your keyboard to search anything on the statistics pages. You can view the top lists on pie charts too.
 - The web interface provides many help boxes and windows, which can be disabled.
 - Man pages of OpenBSD and installed software can be accessed and searched on the web interface.
 - There are two users who can log in to the web interface. Unprivileged user does not have access rights to configuration pages, thus cannot interfere with system settings, and cannot even change user password (i.e. you can safely give the unprivileged user's password to your boss).
@@ -104,8 +105,7 @@ However, the source tree has links to OpenBSD install sets and packages, which s
 	+ Copy the required install sets to the appropriate locations to fix the broken links in the project.
 - Packages:
 	+ Download the required packages available on the OpenBSD mirrors.
-	+ Create the packages which are not available on the OpenBSD mirrors: sslproxy, imspector, snortips, rrdtool 1.6.0 with patches, and libevent 2.1.8 (see `ports` and `ports/disfiles`).
-	+ Create the packages which have been modified specifically for UTMFW and/or are not available on the OpenBSD mirrors: e2guardian, squid, p3scan, smtp-gated, and snort (see `ports` and `ports/disfiles`).
+	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, e2guardian, squid, p3scan, smtp-gated, snort, imspector, snortips, rrdtool 1.6.0 with patches, and libevent 2.1.8 (see `ports` and `ports/disfiles`).
 	+ Copy them to the appropriate locations to fix the broken links in the project.
 
 Note that you can strip down xbase and xfont install sets to reduce the size of the iso file. Copy or link them to the appropriate locations under `openbsd/utmfw`.
