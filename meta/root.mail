@@ -1,9 +1,14 @@
-From sonertari@gmail.com Wed Sep 02 19:59:59 EET 2017
+From sonertari@gmail.com Wed Oct 17 19:59:59 EET 2017
 Return-Path: root
-Date: Sep 02 19:59:59 EET 2017
+Date: Oct 17 19:59:59 EET 2017
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 5.9!
+Subject: Welcome to UTMFW 5.9.2!
 
-This is the 1st public release of UTMFW.
+This is the 3rd public release of UTMFW.
 
+Highlights of this release are:
+- SSLproxy for deep SSL inspection
+- Snort Inline IPS
+- WUI Dashboard
+- The new menu and look-and-feel for the WUI

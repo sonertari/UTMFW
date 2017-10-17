@@ -1127,7 +1127,7 @@ configure_ifs() {
 		fi
 
 		NIFS=$(ls -1 /tmp/hostname.* 2>/dev/null | grep -c ^)
-		# Need at least two interfaces configured for PFFW
+		# Need at least two interfaces configured for UTMFW
 		(( NIFS > 1 )) && _p=done
 	done
 }
