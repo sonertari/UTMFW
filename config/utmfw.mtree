@@ -153,7 +153,6 @@ aliases			type=file mode=0644 uname=root gname=wheel
 ..	#etc/mail
 openvpn			type=dir mode=0755 uname=root gname=wheel
 ca.crt			type=file mode=0444 uname=root gname=wheel
-ca.key			type=file mode=0444 uname=root gname=wheel
 client.conf		type=file mode=0644 uname=root gname=wheel
 client.crt		type=file mode=0444 uname=root gname=wheel
 client.key		type=file mode=0400 uname=root gname=wheel
