@@ -23,26 +23,6 @@
  */
 
 /**
- * Checks and prints a warning if the page is not active.
- *
- * $active is set during left and top menu creation according to logged in user.
- *
- * @param bool $active Whether the page was active or not.
- */
-function CheckPageActivation($active)
-{
-	global $VIEW_PATH, $Submenu;
-
-	if (!$active) {
-		echo _TITLE('Resource not available').': '.$Submenu;
-
-		require_once($VIEW_PATH.'/footer.php');
-		wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Page not active.');
-		exit(1);
-	}
-}
-
-/**
  * Prints the message in a simple box, without an image.
  *
  * Used in simple info boxes on the right of components.

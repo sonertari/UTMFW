@@ -24,6 +24,21 @@
 
 require_once('lib/vars.php');
 
+$PageActivated= FALSE;
+if (isset($TopMenu)) {
+	if (in_array($_SESSION['USER'], $Menu[$TopMenu]['Perms'])) {
+		$_SESSION[$View->Module]['topmenu']= $TopMenu;
+		$PageActivated= TRUE;
+	}
+}
+
+if (!$PageActivated) {
+	wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Page not active: $View->Module>$TopMenu>$Submenu");
+	header('Location: info.php');
+	exit(1);
+}
+
+// Start sending the page
 if (!isset($_SESSION[$View->Model]['ReloadRate'])) {
 	$_SESSION[$View->Model]['ReloadRate']= $DefaultReloadRate;
 }
@@ -34,16 +49,6 @@ if ($Reload) {
 else {
 	HTMLHeader();
 }
-
-$PageActivated= FALSE;
-if (isset($TopMenu)) {
-	if (in_array($_SESSION['USER'], $Menu[$TopMenu]['Perms'])) {
-		$_SESSION[$View->Module]['topmenu']= $TopMenu;
-		$PageActivated= TRUE;
-	}
-}
-
-CheckPageActivation($PageActivated);
 
 $ModuleFiles= array();
 $DirHandle= opendir($VIEW_PATH);
