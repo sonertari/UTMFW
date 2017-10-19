@@ -19,7 +19,7 @@
 ARCH=amd64
 
 ROOT_PATH=$(pwd)
-VERSION='5.9'
+VERSION='6.2'
 SUBVERSION=_$(date +%Y%m%d)
 VMAJ=${VERSION%%\.*}
 VMIN=${VERSION##*\.}
@@ -45,6 +45,7 @@ PKG_PATH=packages
 
 CD_PATH=cd/${ARCH}
 INSTALL_SETS_PATH=${VERSION}/${ARCH}
+BOOT_CATALOG=$INSTALL_SETS_PATH/boot.catalog
 BOOT_IMG=$INSTALL_SETS_PATH/cdbr
 ISO_FILE=utmfw${VMAJ}${VMIN}${SUBVERSION}_${ARCH}.iso
 SYS_ID="OpenBSD ${VERSION} ${ARCH}"
@@ -107,7 +108,7 @@ echo "Creating CD image: $ISO_FILE"
 
 cd $ROOT_PATH
 mkhybrid -f -l -T -r -L \
-	-c boot.catalog \
+	-c $BOOT_CATALOG \
 	-sysid "$SYS_ID" \
 	-p "$PREP_ID" \
 	-P "$PUBLISH_ID" \

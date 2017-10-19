@@ -6,14 +6,15 @@ Make sure you configure two network interfaces. You will be asked to choose inte
 
 All of the install sets and software packages are selected by default, simply accept the selections.
 
-If the installation script finds an already existing file which needs to be updated, it saves the old file as <filename>.orig. To update all such files, accept the default 'a' answer when asked.
+If the installation script finds an already existing file which needs to be updated, it saves the old file as <filename>.orig.
 
 Installation logs can be found under the /root directory.
 
 You can access the web administration interface using the IP address of the system's internal interface you have selected during installation. You can log in to the system over ssh from internal network.
 
-Web interface user names are admin and user. Both are set to the same password you have provided during installation.
+Web interface user names are admin and user. Both are set to the same password you provide during installation.
 
 References:
-[1] See http://openbsd.org/amd64.html for supported hardware.
-[2] See http://openbsd.org/faq/faq4.html for OpenBSD installation guide.
+[1] INSTALL.amd64 under /6.2/amd64/ in the installation iso file
+[2] https://www.openbsd.org/amd64.html for supported hardware
+[3] https://www.openbsd.org/faq/faq4.html for OpenBSD installation guide

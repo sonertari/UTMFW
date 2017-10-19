@@ -6,14 +6,15 @@ Otomatik disk bölümlendirme özelliği sizin için bir disk düzeni önerecekt
 
 Bütün kurulum setleri ve yazılım paketleri seçilmiş olarak gelir, onaylayarak geçin.
 
-Yenilenmesi gereken mevcut bir dosya bulunursa, eski dosya .orig uzantısıyla saklanır. Bütün böyle dosyaların yenilenmesini istiyorsanız, sorulduğunda önerilen 'a' cevabını onaylayın.
+Yenilenmesi gereken mevcut bir dosya bulunursa, eski dosya .orig uzantısıyla saklanır.
 
 Kurulum kayıtları /root dizini altında bulunabilir.
 
 Kurulum sırasında belirlediğiniz iç ağ arayüzünün IP adresi üzerinden web yönetim arayüzüne ulaşabilirsiniz. Sisteme iç ağdan ssh bağlantısı yapabilirsiniz.
 
-Web arayüzü kullanıcı adları admin ve user'dır. İkisinin parolası da kurulum sırasında girdiğiniz değere ayarlanmıştır.
+Web arayüzü kullanıcı adları admin ve user'dır. İkisinin parolası da kurulum sırasında girdiğiniz değere ayarlanır.
 
 Kaynaklar:
-[1] Desteklenen donanımlar için bkz. http://openbsd.org/amd64.html
-[2] OpenBSD kurulum detayları için bkz. http://openbsd.org/faq/faq4.html
+[1] Kurulum iso dosyasındaki /6.2/amd64/ klasörünün altındaki INSTALL.amd64
+[2] Desteklenen donanımlar için https://www.openbsd.org/amd64.html
+[3] OpenBSD kurulum detayları için https://www.openbsd.org/faq/faq4.html
