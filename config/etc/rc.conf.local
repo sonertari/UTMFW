@@ -8,3 +8,4 @@ ftpproxy_flags="-vv -D6"
 #spamlogd_flags="-i wan0"
 apmd_flags="-A"
 relayd_flags=
+syslogd_flags="-rr"
