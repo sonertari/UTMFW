@@ -1,10 +1,26 @@
+@comment $OpenBSD$
 @newgroup _imspector:702
 @newuser _imspector:702:702:daemon:IM proxy:/nonexistent:/sbin/nologin
-%%SHARED%%
 etc/
 etc/imspector/
 etc/imspector/acl.txt
 etc/imspector/badwords.txt
 etc/imspector/imspector.conf
 lib/imspector/
+lib/imspector/aclfilterplugin.so
+lib/imspector/badwordsfilterplugin.so
+lib/imspector/catsloggingplugin.so
+lib/imspector/censordfilterplugin.so
+lib/imspector/dbresponderplugin.so
+lib/imspector/debugloggingplugin.so
+lib/imspector/fileloggingplugin.so
+lib/imspector/ggprotocolplugin.so
+lib/imspector/httpsprotocolplugin.so
+lib/imspector/icqprotocolplugin.so
+lib/imspector/ircprotocolplugin.so
+lib/imspector/jabberprotocolplugin.so
+lib/imspector/miscfilterplugin.so
+lib/imspector/msnprotocolplugin.so
+lib/imspector/yahooprotocolplugin.so
+lib/libimspector.so
 @bin sbin/imspector

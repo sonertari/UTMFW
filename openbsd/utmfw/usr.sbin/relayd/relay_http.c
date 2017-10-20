@@ -1,7 +1,7 @@
-/*	$OpenBSD: relay_http.c,v 1.55.2.2 2016/08/07 07:54:07 benno Exp $	*/
+/*	$OpenBSD: relay_http.c,v 1.67 2017/09/23 11:56:57 bluhm Exp $	*/
 
 /*
- * Copyright (c) 2006 - 2015 Reyk Floeter <reyk@openbsd.org>
+ * Copyright (c) 2006 - 2016 Reyk Floeter <reyk@openbsd.org>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -169,14 +169,16 @@ relay_read_http(struct bufferevent *bev, void *arg)
 		goto done;
 	}
 
-	while (!cre->done && (line = evbuffer_readline(src)) != NULL) {
-		linelen = strlen(line);
+	while (!cre->done) {
+		line = evbuffer_readln(src, &linelen, EVBUFFER_EOL_CRLF);
+		if (line == NULL)
+			break;
 
 		/*
 		 * An empty line indicates the end of the request.
 		 * libevent already stripped the \r\n for us.
 		 */
-		if (!linelen) {
+		if (linelen == 0) {
 			cre->done = 1;
 			free(line);
 			break;
@@ -258,6 +260,15 @@ relay_read_http(struct bufferevent *bev, void *arg)
 				free(line);
 				goto fail;
 			}
+			desc->http_status = strtonum(desc->http_rescode, 100,
+			    599, &errstr);
+			if (errstr) {
+				DPRINTF("%s: http_status %s: errno %d, %s",
+				    __func__, desc->http_rescode, errno,
+				    errstr);
+				free(line);
+				goto fail;
+			}
 			DPRINTF("http_version %s http_rescode %s "
 			    "http_resmesg %s", desc->http_version,
 			    desc->http_rescode, desc->http_resmesg);
@@ -303,16 +314,28 @@ relay_read_http(struct bufferevent *bev, void *arg)
 			}
 		} else if (desc->http_method != HTTP_METHOD_NONE &&
 		    strcasecmp("Content-Length", key) == 0) {
+			/*
+			 * These methods should not have a body
+			 * and thus no Content-Length header.
+			 */
 			if (desc->http_method == HTTP_METHOD_TRACE ||
 			    desc->http_method == HTTP_METHOD_CONNECT) {
-				/*
-				 * These method should not have a body
-				 * and thus no Content-Length header.
-				 */
 				relay_abort_http(con, 400, "malformed", 0);
 				goto abort;
 			}
-
+			/*
+			 * response with a status code of 1xx
+			 * (Informational) or 204 (No Content) MUST
+			 * not have a Content-Length (rfc 7230 3.3.3)
+			 */
+			if (desc->http_method == HTTP_METHOD_RESPONSE && (
+			    ((desc->http_status >= 100 &&
+			    desc->http_status < 200) ||
+			    desc->http_status == 204))) {
+				relay_abort_http(con, 500,
+				    "Internal Server Error", 0);
+				goto abort;
+			}
 			/*
 			 * Need to read data from the client after the
 			 * HTTP header.
@@ -320,8 +343,7 @@ relay_read_http(struct bufferevent *bev, void *arg)
 			 * the carriage return? And some browsers seem to
 			 * include the line length in the content-length.
 			 */
-			cre->toread = strtonum(value, 0, LLONG_MAX,
-			    &errstr);
+			cre->toread = strtonum(value, 0, LLONG_MAX, &errstr);
 			if (errstr) {
 				relay_abort_http(con, 500, errstr, 0);
 				goto abort;
@@ -398,16 +420,41 @@ relay_read_http(struct bufferevent *bev, void *arg)
 			cre->toread = TOREAD_UNLIMITED;
 			bev->readcb = relay_read;
 			break;
-		case HTTP_METHOD_DELETE:
 		case HTTP_METHOD_GET:
 		case HTTP_METHOD_HEAD:
-		case HTTP_METHOD_OPTIONS:
+		/* WebDAV methods */
+		case HTTP_METHOD_COPY:
+		case HTTP_METHOD_MOVE:
 			cre->toread = 0;
 			break;
-		case HTTP_METHOD_PATCH:
+		case HTTP_METHOD_DELETE:
+		case HTTP_METHOD_OPTIONS:
 		case HTTP_METHOD_POST:
 		case HTTP_METHOD_PUT:
 		case HTTP_METHOD_RESPONSE:
+		/* WebDAV methods */
+		case HTTP_METHOD_PROPFIND:
+		case HTTP_METHOD_PROPPATCH:
+		case HTTP_METHOD_MKCOL:
+		case HTTP_METHOD_LOCK:
+		case HTTP_METHOD_UNLOCK:
+		case HTTP_METHOD_VERSION_CONTROL:
+		case HTTP_METHOD_REPORT:
+		case HTTP_METHOD_CHECKOUT:
+		case HTTP_METHOD_CHECKIN:
+		case HTTP_METHOD_UNCHECKOUT:
+		case HTTP_METHOD_MKWORKSPACE:
+		case HTTP_METHOD_UPDATE:
+		case HTTP_METHOD_LABEL:
+		case HTTP_METHOD_MERGE:
+		case HTTP_METHOD_BASELINE_CONTROL:
+		case HTTP_METHOD_MKACTIVITY:
+		case HTTP_METHOD_ORDERPATCH:
+		case HTTP_METHOD_ACL:
+		case HTTP_METHOD_MKREDIRECTREF:
+		case HTTP_METHOD_UPDATEREDIRECTREF:
+		case HTTP_METHOD_SEARCH:
+		case HTTP_METHOD_PATCH:
 			/* HTTP request payload */
 			if (cre->toread > 0)
 				bev->readcb = relay_read_httpcontent;
@@ -549,7 +596,7 @@ relay_read_httpchunks(struct bufferevent *bev, void *arg)
 	struct evbuffer		*src = EVBUFFER_INPUT(bev);
 	char			*line;
 	long long		 llval;
-	size_t			 size;
+	size_t			 size, linelen;
 
 	getmonotime(&con->se_tv_last);
 	cre->timedout = 0;
@@ -580,13 +627,13 @@ relay_read_httpchunks(struct bufferevent *bev, void *arg)
 	}
 	switch (cre->toread) {
 	case TOREAD_HTTP_CHUNK_LENGTH:
-		line = evbuffer_readline(src);
+		line = evbuffer_readln(src, &linelen, EVBUFFER_EOL_CRLF);
 		if (line == NULL) {
 			/* Ignore empty line, continue */
 			bufferevent_enable(bev, EV_READ);
 			return;
 		}
-		if (strlen(line) == 0) {
+		if (linelen == 0) {
 			free(line);
 			goto next;
 		}
@@ -615,7 +662,7 @@ relay_read_httpchunks(struct bufferevent *bev, void *arg)
 		break;
 	case TOREAD_HTTP_CHUNK_TRAILER:
 		/* Last chunk is 0 bytes followed by trailer and empty line */
-		line = evbuffer_readline(src);
+		line = evbuffer_readln(src, &linelen, EVBUFFER_EOL_CRLF);
 		if (line == NULL) {
 			/* Ignore empty line, continue */
 			bufferevent_enable(bev, EV_READ);
@@ -626,7 +673,7 @@ relay_read_httpchunks(struct bufferevent *bev, void *arg)
 			free(line);
 			goto fail;
 		}
-		if (strlen(line) == 0) {
+		if (linelen == 0) {
 			/* Switch to HTTP header mode */
 			cre->toread = TOREAD_HTTP_HEADER;
 			bev->readcb = relay_read_http;
@@ -635,7 +682,7 @@ relay_read_httpchunks(struct bufferevent *bev, void *arg)
 		break;
 	case 0:
 		/* Chunk is terminated by an empty newline */
-		line = evbuffer_readline(src);
+		line = evbuffer_readln(src, &linelen, EVBUFFER_EOL_CRLF);
 		free(line);
 		if (relay_bufferevent_print(cre->dst, "\r\n") == -1)
 			goto fail;
@@ -670,11 +717,6 @@ relay_reset_http(struct ctl_relay_event *cre)
 	struct http_descriptor	*desc = cre->desc;
 
 	relay_httpdesc_free(desc);
-	if (cre->buf != NULL) {
-		free(cre->buf);
-		cre->buf = NULL;
-		cre->buflen = 0;
-	}
 	desc->http_method = 0;
 	desc->http_chunked = 0;
 	cre->headerlen = 0;
@@ -1569,7 +1611,7 @@ relay_apply_actions(struct ctl_relay_event *cre, struct kvlist *actions)
 			/* perform this later */
 			break;
 		default:
-			fatalx("relay_action: invalid action");
+			fatalx("%s: invalid action", __func__);
 			/* NOTREACHED */
 		}
 
@@ -1762,13 +1804,14 @@ relay_test(struct protocol *proto, struct ctl_relay_event *cre)
 			DPRINTF("%s: session %d, res %d", __func__,
 			    con->se_id, res);
 			if (res == RES_BAD || res == RES_INTERNAL)
-				return(res);
+				return (res);
 			res = 0;
-	       		r = TAILQ_NEXT(r, rule_entry);
+			r = TAILQ_NEXT(r, rule_entry);
 		}
 	}
 
-	if (rule != NULL && relay_match_actions(cre, rule, NULL, &actions) != 0) {
+	if (rule != NULL && relay_match_actions(cre, rule, NULL, &actions)
+	    != 0) {
 		/* Something bad happened, drop */
 		action = RES_DROP;
 	}

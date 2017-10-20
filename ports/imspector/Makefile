@@ -13,9 +13,7 @@ PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-MODULES=		converters/libiconv
 WANTLIB=		c m stdc++
-LIB_DEPENDS=		databases/sqlite3
 
 CONFIGURE_STYLE=	No
 

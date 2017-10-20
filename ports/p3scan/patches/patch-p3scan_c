@@ -1,6 +1,7 @@
 $ComixWall: patch-p3scan_c,v 1.6 2016/07/12 10:30:10 soner Exp $
---- p3scan.c.orig	Tue Aug  1 15:40:42 2017
-+++ p3scan.c	Thu Aug  3 22:45:20 2017
+Index: p3scan.c
+--- p3scan.c.orig
++++ p3scan.c
 @@ -44,33 +44,36 @@ TODO: Wanted: no iptables support
  #include <stdio.h>
  #include <stdlib.h>
@@ -335,7 +336,805 @@ $ComixWall: patch-p3scan_c,v 1.6 2016/07/12 10:30:10 soner Exp $
        if (clientret<0){
          if (clientret==GETLINE_TOO_LONG){
            do_log(LOG_DEBUG, "Line too long: Getting rest of line.");
-@@ -2800,7 +2951,7 @@ void parseoptions(int argc, char **argv){
+@@ -2332,402 +2483,407 @@ void usage(char * progname){
+    "\n"
+    );
+ }
++
++struct option long_options[] = {
++	{ "renattach",    required_argument,   NULL, 'a' },
++	{ "altvnmsg",     no_argument,         NULL, 'A' },
++	{ "bytesfree",    required_argument,   NULL, 'b' },
++	{ "broken",       no_argument,         NULL, 'B' },
++	{ "viruscode",    required_argument,   NULL, 'c' },
++	{ "checksize",    required_argument,   NULL, 'C' },
++	{ "debug",        no_argument,         NULL, 'd' },
++	{ "extra",        required_argument,   NULL, 'e' },
++	{ "emailport",    required_argument,   NULL, 'E' },
++	{ "configfile",   required_argument,   NULL, 'f' },
++	{ "footer",       required_argument,   NULL, 'F' },
++	{ "virusregexp",  required_argument,   NULL, 'g' },
++	{ "goodcode",     required_argument,   NULL, 'G' },
++	{ "help",         no_argument,         NULL, 'h' },
++	{ "ip",           required_argument,   NULL, 'i' },
++	{ "targetip",     required_argument,   NULL, 'I' },
++	{ "justdelete",   no_argument,         NULL, 'j' },
++	{ "enabletop",    no_argument,         NULL, 'J' },
++	{ "checkspam",    no_argument,         NULL, 'k' },
++	{ "emergcon",     required_argument,   NULL, 'K' },
++	{ "pidfile",      required_argument,   NULL, 'l' },
++	{ "sslport",      required_argument,   NULL, 'L' },
++	{ "maxchilds",    required_argument,   NULL, 'm' },
++	{ "ispspam",      required_argument,   NULL, 'M' },
++	{ "notifydir",    required_argument,   NULL, 'n' },
++	{ "notify",       required_argument,   NULL, 'N' },
++	{ "overwrite",    required_argument,   NULL, 'o' },
++	{ "timeout",      required_argument,   NULL, 'O' },
++	{ "port",         required_argument,   NULL, 'p' },
++	{ "targetport",   required_argument,   NULL, 'P' },
++	{ "quiet",        no_argument,         NULL, 'q' },
++	{ "virusdir",     required_argument,   NULL, 'r' },
++	{ "smtprset",     required_argument,   NULL, 'R' },
++	{ "scanner",      required_argument,   NULL, 's' },
++	{ "subject",      required_argument,   NULL, 'S' },
++	{ "template",     required_argument,   NULL, 't' },
++	{ "scannertype",  required_argument,   NULL, 'T' },
++	{ "user",         required_argument,   NULL, 'u' },
++	{ "useurl",       no_argument,         NULL, 'U' },
++	{ "version",      no_argument,         NULL, 'v' },
++#ifdef DEMIME
++	{ "demime",       no_argument,         NULL, 'x' },
++#endif
++	{ "xmail",        required_argument,   NULL, 'X' },
++	{ "spamcheck",    required_argument,   NULL, 'z' },
++	{ NULL,           no_argument,         NULL, 0 }
++};
++
++long parseargs(int c, char **argv, char *where, int state, char *getoptparam, char **rest, long i, long *ii, int *error){
++  int option, option_index = 0;
++  struct servent *port;
++  int pidfd;
++
++  opterr=0;
++  optind=1;
++  while (1){
++     option = getopt_long(c, argv, getoptparam, long_options, &option_index);
++     if (option == EOF) break;
++		char *next_tok;
++		switch (option){
++		   case 'h':
++		   case 'v':
++		   case 'f':
++			  /* don't check in second run (is in the first) */
++			  if (state==CONFIG_STATE_CMD)
++				  return i;
++			  /* disallow help/version/configfile in configfile */
++			  if (state==CONFIG_STATE_FILE){
++				 fprintf(stderr, "%s '%s' is not allowed in configfile!\n", where, argv[optind-1]);
++				 *error=1;
++				 return i;
++			  }
++		   break;
++		   default:
++		   /* only check help/version/configfile for the first cmd run */
++		   if (state==CONFIG_STATE_CMDPRE)
++			   return i;
++		}
++
++		switch (option){
++		   case 'h': /* usage */
++			  usage(argv[0]);
++			  exit(0);
++			  break;
++		   case 'v': /* version */
++			  printversion();
++			  exit(0);
++			  break;
++		   case 'f': /* config (file) */
++			  config->configfile = optarg;
++			  break;
++		   case 'F': /* footer (file) */
++			  config->footer = optarg;
++			  break;
++		   case 'd': /* debug */
++			  config->debug=1;
++			  break;
++		   case 'e': /* Extra notification */
++			  config->extra=optarg;
++			  break;
++		   case 'E': /* SMTP (email) port */
++			  i=strtol(optarg, rest, 10);
++			  if (*rest && strlen(*rest)>0){
++				 if (i>0){ /* 123abc */
++					fprintf(stderr, "%s %s isn't a valid port\n", where, optarg);
++					*error=1;
++				 }else{
++					if((port=getservbyname(optarg, "tcp"))!=NULL) config->smtpport=ntohs(port->s_port);
++					else{
++					   fprintf(stderr, "Port lookup for '%s/tcp' failed! Check /etc/services\n", optarg);
++					   *error=1;
++					 }
++				  }
++			  } else {
++				  if (i>0) config->smtpport=i;
++				  else {
++					fprintf(stderr, "%s Incorrect emailport portnumber\n", where);
++					*error=1;
++				  }
++			  }
++			  break;
++		   case 'l': /* PID File */
++			  config->pidfile=optarg;
++			  if ((pidfd=open(config->pidfile,O_RDONLY ))>=0){
++				 do_log(LOG_EMERG, "ERR: PID file %s exists! Aborting!",config->pidfile);
++				 /* Should not reach here. We are dead. */
++				 pidfd=close(pidfd);
++				 exit(0);
++			  }
++			  break;
++		   case 'L': /* SSL port */
++			  i=strtol(optarg, rest, 10);
++			  if (*rest && strlen(*rest)>0){
++				 if (i>0){ /* 123abc */
++					fprintf(stderr, "%s %s isn't a valid port\n", where, optarg);
++					*error=1;
++				 }else{
++					if((port=getservbyname(optarg, "tcp"))!=NULL) config->sslport=ntohs(port->s_port);
++					else{
++					   fprintf(stderr, "Port lookup for '%s/tcp' failed! Check /etc/services\n", optarg);
++					   *error=1;
++					}
++				 }
++			  } else {
++				 if (i>0) config->sslport=i;
++				 else {
++					fprintf(stderr, "%s Incorrect POP3S portnumber\n", where);
++					*error=1;
++				 }
++			  }
++			  break;
++		   case 'a': /* rename attachments using renattach */
++			  config->renattach=optarg;
++			  break;
++		   case 'A': /* use alternate virus notification email */
++			  config->altemail=1;
++			  break;
++		   case 'r': /* virusdir */
++			  config->virusdirbase=optarg;
++			  config->virusdir=config->virusdirbase;
++			  break;
++		   case 'R': /* smtp reject */
++			  config->smtprset=optarg;
++			  break;
++		   case 'n': /* notifydir */
++			  config->notifydir=optarg;
++			  break;
++		   case 'm': /* Max Childs */
++			  i=strtol(optarg, rest, 10);
++			  if ((*rest && strlen(*rest)>0) || i<1 || i>9999){
++				 fprintf(stderr, "%s --maxchilds has to be 1 < val < 10000\n", where);
++				 *error=1;
++			  } else config->maxchilds=(int)i;
++			  break;
++		   case 'i': /* IP (to listen on) */
++			  if (!strcmp(optarg, "0.0.0.0")){
++				 config->addr.sin_addr.s_addr=htonl(INADDR_ANY);
++			  }else if (!inet_aton(optarg, &config->addr.sin_addr)){
++				 fprintf(stderr, "%s %s isn't a valid IP Adress\n", where, optarg);
++				 *error=1;
++			  }
++			  break;
++		   case 'I': /* IP (to connect) */
++			  if (!strcmp(optarg, "0.0.0.0")){
++				 config->targetaddr.sin_addr.s_addr=htonl(INADDR_ANY);
++			  }else if (!inet_aton(optarg, &config->targetaddr.sin_addr)){
++				 fprintf(stderr, "%s %s isn't a valid IP Adress\n", where, optarg);
++				 *error=1;
++			  }
++			  break;
++		   case 'o': /* overwrite (disable) HTML */
++			  config->overwrite=optarg;
++			  break;
++		   case 'O': /* timeOut */
++			  i=strtol(optarg, rest, 10);
++			  if ((*rest && strlen(*rest)>0) || i<1 || i>9999){
++				 fprintf(stderr, "%s --timeout has to be 1 < val < 10000\n", where);
++				 *error=1;
++			  } else config->timeout=(int)i;
++			  break;
++		   case 'p': /* Port */
++			  i=strtol(optarg, rest, 10);
++			  if (*rest && strlen(*rest)>0){
++				 if (i>0){ /* 123abc */
++					fprintf(stderr, "%s %s isn't a valid port\n", where, optarg);
++					*error=1;
++				 }else{
++					if((port=getservbyname(optarg, "tcp"))!=NULL){
++					   config->addr.sin_port=port->s_port;
++					}else{
++					   fprintf(stderr, "Port lookup for '%s/tcp' failed! Check /etc/services\n", optarg);
++					   *error=1;
++					}
++				 }
++			  }else{
++				 if (i>0)config->addr.sin_port=htons((int)i);
++				 else{
++					fprintf(stderr, "%s Incorrect POP3 portnumber\n", where);
++					*error=1;
++				 }
++			  }
++			  break;
++		   case 'P': /* target Port */
++			  i=strtol(optarg, rest, 10);
++			  if (*rest && strlen(*rest)>0){
++				 if (i>0){ /* 123abc */
++					fprintf(stderr, "%s %s isn't a valid port\n", where, optarg);
++					*error=1;
++				 }else{
++					if((port=getservbyname(optarg, "tcp"))!=NULL){
++					   config->targetaddr.sin_port=port->s_port;
++					}else{
++					   fprintf(stderr, "Port lookup for '%s/tcp' failed! Check /etc/services\n", optarg);
++					   *error=1;
++					}
++				 }
++			  }else{
++				 if (i>0)config->targetaddr.sin_port=htons((int)i);
++				 else{
++					fprintf(stderr, "%s Incorrect target portnumber\n", where);
++					*error=1;
++				 }
++			  }
++			  break;
++		   case 'q': /* quiet */
++			  config->quiet=1;
++			  break;
++		   case 'u': /* Run as User */
++			  config->runasuser=optarg;
++			  /* getpwnam will also accept UID's, so we need no converting*/
++			  break;
++		   case 'U': /* Parse username for destination url */
++			  config->useurl=1;
++			  break;
++		   case 's': /* Scanner */
++			  config->virusscanner=optarg;
++			  break;
++		   case 't': /* template */
++			  config->virustemplate=optarg;
++			  break;
++		   case 'c': /* Virus (exit) code */
++			  *ii = 0;
++			  next_tok = strtok(optarg, " \t,");
++			  if (next_tok){
++				 do{
++					if (*ii < MAX_VIRUS_CODES){
++					   i=strtol(next_tok, rest, 10);
++					   if ( (*rest && strlen(*rest)>0) || i<1 || i>256){
++						  fprintf(stderr, "%s --viruscode has be a list of numbers (%s)\n", where, *rest);
++						  *error=1;
++					   }else config->viruscode[*ii]=(int)i;
++					   *ii++;
++					}
++				 }while ((next_tok = strtok(NULL, " \t,")) || (*ii >= MAX_VIRUS_CODES));
++			  }
++			  config->viruscode[*ii] = -1;
++			  if (*ii == 0){
++				 fprintf(stderr, "%s --viruscode has be a list of numbers (%s)\n", where, *rest);
++				 *error=1;
++			  }
++			  break;
++		   case 'G': /* Good Virus (exit) code */
++			  *ii = 0;
++			  next_tok = strtok(optarg, " \t,");
++			  if (next_tok){
++				 do{
++					if (*ii < MAX_VIRUS_CODES){
++					   i=strtol(next_tok, rest, 10);
++					   if ( (*rest && strlen(*rest)>0) || i<1 || i>256){
++						  fprintf(stderr, "%s --good viruscode has be a list of numbers (%s)\n", where, *rest);
++						  *error=1;
++					   }else config->gvcode[*ii]=(int)i;
++					   *ii++;
++					}
++				 }while ((next_tok = strtok(NULL, " \t,")) || (*ii >= MAX_VIRUS_CODES));
++			  }
++			  config->gvcode[*ii] = -1;
++			  if (*ii == 0){
++				 fprintf(stderr, "%s --good viruscode has be a list of numbers (%s)\n", where, *rest);
++				 *error=1;
++			  }
++			  break;
++	  #ifdef DEMIME
++		   case 'x': /* demime */
++			  config->demime = 1;
++			  break;
++	  #endif
++		   case 'X': /* Xtra notification reciept mail program */
++			  config->mail=optarg;
++			  break;
++		   case 'T': /* scannertype */
++			  i=0;
++			  while (scannerlist[i]){
++				 if(!strcasecmp(optarg, scannerlist[i]->name)){
++					config->scanner=scannerlist[i];
++					i=-1;
++					break;
++				 }
++				 i++;
++			  }
++			  if (i!=-1){
++				 fprintf(stderr, "%s scannertype '%s' is not supported", where, optarg);
++				 *error=1;
++			  }
++			  break;
++		   case 'g': /* virusregexp */
++			  config->virusregexp = optarg;
++			  i=strlen(optarg);
++			  if (optarg[i-2]=='/' && isdigit(optarg[i-1])){
++				 optarg[i-2]='\0';
++				 config->virusregexpsub=optarg[i-1]-'0';
++			  }
++			  break;
++		   case 'k': /* check for spam */
++			  config->checkspam=1;
++			  break;
++		   case 'K': /* emergency Kontact! */
++			  config->emergcon = optarg;
++			  break;
++		   case 'z': /* path to spam checking executable */
++			  config->spamcheck = optarg;
++			  break;
++		   case 'b': /* bytes free */
++			  i=strtol(optarg, rest, 10);
++			  config->freespace=(int)i;
++			  break;
++		   case 'C': /* Check SMTP size */
++			  i=strtol(optarg, rest, 10);
++			  config->smtpsize=(int)i;
++			  break;
++		   case 'j': /* justdelete */
++			  config->delit=1;
++			  break;
++		   case 'J': /* enabletop */
++			  config->enabletop=1;
++			  break;
++		   case 'B': /* broken */
++			  config->broken=1;
++			  break;
++		   case 'S': /* Subject line for virus notification */
++			  config->subject = optarg;
++			  break;
++		   case 'N': /* deleted file notification */
++			  config->notify = optarg;
++			  break;
++		   case 'M': /* ISP marked as SPAM */
++			  config->ispspam = optarg;
++			  break;
++
++		   default:
++			  fprintf(stderr, "%s Option '%s' isn't known\n", where, getoptparam);
++			  *error=1;
++		}
++  }
++  if (state != CONFIG_STATE_CMDPRE && optind < c){
++     *error=1;
++     while (optind < c) fprintf(stderr, "%s Unknown option '%s'\n", where, argv[optind++]);
++  }
++  return i;
++}
++
+ void parseoptions(int argc, char **argv){
+-   long i, ii;
+-   char * rest;
++   long i = 0;
++   long ii = 0;
++   char *rest;
+    int error = 0;
+-   struct servent *port;
+    int fp, res;
+    struct linebuf *cf;
+    char *pargv[MAX_PSEUDO_ARGV];
+    int pargc;
+    char *line;
+-   int pidfd;
+    int dofree=0;
+ 
+-   struct option long_options[] = {
+-   { "renattach",    required_argument,   NULL, 'a' },
+-   { "altvnmsg",     no_argument,         NULL, 'A' },
+-   { "bytesfree",    required_argument,   NULL, 'b' },
+-   { "broken",       no_argument,         NULL, 'B' },
+-   { "viruscode",    required_argument,   NULL, 'c' },
+-   { "checksize",    required_argument,   NULL, 'C' },
+-   { "debug",        no_argument,         NULL, 'd' },
+-   { "extra",        required_argument,   NULL, 'e' },
+-   { "emailport",    required_argument,   NULL, 'E' },
+-   { "configfile",   required_argument,   NULL, 'f' },
+-   { "footer",       required_argument,   NULL, 'F' },
+-   { "virusregexp",  required_argument,   NULL, 'g' },
+-   { "goodcode",     required_argument,   NULL, 'G' },
+-   { "help",         no_argument,         NULL, 'h' },
+-   { "ip",           required_argument,   NULL, 'i' },
+-   { "targetip",     required_argument,   NULL, 'I' },
+-   { "justdelete",   no_argument,         NULL, 'j' },
+-   { "enabletop",    no_argument,         NULL, 'J' },
+-   { "checkspam",    no_argument,         NULL, 'k' },
+-   { "emergcon",     required_argument,   NULL, 'K' },
+-   { "pidfile",      required_argument,   NULL, 'l' },
+-   { "sslport",      required_argument,   NULL, 'L' },
+-   { "maxchilds",    required_argument,   NULL, 'm' },
+-   { "ispspam",      required_argument,   NULL, 'M' },
+-   { "notifydir",    required_argument,   NULL, 'n' },
+-   { "notify",       required_argument,   NULL, 'N' },
+-   { "overwrite",    required_argument,   NULL, 'o' },
+-   { "timeout",      required_argument,   NULL, 'O' },
+-   { "port",         required_argument,   NULL, 'p' },
+-   { "targetport",   required_argument,   NULL, 'P' },
+-   { "quiet",        no_argument,         NULL, 'q' },
+-   { "virusdir",     required_argument,   NULL, 'r' },
+-   { "smtprset",     required_argument,   NULL, 'R' },
+-   { "scanner",      required_argument,   NULL, 's' },
+-   { "subject",      required_argument,   NULL, 'S' },
+-   { "template",     required_argument,   NULL, 't' },
+-   { "scannertype",  required_argument,   NULL, 'T' },
+-   { "user",         required_argument,   NULL, 'u' },
+-   { "useurl",       no_argument,         NULL, 'U' },
+-   { "version",      no_argument,         NULL, 'v' },
+ #ifdef DEMIME
+-   { "demime",       no_argument,         NULL, 'x' },
+-#endif
+-   { "xmail",        required_argument,   NULL, 'X' },
+-   { "spamcheck",    required_argument,   NULL, 'z' },
+-   { NULL,           no_argument,         NULL, 0 }
+-   };
+-#ifdef DEMIME
+    char getoptparam[] = "hvf:a:Ab:Bc:C:de:F:g:G:i:I:jJkK:l:L:m:M:n:N:o:O:p:P:qr:R:s:S:t:T:u:UxX:z:";
+ #else
+    char getoptparam[] = "hvf:a:Ab:Bc:C:de:F:g:G:i:I:jJkK:l:L:m:M:n:N:o:O:p:P:qr:R:s:S:t:T:u:UX:z:";
+ #endif
+-   void switchoption(char opt, char * arg, char * optstr, char * where, int state){
+-      char *next_tok;
+-      switch (opt){
+-         case 'h':
+-         case 'v':
+-         case 'f':
+-            /* don't check in second run (is in the first) */
+-            if (state==CONFIG_STATE_CMD) return;
+-            /* disallow help/version/configfile in configfile */
+-            if (state==CONFIG_STATE_FILE){
+-               fprintf(stderr, "%s '%s' is not allowed in configfile!\n", where, optstr);
+-               error=1;
+-               return;
+-            }
+-         break;
+-         default:
+-         /* only check help/version/configfile for the first cmd run */
+-         if (state==CONFIG_STATE_CMDPRE) return;
+-      }
+ 
+-      switch (opt){
+-         case 'h': /* usage */
+-            usage(argv[0]);
+-            exit(0);
+-            break;
+-         case 'v': /* version */
+-            printversion();
+-            exit(0);
+-            break;
+-         case 'f': /* config (file) */
+-            config->configfile = arg;
+-            break;
+-         case 'F': /* footer (file) */
+-            config->footer = arg;
+-            break;
+-         case 'd': /* debug */
+-            config->debug=1;
+-            break;
+-         case 'e': /* Extra notification */
+-            config->extra=arg;
+-            break;
+-         case 'E': /* SMTP (email) port */
+-            i=strtol(arg, &rest, 10);
+-            if (rest && strlen(rest)>0){
+-               if (i>0){ /* 123abc */
+-                  fprintf(stderr, "%s %s isn't a valid port\n", where, arg);
+-                  error=1;
+-               }else{
+-                  if((port=getservbyname(arg, "tcp"))!=NULL) config->smtpport=ntohs(port->s_port);
+-                  else{
+-                     fprintf(stderr, "Port lookup for '%s/tcp' failed! Check /etc/services\n", arg);
+-                     error=1;
+-                   }
+-                }
+-            } else {
+-                if (i>0) config->smtpport=i;
+-                else {
+-                  fprintf(stderr, "%s Incorrect emailport portnumber\n", where);
+-                  error=1;
+-                }
+-            }
+-            break;
+-         case 'l': /* PID File */
+-            config->pidfile=arg;
+-            if ((pidfd=open(config->pidfile,O_RDONLY ))>=0){
+-               do_log(LOG_EMERG, "ERR: PID file %s exists! Aborting!",config->pidfile);
+-               /* Should not reach here. We are dead. */
+-               pidfd=close(pidfd);
+-               exit(0);
+-            }
+-            break;
+-         case 'L': /* SSL port */
+-            i=strtol(arg, &rest, 10);
+-            if (rest && strlen(rest)>0){
+-               if (i>0){ /* 123abc */
+-                  fprintf(stderr, "%s %s isn't a valid port\n", where, arg);
+-                  error=1;
+-               }else{
+-                  if((port=getservbyname(arg, "tcp"))!=NULL) config->sslport=ntohs(port->s_port);
+-                  else{
+-                     fprintf(stderr, "Port lookup for '%s/tcp' failed! Check /etc/services\n", arg);
+-                     error=1;
+-                  }
+-               }
+-            } else {
+-               if (i>0) config->sslport=i;
+-               else {
+-                  fprintf(stderr, "%s Incorrect POP3S portnumber\n", where);
+-                  error=1;
+-               }
+-            }
+-            break;
+-         case 'a': /* rename attachments using renattach */
+-            config->renattach=arg;
+-            break;
+-         case 'A': /* use alternate virus notification email */
+-            config->altemail=1;
+-            break;
+-         case 'r': /* virusdir */
+-            config->virusdirbase=arg;
+-            config->virusdir=config->virusdirbase;
+-            break;
+-         case 'R': /* smtp reject */
+-            config->smtprset=arg;
+-            break;
+-         case 'n': /* notifydir */
+-            config->notifydir=arg;
+-            break;
+-         case 'm': /* Max Childs */
+-            i=strtol(arg, &rest, 10);
+-            if ((rest && strlen(rest)>0) || i<1 || i>9999){
+-               fprintf(stderr, "%s --maxchilds has to be 1 < val < 10000\n", where);
+-               error=1;
+-            } else config->maxchilds=(int)i;
+-            break;
+-         case 'i': /* IP (to listen on) */
+-            if (!strcmp(arg, "0.0.0.0")){
+-               config->addr.sin_addr.s_addr=htonl(INADDR_ANY);
+-            }else if (!inet_aton(arg, &config->addr.sin_addr)){
+-               fprintf(stderr, "%s %s isn't a valid IP Adress\n", where, arg);
+-               error=1;
+-            }
+-            break;
+-         case 'I': /* IP (to connect) */
+-            if (!strcmp(arg, "0.0.0.0")){
+-               config->targetaddr.sin_addr.s_addr=htonl(INADDR_ANY);
+-            }else if (!inet_aton(arg, &config->targetaddr.sin_addr)){
+-               fprintf(stderr, "%s %s isn't a valid IP Adress\n", where, arg);
+-               error=1;
+-            }
+-            break;
+-         case 'o': /* overwrite (disable) HTML */
+-            config->overwrite=arg;
+-            break;
+-         case 'O': /* timeOut */
+-            i=strtol(arg, &rest, 10);
+-            if ((rest && strlen(rest)>0) || i<1 || i>9999){
+-               fprintf(stderr, "%s --timeout has to be 1 < val < 10000\n", where);
+-               error=1;
+-            } else config->timeout=(int)i;
+-            break;
+-         case 'p': /* Port */
+-            i=strtol(arg, &rest, 10);
+-            if (rest && strlen(rest)>0){
+-               if (i>0){ /* 123abc */
+-                  fprintf(stderr, "%s %s isn't a valid port\n", where, arg);
+-                  error=1;
+-               }else{
+-                  if((port=getservbyname(arg, "tcp"))!=NULL){
+-                     config->addr.sin_port=port->s_port;
+-                  }else{
+-                     fprintf(stderr, "Port lookup for '%s/tcp' failed! Check /etc/services\n", arg);
+-                     error=1;
+-                  }
+-               }
+-            }else{
+-               if (i>0)config->addr.sin_port=htons((int)i);
+-               else{
+-                  fprintf(stderr, "%s Incorrect POP3 portnumber\n", where);
+-                  error=1;
+-               }
+-            }
+-            break;
+-         case 'P': /* target Port */
+-            i=strtol(arg, &rest, 10);
+-            if (rest && strlen(rest)>0){
+-               if (i>0){ /* 123abc */
+-                  fprintf(stderr, "%s %s isn't a valid port\n", where, arg);
+-                  error=1;
+-               }else{
+-                  if((port=getservbyname(arg, "tcp"))!=NULL){
+-                     config->targetaddr.sin_port=port->s_port;
+-                  }else{
+-                     fprintf(stderr, "Port lookup for '%s/tcp' failed! Check /etc/services\n", arg);
+-                     error=1;
+-                  }
+-               }
+-            }else{
+-               if (i>0)config->targetaddr.sin_port=htons((int)i);
+-               else{
+-                  fprintf(stderr, "%s Incorrect target portnumber\n", where);
+-                  error=1;
+-               }
+-            }
+-            break;
+-         case 'q': /* quiet */
+-            config->quiet=1;
+-            break;
+-         case 'u': /* Run as User */
+-            config->runasuser=arg;
+-            /* getpwnam will also accept UID's, so we need no converting*/
+-            break;
+-         case 'U': /* Parse username for destination url */
+-            config->useurl=1;
+-            break;
+-         case 's': /* Scanner */
+-            config->virusscanner=arg;
+-            break;
+-         case 't': /* template */
+-            config->virustemplate=arg;
+-            break;
+-         case 'c': /* Virus (exit) code */
+-            ii = 0;
+-            next_tok = strtok(arg, " \t,");
+-            if (next_tok){
+-               do{
+-                  if (ii < MAX_VIRUS_CODES){
+-                     i=strtol(next_tok, &rest, 10);
+-                     if ( (rest && strlen(rest)>0) || i<1 || i>256){
+-                        fprintf(stderr, "%s --viruscode has be a list of numbers (%s)\n", where, rest);
+-                        error=1;
+-                     }else config->viruscode[ii]=(int)i;
+-                     ii++;
+-                  }
+-               }while ((next_tok = strtok(NULL, " \t,")) || (ii >= MAX_VIRUS_CODES));
+-            }
+-            config->viruscode[ii] = -1;
+-            if (ii == 0){
+-               fprintf(stderr, "%s --viruscode has be a list of numbers (%s)\n", where, rest);
+-               error=1;
+-            }
+-            break;
+-         case 'G': /* Good Virus (exit) code */
+-            ii = 0;
+-            next_tok = strtok(arg, " \t,");
+-            if (next_tok){
+-               do{
+-                  if (ii < MAX_VIRUS_CODES){
+-                     i=strtol(next_tok, &rest, 10);
+-                     if ( (rest && strlen(rest)>0) || i<1 || i>256){
+-                        fprintf(stderr, "%s --good viruscode has be a list of numbers (%s)\n", where, rest);
+-                        error=1;
+-                     }else config->gvcode[ii]=(int)i;
+-                     ii++;
+-                  }
+-               }while ((next_tok = strtok(NULL, " \t,")) || (ii >= MAX_VIRUS_CODES));
+-            }
+-            config->gvcode[ii] = -1;
+-            if (ii == 0){
+-               fprintf(stderr, "%s --good viruscode has be a list of numbers (%s)\n", where, rest);
+-               error=1;
+-            }
+-            break;
+-#ifdef DEMIME
+-         case 'x': /* demime */
+-            config->demime = 1;
+-            break;
+-#endif
+-         case 'X': /* Xtra notification reciept mail program */
+-            config->mail=arg;
+-            break;
+-         case 'T': /* scannertype */
+-            i=0;
+-            while (scannerlist[i]){
+-               if(!strcasecmp(arg, scannerlist[i]->name)){
+-                  config->scanner=scannerlist[i];
+-                  i=-1;
+-                  break;
+-               }
+-               i++;
+-            }
+-            if (i!=-1){
+-               fprintf(stderr, "%s scannertype '%s' is not supported", where, arg);
+-               error=1;
+-            }
+-            break;
+-         case 'g': /* virusregexp */
+-            config->virusregexp = arg;
+-            i=strlen(arg);
+-            if (arg[i-2]=='/' && isdigit(arg[i-1])){
+-               arg[i-2]='\0';
+-               config->virusregexpsub=arg[i-1]-'0';
+-            }
+-            break;
+-         case 'k': /* check for spam */
+-            config->checkspam=1;
+-            break;
+-         case 'K': /* emergency Kontact! */
+-            config->emergcon = arg;
+-            break;
+-         case 'z': /* path to spam checking executable */
+-            config->spamcheck = arg;
+-            break;
+-         case 'b': /* bytes free */
+-            i=strtol(arg, &rest, 10);
+-            config->freespace=(int)i;
+-            break;
+-         case 'C': /* Check SMTP size */
+-            i=strtol(arg, &rest, 10);
+-            config->smtpsize=(int)i;
+-            break;
+-         case 'j': /* justdelete */
+-            config->delit=1;
+-            break;
+-         case 'J': /* enabletop */
+-            config->enabletop=1;
+-            break;
+-         case 'B': /* broken */
+-            config->broken=1;
+-            break;
+-         case 'S': /* Subject line for virus notification */
+-            config->subject = arg;
+-            break;
+-         case 'N': /* deleted file notification */
+-            config->notify = arg;
+-            break;
+-         case 'M': /* ISP marked as SPAM */
+-            config->ispspam = arg;
+-            break;
+-
+-         default:
+-            fprintf(stderr, "%s Option '%s' isn't known\n", where, optstr);
+-            error=1;
+-      }
+-   }/* sub function switchoption  }}} */
+-   void parseargs(int c, char **v, char * where, int state){
+-      int option, option_index = 0;
+-      opterr=0;
+-      optind=1;
+-      while (1){
+-         option = getopt_long(c, v, getoptparam,
+-         long_options, &option_index);
+-         if (option == EOF) break;
+-         switchoption(option, optarg, v[optind-1], where, state);
+-      }
+-      if (state != CONFIG_STATE_CMDPRE && optind < c){
+-         error=1;
+-         while (optind < c) fprintf(stderr, "%s Unknown option '%s'\n", where, v[optind++]);
+-      }
+-   }
+    config=w_malloc(sizeof(struct configuration_t));
+    /* set defaults for in, char* to NULL */
+    config->debug=DEBUG;
+@@ -2772,7 +2928,7 @@ void parseoptions(int argc, char **argv){
+    config->emergcon=NULL;
+    config->emergency=NULL;
+    /* parse line args, but for the first time only configfile/version/help */
+-   parseargs(argc, argv, "\t[cmdlineparm]", CONFIG_STATE_CMDPRE);
++   i = parseargs(argc, argv, "\t[cmdlineparm]", CONFIG_STATE_CMDPRE, getoptparam, &rest, i, &ii, &error);
+    /* parse configfile */
+    if (!config->configfile){
+       config->configfile=strdup(CONFIGFILE); //TODO: 24 bytes in 1 blocks are definitely lost in loss record 2 of 2
+@@ -2800,7 +2956,7 @@ void parseoptions(int argc, char **argv){
                          rest=line+i+ii+1;
                          if (rest && strlen(rest)>0 ){
                             pargv[pargc][strlen(pargv[pargc])]='=';
@@ -344,7 +1143,21 @@ $ComixWall: patch-p3scan_c,v 1.6 2016/07/12 10:30:10 soner Exp $
                          }
                       }
                    }
-@@ -2873,7 +3024,7 @@ int main(int argc, char ** argv){
+@@ -2812,11 +2968,11 @@ void parseoptions(int argc, char **argv){
+       close(fp);
+       linebuf_uninit(cf);
+       pargv[pargc]=NULL;
+-      parseargs(pargc, pargv, "\t[configfile]", CONFIG_STATE_FILE);
++      i = parseargs(pargc, pargv, "\t[configfile]", CONFIG_STATE_FILE, getoptparam, &rest, i, &ii, &error);
+    }
+    if(dofree) free(config->configfile);
+    /* now check the rest of commandline args (higher precedence than configfile) */
+-   parseargs(argc, argv, "\t[cmdlineparm]", CONFIG_STATE_CMD);
++   i = parseargs(argc, argv, "\t[cmdlineparm]", CONFIG_STATE_CMD, getoptparam, &rest, i, &ii, &error);
+    if (error){
+       printf(
+       "Commandline options/configfile are not ok\n"
+@@ -2873,7 +3029,7 @@ int main(int argc, char ** argv){
     int connfd=0, i=0, cuid=0;
     int abortfd=0;
     struct sockaddr_in  addr;
@@ -353,7 +1166,7 @@ $ComixWall: patch-p3scan_c,v 1.6 2016/07/12 10:30:10 soner Exp $
     pid_t pid;
     int stat=0;
     FILE * fp;
-@@ -2882,12 +3033,12 @@ int main(int argc, char ** argv){
+@@ -2882,12 +3038,12 @@ int main(int argc, char ** argv){
     char * responsemsg;
     int virusdirlen=0;
     char chownit[100];
@@ -368,7 +1181,7 @@ $ComixWall: patch-p3scan_c,v 1.6 2016/07/12 10:30:10 soner Exp $
  
     w_memory_init();                  // We need to initialize our memory allocation routines
  
-@@ -2931,11 +3082,14 @@ int main(int argc, char ** argv){
+@@ -2931,11 +3087,14 @@ int main(int argc, char ** argv){
        do_log(LOG_NOTICE, "Changing uid (we are root)");
        pws = getpwnam(config->runasuser);
        if (pws == NULL) do_log(LOG_EMERG,"ERR: Unknown User '%s'",config->runasuser);
@@ -384,7 +1197,7 @@ $ComixWall: patch-p3scan_c,v 1.6 2016/07/12 10:30:10 soner Exp $
     if (p3signal(SIGCHLD, do_sigchld)<0) do_log(LOG_EMERG, "ERR: Could not set signal handler SIGCHLD");
     if (p3signal(SIGTERM, do_sigterm_main)<0) do_log(LOG_EMERG, "ERR: Could not set signal handler SIGTERM main");
     if (p3signal(SIGINT, do_sigterm_main)<0) do_log(LOG_EMERG, "ERR: Could not set signal handler SIGINT main");
-@@ -3024,7 +3178,7 @@ int main(int argc, char ** argv){
+@@ -3024,7 +3183,7 @@ int main(int argc, char ** argv){
           numprocs++;
           do_log(LOG_DEBUG, "Forked, pid=%i, numprocs=%i", pid, numprocs);
           close (connfd);
@@ -393,7 +1206,7 @@ $ComixWall: patch-p3scan_c,v 1.6 2016/07/12 10:30:10 soner Exp $
              we don't need "them" (connfd?), child process takes care of that */
           if (numprocs>=config->maxchilds){
              do_log(LOG_WARNING, "MAX_CHILDS (%i) reached!", config->maxchilds);
-@@ -3036,7 +3190,7 @@ int main(int argc, char ** argv){
+@@ -3036,7 +3195,7 @@ int main(int argc, char ** argv){
        }else{
           /* child */
           config->child=1;

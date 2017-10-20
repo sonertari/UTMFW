@@ -1,4 +1,4 @@
-/*	$OpenBSD: editor.c,v 1.300 2015/12/10 17:26:59 mmcc Exp $	*/
+/*	$OpenBSD: editor.c,v 1.308 2017/09/29 18:32:09 otto Exp $	*/
 
 /*
  * Copyright (c) 1997-2000 Todd C. Miller <Todd.Miller@courtesan.com>
@@ -137,6 +137,7 @@ int	micmp(const void *, const void *);
 int	mpequal(char **, char **);
 int	get_bsize(struct disklabel *, int);
 int	get_fsize(struct disklabel *, int);
+int	get_cpg(struct disklabel *, int);
 int	get_fstype(struct disklabel *, int);
 int	get_mp(struct disklabel *, int);
 int	get_offset(struct disklabel *, int);
@@ -207,7 +208,7 @@ editor(int f)
 	}
 
 #ifdef SUN_CYLCHECK
-	if ((newlab.d_flags & D_VENDOR) && !aflag) {
+	if ((newlab.d_flags & D_VENDOR) && !quiet) {
 		puts("This platform requires that partition offsets/sizes "
 		    "be on cylinder boundaries.\n"
 		    "Partition offsets/sizes will be rounded to the "
@@ -257,9 +258,10 @@ editor(int f)
 
 		case 'A':
 			if (ioctl(f, DIOCGPDINFO, &newlab) == 0) {
-				++aflag;
+				aflag = 1;
+				++quiet;
 				editor_allocspace(&newlab);
-				--aflag;
+				--quiet;
 			} else
 				newlab = lastlabel;
 			break;
@@ -510,7 +512,7 @@ done:
  * Allocate all disk space according to standard recommendations for a
  * root disk.
  */
-void
+int
 editor_allocspace(struct disklabel *lp_org)
 {
 	struct disklabel *lp, label;
@@ -590,7 +592,7 @@ again:
 			if (++index < alloc_table_nitems)
 				goto again;
 			else
-				return;
+				return 1;
 		}
 		partno = j;
 		pp = &lp->d_partitions[j];
@@ -653,25 +655,22 @@ cylinderalign:
 			if (++index < alloc_table_nitems)
 				goto again;
 			else
-				return;
+				return 1;
 		}
 
 		/* Everything seems ok so configure the partition. */
 		DL_SETPSIZE(pp, secs);
 		DL_SETPOFFSET(pp, chunkstart);
-		fragsize = (lp->d_secsize == DEV_BSIZE) ? 2048 :
-		    lp->d_secsize;
+		fragsize = 2048;
 		if (secs * lp->d_secsize > 128ULL * 1024 * 1024 * 1024)
 			fragsize *= 2;
 		if (secs * lp->d_secsize > 512ULL * 1024 * 1024 * 1024)
 			fragsize *= 2;
-#if defined (__sparc__) && !defined(__sparc64__)
-		/* can't boot from > 8k boot blocks */
-		pp->p_fragblock =
-		    DISKLABELV1_FFS_FRAGBLOCK(i == 0 ? 1024 : fragsize, 8);
-#else
+		if (fragsize < lp->d_secsize)
+			fragsize = lp->d_secsize;
+		if (fragsize > MAXBSIZE / 8)
+			fragsize = MAXBSIZE / 8;
 		pp->p_fragblock = DISKLABELV1_FFS_FRAGBLOCK(fragsize, 8);
-#endif
 		pp->p_cpg = 1;
 		if (ap->mp[0] != '/')
 			pp->p_fstype = FS_SWAP;
@@ -686,6 +685,7 @@ cylinderalign:
 
 	free(alloc);
 	memcpy(lp_org, lp, sizeof(struct disklabel));
+	return 0;
 }
 
 /*
@@ -883,22 +883,17 @@ editor_add(struct disklabel *lp, char *p)
 
 	if (get_offset(lp, partno) == 0 &&
 	    get_size(lp, partno) == 0) {
-		fragsize = (lp->d_secsize == DEV_BSIZE) ? 2048 :
-		    lp->d_secsize;
+		fragsize = 2048;
 		new_size = DL_GETPSIZE(pp) * lp->d_secsize;
 		if (new_size > 128ULL * 1024 * 1024 * 1024)
 			fragsize *= 2;
 		if (new_size > 512ULL * 1024 * 1024 * 1024)
 			fragsize *= 2;
+		if (fragsize < lp->d_secsize)
+			fragsize = lp->d_secsize;
 		if (fragsize > MAXBSIZE / 8)
 			fragsize = MAXBSIZE / 8;
-#if defined (__sparc__) && !defined(__sparc64__)
-		/* can't boot from > 8k boot blocks */
-		pp->p_fragblock =
-		    DISKLABELV1_FFS_FRAGBLOCK(partno == 0 ? 1024 : fragsize, 8);
-#else
 		pp->p_fragblock = DISKLABELV1_FFS_FRAGBLOCK(fragsize, 8);
-#endif
 		if (get_fstype(lp, partno) == 0 &&
 		    get_mp(lp, partno) == 0 &&
 		    get_fsize(lp, partno) == 0  &&
@@ -990,7 +985,8 @@ editor_modify(struct disklabel *lp, char *p)
 	    get_fstype(lp, partno) == 0 &&
 	    get_mp(lp, partno) == 0 &&
 	    get_fsize(lp, partno) == 0  &&
-	    get_bsize(lp, partno) == 0)
+	    get_bsize(lp, partno) == 0 &&
+	    get_cpg(lp, partno) == 0)
 		return;
 
 	/* Bailed out at some point, so undo any changes. */
@@ -1264,7 +1260,7 @@ getuint64(struct disklabel *lp, char *prompt, char *helpstring,
 			if ((cyls * lp->d_secpercyl) - offset > maxval)
 				cyls--;
 			rval = (cyls * lp->d_secpercyl) - offset;
-			if (!aflag)
+			if (!quiet)
 				printf("Rounding size to cylinder (%d sectors)"
 				    ": %llu\n", lp->d_secpercyl, rval);
 		}
@@ -1305,7 +1301,7 @@ has_overlap(struct disklabel *lp)
 				printf("\nError, partitions %c and %c overlap:"
 				    "\n", 'a' + i, 'a' + j);
 				printf("#    %16.16s %16.16s  fstype "
-				    "[fsize bsize  cpg]\n", "size", "offset");
+				    "[fsize bsize    cpg]\n", "size", "offset");
 				display_partition(stdout, lp, i, 0);
 				display_partition(stdout, lp, j, 0);
 
@@ -1868,13 +1864,13 @@ void
 mpfree(char **mp)
 {
 	int part;
-
+	
 	if (mp == NULL)
 		return;
-
+	
 	for (part = 0; part < MAXPARTITIONS; part++)
 		free(mp[part]);
-
+	
 	free(mp);
 }
 
@@ -1964,6 +1960,34 @@ get_size(struct disklabel *lp, int partno)
 
 	/* Partition size was not set. */
 	return (1);
+}
+
+int
+get_cpg(struct disklabel *lp, int partno)
+{
+	u_int64_t ui;
+	struct partition *pp = &lp->d_partitions[partno];
+
+	if (!expert || pp->p_fstype != FS_BSDFFS)
+		return (0);
+
+	for (;;) {
+		ui = getuint64(lp, "cpg",
+		    "Size of partition in fs blocks.",
+		    pp->p_cpg, pp->p_cpg, 0, 0);
+		if (ui == ULLONG_MAX - 1) {
+			fputs("Command aborted\n", stderr);
+			return (1);
+		} else if (ui == ULLONG_MAX) {
+			fputs("Invalid entry\n", stderr);
+		} else if (ui > USHRT_MAX) {
+			fprintf(stderr, "Error: cpg should be smaller than "
+			    "65536\n");
+		} else
+			break;
+	}
+	pp->p_cpg = ui;
+	return (0);
 }
 
 int
@@ -2077,10 +2101,10 @@ align:
 	if (adj > 0)
 		DL_SETPSIZE(pp, DL_GETPSIZE(pp) - adj);
 
-	if (orig_offset != DL_GETPOFFSET(pp) && !aflag)
+	if (orig_offset != DL_GETPOFFSET(pp) && !quiet)
 		printf("Rounding offset to bsize (%llu sectors): %llu\n",
 		    bsize, DL_GETPOFFSET(pp));
-	if (orig_size != DL_GETPSIZE(pp) && !aflag)
+	if (orig_size != DL_GETPSIZE(pp) && !quiet)
 		printf("Rounding size to bsize (%llu sectors): %llu\n",
 		    bsize, DL_GETPSIZE(pp));
 #endif
@@ -2330,7 +2354,7 @@ display_edit(struct disklabel *lp, char unit, u_int64_t fr)
 	printf("; free: ");
 	psize(fr, unit, lp);
 
-	printf("\n#    %16.16s %16.16s  fstype [fsize bsize  cpg]\n",
+	printf("\n#    %16.16s %16.16s  fstype [fsize bsize   cpg]\n",
 	    "size", "offset");
 	for (i = 0; i < lp->d_npartitions; i++)
 		display_partition(stdout, lp, i, unit);
@@ -2356,6 +2380,7 @@ parse_autotable(char *filename)
 		    idx + 1, sizeof(*sa))) == NULL)
 			err(1, NULL);
 		sa = &(alloc_table[0].table[idx]);
+		memset(sa, 0, sizeof(*sa));
 		idx++;
 
 		if ((sa->mp = get_token(&buf, &len)) == NULL ||
@@ -2475,7 +2500,7 @@ parse_sizerange(char *buf, u_int64_t *min, u_int64_t *max)
 		if (*max == 0)
 			*max = *min;
 	free(buf);
-	return (0);
+	return (0);	
 }
 
 int
