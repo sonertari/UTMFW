@@ -393,7 +393,6 @@ makedev() {
 GetPkgDesc() {
 
 	case $1 in
-		apache-httpd-openbsd-*) 				pkgdesc="Web Server" ;;
 		isc-bind-*) 				pkgdesc="DNS Server" ;;
 		sslproxy-*) 				pkgdesc="SSL Proxy" ;;
 		clamav-*) 				pkgdesc="Virus Scanner" ;;
@@ -1102,8 +1101,7 @@ CDDEVS=$(scan_dmesg "${MDCDDEVS:-/^cd[0-9][0-9]* /s/ .*//p}")
 [[ -z $CDDEVS ]] && CDDEVS="cd0,cd1,cd2"
 
 # Selected sets will be installed in the order they are listed in $THESETS.
-THESETS="apache-httpd-openbsd-1.3.20140502p6.tgz \
-		isc-bind-9.10.6.tgz \
+THESETS="isc-bind-9.10.6.tgz \
 		sslproxy-0.5.1.tgz \
 		clamav-0.99.2p5.tgz \
 		clamavdb.tar.gz \
