@@ -108,7 +108,9 @@ class View
 
 					$ciphertext_dec = substr($ciphertext_dec, $iv_size);
 
-					$passwd = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $_SESSION['cryptKey'], $ciphertext_dec, MCRYPT_MODE_CBC, $iv_dec);
+					/// @attention Use trim(), since the mcrypt_decrypt() in php-mcrypt-5.6.31 returns with trailing white space of size 8!
+					/// @todo Check why mcrypt_decrypt() returns with trailing white space now
+					$passwd = trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $_SESSION['cryptKey'], $ciphertext_dec, MCRYPT_MODE_CBC, $iv_dec));
 
 					$ssh = new Net_SSH2(gethostname());
 

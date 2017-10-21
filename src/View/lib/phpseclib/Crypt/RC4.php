@@ -189,8 +189,10 @@ class Crypt_RC4 extends Crypt_Base
      */
     function isValidEngine($engine)
     {
-        switch ($engine) {
-            case CRYPT_ENGINE_OPENSSL:
+        if ($engine == CRYPT_ENGINE_OPENSSL) {
+            if (version_compare(PHP_VERSION, '5.3.7') >= 0) {
+                $this->cipher_name_openssl = 'rc4-40';
+            } else {
                 switch (strlen($this->key)) {
                     case 5:
                         $this->cipher_name_openssl = 'rc4-40';
@@ -204,6 +206,7 @@ class Crypt_RC4 extends Crypt_Base
                     default:
                         return false;
                 }
+            }
         }
 
         return parent::isValidEngine($engine);
