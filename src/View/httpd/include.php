@@ -33,7 +33,6 @@ $Menu = array(
 			'daily' => _MENU('Daily'),
 			'hourly' => _MENU('Hourly'),
 			'live' => _MENU('Live'),
-			'charts' => _MENU('Charts'),
 			),
 		),
     'graphs' => array(

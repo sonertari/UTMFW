@@ -115,7 +115,7 @@ $UTMFW_MODULES = array(
 		'Name' => _MENU('SPAMD'),
 		'Perms' => $ALL_USERS,
 		),
-    'apache' => array(
+    'httpd' => array(
 		'Name' => _MENU('WEB SERVER'),
 		'Perms' => $ALL_USERS,
 		),

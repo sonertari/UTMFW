@@ -18,6 +18,6 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('apache.php');
-require_once('../lib/conf.php');
+require_once('include.accesslogs.php');
+require_once('../lib/stats.php');
 ?>

@@ -36,7 +36,7 @@ if (count($_POST)) {
 require_once($VIEW_PATH.'/header.php');
 
 $ServiceDescs= array(
-	'/usr/local/sbin/httpd'			=> _TITLE2('Web Server (WUI)'),
+	'/usr/local/sbin/php-fpm-5.6'	=> _TITLE2('PHP FastCGI Server'),
 	'/usr/local/sbin/named'			=> _TITLE2('DNS Server'),
 	'/usr/local/bin/sslproxy'		=> _TITLE2('SSL Proxy'),
 	'/usr/local/sbin/e2guardian'	=> _TITLE2('Web Filter'),
@@ -54,6 +54,8 @@ $ServiceDescs= array(
 	'/usr/local/libexec/symon'		=> _TITLE2('Symon System Monitoring'),
 	'/usr/local/sbin/pmacctd'		=> _TITLE2('Pmacct Network Monitoring'),
 	'pf'							=> _TITLE2('Packet Filter'),
+	'httpd_flags'					=> _TITLE2('Web Server (WUI)'),
+	'slowcgi_flags'					=> _TITLE2('CGI Server'),
 	'dhcpd_flags'					=> _TITLE2('DHCP Server'),
 	'relayd_flags'					=> _TITLE2('Relayd'),
 	'ftpproxy_flags'				=> _TITLE2('FTP Proxy'),

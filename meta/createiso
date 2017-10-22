@@ -59,21 +59,21 @@ echo $VOL_ID
 echo $APP_ID
 echo "========================="
 
-echo "Cloning $PROJECT_NAME git repo:"
+echo "Cloning $PROJECT_NAME git repo"
 
 mkdir $ROOT_PATH/$TMP/
 cd $ROOT_PATH/$TMP/
 rm -rf *
 git clone $ROOT_PATH
 
-echo "Generating gettext translations:"
+echo "Generating gettext translations"
 
 for locale in $LOCALES_LIST; do
 	cd $ROOT_PATH/$TMP/$PROJECT_NAME/src/View/$LOCALE_PATH/$locale/LC_MESSAGES
 	msgfmt -o utmfw.mo utmfw.po
 done
 
-echo "Generating source documention:"
+echo "Generating source documention"
 
 cd $ROOT_PATH/$TMP/$PROJECT_NAME
 doxygen Doxyfile

@@ -117,7 +117,7 @@ class Squid extends Model
 		$re_clientip= "($Re_Ip|-)";
 		$re_cache= '(\S+)';
 		$re_code= '(\d+)';
-		$re_mtd= '(GET|POST|\S+)';
+		$re_mtd= '(\S+)';
 		// @attention https should come first, otherwise http always matches
 		$re_link= '((https|http)\S+)';
 		$re_direct= '(\S+)';

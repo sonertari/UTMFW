@@ -80,18 +80,12 @@ utmfw		type=dir mode=0755 uname=root gname=wheel flags=none
 virusmails		type=dir mode=0700 uid=539 gid=539 flags=none
 ..	#var/virusmails
 www			type=dir mode=0755 uname=root gname=daemon
-cgi-bin			type=dir mode=0755 uname=root gname=daemon
-man.cgi			type=file mode=0511 uname=root gname=bin
-..	#var/www/cgi-bin
-conf			type=dir mode=0755 uname=root gname=daemon
-modules			type=dir mode=0755 uname=root gname=daemon
-php-5.6.conf	type=file mode=0644 uname=root gname=daemon
-..	#var/www/conf/modules
-httpd.conf		type=file mode=0644 uname=root gname=daemon
-..	#var/www/conf
 htdocs			type=dir mode=0755 uname=root gname=wheel
 utmfw		type=dir mode=0755 uname=root gname=wheel
 View			type=dir mode=0755 uname=root gname=wheel
+cgi-bin			type=dir mode=0755 uname=root gname=daemon
+man.cgi			type=file mode=0511 uname=root gname=bin
+..	#var/www/htdocs/utmfw/View/cgi-bin
 symon			type=dir mode=0755 uname=root gname=wheel
 cache			type=dir mode=0777 uname=root gname=wheel flags=none
 ..	#var/www/htdocs/utmfw/View/symon/cache
@@ -104,7 +98,8 @@ localhost		type=dir mode=0755 uname=root gname=wheel flags=none
 ..	#var/www/htdocs/utmfw
 ..	#var/www/htdocs
 logs			type=dir mode=0755 uname=root gname=daemon
-access_log		type=file mode=0644 uname=root gname=daemon
+access.log		type=file mode=0644 uname=root gname=daemon
+error.log		type=file mode=0644 uname=root gname=daemon
 ..	#var/www/logs
 ..	#var/www
 ..	#var
@@ -210,12 +205,14 @@ clamd.conf		type=file mode=0644 uname=root gname=wheel
 dhcpd.conf		type=file mode=0644 uname=root gname=wheel
 doas.conf		type=file mode=0644 uname=root gname=wheel
 freshclam.conf		type=file mode=0644 uname=root gname=wheel
+httpd.conf		type=file mode=0644 uname=root gname=wheel
 login.conf		type=file mode=0644 uname=root gname=wheel
 motd			type=file mode=0664 uname=root gname=wheel
 newsyslog.conf		type=file mode=0644 uname=root gname=wheel
 pf.conf			type=file mode=0600 uname=root gname=wheel
 pf.restrictedips	type=file mode=0600 uname=root gname=wheel
 php-5.6.ini			type=file mode=0644 uname=root gname=wheel
+php-fpm.conf		type=file mode=0644 uname=root gname=wheel
 rc.conf.local		type=file mode=0644 uname=root gname=wheel
 rc.local		type=file mode=0644 uname=root gname=wheel
 rc.shutdown		type=file mode=0644 uname=root gname=wheel
@@ -226,7 +223,6 @@ symon.conf		type=file mode=0644 uname=root gname=wheel
 symux.conf		type=file mode=0644 uname=root gname=wheel
 sysctl.conf		type=file mode=0644 uname=root gname=wheel
 syslog.conf		type=file mode=0644 uname=root gname=wheel
-webalizer.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc
 usr			type=dir mode=0755 uname=root gname=wheel
 local			type=dir mode=0755 uname=root gname=wheel

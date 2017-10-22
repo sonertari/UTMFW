@@ -1,14 +1,14 @@
-# Doxyfile 1.8.11
+# Doxyfile 1.8.13
 
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "UTM Firewall"
-PROJECT_NUMBER         = 5.9
+PROJECT_NUMBER         = 6.2
 PROJECT_BRIEF          =
 PROJECT_LOGO           =
-OUTPUT_DIRECTORY       = ./src/docs
+OUTPUT_DIRECTORY       = ./src/View/docs
 CREATE_SUBDIRS         = NO
 ALLOW_UNICODE_NAMES    = NO
 OUTPUT_LANGUAGE        = English
@@ -45,6 +45,7 @@ OPTIMIZE_FOR_FORTRAN   = NO
 OPTIMIZE_OUTPUT_VHDL   = NO
 EXTENSION_MAPPING      =
 MARKDOWN_SUPPORT       = YES
+TOC_INCLUDE_HEADINGS   = 0
 AUTOLINK_SUPPORT       = YES
 BUILTIN_STL_SUPPORT    = NO
 CPP_CLI_SUPPORT        = NO
@@ -142,8 +143,6 @@ REFERENCES_LINK_SOURCE = YES
 SOURCE_TOOLTIPS        = YES
 USE_HTAGS              = NO
 VERBATIM_HEADERS       = YES
-CLANG_ASSISTED_PARSING = NO
-CLANG_OPTIONS          =
 #---------------------------------------------------------------------------
 # Configuration options related to the alphabetical class index
 #---------------------------------------------------------------------------
@@ -173,7 +172,7 @@ DOCSET_BUNDLE_ID       = org.doxygen.Project
 DOCSET_PUBLISHER_ID    = org.doxygen.Publisher
 DOCSET_PUBLISHER_NAME  = Publisher
 GENERATE_HTMLHELP      = NO
-CHM_FILE               = ./src/docs/utmfw.chm
+CHM_FILE               = ./src/View/docs/utmfw.chm
 HHC_LOCATION           =
 GENERATE_CHI           = YES
 CHM_INDEX_ENCODING     =
@@ -286,7 +285,7 @@ SKIP_FUNCTION_MACROS   = YES
 # Configuration options related to external references
 #---------------------------------------------------------------------------
 TAGFILES               =
-GENERATE_TAGFILE       = ./src/docs/utmfw.tag
+GENERATE_TAGFILE       = ./src/View/docs/utmfw.tag
 ALLEXTERNALS           = NO
 EXTERNAL_GROUPS        = YES
 EXTERNAL_PAGES         = YES
@@ -322,6 +321,7 @@ DOTFILE_DIRS           =
 MSCFILE_DIRS           =
 DIAFILE_DIRS           =
 PLANTUML_JAR_PATH      =
+PLANTUML_CFG_FILE      =
 PLANTUML_INCLUDE_PATH  =
 DOT_GRAPH_MAX_NODES    = 50
 MAX_DOT_GRAPH_DEPTH    = 0

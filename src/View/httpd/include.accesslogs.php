@@ -21,7 +21,7 @@
 require_once('include.php');
 
 $LogConf = array(
-    'apachelogs' => array(
+    'httpdlogs' => array(
         'Fields' => array(
             'DateTime',
             'IP',
@@ -30,46 +30,27 @@ $LogConf = array(
             'Code',
             'Size',
     		),
+        'HighlightLogs' => array(
+            'Col' => 'Code',
+            'REs' => array(
+                'red' => array('5\d\d'),
+                'yellow' => array('4\d\d'),
+        		),
+    		),
 		),
 	);
 
-class Apachelogs extends View
+class Httpdlogs extends View
 {
-	public $Model= 'apachelogs';
+	public $Model= 'httpdlogs';
 	public $LogsPage= 'accesslogs.php';
 
 	function __construct()
 	{
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
-		$this->LogsHelpMsg= _HELPWINDOW('These are access logs of the Apache web server. Logs contain logged-in users, client IP addresses, and pages accessed.');
-	}
-	
-	function FormatDate($date)
-	{
-		global $MonthNames;
-		
-		return $date['Day'].'/'.$MonthNames[$date['Month']].'/'.date('Y');
-	}
-
-	function FormatDateArray($datestr, &$date)
-	{
-		global $MonthNumbers;
-
-		if (preg_match('/^(\d+)\/(\w+)\/(\d+)$/', $datestr, $match)) {
-			$date['Day']= $match[1];
-			$date['Month']= $MonthNumbers[$match[2]];
-			return TRUE;
-		}
-		else if (preg_match('/(\w+)\s+(\d+)/', $datestr, $match)) {
-			if (array_key_exists($match[1], $MonthNumbers)) {
-				$date['Month']= sprintf('%02d', $MonthNumbers[$match[1]]);
-				$date['Day']= sprintf('%02d', $match[2]);
-				return TRUE;
-			}
-		}
-		return FALSE;
+		$this->LogsHelpMsg= _HELPWINDOW('These are the access logs of OpenBSD/httpd. Logs contain client IP addresses and pages accessed.');
 	}
 }
 
-$View= new Apachelogs();
+$View= new Httpdlogs();
 ?>

@@ -14,10 +14,10 @@
 
 echo '\nStarting UTMFW services...'
 
-# Start Apache Web server
-if [ -x /usr/local/sbin/httpd ]; then
-	echo 'Web server'
-	/usr/local/sbin/httpd -u -DSSL >/dev/null 2>&1
+# Start PHP FastCGI server
+if [ -x /usr/local/sbin/php-fpm-5.6 ]; then
+	echo 'PHP FastCGI server'
+	/usr/local/sbin/php-fpm-5.6
 fi
 
 # Start ISC DNS server

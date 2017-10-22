@@ -22,9 +22,9 @@
  * UTMFW logs.
  */
 
-require_once($MODEL_PATH.'/apache.php');
+require_once($MODEL_PATH.'/httpd.php');
 
-class Fwlogs extends Apache
+class Fwlogs extends Httpd
 {
 	function ParseLogLine($logline, &$cols)
 	{

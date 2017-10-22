@@ -24,9 +24,6 @@ HOME=/var/log
 #0	9	*	*	1,2,3,4,5,6	/sbin/pfctl -a AfterHours -Fr
 #*	*	*	*	7		/sbin/pfctl -a AfterHours -f /etc/pfre/pf.conf.afterhours
 
-# Webalizer
-30      *       *       *       *       /usr/local/bin/webalizer > /dev/null
-
 # pmacct pnrg protograph
 */1     *       *       *       *       /var/www/htdocs/utmfw/View/pmacct/pnrg/pnrg-wrapper.sh > /dev/null
 */1     *       *       *       *       /bin/sh /var/www/htdocs/utmfw/View/pmacct/protograph/cron.sh > /dev/null

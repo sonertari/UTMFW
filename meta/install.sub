@@ -409,7 +409,6 @@ GetPkgDesc() {
 		imspector-*) 			pkgdesc="IM Proxy" ;;
 		openvpn-*) 				pkgdesc="OpenVPN" ;;
 		dante-*) 				pkgdesc="SOCKS Proxy" ;;
-		webalizer-*) 			pkgdesc="Web Server Logs Analyzer" ;;
 		symon-*) 				pkgdesc="System Monitoring" ;;
 		pmacct-*) 				pkgdesc="Network Monitoring" ;;
 		pftop-*) 				pkgdesc="Packet Filter Monitoring" ;;
@@ -662,6 +661,7 @@ __EOT
 				ln -s /usr/local/bin/php-5.6 /usr/local/bin/php
 				pkg_add php-pcntl
 				pkg_add php-mcrypt
+				pkg_add php-fastcgi
 				;;
 			esac
 			;;
@@ -699,6 +699,7 @@ __EOT
 
 			[[ -d /tmp/config ]] || continue
 			cd /tmp/config
+			chown -R root:wheel *
 		
 			MTREE=utmfw.mtree
 			FILES=utmfw.files
@@ -729,6 +730,7 @@ __EOT
 			[[ -d $_webifdir ]] && mv $_webifdir $_webifdir.orig
 			[[ ! -d $_webifparent ]] && mkdir -p $_webifparent
 			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_webifparent
+			chown -R root:wheel $_webifdir
 			;;
 
 		*)	echo "Unknown file, skipping..."
@@ -1117,7 +1119,6 @@ THESETS="isc-bind-9.10.6.tgz \
 		imspector-0.9.tgz \
 		openvpn-2.4.4.tgz \
 		dante-1.4.1p0.tgz \
-		webalizer-2.23.08.30p5.tgz \
 		symon-2.88p0.tgz \
 		pmacct-1.5.3p1.tgz \
 		pftop-0.7p16.tgz \

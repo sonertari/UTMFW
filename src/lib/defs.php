@@ -822,7 +822,7 @@ $StatsConf = array(
 				),
 			),
 		),
-    'apachelogs' => array(
+    'httpdlogs' => array(
 		'Total' => array(
 			'Title' => _STATS('All requests'),
 			'Cmd' => '/bin/cat <LF>',
@@ -1001,7 +1001,7 @@ $ModelsToStat= array(
 	'ftp-proxy' => _TITLE('FTP Proxy'),
 	'dante' => _TITLE('SOCKS Proxy'),
 	'spamd' => _TITLE('SPAM Deferral'),
-	'apache' => _TITLE('Web Server'),
+	'httpd' => _TITLE('Web Server'),
 	'symon' => _TITLE('Symon'),
 	'symux' => _TITLE('Symux'),
 	'pmacct' => _TITLE('Pmacct'),

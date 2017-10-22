@@ -18,18 +18,6 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file
- * Webalizer iframe.
- */
-
-require_once('include.accesslogs.php');
-
-require_once($VIEW_PATH.'/header.php');
-?>
-<iframe frameborder=0 scrolling=auto marginheight=0 marginwidth=0 width="100%" height="700" src="index.html">
-Your browser does not support iframes.
-</iframe>
-<?php
-PrintHelpWindow(_HELPWINDOW('On this page are web administration interface access statistics.'));
-require_once($VIEW_PATH.'/footer.php');
+require_once('httpd.php');
+require_once('../lib/graphs.php');
 ?>

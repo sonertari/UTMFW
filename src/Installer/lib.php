@@ -123,11 +123,6 @@ function ApplyConfig($auto)
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting smtp-gated proxy_name: $myname");
 		}
 		
-		$View->Model= 'apache';
-		if (!$View->Controller($output, 'SetWebalizerHostname', $lanip)) {
-			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting webalizer hostname: $lanip");
-		}
-		
 		$View->Model= 'e2guardian';
 		if (!$View->Controller($output, 'SetTemplateIps', $lanip)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting e2guardian template ips: $lanip");

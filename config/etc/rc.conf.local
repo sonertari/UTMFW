@@ -9,3 +9,5 @@ ftpproxy_flags="-vv -D6"
 apmd_flags="-A"
 relayd_flags=
 syslogd_flags="-rr"
+httpd_flags=
+slowcgi_flags="-p/"

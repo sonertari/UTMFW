@@ -59,7 +59,7 @@ class System extends Model
 		 * the lines like the 3rd one above.
 		 */
 		$this->rcLocalServices= array(
-			'/usr/local/sbin/httpd',
+			'/usr/local/sbin/php-fpm-5.6',
 			'/usr/local/sbin/named',
 			'/usr/local/bin/sslproxy',
 			'/usr/local/sbin/e2guardian',
@@ -81,6 +81,8 @@ class System extends Model
 		/// rc.conf.local module search strings and descriptions
 		$this->rcConfLocalServices= array(
 			'pf',
+			'httpd_flags',
+			'slowcgi_flags',
 			'dhcpd_flags',
 			'relayd_flags',
 			'ftpproxy_flags',
@@ -880,7 +882,7 @@ class System extends Model
 	function SetManCgiHome($ip)
 	{
 		$re= '|^(\s*\$www\{\'home\'\}\h*=\h*\')(.*)(\'\h*;\h*)$|m';
-		return $this->ReplaceRegexp('/var/www/cgi-bin/man.cgi', $re, '${1}'."https://$ip".'${3}');
+		return $this->ReplaceRegexp('/var/www/htdocs/utmfw/View/cgi-bin/man.cgi', $re, '${1}'."https://$ip".'${3}');
 	}
 
 	/**

@@ -18,14 +18,6 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('apache.php');
-
-$View->ProcessStartStopRequests();
-		
-$Reload= TRUE;
-require_once($VIEW_PATH.'/header.php');
-		
-$View->PrintStatusForm(PRINT_COUNT);
-PrintHelpWindow(_HELPWINDOW('This web administration interface is served by Apache web server, OpenBSD/httpd. If you stop the web server, you will lose your connection to this web interface. You can restart it on the command line.'));
-require_once($VIEW_PATH.'/footer.php');
+require_once('httpd.php');
+require_once('../lib/logs.php');
 ?>
