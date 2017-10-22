@@ -197,9 +197,6 @@ function FirstBootTasks()
 	// Run symon script to create rrd files again for cpu and sensor probes
 	exec('/bin/sh /usr/local/share/examples/symon/c_smrrds.sh all');
 
-	// Create initial web server statistics page
-	exec('/usr/local/bin/webalizer');
-
 	// Disable rc.local line which leads to this function call
 	$file= '/etc/rc.local';
 	if (copy($file, $file.'.bak')) {
