@@ -8,8 +8,8 @@
 <head>
 <style type="text/css">
 	BODY {font-family: arial, helvetica, sans-serif; }
-	SPAN.bold { color: navy; font-weight: bold; }
-	SPAN.underline { color: purple; text-decoration: underline; }
+	SPAN.bold { color: navy; }
+	SPAN.underline { color: purple; }
 	A:link {color: blue; text-decoration: none; }
 	A:visited {color: blue; text-decoration: none; }
 	A:hover {text-decoration: underline; }
@@ -34,7 +34,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 
      <span class="underline">OPTIONS</span> globally tune the behaviour of the packet filtering engine.
 
-     <span class="underline">QUEUEING</span> provides rule-based bandwidth control.
+     <span class="underline">QUEUEING</span> provides rule-based bandwidth and traffic control.
 
      <span class="underline">TABLES</span> provide a method for dealing with large numbers of addresses.
 
@@ -87,16 +87,18 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      which of these actions are taken; filter parameters specify the packets
      to which a rule applies.
 
-     For each packet processed by the packet filter, the filter rules are
-     evaluated in sequential order, from first to last.  For <span class="bold">block</span> and <span class="bold">pass</span>,
-     the last matching rule decides what action is taken; if no rule matches
-     the packet, the default action is to pass the packet without creating a
-     state.  For <span class="bold">match</span>, rules are evaluated every time they match; the
-     pass/block state of a packet remains unchanged.
+     Each time a packet processed by the packet filter comes in on or goes out
+     through an interface, the filter rules are evaluated in sequential order,
+     from first to last.  For <span class="bold">block</span> and <span class="bold">pass</span>, the last matching rule decides
+     what action is taken; if no rule matches the packet, the default action
+     is to pass the packet without creating a state.  For <span class="bold">match</span>, rules are
+     evaluated every time they match; the pass/block state of a packet remains
+     unchanged.
 
      Most parameters are optional.  If a parameter is specified, the rule only
-     applies to packets with matching attributes.  Certain parameters can be
-     expressed as lists, in which case pfctl(8) generates all needed rule
+     applies to packets with matching attributes.  The matching for some
+     parameters can be inverted with the <span class="bold">!</span> operator.  Certain parameters can
+     be expressed as lists, in which case pfctl(8) generates all needed rule
      combinations.
 
      By default pf(4) filters packets statefully: the first time a packet
@@ -146,7 +148,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              packet.  <span class="bold">match</span> rules differ from <span class="bold">block</span> and <span class="bold">pass</span> rules in that
              parameters are set every time a packet matches the rule, not only
              on the last matching rule.  For the following parameters, this
-             means that the parameter effectively becomes ``sticky'' until
+             means that the parameter effectively becomes "sticky" until
              explicitly overridden: <span class="bold">nat-to</span>, <span class="bold">binat-to</span>, <span class="bold">rdr-to</span>, <span class="bold">queue</span>, <span class="bold">rtable</span>,
              and <span class="bold">scrub</span>.
 
@@ -166,7 +168,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              specified, the rule will match packets in both directions.
 
 <a name="log"></a>
-     <span class="bold">log</span> [<span class="bold">all</span> | <span class="bold">matches</span> | <span class="bold">to</span> <span class="underline">interface</span> | <span class="bold">user</span>]
+     <span class="bold">log</span> (<span class="bold">all</span> | <span class="bold">matches</span> | <span class="bold">to</span> <span class="underline">interface</span> | <span class="bold">user</span>)
              In addition to any action specified, log the packet.  Only the
              packet that establishes the state is logged, unless the <span class="bold">no</span> <span class="bold">state</span>
              option is specified.  The logged packets are sent to a pflog(4)
@@ -174,8 +176,9 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              pflogd(8) logging daemon which logs to the file <span class="underline">/var/log/pflog</span> in
              pcap(3) binary format.
 
-             The keywords <span class="bold">all</span>, <span class="bold">matches</span>, <span class="bold">to</span>, and <span class="bold">user</span> are all optional, and can
-             be combined using commas.
+             The keywords <span class="bold">all</span>, <span class="bold">matches</span>, <span class="bold">to</span>, and <span class="bold">user</span> are optional and can be
+             combined using commas, but must be enclosed in parentheses if
+             given.
 
              Use <span class="bold">all</span> to force logging of all packets for a connection.  This
              is not necessary when <span class="bold">no</span> <span class="bold">state</span> is explicitly specified.
@@ -241,7 +244,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                           back to the packet's source address.
 
              Ranges of addresses are specified using the `-' operator.  For
-             instance: ``10.1.1.10 - 10.1.1.12'' means all addresses from
+             instance: "10.1.1.10 - 10.1.1.12" means all addresses from
              10.1.1.10 to 10.1.1.12, hence addresses 10.1.1.10, 10.1.1.11, and
              10.1.1.12.
 
@@ -255,7 +258,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              <span class="bold">:peer</span>       Translates to the point-to-point interface's peer
                          address(es).
 
-             Host names may also have the <span class="bold">:0</span> modfier appended to restrict the
+             Host names may also have the <span class="bold">:0</span> modifier appended to restrict the
              name resolution to the first of each v4 and v6 address found.
 
              Host name resolution and interface to address translation are
@@ -322,14 +325,15 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 
 <a name="allow-opts"></a>
      <span class="bold">allow-opts</span>
-             By default, IPv4 packets with IP options or IPv6 packets with
-             routing extension headers are blocked.  When <span class="bold">allow-opts</span> is
+             By default, packets with IPv4 options or IPv6 hop-by-hop or
+             destination options header are blocked.  When <span class="bold">allow-opts</span> is
              specified for a <span class="bold">pass</span> rule, packets that pass the filter based on
-             that rule (last matching) do so even if they contain IP options
-             or routing extension headers.  For packets that match state, the
-             rule that initially created the state is used.  The implicit pass
-             rule that is used when a packet does not match any rules does not
-             allow IP options.
+             that rule (last matching) do so even if they contain options.
+             For packets that match state, the rule that initially created the
+             state is used.  The implicit pass rule, that is used when a
+             packet does not match any rules, does not allow IP options or
+             option headers.  Note that IPv6 packets with type 0 routing
+             headers are always dropped.
 
 <a name="divert-packet"></a>
      <span class="bold">divert-packet</span> <span class="bold">port</span> <span class="underline">port</span>
@@ -434,7 +438,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              rule is matched.
 
 <a name="probability"></a>
-    <span class="bold">probability</span> <span class="underline">number</span>%
+     <span class="bold">probability</span> <span class="underline">number</span>%
              A probability attribute can be attached to a rule, with a value
              set between 0 and 100%, in which case the rule is honoured using
              the given probability value.  For example, the following rule
@@ -448,7 +452,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              assigned.
 
 <a name="received-on"></a>
-     <span class="bold">received-on</span> <span class="underline">interface</span>
+     [<span class="bold">!</span>]<span class="bold">received-on</span> <span class="underline">interface</span>
              Only match packets which were received on the specified <span class="bold">interface</span>
              (or interface group).  <span class="bold">any</span> will match any existing interface
              except loopback ones.
@@ -466,8 +470,8 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              a default priority of 3.  If the packet is transmitted on a
              vlan(4) interface, the queueing priority will also be written as
              the priority code point in the 802.1Q VLAN header.  If two
-             priorities are given, packets which have a TOS of <span class="bold">lowdelay</span> and
-             TCP ACKs with no data payload will be assigned to the second one.
+             priorities are given, TCP ACKs with no data payload and packets
+             which have a TOS of <span class="bold">lowdelay</span> will be assigned to the second one.
              Packets with a higher priority number are processed first, and
              packets with the same priority are processed in the order in
              which they are received.
@@ -507,7 +511,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              <span class="underline">string</span>.  The tag acts as an internal marker that can be used to
              identify these packets later on.  This can be used, for example,
              to provide trust between interfaces and to determine if packets
-             have been processed by translation rules.  Tags are ``sticky'',
+             have been processed by translation rules.  Tags are "sticky",
              meaning that the packet will be tagged even if the rule is not
              the last matching rule.  Further matching rules can replace the
              tag with a new one but will not remove a previously applied tag.
@@ -518,8 +522,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      [<span class="bold">!</span>]<span class="bold">tagged</span> <span class="underline">string</span>
              Used with filter or translation rules to specify that packets
              must already be tagged with the given <span class="underline">string</span> in order to match
-             the rule.  Inverse tag matching can also be done by specifying
-             the <span class="bold">!</span> operator before the <span class="bold">tagged</span> keyword.
+             the rule.
 
 <a name="tos"></a>
      <span class="bold">tos</span> <span class="underline">string</span> | <span class="underline">number</span>
@@ -536,7 +539,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                    pass all tos 16
 
 <a name="user"></a>
-    <span class="bold">user</span> <span class="underline">user</span>
+     <span class="bold">user</span> <span class="underline">user</span>
              This rule only applies to packets of sockets owned by the
              specified <span class="underline">user</span>.  For outgoing connections initiated from the
              firewall, this is the user that opened the connection.  For
@@ -574,9 +577,10 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      modifies the specified address and/or port in the packet and recalculates
      IP, TCP, and UDP checksums as necessary.
 
-     Subsequent rules will see packets as they look after any addresses and
-     ports have been translated.  These rules will therefore have to filter
-     based on the translated address and port number.
+     If specified on a <span class="bold">match</span> rule, subsequent rules will see packets as they
+     look after any addresses and ports have been translated.  These rules
+     will therefore have to filter based on the translated address and port
+     number.
 
      The state entry created permits pf(4) to keep track of the original
      address for traffic associated with that state and correctly direct
@@ -619,8 +623,10 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 
                In the reverse case the following rules are identical:
 
-                     pass in inet6 af-to inet from 198.51.100.1 to 0.0.0.0/0
-                     pass in inet6 af-to inet from 198.51.100.1
+                     pass in inet6 from any to 64:ff9b::/96 af-to inet \
+                             from 198.51.100.1 to 0.0.0.0/0
+                     pass in inet6 from any to 64:ff9b::/96 af-to inet \
+                             from 198.51.100.1
 
                The destination IPv4 address is assumed to be embedded inside
                the original IPv6 destination address, e.g. 64:ff9b::c633:6464
@@ -640,7 +646,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                as the packet traverses the given interface.  This technique
                allows one or more IP addresses on the translating host to
                support network traffic for a larger range of machines on an
-               ``inside'' network.  Although in theory any IP address can be
+               "inside" network.  Although in theory any IP address can be
                used on the inside, it is strongly recommended that one of the
                address ranges defined by RFC 1918 be used.  Those netblocks
                are:
@@ -919,9 +925,9 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      <span class="bold">set</span> <span class="bold">reassemble</span> <span class="bold">yes</span> | <span class="bold">no</span> [<span class="bold">no-df</span>]
              The <span class="bold">reassemble</span> option is used to enable or disable the reassembly
              of fragmented packets, and can be set to <span class="bold">yes</span> (the default) or <span class="bold">no</span>.
-             If <span class="bold">no-df</span> is also specified, fragments with the ``dont-fragment''
+             If <span class="bold">no-df</span> is also specified, fragments with the "dont-fragment"
              bit set are reassembled too, instead of being dropped; the
-             reassembled packet will have the ``dont-fragment'' bit cleared.
+             reassembled packet will have the "dont-fragment" bit cleared.
 
 <a name="ruleset-optimization"></a>
      <span class="bold">set</span> <span class="bold">ruleset-optimization</span> <span class="underline">level</span>
@@ -933,8 +939,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                       2.   remove rules that are a subset of another rule
                       3.   combine multiple rules into a table when
                            advantageous
-                      4.   re-order the rules to improve evaluation
-                           performance
+                      4.   reorder the rules to improve evaluation performance
 
              <span class="bold">none</span>     Disable the ruleset optimizer.
              <span class="bold">profile</span>  Uses the currently loaded ruleset as a feedback profile
@@ -1078,20 +1083,19 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 <span class="bold">QUEUEING</span>
      Packets can be assigned to queues for the purpose of bandwidth control.
      At least one declaration is required to configure queues, and later any
-     packet filtering rule can reference the defined queues by name.  During
-     the filtering component of <span class="bold">pf.conf</span>, the last referenced <span class="underline">queue</span> name is
-     where any passed packets will be queued, while for blocked packets it
-     specifies where any resulting ICMP or TCP RST packets should be queued.
-     If the referenced queue does not exist on the outgoing interface the
-     default queue for that interface is used.  Queues attached to an
-     interface build a tree, thus each queue can have further child queues.
-     Only leaf queues, i.e. queues without children, can be used to assign
-     packets to.  The root queue must specifically reference an interface, all
-     other queues pick up the interface(s) they should be created on from
-     their parent queues unless explicitly specified.
+     packet filtering rule can reference the defined queues by name.  When
+     filtering, the last referenced <span class="underline">queue</span> name is where any passed packets
+     will be queued, while for blocked packets it specifies where any
+     resulting ICMP or TCP RST packets should be queued.  If the referenced
+     queue does not exist on the outgoing interface, the default queue for
+     that interface is used.  Queues attached to an interface build a tree,
+     thus each queue can have further child queues.  Only leaf queues, i.e.
+     queues without children, can be used to assign packets to.  The root
+     queue must specifically reference an interface, all other queues pick up
+     the interfaces they should be created on from their parent queues.
 
      In the following example, a queue named std is created on the interface
-     em0, with 3 child queues ssh, mail and http.
+     em0, with 3 child queues ssh, mail and http:
 
            queue std on em0 bandwidth 100M
            queue ssh parent std bandwidth 10M
@@ -1103,19 +1107,18 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      more bandwidth as long as the parent still has some available.  The
      maximum bandwidth that should be assigned to a given queue can be limited
      using the <span class="bold">max</span> keyword.  Similarly, a minimum (reserved) bandwidth can be
-     specified.
+     specified:
 
-           queue ssh parent std bandwidth 10M, min 5M, max 25M
+           queue ssh parent std bandwidth 10M min 5M max 25M
 
      For each of these 3 bandwidth specifications an additional burst
-     bandwidth and time can be specified.
+     bandwidth and time can be specified:
 
            queue ssh parent std bandwidth 10M burst 90M for 100ms
 
-     All <span class="bold">bandwidth</span> values must be specified as an absolute value.  The
-     suffixes <span class="bold">K</span>, <span class="bold">M</span>, and <span class="bold">G</span> are used to represent bits, kilobits, megabits, and
-     gigabits per second, respectively.  The value must not exceed the
-     interface bandwidth.
+     All <span class="bold">bandwidth</span> values are specified as bits per second or using the
+     suffixes <span class="bold">K</span>, <span class="bold">M</span>, and <span class="bold">G</span> to represent kilobits, megabits, and gigabits per
+     second, respectively.  The value must not exceed the interface bandwidth.
 
      In addition to the bandwidth specifications queues support the following
      options:
@@ -1150,7 +1153,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      four referenced queues, plus a few child queues.  Interactive ssh(1)
      sessions get a queue with a minimum bandwidth; scp(1) and sftp(1) bulk
      transfers go to a separate queue.  The queues are then referenced by
-     filtering rules (see <span class="underline">PACKET</span> <span class="underline">FILTERING</span>, above).
+     filtering rules.
 
          queue rootq on em0 bandwidth 100M max 100M
          queue http parent rootq bandwidth 60M burst 90M for 100ms
@@ -1171,6 +1174,33 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                set queue(ssh_bulk, ssh_interactive)
          pass out on em0 inet proto tcp from any to any port 25 \
                set queue mail
+
+     In addition to bandwidth management, a fair traffic sharing option is
+     provided via a flow queue.  When packets are classified by the stateful
+     inspection engine, a flow identifier is assigned to all packets belonging
+     to this state.  Outgoing traffic is split according to these identifiers
+     into individual queues and is serviced in a way that provides a fair
+     share of bandwidth for all connections sharing the queue.
+
+     Configuration of a flow queue is similar to a regular one, except flow
+     queues don't build a hierarchy and thus only one flow queue may be
+     specified per interface.
+
+     The core parameter of a flow queue is the number of expected simultaneous
+     connections, or <span class="bold">flows</span>, limited by the resolution of the flow identifier
+     (the current implementation is able to classify traffic into 32767
+     distinct flows).  Thus a minimal flow queue configuration is:
+
+           queue fq on em0 flows 1024
+
+     Another value affecting the flow queue is a quantum of service.  The
+     lower the <span class="bold">quantum</span> the more advantage is given to streams of small packets
+     at the expense of bulk transfers.  The default value for <span class="bold">quantum</span> is
+     selected based on the configured Maximum Transmission Unit (MTU) of the
+     specified interface.
+
+     An additional configuration option <span class="bold">qlimit</span> sets the queue depth shared
+     among all flows.  The default is 1024.
 
 <a name="Table"></a>
 <span class="bold">TABLES</span>
@@ -1220,10 +1250,10 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                automatically remove the table when the last rule referring to
                it is flushed.
 
-     This example creates a table called ``private'', to hold RFC 1918 private
-     network blocks, and a table called ``badhosts'', which is initially
-     empty.  A filter rule is set up to block all traffic coming from
-     addresses listed in either table:
+     This example creates a table called "private", to hold RFC 1918 private
+     network blocks, and a table called "badhosts", which is initially empty.
+     A filter rule is set up to block all traffic coming from addresses listed
+     in either table:
 
            table &lt;private&gt; const { 10/8, 172.16/12, 192.168/16 }
            table &lt;badhosts&gt; persist
@@ -1284,9 +1314,10 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
            load anchor spam from "/etc/pf-spam.conf"
 
 <a name="inline"></a>
-     Filter rule anchors can also be loaded inline in the ruleset within a
-     brace-delimited block.  Brace delimited blocks may contain rules or other
-     brace-delimited blocks.  When anchors are loaded this way the anchor name
+     An anchor rule can also contain a filter ruleset in a brace-delimited
+     block.  In that case, no separate loading of rules into the anchor is
+     required.  Brace delimited blocks may contain rules or other brace-
+     delimited blocks.  When an anchor is populated this way the anchor name
      becomes optional.  Since the parser specification for anchor names is a
      string, double quote characters (`"') should be placed around the anchor
      name.
@@ -1603,15 +1634,15 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 
 <a name="no-df"></a>
      <span class="bold">no-df</span>
-           Clears the ``dont-fragment'' bit from a matching IPv4 packet.  Some
+           Clears the "dont-fragment" bit from a matching IPv4 packet.  Some
            operating systems have NFS implementations which are known to
-           generate fragmented packets with the ``dont-fragment'' bit set.
-           pf(4) will drop such fragmented ``dont-fragment'' packets unless
+           generate fragmented packets with the "dont-fragment" bit set.
+           pf(4) will drop such fragmented "dont-fragment" packets unless
            <span class="bold">no-df</span> is specified.
 
            Unfortunately some operating systems also generate their
-           ``dont-fragment'' packets with a zero IP identification field.
-           Clearing the ``dont-fragment'' bit on packets with a zero IP ID may
+           "dont-fragment" packets with a zero IP identification field.
+           Clearing the "dont-fragment" bit on packets with a zero IP ID may
            cause deleterious results if an upstream router later fragments the
            packet.  Using <span class="bold">random-id</span> is recommended in combination with <span class="bold">no-df</span>
            to ensure unique IP identifiers.
@@ -1982,7 +2013,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      pf-rule        = action [ ( "in" | "out" ) ]
                       [ "log" [ "(" logopts ")"] ] [ "quick" ]
                       [ "on" ( ifspec | "rdomain" number ) ] [ af ]
-                      [ protospec ] hosts [ filteropts ]
+                      [ protospec ] [ hosts ] [ filteropts ]
 
      logopts        = logopt [ [ "," ] logopts ]
      logopt         = "all" | "matches" | "user" | "to" interface-name
@@ -1995,7 +2026,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                       "fragment" | "allow-opts" | "once" |
                       "divert-packet" "port" port | "divert-reply" |
                       "divert-to" host "port" port |
-                      "label" string | "tag" string | [ ! ] "tagged" string |
+                      "label" string | "tag" string | [ "!" ] "tagged" string |
                       "set prio" ( number | "(" number [ [ "," ] number ] ")" ) |
                       "set queue" ( string | "(" string [ [ "," ] string ] ")" ) |
                       "rtable" number | "probability" number"%" | "prio" number |
@@ -2036,9 +2067,12 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      load-anchor    = "load anchor" string "from" filename
 
      queueopts-list = queueopts-list queueopts | queueopts
-     queueopts      = [ "bandwidth" bandwidth ] | [ "min" bandwidth ] |
+     queueopts      = ([ "bandwidth" bandwidth ] | [ "min" bandwidth ] |
                       [ "max" bandwidth ] | [ "parent" string ] |
-                      [ "default" ] | [ "qlimit" number ]
+                      [ "default" ]) |
+                      ([ "flows" number ] | [ "quantum" number ]) |
+                      [ "qlimit" number ]
+
      bandwidth      = bandwidth-spec [ "burst" bandwidth-spec "for" number "ms" ]
      bandwidth-spec = number ( "" | "K" | "M" | "G" )
 
@@ -2153,7 +2187,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 <span class="bold">HISTORY</span>
      The <span class="bold">pf.conf</span> file format first appeared in OpenBSD 3.0.
 
-OpenBSD 5.9                     January 5, 2016                    OpenBSD 5.9
+OpenBSD 6.2                      July 13, 2017                     OpenBSD 6.2
 </pre>
 </body>
 </html>
