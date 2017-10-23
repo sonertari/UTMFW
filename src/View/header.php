@@ -61,6 +61,8 @@ closedir($DirHandle);
 
 define('ACTIVE_LI_STYLE', ' style="background: #01466b;"');
 define('ACTIVE_A_STYLE', ' style="color: white;"');
+define('SELECTED_LI_STYLE', ' style="background: gray;"');
+define('SELECTED_A_STYLE', ' style="color: white;"');
 ?>
 <table id="menu">
 	<tr >
@@ -87,15 +89,15 @@ define('ACTIVE_A_STYLE', ' style="color: white;"');
 								<?php
 								foreach ($UTMFW_MODULES as $Module => $ModuleConf) {
 									if (in_array($Module, $ModuleFiles) && in_array($_SESSION['USER'], $ModuleConf['Perms'])) {
-										$ActiveLiStyle= '';
-										$ActiveAStyle= '';
+										$LiStyle= '';
+										$AStyle= '';
 										if (strpos($_SERVER['PHP_SELF'], "/$Module/") !== FALSE) {
-											$ActiveLiStyle= ACTIVE_LI_STYLE;
-											$ActiveAStyle= ACTIVE_A_STYLE;
+											$LiStyle= ACTIVE_LI_STYLE;
+											$AStyle= ACTIVE_A_STYLE;
 										}
 										?>
-										<li<?php echo $ActiveLiStyle ?>>
-											<a href="<?php echo "/$Module/index.php" ?>"<?php echo $ActiveAStyle ?>><?php echo _($ModuleConf['Name']) ?></a>
+										<li<?php echo $LiStyle ?>>
+											<a href="<?php echo "/$Module/index.php" ?>"<?php echo $AStyle ?>><?php echo _($ModuleConf['Name']) ?></a>
 										</li>
 										<?php
 									}
@@ -106,30 +108,33 @@ define('ACTIVE_A_STYLE', ' style="color: white;"');
 						<?php
 						foreach ($Menu as $TopMenuName => $TopMenuConf) {
 							if (in_array($_SESSION['USER'], $TopMenuConf['Perms'])) {
-								$ActiveLiStyle= '';
-								$ActiveAStyle= '';
+								$LiStyle= '';
+								$AStyle= '';
 								if ($TopMenu == $TopMenuName) {
-									$ActiveLiStyle= ACTIVE_LI_STYLE;
-									$ActiveAStyle= ACTIVE_A_STYLE;
+									$LiStyle= ACTIVE_LI_STYLE;
+									$AStyle= ACTIVE_A_STYLE;
 								}
 								?>
-								<li<?php echo $ActiveLiStyle ?>>
-									<a href="<?php echo $TopMenuName ?>.php"<?php echo $ActiveAStyle ?>><?php echo _($TopMenuConf['Name']) ?></a>
+								<li<?php echo $LiStyle ?>>
+									<a href="<?php echo $TopMenuName ?>.php"<?php echo $AStyle ?>><?php echo _($TopMenuConf['Name']) ?></a>
 									<?php
 									if (isset($TopMenuConf['SubMenu'])) {
 										?>
 										<ul>
 										<?php
 										foreach ($TopMenuConf['SubMenu'] as $SubMenuName => $Caption) {
-											$ActiveLiStyle= '';
-											$ActiveAStyle= '';
+											$LiStyle= '';
+											$AStyle= '';
 											if (($TopMenu == $TopMenuName) && ($Submenu == $SubMenuName)) {
-												$ActiveLiStyle= ACTIVE_LI_STYLE;
-												$ActiveAStyle= ACTIVE_A_STYLE;
+												$LiStyle= ACTIVE_LI_STYLE;
+												$AStyle= ACTIVE_A_STYLE;
+											} else if (isset($_SESSION[$View->Module][$TopMenuName]['submenu']) && $_SESSION[$View->Module][$TopMenuName]['submenu'] == $SubMenuName) {
+												$LiStyle= SELECTED_LI_STYLE;
+												$AStyle= SELECTED_A_STYLE;
 											}
 											?>
-											<li<?php echo $ActiveLiStyle ?>>
-												<a href="<?php echo $TopMenuName ?>.php?submenu=<?php echo $SubMenuName ?>"<?php echo $ActiveAStyle ?>><?php echo _($Caption) ?></a>
+											<li<?php echo $LiStyle ?>>
+												<a href="<?php echo $TopMenuName ?>.php?submenu=<?php echo $SubMenuName ?>"<?php echo $AStyle ?>><?php echo _($Caption) ?></a>
 											</li>
 											<?php
 										}
@@ -195,11 +200,11 @@ define('ACTIVE_A_STYLE', ' style="color: white;"');
 									<ul>
 										<?php
 										foreach ($LOCALES as $Locale => $Conf) {
-											$ActiveLiStyle= '';
-											$ActiveAStyle= '';
+											$LiStyle= '';
+											$AStyle= '';
 											if ($_SESSION['Locale'] == $Locale) {
-												$ActiveLiStyle= ACTIVE_LI_STYLE;
-												$ActiveAStyle= ACTIVE_A_STYLE;
+												$LiStyle= ACTIVE_LI_STYLE;
+												$AStyle= ACTIVE_A_STYLE;
 											}
 											if ($_SESSION['Locale'] !== 'en_EN') {
 												$LocaleDisplayName= _($Conf['Name']).' ('.$Conf['Name'].')';
@@ -208,8 +213,8 @@ define('ACTIVE_A_STYLE', ' style="color: white;"');
 												$LocaleDisplayName= _($Conf['Name']);
 											}
 											?>
-											<li<?php echo $ActiveLiStyle ?>>
-												<a href="<?php echo $_SERVER['PHP_SELF'] ?>?locale=<?php echo $Locale ?>"<?php echo $ActiveAStyle ?>><?php echo $LocaleDisplayName ?></a>
+											<li<?php echo $LiStyle ?>>
+												<a href="<?php echo $_SERVER['PHP_SELF'] ?>?locale=<?php echo $Locale ?>"<?php echo $AStyle ?>><?php echo $LocaleDisplayName ?></a>
 											</li>
 											<?php
 										}
