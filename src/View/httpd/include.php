@@ -26,6 +26,7 @@ $Menu = array(
         'Perms' => $ALL_USERS,
 		),
     'stats' => array(
+		'Model' => 'httpdlogs',
         'Name' => _MENU('Statistics'),
         'Perms' => $ALL_USERS,
 		'SubMenu' => array(
@@ -48,6 +49,7 @@ $Menu = array(
 			),
 		),
     'accesslogs' => array(
+		'Model' => 'httpdlogs',
         'Name' => _MENU('Access Logs'),
         'Perms' => $ALL_USERS,
 		'SubMenu' => array(
@@ -56,6 +58,7 @@ $Menu = array(
 			),
 		),
     'wuilogs' => array(
+		'Model' => 'wui_syslog',
         'Name' => _MENU('WUI Logs'),
         'Perms' => $ADMIN,
 		'SubMenu' => array(
@@ -64,6 +67,7 @@ $Menu = array(
 			),
 		),
     'ctlrlogs' => array(
+		'Model' => 'ctlr_syslog',
         'Name' => _MENU('CTLR Logs'),
         'Perms' => $ADMIN,
 		'SubMenu' => array(

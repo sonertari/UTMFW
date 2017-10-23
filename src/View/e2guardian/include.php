@@ -26,6 +26,7 @@ $Menu = array(
 		'Perms' => $ALL_USERS,
 		),
 	'stats' => array(
+		'Model' => 'e2guardianlogs',
 		'Name' => _MENU('Statistics'),
 		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
@@ -48,6 +49,7 @@ $Menu = array(
 			),
 		),
 	'accesslogs' => array(
+		'Model' => 'e2guardianlogs',
 		'Name' => _MENU('Access Logs'),
 		'Perms' => $ALL_USERS,
 		'SubMenu' => array(

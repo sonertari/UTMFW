@@ -76,7 +76,7 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 								<img class="menuwithimage" src="/images/menu.png" name="Menu" alt="Menu" align="absmiddle">
 								<?php
 								foreach ($UTMFW_MODULES as $Module => $ModuleConf) {
-									if (strpos($_SERVER['PHP_SELF'], "/$Module/") !== FALSE && in_array($Module, $ModuleFiles) && in_array($_SESSION['USER'], $ModuleConf['Perms'])) {
+									if ($View->Module == $Module && in_array($Module, $ModuleFiles) && in_array($_SESSION['USER'], $ModuleConf['Perms'])) {
 										?>
 										<span class="menuwithimage"><?php echo _($ModuleConf['Name']) ?></span>
 										<?php
@@ -91,7 +91,7 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 									if (in_array($Module, $ModuleFiles) && in_array($_SESSION['USER'], $ModuleConf['Perms'])) {
 										$LiStyle= '';
 										$AStyle= '';
-										if (strpos($_SERVER['PHP_SELF'], "/$Module/") !== FALSE) {
+										if ($View->Module == $Module) {
 											$LiStyle= ACTIVE_LI_STYLE;
 											$AStyle= ACTIVE_A_STYLE;
 										}
@@ -128,9 +128,17 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 											if (($TopMenu == $TopMenuName) && ($Submenu == $SubMenuName)) {
 												$LiStyle= ACTIVE_LI_STYLE;
 												$AStyle= ACTIVE_A_STYLE;
-											} else if (isset($_SESSION[$View->Module][$TopMenuName]['submenu']) && $_SESSION[$View->Module][$TopMenuName]['submenu'] == $SubMenuName) {
-												$LiStyle= SELECTED_LI_STYLE;
-												$AStyle= SELECTED_A_STYLE;
+											} else {
+												// The default model is the module
+												$MenuModel= $View->Module;
+												// But some top menus may define different models
+												if (isset($TopMenuConf['Model'])) {
+													$MenuModel= $TopMenuConf['Model'];
+												}
+												if (isset($_SESSION[$MenuModel][$TopMenuName]['submenu']) && $_SESSION[$MenuModel][$TopMenuName]['submenu'] == $SubMenuName) {
+													$LiStyle= SELECTED_LI_STYLE;
+													$AStyle= SELECTED_A_STYLE;
+												}
 											}
 											?>
 											<li<?php echo $LiStyle ?>>

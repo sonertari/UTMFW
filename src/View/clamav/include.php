@@ -30,6 +30,7 @@ $Menu = array(
         'Perms' => $ALL_USERS,
 		),
     'logs' => array(
+		'Model' => 'clamd',
         'Name' => _MENU('Logs'),
         'Perms' => $ALL_USERS,
 		'SubMenu' => array(
@@ -38,6 +39,7 @@ $Menu = array(
 			),
 		),
     'freshclamlogs' => array(
+		'Model' => 'freshclam',
         'Name' => _MENU('DB Logs'),
         'Perms' => $ALL_USERS,
 		'SubMenu' => array(
@@ -46,6 +48,8 @@ $Menu = array(
 			),
 		),
     'conf' => array(
+		// XXX
+		'Model' => 'clamd',
         'Name' => _MENU('Config'),
         'Perms' => $ADMIN,
 		'SubMenu' => array(
