@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: UTMFW 5.9\n"
+"Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-16 23:13+0300\n"
+"PO-Revision-Date: 2017-10-23 23:01+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language-Team: LANGUAGE <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -699,6 +699,9 @@ msgstr ""
 msgid "CA Key"
 msgstr ""
 
+msgid "CGI Server"
+msgstr ""
+
 msgid "COMMAND"
 msgstr ""
 
@@ -784,9 +787,6 @@ msgid ""
 "\n"
 "Internal and external physical interface names are obtained from packet "
 "filter configuration, i.e. int_if and ext_if macros."
-msgstr ""
-
-msgid "Charts"
 msgstr ""
 
 msgid "Check for expired connections every this many seconds."
@@ -2348,9 +2348,6 @@ msgstr ""
 msgid "Hostname"
 msgstr ""
 
-msgid "Hostname Lookups"
-msgstr ""
-
 msgid "Hosts"
 msgstr ""
 
@@ -2803,12 +2800,6 @@ msgstr ""
 msgid "Keep Alive"
 msgstr ""
 
-msgid "KeepAlive"
-msgstr ""
-
-msgid "KeepAlive Timeout"
-msgstr ""
-
 msgid "Keywords"
 msgstr ""
 
@@ -2837,14 +2828,6 @@ msgid "Limit"
 msgstr ""
 
 msgid "Limit SSL MITM to sites in greysslsitelist(s)"
-msgstr ""
-
-msgid ""
-"Limit on total number of servers running, i.e., limit on the number of "
-"clients who can simultaneously connect --- if this limit is ever reached, "
-"clients will be LOCKED OUT, so it should NOT BE SET TOO LOW. It is intended "
-"mainly as a brake to keep a runaway server from taking the system with it as "
-"it spirals down..."
 msgstr ""
 
 msgid "Line"
@@ -3057,21 +3040,7 @@ msgid ""
 "set this to off."
 msgstr ""
 
-msgid ""
-"Log the names of clients or just their IP addresses e.g., www.apache.org "
-"(on) or 204.62.129.132 (off).\n"
-"\t\tThe default is off because it'd be overall better for the net if people "
-"had to knowingly turn this feature on, since enabling it means that each "
-"client request will result in AT LEAST one lookup request to the nameserver."
-msgstr ""
-
 msgid "Log typing events"
-msgstr ""
-
-msgid ""
-"LogLevel: Control the number of messages logged to the error_log.\n"
-"\t\tPossible values include: debug, info, notice, warn, error, crit, alert, "
-"emerg."
 msgstr ""
 
 msgid "Logged in user"
@@ -3227,9 +3196,6 @@ msgstr ""
 msgid "Max Directory Recursion"
 msgstr ""
 
-msgid "Max KeepAlive Requests"
-msgstr ""
-
 msgid "Max Log Item Length"
 msgstr ""
 
@@ -3237,9 +3203,6 @@ msgid "Max MSS"
 msgstr ""
 
 msgid "Max Single Host States"
-msgstr ""
-
-msgid "Max Spare Servers"
 msgstr ""
 
 msgid "Max States"
@@ -3346,9 +3309,6 @@ msgid "Mimes"
 msgstr ""
 
 msgid "Min"
-msgstr ""
-
-msgid "Min Spare Servers"
 msgstr ""
 
 msgid "Min TTL"
@@ -3595,11 +3555,6 @@ msgid "Number of processes"
 msgstr ""
 
 msgid ""
-"Number of seconds to wait for the next request from the same client on the "
-"same connection."
-msgstr ""
-
-msgid ""
 "Number of servers to start initially --- should be a reasonable ballpark "
 "figure."
 msgstr ""
@@ -3622,9 +3577,6 @@ msgid "OS"
 msgstr ""
 
 msgid "Obsoletes QuietMode and FascistLogging"
-msgstr ""
-
-msgid "On this page are web administration interface access statistics."
 msgstr ""
 
 msgid "Once"
@@ -3718,6 +3670,9 @@ msgid ""
 "to perform a deeper analysis of executable files and it's also required for "
 "decompression of popular executable packers such as UPX, FSG, and Petite.\n"
 "\t\tDefault: enabled"
+msgstr ""
+
+msgid "PHP FastCGI Server"
 msgstr ""
 
 msgid "PICS rating support"
@@ -4565,34 +4520,10 @@ msgstr ""
 msgid "Server"
 msgstr ""
 
-msgid "Server Admin"
-msgstr ""
-
 msgid "Server Key Bits"
 msgstr ""
 
 msgid "Server Mode"
-msgstr ""
-
-msgid ""
-"Server-pool size regulation.\n"
-"\t\tRather than making you guess how many server processes you need, Apache "
-"dynamically adapts to the load it sees --- that is, it tries to maintain "
-"enough server processes to handle the current load, plus a few spare servers "
-"to handle transient load spikes (e.g., multiple simultaneous requests from a "
-"single Netscape browser).\n"
-"\n"
-"\t\tIt does this by periodically checking how many servers are waiting for a "
-"request.  If there are fewer than MinSpareServers, it creates a new spare.  "
-"If there are more than MaxSpareServers, some of the spares die off.  The "
-"default values in httpd.conf-dist are probably OK for most sites."
-msgstr ""
-
-msgid ""
-"ServerAdmin: Your address, where problems with the server should be e-"
-"mailed.\n"
-"\t\tThis address appears on some server-generated pages, such as error "
-"documents."
 msgstr ""
 
 msgid "Session"
@@ -4762,9 +4693,6 @@ msgstr ""
 msgid "Set watermarks"
 msgstr ""
 
-msgid "Set webalizer hostname"
-msgstr ""
-
 msgid ""
 "Set which networks or hosts are considered 'trusted' by your mail server (i."
 "e. not spammers)"
@@ -4841,11 +4769,10 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Since this web administration interface depends on the Apache web server, "
-"you should be careful while modifying these options. By default, the web "
-"server is configured to serve this web interface only, hence the default "
-"values should suffice for most purposes. However, OpenBSD/httpd is a full-"
-"featured HTTP server, and you can configure it to serve web sites too."
+"Since this web administration interface runs on the web server, you should "
+"be careful while modifying its options. By default, the web server is "
+"configured to serve this web interface only, hence the default values should "
+"suffice for most purposes."
 msgstr ""
 
 msgid "Site for real-time chatting and instant messaging."
@@ -5581,19 +5508,10 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The maximum number of requests to allow during a persistent connection. Set "
-"to 0 to allow an unlimited amount. We recommend you leave this number high, "
-"for maximum performance."
-msgstr ""
-
-msgid ""
 "The number of KB's there must be free before processing any mail. If there "
 "is less than this amount, p3scan will terminate any connections until the "
 "problem is resolved.\n"
 "\t\tdefault: 100MB"
-msgstr ""
-
-msgid "The number of seconds before receives and sends time out."
 msgstr ""
 
 msgid ""
@@ -5677,11 +5595,6 @@ msgid ""
 "make sure you adjust both settings accordingly."
 msgstr ""
 
-msgid ""
-"These are access logs of the Apache web server. Logs contain logged-in "
-"users, client IP addresses, and pages accessed."
-msgstr ""
-
 msgid "These are interface statistics reported by pf."
 msgstr ""
 
@@ -5697,6 +5610,11 @@ msgid ""
 msgstr ""
 
 msgid "These are queue statistics reported by pf."
+msgstr ""
+
+msgid ""
+"These are the access logs of OpenBSD/httpd. Logs contain client IP addresses "
+"and pages accessed."
 msgstr ""
 
 msgid ""
@@ -6073,9 +5991,9 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This web administration interface is served by Apache web server, OpenBSD/"
-"httpd. If you stop the web server, you will lose your connection to this web "
-"interface. You can restart it on the command line."
+"This web administration interface is served by OpenBSD/httpd. If you stop "
+"the web server, you will lose your connection to this web interface. You can "
+"restart it on the command line."
 msgstr ""
 
 msgid ""
@@ -6571,11 +6489,6 @@ msgid ""
 "Set to 0 to disable.\n"
 "Defaults to 0.\n"
 "WARNING: This option is highly CPU intensive!"
-msgstr ""
-
-msgid ""
-"Whether or not to allow persistent connections (more than one request per "
-"connection). Set to \"Off\" to deactivate."
 msgstr ""
 
 msgid ""

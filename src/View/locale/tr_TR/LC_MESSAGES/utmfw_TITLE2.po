@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: UTMFW 5.9\n"
+"Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-16 22:43+0300\n"
+"PO-Revision-Date: 2017-10-23 22:49+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.7\n"
 
 msgid "%MEM"
-msgstr "%BELLEK"
+msgstr "BELLEK%"
 
 msgid "ACL"
 msgstr "ACL"
@@ -148,6 +148,9 @@ msgstr "CA Sertifikası"
 
 msgid "CA Key"
 msgstr "CA Anahtarı"
+
+msgid "CGI Server"
+msgstr "CGI Sunucu"
 
 msgid "COMMAND"
 msgstr "KOMUT"
@@ -404,9 +407,6 @@ msgstr "Bilgisayar"
 msgid "Host IP"
 msgstr "Bilgisayar IP adresi"
 
-msgid "Hostname Lookups"
-msgstr "Bilgisayar adı arama"
-
 msgid "ICQ"
 msgstr "ICQ"
 
@@ -466,12 +466,6 @@ msgstr "Sadece sil"
 
 msgid "Keep Alive"
 msgstr "Canlı tutma"
-
-msgid "KeepAlive"
-msgstr "Canlı tutma"
-
-msgid "KeepAlive Timeout"
-msgstr "Canlı tutma zaman aşımı"
 
 msgid "Keywords"
 msgstr "Anahtar kelimeler"
@@ -608,14 +602,8 @@ msgstr "İstemci üst sınırı"
 msgid "Max Directory Recursion"
 msgstr "Dizin yenileme üst sınırı"
 
-msgid "Max KeepAlive Requests"
-msgstr "Canlı tutma istekleri üst sınırı"
-
 msgid "Max Log Item Length"
 msgstr "Kayıt öğesi uzunluk üst sınırı"
-
-msgid "Max Spare Servers"
-msgstr "Boşta sunucu üst sınırı"
 
 msgid "Max Threads"
 msgstr "İşparçacığı üst sınırı"
@@ -671,9 +659,6 @@ msgstr "Virüs tarama boyutu üst sınırı"
 msgid "Mime"
 msgstr "Mime"
 
-msgid "Min Spare Servers"
-msgstr "Boşta sunucu alt sınırı"
-
 msgid "Min children"
 msgstr "Alt süreç alt sınırı"
 
@@ -721,6 +706,9 @@ msgstr "İçerik uyarısı"
 
 msgid "Number of filter groups"
 msgstr "Elek grubu sayısı"
+
+msgid "PHP FastCGI Server"
+msgstr "PHP FastCGI Sunucu"
 
 msgid "PICS rating support"
 msgstr "PICS derecelendirme desteği"
@@ -935,9 +923,6 @@ msgstr "Temiz önbelleğini tara"
 msgid "Self Check"
 msgstr "Kendini kontrol"
 
-msgid "Server Admin"
-msgstr "Sunucu yöneticisi"
-
 msgid "Server Key Bits"
 msgstr "Sunucu anahtar bitleri"
 
@@ -1036,9 +1021,6 @@ msgstr "Süre bitiş zamanı"
 
 msgid "Time to expire (secs)"
 msgstr "Süre bitim zamanı (sn)"
-
-msgid "Timeout"
-msgstr "Zaman aşımı"
 
 msgid "Timespan"
 msgstr "Zaman aralığı"

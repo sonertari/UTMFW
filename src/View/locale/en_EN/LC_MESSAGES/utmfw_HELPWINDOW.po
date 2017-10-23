@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: UTMFW 5.9\n"
+"Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-16 23:08+0300\n"
+"PO-Revision-Date: 2017-10-23 23:00+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language-Team: LANGUAGE <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -479,9 +479,6 @@ msgid ""
 "into your spam or junk folder."
 msgstr ""
 
-msgid "On this page are web administration interface access statistics."
-msgstr ""
-
 msgid "Online libraries and sites where you can read e-books."
 msgstr ""
 
@@ -551,11 +548,10 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Since this web administration interface depends on the Apache web server, "
-"you should be careful while modifying these options. By default, the web "
-"server is configured to serve this web interface only, hence the default "
-"values should suffice for most purposes. However, OpenBSD/httpd is a full-"
-"featured HTTP server, and you can configure it to serve web sites too."
+"Since this web administration interface runs on the web server, you should "
+"be careful while modifying its options. By default, the web server is "
+"configured to serve this web interface only, hence the default values should "
+"suffice for most purposes."
 msgstr ""
 
 msgid "Site for real-time chatting and instant messaging."
@@ -928,11 +924,6 @@ msgid ""
 "make sure you adjust both settings accordingly."
 msgstr ""
 
-msgid ""
-"These are access logs of the Apache web server. Logs contain logged-in "
-"users, client IP addresses, and pages accessed."
-msgstr ""
-
 msgid "These are interface statistics reported by pf."
 msgstr ""
 
@@ -943,6 +934,11 @@ msgid ""
 msgstr ""
 
 msgid "These are queue statistics reported by pf."
+msgstr ""
+
+msgid ""
+"These are the access logs of OpenBSD/httpd. Logs contain client IP addresses "
+"and pages accessed."
 msgstr ""
 
 msgid ""
@@ -1091,9 +1087,9 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This web administration interface is served by Apache web server, OpenBSD/"
-"httpd. If you stop the web server, you will lose your connection to this web "
-"interface. You can restart it on the command line."
+"This web administration interface is served by OpenBSD/httpd. If you stop "
+"the web server, you will lose your connection to this web interface. You can "
+"restart it on the command line."
 msgstr ""
 
 msgid ""

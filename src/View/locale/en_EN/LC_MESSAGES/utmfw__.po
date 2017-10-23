@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: UTMFW 5.9\n"
+"Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-16 23:13+0300\n"
+"PO-Revision-Date: 2017-10-23 23:01+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language-Team: LANGUAGE <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -949,9 +949,6 @@ msgid "Set use SSH"
 msgstr ""
 
 msgid "Set user password"
-msgstr ""
-
-msgid "Set webalizer hostname"
 msgstr ""
 
 msgid "Source"

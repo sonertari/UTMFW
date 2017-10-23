@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: UTMFW 5.9\n"
+"Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-16 22:58+0300\n"
+"PO-Revision-Date: 2017-10-23 22:59+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language-Team: LANGUAGE <sonertari@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -146,6 +146,9 @@ msgid "CA Cert"
 msgstr ""
 
 msgid "CA Key"
+msgstr ""
+
+msgid "CGI Server"
 msgstr ""
 
 msgid "COMMAND"
@@ -403,9 +406,6 @@ msgstr ""
 msgid "Host IP"
 msgstr ""
 
-msgid "Hostname Lookups"
-msgstr ""
-
 msgid "ICQ"
 msgstr ""
 
@@ -464,12 +464,6 @@ msgid "Just Delete"
 msgstr ""
 
 msgid "Keep Alive"
-msgstr ""
-
-msgid "KeepAlive"
-msgstr ""
-
-msgid "KeepAlive Timeout"
 msgstr ""
 
 msgid "Keywords"
@@ -607,13 +601,7 @@ msgstr ""
 msgid "Max Directory Recursion"
 msgstr ""
 
-msgid "Max KeepAlive Requests"
-msgstr ""
-
 msgid "Max Log Item Length"
-msgstr ""
-
-msgid "Max Spare Servers"
 msgstr ""
 
 msgid "Max Threads"
@@ -670,9 +658,6 @@ msgstr ""
 msgid "Mime"
 msgstr ""
 
-msgid "Min Spare Servers"
-msgstr ""
-
 msgid "Min children"
 msgstr ""
 
@@ -719,6 +704,9 @@ msgid "Notify Content"
 msgstr ""
 
 msgid "Number of filter groups"
+msgstr ""
+
+msgid "PHP FastCGI Server"
 msgstr ""
 
 msgid "PICS rating support"
@@ -934,9 +922,6 @@ msgstr ""
 msgid "Self Check"
 msgstr ""
 
-msgid "Server Admin"
-msgstr ""
-
 msgid "Server Key Bits"
 msgstr ""
 
@@ -1034,9 +1019,6 @@ msgid "Time to expire"
 msgstr ""
 
 msgid "Time to expire (secs)"
-msgstr ""
-
-msgid "Timeout"
 msgstr ""
 
 msgid "Timespan"
