@@ -50,6 +50,11 @@ class Httpdlogs extends View
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
 		$this->LogsHelpMsg= _HELPWINDOW('These are the access logs of OpenBSD/httpd. Logs contain client IP addresses and pages accessed.');
 	}
+	
+	function FormatLogCols(&$cols)
+	{
+		$cols['Link']= htmlspecialchars($cols['Link']);
+	}
 }
 
 $View= new Httpdlogs();

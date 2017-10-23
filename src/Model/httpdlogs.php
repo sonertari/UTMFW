@@ -63,7 +63,7 @@ class Httpdlogs extends Httpd
 				$re= "/^\S+\s+$ip\s+.*\s+$datetime\s+\"(.+)\"\s+$code\s+$size$/";
 				if (preg_match($re, $cols['Log'], $match)) {
 					$cols['IP']= $match[1];
-					$cols['Link']= htmlentities($match[4]);
+					$cols['Link']= $match[4];
 					$cols['Code']= $match[5];
 					$cols['Size']= $match[6];
 					if ($cols['Size'] == '-') {
