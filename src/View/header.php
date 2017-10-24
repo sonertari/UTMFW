@@ -122,22 +122,31 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 										?>
 										<ul>
 										<?php
+										$SelectedStyleSet= FALSE;
 										foreach ($TopMenuConf['SubMenu'] as $SubMenuName => $Caption) {
 											$LiStyle= '';
 											$AStyle= '';
-											if (($TopMenu == $TopMenuName) && ($Submenu == $SubMenuName)) {
-												$LiStyle= ACTIVE_LI_STYLE;
-												$AStyle= ACTIVE_A_STYLE;
-											} else {
+											if (!$SelectedStyleSet) {
 												// The default model is the module
 												$MenuModel= $View->Module;
 												// But some top menus may define different models
 												if (isset($TopMenuConf['Model'])) {
 													$MenuModel= $TopMenuConf['Model'];
 												}
-												if (isset($_SESSION[$MenuModel][$TopMenuName]['submenu']) && $_SESSION[$MenuModel][$TopMenuName]['submenu'] == $SubMenuName) {
+
+												if (($TopMenu == $TopMenuName) && ($Submenu == $SubMenuName)) {
+													// The active submenu of the active topmenu
+													// @attention This should be the first if condition, otherwise the selected style is applied instead of the active one
+													$LiStyle= ACTIVE_LI_STYLE;
+													$AStyle= ACTIVE_A_STYLE;
+													$SelectedStyleSet= TRUE;
+												} else if (!isset($_SESSION[$MenuModel][$TopMenuName]['submenu']) ||
+														$_SESSION[$MenuModel][$TopMenuName]['submenu'] == $SubMenuName) {
+													// The default submenu of all top menus is always the first submenu,
+													// or we set the last visited submenu of all top menus
 													$LiStyle= SELECTED_LI_STYLE;
 													$AStyle= SELECTED_A_STYLE;
+													$SelectedStyleSet= TRUE;
 												}
 											}
 											?>
