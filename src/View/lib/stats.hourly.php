@@ -36,7 +36,9 @@ if (!isset($_SESSION[$View->Model][$Submenu]['PrevLogFile']) || $LogFile === $_S
 		// Sender input indicates that the user has clicked on an item on a Stats page, so we should process what that page posts
 		filter_has_var(INPUT_POST, 'Sender')) {
 	if (count($_POST)) {
-		if (filter_has_var(INPUT_POST, 'Apply')) {
+		// The existence of Month POST var means that the user has clicked the Apply button of the datetime selection, not log file chooser form
+		// Otherwise, the datetime fields would not be set, causing empty bar charts and top lists
+		if (filter_has_var(INPUT_POST, 'Apply') && filter_has_var(INPUT_POST, 'Month')) {
 			$DateArray['Month']= filter_input(INPUT_POST, 'Month');
 			$DateArray['Day']= filter_input(INPUT_POST, 'Day');
 			$DateArray['Hour']= filter_input(INPUT_POST, 'Hour');

@@ -1113,6 +1113,13 @@ class Model
 					ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Logfile not modified: $logfile, linecount $linecount");
 					return FALSE;
 				}
+				
+				// Reset the accumulated stats if the log file turned over
+				if ($newfilestat['ino'] != $filestat['ino']) {
+					$statsfile= $this->GetStatsFileName($logfile);
+					exec("/bin/rm -f $statsfile 2>&1", $output, $retval);
+					ctlr_syslog(LOG_INFO, __FILE__, __FUNCTION__, __LINE__, "Logfile turned over: $logfile, deleted stats file: $statsfile");
+				}
 			}
 		}
 		return TRUE;
