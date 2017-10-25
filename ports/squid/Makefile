@@ -1,15 +1,16 @@
-# $OpenBSD: Makefile,v 1.177 2016/02/16 13:21:07 sthen Exp $
+# $OpenBSD: Makefile,v 1.202 2017/09/22 21:30:32 sthen Exp $
 
 COMMENT-main=	WWW and FTP proxy cache and accelerator
 COMMENT-ldap=	LDAP authentication/ACL support for Squid
 COMMENT-ntlm=	NTLM authentication/ACL support for Squid
 
-V=		3.5.14
+V=		3.5.27
 DISTNAME=	squid-$V
 EXTRACT_SUFX=	.tar.xz
 PKGNAME-main=	squid-$V
 PKGNAME-ldap=	squid-ldap-$V
 PKGNAME-ntlm=	squid-ntlm-$V
+REVISION-ntlm=	0
 
 CATEGORIES=	www
 
@@ -20,20 +21,20 @@ MAINTAINER=	Stuart Henderson <sthen@openbsd.org>
 # GPLv2+
 PERMIT_PACKAGE_CDROM=	Yes
 
-WANTLIB += c m nettle pthread stdc++
-cWANTLIB = ${WANTLIB} ffi gmp gnutls hogweed p11-kit tasn1 z
+WANTLIB += c m nettle pthread
 
-# bzr repository at https://code.launchpad.net/squid
+cWANTLIB=	${WANTLIB} ${COMPILER_LIBCXX} ffi gmp gnutls hogweed iconv
+cWANTLIB+=	idn2 intl p11-kit tasn1 unistring z
+
+# repo at https://github.com/squid-cache/squid
 MASTER_SITES=	${HOMEPAGE}Versions/v${V:C/^([0-9]).*/\1/}/${V:C/([0-9.]{3}).*/\1/}/ \
 		http://ftp.mirrorservice.org/sites/ftp.squid-cache.org/pub/archive/${V:C/([0-9.]{3}).*/\1/}/
 
-MODULES+=	devel/gettext gcc4
+# C++11
+COMPILER =	gcc
+
 LIB_DEPENDS+=	security/gnutls
 BUILD_DEPENDS+=	devel/cppunit
-USE_GROFF=	Yes
-
-MODGCC4_ARCHS=	powerpc
-MODGCC4_LANGS=	c c++
 
 SEPARATE_BUILD=	Yes
 CONFIGURE_STYLE= autoconf
@@ -44,13 +45,14 @@ CONFIGURE_ARGS=	--disable-strict-error-checking \
 		--disable-arch-native \
 		--enable-ssl-crtd
 
-EXTERNAL_ACL=	LDAP_group SQL_session file_userip time_quota \
+EXTERNAL_ACL=	SQL_session file_userip time_quota \
 		unix_group wbinfo_group # kerberos_ldap_group (sasl/gssapi)
 
 WANTLIB-main +=	${cWANTLIB} crypto db ssl
 
 LIB_DEPENDS-main += ${LIB_DEPENDS} \
 		databases/db/v4 \
+		devel/gettext \
 		security/libnettle
 
 SYSCONFDIR=	${BASESYSCONFDIR}/squid
@@ -62,8 +64,7 @@ FLAVOR?=
 
 .include <bsd.port.arch.mk>
 
-CONFIGURE_ARGS+= ${CONFIGURE_SHARED} \
-		--datadir="${PREFIX}/share/squid" \
+CONFIGURE_ARGS+= --datadir="${PREFIX}/share/squid" \
 		--libexecdir="${PREFIX}/libexec/squid" \
 		--disable-loadable-modules \
 		--enable-arp-acl \
@@ -119,6 +120,7 @@ WANTLIB-ldap +=     ${cWANTLIB} crypto lber-2.4 ldap-2.4 sasl2 ssl
 
 RUN_DEPENDS-ntlm=   net/samba ${BASE_PKGPATH}
 LIB_DEPENDS-ntlm += security/libnettle
+WANTLIB-ntlm=       ${WANTLIB} ${COMPILER_LIBCXX}
 
 pre-build:
 	@cd ${WRKSRC}; \

@@ -66,6 +66,7 @@ class Openssh extends Model
 			else {
 				// Accepted password for root from 81.215.105.114 port 47179 ssh2
 				// Accepted publickey for root from 81.215.105.114 port 58402 ssh2
+				// Accepted publickey for root from 81.215.105.114 port 58402 ssh2: RSA SHA256:<key>
 				$re= "/Accepted\s+(.*)\s+for\s+$re_user\s+from\s+$re_clientip\s+port\s+$re_num\s+$re_type$/";
 				if (preg_match($re, $logline, $match)) {
 					$cols['User']= $match[4];
