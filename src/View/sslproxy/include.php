@@ -56,11 +56,11 @@ $Menu = array(
 $LogConf = array(
     'sslproxy' => array(
         'Fields' => array(
-            'Date' => _TITLE('Date'),
-            'Time' => _TITLE('Time'),
-            'Process' => _TITLE('Process'),
-            'Prio' => _TITLE('Prio'),
-            'Log' => _TITLE('Log'),
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'Process' => _TITLE('Process'),
+			'Prio' => _TITLE('Prio'),
+			'Log' => _TITLE('Log'),
     		),
         'HighlightLogs' => array(
             'REs' => array(
@@ -72,14 +72,14 @@ $LogConf = array(
 		),
 	'idleconns' => array(
 		'Fields' => array(
-            'Date',
-            'Time',
-			'ThreadIdx',
-			'ConnIdx',
-			'SrcAddr',
-			'DstAddr',
-			'IdleTime',
-			'Duration',
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'ThreadIdx' => _TITLE('ThreadIdx'),
+			'ConnIdx' => _TITLE('ConnIdx'),
+			'SrcAddr' => _TITLE('SrcAddr'),
+			'DstAddr' => _TITLE('DstAddr'),
+			'IdleTime' => _TITLE('IdleTime'),
+			'Duration' => _TITLE('Duration'),
 			),
 		),
 	);
