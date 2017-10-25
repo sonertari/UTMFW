@@ -56,16 +56,16 @@ $Menu = array(
 $LogConf = array(
     'squid' => array(
         'Fields' => array(
-            'DateTime',
-            'Client',
-            'Target',
-            'Link',
-            'Size',
-            'Mtd',
-            'Code',
-            'Direct',
-            'Cache',
-            'Type',
+            'DateTime' => _TITLE('DateTime'),
+            'Client' => _TITLE('Client'),
+            'Target' => _TITLE('Target'),
+            'Link' => _TITLE('Link'),
+            'Size' => _TITLE('Size'),
+            'Mtd' => _TITLE('Mtd'),
+            'Code' => _TITLE('Code'),
+            'Direct' => _TITLE('Direct'),
+            'Cache' => _TITLE('Cache'),
+            'Type' => _TITLE('Type'),
     		),
         'HighlightLogs' => array(
             'REs' => array(

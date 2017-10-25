@@ -1314,25 +1314,13 @@ function UpdateLogsPageSessionVars(&$count, &$re, &$needle)
 function PrintTableHeaders($view)
 {
 	global $LogConf;
-
-	$gettextheaders= array(
-		_TITLE('Time'),
-		_TITLE('Process'),
-		_TITLE('Log'),
-		_TITLE('Rule'),
-		_TITLE('Rule'),
-		_TITLE('DateTime'),
-		_TITLE('Target'),
-		_TITLE('Size'),
-		_TITLE('Level'),
-	);
 	?>
 	<tr id="logline">
 		<th><?php echo _('Line') ?></th>
 		<?php
-		foreach ($LogConf[$view]['Fields'] as $header) {
+		foreach ($LogConf[$view]['Fields'] as $field => $caption) {
 			?>
-			<th><?php echo _($header) ?></th>
+			<th><?php echo $caption ?></th>
 			<?php
 		}
 		?>
@@ -1372,7 +1360,7 @@ function PrintLogCols($linenum, $cols, $lastlinenum= -1, $class= '', $module= ''
 		<?php
 		$totalCols= count($LogConf[$module]['Fields']);
 		$count= 1;
-		foreach ($LogConf[$module]['Fields'] as $field) {
+		foreach ($LogConf[$module]['Fields'] as $field => $caption) {
 			$cellClass= $class;
 			if ($lastLine && $count++ == $totalCols) {
 				$cellClass.= ' lastLineLastCell';

@@ -23,9 +23,9 @@ require_once('include.php');
 $LogConf = array(
     'clamd' => array(
         'Fields' => array(
-            'Date',
-            'Time',
-            'Log',
+            'Date' => _TITLE('Date'),
+            'Time' => _TITLE('Time'),
+            'Log' => _TITLE('Log'),
     		),
         'HighlightLogs' => array(
             'REs' => array(

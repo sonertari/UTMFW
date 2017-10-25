@@ -46,29 +46,29 @@ $Menu = array(
 $LogConf = array(
     'dhcpd' => array(
         'Fields' => array(
-            'Date',
-            'Time',
-            'Process',
-            'Prio',
-            'Log',
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'Process' => _TITLE('Process'),
+			'Prio' => _TITLE('Prio'),
+			'Log' => _TITLE('Log'),
     		),
 		),
 	'arp' => array(
 		'Fields' => array(
-			'IP',
-			'MAC',
-			'Interface',
-			'Expire',
+			'IP' => _TITLE('IP'),
+			'MAC' => _TITLE('MAC'),
+			'Interface' => _TITLE('Interface'),
+			'Expire' => _TITLE('Expire'),
 			),
 		),
 	'lease' => array(
 		'Fields' => array(
-			'IP',
-			'Start',
-			'End',
-			'MAC',
-			'Host',
-			'Status',
+			'IP' => _TITLE('IP'),
+			'Start' => _TITLE('Start'),
+			'End' => _TITLE('End'),
+			'MAC' => _TITLE('MAC'),
+			'Host' => _TITLE('Host'),
+			'Status' => _TITLE('Status'),
 			),
 		),
 	);

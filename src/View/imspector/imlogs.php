@@ -23,10 +23,10 @@ require_once('include.php');
 $LogConf = array(
     'imlogs' => array(
         'Fields' => array(
-            'Date',
-            'Time',
-            'IPPort',
-            'Log',
+            'Date' => _TITLE('Date'),
+            'Time' => _TITLE('Time'),
+            'IPPort' => _TITLE('IPPort'),
+            'Log' => _TITLE('Log'),
     		),
         'HighlightLogs' => array(
             'REs' => array(

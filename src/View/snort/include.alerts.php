@@ -23,16 +23,16 @@ require_once('include.php');
 $LogConf = array(
     'snortalerts' => array(
         'Fields' => array(
-            'Date',
-            'Time',
-            'Process',
-            'Log',
-            'Prio',
-            'Proto',
-            'SrcIP',
-            'SPort',
-            'DstIP',
-            'DPort',
+            'Date' => _TITLE('Date'),
+            'Time' => _TITLE('Time'),
+            'Process' => _TITLE('Process'),
+            'Log' => _TITLE('Log'),
+            'Prio' => _TITLE('Prio'),
+            'Proto' => _TITLE('Proto'),
+            'SrcIP' => _TITLE('SrcIP'),
+            'SPort' => _TITLE('SPort'),
+            'DstIP' => _TITLE('DstIP'),
+            'DPort' => _TITLE('DPort'),
     		),
         'HighlightLogs' => array(
             'Col' => 'Prio',

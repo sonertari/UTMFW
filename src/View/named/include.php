@@ -56,13 +56,13 @@ $Menu = array(
 $LogConf = array(
 	'named' => array(
 		'Fields' => array(
-			'Date',
-			'Time',
-			'Process',
-            'Prio',
-			'IP',
-			'Domain',
-			'Log',
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'Process' => _TITLE('Process'),
+			'Prio' => _TITLE('Prio'),
+			'IP' => _TITLE('IP'),
+			'Domain' => _TITLE('Domain'),
+			'Log' => _TITLE('Log'),
 			),
 		),
 	);

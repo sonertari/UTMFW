@@ -23,14 +23,14 @@ require_once('include.php');
 $LogConf = array(
     'ctlr_syslog' => array(
         'Fields' => array(
-            'Date',
-            'Time',
-            'Prio',
-            'File',
-            'Function',
-            'Line',
-            'Reason',
-            'Log',
+            'Date' => _TITLE('Date'),
+            'Time' => _TITLE('Time'),
+            'Prio' => _TITLE('Prio'),
+            'File' => _TITLE('File'),
+            'Function' => _TITLE('Function'),
+            'Line' => _TITLE('Line'),
+            'Reason' => _TITLE('Reason'),
+            'Log' => _TITLE('Log'),
     		),
         'HighlightLogs' => array(
             'Col' => 'LogLevel',

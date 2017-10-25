@@ -23,14 +23,14 @@ require_once('include.php');
 $LogConf = array(
     'e2guardianlogs' => array(
         'Fields' => array(
-            'Date',
-            'Time',
-            'IP',
-            'Link',
-            'Scan',
-            'Mtd',
-            'Size',
-            'Log',
+            'Date' => _TITLE('Date'),
+            'Time' => _TITLE('Time'),
+            'IP' => _TITLE('IP'),
+            'Link' => _TITLE('Link'),
+            'Scan' => _TITLE('Scan'),
+            'Mtd' => _TITLE('Mtd'),
+            'Size' => _TITLE('Size'),
+            'Log' => _TITLE('Log'),
     		),
         'HighlightLogs' => array(
             'Col' => 'Scan',

@@ -46,11 +46,11 @@ $Menu = array(
 $LogConf = array(
     'openvpn' => array(
         'Fields' => array(
-            'Date',
-            'Time',
-            'Process',
-            'Prio',
-            'Log',
+            'Date' => _TITLE('Date'),
+            'Time' => _TITLE('Time'),
+            'Process' => _TITLE('Process'),
+            'Prio' => _TITLE('Prio'),
+            'Log' => _TITLE('Log'),
     		),
         'HighlightLogs' => array(
             'REs' => array(

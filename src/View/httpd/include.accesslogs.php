@@ -23,12 +23,12 @@ require_once('include.php');
 $LogConf = array(
     'httpdlogs' => array(
         'Fields' => array(
-            'DateTime',
-            'IP',
-            'Mtd',
-            'Link',
-            'Code',
-            'Size',
+            'DateTime' => _TITLE('DateTime'),
+            'IP' => _TITLE('IP'),
+            'Mtd' => _TITLE('Mtd'),
+            'Link' => _TITLE('Link'),
+            'Code' => _TITLE('Code'),
+            'Size' => _TITLE('Size'),
     		),
         'HighlightLogs' => array(
             'Col' => 'Code',

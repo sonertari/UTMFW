@@ -23,8 +23,8 @@ require_once('include.php');
 $LogConf = array(
     'blacklists' => array(
         'Fields' => array(
-            'Category',
-            'Site',
+            'Category' => _TITLE('Category'),
+            'Site' => _TITLE('Site'),
     		),
         'HighlightLogs' => array(
             'REs' => array(

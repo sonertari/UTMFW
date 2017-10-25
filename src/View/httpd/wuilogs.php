@@ -23,16 +23,16 @@ require_once('include.php');
 $LogConf = array(
     'wui_syslog' => array(
         'Fields' => array(
-            'Date',
-            'Time',
-            'Prio',
-            'User',
-            'IP',
-            'File',
-            'Function',
-            'Line',
-            'Reason',
-            'Log',
+            'Date' => _TITLE('Date'),
+            'Time' => _TITLE('Time'),
+            'Prio' => _TITLE('Prio'),
+            'User' => _TITLE('User'),
+            'IP' => _TITLE('IP'),
+            'File' => _TITLE('File'),
+            'Function' => _TITLE('Function'),
+            'Line' => _TITLE('Line'),
+            'Reason' => _TITLE('Reason'),
+            'Log' => _TITLE('Log'),
     		),
         'HighlightLogs' => array(
             'Col' => 'LogLevel',
