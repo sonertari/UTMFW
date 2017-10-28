@@ -1,3 +1,4 @@
+@comment $OpenBSD$
 @conflict e2guardian-*-clamav
 @pkgpath www/e2guardian,clamav
 @newgroup _e2guardian:589
@@ -90,7 +91,6 @@ share/e2guardian/languages/polish/template.html
 share/e2guardian/languages/portuguese/
 share/e2guardian/languages/portuguese/fancydmtemplate.html
 share/e2guardian/languages/portuguese/messages
-share/e2guardian/languages/portuguese/messagesaccents
 share/e2guardian/languages/portuguese/template.html
 share/e2guardian/languages/ptbrazilian/
 share/e2guardian/languages/ptbrazilian/fancydmtemplate.html
@@ -123,7 +123,6 @@ share/e2guardian/languages/turkish/template.html
 share/e2guardian/languages/ukenglish/
 share/e2guardian/languages/ukenglish/fancydmtemplate.html
 share/e2guardian/languages/ukenglish/messages
-share/e2guardian/languages/ukenglish/messages.alt
 share/e2guardian/languages/ukenglish/template.html
 share/e2guardian/scripts/
 share/e2guardian/scripts/bsd-init
@@ -147,7 +146,6 @@ share/examples/e2guardian/authplugins/proxy-basic.conf
 @sample ${SYSCONFDIR}/e2guardian/authplugins/proxy-basic.conf
 share/examples/e2guardian/authplugins/proxy-digest.conf
 @sample ${SYSCONFDIR}/e2guardian/authplugins/proxy-digest.conf
-share/examples/e2guardian/authplugins/proxy-header.conf
 share/examples/e2guardian/contentscanners/
 @sample ${SYSCONFDIR}/e2guardian/contentscanners/
 share/examples/e2guardian/contentscanners/clamdscan.conf
@@ -198,6 +196,7 @@ share/examples/e2guardian/lists/bannedsearchlist
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedsearchlist
 share/examples/e2guardian/lists/bannedsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedsitelist
+share/examples/e2guardian/lists/bannedsitelistwithbypass
 share/examples/e2guardian/lists/bannedsslsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedsslsitelist
 share/examples/e2guardian/lists/bannedurllist

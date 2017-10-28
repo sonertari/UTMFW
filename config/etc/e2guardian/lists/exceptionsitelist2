@@ -1,0 +1,9 @@
+# Blanket exception.  To allow all sites except those in the
+# exceptionsitelist and greysitelist files, remove
+# the # from the next line to leave only a '**':
+**
+
+# Blanket IP exception.  To allow all sites specified only as an IP,
+# remove the # from the next line to leave only a '*ip':
+*ip
+

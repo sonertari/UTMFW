@@ -87,9 +87,13 @@ function PrintFilterConfForms($list)
 						<select name="SitesToDelete[]" multiple style="width: 400px; height: 100px;">
 						<?php
 						for ($i = 0; $i < count($items); $i++){
-							?>
-							<option value="<?php echo $items[$i] ?>"><?php echo $items[$i] ?></option>
-							<?php
+							// @attention Do not list blanket configuration
+							// XXX: These should be filtered in the Model actually
+							if (!in_array($items[$i], array('**', '**s', '*ip', '*ips'))) {
+								?>
+								<option value="<?php echo $items[$i] ?>"><?php echo $items[$i] ?></option>
+								<?php
+							}
 						}
 						?>
 						</select>

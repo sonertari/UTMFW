@@ -1,5 +1,5 @@
 COMMENT =	content scanning web filter
-DISTNAME =	e2guardian-3.5.1
+DISTNAME =	e2guardian-4.1.3
 CATEGORIES =	www net
 
 HOMEPAGE =	http://www.e2guardian.org/
@@ -13,11 +13,14 @@ WANTLIB =               c m pcre pcreposix stdc++ z
 
 # You may need to download the source package yourself,
 # and copy it under /usr/ports/distfiles/
-MASTER_SITES=	https://github.com/e2guardian/e2guardian/releases/tag/v3.5.1/
+MASTER_SITES=	https://github.com/e2guardian/e2guardian/releases/tag/v4.1.3/
+
+# C++11
+COMPILER =      gcc
 
 LIB_DEPENDS =           devel/pcre
 
-
+# TODO: Sometimes build fails in Makefile:383 not finding AUTOCONF_VERSION
 CONFIGURE_STYLE =	gnu
 AUTOCONF_VERSION =	2.69
 AUTOMAKE_VERSION =	1.15

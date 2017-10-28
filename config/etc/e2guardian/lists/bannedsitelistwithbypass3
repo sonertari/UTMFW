@@ -1,0 +1,11 @@
+#domains in banned list for BYPASS (and only for BYPASS !)
+#Use bannesitelist to block unwanted websites
+#Don't bother with the www. or the http://
+#You can include
+#.tld so for example you can match .gov for example
+
+#To include additional files in this list use this example:
+#.Include</etc/e2guardian/anotherbannedurllist>
+
+#You can have multiple .Includes.
+

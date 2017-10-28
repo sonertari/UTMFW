@@ -61,6 +61,7 @@
 #.Include</etc/e2guardian/lists/phraselists/pornography/weighted_polish>
 #.Include</etc/e2guardian/lists/phraselists/pornography/weighted_portuguese>
 #.Include</etc/e2guardian/lists/phraselists/pornography/weighted_russian> #BETA#
+#.Include</etc/e2guardian/lists/phraselists/pornography/weighted_russian_utf8> #BETA#
 #.Include</etc/e2guardian/lists/phraselists/pornography/weighted_spanish> #ALPHA#
 #.Include</etc/e2guardian/lists/phraselists/pornography/weighted_swedish>
 .Include</etc/e2guardian/lists/phraselists/nudism/weighted>

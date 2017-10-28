@@ -1,0 +1,14 @@
+$OpenBSD$
+
+Index: src/authplugins/dnsauth.cpp
+--- src/authplugins/dnsauth.cpp.orig
++++ src/authplugins/dnsauth.cpp
+@@ -219,7 +219,7 @@ bool dnsauthinstance::getdnstxt(String &ippath)
+     // get info from DNS
+     union {
+         HEADER hdr;
+-        u_char buf[NS_PACKETSZ];
++        u_char buf[PACKETSZ];
+     } response;
+     int responseLen;
+ 

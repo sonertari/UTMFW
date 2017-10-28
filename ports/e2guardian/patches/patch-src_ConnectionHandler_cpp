@@ -1,7 +1,21 @@
 $OpenBSD$
---- src/ConnectionHandler.cpp.orig	Mon Mar 13 18:05:36 2017
-+++ src/ConnectionHandler.cpp	Thu Sep 28 10:53:21 2017
-@@ -547,11 +547,23 @@ int ConnectionHandler::handleConnection(Socket &peerco
+Index: src/ConnectionHandler.cpp
+--- src/ConnectionHandler.cpp.orig
++++ src/ConnectionHandler.cpp
+@@ -534,9 +534,10 @@ stat_rec* &dystat)
+                    int pport = peerconn.getPeerSourcePort();
+                    std::string peerIP = peerconn.getPeerIP();
+ 
+-                   syslog(LOG_INFO, "%d No header recd from client at %s - errno: %d", pport, peerIP.c_str(), err);
++                   // This happens too often and does not need to be logged imo
++                   //syslog(LOG_INFO, "%d No header recd from client at %s - errno: %d", pport, peerIP.c_str(), err);
+ #ifdef DGDEBUG
+-            	   std::cout << "pport" << " No header recd from client - errno: " << err << " Line: " << __LINE__ << " Function: " << __func__ << std::endl;
++            	   std::cout << pport << " No header recd from client - errno: " << err << " Line: " << __LINE__ << " Function: " << __func__ << std::endl;
+ #endif
+                } else {
+                    syslog(LOG_INFO, "Client connection closed early - no request header received");
+@@ -641,11 +642,23 @@ stat_rec* &dystat)
                  checkme.reset();
              }
  
@@ -11,7 +25,7 @@ $OpenBSD$
 +            if (!srcaddrport.empty()) {
 +                clientip = srcaddrport.before(":").toCharArray();
 +                peerconn.setActualPeerAddrPort(srcaddrport.before(":").toCharArray(), srcaddrport.after(":").before(",").toInteger());
-+                is_ssl = ismitm = (srcaddrport.after(",") == "s");
++                is_ssl = (srcaddrport.after(",") == "s");
 +            }
 +
 +            if (is_ssl && header.header.front().contains("http://")) {
@@ -23,22 +37,14 @@ $OpenBSD$
              urld = header.decode(url);
              urldomain = url.getHostname();
 -            is_ssl = header.requestType().startsWith("CONNECT");
- 
-             //If proxy connction is not persistent...
-             if (!persistProxy) {
-@@ -584,7 +596,7 @@ int ConnectionHandler::handleConnection(Socket &peerco
-             }
- 
+             if (o.forwarded_for && !ismitm) {
+                 if (o.use_xforwardedfor) {
+                     std::string xforwardip(header.getXForwardedForIP());
+@@ -2712,6 +2725,17 @@ stat_rec* &dystat)
  #ifdef DGDEBUG
--            std::cerr << "PID: " << getpid() << " Start URL " << url.c_str() << "is_ssl=" << is_ssl << "ismitm=" << ismitm << std::endl;
-+            std::cerr << "PID: " << getpid() << " Start URL " << url.c_str() << " is_ssl=" << is_ssl << " ismitm=" << ismitm << std::endl;
+                     std::cout << dbgPeerPort << " -url " << logurl << " isbypass: " << isbypass << " isexception: " << isexception << " iscookiebypass: " << iscookiebypass << " Line: " << __LINE__ << " Function: " << __func__ << std::endl;
  #endif
- 
-             // checks for bad URLs to prevent security holes/domain obfuscation.
-@@ -2359,6 +2371,16 @@ int ConnectionHandler::handleConnection(Socket &peerco
-                     std::cout << dbgPeerPort << " -header says close, so not persisting" << std::endl;
- #endif
- 
++
 +                off_t cl = docheader.contentLength();
 +                String temp(docheader.header.front().after(" "));
 +                if (cl > 0  && temp.startsWith("304")) {
@@ -52,7 +58,7 @@ $OpenBSD$
                  // if we're not careful, we can end up accidentally setting the bypass cookie twice.
                  // because of the code flow, this second cookie ends up with timestamp 0, and is always disallowed.
                  if (isbypass && !isvirusbypass && !iscookiebypass && !isexception) {
-@@ -2390,7 +2412,7 @@ int ConnectionHandler::handleConnection(Socket &peerco
+@@ -2750,7 +2774,7 @@ stat_rec* &dystat)
                  // don't even bother scan testing if the content-length header indicates the file is larger than the maximum size we'll scan
                  // - based on patch supplied by cahya (littlecahya@yahoo.de)
                  // be careful: contentLength is signed, and max_content_filecache_scan_size is unsigned
@@ -61,3 +67,12 @@ $OpenBSD$
                  if (!responsescanners.empty()) {
                      if (cl == 0)
                          responsescanners.clear();
+@@ -4738,7 +4762,7 @@ bool ConnectionHandler::getdnstxt(std::string &clienti
+     // get info from DNS
+     union {
+         HEADER hdr;
+-        u_char buf[NS_PACKETSZ];
++        u_char buf[PACKETSZ];
+     } response;
+     int responseLen;
+ #ifdef PRT_DNSAUTH

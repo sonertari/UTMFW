@@ -37,8 +37,6 @@
 
 #List other sites to block:
 
-badboys.com
-
 #Blanket Block.  To block all sites except those in the
 #exceptionsitelist and greysitelist files, remove
 #the # from the next line to leave only a '**':
@@ -58,7 +56,6 @@ badboys.com
 #tunnels to sites specified only as an IP,
 #remove the # from the next line to leave only a '*ips':
 #*ips
-
 
 # The squidGuard advert domain/URL lists are now included by default.
 # To work with advanced ad blocking & the logadblocks option, advert

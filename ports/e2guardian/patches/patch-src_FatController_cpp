@@ -1,11 +1,31 @@
 $OpenBSD$
---- src/FatController.cpp.orig	Sun Oct 15 07:08:07 2017
-+++ src/FatController.cpp	Sun Oct 15 07:08:38 2017
-@@ -3160,7 +3160,6 @@ int fc_controlit()
-                             usleep(1000);
-                         } else {
-                             tellchild_accept(childnum, i - o.max_children);
--                            --freechildren;
-                         }
-                     } else {
-                         usleep(1000);
+
+Index: src/FatController.cpp
+--- src/FatController.cpp.orig
++++ src/FatController.cpp
+@@ -2026,12 +2026,11 @@ int fc_controlit()   //
+             gentlereload = false;
+             continue;        //  OK to continue even if gentle failed - just continue to use previous lists
+         }
+-        timeout.tv_sec = 5;
+-        timeout.tv_nsec = (long) 0;
+-        rc = sigtimedwait(&signal_set, NULL, &timeout);
+-        if (rc < 0) {
++        // OpenBSD does not have sigtimedwait(), sigwait() does not return until a signal arrives
++        int retval = sigwait(&signal_set, &rc);
++        if (retval < 0) {
+             if (errno != EAGAIN) {
+-                syslog(LOG_INFO, "Unexpected error from sigtimedwait() %d %s", errno, strerror(errno));
++                syslog(LOG_INFO, "Unexpected error from sigwait() %d %s", errno, strerror(errno));
+             }
+         } else {
+             if (rc == SIGUSR1)
+@@ -2044,7 +2043,7 @@ int fc_controlit()   //
+             std::cout << "signal:" << rc << std::endl;
+ #endif
+             if (o.logconerror) {
+-                syslog(LOG_INFO, "sigtimedwait() signal %d recd:", rc);
++                syslog(LOG_INFO, "sigwait() signal %d recd:", rc);
+             }
+         }
+         int q_size = o.http_worker_Q->size();

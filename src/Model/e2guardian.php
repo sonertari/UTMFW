@@ -1313,6 +1313,9 @@ $GeneraladvancedConfig = array(
     'maxchildren' => array(
         'type' => UINT,
 		),
+    'httpworkers' => array(
+        'type' => UINT,
+		),
     'minchildren' => array(
         'type' => UINT,
 		),

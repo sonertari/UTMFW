@@ -25,7 +25,7 @@ $View->ProcessStartStopRequests();
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm(PRINT_COUNT);
+$View->PrintStatusForm();
 
 PrintHelpWindow(_HELPWINDOW('The number of web filter processes depends on the number of requests from internal network. Minimum and maximum number of processes can be adjusted on the configuration pages.
 

@@ -705,6 +705,11 @@ Warning - headers are easily spoofed. on | off'),
         'title' => _TITLE2('Filter IP for xforwarded for'),
         'info' => _HELPBOX2('The headers can be easily spoofed in order to fake the request origin by setting the X-Forwarded-For header. If you have the "usexforwardedfor" option enabled, you may want to specify the IPs from which this kind of header is allowed, such as another upstream proxy server for instance If you want authorize multiple IPs, specify each one on an individual xforwardedforfilterip line.'),
 		),
+    'httpworkers' => array(
+        'title' => _TITLE2('Max threads'),
+        'info' => _HELPBOX2('This is the maximum number of threads, i.e. concurrent connections. If more connections are made, connections will queue until a worker thread is free.
+On large sites you might want to increase this number, e.g. 5000 (max value 20000).'),
+		),
     'maxchildren' => array(
         'title' => _TITLE2('Max children'),
         'info' => _HELPBOX2('Sets the maximum number of processes to spawn to handle the incoming connections.  Max value usually 250 depending on OS.

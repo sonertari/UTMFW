@@ -1,0 +1,11 @@
+$OpenBSD$
+--- src/FatController.cpp.orig	Sun Oct 15 07:08:07 2017
++++ src/FatController.cpp	Sun Oct 15 07:08:38 2017
+@@ -3160,7 +3160,6 @@ int fc_controlit()
+                             usleep(1000);
+                         } else {
+                             tellchild_accept(childnum, i - o.max_children);
+-                            --freechildren;
+                         }
+                     } else {
+                         usleep(1000);

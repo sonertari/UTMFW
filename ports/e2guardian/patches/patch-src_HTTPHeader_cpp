@@ -1,7 +1,8 @@
 $OpenBSD$
---- src/HTTPHeader.cpp.orig	Mon Mar 13 18:05:36 2017
-+++ src/HTTPHeader.cpp	Thu Sep 28 10:59:39 2017
-@@ -1112,10 +1112,13 @@ void HTTPHeader::checkheader(bool allowpersistent)
+Index: src/HTTPHeader.cpp
+--- src/HTTPHeader.cpp.orig
++++ src/HTTPHeader.cpp
+@@ -1222,10 +1222,13 @@ void HTTPHeader::checkheader(bool allowpersistent)
  
  String HTTPHeader::getLogUrl(bool withport, bool isssl)
  {
@@ -17,7 +18,7 @@ $OpenBSD$
      }
      return answer;
  }
-@@ -1140,6 +1143,14 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
+@@ -1250,6 +1253,14 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
      } else {
          answer = answer.before(" http/"); // just in case!
      }
@@ -32,7 +33,7 @@ $OpenBSD$
      if (requestType() == "CONNECT") {
          https = true;
          port = 443;
-@@ -1174,11 +1185,20 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
+@@ -1284,11 +1295,20 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
              // Squid doesn't like requests in this format. Work around the fact.
              header.front() = requestType() + " " + answer + " HTTP/" + header.front().after(" HTTP/");
          } else { // must be in the form GET http://foo.bar:80/ HTML/1.0
@@ -57,16 +58,7 @@ $OpenBSD$
              String url(hostname.after("/"));
              url.removeWhiteSpace(); // remove rubbish like ^M and blanks
              if (hostname.endsWith(".")) {
-@@ -1215,7 +1235,7 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
- //	}
- 
- #ifdef DGDEBUG
--    std::cout << "from header url:" << answer << std::endl;
-+//    std::cout << "from header url:" << answer << std::endl;
- #endif
- 
- //make sure ssl stuff is logged as https
-@@ -1303,7 +1323,10 @@ String HTTPHeader::getCookie(const char *cookie)
+@@ -1409,7 +1429,10 @@ String HTTPHeader::getCookie(const char *cookie)
          if (i->startsWithLower("cookie:")) {
              line = i->after(": ");
              if (line.contains(cookie)) { // We know we have the cookie
@@ -78,8 +70,8 @@ $OpenBSD$
                  line.lop(); // Get rid of the '='
                  if (line.contains(";")) {
                      line = line.before(";");
-@@ -1617,6 +1640,23 @@ String HTTPHeader::getReferer()
-     std::cout << "Found Referer URL:" << line << std::endl;
+@@ -1723,6 +1746,23 @@ String HTTPHeader::getReferer()
+     std::cout << "Found Referer URL:" << line << " Line: " << __LINE__ << " Function: " << __func__ << std::endl;
  #endif
      return line;
 +}

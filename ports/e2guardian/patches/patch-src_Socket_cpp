@@ -1,7 +1,32 @@
 $OpenBSD$
---- src/Socket.cpp.orig	Mon Jul 24 19:48:41 2017
-+++ src/Socket.cpp	Mon Jul 24 19:51:47 2017
-@@ -129,12 +129,18 @@ std::string Socket::getLocalIP()
+Index: src/Socket.cpp
+--- src/Socket.cpp.orig
++++ src/Socket.cpp
+@@ -60,6 +60,7 @@ Socket::Socket()
+             int res = setsockopt(sck, IPPROTO_TCP, TCP_NODELAY, &f, sizeof(int));
+ 
+         my_port = 0;
++        actualPeerPort = 0;
+ 
+ #ifdef __SSLMITM
+         ssl = NULL;
+@@ -86,6 +87,7 @@ Socket::Socket(int fd)
+     int res = setsockopt(sck, IPPROTO_TCP, TCP_NODELAY, &f, sizeof(int));
+     if (res < 0) s_errno = errno;
+     my_port = 0;
++    actualPeerPort = 0;
+ 
+ #ifdef __SSLMITM
+     ssl = NULL;
+@@ -113,6 +115,7 @@ Socket::Socket(int newfd, struct sockaddr_in myip, str
+     int res = setsockopt(sck, IPPROTO_TCP, TCP_NODELAY, &f, sizeof(int));
+     if (res < 0) s_errno = errno;
+     my_port = 0;
++    actualPeerPort = 0;
+ 
+ #ifdef __SSLMITM
+     ssl = NULL;
+@@ -133,12 +136,18 @@ std::string Socket::getLocalIP()
  // find the ip of the client connecting to us
  std::string Socket::getPeerIP()
  {
@@ -20,7 +45,7 @@ $OpenBSD$
      return ntohs(peer_adr.sin_port);
  }
  int Socket::getPort()
-@@ -150,6 +156,12 @@ void Socket::setPort(int port)
+@@ -154,6 +163,12 @@ void Socket::setPort(int port)
  unsigned long int Socket::getPeerSourceAddr()
  {
      return (unsigned long int)ntohl(peer_adr.sin_addr.s_addr);

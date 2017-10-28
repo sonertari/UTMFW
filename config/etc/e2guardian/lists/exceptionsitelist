@@ -40,9 +40,6 @@
 # remove the # from the next line to leave only a '*ips':
 #*ips
 
-
-windowsupdate.microsoft.com
-
 #.Include</etc/e2guardian/lists/blacklists/adv/domains>
 #.Include</etc/e2guardian/lists/blacklists/aggressive/domains>
 #.Include</etc/e2guardian/lists/blacklists/alcohol/domains>
