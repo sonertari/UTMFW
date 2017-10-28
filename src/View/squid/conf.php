@@ -18,7 +18,7 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('include.php');
+require_once('squid.php');
 
 /**
  * Prints Squid interface change form as IP:Port and lets the user modify it.

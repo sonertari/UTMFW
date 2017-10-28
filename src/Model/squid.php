@@ -31,7 +31,7 @@ class Squid extends Model
 	
 	public $NVPS= '\h';
 	public $ConfFile = '/etc/squid/squid.conf';
-	public $LogFile= '/var/squid/logs/access.log';
+	public $LogFile= '/var/log/squid.log';
 
 	public $VersionCmd= '/usr/local/sbin/squid -v';
 
@@ -42,7 +42,6 @@ class Squid extends Model
 		global $TmpFile;
 		
 		parent::__construct();
-		$this->ErrorLogFile= '/var/log/messages';
 		
 		$this->StartCmd= "/usr/local/sbin/squid > $TmpFile 2>&1 &";
 		
@@ -104,138 +103,6 @@ class Squid extends Model
 		global $Re_IpPort;
 
 		return Output($this->SearchFileAll($this->ConfFile, "/^\h*http_port\h*($Re_IpPort)\b.*\h*$/m"));
-	}
-	
-	function ParseLogLine($logline, &$cols)
-	{
-		global $Re_Ip;
-	
-		//23/Aug/2017:08:25:52 +0300  11463 127.0.0.1 TCP_MISS/200 6796 GET http://openbsd.org/images/cd45-s.gif - DIRECT/199.185.137.3 image/gif
-		//23/Aug/2017:08:25:52 +0300      0 127.0.0.1 TCP_HIT/302 823 GET http://fxfeeds.mozilla.com/firefox/headlines.xml - NONE/- text/html
-		$re_datetime= '(\d+\/\w+\/\d+):(\d+:\d+:\d+)\s*[\w+]*';
-		$re_size= '(\d+)';
-		$re_clientip= "($Re_Ip|-)";
-		$re_cache= '(\S+)';
-		$re_code= '(\d+)';
-		$re_mtd= '(\S+)';
-		// @attention https should come first, otherwise http always matches
-		$re_link= '((https|http)\S+)';
-		$re_direct= '(\S+)';
-		$re_targetip= "($Re_Ip|\S+|-)";
-		$re_type= '(\S+)';
-
-		$re= "/^$re_datetime\s+\d+\s+$re_clientip\s+$re_cache\/$re_code\s+$re_size\s+$re_mtd\s+$re_link.*\s+$re_direct\/$re_targetip\s+$re_type$/";
-		if (preg_match($re, $logline, $match)) {
-			$cols['Date']= $match[1];
-			$cols['Time']= $match[2];
-			$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
-			$cols['Client']= $match[3];
-			$cols['Cache']= $match[4];
-			$cols['Code']= $match[5];
-			$cols['Size']= $match[6];
-			$cols['Mtd']= $match[7];
-			$cols['Link']= $match[8];
-			$cols['Proto']= $match[9];
-			$cols['Direct']= $match[10];
-			$cols['Target']= $match[11];
-			$cols['Type']= $match[12];
-			return TRUE;
-		}
-		else if ($this->ParseSyslogLine($logline, $cols)) {
-			$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
-			// Squid Logs page does not have a Log column, use Type column for Log field
-			$cols['Type']= $cols['Log'];
-			return TRUE;
-		}
-		return FALSE;
-	}
-	
-	function PostProcessCols(&$cols)
-	{
-		preg_match('?http(|s)://([^/]*)?', $cols['Link'], $match);
-		$cols['Link']= $match[2];
-	}
-
-	function GetDateRegexp($date)
-	{
-		global $MonthNames;
-		
-		// Match all years
-		$re= '.*';
-		if ($date['Month'] == '') {
-			$re= '.*\/'.$re;
-		}
-		else {
-			$re= $MonthNames[$date['Month']].'\/'.$re;
-			if ($date['Day'] == '') {
-				$re= '.*\/'.$re;
-			}
-			else {
-				$re= $date['Day'].'\/'.$re;
-			}
-		}
-		return $re;
-	}
-
-	function formatDateHourRegexp($month, $day, $hour, $minute)
-	{
-		global $MonthNames, $Re_MonthNames;
-
-		// 05/Sep/2017:00:05:11
-		$reYear= '20[[:digit:]][[:digit:]]';
-
-		if ($month != '') {
-			$reMonth= $MonthNames[$month];
-		} else {
-			$reMonth= '('.$Re_MonthNames.')';
-		}
-
-		if ($day != '') {
-			$reDay= $day;
-		} else {
-			$reDay= '([[:digit:]][[:digit:]])';
-		}
-
-		if ($hour != '') {
-			$reHour= $hour;
-		} else {
-			$reHour= '([[:digit:]][[:digit:]])';
-		}
-
-		if ($minute != '') {
-			$reMinute= $minute;
-		} else {
-			$reMinute= '([[:digit:]][[:digit:]])';
-		}
-
-		return "^$reDay/$reMonth/$reYear:$reHour:$reMinute:";
-	}
-
-	function getStatusLogs($file, $count, $re= '', $needle= '')
-	{
-		$cmd= "/usr/bin/grep -a ' squid\[' /var/log/messages";
-
-		$re= escapeshellarg($re);
-		if ($needle == '') {
-			$cmd.= " | /usr/bin/grep -a -E $re";
-		}
-		else {
-			$needle= escapeshellarg($needle);
-			$cmd.= " | /usr/bin/grep -a -E $needle | /usr/bin/grep -a -E $re";
-		}
-
-		$cmd.= " | /usr/bin/tail -$count";
-
-		exec($cmd, $output, $retval);
-		
-		$logs= array();
-		foreach ($output as $line) {
-			unset($cols);
-			if ($this->ParseLogLine($line, $cols)) {
-				$logs[]= $cols;
-			}
-		}
-		return $logs;
 	}
 }
 

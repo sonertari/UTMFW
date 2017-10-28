@@ -780,7 +780,7 @@ $StatsConf = array(
 				),
 			),
 		),
-    'squid' => array(
+    'squidlogs' => array(
 		'Total' => array(
 			'Title' => _STATS('All requests'),
 			'Cmd' => '/bin/cat <LF>',

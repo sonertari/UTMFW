@@ -56,7 +56,6 @@ class Model
 	public $COMC= '#';
 
 	public $LogFile= '';
-	public $ErrorLogFile= '';
 	public $TmpLogsDir= '';
 
 	protected $rcConfLocal= '/etc/rc.conf.local';
@@ -90,7 +89,6 @@ class Model
 
 		$this->Config= $ModelConfig;
 
-		$this->ErrorLogFile= $this->LogFile;
 		$this->prios= array(
 			'EMERGENCY|ALERT|CRITICAL' => _TITLE('<MODEL> has CRITICAL errors'),
 			'ERROR' => _TITLE('<MODEL> has ERRORs'),
@@ -2628,7 +2626,7 @@ class Model
 		$lastLogs= array();
 
 		// @attention Get the last datetime in the logs, so do not use the $needle
-		$logs= $this->getStatusLogs($this->ErrorLogFile, 1);
+		$logs= $this->getStatusLogs($this->LogFile, 1);
 		if (count($logs) == 1) {
 			$lastLine= $logs[0];
 			// @attention Always check the retval of createFromFormat(), it may fail due to format mismatch, e.g. log rotation lines
@@ -2637,7 +2635,7 @@ class Model
 				$lastTs= $dt->getTimestamp();
 
 				// @attention Don't get the logs in the last 60 seconds from now instead, otherwise the errors still important cannot be reported after 60 seconds.
-				$logs= $this->getStatusLogs($this->ErrorLogFile, 1000, $needle);
+				$logs= $this->getStatusLogs($this->LogFile, 1000, $needle);
 				if (count($logs)) {
 					// Loop in reverse order to break out asap
 					foreach (array_reverse($logs) as $l) {
@@ -3018,6 +3016,7 @@ $ModelsToLogConfig= array(
 	'e2guardian',
 	'e2guardianlogs',
 	'squid',
+	'squidlogs',
 	'snort',
 	'snortalerts',
 	'snortips',

@@ -52,6 +52,7 @@ p3scan.log		type=file mode=0640 uname=root gname=wheel
 smtp-gated.log		type=file mode=0640 uname=root gname=wheel
 snortips.log		type=file mode=0640 uname=root gname=wheel
 spamd.log		type=file mode=0640 uname=root gname=wheel
+squid.log		type=file mode=0640 uname=root gname=wheel
 sslproxy.log		type=file mode=0640 uname=root gname=wheel
 ..	#var/log
 named			type=dir mode=0755 uname=root gname=_bind

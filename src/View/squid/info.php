@@ -18,7 +18,7 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('include.php');
+require_once('squid.php');
 
 $View->ProcessStartStopRequests();
 

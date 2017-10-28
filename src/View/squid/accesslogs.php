@@ -19,5 +19,5 @@
  */
 
 require_once('include.accesslogs.php');
-require_once('../lib/stats.php');
+require_once('../lib/logs.php');
 ?>
