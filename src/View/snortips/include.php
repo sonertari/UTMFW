@@ -98,6 +98,10 @@ class Snortips extends View
 				'title' => _TITLE2('Priority'),
 				'info' => _HELPBOX2('This is the priority in the alerts. Alerts at this severity and up will be used to block IPs.'),
 				),
+			'AndPrioKey' => array(
+				'title' => _TITLE2('And Priority and Keyword'),
+				'info' => _HELPBOX2('If yes, both priority and keyword should match to block IPs.'),
+				),
 			'BlockDuration' => array(
 				'title' => _TITLE2('Block Duration'),
 				'info' => _HELPBOX2('Temporary block duration in seconds on each alert.'),

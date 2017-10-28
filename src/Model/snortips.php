@@ -413,6 +413,9 @@ $ModelConfig = array(
     'Priority' => array(
         'type' => UINT,
 		),
+    'AndPrioKey' => array(
+        'type' => STR_yes_no,
+		),
     'BlockDuration' => array(
         'type' => UINT,
 		),
