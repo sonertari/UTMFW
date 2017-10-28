@@ -85,7 +85,6 @@ class E2guardianlogs extends E2guardian
 				return TRUE;
 			}
 			else if ($this->ParseSyslogLine($logline, $cols)) {
-				$cols['IP']= _('NA');
 				$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
 				return TRUE;
 			}

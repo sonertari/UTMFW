@@ -44,7 +44,6 @@ class Httpdlogs extends Httpd
 
 		if ($this->ParseSyslogLine($logline, $cols)) {
 			$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
-			$cols['IP']= _('NA');
 			$cols['Link']= $cols['Log'];
 
 			$re= "/^\S+\s+$ip\s+.*\s+$datetime\s+\"$mtd\s+$link\s+HTTP\/\d+\.\d+\"\s+$code\s+$size$/";
