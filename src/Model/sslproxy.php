@@ -27,7 +27,7 @@ class Sslproxy extends Model
 
 	public $NVPS= '\h';
 	public $ConfFile= '/etc/sslproxy/sslproxy.conf';
-	public $LogFile= '/var/log/sslproxy.log';
+	public $LogFile= '/var/log/sslproxy/sslproxy.log';
 	
 	public $VersionCmd= '/usr/local/bin/sslproxy -V 2>&1';
 	
@@ -65,11 +65,6 @@ class Sslproxy extends Model
 					'desc'	=>	_('Get max stats'),
 					),
 
-				'GetIdleConns'	=> array(
-					'argv'	=>	array(NUM),
-					'desc'	=>	_('Get idle conns'),
-					),
-
 				'GetCACertFileName'	=> array(
 					'argv'	=>	array(),
 					'desc'	=>	_('Get CA cert filename'),
@@ -98,57 +93,29 @@ class Sslproxy extends Model
 	 */
 	function ParseLogLine($logline, &$cols)
 	{
-		global $Re_Ip, $Re_Net;
-
 		if ($this->ParseSyslogLine($logline, $cols)) {
-			// CONN: https 192.168.3.24 60512 172.217.17.206 443 safebrowsing-cache.google.com GET /safebrowsing/rd/xxx 200 - sni:safebrowsing-cache.google.com names:- sproto:TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256 dproto:TLSv1.2:ECDHE-ECDSA-AES128-GCM-SHA256 origcrt:- usedcrt:-
-			// CONN: pop3s 192.168.3.24 46790 66.102.1.108 995 sni:pop.gmail.com names:- sproto:TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256 dproto:TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256 origcrt:- usedcrt:-
-			$re= "/^CONN:\s+(\S+)\s+(\S+)\s+(\d+)\s+(\S+)\s+(\d+)(\s+.*sproto:(\S+)\s+dproto:(\S+).*|)$/";
+			// STATS: thr=1, mld=0, mfd=0, mat=0, mct=0, iib=0, iob=0, eib=0, eob=0, swm=0, uwm=0, to=0, err=0
+			$re= "/^STATS: thr=\d+, mld=(\d+), mfd=(\d+), mat=(\d+), mct=(\d+), iib=(\d+), iob=(\d+), eib=(\d+), eob=(\d+), swm=(\d+), uwm=(\d+), to=(\d+), err=(\d+), si=(\d+)$/";
 			if (preg_match($re, $cols['Log'], $match)) {
-				$cols['Proto']= $match[1];
-				$cols['SrcAddr']= $match[2];
-				$cols['SrcPort']= $match[3];
-				$cols['DstAddr']= $match[4];
-				$cols['DstPort']= $match[5];
-				$cols['SProto']= $match[7];
-				$cols['DProto']= $match[8];
-			} else {
-				// STATS: thr=1, mld=0, mfd=0, mat=0, mct=0, iib=0, iob=0, eib=0, eob=0, swm=0, uwm=0, to=0, err=0
-				$re= "/^STATS: thr=\d+, mld=(\d+), mfd=(\d+), mat=(\d+), mct=(\d+), iib=(\d+), iob=(\d+), eib=(\d+), eob=(\d+), swm=(\d+), uwm=(\d+), to=(\d+), err=(\d+), si=(\d+)$/";
-				if (preg_match($re, $cols['Log'], $match)) {
-					$cols['MaxLoad']= $match[1];
-					$cols['MaxFd']= $match[2];
-					$cols['MaxAccessTime']= $match[3];
-					$cols['MaxCreateTime']= $match[4];
-					$cols['IntifInBytes']= $match[5];
-					$cols['IntifOutBytes']= $match[6];
-					$cols['ExtifInBytes']= $match[7];
-					$cols['ExtifOutBytes']= $match[8];
-					$cols['SetWatermark']= $match[9];
-					$cols['UnsetWatermark']= $match[10];
-					$cols['Timeout']= $match[11];
-					$cols['StatsError']= $match[12];
-					$cols['StatsIdx']= $match[13];
-				} else {
-					// IDLE: thr=0, id=1, ce=1 cc=1, at=0 ct=0, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443
-					$re= "/^IDLE: thr=(\d+), id=(\d+),.*, at=(\d+) ct=(\d+)(, src_addr=((\S+):\d+)|)(, dst_addr=((\S+):\d+)|)$/";
-					if (preg_match($re, $cols['Log'], $match)) {
-						$cols['ThreadIdx']= $match[1];
-						$cols['ConnIdx']= $match[2];
-						$cols['IdleTime']= $match[3];
-						$cols['Duration']= $match[4];
-						$cols['SrcAddr']= $match[7];
-						$cols['DstAddr']= $match[10];
-					} else {
-						// EXPIRED: thr=1, time=0, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443
-						$re= "/^EXPIRED: thr=\d+, time=(\d+)(, src_addr=((\S+):\d+)|)(, dst_addr=((\S+):\d+)|)$/";
-						if (preg_match($re, $cols['Log'], $match)) {
-							$cols['IdleTime']= $match[1];
-							$cols['ExpiredSrcAddr']= $match[4];
-							$cols['ExpiredDstAddr']= $match[7];
-						}
-					}
-				}
+				$cols['MaxLoad']= $match[1];
+				$cols['MaxFd']= $match[2];
+				$cols['MaxAccessTime']= $match[3];
+				$cols['MaxCreateTime']= $match[4];
+				$cols['IntifInBytes']= $match[5];
+				$cols['IntifOutBytes']= $match[6];
+				$cols['ExtifInBytes']= $match[7];
+				$cols['ExtifOutBytes']= $match[8];
+				$cols['SetWatermark']= $match[9];
+				$cols['UnsetWatermark']= $match[10];
+				$cols['Timeout']= $match[11];
+				$cols['StatsError']= $match[12];
+				$cols['StatsIdx']= $match[13];
+			} else if ($cols['Prio'] == 'ERROR' || $cols['Prio'] == 'CRITICAL') {
+				// ERROR: Error from bufferevent: 0:- 336151570:1042:sslv3 alert bad certificate:20:SSL routines:148:SSL3_READ_BYTES
+				$cols['Error']= $cols['Log'];
+			} else if ($cols['Prio'] == 'WARNING') {
+				// WARNING: Received SIGPIPE; ignoring.
+				$cols['Warning']= $cols['Log'];
 			}
 			return TRUE;
 		}
@@ -216,11 +183,6 @@ class Sslproxy extends Model
 		$maxStats['DownloadKB']= round($maxStats['DownloadKB'] / 1000);
 
 		return Output(json_encode($maxStats));
-	}
-
-	function GetIdleConns($interval)
-	{
-		return Output(json_encode($this->GetLastLogs('IDLE:', $interval)));
 	}
 
 	function GetCACertFileName()

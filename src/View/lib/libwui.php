@@ -263,7 +263,7 @@ function PrintNVPsVGraph($data, $color= 'red', $title= '')
 				$width= intval(100 * $value / $max);
 			}
 			?>
-			<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="stats.php?submenu=daily" method="post">
+			<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $View->StatsPage ?>?submenu=daily" method="post">
 				<input type="hidden" name="Month" value="<?php echo $dateArray['Month'] ?>" />
 				<input type="hidden" name="Day" value="<?php echo $dateArray['Day'] ?>" />
 				<input type="hidden" name="Hour" value="<?php echo $dateArray['Hour'] ?>" />
@@ -353,7 +353,7 @@ function PrintVGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $ne
 					$dateArray= $data[$i]['date'];
 
 					$formId= 'form'.$FormIdCount++;
-					$action= !$minutesGraph ? 'stats.php?submenu=hourly' : "$View->LogsPage?submenu=archives";
+					$action= !$minutesGraph ? "$View->StatsPage?submenu=hourly" : "$View->LogsPage?submenu=archives";
 					$title= !$minutesGraph ? _TITLE('Click to search in the stats') : _TITLE('Click to search in the logs');
 					?>
 					<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $action ?>" method="post">
@@ -438,7 +438,7 @@ function PrintHGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $ne
 				$dateArray= $data[$i]['date'];
 
 				$formId= 'form'.$FormIdCount++;
-				$action= !$minutesGraph ? 'stats.php?submenu=hourly' : "$View->LogsPage?submenu=archives";
+				$action= !$minutesGraph ? "$View->StatsPage?submenu=hourly" : "$View->LogsPage?submenu=archives";
 				$title= !$minutesGraph ? _TITLE('Click to search in the stats') : _TITLE('Click to search in the logs');
 				?>
 				<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $action ?>" method="post">

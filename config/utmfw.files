@@ -154,7 +154,8 @@ var/log/smtp-gated.log,640,root,wheel
 var/log/snortips.log,640,root,wheel
 var/log/spamd.log,640,root,wheel
 var/log/squid.log,640,root,wheel
-var/log/sslproxy.log,640,root,wheel
+var/log/sslproxy/sslproxy.log,640,root,wheel
+var/log/sslproxy/conns.log,640,root,wheel
 var/named/etc/named.conf,640,root,_bind
 var/www/logs/access.log,640,root,daemon
 var/www/logs/error.log,640,root,daemon

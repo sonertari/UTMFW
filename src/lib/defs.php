@@ -895,15 +895,8 @@ $StatsConf = array(
 			'Cmd' => '/bin/cat <LF>',
 			'SearchRegexpPrefix' => '([[:blank:]=:]+)',
 			'BriefStats' => array(
-				'Proto' => _STATS('Protocols'),
 				'Error' => _STATS('Errors'),
 				'Warning' => _STATS('Warnings'),
-				'ExpiredSrcAddr' => _STATS('Expired Source Addresses'),
-				'ExpiredDstAddr' => _STATS('Expired Destination Addresses'),
-				'SrcAddr' => _STATS('Source Addresses'),
-				'DstAddr' => _STATS('Destination Addresses'),
-				'SProto' => _STATS('SSL Source Protocols'),
-				'DProto' => _STATS('SSL Destination Protocols'),
 				),
 			),
 		'Stats' => array(
@@ -928,29 +921,6 @@ $StatsConf = array(
 					),
 				),
 			),
-		'Connections' => array(
-			'Title' => _STATS('Connections'),
-			'Needle' => 'CONN:',
-			'Color' => '#01466b',
-			'NVPs' => array(
-				'SrcAddr' => _STATS('Source Addresses'),
-				'DstAddr' => _STATS('Destination Addresses'),
-				'SProto' => _STATS('SSL Source Protocols'),
-				'DProto' => _STATS('SSL Destination Protocols'),
-				'Proto' => _STATS('Protocols'),
-				'Date' => _STATS('Requests by date'),
-				),
-			),
-		'Expired' => array(
-			'Title' => _STATS('Expired connections'),
-			'Needle' => 'EXPIRED:',
-			'Color' => 'Red',
-			'NVPs' => array(
-				'ExpiredSrcAddr' => _STATS('Source Addresses'),
-				'ExpiredDstAddr' => _STATS('Destination Addresses'),
-				'IdleTime' => _STATS('Idle Times'),
-				),
-			),
 		'Error' => array(
 			'Title' => _STATS('Errors'),
 			'Needle' => 'ERROR:',
@@ -965,6 +935,53 @@ $StatsConf = array(
 			'Color' => 'Yellow',
 			'NVPs' => array(
 				'Warning' => _STATS('Reasons'),
+				),
+			),
+		),
+    'sslproxyconns' => array(
+		'Total' => array(
+			'Cmd' => '/bin/cat <LF>',
+			'SearchRegexpPrefix' => '([[:blank:]=:]+)',
+			'BriefStats' => array(
+				'Proto' => _STATS('Protocols'),
+				'SrcAddr' => _STATS('Source Addresses'),
+				'DstAddr' => _STATS('Destination Addresses'),
+				'SProto' => _STATS('SSL Source Protocols'),
+				'DProto' => _STATS('SSL Destination Protocols'),
+				),
+			),
+		'Connections' => array(
+			'Title' => _STATS('Connections'),
+			'Needle' => 'CONN:',
+			'Color' => '#01466b',
+			'NVPs' => array(
+				'SrcAddr' => _STATS('Source Addresses'),
+				'DstAddr' => _STATS('Destination Addresses'),
+				'SProto' => _STATS('SSL Source Protocols'),
+				'DProto' => _STATS('SSL Destination Protocols'),
+				'Proto' => _STATS('Protocols'),
+				'Date' => _STATS('Requests by date'),
+				),
+			),
+		'Idle' => array(
+			'Title' => _STATS('Idle connections'),
+			'Needle' => 'IDLE:',
+			'Color' => 'Yellow',
+			'NVPs' => array(
+				'IdleSrcAddr' => _STATS('Source Addresses'),
+				'IdleDstAddr' => _STATS('Destination Addresses'),
+				'IdleTime' => _STATS('Idle Times'),
+				'IdleDuration' => _STATS('Durations'),
+				),
+			),
+		'Expired' => array(
+			'Title' => _STATS('Expired connections'),
+			'Needle' => 'EXPIRED:',
+			'Color' => 'Red',
+			'NVPs' => array(
+				'ExpiredSrcAddr' => _STATS('Source Addresses'),
+				'ExpiredDstAddr' => _STATS('Destination Addresses'),
+				'ExpiredIdleTime' => _STATS('Idle Times'),
 				),
 			),
 		),

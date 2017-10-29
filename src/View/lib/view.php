@@ -36,6 +36,7 @@ class View
 
 	public $Layout= '';
 	public $LogsPage= 'logs.php';
+	public $StatsPage= 'stats.php';
 
 	/**
 	 * Configuration.

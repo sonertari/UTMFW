@@ -3013,6 +3013,7 @@ $ModelsToLogConfig= array(
 	'system',
 	'pf',
 	'sslproxy',
+	'sslproxyconns',
 	'e2guardian',
 	'e2guardianlogs',
 	'squid',

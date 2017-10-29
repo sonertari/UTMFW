@@ -1,5 +1,5 @@
 # Hand-crafted mtree specification for UTMFW.
-# flags=none is UTMFW specific, to actually force
+# flags=none is UTMFW specific, to force
 # UTMFW upgrade script to set owner and permissions.
 
 var			type=dir mode=0755 uname=root gname=wheel
@@ -29,7 +29,7 @@ tmp			type=dir mode=0755 uid=506 gid=506 flags=none
 ..	#var/db
 log			type=dir mode=0755 uname=root gname=wheel
 doas			type=file mode=0600 uname=root gname=wheel
-e2guardian		type=dir mode=0755 uid=588 gid=588 flags=none
+e2guardian		type=dir mode=0755 uid=589 gid=589 flags=none
 e2guardian.log	type=file mode=0640 uname=root gname=wheel
 ..	#var/log/e2guardian
 imspector		type=dir mode=0755 uid=702 gid=702 flags=none
@@ -53,7 +53,10 @@ smtp-gated.log		type=file mode=0640 uname=root gname=wheel
 snortips.log		type=file mode=0640 uname=root gname=wheel
 spamd.log		type=file mode=0640 uname=root gname=wheel
 squid.log		type=file mode=0640 uname=root gname=wheel
+sslproxy			type=dir mode=0755 uname=root gname=wheel flags=none
 sslproxy.log		type=file mode=0640 uname=root gname=wheel
+conns.log		type=file mode=0640 uname=root gname=wheel
+..	#var/log/sslproxy
 ..	#var/log
 named			type=dir mode=0755 uname=root gname=_bind
 etc			type=dir mode=0750 uname=root gname=_bind
