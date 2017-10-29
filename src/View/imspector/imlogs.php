@@ -200,7 +200,6 @@ if ($Session) {
 	ProcessStartLine($StartLine);
 	UpdateLogsPageSessionVars($LinesPerPage, $SearchRegExp, $SearchNeedle);
 
-	/// @todo GetLogs here, compute LogSize using Logs, this is double work otherwise
 	$View->Controller($Output, 'GetFileLineCount', $LogFile, $SearchRegExp);
 	$LogSize= $Output[0];
 

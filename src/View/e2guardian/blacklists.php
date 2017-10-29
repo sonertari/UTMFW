@@ -68,6 +68,7 @@ function PrintSiteCategorySearchForm($site)
 					<?php echo _TITLE('Search site').': ' ?>
 					<input type="text" name="SearchSite" style="width: 200px;" maxlength="100" value="<?php echo $site ?>"/>
 					<input type="submit" name="Search" value="<?php echo _CONTROL('Search') ?>"/>
+					<input type="submit" name="Defaults" value="<?php echo _CONTROL('Defaults') ?>"/>
 				</form>
 			</td>
 			<td>
@@ -175,10 +176,10 @@ function AppendCatsDescTable(&$msg)
 	$msg.= $deschtml;
 }
 
-$LogFile= $_SESSION[$View->Model]['LogFile'];
-$SearchSite= $_SESSION[$View->Model]['SearchSite'];
-
-if (filter_has_var(INPUT_POST, 'SearchSite')) {
+if (filter_has_var(INPUT_POST, 'Defaults')) {
+	unset($_SESSION[$View->Model]['LogFile']);
+	unset($_SESSION[$View->Model]['SearchSite']);
+} else if (filter_has_var(INPUT_POST, 'SearchSite')) {
 	$SearchSite= filter_input(INPUT_POST, 'SearchSite');
 	$_SESSION[$View->Model]['SearchSite']= $SearchSite;
 	
@@ -191,6 +192,9 @@ if (filter_has_var(INPUT_POST, 'SearchSite')) {
 	}
 }
 
+$LogFile= $_SESSION[$View->Model]['LogFile'];
+$SearchSite= $_SESSION[$View->Model]['SearchSite'];
+
 require_once($VIEW_PATH.'/header.php');
 		
 PrintSiteCategorySearchForm($SearchSite);
@@ -200,7 +204,6 @@ if ($LogFile) {
 	ProcessStartLine($StartLine);
 	UpdateLogsPageSessionVars($LinesPerPage, $SearchRegExp, $SearchNeedle);
 
-	/// @todo GetLogs here, compute LogSize using Logs, this is double work otherwise
 	$View->Controller($Output, 'GetFileLineCount', $LogFile, $SearchRegExp);
 	$LogSize= $Output[0];
 
