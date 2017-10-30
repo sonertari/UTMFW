@@ -41,33 +41,6 @@ class Clamd extends Model
 		
 		$this->StartCmd= "/usr/local/sbin/clamd -c /etc/clamd.conf > $TmpFile 2>&1 &";
 	}
-		
-	/// @todo clamd and freshclam log lines contain the number of virus defs.
-	function ParseLogLine($logline, &$cols)
-	{
-		//Thu Sep 24 14:20:02 2009 -> SelfCheck: Database status OK.
-		$re_datetime= '\w+\s+(\w+\s+\d+)\s+(\d+:\d+:\d+)\s+\d+';
-		$re_rest= '(.*)';
-
-		$re= "/^$re_datetime\s+->\s+$re_rest$/";
-		if (preg_match($re, $logline, $match)) {
-			$cols['Date']= $match[1];
-			$cols['Time']= $match[2];
-			$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
-			$cols['Log']= $match[3];
-			return TRUE;
-		}
-		else if ($this->ParseSyslogLine($logline, $cols)) {
-			$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
-			return TRUE;
-		}
-		return FALSE;
-	}
-
-	function formatDateHourRegexp($month, $day, $hour, $minute)
-	{
-		return $this->formatDateHourRegexpWeekDays($month, $day, $hour, $minute);
-	}
 }
 
 $ModelConfig = array(

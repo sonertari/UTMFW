@@ -25,6 +25,8 @@ $LogConf = array(
         'Fields' => array(
             'Date' => _TITLE('Date'),
             'Time' => _TITLE('Time'),
+            'Process' => _TITLE('Process'),
+            'Prio' => _TITLE('Prio'),
             'Log' => _TITLE('Log'),
     		),
         'HighlightLogs' => array(

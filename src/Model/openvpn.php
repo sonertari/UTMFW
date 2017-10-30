@@ -117,7 +117,7 @@ class Openvpn extends Model
 		global $TmpFile;
 
 		if ($this->StopProcess($conffile)) {
-			$cmd= "/usr/local/sbin/openvpn --config /etc/openvpn/$conffile --daemon --status /var/log/openvpn-status.log 5 > $TmpFile";
+			$cmd= "/usr/local/sbin/openvpn --config /etc/openvpn/$conffile --daemon --status /var/log/openvpn-status.log 30 > $TmpFile";
 			$this->RunShellCommand($cmd);
 
 			$count= 0;

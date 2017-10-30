@@ -64,32 +64,6 @@ class Freshclam extends Model
 			);
 	}
 	
-	/// @todo clamd and freshclam log lines contain number of virus defs.
-	function ParseLogLine($logline, &$cols)
-	{
-		// Mon Oct 26 05:23:56 2009 -> ClamAV update process started at Mon Oct 26 05:23:56 2009
-		$re_datetime= '\w+\s+(\w+\s+\d+)\s+(\d+:\d+:\d+)\s+\d+';
-		$re_rest= '(.*)';
-
-		$re= "/^$re_datetime\s+->\s+$re_rest$/";
-		if (preg_match($re, $logline, $match)) {
-			$cols['Date']= $match[1];
-			$cols['Time']= $match[2];
-			$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
-			$cols['Log']= $match[3];
-			return TRUE;
-		}
-		else if ($this->ParseSyslogLine($logline, $cols)) {
-			$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
-			return TRUE;
-		}
-		else {
-			$cols['Log']= $logline;
-			return TRUE;
-		}
-		return FALSE;		
-	}
-
 	function GetMirrors()
 	{
 		$mirrors= $this->SearchFileAll($this->ConfFile, "/^\h*DatabaseMirror\h*([\w.]+)\b.*\h*$/m");
@@ -112,11 +86,6 @@ class Freshclam extends Model
 		}
 		Error(_("Won't delete database.clamav.net entry."));
 		return FALSE;
-	}
-
-	function formatDateHourRegexp($month, $day, $hour, $minute)
-	{
-		return $this->formatDateHourRegexpWeekDays($month, $day, $hour, $minute);
 	}
 }
 

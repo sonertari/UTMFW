@@ -27,7 +27,6 @@ require_once($VIEW_PATH.'/header.php');
 		
 $View->PrintStatusForm();
 ?>
-<br />
 <strong><?php echo _('Statistics') ?></strong>
 <?php
 $View->PrintStatsMaxValues($StatusCheckInterval);
