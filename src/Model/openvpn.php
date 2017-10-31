@@ -75,7 +75,7 @@ class Openvpn extends Model
 	/// @attention PHP does not allow parameter overriding, method signature should be the same, hence this redundant $group arg
 	function GetConfFile($conf, $group)
 	{
-		return '/etc/openvpn/'.$conf;
+		return "/etc/openvpn/$conf";
 	}
 
 	function SetConfig($confname)
@@ -237,6 +237,8 @@ $ServerConfig = array(
     'key' => array(
 		),
     'dh' => array(
+		),
+    'topology' => array(
 		),
     'cipher' => array(
 		),

@@ -219,8 +219,15 @@ Any X509 key management system can be used. OpenVPN can also use a PKCS #12 form
     'dh' => array(
         'title' => _TITLE2('Diffie-Hellman params'),
         'info' => _HELPBOX2('Generate your own with:
-   openssl dhparam -out dh1024.pem 1024
+openssl dhparam -out dh1024.pem 1024
 Substitute 2048 for 1024 if you are using 2048 bit keys.'),
+		),
+    'topology' => array(
+        'title' => _TITLE2('Network Topology'),
+        'info' => _HELPBOX2('Should be subnet (addressing via IP)
+unless Windows clients v2.0.9 and lower have to
+be supported (then net30, i.e. a /30 per client)
+Defaults to net30 (not recommended).'),
 		),
     'cipher' => array(
         'title' => _TITLE2('Cipher'),
