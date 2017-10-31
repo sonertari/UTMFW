@@ -1043,23 +1043,25 @@ You can search the logs by entering keywords or extended regular expressions in 
  */
 function ProcessStartLine(&$startline)
 {
-	global $View;
+	global $View, $TopMenu;
+
+	$pageSession= &$_SESSION[$View->Model][$TopMenu];
 
 	if (filter_has_var(INPUT_POST, 'StartLine')) {
 		if (preg_match('/^\d+$/', filter_input(INPUT_POST, 'StartLine'))) {
-			$_SESSION[$View->Model]['StartLine']= filter_input(INPUT_POST, 'StartLine') - 1;
+			$pageSession['StartLine']= filter_input(INPUT_POST, 'StartLine') - 1;
 		}
 		else {
 			PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Page start line').': '.filter_input(INPUT_POST, 'StartLine'), 'auto', 'ERROR');
 		}
 	}
 
-	if ($_SESSION[$View->Model]['StartLine']) {
-		$startline= $_SESSION[$View->Model]['StartLine'];
+	if ($pageSession['StartLine']) {
+		$startline= $pageSession['StartLine'];
 	}
 	else {
 		$startline= 0;
-		$_SESSION[$View->Model]['StartLine']= $startline;
+		$pageSession['StartLine']= $startline;
 	}
 }
 
@@ -1068,7 +1070,7 @@ function ProcessStartLine(&$startline)
  */
 function ProcessNavigationButtons($linesperpage, $total, &$startline, &$headstart)
 {
-	global $View;
+	global $View, $TopMenu;
 
 	if (count($_POST)) {
 		if (filter_has_var(INPUT_POST, 'First')) {
@@ -1094,7 +1096,7 @@ function ProcessNavigationButtons($linesperpage, $total, &$startline, &$headstar
 		$startline= 0;
 		$headstart= $linesperpage;
 	}
-	$_SESSION[$View->Model]['StartLine']= $startline;
+	$_SESSION[$View->Model][$TopMenu]['StartLine']= $startline;
 }
 
 /**

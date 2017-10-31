@@ -385,6 +385,9 @@ class Dhcpd extends Model
 				if (preg_match('/'.Escape($re, '/').'/m', $fields[0]) && (($end == 0 && $count == 0) || ($line >= $start && $lineCount < $count))) {
 					$logs[]= $cols;
 					$lineCount++;
+					if ($count > 0 && $lineCount >= $count) {
+						break;
+					}
 				}
 				$line++;
 			}

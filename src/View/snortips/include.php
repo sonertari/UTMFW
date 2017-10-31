@@ -50,11 +50,6 @@ $Menu = array(
     'conf' => array(
         'Name' => _MENU('Config'),
         'Perms' => $ADMIN,
-		'SubMenu' => array(
-			'basic' => _MENU('Basic'),
-			'managed' => _MENU('Managed'),
-			'lists' => _MENU('Lists'),
-			),
 		),
 	);
 
@@ -91,7 +86,9 @@ class Snortips extends View
 		
 		$this->GraphHelpMsg= _HELPWINDOW('SnortIPS is a perl process. These graphs display data from all perl processes.');
 		
-		$this->ConfHelpMsg= _HELPWINDOW('The IDS produces many alerts. Some alerts may be more serious than others, hence most alerts have priorities. You can configure the IPS to block only alerts at a certain priority and up. Each alert also contains log and classification text. You can add keywords to match within such text. The IP in the matching alert is blocked. If the alert does not contain an IP address, no action is taken.');
+		$this->ConfHelpMsg= _HELPWINDOW('The IDS produces many alerts. Some alerts may be more serious than others, hence most alerts have priorities. You can configure the IPS to block only alerts at a certain priority and up. Each alert also contains log and classification text. You can add keywords to match within such text. The IP in the matching alert is blocked. If the alert does not contain an IP address, no action is taken.
+
+Intrusion alerts produced by the IDS are guesses, hence there may be false positives or wrong alarms. Since the IPS depends on alerts produced by the IDS, you may want to make sure some IP addresses are never blocked accidentally, such as the internal and external IP addresses of the system, or the IP address of the computer you use to access this web administration interface. You can enter individual IPs or network addresses. IP and network addresses can overlap. For example, you can blacklist 10.0.0.0/24, but whitelist 10.0.0.1.');
 	
 		$this->Config = array(
 			'Priority' => array(
@@ -135,11 +132,11 @@ class Snortips extends View
 	 */
 	function PrintListedIPsForm($list, $title, $helpmsg)
 	{
-		global $Row;
+		global $Class, $Row;
 
-		$class= $Row++ % 2 == 0 ? 'evenline' : 'oddline';
+		$Class= $Row++ % 2 == 0 ? 'evenline' : 'oddline';
 		?>
-		<tr class="<?php echo $class ?>">
+		<tr class="<?php echo $Class ?>">
 			<td class="title">
 				<?php echo $title.':' ?>
 			</td>
@@ -196,64 +193,118 @@ class Snortips extends View
 				$blacklisted= count($info['Blacklisted']);
 				$managed= $whitelisted + $blocked + $blacklisted;
 
+				ProcessStartLine($startLine);
+				UpdateLogsPageSessionVars($linesPerPage, $searchRegExp, $searchNeedle);
+
+				ProcessNavigationButtons($linesPerPage, $managed, $startLine, $end);
+				?>
+				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+					<table id="nvp">
+						<tr class="oddline">
+							<td>
+								<?php echo _TITLE('Line').':' ?>
+								<input type="text" name="StartLine" style="width: 50px;" maxlength="10" value="<?php echo $startLine + 1 ?>" />/<?php echo $managed ?>
+							</td>
+							<td>
+								<?php echo _TITLE('Lines per page').':' ?>
+								<input type="text" name="LinesPerPage" style="width: 30px;" maxlength="3" value="<?php echo $linesPerPage ?>" />
+								<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
+							</td>
+						</tr>
+						<tr class="evenline">
+							<td class="center" colspan="<?php echo $showDateTimeSelect ? 2:3 ?>">
+								<input type="submit" name="First" value="<?php echo _CONTROL('<< First') ?>"/>
+								<input type="submit" name="Previous" value="<?php echo _CONTROL('< Previous') ?>"/>
+								<input type="submit" name="Next" value="<?php echo _CONTROL('Next >') ?>"/>
+								<input type="submit" name="Last" value="<?php echo _CONTROL('Last >>') ?>"/>
+							</td>
+						</tr>
+					</table>
+				</form>
+				<?php
 				echo $managed.' '._TITLE2('managed').': '.$whitelisted.' '._TITLE2('whitelisted').', '.$blocked.' '._TITLE2('blocked').', '.$blacklisted.' '._TITLE2('blacklisted');
+				$start= $end - $linesPerPage;
+				$line= 0;
+				$lineCount= 0;
 				?>
 				<table id="ipsmanaged">
 					<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 						<tr>
+							<th><?php echo _('Line') ?></th>
 							<th><?php echo _TITLE2('Host') ?></th>
 							<th><?php echo _TITLE2('Time to expire (secs)') ?></th>
 						</tr>
 						<?php
 						foreach ($info['Whitelisted'] as $host) {
-							?>
-							<tr class="whitelisted">
-								<td>
-									<?php echo $host ?>
-								</td>
-								<td>
-									<?php echo _TITLE2('Whitelisted') ?>
-								</td>
-							</tr>
-							<?php
+							if ($line >= $start && $lineCount < $linesPerPage) {
+								?>
+								<tr class="whitelisted">
+									<td>
+										<?php echo $line + 1 ?>
+									</td>
+									<td>
+										<?php echo $host ?>
+									</td>
+									<td>
+										<?php echo _TITLE2('Whitelisted') ?>
+									</td>
+								</tr>
+								<?php
+								$lineCount++;
+							}
+							$line++;
 						}
 
 						foreach ($info['Blacklisted'] as $host) {
-							?>
-							<tr class="blacklisted">
-								<td>
-									<?php echo $host ?>
-								</td>
-								<td>
-									<?php echo _TITLE2('Blacklisted') ?>
-								</td>
-							</tr>
-							<?php
+							if ($line >= $start && $lineCount < $linesPerPage) {
+								?>
+								<tr class="blacklisted">
+									<td>
+										<?php echo $line + 1 ?>
+									</td>
+									<td>
+										<?php echo $host ?>
+									</td>
+									<td>
+										<?php echo _TITLE2('Blacklisted') ?>
+									</td>
+								</tr>
+								<?php
+								$lineCount++;
+							}
+							$line++;
 						}
 
 						foreach ($info['Blocked'] as $host => $time) {
-							?>
-							<tr class="blocked">
-								<td>
-									<?php
-									/// Only admin can delete/add hosts
-									if (in_array($_SESSION['USER'], $ADMIN)) {
-										?>
-										<input name="ItemsToDelete[]" type="checkbox" value="<?php echo $host ?>"/><?php echo $host ?>
+							if ($line >= $start && $lineCount < $linesPerPage) {
+								?>
+								<tr class="blocked">
+									<td>
+										<?php echo $line + 1 ?>
+									</td>
+									<td>
 										<?php
-									}
-									else {
+										/// Only admin can delete/add hosts
+										if (in_array($_SESSION['USER'], $ADMIN)) {
+											?>
+											<input name="ItemsToDelete[]" type="checkbox" value="<?php echo $host ?>"/><?php echo $host ?>
+											<?php
+										}
+										else {
+											?>
+											<?php echo $host ?>
+											<?php
+										}
 										?>
-										<?php echo $host ?>
-										<?php
-									}
-									?>
-								</td>
-								<td>
-									<?php echo $time ?>
-								</td>
-							</tr>
-							<?php
+									</td>
+									<td>
+										<?php echo $time ?>
+									</td>
+								</tr>
+								<?php
+								$lineCount++;
+							}
+							$line++;
 						}
 						/// Only admin can delete/add hosts
 						if (in_array($_SESSION['USER'], $ADMIN)) {
