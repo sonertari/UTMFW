@@ -985,6 +985,25 @@ $StatsConf = array(
 				),
 			),
 		),
+    'clamd' => array(
+		'Total' => array(
+			'Title' => _STATS('All requests'),
+			'Cmd' => '/usr/bin/grep -a -E "(FOUND|OK)" <LF> | /usr/bin/grep -a -v -E "OK\."',
+			'Needle' => '',
+			'SearchRegexpPrefix' => '([^[:alnum:]]+)',
+			'SearchRegexpPostfix' => '([^[:alnum:]\.]+)',
+			'Color' => '#01466b',
+			'NVPs' => array(
+				'Scan' => _STATS('Scan Results'),
+				'Virus' => _STATS('Virus'),
+				),
+			'BriefStats' => array(
+				'Date' => _STATS('Requests by date'),
+				'Scan' => _STATS('Scan Results'),
+				'Virus' => _STATS('Virus'),
+				),
+			),
+		),
 	);
 
 /// For classifying gettext strings into files.

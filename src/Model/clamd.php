@@ -41,6 +41,25 @@ class Clamd extends Model
 		
 		$this->StartCmd= "/usr/local/sbin/clamd -c /etc/clamd.conf > $TmpFile 2>&1 &";
 	}
+
+	function ParseLogLine($logline, &$cols)
+	{
+		if ($this->ParseSyslogLine($logline, $cols)) {
+			//Oct 31 04:10:24 utmfw62 clamd[53433]: INFO: /tmp/e2guardian/tfmkNCU8: Eicar-Test-Signature FOUND
+			if (preg_match('/^\S+:\s+(.*)\s+FOUND$/', $cols['Log'], $match)) {
+				$cols['Scan']= 'FOUND';
+				$cols['Virus']= $match[1];
+			}
+			//Oct 28 23:22:12 utmfw62 clamd[93993]: INFO: /tmp/e2guardian/tfEuAxaG: OK
+			//Oct 31 04:26:07 utmfw62 clamd[53433]: INFO: stream(127.0.0.1@1295): OK
+			//Oct 31 04:28:07 utmfw62 clamd[53433]: INFO: /var/spool/smtp-gated/msg/1509413284.88659: OK
+			else if (preg_match('/^\S+:\s+OK$/', $cols['Log'], $match)) {
+				$cols['Scan']= 'OK';
+			}
+			return TRUE;
+		}
+		return FALSE;
+	}
 }
 
 $ModelConfig = array(

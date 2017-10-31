@@ -25,6 +25,17 @@ $Menu = array(
         'Name' => _MENU('Info'),
         'Perms' => $ALL_USERS,
 		),
+    'stats' => array(
+		'Model' => 'clamd',
+        'Name' => _MENU('Statistics'),
+        'Perms' => $ALL_USERS,
+		'SubMenu' => array(
+			'general' => _MENU('General'),
+			'daily' => _MENU('Daily'),
+			'hourly' => _MENU('Hourly'),
+			'live' => _MENU('Live'),
+			),
+		),
     'graphs' => array(
         'Name' => _MENU('Graphs'),
         'Perms' => $ALL_USERS,
