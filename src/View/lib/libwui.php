@@ -1000,7 +1000,7 @@ function SetRefreshInterval()
 
 	if (filter_has_var(INPUT_POST, 'RefreshInterval')) {
 		if (preg_match('/^\d+$/', filter_input(INPUT_POST, 'RefreshInterval'))) {
-			$_SESSION[$View->Model]['ReloadRate']= filter_input(INPUT_POST, 'RefreshInterval') >= 3 ? filter_input(INPUT_POST, 'RefreshInterval'):3;
+			$_SESSION[$View->Model][$TopMenu]['ReloadRate']= filter_input(INPUT_POST, 'RefreshInterval') >= 3 ? filter_input(INPUT_POST, 'RefreshInterval'):3;
 		}
 		else {
 			PrintHelpWindow(_NOTICE('FAILED').': '._TITLE('Refresh interval').': '.filter_input(INPUT_POST, 'RefreshInterval'), 'auto', 'ERROR');
@@ -1223,20 +1223,20 @@ function PrintLogHeaderForm($start, $total, $count, $re, $hidden, $needle='', $s
  */
 function PrintLiveLogHeaderForm()
 {
-	global $View;
+	global $View, $TopMenu;
 	?>
 	<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 		<table id="nvp">
 			<tr class="oddline">
 				<td>
-					<?php echo _TITLE('Refresh interval').':' ?><input type="text" name="RefreshInterval" style="width: 20px;" maxlength="2" value="<?php echo $_SESSION[$View->Model]['ReloadRate'] ?>" />
+					<?php echo _TITLE('Refresh interval').':' ?><input type="text" name="RefreshInterval" style="width: 20px;" maxlength="2" value="<?php echo $_SESSION[$View->Model][$TopMenu]['ReloadRate'] ?>" />
 					<?php echo _TITLE('secs') ?>
 				</td>
 				<td>
-					<?php echo _TITLE('Lines per page').':' ?><input type="text" name="LinesPerPage" style="width: 20px;" maxlength="2" value="<?php echo $_SESSION[$View->Model]['LinesPerPage'] ?>" />
+					<?php echo _TITLE('Lines per page').':' ?><input type="text" name="LinesPerPage" style="width: 20px;" maxlength="2" value="<?php echo $_SESSION[$View->Model][$TopMenu]['LinesPerPage'] ?>" />
 				</td>
 				<td>
-					<?php echo _TITLE('Regexp').':' ?><input type="text" name="SearchRegExp" style="width: 300px;" maxlength="200" value="<?php echo $_SESSION[$View->Model]['SearchRegExp'] ?>" />
+					<?php echo _TITLE('Regexp').':' ?><input type="text" name="SearchRegExp" style="width: 300px;" maxlength="200" value="<?php echo $_SESSION[$View->Model][$TopMenu]['SearchRegExp'] ?>" />
 					<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
 				</td>
 			</tr>
@@ -1254,50 +1254,52 @@ function PrintLiveLogHeaderForm()
  */
 function UpdateLogsPageSessionVars(&$count, &$re, &$needle)
 {
-	global $View;
+	global $View, $TopMenu;
+
+	$pageSession= &$_SESSION[$View->Model][$TopMenu];
 
 	if (filter_has_var(INPUT_POST, 'LinesPerPage')) {
 		if (preg_match('/^\d+$/', filter_input(INPUT_POST, 'LinesPerPage'))) {
-			$_SESSION[$View->Model]['LinesPerPage']= filter_input(INPUT_POST, 'LinesPerPage');
+			$pageSession['LinesPerPage']= filter_input(INPUT_POST, 'LinesPerPage');
 		}
 		else {
 			PrintHelpWindow(_NOTICE('FAILED').': '._TITLE('Lines per page').': '.filter_input(INPUT_POST, 'LinesPerPage'), 'auto', 'ERROR');
 		}
 	}
 
-	if ($_SESSION[$View->Model]['LinesPerPage']) {
-		$count= $_SESSION[$View->Model]['LinesPerPage'];
+	if ($pageSession['LinesPerPage']) {
+		$count= $pageSession['LinesPerPage'];
 	}
 	else {
 		$count= 25;
-		$_SESSION[$View->Model]['LinesPerPage']= $count;
+		$pageSession['LinesPerPage']= $count;
 	}
 
 	// Reset the SearchNeedle if the user modifies the SearchRegExp
-	if ($_SESSION[$View->Model]['SearchRegExp'] !== filter_input(INPUT_POST, 'SearchRegExp')) {
-		$_SESSION[$View->Model]['SearchNeedle']= '';
+	if ($pageSession['SearchRegExp'] !== filter_input(INPUT_POST, 'SearchRegExp')) {
+		$pageSession['SearchNeedle']= '';
 	}
 
 	// Empty regexp posted is used to clear the session regexp, use isset() here
 	if (filter_has_var(INPUT_POST, 'SearchRegExp')) {
-		$_SESSION[$View->Model]['SearchRegExp']= filter_input(INPUT_POST, 'SearchRegExp');
+		$pageSession['SearchRegExp']= filter_input(INPUT_POST, 'SearchRegExp');
 	}
 
-	if ($_SESSION[$View->Model]['SearchRegExp']) {
-		$re= RemoveBackSlashes($_SESSION[$View->Model]['SearchRegExp']);
-		$_SESSION[$View->Model]['SearchRegExp']= $re;
+	if ($pageSession['SearchRegExp']) {
+		$re= RemoveBackSlashes($pageSession['SearchRegExp']);
+		$pageSession['SearchRegExp']= $re;
 	}
 	else {
 		$re= '';
 	}
 
 	if (filter_has_var(INPUT_POST, 'SearchNeedle')) {
-		$_SESSION[$View->Model]['SearchNeedle']= filter_input(INPUT_POST, 'SearchNeedle');
+		$pageSession['SearchNeedle']= filter_input(INPUT_POST, 'SearchNeedle');
 	}
 
-	if ($_SESSION[$View->Model]['SearchNeedle']) {
-		$needle= RemoveBackSlashes($_SESSION[$View->Model]['SearchNeedle']);
-		$_SESSION[$View->Model]['SearchNeedle']= $needle;
+	if ($pageSession['SearchNeedle']) {
+		$needle= RemoveBackSlashes($pageSession['SearchNeedle']);
+		$pageSession['SearchNeedle']= $needle;
 	}
 	else {
 		$needle= '';

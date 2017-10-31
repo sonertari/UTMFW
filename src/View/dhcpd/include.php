@@ -24,6 +24,10 @@ $Menu = array(
     'info' => array(
         'Name' => _MENU('Info'),
         'Perms' => $ALL_USERS,
+		'SubMenu' => array(
+			'dhcpd' => _MENU('Dhcpd'),
+			'arptable' => _MENU('Arp Table'),
+			),
 		),
     'graphs' => array(
         'Name' => _MENU('Graphs'),

@@ -65,13 +65,23 @@ class Dhcpd extends Model
 					),
 
 				'GetArpTable'	=>	array(
-					'argv'	=> array(),
+					'argv'	=> array(REGEXP|NONE, NUM|NONE, TAIL|NONE),
 					'desc'	=> _('Get arp table'),
 					),
 
+				'GetArpTableLineCount'	=>	array(
+					'argv'	=> array(REGEXP|NONE),
+					'desc'	=> _('Get arp table size'),
+					),
+
 				'GetLeases'	=>	array(
-					'argv'	=> array(),
+					'argv'	=> array(REGEXP|NONE, NUM|NONE, TAIL|NONE),
 					'desc'	=> _('Get dhcp leases'),
+					),
+
+				'GetLeasesLineCount'	=>	array(
+					'argv'	=> array(REGEXP|NONE),
+					'desc'	=> _('Get dhcp leases count'),
 					),
 
 				'SetOptions'=>	array(
@@ -271,11 +281,28 @@ class Dhcpd extends Model
 	 * 
 	 * @return array Arp table.
 	 */
-	function GetArpTable()
+	function GetArpTable($re= '', $end= 0, $count= 0)
+	{
+		return Output(json_encode($this->_getArpTable($re, $end, $count)));
+	}
+
+	function _getArpTable($re= '', $end= 0, $count= 0)
 	{
 		global $preIP, $preMac, $preIfName;
 
-		$lines= $this->RunShellCommand('/usr/sbin/arp -an');
+		/// @attention Delete the table header: Host Ethernet Address Netif Expire Flags
+		$cmd= '/usr/sbin/arp -an | /usr/bin/grep -v Host';
+		if ($re != '') {
+			$cmd.= " | /usr/bin/grep -a -E $re";
+		}
+		if ($end != 0) {
+			$cmd.= " | /usr/bin/head -$end";
+		}
+		if ($count != 0) {
+			$cmd.= " | /usr/bin/tail -$count";
+		}
+
+		$lines= $this->RunShellCommand($cmd);
 
 		//Host                                 Ethernet Address   Netif Expire     Flags
 		//192.168.0.1                          00:0c:29:a2:8c:56    em1 permanent  l
@@ -292,7 +319,12 @@ class Dhcpd extends Model
 				$logs[]= $cols;
 			}
 		}
-		return Output(json_encode($logs));
+		return $logs;
+	}
+
+	function GetArpTableLineCount($re= '')
+	{
+		return Output(count($this->_getArpTable($re)));
 	}
 
 	/**
@@ -302,24 +334,28 @@ class Dhcpd extends Model
 	 * 
 	 * @return array IP leases.
 	 */
-	function GetLeases()
+	function GetLeases($re= '', $end= 0, $count= 0)
+	{
+		return Output(json_encode($this->_getLeases($re, $end, $count)));
+	}
+
+	function _getLeases($re= '', $end= 0, $count= 0)
 	{
 		global $Re_Ip;
 
-		// lease 192.168.0.3 {
-		// 	starts 3 2016/07/13 00:15:18 UTC;
-		// 	ends 3 2016/07/13 12:15:18 UTC;
-		// 	hardware ethernet 00:0c:29:d3:9b:50;
-		// 	uid 01:00:0c:29:d3:9b:50;
-		// 	client-hostname "obsd59";
-		// }
-		// lease 192.168.0.2 {
-		// 	starts 2 2016/07/12 23:09:32 UTC;
-		// 	ends 2 2016/07/12 23:11:32 UTC;
-		// 	hardware ethernet 00:50:56:c0:00:01;
-		// 	uid 01:00:50:56:c0:00:01;
-		// 	client-hostname "Soner";
-		// }
+		//lease 192.168.9.3 {
+		//        starts 1 2017/10/30 16:32:46 UTC;
+		//        ends 2 2017/10/31 04:32:46 UTC;
+		//        hardware ethernet 08:62:66:b9:b4:c5;
+		//        client-hostname "soner";
+		//}
+		//lease 192.168.9.2 {
+		//        starts 1 2017/10/30 15:03:45 UTC;
+		//        ends 2 2017/10/31 03:03:45 UTC;
+		//
+		//        abandoned;
+		//        client-hostname "soner";
+		//}
 		
 		$re_starts= '\s*starts\s+(\d+)\s+(\d+\/\d+\/\d+)\s+(\d+:\d+:\d+\s+\w*)\s*';
 		$re_ends= '\s*ends\s+(\d+)\s+(\d+\/\d+\/\d+)\s+(\d+:\d+:\d+\s+\w*)\s*';
@@ -328,23 +364,37 @@ class Dhcpd extends Model
 		$re_host= '\s*(client-hostname|hostname)\s+"(.+)"\s*';
 		$re_abandoned= '(\s*(abandoned);\s*|)';
 		
-		$re_lease= "/\s*lease\s+($Re_Ip)\s*\{$re_starts;$re_ends;$re_mac;($re_uid;|)$re_host;$re_abandoned\s*\}\s*/m";
+		$re_lease= "/\s*lease\s+($Re_Ip)\s*\{$re_starts;$re_ends;($re_mac;|)($re_uid;|)$re_abandoned\s*$re_host;\s*\}\s*/m";
 
 		$lines= $this->GetFile($this->leasesFile);
 		
 		$logs= array();
 		if (preg_match_all($re_lease, $lines, $match, PREG_SET_ORDER)) {
+			$start= $end - $count;
+			$line= 0;
+			$lineCount= 0;
 			foreach ($match as $fields) {
 				$cols['IP']= $fields[1];
 				$cols['Start']= "$fields[3] $fields[4]";
 				$cols['End']= "$fields[6] $fields[7]";
-				$cols['MAC']= $fields[8];
-				$cols['Host']= "$fields[12]";
-				$cols['Status']= $fields[14];
-				$logs[]= $cols;
+				$cols['MAC']= $fields[9];
+				$cols['Status']= $fields[13];
+				$cols['Host']= $fields[15];
+
+				/// @attention Empty $re matches all
+				if (preg_match('/'.Escape($re, '/').'/m', $fields[0]) && (($end == 0 && $count == 0) || ($line >= $start && $lineCount < $count))) {
+					$logs[]= $cols;
+					$lineCount++;
+				}
+				$line++;
 			}
 		}
-		return Output(json_encode($logs));
+		return $logs;
+	}
+
+	function GetLeasesLineCount($re= '')
+	{
+		return Output(count($this->_getLeases($re)));
 	}
 }
 ?>

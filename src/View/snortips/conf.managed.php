@@ -43,7 +43,7 @@ require_once($VIEW_PATH.'/header.php');
 	<table>
 		<tr>
 			<td>
-				<?php echo _TITLE('Refresh interval').': ' ?><input type="text" name="RefreshInterval" style="width: 20px;" maxlength="2" value="<?php echo $_SESSION[$View->Model]['ReloadRate'] ?>" />
+				<?php echo _TITLE('Refresh interval').': ' ?><input type="text" name="RefreshInterval" style="width: 20px;" maxlength="2" value="<?php echo $_SESSION[$View->Model][$TopMenu]['ReloadRate'] ?>" />
 				<?php echo ' '._TITLE('secs') ?>
 				<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
 			</td>

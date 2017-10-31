@@ -24,46 +24,14 @@
 
 require_once('include.php');
 
-$View->ProcessStartStopRequests();
+$Submenu= SetSubmenu('dhcpd');
 
-$Reload= TRUE;
-require_once($VIEW_PATH.'/header.php');
-
-$View->PrintStatusForm();
-?>
-<br />
-<strong><?php echo _TITLE2('Active IPs (arp table)').':' ?></strong>
-<table id="logline" class="center">
-	<?php
-	PrintTableHeaders('arp');
-
-	if ($View->Controller($Output, 'GetArpTable')) {
-		$ArpTable= json_decode($Output[0], TRUE);
-		$LineCount= 1;
-		$LastLineNum= count($ArpTable);
-		foreach ($ArpTable as $Cols) {
-			PrintLogCols($LineCount++, $Cols, $LastLineNum, '', 'arp');
-		}
-	}
-	?>
-</table>
-<br />
-<strong><?php echo _TITLE2('Leases').':' ?></strong>
-<table id="logline" class="center">
-	<?php
-	PrintTableHeaders('lease');
-
-	if ($View->Controller($Output, 'GetLeases')) {
-		$Leases= json_decode($Output[0], TRUE);
-		$LineCount= 1;
-		$LastLineNum= count($Leases);
-		foreach ($Leases as $Cols) {
-			PrintLogCols($LineCount++, $Cols, $LastLineNum, '', 'lease');
-		}
-	}
-	?>
-</table>
-<?php
-PrintHelpWindow(_HELPWINDOW('DHCP server supports both dynamic dhcp and bootp protocols. Dynamic leases can be monitored on this page.'));
-require_once($VIEW_PATH.'/footer.php');
+switch ($Submenu) {
+	case 'dhcpd':
+		require_once('dhcpd.php');
+		exit;
+	case 'arptable':
+		require_once('arptable.php');
+		exit;
+}
 ?>

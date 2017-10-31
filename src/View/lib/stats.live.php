@@ -60,7 +60,7 @@ require_once($VIEW_PATH . '/header.php');
 		<td>
 			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 				<?php echo _TITLE('Refresh interval').':' ?>
-				<input type="text" name="RefreshInterval" style="width: 20px;" maxlength="2" value="<?php echo $_SESSION[$View->Model]['ReloadRate'] ?>" />
+				<input type="text" name="RefreshInterval" style="width: 20px;" maxlength="2" value="<?php echo $_SESSION[$View->Model][$TopMenu]['ReloadRate'] ?>" />
 				<?php echo _TITLE('secs') ?>
 				<select name="GraphType">
 					<option <?php echo ($GraphType == 'Vertical') ? 'selected' : '' ?> value="<?php echo 'Vertical' ?>"><?php echo _CONTROL('Vertical') ?></option>

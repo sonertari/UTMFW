@@ -51,6 +51,7 @@ $ModuleNames= array(
 $SubmenuNames= array(
 	'system' => 'system',
 	'pf' => 'pf',
+	'dhcpd' => 'dhcpd',
 	);
 
 $Reload= TRUE;
