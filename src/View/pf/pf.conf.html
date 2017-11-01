@@ -1175,6 +1175,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
          pass out on em0 inet proto tcp from any to any port 25 \
                set queue mail
 
+<a name="flows"></a>
      In addition to bandwidth management, a fair traffic sharing option is
      provided via a flow queue.  When packets are classified by the stateful
      inspection engine, a flow identifier is assigned to all packets belonging
@@ -1193,6 +1194,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 
            queue fq on em0 flows 1024
 
+<a name="quantum"></a>
      Another value affecting the flow queue is a quantum of service.  The
      lower the <span class="bold">quantum</span> the more advantage is given to streams of small packets
      at the expense of bulk transfers.  The default value for <span class="bold">quantum</span> is

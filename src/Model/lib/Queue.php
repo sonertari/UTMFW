@@ -47,6 +47,14 @@ class Queue extends Rule
 			'method' => 'parseNextValue',
 			'params' => array(),
 			),
+		'flows' => array(
+			'method' => 'parseNextValue',
+			'params' => array(),
+			),
+		'quantum' => array(
+			'method' => 'parseNextValue',
+			'params' => array(),
+			),
 		'default' => array(
 			'method' => 'parseBool',
 			'params' => array(),
@@ -86,6 +94,12 @@ class Queue extends Rule
 			),
 		'max-time' => array(
 			'regex' => RE_BWTIME,
+			),
+		'flows' => array(
+			'regex' => RE_NUM,
+			),
+		'quantum' => array(
+			'regex' => RE_NUM,
 			),
 		'qlimit' => array(
 			'regex' => RE_NUM,
@@ -151,6 +165,8 @@ class Queue extends Rule
 		$this->genBandwidth('bandwidth', 'bw');
 		$this->genBandwidth('min', 'min');
 		$this->genBandwidth('max', 'max');
+		$this->genValue('flows', 'flows ');
+		$this->genValue('quantum', 'quantum ');
 		$this->genValue('qlimit', 'qlimit ');
 		$this->genKey('default');
 

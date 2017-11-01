@@ -29,8 +29,10 @@ class Queue extends Rule
 		$this->dispInterface();
 		$this->dispValue('parent', _TITLE('Parent'));
 		$this->dispBandwidth('bandwidth', 'bw', _TITLE('Bandwidth'), 3);
-		$this->dispBandwidth('min', 'min', _TITLE('Min'), 2);
-		$this->dispBandwidth('max', 'max', _TITLE('Max'), 2);
+		$this->dispBandwidth('min', 'min', _TITLE('Min'));
+		$this->dispBandwidth('max', 'max', _TITLE('Max'));
+		$this->dispValue('flows', _TITLE('Flows'));
+		$this->dispValue('quantum', _TITLE('Quantum'));
 		$this->dispValue('qlimit', _TITLE('Qlimit'));
 		$this->dispKey('default', _TITLE('Default'));
 		$this->dispTail($ruleNumber, $count);
@@ -59,6 +61,8 @@ class Queue extends Rule
 		$this->inputKey('max');
 		$this->inputKey('max-burst');
 		$this->inputKey('max-time');
+		$this->inputKey('flows');
+		$this->inputKey('quantum');
 		$this->inputKey('qlimit');
 		$this->inputBool('default');
 
@@ -79,6 +83,8 @@ class Queue extends Rule
 		$this->editBandwidth('bandwidth', 'bw', _TITLE('Bandwidth'));
 		$this->editBandwidth('min', 'min', _TITLE('Min'));
 		$this->editBandwidth('max', 'max', _TITLE('Max'));
+		$this->editText('flows', _TITLE('Flows'), NULL, NULL, _CONTROL('number'));
+		$this->editText('quantum', _TITLE('Quantum'), NULL, NULL, _CONTROL('number'));
 		$this->editText('qlimit', _TITLE('Qlimit'), NULL, NULL, _CONTROL('number'));
 		$this->editCheckbox('default', _TITLE('Default'));
 
