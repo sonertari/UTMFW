@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-23 22:49+0300\n"
+"PO-Revision-Date: 2017-11-02 00:29+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -35,9 +35,6 @@ msgstr "Giriş kontrol listesi"
 msgid "Access denied address"
 msgstr "Giriş engelleme adresi"
 
-msgid "Active IPs (arp table)"
-msgstr "Geçerli IP'ler (arp tablosu)"
-
 msgid "Additional mime types"
 msgstr "Ek mime türleri"
 
@@ -52,6 +49,9 @@ msgstr "Mesai sonrası"
 
 msgid "Allow localhost"
 msgstr "Yerel bilgisayara izin ver"
+
+msgid "And Priority and Keyword"
+msgstr "Öncelik ve Kelimeyi And'le"
 
 msgid "Anonymize Logs"
 msgstr "Kayıtları anonimleştir"
@@ -425,9 +425,6 @@ msgstr "IP aralığı"
 msgid "IRC"
 msgstr "IRC"
 
-msgid "Idle connections"
-msgstr "Durağan bağlantılar"
-
 msgid "Ignore errors"
 msgstr "Hataları yoksay"
 
@@ -629,6 +626,9 @@ msgstr "IP üst sınırı"
 msgid "Max spare children"
 msgstr "Boşta alt süreç üst sınırı"
 
+msgid "Max threads"
+msgstr "İşlem parçacık sayısı üst sınırı"
+
 msgid "Max upload size"
 msgstr "Karşıya yükleme boyut üst sınırı"
 
@@ -679,6 +679,9 @@ msgstr "Uygunsuz içerik sınırı"
 
 msgid "Network Time"
 msgstr "Ağ Zamanı"
+
+msgid "Network Topology"
+msgstr "Ağ Topolojisi"
 
 msgid "No bind"
 msgstr "Bağlantısız"

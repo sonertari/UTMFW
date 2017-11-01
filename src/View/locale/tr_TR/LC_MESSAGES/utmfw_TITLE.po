@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-23 22:49+0300\n"
+"PO-Revision-Date: 2017-11-02 00:40+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -16,6 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gtranslator 2.91.7\n"
+
+msgid "#Blocked"
+msgstr "Engellenmiş#"
+
+msgid "#Passed"
+msgstr "İzinverilmiş#"
 
 msgid "1 minute average"
 msgstr "1 dakikalık ortalama"
@@ -37,6 +43,9 @@ msgstr "<MODEL>: UYARILAR var"
 
 msgid "<RULE_TYPE> rule"
 msgstr "<RULE_TYPE> kuralı"
+
+msgid "Act"
+msgstr "İşlem"
 
 msgid "Action"
 msgstr "İşlem"
@@ -98,6 +107,9 @@ msgstr "İşlemciler"
 msgid "CRITICAL"
 msgstr "ÖNEMLİ"
 
+msgid "Cache"
+msgstr "Önbellek"
+
 msgid "Category"
 msgstr "Sınıf"
 
@@ -106,6 +118,12 @@ msgstr "Kayıtlarda aramak için tıklayın"
 
 msgid "Click to search in the stats"
 msgstr "İstatistiklerde aramak için tıklayın"
+
+msgid "Client"
+msgstr "İstemci"
+
+msgid "Code"
+msgstr "Kod"
 
 msgid "Comment"
 msgstr "Yorum"
@@ -133,6 +151,9 @@ msgstr "DHCP Sunucu"
 
 msgid "DNS Server"
 msgstr "DNS Sunucu"
+
+msgid "DPort"
+msgstr "HPort"
 
 msgid "Data Transfer"
 msgstr "Veri Aktarımı"
@@ -164,6 +185,12 @@ msgstr "Hedef"
 msgid "Destination Port"
 msgstr "Hedef Kapı"
 
+msgid "Dir"
+msgstr "Yön"
+
+msgid "Direct"
+msgstr "Direct"
+
 msgid "Direction"
 msgstr "Yön"
 
@@ -185,8 +212,14 @@ msgstr "Yön Değiştirme Kapısı"
 msgid "Divert Reply"
 msgstr "Yön Değiştirmeye Cevap"
 
+msgid "Domain"
+msgstr "Alanadı"
+
 msgid "Download ruleset"
 msgstr "Kural listesini indir"
+
+msgid "DstIP"
+msgstr "HdfIP"
 
 msgid "ERROR"
 msgstr "HATA"
@@ -203,11 +236,17 @@ msgstr "Kaynak Takibini Aç"
 msgid "Enabled Services"
 msgstr "Açık Servisler"
 
+msgid "End"
+msgstr "Son"
+
 msgid "Enforce TOS"
 msgstr "TOS Uygula"
 
 msgid "Error"
 msgstr "Hata"
+
+msgid "Expire"
+msgstr "Zamanaşımı"
 
 msgid "Export To pflow"
 msgstr "Pflow'a Aktar"
@@ -230,11 +269,17 @@ msgstr "Dosya"
 msgid "Fingerprints File"
 msgstr "Parmakizi Dosyası"
 
+msgid "First"
+msgstr "İlk"
+
 msgid "Flag"
 msgstr "Bayrak"
 
 msgid "Flags"
 msgstr "Bayraklar"
+
+msgid "Flows"
+msgstr "Akışlar"
 
 msgid "Force HTTPs"
 msgstr "HTTPs Uygula"
@@ -250,6 +295,9 @@ msgstr "Başlangıç"
 
 msgid "From Redirect Host"
 msgstr "Yönlendirme Adresinden"
+
+msgid "Function"
+msgstr "Fonksiyon"
 
 msgid "Gateway"
 msgstr "Ağ geçidi"
@@ -268,6 +316,9 @@ msgstr "Yardım Kutuları"
 
 msgid "Holidays"
 msgstr "Tatiller"
+
+msgid "Host"
+msgstr "Cihaz"
 
 msgid "Host Id"
 msgstr "Adres Kimliği"
@@ -299,14 +350,23 @@ msgstr "IM Vekil"
 msgid "INFORMATION"
 msgstr "BİLGİ"
 
+msgid "IP"
+msgstr "IP"
+
 msgid "IP Forwarding"
 msgstr "IP Yönlendirme"
+
+msgid "IPPort"
+msgstr "IPPort"
 
 msgid "Id"
 msgstr "Kimlik"
 
 msgid "Identifier"
 msgstr "Tanımlayıcı"
+
+msgid "If"
+msgstr "Arayüz"
 
 msgid "Inline IPS"
 msgstr "Inline SES"
@@ -344,9 +404,6 @@ msgstr "Etiket"
 msgid "Language"
 msgstr "Dil"
 
-msgid "Level"
-msgstr "Seviye"
-
 msgid "Limit"
 msgstr "Sınır"
 
@@ -358,6 +415,12 @@ msgstr "Satır numarası"
 
 msgid "Lines per page"
 msgstr "Satır sayısı"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "Listed"
+msgstr "Listelenme"
 
 msgid "Load ruleset"
 msgstr "Kural listesini yükle"
@@ -379,6 +442,9 @@ msgstr "Kayıtlar"
 
 msgid "Loopback Interface"
 msgstr "Döngü Arayüzü"
+
+msgid "MAC"
+msgstr "MAC"
 
 msgid "Machine"
 msgstr "Makina"
@@ -454,6 +520,9 @@ msgstr "Aşağı taşı"
 
 msgid "Move up"
 msgstr "Yukarı taşı"
+
+msgid "Mtd"
+msgstr "Yntm"
 
 msgid "Name"
 msgstr "Ad"
@@ -551,6 +620,9 @@ msgstr "Fiziksel Bellek"
 msgid "Pmacct"
 msgstr "Pmacct"
 
+msgid "Prio"
+msgstr "Önc"
+
 msgid "Privileged IPs"
 msgstr "Öncelikli IP'ler"
 
@@ -575,11 +647,17 @@ msgstr "Protokol"
 msgid "Qlimit"
 msgstr "Kuyruk Boyu"
 
+msgid "Quantum"
+msgstr "Kuantum"
+
 msgid "Queue"
 msgstr "Kuyruk"
 
 msgid "Quick"
 msgstr "Hemen Uygula"
+
+msgid "Reason"
+msgstr "Sebep"
 
 msgid "Reassemble"
 msgstr "Birleştir"
@@ -656,11 +734,17 @@ msgstr "SPAM Geciktirme"
 msgid "SPAM Filter"
 msgstr "SPAM Eleği"
 
+msgid "SPort"
+msgstr "KPort"
+
 msgid "SSL Proxy"
 msgstr "SSL Vekil"
 
 msgid "Save ruleset"
 msgstr "Kural listesini kaydet"
+
+msgid "Scan"
+msgstr "Tarama"
 
 msgid "Scrub Options"
 msgstr "Kazıma Seçenekleri"
@@ -682,6 +766,9 @@ msgstr "Seri Numarası"
 
 msgid "Session Timeout"
 msgstr "Oturum Zaman Aşımı"
+
+msgid "Site"
+msgstr "Site"
 
 msgid "Size"
 msgstr "Boyut"
@@ -713,6 +800,12 @@ msgstr "Kaynak->Hedef"
 msgid "Src Nodes"
 msgstr "Kaynak Noktalar"
 
+msgid "SrcIP"
+msgstr "KynkIP"
+
+msgid "Start"
+msgstr "Başlangıç"
+
 msgid "State"
 msgstr "Durum"
 
@@ -739,6 +832,9 @@ msgstr "Sabit Kapı"
 
 msgid "Statistics and uncompressed log files"
 msgstr "İstatistik ve açılmış kayıt dosyaları"
+
+msgid "Status"
+msgstr "Durum"
 
 msgid "Status Check Interval"
 msgstr "Durum Kontrol Aralığı"

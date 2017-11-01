@@ -1,21 +1,3 @@
-# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
-# This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2017.
-#
-msgid ""
-msgstr ""
-"Project-Id-Version: UTMFW 6.2\n"
-"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
-"POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-23 22:59+0300\n"
-"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
-"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 2.91.7\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-
 msgid "%MEM"
 msgstr ""
 
@@ -34,9 +16,6 @@ msgstr ""
 msgid "Access denied address"
 msgstr ""
 
-msgid "Active IPs (arp table)"
-msgstr ""
-
 msgid "Additional mime types"
 msgstr ""
 
@@ -50,6 +29,9 @@ msgid "After hours"
 msgstr ""
 
 msgid "Allow localhost"
+msgstr ""
+
+msgid "And Priority and Keyword"
 msgstr ""
 
 msgid "Anonymize Logs"
@@ -424,9 +406,6 @@ msgstr ""
 msgid "IRC"
 msgstr ""
 
-msgid "Idle connections"
-msgstr ""
-
 msgid "Ignore errors"
 msgstr ""
 
@@ -628,6 +607,9 @@ msgstr ""
 msgid "Max spare children"
 msgstr ""
 
+msgid "Max threads"
+msgstr ""
+
 msgid "Max upload size"
 msgstr ""
 
@@ -677,6 +659,9 @@ msgid "Naughtyness limit"
 msgstr ""
 
 msgid "Network Time"
+msgstr ""
+
+msgid "Network Topology"
 msgstr ""
 
 msgid "No bind"

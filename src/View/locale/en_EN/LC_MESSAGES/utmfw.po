@@ -1,21 +1,3 @@
-# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
-# This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2017.
-#
-msgid ""
-msgstr ""
-"Project-Id-Version: UTMFW 6.2\n"
-"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
-"POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-23 23:01+0300\n"
-"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
-"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 2.91.7\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-
 msgid ""
 " This the limit over which the page will be blocked.  Each weighted phrase "
 "is given a value either positive or negative and the values added up.  "
@@ -31,6 +13,12 @@ msgid ""
 "precreated a tap0 virtual interface and bridged it with your ethernet "
 "interface. If you want to control access policies over the VPN, you must "
 "create firewall rules for the the TUN/TAP interface."
+msgstr ""
+
+msgid "#Blocked"
+msgstr ""
+
+msgid "#Passed"
 msgstr ""
 
 msgid "%CPU"
@@ -144,10 +132,10 @@ msgstr ""
 msgid "Account name"
 msgstr ""
 
-msgid "Action"
+msgid "Act"
 msgstr ""
 
-msgid "Active IPs (arp table)"
+msgid "Action"
 msgstr ""
 
 msgid "Adaptive Timeouts"
@@ -354,6 +342,9 @@ msgstr ""
 msgid "And <COUNT> others not shown."
 msgstr ""
 
+msgid "And Priority and Keyword"
+msgstr ""
+
 msgid "And finally deny all other access to this proxy"
 msgstr ""
 
@@ -453,6 +444,12 @@ msgid "Are you sure you want to stop the <NAME>?"
 msgstr ""
 
 msgid "Arg type check failed"
+msgstr ""
+
+msgid "Arp Table"
+msgstr ""
+
+msgid "Arp table lists the active IP addresses in the network."
 msgstr ""
 
 msgid ""
@@ -853,6 +850,9 @@ msgstr ""
 msgid "Closed by"
 msgstr ""
 
+msgid "Code"
+msgstr ""
+
 msgid "Collection of search engines and directory sites."
 msgstr ""
 
@@ -900,6 +900,9 @@ msgid ""
 "List of DNS servers on your network"
 msgstr ""
 
+msgid "Conn Statistics"
+msgstr ""
+
 msgid "Connection Duration"
 msgstr ""
 
@@ -913,6 +916,9 @@ msgid "Connections"
 msgstr ""
 
 msgid "Connections by date"
+msgstr ""
+
+msgid "Conns"
 msgstr ""
 
 msgid "Content Admin"
@@ -1015,6 +1021,9 @@ msgid ""
 msgstr ""
 
 msgid "DNS_SERVERS"
+msgstr ""
+
+msgid "DPort"
 msgstr ""
 
 msgid "Daily"
@@ -1203,10 +1212,16 @@ msgstr ""
 msgid "Device"
 msgstr ""
 
+msgid "Dhcpd"
+msgstr ""
+
 msgid "Diffie-Hellman params"
 msgstr ""
 
 msgid "Dir"
+msgstr ""
+
+msgid "Direct"
 msgstr ""
 
 msgid "Direction"
@@ -1321,6 +1336,9 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
+msgid "Domain"
+msgstr ""
+
 msgid "Domains"
 msgstr ""
 
@@ -1373,12 +1391,18 @@ msgstr ""
 msgid "Dropped Packets"
 msgstr ""
 
+msgid "DstIP"
+msgstr ""
+
 msgid ""
 "Due to license issues libclamav does not support RAR 3.0 archives (only the "
 "old 2.0 format is supported). Because some users report stability problems "
 "with unrarlib it's disabled by default and you must uncomment the directive "
 "below to enable RAR 2.0 support.\n"
 "\t\tDefault: disabled"
+msgstr ""
+
+msgid "Durations"
 msgstr ""
 
 msgid "Dutch"
@@ -1512,6 +1536,9 @@ msgstr ""
 msgid "Enabled Services"
 msgstr ""
 
+msgid "End"
+msgstr ""
+
 msgid "Enforce TOS"
 msgstr ""
 
@@ -1554,13 +1581,10 @@ msgstr ""
 msgid "Exception requests"
 msgstr ""
 
+msgid "Expire"
+msgstr ""
+
 msgid "Expired Connection Check Period"
-msgstr ""
-
-msgid "Expired Destination Addresses"
-msgstr ""
-
-msgid "Expired Source Addresses"
 msgstr ""
 
 msgid "Expired connections"
@@ -1714,10 +1738,16 @@ msgstr ""
 msgid "Fingerprints File"
 msgstr ""
 
+msgid "First"
+msgstr ""
+
 msgid "Flag"
 msgstr ""
 
 msgid "Flags"
+msgstr ""
+
+msgid "Flows"
 msgstr ""
 
 msgid "Follow Directory Symlinks"
@@ -1804,6 +1834,9 @@ msgstr ""
 msgid "From Redirect Host"
 msgstr ""
 
+msgid "Function"
+msgstr ""
+
 msgid "GG"
 msgstr ""
 
@@ -1830,7 +1863,7 @@ msgstr ""
 
 msgid ""
 "Generate your own with:\n"
-"   openssl dhparam -out dh1024.pem 1024\n"
+"openssl dhparam -out dh1024.pem 1024\n"
 "Substitute 2048 for 1024 if you are using 2048 bit keys."
 msgstr ""
 
@@ -1888,6 +1921,9 @@ msgstr ""
 msgid "Get arp table"
 msgstr ""
 
+msgid "Get arp table size"
+msgstr ""
+
 msgid "Get auth ip list"
 msgstr ""
 
@@ -1918,6 +1954,9 @@ msgstr ""
 msgid "Get dhcp leases"
 msgstr ""
 
+msgid "Get dhcp leases count"
+msgstr ""
+
 msgid "Get disabled rules"
 msgstr ""
 
@@ -1934,9 +1973,6 @@ msgid "Get group ip list"
 msgstr ""
 
 msgid "Get host graphs"
-msgstr ""
-
-msgid "Get idle conns"
 msgstr ""
 
 msgid "Get if config"
@@ -2429,6 +2465,9 @@ msgstr ""
 msgid "INFORMATION"
 msgstr ""
 
+msgid "IP"
+msgstr ""
+
 msgid "IP Forwarding"
 msgstr ""
 
@@ -2461,6 +2500,9 @@ msgstr ""
 msgid "IP range wrong"
 msgstr ""
 
+msgid "IPPort"
+msgstr ""
+
 msgid "IPs"
 msgstr ""
 
@@ -2486,6 +2528,9 @@ msgid "Idle Times"
 msgstr ""
 
 msgid "Idle connections"
+msgstr ""
+
+msgid "If"
 msgstr ""
 
 msgid ""
@@ -2578,6 +2623,9 @@ msgstr ""
 msgid ""
 "If the HTTP proxy is configured as non-caching proxy, you should see "
 "TCP_MISS on the Cache column."
+msgstr ""
+
+msgid "If yes, both priority and keyword should match to block IPs."
 msgstr ""
 
 msgid ""
@@ -2763,19 +2811,6 @@ msgstr ""
 msgid "Intrusion Detection and Prevention"
 msgstr ""
 
-msgid ""
-"Intrusion alerts produced by the IDS are guesses, hence there may be false "
-"positives or wrong alarms. Since the IPS depends on alerts produced by the "
-"IDS, you may want to make sure some IP addresses are never blocked "
-"accidentally, such as the internal and external IP addresses of the system, "
-"or the IP address of the computer you use to access this web administration "
-"interface.\n"
-"\n"
-"You can enter individual IPs or network addresses. IP and network addresses "
-"can overlap. For example, you can blacklist 10.0.0.0/24, but whitelist "
-"10.0.0.1."
-msgstr ""
-
 msgid "Invalid destination rule number"
 msgstr ""
 
@@ -2821,9 +2856,6 @@ msgstr ""
 msgid "Leave spool on"
 msgstr ""
 
-msgid "Level"
-msgstr ""
-
 msgid "Limit"
 msgstr ""
 
@@ -2837,6 +2869,9 @@ msgid "Line number"
 msgstr ""
 
 msgid "Lines per page"
+msgstr ""
+
+msgid "Link"
 msgstr ""
 
 msgid "Links"
@@ -2873,6 +2908,9 @@ msgid "List physical interfaces"
 msgstr ""
 
 msgid "List to allow necessary downloads from vendors."
+msgstr ""
+
+msgid "Listed"
 msgstr ""
 
 msgid "Listen Address"
@@ -3088,6 +3126,9 @@ msgid ""
 "1 = do not change case"
 msgstr ""
 
+msgid "MAC"
+msgstr ""
+
 msgid "MONITORING"
 msgstr ""
 
@@ -3125,9 +3166,6 @@ msgid "Make system gateway dynamic"
 msgstr ""
 
 msgid "Make system gateway static"
-msgstr ""
-
-msgid "Managed"
 msgstr ""
 
 msgid "Managed extensions"
@@ -3233,6 +3271,9 @@ msgid "Max ips"
 msgstr ""
 
 msgid "Max spare children"
+msgstr ""
+
+msgid "Max threads"
 msgstr ""
 
 msgid "Max upload size"
@@ -3373,10 +3414,10 @@ msgstr ""
 msgid "Move up"
 msgstr ""
 
-msgid "Multiple values not allowed for"
+msgid "Mtd"
 msgstr ""
 
-msgid "NA"
+msgid "Multiple values not allowed for"
 msgstr ""
 
 msgid "NAT header type"
@@ -3421,6 +3462,9 @@ msgid "Network Protocol Usage"
 msgstr ""
 
 msgid "Network Time"
+msgstr ""
+
+msgid "Network Topology"
 msgstr ""
 
 msgid ""
@@ -3882,6 +3926,9 @@ msgstr ""
 msgid "Print Motd"
 msgstr ""
 
+msgid "Prio"
+msgstr ""
+
 msgid "Priorities"
 msgstr ""
 
@@ -3962,6 +4009,9 @@ msgstr ""
 msgid "Qlimit"
 msgstr ""
 
+msgid "Quantum"
+msgstr ""
+
 msgid "Query types"
 msgstr ""
 
@@ -4005,6 +4055,9 @@ msgid "Read system hostname"
 msgstr ""
 
 msgid "Read system nameserver"
+msgstr ""
+
+msgid "Reason"
 msgstr ""
 
 msgid "Reasons"
@@ -4318,6 +4371,9 @@ msgid "SPAM Filter"
 msgstr ""
 
 msgid "SPAMD"
+msgstr ""
+
+msgid "SPort"
 msgstr ""
 
 msgid "SQL_SERVERS"
@@ -4745,6 +4801,13 @@ msgid ""
 "Defaults to preforkchildren."
 msgstr ""
 
+msgid ""
+"Should be subnet (addressing via IP)\n"
+"unless Windows clients v2.0.9 and lower have to\n"
+"be supported (then net30, i.e. a /30 per client)\n"
+"Defaults to net30 (not recommended)."
+msgstr ""
+
 msgid "Show"
 msgstr ""
 
@@ -4773,6 +4836,9 @@ msgid ""
 "be careful while modifying its options. By default, the web server is "
 "configured to serve this web interface only, hence the default values should "
 "suffice for most purposes."
+msgstr ""
+
+msgid "Site"
 msgstr ""
 
 msgid "Site for real-time chatting and instant messaging."
@@ -5174,6 +5240,9 @@ msgstr ""
 msgid "Src Nodes"
 msgstr ""
 
+msgid "SrcIP"
+msgstr ""
+
 msgid "Start"
 msgstr ""
 
@@ -5236,6 +5305,9 @@ msgstr ""
 msgid ""
 "Statistics collection entirely depends on what and how logs are recorded in "
 "the log files. So do not change these settings unless necessary."
+msgstr ""
+
+msgid "Status"
 msgstr ""
 
 msgid "Status Check Interval"
@@ -5406,7 +5478,16 @@ msgid ""
 "alerts at a certain priority and up. Each alert also contains log and "
 "classification text. You can add keywords to match within such text. The IP "
 "in the matching alert is blocked. If the alert does not contain an IP "
-"address, no action is taken."
+"address, no action is taken.\n"
+"\n"
+"Intrusion alerts produced by the IDS are guesses, hence there may be false "
+"positives or wrong alarms. Since the IPS depends on alerts produced by the "
+"IDS, you may want to make sure some IP addresses are never blocked "
+"accidentally, such as the internal and external IP addresses of the system, "
+"or the IP address of the computer you use to access this web administration "
+"interface. You can enter individual IPs or network addresses. IP and network "
+"addresses can overlap. For example, you can blacklist 10.0.0.0/24, but "
+"whitelist 10.0.0.1."
 msgstr ""
 
 msgid ""
@@ -5432,7 +5513,14 @@ msgstr ""
 msgid ""
 "The Passive Intrusion Prevention System (IPS) depends on alerts generated by "
 "the Intrusion Detection System (IDS). Make sure the IDS is running before "
-"starting the IPS."
+"starting the IPS.\n"
+"\n"
+"This page displays the hosts managed by the IPS, i.e. blocked or unblocked "
+"IPs or networks. You can temporarily block hosts for a period of time. If "
+"expiration time is not provided, the default duration is used. You can enter "
+"individual IPs or network addresses. IP and network addresses can overlap. "
+"This page reloads periodically to update the managed list. If the IPS is not "
+"running, the page displays blank."
 msgstr ""
 
 msgid ""
@@ -5444,25 +5532,21 @@ msgid ""
 "proxy process as a whole, within the last report interval in seconds. The "
 "numbers here may give you an idea on the current load of the proxy. For "
 "example, if the max number of file descriptors is too high, you might want "
-"to increase the open files limit of the daemon class in login.conf file.\n"
-"\n"
-"This page may report certain connections as idle, because they remained idle "
-"longer than the expired connection check interval of the SSL proxy. This "
-"does not mean that these connections have stalled; they may be just slow. "
-"Note that the SSL proxy does not allow for persistent HTTP connections, "
-"hence tries to close them as soon as possible. Therefore, it is desirable "
-"that the idle connections table be empty."
+"to increase the open files limit of the daemon class in login.conf file."
 msgstr ""
 
 msgid "The SSL proxy is an event-driven multi-threaded program."
 msgstr ""
 
 msgid ""
-"The SSL proxy takes 5 different kinds of logs: (1) STATS for periodic "
-"statistics per thread, (2) CONN for connection details at establisment time, "
-"(3) IDLE for slow connections, (4) EXPIRED for timed-out connections which "
-"are closed by the SSL proxy, and (5) CRITICAL, ERROR, WARNING, or INFO "
-"messages."
+"The SSL proxy takes 2 different kinds of logs: (1) STATS for periodic "
+"statistics per thread and (2) CRITICAL, ERROR, WARNING, and INFO messages."
+msgstr ""
+
+msgid ""
+"The SSL proxy takes 3 different kinds of connection logs: (1) CONN for "
+"connection details at establisment time, (2) IDLE for slow connections, and "
+"(3) EXPIRED for timed-out connections which are closed by the SSL proxy."
 msgstr ""
 
 msgid ""
@@ -5642,6 +5726,9 @@ msgid ""
 "here as well."
 msgstr ""
 
+msgid "These logs may be important for diagnosing HTTP proxy related problems."
+msgstr ""
+
 msgid "These logs may be important for diagnosing web filter related problems."
 msgstr ""
 
@@ -5768,6 +5855,13 @@ msgid ""
 msgstr ""
 
 msgid ""
+"This is the maximum number of threads, i.e. concurrent connections. If more "
+"connections are made, connections will queue until a worker thread is free.\n"
+"On large sites you might want to increase this number, e.g. 5000 (max value "
+"20000)."
+msgstr ""
+
+msgid ""
 "This is the name server used by the system. You can use the DNS server on "
 "the system, i.e. enter 127.0.0.1 here."
 msgstr ""
@@ -5891,16 +5985,6 @@ msgid ""
 "This page displays the graphs of all temperature and fan sensors in your "
 "system. You may have multiple sensors depending on your hardware. Virtual "
 "machines may not provide any sensors at all."
-msgstr ""
-
-msgid ""
-"This page displays the hosts managed by the IPS, i.e. blocked or unblocked "
-"IPs or networks. You can temporarily block hosts for a period of time. If "
-"expiration time is not provided, the default duration is used. You can enter "
-"individual IPs or network addresses. IP and network addresses can overlap.\n"
-"\n"
-"This page reloads automatically to update the managed list. If the IPS is "
-"not running, the page displays blank."
 msgstr ""
 
 msgid ""

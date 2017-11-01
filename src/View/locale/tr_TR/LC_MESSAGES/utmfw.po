@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-23 22:53+0300\n"
+"PO-Revision-Date: 2017-11-02 01:31+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -44,6 +44,12 @@ msgstr ""
 "yaratarak ethernet arayüzüne köprü olarak eklediyseniz \"dev tap0\" "
 "kullanın. VPN üzerinde giriş kontrol kuralları istiyorsanız, TUN/TAP arayüzü "
 "için paket eleği kuralları yaratmalısınız."
+
+msgid "#Blocked"
+msgstr "Engellenmiş#"
+
+msgid "#Passed"
+msgstr "İzinverilmiş#"
 
 msgid "%CPU"
 msgstr "CPU%"
@@ -193,11 +199,11 @@ msgstr "Giriş engelleme adresi"
 msgid "Account name"
 msgstr "Hesap adı"
 
-msgid "Action"
+msgid "Act"
 msgstr "İşlem"
 
-msgid "Active IPs (arp table)"
-msgstr "Geçerli IP'ler (arp tablosu)"
+msgid "Action"
+msgstr "İşlem"
 
 msgid "Adaptive Timeouts"
 msgstr "Değişken Zaman Aşımları"
@@ -422,6 +428,9 @@ msgstr "Çapa"
 msgid "And <COUNT> others not shown."
 msgstr "Ve <COUNT> adet gösterilmeyen var."
 
+msgid "And Priority and Keyword"
+msgstr "Öncelik ve Kelimeyi And'le"
+
 msgid "And finally deny all other access to this proxy"
 msgstr "Son olarak bu vekile yapılan tüm diğer girişleri engeller."
 
@@ -522,6 +531,12 @@ msgstr "<NAME>: durdurmak istediğinizden emin misiniz?"
 
 msgid "Arg type check failed"
 msgstr "Argüman tür kontrolü başarısız oldu"
+
+msgid "Arp Table"
+msgstr "Arp Tablosu"
+
+msgid "Arp table lists the active IP addresses in the network."
+msgstr "Arp tablosu ağdaki aktif IP adresleri listeler."
 
 msgid ""
 "As a matter of course, URLs undergo regular expression search/replace "
@@ -996,6 +1011,9 @@ msgstr "Saniye cinsinden bu kadar süre durağan kalan bağlantıları kapat."
 msgid "Closed by"
 msgstr "Kapatan"
 
+msgid "Code"
+msgstr "Kod"
+
 msgid "Collection of search engines and directory sites."
 msgstr ""
 
@@ -1052,6 +1070,9 @@ msgstr ""
 "tanımlanan AYNI yapılandırma düzenini takip etmelidir.\n"
 "Ağınızdaki DNS sunucuların listesi."
 
+msgid "Conn Statistics"
+msgstr "Bağlantı İstatistikleri"
+
 msgid "Connection Duration"
 msgstr "Bağlantı Süresi"
 
@@ -1066,6 +1087,9 @@ msgstr "Bağlantılar"
 
 msgid "Connections by date"
 msgstr "Tarihe göre bağlantılar"
+
+msgid "Conns"
+msgstr "Bağlantılar"
 
 msgid "Content Admin"
 msgstr "İçerik yöneticisi"
@@ -1176,6 +1200,9 @@ msgstr ""
 
 msgid "DNS_SERVERS"
 msgstr "DNS_SERVERS"
+
+msgid "DPort"
+msgstr "HPort"
 
 msgid "Daily"
 msgstr "Günlük"
@@ -1381,11 +1408,17 @@ msgstr "Ağdaki Back Orifice trafiğini algılar"
 msgid "Device"
 msgstr "Aygıt"
 
+msgid "Dhcpd"
+msgstr "Dhcpd"
+
 msgid "Diffie-Hellman params"
 msgstr "Diffie-Hellman değişkenleri"
 
 msgid "Dir"
 msgstr "Yön"
+
+msgid "Direct"
+msgstr "Direct"
 
 msgid "Direction"
 msgstr "Yön"
@@ -1504,6 +1537,9 @@ msgstr ""
 msgid "Documentation"
 msgstr "Belgeler"
 
+msgid "Domain"
+msgstr "Alanadı"
+
 msgid "Domains"
 msgstr "Alanadları"
 
@@ -1566,6 +1602,9 @@ msgstr "Engellenen Baytlar"
 msgid "Dropped Packets"
 msgstr "Engellenen Paketler"
 
+msgid "DstIP"
+msgstr "HdfIP"
+
 msgid ""
 "Due to license issues libclamav does not support RAR 3.0 archives (only the "
 "old 2.0 format is supported). Because some users report stability problems "
@@ -1578,6 +1617,9 @@ msgstr ""
 "unrarlib öndeğer olarak kapatılmıştır ve RAR 2.0 desteğini buradan kendiniz "
 "açmanız gerekir.\n"
 "Öndeğer: kapalı"
+
+msgid "Durations"
+msgstr "Süreler"
 
 msgid "Dutch"
 msgstr "Hollandaca"
@@ -1727,6 +1769,9 @@ msgstr "Açık Kurallar"
 msgid "Enabled Services"
 msgstr "Açık Servisler"
 
+msgid "End"
+msgstr "Son"
+
 msgid "Enforce TOS"
 msgstr "TOS Uygula"
 
@@ -1769,14 +1814,11 @@ msgstr "İstisna IP'ler"
 msgid "Exception requests"
 msgstr "İstisna istekler"
 
+msgid "Expire"
+msgstr "Zamanaşımı"
+
 msgid "Expired Connection Check Period"
 msgstr "Zaman Aşımna Uğramış Bağlantı Kontrol Periyodu"
-
-msgid "Expired Destination Addresses"
-msgstr "Zaman Aşımına Uğramış Hedef Adresler"
-
-msgid "Expired Source Addresses"
-msgstr "Zaman Aşımına Uğramış Kaynak Adresler"
 
 msgid "Expired connections"
 msgstr "Zaman aşımına uğramış bağlantılar"
@@ -1933,11 +1975,17 @@ msgstr ""
 msgid "Fingerprints File"
 msgstr "Parmakizi Dosyası"
 
+msgid "First"
+msgstr "İlk"
+
 msgid "Flag"
 msgstr "Bayrak"
 
 msgid "Flags"
 msgstr "Bayraklar"
+
+msgid "Flows"
+msgstr "Akışlar"
 
 msgid "Follow Directory Symlinks"
 msgstr "Dizin sembolik bağlantılarını izle"
@@ -2050,6 +2098,9 @@ msgstr "Başlangıç"
 msgid "From Redirect Host"
 msgstr "Yönlendirme Adresinden"
 
+msgid "Function"
+msgstr "Fonksiyon"
+
 msgid "GG"
 msgstr "GG"
 
@@ -2081,6 +2132,15 @@ msgid ""
 msgstr ""
 "Kendi dosyanızı aşağıdaki komutla yaratın:\n"
 "   openssl dhparam -out dh1024.pem 1024\n"
+"2048 bitlik anahtarlar kullanıyorsanız 1024 yerine 2048 kullanın."
+
+msgid ""
+"Generate your own with:\n"
+"openssl dhparam -out dh1024.pem 1024\n"
+"Substitute 2048 for 1024 if you are using 2048 bit keys."
+msgstr ""
+"Kendi dosyanızı aşağıdaki komutla yaratın:\n"
+"openssl dhparam -out dh1024.pem 1024\n"
 "2048 bitlik anahtarlar kullanıyorsanız 1024 yerine 2048 kullanın."
 
 msgid "Gentle child restart"
@@ -2137,6 +2197,9 @@ msgstr "Tüm istatistikleri getir"
 msgid "Get arp table"
 msgstr "Arp tablosunu getir"
 
+msgid "Get arp table size"
+msgstr "Arp tablosu boyutunu getir"
+
 msgid "Get auth ip list"
 msgstr "Auth IP listesini getir"
 
@@ -2167,6 +2230,9 @@ msgstr "Tarih-saati getir"
 msgid "Get dhcp leases"
 msgstr "Kiralanan DHCP adreslerini getir"
 
+msgid "Get dhcp leases count"
+msgstr "Kiralanan DHCP adres sayısını getir"
+
 msgid "Get disabled rules"
 msgstr "Kapalı kuralları getir"
 
@@ -2184,9 +2250,6 @@ msgstr "Grup IP listesini getir"
 
 msgid "Get host graphs"
 msgstr "Bilgisayar grafiklerini getir"
-
-msgid "Get idle conns"
-msgstr "Durağan bağlantıları getir"
 
 msgid "Get if config"
 msgstr "Arayüz yapılandırmasını getir"
@@ -2691,7 +2754,7 @@ msgid "Horizontal"
 msgstr "Yatay"
 
 msgid "Host"
-msgstr "Bilgisayar"
+msgstr "Cihaz"
 
 msgid "Host IP"
 msgstr "Bilgisayar IP adresi"
@@ -2804,6 +2867,9 @@ msgstr ""
 msgid "INFORMATION"
 msgstr "BİLGİ"
 
+msgid "IP"
+msgstr "IP"
+
 msgid "IP Forwarding"
 msgstr "IP Yönlendirme"
 
@@ -2837,6 +2903,9 @@ msgstr "IP aralığı"
 msgid "IP range wrong"
 msgstr "IP aralığı hatalı"
 
+msgid "IPPort"
+msgstr "IPPort"
+
 msgid "IPs"
 msgstr "IP'ler"
 
@@ -2863,6 +2932,9 @@ msgstr "Durağan Süreler"
 
 msgid "Idle connections"
 msgstr "Durağan bağlantılar"
+
+msgid "If"
+msgstr "Arayüz"
 
 msgid ""
 "If 'on' exception sites, urls, users etc will be scanned\n"
@@ -2999,6 +3071,11 @@ msgid ""
 msgstr ""
 "HTTP vekil önbellek kullanmayacak şekilde ayarlanırsa Önbellek sütununda "
 "TCP_MISS görebilirsiniz."
+
+msgid "If yes, both priority and keyword should match to block IPs."
+msgstr ""
+"Yes olarak ayarlanmışsa, IP'lerin engellenmesi için öncelik ve anahtar "
+"kelime şartlarının beraber gerçekleşmesi gerekir."
 
 msgid ""
 "If you are not seeing as many number of lines as you were expecting, this "
@@ -3222,28 +3299,6 @@ msgstr "Saldırı Tespit"
 msgid "Intrusion Detection and Prevention"
 msgstr "Saldırı Tespit ve Engelleme"
 
-msgid ""
-"Intrusion alerts produced by the IDS are guesses, hence there may be false "
-"positives or wrong alarms. Since the IPS depends on alerts produced by the "
-"IDS, you may want to make sure some IP addresses are never blocked "
-"accidentally, such as the internal and external IP addresses of the system, "
-"or the IP address of the computer you use to access this web administration "
-"interface.\n"
-"\n"
-"You can enter individual IPs or network addresses. IP and network addresses "
-"can overlap. For example, you can blacklist 10.0.0.0/24, but whitelist "
-"10.0.0.1."
-msgstr ""
-"STS tarafından üretilen uyarılar sadece tahmindir, yani yanlış alarmlar "
-"olabilir. SES STS tarafından üretilen uyarılar üzerinden çalıştığından, bazı "
-"IP adreslerinin kazara engellenmediğinden emin olun, örneğin sistemin iç ve "
-"dış IP adresleri, veya web yönetim arayüzüne bağlandığınız bilgisayarın IP "
-"adresi gibi.\n"
-"\n"
-"Burada IP veya ağ adresi girebilirsiniz. IP ve ağ adresleri örtüşebilir. "
-"Örneğin, 10.0.0.0/24 ağ adresini karalisteye, 10.0.0.1 adresini beyazlisteye "
-"atayabilirsiniz."
-
 msgid "Invalid destination rule number"
 msgstr "Geçersiz hedef kural numarası"
 
@@ -3289,9 +3344,6 @@ msgstr "Geçici dosyaları bırak"
 msgid "Leave spool on"
 msgstr "Kuyruğu bırak"
 
-msgid "Level"
-msgstr "Seviye"
-
 msgid "Limit"
 msgstr "Sınırlar"
 
@@ -3306,6 +3358,9 @@ msgstr "Satır numarası"
 
 msgid "Lines per page"
 msgstr "Satır sayısı"
+
+msgid "Link"
+msgstr "Link"
 
 msgid "Links"
 msgstr "Bağlantılar"
@@ -3348,6 +3403,9 @@ msgstr "Fiziksel arayüzleri listele"
 
 msgid "List to allow necessary downloads from vendors."
 msgstr ""
+
+msgid "Listed"
+msgstr "Listelenme"
 
 msgid "Listen Address"
 msgstr "Dinleme adresi"
@@ -3606,6 +3664,9 @@ msgstr ""
 "0 = küçük harfe zorla (öndeğer)\n"
 "1 = harf boyutunu değiştirme"
 
+msgid "MAC"
+msgstr "MAC"
+
 msgid "MONITORING"
 msgstr "GÖZLEMLEME"
 
@@ -3644,9 +3705,6 @@ msgstr "Sistem ağ geçidini dinamik yap"
 
 msgid "Make system gateway static"
 msgstr "Sistem ağ geçidini sabit yap"
-
-msgid "Managed"
-msgstr "Yönetilen"
 
 msgid "Managed extensions"
 msgstr "Yönetilen uzantılar"
@@ -3757,6 +3815,9 @@ msgstr "IP üst sınırı"
 
 msgid "Max spare children"
 msgstr "Boşta alt süreç üst sınırı"
+
+msgid "Max threads"
+msgstr "İşlem parçacık sayısı üst sınırı"
 
 msgid "Max upload size"
 msgstr "Karşıya yükleme boyut üst sınırı"
@@ -3901,11 +3962,11 @@ msgstr "Kuralı yukarı kaydır"
 msgid "Move up"
 msgstr "Yukarı taşı"
 
+msgid "Mtd"
+msgstr "Yntm"
+
 msgid "Multiple values not allowed for"
 msgstr "Birden fazla değer kullanılamaz"
-
-msgid "NA"
-msgstr "GÇZ"
 
 msgid "NAT header type"
 msgstr "NAT başlık türü"
@@ -3955,6 +4016,9 @@ msgstr "Ağ Protokol Kullanımı"
 
 msgid "Network Time"
 msgstr "Ağ Zamanı"
+
+msgid "Network Topology"
+msgstr "Ağ Topolojisi"
 
 msgid ""
 "Network interfaces are listed here. You can configure an interface as dhcp "
@@ -4499,6 +4563,9 @@ msgstr "Son kaydı yazdır"
 msgid "Print Motd"
 msgstr "Günün mesajını yazdır"
 
+msgid "Prio"
+msgstr "Önc"
+
 msgid "Priorities"
 msgstr "Öncelikler"
 
@@ -4584,6 +4651,9 @@ msgstr "Vekil zaman aşımı"
 msgid "Qlimit"
 msgstr "Kuyruk Boyu"
 
+msgid "Quantum"
+msgstr "Kuantum"
+
 msgid "Query types"
 msgstr "Sorgu türleri"
 
@@ -4635,6 +4705,9 @@ msgstr "Sistem adını getir"
 
 msgid "Read system nameserver"
 msgstr "Sistem ad sunucusunu getir"
+
+msgid "Reason"
+msgstr "Sebep"
 
 msgid "Reasons"
 msgstr "Sebepler"
@@ -4987,6 +5060,9 @@ msgstr "SPAM Eleği"
 msgid "SPAMD"
 msgstr "SPAMD"
 
+msgid "SPort"
+msgstr "KPort"
+
 msgid "SQL_SERVERS"
 msgstr "SQL_SERVERS"
 
@@ -5217,30 +5293,6 @@ msgstr "Sunucu anahtar bitleri"
 msgid "Server Mode"
 msgstr "Sunucu kipi"
 
-msgid ""
-"Server-pool size regulation.\n"
-"\t\tRather than making you guess how many server processes you need, Apache "
-"dynamically adapts to the load it sees --- that is, it tries to maintain "
-"enough server processes to handle the current load, plus a few spare servers "
-"to handle transient load spikes (e.g., multiple simultaneous requests from a "
-"single Netscape browser).\n"
-"\n"
-"\t\tIt does this by periodically checking how many servers are waiting for a "
-"request.  If there are fewer than MinSpareServers, it creates a new spare.  "
-"If there are more than MaxSpareServers, some of the spares die off.  The "
-"default values in httpd.conf-dist are probably OK for most sites."
-msgstr ""
-"Sunucu havuzu büyüklüğünü ayarlar.\n"
-"Kaç adet sunucu sürecine ihtiyacınız olacağını tahmin etmenizi istemek "
-"yerine Apache gördüğü yüke göre dinamik olarak kendini değiştirir, yani "
-"mevcut yükü ve geçici yük artışlarını (örneğin, bir adet Netscape "
-"tarayıcısından gelen birden fazla istek gibi) karşılamak için yeterli sayıda "
-"sunucu süreci açık tutar.\n"
-"\n"
-"Aralıklarla kaç sunucunun istek beklediğini kontrol eder. Alt sınırdan daha "
-"az varsa yenilerini başlatır. Üst sınırdan daha fazla varsa bazılarını "
-"durdurur. Varsayılan değerler çoğu site için uygundur."
-
 msgid "Session"
 msgstr "Oturum"
 
@@ -5417,9 +5469,6 @@ msgstr "Kullanıcı parolasını ayarla"
 msgid "Set watermarks"
 msgstr "Devreye giren watermarklar"
 
-msgid "Set webalizer hostname"
-msgstr "Webalizer adını ayarla"
-
 msgid ""
 "Set which networks or hosts are considered 'trusted' by your mail server (i."
 "e. not spammers)"
@@ -5497,6 +5546,17 @@ msgstr ""
 "açılacak alt-süreç sayısını ayarlaryın.\n"
 "Öndeğer preforkchildren."
 
+msgid ""
+"Should be subnet (addressing via IP)\n"
+"unless Windows clients v2.0.9 and lower have to\n"
+"be supported (then net30, i.e. a /30 per client)\n"
+"Defaults to net30 (not recommended)."
+msgstr ""
+"Windows istemci v2.0.9 ve aşağısındaki sürümlerin desteklenmesi gerekmiyorsa "
+"subnet (IP adres kullanımı) olarak ayarlanmalıdır (gerekiyorsa net30 yani "
+"her istemci için /30 kullanılır)\n"
+"Öndeğer net30 (tavsiye edilmez)"
+
 msgid "Show"
 msgstr "Göster"
 
@@ -5540,6 +5600,9 @@ msgstr ""
 "değiştirirken dikkatli olmanız gerekir. Öntanımlı olarak web sunucu sadece "
 "bu web arayüzünü sunacak şekilde yapılandırılmıştır, yani öntanımlı değerler "
 "çoğu amaç için yeterli olmalıdır."
+
+msgid "Site"
+msgstr "Site"
 
 msgid "Site for real-time chatting and instant messaging."
 msgstr ""
@@ -5980,6 +6043,9 @@ msgstr "İspanyolca"
 msgid "Src Nodes"
 msgstr "Kaynak Noktalar"
 
+msgid "SrcIP"
+msgstr "KynkIP"
+
 msgid "Start"
 msgstr "Başlat"
 
@@ -6046,6 +6112,9 @@ msgstr ""
 "İstatistik toplama tamamen kayıt dosyalarına hangi mesajların nasıl "
 "kaydedildiğine bağımlı çalışır. Bu nedenle gerekmedikçe bu ayarları "
 "değiştirmeyin."
+
+msgid "Status"
+msgstr "Durum"
 
 msgid "Status Check Interval"
 msgstr "Durum Kontrol Aralığı"
@@ -6229,14 +6298,32 @@ msgid ""
 "alerts at a certain priority and up. Each alert also contains log and "
 "classification text. You can add keywords to match within such text. The IP "
 "in the matching alert is blocked. If the alert does not contain an IP "
-"address, no action is taken."
+"address, no action is taken.\n"
+"\n"
+"Intrusion alerts produced by the IDS are guesses, hence there may be false "
+"positives or wrong alarms. Since the IPS depends on alerts produced by the "
+"IDS, you may want to make sure some IP addresses are never blocked "
+"accidentally, such as the internal and external IP addresses of the system, "
+"or the IP address of the computer you use to access this web administration "
+"interface. You can enter individual IPs or network addresses. IP and network "
+"addresses can overlap. For example, you can blacklist 10.0.0.0/24, but "
+"whitelist 10.0.0.1."
 msgstr ""
 "STS pekçok uyarı üretir. Bazı uyarılar diğerlerinden daha önemli olabilir, "
 "bu nedenle çoğu uyarının öncelik numarası bulunur. SES'i belli öncelik ve "
 "yukarısındaki numaradaki uyarıları engelleyecek şekilde ayarlayabilirsiniz. "
 "Her uyarı ayrıca kayıt ve sınıflandırma metni içerir. Bu metinler üzerinden "
 "eşleştirilecek anahtar kelimeler girebilirsiniz. Eşleşen uyarıdaki IP adresi "
-"engellenecektir. Eğer uyarıda bir IP bulunamazsa herhangi bir işlem yapılmaz."
+"engellenecektir. Eğer uyarıda bir IP bulunamazsa herhangi bir işlem "
+"yapılmaz.\n"
+"\n"
+"STS tarafından üretilen uyarılar sadece tahmindir, yani yanlış alarmlar "
+"olabilir. SES STS tarafından üretilen uyarılar üzerinden çalıştığından, bazı "
+"IP adreslerinin kazara engellenmediğinden emin olun, örneğin sistemin iç ve "
+"dış IP adresleri, veya web yönetim arayüzüne bağlandığınız bilgisayarın IP "
+"adresi gibi. Burada IP veya ağ adresi girebilirsiniz. IP ve ağ adresleri "
+"örtüşebilir. Örneğin, 10.0.0.0/24 ağ adresini karalisteye, 10.0.0.1 adresini "
+"beyazlisteye atayabilirsiniz."
 
 msgid ""
 "The IDS uses rules categorized in different packages. Note that you cannot "
@@ -6273,11 +6360,25 @@ msgstr ""
 msgid ""
 "The Passive Intrusion Prevention System (IPS) depends on alerts generated by "
 "the Intrusion Detection System (IDS). Make sure the IDS is running before "
-"starting the IPS."
+"starting the IPS.\n"
+"\n"
+"This page displays the hosts managed by the IPS, i.e. blocked or unblocked "
+"IPs or networks. You can temporarily block hosts for a period of time. If "
+"expiration time is not provided, the default duration is used. You can enter "
+"individual IPs or network addresses. IP and network addresses can overlap. "
+"This page reloads periodically to update the managed list. If the IPS is not "
+"running, the page displays blank."
 msgstr ""
 "Pasif Saldırı Engelleme Sistemi (SES) Saldırı Tespit Sistemi (STS) "
 "tarafından üretilen uyarılara bağımlı çalışır. SES'yi başlatmadan önce "
-"STS'nin çalışıyor olduğundan emin olun."
+"STS'nin çalışıyor olduğundan emin olun.\n"
+"\n"
+"Bu sayfa STS tarafından yönetilen, yani engellenen veya engellemesi "
+"kaldırılan IP adresleri veya ağları listeler. Bilgisayarları geçici süreyle "
+"engelleyebilirsiniz. Eğer süre aşım değeri sağlanmazsa süre öndeğeri "
+"kullanılır. Tek IP adresleri veya ağ adresleri kullanabilirsiniz. IP ve ağ "
+"adresleri örtüşebilir. Bu sayfa yönetilenler listesini güncellemek için "
+"belli aralıklarla tekrar yüklenir. STS çalışmıyorsa liste boş görünecektir."
 
 msgid ""
 "The SSL proxy decrypts SSL/TLS encrypted traffic and feeds it into the UTM "
@@ -6288,14 +6389,7 @@ msgid ""
 "proxy process as a whole, within the last report interval in seconds. The "
 "numbers here may give you an idea on the current load of the proxy. For "
 "example, if the max number of file descriptors is too high, you might want "
-"to increase the open files limit of the daemon class in login.conf file.\n"
-"\n"
-"This page may report certain connections as idle, because they remained idle "
-"longer than the expired connection check interval of the SSL proxy. This "
-"does not mean that these connections have stalled; they may be just slow. "
-"Note that the SSL proxy does not allow for persistent HTTP connections, "
-"hence tries to close them as soon as possible. Therefore, it is desirable "
-"that the idle connections table be empty."
+"to increase the open files limit of the daemon class in login.conf file."
 msgstr ""
 "SSL vekil SSL/TLS ile şifrelenmiş trafiği çözer ve UTM servislerine "
 "gönderir. Inline IPS de bu çözülmiş trafiği saldırı tespit ve engelleme "
@@ -6305,30 +6399,26 @@ msgstr ""
 "cinsinden son raporlama aralığındaki durumunu temsil eder. Buradaki sayılar "
 "vekilin bu aralıktaki yükü hakkında bilgi verebilir. Örneğin, en fazla file "
 "descriptor istatistiği çok yüksekse, login.conf dosyasındaki daemon "
-"sınıfının açık dosya sınırını artırmak isteyebilirsiniz.\n"
-"\n"
-"Ayrıca, bu sayfa SSL vekilin zaman aşımına uğramış bağlantıları kontrol etme "
-"aralığından daha uzun süre hareketsiz kalmış bağlantıları durağan olarak "
-"gösterebilir. Bu rapor edilen bağlantıların durduğu anlamına gelmez; sadece "
-"yavaş olabilirler. SSL vekil kalıcı HTTP bağlantılara izin vermez, ve "
-"bunları hemen kapatmaya çalışır. Bu nedenle, durağan bağlantılar tablosunun "
-"boş olması tercih edilir."
+"sınıfının açık dosya sınırını artırmak isteyebilirsiniz."
 
 msgid "The SSL proxy is an event-driven multi-threaded program."
 msgstr "SSL vekil olaya dayalı çoklu parçacıklı bir programdır."
 
 msgid ""
-"The SSL proxy takes 5 different kinds of logs: (1) STATS for periodic "
-"statistics per thread, (2) CONN for connection details at establisment time, "
-"(3) IDLE for slow connections, (4) EXPIRED for timed-out connections which "
-"are closed by the SSL proxy, and (5) CRITICAL, ERROR, WARNING, or INFO "
-"messages."
+"The SSL proxy takes 2 different kinds of logs: (1) STATS for periodic "
+"statistics per thread and (2) CRITICAL, ERROR, WARNING, and INFO messages."
 msgstr ""
-"SSL vekil 5 farklı çeşit kayıt alır: (1) parçacık başına periyodik "
-"istatistikler için STATS, (2) bağlantı başlangıcındaki detaylar için CONN, "
-"(3) yavaş bağlantılar için IDLE, (4) zaman aşımına uğradığı için SSL vekil "
-"tarafından kapatılan bağlantılar için EXPIRED ve  (5) CRITICAL, ERROR, "
-"WARNING veya INFO mesajları."
+"SSL vekil 2 farklı çeşit kayıt alır: (1) parçacık başına periyodik "
+"istatistikler için STATS ve (2) CRITICAL, ERROR, WARNING ve INFO mesajları."
+
+msgid ""
+"The SSL proxy takes 3 different kinds of connection logs: (1) CONN for "
+"connection details at establisment time, (2) IDLE for slow connections, and "
+"(3) EXPIRED for timed-out connections which are closed by the SSL proxy."
+msgstr ""
+"SSL vekil 3 farklı çeşit bağlantı kaydı alır: (1) bağlantı başlangıcındaki "
+"detaylar için CONN, (2) durağan bağlantılar için IDLE ve (3) zaman aşımına "
+"uğradığı için SSL vekil tarafından kapatılan bağlantılar için EXPIRED."
 
 msgid ""
 "The address of your web server to which the static page e2guardian reporting "
@@ -6589,6 +6679,9 @@ msgstr ""
 "Bu kayıtlar tüm STS süreçlerinden gelen mesajları içerir. Uyarılar burada da "
 "tekrarlanır."
 
+msgid "These logs may be important for diagnosing HTTP proxy related problems."
+msgstr "Bu kayıtlar HTTP vekil ile ilgili sorunları teşhis ederken önemlidir."
+
 msgid "These logs may be important for diagnosing web filter related problems."
 msgstr "Bu kayıtlar web eleği ile ilgili sorunları teşhis ederken önemlidir."
 
@@ -6772,6 +6865,18 @@ msgstr ""
 "Bu ayar utmfw web arayüzünün kayıt seviyesini belirler. Bu seviye ve "
 "üzerindeki kayıtlar WUI ve Controller kayıt dosyalarına kaydedilir. Bu ayar "
 "diğer servisleri etkilemez."
+
+msgid ""
+"This is the maximum number of threads, i.e. concurrent connections. If more "
+"connections are made, connections will queue until a worker thread is free.\n"
+"On large sites you might want to increase this number, e.g. 5000 (max value "
+"20000)."
+msgstr ""
+"Bu en yüksek işlem parçacığı, yani eş zamanlı bağlantı sayısıdır. Bundan "
+"daha fazla bağlantı yapılırsa, bir parçacık boşa çıkana kadar bağlantılar "
+"kuyruğa alınır.\n"
+"Büyük yerlerde bu sayıyı artırmak isteyebilirsiniz, örneğin 5000 (üst sınır "
+"20000)."
 
 msgid ""
 "This is the name server used by the system. You can use the DNS server on "
@@ -6973,24 +7078,6 @@ msgstr ""
 "Bu sayfa sisteminizde bulunan tüm sıcaklık ve fan sensörlerinin grafiklerini "
 "gösterir. Donanımınıza bağlı olarak birden fazla sensör bulunabilir. Sanal "
 "makinalar hiç sensör sağlamayabilir."
-
-msgid ""
-"This page displays the hosts managed by the IPS, i.e. blocked or unblocked "
-"IPs or networks. You can temporarily block hosts for a period of time. If "
-"expiration time is not provided, the default duration is used. You can enter "
-"individual IPs or network addresses. IP and network addresses can overlap.\n"
-"\n"
-"This page reloads automatically to update the managed list. If the IPS is "
-"not running, the page displays blank."
-msgstr ""
-"Bu sayfa STS tarafından yönetilen, yani engellenen veya engellemesi "
-"kaldırılan IP adresleri veya ağları listeler. Bilgisayarları geçici süreyle "
-"engelleyebilirsiniz. Eğer süre aşım değeri sağlanmazsa süre öndeğeri "
-"kullanılır. Tek IP adresleri veya ağ adresleri kullanabilirsiniz. IP ve ağ "
-"adresleri örtüşebilir.\n"
-"\n"
-"Bu sayfa yönetilenler listesini güncellemek için otomatik olarak tekrar "
-"yüklenir. STS çalışmıyorsa liste boş görünecektir."
 
 msgid ""
 "This page displays the usage graphs of all the partitions on your disks."

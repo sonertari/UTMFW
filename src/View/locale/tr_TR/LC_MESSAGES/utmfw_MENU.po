@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-23 22:49+0300\n"
+"PO-Revision-Date: 2017-11-02 00:42+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -31,6 +31,9 @@ msgstr "Uyarılar"
 
 msgid "Archives"
 msgstr "Arşivler"
+
+msgid "Arp Table"
+msgstr "Arp Tablosu"
 
 msgid "Badwords"
 msgstr "Uygunsuz Kelimeler"
@@ -62,6 +65,12 @@ msgstr "Clamd"
 msgid "Config"
 msgstr "Ayarlar"
 
+msgid "Conn Statistics"
+msgstr "Bağlantı İstatistikleri"
+
+msgid "Conns"
+msgstr "Bağlantılar"
+
 msgid "DB"
 msgstr "VT"
 
@@ -85,6 +94,9 @@ msgstr "Günlük"
 
 msgid "Dashboard"
 msgstr "Gösterge Paneli"
+
+msgid "Dhcpd"
+msgstr "Dhcpd"
 
 msgid "Disks"
 msgstr "Diskler"
@@ -178,9 +190,6 @@ msgstr "Kayıtlar"
 
 msgid "MONITORING"
 msgstr "GÖZLEMLEME"
-
-msgid "Managed"
-msgstr "Yönetilen"
 
 msgid "Mbufs"
 msgstr "Mbuf'lar"

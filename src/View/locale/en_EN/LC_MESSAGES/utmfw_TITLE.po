@@ -1,20 +1,8 @@
-# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
-# This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2017.
-#
-msgid ""
+msgid "#Blocked"
 msgstr ""
-"Project-Id-Version: UTMFW 6.2\n"
-"Report-Msgid-Bugs-To: sonertari@gmail.com\n"
-"POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-23 22:59+0300\n"
-"Last-Translator: Soner Tari <sonertari@gmail.com>\n"
-"Language-Team: LANGUAGE <sonertari@gmail.com>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 2.91.7\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "#Passed"
+msgstr ""
 
 msgid "1 minute average"
 msgstr ""
@@ -35,6 +23,9 @@ msgid "<MODEL> has WARNINGs"
 msgstr ""
 
 msgid "<RULE_TYPE> rule"
+msgstr ""
+
+msgid "Act"
 msgstr ""
 
 msgid "Action"
@@ -97,6 +88,9 @@ msgstr ""
 msgid "CRITICAL"
 msgstr ""
 
+msgid "Cache"
+msgstr ""
+
 msgid "Category"
 msgstr ""
 
@@ -104,6 +98,12 @@ msgid "Click to search in the logs"
 msgstr ""
 
 msgid "Click to search in the stats"
+msgstr ""
+
+msgid "Client"
+msgstr ""
+
+msgid "Code"
 msgstr ""
 
 msgid "Comment"
@@ -131,6 +131,9 @@ msgid "DHCP Server"
 msgstr ""
 
 msgid "DNS Server"
+msgstr ""
+
+msgid "DPort"
 msgstr ""
 
 msgid "Data Transfer"
@@ -163,6 +166,12 @@ msgstr ""
 msgid "Destination Port"
 msgstr ""
 
+msgid "Dir"
+msgstr ""
+
+msgid "Direct"
+msgstr ""
+
 msgid "Direction"
 msgstr ""
 
@@ -184,7 +193,13 @@ msgstr ""
 msgid "Divert Reply"
 msgstr ""
 
+msgid "Domain"
+msgstr ""
+
 msgid "Download ruleset"
+msgstr ""
+
+msgid "DstIP"
 msgstr ""
 
 msgid "ERROR"
@@ -202,10 +217,16 @@ msgstr ""
 msgid "Enabled Services"
 msgstr ""
 
+msgid "End"
+msgstr ""
+
 msgid "Enforce TOS"
 msgstr ""
 
 msgid "Error"
+msgstr ""
+
+msgid "Expire"
 msgstr ""
 
 msgid "Export To pflow"
@@ -229,10 +250,16 @@ msgstr ""
 msgid "Fingerprints File"
 msgstr ""
 
+msgid "First"
+msgstr ""
+
 msgid "Flag"
 msgstr ""
 
 msgid "Flags"
+msgstr ""
+
+msgid "Flows"
 msgstr ""
 
 msgid "Force HTTPs"
@@ -248,6 +275,9 @@ msgid "From"
 msgstr ""
 
 msgid "From Redirect Host"
+msgstr ""
+
+msgid "Function"
 msgstr ""
 
 msgid "Gateway"
@@ -266,6 +296,9 @@ msgid "Help Boxes"
 msgstr ""
 
 msgid "Holidays"
+msgstr ""
+
+msgid "Host"
 msgstr ""
 
 msgid "Host Id"
@@ -298,13 +331,22 @@ msgstr ""
 msgid "INFORMATION"
 msgstr ""
 
+msgid "IP"
+msgstr ""
+
 msgid "IP Forwarding"
+msgstr ""
+
+msgid "IPPort"
 msgstr ""
 
 msgid "Id"
 msgstr ""
 
 msgid "Identifier"
+msgstr ""
+
+msgid "If"
 msgstr ""
 
 msgid "Inline IPS"
@@ -343,9 +385,6 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-msgid "Level"
-msgstr ""
-
 msgid "Limit"
 msgstr ""
 
@@ -356,6 +395,12 @@ msgid "Line number"
 msgstr ""
 
 msgid "Lines per page"
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+msgid "Listed"
 msgstr ""
 
 msgid "Load ruleset"
@@ -377,6 +422,9 @@ msgid "Logs"
 msgstr ""
 
 msgid "Loopback Interface"
+msgstr ""
+
+msgid "MAC"
 msgstr ""
 
 msgid "Machine"
@@ -452,6 +500,9 @@ msgid "Move down"
 msgstr ""
 
 msgid "Move up"
+msgstr ""
+
+msgid "Mtd"
 msgstr ""
 
 msgid "Name"
@@ -550,6 +601,9 @@ msgstr ""
 msgid "Pmacct"
 msgstr ""
 
+msgid "Prio"
+msgstr ""
+
 msgid "Privileged IPs"
 msgstr ""
 
@@ -574,10 +628,16 @@ msgstr ""
 msgid "Qlimit"
 msgstr ""
 
+msgid "Quantum"
+msgstr ""
+
 msgid "Queue"
 msgstr ""
 
 msgid "Quick"
+msgstr ""
+
+msgid "Reason"
 msgstr ""
 
 msgid "Reassemble"
@@ -655,10 +715,16 @@ msgstr ""
 msgid "SPAM Filter"
 msgstr ""
 
+msgid "SPort"
+msgstr ""
+
 msgid "SSL Proxy"
 msgstr ""
 
 msgid "Save ruleset"
+msgstr ""
+
+msgid "Scan"
 msgstr ""
 
 msgid "Scrub Options"
@@ -680,6 +746,9 @@ msgid "Serial Number"
 msgstr ""
 
 msgid "Session Timeout"
+msgstr ""
+
+msgid "Site"
 msgstr ""
 
 msgid "Size"
@@ -712,6 +781,12 @@ msgstr ""
 msgid "Src Nodes"
 msgstr ""
 
+msgid "SrcIP"
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
 msgid "State"
 msgstr ""
 
@@ -737,6 +812,9 @@ msgid "Static Port"
 msgstr ""
 
 msgid "Statistics and uncompressed log files"
+msgstr ""
+
+msgid "Status"
 msgstr ""
 
 msgid "Status Check Interval"

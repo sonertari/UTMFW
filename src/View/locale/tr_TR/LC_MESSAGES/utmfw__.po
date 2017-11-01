@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-23 22:53+0300\n"
+"PO-Revision-Date: 2017-11-02 01:05+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -362,6 +362,9 @@ msgstr "Tüm istatistikleri getir"
 msgid "Get arp table"
 msgstr "Arp tablosunu getir"
 
+msgid "Get arp table size"
+msgstr "Arp tablosu boyutunu getir"
+
 msgid "Get auth ip list"
 msgstr "Auth IP listesini getir"
 
@@ -392,6 +395,9 @@ msgstr "Tarih-saati getir"
 msgid "Get dhcp leases"
 msgstr "Kiralanan DHCP adreslerini getir"
 
+msgid "Get dhcp leases count"
+msgstr "Kiralanan DHCP adres sayısını getir"
+
 msgid "Get disabled rules"
 msgstr "Kapalı kuralları getir"
 
@@ -409,9 +415,6 @@ msgstr "Grup IP listesini getir"
 
 msgid "Get host graphs"
 msgstr "Bilgisayar grafiklerini getir"
-
-msgid "Get idle conns"
-msgstr "Durağan bağlantıları getir"
 
 msgid "Get if config"
 msgstr "Arayüz yapılandırmasını getir"
@@ -664,9 +667,6 @@ msgstr "Kuralı yukarı kaydır"
 
 msgid "Multiple values not allowed for"
 msgstr "Birden fazla değer kullanılamaz"
-
-msgid "NA"
-msgstr "GÇZ"
 
 msgid "NI"
 msgstr "NI"
@@ -954,9 +954,6 @@ msgstr "SSH kullanımını ayarla"
 
 msgid "Set user password"
 msgstr "Kullanıcı parolasını ayarla"
-
-msgid "Set webalizer hostname"
-msgstr "Webalizer adını ayarla"
 
 msgid "Source"
 msgstr "Kaynak"
