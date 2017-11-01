@@ -188,14 +188,14 @@ PrintModalPieChart();
 
 foreach ($ViewStatsConf as $Name => $Conf) {
 	if (isset($Conf['Color'])) {
-		PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix']);
+		PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix'], 'daily');
 	}
 }
 
 foreach ($ViewStatsConf as $Name => $CurConf) {
 	if (isset($CurConf['Counters'])) {
 		foreach ($CurConf['Counters'] as $Name => $Conf) {
-			PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix']);
+			PrintGraphNVPSet($DateStats, $DateArray, $Name, $Conf, $GraphType, $GraphStyle, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix'], 'daily');
 		}
 	}
 }

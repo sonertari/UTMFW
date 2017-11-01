@@ -236,7 +236,7 @@ $FormIdCount = 0;
  */
 function PrintNVPsVGraph($data, $color= 'red', $title= '')
 {
-	global $FormIdCount;
+	global $FormIdCount, $View;
 
 	if (!isset($data)) {
 		$data= array();
@@ -316,13 +316,13 @@ function PrintNVPsVGraph($data, $color= 'red', $title= '')
  * @param array $data Data filled in elsewhere.
  * @param string $color Color of the bars.
  * @param string $title Graph title, if provided.
- * @param boolean $minutesGraph TRUE if the caller is hourly stats page, used to jump to the correct page.
+ * @param boolean $page TRUE if the caller is hourly stats page, used to jump to the correct page.
  * @param string $needle Search regexp to filter the logs, used by hourly stats.
  * @param string $logFile Current log file, used by live stats pages to set the log file to the active one.
  */
-function PrintVGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $needle= '', $logFile= '')
+function PrintVGraph($data, $color= 'red', $title= '', $page= 'general', $style= 'Daily', $needle= '', $logFile= '')
 {
-	global $FormIdCount;
+	global $FormIdCount, $View;
 
 	if (!isset($data)) {
 		$data= array();
@@ -340,6 +340,14 @@ function PrintVGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $ne
 		<tr>
 			<td>
 				<?php
+				if ($page == 'hourly' || ($page == 'general' && $style= 'Hourly')) {
+					$action= "$View->LogsPage?submenu=archives";
+					$title= _TITLE('Click to search in the logs');
+				} else {
+					$action= "$View->StatsPage?submenu=hourly";
+					$title= _TITLE('Click to search in the stats');
+				}
+
 				for ($i= 0; $i < count($data); $i++) {
 					$i= sprintf('%02d', $i);
 					$width= 0;
@@ -352,9 +360,12 @@ function PrintVGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $ne
 
 					$dateArray= $data[$i]['date'];
 
+					if ($page == 'general' && $style= 'Hourly') {
+						$dateArray['Month']= '';
+						$dateArray['Day']= '';
+					}
+
 					$formId= 'form'.$FormIdCount++;
-					$action= !$minutesGraph ? "$View->StatsPage?submenu=hourly" : "$View->LogsPage?submenu=archives";
-					$title= !$minutesGraph ? _TITLE('Click to search in the stats') : _TITLE('Click to search in the logs');
 					?>
 					<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $action ?>" method="post">
 						<input type="hidden" name="SearchRegExp" value="" />
@@ -409,11 +420,11 @@ function PrintVGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $ne
  * @param array $data Data filled in elsewhere.
  * @param string $color Color of the bars.
  * @param string $title Graph title, if provided.
- * @param boolean $minutesGraph TRUE if the caller is hourly stats page, used to jump to the correct page.
+ * @param boolean $page TRUE if the caller is hourly stats page, used to jump to the correct page.
  * @param string $needle Search regexp to filter the logs, used by hourly stats.
  * @param string $logFile Current log file, used by live stats pages to set the log file to the active one.
  */
-function PrintHGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $needle= '', $logFile= '')
+function PrintHGraph($data, $color= 'red', $title= '', $page= 'general', $style= 'Daily', $needle= '', $logFile= '')
 {
 	global $FormIdCount, $View;
 
@@ -432,14 +443,24 @@ function PrintHGraph($data, $color= 'red', $title= '', $minutesGraph= FALSE, $ne
 	<table id="statsgraph">
 		<tr class="hgraph">
 			<?php
+			if ($page == 'hourly' || ($page == 'general' && $style= 'Hourly')) {
+				$action= "$View->LogsPage?submenu=archives";
+				$title= _TITLE('Click to search in the logs');
+			} else {
+				$action= "$View->StatsPage?submenu=hourly";
+				$title= _TITLE('Click to search in the stats');
+			}
+
 			for ($i= 0; $i < count($data); $i++) {
 				$i= sprintf('%02d', $i);
-
 				$dateArray= $data[$i]['date'];
 
+				if ($page == 'general' && $style= 'Hourly') {
+					$dateArray['Month']= '';
+					$dateArray['Day']= '';
+				}
+
 				$formId= 'form'.$FormIdCount++;
-				$action= !$minutesGraph ? "$View->StatsPage?submenu=hourly" : "$View->LogsPage?submenu=archives";
-				$title= !$minutesGraph ? _TITLE('Click to search in the stats') : _TITLE('Click to search in the logs');
 				?>
 				<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $action ?>" method="post">
 					<input type="hidden" name="SearchRegExp" value="" />
@@ -612,7 +633,7 @@ function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE, $needle='', $prefix
  * @param string $prefix Regexp to insert before the search string.
  * @param string $postfix Regexp to insert after the search string.
  */
-function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style, $prefix, $postfix)
+function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style, $prefix, $postfix, $page)
 {
 	global $NvpColCount;
 
@@ -634,7 +655,7 @@ function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style, $prefix,
 		<tr>
 			<td>
 				<?php
-				$printFunc($data, $conf['Color'], _($conf['Title']));
+				$printFunc($data, $conf['Color'], _($conf['Title']), $page, $style, $conf['Needle']);
 				if (count($conf['NVPs']) > 0) {
 					?>
 					<table>
@@ -701,7 +722,7 @@ function PrintMinutesGraphNVPSet($stats, $parent, $conf, $type, $prefix, $postfi
 		<tr>
 			<td>
 				<?php
-				$printGraphFunc($data, $conf['Color'], _($conf['Title']), TRUE, $conf['Needle'], $logFile);
+				$printGraphFunc($data, $conf['Color'], _($conf['Title']), 'hourly', 'Hourly', $conf['Needle'], $logFile);
 				if (count($conf['NVPs']) > 0) {
 					?>
 					<table>
