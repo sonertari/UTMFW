@@ -1,8 +1,11 @@
-From sonertari@gmail.com Fri Oct 20 06:20:00 EET 2017
+From sonertari@gmail.com Wed Nov  1 06:20:10 EET 2017
 Return-Path: root
-Date: Oct 20 06:20:00 EET 2017
+Date: Nov  1 06:20:10 EET 2017
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 6.2!
+Subject: Welcome to UTMFW 6.2.1!
 
-This release updates OpenBSD to 6.2.
+Highlights of this release are:
+- Updated SSLproxy, E2Guardian, Squid, and SnortIPS.
+- ClamAV statistics pages.
+- Numerous fixes and improvements to the WUI.
