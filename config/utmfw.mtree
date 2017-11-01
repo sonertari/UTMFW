@@ -124,6 +124,7 @@ bannedregexpurllist3	type=file mode=0644 uname=root gname=wheel
 bannedsitelist	type=file mode=0644 uname=root gname=wheel
 bannedsitelist2	type=file mode=0644 uname=root gname=wheel
 bannedsitelist3	type=file mode=0644 uname=root gname=wheel
+bannedsitelistwithbypass	type=file mode=0644 uname=root gname=wheel
 bannedsitelistwithbypass2	type=file mode=0644 uname=root gname=wheel
 bannedsitelistwithbypass3	type=file mode=0644 uname=root gname=wheel
 bannedurllist	type=file mode=0644 uname=root gname=wheel
@@ -153,6 +154,12 @@ greysitelist3	type=file mode=0644 uname=root gname=wheel
 greyurllist	type=file mode=0644 uname=root gname=wheel
 greyurllist2	type=file mode=0644 uname=root gname=wheel
 greyurllist3	type=file mode=0644 uname=root gname=wheel
+headerregexplist2	type=file mode=0644 uname=root gname=wheel
+headerregexplist3	type=file mode=0644 uname=root gname=wheel
+sslsiteregexplist2	type=file mode=0644 uname=root gname=wheel
+sslsiteregexplist3	type=file mode=0644 uname=root gname=wheel
+urlregexplist2	type=file mode=0644 uname=root gname=wheel
+urlregexplist3	type=file mode=0644 uname=root gname=wheel
 weightedphraselist	type=file mode=0644 uname=root gname=wheel
 ..	#etc/e2guardian/lists
 e2guardian.conf	type=file mode=0644 uname=root gname=wheel

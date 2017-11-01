@@ -12,6 +12,7 @@ etc/e2guardian/lists/bannedregexpurllist3,644,root,wheel
 etc/e2guardian/lists/bannedsitelist,644,root,wheel
 etc/e2guardian/lists/bannedsitelist2,644,root,wheel
 etc/e2guardian/lists/bannedsitelist3,644,root,wheel
+etc/e2guardian/lists/bannedsitelistwithbypass,644,root,wheel
 etc/e2guardian/lists/bannedsitelistwithbypass2,644,root,wheel
 etc/e2guardian/lists/bannedsitelistwithbypass3,644,root,wheel
 etc/e2guardian/lists/bannedurllist,644,root,wheel
@@ -41,6 +42,12 @@ etc/e2guardian/lists/greysitelist3,644,root,wheel
 etc/e2guardian/lists/greyurllist,644,root,wheel
 etc/e2guardian/lists/greyurllist2,644,root,wheel
 etc/e2guardian/lists/greyurllist3,644,root,wheel
+etc/e2guardian/lists/headerregexplist2,644,root,wheel
+etc/e2guardian/lists/headerregexplist3,644,root,wheel
+etc/e2guardian/lists/sslsiteregexplist2,644,root,wheel
+etc/e2guardian/lists/sslsiteregexplist3,644,root,wheel
+etc/e2guardian/lists/urlregexplist2,644,root,wheel
+etc/e2guardian/lists/urlregexplist3,644,root,wheel
 etc/e2guardian/lists/weightedphraselist,644,root,wheel
 etc/e2guardian/e2guardian.conf,644,root,wheel
 etc/e2guardian/e2guardianf1.conf,644,root,wheel
