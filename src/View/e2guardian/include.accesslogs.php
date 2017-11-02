@@ -54,42 +54,6 @@ class E2guardianlogs extends View
 		$this->LogsHelpMsg= _HELPWINDOW('Among web filter log messages are page denials, virus scan results, denial bypasses or exceptions. However, some details can be found in HTTP proxy logs only, such as the sizes of file downloads if the download manager is engaged.');
 	}
 	
-	/**
-	 * Builds a DG specific string from $date.
-	 *
-	 * The datetimes in log lines are different for each module.
-	 * Does the opposite of FormatDateArray()
-	 *
-	 * @param array $date Datetime struct
-	 * @return string Date
-	 */
-	function FormatDate($date)
-	{
-		return date('Y').'.'.($date['Month'] + 0).'.'.($date['Day'] + 0);
-	}
-
-	/**
-	 * Builds a DG specific $date from string.
-	 */
-	function FormatDateArray($datestr, &$date)
-	{
-		global $MonthNumbers;
-
-		if (preg_match('/^(\d+)\.(\d+)\.(\d+)$/', $datestr, $match)) {
-			$date['Month']= $match[2] + 0;
-			$date['Day']= $match[3] + 0;
-			return TRUE;
-		}
-		else if (preg_match('/(\w+)\s+(\d+)/', $datestr, $match)) {
-			if (array_key_exists($match[1], $MonthNumbers)) {
-				$date['Month']= $MonthNumbers[$match[1]] + 0;
-				$date['Day']= $match[2] + 0;
-				return TRUE;
-			}
-		}
-		return FALSE;
-	}
-	
 	function FormatLogCols(&$cols)
 	{
 		$link= $cols['Link'];

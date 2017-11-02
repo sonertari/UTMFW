@@ -548,6 +548,8 @@ class View
 	 * Generic date array to string formatter.
 	 *
 	 * Assumes standard syslog date format for the output string.
+	 * The datetimes in log lines may be different for each module.
+	 * Does the opposite of FormatDateArray().
 	 *
 	 * @param array $date Datetime struct.
 	 * @return string Date string.

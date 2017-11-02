@@ -30,6 +30,7 @@ tmp			type=dir mode=0755 uid=506 gid=506 flags=none
 log			type=dir mode=0755 uname=root gname=wheel
 doas			type=file mode=0600 uname=root gname=wheel
 e2guardian		type=dir mode=0755 uid=589 gid=589 flags=none
+access.log		type=file mode=0640 uname=root gname=wheel
 e2guardian.log	type=file mode=0640 uname=root gname=wheel
 ..	#var/log/e2guardian
 imspector		type=dir mode=0755 uid=702 gid=702 flags=none

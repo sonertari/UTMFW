@@ -143,6 +143,7 @@ usr/local/share/e2guardian/languages/ukenglish/template.html,644,root,wheel
 usr/local/share/e2guardian/languages/ukenglish/template_nobypass.html,644,root,wheel
 var/cron/tabs/root,600,root,crontab
 var/log/doas,600,root,wheel
+var/log/e2guardian/access.log,640,root,wheel
 var/log/e2guardian/e2guardian.log,640,root,wheel
 var/log/snort/snort.log,640,root,wheel
 var/log/snort/alert.log,640,root,wheel

@@ -26,7 +26,7 @@ AUTOCONF_VERSION =	2.69
 AUTOMAKE_VERSION =	1.15
 
 CONFIGURE_ENV =		CPPFLAGS="-I${LOCALBASE}/include" \
-			LDFLAGS="-L${LOCALBASE}/lib"
+			LDFLAGS="-L${LOCALBASE}/lib -pthread"
 CONFIGURE_ARGS =	--localstatedir=/var \
 			--with-proxyuser=_e2guardian \
 			--with-proxygroup=_e2guardian \

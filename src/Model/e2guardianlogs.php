@@ -34,7 +34,6 @@ class E2guardianlogs extends E2guardian
 	{
 		global $Re_Ip;
 
-		$re_datetime= '(\d+\.\d+\.\d+) (\d+:\d+:\d+)';
 		$re_pip= "($Re_Ip|-)";
 		$re_srcip= "($Re_Ip)";
 		$re_link= '(http:\/\/[^ \/]*|https:\/\/[^ \/]*)(\S*)';
@@ -48,46 +47,41 @@ class E2guardianlogs extends E2guardian
 		$re_num= '(-{0,1}\d+|)';
 		$re_restorempty= '(.*|)';
 		
-		// 2007.12.29 20:46:18 - 192.168.1.33 http://URL.com *DENIED* Banned site: URL.com GET 0 0 Cleaning Domains 1 403 -   -
-		// 2007.12.29 20:10:15 - 192.168.1.34 http://URL.com  GET 1632 0  1 404 text/html   -
-		// 2007.12.29 20:09:57 - 192.168.1.34 http://URL.com *SCANNED*  GET 5137 -20  1 200 text/html   -
-		$re= "/^$re_datetime\s+$re_pip\s+$re_srcip\s+$re_link\s+$re_result\s+$re_mtd\s+$re_size\s+$re_ttl\s+$re_restorempty\s*$re_num\s+$re_num\s+$re_rest$/";
-		if (preg_match($re, $logline, $match)) {
-			$cols['Date']= $match[1];
-			$cols['Time']= $match[2];
-			$cols['IPsrc']= $match[3];
-			$cols['IP']= $match[4];
-			$cols['Link']= $match[5].$match[6];
-			$cols['Scan']= $match[7];
-			$cols['Mtd']= $match[8];
-			$cols['Size']= $match[9];
-			$cols['TTL']= $match[10];
-			$log= $match[11].' '.$match[12].' '.$match[13].' '.$match[14];
-			/// @todo What are the other category names?
-			if (preg_match('/(\S+)\s+(Domains|URLs|Sites|Phrases)/', $log, $cats)) {
-				$cols['Cat']= $cats[1];
-			}
-			$cols['Log']= $log;
-			return TRUE;
-		}
-		else {
-			$cols['IP']= _('Unknown');
-			$cols['Link']= _('Unknown');
+		if ($this->ParseSyslogLine($logline, $cols)) {
+			$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
 
-			$re= "/^$re_datetime$re_result\s+$re_mtd\s+$re_nonempty\s+$re_nonempty\s+$re_nonempty\s+$re_link\s+$re_rest$/";
-			if (preg_match($re, $logline, $match)) {
-				$cols['Date']= $match[1];
-				$cols['Time']= $match[2];
-				$cols['Mtd']= $match[4];
-				$cols['Scan']= $match[6].' '.$match[3].' '.$match[5].' '.$match[7];
-				$cols['Link']= $match[8].$match[9];
-				$cols['Log']= $match[10];
-				return TRUE;
+			// - 192.168.1.33 http://URL.com *DENIED* Banned site: URL.com GET 0 0 Cleaning Domains 1 403 -   -
+			// - 192.168.1.34 http://URL.com  GET 1632 0  1 404 text/html   -
+			// - 192.168.1.34 http://URL.com *SCANNED*  GET 5137 -20  1 200 text/html   -
+			$re= "/^$re_pip\s+$re_srcip\s+$re_link\s+$re_result\s+$re_mtd\s+$re_size\s+$re_ttl\s+$re_restorempty\s*$re_num\s+$re_num\s+$re_rest$/";
+			if (preg_match($re, $cols['Log'], $match)) {
+				$cols['IPsrc']= $match[1];
+				$cols['IP']= $match[2];
+				$cols['Link']= $match[3].$match[4];
+				$cols['Scan']= $match[5];
+				$cols['Mtd']= $match[6];
+				$cols['Size']= $match[7];
+				$cols['TTL']= $match[8];
+				$log= $match[9].' '.$match[10].' '.$match[11].' '.$match[12];
+				/// @todo What are the other category names?
+				if (preg_match('/(.+)\s+(Domains|URLs|Sites|Phrases)/', $log, $cats)) {
+					$cols['Cat']= $cats[1];
+				}
+				$cols['Log']= $log;
 			}
-			else if ($this->ParseSyslogLine($logline, $cols)) {
-				$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
-				return TRUE;
+			else {
+				$cols['IP']= _('Unknown');
+				$cols['Link']= _('Unknown');
+
+				$re= "/^$re_result\s+$re_mtd\s+$re_nonempty\s+$re_nonempty\s+$re_nonempty\s+$re_link\s+$re_rest$/";
+				if (preg_match($re, $cols['Log'], $match)) {
+					$cols['Mtd']= $match[2];
+					$cols['Scan']= $match[4].' '.$match[1].' '.$match[3].' '.$match[5];
+					$cols['Link']= $match[6].$match[7];
+					$cols['Log']= $match[8];
+				}
 			}
+			return TRUE;
 		}
 		return FALSE;
 	}
@@ -98,66 +92,6 @@ class E2guardianlogs extends E2guardian
 			$cols['Proto']= $match[1];
 			$cols['Link']= $match[2];
 		}
-
-		if (preg_match('/(\d+)\.(\d+)\.(\d+)/', $cols['Date'], $match)) {
-			$cols['Date']= $match[1].'.'.($match[2] + 0).'.'.($match[3] + 0);
-		}
-
-		$time= explode(':', $cols['Time'], 3);
-		$cols['Time']= sprintf('%02d', $time[0]).':'.sprintf('%02d', $time[1]).':'.sprintf('%02d', $time[2]);
-	}
-	
-	function GetDateRegexp($date)
-	{
-		// Match all years
-		$re= '.*\.';
-		if ($date['Month'] == '') {
-			$re.= '.*';
-		}
-		else {
-			$re.= ($date['Month'] + 0).'\.';
-			if ($date['Day'] == '') {
-				$re.= '.*';
-			}
-			else {
-				$re.= ($date['Day'] + 0);
-			}
-		}
-		return $re;
-	}
-
-	function formatDateHourRegexp($month, $day, $hour, $minute)
-	{
-		global $Re_MonthNumbersNoLeadingZeros, $Re_DaysNoLeadingZeros;
-
-		// 2017.9.7 1:06:16
-		$reYear= '20[[:digit:]][[:digit:]]';
-
-		if ($month != '') {
-			$reMonth= $month + 0;
-		} else {
-			$reMonth= '(' . $Re_MonthNumbersNoLeadingZeros . ')';
-		}
-
-		if ($day != '') {
-			$reDay= $day + 0;
-		} else {
-			$reDay= '(' . $Re_DaysNoLeadingZeros . ')';
-		}
-
-		if ($hour != '') {
-			$reHour= $hour + 0;
-		} else {
-			$reHour= '([[:digit:]]|[[:digit:]][[:digit:]])';
-		}
-
-		if ($minute != '') {
-			$reMinute= $minute;
-		} else {
-			$reMinute= '([[:digit:]][[:digit:]])';
-		}
-
-		return "^$reYear.$reMonth.$reDay $reHour:$reMinute:";
 	}
 }
 ?>
