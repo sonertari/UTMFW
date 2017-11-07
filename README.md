@@ -8,7 +8,7 @@ The installation iso file for the amd64 arch is available for download at [utmfw
 
 UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, and many fixes and improvements to the system and the WUI. Also note that UTMFW 6.2 comes with OpenBSD 6.2-stable including all updates until October 23rd, 2017.
 
-UTMFW supports the deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, HTTP Proxy, POP3 Proxy, SMTP Proxy, Virus Scanner, Spam Filter, and Inline IPS. These UTM software are modified to support the mode of operation required by the SSLproxy.
+UTMFW supports the deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, HTTP Proxy, POP3 Proxy, SMTP Proxy, Virus Scanner, Spam Filter, and Inline IPS. These UTM software have been modified to support the mode of operation required by the SSLproxy.
 
 ## Features
 
@@ -47,7 +47,7 @@ The web user interface of UTMFW helps you manage your firewall:
 - Man pages of OpenBSD and installed software can be accessed and searched on the web interface.
 - There are two users who can log in to the web interface. Unprivileged user does not have access rights to configuration pages, thus cannot interfere with system settings, and cannot even change user password (i.e. you can safely give the unprivileged user's password to your boss).
 - The web interface supports languages other than English: Turkish, Chinese, Dutch, Russian, French, Spanish.
-- The web interface configuration pages are designed so that changes you may have made to the configuration files on the command line (such as comments you might have added) remain intact after you configure a module using the web interface.
+- The web interface configuration pages are designed such that changes you may have made to the configuration files on the command line (such as comments you might have added) remain intact after you configure a module using the web interface.
 
 ![Dashboard](https://github.com/sonertari/UTMFW/blob/master/screenshots/Dashboard.png)
 
@@ -92,7 +92,7 @@ The createiso script:
 
 - Clones the git repo of the project to a tmp folder.
 - Generates gettext translations and doxygen documentation.
-- Prepares the site install set.
+- Prepares the webif and config packages and the site install set.
 - And finally creates the iso file.
 
 However, the source tree has links to OpenBSD install sets and packages, which should be broken, hence need to be fixed when you first obtain the sources. Make sure you see those broken links now. So, before you can run createiso, you need to do a couple of things:
@@ -101,11 +101,11 @@ However, the source tree has links to OpenBSD install sets and packages, which s
 	+ Obtain the sources of OpenBSD.
 	+ Copy the files under `openbsd/utmfw` to the OpenBSD sources to replace the original files. You are advised to compare the original files with the UTMFW versions before replacing.
 	+ Build an OpenBSD release, as described in [release(8)](https://man.openbsd.org/release) or [faq5](https://www.openbsd.org/faq/faq5.html).
-	+ Copy the required install sets to the appropriate locations to fix the broken links in the project.
+	+ Copy the required install sets to the appropriate locations to fix the broken links in the sources.
 - Packages:
 	+ Download the required packages available on the OpenBSD mirrors.
 	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, e2guardian, squid, p3scan, smtp-gated, snort, imspector, snortips, and libevent 2.1.8 (see `ports` and `ports/disfiles`).
-	+ Copy them to the appropriate locations to fix the broken links in the project.
+	+ Copy them to the appropriate locations to fix the broken links in the sources.
 
 Note that you can strip down xbase and xfont install sets to reduce the size of the iso file. Copy or link them to the appropriate locations under `openbsd/utmfw`.
 
