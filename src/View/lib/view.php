@@ -89,8 +89,6 @@ class View
 			// Arg 0 is $output, skip it
 			$argv= array_slice($argv, 1);
 
-			$command= $argv[0];
-
 			if ($this->EscapeArgs($argv, $cmdline)) {
 				$locale= $_SESSION['Locale'];
 				$cmdline= "/usr/bin/doas $ctlr $locale $this->Model $cmdline";

@@ -28,7 +28,7 @@
  * View of MVC: Generally, the View displays Model data and allows modification of the data.
  * 
  * The View does not know how to parse or generate pf rules. It only maintains a list of rules
- * in an internal data structure, the format of which is exactly the same with the one in
+ * in an internal data structure, the format of which is exactly the same as the one in
  * the Model.
  * 
  * In PFRE, the View:

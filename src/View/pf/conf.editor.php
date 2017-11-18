@@ -21,57 +21,57 @@
 require_once ('pf.php');
 
 $ruleCategoryNames = array(
-    'filter' => _CONTROL('Filter'),
-    'antispoof' => _CONTROL('Antispoof'),
-    'anchor' => _CONTROL('Anchor'),
-    'macro' => _CONTROL('Macro'),
-    'table' => _CONTROL('Table'),
-    'afto' => _CONTROL('Af Translate'),
-    'natto' => _CONTROL('Nat'),
-    'binatto' => _CONTROL('Binat'),
-    'divertto' => _CONTROL('Divert'),
-    'divertpacket' => _CONTROL('Divert Packet'),
-    'rdrto' => _CONTROL('Redirect'),
-    'route' => _CONTROL('Route'),
-    'queue' => _CONTROL('Queue'),
-    'scrub' => _CONTROL('Scrub'),
-    'option' => _CONTROL('Option'),
-    'timeout' => _CONTROL('Timeout'),
-    'limit' => _CONTROL('Limit'),
-    'state' => _CONTROL('State Defaults'),
-    'loadanchor' => _CONTROL('Load Anchor'),
-    'include' => _CONTROL('Include'),
-    'comment' => _CONTROL('Comment'),
-    'blank' => _CONTROL('Blank Line'),
+	'filter' => _CONTROL('Filter'),
+	'antispoof' => _CONTROL('Antispoof'),
+	'anchor' => _CONTROL('Anchor'),
+	'macro' => _CONTROL('Macro'),
+	'table' => _CONTROL('Table'),
+	'afto' => _CONTROL('Af Translate'),
+	'natto' => _CONTROL('Nat'),
+	'binatto' => _CONTROL('Binat'),
+	'divertto' => _CONTROL('Divert'),
+	'divertpacket' => _CONTROL('Divert Packet'),
+	'rdrto' => _CONTROL('Redirect'),
+	'route' => _CONTROL('Route'),
+	'queue' => _CONTROL('Queue'),
+	'scrub' => _CONTROL('Scrub'),
+	'option' => _CONTROL('Option'),
+	'timeout' => _CONTROL('Timeout'),
+	'limit' => _CONTROL('Limit'),
+	'state' => _CONTROL('State Defaults'),
+	'loadanchor' => _CONTROL('Load Anchor'),
+	'include' => _CONTROL('Include'),
+	'comment' => _CONTROL('Comment'),
+	'blank' => _CONTROL('Blank Line'),
 	);
 
 $ruleType2Class= array(
-    'filter' => 'Filter',
-    'antispoof' => 'Antispoof',
-    'anchor' => 'Anchor',
-    'macro' => 'Macro',
-    'table' => 'Table',
-    'afto' => 'AfTo',
-    'natto' => 'NatTo',
-    'binatto' => 'BinatTo',
-    'divertto' => 'DivertTo',
-    'divertpacket' => 'DivertPacket',
-    'rdrto' => 'RdrTo',
-    'route' => 'Route',
-    'queue' => 'Queue',
-    'scrub' => 'Scrub',
-    'option' => 'Option',
-    'timeout' => 'Timeout',
-    'limit' => 'Limit',
-    'state' => 'State',
-    'loadanchor' => 'LoadAnchor',
-    'include' => '_Include',
-    'comment' => 'Comment',
-    'blank' => 'Blank',
+	'filter' => 'Filter',
+	'antispoof' => 'Antispoof',
+	'anchor' => 'Anchor',
+	'macro' => 'Macro',
+	'table' => 'Table',
+	'afto' => 'AfTo',
+	'natto' => 'NatTo',
+	'binatto' => 'BinatTo',
+	'divertto' => 'DivertTo',
+	'divertpacket' => 'DivertPacket',
+	'rdrto' => 'RdrTo',
+	'route' => 'Route',
+	'queue' => 'Queue',
+	'scrub' => 'Scrub',
+	'option' => 'Option',
+	'timeout' => 'Timeout',
+	'limit' => 'Limit',
+	'state' => 'State',
+	'loadanchor' => 'LoadAnchor',
+	'include' => '_Include',
+	'comment' => 'Comment',
+	'blank' => 'Blank',
 	);
 
 if (filter_has_var(INPUT_GET, 'sender') && array_key_exists(filter_input(INPUT_GET, 'sender'), $ruleCategoryNames)) {
-    $edit= filter_input(INPUT_GET, 'sender');
+	$edit= filter_input(INPUT_GET, 'sender');
 	$ruleNumber= filter_input(INPUT_GET, 'rulenumber');
 	
 	if (filter_has_var(INPUT_GET, 'state') && filter_input(INPUT_GET, 'state') == 'create') {
@@ -117,19 +117,19 @@ if (filter_has_var(INPUT_POST, 'ruleNumber') && filter_input(INPUT_POST, 'ruleNu
 }
 
 if (isset($edit)) {
-    require ('edit.php');
+	require ('edit.php');
 }
 
 if (filter_has_var(INPUT_GET, 'up')) {
-    $View->RuleSet->up(filter_input(INPUT_GET, 'up'));
+	$View->RuleSet->up(filter_input(INPUT_GET, 'up'));
 }
 
 if (filter_has_var(INPUT_GET, 'down')) {
-    $View->RuleSet->down(filter_input(INPUT_GET, 'down'));
+	$View->RuleSet->down(filter_input(INPUT_GET, 'down'));
 }
 
 if (filter_has_var(INPUT_GET, 'del')) {
-    $View->RuleSet->del(filter_input(INPUT_GET, 'del'));
+	$View->RuleSet->del(filter_input(INPUT_GET, 'del'));
 }
 
 if (filter_has_var(INPUT_POST, 'move')) {
@@ -140,7 +140,7 @@ if (filter_has_var(INPUT_POST, 'move')) {
 }
 
 if (filter_has_var(INPUT_POST, 'delete')) {
-    $View->RuleSet->del(filter_input(INPUT_POST, 'ruleNumber'));
+	$View->RuleSet->del(filter_input(INPUT_POST, 'ruleNumber'));
 }
 
 if (filter_has_var(INPUT_POST, 'deleteAll')) {

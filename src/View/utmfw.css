@@ -199,11 +199,11 @@ ul#navigation li:hover > ul
 ul#navigation ul, ul#navigation ul li ul
 {
 	list-style: none;
-    margin: 0;
-    padding: 0;    
+	margin: 0;
+	padding: 0;
 	visibility: hidden;
-    position: absolute;
-    z-index: 99999;
+	position: absolute;
+	z-index: 99999;
 	background: #eaeff1;
 	opacity: 0;
 	-webkit-transition: opacity 0.2s linear, visibility 0.2s linear; 
@@ -215,14 +215,14 @@ ul#navigation ul, ul#navigation ul li ul
 
 ul#navigation ul
 {
-    top: 31px;
-    left: 0px;
+	top: 31px;
+	left: 0px;
 }
 
 ul#navigation ul li ul
 {
-    top: 0;
-    left: -100px;
+	top: 0;
+	left: -100px;
 }
 
 ul#navigation ul li
@@ -673,7 +673,7 @@ table#mainhelpbox
 #mainhelpbox th
 {
 	color: white;
-  	background: #01466b;
+	background: #01466b;
 	font-size: 100%;
 	border: 0px none;
 	padding: 0.25em 0.25em 0.25em 5px;
@@ -720,7 +720,7 @@ table#mainhelpbox
 #helpbox td.leftbar
 {
 	width: 3px;
-  	background: #01466b;
+	background: #01466b;
 	padding: 0;
 }
 
@@ -763,7 +763,7 @@ table#logline
 #logline th
 {
 	color: white;
-  	background: #01466b;
+	background: #01466b;
 	border: 0px none;
 	line-height: 1em;
 	text-align: center;

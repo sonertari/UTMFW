@@ -110,7 +110,7 @@ class RuleSet
 	 * \li Divide the given string into lines, which are to be parsed by rule objects
 	 * \li Determine the type of rule on each line
 	 * \li Insert any accumulated comments or blank lines
-	 * \li Collect inline anchor rules which spans multiple lines
+	 * \li Collect inline anchor rules which span multiple lines
 	 * \li Finally create a rule object of the type determined above and pass the line to be parsed to that object
 	 * 
 	 * We validate the ruleset after all those steps are completed.
