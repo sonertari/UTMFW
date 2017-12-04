@@ -1,4 +1,3 @@
-
 group	name="Number of Processes", rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/proc_sockd.rrd;
 graph	template='-t Number of Processes
 -v processes/s

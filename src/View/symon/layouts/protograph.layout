@@ -1,4 +1,3 @@
-
 group	name="Network Protocol Usage", rrdfile=/var/www/htdocs/utmfw/View/pmacct/protograph/utmfw.rrd;
 graph	template='-t Overall Protocol (Port) Usage
 -v bits/s

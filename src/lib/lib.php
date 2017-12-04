@@ -47,9 +47,9 @@ function IsFilePath($filepath)
 		|| preg_match('?^/var/log/\w[\w./\-_]*$?', $filepath)
 		// Statistics and uncompressed logs
 		|| preg_match('?^/var/tmp/utmfw/\w[\w.\-_/]*$?', $filepath)
+		|| preg_match('|^/var/www/logs/\w[\w./\-_]*$|', $filepath)
 		// Messaging logs
 		|| preg_match('|^/var/log/imspector/\w[^$`]*$|', $filepath)
-		|| preg_match('|^/var/www/logs/\w[\w./\-_]*$|', $filepath)
 		|| preg_match('|^/var/squid/logs/\w[\w./\-_]*$|', $filepath)
 		|| preg_match('|^/etc/sslproxy/ca.crt$|', $filepath);
 }

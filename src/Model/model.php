@@ -19,7 +19,7 @@
  */
 
 /** @file
- * Contains base class which runs basic Model tasks and master configuration table.
+ * Contains base class which runs basic Model tasks.
  */
 
 require_once($MODEL_PATH.'/include.php');
@@ -380,7 +380,7 @@ class Model
 	/**
 	 * Gets the list of processes running.
 	 * 
-	 * @return mixed List of processes on success, FALSE on fail.
+	 * @return mixed List of processes on success, FALSE on failure.
 	 */
 	function GetProcList()
 	{
@@ -1523,6 +1523,8 @@ class Model
 
 	/**
 	 * Prepares file for download over WUI.
+	 * 
+	 * @return mixed File name or FALSE on failure.
 	 */
 	function PrepareFileForDownload($file)
 	{

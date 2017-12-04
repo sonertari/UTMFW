@@ -194,7 +194,7 @@ function FirstBootTasks()
 {
 	global $Config, $View;
 
-	// Run symon script to create rrd files again for cpu and sensor probes
+	// Run symon script to create rrd files
 	exec('/bin/sh /usr/local/share/examples/symon/c_smrrds.sh all');
 
 	// Disable rc.local line which leads to this function call

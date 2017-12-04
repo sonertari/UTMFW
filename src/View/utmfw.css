@@ -850,16 +850,6 @@ table#logline
 	font-size: 90%;
 }
 
-.enablebutton
-{
-	color: green;
-}
-
-.disablebutton
-{
-	color: red;
-}
-
 /*
  * IM proxy messages table
  */
@@ -1245,4 +1235,14 @@ table#logline
 	-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 	-moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.enablebutton
+{
+	color: green;
+}
+
+.disablebutton
+{
+	color: red;
 }

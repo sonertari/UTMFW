@@ -1036,15 +1036,7 @@ finish_up() {
 		echo "Running post-install script..."
 		/usr/local/bin/php /var/www/htdocs/utmfw/Installer/install.php
 	fi
-	
-	if [[ -d /var/www/htdocs/utmfw/View/symon/rrds/localhost ]]; then
-		cd /var/www/htdocs/utmfw/View/symon/rrds/localhost
-		if [[ -x /usr/local/share/examples/symon/c_smrrds.sh ]]; then
-			echo "Creating symon rrd files..."
-			/usr/local/share/examples/symon/c_smrrds.sh all
-		fi
-	fi
-	
+
 	if [[ -x /var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh ]]; then
 		echo "Creating pmacct rrd files..."
 		/var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh

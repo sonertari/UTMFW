@@ -1,4 +1,5 @@
-#	$OpenBSD: aliases,v 1.55 2015/12/16 18:19:25 ratchov Exp $
+#
+#	$OpenBSD: aliases,v 1.64 2017/03/18 21:18:01 florian Exp $
 #
 #  Aliases in this file will NOT be expanded in the header from
 #  Mail, but WILL be visible over networks or from /usr/libexec/mail.local.
@@ -16,7 +17,6 @@ postmaster: root
 daemon:	root
 ftp-bugs: root
 operator: root
-uucp:	root
 www:	root
 
 # Redirections for pseudo accounts that should not receive mail
@@ -43,6 +43,9 @@ _ospf6d: /dev/null
 _pbuild: /dev/null
 _pfetch: /dev/null
 _pflogd: /dev/null
+_ping: /dev/null
+_pkgfetch: /dev/null
+_pkguntar: /dev/null
 _portmap: /dev/null
 _ppp: /dev/null
 _radiusd: /dev/null
@@ -59,19 +62,23 @@ _smtpq: /dev/null
 _sndio: /dev/null
 _snmpd: /dev/null
 _spamd: /dev/null
+_switchd: /dev/null
 _syslogd: /dev/null
 _tcpdump: /dev/null
+_traceroute: /dev/null
 _tftpd: /dev/null
 _unbound: /dev/null
 _vmd: /dev/null
 _x11:   /dev/null
 _ypldap: /dev/null
 bin:	/dev/null
+build:	/dev/null
 nobody:	/dev/null
-proxy:  /dev/null		# remove in 6.0
 _tftp_proxy: /dev/null
 _ftp_proxy: /dev/null
 _sndiop: /dev/null
+_syspatch: /dev/null
+_slaacd: /dev/null
 sshd:   /dev/null
 
 # Well-known aliases -- these should be filled in!

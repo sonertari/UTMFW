@@ -1,4 +1,3 @@
-#
 # Layout to show pf usage
 
 group	name="State Statistics", pf_rrd=/var/www/htdocs/utmfw/View/symon/rrds/localhost/pf.rrd;
