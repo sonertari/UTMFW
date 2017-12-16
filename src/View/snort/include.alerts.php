@@ -43,6 +43,7 @@ $LogConf = array(
 class Snortalerts extends View
 {
 	public $Model= 'snortalerts';
+	public $LogsPage= 'alerts.php';
 
 	function __construct()
 	{
