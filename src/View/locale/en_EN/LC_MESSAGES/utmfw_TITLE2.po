@@ -28,6 +28,9 @@ msgstr ""
 msgid "After hours"
 msgstr ""
 
+msgid "Allow Wrong Host"
+msgstr ""
+
 msgid "Allow localhost"
 msgstr ""
 
@@ -1055,6 +1058,9 @@ msgid "User agent regexp"
 msgstr ""
 
 msgid "Verbosity"
+msgstr ""
+
+msgid "Verify Peer"
 msgstr ""
 
 msgid "Violations"

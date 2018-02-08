@@ -298,7 +298,13 @@ msgstr ""
 msgid "Allow Opts"
 msgstr ""
 
+msgid "Allow Wrong Host"
+msgstr ""
+
 msgid "Allow localhost"
+msgstr ""
+
+msgid "Allow wrong host names in certificates."
 msgstr ""
 
 msgid "Allowed requests"
@@ -6446,6 +6452,12 @@ msgid "Values"
 msgstr ""
 
 msgid "Verbosity"
+msgstr ""
+
+msgid "Verify Peer"
+msgstr ""
+
+msgid "Verify peer using default certificates."
 msgstr ""
 
 msgid "Version"

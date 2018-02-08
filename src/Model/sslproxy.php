@@ -217,5 +217,11 @@ $ModelConfig = array(
     'RemoveHTTPReferer' => array(
         'type' => STR_yes_no,
 		),
+    'VerifyPeer' => array(
+        'type' => STR_yes_no,
+		),
+    'AllowWrongHost' => array(
+        'type' => STR_yes_no,
+		),
 	);
 ?>

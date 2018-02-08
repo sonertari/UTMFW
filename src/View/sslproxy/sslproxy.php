@@ -85,6 +85,14 @@ class Sslproxy extends View
 				'title' => _TITLE2('Remove HTTP Referer'),
 				'info' => _HELPBOX2('Remove HTTP header line for Referer. The OWASP considers it a vulnerabilty, and it may cause redirection errors with SSLproxy.'),
 				),
+			'VerifyPeer' => array(
+				'title' => _TITLE2('Verify Peer'),
+				'info' => _HELPBOX2('Verify peer using default certificates.'),
+				),
+			'AllowWrongHost' => array(
+				'title' => _TITLE2('Allow Wrong Host'),
+				'info' => _HELPBOX2('Allow wrong host names in certificates.'),
+				),
 			);
 	}
 	

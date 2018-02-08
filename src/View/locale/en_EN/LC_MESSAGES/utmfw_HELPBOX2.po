@@ -63,6 +63,9 @@ msgid ""
 "900 = recommended = 15 mins"
 msgstr ""
 
+msgid "Allow wrong host names in certificates."
+msgstr ""
+
 msgid ""
 "Also log clean files. Useful in debugging but drastically increases the log "
 "size.\n"
@@ -1324,6 +1327,9 @@ msgid ""
 "Used to fill in the -FILTERGROUP- placeholder in the HTML template file, and "
 "to name the group in the access logs\n"
 "Defaults to empty string"
+msgstr ""
+
+msgid "Verify peer using default certificates."
 msgstr ""
 
 msgid ""

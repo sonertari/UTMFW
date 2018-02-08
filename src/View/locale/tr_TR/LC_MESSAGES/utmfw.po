@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009, 2017.
+# Soner Tari <sonertari@gmail.com>, 2009, 2017, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-11-02 01:31+0300\n"
+"PO-Revision-Date: 2018-02-09 00:32+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -368,8 +368,14 @@ msgstr "Tüm engelleme ve uzatmalar"
 msgid "Allow Opts"
 msgstr "Seçeneklere İzin Ver"
 
+msgid "Allow Wrong Host"
+msgstr "Yanlış Sistem İsmine İzin Ver"
+
 msgid "Allow localhost"
 msgstr "Yerel bilgisayara izin ver"
+
+msgid "Allow wrong host names in certificates."
+msgstr "Sertifikalarda yanlış sistem isimlerine izin ver"
 
 msgid "Allowed requests"
 msgstr "İzin verilen istekler"
@@ -7672,6 +7678,12 @@ msgstr "Değerler"
 
 msgid "Verbosity"
 msgstr "Detay seviyesi"
+
+msgid "Verify Peer"
+msgstr "Karşı Tarafı Doğrula"
+
+msgid "Verify peer using default certificates."
+msgstr "Öntanımlı sertifikalarla karşı tarafı doğrula"
 
 msgid "Version"
 msgstr "Sürüm"

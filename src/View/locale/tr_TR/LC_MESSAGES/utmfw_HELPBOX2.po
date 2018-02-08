@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2017 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009, 2017.
+# Soner Tari <sonertari@gmail.com>, 2009, 2017, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-11-02 01:03+0300\n"
+"PO-Revision-Date: 2018-02-09 00:30+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -123,6 +123,9 @@ msgstr ""
 "Saniye cinsinden süre aşım değeridir\n"
 "0 = asla\n"
 "900 = tavsiye edilen = 15 dakika"
+
+msgid "Allow wrong host names in certificates."
+msgstr "Sertifikalarda yanlış sistem isimlerine izin ver"
 
 msgid ""
 "Also log clean files. Useful in debugging but drastically increases the log "
@@ -2010,6 +2013,9 @@ msgstr ""
 "HTML kalıp dosyasındaki -FILTERGROUP- yertutucusunu değiştirmek ve grubu "
 "giriş kayıtlarında isimlendirmek için kullanılır\n"
 "Öndeğer boş dizedir"
+
+msgid "Verify peer using default certificates."
+msgstr "Öntanımlı sertifikalarla karşı tarafı doğrula"
 
 msgid ""
 "When a file with unknown content length gets handled by the fancy DM, "
