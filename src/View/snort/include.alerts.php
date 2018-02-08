@@ -51,11 +51,6 @@ class Snortalerts extends View
 		$this->LogsHelpMsg= _HELPWINDOW('These are intrusion alerts. Note that these alerts can be considered as guesses at best. While configuring the IPS, make use of priorities and keywords.');
 	}
 	
-	/**
-	 * Prints log line color tr tag.
-	 *
-	 * @param string $line Log string to search for keywords
-	 */
 	function getLogLineClass($line, $cols)
 	{
 		$class= '';
