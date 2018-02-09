@@ -1,11 +1,9 @@
-From sonertari@gmail.com Wed Nov  1 06:20:10 EET 2017
+From sonertari@gmail.com Fri Feb  9 06:20:20 EET 2018
 Return-Path: root
-Date: Nov  1 06:20:10 EET 2017
+Date: Feb  9 06:20:20 EET 2018
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 6.2.1!
+Subject: Welcome to UTMFW 6.2.2!
 
 Highlights of this release are:
-- Updated SSLproxy, E2Guardian, Squid, and SnortIPS.
-- ClamAV statistics pages.
-- Numerous fixes and improvements to the WUI.
+- Updated SSLproxy, E2Guardian, SnortIPS, and P3Scan.

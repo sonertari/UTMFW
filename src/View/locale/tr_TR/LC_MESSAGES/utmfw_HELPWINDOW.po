@@ -1,4 +1,4 @@
-# Copyright (C) 2004-2017 Soner Tari, The UTMFW project
+# Copyright (C) 2004-2018 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
 # Soner Tari <sonertari@gmail.com>, 2009, 2017.
 #
