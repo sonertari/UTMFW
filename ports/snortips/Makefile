@@ -1,10 +1,10 @@
 COMMENT=		turns Snort IDS into an IPS
 
-DISTNAME=		snortips-6.2
+DISTNAME=		snortips-6.2.2
 PKGNAME=		${DISTNAME}
 CATEGORIES=		net security
 
-HOMEPAGE=		https://github.com/sonertari/UTMFW
+HOMEPAGE=		https://github.com/sonertari/SnortIPS
 
 MAINTAINER=		Soner Tari <sonertari@gmail.com>
 

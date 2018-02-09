@@ -1096,7 +1096,7 @@ CDDEVS=$(scan_dmesg "${MDCDDEVS:-/^cd[0-9][0-9]* /s/ .*//p}")
 
 # Selected sets will be installed in the order they are listed in $THESETS.
 THESETS="isc-bind-9.10.6.tgz \
-		sslproxy-0.5.3.tgz \
+		sslproxy-0.5.4.tgz \
 		clamav-0.99.2p5.tgz \
 		clamavdb.tar.gz \
 		p5-Mail-SpamAssassin-3.4.1p6.tgz \
@@ -1107,7 +1107,7 @@ THESETS="isc-bind-9.10.6.tgz \
 		squid-3.5.27.tgz \
 		snort-2.9.9.0p0.tgz \
 		snortrules.tar.gz \
-		snortips-6.2.tgz \
+		snortips-6.2.2.tgz \
 		imspector-0.9.tgz \
 		openvpn-2.4.4.tgz \
 		dante-1.4.1p0.tgz \
