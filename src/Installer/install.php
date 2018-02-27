@@ -65,7 +65,7 @@ require_once($VIEW_PATH.'/lib/view.php');
 $View= new View();
 $View->Model= 'system';
 
-/// @attention This script is executed on the command line, so we don't have access to cookie and session vars here; .
+/// @attention This script is executed on the command line, so we don't have access to cookie and session vars here.
 // Do not use SSH to run Controller commands
 $UseSSH= FALSE;
 

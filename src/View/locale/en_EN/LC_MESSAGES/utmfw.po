@@ -809,6 +809,12 @@ msgstr ""
 msgid "Cipher"
 msgstr ""
 
+msgid "Cipher specification for both server and client SSL/TLS connections."
+msgstr ""
+
+msgid "Ciphers"
+msgstr ""
+
 msgid ""
 "ClamAV can scan within archives and compressed files.\n"
 "\t\tDefault: enabled"

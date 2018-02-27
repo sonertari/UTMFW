@@ -223,5 +223,7 @@ $ModelConfig = array(
     'AllowWrongHost' => array(
         'type' => STR_yes_no,
 		),
+    'Ciphers' => array(
+		),
 	);
 ?>

@@ -151,6 +151,9 @@ msgstr ""
 msgid "Cipher"
 msgstr ""
 
+msgid "Ciphers"
+msgstr ""
+
 msgid "Client netmask"
 msgstr ""
 

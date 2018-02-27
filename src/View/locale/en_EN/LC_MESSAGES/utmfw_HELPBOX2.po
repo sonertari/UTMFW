@@ -134,6 +134,9 @@ msgid ""
 "signed by a ca in the configured path."
 msgstr ""
 
+msgid "Cipher specification for both server and client SSL/TLS connections."
+msgstr ""
+
 msgid ""
 "ClamAV can scan within archives and compressed files.\n"
 "\t\tDefault: enabled"

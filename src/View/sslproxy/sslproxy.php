@@ -93,6 +93,10 @@ class Sslproxy extends View
 				'title' => _TITLE2('Allow Wrong Host'),
 				'info' => _HELPBOX2('Allow wrong host names in certificates.'),
 				),
+			'Ciphers' => array(
+				'title' => _TITLE2('Ciphers'),
+				'info' => _HELPBOX2('Cipher specification for both server and client SSL/TLS connections.'),
+				),
 			);
 	}
 	
