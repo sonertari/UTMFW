@@ -43,7 +43,7 @@ class Lexer {
     var $unget;
     var $keywordchrs;
 
-    function Lexer() {
+    function __construct() {
 	$this->filename = '';
 	$this->lineno = 0;
 	$this->buffer = array();

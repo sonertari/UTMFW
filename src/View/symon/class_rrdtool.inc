@@ -40,7 +40,7 @@ class RRDTool {
     var $error;
     var $output;
 
-    function RRDTool() {
+    function __construct() {
 	global $symon;
 
 	$this->method = '';

@@ -40,7 +40,7 @@ require_once('class_lexer.inc');
 class Text {
     var $text;
 
-    function Text($text='') {
+    function __construct($text='') {
 	$this->text = $text;
     }
 

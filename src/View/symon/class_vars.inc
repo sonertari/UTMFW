@@ -49,7 +49,7 @@ $html2chr = array_flip($chr2html);
 class Vars {
     var $vars;
 
-    function Vars($frozen="") {
+    function __construct($frozen="") {
 	unset($this->vars);
 	if ($frozen != "") {
 	    $this->inject($frozen);

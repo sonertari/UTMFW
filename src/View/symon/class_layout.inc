@@ -47,7 +47,7 @@ class Layout {
 	var $groups;
 	var $groupvars;
 
-	function Layout($name = '') {
+	function __construct($name = '') {
 		global $symon;
 
 		$this->_reset();

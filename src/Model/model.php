@@ -268,11 +268,6 @@ class Model
 					'desc'	=>	_('Reload '.get_class($this)),
 					),
 
-				'Restart'	=> array(
-					'argv'	=> array(),
-					'desc'	=> _('Restart '.get_class($this)),
-					),
-
 				'GetServiceStatus'	=>	array(
 					'argv'	=>	array(),
 					'desc'	=>	_('Get service status'),

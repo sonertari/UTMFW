@@ -49,7 +49,7 @@ class Graph {
     var $definition;
     var $url;
 
-    function Graph(&$group_vars) {
+    function __construct(&$group_vars) {
 	$this->group_vars = $group_vars;
     }
 

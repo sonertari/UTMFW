@@ -52,7 +52,7 @@ function PrintConfStartStopForm()
 if (filter_has_var(INPUT_POST, 'Start')) {
 	if (filter_has_var(INPUT_POST, 'ConfFiles')) {
 		foreach ($_POST['ConfFiles'] as $file) {
-			$View->Controller($Output, 'Restart', $file);
+			$View->Controller($Output, 'RestartInstance', $file);
 		}
 	}
 	else {
@@ -62,10 +62,11 @@ if (filter_has_var(INPUT_POST, 'Start')) {
 else if (filter_has_var(INPUT_POST, 'Stop')) {
 	if (filter_has_var(INPUT_POST, 'ConfFiles')) {
 		foreach ($_POST['ConfFiles'] as $file) {
-			$View->Controller($Output, 'StopProcess', $file);
+			$View->Controller($Output, 'StopInstance', $file);
 		}
 	}
 	else {
+		// Snort inline IPS
 		$View->Stop();
 	}
 }

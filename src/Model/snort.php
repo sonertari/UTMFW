@@ -42,14 +42,14 @@ class Snort extends Model
 		$this->Commands= array_merge(
 			$this->Commands,
 			array(
-				'Start'=>	array(
+				'StartInstance'=>	array(
 					'argv'	=>	array(NAME),
-					'desc'	=>	_('Start snort'),
+					'desc'	=>	_('Start instance'),
 					),
 
-				'StopProcess'=> array(
+				'StopInstance'=> array(
 					'argv'	=> array(NAME),
-					'desc'	=> _('Stop Snort instance'),
+					'desc'	=> _('Stop instance'),
 					),
 
 				'GetRules'		=>	array(
@@ -95,7 +95,7 @@ class Snort extends Model
 		return Output($this->RunShellCommand($this->VersionCmd.' | /usr/bin/head -3 | /usr/bin/tail -2'));
 	}
 
-	function Start($if)
+	function StartInstance($if)
 	{
 		global $TmpFile;
 
@@ -120,40 +120,15 @@ class Snort extends Model
 		return $this->IsInstanceRunning($if);
 	}
 
-	function Stop()
-	{
-		global $TmpFile;
-
-		$cmd= '/usr/bin/pkill -U_snort';
-
-		$count= 0;
-		while ($count++ < self::PROC_STAT_TIMEOUT) {
-			if (!$this->IsInstanceRunning('\w+')) {
-				return TRUE;
-			}
-			$this->RunShellCommand("$cmd > $TmpFile 2>&1");
-			/// @todo Check $TmpFile for error messages, if so break out instead
-			exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
-		}
-
-		/// Kill command is redirected to tmp file
-		$output= file_get_contents($TmpFile);
-		Error($output);
-		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Kill failed with: $output");
-
-		// Check one last time due to the last sleep in the loop
-		return !$this->IsInstanceRunning('\w+');
-	}
-
 	/**
 	 * Stops snort process started with the given interface.
 	 *
 	 * @param string $if Interface name.
 	 * @return bool TRUE on success, FALSE on fail.
 	 */
-	function StopProcess($if)
+	function StopInstance($if)
 	{
-		$pid= $this->FindPid($if);
+		$pid= $this->FindInstancePid($if);
 		if ($pid > -1) {
 			return $this->KillPid($pid);
 		}
@@ -166,7 +141,7 @@ class Snort extends Model
 	 * @param string $if Interface name.
 	 * @return int Pid or -1 if not running
 	 */
-	function FindPid($if)
+	function FindInstancePid($if)
 	{
 		$pidcmd= "/bin/ps arwwx | /usr/bin/grep snort | /usr/bin/grep '$if' | /usr/bin/grep -v -e ctlr.php -e grep";
 		exec($pidcmd, $output, $retval);

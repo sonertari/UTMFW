@@ -28,22 +28,6 @@ class Snortinline extends Snort
 	
 	protected $psCmd= '/bin/ps arwwx -o pid,start,%cpu,time,%mem,rss,vsz,stat,pri,nice,tty,user,group,command | /usr/bin/grep "\-Q" | /usr/bin/grep -v -e grep | /usr/bin/grep -E <PROC>';
 
-	function __construct()
-	{
-		parent::__construct();
-		
-		$this->Commands= array_merge(
-			$this->Commands,
-			array(
-				// Override the parent's Start command
-				'Start'=>	array(
-					'argv'	=>	array(),
-					'desc'	=>	_('Start snort'),
-					),
-				)
-			);
-	}
-
 	function GetVersion()
 	{
 		return FALSE;
@@ -58,7 +42,7 @@ class Snortinline extends Snort
 
 		$count= 0;
 		while ($count++ < self::PROC_STAT_TIMEOUT) {
-			if ($this->IsInstanceRunning()) {
+			if ($this->IsRunning()) {
 				return TRUE;
 			}
 			/// @todo Check $TmpFile for error messages, if so break out instead
@@ -71,7 +55,7 @@ class Snortinline extends Snort
 		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Start failed with: $output");
 
 		// Check one last time due to the last sleep in the loop
-		return $this->IsInstanceRunning();
+		return $this->IsRunning();
 	}
 
 	function Stop()
@@ -114,7 +98,7 @@ class Snortinline extends Snort
 	 *
 	 * @return bool TRUE if running
 	 */
-	function IsInstanceRunning()
+	function IsRunning($proc= '')
 	{
 		$re= "\/usr\/local\/bin\/snort\s+[^\n]*-Q\s+[^\n]*";
 

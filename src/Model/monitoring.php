@@ -25,7 +25,7 @@ class Monitoring extends Model
 	public $LogFile= '/var/log/monitoring.log';
 	protected $LogFilter= '';
 
-	function _getLiveLogs($file, $count, $re= '')
+	function _getLiveLogs($file, $count, $re= '', $needle= '')
 	{
 		return parent::_getLiveLogs($file, $count, $re, $this->LogFilter);
 	}

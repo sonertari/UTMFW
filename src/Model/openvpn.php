@@ -39,14 +39,14 @@ class Openvpn extends Model
 		$this->Commands= array_merge(
 			$this->Commands,
 			array(
-				'Restart'	=> array(
+				'RestartInstance'	=> array(
 					'argv'	=> array(NAME),
-					'desc'	=> _('Start OpenVPN process'),
+					'desc'	=> _('Start instance'),
 					),
 
-				'StopProcess'=> array(
+				'StopInstance'=> array(
 					'argv'	=> array(NAME),
-					'desc'	=> _('Stop OpenVPN instance'),
+					'desc'	=> _('Stop instance'),
 					),
 
 				'IsClientConf'=> array(
@@ -96,7 +96,7 @@ class Openvpn extends Model
 	 * @param string $conffile Conf file name.
 	 * @return bool TRUE on success, FALSE on fail.
 	 */
-	function StopProcess($conffile)
+	function StopInstance($conffile)
 	{
 		$pid= $this->FindPid($conffile);
 		if ($pid > -1) {
@@ -112,11 +112,11 @@ class Openvpn extends Model
 	 *
 	 * @todo Actually should stop retying on some error conditions?
 	 */
-	function Restart($conffile)
+	function RestartInstance($conffile)
 	{
 		global $TmpFile;
 
-		if ($this->StopProcess($conffile)) {
+		if ($this->StopInstance($conffile)) {
 			$cmd= "/usr/local/sbin/openvpn --config /etc/openvpn/$conffile --daemon --status /var/log/openvpn-status.log 30 > $TmpFile";
 			$this->RunShellCommand($cmd);
 

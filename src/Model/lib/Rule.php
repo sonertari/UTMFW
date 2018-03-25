@@ -364,7 +364,7 @@ class Rule
 			$result= preg_match("/$rxfn/", $value);
 		} elseif (isset($def['func'])) {
 			$rxfn= $def['func'];
-			/// @todo Should we use call_user_func_array() or call_user_method_array() and pass params in an array?
+			/// @todo Should we use call_user_func_array() and pass params in an array?
 			if (isset($def['force']) && $def['force']) {
 				$result= $rxfn($value, $force);
 			} else {
@@ -411,7 +411,7 @@ class Rule
 			if (array_key_exists($key, $this->keywords)) {
 				$method= $this->keywords[$key]['method'];				
 				if (is_callable($method, TRUE)) {
-					call_user_method_array($method, $this, $this->keywords[$key]['params']);
+					call_user_func_array(array($this, $method), $this->keywords[$key]['params']);
 				} else {
 					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Parser method '$method' not callable");
 				}

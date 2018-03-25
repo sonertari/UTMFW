@@ -46,7 +46,7 @@ require_once("tools.inc");
 class Session {
     var $vars;
 
-    function Session() {
+    function __construct() {
 	$this->vars = new Vars();
     }
 

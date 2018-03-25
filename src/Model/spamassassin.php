@@ -199,7 +199,7 @@ class Spamassassin extends Model
 		return Output(json_encode($logs));
 	}
 	
-	function _getLiveLogs($file, $count, $re= '')
+	function _getLiveLogs($file, $count, $re= '', $needle= '')
 	{
 		$cmd= "/usr/bin/grep -a ' spamd\[' $file";
 		if ($re !== '') {

@@ -658,7 +658,7 @@ __EOT
 				pkg_add rrdtool
 				;;
 			php-*)
-				ln -s /usr/local/bin/php-5.6 /usr/local/bin/php
+				ln -s /usr/local/bin/php-7.0 /usr/local/bin/php
 				pkg_add php-pcntl
 				pkg_add php-mcrypt
 				pkg_add php-fastcgi
@@ -1114,7 +1114,7 @@ THESETS="isc-bind-9.10.6.tgz \
 		symon-2.88p0.tgz \
 		pmacct-1.5.3p1.tgz \
 		pftop-0.7p16.tgz \
-		php-5.6.31.tgz \
+		php-7.0.23.tgz \
 		$CW_WEBIF_TARFILE \
 		$CW_CONFIG_TARFILE"
 

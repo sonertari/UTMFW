@@ -29,7 +29,8 @@ class Table extends Rule
 		$this->dispKey('const', _TITLE('Flag'));
 		$this->dispKey('persist', _TITLE('Flag'));
 		$this->dispKey('counters', _TITLE('Flag'));
-		$this->dispValues();
+		// Dummy params
+		$this->dispValues('', '');
 		$this->dispTail($ruleNumber, $count);
 	}
 
@@ -42,7 +43,7 @@ class Table extends Rule
 		<?php
 	}
 
-	function dispValues()
+	function dispValues($key, $title)
 	{
 		?>
 		<td title="<?php echo _TITLE('Values') ?>" colspan="8">
@@ -78,7 +79,8 @@ class Table extends Rule
 
 		$this->editText('identifier', _TITLE('Identifier'), FALSE, NULL, _CONTROL('string'));
 		$this->editFlags();
-		$this->editValues();
+		// Dummy params
+		$this->editValues('', '', '', '', '');
 
 		$this->editComment();
 		$this->editTail($modified, $testResult, $generateResult, $action);
@@ -108,7 +110,7 @@ class Table extends Rule
 		<?php
 	}
 
-	function editValues()
+	function editValues($key, $title, $delName, $addName, $hint, $help= NULL, $size= 0, $disabled= FALSE)
 	{
 		?>
 		<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">

@@ -25,8 +25,8 @@ if (filter_has_var(INPUT_POST, 'Model')) {
 		if (filter_has_var(INPUT_POST, 'Start')) {
 			if (filter_has_var(INPUT_POST, 'Interfaces')) {
 				foreach ($_POST['Interfaces'] as $If) {
-					$View->Controller($Output, 'StopProcess', $If);
-					$View->Controller($Output, 'Start', $If);
+					$View->Controller($Output, 'StopInstance', $If);
+					$View->Controller($Output, 'StartInstance', $If);
 				}
 			}
 			else {
@@ -36,7 +36,7 @@ if (filter_has_var(INPUT_POST, 'Model')) {
 		else if (filter_has_var(INPUT_POST, 'Stop')) {
 			if (filter_has_var(INPUT_POST, 'Interfaces')) {
 				foreach ($_POST['Interfaces'] as $If) {
-					$View->Controller($Output, 'StopProcess', $If);
+					$View->Controller($Output, 'StopInstance', $If);
 				}
 			}
 			else {

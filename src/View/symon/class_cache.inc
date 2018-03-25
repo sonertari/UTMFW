@@ -54,7 +54,7 @@ class Cache {
     var $db;
     var $timestamp;
 
-    function Cache() {
+    function __construct() {
 	global $symon;
 
 	if (!isset($symon["cache_duration"])) {
