@@ -1,9 +1,8 @@
-From sonertari@gmail.com Fri Feb  9 06:20:20 EET 2018
+From sonertari@gmail.com Mon Mar 26 06:20:30 EET 2018
 Return-Path: root
-Date: Feb  9 06:20:20 EET 2018
+Date: Mar 26 06:20:30 EET 2018
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 6.2.2!
+Subject: Welcome to UTMFW 6.2.3!
 
-Highlights of this release are:
-- Updated SSLproxy, E2Guardian, SnortIPS, and P3Scan.
+Highlights of this release are PHP 7 and updated SSLproxy.
