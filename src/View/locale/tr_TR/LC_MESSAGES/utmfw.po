@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.2\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-02-28 02:40+0300\n"
+"PO-Revision-Date: 2018-03-26 15:44+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -4880,9 +4880,6 @@ msgstr "Cevap öneki"
 msgid "Restart"
 msgstr "Tekrar Başlat"
 
-msgid "Restart "
-msgstr "Tekrar başlat"
-
 msgid "Restart network"
 msgstr "Ağı tekrar başlat"
 
@@ -6064,14 +6061,11 @@ msgstr "Başlat"
 msgid "Start "
 msgstr "Başlangıç"
 
-msgid "Start OpenVPN process"
-msgstr "OpenVPN sürecini başlat"
-
 msgid "Start Servers"
 msgstr "Başlangıç sunucu sayısı"
 
-msgid "Start snort"
-msgstr "Snort başlat"
+msgid "Start instance"
+msgstr "Süreci başlat"
 
 msgid "Startup"
 msgstr "Başlangıç"
@@ -6162,11 +6156,8 @@ msgstr "Geçersiz IP seçeneklerinin uyarılarını kapatır."
 msgid "Stop Alerts on obsolete TCP options"
 msgstr "Artık kullanılmayan TCP seçeneklerinin uyarılarını kapatır."
 
-msgid "Stop OpenVPN instance"
-msgstr "OpenVPN sürecini durdur"
-
-msgid "Stop Snort instance"
-msgstr "Snort sürecini durdur"
+msgid "Stop instance"
+msgstr "Süreci durdur"
 
 msgid "Stopped"
 msgstr "Durmuş"

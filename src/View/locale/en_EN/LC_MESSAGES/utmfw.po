@@ -4222,9 +4222,6 @@ msgstr ""
 msgid "Restart"
 msgstr ""
 
-msgid "Restart "
-msgstr ""
-
 msgid "Restart network"
 msgstr ""
 
@@ -5261,13 +5258,10 @@ msgstr ""
 msgid "Start "
 msgstr ""
 
-msgid "Start OpenVPN process"
-msgstr ""
-
 msgid "Start Servers"
 msgstr ""
 
-msgid "Start snort"
+msgid "Start instance"
 msgstr ""
 
 msgid "Startup"
@@ -5351,10 +5345,7 @@ msgstr ""
 msgid "Stop Alerts on obsolete TCP options"
 msgstr ""
 
-msgid "Stop OpenVPN instance"
-msgstr ""
-
-msgid "Stop Snort instance"
+msgid "Stop instance"
 msgstr ""
 
 msgid "Stopped"

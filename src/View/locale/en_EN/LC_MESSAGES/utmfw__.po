@@ -771,9 +771,6 @@ msgstr ""
 msgid "Required element missing"
 msgstr ""
 
-msgid "Restart "
-msgstr ""
-
 msgid "Restart network"
 msgstr ""
 
@@ -942,10 +939,7 @@ msgstr ""
 msgid "Start "
 msgstr ""
 
-msgid "Start OpenVPN process"
-msgstr ""
-
-msgid "Start snort"
+msgid "Start instance"
 msgstr ""
 
 msgid "State"
@@ -963,10 +957,7 @@ msgstr ""
 msgid "Stop "
 msgstr ""
 
-msgid "Stop OpenVPN instance"
-msgstr ""
-
-msgid "Stop Snort instance"
+msgid "Stop instance"
 msgstr ""
 
 msgid "String wrong"
