@@ -6,7 +6,7 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The installation iso file for the amd64 arch is available for download at [utmfw62\_20180326\_amd64.iso](https://drive.google.com/file/d/1PjnNY9FVEtschE5DsqR8LCLK5QNZoqN4/view?usp=sharing). Make sure the SHA256 checksum is correct: 63eaeba0ddc406e67144012bab51dbe7871dd23acff9b9575d6af64664f1eec7.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, and many fixes and improvements to the system and the WUI. Also note that UTMFW 6.2.3 comes with OpenBSD 6.2-stable including all updates until March 26th, 2018.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, and many fixes and improvements to the system and the WUI. Also note that UTMFW 6.3 comes with OpenBSD 6.3-stable including all updates until May 13th, 2018.
 
 UTMFW supports the deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, HTTP Proxy, POP3 Proxy, SMTP Proxy, Virus Scanner, Spam Filter, and Inline IPS. These UTM software have been modified to support the mode of operation required by the SSLproxy.
 
@@ -80,13 +80,13 @@ Web interface user names are admin and user. Both are set to the same password y
 
 References:
 
-1. INSTALL.amd64 under /6.2/amd64/ in the installation iso file.
+1. INSTALL.amd64 under /6.3/amd64/ in the installation iso file.
 2. [Supported hardware](https://www.openbsd.org/amd64.html).
 3. [OpenBSD installation guide](https://www.openbsd.org/faq/faq4.html).
 
 ## How to build
 
-The purpose in this section is to build the installation iso file using the createiso script at the root of the project source tree. You are expected to be doing these on an OpenBSD 6.2 and have installed git, gettext, and doxygen on it.
+The purpose in this section is to build the installation iso file using the createiso script at the root of the project source tree. You are expected to be doing these on an OpenBSD 6.3 and have installed git, gettext, and doxygen on it.
 
 The createiso script:
 

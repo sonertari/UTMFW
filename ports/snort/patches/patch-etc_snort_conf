@@ -2,8 +2,8 @@ $OpenBSD: patch-etc_snort_conf,v 1.15 2016/05/02 02:29:58 lteo Exp $
 
 reputation preprocessor disabled, still experimental
 
---- etc/snort.conf.orig	Tue Nov 29 08:12:42 2016
-+++ etc/snort.conf	Fri Aug 25 17:34:05 2017
+--- etc/snort.conf.orig	Fri Mar 18 15:11:55 2016
++++ etc/snort.conf	Fri Apr 29 11:02:26 2016
 @@ -101,17 +101,17 @@ ipvar AIM_SERVERS [64.12.24.0/23,64.12.28.0/23,64.12.1
  # Path to your rules files (this can be a relative path)
  # Note for Windows users:  You are advised to make this an absolute path,
@@ -11,9 +11,9 @@ reputation preprocessor disabled, still experimental
 -var RULE_PATH ../rules
 -var SO_RULE_PATH ../so_rules
 -var PREPROC_RULE_PATH ../preproc_rules
-+var RULE_PATH /etc/snort/rules
-+var SO_RULE_PATH /etc/snort/so_rules
-+var PREPROC_RULE_PATH /etc/snort/preproc_rules
++var RULE_PATH ${SYSCONFDIR}/snort/rules
++var SO_RULE_PATH ${SYSCONFDIR}/snort/so_rules
++var PREPROC_RULE_PATH ${SYSCONFDIR}/snort/preproc_rules
  
  # If you are using reputation preprocessor set these
  # Currently there is a bug with relative paths, they are relative to where snort is
@@ -22,8 +22,8 @@ reputation preprocessor disabled, still experimental
  # Set the absolute path appropriately
 -var WHITE_LIST_PATH ../rules
 -var BLACK_LIST_PATH ../rules
-+var WHITE_LIST_PATH /etc/snort/rules
-+var BLACK_LIST_PATH /etc/snort/rules
++var WHITE_LIST_PATH ${SYSCONFDIR}/snort/rules
++var BLACK_LIST_PATH ${SYSCONFDIR}/snort/rules
  
  ###################################################
  # Step #2: Configure the decoder.  For more information, see README.decode
@@ -44,7 +44,7 @@ reputation preprocessor disabled, still experimental
  #
  # config daq: <type>
  # config daq_dir: <dir>
-+config daq_dir: /usr/local/lib/daq/
++config daq_dir: ${PREFIX}/lib/daq/
  # config daq_mode: <mode>
  # config daq_var: <var>
  #

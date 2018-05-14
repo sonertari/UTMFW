@@ -431,6 +431,21 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              The macro expansion for the <span class="bold">label</span> directive occurs only at
              configuration file parse time, not during runtime.
 
+<a name="max-pkt-rate"></a>
+     <span class="bold">max-pkt-rate</span> <span class="underline">number</span>/<span class="underline">seconds</span>
+             Measure the rate of packets matching the rule and states created
+             by it.  When the specified rate is exceeded, the rule stops
+             matching.  Only packets in the direction in which the state was
+             created are considered, so that typically requests are counted
+             and replies are not.  For example, to pass up to 100 ICMP packets
+             per 10 seconds:
+
+                   block in proto icmp
+                   pass in proto icmp max-pkt-rate 100/10
+
+             When the rate is exceeded, all ICMP is blocked until the rate
+             falls below 100 per 10 seconds again.
+
 <a name="once"></a>
      <span class="bold">once</span>    Creates a one shot rule that will remove itself from an active
              ruleset after the first match.  In case this is the only rule in
@@ -982,6 +997,34 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              <span class="bold">floating</span>  States can match packets on any interfaces (the
                        default).
 
+<a name="syncookies"></a>
+     <span class="bold">set</span> <span class="bold">syncookies</span> <span class="bold">never</span> | <span class="bold">always</span> | <span class="bold">adaptive</span>
+             When <span class="bold">syncookies</span> are active, pf will answer each and every
+             incoming TCP SYN with a syncookie SYNACK, without allocating any
+             resources.  Upon reception of the client's ACK in response to the
+             syncookie SYNACK, pf will evaluate the ruleset and create state
+             if the ruleset permits it, complete the three way handshake with
+             the target host, and continue the connection with synproxy in
+             place.  This allows pf to be resilient against large synflood
+             attacks, which could otherwise exhaust the state table.  Due to
+             the blind answers to each and every SYN, syncookies share the
+             caveats of synproxy: seemingly accepting connections that will be
+             dropped later on.
+
+<a name="never"></a>
+             <span class="bold">never</span>     pf will never send syncookie SYNACKs.
+<a name="always"></a>
+             <span class="bold">always</span>    pf will always send syncookie SYNACKs.
+<a name="adaptive"></a>
+             <span class="bold">adaptive</span>  pf will enable syncookie mode when a given percentage
+                       of the state table is used up by half-open TCP
+                       connections, such as those that saw the initial SYN but
+                       didn't finish the three way handshake.  The thresholds
+                       for entering and leaving syncookie mode can be
+                       specified using:
+
+                             set syncookies adaptive (start 25%, end 12%)
+
 <a name="Timeout"></a>
      <span class="bold">set</span> <span class="bold">timeout</span> <span class="underline">variable</span> <span class="underline">value</span>
 <a name="frag"></a>
@@ -1106,8 +1149,9 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      The specified bandwidth is the target bandwidth, every queue can receive
      more bandwidth as long as the parent still has some available.  The
      maximum bandwidth that should be assigned to a given queue can be limited
-     using the <span class="bold">max</span> keyword.  Similarly, a minimum (reserved) bandwidth can be
-     specified:
+     using the <span class="bold">max</span> keyword.  If a limitation isn't imposed on the root queue,
+     borrowing can result in saturating the bandwidth of the outgoing
+     interface.  Similarly, a minimum (reserved) bandwidth can be specified:
 
            queue ssh parent std bandwidth 10M min 5M max 25M
 
@@ -1120,8 +1164,35 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      suffixes <span class="bold">K</span>, <span class="bold">M</span>, and <span class="bold">G</span> to represent kilobits, megabits, and gigabits per
      second, respectively.  The value must not exceed the interface bandwidth.
 
-     In addition to the bandwidth specifications queues support the following
-     options:
+<a name="flows"></a>
+     If multiple connections are assigned the same queue, they're not
+     guaranteed to share the queue bandwidth fairly.  An alternative flow
+     queue manager can be used to achieve fair sharing by indicating how many
+     simultaneous states are expected with a <span class="bold">flows</span> option, unless a minimum
+     bandwidth has been specified as well.
+
+     When packets are classified by the stateful inspection engine, a flow
+     identifier is assigned to all packets belonging to the state, thus
+     limiting the number of individual flows that can be recognized by the
+     resolution of a flow identifier.  The current implementation is able to
+     classify traffic into 32767 distinct flows.  However, efficient fair
+     sharing is observed even with a much smaller number of flows.  For
+     example on a 10Mbit/s DSL or a cable modem uplink, the following simple
+     configuration can be used:
+
+         queue outq on em0 bandwidth 9M max 9M flows 1024 qlimit 1024 \
+               default
+
+     It's important to specify the upper bound within 90-95% of the expected
+     bandwidth and raise the default queue limit.
+
+     If a <span class="bold">flows</span> option appears without a <span class="bold">bandwidth</span> specification, the flow
+     queue manager is selected as the queueing discipline for the
+     corresponding interface acting as a default queue for all outgoing
+     packets.  In such a scenario, a queueing hierarchy is not supported.
+
+     In addition to the bandwidth and flow specifications, queues support the
+     following options:
 
 <a name="default"></a>
      <span class="bold">default</span>
@@ -1138,6 +1209,14 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
            Defines which parent queue the queue should be attached to.
            Mandatory for all queues except root queues.  The parent queue must
            exist.
+
+<a name="quantum"></a>
+     <span class="bold">quantum</span> <span class="underline">size</span>
+           Specifies the quantum of service for the flow queue manager.  The
+           lower the quantum size the more advantage is given to streams of
+           smaller packets at the expense of bulk transfers.  The default
+           value is set to the configured Maximum Transmission Unit (MTU) of
+           the specified interface.
 
 <a name="qlimit"></a>
      <span class="bold">qlimit</span> <span class="underline">limit</span>
@@ -1174,35 +1253,6 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                set queue(ssh_bulk, ssh_interactive)
          pass out on em0 inet proto tcp from any to any port 25 \
                set queue mail
-
-<a name="flows"></a>
-     In addition to bandwidth management, a fair traffic sharing option is
-     provided via a flow queue.  When packets are classified by the stateful
-     inspection engine, a flow identifier is assigned to all packets belonging
-     to this state.  Outgoing traffic is split according to these identifiers
-     into individual queues and is serviced in a way that provides a fair
-     share of bandwidth for all connections sharing the queue.
-
-     Configuration of a flow queue is similar to a regular one, except flow
-     queues don't build a hierarchy and thus only one flow queue may be
-     specified per interface.
-
-     The core parameter of a flow queue is the number of expected simultaneous
-     connections, or <span class="bold">flows</span>, limited by the resolution of the flow identifier
-     (the current implementation is able to classify traffic into 32767
-     distinct flows).  Thus a minimal flow queue configuration is:
-
-           queue fq on em0 flows 1024
-
-<a name="quantum"></a>
-     Another value affecting the flow queue is a quantum of service.  The
-     lower the <span class="bold">quantum</span> the more advantage is given to streams of small packets
-     at the expense of bulk transfers.  The default value for <span class="bold">quantum</span> is
-     selected based on the configured Maximum Transmission Unit (MTU) of the
-     specified interface.
-
-     An additional configuration option <span class="bold">qlimit</span> sets the queue depth shared
-     among all flows.  The default is 1024.
 
 <a name="Table"></a>
 <span class="bold">TABLES</span>
@@ -2029,6 +2079,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                       "divert-packet" "port" port | "divert-reply" |
                       "divert-to" host "port" port |
                       "label" string | "tag" string | [ "!" ] "tagged" string |
+                      "max-pkt-rate" number "/" seconds |
                       "set prio" ( number | "(" number [ [ "," ] number ] ")" ) |
                       "set queue" ( string | "(" string [ [ "," ] string ] ")" ) |
                       "rtable" number | "probability" number"%" | "prio" number |
@@ -2189,7 +2240,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 <span class="bold">HISTORY</span>
      The <span class="bold">pf.conf</span> file format first appeared in OpenBSD 3.0.
 
-OpenBSD 6.2                      July 13, 2017                     OpenBSD 6.2
+OpenBSD 6.3                    February 9, 2018                    OpenBSD 6.3
 </pre>
 </body>
 </html>

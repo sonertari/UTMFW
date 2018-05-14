@@ -15,9 +15,6 @@ WANTLIB =               c m pcre pcreposix stdc++ z
 # and copy it under /usr/ports/distfiles/
 MASTER_SITES=	https://github.com/e2guardian/e2guardian/releases/tag/v4.1.4/
 
-# C++11
-COMPILER =      gcc
-
 LIB_DEPENDS =           devel/pcre
 
 # TODO: Sometimes build fails in Makefile:383 not finding AUTOCONF_VERSION

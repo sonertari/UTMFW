@@ -620,7 +620,7 @@ __EOT
 				;;
 			esac
 
-			# Upgrade not supported on 6.2
+			# Upgrade not supported on 6.3
 			#if [[ $MODE == upgrade ]] ;then
 			#fi
 
@@ -661,7 +661,7 @@ __EOT
 				ln -s /usr/local/bin/php-7.0 /usr/local/bin/php
 				pkg_add php-pcntl
 				pkg_add php-mcrypt
-				pkg_add php-fastcgi
+				pkg_add php-cgi
 				;;
 			esac
 			;;
@@ -1064,7 +1064,7 @@ __EOT
 # #######################################################################
 # Initial actions common to both installs and upgrades.
 # #######################################################################
-VERSION='6.2'
+VERSION='6.3'
 ARCH=$(/usr/bin/machine)
 
 VMAJ=${VERSION%%\.*}
@@ -1095,26 +1095,26 @@ CDDEVS=$(scan_dmesg "${MDCDDEVS:-/^cd[0-9][0-9]* /s/ .*//p}")
 [[ -z $CDDEVS ]] && CDDEVS="cd0,cd1,cd2"
 
 # Selected sets will be installed in the order they are listed in $THESETS.
-THESETS="isc-bind-9.10.6.tgz \
-		sslproxy-0.5.5.tgz \
-		clamav-0.99.2p5.tgz \
+THESETS="isc-bind-9.11.3.tgz \
+		sslproxy-0.5.6.tgz \
+		clamav-0.99.4.tgz \
 		clamavdb.tar.gz \
-		p5-Mail-SpamAssassin-3.4.1p6.tgz \
+		p5-Mail-SpamAssassin-3.4.1p14.tgz \
 		p3scan-2.3.2.tgz \
 		smtp-gated-1.4.16.2.tgz \
 		e2guardian-4.1.4.tgz \
 		blacklists.tar.gz \
 		squid-3.5.27.tgz \
-		snort-2.9.9.0p0.tgz \
+		snort-2.9.11.1.tgz \
 		snortrules.tar.gz \
 		snortips-6.2.2.tgz \
 		imspector-0.9.tgz \
-		openvpn-2.4.4.tgz \
-		dante-1.4.1p0.tgz \
-		symon-2.88p0.tgz \
-		pmacct-1.5.3p1.tgz \
-		pftop-0.7p16.tgz \
-		php-7.0.23.tgz \
+		openvpn-2.4.5p1.tgz \
+		dante-1.4.2.tgz \
+		symon-2.88p2.tgz \
+		pmacct-1.7.0.tgz \
+		pftop-0.7p17.tgz \
+		php-7.0.28.tgz \
 		$CW_WEBIF_TARFILE \
 		$CW_CONFIG_TARFILE"
 

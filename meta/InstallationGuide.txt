@@ -15,6 +15,6 @@ You can access the web administration interface using the IP address of the syst
 Web interface user names are admin and user. Both are set to the same password you provide during installation.
 
 References:
-[1] INSTALL.amd64 under /6.2/amd64/ in the installation iso file
+[1] INSTALL.amd64 under /6.3/amd64/ in the installation iso file
 [2] https://www.openbsd.org/amd64.html for supported hardware
 [3] https://www.openbsd.org/faq/faq4.html for OpenBSD installation guide

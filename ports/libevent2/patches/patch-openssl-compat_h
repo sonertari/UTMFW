@@ -3,17 +3,21 @@ individual features instead but API isn't compatible with OpenSSL 1.1.x.
 
 https://github.com/libevent/libevent/commit/d057c45e8f48
 
---- openssl-compat.h.orig	Wed Dec  7 00:13:44 2016
-+++ openssl-compat.h	Tue Jul 25 15:48:57 2017
-@@ -1,7 +1,7 @@
+Index: openssl-compat.h
+--- openssl-compat.h.orig
++++ openssl-compat.h
+@@ -1,9 +1,9 @@
  #ifndef OPENSSL_COMPAT_H
  #define OPENSSL_COMPAT_H
  
 -#if OPENSSL_VERSION_NUMBER < 0x10100000L
 +#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
  
- static inline BIO_METHOD *BIO_meth_new(int type, const char *name)
+-static inline BIO_METHOD *BIO_meth_new(int type, const char *name)
++inline BIO_METHOD *BIO_meth_new(int type, const char *name)
  {
+ 	BIO_METHOD *biom = calloc(1, sizeof(BIO_METHOD));
+ 
 @@ -30,6 +30,6 @@ static inline BIO_METHOD *BIO_meth_new(int type, const
  
  #define TLS_method SSLv23_method

@@ -1,6 +1,3 @@
-# $ComixWall: Makefile,v 1.6 2016/07/07 05:50:57 soner Exp $
-# Original from: Jack S. Lai <laitcg at cox dot net>
-
 COMMENT=		content scanning transparent POP3 proxy
 DISTNAME=		p3scan-2.3.2
 CATEGORIES=		net mail
@@ -16,7 +13,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
 WANTLIB=		c crypto ssl
-LIB_DEPENDS=		devel/pcre
+BUILD_DEPENDS=		devel/pcre
 
 SEPARATE_BUILD=		No
 CONFIGURE_STYLE=	No

@@ -14,8 +14,8 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
 WANTLIB=		c m stdc++
-
 CONFIGURE_STYLE=	No
+BUILD_DEPENDS=		databases/sqlite3
 
 FAKE_FLAGS+=		rel_group=_imspector rel_user=_imspector
 

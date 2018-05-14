@@ -30,9 +30,6 @@ cWANTLIB+=	idn2 intl p11-kit tasn1 unistring z
 MASTER_SITES=	${HOMEPAGE}Versions/v${V:C/^([0-9]).*/\1/}/${V:C/([0-9.]{3}).*/\1/}/ \
 		http://ftp.mirrorservice.org/sites/ftp.squid-cache.org/pub/archive/${V:C/([0-9.]{3}).*/\1/}/
 
-# C++11
-COMPILER =	gcc
-
 LIB_DEPENDS+=	security/gnutls
 BUILD_DEPENDS+=	devel/cppunit
 

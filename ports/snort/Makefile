@@ -1,14 +1,13 @@
-# $OpenBSD: Makefile,v 1.97 2017/01/23 11:22:58 ajacoutot Exp $
+# $OpenBSD: Makefile,v 1.99 2018/01/28 03:09:12 lteo Exp $
 
 COMMENT =		highly flexible sniffer/NIDS
 
-VERSION =		2.9.9.0
+VERSION =		2.9.11.1
 DISTNAME =		snort-${VERSION}
-REVISION =		0
 
 CATEGORIES =		net security
 
-HOMEPAGE =		http://www.snort.org/
+HOMEPAGE =		https://www.snort.org/
 
 MAINTAINER =		Markus Lude <markus.lude@gmx.de>
 
@@ -43,7 +42,6 @@ DOCS =			AUTHORS CREDITS README README.* *.pdf TODO USAGE \
 
 V =			${VERSION:S/.//g}
 SUBST_VARS +=		V
-
 
 pre-configure:
 	@${SUBST_CMD} ${WRKSRC}/etc/snort.conf
