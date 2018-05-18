@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2018 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009, 2017.
+# Soner Tari <sonertari@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.3\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-23 22:49+0300\n"
+"PO-Revision-Date: 2018-05-18 18:19+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -122,6 +122,9 @@ msgstr "Sayfa başlangıç satırı"
 
 msgid "Passwords do not match"
 msgstr "Parolalar uyuşmuyor"
+
+msgid "Rule test failed without an error message"
+msgstr "Kural testi hata mesajı vermeden başarısız oldu"
 
 msgid "Rules file deleted"
 msgstr "Kural dosyası silindi"

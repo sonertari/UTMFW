@@ -460,6 +460,9 @@ msgstr ""
 msgid "Max MSS"
 msgstr ""
 
+msgid "Max Packet Rate"
+msgstr ""
+
 msgid "Max Single Host States"
 msgstr ""
 
@@ -827,6 +830,9 @@ msgid "Symon"
 msgstr ""
 
 msgid "Symux"
+msgstr ""
+
+msgid "Syncookies"
 msgstr ""
 
 msgid "System"

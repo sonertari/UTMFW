@@ -3252,6 +3252,9 @@ msgstr ""
 msgid "Max MSS"
 msgstr ""
 
+msgid "Max Packet Rate"
+msgstr ""
+
 msgid "Max Single Host States"
 msgstr ""
 
@@ -4304,6 +4307,9 @@ msgid "Rule"
 msgstr ""
 
 msgid "Rule number"
+msgstr ""
+
+msgid "Rule test failed without an error message"
 msgstr ""
 
 msgid "Rule to be added to the routing table."
@@ -5390,6 +5396,9 @@ msgid "Symux"
 msgstr ""
 
 msgid "Symux System Monitoring"
+msgstr ""
+
+msgid "Syncookies"
 msgstr ""
 
 msgid "Syslog Facility"
@@ -6746,6 +6755,9 @@ msgid ""
 "addresses or using BOOTP protocol, and choose a range accordingly."
 msgstr ""
 
+msgid "adaptive"
+msgstr ""
+
 msgid "add file"
 msgstr ""
 
@@ -6753,6 +6765,9 @@ msgid "add host or network"
 msgstr ""
 
 msgid "add value"
+msgstr ""
+
+msgid "always"
 msgstr ""
 
 msgid "anonymize logs (blank out usernames & IPs)"
@@ -6851,6 +6866,9 @@ msgstr ""
 msgid "negated"
 msgstr ""
 
+msgid "never"
+msgstr ""
+
 msgid "no"
 msgstr ""
 
@@ -6869,6 +6887,9 @@ msgstr ""
 msgid "number or name"
 msgstr ""
 
+msgid "number%"
+msgstr ""
+
 msgid "number(ms)"
 msgstr ""
 
@@ -6876,6 +6897,9 @@ msgid "number, name, table or macro"
 msgstr ""
 
 msgid "number/number"
+msgstr ""
+
+msgid "number/seconds"
 msgstr ""
 
 msgid "number[(K|M|G)]"

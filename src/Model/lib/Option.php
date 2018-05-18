@@ -63,6 +63,10 @@ class Option extends Rule
 			'method' => 'parseReassemble',
 			'params' => array(),
 			),
+		'syncookies' => array(
+			'method' => 'parseSyncookies',
+			'params' => array(),
+			),
 		);
 
 	protected $typeOption= array(
@@ -102,6 +106,15 @@ class Option extends Rule
 			),
 		'no-df' => array(
 			'regex' => RE_BOOL,
+			),
+		'syncookies' => array(
+			'regex' => RE_SYNCOOKIES,
+			),
+		'start' => array(
+			'regex' => RE_PERCENT,
+			),
+		'end' => array(
+			'regex' => RE_PERCENT,
 			),
 		);
 
@@ -146,6 +159,20 @@ class Option extends Rule
 		}
 	}
 
+	function parseSyncookies()
+	{
+		$this->parseOption();
+		if ($this->words[$this->index] === 'adaptive') {
+			while ($this->words[++$this->index] != ')' && !$this->isEndOfWords()) {
+				if ($this->words[$this->index] == 'start') {
+					$this->rule['start']= $this->words[++$this->index];
+				} else if ($this->words[$this->index] == 'end') {
+					$this->rule['end']= $this->words[++$this->index];
+				}
+			}
+		}
+	}
+
 	function generate()
 	{
 		$this->str= '';
@@ -160,6 +187,7 @@ class Option extends Rule
 		$this->genOption('state-policy');
 		$this->genSkip();
 		$this->genReassemble();
+		$this->genSyncookies();
 		
 		$this->genComment();
 		$this->str.= "\n";
@@ -189,6 +217,16 @@ class Option extends Rule
 		if (isset($this->rule['reassemble'])) {
 			$this->genOption('reassemble');
 			$this->genKey('no-df');
+		}
+	}
+
+	function genSyncookies()
+	{
+		if (isset($this->rule['syncookies'])) {
+			$this->genOption('syncookies');
+			if ($this->rule['syncookies'] === 'adaptive') {
+				$this->str.= ' (start ' . $this->rule['start'] . ', end ' . $this->rule['end'] . ')';
+			}
 		}
 	}
 }

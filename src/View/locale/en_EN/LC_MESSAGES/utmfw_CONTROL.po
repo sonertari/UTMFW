@@ -272,7 +272,13 @@ msgstr ""
 msgid "Vertical"
 msgstr ""
 
+msgid "adaptive"
+msgstr ""
+
 msgid "add value"
+msgstr ""
+
+msgid "always"
 msgstr ""
 
 msgid "as rule number"
@@ -317,6 +323,9 @@ msgstr ""
 msgid "name, may be nested"
 msgstr ""
 
+msgid "never"
+msgstr ""
+
 msgid "no"
 msgstr ""
 
@@ -335,6 +344,9 @@ msgstr ""
 msgid "number or name"
 msgstr ""
 
+msgid "number%"
+msgstr ""
+
 msgid "number(ms)"
 msgstr ""
 
@@ -342,6 +354,9 @@ msgid "number, name, table or macro"
 msgstr ""
 
 msgid "number/number"
+msgstr ""
+
+msgid "number/seconds"
 msgstr ""
 
 msgid "number[(K|M|G)]"

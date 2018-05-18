@@ -360,8 +360,12 @@ class Math_BigInteger
             case 256:
                 switch (MATH_BIGINTEGER_MODE) {
                     case MATH_BIGINTEGER_MODE_GMP:
-                        $sign = $this->is_negative ? '-' : '';
-                        $this->value = gmp_init($sign . '0x' . bin2hex($x));
+                        $this->value = function_exists('gmp_import') ?
+                            gmp_import($x) :
+                            gmp_init('0x' . bin2hex($x));
+                        if ($this->is_negative) {
+                            $this->value = gmp_neg($this->value);
+                        }
                         break;
                     case MATH_BIGINTEGER_MODE_BCMATH:
                         // round $len to the nearest 4 (thanks, DavidMJ!)
@@ -546,7 +550,7 @@ class Math_BigInteger
             $temp = $comparison < 0 ? $this->add(new Math_BigInteger(1)) : $this->copy();
             $bytes = $temp->toBytes();
 
-            if (empty($bytes)) { // eg. if the number we're trying to convert is -1
+            if (!strlen($bytes)) { // eg. if the number we're trying to convert is -1
                 $bytes = chr(0);
             }
 
@@ -563,9 +567,13 @@ class Math_BigInteger
                     return $this->precision > 0 ? str_repeat(chr(0), ($this->precision + 1) >> 3) : '';
                 }
 
-                $temp = gmp_strval(gmp_abs($this->value), 16);
-                $temp = (strlen($temp) & 1) ? '0' . $temp : $temp;
-                $temp = pack('H*', $temp);
+                if (function_exists('gmp_export')) {
+                    $temp = gmp_export($this->value);
+                } else {
+                    $temp = gmp_strval(gmp_abs($this->value), 16);
+                    $temp = (strlen($temp) & 1) ? '0' . $temp : $temp;
+                    $temp = pack('H*', $temp);
+                }
 
                 return $this->precision > 0 ?
                     substr(str_pad($temp, $this->precision >> 3, chr(0), STR_PAD_LEFT), -($this->precision >> 3)) :
@@ -2897,7 +2905,7 @@ class Math_BigInteger
         switch (MATH_BIGINTEGER_MODE) {
             case MATH_BIGINTEGER_MODE_GMP:
                 $temp = new Math_BigInteger();
-                $temp->value = gmp_xor($this->value, $x->value);
+                $temp->value = gmp_xor(gmp_abs($this->value), gmp_abs($x->value));
 
                 return $this->_normalize($temp);
             case MATH_BIGINTEGER_MODE_BCMATH:
@@ -2914,6 +2922,7 @@ class Math_BigInteger
 
         $length = max(count($this->value), count($x->value));
         $result = $this->copy();
+        $result->is_negative = false;
         $result->value = array_pad($result->value, $length, 0);
         $x->value = array_pad($x->value, $length, 0);
 
@@ -2937,7 +2946,7 @@ class Math_BigInteger
         // (will always result in a smaller number.  ie. ~1 isn't 1111 1110 - it's 0)
         $temp = $this->toBytes();
         if ($temp == '') {
-            return '';
+            return $this->_normalize(new Math_BigInteger());
         }
         $pre_msb = decbin(ord($temp[0]));
         $temp = ~$temp;
@@ -3484,7 +3493,7 @@ class Math_BigInteger
                     break;
                 }
             }
-            $s = 26 * $i + $j - 1;
+            $s = 26 * $i + $j;
             $r->_rshift($s);
         }
 

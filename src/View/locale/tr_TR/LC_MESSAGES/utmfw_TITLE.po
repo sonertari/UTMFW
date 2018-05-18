@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2018 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009, 2017.
+# Soner Tari <sonertari@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.3\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-11-02 00:40+0300\n"
+"PO-Revision-Date: 2018-05-18 18:19+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -479,6 +479,9 @@ msgstr "En Yüksek Bağlantı Hızı"
 msgid "Max MSS"
 msgstr "En Yüksek MSS"
 
+msgid "Max Packet Rate"
+msgstr "En Yüksek Paket Hızı"
+
 msgid "Max Single Host States"
 msgstr "Tek Adres için En Fazla Durum Sayısı"
 
@@ -847,6 +850,9 @@ msgstr "Symon"
 
 msgid "Symux"
 msgstr "Symux"
+
+msgid "Syncookies"
+msgstr "Syncookies"
 
 msgid "System"
 msgstr "Sistem"

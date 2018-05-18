@@ -48,6 +48,11 @@ class Option extends Rule
 				if (isset($this->rule['no-df'])) {
 					echo ' no-df';
 				}
+			} elseif ($this->rule['type'] == 'syncookies') {
+				echo $this->rule['type'] . ": $value";
+				if ($value === 'adaptive') {
+					echo ' (start ' . $this->rule['start'] . ', end ' . $this->rule['end'] . ')';
+				}
 			}
 			?>
 		</td>
@@ -68,6 +73,9 @@ class Option extends Rule
 		$this->inputAdd('skip', 'addSkip');
 		$this->inputKey('reassemble');
 		$this->inputBool('no-df');
+		$this->inputKey('syncookies');
+		$this->inputKey('start');
+		$this->inputKey('end');
 
 		$this->inputKey('comment');
 		$this->inputDelEmpty();
@@ -98,6 +106,7 @@ class Option extends Rule
 		$this->editDebug();
 		$this->editSkip();
 		$this->editReassemble();
+		$this->editSyncookies();
 
 		if (isset($this->rule['type'])) {
 			$this->editComment();
@@ -124,6 +133,7 @@ class Option extends Rule
 					<option value="debug" <?php echo ($this->rule['type'] == 'debug' ? 'selected' : ''); ?>>debug</option>
 					<option value="skip" <?php echo ($this->rule['type'] == 'skip' ? 'selected' : ''); ?>>skip</option>
 					<option value="reassemble" <?php echo ($this->rule['type'] == 'reassemble' ? 'selected' : ''); ?>>reassemble</option>
+					<option value="syncookies" <?php echo ($this->rule['type'] == 'syncookies' ? 'selected' : ''); ?>>syncookies</option>
 				</select>
 			</td>
 		</tr>
@@ -327,6 +337,31 @@ class Option extends Rule
 					<?php $this->editHelp('reassemble') ?>
 					<input type="checkbox" id="no-df" name="no-df" value="no-df" <?php echo ($this->rule['no-df'] ? 'checked' : ''); ?> />
 					<label for="no-df">no-df</label>
+				</td>
+			</tr>
+			<?php
+		}
+	}
+
+	function editSyncookies()
+	{
+		if ($this->rule['type'] == 'syncookies') {
+			?>
+			<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
+				<td class="title">
+					<?php echo _TITLE('Syncookies').':' ?>
+				</td>
+				<td>
+					<select id="syncookies" name="syncookies">
+						<option value="never" <?php echo ($this->rule['syncookies'] == 'never' ? 'selected' : ''); ?>><?php echo _CONTROL('never') ?></option>
+						<option value="always" <?php echo ($this->rule['syncookies'] == 'always' ? 'selected' : ''); ?>><?php echo _CONTROL('always') ?></option>
+						<option value="adaptive" <?php echo ($this->rule['syncookies'] == 'adaptive' ? 'selected' : ''); ?>><?php echo _CONTROL('adaptive') ?></option>
+					</select>
+					<input type="text" id="start" name="start" value="<?php echo $this->rule['start']; ?>" size="10" placeholder="<?php echo _CONTROL('number%') ?>" <?php echo $this->rule['syncookies'] !== 'adaptive' ? 'disabled' : ''; ?> />
+					<label for="start">start</label>
+					<input type="text" id="end" name="end" value="<?php echo $this->rule['end']; ?>" size="10" placeholder="<?php echo _CONTROL('number%') ?>" <?php echo $this->rule['syncookies'] !== 'adaptive' ? 'disabled' : ''; ?> />
+					<label for="end">end</label>
+					<?php $this->editHelp('syncookies') ?>
 				</td>
 			</tr>
 			<?php

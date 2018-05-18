@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2018 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009, 2017.
+# Soner Tari <sonertari@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.3\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2017-10-23 22:53+0300\n"
+"PO-Revision-Date: 2018-05-18 18:23+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -291,8 +291,14 @@ msgstr "Hatalara rağmen karşıya yükle"
 msgid "Vertical"
 msgstr "Dikey"
 
+msgid "adaptive"
+msgstr "değişken"
+
 msgid "add value"
 msgstr "değer ekle"
+
+msgid "always"
+msgstr "her zaman"
 
 msgid "as rule number"
 msgstr "kural numarası"
@@ -336,6 +342,9 @@ msgstr "taşınacak yer"
 msgid "name, may be nested"
 msgstr "ad, içiçe olabilir"
 
+msgid "never"
+msgstr "asla"
+
 msgid "no"
 msgstr "hayır"
 
@@ -354,6 +363,9 @@ msgstr "sayı veya kısaltma"
 msgid "number or name"
 msgstr "sayı veya ad"
 
+msgid "number%"
+msgstr "sayı%"
+
 msgid "number(ms)"
 msgstr "sayı(ms)"
 
@@ -362,6 +374,9 @@ msgstr "sayı, ad, tablo veya makro"
 
 msgid "number/number"
 msgstr "sayı/sayı"
+
+msgid "number/seconds"
+msgstr "sayı/saniye"
 
 msgid "number[(K|M|G)]"
 msgstr "sayı[(K|M|G)]"

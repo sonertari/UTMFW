@@ -101,6 +101,9 @@ msgstr ""
 msgid "Passwords do not match"
 msgstr ""
 
+msgid "Rule test failed without an error message"
+msgstr ""
+
 msgid "Rules file deleted"
 msgstr ""
 

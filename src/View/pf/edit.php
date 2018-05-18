@@ -54,6 +54,13 @@ if (isset($edit) && array_key_exists($edit, $ruleType2Class)) {
 		$ruleStr= _NOTICE('ERROR') . ': ' . _NOTICE('Cannot generate rule');
 	}
 
+	if (!$testResult && $ErrorMsg == '') {
+		/// @bug pfctl on 6.3 sometimes returns a nonzero value without issuing any error message.
+		// For example, run the following to reproduce:
+		//# echo "set syncookies adaptive (start 25%, end 12.1)" | pfctl -nf - || echo fail
+		//fail
+		$ErrorMsg= _NOTICE('Rule test failed without an error message');
+	}
 	require_once($VIEW_PATH.'/header.php');
 	?>
 	<table class="shadowbox">
