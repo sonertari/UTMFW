@@ -21,14 +21,14 @@
 require_once('../lib/vars.php');
 
 $Menu = array(
-    'info' => array(
-        'Name' => _MENU('Info'),
-        'Perms' => $ALL_USERS,
+	'info' => array(
+		'Name' => _MENU('Info'),
+		'Perms' => $ALL_USERS,
 		),
-    'stats' => array(
+	'stats' => array(
 		'Model' => 'clamd',
-        'Name' => _MENU('Statistics'),
-        'Perms' => $ALL_USERS,
+		'Name' => _MENU('Statistics'),
+		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
 			'general' => _MENU('General'),
 			'daily' => _MENU('Daily'),
@@ -36,33 +36,33 @@ $Menu = array(
 			'live' => _MENU('Live'),
 			),
 		),
-    'graphs' => array(
-        'Name' => _MENU('Graphs'),
-        'Perms' => $ALL_USERS,
+	'graphs' => array(
+		'Name' => _MENU('Graphs'),
+		'Perms' => $ALL_USERS,
 		),
-    'logs' => array(
+	'logs' => array(
 		'Model' => 'clamd',
-        'Name' => _MENU('Logs'),
-        'Perms' => $ALL_USERS,
+		'Name' => _MENU('Logs'),
+		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
 			'archives' => _MENU('Archives'),
 			'live' => _MENU('Live'),
 			),
 		),
-    'freshclamlogs' => array(
+	'freshclamlogs' => array(
 		'Model' => 'freshclam',
-        'Name' => _MENU('DB Logs'),
-        'Perms' => $ALL_USERS,
+		'Name' => _MENU('DB Logs'),
+		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
 			'archives' => _MENU('Archives'),
 			'live' => _MENU('Live'),
 			),
 		),
-    'conf' => array(
+	'conf' => array(
 		// XXX
 		'Model' => 'clamd',
-        'Name' => _MENU('Config'),
-        'Perms' => $ADMIN,
+		'Name' => _MENU('Config'),
+		'Perms' => $ADMIN,
 		'SubMenu' => array(
 			'clamd' => _MENU('Clamd'),
 			'freshclam' => _MENU('DB'),

@@ -21,14 +21,14 @@
 require_once('../lib/vars.php');
 
 $Menu = array(
-    'info' => array(
-        'Name' => _MENU('Info'),
-        'Perms' => $ALL_USERS,
+	'info' => array(
+		'Name' => _MENU('Info'),
+		'Perms' => $ALL_USERS,
 		),
-    'stats' => array(
+	'stats' => array(
 		'Model' => 'snortalerts',
-        'Name' => _MENU('Statistics'),
-        'Perms' => $ALL_USERS,
+		'Name' => _MENU('Statistics'),
+		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
 			'general' => _MENU('General'),
 			'daily' => _MENU('Daily'),
@@ -36,30 +36,30 @@ $Menu = array(
 			'live' => _MENU('Live'),
 			),
 		),
-    'graphs' => array(
-        'Name' => _MENU('Graphs'),
-        'Perms' => $ALL_USERS,
+	'graphs' => array(
+		'Name' => _MENU('Graphs'),
+		'Perms' => $ALL_USERS,
 		),
-    'logs' => array(
-        'Name' => _MENU('Logs'),
-        'Perms' => $ALL_USERS,
+	'logs' => array(
+		'Name' => _MENU('Logs'),
+		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
 			'archives' => _MENU('Archives'),
 			'live' => _MENU('Live'),
 			),
 		),
-    'alerts' => array(
+	'alerts' => array(
 		'Model' => 'snortalerts',
-        'Name' => _MENU('Alerts'),
-        'Perms' => $ALL_USERS,
+		'Name' => _MENU('Alerts'),
+		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
 			'archives' => _MENU('Archives'),
 			'live' => _MENU('Live'),
 			),
 		),
-    'conf' => array(
-        'Name' => _MENU('Config'),
-        'Perms' => $ADMIN,
+	'conf' => array(
+		'Name' => _MENU('Config'),
+		'Perms' => $ADMIN,
 		'SubMenu' => array(
 			'basic' => _MENU('Basic'),
 			'advanced' => _MENU('Advanced'),

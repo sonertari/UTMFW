@@ -21,27 +21,27 @@
 include('include.php');
 
 $LogConf = array(
-    'spamdwhitedb' => array(
-        'Fields' => array(
-            'IP' => _TITLE('IP'),
-            'First' => _TITLE('First'),
-            'Listed' => _TITLE('Listed'),
-            'Expire' => _TITLE('Expire'),
-            '#Blocked' => _TITLE('#Blocked'),
-            '#Passed' => _TITLE('#Passed'),
-    		),
+	'spamdwhitedb' => array(
+		'Fields' => array(
+			'IP' => _TITLE('IP'),
+			'First' => _TITLE('First'),
+			'Listed' => _TITLE('Listed'),
+			'Expire' => _TITLE('Expire'),
+			'#Blocked' => _TITLE('#Blocked'),
+			'#Passed' => _TITLE('#Passed'),
+			),
 		),
-    'spamdgreydb' => array(
-        'Fields' => array(
-            'IP' => _TITLE('IP'),
-            'From' => _TITLE('From'),
-            'To' => _TITLE('To'),
-            'First' => _TITLE('First'),
-            'Listed' => _TITLE('Listed'),
-            'Expire' => _TITLE('Expire'),
-            '#Blocked' => _TITLE('#Blocked'),
-            '#Passed' => _TITLE('#Passed'),
-    		),
+	'spamdgreydb' => array(
+		'Fields' => array(
+			'IP' => _TITLE('IP'),
+			'From' => _TITLE('From'),
+			'To' => _TITLE('To'),
+			'First' => _TITLE('First'),
+			'Listed' => _TITLE('Listed'),
+			'Expire' => _TITLE('Expire'),
+			'#Blocked' => _TITLE('#Blocked'),
+			'#Passed' => _TITLE('#Passed'),
+			),
 		),
 	);
 

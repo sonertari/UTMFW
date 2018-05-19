@@ -21,21 +21,21 @@
 require_once('include.php');
 
 $LogConf = array(
-    'freshclam' => array(
-        'Fields' => array(
-            'Date' => _TITLE('Date'),
-            'Time' => _TITLE('Time'),
-            'Process' => _TITLE('Process'),
-            'Prio' => _TITLE('Prio'),
-            'Log' => _TITLE('Log'),
-    		),
-        'HighlightLogs' => array(
-            'REs' => array(
-                'red' => array('failed', 'ERROR:'),
-                'yellow' => array('Waiting to lock database directory', 'WARNING:'),
-                'green' => array('update process started at', 'up to date', 'updated', '\bsuccess'),
-        		),
-    		),
+	'freshclam' => array(
+		'Fields' => array(
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'Process' => _TITLE('Process'),
+			'Prio' => _TITLE('Prio'),
+			'Log' => _TITLE('Log'),
+			),
+		'HighlightLogs' => array(
+			'REs' => array(
+				'red' => array('failed', 'ERROR:'),
+				'yellow' => array('Waiting to lock database directory', 'WARNING:'),
+				'green' => array('update process started at', 'up to date', 'updated', '\bsuccess'),
+				),
+			),
 		),
 	);
 

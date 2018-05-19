@@ -21,24 +21,24 @@
 require_once('include.php');
 
 $LogConf = array(
-    'imlogs' => array(
-        'Fields' => array(
-            'Date' => _TITLE('Date'),
-            'Time' => _TITLE('Time'),
-            'IPPort' => _TITLE('IPPort'),
-            'Log' => _TITLE('Log'),
-    		),
-        'HighlightLogs' => array(
-            'REs' => array(
-                /// v0.7 log format confuses old format parser
-                /// Incrementing by 1 in im parser elsewhere for v0.7
-                //'intext'		=> array('0'),
-                'intext' => array('1'),
-                'outtext' => array('2'),
-                'infilexfer' => array('3'),
-                'outfilexfer' => array('4'),
-        		),
-    		),
+	'imlogs' => array(
+		'Fields' => array(
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'IPPort' => _TITLE('IPPort'),
+			'Log' => _TITLE('Log'),
+			),
+		'HighlightLogs' => array(
+			'REs' => array(
+				/// v0.7 log format confuses old format parser
+				/// Incrementing by 1 in im parser elsewhere for v0.7
+				//'intext'		=> array('0'),
+				'intext' => array('1'),
+				'outtext' => array('2'),
+				'infilexfer' => array('3'),
+				'outfilexfer' => array('4'),
+				),
+			),
 		),
 	);
 

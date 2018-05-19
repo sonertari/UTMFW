@@ -21,13 +21,13 @@
 require_once('../lib/vars.php');
 
 $Menu = array(
-    'info' => array(
-        'Name' => _MENU('Info'),
-        'Perms' => $ALL_USERS,
+	'info' => array(
+		'Name' => _MENU('Info'),
+		'Perms' => $ALL_USERS,
 		),
-    'stats' => array(
-        'Name' => _MENU('Statistics'),
-        'Perms' => $ALL_USERS,
+	'stats' => array(
+		'Name' => _MENU('Statistics'),
+		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
 			'general' => _MENU('General'),
 			'daily' => _MENU('Daily'),
@@ -35,13 +35,13 @@ $Menu = array(
 			'live' => _MENU('Live'),
 			),
 		),
-    'graphs' => array(
-        'Name' => _MENU('Graphs'),
-        'Perms' => $ALL_USERS,
+	'graphs' => array(
+		'Name' => _MENU('Graphs'),
+		'Perms' => $ALL_USERS,
 		),
-    'logs' => array(
-        'Name' => _MENU('Logs'),
-        'Perms' => $ALL_USERS,
+	'logs' => array(
+		'Name' => _MENU('Logs'),
+		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
 			'archives' => _MENU('Archives'),
 			'live' => _MENU('Live'),
@@ -50,14 +50,14 @@ $Menu = array(
 	);
 
 $LogConf = array(
-    'ftp-proxy' => array(
-        'Fields' => array(
-            'Date' => _TITLE('Date'),
-            'Time' => _TITLE('Time'),
-            'Process' => _TITLE('Process'),
-            'Prio' => _TITLE('Prio'),
-            'Log' => _TITLE('Log'),
-    		),
+	'ftp-proxy' => array(
+		'Fields' => array(
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'Process' => _TITLE('Process'),
+			'Prio' => _TITLE('Prio'),
+			'Log' => _TITLE('Log'),
+			),
 		),
 	);
 

@@ -21,26 +21,26 @@
 require_once('include.php');
 
 $LogConf = array(
-    'wui_syslog' => array(
-        'Fields' => array(
-            'Date' => _TITLE('Date'),
-            'Time' => _TITLE('Time'),
-            'Prio' => _TITLE('Prio'),
-            'User' => _TITLE('User'),
-            'IP' => _TITLE('IP'),
-            'File' => _TITLE('File'),
-            'Function' => _TITLE('Function'),
-            'Line' => _TITLE('Line'),
-            'Reason' => _TITLE('Reason'),
-            'Log' => _TITLE('Log'),
-    		),
-        'HighlightLogs' => array(
-            'Col' => 'LogLevel',
-            'REs' => array(
-                'red' => array('LOG_EMERG', 'LOG_ALERT', 'LOG_CRIT', 'LOG_ERR'),
-                'yellow' => array('LOG_WARNING'),
-        		),
-    		),
+	'wui_syslog' => array(
+		'Fields' => array(
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'Prio' => _TITLE('Prio'),
+			'User' => _TITLE('User'),
+			'IP' => _TITLE('IP'),
+			'File' => _TITLE('File'),
+			'Function' => _TITLE('Function'),
+			'Line' => _TITLE('Line'),
+			'Reason' => _TITLE('Reason'),
+			'Log' => _TITLE('Log'),
+			),
+		'HighlightLogs' => array(
+			'Col' => 'LogLevel',
+			'REs' => array(
+				'red' => array('LOG_EMERG', 'LOG_ALERT', 'LOG_CRIT', 'LOG_ERR'),
+				'yellow' => array('LOG_WARNING'),
+				),
+			),
 		),
 	);
 

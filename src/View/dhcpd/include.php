@@ -21,41 +21,41 @@
 require_once('../lib/vars.php');
 
 $Menu = array(
-    'info' => array(
-        'Name' => _MENU('Info'),
-        'Perms' => $ALL_USERS,
+	'info' => array(
+		'Name' => _MENU('Info'),
+		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
 			'dhcpd' => _MENU('Dhcpd'),
 			'arptable' => _MENU('Arp Table'),
 			),
 		),
-    'graphs' => array(
-        'Name' => _MENU('Graphs'),
-        'Perms' => $ALL_USERS,
+	'graphs' => array(
+		'Name' => _MENU('Graphs'),
+		'Perms' => $ALL_USERS,
 		),
-    'logs' => array(
-        'Name' => _MENU('Logs'),
-        'Perms' => $ALL_USERS,
+	'logs' => array(
+		'Name' => _MENU('Logs'),
+		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
 			'archives' => _MENU('Archives'),
 			'live' => _MENU('Live'),
 			),
 		),
-    'conf' => array(
-        'Name' => _MENU('Config'),
-        'Perms' => $ADMIN,
+	'conf' => array(
+		'Name' => _MENU('Config'),
+		'Perms' => $ADMIN,
 		),
 	);
 
 $LogConf = array(
-    'dhcpd' => array(
-        'Fields' => array(
+	'dhcpd' => array(
+		'Fields' => array(
 			'Date' => _TITLE('Date'),
 			'Time' => _TITLE('Time'),
 			'Process' => _TITLE('Process'),
 			'Prio' => _TITLE('Prio'),
 			'Log' => _TITLE('Log'),
-    		),
+			),
 		),
 	'arp' => array(
 		'Fields' => array(

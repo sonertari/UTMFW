@@ -122,7 +122,7 @@ class Named extends Model
 			// Older: client 127.0.0.1#31874: query: www.openbsd.org IN A +
 			// Old: client 192.168.5.2#49585 (detectportal.firefox.com): query: detectportal.firefox.com IN AAAA + (192.168.5.1)
 			// New: client @0x1512ca59d450 192.168.11.2#49672 (detectportal.firefox.com): query: detectportal.firefox.com IN AAAA + (192.168.11.1)
-			$re= "/client\s+@0x[\da-f]{12}\s+$re_clientip#$re_num(\h*\([^\)]*\)|):\s+query:\s+$re_domain\s+$re_type\s+.*\s+\(($Re_Ip)\)$/";
+			$re= "/client\s+\S+\s+$re_clientip#$re_num(\h*\([^\)]*\)|):\s+query:\s+$re_domain\s+$re_type\s+.*\s+\(($Re_Ip)\)$/";
 			if (preg_match($re, $cols['Log'], $match)) {
 				$cols['IP']= $match[1];
 				// Skip port
@@ -134,7 +134,7 @@ class Named extends Model
 				$cols['Log']= $cols['Type'];
 			} else {
 				// client @0x151299cc5450 192.168.11.2#49672 (detectportal.firefox.com): query failed (SERVFAIL) for detectportal.firefox.com/IN/A at /usr/obj/ports/isc-bind-9.11.3/bind-9.11.3/bin/named/query.c:6885
-				$re= "/client\s+@0x[\da-f]{12}\s+$re_clientip#$re_num(\h*\([^\)]*\)|):\s+query\s+failed\s+\((.+)\)\s+for\s+$re_domain\/(.*)\/(.*)\s+at\s+.*$/";
+				$re= "/client\s+\S+\s+$re_clientip#$re_num(\h*\([^\)]*\)|):\s+query\s+failed\s+\((.+)\)\s+for\s+$re_domain\/(.*)\/(.*)\s+at\s+.*$/";
 				if (preg_match($re, $cols['Log'], $match)) {
 					$cols['IP']= $match[1];
 					$cols['Reason']= $match[4];

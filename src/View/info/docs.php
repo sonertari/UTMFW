@@ -25,9 +25,9 @@
 require_once('include.php');
 
 $Menu = array(
-    'docs' => array(
-        'Name' => _MENU('Documentation'),
-        'Perms' => $ALL_USERS,
+	'docs' => array(
+		'Name' => _MENU('Documentation'),
+		'Perms' => $ALL_USERS,
 		),
 	);
 

@@ -21,20 +21,20 @@
 require_once('include.php');
 
 $LogConf = array(
-    'snort' => array(
-        'Fields' => array(
-            'Date' => _TITLE('Date'),
-            'Time' => _TITLE('Time'),
-            'Process' => _TITLE('Process'),
-            'Prio' => _TITLE('Prio'),
-            'Log' => _TITLE('Log'),
-    		),
-        'HighlightLogs' => array(
-            'REs' => array(
-                'red' => array('failed', 'ERROR:'),
-                'yellow' => array('WARNING:'),
-        		),
-    		),
+	'snort' => array(
+		'Fields' => array(
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'Process' => _TITLE('Process'),
+			'Prio' => _TITLE('Prio'),
+			'Log' => _TITLE('Log'),
+			),
+		'HighlightLogs' => array(
+			'REs' => array(
+				'red' => array('failed', 'ERROR:'),
+				'yellow' => array('WARNING:'),
+				),
+			),
 		),
 	);
 
@@ -164,54 +164,54 @@ $View= new Snort();
  * Basic configuration.
  */
 $basicConfig = array(
-    'ipvar HOME_NET' => array(
-        'title' => _TITLE2('HOME_NET'),
-        'info' => _HELPBOX2('You must change the following variables to reflect your local network. The variable is currently setup for an RFC 1918 address space.'),
+	'ipvar HOME_NET' => array(
+		'title' => _TITLE2('HOME_NET'),
+		'info' => _HELPBOX2('You must change the following variables to reflect your local network. The variable is currently setup for an RFC 1918 address space.'),
 		),
-    'ipvar EXTERNAL_NET' => array(
-        'title' => _TITLE2('EXTERNAL_NET'),
-        'info' => _HELPBOX2('Set up the external network addresses as well.  A good start may be "any"'),
+	'ipvar EXTERNAL_NET' => array(
+		'title' => _TITLE2('EXTERNAL_NET'),
+		'info' => _HELPBOX2('Set up the external network addresses as well.  A good start may be "any"'),
 		),
-    'ipvar DNS_SERVERS' => array(
-        'title' => _TITLE2('DNS_SERVERS'),
-        'info' => _HELPBOX2('Configure your server lists.  This allows snort to only look for attacks to systems that have a service up.  Why look for HTTP attacks if you are not running a web server?  This allows quick filtering based on IP addresses. These configurations MUST follow the same configuration scheme as defined above for $HOME_NET.
+	'ipvar DNS_SERVERS' => array(
+		'title' => _TITLE2('DNS_SERVERS'),
+		'info' => _HELPBOX2('Configure your server lists.  This allows snort to only look for attacks to systems that have a service up.  Why look for HTTP attacks if you are not running a web server?  This allows quick filtering based on IP addresses. These configurations MUST follow the same configuration scheme as defined above for $HOME_NET.
 List of DNS servers on your network'),
 		),
-    'ipvar SMTP_SERVERS' => array(
-        'title' => _TITLE2('SMTP_SERVERS'),
-        'info' => _HELPBOX2('List of SMTP servers on your network'),
+	'ipvar SMTP_SERVERS' => array(
+		'title' => _TITLE2('SMTP_SERVERS'),
+		'info' => _HELPBOX2('List of SMTP servers on your network'),
 		),
-    'ipvar HTTP_SERVERS' => array(
-        'title' => _TITLE2('HTTP_SERVERS'),
-        'info' => _HELPBOX2('List of web servers on your network'),
+	'ipvar HTTP_SERVERS' => array(
+		'title' => _TITLE2('HTTP_SERVERS'),
+		'info' => _HELPBOX2('List of web servers on your network'),
 		),
-    'ipvar SQL_SERVERS' => array(
-        'title' => _TITLE2('SQL_SERVERS'),
-        'info' => _HELPBOX2('List of sql servers on your network'),
+	'ipvar SQL_SERVERS' => array(
+		'title' => _TITLE2('SQL_SERVERS'),
+		'info' => _HELPBOX2('List of sql servers on your network'),
 		),
-    'ipvar TELNET_SERVERS' => array(
-        'title' => _TITLE2('TELNET_SERVERS'),
-        'info' => _HELPBOX2('List of telnet servers on your network'),
+	'ipvar TELNET_SERVERS' => array(
+		'title' => _TITLE2('TELNET_SERVERS'),
+		'info' => _HELPBOX2('List of telnet servers on your network'),
 		),
-//    'ipvar SNMP_SERVERS' => array(
-//        'title' => _TITLE2('SNMP_SERVERS'),
-//        'info' => _HELPBOX2('List of snmp servers on your network'),
+//	'ipvar SNMP_SERVERS' => array(
+//		'title' => _TITLE2('SNMP_SERVERS'),
+//		'info' => _HELPBOX2('List of snmp servers on your network'),
 //		),
-    'portvar SSH_PORTS' => array(
-        'title' => _TITLE2('SSH_PORTS'),
-        'info' => _HELPBOX2('Ports you run secure shell on.'),
+	'portvar SSH_PORTS' => array(
+		'title' => _TITLE2('SSH_PORTS'),
+		'info' => _HELPBOX2('Ports you run secure shell on.'),
 		),
-    'portvar HTTP_PORTS' => array(
-        'title' => _TITLE2('HTTP_PORTS'),
-        'info' => _HELPBOX2('Ports you run web servers on.
+	'portvar HTTP_PORTS' => array(
+		'title' => _TITLE2('HTTP_PORTS'),
+		'info' => _HELPBOX2('Ports you run web servers on.
 
 Please note:  [80,8080] does not work.
 If you wish to define multiple HTTP ports, port lists must either be continuous [eg 80:8080], or a single port [eg 80].
 We will add support for a real list of ports in the future.'),
 		),
-    'portvar SHELLCODE_PORTS' => array(
-        'title' => _TITLE2('SHELLCODE_PORTS'),
-        'info' => _HELPBOX2('Ports you want to look for SHELLCODE on.'),
+	'portvar SHELLCODE_PORTS' => array(
+		'title' => _TITLE2('SHELLCODE_PORTS'),
+		'info' => _HELPBOX2('Ports you want to look for SHELLCODE on.'),
 		),
 	);
 
@@ -219,50 +219,50 @@ We will add support for a real list of ports in the future.'),
  * Advanced configuration.
  */
 $advancedConfig = array(
-    'config disable_decode_alerts' => array(
-        'title' => _TITLE2('Disable decode alerts'),
-        'info' => _HELPBOX2('Snort\'s decoder will alert on lots of things such as header truncation or options of unusual length or infrequently used tcp options.
+	'config disable_decode_alerts' => array(
+		'title' => _TITLE2('Disable decode alerts'),
+		'info' => _HELPBOX2('Snort\'s decoder will alert on lots of things such as header truncation or options of unusual length or infrequently used tcp options.
 Stop generic decode events:'),
 		),
-    'config disable_tcpopt_experimental_alerts' => array(
-        'title' => _TITLE2('Disable tcpopt experimental alerts'),
-        'info' => _HELPBOX2('Stop Alerts on experimental TCP options'),
+	'config disable_tcpopt_experimental_alerts' => array(
+		'title' => _TITLE2('Disable tcpopt experimental alerts'),
+		'info' => _HELPBOX2('Stop Alerts on experimental TCP options'),
 		),
-    'config disable_tcpopt_obsolete_alerts' => array(
-        'title' => _TITLE2('Disable tcpopt obsolete alerts'),
-        'info' => _HELPBOX2('Stop Alerts on obsolete TCP options'),
+	'config disable_tcpopt_obsolete_alerts' => array(
+		'title' => _TITLE2('Disable tcpopt obsolete alerts'),
+		'info' => _HELPBOX2('Stop Alerts on obsolete TCP options'),
 		),
-    'config disable_tcpopt_ttcp_alerts' => array(
-        'title' => _TITLE2('Disable tcpopt ttcp alerts'),
-        'info' => _HELPBOX2('Stop Alerts on T/TCP alerts
+	'config disable_tcpopt_ttcp_alerts' => array(
+		'title' => _TITLE2('Disable tcpopt ttcp alerts'),
+		'info' => _HELPBOX2('Stop Alerts on T/TCP alerts
 
 In snort 2.0.1 and above, this only alerts when a TCP option is detected that shows T/TCP being actively used on the network.  If this is normal behavior for your network, disable the next option.'),
 		),
-    'config disable_tcpopt_alerts' => array(
-        'title' => _TITLE2('Disable tcpopt alerts'),
-        'info' => _HELPBOX2('Stop Alerts on all other TCPOption type events'),
+	'config disable_tcpopt_alerts' => array(
+		'title' => _TITLE2('Disable tcpopt alerts'),
+		'info' => _HELPBOX2('Stop Alerts on all other TCPOption type events'),
 		),
-    'config disable_ipopt_alerts' => array(
-        'title' => _TITLE2('Disable ipopt alerts'),
-        'info' => _HELPBOX2('Stop Alerts on invalid ip options'),
+	'config disable_ipopt_alerts' => array(
+		'title' => _TITLE2('Disable ipopt alerts'),
+		'info' => _HELPBOX2('Stop Alerts on invalid ip options'),
 		),
-    'preprocessor frag3_global: max_frags' => array(
-        'title' => _TITLE2('IP defragmentation support'),
-        'info' => _HELPBOX2('This preprocessor performs IP defragmentation.  This plugin will also detect people launching fragmentation attacks (usually DoS) against hosts. Maximum number of frag trackers that may be active at once.'),
+	'preprocessor frag3_global: max_frags' => array(
+		'title' => _TITLE2('IP defragmentation support'),
+		'info' => _HELPBOX2('This preprocessor performs IP defragmentation.  This plugin will also detect people launching fragmentation attacks (usually DoS) against hosts. Maximum number of frag trackers that may be active at once.'),
 		),
-    'preprocessor bo' => array(
-        'title' => _TITLE2('Back Orifice detector'),
-        'info' => _HELPBOX2('Detects Back Orifice traffic on the network.'),
+	'preprocessor bo' => array(
+		'title' => _TITLE2('Back Orifice detector'),
+		'info' => _HELPBOX2('Detects Back Orifice traffic on the network.'),
 		),
-//    'preprocessor telnet_decode' => array(
-//        'title' => _TITLE2('Telnet negotiation string normalizer'),
-//        'info' => _HELPBOX2('This preprocessor "normalizes" telnet negotiation strings from telnet and ftp traffic.  It works in much the same way as the http_decode preprocessor, searching for traffic that breaks up the normal data stream of a protocol and replacing it with a normalized representation of that traffic so that the "content" pattern matching keyword can work without requiring modifications.'),
+//	'preprocessor telnet_decode' => array(
+//		'title' => _TITLE2('Telnet negotiation string normalizer'),
+//		'info' => _HELPBOX2('This preprocessor "normalizes" telnet negotiation strings from telnet and ftp traffic.  It works in much the same way as the http_decode preprocessor, searching for traffic that breaks up the normal data stream of a protocol and replacing it with a normalized representation of that traffic so that the "content" pattern matching keyword can work without requiring modifications.'),
 //		),
-    'include classification.config' => array(
-        'title' => _TITLE2('Include classification & priority settings'),
+	'include classification.config' => array(
+		'title' => _TITLE2('Include classification & priority settings'),
 		),
-    'include reference.config' => array(
-        'title' => _TITLE2('Include reference systems'),
+	'include reference.config' => array(
+		'title' => _TITLE2('Include reference systems'),
 		),
 	);
 ?>

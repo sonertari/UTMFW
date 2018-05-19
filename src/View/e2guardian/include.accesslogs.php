@@ -21,25 +21,25 @@
 require_once('include.php');
 
 $LogConf = array(
-    'e2guardianlogs' => array(
-        'Fields' => array(
-            'Date' => _TITLE('Date'),
-            'Time' => _TITLE('Time'),
-            'IP' => _TITLE('IP'),
-            'Link' => _TITLE('Link'),
-            'Scan' => _TITLE('Scan'),
-            'Mtd' => _TITLE('Mtd'),
-            'Size' => _TITLE('Size'),
-            'Log' => _TITLE('Log'),
-    		),
-        'HighlightLogs' => array(
-            'Col' => 'Scan',
-            'REs' => array(
-                'red' => array('\*DENIED\*'),
-                'yellow' => array('Bypass cookie|Bypass URL'),
-                'green' => array('\*SCANNED\*|\*TRUSTED\*'),
-        		),
-    		),
+	'e2guardianlogs' => array(
+		'Fields' => array(
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'IP' => _TITLE('IP'),
+			'Link' => _TITLE('Link'),
+			'Scan' => _TITLE('Scan'),
+			'Mtd' => _TITLE('Mtd'),
+			'Size' => _TITLE('Size'),
+			'Log' => _TITLE('Log'),
+			),
+		'HighlightLogs' => array(
+			'Col' => 'Scan',
+			'REs' => array(
+				'red' => array('\*DENIED\*'),
+				'yellow' => array('Bypass cookie|Bypass URL'),
+				'green' => array('\*SCANNED\*|\*TRUSTED\*'),
+				),
+			),
 		),
 	);
 

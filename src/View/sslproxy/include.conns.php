@@ -21,20 +21,20 @@
 require_once('include.php');
 
 $LogConf = array(
-    'sslproxyconns' => array(
-        'Fields' => array(
+	'sslproxyconns' => array(
+		'Fields' => array(
 			'Date' => _TITLE('Date'),
 			'Time' => _TITLE('Time'),
 			'Process' => _TITLE('Process'),
 			'Prio' => _TITLE('Prio'),
 			'Log' => _TITLE('Log'),
-    		),
-        'HighlightLogs' => array(
-            'REs' => array(
-                'red' => array('EXPIRED:'),
-                'yellow' => array('IDLE:'),
-        		),
-    		),
+			),
+		'HighlightLogs' => array(
+			'REs' => array(
+				'red' => array('EXPIRED:'),
+				'yellow' => array('IDLE:'),
+				),
+			),
 		),
 	);
 

@@ -21,26 +21,26 @@
 require_once('include.php');
 
 $LogConf = array(
-    'squidlogs' => array(
-        'Fields' => array(
-            'DateTime' => _TITLE('DateTime'),
-            'Client' => _TITLE('Client'),
-            'Target' => _TITLE('Target'),
-            'Link' => _TITLE('Link'),
-            'Size' => _TITLE('Size'),
-            'Mtd' => _TITLE('Mtd'),
-            'Code' => _TITLE('Code'),
-            'Direct' => _TITLE('Direct'),
-            'Cache' => _TITLE('Cache'),
-            'Type' => _TITLE('Type'),
-    		),
-        'HighlightLogs' => array(
-            'REs' => array(
-                'red' => array('ERROR'),
-                'yellow' => array('MISS'),
-                'green' => array('HIT'),
-        		),
-    		),
+	'squidlogs' => array(
+		'Fields' => array(
+			'DateTime' => _TITLE('DateTime'),
+			'Client' => _TITLE('Client'),
+			'Target' => _TITLE('Target'),
+			'Link' => _TITLE('Link'),
+			'Size' => _TITLE('Size'),
+			'Mtd' => _TITLE('Mtd'),
+			'Code' => _TITLE('Code'),
+			'Direct' => _TITLE('Direct'),
+			'Cache' => _TITLE('Cache'),
+			'Type' => _TITLE('Type'),
+			),
+		'HighlightLogs' => array(
+			'REs' => array(
+				'red' => array('ERROR'),
+				'yellow' => array('MISS'),
+				'green' => array('HIT'),
+				),
+			),
 		),
 	);
 

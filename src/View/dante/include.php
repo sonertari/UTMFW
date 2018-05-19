@@ -21,17 +21,17 @@
 require_once('../lib/vars.php');
 
 $Menu = array(
-    'info' => array(
-        'Name' => _MENU('Info'),
-        'Perms' => $ALL_USERS,
+	'info' => array(
+		'Name' => _MENU('Info'),
+		'Perms' => $ALL_USERS,
 		),
-    'graphs' => array(
-        'Name' => _MENU('Graphs'),
-        'Perms' => $ALL_USERS,
+	'graphs' => array(
+		'Name' => _MENU('Graphs'),
+		'Perms' => $ALL_USERS,
 		),
-    'logs' => array(
-        'Name' => _MENU('Logs'),
-        'Perms' => $ALL_USERS,
+	'logs' => array(
+		'Name' => _MENU('Logs'),
+		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
 			'archives' => _MENU('Archives'),
 			'live' => _MENU('Live'),
@@ -40,21 +40,21 @@ $Menu = array(
 	);
 
 $LogConf = array(
-    'dante' => array(
-        'Fields' => array(
-            'Date' => _TITLE('Date'),
-            'Time' => _TITLE('Time'),
-            'Process' => _TITLE('Process'),
-            'Prio' => _TITLE('Prio'),
-            'Log' => _TITLE('Log'),
-    		),
-        'HighlightLogs' => array(
-            'REs' => array(
-                'red' => array('Connection timed out', 'Connection refused', 'Connection reset by peer'),
-                'yellow' => array('remote close'),
-                'green' => array('connect', 'accept'),
-        		),
-    		),
+	'dante' => array(
+		'Fields' => array(
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'Process' => _TITLE('Process'),
+			'Prio' => _TITLE('Prio'),
+			'Log' => _TITLE('Log'),
+			),
+		'HighlightLogs' => array(
+			'REs' => array(
+				'red' => array('Connection timed out', 'Connection refused', 'Connection reset by peer'),
+				'yellow' => array('remote close'),
+				'green' => array('connect', 'accept'),
+				),
+			),
 		),
 	);
 

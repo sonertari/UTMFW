@@ -39,87 +39,87 @@ require_once($VIEW_PATH . '/pf/include.php');
 
 /// Left menu items with captions and user permissions.
 $UTMFW_MODULES = array(
-    'system' => array(
+	'system' => array(
 		'Name' => _MENU('SYSTEM'),
 		'Perms' => $ALL_USERS,
 		),
-    'pf' => array(
+	'pf' => array(
 		'Name' => _MENU('PACKET FILTER'),
 		'Perms' => $ALL_USERS,
 		),
-    'sslproxy' => array(
+	'sslproxy' => array(
 		'Name' => _MENU('SSL PROXY'),
 		'Perms' => $ALL_USERS,
 		),
-    'e2guardian' => array(
+	'e2guardian' => array(
 		'Name' => _MENU('WEB FILTER'),
 		'Perms' => $ALL_USERS,
 		),
-    'squid' => array(
+	'squid' => array(
 		'Name' => _MENU('HTTP PROXY'),
 		'Perms' => $ALL_USERS,
 		),
-    'snort' => array(
+	'snort' => array(
 		'Name' => _MENU('IDP'),
 		'Perms' => $ALL_USERS,
 		),
-    'snortips' => array(
+	'snortips' => array(
 		'Name' => _MENU('PASSIVE IPS'),
 		'Perms' => $ALL_USERS,
 		),
-    'clamav' => array(
+	'clamav' => array(
 		'Name' => _MENU('VIRUS FILTER'),
 		'Perms' => $ALL_USERS,
 		),
-    'spamassassin' => array(
+	'spamassassin' => array(
 		'Name' => _MENU('SPAM FILTER'),
 		'Perms' => $ALL_USERS,
 		),
-    'p3scan' => array(
+	'p3scan' => array(
 		'Name' => _MENU('POP3 PROXY'),
 		'Perms' => $ALL_USERS,
 		),
-    'smtp-gated' => array(
+	'smtp-gated' => array(
 		'Name' => _MENU('SMTP PROXY'),
 		'Perms' => $ALL_USERS,
 		),
-    'imspector' => array(
+	'imspector' => array(
 		'Name' => _MENU('IM PROXY'),
 		'Perms' => $ALL_USERS,
 		),
-    'dhcpd' => array(
+	'dhcpd' => array(
 		'Name' => _MENU('DHCP'),
 		'Perms' => $ALL_USERS,
 		),
-    'named' => array(
+	'named' => array(
 		'Name' => _MENU('DNS'),
 		'Perms' => $ALL_USERS,
 		),
-    'openvpn' => array(
+	'openvpn' => array(
 		'Name' => _MENU('OPENVPN'),
 		'Perms' => $ALL_USERS,
 		),
-    'openssh' => array(
+	'openssh' => array(
 		'Name' => _MENU('OPENSSH'),
 		'Perms' => $ALL_USERS,
 		),
-    'ftp-proxy' => array(
+	'ftp-proxy' => array(
 		'Name' => _MENU('FTP PROXY'),
 		'Perms' => $ALL_USERS,
 		),
-    'dante' => array(
+	'dante' => array(
 		'Name' => _MENU('SOCKS PROXY'),
 		'Perms' => $ALL_USERS,
 		),
-    'spamd' => array(
+	'spamd' => array(
 		'Name' => _MENU('SPAMD'),
 		'Perms' => $ALL_USERS,
 		),
-    'httpd' => array(
+	'httpd' => array(
 		'Name' => _MENU('WEB SERVER'),
 		'Perms' => $ALL_USERS,
 		),
-    'monitoring' => array(
+	'monitoring' => array(
 		'Name' => _MENU('MONITORING'),
 		'Perms' => $ALL_USERS,
 		),

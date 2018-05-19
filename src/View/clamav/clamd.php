@@ -21,21 +21,21 @@
 require_once('include.php');
 
 $LogConf = array(
-    'clamd' => array(
-        'Fields' => array(
-            'Date' => _TITLE('Date'),
-            'Time' => _TITLE('Time'),
-            'Process' => _TITLE('Process'),
-            'Prio' => _TITLE('Prio'),
-            'Log' => _TITLE('Log'),
-    		),
-        'HighlightLogs' => array(
-            'REs' => array(
-                'red' => array('FOUND', 'ERROR'),
-                'yellow' => array('Started', 'Database modification detected'),
-                'green' => array('Database status OK', 'Database correctly reloaded'),
-        		),
-    		),
+	'clamd' => array(
+		'Fields' => array(
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'Process' => _TITLE('Process'),
+			'Prio' => _TITLE('Prio'),
+			'Log' => _TITLE('Log'),
+			),
+		'HighlightLogs' => array(
+			'REs' => array(
+				'red' => array('FOUND', 'ERROR'),
+				'yellow' => array('Started', 'Database modification detected'),
+				'green' => array('Database status OK', 'Database correctly reloaded'),
+				),
+			),
 		),
 	);
 

@@ -94,15 +94,15 @@ $Menu = array(
  * 									Precedence being in that order.
  */
 $LogConf = array(
-    'system' => array(
-        'Name' => _TITLE2('System'),
-        'Fields' => array(
-            'Date' => _TITLE('Date'),
-            'Time' => _TITLE('Time'),
-            'Process' => _TITLE('Process'),
-            'Prio' => _TITLE('Prio'),
-            'Log' => _TITLE('Log'),
-    		),
+	'system' => array(
+		'Name' => _TITLE2('System'),
+		'Fields' => array(
+			'Date' => _TITLE('Date'),
+			'Time' => _TITLE('Time'),
+			'Process' => _TITLE('Process'),
+			'Prio' => _TITLE('Prio'),
+			'Log' => _TITLE('Log'),
+			),
 		),
 	);
 
