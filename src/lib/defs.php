@@ -375,13 +375,14 @@ $StatsConf = array(
 		'Total' => array(
 			'Title' => _STATS('All queries'),
 			'Cmd' => '/bin/cat <LF>',
-			'Needle' => '( query: )',
+			'Needle' => '( query)',
 			'SearchRegexpPrefix' => '([[:blank:]]+)',
 			'BriefStats' => array(
 				'Date' => _STATS('Requests by date'),
 				'Domain' => _STATS('Domains'),
 				'IP' => _STATS('IPs querying'),
 				'Type' => _STATS('Query types'),
+				'Reason' => _STATS('Failure reason'),
 				),
 			'Counters' => array(),
 			),
@@ -393,6 +394,17 @@ $StatsConf = array(
 				'Domain' => _STATS('Domains'),
 				'IP' => _STATS('IPs querying'),
 				'Type' => _STATS('Query types'),
+				),
+			),
+		'Failures' => array(
+			'Title' => _STATS('Failed queries'),
+			'Needle' => '( query failed )',
+			'Color' => 'Red',
+			'NVPs' => array(
+				'Domain' => _STATS('Domains'),
+				'IP' => _STATS('IPs querying'),
+				'Type' => _STATS('Query types'),
+				'Reason' => _STATS('Failure reason'),
 				),
 			),
 		),

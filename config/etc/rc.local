@@ -130,7 +130,7 @@ fi
 
 # Start SSLproxy
 if [ -x /usr/local/bin/sslproxy ]; then
-	echo -n '\nSSLproxy'
+	echo -n '\nSSL proxy'
 	/usr/local/bin/sslproxy -f /etc/sslproxy/sslproxy.conf >/dev/null 2>&1
 fi
 

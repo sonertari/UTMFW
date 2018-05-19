@@ -64,6 +64,11 @@ $LogConf = array(
 			'Domain' => _TITLE('Domain'),
 			'Log' => _TITLE('Log'),
 			),
+        'HighlightLogs' => array(
+            'REs' => array(
+                'red' => array('failed'),
+        		),
+    		),
 		),
 	);
 

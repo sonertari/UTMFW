@@ -117,11 +117,12 @@ class Named extends Model
 			$re_clientip= "($Re_Ip)";
 			$re_num= '(\d+)';
 			$re_domain= '(\S+)';
-			$re_type= '(.*)';
+			$re_type= '(\S+\s+\S+)';
 
-			// Old: client 127.0.0.1#31874: query: www.openbsd.org IN A +
-			// New: client 192.168.5.2#49585 (detectportal.firefox.com): query: detectportal.firefox.com IN AAAA + (192.168.5.1) 
-			$re= "/client\s+$re_clientip#$re_num(\h*\([^\)]*\)|):\s+query:\s+$re_domain\s+\S+\s+$re_type$/";
+			// Older: client 127.0.0.1#31874: query: www.openbsd.org IN A +
+			// Old: client 192.168.5.2#49585 (detectportal.firefox.com): query: detectportal.firefox.com IN AAAA + (192.168.5.1)
+			// New: client @0x1512ca59d450 192.168.11.2#49672 (detectportal.firefox.com): query: detectportal.firefox.com IN AAAA + (192.168.11.1)
+			$re= "/client\s+@0x[\da-f]{12}\s+$re_clientip#$re_num(\h*\([^\)]*\)|):\s+query:\s+$re_domain\s+$re_type\s+.*\s+\(($Re_Ip)\)$/";
 			if (preg_match($re, $cols['Log'], $match)) {
 				$cols['IP']= $match[1];
 				// Skip port
@@ -131,6 +132,16 @@ class Named extends Model
 				// Log field is displayed on the Log column on Logs pages
 				// Since we have further parsed the Log field now, update it with the Type value
 				$cols['Log']= $cols['Type'];
+			} else {
+				// client @0x151299cc5450 192.168.11.2#49672 (detectportal.firefox.com): query failed (SERVFAIL) for detectportal.firefox.com/IN/A at /usr/obj/ports/isc-bind-9.11.3/bind-9.11.3/bin/named/query.c:6885
+				$re= "/client\s+@0x[\da-f]{12}\s+$re_clientip#$re_num(\h*\([^\)]*\)|):\s+query\s+failed\s+\((.+)\)\s+for\s+$re_domain\/(.*)\/(.*)\s+at\s+.*$/";
+				if (preg_match($re, $cols['Log'], $match)) {
+					$cols['IP']= $match[1];
+					$cols['Reason']= $match[4];
+					$cols['Domain']= $match[5];
+					$cols['Type']= $match[6].' '.$match[7];
+					$cols['Log']= $cols['Type'].' query failed: '.$cols['Reason'];
+				}
 			}
 			return TRUE;
 		}

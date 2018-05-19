@@ -1677,6 +1677,9 @@ msgstr ""
 msgid "Failed loading pf rules"
 msgstr ""
 
+msgid "Failed queries"
+msgstr ""
+
 msgid "Failed removing message queue"
 msgstr ""
 
