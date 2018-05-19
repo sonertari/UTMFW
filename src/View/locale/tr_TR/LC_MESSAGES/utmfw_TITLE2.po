@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.3\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-02-28 02:41+0300\n"
+"PO-Revision-Date: 2018-05-19 04:30+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -239,6 +239,9 @@ msgstr "Hata ayıklama seçenekleri"
 msgid "Delete downloaded temp files"
 msgstr "İndirilen geçici dosyaları sil"
 
+msgid "Deny OCSP"
+msgstr "OCSP'yi reddet"
+
 msgid "Deny others"
 msgstr "Diğerlerini reddet"
 
@@ -253,6 +256,9 @@ msgstr "Aygıt"
 
 msgid "Diffie-Hellman params"
 msgstr "Diffie-Hellman değişkenleri"
+
+msgid "Disable SSL Protocol"
+msgstr "SSL protokolünü kapat"
 
 msgid "Disable content scanning"
 msgstr "İçerik taramayı kapat"
@@ -346,6 +352,9 @@ msgstr "Dizin sembolik bağlantılarını izle"
 
 msgid "Follow File Symlinks"
 msgstr "Dosya sembolik bağlantılarını izle"
+
+msgid "Force SSL Protocol"
+msgstr "SSL protokolünü zorla"
 
 msgid "Force quick search"
 msgstr "Hızlı arama"
@@ -880,6 +889,9 @@ msgstr "SQL_SERVERS"
 
 msgid "SSH_PORTS"
 msgstr "SSH_PORTS"
+
+msgid "SSL Compression"
+msgstr "SSL sıkıştırma"
 
 msgid "SSL Proxy"
 msgstr "SSL Vekil"

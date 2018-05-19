@@ -1374,6 +1374,12 @@ msgstr "Engellenen kategoriler"
 msgid "Denied requests"
 msgstr "Engellenen istekler"
 
+msgid "Deny OCSP"
+msgstr "OCSP'yi reddet"
+
+msgid "Deny all OCSP requests on all proxyspecs."
+msgstr "Tüm vekil tanımlarında OCSP isteklerini reddet."
+
 msgid "Deny others"
 msgstr "Diğerlerini reddet"
 
@@ -1446,6 +1452,12 @@ msgstr "MesaiSonrası işgünlerini kapat"
 
 msgid "Disable AfterHours holidays"
 msgstr "MesaiSonrası tatil günlerini kapat"
+
+msgid "Disable SSL Protocol"
+msgstr "SSL protokolünü kapat"
+
+msgid "Disable SSL/TLS protocol version."
+msgstr "SSL/TLS protokol sürümünü devre dışı bırak."
 
 msgid "Disable config"
 msgstr "Yapılandırmayı kapat"
@@ -1772,6 +1784,9 @@ msgstr ""
 "Detaylı kaydı açar.\n"
 "Öndeğer: kapalı"
 
+msgid "Enable/disable SSL/TLS compression on all connections."
+msgstr "SSL/TLS sıkıştırmayı tüm bağlantılarda aç/kapat."
+
 msgid "Enabled"
 msgstr "Açık"
 
@@ -2058,6 +2073,12 @@ msgstr ""
 "etkinleştirin.\n"
 "0 = off (öndeğer)\n"
 "1 = on (Big5 uyumlu)"
+
+msgid "Force SSL Protocol"
+msgstr "SSL protokolünü zorla"
+
+msgid "Force SSL/TLS protocol version only."
+msgstr "Sadece SSL/TLS protokol sürümüne zorla."
 
 msgid "Force quick search"
 msgstr "Hızlı arama"
@@ -5086,6 +5107,9 @@ msgstr "SSH sürümü"
 
 msgid "SSH_PORTS"
 msgstr "SSH_PORTS"
+
+msgid "SSL Compression"
+msgstr "SSL sıkıştırma"
 
 msgid "SSL Destination Protocols"
 msgstr "SSL Hedef Protokoller"

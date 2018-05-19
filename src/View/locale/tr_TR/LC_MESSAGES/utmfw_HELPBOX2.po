@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.3\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-02-28 02:40+0300\n"
+"PO-Revision-Date: 2018-05-19 04:32+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -315,8 +315,14 @@ msgstr ""
 "gerekir.\n"
 "on|off ( öndeğer on )"
 
+msgid "Deny all OCSP requests on all proxyspecs."
+msgstr "Tüm vekil tanımlarında OCSP isteklerini reddet."
+
 msgid "Detects Back Orifice traffic on the network."
 msgstr "Ağdaki Back Orifice trafiğini algılar"
+
+msgid "Disable SSL/TLS protocol version."
+msgstr "SSL/TLS protokol sürümünü devre dışı bırak."
 
 msgid ""
 "Disable reporting of normal operating messages. Only report errors or "
@@ -430,6 +436,9 @@ msgstr ""
 "Detaylı kaydı açar.\n"
 "Öndeğer: kapalı"
 
+msgid "Enable/disable SSL/TLS compression on all connections."
+msgstr "SSL/TLS sıkıştırmayı tüm bağlantılarda aç/kapat."
+
 msgid ""
 "Follow directory symlinks.\n"
 "\t\tDefault: disabled"
@@ -480,6 +489,9 @@ msgstr ""
 "etkinleştirin.\n"
 "0 = off (öndeğer)\n"
 "1 = on (Big5 uyumlu)"
+
+msgid "Force SSL/TLS protocol version only."
+msgstr "Sadece SSL/TLS protokol sürümüne zorla."
 
 msgid ""
 "Forge ssl certificates for all non-exception sites, decrypt the data then re "

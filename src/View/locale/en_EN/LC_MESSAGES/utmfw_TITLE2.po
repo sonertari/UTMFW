@@ -220,6 +220,9 @@ msgstr ""
 msgid "Delete downloaded temp files"
 msgstr ""
 
+msgid "Deny OCSP"
+msgstr ""
+
 msgid "Deny others"
 msgstr ""
 
@@ -233,6 +236,9 @@ msgid "Device"
 msgstr ""
 
 msgid "Diffie-Hellman params"
+msgstr ""
+
+msgid "Disable SSL Protocol"
 msgstr ""
 
 msgid "Disable content scanning"
@@ -326,6 +332,9 @@ msgid "Follow Directory Symlinks"
 msgstr ""
 
 msgid "Follow File Symlinks"
+msgstr ""
+
+msgid "Force SSL Protocol"
 msgstr ""
 
 msgid "Force quick search"
@@ -860,6 +869,9 @@ msgid "SQL_SERVERS"
 msgstr ""
 
 msgid "SSH_PORTS"
+msgstr ""
+
+msgid "SSL Compression"
 msgstr ""
 
 msgid "SSL Proxy"

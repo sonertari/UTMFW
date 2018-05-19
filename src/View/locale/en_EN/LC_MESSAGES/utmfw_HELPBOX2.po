@@ -194,7 +194,13 @@ msgid ""
 "on|off ( defaults to on )"
 msgstr ""
 
+msgid "Deny all OCSP requests on all proxyspecs."
+msgstr ""
+
 msgid "Detects Back Orifice traffic on the network."
+msgstr ""
+
+msgid "Disable SSL/TLS protocol version."
 msgstr ""
 
 msgid ""
@@ -280,6 +286,9 @@ msgid ""
 "\t\tDefault: disabled"
 msgstr ""
 
+msgid "Enable/disable SSL/TLS compression on all connections."
+msgstr ""
+
 msgid ""
 "Follow directory symlinks.\n"
 "\t\tDefault: disabled"
@@ -310,6 +319,9 @@ msgid ""
 "this option.\n"
 "0 = off (default)\n"
 "1 = on (Big5 compatible)"
+msgstr ""
+
+msgid "Force SSL/TLS protocol version only."
 msgstr ""
 
 msgid ""

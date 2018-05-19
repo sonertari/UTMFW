@@ -130,10 +130,11 @@ fi
 
 # Start SSLproxy
 if [ -x /usr/local/bin/sslproxy ]; then
-	echo -n '\nSSL proxy'
-	/usr/local/bin/sslproxy -d -f /etc/sslproxy/sslproxy.conf >/dev/null 2>&1
+	echo -n '\nSSLproxy'
+	/usr/local/bin/sslproxy -f /etc/sslproxy/sslproxy.conf >/dev/null 2>&1
 fi
 
+echo
 banner utmfw
 echo 'is ready...\n'
 echo -n "a~a." > /dev/speaker &

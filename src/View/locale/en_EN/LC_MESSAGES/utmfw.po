@@ -1180,6 +1180,12 @@ msgstr ""
 msgid "Denied requests"
 msgstr ""
 
+msgid "Deny OCSP"
+msgstr ""
+
+msgid "Deny all OCSP requests on all proxyspecs."
+msgstr ""
+
 msgid "Deny others"
 msgstr ""
 
@@ -1249,6 +1255,12 @@ msgid "Disable AfterHours business days"
 msgstr ""
 
 msgid "Disable AfterHours holidays"
+msgstr ""
+
+msgid "Disable SSL Protocol"
+msgstr ""
+
+msgid "Disable SSL/TLS protocol version."
 msgstr ""
 
 msgid "Disable config"
@@ -1539,6 +1551,9 @@ msgid ""
 "\t\tDefault: disabled"
 msgstr ""
 
+msgid "Enable/disable SSL/TLS compression on all connections."
+msgstr ""
+
 msgid "Enabled"
 msgstr ""
 
@@ -1801,6 +1816,12 @@ msgid ""
 "this option.\n"
 "0 = off (default)\n"
 "1 = on (Big5 compatible)"
+msgstr ""
+
+msgid "Force SSL Protocol"
+msgstr ""
+
+msgid "Force SSL/TLS protocol version only."
 msgstr ""
 
 msgid "Force quick search"
@@ -4398,6 +4419,9 @@ msgid "SSH version"
 msgstr ""
 
 msgid "SSH_PORTS"
+msgstr ""
+
+msgid "SSL Compression"
 msgstr ""
 
 msgid "SSL Destination Protocols"

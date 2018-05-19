@@ -57,6 +57,26 @@ class Sslproxy extends View
 				'title' => _TITLE2('CA Key'),
 				'info' => _HELPBOX2('Use CA key (and cert) to sign forged certs.'),
 				),
+			'DenyOCSP' => array(
+				'title' => _TITLE2('Deny OCSP'),
+				'info' => _HELPBOX2('Deny all OCSP requests on all proxyspecs.'),
+				),
+			'SSLCompression' => array(
+				'title' => _TITLE2('SSL Compression'),
+				'info' => _HELPBOX2('Enable/disable SSL/TLS compression on all connections.'),
+				),
+			'ForceSSLProto' => array(
+				'title' => _TITLE2('Force SSL Protocol'),
+				'info' => _HELPBOX2('Force SSL/TLS protocol version only.'),
+				),
+			'DisableSSLProto' => array(
+				'title' => _TITLE2('Disable SSL Protocol'),
+				'info' => _HELPBOX2('Disable SSL/TLS protocol version.'),
+				),
+			'Ciphers' => array(
+				'title' => _TITLE2('Ciphers'),
+				'info' => _HELPBOX2('Cipher specification for both server and client SSL/TLS connections.'),
+				),
 			'ConnIdleTimeout' => array(
 				'title' => _TITLE2('Connection Idle Timeout'),
 				'info' => _HELPBOX2('Close connections after this many seconds of idle time.'),
@@ -92,10 +112,6 @@ class Sslproxy extends View
 			'AllowWrongHost' => array(
 				'title' => _TITLE2('Allow Wrong Host'),
 				'info' => _HELPBOX2('Allow wrong host names in certificates.'),
-				),
-			'Ciphers' => array(
-				'title' => _TITLE2('Ciphers'),
-				'info' => _HELPBOX2('Cipher specification for both server and client SSL/TLS connections.'),
 				),
 			);
 	}

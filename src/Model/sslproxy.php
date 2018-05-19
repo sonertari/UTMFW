@@ -40,7 +40,7 @@ class Sslproxy extends Model
 		parent::__construct();
 		
 		$this->Proc= 'sslproxy';
-		$this->StartCmd= "/usr/local/bin/sslproxy -d -f $this->ConfFile > $TmpFile 2>&1 &";
+		$this->StartCmd= "/usr/local/bin/sslproxy -f $this->ConfFile > $TmpFile 2>&1 &";
 
 		$this->Commands= array_merge(
 			$this->Commands,
@@ -196,6 +196,18 @@ $ModelConfig = array(
 		),
     'CAKey' => array(
 		),
+    'DenyOCSP' => array(
+        'type' => STR_yes_no,
+		),
+    'SSLCompression' => array(
+        'type' => STR_yes_no,
+		),
+    'ForceSSLProto' => array(
+		),
+    'DisableSSLProto' => array(
+		),
+    'Ciphers' => array(
+		),
     'ConnIdleTimeout' => array(
         'type' => UINT,
 		),
@@ -222,8 +234,6 @@ $ModelConfig = array(
 		),
     'AllowWrongHost' => array(
         'type' => STR_yes_no,
-		),
-    'Ciphers' => array(
 		),
 	);
 ?>
