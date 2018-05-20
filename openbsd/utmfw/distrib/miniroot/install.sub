@@ -1590,7 +1590,7 @@ install_files() {
 			_issue="Cannot fetch SHA256.sig" && break
 
 		$UPGRADE_BSDRD &&
-			PUB_KEY=/mnt/etc/signify/openbsd-$((VERSION + 1))-base.pub
+			PUB_KEY=/mnt/etc/signify/utmfw-$((VERSION + 1)).pub
 
 		# Verify signature file with public keys.
 		! unpriv -f "$_cfile" \
@@ -3237,7 +3237,7 @@ HTTP_SEC=/tmp/i/httpsec
 INSTALL_METHOD=
 NIFS=0
 export PS1="$MODE# "
-PUB_KEY=/etc/signify/openbsd-${VERSION}-base.pub
+PUB_KEY=/etc/signify/utmfw-${VERSION}.pub
 ROOTDEV=
 ROOTDISK=
 SETDIR="$VNAME/$ARCH"

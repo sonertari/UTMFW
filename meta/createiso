@@ -43,6 +43,9 @@ CONFIG_FILE=utmfw-$CONFIG-${VMAJ}.${VMIN}.tar.gz
 
 PKG_PATH=packages
 
+EXCLUDE_FROM_SHA256="boot.catalog SHA256 SHA256.sig"
+SECRET_KEY=$ROOT_PATH/docs/signify/utmfw-${VMAJ}${VMIN}.sec
+
 CD_PATH=cd/${ARCH}
 INSTALL_SETS_PATH=${VERSION}/${ARCH}
 BOOT_CATALOG=$INSTALL_SETS_PATH/boot.catalog
@@ -103,6 +106,17 @@ done
 doas chown -R root:wheel *
 tar czhf $SITE_FILE $SITE_CONTENTS
 ln -fs $ROOT_PATH/$SITE_DIR/$SITE_FILE $ROOT_PATH/$CD_PATH/$INSTALL_SETS_PATH/$SITE_FILE
+
+echo "Generating SHA256.sig"
+
+cd $ROOT_PATH/$CD_PATH/$INSTALL_SETS_PATH/
+for exclude in $EXCLUDE_FROM_SHA256; do
+	rm $exclude
+done
+
+cksum -a SHA256 * > SHA256
+signify -S -s $SECRET_KEY -m SHA256 -e -x SHA256.sig
+rm SHA256
 
 echo "Creating CD image: $ISO_FILE"
 
