@@ -2,7 +2,7 @@ $OpenBSD$
 Index: src/ConnectionHandler.cpp
 --- src/ConnectionHandler.cpp.orig
 +++ src/ConnectionHandler.cpp
-@@ -534,9 +534,10 @@ stat_rec* &dystat)
+@@ -533,9 +533,10 @@ stat_rec* &dystat)
                     int pport = peerconn.getPeerSourcePort();
                     std::string peerIP = peerconn.getPeerIP();
  
@@ -10,12 +10,12 @@ Index: src/ConnectionHandler.cpp
 +                   // This happens too often and does not need to be logged imo
 +                   //syslog(LOG_INFO, "%d No header recd from client at %s - errno: %d", pport, peerIP.c_str(), err);
  #ifdef DGDEBUG
--            	   std::cout << "pport" << " No header recd from client - errno: " << err << " Line: " << __LINE__ << " Function: " << __func__ << std::endl;
-+            	   std::cout << pport << " No header recd from client - errno: " << err << " Line: " << __LINE__ << " Function: " << __func__ << std::endl;
+-            	   std::cerr << "pport" << " No header recd from client - errno: " << err << " Line: " << __LINE__ << " Function: " << __func__ << " Getpid: " << getpid() << std::endl;
++            	   std::cerr << pport << " No header recd from client - errno: " << err << " Line: " << __LINE__ << " Function: " << __func__ << " Getpid: " << getpid() << std::endl;
  #endif
                 } else {
                     syslog(LOG_INFO, "Client connection closed early - no request header received");
-@@ -641,11 +642,23 @@ stat_rec* &dystat)
+@@ -640,11 +641,23 @@ stat_rec* &dystat)
                  checkme.reset();
              }
  
@@ -40,9 +40,9 @@ Index: src/ConnectionHandler.cpp
              if (o.forwarded_for && !ismitm) {
                  if (o.use_xforwardedfor) {
                      std::string xforwardip(header.getXForwardedForIP());
-@@ -2712,6 +2725,17 @@ stat_rec* &dystat)
+@@ -2716,6 +2729,17 @@ stat_rec* &dystat)
  #ifdef DGDEBUG
-                     std::cout << dbgPeerPort << " -url " << logurl << " isbypass: " << isbypass << " isexception: " << isexception << " iscookiebypass: " << iscookiebypass << " Line: " << __LINE__ << " Function: " << __func__ << std::endl;
+                     std::cerr << dbgPeerPort << " -url " << logurl << " isbypass: " << isbypass << " isexception: " << isexception << " iscookiebypass: " << iscookiebypass << " Line: " << __LINE__ << " Function: " << __func__ << " Getpid: " << getpid() << std::endl;
  #endif
 +
 +                off_t cl = docheader.contentLength();
@@ -58,7 +58,7 @@ Index: src/ConnectionHandler.cpp
                  // if we're not careful, we can end up accidentally setting the bypass cookie twice.
                  // because of the code flow, this second cookie ends up with timestamp 0, and is always disallowed.
                  if (isbypass && !isvirusbypass && !iscookiebypass && !isexception) {
-@@ -2750,7 +2774,7 @@ stat_rec* &dystat)
+@@ -2754,7 +2778,7 @@ stat_rec* &dystat)
                  // don't even bother scan testing if the content-length header indicates the file is larger than the maximum size we'll scan
                  // - based on patch supplied by cahya (littlecahya@yahoo.de)
                  // be careful: contentLength is signed, and max_content_filecache_scan_size is unsigned
@@ -67,7 +67,7 @@ Index: src/ConnectionHandler.cpp
                  if (!responsescanners.empty()) {
                      if (cl == 0)
                          responsescanners.clear();
-@@ -4738,7 +4762,7 @@ bool ConnectionHandler::getdnstxt(std::string &clienti
+@@ -4741,7 +4765,7 @@ bool ConnectionHandler::getdnstxt(std::string &clienti
      // get info from DNS
      union {
          HEADER hdr;

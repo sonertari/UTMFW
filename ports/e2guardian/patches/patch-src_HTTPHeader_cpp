@@ -71,7 +71,7 @@ Index: src/HTTPHeader.cpp
                  if (line.contains(";")) {
                      line = line.before(";");
 @@ -1723,6 +1746,23 @@ String HTTPHeader::getReferer()
-     std::cout << "Found Referer URL:" << line << " Line: " << __LINE__ << " Function: " << __func__ << std::endl;
+     std::cerr << "Found Referer URL:" << line << " Line: " << __LINE__ << " Function: " << __func__ << std::endl;
  #endif
      return line;
 +}

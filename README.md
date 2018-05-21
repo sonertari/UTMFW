@@ -100,6 +100,7 @@ However, the source tree has links to OpenBSD install sets and packages, which s
 - Install sets:
 	+ Obtain the sources of OpenBSD.
 	+ Copy the files under `openbsd/utmfw` to the OpenBSD sources to replace the original files. You are advised to compare the original files with the UTMFW versions before replacing.
+	+ Create the UTMFW secret and public key pair to sign and verify the SHA256 checksums of the install sets, and copy them to their appropriate locations.
 	+ Build an OpenBSD release, as described in [release(8)](https://man.openbsd.org/release) or [faq5](https://www.openbsd.org/faq/faq5.html).
 	+ Copy the required install sets to the appropriate locations to fix the broken links in the sources.
 - Packages:

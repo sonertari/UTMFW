@@ -2,7 +2,7 @@ $OpenBSD$
 Index: src/FOptionContainer.cpp
 --- src/FOptionContainer.cpp.orig
 +++ src/FOptionContainer.cpp
-@@ -573,7 +573,7 @@ bool FOptionContainer::read(const char *filename)
+@@ -574,7 +574,7 @@ bool FOptionContainer::read(const char *filename)
  
          if (reporting_level == 0) {
              std::cerr << "Reporting_level is : " << reporting_level << " file " << filename << std::endl;
