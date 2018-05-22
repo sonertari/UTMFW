@@ -85,6 +85,11 @@ function ApplyConfig($auto)
 		}
 		
 		$View->Model= 'system';
+		$host= "$lanip	$myname ".explode(".", $myname)[0];
+		if (!$View->Controller($output, 'AddHost', $host)) {
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting hosts: $host");
+		}
+		
 		if (!$View->Controller($output, 'SetManCgiHome', $lanip)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting man.cgi home: $lanip");
 		}

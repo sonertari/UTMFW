@@ -535,6 +535,8 @@ class System extends Model
 	 */
 	function SetMyName($myname)
 	{
+		/// @attention Do not change the active hostname here by running /bin/hostname, otherwise UI login over SSH fails.
+		// The user should run auto config and then reboot the system to activate the new hostname.
 		return file_put_contents($this->confDir.'myname', $myname.PHP_EOL);
 	}
 
