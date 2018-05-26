@@ -1,0 +1,29 @@
+$OpenBSD$
+
+Index: src/util.c
+--- src/util.c.orig
++++ src/util.c
+@@ -969,16 +969,16 @@ int set_rlimit(int what, rlim_t value)
+ } /* set_rlimit() */
+ #endif
+ 
++inline u_int32_t power(u_int32_t x, u_int32_t y)
++{
++	u_int32_t r = 1;
++	while (y--) r*=x;
++	return r;
++}
++
+ /* netmask(28) => 255.255.255.240 (network order) */
+ u_int32_t netmask(int m)
+ {
+-	inline u_int32_t power(u_int32_t x, u_int32_t y)
+-	{
+-		u_int32_t r = 1;
+-		while (y--) r*=x;
+-		return r;
+-	}
+-
+ 	if (m < 0)
+ 		m = 0;
+ 

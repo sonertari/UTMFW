@@ -610,11 +610,9 @@ __EOT
 
 			_pkgshortname=${_f%%-*}
 			case $_f in
-			#p5-Mail-SpamAssassin-3.2.5p1.tgz
 			p5-Mail-SpamAssassin-*)
 				_pkgshortname=${_f%-*}
 				;;
-			#smtp-gated-1.4.16.2.tgz
 			smtp-gated-*)
 				_pkgshortname=${_f%-*}
 				;;
@@ -1101,7 +1099,7 @@ THESETS="isc-bind-9.11.3.tgz \
 		clamavdb.tar.gz \
 		p5-Mail-SpamAssassin-3.4.1p14.tgz \
 		p3scan-2.3.2.tgz \
-		smtp-gated-1.4.16.2.tgz \
+		smtp-gated-1.4.20.0.tgz \
 		e2guardian-4.1.5.tgz \
 		blacklists.tar.gz \
 		squid-3.5.27.tgz \

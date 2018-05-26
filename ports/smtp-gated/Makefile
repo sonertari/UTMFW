@@ -1,8 +1,7 @@
-# $ComixWall: Makefile,v 1.6 2016/07/07 05:51:18 soner Exp $
 # Original from: Bartlomiej Korupczynski
 
 COMMENT=		content scanning transparent smtp proxy
-DISTNAME=		smtp-gated-1.4.16.2
+DISTNAME=		smtp-gated-1.4.20.0
 CATEGORIES=		net mail
 
 HOMEPAGE=		http://smtp-proxy.klolik.org

@@ -1,25 +1,26 @@
 $OpenBSD$
---- src/smtp-gated.c.orig	Wed Aug  2 08:10:29 2017
-+++ src/smtp-gated.c	Fri Aug  4 08:53:27 2017
-@@ -1796,7 +1796,7 @@ int target_connect(struct session_t *data)
- 	switch (config.mode) {
- 		case MODE_TPROXY:
- #ifdef USE_NAT_TPROXY
--			data->server = connect_host_tproxy(data->target, ntohs(data->target.sin_port),
-+			data->server = connect_host_tproxy(data->actual_target, ntohs(data->actual_target.sin_port),
- 					src, data->origin);
+Index: src/smtp-gated.c
+--- src/smtp-gated.c.orig
++++ src/smtp-gated.c
+@@ -2210,7 +2210,7 @@ int target_connect(struct session_t *data)
+ 				SAFE_CLOSE(data->client);
+ 				exit(0);
+ 			}
+-			data->server = connect_host_from_port(data->target, ntohs(data->target.sin_port), data->origin, ARRAY(int, SO_REUSEADDR, 0), ARRAY(int, IP_TRANSPARENT, 0));
++			data->server = connect_host_from_port(data->actual_target, ntohs(data->actual_target.sin_port), data->origin, ARRAY(int, SO_REUSEADDR, 0), ARRAY(int, IP_TRANSPARENT, 0));
  			res = errno;
- 			if (set_uid2euid() < 0)  {
-@@ -1821,7 +1821,7 @@ int target_connect(struct session_t *data)
+ 
+ 			// drop privileges entirely, not needed anymore
+@@ -2239,7 +2239,7 @@ int target_connect(struct session_t *data)
+ 		case MODE_PF:
  		case MODE_REMOTE:
  		case MODE_REMOTE_UDP:
+-			data->server = connect_host(data->target, ntohs(data->target.sin_port), src, ARRAY(int, SO_REUSEADDR, 0), NULL);
++			data->server = connect_host(data->actual_target, ntohs(data->actual_target.sin_port), src, ARRAY(int, SO_REUSEADDR, 0), NULL);
+ 			break;
  		default:
--			data->server = connect_host(data->target, ntohs(data->target.sin_port), src);
-+			data->server = connect_host(data->actual_target, ntohs(data->actual_target.sin_port), src);
- 	}
- 
- 	if (data->server == -1) {
-@@ -2003,8 +2003,11 @@ void connection(struct session_t *data)
+ 			log_action(LOG_CRIT, "!BUG! target_connect(): data->mode=%d", data->mode);
+@@ -2427,8 +2427,11 @@ void connection(struct session_t *data)
  
  	session_init_2(data);
  
@@ -33,7 +34,7 @@ $OpenBSD$
  
  	if (lockfile_ident_present(data)) {
  		SHARED_STATS_INC(rejects_lock);
-@@ -2050,9 +2053,9 @@ void connection(struct session_t *data)
+@@ -2477,9 +2480,9 @@ void connection(struct session_t *data)
  	}
  	
  	// log
@@ -45,36 +46,35 @@ $OpenBSD$
  
  	// nie bedzie petli?
  	// dla testow wylacz (albo: wlacz jesli !fixed)
-@@ -2081,9 +2084,25 @@ void connection(struct session_t *data)
- 			wait_for_quit(data, "%s", config.msg_fixed_xclient_fail);
+@@ -2518,8 +2521,24 @@ void connection(struct session_t *data)
+ 		// xclient_startup eats initial greeting and forwards it to client directly
+ 		// so queueing COMMAND_GREETING would confuse pipelining support
+ 	} else {
+-		// not a real command, but we'll get initial greeting from MTA
+-		queue_command(COMMAND_GREETING, data);
++		if (!data->saved_line) {
++			// not a real command, but we'll get initial greeting from MTA
++			queue_command(COMMAND_OTHER, data);
++		} else {
++			fdprintf(data->server, "%s\r\n", data->saved_line);
++
++			char buffer[1024], *line;
++			int bufsize = 0;
++			int offset = 0;
++			SET_TIMEOUT(config.timeout_connect);
++			if ((line = fdgetline(data->server, buffer, sizeof(buffer), &bufsize, &offset)) != NULL) {
++				if (strncasecmp(line, "220 ", 4)) {
++					// Consume 220 reply, forward others to the client
++					fdprintf(data->client, "%s\r\n", line);
++				}
++			}
++			CLEAR_TIMEOUT();
++		}
  	}
  
--	// not a real command, but we'll get initial greeting from MTA
--	queue_command(COMMAND_OTHER, data);
-+    if (!data->saved_line) {
-+    	// not a real command, but we'll get initial greeting from MTA
-+	    queue_command(COMMAND_OTHER, data);
-+    } else {
-+		fdprintf(data->server, "%s\r\n", data->saved_line);
- 
-+	    char buffer[1024], *line;
-+		int bufsize = 0;
-+        int offset = 0;
-+    	SET_TIMEOUT(config.timeout_connect);
-+	    if ((line = fdgetline(data->server, buffer, sizeof(buffer), &bufsize, &offset)) != NULL) {
-+		    if (strncasecmp(line, "220 ", 4)) {
-+                // Consume 220 reply, forward others to the client
-+                fdprintf(data->client, "%s\r\n", line);
-+            }
-+        }
-+    	CLEAR_TIMEOUT();
-+    }
-+
  	// deskryptor dla select-a
- 	max_fd = (data->client > data->server) ? data->client : data->server;
- 
-@@ -2594,7 +2613,107 @@ restart:
- 		#warning MEMLEAK TESTING
+@@ -3136,7 +3155,107 @@ restart:
+ 		log_action(LOG_WARNING, "MEMLEAK_TESTING defined, allocating bogus %s bytes", MEMLEAK_TESTING);
  		malloc(MEMLEAK_TESTING);
  #endif
 +		// free previous context
@@ -181,7 +181,7 @@ $OpenBSD$
  		/* fast DoS checks */
  		if (children >= max_connections_real) {
  			log_action(LOG_INFO, "Rejecting (%d) connection from %s:%d", children, inet_ntoa(origin.sin_addr), ntohs(origin.sin_port));
-@@ -2622,9 +2741,11 @@ restart:
+@@ -3168,9 +3287,11 @@ restart:
  			}
  		}
  
@@ -194,5 +194,5 @@ $OpenBSD$
 +				data.lockfile = NULL;
 +		}
  
- 		if (host_count > config.max_per_host) {
- 			log_action(LOG_INFO, "Rejecting (host %d) connection from %s:%d", host_count, inet_ntoa(origin.sin_addr), ntohs(origin.sin_port));
+ 		// count is equal to number of connection coming from the same IP, except the current one
+ 		if (count >= config.max_per_host) {
