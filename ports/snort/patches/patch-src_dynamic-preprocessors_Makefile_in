@@ -2,24 +2,6 @@ $OpenBSD: patch-src_dynamic-preprocessors_Makefile_in,v 1.17 2018/01/28 03:09:12
 Index: src/dynamic-preprocessors/Makefile.in
 --- src/dynamic-preprocessors/Makefile.in.orig
 +++ src/dynamic-preprocessors/Makefile.in
-@@ -318,7 +318,7 @@ am__define_uniq_tagged_files = \
- ETAGS = etags
- CTAGS = ctags
- DIST_SUBDIRS = . libs ftptelnet pop imap smtp ssh dns ssl dcerpc2 sdf \
--	sip reputation gtp modbus dnp3 file appid
-+	sip reputation gtp modbus dnp3 file appid utmfw
- am__DIST_COMMON = $(srcdir)/Makefile.in
- DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
- am__relativize = \
-@@ -763,7 +763,7 @@ copy_treenode_header = \
- 
- @FEAT_FILE_INSPECT_TRUE@FILE_INSPECT_DIR = file
- SUBDIRS = . libs ftptelnet pop imap smtp ssh dns ssl dcerpc2 sdf sip \
--	reputation gtp modbus dnp3 $(FILE_INSPECT_DIR) $(am__append_6)
-+	reputation gtp modbus dnp3 utmfw $(FILE_INSPECT_DIR) $(am__append_6)
- EXTRA_DIST = \
- dynamic_preprocessors.dsp \
- sf_dynamic_initialize/sf_dynamic_initialize.dsp \
 @@ -1635,19 +1635,8 @@ clean-local:
  	rm -rf include build
  
