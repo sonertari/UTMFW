@@ -211,13 +211,6 @@ class Symon extends Monitoring
 		/// XXX
 		global $SRC_ROOT, $symon, $cache, $session, $chr2html, $runtime;
 		
-		/// XXX
-		/// For classifying gettext strings into files.
-		function _TITLE($str)
-		{
-			return _($str);
-		}
-
 		require_once ("$SRC_ROOT/View/symon/class_session.inc");
 		require_once ("$SRC_ROOT/View/symon/class_layout.inc");
 
