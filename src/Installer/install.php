@@ -28,10 +28,9 @@ if (isset($_SERVER['SERVER_ADDR'])) {
 	header('Location: /index.php');
 	exit(1);
 }
-else {
-	// Report only errors during installation
-	error_reporting(E_ERROR);
-}
+
+// Report only errors during installation
+error_reporting(E_ERROR);
 
 // chdir is for libraries
 chdir(dirname(__FILE__));

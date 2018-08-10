@@ -488,7 +488,7 @@ class Rule
 			$index= array_search($value, $rule[$key]);
 			if ($index !== FALSE) {
 				unset($rule[$key][$index]);
-				/// @todo After unseting, should we also update the keys the array?
+				/// @todo After unseting, should we also update the keys in the array?
 			}
 
 			FlattenArray($rule[$key]);

@@ -98,11 +98,6 @@ class Model
 		$this->Commands= array_merge(
 			$this->Commands,
 			array(
-				'IsRunning'	=>	array(
-					'argv'	=>	array(),
-					'desc'	=>	_('Check if process running'),
-					),
-
 				'Start'	=>	array(
 					'argv'	=>	array(),
 					'desc'	=>	_('Start '.get_class($this)),
@@ -887,9 +882,10 @@ class Model
 		if (copy($file, $file.'.bak')) {
 			if (($value= $this->GetNVP($file, $name)) !== FALSE) {
 				/// @warning Backslash should be escaped first, or causes double escapes
-				$value= Escape($value, '\/$^*()."');
+				$value= Escape($value, '\/$^*().-[]"');
 				$re= "^(\h*$name\b\h*$this->NVPS\h*)($value)(\h*$this->COMC.*|\h*)$";
 
+				/// @todo Put strings between single quotes, otherwise PHP conf files complain about certain chars, such as ':'
 				$contents= preg_replace("/$re/m", '${1}'.$newvalue.'${3}', file_get_contents($file), 1, $count);
 				if ($contents !== NULL && $count == 1) {
 					file_put_contents($file, $contents);

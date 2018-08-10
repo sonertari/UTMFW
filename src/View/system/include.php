@@ -69,6 +69,7 @@ $Menu = array(
 			'startup' => _MENU('Startup'),
 			'logs' => _MENU('Logs'),
 			'wui' => _MENU('WUI'),
+			'notifier' => _MENU('Notifier'),
 			),
 		),
 	'procs' => array(

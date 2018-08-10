@@ -321,7 +321,7 @@ function IsHost($host)
 
 function IsUrl($name)
 {
-	return preg_match('|^[\w_.\-/?=]{1,100}$|', $name);
+	return preg_match('|^[\w_.:\-/?=]{1,200}$|', $name);
 }
 
 function IsEmailAddress($addr)
