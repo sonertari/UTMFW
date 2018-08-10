@@ -197,7 +197,7 @@ require_once($VIEW_PATH.'/header.php');
 				<select name="TokensToDelete[]" multiple style="width: 300px; height: 100px;">
 					<?php
 					$tokens= json_decode($NotifierTokens, TRUE);
-					if ($tokens) {
+					if ($tokens !== NULL) {
 						foreach ($tokens as $token) {
 							?>
 							<option value="<?php echo $token ?>"><?php echo $token ?></option>

@@ -44,7 +44,7 @@ require_once($VIEW_PATH.'/lib/view.php');
 
 function Notify($title, $body, $data)
 {
-	global $NotifierHost, $NotifierAPIKey, $NotifierTokens, $NotifierSSLVerifyPeer;
+	global $NotifierHost, $NotifierAPIKey, $NotifierTokens, $NotifierSSLVerifyPeer, $NotifierTimeout;
 
 	$return= FALSE;
 
@@ -77,11 +77,14 @@ function Notify($title, $body, $data)
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $NotifierSSLVerifyPeer);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $message);
+		// Time curl_exec() out if it takes too long
+		curl_setopt($ch, CURLOPT_TIMEOUT, $NotifierTimeout);
+		
+		$start= time();
+		$output= curl_exec($ch);
+		wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'curl_exec() runs for '.(time() - $start).' secs');
 
-		// Fork curl_exec() to time it out if it takes too long
-		if (!CurlExec($ch, $output, $retval)) {
-			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed executing notifier curl');
-		} else {
+		if ($output !== FALSE) {
 			$output= json_decode($output, TRUE);
 			if ($output !== NULL) {
 				if (is_array($output)) {
@@ -95,111 +98,12 @@ function Notify($title, $body, $data)
 					wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Curl exec output not array');
 				}
 			}
+		} else {
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed executing notifier curl');
 		}
 		curl_close($ch);
 
 		return $return;
-	}
-}
-
-/// @todo Code reuse: Combine this with RunPfctlCmd()?
-function CurlExec($ch, &$output, &$retval)
-{
-	global $NotifierTimeout;
-
-	$retval= 0;
-	$output= array();
-
-	$mqid= 1;
-	$queue= msg_get_queue($mqid);
-
-	if (!msg_queue_exists($mqid)) {
-		wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed creating or attaching to message queue');
-		return FALSE;
-	}
-
-	$sendtype= 1;
-
-	$pid= pcntl_fork();
-
-	if ($pid == -1) {
-		wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot fork notifier process');
-	} elseif ($pid) {
-		// This is the parent!
-
-		$return= FALSE;
-
-		// Parent should wait for output for $NotifierTimeout seconds
-		// Wait count starts from 1 due to do..while loop
-		$count= 1;
-
-		// We use this $interval var instead of a constant like .1, because
-		// if $NotifierTimeout is set to 0, $interval becomes 0 too, effectively disabling sleep
-		// Add 1 to prevent division by zero ($NotifierTimeout cannot be set to -1 on the WUI)
-		$interval= $NotifierTimeout/($NotifierTimeout + 1)/10;
-
-		do {
-			exec("/bin/sleep $interval");
-			wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Receive message wait count: $count, sleep interval: $interval");
-
-			/// @attention Do not wait for a message, loop instead: MSG_IPC_NOWAIT
-			$received= msg_receive($queue, 0, $recvtype, 10000, $msg, TRUE, MSG_NOERROR|MSG_IPC_NOWAIT, $error);
-
-			if ($received && $sendtype == $recvtype) {
-				if (is_array($msg) && array_key_exists('retval', $msg) && array_key_exists('output', $msg)) {
-					$retval= $msg['retval'];
-					$output= $msg['output'];
-
-					wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Received notifier output: ' . print_r($msg, TRUE));
-
-					$return= TRUE;
-					break;
-				} else {
-					wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Output not in correct format: ' . print_r($msg, TRUE));
-					break;
-				}
-			} else {
-				wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Failed receiving notifier output: ' . posix_strerror($error));
-			}
-
-		} while ($count++ < $NotifierTimeout * 10);
-
-		if (!$return) {
-			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Timed out running notifier command');
-		}
-
-		// Parent removes the queue
-		if (!msg_remove_queue($queue)) {
-			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed removing message queue');
-		}
-
-		/// @attention Make sure the child is terminated, otherwise the parent gets stuck too.
-		if (posix_getpgid($pid)) {
-			exec("/bin/kill -KILL $pid");
-		}
-
-		// Parent survives
-		return $return;
-	} else {
-		// This is the child!
-
-		// Child should run the command and send the result in a message
-		wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Running notifier command');
-		$result= curl_exec($ch);
-
-		$msg= array(
-			'retval' => $result === FALSE ? FALSE:TRUE,
-			'output' => $result === FALSE ? '':$result
-			);
-
-		if (!msg_send($queue, $sendtype, $msg, TRUE, TRUE, $error)) {
-			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed sending notifier output: ' . print_r($msg, TRUE) . ', error: ' . posix_strerror($error));
-		} else {
-			wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Sent notifier output: ' . print_r($msg, TRUE));
-		}
-
-		// Child exits
-		exit;
 	}
 }
 
@@ -221,7 +125,7 @@ function BuildFields(&$title, &$body, &$data, $total, $level, $text)
 	$body[]= implode(', ', $modules);
 
 	foreach ($ModuleErrorCounts[$level] as $module => $count) {
-		// TODO: Should we send data and time only, so delete the other fields?
+		/// @todo Should we send data and time only, so delete the other fields?
 		$data[$module][$level][]= $ServiceStatus[$module]['Logs'][0];
 	}
 }
@@ -308,7 +212,7 @@ if (count(json_decode($NotifierTokens, TRUE))) {
 		wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get service status');
 	}
 } else {
-	wui_syslog(LOG_WARNING, __FILE__, __FUNCTION__, __LINE__, 'No device token to send notifications');
+	wui_syslog(LOG_WARNING, __FILE__, __FUNCTION__, __LINE__, 'No device token to send notifications to');
 	exit(0);
 }
 
