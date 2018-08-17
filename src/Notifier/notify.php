@@ -42,6 +42,17 @@ require_once($SRC_ROOT.'/lib/lib.php');
 require_once($VIEW_PATH.'/lib/libauth.php');
 require_once($VIEW_PATH.'/lib/view.php');
 
+$StatusText= array(
+	'R' => _('running'),
+	'S' => _('stopped'),
+	);
+
+$Prios= array(
+	'Critical' => array('EMERGENCY', 'ALERT', 'CRITICAL'),
+	'Error' => array('ERROR'),
+	'Warning' => array('WARNING', 'NOTICE'),
+	);
+
 function Notify($title, $body, $data)
 {
 	global $NotifierHost, $NotifierAPIKey, $NotifierTokens, $NotifierSSLVerifyPeer, $NotifierTimeout;
@@ -59,13 +70,29 @@ function Notify($title, $body, $data)
 			array(
 				'registration_ids' => json_decode($NotifierTokens, TRUE),
 				'notification' => array(
-					'notId' => 1,
-					'sound'=> 1,
-					'vibrate'=> 1,
 					'title' => $title,
 					'body' => $body,
+					'icon' => 'notification',
+					'sound'=> 'default',
 					),
-				'data' => $data,
+				'data' => array(
+					'title' => $title,
+					'body' => $body,
+					'data' => array(
+						// Timestamp used as unique message id
+						'timestamp' => time(),
+						/// @attention Put data field within data, so that Android app does convert the subfields to a map
+						// We process these fields uniformly as json
+						'data' => array(
+							/// @attention If the Android app is in the background, it cannot access the title and body fields in notification
+							// So, repeat the title and body fields in data
+							'title' => $title,
+							'body' => $body,
+							'data' => $data,
+							'datetime' => exec('/bin/date "+%c"'),
+							)
+						)
+					)
 				)
 			);
 
@@ -109,12 +136,7 @@ function Notify($title, $body, $data)
 
 function BuildFields(&$title, &$body, &$data, $total, $level, $text)
 {
-	global $ModuleErrorCounts, $ServiceStatus;
-
-	$StatusText= array(
-		'R' => _('running'),
-		'S' => _('stopped'),
-		);
+	global $ModuleErrorCounts, $ServiceStatus, $StatusText, $Prios;
 
 	$title[]= "$total $text";
 
@@ -125,8 +147,12 @@ function BuildFields(&$title, &$body, &$data, $total, $level, $text)
 	$body[]= implode(', ', $modules);
 
 	foreach ($ModuleErrorCounts[$level] as $module => $count) {
-		/// @todo Should we send data and time only, so delete the other fields?
-		$data[$module][$level][]= $ServiceStatus[$module]['Logs'][0];
+		foreach ($ServiceStatus[$module]['Logs'] as $log) {
+			if (in_array($log['Prio'], $Prios[$level])) {
+				$data[$module][$level][]= $log;
+				break;
+			}
+		}
 	}
 }
 

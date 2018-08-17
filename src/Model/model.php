@@ -98,6 +98,11 @@ class Model
 		$this->Commands= array_merge(
 			$this->Commands,
 			array(
+				'IsRunning'	=>	array(
+					'argv'	=>	array(),
+					'desc'	=>	_('Check if process running'),
+					),
+
 				'Start'	=>	array(
 					'argv'	=>	array(),
 					'desc'	=>	_('Start '.get_class($this)),
