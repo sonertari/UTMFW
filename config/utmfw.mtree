@@ -217,6 +217,7 @@ pfre			type=dir mode=0755 uname=root gname=wheel
 pf.conf.afterhours	type=file mode=0600 uname=root gname=wheel
 ..	#etc/pfre
 php-7.0			type=dir mode=0755 uname=root gname=wheel
+curl.ini		type=file mode=0644 uname=root gname=wheel
 mcrypt.ini		type=file mode=0644 uname=root gname=wheel
 pcntl.ini		type=file mode=0644 uname=root gname=wheel
 ..	#etc/php-7.0
