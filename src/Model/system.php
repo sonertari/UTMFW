@@ -346,6 +346,16 @@ class System extends Model
 					'desc'	=>	_('Delete token'),
 					),
 
+				'AddFilter'		=>	array(
+					'argv'	=>	array(REGEXP),
+					'desc'	=>	_('Add filter'),
+					),
+
+				'DelFilter'		=>	array(
+					'argv'	=>	array(REGEXP),
+					'desc'	=>	_('Delete filter'),
+					),
+
 				'SetNotifierTimeout'=>	array(
 					'argv'	=>	array(NUM),
 					'desc'	=>	_('Set notifier timeout'),
@@ -1419,6 +1429,34 @@ class System extends Model
 			return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$NotifierTokens', "'".json_encode($tokens)."';");
 		}
 		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot json_decode NotifierTokens: $NotifierTokens");
+		return FALSE;
+	}
+
+	function AddFilter($filter)
+	{
+		global $ROOT, $TEST_DIR_SRC, $NotifierFilters;
+
+		$filters= json_decode($NotifierFilters, TRUE);
+		if ($filters === NULL) {
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot json_decode NotifierFilters, starting with an empty list: $NotifierFilters");
+			$filters= array();
+		}
+
+		$filters= $this->_delToken($filters, $filter);
+		$filters[]= $filter;
+		return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$NotifierFilters', "'".json_encode($filters)."';");
+	}
+
+	function DelFilter($filter)
+	{
+		global $ROOT, $TEST_DIR_SRC, $NotifierFilters;
+
+		$filters= json_decode($NotifierFilters, TRUE);
+		if ($filters !== NULL) {
+			$filters= $this->_delToken($filters, $filter);
+			return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$NotifierFilters', "'".json_encode($filters)."';");
+		}
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot json_decode NotifierFilters: $NotifierFilters");
 		return FALSE;
 	}
 

@@ -55,6 +55,9 @@ $NotifierAPIKey= 'AAAA4IgjjmM:APA91bERsNWEVVu9XZtlrB3L1vaA_2qNExBcpII2OU9cgRj3nK
 /// Notifier tokens.
 $NotifierTokens= '[]';
 
+/// Send notifications containing one of these keywords only.
+$NotifierFilters= '[]';
+
 /// Wait notifier for this many seconds before giving up.
 $NotifierTimeout= 10;
 ?>

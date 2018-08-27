@@ -81,7 +81,7 @@ function Notify($title, $body, $data)
 					'data' => array(
 						// Timestamp used as unique message id
 						'timestamp' => time(),
-						/// @attention Put data field within data, so that Android app does convert the subfields to a map
+						/// @attention Put data field within data, so that Android app does not convert the subfields to a map
 						// We process these fields uniformly as json
 						'data' => array(
 							/// @attention If the Android app is in the background, it cannot access the title and body fields in notification
@@ -156,6 +156,39 @@ function BuildFields(&$title, &$body, &$data, $total, $level, $text)
 	}
 }
 
+function FilterServiceStatus()
+{
+	global $ServiceStatus, $NotifierFilters;
+
+	$filters= json_decode($NotifierFilters, TRUE);
+	if (count($filters) > 0) {
+		foreach ($ServiceStatus as $module => $status) {
+			/// @todo Filter module names too? So the module name must be among the filter keywords
+			foreach ($status['Logs'] as $j => $log) {
+				$deleteLog= TRUE;
+				foreach ($filters as $i => $re) {
+					$re= Escape($re, '/');
+					if (preg_match("/$re/", $log['Process']) || preg_match("/$re/", $log['Prio']) || preg_match("/$re/", $log['Log'])) {
+						$deleteLog= FALSE;
+						break;
+					}
+				}
+
+				if ($deleteLog) {
+					unset($ServiceStatus[$module]['Logs'][$j]);
+				}
+			}
+
+			if (count($ServiceStatus[$module]['Logs']) == 0) {
+				unset($ServiceStatus[$module]);
+			} else {
+				/// @attention Fake slice to update the keys
+				$ServiceStatus[$module]['Logs']= array_slice($ServiceStatus[$module]['Logs'], 0);
+			}
+		}
+	}
+}
+
 $View= new View();
 $View->Model= 'system';
 
@@ -167,71 +200,79 @@ if (count(json_decode($NotifierTokens, TRUE))) {
 	if ($View->Controller($Output, 'GetServiceStatus')) {
 		$ServiceStatus= json_decode($Output[0], TRUE);
 
-		// Critical errors are always reported
-		$NotifyWarning= $NotifyLevel >= LOG_WARNING;
-		$NotifyError= $NotifyLevel >= LOG_ERR;
+		FilterServiceStatus();
 
-		$Critical= 0;
-		$Error= 0;
-		$Warning= 0;
+		// $ServiceStatus may become empty after applying filters
+		if (count($ServiceStatus)) {
+			// Critical errors are always reported
+			$NotifyWarning= $NotifyLevel >= LOG_WARNING;
+			$NotifyError= $NotifyLevel >= LOG_ERR;
 
-		$ModuleErrorCounts= array();
-		foreach ($ServiceStatus as $Module => $StatusArray) {
-			$count= $ServiceStatus[$Module]['Critical'];
-			if ($count) {
-				$Critical+= $count;
-				$ModuleErrorCounts['Critical'][$Module]= $count;
-			}
+			$Critical= 0;
+			$Error= 0;
+			$Warning= 0;
 
-			if ($NotifyError) {
-				$count= $ServiceStatus[$Module]['Error'];
+			$ModuleErrorCounts= array();
+			foreach ($ServiceStatus as $Module => $StatusArray) {
+				$count= $ServiceStatus[$Module]['Critical'];
 				if ($count) {
-					$Error+= $count;
-					$ModuleErrorCounts['Error'][$Module]= $count;
+					$Critical+= $count;
+					$ModuleErrorCounts['Critical'][$Module]= $count;
+				}
+
+				if ($NotifyError) {
+					$count= $ServiceStatus[$Module]['Error'];
+					if ($count) {
+						$Error+= $count;
+						$ModuleErrorCounts['Error'][$Module]= $count;
+					}
+				}
+
+				if ($NotifyWarning) {
+					$count= $ServiceStatus[$Module]['Warning'];
+					if ($count) {
+						$Warning+= $count;
+						$ModuleErrorCounts['Warning'][$Module]= $count;
+					}
 				}
 			}
 
-			if ($NotifyWarning) {
-				$count= $ServiceStatus[$Module]['Warning'];
-				if ($count) {
-					$Warning+= $count;
-					$ModuleErrorCounts['Warning'][$Module]= $count;
+			wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Counts: $Critical, $Error, $Warning, Level: $NotifyLevel, $NotifyError, $NotifyWarning");
+
+			if ($Critical || ($NotifyError && $Error) || ($NotifyWarning && $Warning)) {
+				$Title= array();
+				$Body= array();
+				$Data= array();
+
+				if ($Critical) {
+					BuildFields($Title, $Body, $Data, $Critical, 'Critical', 'critical errors');
 				}
-			}
-		}
+				if ($Error && $NotifyError) {
+					BuildFields($Title, $Body, $Data, $Error, 'Error', 'errors');
+				}
+				if ($Warning && $NotifyWarning) {
+					BuildFields($Title, $Body, $Data, $Warning, 'Warning', 'warnings');
+				}
 
-		wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Counts: $Critical, $Error, $Warning, Level: $NotifyLevel, $NotifyError, $NotifyWarning");
+				$hostname= 'UTMFW';
+				if ($View->Controller($Myname, 'GetMyName')) {
+					$hostname= $Myname[0];
+				} else {
+					wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get system name');
+				}
 
-		if ($Critical || ($NotifyError && $Error) || ($NotifyWarning && $Warning)) {
-			$Title= array();
-			$Body= array();
-			$Data= array();
+				$Title= $hostname.': '.implode(', ', $Title);
+				$Body= implode(', ', $Body);
 
-			if ($Critical) {
-				BuildFields($Title, $Body, $Data, $Critical, 'Critical', 'critical errors');
-			}
-			if ($Error && $NotifyError) {
-				BuildFields($Title, $Body, $Data, $Error, 'Error', 'errors');
-			}
-			if ($Warning && $NotifyWarning) {
-				BuildFields($Title, $Body, $Data, $Warning, 'Warning', 'warnings');
-			}
-
-			$hostname= 'UTMFW';
-			if ($View->Controller($Myname, 'GetMyName')) {
-				$hostname= $Myname[0];
+				if (Notify($Title, $Body, $Data)) {
+					exit(0);
+				}
 			} else {
-				wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get system name');
-			}
-
-			$Title= $hostname.': '.implode(', ', $Title);
-			$Body= implode(', ', $Body);
-
-			if (Notify($Title, $Body, $Data)) {
+				wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Nothing to notify due to notify level or counts');
 				exit(0);
 			}
 		} else {
-			wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Nothing to notify due to notify level or counts');
+			wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Nothing to notify due to service status being empty, perhaps after applying filters');
 			exit(0);
 		}
 	} else {

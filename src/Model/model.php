@@ -897,7 +897,7 @@ class Model
 					return TRUE;
 				}
 				else {
-					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot set new value $file, $name, $newvalue");
+					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot set new value $file, $name, new: $newvalue, old: $value, re: $re, $count");
 				}
 			}
 			else {

@@ -73,6 +73,15 @@ if (count($_POST)) {
 			$View->Controller($Output, 'DelToken', $Token);
 		}
 	}
+	else if (filter_has_var(INPUT_POST, 'AddFilter') && filter_has_var(INPUT_POST, 'FilterToAdd')) {
+		$View->Controller($Output, 'AddFilter', filter_input(INPUT_POST, 'FilterToAdd'));
+	}
+	else if (filter_has_var(INPUT_POST, 'DeleteFilter')) {
+		/// @todo Do not delete individually, send the list of filters to delete
+		foreach ($_POST['FiltersToDelete'] as $Filter) {
+			$View->Controller($Output, 'DelFilter', $Filter);
+		}
+	}
 	else if (filter_has_var(INPUT_POST, 'NotifierTimeout')) {
 		if ($View->Controller($Output, 'SetNotifierTimeout', filter_input(INPUT_POST, 'NotifierTimeout'))) {
 			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'NotifierTimeout set: '.filter_input(INPUT_POST, 'NotifierTimeout'));
@@ -220,6 +229,38 @@ require_once($VIEW_PATH.'/header.php');
 		</td>
 	</tr>
 	<tr class="oddline">
+		<td class="title">
+			<?php echo _TITLE('Filters').':' ?>
+		</td>
+		<td>
+			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+				<input style="display:none;" type="submit" name="AddFilter" value="<?php echo _CONTROL('Add') ?>"/>
+				<select name="FiltersToDelete[]" multiple style="width: 300px; height: 100px;">
+					<?php
+					$filters= json_decode($NotifierFilters, TRUE);
+					if ($filters !== NULL) {
+						foreach ($filters as $filter) {
+							?>
+							<option value="<?php echo $filter ?>"><?php echo $filter ?></option>
+							<?php
+						}
+					} else {
+						wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot json_decode NotifierFilters: $NotifierFilters");
+					}
+					?>
+				</select>
+				<input type="submit" name="DeleteFilter" value="<?php echo _CONTROL('Delete') ?>"/><br />
+				<input type="text" name="FilterToAdd" style="width: 300px;" maxlength="200"/>
+				<input type="submit" name="AddFilter" value="<?php echo _CONTROL('Add') ?>"/>
+			</form>
+		</td>
+		<td class="none">
+			<?php
+			PrintHelpBox(_HELPBOX('The system will send service statuses containing one of these keywords only.'));
+			?>
+		</td>
+	</tr>
+	<tr class="evenline">
 		<td class="title">
 			<?php echo _TITLE('Notifier Timeout').':' ?>
 		</td>
