@@ -336,14 +336,14 @@ class System extends Model
 					'desc'	=>	_('Set notifier API key'),
 					),
 
-				'AddToken'		=>	array(
-					'argv'	=>	array(URL),
-					'desc'	=>	_('Add token'),
+				'AddNotifierUser'	=>	array(
+					'argv'	=>	array(JSON),
+					'desc'	=>	_('Add notifier user'),
 					),
 
-				'DelToken'		=>	array(
+				'DelNotifierUser'	=>	array(
 					'argv'	=>	array(URL),
-					'desc'	=>	_('Delete token'),
+					'desc'	=>	_('Delete notifier user'),
 					),
 
 				'AddFilter'		=>	array(
@@ -1404,32 +1404,36 @@ class System extends Model
 		return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$NotifierAPIKey', "'$apikey';");
 	}
 
-	function AddToken($token)
+	function AddNotifierUser($userJson)
 	{
-		global $ROOT, $TEST_DIR_SRC, $NotifierTokens;
+		global $ROOT, $TEST_DIR_SRC, $NotifierUsers;
 
-		$tokens= json_decode($NotifierTokens, TRUE);
-		if ($tokens === NULL) {
-			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot json_decode NotifierTokens, starting with an empty list: $NotifierTokens");
-			$tokens= array();
+		$users= json_decode($NotifierUsers, TRUE);
+		if ($users === NULL) {
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot json_decode NotifierUsers, starting with an empty list: $NotifierUsers");
+			$users= array();
 		}
 
-		$tokens= $this->_delToken($tokens, $token);
-		$tokens[]= $token;
-		return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$NotifierTokens', "'".json_encode($tokens)."';");
+		$user= json_decode($userJson, TRUE);
+		$token= key($user);
+		$users[$token]= $user[$token];
+		return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$NotifierUsers', "'".json_encode($users)."';");
 	}
 
-	function DelToken($token)
+	function DelNotifierUser($token)
 	{
-		global $ROOT, $TEST_DIR_SRC, $NotifierTokens;
+		global $ROOT, $TEST_DIR_SRC, $NotifierUsers;
 
-		$tokens= json_decode($NotifierTokens, TRUE);
-		if ($tokens !== NULL) {
-			$tokens= $this->_delToken($tokens, $token);
-			return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$NotifierTokens', "'".json_encode($tokens)."';");
+		$users= json_decode($NotifierUsers, TRUE);
+		if ($users === NULL) {
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot json_decode NotifierUsers, starting with an empty list: $NotifierUsers");
+			$users= array();
 		}
-		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot json_decode NotifierTokens: $NotifierTokens");
-		return FALSE;
+
+		if (array_key_exists($token, $users)) {
+			unset($users[$token]);
+		}
+		return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$NotifierUsers', "'".json_encode($users)."';");
 	}
 
 	function AddFilter($filter)
@@ -1442,7 +1446,7 @@ class System extends Model
 			$filters= array();
 		}
 
-		$filters= $this->_delToken($filters, $filter);
+		$filters= $this->_delFilter($filters, $filter);
 		$filters[]= $filter;
 		return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$NotifierFilters', "'".json_encode($filters)."';");
 	}
@@ -1453,14 +1457,14 @@ class System extends Model
 
 		$filters= json_decode($NotifierFilters, TRUE);
 		if ($filters !== NULL) {
-			$filters= $this->_delToken($filters, $filter);
+			$filters= $this->_delFilter($filters, $filter);
 			return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$NotifierFilters', "'".json_encode($filters)."';");
 		}
 		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot json_decode NotifierFilters: $NotifierFilters");
 		return FALSE;
 	}
 
-	function _delToken($tokens, $token)
+	function _delFilter($tokens, $token)
 	{
 		$key= FALSE;
 		try {

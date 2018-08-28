@@ -55,7 +55,7 @@ $Prios= array(
 
 function Notify($title, $body, $data)
 {
-	global $NotifierHost, $NotifierAPIKey, $NotifierTokens, $NotifierSSLVerifyPeer, $NotifierTimeout;
+	global $NotifierHost, $NotifierAPIKey, $NotifierUsers, $NotifierSSLVerifyPeer, $NotifierTimeout;
 
 	$return= FALSE;
 
@@ -68,7 +68,7 @@ function Notify($title, $body, $data)
 
 		$message= json_encode(
 			array(
-				'registration_ids' => json_decode($NotifierTokens, TRUE),
+				'registration_ids' => array_keys(json_decode($NotifierUsers, TRUE)),
 				'notification' => array(
 					'title' => $title,
 					'body' => $body,
@@ -196,7 +196,7 @@ $View->Model= 'system';
 // Do not use SSH to run Controller commands
 $UseSSH= FALSE;
 
-if (count(json_decode($NotifierTokens, TRUE))) {
+if (count(json_decode($NotifierUsers, TRUE))) {
 	if ($View->Controller($Output, 'GetServiceStatus')) {
 		$ServiceStatus= json_decode($Output[0], TRUE);
 

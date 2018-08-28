@@ -65,12 +65,13 @@ if (count($_POST)) {
 		}
 	}
 	else if (filter_has_var(INPUT_POST, 'Add') && filter_has_var(INPUT_POST, 'TokenToAdd')) {
-		$View->Controller($Output, 'AddToken', filter_input(INPUT_POST, 'TokenToAdd'));
+		$user = array(filter_input(INPUT_POST, 'TokenToAdd') => filter_input(INPUT_POST, 'UserToAdd'));
+		$View->Controller($Output, 'AddNotifierUser', json_encode($user));
 	}
 	else if (filter_has_var(INPUT_POST, 'Delete')) {
 		/// @todo Do not delete individually, send the list of tokens to delete
 		foreach ($_POST['TokensToDelete'] as $Token) {
-			$View->Controller($Output, 'DelToken', $Token);
+			$View->Controller($Output, 'DelNotifierUser', $Token);
 		}
 	}
 	else if (filter_has_var(INPUT_POST, 'AddFilter') && filter_has_var(INPUT_POST, 'FilterToAdd')) {
@@ -190,20 +191,21 @@ require_once($VIEW_PATH.'/header.php');
 				<input style="display:none;" type="submit" name="Add" value="<?php echo _CONTROL('Add') ?>"/>
 				<select name="TokensToDelete[]" multiple style="width: 300px; height: 100px;">
 					<?php
-					$tokens= json_decode($NotifierTokens, TRUE);
-					if ($tokens !== NULL) {
-						foreach ($tokens as $token) {
+					$users= json_decode($NotifierUsers, TRUE);
+					if ($users !== NULL) {
+						foreach ($users as $token => $user) {
 							?>
-							<option value="<?php echo $token ?>"><?php echo $token ?></option>
+							<option title="<?php echo $user ?>" value="<?php echo $token ?>"><?php echo $token ?></option>
 							<?php
 						}
 					} else {
-						wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot json_decode NotifierTokens: $NotifierTokens");
+						wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot json_decode NotifierUsers: $NotifierUsers");
 					}
 					?>
 				</select>
 				<input type="submit" name="Delete" value="<?php echo _CONTROL('Delete') ?>"/><br />
-				<input type="text" name="TokenToAdd" style="width: 300px;" maxlength="200"/>
+				<input type="text" name="TokenToAdd" style="width: 300px;" maxlength="200"/> <?php echo _TITLE('Token') ?><br />
+				<input type="text" name="UserToAdd" style="width: 300px;" maxlength="200"/> <?php echo _TITLE('User') ?>
 				<input type="submit" name="Add" value="<?php echo _CONTROL('Add') ?>"/>
 			</form>
 		</td>
