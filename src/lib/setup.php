@@ -41,7 +41,7 @@ $StatusCheckInterval= 60;
 $DefaultLocale= 'en_EN';
 
 /// Send module statuses at this priority level and up as notification.
-$NotifyLevel= LOG_WARNING;
+$NotifyLevel= LOG_CRIT;
 
 /// Notifier host.
 $NotifierHost= 'https://fcm.googleapis.com/fcm/send';

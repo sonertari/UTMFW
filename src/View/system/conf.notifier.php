@@ -116,37 +116,6 @@ require_once($VIEW_PATH.'/header.php');
 	</tr>
 	<tr class="evenline">
 		<td class="title">
-			<?php echo _TITLE('Notify Level').':' ?>
-		</td>
-		<td>
-			<form action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>" method="post">
-				<select name="NotifyLevel">
-					<?php
-					// We just have 3x notifier levels from $LOG_PRIOS
-					$NOTIFIER_PRIOS= array(
-						'LOG_CRIT',		// critical conditions
-						'LOG_ERR',		// error conditions
-						'LOG_WARNING',	// warning conditions
-						);
-					foreach ($NOTIFIER_PRIOS as $Prio) {
-						$Selected= $Prio === $LOG_PRIOS[$NotifyLevel] ? 'selected' : '';
-						?>
-						<option <?php echo $Selected ?> value="<?php echo $Prio ?>"><?php echo $Prio ?></option>
-						<?php
-					}
-					?>
-				</select>
-				<input type="submit" id="ApplyNotifierLevel" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
-			</form>
-		</td>
-		<td class="none">
-			<?php
-			PrintHelpBox(_HELPBOX('This is the notifier level. The system will send push notifications for the logs at this level and up.'));
-			?>
-		</td>
-	</tr>
-	<tr class="oddline">
-		<td class="title">
 			<?php echo _TITLE('Notification Service').':' ?>
 		</td>
 		<td>
@@ -161,7 +130,7 @@ require_once($VIEW_PATH.'/header.php');
 			?>
 		</td>
 	</tr>
-	<tr class="evenline">
+	<tr class="oddline">
 		<td class="title">
 			<?php echo _TITLE('SSL Verify Peer').':' ?>
 		</td>
@@ -177,6 +146,22 @@ require_once($VIEW_PATH.'/header.php');
 		<td class="none">
 			<?php
 			PrintHelpBox(_HELPBOX('Verify Firebase SSL notification server.'));
+			?>
+		</td>
+	</tr>
+	<tr class="evenline">
+		<td class="title">
+			<?php echo _TITLE('Notifier Timeout').':' ?>
+		</td>
+		<td>
+			<form action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>" method="post">
+				<input type="text" name="NotifierTimeout" style="width: 50px;" maxlength="4" value="<?php echo $NotifierTimeout ?>" />
+				<input type="submit" id="ApplyNotifierTimeout" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
+			</form>
+		</td>
+		<td class="none">
+			<?php
+			PrintHelpBox(_HELPBOX('Notifier times out trying to connect to the notification server after a period defined by this value. The unit is in seconds.'));
 			?>
 		</td>
 	</tr>
@@ -230,6 +215,37 @@ require_once($VIEW_PATH.'/header.php');
 	</tr>
 	<tr class="oddline">
 		<td class="title">
+			<?php echo _TITLE('Notify Level').':' ?>
+		</td>
+		<td>
+			<form action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>" method="post">
+				<select name="NotifyLevel">
+					<?php
+					// We just have 3x notifier levels from $LOG_PRIOS
+					$NOTIFIER_PRIOS= array(
+						'LOG_CRIT',		// critical conditions
+						'LOG_ERR',		// error conditions
+						'LOG_WARNING',	// warning conditions
+						);
+					foreach ($NOTIFIER_PRIOS as $Prio) {
+						$Selected= $Prio === $LOG_PRIOS[$NotifyLevel] ? 'selected' : '';
+						?>
+						<option <?php echo $Selected ?> value="<?php echo $Prio ?>"><?php echo $Prio ?></option>
+						<?php
+					}
+					?>
+				</select>
+				<input type="submit" id="ApplyNotifierLevel" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
+			</form>
+		</td>
+		<td class="none">
+			<?php
+			PrintHelpBox(_HELPBOX('This is the notifier level. The system will send push notifications for the logs at this level and up.'));
+			?>
+		</td>
+	</tr>
+	<tr class="evenline">
+		<td class="title">
 			<?php echo _TITLE('Filters').':' ?>
 		</td>
 		<td>
@@ -260,24 +276,10 @@ require_once($VIEW_PATH.'/header.php');
 			?>
 		</td>
 	</tr>
-	<tr class="evenline">
-		<td class="title">
-			<?php echo _TITLE('Notifier Timeout').':' ?>
-		</td>
-		<td>
-			<form action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>" method="post">
-				<input type="text" name="NotifierTimeout" style="width: 50px;" maxlength="4" value="<?php echo $NotifierTimeout ?>" />
-				<input type="submit" id="ApplyNotifierTimeout" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
-			</form>
-		</td>
-		<td class="none">
-			<?php
-			PrintHelpBox(_HELPBOX('Notifier times out after a period defined by this value. The unit is in seconds.'));
-			?>
-		</td>
-	</tr>
 </table>
 <?php
-PrintHelpWindow(_HELPWINDOW('These settings are for the Firebase push notifications.'));
+PrintHelpWindow(_HELPWINDOW('Notifier runs every minute to check the system status and send Firebase push notifications based on the settings on this page. You can change the frequency of those notifications on the crontab of root.
+
+When the user logs in to the mobile application, the application adds its device token among the registration ids on this page. It deletes the token when the user logs out. So the notifications are sent to that device while the user is logged in to the application. You can add or delete tokens on this page.'));
 require_once($VIEW_PATH.'/footer.php');
 ?>
