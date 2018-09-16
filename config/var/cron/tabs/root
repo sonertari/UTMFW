@@ -25,5 +25,8 @@ HOME=/var/log
 #*	*	*	*	7		/sbin/pfctl -a AfterHours -f /etc/pfre/pf.conf.afterhours
 
 # pmacct pnrg protograph
-*/1     *       *       *       *       /var/www/htdocs/utmfw/View/pmacct/pnrg/pnrg-wrapper.sh > /dev/null
-*/1     *       *       *       *       /bin/sh /var/www/htdocs/utmfw/View/pmacct/protograph/cron.sh > /dev/null
+*/1	*	*	*	*	/var/www/htdocs/utmfw/View/pmacct/pnrg/pnrg-wrapper.sh > /dev/null
+*/1	*	*	*	*	/bin/sh /var/www/htdocs/utmfw/View/pmacct/protograph/cron.sh > /dev/null
+
+# Notifier
+#*/1	*	*	*	*	/usr/local/bin/php /var/www/htdocs/utmfw/Notifier/notify.php > /dev/null

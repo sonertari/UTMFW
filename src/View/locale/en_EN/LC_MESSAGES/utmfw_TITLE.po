@@ -247,6 +247,9 @@ msgstr ""
 msgid "File"
 msgstr ""
 
+msgid "Filters"
+msgstr ""
+
 msgid "Fingerprints File"
 msgstr ""
 
@@ -532,6 +535,21 @@ msgstr ""
 msgid "No pfsync"
 msgstr ""
 
+msgid "Notification Service"
+msgstr ""
+
+msgid "Notifications"
+msgstr ""
+
+msgid "Notifier API Key"
+msgstr ""
+
+msgid "Notifier Timeout"
+msgstr ""
+
+msgid "Notify Level"
+msgstr ""
+
 msgid "Number of Processes"
 msgstr ""
 
@@ -667,6 +685,9 @@ msgstr ""
 msgid "Regexp"
 msgstr ""
 
+msgid "Registration IDs"
+msgstr ""
+
 msgid "Reload Rate"
 msgstr ""
 
@@ -722,6 +743,9 @@ msgid "SPort"
 msgstr ""
 
 msgid "SSL Proxy"
+msgstr ""
+
+msgid "SSL Verify Peer"
 msgstr ""
 
 msgid "Save ruleset"
@@ -869,6 +893,9 @@ msgid "To"
 msgstr ""
 
 msgid "To Redirect Host"
+msgstr ""
+
+msgid "Token"
 msgstr ""
 
 msgid "Type"

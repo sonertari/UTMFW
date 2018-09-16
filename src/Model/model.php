@@ -887,16 +887,17 @@ class Model
 		if (copy($file, $file.'.bak')) {
 			if (($value= $this->GetNVP($file, $name)) !== FALSE) {
 				/// @warning Backslash should be escaped first, or causes double escapes
-				$value= Escape($value, '\/$^*()."');
+				$value= Escape($value, '\/$^*().-[]"');
 				$re= "^(\h*$name\b\h*$this->NVPS\h*)($value)(\h*$this->COMC.*|\h*)$";
 
+				/// @todo Put strings between single quotes, otherwise PHP conf files complain about certain chars, such as ':'
 				$contents= preg_replace("/$re/m", '${1}'.$newvalue.'${3}', file_get_contents($file), 1, $count);
 				if ($contents !== NULL && $count == 1) {
 					file_put_contents($file, $contents);
 					return TRUE;
 				}
 				else {
-					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot set new value $file, $name, $newvalue");
+					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot set new value $file, $name, new: $newvalue, old: $value, re: $re, $count");
 				}
 			}
 			else {

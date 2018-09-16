@@ -70,6 +70,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"Notifier times out trying to connect to the notification server after a "
+"period defined by this value. The unit is in seconds."
+msgstr ""
+
+msgid ""
 "Pfctl commands are executed in a separate process, which returns pfctl "
 "output in a message. Parent process times out waiting for an output message "
 "after this many seconds. This approach is necessary in case pfctl is stuck "
@@ -83,6 +88,22 @@ msgid ""
 "Privileged IPs have access to more services than other IPs, such as instant "
 "messaging and file sharing. Normally, the ports of such services should "
 "remain blocked for users who do not need them."
+msgstr ""
+
+msgid "Send notifications."
+msgstr ""
+
+msgid "The Firebase API key for the project, i.e. the Android application."
+msgstr ""
+
+msgid "The URL of the Firebase notification service."
+msgstr ""
+
+msgid "The system will send notifications to these devices."
+msgstr ""
+
+msgid ""
+"The system will send service statuses containing one of these keywords only."
 msgstr ""
 
 msgid ""
@@ -130,6 +151,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"This is the notifier level. The system will send push notifications for the "
+"logs at this level and up."
+msgstr ""
+
+msgid ""
 "This is the opposite of Privileged IPs. You can enter IP ranges as well, e."
 "g. 192.168.1.0/24."
 msgstr ""
@@ -172,6 +198,9 @@ msgid ""
 "Internet time servers gradually. But if the clock is too out of sync with "
 "the time servers, you are advised to set the system clock to Internet time "
 "manually. You can use your own time server if you like."
+msgstr ""
+
+msgid "Verify Firebase SSL notification server."
 msgstr ""
 
 msgid ""

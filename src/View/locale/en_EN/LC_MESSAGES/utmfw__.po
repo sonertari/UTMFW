@@ -25,6 +25,9 @@ msgstr ""
 msgid "Add ext/mime"
 msgstr ""
 
+msgid "Add filter"
+msgstr ""
+
 msgid "Add filter group IP"
 msgstr ""
 
@@ -32,6 +35,9 @@ msgid "Add host"
 msgstr ""
 
 msgid "Add list item"
+msgstr ""
+
+msgid "Add notifier user"
 msgstr ""
 
 msgid "Add proxy specs"
@@ -160,6 +166,9 @@ msgstr ""
 msgid "Delete ext/mime"
 msgstr ""
 
+msgid "Delete filter"
+msgstr ""
+
 msgid "Delete filter group IP"
 msgstr ""
 
@@ -167,6 +176,9 @@ msgid "Delete host"
 msgstr ""
 
 msgid "Delete list item"
+msgstr ""
+
+msgid "Delete notifier user"
 msgstr ""
 
 msgid "Delete pf rule file"
@@ -194,6 +206,12 @@ msgid "Disable config"
 msgstr ""
 
 msgid "Disable ext/mime"
+msgstr ""
+
+msgid "Disable notifier"
+msgstr ""
+
+msgid "Disable notifier SSL verify peer"
 msgstr ""
 
 msgid "Disable rule"
@@ -227,6 +245,12 @@ msgid "Enable config"
 msgstr ""
 
 msgid "Enable ext/mime"
+msgstr ""
+
+msgid "Enable notifier"
+msgstr ""
+
+msgid "Enable notifier SSL verify peer"
 msgstr ""
 
 msgid "Enable rule"
@@ -607,6 +631,9 @@ msgstr ""
 msgid "Invalid value for"
 msgstr ""
 
+msgid "Is notifier enabled"
+msgstr ""
+
 msgid "Line"
 msgstr ""
 
@@ -849,9 +876,6 @@ msgstr ""
 msgid "Set internal net"
 msgstr ""
 
-msgid "Set locale"
-msgstr ""
-
 msgid "Set log level"
 msgstr ""
 
@@ -865,6 +889,18 @@ msgid "Set max anchor nesting"
 msgstr ""
 
 msgid "Set name value pair"
+msgstr ""
+
+msgid "Set notifier API key"
+msgstr ""
+
+msgid "Set notifier host"
+msgstr ""
+
+msgid "Set notifier timeout"
+msgstr ""
+
+msgid "Set notify level"
 msgstr ""
 
 msgid "Set pfctl timeout"
@@ -1059,7 +1095,13 @@ msgstr ""
 msgid "min"
 msgstr ""
 
+msgid "running"
+msgstr ""
+
 msgid "sec"
+msgstr ""
+
+msgid "stopped"
 msgstr ""
 
 msgid "unconfigured"

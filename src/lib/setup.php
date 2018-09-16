@@ -39,4 +39,25 @@ $StatusCheckInterval= 60;
 
 /// Default locale for both View and Controller.
 $DefaultLocale= 'en_EN';
+
+/// Send module statuses at this priority level and up as notification.
+$NotifyLevel= LOG_CRIT;
+
+/// Notifier host.
+$NotifierHost= 'https://fcm.googleapis.com/fcm/send';
+
+/// Verify Notifier SSL peers.
+$NotifierSSLVerifyPeer= TRUE;
+
+/// Notifier API key.
+$NotifierAPIKey= 'AAAA4IgjjmM:APA91bERsNWEVVu9XZtlrB3L1vaA_2qNExBcpII2OU9cgRj3nKENGQ1ZLft38g8cSas_j00liurV5dm6VaBUdoqLrJa3afuBu5ieC6RPPElF2IUNm9l4G21TP4v7L7ArQjhehbPK06c79KlaZtYVzcPONrGpZitR4w';
+
+/// Notifier users.
+$NotifierUsers= '[]';
+
+/// Send notifications containing one of these keywords only.
+$NotifierFilters= '[]';
+
+/// Wait notifier for this many seconds before giving up.
+$NotifierTimeout= 10;
 ?>

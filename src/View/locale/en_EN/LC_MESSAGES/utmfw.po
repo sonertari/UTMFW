@@ -171,6 +171,9 @@ msgstr ""
 msgid "Add ext/mime"
 msgstr ""
 
+msgid "Add filter"
+msgstr ""
+
 msgid "Add filter group IP"
 msgstr ""
 
@@ -178,6 +181,9 @@ msgid "Add host"
 msgstr ""
 
 msgid "Add list item"
+msgstr ""
+
+msgid "Add notifier user"
 msgstr ""
 
 msgid "Add proxy specs"
@@ -1150,6 +1156,9 @@ msgid ""
 "on|off ( defaults to on )"
 msgstr ""
 
+msgid "Delete filter"
+msgstr ""
+
 msgid "Delete filter group IP"
 msgstr ""
 
@@ -1157,6 +1166,9 @@ msgid "Delete host"
 msgstr ""
 
 msgid "Delete list item"
+msgstr ""
+
+msgid "Delete notifier user"
 msgstr ""
 
 msgid "Delete pf rule file"
@@ -1279,6 +1291,12 @@ msgid "Disable ipopt alerts"
 msgstr ""
 
 msgid "Disable logging process"
+msgstr ""
+
+msgid "Disable notifier"
+msgstr ""
+
+msgid "Disable notifier SSL verify peer"
 msgstr ""
 
 msgid ""
@@ -1522,6 +1540,12 @@ msgid ""
 "on|off (defaults to off)"
 msgstr ""
 
+msgid "Enable notifier"
+msgstr ""
+
+msgid "Enable notifier SSL verify peer"
+msgstr ""
+
 msgid "Enable or disable ACL"
 msgstr ""
 
@@ -1760,6 +1784,9 @@ msgid "Filtered minutes"
 msgstr ""
 
 msgid "Filtered response"
+msgstr ""
+
+msgid "Filters"
 msgstr ""
 
 msgid "Finance in general."
@@ -2862,6 +2889,9 @@ msgstr ""
 msgid "Invalid value for"
 msgstr ""
 
+msgid "Is notifier enabled"
+msgstr ""
+
 msgid "Jabber"
 msgstr ""
 
@@ -3599,10 +3629,45 @@ msgstr ""
 msgid "Notice responses"
 msgstr ""
 
+msgid "Notification Service"
+msgstr ""
+
+msgid "Notifications"
+msgstr ""
+
+msgid "Notifier"
+msgstr ""
+
+msgid "Notifier API Key"
+msgstr ""
+
+msgid "Notifier Timeout"
+msgstr ""
+
+msgid ""
+"Notifier runs every minute to check the system status and send Firebase push "
+"notifications based on the settings on this page. You can change the "
+"frequency of notifications on the crontab of root.\n"
+"\n"
+"When the user logs in to the mobile application, the application "
+"automatically adds its device token to the registration ids displayed on "
+"this page. And it deletes its token when the user logs out. So the "
+"notifications are sent to that device only while the user is logged in to "
+"the application. You can manually add or delete tokens on this page."
+msgstr ""
+
+msgid ""
+"Notifier times out trying to connect to the notification server after a "
+"period defined by this value. The unit is in seconds."
+msgstr ""
+
 msgid "Notify AV"
 msgstr ""
 
 msgid "Notify Content"
+msgstr ""
+
+msgid "Notify Level"
 msgstr ""
 
 msgid "Number"
@@ -4141,6 +4206,9 @@ msgstr ""
 msgid "Regexp"
 msgstr ""
 
+msgid "Registration IDs"
+msgstr ""
+
 msgid ""
 "Regular expression for matching user agents\n"
 "When not defined, matches all agents.\n"
@@ -4442,6 +4510,9 @@ msgstr ""
 msgid "SSL Source Protocols"
 msgstr ""
 
+msgid "SSL Verify Peer"
+msgstr ""
+
 msgid "SSL access denied address"
 msgstr ""
 
@@ -4603,6 +4674,9 @@ msgid ""
 "connection alive."
 msgstr ""
 
+msgid "Send notifications."
+msgstr ""
+
 msgid "Senders"
 msgstr ""
 
@@ -4682,9 +4756,6 @@ msgstr ""
 msgid "Set internal net"
 msgstr ""
 
-msgid "Set locale"
-msgstr ""
-
 msgid "Set log level"
 msgstr ""
 
@@ -4698,6 +4769,18 @@ msgid "Set max anchor nesting"
 msgstr ""
 
 msgid "Set name value pair"
+msgstr ""
+
+msgid "Set notifier API key"
+msgstr ""
+
+msgid "Set notifier host"
+msgstr ""
+
+msgid "Set notifier timeout"
+msgstr ""
+
+msgid "Set notify level"
 msgstr ""
 
 msgid "Set pfctl timeout"
@@ -5511,6 +5594,9 @@ msgid ""
 "TCP Keep Alive and Use DNS options may help you resolve some issues."
 msgstr ""
 
+msgid "The Firebase API key for the project, i.e. the Android application."
+msgstr ""
+
 msgid ""
 "The IDS produces many alerts. Some alerts may be more serious than others, "
 "hence most alerts have priorities. You can configure the IPS to block only "
@@ -5586,6 +5672,9 @@ msgid ""
 "The SSL proxy takes 3 different kinds of connection logs: (1) CONN for "
 "connection details at establisment time, (2) IDLE for slow connections, and "
 "(3) EXPIRED for timed-out connections which are closed by the SSL proxy."
+msgstr ""
+
+msgid "The URL of the Firebase notification service."
 msgstr ""
 
 msgid ""
@@ -5680,6 +5769,13 @@ msgid ""
 "The strategy used for options in the default sshd_config shipped with "
 "OpenSSH is to specify options with their default value where possible, but "
 "leave them commented.  Uncommented options change a default value."
+msgstr ""
+
+msgid "The system will send notifications to these devices."
+msgstr ""
+
+msgid ""
+"The system will send service statuses containing one of these keywords only."
 msgstr ""
 
 msgid ""
@@ -5903,6 +5999,11 @@ msgstr ""
 msgid ""
 "This is the name server used by the system. You can use the DNS server on "
 "the system, i.e. enter 127.0.0.1 here."
+msgstr ""
+
+msgid ""
+"This is the notifier level. The system will send push notifications for the "
+"logs at this level and up."
 msgstr ""
 
 msgid ""
@@ -6185,6 +6286,9 @@ msgid ""
 msgstr ""
 
 msgid "To block all sites specified only as an IP"
+msgstr ""
+
+msgid "Token"
 msgstr ""
 
 msgid "Too many args, truncating"
@@ -6485,6 +6589,9 @@ msgid "Values"
 msgstr ""
 
 msgid "Verbosity"
+msgstr ""
+
+msgid "Verify Firebase SSL notification server."
 msgstr ""
 
 msgid "Verify Peer"
@@ -6947,6 +7054,9 @@ msgstr ""
 msgid "ruleset has errors"
 msgstr ""
 
+msgid "running"
+msgstr ""
+
 msgid "sec"
 msgstr ""
 
@@ -6960,6 +7070,9 @@ msgid "size"
 msgstr ""
 
 msgid "start"
+msgstr ""
+
+msgid "stopped"
 msgstr ""
 
 msgid "string"
