@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.3\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-03-26 15:42+0300\n"
+"PO-Revision-Date: 2018-09-16 16:21+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -44,6 +44,9 @@ msgstr "Veritabanı aynası ekle"
 msgid "Add ext/mime"
 msgstr "Uzt/mime ekle"
 
+msgid "Add filter"
+msgstr "Elek ekle"
+
 msgid "Add filter group IP"
 msgstr "Elek grup IP adresi ekle"
 
@@ -52,6 +55,9 @@ msgstr "Bilgisayar ekle"
 
 msgid "Add list item"
 msgstr "Liste öğesi ekle"
+
+msgid "Add notifier user"
+msgstr "Uyarı kullanıcısı ekle"
 
 msgid "Add proxy specs"
 msgstr "Vekil tanımları ekle"
@@ -179,6 +185,9 @@ msgstr "Veritabanı aynasını sil"
 msgid "Delete ext/mime"
 msgstr "Uzt/mime sil"
 
+msgid "Delete filter"
+msgstr "Elek sil"
+
 msgid "Delete filter group IP"
 msgstr "Elek grup IP adresini sil"
 
@@ -187,6 +196,9 @@ msgstr "Bilgisayar sil"
 
 msgid "Delete list item"
 msgstr "Liste öğesini sil"
+
+msgid "Delete notifier user"
+msgstr "Uyarı kullanıcısı sil"
 
 msgid "Delete pf rule file"
 msgstr "Pf kural dosyası silme"
@@ -214,6 +226,12 @@ msgstr "Yapılandırmayı kapat"
 
 msgid "Disable ext/mime"
 msgstr "Uzt/mime kapat"
+
+msgid "Disable notifier"
+msgstr "Uyarıları kapat"
+
+msgid "Disable notifier SSL verify peer"
+msgstr "Uyarı sunucusu SSL doğrulamayı kapat"
 
 msgid "Disable rule"
 msgstr "Kuralı kapat"
@@ -247,6 +265,12 @@ msgstr "Yapılandırmayı aç"
 
 msgid "Enable ext/mime"
 msgstr "Uzt/mime aç"
+
+msgid "Enable notifier"
+msgstr "Uyarıları aç"
+
+msgid "Enable notifier SSL verify peer"
+msgstr "Uyarı sunucusu SSL doğrulamayı aç"
 
 msgid "Enable rule"
 msgstr "Kuralı aç"
@@ -626,6 +650,9 @@ msgstr "Geçersiz değer"
 msgid "Invalid value for"
 msgstr "Geçersiz değer"
 
+msgid "Is notifier enabled"
+msgstr "Uyarılar açık mı"
+
 msgid "Line"
 msgstr "Satır"
 
@@ -871,9 +898,6 @@ msgstr "Arayüzleri ayarla"
 msgid "Set internal net"
 msgstr "İç ağı ayarla"
 
-msgid "Set locale"
-msgstr "Yöreyi ayarla"
-
 msgid "Set log level"
 msgstr "Kayıt seviyesini ayarla"
 
@@ -888,6 +912,18 @@ msgstr "En fazla içiçe çapa sayısını ayarla"
 
 msgid "Set name value pair"
 msgstr "Ad değer çiftini ayarla"
+
+msgid "Set notifier API key"
+msgstr "Uyarı API anahtarını ayarla"
+
+msgid "Set notifier host"
+msgstr "Uyarı sunucuyu ayarla"
+
+msgid "Set notifier timeout"
+msgstr "Uyarı zaman aşımını ayarla"
+
+msgid "Set notify level"
+msgstr "Uyarı seviyesini ayarla"
 
 msgid "Set pfctl timeout"
 msgstr "Pfctl zaman aşımını ayarla"
@@ -1081,8 +1117,14 @@ msgstr "s"
 msgid "min"
 msgstr "dak"
 
+msgid "running"
+msgstr "çalışıyor"
+
 msgid "sec"
 msgstr "sn"
+
+msgid "stopped"
+msgstr "durdu"
 
 msgid "unconfigured"
 msgstr "yapılandırılmamış"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.3\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-05-18 18:19+0300\n"
+"PO-Revision-Date: 2018-09-16 16:27+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -265,6 +265,9 @@ msgstr "Fan"
 
 msgid "File"
 msgstr "Dosya"
+
+msgid "Filters"
+msgstr "Elekler"
 
 msgid "Fingerprints File"
 msgstr "Parmakizi Dosyası"
@@ -551,6 +554,21 @@ msgstr "Hata yok"
 msgid "No pfsync"
 msgstr "Pfsync olmadan"
 
+msgid "Notification Service"
+msgstr "Uyarı Servisi"
+
+msgid "Notifications"
+msgstr "Uyarılar"
+
+msgid "Notifier API Key"
+msgstr "Uyarı API Anahtarı"
+
+msgid "Notifier Timeout"
+msgstr "Uyarı Zaman Aşımı"
+
+msgid "Notify Level"
+msgstr "Uyarı Seviyesi"
+
 msgid "Number of Processes"
 msgstr "Süreç Sayısı"
 
@@ -686,6 +704,9 @@ msgstr "Yenileme aralığı"
 msgid "Regexp"
 msgstr "Düzenli ifade"
 
+msgid "Registration IDs"
+msgstr "Kayıtlı Kullanıcılar"
+
 msgid "Reload Rate"
 msgstr "Tekrar Yükleme Sıklığı"
 
@@ -742,6 +763,9 @@ msgstr "KPort"
 
 msgid "SSL Proxy"
 msgstr "SSL Vekil"
+
+msgid "SSL Verify Peer"
+msgstr "SSL Sunucu Doğrulama"
 
 msgid "Save ruleset"
 msgstr "Kural listesini kaydet"
@@ -889,6 +913,9 @@ msgstr "Bitiş"
 
 msgid "To Redirect Host"
 msgstr "Tekrar Yönlendirme Hedef Adresi"
+
+msgid "Token"
+msgstr "Aygıt Simgesi"
 
 msgid "Type"
 msgstr "Tür"

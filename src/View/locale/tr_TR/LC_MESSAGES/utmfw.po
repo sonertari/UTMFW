@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.3\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-05-19 17:32+0300\n"
+"PO-Revision-Date: 2018-09-16 16:44+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -238,6 +238,9 @@ msgstr "Veritabanı aynası ekle"
 msgid "Add ext/mime"
 msgstr "Uzt/mime ekle"
 
+msgid "Add filter"
+msgstr "Elek ekle"
+
 msgid "Add filter group IP"
 msgstr "Elek grup IP adresi ekle"
 
@@ -246,6 +249,9 @@ msgstr "Bilgisayar ekle"
 
 msgid "Add list item"
 msgstr "Liste öğesi ekle"
+
+msgid "Add notifier user"
+msgstr "Uyarı kullanıcısı ekle"
 
 msgid "Add proxy specs"
 msgstr "Vekil tanımları ekle"
@@ -1344,6 +1350,9 @@ msgstr ""
 "gerekir.\n"
 "on|off ( öndeğer on )"
 
+msgid "Delete filter"
+msgstr "Elek sil"
+
 msgid "Delete filter group IP"
 msgstr "Elek grup IP adresini sil"
 
@@ -1352,6 +1361,9 @@ msgstr "Bilgisayar sil"
 
 msgid "Delete list item"
 msgstr "Liste öğesini sil"
+
+msgid "Delete notifier user"
+msgstr "Uyarı kullanıcısı sil"
 
 msgid "Delete pf rule file"
 msgstr "Pf kural dosyası silme"
@@ -1476,6 +1488,12 @@ msgstr "Ipopt uyarılarını kapat"
 
 msgid "Disable logging process"
 msgstr "Kayıt sürecini kapat"
+
+msgid "Disable notifier"
+msgstr "Uyarıları kapat"
+
+msgid "Disable notifier SSL verify peer"
+msgstr "Uyarı sunucusu SSL doğrulamayı kapat"
 
 msgid ""
 "Disable reporting of normal operating messages. Only report errors or "
@@ -1747,6 +1765,12 @@ msgstr ""
 "Reklam sınıfı engellemelerin kaydedilmesini etkinleştirir.\n"
 "on|off (öndeğer off)"
 
+msgid "Enable notifier"
+msgstr "Uyarıları aç"
+
+msgid "Enable notifier SSL verify peer"
+msgstr "Uyarı sunucusu SSL doğrulamayı aç"
+
 msgid "Enable or disable ACL"
 msgstr "ACL'yi açar ya da kapatır."
 
@@ -1998,6 +2022,9 @@ msgstr "Elek uygulama süresi"
 
 msgid "Filtered response"
 msgstr "Elek uygulama cevabı"
+
+msgid "Filters"
+msgstr "Elekler"
 
 msgid "Finance in general."
 msgstr ""
@@ -3350,6 +3377,9 @@ msgstr "Geçersiz değer"
 msgid "Invalid value for"
 msgstr "Geçersiz değer"
 
+msgid "Is notifier enabled"
+msgstr "Uyarılar açık mı"
+
 msgid "Jabber"
 msgstr "Jabber"
 
@@ -4160,11 +4190,57 @@ msgstr "Uyarı cevabı"
 msgid "Notice responses"
 msgstr "Uyarı cevapları"
 
+msgid "Notification Service"
+msgstr "Uyarı Servisi"
+
+msgid "Notifications"
+msgstr "Uyarılar"
+
+msgid "Notifier"
+msgstr "Uyarılar"
+
+msgid "Notifier API Key"
+msgstr "Uyarı API Anahtarı"
+
+msgid "Notifier Timeout"
+msgstr "Uyarı Zaman Aşımı"
+
+msgid ""
+"Notifier runs every minute to check the system status and send Firebase push "
+"notifications based on the settings on this page. You can change the "
+"frequency of notifications on the crontab of root.\n"
+"\n"
+"When the user logs in to the mobile application, the application "
+"automatically adds its device token to the registration ids displayed on "
+"this page. And it deletes its token when the user logs out. So the "
+"notifications are sent to that device only while the user is logged in to "
+"the application. You can manually add or delete tokens on this page."
+msgstr ""
+"Uyarı servisi her dakika çalışarak sistem durumunu kontrol eder ve bu "
+"sayfadaki ayarlara göre Firebase uyarıları olarak gönderir. Uyarıların "
+"sıklığını root kullanıcısının crontab dosyasından değiştirebilirsiniz.\n"
+"\n"
+"Kullanıcı mobil uygulamaya giriş yaptığında uygulama otomatik olarak aygıt "
+"simgesini bu sayfada lıstelenen kayıtlı kullanıcılar arasına ekler. Ve "
+"kullanıcı çıkış yaptığında da listeden siler. Bu nedenle, uyarılar mobil "
+"cihaza sadece kullanıcı giriş yaptığı sürece gönderilir. Aygıt simgelerini "
+"bu sayfadan elle ekleyip silebilirsiniz."
+
+msgid ""
+"Notifier times out trying to connect to the notification server after a "
+"period defined by this value. The unit is in seconds."
+msgstr ""
+"Uyarılar uyarı sunucusuna burada belirlenen süre boyunca bağlantı kurmaya "
+"çalışır ve sonra zaman aşımına uğrar. Değer saniye cinsindendir."
+
 msgid "Notify AV"
 msgstr "AV'yi uyar"
 
 msgid "Notify Content"
 msgstr "İçerik uyarısı"
+
+msgid "Notify Level"
+msgstr "Uyarı Seviyesi"
 
 msgid "Number"
 msgstr "Sayı"
@@ -4790,6 +4866,9 @@ msgstr "Yenileme aralığı"
 msgid "Regexp"
 msgstr "Düzenli ifade"
 
+msgid "Registration IDs"
+msgstr "Kayıtlı Kullanıcılar"
+
 msgid ""
 "Regular expression for matching user agents\n"
 "When not defined, matches all agents.\n"
@@ -5129,6 +5208,9 @@ msgstr "SSL Sonlandırma Tekrar Deneme Aralığı"
 msgid "SSL Source Protocols"
 msgstr "SSL Kaynak Protokoller"
 
+msgid "SSL Verify Peer"
+msgstr "SSL Sunucu Doğrulama"
+
 msgid "SSL access denied address"
 msgstr "SSL giriş engelleme adresi"
 
@@ -5314,6 +5396,9 @@ msgstr ""
 "Durumlu paket eleği bağlantısını canlı tutmak için bağlantının diğer ucuna "
 "buraya girilen saniye aralığında UDP ping gönderir."
 
+msgid "Send notifications."
+msgstr "Uyarıları gönder."
+
 msgid "Senders"
 msgstr "Göndericiler"
 
@@ -5393,9 +5478,6 @@ msgstr "Arayüzleri ayarla"
 msgid "Set internal net"
 msgstr "İç ağı ayarla"
 
-msgid "Set locale"
-msgstr "Yöreyi ayarla"
-
 msgid "Set log level"
 msgstr "Kayıt seviyesini ayarla"
 
@@ -5410,6 +5492,18 @@ msgstr "En fazla içiçe çapa sayısını ayarla"
 
 msgid "Set name value pair"
 msgstr "Ad değer çiftini ayarla"
+
+msgid "Set notifier API key"
+msgstr "Uyarı API anahtarını ayarla"
+
+msgid "Set notifier host"
+msgstr "Uyarı sunucusunu ayarla"
+
+msgid "Set notifier timeout"
+msgstr "Uyarı zaman aşımını ayarla"
+
+msgid "Set notify level"
+msgstr "Uyarı seviyesini ayarla"
 
 msgid "Set pfctl timeout"
 msgstr "Pfctl zaman aşımını ayarla"
@@ -6331,6 +6425,9 @@ msgstr ""
 "verilmektedir. TCP Canlı Tutma ve DNS Kullanma seçenekleri bazı sorunları "
 "çözmede yardımcı olabilir."
 
+msgid "The Firebase API key for the project, i.e. the Android application."
+msgstr "Projenin Android uygulamasının Firebase API anahtarı."
+
 msgid ""
 "The IDS produces many alerts. Some alerts may be more serious than others, "
 "hence most alerts have priorities. You can configure the IPS to block only "
@@ -6458,6 +6555,9 @@ msgstr ""
 "SSL vekil 3 farklı çeşit bağlantı kaydı alır: (1) bağlantı başlangıcındaki "
 "detaylar için CONN, (2) durağan bağlantılar için IDLE ve (3) zaman aşımına "
 "uğradığı için SSL vekil tarafından kapatılan bağlantılar için EXPIRED."
+
+msgid "The URL of the Firebase notification service."
+msgstr "Firebase uyarı servisinin URL adresi."
 
 msgid ""
 "The address of your web server to which the static page e2guardian reporting "
@@ -6597,6 +6697,14 @@ msgid ""
 msgstr ""
 "OpenSSH ile gelen yapılandırma dosyası seçenekleri öndeğerlerinde bırakıp "
 "kapatma strajesini uygular. Açılan seçenekler öndeğeri değiştirir."
+
+msgid "The system will send notifications to these devices."
+msgstr "Sistem uyarıları burada listelenen aygıtlara gönderir."
+
+msgid ""
+"The system will send service statuses containing one of these keywords only."
+msgstr ""
+"Sistem bu anahtar kelimelerden birini içeren servis durumlarını gönderir."
 
 msgid ""
 "The web filter can decrypt SSL content, scan as if plain, and then re-"
@@ -6923,6 +7031,13 @@ msgid ""
 msgstr ""
 "Bu sistem tarafından kullanılan DNS sunucudur. Sistemin kendi DNS sunucusunu "
 "kullanabilirsiniz, yani buraya 127.0.0.1 girebilirsiniz."
+
+msgid ""
+"This is the notifier level. The system will send push notifications for the "
+"logs at this level and up."
+msgstr ""
+"Bu uyarı seviyesidir. Sistem bu ve yukarısındaki seviyede olan kayıtlar için "
+"uyarı gönderir."
 
 msgid ""
 "This is the number of seconds a browser connection is left waiting before "
@@ -7349,6 +7464,9 @@ msgstr "Beyaz ve gri site listelerindekiler hariç tüm siteleri engeller"
 msgid "To block all sites specified only as an IP"
 msgstr "Sadece IP adresi olarak tanımlanmış tüm siteleri engeller"
 
+msgid "Token"
+msgstr "Aygıt Simgesi"
+
 msgid "Too many args, truncating"
 msgstr "Fazla argümanlar atıldı"
 
@@ -7711,6 +7829,9 @@ msgstr "Değerler"
 
 msgid "Verbosity"
 msgstr "Detay seviyesi"
+
+msgid "Verify Firebase SSL notification server."
+msgstr "Firebase SSL uyarı sunucusunu doğrula."
 
 msgid "Verify Peer"
 msgstr "Karşı Tarafı Doğrula"
@@ -8258,6 +8379,9 @@ msgstr "protokol"
 msgid "ruleset has errors"
 msgstr "kural listesinde hata var"
 
+msgid "running"
+msgstr "çalışıyor"
+
 msgid "sec"
 msgstr "sn"
 
@@ -8272,6 +8396,9 @@ msgstr "boyut"
 
 msgid "start"
 msgstr "başlangıç"
+
+msgid "stopped"
+msgstr "durdu"
 
 msgid "string"
 msgstr "metin"

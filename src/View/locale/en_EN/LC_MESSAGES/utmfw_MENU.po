@@ -184,6 +184,9 @@ msgstr ""
 msgid "Network"
 msgstr ""
 
+msgid "Notifier"
+msgstr ""
+
 msgid "OPENSSH"
 msgstr ""
 
