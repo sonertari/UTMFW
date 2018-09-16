@@ -76,7 +76,7 @@ class Sslproxy extends Model
 	function GetVersion()
 	{
 		$version= explode("\n", $this->RunShellCommand($this->VersionCmd));
-		return Output($version[0]."\n".$version[9]."\n".$version[19]);
+		return Output($version[0]."\n".$version[9]."\n".$version[20]);
 	}
 
 	function Stop()
