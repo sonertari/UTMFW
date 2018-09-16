@@ -104,10 +104,18 @@ class Dhcpd extends Model
 	 */
 	function Start()
 	{
+		global $TmpFile;
+
 		if (($ifs= $this->_getIfs()) !== FALSE) {
 			$ifs= explode("\n", $ifs);
 			$ifs= implode(' ', $ifs);
-			return $this->RunShellCommand("/usr/sbin/dhcpd $ifs");
+			$this->RunShellCommand("/usr/sbin/dhcpd $ifs > $TmpFile 2>&1");
+
+			/// Start command is redirected to tmp file
+			$output= file_get_contents($TmpFile);
+			Error($output);
+			ctlr_syslog(LOG_INFO, __FILE__, __FUNCTION__, __LINE__, "Start output: $output");
+			return $this->IsRunning();
 		}
 		return FALSE;
 	}

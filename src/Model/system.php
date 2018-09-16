@@ -1305,7 +1305,8 @@ class System extends Model
 	function DisableNotifier()
 	{
 		$tmp= $this->cronDir.'root';
-		$this->PutFile($tmp, $this->getRootCronTab());
+		// Do not use PutFile(), it expects file to exist
+		file_put_contents($tmp, $this->getRootCronTab(), LOCK_EX);
 
 		$retval= $this->ReplaceRegexp($tmp, "?^(\h*\*/1\h+\*\h+\*\h+\*\h+\*\h+/usr/local/bin/php\h+/var/www/htdocs/utmfw/Notifier/notify.php\h+.*)$?m", '#${1}');
 		if (file_exists($tmp.'.bak')) {
@@ -1324,7 +1325,8 @@ class System extends Model
 	function EnableNotifier()
 	{
 		$tmp= $this->cronDir.'root';
-		$this->PutFile($tmp, $this->getRootCronTab());
+		// Do not use PutFile(), it expects file to exist
+		file_put_contents($tmp, $this->getRootCronTab(), LOCK_EX);
 
 		$retval= $this->ReplaceRegexp($tmp, "?^\h*#(\h*\*/1\h+\*\h+\*\h+\*\h+\*\h+/usr/local/bin/php\h+/var/www/htdocs/utmfw/Notifier/notify.php\h+.*$)?m", '${1}');
 		if (file_exists($tmp.'.bak')) {

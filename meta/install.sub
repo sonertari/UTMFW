@@ -660,6 +660,7 @@ __EOT
 				pkg_add php-pcntl
 				pkg_add php-mcrypt
 				pkg_add php-cgi
+				pkg_add php-curl
 				;;
 			esac
 			;;
