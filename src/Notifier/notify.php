@@ -196,7 +196,7 @@ $View->Model= 'system';
 // Do not use SSH to run Controller commands
 $UseSSH= FALSE;
 
-if (count(json_decode($NotifierUsers, TRUE))) {
+if (count(json_decode($NotifierUsers, TRUE)) > 0) {
 	if ($View->Controller($Output, 'GetServiceStatus')) {
 		$ServiceStatus= json_decode($Output[0], TRUE);
 

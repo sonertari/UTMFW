@@ -1,14 +1,14 @@
 # UTMFW
 
-UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use [A4PFFW](https://github.com/sonertari/A4PFFW) and [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring. UTMFW supports deep SSL inspection and inline intrusion prevention.
+UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use [A4PFFW](https://github.com/sonertari/A4PFFW) and [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
 The installation iso file for the amd64 arch is available for download at [utmfw63\_20180522\_amd64.iso](https://drive.google.com/file/d/1ro6oTySj5R6ET86RCU8FksjcsRUbZCIh/view?usp=sharing). Make sure the SHA256 checksum is correct: 74c2db7524c0d87ee2fb0ca684ffe7d1af21cd0ee1108fb275dca759f7ea3410.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, and many fixes and improvements to the system and the WUI. Also note that UTMFW 6.3 comes with OpenBSD 6.3-stable including all updates until May 19th, 2018.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, and Firebase push notifications. Also note that UTMFW 6.3.1 comes with OpenBSD 6.3-stable including all updates until September 16th, 2018.
 
-UTMFW supports the deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, HTTP Proxy, POP3 Proxy, SMTP Proxy, Virus Scanner, Spam Filter, and Inline IPS. These UTM software have been modified to support the mode of operation required by the SSLproxy.
+UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, HTTP Proxy, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by the SSLproxy.
 
 ## Features
 
@@ -36,7 +36,7 @@ UTMFW includes the following software, alongside what is already available on a 
 
 The web user interface of UTMFW helps you manage your firewall:
 
-- Dashboard provides an overview of the system status.
+- Dashboard provides an overview of system status. If enabled, Notifier sends the system status as Firebase push notification to the Android application, [A4PFFW](https://github.com/sonertari/A4PFFW).
 - System, network, and service configuration can be achieved on the web interface.
 - Pf rules are maintained using PFRE.
 - Information on hosts, interfaces, pf rules, states, and queues are provided in a tabular form.

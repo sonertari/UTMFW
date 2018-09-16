@@ -280,8 +280,8 @@ require_once($VIEW_PATH.'/header.php');
 	</tr>
 </table>
 <?php
-PrintHelpWindow(_HELPWINDOW('Notifier runs every minute to check the system status and send Firebase push notifications based on the settings on this page. You can change the frequency of those notifications on the crontab of root.
+PrintHelpWindow(_HELPWINDOW('Notifier runs every minute to check the system status and send Firebase push notifications based on the settings on this page. You can change the frequency of notifications on the crontab of root.
 
-When the user logs in to the mobile application, the application adds its device token among the registration ids on this page. It deletes the token when the user logs out. So the notifications are sent to that device while the user is logged in to the application. You can add or delete tokens on this page.'));
+When the user logs in to the mobile application, the application automatically adds its device token to the registration ids displayed on this page. And it deletes its token when the user logs out. So the notifications are sent to that device only while the user is logged in to the application. You can manually add or delete tokens on this page.'));
 require_once($VIEW_PATH.'/footer.php');
 ?>
