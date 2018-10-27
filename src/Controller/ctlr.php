@@ -1,4 +1,4 @@
-#!/usr/local/bin/php
+#!/usr/bin/env php
 <?php
 /*
  * Copyright (C) 2004-2018 Soner Tari
