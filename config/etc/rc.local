@@ -10,7 +10,7 @@
 
 /bin/mkdir -p /var/tmp/utmfw/
 
-/var/www/htdocs/utmfw/Installer/install.php -f
+/usr/bin/env PATH=$PATH:/usr/local/bin /var/www/htdocs/utmfw/Installer/install.php -f
 # The line above should have been commented out after first boot
 
 echo '\nStarting UTMFW services...'

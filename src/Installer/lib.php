@@ -205,7 +205,7 @@ function FirstBootTasks()
 	// Disable rc.local line which leads to this function call
 	$file= '/etc/rc.local';
 	if (copy($file, $file.'.bak')) {
-		$re= '|^(\h*/var/www/htdocs/utmfw/Installer/install\.php\h+-f\h*)|ms';
+		$re= '|^(\h*/usr/bin/env\h+PATH=\$PATH:/usr/local/bin\h+/var/www/htdocs/utmfw/Installer/install\.php\h+-f\h*)|ms';
 		$contents= preg_replace($re, '#${1}', file_get_contents($file), 1, $count);
 		if ($contents !== NULL && $count === 1) {
 			file_put_contents($file, $contents);
