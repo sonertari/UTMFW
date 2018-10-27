@@ -1,0 +1,75 @@
+--- syslogd.c.orig	2018-10-27 02:58:05.163862868 +0300
++++ syslogd.c	2018-10-27 02:46:40.433861902 +0300
+@@ -1677,6 +1677,9 @@
+ 
+ struct timeval	now;
+ 
++// In the order of priorities defined in syslog.h, so that the pri param can be used as index
++char *priority_names[] = {"EMERGENCY", "ALERT", "CRITICAL", "ERROR", "WARNING", "NOTICE", "INFO", "DEBUG"};
++
+ /*
+  * Log a message to the appropriate log files, users, etc. based on
+  * the priority.
+@@ -1802,6 +1805,43 @@
+ 	}
+ 	prog[i] = 0;
+ 
++	int insert_pri_name = 0;
++	int j;
++	for (j = i; j < i + 10; j++) {
++		if (msg[j] == ':') {
++			insert_pri_name = 1;
++			break;
++		}
++	}
++
++	char *new_msg = NULL;
++	if (insert_pri_name) {
++		char *pri_name = priority_names[prilev];
++		// +2 for ": "
++		int new_msglen = msglen + strlen(pri_name) + 2;
++
++		int head_len = j + 2;
++		char *tail = msg + head_len;
++		log_debug("tail= %s\n", tail);
++
++		char *head = malloc(head_len + 1);
++		if (head) {
++			strlcpy(head, msg, head_len);
++			head[head_len] = 0;
++			log_debug("head= %s\n", head);
++
++			new_msg = malloc(new_msglen + 1);
++			if (new_msg) {
++				snprintf(new_msg, new_msglen + 1, "%s %s: %s", head, pri_name, tail);
++				msg = new_msg;
++				msglen = new_msglen;
++				log_debug("new_msg= %s\n", new_msg);
++			}
++
++			free(head);
++		}
++	}
++
+ 	/* log the message to the particular outputs */
+ 	if (!Initialized) {
+ 		f = &consfile;
+@@ -1815,7 +1855,7 @@
+ 			f->f_type = F_CONSOLE;
+ 		}
+ 		init_dropped++;
+-		return;
++		goto leave;
+ 	}
+ 	SIMPLEQ_FOREACH(f, &Files, f_next) {
+ 		/* skip messages that are incorrect priority */
+@@ -1887,6 +1927,9 @@
+ 		if (f->f_quick)
+ 			break;
+ 	}
++leave:
++	if (new_msg)
++		free(new_msg);
+ }
+ 
+ void

@@ -1,0 +1,33 @@
+--- newsyslog.c.orig	2018-10-27 02:55:45.190636143 +0300
++++ newsyslog.c	2018-10-27 02:33:58.807187015 +0300
+@@ -144,7 +144,7 @@
+ char	*conf = CONF;		/* Configuration file to use */
+ time_t	timenow;
+ char	hostname[HOST_NAME_MAX+1]; /* Hostname */
+-char	daytime[33];		/* timenow in human readable form */
++char	*daytime;		/* timenow in human readable form */
+ char	*arcdir;		/* Dir to put archives in (if it exists) */
+ 
+ char   *lstat_log(char *, size_t, int);
+@@ -402,18 +402,12 @@
+ void
+ parse_args(int argc, char **argv)
+ {
+-	struct timeval now;
+-	struct tm *tm;
+-	size_t l;
+ 	char *p;
+ 	int ch;
+ 
+-	gettimeofday(&now, NULL);
+-	timenow = now.tv_sec;
+-	tm = gmtime(&now.tv_sec);
+-	l = strftime(daytime, sizeof(daytime), "%FT%T", tm);
+-	snprintf(daytime + l, sizeof(daytime) - l, ".%03ldZ",
+-	    now.tv_usec / 1000);
++	timenow = time(NULL);
++	daytime = ctime(&timenow) + 4;
++	daytime[15] = '\0';
+ 
+ 	/* Let's get our hostname */
+ 	(void)gethostname(hostname, sizeof(hostname));

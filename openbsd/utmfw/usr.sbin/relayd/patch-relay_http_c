@@ -1,0 +1,26 @@
+--- relay_http.c.orig	2018-10-27 02:57:10.819386593 +0300
++++ relay_http.c	2018-10-27 02:42:40.219756668 +0300
+@@ -1102,6 +1102,23 @@
+ 				return (NULL);
+ 		}
+ 	}
++	if (strstr(val, "$TARGET_") != NULL) {
++		if (strstr(val, "$TARGET_ADDR") != NULL) {
++			if (print_host(&con->target_ss, ibuf, sizeof(ibuf)) == NULL)
++				return (NULL);
++			if (expand_string(buf, len,
++			    "$TARGET_ADDR", ibuf) != 0)
++				return (NULL);
++			log_debug("$TARGET_ADDR = %s", ibuf);
++		}
++		if (strstr(val, "$TARGET_PORT") != NULL) {
++			snprintf(ibuf, sizeof(ibuf), "%u", con->target_port);
++			if (expand_string(buf, len,
++			    "$TARGET_PORT", ibuf) != 0)
++				return (NULL);
++			log_debug("$TARGET_PORT = %s", ibuf);
++		}
++	}
+ 	if (strstr(val, "$SERVER_") != NULL) {
+ 		if (strstr(val, "$SERVER_ADDR") != NULL) {
+ 			if (print_host(&rlay->rl_conf.ss,

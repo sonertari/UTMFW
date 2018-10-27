@@ -1,0 +1,13 @@
+--- relayd.h.orig	2018-10-27 02:56:55.043248332 +0300
++++ relayd.h	2018-10-27 02:40:01.970369772 +0300
+@@ -552,6 +552,10 @@
+ 	objid_t				 se_relayid;
+ 	struct ctl_relay_event		 se_in;
+ 	struct ctl_relay_event		 se_out;
++
++	struct sockaddr_storage	 target_ss;
++	in_port_t		 target_port;
++
+ 	void				*se_priv;
+ 	SIPHASH_CTX			 se_siphashctx;
+ 	struct relay_table		*se_table;

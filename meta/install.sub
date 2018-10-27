@@ -618,7 +618,7 @@ __EOT
 				;;
 			esac
 
-			# Upgrade not supported on 6.3
+			# Upgrade not supported on 6.4
 			#if [[ $MODE == upgrade ]] ;then
 			#fi
 
@@ -1063,7 +1063,7 @@ __EOT
 # #######################################################################
 # Initial actions common to both installs and upgrades.
 # #######################################################################
-VERSION='6.3'
+VERSION='6.4'
 ARCH=$(/usr/bin/machine)
 
 VMAJ=${VERSION%%\.*}
@@ -1094,11 +1094,11 @@ CDDEVS=$(scan_dmesg "${MDCDDEVS:-/^cd[0-9][0-9]* /s/ .*//p}")
 [[ -z $CDDEVS ]] && CDDEVS="cd0,cd1,cd2"
 
 # Selected sets will be installed in the order they are listed in $THESETS.
-THESETS="isc-bind-9.11.3.tgz \
-		sslproxy-0.5.7.tgz \
-		clamav-0.99.4.tgz \
+THESETS="isc-bind-9.11.4pl2.tgz \
+		sslproxy-0.5.8.tgz \
+		clamav-0.100.2.tgz \
 		clamavdb.tar.gz \
-		p5-Mail-SpamAssassin-3.4.1p14.tgz \
+		p5-Mail-SpamAssassin-3.4.2p0.tgz \
 		p3scan-2.3.2.tgz \
 		smtp-gated-1.4.20.0.tgz \
 		e2guardian-4.1.5.tgz \
@@ -1108,12 +1108,12 @@ THESETS="isc-bind-9.11.3.tgz \
 		snortrules.tar.gz \
 		snortips-6.2.2.tgz \
 		imspector-0.9.tgz \
-		openvpn-2.4.5p1.tgz \
+		openvpn-2.4.6p0.tgz \
 		dante-1.4.2.tgz \
-		symon-2.88p2.tgz \
-		pmacct-1.7.0.tgz \
-		pftop-0.7p17.tgz \
-		php-7.0.28.tgz \
+		symon-2.88p3.tgz \
+		pmacct-1.7.1.tgz \
+		pftop-0.7p18.tgz \
+		php-7.0.32p1.tgz \
 		$CW_WEBIF_TARFILE \
 		$CW_CONFIG_TARFILE"
 

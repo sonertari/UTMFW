@@ -1,0 +1,138 @@
+--- install.sub.orig	2018-10-27 02:53:47.289602861 +0300
++++ install.sub	2018-10-27 02:16:49.158163184 +0300
+@@ -1235,7 +1235,7 @@
+ 
+ # Set up IPv4 and IPv6 interface configuration.
+ configure_ifs() {
+-	local _first _hn _if _name _p _vi
++	local _first _hn _if _name _p _vi _iflist
+ 
+ 	# Always need lo0 configured.
+ 	ifconfig lo0 inet 127.0.0.1/8
+@@ -1243,6 +1243,8 @@
+ 	# In case of restart, delete previous default gateway config.
+ 	rm -f /tmp/i/mygate
+ 
++	_iflist=$(get_ifs)
++
+ 	while :; do
+ 		# Discover last configured vlan interface and increment it's
+ 		# minor for the next offered vlan interface.
+@@ -1251,7 +1253,7 @@
+ 
+ 		ask_which "network interface" "do you wish to configure" \
+ 			"\$(get_ifs) vlan${_vi:-0}" \
+-			${_p:-'$( (get_ifs netboot; get_ifs) | sed q )'}
++			${_p:-'$( (get_ifs netboot; echo $_iflist) | sed q )'}
+ 		[[ $resp == done ]] && break
+ 
+ 		_if=$resp
+@@ -1281,10 +1283,12 @@
+ 		if [[ -f $_hn ]]; then
+ 			chmod 640 $_hn
+ 			: ${_first:=$_if}
++			_iflist=$(rmel "$_if" $_iflist)
+ 		fi
+ 
+ 		NIFS=$(ls -1 /tmp/i/hostname.* 2>/dev/null | grep -c ^)
+-		_p=done
++		# Need at least two interfaces configured for UTMFW
++		(( NIFS > 1 )) && _p=done
+ 	done
+ }
+ 
+@@ -1542,8 +1546,9 @@
+ 	# Try to prefetch and control checksum of the set files.
+ 	# Use dummy for loop as combined assignment and do { ... } while(0).
+ 	for _issue in ''; do
++		_utmfwv=no
+ 		! isin SHA256.sig $_files &&
+-			_issue="Directory does not contain SHA256.sig" && break
++			_issue="Directory does not contain SHA256.sig" && _utmfwv=yes && break
+ 
+ 		if ! $_srclocal; then
+ 			! _tmpfs_list=$(prefetcharea_fs_list) &&
+@@ -1586,7 +1591,7 @@
+ 		# The bsd.rd only download/verify/install assumes that the sets
+ 		# location of the next release. So use the right signature file.
+ 		$UPGRADE_BSDRD &&
+-			PUB_KEY=/mnt/etc/signify/openbsd-$((VERSION + 1))-base.pub
++			PUB_KEY=/mnt/etc/signify/utmfw-$((VERSION + 1)).pub
+ 
+ 		# Verify signature file with public keys.
+ 		! unpriv -f "$_cfile" \
+@@ -1633,7 +1638,7 @@
+ 
+ 	[[ -n $_unver ]] && : ${_issue:="Unverified sets:" ${_unver% }}
+ 	if [[ -n $_issue ]] &&
+-		! ask_yn "$_issue. Continue without verification?"; then
++		! ask_yn "$_issue. Continue without verification?" $_utmfwv; then
+ 		[[ -d $_tmpsrc ]] && rm -rf "$_tmpsrc"
+ 		$AI && exit 1
+ 		return
+@@ -2055,20 +2060,6 @@
+ 	ask_yn "Start sshd(8) by default?" yes
+ 	START_SSHD=$resp
+ 
+-	APERTURE=
+-	resp=
+-	START_XDM=
+-	if [[ -n $(scan_dmesg '/^wsdisplay[0-9]* /s/ .*//p') ]]; then
+-		if [[ -n $(scan_dmesg '/^[a-z]*[01]: aperture needed/p') ]]; then
+-			ask_yn "Do you expect to run the X Window System?" yes &&
+-				APERTURE=$MDXAPERTURE
+-		fi
+-		if [[ -n $MDXDM && $resp != n ]]; then
+-			ask_yn "Do you want the X Window System to be started by xenodm(1)?"
+-			START_XDM=$resp
+-		fi
+-	fi
+-
+ 	if [[ -n $CDEV ]]; then
+ 		_d=${CPROM:-$CDEV}
+ 		[[ -n $CONSOLE ]] && _cdef=yes
+@@ -2099,6 +2090,9 @@
+ 			;;
+ 		root|daemon|operator|bin|build|sshd|www|nobody|ftp)
+ 			;;
++		admin|user)
++			# Reserved for UTMFW
++			;;
+ 		[a-z]*([-a-z0-9_]))
+ 			((${#resp} <= 31)) && break
+ 			;;
+@@ -2897,7 +2891,6 @@
+ 	questions
+ 
+ 	# Gather information for setting up the initial user account.
+-	user_setup
+ 	ask_root_sshd
+ 
+ 	# Set TZ variable based on zonefile and user selection.
+@@ -3263,7 +3256,7 @@
+ INSTALL_METHOD=
+ NIFS=0
+ export PS1="$MODE# "
+-PUB_KEY=/etc/signify/openbsd-${VERSION}-base.pub
++PUB_KEY=/etc/signify/utmfw-${VERSION}.pub
+ ROOTDEV=
+ ROOTDISK=
+ SETDIR="$VNAME/$ARCH"
+@@ -3302,14 +3295,14 @@
+ # Selected sets will be installed in the order they are listed in $ALLSETS.
+ # Ensure that siteXX.tgz is the *last* set listed so its contents overwrite
+ # the contents of the other sets, not the other way around.
+-SETS=$(echo {base,comp,man,game,xbase,xshare,xfont,xserv}$VERSION.tgz)
++SETS=$(echo {base,comp,man,game,xbase,xshare,xfont,xserv,site}$VERSION.tgz)
+ DEFAULTSETS="${MDSETS:-bsd bsd.rd} $SETS"
+ ALLSETS="${MDSETS:-bsd bsd.rd} $SETS site$VERSION.tgz"
+-SANESETS="${MDSANESETS:-bsd} base${VERSION}.tgz"
++SANESETS="${MDSANESETS:-bsd} base${VERSION}.tgz site${VERSION}.tgz xbase${VERSION}.tgz xfont${VERSION}.tgz"
+ if ((NCPU > 1)); then
+ 	DEFAULTSETS="${MDSETS:-bsd bsd.mp bsd.rd} $SETS"
+ 	ALLSETS="${MDSETS:-bsd bsd.mp bsd.rd} $SETS site$VERSION.tgz"
+-	SANESETS="${MDSANESETS:-bsd bsd.mp} base${VERSION}.tgz"
++	SANESETS="${MDSANESETS:-bsd bsd.mp} base${VERSION}.tgz site$VERSION.tgz xbase${VERSION}.tgz xfont${VERSION}.tgz"
+ fi
+ 
+ # Prepare COLUMNS sanely.
