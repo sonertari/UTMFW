@@ -1,5 +1,5 @@
 --- install.sub.orig	Sat Sep 22 12:12:36 2018
-+++ install.sub	Sat Oct 27 21:16:02 2018
++++ install.sub	Sun Oct 28 02:00:20 2018
 @@ -1235,7 +1235,7 @@
  
  # Set up IPv4 and IPv6 interface configuration.
@@ -118,16 +118,22 @@
  ROOTDEV=
  ROOTDISK=
  SETDIR="$VNAME/$ARCH"
-@@ -3305,11 +3298,11 @@
- SETS=$(echo {base,comp,man,game,xbase,xshare,xfont,xserv}$VERSION.tgz)
+@@ -3302,14 +3295,14 @@
+ # Selected sets will be installed in the order they are listed in $ALLSETS.
+ # Ensure that siteXX.tgz is the *last* set listed so its contents overwrite
+ # the contents of the other sets, not the other way around.
+-SETS=$(echo {base,comp,man,game,xbase,xshare,xfont,xserv}$VERSION.tgz)
++SETS=$(echo {base,comp,man,game,xbase,xshare,xfont,xserv,site}$VERSION.tgz)
  DEFAULTSETS="${MDSETS:-bsd bsd.rd} $SETS"
- ALLSETS="${MDSETS:-bsd bsd.rd} $SETS site$VERSION.tgz"
+-ALLSETS="${MDSETS:-bsd bsd.rd} $SETS site$VERSION.tgz"
 -SANESETS="${MDSANESETS:-bsd} base${VERSION}.tgz"
++ALLSETS="${MDSETS:-bsd bsd.rd} $SETS"
 +SANESETS="${MDSANESETS:-bsd} base${VERSION}.tgz xbase${VERSION}.tgz xfont${VERSION}.tgz site${VERSION}.tgz"
  if ((NCPU > 1)); then
  	DEFAULTSETS="${MDSETS:-bsd bsd.mp bsd.rd} $SETS"
- 	ALLSETS="${MDSETS:-bsd bsd.mp bsd.rd} $SETS site$VERSION.tgz"
+-	ALLSETS="${MDSETS:-bsd bsd.mp bsd.rd} $SETS site$VERSION.tgz"
 -	SANESETS="${MDSANESETS:-bsd bsd.mp} base${VERSION}.tgz"
++	ALLSETS="${MDSETS:-bsd bsd.mp bsd.rd} $SETS"
 +	SANESETS="${MDSANESETS:-bsd bsd.mp} base${VERSION}.tgz xbase${VERSION}.tgz xfont${VERSION}.tgz site${VERSION}.tgz"
  fi
  
