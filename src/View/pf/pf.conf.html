@@ -478,6 +478,11 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              Only effective before the route lookup happened, i.e. when
              filtering inbound.
 
+<a name="set-delay"></a>
+     <span class="bold">set</span> <span class="bold">delay</span> <span class="underline">milliseconds</span>
+             Packets matching this rule will be delayed at the outbound
+             interface by the given number of milliseconds.
+
 <a name="set-prio"></a>
      <span class="bold">set</span> <span class="bold">prio</span> <span class="underline">priority</span> | (<span class="underline">priority</span>, <span class="underline">priority</span>)
              Packets matching this rule will be assigned a specific queueing
@@ -1012,7 +1017,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              dropped later on.
 
 <a name="never"></a>
-             <span class="bold">never</span>     pf will never send syncookie SYNACKs.
+             <span class="bold">never</span>     pf will never send syncookie SYNACKs (the default).
 <a name="always"></a>
              <span class="bold">always</span>    pf will always send syncookie SYNACKs.
 <a name="adaptive"></a>
@@ -1116,8 +1121,8 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 
                    set timeout tcp.first 120
                    set timeout tcp.established 86400
-                   set timeout { adaptive.start 6000, adaptive.end 12000 }
-                   set limit states 10000
+                   set timeout { adaptive.start 60000, adaptive.end 120000 }
+                   set limit states 100000
 
              With 9000 state table entries, the timeout values are scaled to
              50% (tcp.first 60, tcp.established 43200).
@@ -2080,6 +2085,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                       "divert-to" host "port" port |
                       "label" string | "tag" string | [ "!" ] "tagged" string |
                       "max-pkt-rate" number "/" seconds |
+                      "set delay" number |
                       "set prio" ( number | "(" number [ [ "," ] number ] ")" ) |
                       "set queue" ( string | "(" string [ [ "," ] string ] ")" ) |
                       "rtable" number | "probability" number"%" | "prio" number |
@@ -2240,7 +2246,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 <span class="bold">HISTORY</span>
      The <span class="bold">pf.conf</span> file format first appeared in OpenBSD 3.0.
 
-OpenBSD 6.3                    February 9, 2018                    OpenBSD 6.3
+OpenBSD 6.4                      July 12, 2018                     OpenBSD 6.4
 </pre>
 </body>
 </html>

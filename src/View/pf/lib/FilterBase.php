@@ -177,6 +177,7 @@ class FilterBase extends State
 		$this->inputDel('set-prio', 'delPrio');
 		$this->inputAdd('set-prio', 'addPrio');
 
+		$this->inputKey('set-delay');
 		$this->inputKey('max-pkt-rate');
 		$this->inputKey('probability');
 
@@ -285,6 +286,7 @@ class FilterBase extends State
 		$this->editText('set-tos', _TITLE('Enforce TOS'), NULL, NULL, _CONTROL('string or number'));
 		$this->editText('prio', _TITLE('Match Priority'), NULL, 10, _CONTROL('number 0-7'));
 		$this->editValues('set-prio', _TITLE('Assign Priority'), 'delPrio', 'addPrio', _CONTROL('number 0-7'), NULL, 10);
+		$this->editText('set-delay', _TITLE('Delay Packets'), NULL, NULL, _CONTROL('milliseconds'));
 		$this->editText('max-pkt-rate', _TITLE('Max Packet Rate'), NULL, 10, _CONTROL('number/seconds'));
 		$this->editText('probability', _TITLE('Probability'), NULL, 10, _CONTROL('0-100% or 0-1'));
 		$this->editText('rtable', _TITLE('Routing Table'), NULL, 10, _CONTROL('number'));

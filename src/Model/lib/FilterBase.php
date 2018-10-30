@@ -132,7 +132,7 @@ class FilterBase extends State
 			'method' => 'parseNotTagged',
 			'params' => array(),
 			),
-		// "set prio" and "set tos"
+		// "set prio", "set tos", and "set delay"
 		'set' => array(
 			'method' => 'parseSet',
 			'params' => array(),
@@ -269,6 +269,9 @@ class FilterBase extends State
 		'set-tos' => array(
 			'regex' => RE_W_1_10,
 			),
+		'set-delay' => array(
+			'regex' => RE_NUM,
+			),
 		'queue' => array(
 			'multi' => TRUE,
 			'regex' => RE_NAME,
@@ -346,6 +349,9 @@ class FilterBase extends State
 		} elseif ($this->words[$this->index + 1] === 'tos') {
 			$this->index++;
 			$this->parseNextNVP('set-tos');
+		} elseif ($this->words[$this->index + 1] === 'delay') {
+			$this->index++;
+			$this->parseNextNVP('set-delay');
 		}
 	}
 
@@ -399,6 +405,7 @@ class FilterBase extends State
 		$this->genValue('label', 'label "', '"');
 		$this->genValue('tag', 'tag "', '"');
 		$this->genTagged();
+		$this->genValue('set-delay', 'set delay ');
 		$this->genItems('set-prio', 'set prio', '(', ')');
 		$this->genQueue();
 		$this->genValue('rtable', 'rtable ');
