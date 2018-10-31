@@ -158,33 +158,94 @@ function BuildFields(&$title, &$body, &$data, $total, $level, $text)
 
 function FilterServiceStatus()
 {
-	global $ServiceStatus, $NotifierFilters;
+	global $ServiceStatus, $NotifierFilters, $Prios, $NotifyLevel;
+
+	$notifierFile= '/tmp/NotifierServiceStatus.json';
+
+	$previousServiceStatus= array();
+	if (file_exists($notifierFile)) {
+		$previousServiceStatus= json_decode(file_get_contents($notifierFile), TRUE);
+	}
 
 	$filters= json_decode($NotifierFilters, TRUE);
-	if (count($filters) > 0) {
-		foreach ($ServiceStatus as $module => $status) {
-			/// @todo Filter module names too? So the module name must be among the filter keywords
-			foreach ($status['Logs'] as $j => $log) {
+
+	foreach ($ServiceStatus as $module => $status) {
+		foreach ($status['Logs'] as $i => $log) {
+			// The log should pass the log level filter, otherwise we delete it
+			$deleteLog= TRUE;
+
+			// Critical errors are always reported
+			if (in_array($log['Prio'], $Prios['Critical'])) {
+				$deleteLog= FALSE;
+			}
+
+			if ($deleteLog && $NotifyLevel >= LOG_ERR) {
+				if (in_array($log['Prio'], $Prios['Error'])) {
+					$deleteLog= FALSE;
+				}
+			}
+
+			if ($deleteLog && $NotifyLevel >= LOG_WARNING) {
+				if (in_array($log['Prio'], $Prios['Warning'])) {
+					$deleteLog= FALSE;
+				}
+			}
+
+			if ($deleteLog && count($filters) > 0) {
+				// The log should pass the keyword filter too, otherwise we delete it
 				$deleteLog= TRUE;
+
 				foreach ($filters as $i => $re) {
 					$re= Escape($re, '/');
+					/// @todo Filter module names too? So the module name must be among the filter keywords
 					if (preg_match("/$re/", $log['Process']) || preg_match("/$re/", $log['Prio']) || preg_match("/$re/", $log['Log'])) {
 						$deleteLog= FALSE;
 						break;
 					}
 				}
+			}
 
-				if ($deleteLog) {
+			if ($deleteLog) {
+				unset($ServiceStatus[$module]['Logs'][$i]);
+			}
+		}
+
+		if (count($ServiceStatus[$module]['Logs']) == 0) {
+			unset($ServiceStatus[$module]);
+		} else {
+			// Keep the newest log only, to send as a sample, logs are already sorted from newest to oldest
+			$ServiceStatus[$module]['Logs']= array_slice($ServiceStatus[$module]['Logs'], 0, 1);
+		}
+	}
+
+	// Save the current $ServiceStatus to use as a filter for the next notifier call
+	// Do not use PutFile(), it expects file to exist
+	/// @attention Save $ServiceStatus before filtering with the previous logs, otherwise we may delete current logs
+	// All logs should remain in $previousServiceStatus until they drop from the unfiltered $ServiceStatus, hence the definition of "current" logs
+	file_put_contents($notifierFile, json_encode($ServiceStatus), LOCK_EX);
+
+	// Filter with the previously sent logs, i.e. do not send the same log twice
+	foreach ($previousServiceStatus as $module => $status) {
+		if (!array_key_exists($module, $ServiceStatus)) {
+			continue;
+		}
+
+		// Actually, there is only one log entry in both $previousServiceStatus and $ServiceStatus
+		foreach ($previousServiceStatus[$module]['Logs'] as $i => $plog) {
+			foreach ($ServiceStatus[$module]['Logs'] as $j => $clog) {
+				if ($plog['Date'] == $clog['Date'] && $plog['Time'] == $clog['Time'] && $plog['Process'] == $clog['Process']
+						&& $plog['Prio'] == $clog['Prio'] && $plog['Log'] == $clog['Log']) {
 					unset($ServiceStatus[$module]['Logs'][$j]);
+					break;
 				}
 			}
+		}
 
-			if (count($ServiceStatus[$module]['Logs']) == 0) {
-				unset($ServiceStatus[$module]);
-			} else {
-				/// @attention Fake slice to update the keys
-				$ServiceStatus[$module]['Logs']= array_slice($ServiceStatus[$module]['Logs'], 0);
-			}
+		if (count($ServiceStatus[$module]['Logs']) == 0) {
+			unset($ServiceStatus[$module]);
+		} else {
+			/// @attention Fake slice to update the keys, in case there is more than one log
+			$ServiceStatus[$module]['Logs']= array_slice($ServiceStatus[$module]['Logs'], 0);
 		}
 	}
 }
