@@ -566,7 +566,7 @@ set_dir_perms() {
 # named in $1. Display an error message for failed installs so the
 # user will know to try again.
 install_files() {
-	local _src=$1 _files=$2 _f _sets _get_sets _webifparent _webifdir _mtreedir _e2listsdir _listname _pkgaddopts _pkguser
+	local _src=$1 _files=$2 _f _sets _get_sets _webifparent _webifdir _mtreedir _e2listsdir _listname _pkgaddopts _pkguser _installerror
 
 	# Initialize _sets to the list of sets found in _src, and initialize
 	# _get_sets to the intersection of _sets and DEFAULTSETS.
@@ -604,6 +604,7 @@ __EOT
 	for _f in $THESETS ; do
 		isin $_f $_get_sets || continue
 		echo "Installing $_f ..."
+		_installerror=0
 		case $_f in
 		*.tgz)
 			_pkgname=$_f
@@ -626,41 +627,47 @@ __EOT
 			pkg_delete partial-$_pkgshortname >/dev/null 2>&1
 
 			# Running: pkg_add $_pkgaddopts $_pkgname
-			pkg_add $_pkgaddopts $_pkgname
+			pkg_add $_pkgaddopts $_pkgname || _installerror=1
 
 			# Again deleting partial-$_pkgshortname, if any...
-			pkg_delete partial-$_pkgshortname >/dev/null 2>&1
+			[[ $_installerror -eq 1 ]] && pkg_delete partial-$_pkgshortname >/dev/null 2>&1
 
 			# Running as last option: pkg_add $_pkgname
-			pkg_add $_pkgname
+			[[ $_installerror -eq 1 ]] && pkg_add $_pkgname && _installerror=0
+
+			if [ $_installerror -eq 1 ]; then
+				echo "'$_f' did not install correctly."
+				INSTALL_ERROR=1
+				continue
+			fi
 
 			# Post-processing for the package
 			case $_f in
 			squid-*)	echo "Post-processing for $_f: Creating squid cache..."
-				/usr/local/sbin/squid -z
+				/usr/local/sbin/squid -z || _installerror=1
 				;;
 			p3scan-*|smtp-gated-*)	echo "Post-processing for $_f: Setting /dev/pf permissions..."
-				chmod a+r /dev/pf
+				chmod a+r /dev/pf || _installerror=1
 				;;
 			e2guardian-*)
-				chown -R _e2guardian:_e2guardian $DESTDIR/var/log/e2guardian/
+				chown -R _e2guardian:_e2guardian $DESTDIR/var/log/e2guardian/ || _installerror=1
 				;;
 			imspector-*)	echo "Post-processing for $_f: Setting /dev/pf permissions..."
-				chmod a+r /dev/pf
-				chmod g+w /dev/pf
+				chmod a+r /dev/pf || _installerror=1
+				chmod g+w /dev/pf || _installerror=1
 				;;
 			symon-*)	echo "Installing symux..."
-				pkg_add symux
+				pkg_add symux || _installerror=1
 				;;
 			pmacct-*)	echo "Installing rrdtool..."
-				pkg_add rrdtool
+				pkg_add rrdtool || _installerror=1
 				;;
 			php-*)
 				ln -s /usr/local/bin/php-7.0 /usr/local/bin/php
-				pkg_add php-pcntl
-				pkg_add php-mcrypt
-				pkg_add php-cgi
-				pkg_add php-curl
+				pkg_add php-pcntl || _installerror=1
+				pkg_add php-mcrypt || _installerror=1
+				pkg_add php-cgi || _installerror=1
+				pkg_add php-curl || _installerror=1
 				;;
 			esac
 			;;
@@ -668,8 +675,8 @@ __EOT
 		clamavdb.*)
 			_clamavdbdir=$ROOTDIR/var/db/clamav
 
-			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_clamavdbdir && \
-			chown _clamav:_clamav $_clamavdbdir/*
+			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_clamavdbdir || _installerror=1
+			chown _clamav:_clamav $_clamavdbdir/* || _installerror=1
 			;;
 
 		snortrules.*)
@@ -678,7 +685,7 @@ __EOT
 
 			[[ -d $_snortdir/$_listname ]] && mv $_snortdir/$_listname $_snortdir/$_listname.orig
 			[[ -d $_snortdir/$_listname ]] || mkdir -p $_snortdir/$_listname
-			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_snortdir
+			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_snortdir || _installerror=1
 			;;
 
 		blacklists.*)
@@ -687,16 +694,16 @@ __EOT
 
 			[[ -d $_e2listsdir/$_listname ]] && mv $_e2listsdir/$_listname $_e2listsdir/$_listname.orig
 			[[ -d $_e2listsdir/$_listname ]] || mkdir -p $_e2listsdir/$_listname
-			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_e2listsdir
+			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_e2listsdir || _installerror=1
 			;;
 
 		$CW_CONFIG_TARFILE)
 			[[ ! -d $DESTDIR ]] && mkdir -p $DESTDIR
-			[[ ! -d $DESTDIR ]] && echo "No such directory: $DESTDIR" && continue
+			[[ ! -d $DESTDIR ]] && (echo "No such directory: $DESTDIR"; INSTALL_ERROR=1; continue)
 
-			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C /tmp
+			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C /tmp || _installerror=1
 
-			[[ -d /tmp/config ]] || continue
+			[[ -d /tmp/config ]] || (echo "No such directory: /tmp/config"; INSTALL_ERROR=1; continue)
 			cd /tmp/config
 			chown -R root:wheel *
 		
@@ -718,7 +725,7 @@ __EOT
 			cd $DESTDIR/etc/p3scan/
 			ln -sf p3scan-en.mail p3scan.mail
 
-			chmod 770 $DESTDIR/var/clamav/tmp/
+			chmod 770 $DESTDIR/var/clamav/tmp/ || _installerror=1
 			;;
 
 		$CW_WEBIF_TARFILE)
@@ -728,15 +735,16 @@ __EOT
 			
 			[[ -d $_webifdir ]] && mv $_webifdir $_webifdir.orig
 			[[ ! -d $_webifparent ]] && mkdir -p $_webifparent
-			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_webifparent
-			chown -R root:wheel $_webifdir
+			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_webifparent || _installerror=1
+			chown -R root:wheel $_webifdir || _installerror=1
 			;;
 
 		*)	echo "Unknown file, skipping..."
 			;;
 		esac
-		if [ $? -ne 0 ]; then
+		if [ $_installerror -eq 1 ]; then
 			echo "'$_f' did not install correctly."
+			INSTALL_ERROR=1
 		else
 			DEFAULTSETS=$(rmel $_f $DEFAULTSETS)
 		fi
@@ -1028,24 +1036,30 @@ install_sets() {
 }
 
 finish_up() {
-
-	/sbin/ldconfig /usr/local/lib /usr/X11R6/lib/
+	/sbin/ldconfig /usr/local/lib /usr/X11R6/lib/ || INSTALL_ERROR=1
 
 	if [[ -f /var/www/htdocs/utmfw/Installer/install.php ]]; then
 		echo "Running post-install script..."
-		/usr/local/bin/php /var/www/htdocs/utmfw/Installer/install.php
+		/usr/local/bin/php /var/www/htdocs/utmfw/Installer/install.php || INSTALL_ERROR=1
 	fi
 
 	if [[ -x /var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh ]]; then
 		echo "Creating pmacct rrd files..."
-		/var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh
+		/var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh || INSTALL_ERROR=1
 	fi
 
-	# Pat on the back.
-	cat <<__EOT
+	if [ $INSTALL_ERROR -eq 1 ]; then
+		cat <<__EOT
+
+Your UTMFW $MODE has been completed with errors!
+__EOT
+	else
+		# Pat on the back.
+		cat <<__EOT
 
 CONGRATULATIONS! Your UTMFW $MODE has been successfully completed!
 __EOT
+	fi
 
 	rmdir /mnt2
 }
@@ -1119,6 +1133,9 @@ THESETS="isc-bind-9.11.4pl2.tgz \
 
 # Need all packages for a sane installation
 SANESETS=$THESETS
+
+# Save install errors
+INSTALL_ERROR=0
 
 # Introduce ourselves.
 welcome 2>&1 | tee -a $LOG_FILE
