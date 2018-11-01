@@ -109,6 +109,7 @@ class View
 
 					/// @attention Use trim(), since the mcrypt_decrypt() in php-mcrypt-5.6.31 returns with trailing white space of size 8!
 					/// @todo Check why mcrypt_decrypt() returns with trailing white space now
+					/// This issue still persists on OpenBSD 6.4 with PHP 7.0.32.
 					$passwd = trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $_SESSION['cryptKey'], $ciphertext_dec, MCRYPT_MODE_CBC, $iv_dec));
 
 					$ssh = new Net_SSH2(gethostname());

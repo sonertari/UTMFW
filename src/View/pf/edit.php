@@ -55,10 +55,11 @@ if (isset($edit) && array_key_exists($edit, $ruleType2Class)) {
 	}
 
 	if (!$testResult && $ErrorMsg == '') {
-		/// @bug pfctl on 6.3 sometimes returns a nonzero value without issuing any error message.
+		/// @bug pfctl sometimes returns a nonzero value without issuing any error message.
 		// For example, run the following to reproduce:
 		//# echo "set syncookies adaptive (start 25%, end 12.1)" | pfctl -nf - || echo fail
 		//fail
+		// This issue still persists on OpenBSD 6.4.
 		$ErrorMsg= _NOTICE('Rule test failed without an error message');
 	}
 	require_once($VIEW_PATH.'/header.php');

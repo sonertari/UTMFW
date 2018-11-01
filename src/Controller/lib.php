@@ -404,6 +404,7 @@ function IsTailNumber($str)
 		/// @bug tail(1) on OpenBSD 5.9 amd64 gets stuck with: echo soner | /usr/bin/tail -99999999
 		/// @link https://marc.info/?l=openbsd-bugs&m=148586652218524&w=2
 		/// @attention Never allow large numbers here, otherwise the system becomes unusuable.
+		/// Fixed in 6.4
 		return $str < 1000;
 	}
 }

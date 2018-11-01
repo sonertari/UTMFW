@@ -337,7 +337,7 @@ class Pf extends Model
 	 * 
 	 * @bug We cannot use RunPfctlCmd() here, because pfctl info output gives:
 	 * msg_send(): msgsnd failed: Invalid argument
-	 * Updating PHP to 5.6.26 or 7 should fix sysv msg queue problems, so we need OpenBSD 6.0.
+	 * This issue still persists on OpenBSD 6.4 with PHP 7.0.32.
 	 * 
 	 * @attention So, do not use the following line: return $this->RunPfInfoCmd('/sbin/pfctl -s info');
 	 * 
