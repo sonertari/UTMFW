@@ -156,18 +156,9 @@ function BuildFields(&$title, &$body, &$data, $total, $level, $text)
 	}
 }
 
-function FilterServiceStatus()
+function FilterLogLevels()
 {
-	global $ServiceStatus, $NotifierFilters, $Prios, $NotifyLevel;
-
-	$notifierFile= '/tmp/NotifierServiceStatus.json';
-
-	$previousServiceStatus= array();
-	if (file_exists($notifierFile)) {
-		$previousServiceStatus= json_decode(file_get_contents($notifierFile), TRUE);
-	}
-
-	$filters= json_decode($NotifierFilters, TRUE);
+	global $ServiceStatus, $Prios, $NotifyLevel;
 
 	foreach ($ServiceStatus as $module => $status) {
 		foreach ($status['Logs'] as $i => $log) {
@@ -191,17 +182,40 @@ function FilterServiceStatus()
 				}
 			}
 
-			if ($deleteLog && count($filters) > 0) {
-				// The log should pass the keyword filter too, otherwise we delete it
-				$deleteLog= TRUE;
+			if ($deleteLog) {
+				unset($ServiceStatus[$module]['Logs'][$i]);
+			}
+		}
 
-				foreach ($filters as $i => $re) {
-					$re= Escape($re, '/');
-					/// @todo Filter module names too? So the module name must be among the filter keywords
-					if (preg_match("/$re/", $log['Process']) || preg_match("/$re/", $log['Prio']) || preg_match("/$re/", $log['Log'])) {
-						$deleteLog= FALSE;
-						break;
-					}
+		if (count($ServiceStatus[$module]['Logs']) == 0) {
+			unset($ServiceStatus[$module]);
+		} else {
+			/// @attention Fake slice to update the keys, keep all seen logs to filter the next $ServiceStatus
+			$ServiceStatus[$module]['Logs']= array_slice($ServiceStatus[$module]['Logs'], 0);
+		}
+	}
+}
+
+function FilterKeywords()
+{
+	global $ServiceStatus, $NotifierFilters;
+
+	$filters= json_decode($NotifierFilters, TRUE);
+
+	if (count($filters) == 0) {
+		return;
+	}
+
+	foreach ($ServiceStatus as $module => $status) {
+		foreach ($status['Logs'] as $i => $log) {
+			$deleteLog= TRUE;
+
+			foreach ($filters as $re) {
+				$re= Escape($re, '/');
+				/// @todo Filter module names too? So the module name must be among the filter keywords
+				if (preg_match("/$re/", $log['Process']) || preg_match("/$re/", $log['Prio']) || preg_match("/$re/", $log['Log'])) {
+					$deleteLog= FALSE;
+					break;
 				}
 			}
 
@@ -213,9 +227,21 @@ function FilterServiceStatus()
 		if (count($ServiceStatus[$module]['Logs']) == 0) {
 			unset($ServiceStatus[$module]);
 		} else {
-			// Keep the newest log only, to send as a sample, logs are already sorted from newest to oldest
-			$ServiceStatus[$module]['Logs']= array_slice($ServiceStatus[$module]['Logs'], 0, 1);
+			/// @attention Fake slice to update the keys, keep all seen logs to filter the next $ServiceStatus
+			$ServiceStatus[$module]['Logs']= array_slice($ServiceStatus[$module]['Logs'], 0);
 		}
+	}
+}
+
+function FilterPreviousLogs()
+{
+	global $ServiceStatus;
+
+	$notifierFile= '/tmp/NotifierServiceStatus.json';
+
+	$previousServiceStatus= array();
+	if (file_exists($notifierFile)) {
+		$previousServiceStatus= json_decode(file_get_contents($notifierFile), TRUE);
 	}
 
 	// Save the current $ServiceStatus to use as a filter for the next notifier call
@@ -230,12 +256,11 @@ function FilterServiceStatus()
 			continue;
 		}
 
-		// Actually, there is only one log entry in both $previousServiceStatus and $ServiceStatus
-		foreach ($previousServiceStatus[$module]['Logs'] as $i => $plog) {
-			foreach ($ServiceStatus[$module]['Logs'] as $j => $clog) {
+		foreach ($previousServiceStatus[$module]['Logs'] as $plog) {
+			foreach ($ServiceStatus[$module]['Logs'] as $i => $clog) {
 				if ($plog['Date'] == $clog['Date'] && $plog['Time'] == $clog['Time'] && $plog['Process'] == $clog['Process']
 						&& $plog['Prio'] == $clog['Prio'] && $plog['Log'] == $clog['Log']) {
-					unset($ServiceStatus[$module]['Logs'][$j]);
+					unset($ServiceStatus[$module]['Logs'][$i]);
 					break;
 				}
 			}
@@ -244,7 +269,7 @@ function FilterServiceStatus()
 		if (count($ServiceStatus[$module]['Logs']) == 0) {
 			unset($ServiceStatus[$module]);
 		} else {
-			/// @attention Fake slice to update the keys, in case there is more than one log
+			/// @attention Fake slice to update the keys
 			$ServiceStatus[$module]['Logs']= array_slice($ServiceStatus[$module]['Logs'], 0);
 		}
 	}
@@ -261,7 +286,9 @@ if (count(json_decode($NotifierUsers, TRUE)) > 0) {
 	if ($View->Controller($Output, 'GetServiceStatus')) {
 		$ServiceStatus= json_decode($Output[0], TRUE);
 
-		FilterServiceStatus();
+		FilterLogLevels();
+		FilterKeywords();
+		FilterPreviousLogs();
 
 		// $ServiceStatus may become empty after applying filters
 		if (count($ServiceStatus)) {
