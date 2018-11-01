@@ -1,0 +1,29 @@
+--- dot.profile.orig	Mon Oct 29 20:04:02 2018
++++ dot.profile	Mon Oct 29 20:09:47 2018
+@@ -100,13 +100,13 @@
+ 	fi
+ 
+ 	while :; do
+-		read REPLY?'(I)nstall, (U)pgrade, (A)utoinstall or (S)hell? '
++		read REPLY?'(I)nstall or (S)hell? '
+ 
+-		# Begin the automatic installation if the timeout has expired.
++		# Begin the installation if the timeout has expired.
+ 		if $timeout; then
+ 			timeout=false
+ 			echo
+-			REPLY=a
++			REPLY=i
+ 		else
+ 			# User has made a choice; stop the read timeout.
+ 			[[ -n $timer_pid ]] && kill $timer_pid 2>/dev/null
+@@ -114,9 +114,7 @@
+ 		fi
+ 
+ 		case $REPLY in
+-		[aA]*)	/autoinstall && break;;
+ 		[iI]*)	/install && break;;
+-		[uU]*)	/upgrade && break;;
+ 		[sS]*)	break;;
+ 		esac
+ 	done
