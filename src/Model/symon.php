@@ -76,6 +76,11 @@ class Symon extends Monitoring
 					'argv'	=>	array(),
 					'desc'	=>	_('Set symon partitions'),
 					),
+				
+				'GetGraph'=>	array(
+					'argv'	=>	array(NAME),
+					'desc'	=>	_('Get graph'),
+					),
 				)
 			);
 	}
@@ -228,6 +233,7 @@ class Symon extends Monitoring
 
 		require_once("$SRC_ROOT/View/symon/class_rrdtool.inc");
 
+		$graphFiles= array();
 		foreach ($graphs as $title => $g) {
 			if (preg_match("/^([0-9a-f]+)/", $g, $match)) {
 				$key = $match[1];
@@ -240,15 +246,28 @@ class Symon extends Monitoring
 					$rrdtool = new RRDTool();
 					$graph_file = $cache->obtain_filecache($key);
 					$result = $rrdtool->graph($graph_file, $definition);
-
 				} else {
 					$graph_file = $filename;
 					$result = 1;
 				}
+				$graphFiles[$title]= basename($graph_file);
 			}
 		}
 
-		return Output(json_encode($graphs));
+		return Output(json_encode($graphFiles));
+	}
+
+	function GetGraph($file)
+	{
+		$graphFile= "/var/www/htdocs/utmfw/View/symon/cache/$file";
+		$base64Graph= '';
+
+		if (file_exists($graphFile)) {
+			$base64Graph= base64_encode(file_get_contents($graphFile));
+		}
+
+		/// @attention If json_encode() inserts slashes, it is hard to decode the base64 encoded graph string on the receiving end
+		return Output(json_encode($base64Graph, JSON_UNESCAPED_SLASHES));
 	}
 
 	function SetCpus()

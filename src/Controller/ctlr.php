@@ -162,7 +162,8 @@ else {
 /// @attention We need to include $retval in the array too, because phpseclib exec() does not provide access to retval.
 // Return an encoded array, so that the caller can easily separate output, error, and retval
 $msg= array($Output, $Error, $retval);
-$encoded= json_encode($msg);
+/// @attention If json_encode() inserts slashes, it is hard to decode the base64 encoded graph string on the receiving end
+$encoded= json_encode($msg, JSON_UNESCAPED_SLASHES);
 
 if ($encoded !== NULL) {
 	echo $encoded;
