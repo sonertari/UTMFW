@@ -1,7 +1,8 @@
 $OpenBSD$
---- src/client_side_request.cc.orig	Mon Feb 15 15:59:11 2016
-+++ src/client_side_request.cc	Thu Sep 28 14:34:55 2017
-@@ -579,6 +579,79 @@ ClientRequestContext::hostHeaderVerifyFailed(const cha
+Index: src/client_side_request.cc
+--- src/client_side_request.cc.orig
++++ src/client_side_request.cc
+@@ -583,6 +583,79 @@ ClientRequestContext::hostHeaderVerifyFailed(const cha
  void
  ClientRequestContext::hostHeaderVerify()
  {
@@ -81,7 +82,7 @@ $OpenBSD$
      // Require a Host: header.
      const char *host = http->request->header.getStr(HDR_HOST);
  
-@@ -2075,4 +2148,5 @@ ClientHttpRequest::handleAdaptationFailure(int errDeta
+@@ -2116,4 +2189,5 @@ ClientHttpRequest::callException(const std::exception 
  }
  
  #endif

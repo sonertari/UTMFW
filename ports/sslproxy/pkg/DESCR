@@ -1,2 +1,3 @@
-SSLproxy is a transparent proxy to decrypt SSL/TLS traffic and divert
-it to other programs.
+SSLproxy is a transparent SSL/TLS proxy for decrypting and diverting network
+traffic to other programs, such as UTM services, for deep SSL inspection.
+

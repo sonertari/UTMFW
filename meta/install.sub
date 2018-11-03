@@ -1117,8 +1117,8 @@ THESETS="isc-bind-9.11.4pl2.tgz \
 		smtp-gated-1.4.20.0.tgz \
 		e2guardian-4.1.5.tgz \
 		blacklists.tar.gz \
-		squid-3.5.27.tgz \
-		snort-2.9.11.1.tgz \
+		squid-3.5.28p0.tgz \
+		snort-2.9.11.1p0.tgz \
 		snortrules.tar.gz \
 		snortips-6.2.2.tgz \
 		imspector-0.9.tgz \

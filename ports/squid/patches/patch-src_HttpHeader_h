@@ -1,6 +1,7 @@
 $OpenBSD$
---- src/HttpHeader.h.orig	Thu Aug  3 07:31:14 2017
-+++ src/HttpHeader.h	Thu Aug  3 07:33:22 2017
+Index: src/HttpHeader.h
+--- src/HttpHeader.h.orig
++++ src/HttpHeader.h
 @@ -133,6 +133,7 @@ typedef enum {
      HDR_FTP_PRE,                        /**< Internal header containing leading FTP control response lines */
      HDR_FTP_STATUS,                     /**< Internal header for FTP reply status */
@@ -9,7 +10,7 @@ $OpenBSD$
      HDR_OTHER,                          /**< internal tag value for "unknown" headers */
      HDR_ENUM_END
  } http_hdr_type;
-@@ -304,4 +305,5 @@ void httpHeaderInitModule(void);
+@@ -307,4 +308,5 @@ void httpHeaderInitModule(void);
  void httpHeaderCleanModule(void);
  
  #endif /* SQUID_HTTPHEADER_H */

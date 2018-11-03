@@ -1,4 +1,4 @@
-@comment $OpenBSD$
+@comment $OpenBSD: PLIST,v$
 @newgroup _sslproxy:767
 @newuser _sslproxy:767:_sslproxy:daemon:sslproxy:/nonexistent:/sbin/nologin
 @bin bin/sslproxy

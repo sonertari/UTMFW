@@ -1,6 +1,7 @@
 $OpenBSD$
---- src/HttpRequest.cc.orig	Thu Aug  3 07:33:54 2017
-+++ src/HttpRequest.cc	Thu Aug  3 07:34:55 2017
+Index: src/HttpRequest.cc
+--- src/HttpRequest.cc.orig
++++ src/HttpRequest.cc
 @@ -76,6 +76,9 @@ HttpRequest::init()
      auth_user_request = NULL;
  #endif
@@ -11,7 +12,7 @@ $OpenBSD$
      canonical = NULL;
      memset(&flags, '\0', sizeof(flags));
      range = NULL;
-@@ -690,4 +693,5 @@ HttpRequest::storeId()
+@@ -693,4 +696,5 @@ HttpRequest::storeId()
  
      return urlCanonical(this);
  }

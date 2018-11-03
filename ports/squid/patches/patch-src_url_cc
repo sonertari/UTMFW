@@ -1,7 +1,8 @@
 $OpenBSD$
---- src/url.cc.orig	Mon Feb 15 15:59:11 2016
-+++ src/url.cc	Thu Sep 28 10:49:32 2017
-@@ -97,7 +97,7 @@ urlParseProtocol(const char *b, const char *e)
+Index: src/url.cc
+--- src/url.cc.orig
++++ src/url.cc
+@@ -109,7 +109,7 @@ urlParseProtocol(const char *b, const char *e)
          return AnyP::PROTO_FTP;
  
      if (strncasecmp(b, "https", len) == 0)

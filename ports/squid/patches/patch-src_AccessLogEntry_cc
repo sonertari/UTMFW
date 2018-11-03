@@ -1,6 +1,7 @@
 $OpenBSD$
---- src/AccessLogEntry.cc.orig	Thu Aug  3 07:16:39 2017
-+++ src/AccessLogEntry.cc	Thu Aug  3 07:18:04 2017
+Index: src/AccessLogEntry.cc
+--- src/AccessLogEntry.cc.orig
++++ src/AccessLogEntry.cc
 @@ -25,6 +25,10 @@ AccessLogEntry::getLogClientIp(char *buf, size_t bufsz
  {
      Ip::Address log_ip;
@@ -12,7 +13,7 @@ $OpenBSD$
  #if FOLLOW_X_FORWARDED_FOR
      if (Config.onoff.log_uses_indirect_client && request)
          log_ip = request->indirect_client_addr;
-@@ -69,4 +73,5 @@ AccessLogEntry::~AccessLogEntry()
+@@ -72,4 +76,5 @@ AccessLogEntry::~AccessLogEntry()
      HTTPMSGUNLOCK(icap.request);
  #endif
  }

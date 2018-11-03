@@ -1,6 +1,7 @@
 $OpenBSD$
---- src/HttpRequest.h.orig	Thu Aug  3 07:35:19 2017
-+++ src/HttpRequest.h	Thu Aug  3 07:36:31 2017
+Index: src/HttpRequest.h
+--- src/HttpRequest.h.orig
++++ src/HttpRequest.h
 @@ -138,6 +138,10 @@ class HttpRequest: public HttpMsg (public)
  #endif
      unsigned short port;
@@ -12,7 +13,7 @@ $OpenBSD$
      String urlpath;
  
      char *canonical;
-@@ -266,4 +270,5 @@ class HttpRequest: public HttpMsg (public)
+@@ -267,4 +271,5 @@ class HttpRequest: public HttpMsg (public)
  MEMPROXY_CLASS_INLINE(HttpRequest);
  
  #endif /* SQUID_HTTPREQUEST_H */
