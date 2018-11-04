@@ -1,12 +1,10 @@
-From sonertari@gmail.com Sun Sep 16 06:30:10 EET 2018
+From sonertari@gmail.com Sun Nov 4 06:40:10 EET 2018
 Return-Path: root
-Date: Sep 16 06:30:10 EET 2018
+Date: Nov 4 06:40:10 EET 2018
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 6.3.1!
+Subject: Welcome to UTMFW 6.4!
 
 Highlights of this release are:
-- OpenBSD 6.3-stable
-- SSLproxy 0.5.7
-- Smtp-gated 1.4.20.0
-- Firebase push notifications
+- OpenBSD 6.4
+- SSLproxy 0.5.8

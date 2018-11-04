@@ -15,6 +15,6 @@ Kurulum sırasında belirlediğiniz iç ağ arayüzünün IP adresi üzerinden w
 Web arayüzü kullanıcı adları admin ve user'dır. İkisinin parolası da kurulum sırasında girdiğiniz değere ayarlanır.
 
 Kaynaklar:
-[1] Kurulum iso dosyasındaki /6.3/amd64/ klasörünün altındaki INSTALL.amd64
+[1] Kurulum iso dosyasındaki INSTALL.amd64
 [2] Desteklenen donanımlar için https://www.openbsd.org/amd64.html
 [3] OpenBSD kurulum detayları için https://www.openbsd.org/faq/faq4.html
