@@ -8,8 +8,6 @@
 #
 powerdown=YES	# set to YES for powerdown
 
-# Your shell code goes here
-# Sync the disks before audio warning
 echo "syncing disks before audio warning..."
 /bin/sync
 echo -n "e." > /dev/speaker
