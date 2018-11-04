@@ -1,29 +1,96 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1 (0x1)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=TR, ST=Antalya, L=Serik, O=ComixWall, OU=OpenVPN, CN=comixwall.org/emailAddress=sonertari@gmail.com
+        Validity
+            Not Before: Nov  4 20:42:07 2018 GMT
+            Not After : Nov  4 20:42:07 2019 GMT
+        Subject: C=TR, ST=Antalya, L=Serik, O=ComixWall, OU=OpenVPN Server, CN=comixwall.org/emailAddress=sonertari@gmail.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:ba:41:b7:c6:fd:a2:6c:c7:86:46:f0:dd:64:76:
+                    28:4e:3b:0f:ac:86:5a:20:91:da:6b:a1:34:cb:18:
+                    a9:0a:14:01:34:31:f7:63:13:40:6f:e5:b0:51:a7:
+                    10:ac:3d:8c:4d:81:56:e5:07:ca:4e:dd:92:89:bc:
+                    45:66:2f:2e:3a:f5:44:f9:82:a0:a8:31:3c:65:ee:
+                    93:9c:aa:96:a5:64:18:3c:35:66:05:f8:14:79:d5:
+                    8b:78:fd:83:35:2c:0e:e9:b3:e3:0b:96:6c:3e:d2:
+                    4f:1c:f1:41:67:77:de:bc:63:a7:e9:9b:38:0a:32:
+                    e3:9f:ae:b9:a5:74:7e:8c:6c:db:e7:68:bf:2c:f2:
+                    60:fb:f1:4a:d3:a8:68:53:c8:a4:47:9b:a1:40:d2:
+                    af:fb:86:f7:c9:ec:b2:bc:e4:29:e8:8b:20:73:6f:
+                    25:2d:21:bd:ae:bc:37:9c:3e:7e:2d:47:ea:41:2f:
+                    2f:c6:45:92:de:73:73:eb:a7:b6:c2:4b:d9:c8:0d:
+                    dd:23:de:2f:7d:58:cd:65:16:ea:ea:b7:09:16:6f:
+                    2a:9a:00:eb:4f:ee:91:8e:16:80:7f:56:9d:bc:60:
+                    fa:b2:2e:e3:58:6a:75:7a:a4:eb:a8:97:02:d4:da:
+                    09:d4:8a:88:53:9b:f4:4e:e7:ec:2d:da:fb:ea:b3:
+                    b4:b5
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Cert Type: 
+                SSL Server
+            Netscape Comment: 
+                OpenSSL Server Certificate
+            X509v3 Subject Key Identifier: 
+                8C:E2:EB:10:C2:83:26:45:80:6E:0D:71:5B:24:69:0C:2D:F5:57:3C
+            X509v3 Authority Key Identifier: 
+                keyid:D5:B3:4E:4A:B0:17:32:17:3A:09:F7:F7:14:6F:73:39:EF:0D:DD:CD
+                DirName:/C=TR/ST=Antalya/L=Serik/O=ComixWall/OU=OpenVPN/CN=comixwall.org/emailAddress=sonertari@gmail.com
+                serial:91:FF:41:A7:5E:44:6B:87
+
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Key Usage: 
+                Digital Signature, Key Encipherment
+    Signature Algorithm: sha256WithRSAEncryption
+         46:de:fb:90:3c:83:f1:c0:f1:c9:bd:bb:c3:5a:3e:92:5d:fc:
+         b1:af:24:6b:f6:e4:33:e0:ec:4d:4f:ec:ea:00:bb:ef:be:20:
+         9b:c2:16:09:13:36:97:94:dc:4d:3c:04:9d:e5:00:b7:84:1c:
+         97:2f:a9:bf:a0:24:13:b8:8a:33:42:05:a5:64:27:31:f7:ba:
+         07:1b:e7:70:ec:43:ff:5b:a0:94:51:29:59:0b:04:a2:23:aa:
+         c7:1d:d7:28:21:e5:71:b5:42:6f:c9:ba:e7:0d:8a:ea:69:2f:
+         0e:6e:71:8c:d6:81:e9:28:6a:43:c4:64:d7:8d:26:d7:b7:65:
+         bc:bc:41:c6:79:02:95:9e:54:17:87:13:1c:0b:8a:3c:6d:32:
+         a1:3e:be:41:c6:3e:fb:f8:f1:27:ba:25:d6:b0:8d:00:f1:22:
+         ad:8d:a0:1b:c8:40:3a:6a:4f:34:85:67:bd:72:04:1c:2e:52:
+         2f:0e:9c:10:f5:74:3f:dc:13:43:c0:4d:26:d3:cf:df:34:ed:
+         75:de:6b:49:6e:27:eb:a4:b4:4b:61:39:ef:da:46:75:59:1f:
+         11:d7:78:86:e2:71:c1:06:18:1b:46:9b:60:e2:1f:13:97:0d:
+         63:ec:48:2b:f3:3a:d9:9c:12:a1:e1:76:b8:02:c7:10:5a:2f:
+         a9:e2:3e:b9
 -----BEGIN CERTIFICATE-----
-MIIE3jCCA8agAwIBAgIBAjANBgkqhkiG9w0BAQsFADCBjzELMAkGA1UEBhMCVFIx
+MIIE/zCCA+egAwIBAgIBATANBgkqhkiG9w0BAQsFADCBkTELMAkGA1UEBhMCVFIx
 EDAOBgNVBAgMB0FudGFseWExDjAMBgNVBAcMBVNlcmlrMRIwEAYDVQQKDAlDb21p
-eFdhbGwxDjAMBgNVBAsMBVVUTUZXMRYwFAYDVQQDDA1jb21peHdhbGwub3JnMSIw
-IAYJKoZIhvcNAQkBFhNzb25lcnRhcmlAZ21haWwuY29tMB4XDTE4MDUxOTAwMzA1
-NVoXDTE5MDUxOTAwMzA1NVowgZExCzAJBgNVBAYTAlRSMRAwDgYDVQQIDAdBbnRh
-bHlhMQ4wDAYDVQQHDAVTZXJpazESMBAGA1UECgwJQ29taXhXYWxsMRAwDgYDVQQL
-DAdPcGVuVlBOMRYwFAYDVQQDDA1jb21peHdhbGwub3JnMSIwIAYJKoZIhvcNAQkB
-FhNzb25lcnRhcmlAZ21haWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
-CgKCAQEA3cDWr5v/lbPUhIy4t4kMWCmUz8Rp7wsdJxBYKFfixJk3fL2gEMzAnGhL
-BsndKv/XGmWObxuS1biyNh8mK8q0twTJ0ZGt2bWDGv2srWwLnK6TJo9d8WpHHbgi
-VCJ2Phfr0ZhP/+mVb33iwaML4yh3H1Ikhn7Q7e3fWqkaXxJtnH3Bp+CBxSRK1yJT
-OIFUGMk85IjeETgulLErurUTi+GM0a4R419FbmaKX2QySuiCcKQdAOisinVkTQET
-Nxw7AbeGolbRl8y3T2SLl2SRcHmebA4jsT1BYNiOqUZYmIypFMUcoJ5hjAqjdigK
-EoxbHDx2MMK8kDJrptnPMKMXh2fs5QIDAQABo4IBPzCCATswCQYDVR0TBAIwADAR
-BglghkgBhvhCAQEEBAMCBkAwKQYJYIZIAYb4QgENBBwWGk9wZW5WUE4gU2VydmVy
-IENlcnRpZmljYXRlMB0GA1UdDgQWBBSZld8MNMFEItK/DoTzoBUWaAqPADCBrgYD
-VR0jBIGmMIGjoYGVpIGSMIGPMQswCQYDVQQGEwJUUjEQMA4GA1UECAwHQW50YWx5
-YTEOMAwGA1UEBwwFU2VyaWsxEjAQBgNVBAoMCUNvbWl4V2FsbDEOMAwGA1UECwwF
-VVRNRlcxFjAUBgNVBAMMDWNvbWl4d2FsbC5vcmcxIjAgBgkqhkiG9w0BCQEWE3Nv
-bmVydGFyaUBnbWFpbC5jb22CCQDMxn76sdNHdzATBgNVHSUEDDAKBggrBgEFBQcD
-ATALBgNVHQ8EBAMCBaAwDQYJKoZIhvcNAQELBQADggEBAF4tkmcg1j0pqAoOxIVA
-9FR0NtQ6q01D7/ehj17msklknREWDTJhRmRaVf25WDdTnosxgKTFK903CWOMJNqW
-QAS4/KL1gwiUEZLoIx4m6mXNrCYRjcnxFZSS7TZfws0K0IHUG2ViRn4iZ9MFWnzk
-zpjKSLYJ3tO7nNE4XZW9oJszVkZLMtRZV5Eis3HNXwMYtr2aWJJaESP85aoq6250
-t85P3xcv3cVhM+KdYkUnixZhrqpho8vf96RPX7EHZLxtbZoXW8YUZGZYo5gbxXLV
-1ZH+Oe3xsJO5hVnzwb89gv2ZtKQK5UBcsysUhzG8qTrKH5oF5pbgZ1+d9yMh3TEf
-xws=
+eFdhbGwxEDAOBgNVBAsMB09wZW5WUE4xFjAUBgNVBAMMDWNvbWl4d2FsbC5vcmcx
+IjAgBgkqhkiG9w0BCQEWE3NvbmVydGFyaUBnbWFpbC5jb20wHhcNMTgxMTA0MjA0
+MjA3WhcNMTkxMTA0MjA0MjA3WjCBmDELMAkGA1UEBhMCVFIxEDAOBgNVBAgMB0Fu
+dGFseWExDjAMBgNVBAcMBVNlcmlrMRIwEAYDVQQKDAlDb21peFdhbGwxFzAVBgNV
+BAsMDk9wZW5WUE4gU2VydmVyMRYwFAYDVQQDDA1jb21peHdhbGwub3JnMSIwIAYJ
+KoZIhvcNAQkBFhNzb25lcnRhcmlAZ21haWwuY29tMIIBIjANBgkqhkiG9w0BAQEF
+AAOCAQ8AMIIBCgKCAQEAukG3xv2ibMeGRvDdZHYoTjsPrIZaIJHaa6E0yxipChQB
+NDH3YxNAb+WwUacQrD2MTYFW5QfKTt2SibxFZi8uOvVE+YKgqDE8Ze6TnKqWpWQY
+PDVmBfgUedWLeP2DNSwO6bPjC5ZsPtJPHPFBZ3fevGOn6Zs4CjLjn665pXR+jGzb
+52i/LPJg+/FK06hoU8ikR5uhQNKv+4b3yeyyvOQp6Isgc28lLSG9rrw3nD5+LUfq
+QS8vxkWS3nNz66e2wkvZyA3dI94vfVjNZRbq6rcJFm8qmgDrT+6RjhaAf1advGD6
+si7jWGp1eqTrqJcC1NoJ1IqIU5v0TufsLdr76rO0tQIDAQABo4IBVzCCAVMwCQYD
+VR0TBAIwADARBglghkgBhvhCAQEEBAMCBkAwKQYJYIZIAYb4QgENBBwWGk9wZW5T
+U0wgU2VydmVyIENlcnRpZmljYXRlMB0GA1UdDgQWBBSM4usQwoMmRYBuDXFbJGkM
+LfVXPDCBxgYDVR0jBIG+MIG7gBTVs05KsBcyFzoJ9/cUb3M57w3dzaGBl6SBlDCB
+kTELMAkGA1UEBhMCVFIxEDAOBgNVBAgMB0FudGFseWExDjAMBgNVBAcMBVNlcmlr
+MRIwEAYDVQQKDAlDb21peFdhbGwxEDAOBgNVBAsMB09wZW5WUE4xFjAUBgNVBAMM
+DWNvbWl4d2FsbC5vcmcxIjAgBgkqhkiG9w0BCQEWE3NvbmVydGFyaUBnbWFpbC5j
+b22CCQCR/0GnXkRrhzATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMCBaAw
+DQYJKoZIhvcNAQELBQADggEBAEbe+5A8g/HA8cm9u8NaPpJd/LGvJGv25DPg7E1P
+7OoAu+++IJvCFgkTNpeU3E08BJ3lALeEHJcvqb+gJBO4ijNCBaVkJzH3ugcb53Ds
+Q/9boJRRKVkLBKIjqscd1ygh5XG1Qm/JuucNiuppLw5ucYzWgekoakPEZNeNJte3
+Zby8QcZ5ApWeVBeHExwLijxtMqE+vkHGPvv48Se6JdawjQDxIq2NoBvIQDpqTzSF
+Z71yBBwuUi8OnBD1dD/cE0PATSbTz9807XXea0luJ+uktEthOe/aRnVZHxHXeIbi
+ccEGGBtGm2DiHxOXDWPsSCvzOtmcEqHhdrgCxxBaL6niPrk=
 -----END CERTIFICATE-----
