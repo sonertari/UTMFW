@@ -1048,6 +1048,13 @@ finish_up() {
 		/var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh || INSTALL_ERROR=1
 	fi
 
+	# Fix initial mail message of OpenBSD 6.4.
+	# Single digit day should be blank-padded on the left to make up the field width of 2.
+	# Otherwise the message is discarded after sending the mail in rc.firsttime.
+	# From deraadt@do-not-reply.openbsd.org Sun Nov 1 06:30:00 MDT 2018
+	# From deraadt@do-not-reply.openbsd.org Sun Nov  1 06:30:00 MDT 2018
+	/usr/bin/sed -i 's/Nov 1/Nov  1/' /var/mail/root
+
 	if [ $INSTALL_ERROR -eq 1 ]; then
 		cat <<__EOT
 
