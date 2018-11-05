@@ -29,4 +29,4 @@ HOME=/var/log
 */1	*	*	*	*	/bin/sh /var/www/htdocs/utmfw/View/pmacct/protograph/cron.sh > /dev/null
 
 # Notifier
-#*/1	*	*	*	*	/usr/local/bin/php /var/www/htdocs/utmfw/Notifier/notify.php > /dev/null
+#*/1	*	*	*	*	/usr/bin/env PATH=$PATH:/usr/local/bin /usr/local/bin/php /var/www/htdocs/utmfw/Notifier/notify.php > /dev/null
