@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-05-18 18:23+0300\n"
+"PO-Revision-Date: 2018-11-05 22:09+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -335,6 +335,9 @@ msgstr "etiket"
 
 msgid "logging interface"
 msgstr "kayıt arayüzü"
+
+msgid "milliseconds"
+msgstr "milisaniye"
 
 msgid "move to"
 msgstr "taşınacak yer"

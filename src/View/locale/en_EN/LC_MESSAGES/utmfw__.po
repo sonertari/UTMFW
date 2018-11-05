@@ -412,6 +412,9 @@ msgstr ""
 msgid "Get ext_if"
 msgstr ""
 
+msgid "Get graph"
+msgstr ""
+
 msgid "Get group count"
 msgstr ""
 

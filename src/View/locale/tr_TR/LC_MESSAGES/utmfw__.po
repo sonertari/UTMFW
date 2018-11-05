@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-09-16 16:21+0300\n"
+"PO-Revision-Date: 2018-11-05 22:10+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -430,6 +430,9 @@ msgstr "Uzt/mime listesini getir"
 
 msgid "Get ext_if"
 msgstr "ext_if'i getir"
+
+msgid "Get graph"
+msgstr "Grafiği getir"
 
 msgid "Get group count"
 msgstr "Grup sayısını getir"

@@ -1100,6 +1100,9 @@ msgid ""
 "Business hours configuration is meaningful only for business days."
 msgstr ""
 
+msgid "Delay Packets"
+msgstr ""
+
 msgid "Delete"
 msgstr ""
 
@@ -2027,6 +2030,9 @@ msgid "Get ext/mime list"
 msgstr ""
 
 msgid "Get ext_if"
+msgstr ""
+
+msgid "Get graph"
 msgstr ""
 
 msgid "Get group count"
@@ -6983,6 +6989,9 @@ msgid "logging interface"
 msgstr ""
 
 msgid "managed"
+msgstr ""
+
+msgid "milliseconds"
 msgstr ""
 
 msgid "min"

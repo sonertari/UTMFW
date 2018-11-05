@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-09-16 16:44+0300\n"
+"PO-Revision-Date: 2018-11-05 22:11+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -1286,6 +1286,9 @@ msgstr ""
 "\n"
 "İş saatleri ayarı sadece iş günleri için geçerlidir."
 
+msgid "Delay Packets"
+msgstr "Paketleri Geciktir"
+
 msgid "Delete"
 msgstr "Sil"
 
@@ -2304,6 +2307,9 @@ msgstr "Uzt/mime listesini getir"
 
 msgid "Get ext_if"
 msgstr "ext_if'i getir"
+
+msgid "Get graph"
+msgstr "Grafiği getir"
 
 msgid "Get group count"
 msgstr "Grup sayısını getir"
@@ -5497,7 +5503,7 @@ msgid "Set notifier API key"
 msgstr "Uyarı API anahtarını ayarla"
 
 msgid "Set notifier host"
-msgstr "Uyarı sunucusunu ayarla"
+msgstr "Uyarı sunucuyu ayarla"
 
 msgid "Set notifier timeout"
 msgstr "Uyarı zaman aşımını ayarla"
@@ -8309,6 +8315,9 @@ msgstr "kayıt arayüzü"
 
 msgid "managed"
 msgstr "yönetilen"
+
+msgid "milliseconds"
+msgstr "milisaniye"
 
 msgid "min"
 msgstr "dak"
