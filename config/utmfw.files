@@ -66,6 +66,7 @@ etc/mail/spamassassin/local-pl.cf,644,root,wheel
 etc/mail/spamassassin/local-pt_br.cf,644,root,wheel
 etc/mail/spamassassin/local-tr.cf,644,root,wheel
 etc/mail/aliases,644,root,wheel
+etc/mail/smtpd.conf,644,root,wheel
 etc/openvpn/ca.crt,444,root,wheel
 etc/openvpn/client.conf,644,root,wheel
 etc/openvpn/client.crt,444,root,wheel

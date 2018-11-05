@@ -187,6 +187,7 @@ local-pt_br.cf		type=file mode=0644 uname=root gname=wheel
 local-tr.cf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/mail/spamassassin
 aliases			type=file mode=0644 uname=root gname=wheel
+smtpd.conf			type=file mode=0644 uname=root gname=wheel
 ..	#etc/mail
 openvpn			type=dir mode=0755 uname=root gname=wheel
 ca.crt			type=file mode=0444 uname=root gname=wheel
