@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v$
+@comment $OpenBSD$
 @conflict e2guardian-*-clamav
 @pkgpath www/e2guardian,clamav
 @newgroup _e2guardian:589
@@ -19,137 +19,110 @@ share/e2guardian/languages/
 share/e2guardian/languages/arspanish/
 share/e2guardian/languages/arspanish/fancydmtemplate.html
 share/e2guardian/languages/arspanish/messages
-share/e2guardian/languages/arspanish/neterr_template.html
 share/e2guardian/languages/arspanish/template.html
 share/e2guardian/languages/bulgarian/
 share/e2guardian/languages/bulgarian/fancydmtemplate.html
 share/e2guardian/languages/bulgarian/messages
-share/e2guardian/languages/bulgarian/neterr_template.html
 share/e2guardian/languages/bulgarian/template.html
 share/e2guardian/languages/chinesebig5/
 share/e2guardian/languages/chinesebig5/fancydmtemplate.html
 share/e2guardian/languages/chinesebig5/messages
-share/e2guardian/languages/chinesebig5/neterr_template.html
 share/e2guardian/languages/chinesebig5/template.html
 share/e2guardian/languages/chinesegb2312/
 share/e2guardian/languages/chinesegb2312/fancydmtemplate.html
 share/e2guardian/languages/chinesegb2312/messages
-share/e2guardian/languages/chinesegb2312/neterr_template.html
 share/e2guardian/languages/chinesegb2312/template.html
 share/e2guardian/languages/czech/
 share/e2guardian/languages/czech/fancydmtemplate.html
 share/e2guardian/languages/czech/messages
-share/e2guardian/languages/czech/neterr_template.html
 share/e2guardian/languages/czech/template.html
 share/e2guardian/languages/danish/
 share/e2guardian/languages/danish/fancydmtemplate.html
 share/e2guardian/languages/danish/messages
-share/e2guardian/languages/danish/neterr_template.html
 share/e2guardian/languages/danish/template.html
 share/e2guardian/languages/dutch/
 share/e2guardian/languages/dutch/fancydmtemplate.html
 share/e2guardian/languages/dutch/messages
-share/e2guardian/languages/dutch/neterr_template.html
 share/e2guardian/languages/dutch/template.html
 share/e2guardian/languages/french/
 share/e2guardian/languages/french/fancydmtemplate.html
 share/e2guardian/languages/french/messages
-share/e2guardian/languages/french/neterr_template.html
 share/e2guardian/languages/french/template.html
 share/e2guardian/languages/german/
 share/e2guardian/languages/german/fancydmtemplate.html
 share/e2guardian/languages/german/messages
-share/e2guardian/languages/german/neterr_template.html
 share/e2guardian/languages/german/template.html
 share/e2guardian/languages/hebrew/
 share/e2guardian/languages/hebrew/fancydmtemplate.html
 share/e2guardian/languages/hebrew/messages
-share/e2guardian/languages/hebrew/neterr_template.html
 share/e2guardian/languages/hebrew/template.html
 share/e2guardian/languages/hungarian/
 share/e2guardian/languages/hungarian/fancydmtemplate.html
 share/e2guardian/languages/hungarian/messages
-share/e2guardian/languages/hungarian/neterr_template.html
 share/e2guardian/languages/hungarian/template.html
 share/e2guardian/languages/indonesian/
 share/e2guardian/languages/indonesian/fancydmtemplate.html
 share/e2guardian/languages/indonesian/messages
-share/e2guardian/languages/indonesian/neterr_template.html
 share/e2guardian/languages/indonesian/template.html
 share/e2guardian/languages/italian/
 share/e2guardian/languages/italian/fancydmtemplate.html
 share/e2guardian/languages/italian/messages
-share/e2guardian/languages/italian/neterr_template.html
 share/e2guardian/languages/italian/template.html
 share/e2guardian/languages/japanese/
 share/e2guardian/languages/japanese/fancydmtemplate.html
 share/e2guardian/languages/japanese/messages
-share/e2guardian/languages/japanese/neterr_template.html
 share/e2guardian/languages/japanese/template.html
 share/e2guardian/languages/lithuanian/
 share/e2guardian/languages/lithuanian/fancydmtemplate.html
 share/e2guardian/languages/lithuanian/messages
-share/e2guardian/languages/lithuanian/neterr_template.html
 share/e2guardian/languages/lithuanian/template.html
 share/e2guardian/languages/malay/
 share/e2guardian/languages/malay/fancydmtemplate.html
 share/e2guardian/languages/malay/messages
-share/e2guardian/languages/malay/neterr_template.html
 share/e2guardian/languages/malay/template.html
 share/e2guardian/languages/mxspanish/
 share/e2guardian/languages/mxspanish/fancydmtemplate.html
 share/e2guardian/languages/mxspanish/messages
-share/e2guardian/languages/mxspanish/neterr_template.html
 share/e2guardian/languages/mxspanish/template.html
 share/e2guardian/languages/polish/
 share/e2guardian/languages/polish/fancydmtemplate.html
 share/e2guardian/languages/polish/messages
-share/e2guardian/languages/polish/neterr_template.html
 share/e2guardian/languages/polish/template.html
 share/e2guardian/languages/portuguese/
 share/e2guardian/languages/portuguese/fancydmtemplate.html
 share/e2guardian/languages/portuguese/messages
-share/e2guardian/languages/portuguese/neterr_template.html
 share/e2guardian/languages/portuguese/template.html
 share/e2guardian/languages/ptbrazilian/
 share/e2guardian/languages/ptbrazilian/fancydmtemplate.html
 share/e2guardian/languages/ptbrazilian/messages
-share/e2guardian/languages/ptbrazilian/neterr_template.html
 share/e2guardian/languages/ptbrazilian/template.html
 share/e2guardian/languages/russian-1251/
 share/e2guardian/languages/russian-1251/fancydmtemplate.html
 share/e2guardian/languages/russian-1251/messages
-share/e2guardian/languages/russian-1251/neterr_template.html
 share/e2guardian/languages/russian-1251/template.html
 share/e2guardian/languages/russian-koi8-r/
 share/e2guardian/languages/russian-koi8-r/fancydmtemplate.html
 share/e2guardian/languages/russian-koi8-r/messages
-share/e2guardian/languages/russian-koi8-r/neterr_template.html
 share/e2guardian/languages/russian-koi8-r/template.html
 share/e2guardian/languages/slovak/
 share/e2guardian/languages/slovak/fancydmtemplate.html
 share/e2guardian/languages/slovak/messages
-share/e2guardian/languages/slovak/neterr_template.html
 share/e2guardian/languages/slovak/template.html
 share/e2guardian/languages/spanish/
 share/e2guardian/languages/spanish/fancydmtemplate.html
 share/e2guardian/languages/spanish/messages
-share/e2guardian/languages/spanish/neterr_template.html
 share/e2guardian/languages/spanish/template.html
 share/e2guardian/languages/swedish/
 share/e2guardian/languages/swedish/fancydmtemplate.html
 share/e2guardian/languages/swedish/messages
-share/e2guardian/languages/swedish/neterr_template.html
 share/e2guardian/languages/swedish/template.html
 share/e2guardian/languages/turkish/
 share/e2guardian/languages/turkish/fancydmtemplate.html
 share/e2guardian/languages/turkish/messages
-share/e2guardian/languages/turkish/neterr_template.html
 share/e2guardian/languages/turkish/template.html
 share/e2guardian/languages/ukenglish/
 share/e2guardian/languages/ukenglish/fancydmtemplate.html
 share/e2guardian/languages/ukenglish/messages
-share/e2guardian/languages/ukenglish/neterr_template.html
 share/e2guardian/languages/ukenglish/template.html
 share/e2guardian/scripts/
 share/e2guardian/scripts/bsd-init
@@ -173,8 +146,6 @@ share/examples/e2guardian/authplugins/proxy-basic.conf
 @sample ${SYSCONFDIR}/e2guardian/authplugins/proxy-basic.conf
 share/examples/e2guardian/authplugins/proxy-digest.conf
 @sample ${SYSCONFDIR}/e2guardian/authplugins/proxy-digest.conf
-share/examples/e2guardian/common.story
-@sample ${SYSCONFDIR}/e2guardian/common.story
 share/examples/e2guardian/contentscanners/
 @sample ${SYSCONFDIR}/e2guardian/contentscanners/
 share/examples/e2guardian/contentscanners/clamdscan.conf
@@ -183,20 +154,18 @@ share/examples/e2guardian/downloadmanagers/
 @sample ${SYSCONFDIR}/e2guardian/downloadmanagers/
 share/examples/e2guardian/downloadmanagers/default.conf
 @sample ${SYSCONFDIR}/e2guardian/downloadmanagers/default.conf
+share/examples/e2guardian/downloadmanagers/fancy.conf
+@sample ${SYSCONFDIR}/e2guardian/downloadmanagers/fancy.conf
+share/examples/e2guardian/downloadmanagers/trickle.conf
+@sample ${SYSCONFDIR}/e2guardian/downloadmanagers/trickle.conf
 share/examples/e2guardian/e2guardian.conf
 @sample ${SYSCONFDIR}/e2guardian/e2guardian.conf
 share/examples/e2guardian/e2guardianf1.conf
 @sample ${SYSCONFDIR}/e2guardian/e2guardianf1.conf
-share/examples/e2guardian/examplef1.story
-@sample ${SYSCONFDIR}/e2guardian/examplef1.story
 share/examples/e2guardian/lists/
 @sample ${SYSCONFDIR}/e2guardian/lists/
 share/examples/e2guardian/lists/addheaderregexplist
 @sample ${SYSCONFDIR}/e2guardian/lists/addheaderregexplist
-share/examples/e2guardian/lists/authexceptioniplist
-@sample ${SYSCONFDIR}/e2guardian/lists/authexceptioniplist
-share/examples/e2guardian/lists/authexceptionsiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/authexceptionsiteiplist
 share/examples/e2guardian/lists/authexceptionsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/authexceptionsitelist
 share/examples/e2guardian/lists/authexceptionurllist
@@ -207,8 +176,6 @@ share/examples/e2guardian/lists/authplugins/ipgroups
 @sample ${SYSCONFDIR}/e2guardian/lists/authplugins/ipgroups
 share/examples/e2guardian/lists/authplugins/portgroups
 @sample ${SYSCONFDIR}/e2guardian/lists/authplugins/portgroups
-share/examples/e2guardian/lists/bannedclientlist
-@sample ${SYSCONFDIR}/e2guardian/lists/bannedclientlist
 share/examples/e2guardian/lists/bannedextensionlist
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedextensionlist
 share/examples/e2guardian/lists/bannediplist
@@ -221,23 +188,15 @@ share/examples/e2guardian/lists/bannedregexpheaderlist
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedregexpheaderlist
 share/examples/e2guardian/lists/bannedregexpurllist
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedregexpurllist
-share/examples/e2guardian/lists/bannedregexpuseragentlist
-@sample ${SYSCONFDIR}/e2guardian/lists/bannedregexpuseragentlist
 share/examples/e2guardian/lists/bannedrooms/
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedrooms/
 share/examples/e2guardian/lists/bannedrooms/default
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedrooms/default
 share/examples/e2guardian/lists/bannedsearchlist
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedsearchlist
-share/examples/e2guardian/lists/bannedsearchoveridelist
-@sample ${SYSCONFDIR}/e2guardian/lists/bannedsearchoveridelist
-share/examples/e2guardian/lists/bannedsiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/bannedsiteiplist
 share/examples/e2guardian/lists/bannedsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedsitelist
 share/examples/e2guardian/lists/bannedsitelistwithbypass
-share/examples/e2guardian/lists/bannedsslsiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/bannedsslsiteiplist
 share/examples/e2guardian/lists/bannedsslsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedsslsitelist
 share/examples/e2guardian/lists/bannedurllist
@@ -256,19 +215,18 @@ share/examples/e2guardian/lists/contentscanners/exceptionvirussitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/contentscanners/exceptionvirussitelist
 share/examples/e2guardian/lists/contentscanners/exceptionvirusurllist
 @sample ${SYSCONFDIR}/e2guardian/lists/contentscanners/exceptionvirusurllist
+share/examples/e2guardian/lists/downloadmanagers/
 @sample ${SYSCONFDIR}/e2guardian/lists/downloadmanagers/
-share/examples/e2guardian/lists/embededreferersiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/embededreferersiteiplist
+share/examples/e2guardian/lists/downloadmanagers/managedextensionlist
+@sample ${SYSCONFDIR}/e2guardian/lists/downloadmanagers/managedextensionlist
+share/examples/e2guardian/lists/downloadmanagers/managedmimetypelist
+@sample ${SYSCONFDIR}/e2guardian/lists/downloadmanagers/managedmimetypelist
 share/examples/e2guardian/lists/embededreferersitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/embededreferersitelist
 share/examples/e2guardian/lists/embededrefererurllist
 @sample ${SYSCONFDIR}/e2guardian/lists/embededrefererurllist
-share/examples/e2guardian/lists/exceptionclientlist
-@sample ${SYSCONFDIR}/e2guardian/lists/exceptionclientlist
 share/examples/e2guardian/lists/exceptionextensionlist
 @sample ${SYSCONFDIR}/e2guardian/lists/exceptionextensionlist
-share/examples/e2guardian/lists/exceptionfilesiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/exceptionfilesiteiplist
 share/examples/e2guardian/lists/exceptionfilesitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/exceptionfilesitelist
 share/examples/e2guardian/lists/exceptionfileurllist
@@ -279,30 +237,16 @@ share/examples/e2guardian/lists/exceptionmimetypelist
 @sample ${SYSCONFDIR}/e2guardian/lists/exceptionmimetypelist
 share/examples/e2guardian/lists/exceptionphraselist
 @sample ${SYSCONFDIR}/e2guardian/lists/exceptionphraselist
-share/examples/e2guardian/lists/exceptionregexpheaderlist
-@sample ${SYSCONFDIR}/e2guardian/lists/exceptionregexpheaderlist
 share/examples/e2guardian/lists/exceptionregexpurllist
 @sample ${SYSCONFDIR}/e2guardian/lists/exceptionregexpurllist
-share/examples/e2guardian/lists/exceptionregexpuseragentlist
-@sample ${SYSCONFDIR}/e2guardian/lists/exceptionregexpuseragentlist
-share/examples/e2guardian/lists/exceptionsiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/exceptionsiteiplist
 share/examples/e2guardian/lists/exceptionsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/exceptionsitelist
 share/examples/e2guardian/lists/exceptionurllist
 @sample ${SYSCONFDIR}/e2guardian/lists/exceptionurllist
-share/examples/e2guardian/lists/exceptionvirusextensionlist
-@sample ${SYSCONFDIR}/e2guardian/lists/exceptionvirusextensionlist
-share/examples/e2guardian/lists/exceptionvirussiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/exceptionvirussiteiplist
 share/examples/e2guardian/lists/filtergroupslist
 @sample ${SYSCONFDIR}/e2guardian/lists/filtergroupslist
-share/examples/e2guardian/lists/greysiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/greysiteiplist
 share/examples/e2guardian/lists/greysitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/greysitelist
-share/examples/e2guardian/lists/greysslsiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/greysslsiteiplist
 share/examples/e2guardian/lists/greysslsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/greysslsitelist
 share/examples/e2guardian/lists/greyurllist
@@ -311,42 +255,28 @@ share/examples/e2guardian/lists/headerregexplist
 @sample ${SYSCONFDIR}/e2guardian/lists/headerregexplist
 share/examples/e2guardian/lists/localbannedsearchlist
 @sample ${SYSCONFDIR}/e2guardian/lists/localbannedsearchlist
-share/examples/e2guardian/lists/localbannedsiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/localbannedsiteiplist
 share/examples/e2guardian/lists/localbannedsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/localbannedsitelist
-share/examples/e2guardian/lists/localbannedsslsiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/localbannedsslsiteiplist
 share/examples/e2guardian/lists/localbannedsslsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/localbannedsslsitelist
 share/examples/e2guardian/lists/localbannedurllist
 @sample ${SYSCONFDIR}/e2guardian/lists/localbannedurllist
-share/examples/e2guardian/lists/localexceptionsiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/localexceptionsiteiplist
 share/examples/e2guardian/lists/localexceptionsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/localexceptionsitelist
 share/examples/e2guardian/lists/localexceptionurllist
 @sample ${SYSCONFDIR}/e2guardian/lists/localexceptionurllist
-share/examples/e2guardian/lists/localgreysiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/localgreysiteiplist
 share/examples/e2guardian/lists/localgreysitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/localgreysitelist
-share/examples/e2guardian/lists/localgreysslsiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/localgreysslsiteiplist
 share/examples/e2guardian/lists/localgreysslsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/localgreysslsitelist
 share/examples/e2guardian/lists/localgreyurllist
 @sample ${SYSCONFDIR}/e2guardian/lists/localgreyurllist
 share/examples/e2guardian/lists/logregexpurllist
 @sample ${SYSCONFDIR}/e2guardian/lists/logregexpurllist
-share/examples/e2guardian/lists/logsiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/logsiteiplist
 share/examples/e2guardian/lists/logsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/logsitelist
 share/examples/e2guardian/lists/logurllist
 @sample ${SYSCONFDIR}/e2guardian/lists/logurllist
-share/examples/e2guardian/lists/nocheckcertsiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/nocheckcertsiteiplist
 share/examples/e2guardian/lists/nocheckcertsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/nocheckcertsitelist
 share/examples/e2guardian/lists/phraselists/
@@ -571,8 +501,8 @@ share/examples/e2guardian/lists/phraselists/webmail/
 @sample ${SYSCONFDIR}/e2guardian/lists/phraselists/webmail/
 share/examples/e2guardian/lists/phraselists/webmail/weighted
 @sample ${SYSCONFDIR}/e2guardian/lists/phraselists/webmail/weighted
-share/examples/e2guardian/lists/refererexceptionsiteiplist
-@sample ${SYSCONFDIR}/e2guardian/lists/refererexceptionsiteiplist
+share/examples/e2guardian/lists/pics
+@sample ${SYSCONFDIR}/e2guardian/lists/pics
 share/examples/e2guardian/lists/refererexceptionsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/refererexceptionsitelist
 share/examples/e2guardian/lists/refererexceptionurllist
@@ -587,10 +517,6 @@ share/examples/e2guardian/lists/urlregexplist
 @sample ${SYSCONFDIR}/e2guardian/lists/urlregexplist
 share/examples/e2guardian/lists/weightedphraselist
 @sample ${SYSCONFDIR}/e2guardian/lists/weightedphraselist
-share/examples/e2guardian/preauth.story
-@sample ${SYSCONFDIR}/e2guardian/preauth.story
-share/examples/e2guardian/site.story
-@sample ${SYSCONFDIR}/e2guardian/site.story
 @mode 0755
 @owner _e2guardian
 @group _e2guardian

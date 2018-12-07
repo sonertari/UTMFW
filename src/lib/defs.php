@@ -361,7 +361,7 @@ $StatsConf = array(
 			),
 		'Bypassed' => array(
 			'Title' => _STATS('Bypassed denials'),
-			'Needle' => 'GBYPASS| Bypass ',
+			'Needle' => 'GBYPASS| Bypass |TRUSTED',
 			'Color' => '#FF8000',
 			'NVPs' => array(
 				'Link' => _STATS('Requests bypassed'),

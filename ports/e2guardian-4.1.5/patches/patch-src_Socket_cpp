@@ -2,53 +2,53 @@ $OpenBSD$
 Index: src/Socket.cpp
 --- src/Socket.cpp.orig
 +++ src/Socket.cpp
-@@ -67,6 +67,7 @@ Socket::Socket() {
-             setsockopt(sck, IPPROTO_TCP, TCP_NODELAY, &f, sizeof(int));
+@@ -60,6 +60,7 @@ Socket::Socket()
+             int res = setsockopt(sck, IPPROTO_TCP, TCP_NODELAY, &f, sizeof(int));
  
          my_port = 0;
 +        actualPeerPort = 0;
-         chunkError = false;
  
  #ifdef __SSLMITM
-@@ -93,6 +94,7 @@ Socket::Socket(int fd)
+         ssl = NULL;
+@@ -86,6 +87,7 @@ Socket::Socket(int fd)
      int res = setsockopt(sck, IPPROTO_TCP, TCP_NODELAY, &f, sizeof(int));
      if (res < 0) s_errno = errno;
      my_port = 0;
 +    actualPeerPort = 0;
-     chunkError = false;
  
  #ifdef __SSLMITM
-@@ -120,6 +122,7 @@ Socket::Socket(int newfd, struct sockaddr_in myip, str
+     ssl = NULL;
+@@ -113,6 +115,7 @@ Socket::Socket(int newfd, struct sockaddr_in myip, str
      int res = setsockopt(sck, IPPROTO_TCP, TCP_NODELAY, &f, sizeof(int));
      if (res < 0) s_errno = errno;
      my_port = 0;
 +    actualPeerPort = 0;
-     chunkError = false;
  
  #ifdef __SSLMITM
-@@ -140,12 +143,18 @@ std::string Socket::getLocalIP() {
- 
+     ssl = NULL;
+@@ -133,12 +136,18 @@ std::string Socket::getLocalIP()
  // find the ip of the client connecting to us
- std::string Socket::getPeerIP() {
+ std::string Socket::getPeerIP()
+ {
 +    if (!actualPeerAddr.empty()) {
 +        return actualPeerAddr;
 +    }
-     char res[INET_ADDRSTRLEN];
-     return inet_ntop(AF_INET,&peer_adr.sin_addr, res, sizeof(res));
+     return inet_ntoa(peer_adr.sin_addr);
  }
  
  // find the port of the client connecting to us
- int Socket::getPeerSourcePort() {
+ int Socket::getPeerSourcePort()
+ {
 +    if (actualPeerPort) {
 +        return actualPeerPort;
 +    }
      return ntohs(peer_adr.sin_port);
  }
- 
-@@ -160,6 +169,12 @@ void Socket::setPort(int port) {
- // return the address of the client connecting to us
- unsigned long int Socket::getPeerSourceAddr() {
-     return (unsigned long int) ntohl(peer_adr.sin_addr.s_addr);
+ int Socket::getPort()
+@@ -154,6 +163,12 @@ void Socket::setPort(int port)
+ unsigned long int Socket::getPeerSourceAddr()
+ {
+     return (unsigned long int)ntohl(peer_adr.sin_addr.s_addr);
 +}
 +
 +void Socket::setActualPeerAddrPort(std::string addr, int port)

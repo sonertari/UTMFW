@@ -36,8 +36,8 @@ $LogConf = array(
 			'Col' => 'Scan',
 			'REs' => array(
 				'red' => array('\*DENIED\*'),
-				'yellow' => array('Bypass cookie|Bypass URL'),
-				'green' => array('\*SCANNED\*|\*TRUSTED\*'),
+				'yellow' => array('Bypass cookie|Bypass URL|\*TRUSTED\*'),
+				'green' => array('\*SCANNED\*'),
 				),
 			),
 		),

@@ -3,25 +3,25 @@ $OpenBSD$
 Index: src/FatController.cpp
 --- src/FatController.cpp.orig
 +++ src/FatController.cpp
-@@ -1036,7 +1036,7 @@ void log_listener(std::string log_location, bool logco
+@@ -1060,7 +1060,7 @@ void log_listener(std::string log_location, bool logco
                              postdata + "\"";
                  break;
              case 1:
 -                builtline = when + " " + who + " " + from + " " + where + " " + what + " "
 +                builtline = (!logsyslog ? when + " " : "") + who + " " + from + " " + where + " " + what + " "
                              + how + " " + ssize + " " + sweight + " " + cat + " " + stringgroup + " "
-                             + stringcode + " " + mimetype + " " + clienthost + " " + ldl->fg[filtergroup]->name + " "
+                             + stringcode + " " + mimetype + " " + clienthost + " " + groupname + " "
                              + useragent + " " + params + " " + o.logid_1 + " " + o.logid_2 + " " + postdata;
-@@ -1077,7 +1077,7 @@ void log_listener(std::string log_location, bool logco
+@@ -1101,7 +1101,7 @@ void log_listener(std::string log_location, bool logco
          if (!logsyslog)
              *logfile << builtline << std::endl; // append the line
          else
 -            syslog(LOG_INFO, "%s", builtline.c_str());
 +            syslog(LOG_LOCAL0|LOG_INFO, "%s", builtline.c_str());
- #ifdef DGDEBUG
-         std::cerr << itemcount << " " << builtline << std::endl;
- #endif
-@@ -1673,12 +1673,11 @@ int fc_controlit()   //
+ 
+         //    delete ipcpeersock; // close the connection
+ 
+@@ -2017,12 +2017,11 @@ int fc_controlit()   //
              gentlereload = false;
              continue;        //  OK to continue even if gentle failed - just continue to use previous lists
          }
@@ -33,17 +33,17 @@ Index: src/FatController.cpp
 +        int retval = sigwait(&signal_set, &rc);
 +        if (retval < 0) {
              if (errno != EAGAIN) {
--                syslog(LOG_INFO, "%sUnexpected error from sigtimedwait() %d %s", thread_id.c_str(), errno, strerror(errno));
-+                syslog(LOG_INFO, "%sUnexpected error from sigwait() %d %s", thread_id.c_str(), errno, strerror(errno));
+-                syslog(LOG_INFO, "Unexpected error from sigtimedwait() %d %s", errno, strerror(errno));
++                syslog(LOG_INFO, "Unexpected error from sigwait() %d %s", errno, strerror(errno));
              }
          } else {
              if (rc == SIGUSR1)
-@@ -1691,7 +1690,7 @@ int fc_controlit()   //
-             std::cerr << "signal:" << rc << std::endl;
+@@ -2035,7 +2034,7 @@ int fc_controlit()   //
+             std::cout << "signal:" << rc << std::endl;
  #endif
              if (o.logconerror) {
--                syslog(LOG_INFO, "%ssigtimedwait() signal %d recd:", thread_id.c_str(), rc);
-+                syslog(LOG_INFO, "%ssigwait() signal %d recd:", thread_id.c_str(), rc);
+-                syslog(LOG_INFO, "sigtimedwait() signal %d recd:", rc);
++                syslog(LOG_INFO, "sigwait() signal %d recd:", rc);
              }
          }
-         int q_size = o.http_worker_Q.size();
+         int q_size = o.http_worker_Q->size();

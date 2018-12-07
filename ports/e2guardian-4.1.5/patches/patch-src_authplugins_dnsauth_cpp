@@ -3,7 +3,7 @@ $OpenBSD$
 Index: src/authplugins/dnsauth.cpp
 --- src/authplugins/dnsauth.cpp.orig
 +++ src/authplugins/dnsauth.cpp
-@@ -221,7 +221,7 @@ bool dnsauthinstance::getdnstxt(String &ippath)
+@@ -219,7 +219,7 @@ bool dnsauthinstance::getdnstxt(String &ippath)
      // get info from DNS
      union {
          HEADER hdr;
