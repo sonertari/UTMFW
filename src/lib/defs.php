@@ -935,7 +935,7 @@ $StatsConf = array(
 			),
 		'Error' => array(
 			'Title' => _STATS('Errors'),
-			'Needle' => 'ERROR:',
+			'Needle' => 'ERROR:|CRITICAL:',
 			'Color' => 'Red',
 			'NVPs' => array(
 				'Error' => _STATS('Reasons'),
