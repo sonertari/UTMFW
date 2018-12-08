@@ -256,7 +256,12 @@ share/examples/e2guardian/lists/contentscanners/exceptionvirussitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/contentscanners/exceptionvirussitelist
 share/examples/e2guardian/lists/contentscanners/exceptionvirusurllist
 @sample ${SYSCONFDIR}/e2guardian/lists/contentscanners/exceptionvirusurllist
+share/examples/e2guardian/lists/downloadmanagers/
 @sample ${SYSCONFDIR}/e2guardian/lists/downloadmanagers/
+share/examples/e2guardian/lists/downloadmanagers/managedextensionlist
+@sample ${SYSCONFDIR}/e2guardian/lists/downloadmanagers/managedextensionlist
+share/examples/e2guardian/lists/downloadmanagers/managedmimetypelist
+@sample ${SYSCONFDIR}/e2guardian/lists/downloadmanagers/managedmimetypelist
 share/examples/e2guardian/lists/embededreferersiteiplist
 @sample ${SYSCONFDIR}/e2guardian/lists/embededreferersiteiplist
 share/examples/e2guardian/lists/embededreferersitelist

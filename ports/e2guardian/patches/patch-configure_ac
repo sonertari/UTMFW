@@ -1,0 +1,14 @@
+$OpenBSD$
+
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -380,7 +380,7 @@ void f(const off_t);
+ # by default, we do not need the content scanner list or config directories, nor the download manager list directory
+ cslists=false
+ csconfigs=false
+-dmlists=false
++dmlists=true
+ 
+ # asking user if they want clamd support
+ AC_MSG_CHECKING(for clamd support)
