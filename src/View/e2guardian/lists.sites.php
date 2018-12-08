@@ -37,7 +37,7 @@ function PrintFilterConfForms($list)
 				'title' => _TITLE2('Whitelist'),
 				'color' => 'white',
 				),
-			'gray'		=> array(
+			'grey'		=> array(
 				'title' => _TITLE2('Greylist'),
 				'color' => '#eee',
 				),
@@ -51,7 +51,7 @@ function PrintFilterConfForms($list)
 				'title' => _TITLE2('Whitelist'),
 				'color' => 'white',
 				),
-			'gray'		=> array(
+			'grey'		=> array(
 				'title' => _TITLE2('Greylist'),
 				'color' => '#eee',
 				),
@@ -87,13 +87,9 @@ function PrintFilterConfForms($list)
 						<select name="SitesToDelete[]" multiple style="width: 400px; height: 100px;">
 						<?php
 						for ($i = 0; $i < count($items); $i++){
-							// @attention Do not list blanket configuration
-							// XXX: These should be filtered in the Model actually
-							if (!in_array($items[$i], array('**', '**s', '*ip', '*ips'))) {
-								?>
-								<option value="<?php echo $items[$i] ?>"><?php echo $items[$i] ?></option>
-								<?php
-							}
+							?>
+							<option value="<?php echo $items[$i] ?>"><?php echo $items[$i] ?></option>
+							<?php
 						}
 						?>
 						</select>

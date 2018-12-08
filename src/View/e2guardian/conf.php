@@ -38,9 +38,6 @@ switch ($Submenu) {
 	case 'scan':
 		$View->ConfHelpMsg= _HELPWINDOW('Thresholds and settings here are related with the content scanning feature of the web filter.')."\n\n".$Msg;
 		break;
-	case 'blanket':
-		$View->ConfHelpMsg= _HELPWINDOW('Blanket block configuration is used to block all traffic for that rule.')."\n\n".$Msg;
-		break;
 	case 'bypass':
 		$View->ConfHelpMsg= _HELPWINDOW('The options here are for the Denied page which the user receives instead of the page requested.')."\n\n".$Msg;
 		break;

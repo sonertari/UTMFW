@@ -58,21 +58,25 @@ $SubmenuConf= array(
 		),
 	
 	'virus_sites'	=>	array(
+		'PrintGroupForm'=> TRUE,
 		'HelpMsg'		=> _HELPWINDOW("Sites in the Whitelist are not scanned for viruses. You can omit the leading www. or http://"),
 		'IncludeFile'	=> 'lists.sites.php',
 		),
 	
 	'virus_urls'	=>	array(
+		'PrintGroupForm'=> TRUE,
 		'HelpMsg'		=> _HELPWINDOW("URLs in the Whitelist are not scanned for viruses. You can omit the leading www. or http://"),
 		'IncludeFile'	=> 'lists.sites.php',
 		),
 	
 	'virus_exts'	=>	array(
+		'PrintGroupForm'=> TRUE,
 		'HelpMsg'		=> _HELPWINDOW("Files with extensions in the Whitelist are not scanned for viruses."),
 		'IncludeFile'	=> 'include.lists.php',
 		),
 	
 	'virus_mimes'	=>	array(
+		'PrintGroupForm'=> TRUE,
 		'HelpMsg'		=> _HELPWINDOW("Files with mime types in the Whitelist are not scanned for viruses."),
 		'IncludeFile'	=> 'include.lists.php',
 		),

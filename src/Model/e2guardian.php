@@ -55,79 +55,78 @@ class E2guardian extends Model
 		$this->re_DgRange= "$Re_Ip-$Re_Ip";
 		
 		$this->ipLists= array(
-				'exceptionlist'	=> 'exceptioniplist',
-				'bannedlist' 	=> 'bannediplist',
+				'exceptionlist'	=> 'exceptionclient',
+				'bannedlist' 	=> 'bannedclient',
 			);
 
 		$this->listConfig= array(
 			'sites'			=> array(
-				'exception'			=> 'exceptionsitelist',
-				'gray'				=> 'greysitelist',
-				'banned'			=> 'bannedsitelist',
+				'key'				=> 'sitelist',
 				'GetFunc'			=> 'GetSiteList',
 				'DelFunc'			=> 'DelSiteList',
 				'AddFunc'			=> 'AddSiteList',
 				),
 
 			'urls'			=>	array(
-				'exception'			=> 'exceptionurllist',
-				'gray'				=> 'greyurllist',
-				'banned'			=> 'bannedurllist',
+				'key'				=> 'urllist',
 				'GetFunc'			=> 'GetUrlList',
 				'DelFunc'			=> 'DelUrlList',
 				'AddFunc'			=> 'AddUrlList',
 				),
 
 			'exts'			=>	array(
-				'exception'			=> 'exceptionextensionlist',
-				'gray'				=> 'greyextensionlist',
-				'banned'			=> 'bannedextensionlist',
+				'key'				=> 'fileextlist',
+				'exception'			=> 'exceptionextension',
+				'banned'			=> 'bannedextension',
 				),
 
 			'mimes'			=>	array(
-				'exception'			=> 'exceptionmimetypelist',
-				'gray'				=> 'greymimetypelist',
-				'banned'			=> 'bannedmimetypelist',
+				'key'				=> 'mimelist',
+				'exception'			=> 'exceptionmime',
+				'banned'			=> 'bannedmime',
 				),
 
 			'dm_exts'		=>	array(
-				'MetaConfigFile'	=> $this->confDir.'downloadmanagers/fancy.conf',
+				'key'				=> FALSE,
+				'MetaConfigFile'	=> $this->confDir.'downloadmanagers/default.conf',
 				'exception'			=> 'managedextensionlist',
 				),
 
 			'dm_mimes'		=>	array(
-				'MetaConfigFile'	=> $this->confDir.'downloadmanagers/fancy.conf',
+				'key'				=> FALSE,
+				'MetaConfigFile'	=> $this->confDir.'downloadmanagers/default.conf',
 				'exception'			=> 'managedmimetypelist',
 				),
 
 			'virus_sites'	=>	array(
-				'MetaConfigFile'	=> $this->confDir.'contentscanners/clamdscan.conf',
-				'exception'			=> 'exceptionvirussitelist',
+				'key'				=> 'sitelist',
+				'exception'			=> 'exceptionvirus',
 				'GetFunc'			=> 'GetSiteList',
 				'DelFunc'			=> 'DelSiteList',
 				'AddFunc'			=> 'AddSiteList',
 				),
 
 			'virus_urls'	=>	array(
-				'MetaConfigFile'	=> $this->confDir.'contentscanners/clamdscan.conf',
-				'exception'			=> 'exceptionvirusurllist',
+				'key'				=> 'urllist',
+				'exception'			=> 'exceptionvirus',
 				'GetFunc'			=> 'GetUrlList',
 				'DelFunc'			=> 'DelUrlList',
 				'AddFunc'			=> 'AddUrlList',
 				),
 
 			'virus_exts'	=>	array(
-				'MetaConfigFile'	=> $this->confDir.'contentscanners/clamdscan.conf',
-				'exception'			=> 'exceptionvirusextensionlist',
+				'key'				=> 'fileextlist',
+				'exception'			=> 'exceptionvirus',
 				),
 
 			'virus_mimes'	=>	array(
-				'MetaConfigFile'	=> $this->confDir.'contentscanners/clamdscan.conf',
-				'exception'			=> 'exceptionvirusmimetypelist',
+				'key'				=> 'mimelist',
+				'exception'			=> 'exceptionvirus',
 				),
 
 			// Used by Cats only
 			'phrases'		=>	array(
+				'key'				=> FALSE,
 				'exception'			=> 'exceptionphraselist',
 				'banned'			=> 'bannedphraselist',
 				'weighted'			=> 'weightedphraselist',
@@ -255,10 +254,7 @@ class E2guardian extends Model
 	function GetConfFile($confname, $group)
 	{
 		if ($confname === 'GeneraldownloadsConfig') {
-			$file= $this->confDir.'downloadmanagers/fancy.conf';
-		}
-		else if ($confname == 'blanketConfig') {
-			$file= $this->GetGroupFile($group, 'sites', 'banned');
+			$file= $this->confDir.'downloadmanagers/default.conf';
 		}
 		else if (preg_match('/^General.*Config$/', $confname)) {
 			$file= $this->ConfFile;
@@ -272,7 +268,7 @@ class E2guardian extends Model
 	function SetConfig($confname)
 	{
 		global $GeneralbasicConfig, $GeneralfilterConfig, $GeneralscanConfig, $GenerallogsConfig, $GeneraldownloadsConfig, $GeneraladvancedConfig,
-			$blanketConfig, $basicConfig, $scanConfig, $bypassConfig, $emailConfig, $sslConfig;
+			$basicConfig, $scanConfig, $bypassConfig, $emailConfig, $sslConfig;
 		
 		if ($confname !== '') {
 			$this->Config= ${$confname};
@@ -323,7 +319,7 @@ class E2guardian extends Model
 
 	function GetListFilePath($list)
 	{
-		if ($filepath= $this->GetFilterConfFilePath($this->confDir.'e2guardian.conf', $this->ipLists[$list])) {
+		if ($filepath= $this->GetFilterKeyConfFilePath($this->confDir.'e2guardian.conf', 'iplist', $this->ipLists[$list])) {
 			return $filepath;
 		}
 		else {
@@ -422,6 +418,20 @@ class E2guardian extends Model
 	function GetFilterConfFilePath($file, $name)
 	{
 		return $this->GetNVP($file, $name, "'");
+	}
+
+	/**
+	 * Reads E2g configuration file pathname setting for the given key.
+	 *
+	 * @param string $file Config file pathname.
+	 * @param string $key Key of the NVP.
+	 * @param string $name Name of the config option.
+	 * @return string Value of the setting, file pathname.
+	 */
+	function GetFilterKeyConfFilePath($file, $key, $name)
+	{
+		//iplist = 'name=exceptionclient,messageno=600,path=/etc/e2guardian/lists/exceptioniplist'
+		return $this->SearchFile($file, "/^\h*$key\h*$this->NVPS\h*'\h*name\h*=\h*$name\b[^$this->COMC'\"\n]*,\h*path\h*=\h*([^$this->COMC'\"\n]*|'[^'\n]*'|\"[^\"\n]*\"|[^$this->COMC\n]*)(\h*|\h*$this->COMC.*)$/m", 1, "'");
 	}
 
 	/**
@@ -727,11 +737,23 @@ class E2guardian extends Model
 	{
 		$metafile= $this->GetMetaFile($group, $list);
 
-		$filename= $this->listConfig[$list][$type];
-		if (($groupfile= $this->GetFilterConfFilePath($metafile, $filename)) !== FALSE) {
-			return $groupfile;
+		$key= $this->listConfig[$list]['key'];
+
+		$name= $type;
+		if (isset($this->listConfig[$list][$type])) {
+			$name= $this->listConfig[$list][$type];
 		}
-		Error(_('Cannot find group configuration file').": $type $list");
+
+		if ($key === FALSE) {
+			if (($groupfile= $this->GetFilterConfFilePath($metafile, $name)) !== FALSE) {
+				return $groupfile;
+			}
+		} else {
+			if (($groupfile= $this->GetFilterKeyConfFilePath($metafile, $key, $name)) !== FALSE) {
+				return $groupfile;
+			}
+		}
+		Error(_('Cannot find group configuration file').": $type $list $key $name");
 		return FALSE;
 	}
 
@@ -1078,28 +1100,6 @@ $emailConfig = array(
 		),
     'threshold' => array(
         'type' => UINT,
-		),
-	);
-
-/**
- * Blanket block configuration.
- */
-$blanketConfig = array(
-    // **
-    '\*\*' => array(
-        'type' => FALSE,
-		),
-    // **s
-    '\*\*s' => array(
-        'type' => FALSE,
-		),
-    // *ip
-    '\*ip' => array(
-        'type' => FALSE,
-		),
-    // *ips
-    '\*ips' => array(
-        'type' => FALSE,
 		),
 	);
 

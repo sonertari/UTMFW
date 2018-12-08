@@ -322,32 +322,6 @@ If this is set to 0, then whenever the set number of violations are made a notif
 	);
 
 /**
- * Blanket block configuration.
- */
-$blanketConfig= array(
-	// **
-	'\*\*' => array(
-		'title' => _TITLE2('Blanket Block'),
-		'info' => _HELPBOX2('To block all sites except those in the exceptionsitelist and greysitelist files'),
-		),
-	// **s
-	'\*\*s' => array(
-		'title' => _TITLE2('Blanket SSL/CONNECT Block'),
-		'info' => _HELPBOX2('To block all SSL and CONNECT tunnels except to addresses in the exceptionsitelist and greysitelist files'),
-		),
-	// *ip
-	'\*ip' => array(
-		'title' => _TITLE2('Blanket IP Block'),
-		'info' => _HELPBOX2('To block all sites specified only as an IP'),
-		),
-	// *ips
-	'\*ips' => array(
-		'title' => _TITLE2('Blanket SSL/CONNECT IP Block'),
-		'info' => _HELPBOX2('To block all SSL and CONNECT tunnels to sites specified only as an IP'),
-		),
-	);
-
-/**
  * SSL configuration.
  */
 $sslConfig = array(

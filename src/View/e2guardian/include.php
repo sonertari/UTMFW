@@ -76,9 +76,9 @@ $Menu = array(
 			'groups' => _MENU('General'),
 			'basic' => _MENU('Basic'),
 			'scan' => _MENU('Scan'),
-			'blanket' => _MENU('Blanket'),
 			'bypass' => _MENU('Bypass'),
-			'email' => _MENU('Email'),
+			// Disable email for now
+			//'email' => _MENU('Email'),
 			// Disable SSL MITM for now
 			//'ssl' => _MENU('SSL'),
 			),

@@ -36,7 +36,7 @@ function PrintFilterCatForms($list)
 			'title'	=> _TITLE2('Whitelist'),
 			'color'	=> 'white',
 			),
-		'gray'	=> array(
+		'grey'	=> array(
 			'title'	=> _TITLE2('Greylist'),
 			'color'	=> '#eee',
 			),
@@ -53,8 +53,8 @@ function PrintFilterCatForms($list)
 	$group= $_SESSION[$View->Model]['ConfOpt'];
 
 	$catlists= array(
-		'sites'		=> array('exception', 'gray', 'banned'),
-		'urls'		=> array('exception', 'gray', 'banned'),
+		'sites'		=> array('exception', 'grey', 'banned'),
+		'urls'		=> array('exception', 'grey', 'banned'),
 		'phrases'	=> array('exception', 'banned', 'weighted'),
 		);
 	
