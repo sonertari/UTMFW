@@ -51,8 +51,11 @@ etc/e2guardian/lists/urlregexplist3,644,root,wheel
 etc/e2guardian/lists/weightedphraselist,644,root,wheel
 etc/e2guardian/e2guardian.conf,644,root,wheel
 etc/e2guardian/e2guardianf1.conf,644,root,wheel
+etc/e2guardian/e2guardianf1.story,644,root,wheel
 etc/e2guardian/e2guardianf2.conf,644,root,wheel
+etc/e2guardian/e2guardianf2.story,644,root,wheel
 etc/e2guardian/e2guardianf3.conf,644,root,wheel
+etc/e2guardian/e2guardianf3.story,644,root,wheel
 etc/e2guardian/e2guardianf4.conf,644,root,wheel
 etc/imspector/acl.txt,644,root,wheel
 etc/imspector/badwords.txt,644,root,wheel

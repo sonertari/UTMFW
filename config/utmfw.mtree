@@ -165,8 +165,11 @@ weightedphraselist	type=file mode=0644 uname=root gname=wheel
 ..	#etc/e2guardian/lists
 e2guardian.conf	type=file mode=0644 uname=root gname=wheel
 e2guardianf1.conf	type=file mode=0644 uname=root gname=wheel
+e2guardianf1.story	type=file mode=0644 uname=root gname=wheel
 e2guardianf2.conf	type=file mode=0644 uname=root gname=wheel
+e2guardianf2.story	type=file mode=0644 uname=root gname=wheel
 e2guardianf3.conf	type=file mode=0644 uname=root gname=wheel
+e2guardianf3.story	type=file mode=0644 uname=root gname=wheel
 e2guardianf4.conf	type=file mode=0644 uname=root gname=wheel
 ..	#etc/e2guardian
 imspector		type=dir mode=0755 uname=root gname=wheel
