@@ -35,7 +35,7 @@ $LogConf = array(
 		'HighlightLogs' => array(
 			'Col' => 'Scan',
 			'REs' => array(
-				'red' => array('\*DENIED\*'),
+				'red' => array('\*DENIED\*|\*NETERROR\*'),
 				'yellow' => array('Bypass cookie|Bypass URL|\*TRUSTED\*'),
 				'green' => array('\*SCANNED\*'),
 				),
