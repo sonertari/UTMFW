@@ -18,9 +18,9 @@
 #to allow part of it.
 
 #To include additional files in this list use this example:
-## .Include</etc/e2guardian/anotherurllist>
+#.Include</etc/e2guardian/anotherurllist>
 
-#You can have multiple #.Includes.
+#You can have multiple .Includes.
 
 #List other URLs to block:
 

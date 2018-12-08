@@ -1,11 +1,89 @@
-#domains in banned list for BYPASS (and only for BYPASS !)
-#Use bannesitelist to block unwanted websites
+#domains in bannedwithbypass list
+# User are not allowed to bypass sites in this list
+
 #Don't bother with the www. or the http://
+
+#NOTE: Sites using just IP should be put into bannedsiteiplistwithbypass
+
 #You can include
 #.tld so for example you can match .gov for example
 
-#To include additional files in this list use this example:
 #.Include</etc/e2guardian/anotherbannedurllist>
 
 #You can have multiple .Includes.
+
+#.Include</etc/e2guardian/lists/blacklists/adv/domains>
+#.Include</etc/e2guardian/lists/blacklists/aggressive/domains>
+#.Include</etc/e2guardian/lists/blacklists/alcohol/domains>
+#.Include</etc/e2guardian/lists/blacklists/anonvpn/domains>
+#.Include</etc/e2guardian/lists/blacklists/automobile/bikes/domains>
+#.Include</etc/e2guardian/lists/blacklists/automobile/boats/domains>
+#.Include</etc/e2guardian/lists/blacklists/automobile/cars/domains>
+#.Include</etc/e2guardian/lists/blacklists/automobile/planes/domains>
+#.Include</etc/e2guardian/lists/blacklists/chat/domains>
+#.Include</etc/e2guardian/lists/blacklists/costtraps/domains>
+#.Include</etc/e2guardian/lists/blacklists/dating/domains>
+#.Include</etc/e2guardian/lists/blacklists/downloads/domains>
+#.Include</etc/e2guardian/lists/blacklists/drugs/domains>
+#.Include</etc/e2guardian/lists/blacklists/dynamic/domains>
+#.Include</etc/e2guardian/lists/blacklists/education/schools/domains>
+#.Include</etc/e2guardian/lists/blacklists/finance/banking/domains>
+#.Include</etc/e2guardian/lists/blacklists/finance/insurance/domains>
+#.Include</etc/e2guardian/lists/blacklists/finance/moneylending/domains>
+#.Include</etc/e2guardian/lists/blacklists/finance/other/domains>
+#.Include</etc/e2guardian/lists/blacklists/finance/realestate/domains>
+#.Include</etc/e2guardian/lists/blacklists/finance/trading/domains>
+#.Include</etc/e2guardian/lists/blacklists/fortunetelling/domains>
+#.Include</etc/e2guardian/lists/blacklists/forum/domains>
+#.Include</etc/e2guardian/lists/blacklists/gamble/domains>
+#.Include</etc/e2guardian/lists/blacklists/government/domains>
+#.Include</etc/e2guardian/lists/blacklists/hacking/domains>
+#.Include</etc/e2guardian/lists/blacklists/hobby/cooking/domains>
+#.Include</etc/e2guardian/lists/blacklists/hobby/games-misc/domains>
+#.Include</etc/e2guardian/lists/blacklists/hobby/games-online/domains>
+#.Include</etc/e2guardian/lists/blacklists/hobby/gardening/domains>
+#.Include</etc/e2guardian/lists/blacklists/hobby/pets/domains>
+#.Include</etc/e2guardian/lists/blacklists/homestyle/domains>
+#.Include</etc/e2guardian/lists/blacklists/hospitals/domains>
+#.Include</etc/e2guardian/lists/blacklists/imagehosting/domains>
+#.Include</etc/e2guardian/lists/blacklists/isp/domains>
+#.Include</etc/e2guardian/lists/blacklists/jobsearch/domains>
+#.Include</etc/e2guardian/lists/blacklists/library/domains>
+#.Include</etc/e2guardian/lists/blacklists/military/domains>
+#.Include</etc/e2guardian/lists/blacklists/models/domains>
+#.Include</etc/e2guardian/lists/blacklists/movies/domains>
+#.Include</etc/e2guardian/lists/blacklists/music/domains>
+#.Include</etc/e2guardian/lists/blacklists/news/domains>
+#.Include</etc/e2guardian/lists/blacklists/podcasts/domains>
+#.Include</etc/e2guardian/lists/blacklists/politics/domains>
+#.Include</etc/e2guardian/lists/blacklists/porn/domains>
+#.Include</etc/e2guardian/lists/blacklists/radiotv/domains>
+#.Include</etc/e2guardian/lists/blacklists/recreation/humor/domains>
+#.Include</etc/e2guardian/lists/blacklists/recreation/martialarts/domains>
+#.Include</etc/e2guardian/lists/blacklists/recreation/restaurants/domains>
+#.Include</etc/e2guardian/lists/blacklists/recreation/sports/domains>
+#.Include</etc/e2guardian/lists/blacklists/recreation/travel/domains>
+#.Include</etc/e2guardian/lists/blacklists/recreation/wellness/domains>
+#.Include</etc/e2guardian/lists/blacklists/redirector/domains>
+#.Include</etc/e2guardian/lists/blacklists/religion/domains>
+#.Include</etc/e2guardian/lists/blacklists/remotecontrol/domains>
+#.Include</etc/e2guardian/lists/blacklists/ringtones/domains>
+#.Include</etc/e2guardian/lists/blacklists/science/astronomy/domains>
+#.Include</etc/e2guardian/lists/blacklists/science/chemistry/domains>
+#.Include</etc/e2guardian/lists/blacklists/searchengines/domains>
+#.Include</etc/e2guardian/lists/blacklists/sex/education/domains>
+#.Include</etc/e2guardian/lists/blacklists/sex/lingerie/domains>
+#.Include</etc/e2guardian/lists/blacklists/shopping/domains>
+#.Include</etc/e2guardian/lists/blacklists/socialnet/domains>
+#.Include</etc/e2guardian/lists/blacklists/spyware/domains>
+#.Include</etc/e2guardian/lists/blacklists/tracker/domains>
+#.Include</etc/e2guardian/lists/blacklists/updatesites/domains>
+#.Include</etc/e2guardian/lists/blacklists/urlshortener/domains>
+#.Include</etc/e2guardian/lists/blacklists/violence/domains>
+#.Include</etc/e2guardian/lists/blacklists/warez/domains>
+#.Include</etc/e2guardian/lists/blacklists/weapons/domains>
+#.Include</etc/e2guardian/lists/blacklists/webmail/domains>
+#.Include</etc/e2guardian/lists/blacklists/webphone/domains>
+#.Include</etc/e2guardian/lists/blacklists/webradio/domains>
+#.Include</etc/e2guardian/lists/blacklists/webtv/domains>
 

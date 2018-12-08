@@ -1,4 +1,15 @@
-# weightedphraselist INSTRUCTIONS FOR USE
+# E2GUARDIAN weightedphraselist INSTRUCTIONS FOR USE
+
+# New in v5.2 - per cent feature
+
+# If weighting is a % then that % of the naughtynesslimit is used as the weight
+# e.g.  
+# < slut ><10%>
+# - If naughtynesslimit is 200 will add 20 to the count against the word 'slut'
+#
+# This allows phrases to be used which will have the same effect in all
+# filtergroups
+
 #
 # Examples:
 #
@@ -20,7 +31,7 @@
 # See the bannedphraselist for more examples.
 #
 # Extra weighted-list files to include
-## .Include</etc/e2guardian/lists/phraselists/weightedphraselist.topic>
+# .Include</etc/e2guardian/lists/phraselists/weightedphraselist.topic>
 #
 # Help by contributing customised lists and/or new keyword lists. 
 # Email: pornmastergeneral@e2guardian.org or phrasemaster@e2guardian.org
@@ -35,7 +46,7 @@
 
 #To enable several non-PICS self-labelling and self-rating systems.  
 #Enabled as a bannedsitelist by default.  Disable there before enabling as a phraselist.
-##.Include</etc/e2guardian/lists/phraselists/safelabel/weighted>
+#.Include</etc/e2guardian/lists/phraselists/safelabel/weighted>
 
 #Good Phrases (to allow medical, education, news and other good sites)
 .Include</etc/e2guardian/lists/phraselists/goodphrases/weighted_general>
@@ -55,7 +66,7 @@
 #.Include</etc/e2guardian/lists/phraselists/pornography/weighted_french>
 #.Include</etc/e2guardian/lists/phraselists/pornography/weighted_german>
 #.Include</etc/e2guardian/lists/phraselists/pornography/weighted_italian>
-#.Include</etc/e2guardian/lists/phraselists/pornography/weighted_japanese> #ALPHA#
+#.Include</e2guardian/lists/phraselists/pornography/weighted_japanese> #ALPHA# #Disabled due to overblocking#
 #.Include</etc/e2guardian/lists/phraselists/pornography/weighted_malay> #BETA#
 #.Include</etc/e2guardian/lists/phraselists/pornography/weighted_norwegian> #BETA#
 #.Include</etc/e2guardian/lists/phraselists/pornography/weighted_polish>
