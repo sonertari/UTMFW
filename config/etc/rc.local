@@ -84,15 +84,9 @@ if [ -x /usr/local/sbin/snortips ]; then
 fi
 
 echo -n '\nProxies:'
-# Start squid (disable DNS checks)
-if [ -x /usr/local/sbin/squid ]; then
-	echo -n ' http'
-	/usr/local/sbin/squid
-fi
-
 # Start p3scan: pop3 virus and spam filter
 if [ -x /usr/local/sbin/p3scan ]; then
-	echo -n ', pop3'
+	echo -n ' pop3'
 	mkdir /var/run/p3scan
 	chown _p3scan /var/run/p3scan
 	/usr/local/sbin/p3scan -f /etc/p3scan/p3scan.conf

@@ -559,7 +559,6 @@ function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE, $needle='', $prefix
 							// Regex should search for a case sensitive exact match, otherwise github matches live.github or GITHUB too
 
 							// Caveats of this regexp method:
-							// @todo Squid http code: Searches and finds 302 in all text, need a separate prefix, e.g. for TCP_MISS/302
 							// @todo P3scan Number of e-mails Clean Exit: Searches all, need a separate parser, e.g. for (Clean Exit). Mails: 1
 							// @todo P3scan pop3s: Cannot find pop3s, need to make POP3S lowercase
 							// @todo Smtp-gated Source IPs: Searches and finds all IPs, not just source (or destination), the same issue with other modules

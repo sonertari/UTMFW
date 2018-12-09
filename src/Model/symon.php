@@ -175,7 +175,6 @@ class Symon extends Monitoring
 			'p3scan',
 			'perl',
 			'sshd',
-			'squid',
 			'smtp-gated',
 			'named',
 			'dhcpd',

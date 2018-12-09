@@ -101,13 +101,6 @@ msgid ""
 "It is not advised to configure the internal interface as dhcp."
 msgstr ""
 
-msgid ""
-"A netmask for client addresses in logfiles and cachemgr output.\n"
-"\t\tChange this to protect the privacy of your cache clients.\n"
-"\t\tA netmask of 255.255.255.0 will log all IP's in that range with the last "
-"digit set to '0'."
-msgstr ""
-
 msgid "ACL"
 msgstr ""
 
@@ -151,9 +144,6 @@ msgid "Add ACL"
 msgstr ""
 
 msgid "Add DHCP interface"
-msgstr ""
-
-msgid "Add HTTP proxy IP:port"
 msgstr ""
 
 msgid "Add IP"
@@ -307,9 +297,6 @@ msgstr ""
 msgid "Allow Wrong Host"
 msgstr ""
 
-msgid "Allow localhost"
-msgstr ""
-
 msgid "Allow wrong host names in certificates."
 msgstr ""
 
@@ -355,9 +342,6 @@ msgid "And <COUNT> others not shown."
 msgstr ""
 
 msgid "And Priority and Keyword"
-msgstr ""
-
-msgid "And finally deny all other access to this proxy"
 msgstr ""
 
 msgid "Anonymize Logs"
@@ -555,24 +539,6 @@ msgstr ""
 msgid "Blank Line"
 msgstr ""
 
-msgid "Blanket"
-msgstr ""
-
-msgid "Blanket Block"
-msgstr ""
-
-msgid "Blanket IP Block"
-msgstr ""
-
-msgid "Blanket SSL/CONNECT Block"
-msgstr ""
-
-msgid "Blanket SSL/CONNECT IP Block"
-msgstr ""
-
-msgid "Blanket block configuration is used to block all traffic for that rule."
-msgstr ""
-
 msgid ""
 "Blanket download blocking\n"
 "If enabled, all files will be blocked, unless they match the "
@@ -679,14 +645,6 @@ msgid ""
 "DNS server by modifying configuration files."
 msgstr ""
 
-msgid ""
-"By default, the Web Filter connects to the HTTP proxy over the loopback "
-"interface and at port 3128. If you do not want to use the Web Filter, you "
-"can change this Proxy IP:Port setting to the internal IP address of the "
-"system and port 8080. When you stop the Web Filter, all requests from the "
-"internal network should be directed to the HTTP proxy."
-msgstr ""
-
 msgid "Bypass"
 msgstr ""
 
@@ -724,12 +682,6 @@ msgid "CRITICAL"
 msgstr ""
 
 msgid "CTLR Logs"
-msgstr ""
-
-msgid "Cache"
-msgstr ""
-
-msgid "Cache mgr"
 msgstr ""
 
 msgid "Cancel"
@@ -854,9 +806,6 @@ msgid "Client"
 msgstr ""
 
 msgid "Client IPs"
-msgstr ""
-
-msgid "Client netmask"
 msgstr ""
 
 msgid "Clients"
@@ -1074,9 +1023,6 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
-msgid "Debug options"
-msgstr ""
-
 msgid "Default"
 msgstr ""
 
@@ -1113,9 +1059,6 @@ msgid "Delete All"
 msgstr ""
 
 msgid "Delete DHCP interface"
-msgstr ""
-
-msgid "Delete HTTP proxy IP:port"
 msgstr ""
 
 msgid "Delete IP"
@@ -1201,9 +1144,6 @@ msgstr ""
 msgid "Deny all OCSP requests on all proxyspecs."
 msgstr ""
 
-msgid "Deny others"
-msgstr ""
-
 msgid "Desc"
 msgstr ""
 
@@ -1252,9 +1192,6 @@ msgid "Diffie-Hellman params"
 msgstr ""
 
 msgid "Dir"
-msgstr ""
-
-msgid "Direct"
 msgstr ""
 
 msgid "Direction"
@@ -1474,14 +1411,6 @@ msgstr ""
 msgid "Editor"
 msgstr ""
 
-msgid "Email"
-msgstr ""
-
-msgid ""
-"Email-address of local cache manager who will receive mail if the cache "
-"dies. The default is \"webmaster\"."
-msgstr ""
-
 msgid "Embedded URL weighting"
 msgstr ""
 
@@ -1507,9 +1436,6 @@ msgid "Enable SSL/TLS"
 msgstr ""
 
 msgid "Enable Source Track"
-msgstr ""
-
-msgid "Enable UTMFW as a non-caching proxy for the local network."
 msgstr ""
 
 msgid ""
@@ -1960,9 +1886,6 @@ msgstr ""
 msgid "Get DNS forwarders"
 msgstr ""
 
-msgid "Get HTTP proxy IP:port"
-msgstr ""
-
 msgid "Get IP DNS listens on"
 msgstr ""
 
@@ -2281,12 +2204,6 @@ msgstr ""
 msgid "HTTP Codes"
 msgstr ""
 
-msgid "HTTP PROXY"
-msgstr ""
-
-msgid "HTTP Proxy"
-msgstr ""
-
 msgid "HTTP Proxy Password"
 msgstr ""
 
@@ -2297,12 +2214,6 @@ msgid "HTTP Proxy Server"
 msgstr ""
 
 msgid "HTTP Proxy Username"
-msgstr ""
-
-msgid ""
-"HTTP Proxy runs in front of the web filter and is responsible for fetching "
-"all web requests. Therefore, if this proxy is not running, the web filter "
-"cannot access the web, hence all web access is effectively blocked."
 msgstr ""
 
 msgid "HTTP_PORTS"
@@ -2687,11 +2598,6 @@ msgid ""
 "need to configure mail program (see 'mailer' in global config) and email "
 "recipients\n"
 "default usesmtp = off"
-msgstr ""
-
-msgid ""
-"If the HTTP proxy is configured as non-caching proxy, you should see "
-"TCP_MISS on the Cache column."
 msgstr ""
 
 msgid "If yes, both priority and keyword should match to block IPs."
@@ -3093,9 +2999,6 @@ msgid ""
 "network activity. Statistics are generated over these log files."
 msgstr ""
 
-msgid "Log fqdn"
-msgstr ""
-
 msgid "Log helo"
 msgstr ""
 
@@ -3106,9 +3009,6 @@ msgid ""
 msgstr ""
 
 msgid "Log in"
-msgstr ""
-
-msgid "Log ip on direct"
 msgstr ""
 
 msgid ""
@@ -3144,12 +3044,6 @@ msgstr ""
 msgid "Log statistics to syslog."
 msgstr ""
 
-msgid ""
-"Log the destination IP address in the hierarchy log tag when going direct. "
-"Earlier Squid versions logged the hostname here. If you prefer the old way "
-"set this to off."
-msgstr ""
-
 msgid "Log typing events"
 msgstr ""
 
@@ -3160,14 +3054,6 @@ msgid "Logging"
 msgstr ""
 
 msgid "Logging Settings"
-msgstr ""
-
-msgid ""
-"Logging options are set as section,level where each source file is assigned "
-"a unique section.  Lower levels result in less output,  Full debugging "
-"(level 9) can result in a very large log file, so be careful.  The magic "
-"word \"ALL\" sets debugging levels for all sections.  We recommend normally "
-"running with \"ALL,1\"."
 msgstr ""
 
 msgid "Login Grace Time"
@@ -3573,9 +3459,6 @@ msgid "No Queues defined"
 msgstr ""
 
 msgid "No bind"
-msgstr ""
-
-msgid "No cache"
 msgstr ""
 
 msgid "No default banner path"
@@ -4088,9 +3971,6 @@ msgid "Protocols"
 msgstr ""
 
 msgid "Proxy IP"
-msgstr ""
-
-msgid "Proxy IP:Ports"
 msgstr ""
 
 msgid "Proxy Port"
@@ -5212,9 +5092,6 @@ msgstr ""
 msgid "Size (KB)"
 msgstr ""
 
-msgid "Size by Client (KB)"
-msgstr ""
-
 msgid "Size by IP (KB)"
 msgstr ""
 
@@ -5225,9 +5102,6 @@ msgid "Size by Method (KB)"
 msgstr ""
 
 msgid "Size by Protocol (KB)"
-msgstr ""
-
-msgid "Size by Target (KB)"
 msgstr ""
 
 msgid "Size by site (KB)"
@@ -5568,16 +5442,10 @@ msgstr ""
 msgid "Tail number wrong"
 msgstr ""
 
-msgid "Target"
-msgstr ""
-
 msgid "Target IPs"
 msgstr ""
 
 msgid "Target Ports"
-msgstr ""
-
-msgid "Targets"
 msgstr ""
 
 msgid "Temperature"
@@ -5867,9 +5735,6 @@ msgid ""
 "here as well."
 msgstr ""
 
-msgid "These logs may be important for diagnosing HTTP proxy related problems."
-msgstr ""
-
 msgid "These logs may be important for diagnosing web filter related problems."
 msgstr ""
 
@@ -5942,9 +5807,6 @@ msgstr ""
 msgid ""
 "This is the DNS server internal clients use. The default is the internal IP "
 "address of the system."
-msgstr ""
-
-msgid "This is the IP and port over which the proxy accepts connections."
 msgstr ""
 
 msgid ""
@@ -6278,22 +6140,6 @@ msgstr ""
 msgid "To Redirect Host"
 msgstr ""
 
-msgid ""
-"To block all SSL and CONNECT tunnels except to addresses in the "
-"exceptionsitelist and greysitelist files"
-msgstr ""
-
-msgid "To block all SSL and CONNECT tunnels to sites specified only as an IP"
-msgstr ""
-
-msgid ""
-"To block all sites except those in the exceptionsitelist and greysitelist "
-"files"
-msgstr ""
-
-msgid "To block all sites specified only as an IP"
-msgstr ""
-
 msgid "Token"
 msgstr ""
 
@@ -6346,13 +6192,6 @@ msgid "Turn on debugging."
 msgstr ""
 
 msgid "Turn on service"
-msgstr ""
-
-msgid ""
-"Turn this on if you wish to log fully qualified domain names in the access."
-"log. To do this Squid does a DNS lookup of all IP's connecting to it. This "
-"can (in some situations) increase latency, which makes your cache seem "
-"slower for interactive browsing."
 msgstr ""
 
 msgid "Type"

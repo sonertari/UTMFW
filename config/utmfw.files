@@ -99,7 +99,6 @@ etc/pmacct/pmacctd-protograph.conf,644,root,wheel
 etc/snort/snort.conf,644,root,wheel
 etc/snort/snortinline.conf,644,root,wheel
 etc/snort/snortips.conf,644,root,wheel
-etc/squid/squid.conf,644,root,wheel
 etc/ssl/private/server.key,644,root,bin
 etc/ssl/server.crt,644,root,bin
 etc/sslproxy/sslproxy.conf,644,root,wheel
@@ -166,7 +165,6 @@ var/log/p3scan.log,640,root,wheel
 var/log/smtp-gated.log,640,root,wheel
 var/log/snortips.log,640,root,wheel
 var/log/spamd.log,640,root,wheel
-var/log/squid.log,640,root,wheel
 var/log/sslproxy/sslproxy.log,640,root,wheel
 var/log/sslproxy/conns.log,640,root,wheel
 var/named/etc/named.conf,640,root,_bind

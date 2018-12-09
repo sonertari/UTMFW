@@ -66,7 +66,6 @@ class System extends Model
 			'/usr/local/sbin/named',
 			'/usr/local/bin/sslproxy',
 			'/usr/local/sbin/e2guardian',
-			'/usr/local/sbin/squid',
 			'/usr/local/bin/snort',
 			'/usr/local/sbin/snortips',
 			'/usr/local/sbin/clamd',

@@ -88,9 +88,6 @@ msgstr ""
 msgid "CRITICAL"
 msgstr ""
 
-msgid "Cache"
-msgstr ""
-
 msgid "Category"
 msgstr ""
 
@@ -98,9 +95,6 @@ msgid "Click to search in the logs"
 msgstr ""
 
 msgid "Click to search in the stats"
-msgstr ""
-
-msgid "Client"
 msgstr ""
 
 msgid "Code"
@@ -170,9 +164,6 @@ msgid "Destination Port"
 msgstr ""
 
 msgid "Dir"
-msgstr ""
-
-msgid "Direct"
 msgstr ""
 
 msgid "Direction"
@@ -293,9 +284,6 @@ msgid "Graph files"
 msgstr ""
 
 msgid "Group"
-msgstr ""
-
-msgid "HTTP Proxy"
 msgstr ""
 
 msgid "Help Boxes"
@@ -875,9 +863,6 @@ msgid "Table Entries"
 msgstr ""
 
 msgid "Tables"
-msgstr ""
-
-msgid "Target"
 msgstr ""
 
 msgid "Temperature"

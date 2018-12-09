@@ -47,13 +47,6 @@ msgstr ""
 msgid "0 = none  1 = just denied  2 = all text based  3 = all requests"
 msgstr ""
 
-msgid ""
-"A netmask for client addresses in logfiles and cachemgr output.\n"
-"\t\tChange this to protect the privacy of your cache clients.\n"
-"\t\tA netmask of 255.255.255.0 will log all IP's in that range with the last "
-"digit set to '0'."
-msgstr ""
-
 msgid "Add *****SPAM***** to the Subject header of spam e-mails"
 msgstr ""
 
@@ -70,9 +63,6 @@ msgid ""
 "Also log clean files. Useful in debugging but drastically increases the log "
 "size.\n"
 "\t\tDefault: disabled"
-msgstr ""
-
-msgid "And finally deny all other access to this proxy"
 msgstr ""
 
 msgid ""
@@ -225,14 +215,6 @@ msgid ""
 "with unrarlib it's disabled by default and you must uncomment the directive "
 "below to enable RAR 2.0 support.\n"
 "\t\tDefault: disabled"
-msgstr ""
-
-msgid ""
-"Email-address of local cache manager who will receive mail if the cache "
-"dies. The default is \"webmaster\"."
-msgstr ""
-
-msgid "Enable UTMFW as a non-caching proxy for the local network."
 msgstr ""
 
 msgid ""
@@ -542,20 +524,6 @@ msgid "Log statistics every this many ExpiredConnCheckPeriod periods."
 msgstr ""
 
 msgid "Log statistics to syslog."
-msgstr ""
-
-msgid ""
-"Log the destination IP address in the hierarchy log tag when going direct. "
-"Earlier Squid versions logged the hostname here. If you prefer the old way "
-"set this to off."
-msgstr ""
-
-msgid ""
-"Logging options are set as section,level where each source file is assigned "
-"a unique section.  Lower levels result in less output,  Full debugging "
-"(level 9) can result in a very large log file, so be careful.  The magic "
-"word \"ALL\" sets debugging levels for all sections.  We recommend normally "
-"running with \"ALL,1\"."
 msgstr ""
 
 msgid ""
@@ -1132,9 +1100,6 @@ msgid ""
 "address of the system."
 msgstr ""
 
-msgid "This is the IP and port over which the proxy accepts connections."
-msgstr ""
-
 msgid ""
 "This is the address of your web server to which the cgi e2guardian reporting "
 "script was copied. Only used in reporting levels 1 and 2.\n"
@@ -1272,22 +1237,6 @@ msgid ""
 "content infection."
 msgstr ""
 
-msgid ""
-"To block all SSL and CONNECT tunnels except to addresses in the "
-"exceptionsitelist and greysitelist files"
-msgstr ""
-
-msgid "To block all SSL and CONNECT tunnels to sites specified only as an IP"
-msgstr ""
-
-msgid ""
-"To block all sites except those in the exceptionsitelist and greysitelist "
-"files"
-msgstr ""
-
-msgid "To block all sites specified only as an IP"
-msgstr ""
-
 msgid "Total of block extensions cannot be higher than this value."
 msgstr ""
 
@@ -1295,13 +1244,6 @@ msgid "Try to preserve some state across restarts."
 msgstr ""
 
 msgid "Turn on debugging."
-msgstr ""
-
-msgid ""
-"Turn this on if you wish to log fully qualified domain names in the access."
-"log. To do this Squid does a DNS lookup of all IP's connecting to it. This "
-"can (in some situations) increase latency, which makes your cache seem "
-"slower for interactive browsing."
 msgstr ""
 
 msgid "Use Bayesian classifier (default: 1)"

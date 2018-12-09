@@ -71,9 +71,6 @@ msgstr "Atlanan engellemeler"
 msgid "Bypassing IPs"
 msgstr "Atlayan IP'ler"
 
-msgid "Cache"
-msgstr "Önbellek"
-
 msgid "Client"
 msgstr "İstemci"
 
@@ -314,9 +311,6 @@ msgstr "Bağlantı kesme"
 msgid "Set watermarks"
 msgstr "Devreye giren watermarklar"
 
-msgid "Size by Client (KB)"
-msgstr "İstemci başına boyut (KB)"
-
 msgid "Size by IP (KB)"
 msgstr "IP başına boyut (KB) "
 
@@ -328,9 +322,6 @@ msgstr "Metod başına boyut (KB)"
 
 msgid "Size by Protocol (KB)"
 msgstr "Protokol başına boyut (KB)"
-
-msgid "Size by Target (KB)"
-msgstr "Hedef başına boyut (KB)"
 
 msgid "Size by site (KB)"
 msgstr "Site başına boyut (KB)"
@@ -367,9 +358,6 @@ msgstr "Hedef IP'ler"
 
 msgid "Target Ports"
 msgstr "Hedef kapılar"
-
-msgid "Targets"
-msgstr "Hedefler"
 
 msgid "Total deferred time (sec)"
 msgstr "Toplam geciktirme süresi (sn)"

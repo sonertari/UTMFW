@@ -44,9 +44,6 @@ msgstr "Temel"
 msgid "Blacklists"
 msgstr "Karalisteler"
 
-msgid "Blanket"
-msgstr "Örtü"
-
 msgid "Bypass"
 msgstr "Kestirme"
 
@@ -116,9 +113,6 @@ msgstr "İndirme"
 msgid "Editor"
 msgstr "Düzenleyici"
 
-msgid "Email"
-msgstr "Eposta"
-
 msgid "Extensions"
 msgstr "Uzantılar"
 
@@ -136,9 +130,6 @@ msgstr "Grafikler"
 
 msgid "Groups"
 msgstr "Gruplar"
-
-msgid "HTTP PROXY"
-msgstr "HTTP VEKİL"
 
 msgid "Help"
 msgstr "Yardım"

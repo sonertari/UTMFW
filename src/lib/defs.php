@@ -792,48 +792,6 @@ $StatsConf = array(
 				),
 			),
 		),
-    'squidlogs' => array(
-		'Total' => array(
-			'Title' => _STATS('All requests'),
-			'Cmd' => '/bin/cat <LF>',
-			'Needle' => '',
-			'SearchRegexpPrefix' => '(https://|http://|[A-Z]+/|[[:blank:]]+)',
-			'SearchRegexpPostfix' => '([^[:alnum:]_]+)',
-			'Color' => '#01466b',
-			'NVPs' => array(
-				'Link' => _STATS('Links'),
-				'Target' => _STATS('Targets'),
-				'Client' => _STATS('Clients'),
-				'Proto' => _STATS('Protocols'),
-				'Mtd' => _STATS('Methods'),
-				'Code' => _STATS('HTTP Codes'),
-				),
-			'BriefStats' => array(
-				'Date' => _STATS('Requests by date'),
-				'Link' => _STATS('Links'),
-				'Proto' => _STATS('Protocols'),
-				'Mtd' => _STATS('Methods'),
-				'Code' => _STATS('HTTP Codes'),
-				'Cache' => _STATS('Cache'),
-				'Type' => _STATS('Type'),
-				),
-			'Counters' => array(
-				'Sizes' => array(
-					'Field' => 'Size',
-					'Title' => _STATS('Downloaded (KB)'),
-					'Color' => '#FF8000',
-					'Divisor' => 1000,
-					'NVPs' => array(
-						'Link' => _STATS('Size by Link (KB)'),
-						'Target' => _STATS('Size by Target (KB)'),
-						'Client' => _STATS('Size by Client (KB)'),
-						'Proto' => _STATS('Size by Protocol (KB)'),
-						'Mtd' => _STATS('Size by Method (KB)'),
-						),
-					),
-				),
-			),
-		),
     'httpdlogs' => array(
 		'Total' => array(
 			'Title' => _STATS('All requests'),
@@ -1032,7 +990,6 @@ $ModelsToStat= array(
 	'pf' => _TITLE('Packet Filter'),
 	'sslproxy' => _TITLE('SSL Proxy'),
 	'e2guardian' => _TITLE('Web Filter'),
-	'squid' => _TITLE('HTTP Proxy'),
 	'snort' => _TITLE('IDS'),
 	'snortinline' => _TITLE('Inline IPS'),
 	'snortips' => _TITLE('Passive IPS'),

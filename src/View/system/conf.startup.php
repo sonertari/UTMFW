@@ -40,7 +40,6 @@ $ServiceDescs= array(
 	'/usr/local/sbin/named'			=> _TITLE2('DNS Server'),
 	'/usr/local/bin/sslproxy'		=> _TITLE2('SSL Proxy'),
 	'/usr/local/sbin/e2guardian'	=> _TITLE2('Web Filter'),
-	'/usr/local/sbin/squid'			=> _TITLE2('HTTP Proxy'),
 	'/usr/local/bin/snort'			=> _TITLE2('Intrusion Detection and Prevention'),
 	'/usr/local/sbin/snortips'		=> _TITLE2('Passive Intrusion Prevention'),
 	'/usr/local/sbin/clamd'			=> _TITLE2('Virus Filter'),

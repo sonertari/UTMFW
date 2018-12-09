@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-11-05 22:11+0300\n"
+"PO-Revision-Date: 2018-12-09 15:07+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -162,18 +162,6 @@ msgstr ""
 "\n"
 "İç ağ arayüzünü dhcp olarak yapılandırmanız tavsiye edilmez."
 
-msgid ""
-"A netmask for client addresses in logfiles and cachemgr output.\n"
-"\t\tChange this to protect the privacy of your cache clients.\n"
-"\t\tA netmask of 255.255.255.0 will log all IP's in that range with the last "
-"digit set to '0'."
-msgstr ""
-"Kayıt dosyalarındaki ve önbellek yöneticisi çıktısındaki istemci adresleri "
-"için bir ağ şablonudur.\n"
-"Önbellek istemcilerinin gizliliğini sağlamak için bunu değiştirebilirsiniz.\n"
-"255.255.255.0 şeklindeki ağ şablonu IP aralığındaki adreslerin son rakamını "
-"0'a ayarlar."
-
 msgid "ACL"
 msgstr "ACL"
 
@@ -219,9 +207,6 @@ msgstr "ACL ekle"
 
 msgid "Add DHCP interface"
 msgstr "DHCP arayüzü ekle"
-
-msgid "Add HTTP proxy IP:port"
-msgstr "HTTP vekil IP:kapı ekle"
 
 msgid "Add IP"
 msgstr "IP ekle"
@@ -377,9 +362,6 @@ msgstr "Seçeneklere İzin Ver"
 msgid "Allow Wrong Host"
 msgstr "Yanlış Sistem İsmine İzin Ver"
 
-msgid "Allow localhost"
-msgstr "Yerel bilgisayara izin ver"
-
 msgid "Allow wrong host names in certificates."
 msgstr "Sertifikalarda yanlış sistem isimlerine izin ver"
 
@@ -442,9 +424,6 @@ msgstr "Ve <COUNT> adet gösterilmeyen var."
 
 msgid "And Priority and Keyword"
 msgstr "Öncelik ve Kelimeyi And'le"
-
-msgid "And finally deny all other access to this proxy"
-msgstr "Son olarak bu vekile yapılan tüm diğer girişleri engeller."
 
 msgid "Anonymize Logs"
 msgstr "Kayıtları anonimleştir"
@@ -651,26 +630,6 @@ msgstr "Karalisteler"
 msgid "Blank Line"
 msgstr "Boş Satır"
 
-msgid "Blanket"
-msgstr "Örtü"
-
-msgid "Blanket Block"
-msgstr "Örtü engelleme"
-
-msgid "Blanket IP Block"
-msgstr "Örtü IP engelleme"
-
-msgid "Blanket SSL/CONNECT Block"
-msgstr "Örtü SSL/CONNECT engelleme"
-
-msgid "Blanket SSL/CONNECT IP Block"
-msgstr "Örtü SSL/CONNECT IP engelleme"
-
-msgid "Blanket block configuration is used to block all traffic for that rule."
-msgstr ""
-"Örtü engelleme yapılandırması kuralla ilgili tüm trafiğin engellenmesi için "
-"kullanılır."
-
 msgid ""
 "Blanket download blocking\n"
 "If enabled, all files will be blocked, unless they match the "
@@ -814,18 +773,6 @@ msgstr ""
 "kayıtları yapılmamıştır ve önbellek kullanılmamaktadır. Ancak yapılandırma "
 "dosyalarını değiştirerek DNS sunucunun tüm özelliklerini kullanabilirsiniz."
 
-msgid ""
-"By default, the Web Filter connects to the HTTP proxy over the loopback "
-"interface and at port 3128. If you do not want to use the Web Filter, you "
-"can change this Proxy IP:Port setting to the internal IP address of the "
-"system and port 8080. When you stop the Web Filter, all requests from the "
-"internal network should be directed to the HTTP proxy."
-msgstr ""
-"Öndeğer olarak web eleği HTTP vekile yerel arayüz 3128 kapısı üzerinden "
-"bağlanır. Web eleğini kullanmak istemiyorsanız bu IP:Kapı ayarını sistemin "
-"iç IP adresi ve 8080 kapısına ayarlayabilirsiniz. Web eleğini "
-"durdurduğunuzda bütün istekler HTTP vekile yönlendirilmelidir."
-
 msgid "Bypass"
 msgstr "Kestirme"
 
@@ -864,12 +811,6 @@ msgstr "ÖNEMLİ"
 
 msgid "CTLR Logs"
 msgstr "CTLR Kayıtları"
-
-msgid "Cache"
-msgstr "Önbellek"
-
-msgid "Cache mgr"
-msgstr "Önbellek yöneticisi"
 
 msgid "Cancel"
 msgstr "İptal"
@@ -1016,9 +957,6 @@ msgstr "İstemci"
 
 msgid "Client IPs"
 msgstr "İstemci IP'leri"
-
-msgid "Client netmask"
-msgstr "İstemci ağ şablonu"
 
 msgid "Clients"
 msgstr "İstemciler"
@@ -1252,9 +1190,6 @@ msgstr "Gün"
 msgid "Debug"
 msgstr "Hata Ayıklama"
 
-msgid "Debug options"
-msgstr "Hata ayıklama seçenekleri"
-
 msgid "Default"
 msgstr "Öntanım"
 
@@ -1300,9 +1235,6 @@ msgstr "Hepsini Sil"
 
 msgid "Delete DHCP interface"
 msgstr "DHCP arayüzünü sil"
-
-msgid "Delete HTTP proxy IP:port"
-msgstr "HTTP vekil IP:kapısını sil"
 
 msgid "Delete IP"
 msgstr "IP adresini sil"
@@ -1395,9 +1327,6 @@ msgstr "OCSP'yi reddet"
 msgid "Deny all OCSP requests on all proxyspecs."
 msgstr "Tüm vekil tanımlarında OCSP isteklerini reddet."
 
-msgid "Deny others"
-msgstr "Diğerlerini reddet"
-
 msgid "Desc"
 msgstr "Tanım"
 
@@ -1449,9 +1378,6 @@ msgstr "Diffie-Hellman değişkenleri"
 
 msgid "Dir"
 msgstr "Yön"
-
-msgid "Direct"
-msgstr "Direct"
 
 msgid "Direction"
 msgstr "Yön"
@@ -1690,16 +1616,6 @@ msgstr "<RULE_TYPE> Kuralı <RULE_NUMBER> Düzenleme"
 msgid "Editor"
 msgstr "Düzenleyici"
 
-msgid "Email"
-msgstr "Eposta"
-
-msgid ""
-"Email-address of local cache manager who will receive mail if the cache "
-"dies. The default is \"webmaster\"."
-msgstr ""
-"Önbellek göçerse e-posta ile uyarılacak önbellek yöneticisinin adresidir. "
-"Öndeğer webmaster'dır."
-
 msgid "Embedded URL weighting"
 msgstr "Gömülü URL ağırlıklı hesabı"
 
@@ -1726,9 +1642,6 @@ msgstr "SSL/TLS'yi aç"
 
 msgid "Enable Source Track"
 msgstr "Kaynak Takibini Aç"
-
-msgid "Enable UTMFW as a non-caching proxy for the local network."
-msgstr "Yerel ağ için UTMFW'u önbellek tutmayan bir vekil olarak ayarlar."
 
 msgid ""
 "Enable compression on the VPN link. Don't enable this unless it is also "
@@ -2236,9 +2149,6 @@ msgstr "DHCP seçeneğini getir"
 msgid "Get DNS forwarders"
 msgstr "DNS yönlendirmelerini getir"
 
-msgid "Get HTTP proxy IP:port"
-msgstr "HTTP vekil IP:kapısını getir"
-
 msgid "Get IP DNS listens on"
 msgstr "DNS sunucunun dinlediği IP adresini getir"
 
@@ -2608,12 +2518,6 @@ msgstr "HOME_NET"
 msgid "HTTP Codes"
 msgstr "HTTP Kodu"
 
-msgid "HTTP PROXY"
-msgstr "HTTP VEKİL"
-
-msgid "HTTP Proxy"
-msgstr "HTTP Vekil"
-
 msgid "HTTP Proxy Password"
 msgstr "HTTP vekil şifresi"
 
@@ -2625,15 +2529,6 @@ msgstr "HTTP vekil sunucu"
 
 msgid "HTTP Proxy Username"
 msgstr "HTTP vekil kullanıcı adı"
-
-msgid ""
-"HTTP Proxy runs in front of the web filter and is responsible for fetching "
-"all web requests. Therefore, if this proxy is not running, the web filter "
-"cannot access the web, hence all web access is effectively blocked."
-msgstr ""
-"HTTP Vekil web eleğinin önünde çalışır ve tüm web isteklerini indirmekle "
-"sorumludur. Bu nedenle, bu vekil çalışmıyorsa web eleği web'e giremez ve tüm "
-"bağlantılar engellenmiş olur."
 
 msgid "HTTP_PORTS"
 msgstr "HTTP_PORTS"
@@ -3134,13 +3029,6 @@ msgstr ""
 "mailer)\n"
 "öndeğer usesmtp = off"
 
-msgid ""
-"If the HTTP proxy is configured as non-caching proxy, you should see "
-"TCP_MISS on the Cache column."
-msgstr ""
-"HTTP vekil önbellek kullanmayacak şekilde ayarlanırsa Önbellek sütununda "
-"TCP_MISS görebilirsiniz."
-
 msgid "If yes, both priority and keyword should match to block IPs."
 msgstr ""
 "Yes olarak ayarlanmışsa, IP'lerin engellenmesi için öncelik ve anahtar "
@@ -3599,9 +3487,6 @@ msgstr ""
 "Kayıt dosyalarının sistem ve ağ etkinliği ile ilgili çok önemli bilgiler "
 "içerdiğini unutmayın. İstatistikler bu kayıt dosyaları üzerinden üretilir."
 
-msgid "Log fqdn"
-msgstr "FQDN'i kaydet"
-
 msgid "Log helo"
 msgstr "Helo'yu kaydet"
 
@@ -3616,9 +3501,6 @@ msgstr ""
 
 msgid "Log in"
 msgstr "Gir"
-
-msgid "Log ip on direct"
-msgstr "Doğrudan IP'yi kaydet"
 
 msgid ""
 "Log keeping capacity of UTMFW is limited only by the size of the disks on "
@@ -3667,15 +3549,6 @@ msgstr ""
 msgid "Log statistics to syslog."
 msgstr "İstatistikleri syslog'a yaz."
 
-msgid ""
-"Log the destination IP address in the hierarchy log tag when going direct. "
-"Earlier Squid versions logged the hostname here. If you prefer the old way "
-"set this to off."
-msgstr ""
-"Doğrudan bağlantılarda kayıt etiketine hedef IP adresini kaydeder. Önceki "
-"Squid sürümleri buraya sistem adını kaydederdi. Eski yöntemi tercih "
-"ediyorsanız bunu kapatın."
-
 msgid "Log typing events"
 msgstr "Yazma olaylarını kaydet"
 
@@ -3687,19 +3560,6 @@ msgstr "Kayıt"
 
 msgid "Logging Settings"
 msgstr "Kayıt ayarları"
-
-msgid ""
-"Logging options are set as section,level where each source file is assigned "
-"a unique section.  Lower levels result in less output,  Full debugging "
-"(level 9) can result in a very large log file, so be careful.  The magic "
-"word \"ALL\" sets debugging levels for all sections.  We recommend normally "
-"running with \"ALL,1\"."
-msgstr ""
-"Kayıt seçenekeri bölüm,seviye olarak ayarlanır, her kaynak dosyanın kendine "
-"özel bir bölümü vardır. Alt seviyeler daha az çıktı üretir. Tam hata "
-"ayıklama (seviye 9) çok büyük kayıt dosyası üretir, bu nedenle dikkatli "
-"olun. ALL sihirli kelimesi tüm bölümleri hata ayıklama seviyesine ayarlar. "
-"Normalde ALL,1 olarak çalıştırmanız tavsiye edilir."
 
 msgid "Login Grace Time"
 msgstr "Giriş vade süresi"
@@ -4135,9 +3995,6 @@ msgstr "Kuyruk tanımlanmamış"
 
 msgid "No bind"
 msgstr "Bağlantısız"
-
-msgid "No cache"
-msgstr "Önbelleksiz"
 
 msgid "No default banner path"
 msgstr "Varsayılan bir afiş yolu ayarlar."
@@ -4740,9 +4597,6 @@ msgstr "Protokoller"
 
 msgid "Proxy IP"
 msgstr "Vekil IP adresi"
-
-msgid "Proxy IP:Ports"
-msgstr "Vekil IP:kapısı"
 
 msgid "Proxy Port"
 msgstr "Vekil kapısı"
@@ -5988,9 +5842,6 @@ msgstr "Boyut"
 msgid "Size (KB)"
 msgstr "Boyut (KB)"
 
-msgid "Size by Client (KB)"
-msgstr "İstemci başına boyut (KB)"
-
 msgid "Size by IP (KB)"
 msgstr "IP başına boyut (KB) "
 
@@ -6002,9 +5853,6 @@ msgstr "Metod başına boyut (KB)"
 
 msgid "Size by Protocol (KB)"
 msgstr "Protokol başına boyut (KB)"
-
-msgid "Size by Target (KB)"
-msgstr "Hedef başına boyut (KB)"
 
 msgid "Size by site (KB)"
 msgstr "Site başına boyut (KB)"
@@ -6395,17 +6243,11 @@ msgstr "Tablolar"
 msgid "Tail number wrong"
 msgstr "Kuyruk sayısı yanlış"
 
-msgid "Target"
-msgstr "Hedef"
-
 msgid "Target IPs"
 msgstr "Hedef IP'ler"
 
 msgid "Target Ports"
 msgstr "Hedef kapılar"
-
-msgid "Targets"
-msgstr "Hedefler"
 
 msgid "Temperature"
 msgstr "Sıcaklık"
@@ -6832,9 +6674,6 @@ msgstr ""
 "Bu kayıtlar tüm STS süreçlerinden gelen mesajları içerir. Uyarılar burada da "
 "tekrarlanır."
 
-msgid "These logs may be important for diagnosing HTTP proxy related problems."
-msgstr "Bu kayıtlar HTTP vekil ile ilgili sorunları teşhis ederken önemlidir."
-
 msgid "These logs may be important for diagnosing web filter related problems."
 msgstr "Bu kayıtlar web eleği ile ilgili sorunları teşhis ederken önemlidir."
 
@@ -6940,9 +6779,6 @@ msgid ""
 msgstr ""
 "Bu iç ağdaki istemcilerin kullandığı DNS sunucudur. Öndeğer sistemin iç "
 "arayüz IP adresidir."
-
-msgid "This is the IP and port over which the proxy accepts connections."
-msgstr "Vekilin bağlantıları kabul ettiği IP ve kapı ayarıdır."
 
 msgid ""
 "This is the address of your web server to which the cgi e2guardian reporting "
@@ -7450,26 +7286,6 @@ msgstr "Bitiş"
 msgid "To Redirect Host"
 msgstr "Tekrar Yönlendirme Hedef Adresi"
 
-msgid ""
-"To block all SSL and CONNECT tunnels except to addresses in the "
-"exceptionsitelist and greysitelist files"
-msgstr ""
-"Beyaz ve gri  site listelerindeki adresler haricinde tüm SSL ve CONNECT "
-"tünellerini engeller"
-
-msgid "To block all SSL and CONNECT tunnels to sites specified only as an IP"
-msgstr ""
-"Sadece IP adres olarak tanımlanmış sitelere yapılan tüm SSL ve CONNECT "
-"tünellerini engeller"
-
-msgid ""
-"To block all sites except those in the exceptionsitelist and greysitelist "
-"files"
-msgstr "Beyaz ve gri site listelerindekiler hariç tüm siteleri engeller"
-
-msgid "To block all sites specified only as an IP"
-msgstr "Sadece IP adresi olarak tanımlanmış tüm siteleri engeller"
-
 msgid "Token"
 msgstr "Aygıt Simgesi"
 
@@ -7523,17 +7339,6 @@ msgstr "Hata ayıklamayı açar."
 
 msgid "Turn on service"
 msgstr "Servisleri aç"
-
-msgid ""
-"Turn this on if you wish to log fully qualified domain names in the access."
-"log. To do this Squid does a DNS lookup of all IP's connecting to it. This "
-"can (in some situations) increase latency, which makes your cache seem "
-"slower for interactive browsing."
-msgstr ""
-"Giriş kayıtlarında tam alan adlarının kaydedilmesini etkinleştirir. Bu "
-"amaçla Squid kendisine bağlanan tüm IP adresleri için DNS sorgusu yapar. Bu "
-"bazı durumlarda gecikmeyi artırabilir, bu da gezinmeler sırasında önbelleğin "
-"yavaş görünmesine neden olur."
 
 msgid "Type"
 msgstr "Tür"

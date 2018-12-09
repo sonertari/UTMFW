@@ -23,7 +23,6 @@ UTMFW includes the following software, alongside what is already available on a 
 - SpamAssassin: Spam scanner
 - P3scan: Anti-virus/anti-spam transparent POP3 proxy
 - Smtp-gated: Anti-virus/anti-spam transparent SMTP proxy
-- Squid: HTTP proxy
 - Dante: SOCKS proxy
 - IMSpector: IM proxy which supports IRC and others.
 - OpenVPN: Virtual private networking
@@ -105,7 +104,7 @@ However, the source tree has links to OpenBSD install sets and packages, which s
 	+ Copy the required install sets to the appropriate locations to fix the broken links in the sources.
 - Packages:
 	+ Download the required packages available on the OpenBSD mirrors.
-	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, e2guardian, squid, p3scan, smtp-gated, snort, imspector, snortips, and libevent 2.1.8 (see `ports` and `ports/distfiles`).
+	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, e2guardian, p3scan, smtp-gated, snort, imspector, snortips, and libevent 2.1.8 (see `ports` and `ports/distfiles`).
 	+ Copy them to the appropriate locations to fix the broken links in the sources.
 
 Note that you can strip down xbase and xfont install sets to reduce the size of the iso file. Copy or link them to the appropriate locations under `openbsd/utmfw`.

@@ -402,7 +402,6 @@ GetPkgDesc() {
 		smtp-gated-*) 			pkgdesc="SMTP Proxy" ;;
 		e2guardian-*) 		pkgdesc="Web Filter" ;;
 		blacklists.*) 			pkgdesc="Web Filter Blacklists" ;;
-		squid-*) 				pkgdesc="HTTP Proxy" ;;
 		snort-*) 				pkgdesc="IDP: IDS and Inline IPS" ;;
 		snortrules.*)			pkgdesc="IDP Rules" ;;
 		snortips-*) 			pkgdesc="Passive IPS" ;;
@@ -643,9 +642,6 @@ __EOT
 
 			# Post-processing for the package
 			case $_f in
-			squid-*)	echo "Post-processing for $_f: Creating squid cache..."
-				/usr/local/sbin/squid -z || _installerror=1
-				;;
 			p3scan-*|smtp-gated-*)	echo "Post-processing for $_f: Setting /dev/pf permissions..."
 				chmod a+r /dev/pf || _installerror=1
 				;;
@@ -1124,7 +1120,6 @@ THESETS="isc-bind-9.11.4pl2.tgz \
 		smtp-gated-1.4.20.0.tgz \
 		e2guardian-4.1.5.tgz \
 		blacklists.tar.gz \
-		squid-3.5.28p0.tgz \
 		snort-2.9.11.1p0.tgz \
 		snortrules.tar.gz \
 		snortips-6.2.2.tgz \

@@ -25,9 +25,6 @@ msgstr ""
 msgid "Blacklists"
 msgstr ""
 
-msgid "Blanket"
-msgstr ""
-
 msgid "Bypass"
 msgstr ""
 
@@ -97,9 +94,6 @@ msgstr ""
 msgid "Editor"
 msgstr ""
 
-msgid "Email"
-msgstr ""
-
 msgid "Extensions"
 msgstr ""
 
@@ -116,9 +110,6 @@ msgid "Graphs"
 msgstr ""
 
 msgid "Groups"
-msgstr ""
-
-msgid "HTTP PROXY"
 msgstr ""
 
 msgid "Help"

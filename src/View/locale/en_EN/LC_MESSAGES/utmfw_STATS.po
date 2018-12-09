@@ -52,9 +52,6 @@ msgstr ""
 msgid "Bypassing IPs"
 msgstr ""
 
-msgid "Cache"
-msgstr ""
-
 msgid "Client"
 msgstr ""
 
@@ -295,9 +292,6 @@ msgstr ""
 msgid "Set watermarks"
 msgstr ""
 
-msgid "Size by Client (KB)"
-msgstr ""
-
 msgid "Size by IP (KB)"
 msgstr ""
 
@@ -308,9 +302,6 @@ msgid "Size by Method (KB)"
 msgstr ""
 
 msgid "Size by Protocol (KB)"
-msgstr ""
-
-msgid "Size by Target (KB)"
 msgstr ""
 
 msgid "Size by site (KB)"
@@ -347,9 +338,6 @@ msgid "Target IPs"
 msgstr ""
 
 msgid "Target Ports"
-msgstr ""
-
-msgid "Targets"
 msgstr ""
 
 msgid "Total deferred time (sec)"

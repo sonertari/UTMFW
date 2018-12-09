@@ -7,9 +7,6 @@ msgstr ""
 msgid "Add DHCP interface"
 msgstr ""
 
-msgid "Add HTTP proxy IP:port"
-msgstr ""
-
 msgid "Add IP"
 msgstr ""
 
@@ -134,9 +131,6 @@ msgid "Delete ACL"
 msgstr ""
 
 msgid "Delete DHCP interface"
-msgstr ""
-
-msgid "Delete HTTP proxy IP:port"
 msgstr ""
 
 msgid "Delete IP"
@@ -338,9 +332,6 @@ msgid "Get DHCP option"
 msgstr ""
 
 msgid "Get DNS forwarders"
-msgstr ""
-
-msgid "Get HTTP proxy IP:port"
 msgstr ""
 
 msgid "Get IP DNS listens on"

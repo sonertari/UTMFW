@@ -74,7 +74,7 @@ class Model
 	protected $newSyslogConf= '/etc/newsyslog.conf';
 
 	/// This datetime format is for error logs, not access logs.
-	/// Hence for example squid uses the default syslog format.
+	/// Certain modules use the default syslog format.
 	protected $dateTimeFormat= 'M j H:i:s';
 
 	protected $prios= array();
@@ -3014,8 +3014,6 @@ $ModelsToLogConfig= array(
 	'sslproxyconns',
 	'e2guardian',
 	'e2guardianlogs',
-	'squid',
-	'squidlogs',
 	'snort',
 	'snortalerts',
 	'snortips',

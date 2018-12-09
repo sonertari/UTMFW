@@ -107,9 +107,6 @@ msgstr "İşlemciler"
 msgid "CRITICAL"
 msgstr "ÖNEMLİ"
 
-msgid "Cache"
-msgstr "Önbellek"
-
 msgid "Category"
 msgstr "Sınıf"
 
@@ -118,9 +115,6 @@ msgstr "Kayıtlarda aramak için tıklayın"
 
 msgid "Click to search in the stats"
 msgstr "İstatistiklerde aramak için tıklayın"
-
-msgid "Client"
-msgstr "İstemci"
 
 msgid "Code"
 msgstr "Kod"
@@ -190,9 +184,6 @@ msgstr "Hedef Kapı"
 
 msgid "Dir"
 msgstr "Yön"
-
-msgid "Direct"
-msgstr "Direct"
 
 msgid "Direction"
 msgstr "Yön"
@@ -313,9 +304,6 @@ msgstr "Grafik dosyaları"
 
 msgid "Group"
 msgstr "Grup"
-
-msgid "HTTP Proxy"
-msgstr "HTTP Vekil"
 
 msgid "Help Boxes"
 msgstr "Yardım Kutuları"
@@ -895,9 +883,6 @@ msgstr "Tablo Girdileri"
 
 msgid "Tables"
 msgstr "Tablolar"
-
-msgid "Target"
-msgstr "Hedef"
 
 msgid "Temperature"
 msgstr "Sıcaklık"

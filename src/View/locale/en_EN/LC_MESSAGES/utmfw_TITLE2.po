@@ -31,9 +31,6 @@ msgstr ""
 msgid "Allow Wrong Host"
 msgstr ""
 
-msgid "Allow localhost"
-msgstr ""
-
 msgid "And Priority and Keyword"
 msgstr ""
 
@@ -97,18 +94,6 @@ msgstr ""
 msgid "Blacklisted"
 msgstr ""
 
-msgid "Blanket Block"
-msgstr ""
-
-msgid "Blanket IP Block"
-msgstr ""
-
-msgid "Blanket SSL/CONNECT Block"
-msgstr ""
-
-msgid "Blanket SSL/CONNECT IP Block"
-msgstr ""
-
 msgid "Block Duration"
 msgstr ""
 
@@ -139,9 +124,6 @@ msgstr ""
 msgid "COMMAND"
 msgstr ""
 
-msgid "Cache mgr"
-msgstr ""
-
 msgid "Category display threshold"
 msgstr ""
 
@@ -152,9 +134,6 @@ msgid "Cipher"
 msgstr ""
 
 msgid "Ciphers"
-msgstr ""
-
-msgid "Client netmask"
 msgstr ""
 
 msgid "Compression"
@@ -214,16 +193,10 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
-msgid "Debug options"
-msgstr ""
-
 msgid "Delete downloaded temp files"
 msgstr ""
 
 msgid "Deny OCSP"
-msgstr ""
-
-msgid "Deny others"
 msgstr ""
 
 msgid "Desc"
@@ -368,9 +341,6 @@ msgid "Group"
 msgstr ""
 
 msgid "HOME_NET"
-msgstr ""
-
-msgid "HTTP Proxy"
 msgstr ""
 
 msgid "HTTP Proxy Password"
@@ -529,13 +499,7 @@ msgstr ""
 msgid "Log connection handling errors"
 msgstr ""
 
-msgid "Log fqdn"
-msgstr ""
-
 msgid "Log helo"
-msgstr ""
-
-msgid "Log ip on direct"
 msgstr ""
 
 msgid "Log level"
@@ -682,9 +646,6 @@ msgstr ""
 msgid "No bind"
 msgstr ""
 
-msgid "No cache"
-msgstr ""
-
 msgid "Non standard delimiter"
 msgstr ""
 
@@ -773,9 +734,6 @@ msgid "Protocol"
 msgstr ""
 
 msgid "Proxy IP"
-msgstr ""
-
-msgid "Proxy IP:Ports"
 msgstr ""
 
 msgid "Proxy Port"

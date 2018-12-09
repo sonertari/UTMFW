@@ -26,9 +26,6 @@ msgstr "ACL ekle"
 msgid "Add DHCP interface"
 msgstr "DHCP arayüzü ekle"
 
-msgid "Add HTTP proxy IP:port"
-msgstr "HTTP vekil IP:kapı ekle"
-
 msgid "Add IP"
 msgstr "IP ekle"
 
@@ -154,9 +151,6 @@ msgstr "ACL'yi sil"
 
 msgid "Delete DHCP interface"
 msgstr "DHCP arayüzünü sil"
-
-msgid "Delete HTTP proxy IP:port"
-msgstr "HTTP vekil IP:kapısını sil"
 
 msgid "Delete IP"
 msgstr "IP adresini sil"
@@ -358,9 +352,6 @@ msgstr "DHCP seçeneğini getir"
 
 msgid "Get DNS forwarders"
 msgstr "DNS yönlendirmelerini getir"
-
-msgid "Get HTTP proxy IP:port"
-msgstr "HTTP vekil IP:kapısını getir"
 
 msgid "Get IP DNS listens on"
 msgstr "DNS sunucunun dinlediği IP adresini getir"

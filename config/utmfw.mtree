@@ -53,7 +53,6 @@ p3scan.log		type=file mode=0640 uname=root gname=wheel
 smtp-gated.log		type=file mode=0640 uname=root gname=wheel
 snortips.log		type=file mode=0640 uname=root gname=wheel
 spamd.log		type=file mode=0640 uname=root gname=wheel
-squid.log		type=file mode=0640 uname=root gname=wheel
 sslproxy			type=dir mode=0755 uname=root gname=wheel flags=none
 sslproxy.log		type=file mode=0640 uname=root gname=wheel
 conns.log		type=file mode=0640 uname=root gname=wheel
@@ -234,9 +233,6 @@ snort.conf		type=file mode=0644 uname=root gname=wheel
 snortinline.conf		type=file mode=0644 uname=root gname=wheel
 snortips.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/snort
-squid			type=dir mode=0755 uname=root gname=wheel
-squid.conf		type=file mode=0644 uname=root gname=wheel
-..	#etc/squid
 ssl			type=dir mode=0755 uname=root gname=wheel
 private			type=dir mode=0755 uname=root gname=wheel
 server.key		type=file mode=0644 uname=root gname=bin

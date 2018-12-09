@@ -55,10 +55,6 @@ $UTMFW_MODULES = array(
 		'Name' => _MENU('WEB FILTER'),
 		'Perms' => $ALL_USERS,
 		),
-	'squid' => array(
-		'Name' => _MENU('HTTP PROXY'),
-		'Perms' => $ALL_USERS,
-		),
 	'snort' => array(
 		'Name' => _MENU('IDP'),
 		'Perms' => $ALL_USERS,

@@ -50,9 +50,6 @@ msgstr "Mesai sonrası"
 msgid "Allow Wrong Host"
 msgstr "Yanlış Sistem İsmine İzin Ver"
 
-msgid "Allow localhost"
-msgstr "Yerel bilgisayara izin ver"
-
 msgid "And Priority and Keyword"
 msgstr "Öncelik ve Kelimeyi And'le"
 
@@ -116,18 +113,6 @@ msgstr "Karaliste"
 msgid "Blacklisted"
 msgstr "Karalistelenmiş"
 
-msgid "Blanket Block"
-msgstr "Örtü engelleme"
-
-msgid "Blanket IP Block"
-msgstr "Örtü IP engelleme"
-
-msgid "Blanket SSL/CONNECT Block"
-msgstr "Örtü SSL/CONNECT engelleme"
-
-msgid "Blanket SSL/CONNECT IP Block"
-msgstr "Örtü SSL/CONNECT IP engelleme"
-
 msgid "Block Duration"
 msgstr "Engelleme süresi"
 
@@ -158,9 +143,6 @@ msgstr "CGI Sunucu"
 msgid "COMMAND"
 msgstr "KOMUT"
 
-msgid "Cache mgr"
-msgstr "Önbellek yöneticisi"
-
 msgid "Category display threshold"
 msgstr "Sınıf gösterim eşik değeri"
 
@@ -172,9 +154,6 @@ msgstr "Şifre"
 
 msgid "Ciphers"
 msgstr "Şifreler"
-
-msgid "Client netmask"
-msgstr "İstemci ağ şablonu"
 
 msgid "Compression"
 msgstr "Sıkıştırma"
@@ -233,17 +212,11 @@ msgstr "Veritabanı aynaları"
 msgid "Debug"
 msgstr "Hata ayıklama"
 
-msgid "Debug options"
-msgstr "Hata ayıklama seçenekleri"
-
 msgid "Delete downloaded temp files"
 msgstr "İndirilen geçici dosyaları sil"
 
 msgid "Deny OCSP"
 msgstr "OCSP'yi reddet"
-
-msgid "Deny others"
-msgstr "Diğerlerini reddet"
 
 msgid "Desc"
 msgstr "Tanım"
@@ -388,9 +361,6 @@ msgstr "Grup"
 
 msgid "HOME_NET"
 msgstr "HOME_NET"
-
-msgid "HTTP Proxy"
-msgstr "HTTP Vekil"
 
 msgid "HTTP Proxy Password"
 msgstr "HTTP vekil şifresi"
@@ -548,14 +518,8 @@ msgstr "İstemci bilgisayar adlarını kaydet"
 msgid "Log connection handling errors"
 msgstr "Bağlantı yönetimi hatalarını kaydet"
 
-msgid "Log fqdn"
-msgstr "FQDN'i kaydet"
-
 msgid "Log helo"
 msgstr "Helo'yu kaydet"
-
-msgid "Log ip on direct"
-msgstr "Doğrudan IP'yi kaydet"
 
 msgid "Log level"
 msgstr "Kayıt seviyesi"
@@ -701,9 +665,6 @@ msgstr "Ağ Topolojisi"
 msgid "No bind"
 msgstr "Bağlantısız"
 
-msgid "No cache"
-msgstr "Önbelleksiz"
-
 msgid "Non standard delimiter"
 msgstr "Standart olmayan ayraç"
 
@@ -793,9 +754,6 @@ msgstr "Protokol"
 
 msgid "Proxy IP"
 msgstr "Vekil IP adresi"
-
-msgid "Proxy IP:Ports"
-msgstr "Vekil IP:kapısı"
 
 msgid "Proxy Port"
 msgstr "Vekil kapısı"
