@@ -6,7 +6,7 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The installation iso file for the amd64 arch is available for download at [utmfw64\_20181106\_amd64.iso](https://drive.google.com/file/d/1tMO1WimjF2ZyLmTExEzGTGjn8cBvkAOB/view?usp=sharing). Make sure the SHA256 checksum is correct: f10c37611ac9e970ea6b757b36b05556b92a2e0ef07cdc13b5b16b9cbf4908af.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, and Firebase push notifications. Also note that UTMFW 6.4 comes with OpenBSD 6.4-stable including all updates until November 4th, 2018.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, and Firebase push notifications. Also note that UTMFW 6.4.1 comes with OpenBSD 6.4-stable including all updates until December 9th, 2018.
 
 UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, HTTP Proxy, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 

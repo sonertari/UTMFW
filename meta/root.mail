@@ -1,11 +1,12 @@
-From sonertari@gmail.com Sun Nov  4 06:40:10 EET 2018
+From sonertari@gmail.com Sun Ara  9 06:40:10 EET 2018
 Return-Path: root
-Date: Nov  4 06:40:10 EET 2018
+Date: Ara  9 06:40:10 EET 2018
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 6.4!
+Subject: Welcome to UTMFW 6.4.1!
 
 Highlights of this release are:
-- OpenBSD 6.4
-- SSLproxy 0.5.8
+- OpenBSD 6.4-stable as of December 9th, 2018
+- E2Guardian 5.2.2 (without Squid HTTP proxy)
+- SSLproxy 0.5.9
 
