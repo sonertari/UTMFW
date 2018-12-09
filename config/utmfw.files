@@ -1,5 +1,6 @@
 # Hand-crafted specification for UTMFW configuration files.
 # These files should exist in utmfw-config-X.Y.tar.gz.
+etc/e2guardian/downloadmanagers/default.conf,644,root,wheel
 etc/e2guardian/downloadmanagers/fancy.conf,644,root,wheel
 etc/e2guardian/lists/bannedextensionlist2,644,root,wheel
 etc/e2guardian/lists/bannedextensionlist3,644,root,wheel

@@ -110,6 +110,7 @@ error.log		type=file mode=0644 uname=root gname=daemon
 etc			type=dir mode=0755 uname=root gname=wheel
 e2guardian		type=dir mode=0755 uname=root gname=wheel
 downloadmanagers	type=dir mode=0755 uname=root gname=wheel
+default.conf		type=file mode=0644 uname=root gname=wheel
 fancy.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/e2guardian/downloadmanagers
 lists			type=dir mode=0755 uname=root gname=wheel
