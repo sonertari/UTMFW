@@ -86,6 +86,18 @@ class E2guardian extends Model
 				'banned'			=> 'bannedmime',
 				),
 
+			// Used by CreateNewGroup() only
+			'filesite'		=>	array(
+				'key'				=> 'sitelist',
+				'exception'			=> 'exceptionfile',
+				),
+
+			// Used by CreateNewGroup() only
+			'fileurl'		=>	array(
+				'key'				=> 'urllist',
+				'exception'			=> 'exceptionfile',
+				),
+
 			'dm_exts'		=>	array(
 				'key'				=> FALSE,
 				'MetaConfigFile'	=> $this->confDir.'downloadmanagers/default.conf',
@@ -421,6 +433,19 @@ class E2guardian extends Model
 	}
 
 	/**
+	 * Sets DG configuration file pathname setting.
+	 *
+	 * @param string $file Config file pathname.
+	 * @param string $name Name of the NVP.
+	 * @param string $value New value of the setting, file pathname.
+	 * @return bool TRUE on success, FALSE on fail.
+	 */
+	function SetFilterConfFilePath($file, $name, $value)
+	{
+		return $this->SetNVP($file, $name, "'$value'");
+	}
+
+	/**
 	 * Reads E2g configuration file pathname setting for the given key.
 	 *
 	 * @param string $file Config file pathname.
@@ -432,6 +457,21 @@ class E2guardian extends Model
 	{
 		//iplist = 'name=exceptionclient,messageno=600,path=/etc/e2guardian/lists/exceptioniplist'
 		return $this->SearchFile($file, "/^\h*$key\h*$this->NVPS\h*'\h*name\h*=\h*$name\b[^$this->COMC'\"\n]*,\h*path\h*=\h*([^$this->COMC'\"\n]*|'[^'\n]*'|\"[^\"\n]*\"|[^$this->COMC\n]*)(\h*|\h*$this->COMC.*)$/m", 1, "'");
+	}
+
+	/**
+	 * Sets E2g configuration file pathname setting for the given key.
+	 *
+	 * @param string $file Config file pathname.
+	 * @param string $key Key of the NVP.
+	 * @param string $name Name of the config option.
+	 * @param string $value New value of the setting, file pathname.
+	 * @return bool TRUE on success, FALSE on fail.
+	 */
+	function SetFilterKeyConfFilePath($file, $key, $name, $value)
+	{
+		// The search regex ${2} matches the trailing single quote too, so don't forget to append a single quote in the replacement regex, i.e. ${3} does not have a leading single quote
+		return $this->ReplaceRegexp($file, "/^(\h*$key\h*$this->NVPS\h*'\h*name\h*=\h*$name\b[^$this->COMC'\"\n]*,\h*path\h*=\h*)([^$this->COMC'\"\n]*|'[^'\n]*'|\"[^\"\n]*\"|[^$this->COMC\n]*)(\h*|\h*$this->COMC.*)$/m", '${1}'.$value.'\'${3}');
 	}
 
 	/**
@@ -757,6 +797,24 @@ class E2guardian extends Model
 		return FALSE;
 	}
 
+	function SetGroupFile($group, $list, $type, $value)
+	{
+		$metafile= $this->GetMetaFile($group, $list);
+
+		$key= $this->listConfig[$list]['key'];
+
+		$name= $type;
+		if (isset($this->listConfig[$list][$type])) {
+			$name= $this->listConfig[$list][$type];
+		}
+
+		if ($key === FALSE) {
+			return $this->SetFilterConfFilePath($metafile, $name, $value);
+		} else {
+			return $this->SetFilterKeyConfFilePath($metafile, $key, $name, $value);
+		}
+	}
+
 	/**
 	 * Gets meta file for the given group or list.
 	 *
@@ -809,27 +867,14 @@ class E2guardian extends Model
 	 */
 	function CreateNewGroup($group)
 	{
-		$filenames= array(
-			'bannedphraselist',
-			'weightedphraselist',
-			'exceptionphraselist',
-			'bannedsitelist',
-			'greysitelist',
-			'exceptionsitelist',
-			'bannedurllist',
-			'greyurllist',
-			'exceptionurllist',
- 			//'exceptionregexpurllist',
- 			//'bannedregexpurllist',
- 			//'picsfile',
- 			//'contentregexplist',
- 			//'urlregexplist',
-			'bannedextensionlist',
-			'bannedmimetypelist',
-			'exceptionfilesitelist',
-			'exceptionfileurllist',
- 			//'headerregexplist',
- 			//'bannedregexpheaderlist'
+		/// @todo What other files shall we copy over to the new filter group?
+		$filesToCopy= array(
+			'sites'		=> array('exception', 'grey', 'banned'),
+			'urls'		=> array('exception', 'grey', 'banned'),
+			'exts'		=> array('banned'),
+			'mimes'		=> array('banned'),
+			'filesite'	=> array('exception'),
+			'fileurl'	=> array('exception'),
 			);
 
 		$result= TRUE;
@@ -855,43 +900,50 @@ class E2guardian extends Model
 					Error(_('SUCCESS').": $info");
 					ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "SUCCESS: $info");
 
-					foreach ($filenames as $Name) {
-						$info= "GetNVP: $conffile: $Name";
-						if (($output= $this->GetNVP($conffile, $Name)) !== FALSE) {
-							Error(_('SUCCESS').": $info");
-							ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "SUCCESS: $info");
-
-							$groupfile= rtrim(trim($output, "'"), $group);
-							$newgroupfile= $groupfile.$newgroup;
-
-							$info= "File exists check: $newgroupfile";
-							if (!file_exists($newgroupfile)) {
+					foreach ($filesToCopy as $list => $typeList) {
+						foreach ($typeList as $type) {
+							$info= "GetGroupFile: $conffile: $list $type";
+							if (($output= $this->GetGroupFile($group, $list, $type)) !== FALSE) {
 								Error(_('SUCCESS').": $info");
 								ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "SUCCESS: $info");
 
-								$info= "File copy: $groupfile $newgroupfile";
-								exec("/bin/cp -p $groupfile $newgroupfile 2>&1", $output, $retval);
-								if ($retval === 0) {
+								$groupfile= rtrim(trim($output, "'"), $group);
+								$newgroupfile= $groupfile.$newgroup;
+
+								$info= "File exists check: $newgroupfile";
+								if (!file_exists($newgroupfile)) {
 									Error(_('SUCCESS').": $info");
 									ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "SUCCESS: $info");
 
-									$info= "SetNVP: $newconffile: $Name= $newgroupfile";
-									if ($this->SetNVP($newconffile, $Name, "'$newgroupfile'")) {
+									$info= "File copy: $groupfile $newgroupfile";
+									exec("/bin/cp -p $groupfile $newgroupfile 2>&1", $output, $retval);
+									if ($retval === 0) {
 										Error(_('SUCCESS').": $info");
 										ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "SUCCESS: $info");
+
+										$info= "SetGroupFile: $newconffile: $list $type $newgroupfile";
+										if ($this->SetGroupFile($newgroup, $list, $type, $newgroupfile)) {
+											Error(_('SUCCESS').": $info");
+											ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "SUCCESS: $info");
+										}
+										else {
+											$result= FALSE;
+											$fatal= TRUE;
+											Error(_('FAILED').": $info");
+											ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "FAILED: $info");
+										}
 									}
 									else {
 										$result= FALSE;
 										$fatal= TRUE;
-										Error(_('FAILED').": $info");
-										ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "FAILED: $info");
+										Error(_('FAILED').": $info ".implode("\n", $output));
+										ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "FAILED: $info ".implode("\n", $output));
 									}
 								}
 								else {
 									$result= FALSE;
-									$fatal= TRUE;
-									Error(_('FAILED').": $info ".implode("\n", $output));
-									ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "FAILED: $info ".implode("\n", $output));
+									Error(_('FAILED').": $info");
+									ctlr_syslog(LOG_WARNING, __FILE__, __FUNCTION__, __LINE__, "FAILED: $info");
 								}
 							}
 							else {
@@ -899,11 +951,12 @@ class E2guardian extends Model
 								Error(_('FAILED').": $info");
 								ctlr_syslog(LOG_WARNING, __FILE__, __FUNCTION__, __LINE__, "FAILED: $info");
 							}
+							if ($fatal) {
+								break;
+							}
 						}
-						else {
-							$result= FALSE;
-							Error(_('FAILED').": $info");
-							ctlr_syslog(LOG_WARNING, __FILE__, __FUNCTION__, __LINE__, "FAILED: $info");
+						if ($fatal) {
+							break;
 						}
 					}
 				}
@@ -928,7 +981,7 @@ class E2guardian extends Model
 			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "FAILED: $info");
 		}
 
-		if (!$fatal) {
+		if ($fatal === FALSE) {
 			$info= "SetNVP: $this->ConfFile: filtergroups $newgroup";
 			if ($this->SetNVP($this->ConfFile, 'filtergroups', $newgroup)) {
 					Error(_('SUCCESS').": $info");
