@@ -244,6 +244,21 @@ class System extends Model
 					'desc'	=>	_('Restart network'),
 					),
 
+				'GetUsers'=>	array(
+					'argv'	=>	array(),
+					'desc'	=>	_('Get users'),
+					),
+
+				'GetEther'=>	array(
+					'argv'	=>	array(IPADR),
+					'desc'	=>	_('Get ether of ip'),
+					),
+
+				'UpdateUser'=>	array(
+					'argv'	=>	array(IPADR, NAME, STR, STR),
+					'desc'	=>	_('Update user'),
+					),
+
 				'GetServiceStartStatus'=>	array(
 					'argv'	=>	array(),
 					'desc'	=>	_('Get service start status'),
@@ -948,6 +963,91 @@ class System extends Model
 	{
 		$re= '|^(\s*\$www\{\'home\'\}\h*=\h*\')(.*)(\'\h*;\h*)$|m';
 		return $this->ReplaceRegexp('/var/www/htdocs/utmfw/View/cgi-bin/man.cgi', $re, '${1}'."https://$ip".'${3}');
+	}
+
+	/**
+	 * Gets users from passwd file.
+	 * 
+	 * Firewall users should have whoami as their shell in the passwd file.
+	 */
+	function GetUsers()
+	{
+		$users= array();
+		//soner:*:1002:1002:Soner Tari:/home/soner:/usr/bin/whoami
+		$re= "(\w+):\*:\d+:\d+:([^:]*):[^:]*:/usr/bin/whoami";
+		if (preg_match_all("|^\h*($re)\h*$|m", file_get_contents('/etc/passwd'), $match)) {
+			$output= array_values($match[1]);
+			foreach ($output as $line) {
+				if (preg_match("|^$re$|", $line, $match)) {
+					$users[$match[1]]= $match[2];
+				}
+			}
+		}
+		return Output(json_encode($users));
+	}
+
+	function GetEther($ip)
+	{
+		exec('/usr/sbin/arp -an', $output);
+		//192.168.11.2                         08:62:66:b9:b4:c5     em1 19m8s
+		$re= "$ip\h+([\w:]+).*";
+		foreach ($output as $line) {
+			if (preg_match("|^$re$|", $line, $match)) {
+				Output($match[1]);
+				return TRUE;
+			}
+		}
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot get ethernet address of ip: $ip");
+		return FALSE;
+	}
+
+	/**
+	 * Adds or updates an entry in user db.
+	 * 
+	 * @attention Since there may be single quotes in desc string, we use double quotes around it in the sql stmt.
+	 */
+	function UpdateUser($ip, $user, $ether, $desc)
+	{
+		$now= time();
+		$db= new SQLite3('/var/db/duaf.db');
+		$results = $db->query("SELECT user,mac,desc FROM ip2user WHERE ip = '$ip'");
+		if ($row= $results->fetchArray(SQLITE3_ASSOC)) {
+			$dbuser= $row['USER'];
+			$dbether= $row['MAC'];
+			$dbdesc= $row['DESC'];
+
+			if ($desc == '') {
+				// Remove any/all double quotes, because we use double quotes around desc arg in sql statements
+				$desc= str_replace('"', '', $dbdesc);
+			}
+
+			if ($dbuser == $user && $dbether == $ether) {
+				if ($db->exec("UPDATE ip2user SET atime = '$now', desc = \"$desc\" WHERE ip = '$ip' AND user = '$user' AND mac = '$ether'")) {
+					ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Update atime succeessful: $ip, $user, $ether, $desc");
+				} else {
+					Error('Cannot update atime,desc');
+					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot update atime,desc: $ip, $user, $ether, $desc");
+					return FALSE;
+				}
+			} else {
+				if ($db->exec("UPDATE ip2user SET user = '$user', mac = '$ether', atime = '$now', desc = \"$desc\" WHERE ip = '$ip'")) {
+					ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Update user,mac,atime,desc succeessful: $ip, $user, $ether, $desc");
+				} else {
+					Error('Cannot update user,mac,atime,desc');
+					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot update user,mac,atime,desc: $ip, $user, $ether, $desc");
+					return FALSE;
+				}
+			}
+		} else {
+			if ($db->exec("INSERT INTO ip2user (ip, user, atime, mac, desc) VALUES ('$ip', '$user', '$now', '$ether', \"$desc\")")) {
+				ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Insert ip,user,atime,mac succeessful: $ip, $user, $now, $ether, $desc");
+			} else {
+				Error('Cannot insert ip,user,atime,mac,desc');
+				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot insert ip,user,atime,mac: $ip, $user, $now, $ether, $desc");
+				return FALSE;
+			}
+		}
+		return TRUE;
 	}
 
 	/**

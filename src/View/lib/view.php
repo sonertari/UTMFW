@@ -205,6 +205,22 @@ class View
 		return FALSE;
 	}
 
+	function CheckUserDatabaseAuthentication($user, $passwd)
+	{
+		$hostname= gethostname();
+
+		$ssh = new Net_SSH2($hostname);
+
+		if ($ssh->login($user, $passwd)) {
+			return TRUE;
+		} else {
+			$msg= 'Authentication failed';
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, $msg);
+			PrintHelpWindow(_NOTICE('FAILED') . ":<br>$msg", 'auto', 'ERROR');
+		}
+		return FALSE;
+	}
+
 	/**
 	 * Escapes the arguments passed to Controller() and builds the command line.
 	 *

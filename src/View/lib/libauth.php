@@ -181,6 +181,69 @@ function Authentication($passwd)
 }
 
 /**
+ * Authenticates firewall user with the password supplied.
+ * 
+ * Note that this function is used outside of the WUI, and
+ * we cannot run Controller commands over SSH without logging
+ * in as a WUI user (www is not a WUI user).
+ * Therefore, we have to disable $UseSSH in this function.
+ */
+function UserDatabaseAuthentication($user, $passwd, $desc)
+{
+	global $View, $UseSSH, $SRC_ROOT;
+
+	wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Login attempt');
+
+	$UseSSH= FALSE;
+
+	$View->Controller($output, 'GetUsers');
+	$users= json_decode($output[0], TRUE);
+	if ($users == NULL || !is_array($users)) {
+		PrintHelpWindow('Users not a valid json or array', 'auto', 'ERROR');
+		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Users not a valid json or array');
+		return FALSE;
+	}
+
+	if (!in_array($user, array_keys($users))) {
+		// Invalid user box should look similar to password mismatch one
+		PrintHelpWindow("FAILED:\nAuthentication failed", 'auto', 'ERROR');
+		wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Not a valid user');
+		// Throttle authentication failures
+		exec('/bin/sleep 5');
+		return FALSE;
+	}
+
+	if (!$View->CheckUserDatabaseAuthentication($user, $passwd)) {
+		wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Password mismatch');
+		// Throttle authentication failures
+		exec('/bin/sleep 5');
+		return FALSE;
+	}
+
+	$ip= filter_input(INPUT_SERVER, 'REMOTE_ADDR');
+
+	if ($View->Controller($output, 'GetEther', $ip) == FALSE) {
+		PrintHelpWindow('Cannot get ether of ip', 'auto', 'ERROR');
+		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get ether of ip');
+		return FALSE;
+	}
+	$ether= $output[0];
+
+	// Remove any/all double quotes, because we use double quotes around desc arg in sql statements
+	$desc= str_replace('"', '', $desc);
+	if ($View->Controller($output, 'UpdateUser', $ip, $user, $ether, $desc) == FALSE) {
+		PrintHelpWindow('Cannot update user', 'auto', 'ERROR');
+		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Cannot update user');
+		return FALSE;
+	}
+
+	// If redirection does not work, the help window is displayed
+	PrintHelpWindow('Authentication succeeded, now you can access the Internet', 'auto', 'INFO');
+	wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Authentication succeeded');
+	return TRUE;
+}
+
+/**
  * HTML Header.
  *
  * @param string $color Page background, Login page uses gray.
