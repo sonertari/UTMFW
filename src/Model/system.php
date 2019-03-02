@@ -1009,11 +1009,11 @@ class System extends Model
 	function UpdateUser($ip, $user, $ether, $desc)
 	{
 		$now= time();
-		$db= new SQLite3('/var/db/duaf.db');
-		$results = $db->query("SELECT user,mac,desc FROM ip2user WHERE ip = '$ip'");
+		$db= new SQLite3('/var/db/users.db');
+		$results = $db->query("SELECT user,ether,desc FROM users WHERE ip = '$ip'");
 		if ($row= $results->fetchArray(SQLITE3_ASSOC)) {
 			$dbuser= $row['USER'];
-			$dbether= $row['MAC'];
+			$dbether= $row['ETHER'];
 			$dbdesc= $row['DESC'];
 
 			if ($desc == '') {
@@ -1022,7 +1022,7 @@ class System extends Model
 			}
 
 			if ($dbuser == $user && $dbether == $ether) {
-				if ($db->exec("UPDATE ip2user SET atime = '$now', desc = \"$desc\" WHERE ip = '$ip' AND user = '$user' AND mac = '$ether'")) {
+				if ($db->exec("UPDATE users SET atime = '$now', desc = \"$desc\" WHERE ip = '$ip' AND user = '$user' AND ether = '$ether'")) {
 					ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Update atime succeessful: $ip, $user, $ether, $desc");
 				} else {
 					Error('Cannot update atime,desc');
@@ -1030,20 +1030,20 @@ class System extends Model
 					return FALSE;
 				}
 			} else {
-				if ($db->exec("UPDATE ip2user SET user = '$user', mac = '$ether', atime = '$now', desc = \"$desc\" WHERE ip = '$ip'")) {
-					ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Update user,mac,atime,desc succeessful: $ip, $user, $ether, $desc");
+				if ($db->exec("UPDATE users SET user = '$user', ether = '$ether', atime = '$now', desc = \"$desc\" WHERE ip = '$ip'")) {
+					ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Update user,ether,atime,desc succeessful: $ip, $user, $ether, $desc");
 				} else {
-					Error('Cannot update user,mac,atime,desc');
-					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot update user,mac,atime,desc: $ip, $user, $ether, $desc");
+					Error('Cannot update user,ether,atime,desc');
+					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot update user,ether,atime,desc: $ip, $user, $ether, $desc");
 					return FALSE;
 				}
 			}
 		} else {
-			if ($db->exec("INSERT INTO ip2user (ip, user, atime, mac, desc) VALUES ('$ip', '$user', '$now', '$ether', \"$desc\")")) {
-				ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Insert ip,user,atime,mac succeessful: $ip, $user, $now, $ether, $desc");
+			if ($db->exec("INSERT INTO users (ip, user, atime, ether, desc) VALUES ('$ip', '$user', '$now', '$ether', \"$desc\")")) {
+				ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Insert ip,user,atime,ether succeessful: $ip, $user, $now, $ether, $desc");
 			} else {
-				Error('Cannot insert ip,user,atime,mac,desc');
-				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot insert ip,user,atime,mac: $ip, $user, $now, $ether, $desc");
+				Error('Cannot insert ip,user,atime,ether,desc');
+				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot insert ip,user,atime,ether: $ip, $user, $now, $ether, $desc");
 				return FALSE;
 			}
 		}
