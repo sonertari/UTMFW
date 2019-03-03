@@ -259,6 +259,16 @@ class System extends Model
 					'desc'	=>	_('Update user'),
 					),
 
+				'AddUser'	=>	array(
+					'argv'	=>	array(NAME, SHA1STR, STR),
+					'desc'	=>	_('Add user'),
+					),
+
+				'DelUser'	=>	array(
+					'argv'	=>	array(NAME),
+					'desc'	=>	_('Delete user'),
+					),
+
 				'GetServiceStartStatus'=>	array(
 					'argv'	=>	array(),
 					'desc'	=>	_('Get service start status'),
@@ -1010,7 +1020,7 @@ class System extends Model
 	{
 		$now= time();
 		$db= new SQLite3('/var/db/users.db');
-		$results = $db->query("SELECT user,ether,desc FROM users WHERE ip = '$ip'");
+		$results= $db->query("SELECT user,ether,desc FROM users WHERE ip = '$ip'");
 		if ($row= $results->fetchArray(SQLITE3_ASSOC)) {
 			$dbuser= $row['USER'];
 			$dbether= $row['ETHER'];
@@ -1048,6 +1058,32 @@ class System extends Model
 			}
 		}
 		return TRUE;
+	}
+
+	function AddUser($user, $passwd, $comment)
+	{
+		exec("/usr/sbin/useradd -p $(/usr/bin/encrypt `/bin/echo -n $passwd | sha1 -`) -c '$comment' -s /usr/bin/whoami $user 2>&1", $output, $retval);
+		if ($retval === 0) {
+			return TRUE;
+		}
+
+		$errout= implode("\n", $output);
+		Error($errout);
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Add user $user failed: $errout");
+		return FALSE;
+	}
+
+	function DelUser($user)
+	{
+		exec("/usr/sbin/userdel -r $user 2>&1", $output, $retval);
+		if ($retval === 0) {
+			return TRUE;
+		}
+
+		$errout= implode("\n", $output);
+		Error($errout);
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Delete user $user failed: $errout");
+		return FALSE;
 	}
 
 	/**

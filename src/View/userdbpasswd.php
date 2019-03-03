@@ -23,7 +23,7 @@
  */
 
 /// @warning Do not include vars.php here, it checks for logged in user, otherwise would loop back here
-// Init minimal setup for login page
+// Init minimal setup for passwd page
 $ROOT= dirname(dirname(dirname(__FILE__)));
 $SRC_ROOT= dirname(dirname(__FILE__));
 require_once($SRC_ROOT . '/lib/setup.php');
@@ -51,22 +51,11 @@ require_once('lib/view.php');
 $View= new View();
 $View->Model= 'system';
 
-$Redirect= FALSE;
-if (filter_has_var(INPUT_POST, 'SSLproxy')) {
-	$Redirect= filter_input(INPUT_POST, 'SSLproxy');
-} else if (filter_has_var(INPUT_GET, 'SSLproxy')) {
-	$Redirect= filter_input(INPUT_GET, 'SSLproxy');
-}
-
 // Do not include vars.php for $IMG_PATH, vars.php redirects to login.php
 $IMG_PATH= '/images/';
 $Result= FALSE;
-if (filter_has_var(INPUT_POST, 'Login')) {
-	$Result= UserDbAuth(filter_input(INPUT_POST, 'UserName'), filter_input(INPUT_POST, 'Password'), filter_input(INPUT_POST, 'Description'));
-	if ($Result && $Redirect !== FALSE) {
-		header("Location: $Redirect");
-		exit;
-	}
+if (filter_has_var(INPUT_POST, 'Apply')) {
+	UserDbChangePasswd(filter_input(INPUT_POST, 'UserName'), filter_input(INPUT_POST, 'Password'), filter_input(INPUT_POST, 'NewPassword'), filter_input(INPUT_POST, 'NewPasswordAgain'));
 }
 
 HTMLHeader('whitesmoke');
@@ -84,12 +73,12 @@ if ($Result == FALSE) {
 						<table id="window">
 							<tr>
 								<td class="titlebar">
-									<?php echo _MENU('UTM FIREWALL User Login') ?>
+									<?php echo _MENU('UTM FIREWALL Change User Password') ?>
 								</td>
 							</tr>
 							<tr>
 								<td class="authbox">
-									<?php echo _TITLE('You must authenticate to access the Internet').'<br>'; ?>
+									<?php echo _TITLE('Passwords should have at least 8 alphanumeric characters') ?>
 									<table id="authbox">
 											<tr>
 												<td class="label">
@@ -101,7 +90,7 @@ if ($Result == FALSE) {
 											</tr>
 											<tr>
 												<td class="label">
-													<?php echo _TITLE('Password').':' ?>
+													<?php echo _TITLE('Current Password').':' ?>
 												</td>
 												<td class="textbox">
 													<input class="textbox" type="password" name="Password" maxlength="20"/>
@@ -109,26 +98,26 @@ if ($Result == FALSE) {
 											</tr>
 											<tr>
 												<td class="label">
-													<?php echo _TITLE('Description').':' ?>
+													<?php echo _TITLE('New Password').':' ?>
 												</td>
 												<td class="textbox">
-													<input class="textbox" type="text" name="Description" maxlength="50"/>
+													<input class="textbox" type="password" name="NewPassword" maxlength="20"/>
+												</td>
+											</tr>
+											<tr>
+												<td class="label">
+													<?php echo _TITLE('New Password Again').':' ?>
+												</td>
+												<td class="textbox">
+													<input class="textbox" type="password" name="NewPasswordAgain" maxlength="20"/>
 												</td>
 											</tr>
 									</table>
-									<?php echo str_replace('<SERVER_ADDR>', filter_input(INPUT_SERVER, 'SERVER_ADDR'), _TITLE('Click <a href="https://<SERVER_ADDR>/userdbpasswd.php">here</a> to change your password')); ?>
 								</td>
 							</tr>
 							<tr>
 								<td class="button">
-									<input class="button" type="submit" name="Login" value="<?php echo _CONTROL('Log in') ?>"/>
-									<?php
-									if ($Redirect !== FALSE) {
-										?>
-										<input type="hidden" name="SSLproxy" value=<?php echo $Redirect ?> />
-										<?php
-									}
-									?>
+									<input class="button" type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
 								</td>
 							</tr>
 						</table>

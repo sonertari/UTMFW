@@ -30,26 +30,26 @@ require_once('include.php');
 
 if (count($_POST)) {
 	// Allow posting empty strings to display an error message
-	if (filter_has_var(INPUT_POST, 'User') && filter_has_var(INPUT_POST, 'NewPassword') && filter_has_var(INPUT_POST, 'ReNewPassword')) {
-		if (in_array(filter_input(INPUT_POST, 'User'), $ALL_USERS)) {
-			if (filter_input(INPUT_POST, 'NewPassword') === filter_input(INPUT_POST, 'ReNewPassword')) {
-				if (preg_match('/^\w{8,}$/', filter_input(INPUT_POST, 'NewPassword'))) {
-
+	if (filter_has_var(INPUT_POST, 'User') && filter_has_var(INPUT_POST, 'NewPassword') && filter_has_var(INPUT_POST, 'NewPasswordAgain')) {
+		$User= filter_input(INPUT_POST, 'User');
+		$NewPassword= filter_input(INPUT_POST, 'NewPassword');
+		if (in_array($User, $ALL_USERS)) {
+			if (CheckPasswordsMatch($User, $NewPassword, filter_input(INPUT_POST, 'NewPasswordAgain'))) {
+				if (ValidatePassword($User, $NewPassword)) {
 					/// @attention Admin can change other users' passwords without needing to know their current passwords
-					if (($_SESSION['USER'] == 'admin' && filter_input(INPUT_POST, 'User') != 'admin')
-							|| $View->CheckAuthentication(filter_input(INPUT_POST, 'User'), sha1(filter_input(INPUT_POST, 'CurrentPassword')))) {
-
+					if (($_SESSION['USER'] == 'admin' && $User != 'admin')
+							|| $View->CheckAuthentication($User, sha1(filter_input(INPUT_POST, 'CurrentPassword')))) {
 						// Encrypt passwords before passing down, plaintext passwords should never be visible, not even in the doas logs
-						if ($View->Controller($Output, 'SetPassword', filter_input(INPUT_POST, 'User'), sha1(filter_input(INPUT_POST, 'NewPassword')))) {
-							PrintHelpWindow(_NOTICE('User password changed') . ': ' . filter_input(INPUT_POST, 'User'));
-							wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'User password changed: '.filter_input(INPUT_POST, 'User'));
-							if ($_SESSION['USER'] == filter_input(INPUT_POST, 'User')) {
+						if ($View->Controller($Output, 'SetPassword', $User, sha1($NewPassword))) {
+							PrintHelpWindow(_NOTICE('User password changed') . ': ' . $User);
+							wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "User password changed: $User");
+							if ($_SESSION['USER'] == $User) {
 								// Log user out if she changes her own password, currently only admin can do that
 								LogUserOut('User password changed');
 							}
 						}
 						else {
-							wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Password change failed: '.filter_input(INPUT_POST, 'User'));
+							wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Password change failed: $User");
 						}
 					}
 					else {
@@ -58,19 +58,11 @@ if (count($_POST)) {
 						exec('/bin/sleep 5');
 					}
 				}
-				else {
-					PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Not a valid password'), 'auto', 'ERROR');
-					wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Password change failed: '.filter_input(INPUT_POST, 'User'));
-				}
-			}
-			else {
-				PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Passwords do not match'), 'auto', 'ERROR');
-				wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Passwords do not match: '.filter_input(INPUT_POST, 'User'));
 			}
 		}
 		else {
 			PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('utmfw currently supports only admin and user usernames'), 'auto', 'ERROR');
-			wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Invalid user: '.filter_input(INPUT_POST, 'User'));
+			wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Invalid user: $User");
 		}
 	}
 	else if (filter_has_var(INPUT_POST, 'LogLevel')) {
@@ -200,7 +192,7 @@ Admin can change the user password without knowing the current user password. Bu
 				<?php echo _TITLE('New Password Again').':' ?>
 			</td>
 			<td class="valuegroupbottom">
-				<input type="password" name="ReNewPassword" style="width: 100px;" maxlength="20"/>
+				<input type="password" name="NewPasswordAgain" style="width: 100px;" maxlength="20"/>
 				<input type="submit" id="ApplyPassword" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
 			</td>
 		</tr>

@@ -47,6 +47,10 @@ switch ($Submenu) {
 		require_once('conf.wui.php');
 		break;
 
+	case 'users':
+		require_once('conf.users.php');
+		break;
+
 	case 'notifier':
 		require_once('conf.notifier.php');
 		break;

@@ -205,7 +205,7 @@ class View
 		return FALSE;
 	}
 
-	function CheckUserDatabaseAuthentication($user, $passwd)
+	function CheckUserDbAuthentication($user, $passwd)
 	{
 		$hostname= gethostname();
 

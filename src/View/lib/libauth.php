@@ -188,42 +188,26 @@ function Authentication($passwd)
  * in as a WUI user (www is not a WUI user).
  * Therefore, we have to disable $UseSSH in this function.
  */
-function UserDatabaseAuthentication($user, $passwd, $desc)
+function UserDbAuth($user, $passwd, $desc)
 {
-	global $View, $UseSSH, $SRC_ROOT;
+	global $View, $UseSSH;
 
 	wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Login attempt');
 
 	$UseSSH= FALSE;
 
-	$View->Controller($output, 'GetUsers');
-	$users= json_decode($output[0], TRUE);
-	if ($users == NULL || !is_array($users)) {
-		PrintHelpWindow('Users not a valid json or array', 'auto', 'ERROR');
-		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Users not a valid json or array');
+	if (!CheckUserDbUser($user)) {
 		return FALSE;
 	}
 
-	if (!in_array($user, array_keys($users))) {
-		// Invalid user box should look similar to password mismatch one
-		PrintHelpWindow("FAILED:\nAuthentication failed", 'auto', 'ERROR');
-		wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Not a valid user');
-		// Throttle authentication failures
-		exec('/bin/sleep 5');
-		return FALSE;
-	}
-
-	if (!$View->CheckUserDatabaseAuthentication($user, $passwd)) {
-		wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Password mismatch');
-		// Throttle authentication failures
-		exec('/bin/sleep 5');
+	if (!AuthUserDbUser($user, $passwd)) {
 		return FALSE;
 	}
 
 	$ip= filter_input(INPUT_SERVER, 'REMOTE_ADDR');
 
 	if ($View->Controller($output, 'GetEther', $ip) == FALSE) {
-		PrintHelpWindow('Cannot get ether of ip', 'auto', 'ERROR');
+		PrintHelpWindow(_NOTICE('FAILED') . ":<br>Cannot get ether of ip", 'auto', 'ERROR');
 		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get ether of ip');
 		return FALSE;
 	}
@@ -232,7 +216,7 @@ function UserDatabaseAuthentication($user, $passwd, $desc)
 	// Remove any/all double quotes, because we use double quotes around desc arg in sql statements
 	$desc= str_replace('"', '', $desc);
 	if ($View->Controller($output, 'UpdateUser', $ip, $user, $ether, $desc) == FALSE) {
-		PrintHelpWindow('Cannot update user', 'auto', 'ERROR');
+		PrintHelpWindow(_NOTICE('FAILED') . ":<br>Cannot update user", 'auto', 'ERROR');
 		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Cannot update user');
 		return FALSE;
 	}
@@ -240,6 +224,101 @@ function UserDatabaseAuthentication($user, $passwd, $desc)
 	// If redirection does not work, the help window is displayed
 	PrintHelpWindow('Authentication succeeded, now you can access the Internet', 'auto', 'INFO');
 	wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Authentication succeeded');
+	return TRUE;
+}
+
+function UserDbChangePasswd($user, $passwd, $newpasswd, $newpasswdagain)
+{
+	global $View, $UseSSH;
+
+	wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Userdb password change');
+
+	$UseSSH= FALSE;
+
+	if (!CheckUserDbUser($user)) {
+		return FALSE;
+	}
+
+	if (!AuthUserDbUser($user, $passwd)) {
+		return FALSE;
+	}
+
+	if (!CheckPasswordsMatch($user, $newpasswd, $newpasswdagain)) {
+		return FALSE;
+	}
+
+	if (!ValidatePassword($user, $newpasswd)) {
+		return FALSE;
+	}
+
+	// Encrypt passwords before passing down, plaintext passwords should never be visible, not even in the doas logs
+	if ($View->Controller($output, 'SetPassword', $user, sha1($newpasswd))) {
+		PrintHelpWindow(_NOTICE('User password changed').': '.$user);
+		wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "User password changed: $user");
+	} else {
+		wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Password change failed: $user");
+		return FALSE;
+	}
+	return TRUE;
+}
+
+function CheckUserDbUser($user, $justcheck= FALSE)
+{
+	global $View;
+
+	// $UseSSH must be set to FALSE by the caller
+	$View->Controller($output, 'GetUsers');
+	$users= json_decode($output[0], TRUE);
+	if ($users === NULL || !is_array($users)) {
+		PrintHelpWindow(_NOTICE('FAILED') . ":<br>Users not a valid json or array", 'auto', 'ERROR');
+		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Users not a valid json or array');
+		return FALSE;
+	}
+
+	if (!in_array($user, array_keys($users))) {
+		if (!$justcheck) {
+			// Invalid user box should look similar to password mismatch one
+			PrintHelpWindow(_NOTICE('FAILED') . ":<br>Authentication failed", 'auto', 'ERROR');
+			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Not a valid user');
+			// Throttle authentication failures
+			exec('/bin/sleep 5');
+		}
+		return FALSE;
+	}
+	return TRUE;
+}
+
+function AuthUserDbUser($user, $passwd)
+{
+	global $View;
+
+	// Encrypt passwords before passing down, plaintext passwords should never be visible, not even in the doas logs
+	if (!$View->CheckUserDbAuthentication($user, sha1($passwd))) {
+		wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Password mismatch');
+		// Throttle authentication failures
+		exec('/bin/sleep 5');
+		return FALSE;
+	}
+	return TRUE;
+}
+
+function CheckPasswordsMatch($user, $passwd, $passwdagain)
+{
+	if ($passwd !== $passwdagain) {
+		PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Passwords do not match'), 'auto', 'ERROR');
+		wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Passwords do not match: $user");
+		return FALSE;
+	}
+	return TRUE;
+}
+
+function ValidatePassword($user, $passwd)
+{
+	if (!preg_match('/^\w{8,}$/', $passwd)) {
+		PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Not a valid password'), 'auto', 'ERROR');
+		wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not a valid password: $user");
+		return FALSE;
+	}
 	return TRUE;
 }
 
