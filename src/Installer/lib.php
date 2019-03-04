@@ -94,6 +94,11 @@ function ApplyConfig($auto)
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting man.cgi home: $lanip");
 		}
 		
+		$View->Model= 'sslproxy';
+		if (!$View->Controller($output, 'SetUserAuthURL', $lanip)) {
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting userauth url: $lanip");
+		}
+		
 		$View->Model= 'dhcpd';
 		ComputeDhcpdIpRange($lanip, $lannet, $lanbc, $min, $max);
 		if (!$View->Controller($output, 'SetDhcpdConf', $lanip, $lanmask, $lannet, $lanbc, $min, $max)) {

@@ -664,6 +664,7 @@ __EOT
 				pkg_add php-mcrypt || _installerror=1
 				pkg_add php-cgi || _installerror=1
 				pkg_add php-curl || _installerror=1
+				pkg_add php-sqlite3 || _installerror=1
 				;;
 			esac
 			;;

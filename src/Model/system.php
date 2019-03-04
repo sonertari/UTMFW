@@ -40,6 +40,8 @@ class System extends Model
 	private $rootCronTab= '/var/cron/tabs/root';
 	private $cronDir= '/var/cron/';
 
+	private $userdb= '/var/db/users.db';
+
 	function __construct()
 	{
 		parent::__construct();
@@ -1009,7 +1011,7 @@ class System extends Model
 	function GetClients($user)
 	{
 		$clients= array();
-		$db= new SQLite3('/var/db/users.db');
+		$db= new SQLite3($this->userdb);
 		$results= $db->query('SELECT * FROM users'.($user === '' ? '' : " WHERE user = '$user'"));
 		while ($row= $results->fetchArray(SQLITE3_ASSOC)) {
 			$clients[]= $row;
@@ -1040,7 +1042,7 @@ class System extends Model
 	function UpdateUser($ip, $user, $ether, $desc)
 	{
 		$now= time();
-		$db= new SQLite3('/var/db/users.db');
+		$db= new SQLite3($this->userdb);
 		$results= $db->query("SELECT user,ether,desc FROM users WHERE ip = '$ip'");
 		if ($row= $results->fetchArray(SQLITE3_ASSOC)) {
 			$dbuser= $row['USER'];
@@ -1109,7 +1111,7 @@ class System extends Model
 
 	function DelClient($ip)
 	{
-		$db= new SQLite3('/var/db/users.db');
+		$db= new SQLite3($this->userdb);
 		if ($db->exec("DELETE FROM users WHERE ip = '$ip'")) {
 			ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Delete client succeessful: $ip");
 			return TRUE;

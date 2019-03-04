@@ -95,6 +95,7 @@ etc/pfre/pf.conf.afterhours,600,root,wheel
 etc/php-7.0/curl.ini,644,root,bin
 etc/php-7.0/mcrypt.ini,644,root,bin
 etc/php-7.0/pcntl.ini,644,root,bin
+etc/php-7.0/sqlite.ini,644,root,bin
 etc/pmacct/pmacctd-pnrg.conf,644,root,wheel
 etc/pmacct/pmacctd-protograph.conf,644,root,wheel
 etc/snort/snort.conf,644,root,wheel
@@ -147,6 +148,7 @@ usr/local/share/e2guardian/languages/ukenglish/fancydmtemplate.html,644,root,whe
 usr/local/share/e2guardian/languages/ukenglish/template.html,644,root,wheel
 usr/local/share/e2guardian/languages/ukenglish/template_nobypass.html,644,root,wheel
 var/cron/tabs/root,600,root,crontab
+var/db/users.db,644,root,wheel
 var/log/doas,600,root,wheel
 var/log/e2guardian/access.log,640,root,wheel
 var/log/e2guardian/e2guardian.log,640,root,wheel

@@ -69,6 +69,11 @@ class Sslproxy extends Model
 					'argv'	=>	array(),
 					'desc'	=>	_('Get CA cert filename'),
 					),
+
+				'SetUserAuthURL'	=> array(
+					'argv'	=>	array(IPADR),
+					'desc'	=>	_('Set UserAuth URL'),
+					),
 				)
 			);
 	}
@@ -188,6 +193,11 @@ class Sslproxy extends Model
 	function GetCACertFileName()
 	{
 		return Output($this->GetNVP($this->ConfFile, 'CACert'));
+	}
+
+	function SetUserAuthURL($ip)
+	{
+		return $this->SetNVP($this->ConfFile, 'UserAuthURL', "https://$ip/userdblogin.php");
 	}
 }
 
