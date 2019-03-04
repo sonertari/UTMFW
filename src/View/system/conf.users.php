@@ -31,7 +31,7 @@ require_once('include.php');
 if (count($_POST)) {
 	$SelectedUser= '';
 	$SelectedUserName= '';
-	if (filter_has_var(INPUT_POST, 'SelectedUser')) {
+	if (filter_has_var(INPUT_POST, 'SelectedUser') && (filter_has_var(INPUT_POST, 'Delete') || filter_has_var(INPUT_POST, 'Select'))) {
 		$Selected= filter_input(INPUT_POST, 'SelectedUser');
 		$SelectedArray= explode(':', filter_input(INPUT_POST, 'SelectedUser'));
 		$SelectedUser= $SelectedArray[0];
@@ -61,37 +61,61 @@ if (count($_POST)) {
 	else if (filter_has_var(INPUT_POST, 'Add')) {
 		$User= filter_input(INPUT_POST, 'User');
 		$Password= filter_input(INPUT_POST, 'Password');
-		if (!CheckUserDbUser($User, TRUE)) {
-			if (CheckPasswordsMatch($User, $Password, filter_input(INPUT_POST, 'PasswordAgain'))) {
-				if (ValidatePassword($User, $Password)) {
-					// Encrypt passwords before passing down, plaintext passwords should never be visible, not even in the doas logs
-					if ($View->Controller($Output, 'AddUser', $User, sha1($Password), filter_input(INPUT_POST, 'UserName'))) {
-						PrintHelpWindow(_NOTICE('User added').': '.$User);
-						wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "User added: $User");
-					}
-					else {
-						wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "User add failed: $User");
+		if ($User !== '') {
+			if (!CheckUserDbUser($User, TRUE)) {
+				if (CheckPasswordsMatch($User, $Password, filter_input(INPUT_POST, 'PasswordAgain'))) {
+					if (ValidatePassword($User, $Password)) {
+						// Encrypt passwords before passing down, plaintext passwords should never be visible, not even in the doas logs
+						if ($View->Controller($Output, 'AddUser', $User, sha1($Password), filter_input(INPUT_POST, 'UserName'))) {
+							PrintHelpWindow(_NOTICE('User added').': '.$User);
+							wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "User added: $User");
+						}
+						else {
+							wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "User add failed: $User");
+						}
 					}
 				}
+			} else {
+				PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('User already exists'), 'auto', 'ERROR');
+				wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "User already exists: $User");
 			}
 		} else {
-			PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('User already exists'), 'auto', 'ERROR');
-			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "User already exists: $User");
+			PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Need a login name for user'), 'auto', 'ERROR');
+			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Need a login name for user');
 		}
 	}
 	else if (filter_has_var(INPUT_POST, 'Delete')) {
 		if ($View->Controller($Output, 'DelUser', $SelectedUser)) {
 			PrintHelpWindow(_NOTICE('User deleted') . ': ' . $SelectedUser);
 			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "User deleted: $SelectedUser");
+			// Blank out selected user, otherwise the deleted user's info is printed in edit boxes
+			$SelectedUser= '';
+			$SelectedUserName= '';
 		}
 		else {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "User delete failed: $SelectedUser");
+		}
+	}
+	else if (filter_has_var(INPUT_POST, 'DeleteClient')) {
+		foreach ($_POST['ClientsToDelete'] as $Client) {
+			list($ip, $user, $ether, $atime, $desc)= explode(' | ', $Client);
+			if ($View->Controller($Output, 'DelClient', $ip)) {
+				PrintHelpWindow(_NOTICE('Client deleted') . ': ' . $Client);
+				wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Client deleted: $Client");
+			}
+			else {
+				wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Client delete failed: $Client");
+			}
 		}
 	}
 }
 
 if ($View->Controller($Output, 'GetUsers')) {
 	$users= json_decode($Output[0]);
+}
+if ($View->Controller($Output, 'GetClients')) {
+	/// @attention Need $assoc param set to TRUE here, otherwise we get an object instead
+	$clients= json_decode($Output[0], TRUE);
 }
 
 require_once($VIEW_PATH.'/header.php');
@@ -144,6 +168,7 @@ require_once($VIEW_PATH.'/header.php');
 			</td>
 			<td class="valuegroupmiddle">
 				<input type="password" name="PasswordAgain" style="width: 100px;" maxlength="20"/>
+				<input type="submit" name="Change" value="<?php echo _CONTROL('Change Password') ?>"/>
 			</td>
 		</tr>
 		<tr class="oddline">
@@ -152,8 +177,31 @@ require_once($VIEW_PATH.'/header.php');
 			</td>
 			<td class="valuegroupbottom">
 				<input type="text" name="UserName" style="width: 200px;" maxlength="50" value="<?php echo $SelectedUserName ?>"/>
-				<input type="submit" name="Change" value="<?php echo _CONTROL('Change') ?>"/>
 				<input type="submit" name="Add" value="<?php echo _CONTROL('Add') ?>"/>
+			</td>
+		</tr>
+		<tr class="evenline">
+			<td class="title">
+				<?php echo _TITLE('Clients').':' ?>
+			</td>
+			<td>
+				<select name="ClientsToDelete[]" multiple style="width: 400px; height: 100px;">
+					<?php
+					$now= time();
+					foreach ($clients as $client) {
+						$value= $client['IP'].' | '.$client['USER'].' | '.$client['ETHER'].' | '.($now - $client['ATIME']).' | '.$client['DESC'];
+						?>
+						<option value="<?php echo $value ?>"><?php echo $value ?></option>
+						<?php
+					}
+					?>
+				</select>
+				<input type="submit" name="DeleteClient" value="<?php echo _CONTROL('Delete') ?>" onclick="return confirm('<?php echo _NOTICE('Are you sure you want to delete the selected client(s)?') ?>')"/>
+			</td>
+			<td class="none">
+				<?php
+				PrintHelpBox(_HELPBOX('This is the list of clients. The fields on each line are the IP address, user name, ethernet address, idle time in seconds, and description of the client.'));
+				?>
 			</td>
 		</tr>
 	</form>

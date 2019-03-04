@@ -249,6 +249,11 @@ class System extends Model
 					'desc'	=>	_('Get users'),
 					),
 
+				'GetClients'=>	array(
+					'argv'	=>	array(),
+					'desc'	=>	_('Get active users'),
+					),
+
 				'GetEther'=>	array(
 					'argv'	=>	array(IPADR),
 					'desc'	=>	_('Get ether of ip'),
@@ -267,6 +272,11 @@ class System extends Model
 				'DelUser'	=>	array(
 					'argv'	=>	array(NAME),
 					'desc'	=>	_('Delete user'),
+					),
+
+				'DelClient'=>	array(
+					'argv'	=>	array(IPADR),
+					'desc'	=>	_('Delete client'),
 					),
 
 				'GetServiceStartStatus'=>	array(
@@ -996,6 +1006,17 @@ class System extends Model
 		return Output(json_encode($users));
 	}
 
+	function GetClients()
+	{
+		$clients= array();
+		$db= new SQLite3('/var/db/users.db');
+		$results= $db->query('SELECT * FROM users');
+		while ($row= $results->fetchArray(SQLITE3_ASSOC)) {
+			$clients[]= $row;
+		}
+		return Output(json_encode($clients));
+	}
+
 	function GetEther($ip)
 	{
 		exec('/usr/sbin/arp -an', $output);
@@ -1083,6 +1104,19 @@ class System extends Model
 		$errout= implode("\n", $output);
 		Error($errout);
 		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Delete user $user failed: $errout");
+		return FALSE;
+	}
+
+	function DelClient($ip)
+	{
+		$db= new SQLite3('/var/db/users.db');
+		if ($db->exec("DELETE FROM users WHERE ip = '$ip'")) {
+			ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Delete client succeessful: $ip");
+			return TRUE;
+		} else {
+			Error('Cannot delete client');
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot delete client: $ip");
+		}
 		return FALSE;
 	}
 
