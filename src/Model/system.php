@@ -250,8 +250,8 @@ class System extends Model
 					),
 
 				'GetClients'=>	array(
-					'argv'	=>	array(),
-					'desc'	=>	_('Get active users'),
+					'argv'	=>	array(NAME),
+					'desc'	=>	_('Get clients'),
 					),
 
 				'GetEther'=>	array(
@@ -1006,11 +1006,11 @@ class System extends Model
 		return Output(json_encode($users));
 	}
 
-	function GetClients()
+	function GetClients($user)
 	{
 		$clients= array();
 		$db= new SQLite3('/var/db/users.db');
-		$results= $db->query('SELECT * FROM users');
+		$results= $db->query('SELECT * FROM users'.($user === '' ? '' : " WHERE user = '$user'"));
 		while ($row= $results->fetchArray(SQLITE3_ASSOC)) {
 			$clients[]= $row;
 		}

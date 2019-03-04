@@ -31,7 +31,7 @@ require_once('include.php');
 if (count($_POST)) {
 	$SelectedUser= '';
 	$SelectedUserName= '';
-	if (filter_has_var(INPUT_POST, 'SelectedUser') && (filter_has_var(INPUT_POST, 'Delete') || filter_has_var(INPUT_POST, 'Select'))) {
+	if (filter_has_var(INPUT_POST, 'SelectedUser') && (filter_has_var(INPUT_POST, 'Delete') || filter_has_var(INPUT_POST, 'Select') || filter_has_var(INPUT_POST, 'Filter'))) {
 		$Selected= filter_input(INPUT_POST, 'SelectedUser');
 		$SelectedArray= explode(':', filter_input(INPUT_POST, 'SelectedUser'));
 		$SelectedUser= $SelectedArray[0];
@@ -113,7 +113,7 @@ if (count($_POST)) {
 if ($View->Controller($Output, 'GetUsers')) {
 	$users= json_decode($Output[0]);
 }
-if ($View->Controller($Output, 'GetClients')) {
+if ($View->Controller($Output, 'GetClients', filter_has_var(INPUT_POST, 'Filter') ? $SelectedUser : '')) {
 	/// @attention Need $assoc param set to TRUE here, otherwise we get an object instead
 	$clients= json_decode($Output[0], TRUE);
 }
@@ -196,6 +196,7 @@ require_once($VIEW_PATH.'/header.php');
 					}
 					?>
 				</select>
+				<input type="submit" name="Filter" value="<?php echo _CONTROL('Filter') ?>"/>
 				<input type="submit" name="DeleteClient" value="<?php echo _CONTROL('Delete') ?>" onclick="return confirm('<?php echo _NOTICE('Are you sure you want to delete the selected client(s)?') ?>')"/>
 			</td>
 			<td class="none">
