@@ -1083,7 +1083,7 @@ class System extends Model
 
 	function AddUser($user, $passwd, $comment)
 	{
-		exec("/usr/sbin/useradd -p $(/usr/bin/encrypt `/bin/echo -n $passwd | sha1 -`) -c '$comment' -s /usr/bin/whoami $user 2>&1", $output, $retval);
+		exec("/usr/sbin/useradd -p $(/usr/bin/encrypt $passwd) -c '$comment' -s /usr/bin/whoami $user 2>&1", $output, $retval);
 		if ($retval === 0) {
 			return TRUE;
 		}
