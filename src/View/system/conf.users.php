@@ -207,6 +207,6 @@ require_once($VIEW_PATH.'/header.php');
 	</form>
 </table>
 <?php
-PrintHelpWindow(_HELPWINDOW('You can change, add, and delete firewall users on this page.'));
+PrintHelpWindow(_HELPWINDOW('This page allows you to add and delete firewall users, change their passwords, list and delete active clients. You can setup user authentication on the configuration page for SSLproxy.'));
 require_once($VIEW_PATH.'/footer.php');
 ?>

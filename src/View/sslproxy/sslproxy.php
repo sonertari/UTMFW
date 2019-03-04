@@ -113,6 +113,14 @@ class Sslproxy extends View
 				'title' => _TITLE2('Allow Wrong Host'),
 				'info' => _HELPBOX2('Allow wrong host names in certificates.'),
 				),
+			'UserAuth' => array(
+				'title' => _TITLE2('Authenticate Users'),
+				'info' => _HELPBOX2('Require authentication for users to use SSLproxy.'),
+				),
+			'UserTimeout' => array(
+				'title' => _TITLE2('User Idle Timeout'),
+				'info' => _HELPBOX2('Time users out after this many seconds of idle time.'),
+				),
 			);
 	}
 	

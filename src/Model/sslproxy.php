@@ -235,5 +235,11 @@ $ModelConfig = array(
     'AllowWrongHost' => array(
         'type' => STR_yes_no,
 		),
+    'UserAuth' => array(
+        'type' => STR_yes_no,
+		),
+    'UserTimeout' => array(
+        'type' => UINT,
+		),
 	);
 ?>
