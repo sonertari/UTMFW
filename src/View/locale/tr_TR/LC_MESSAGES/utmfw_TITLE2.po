@@ -779,9 +779,6 @@ msgstr "Değiştirilen URL'leri tekrar kontrol et"
 msgid "Redirect SSL denied page"
 msgstr "SSL engelleme sayfasını yönlendir"
 
-msgid "Relayd"
-msgstr "Relayd"
-
 msgid "Remote Server"
 msgstr "Uzaktaki sunucu"
 

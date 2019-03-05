@@ -121,7 +121,6 @@ etc/php-fpm.conf,644,root,wheel
 etc/rc.conf.local,644,root,wheel
 etc/rc.local,644,root,wheel
 etc/rc.shutdown,644,root,wheel
-etc/relayd.conf,600,root,wheel
 etc/smtp-gated.conf,644,root,wheel
 etc/sockd.conf,644,root,wheel
 etc/symon.conf,644,root,wheel

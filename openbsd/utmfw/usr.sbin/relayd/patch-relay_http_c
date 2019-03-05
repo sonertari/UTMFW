@@ -1,3 +1,4 @@
+UTMFW does not use relayd anymore.
 --- relay_http.c.orig	2018-10-27 02:57:10.819386593 +0300
 +++ relay_http.c	2018-10-27 02:42:40.219756668 +0300
 @@ -1102,6 +1102,23 @@

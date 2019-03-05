@@ -831,9 +831,6 @@ msgstr ""
 msgid "Set IP DNS listens on"
 msgstr ""
 
-msgid "Set IP Relayd listens on"
-msgstr ""
-
 msgid "Set PF allowed"
 msgstr ""
 

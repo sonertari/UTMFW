@@ -334,11 +334,6 @@ class Model
 					'desc'	=>	_('Delete PF restricted'),
 					),
 
-				'SetRelaydExtAddr'	=> array(
-					'argv'	=> array(IPADR),
-					'desc'	=> _('Set IP Relayd listens on'),
-					),
-
 				'GetStatus'	=> array(
 					'argv'	=>	array(),
 					'desc'	=>	_('Get critical errors'),
@@ -2993,17 +2988,6 @@ class Model
 			}
 		}
 		return FALSE;
-	}
-
-	/**
-	 * Sets the IP address that the relayd listens on for conns.
-	 *
-	 * @param string $addr IP address.
-	 * @return bool TRUE on success, FALSE on fail.
-	 */
-	function SetRelaydExtAddr($addr)
-	{
-		return $this->ReplaceRegexp('/etc/relayd.conf', "/^(\h*ext_addr\h*=\h*)(\S+)(.*)$/m", '${1}'.$addr.'${3}');
 	}
 }
 

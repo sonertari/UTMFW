@@ -760,9 +760,6 @@ msgstr ""
 msgid "Redirect SSL denied page"
 msgstr ""
 
-msgid "Relayd"
-msgstr ""
-
 msgid "Remote Server"
 msgstr ""
 

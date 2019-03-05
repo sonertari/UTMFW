@@ -56,7 +56,6 @@ $ServiceDescs= array(
 	'httpd_flags'					=> _TITLE2('Web Server (WUI)'),
 	'slowcgi_flags'					=> _TITLE2('CGI Server'),
 	'dhcpd_flags'					=> _TITLE2('DHCP Server'),
-	'relayd_flags'					=> _TITLE2('Relayd'),
 	'ftpproxy_flags'				=> _TITLE2('FTP Proxy'),
 	'ntpd_flags'					=> _TITLE2('Network Time'),
 	'spamd_flags'					=> _TITLE2('Spamd Spam Deferral'),

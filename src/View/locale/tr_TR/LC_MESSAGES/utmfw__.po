@@ -853,9 +853,6 @@ msgstr "DNS yönlendirmelerini ayarla"
 msgid "Set IP DNS listens on"
 msgstr "DNS sunucunun dinlediği IP adresini ayarla"
 
-msgid "Set IP Relayd listens on"
-msgstr "Relayd'nin dinlediği IP'yi ayarla"
-
 msgid "Set PF allowed"
 msgstr "İzinli PF öğesi ekle"
 

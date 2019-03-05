@@ -4111,9 +4111,6 @@ msgstr ""
 msgid "Relay results"
 msgstr ""
 
-msgid "Relayd"
-msgstr ""
-
 msgid "Reload"
 msgstr ""
 
@@ -4597,9 +4594,6 @@ msgid "Set DNS forwarders"
 msgstr ""
 
 msgid "Set IP DNS listens on"
-msgstr ""
-
-msgid "Set IP Relayd listens on"
 msgstr ""
 
 msgid "Set PF allowed"

@@ -88,7 +88,6 @@ class System extends Model
 			'httpd_flags',
 			'slowcgi_flags',
 			'dhcpd_flags',
-			'relayd_flags',
 			'ftpproxy_flags',
 			'ntpd_flags',
 			'spamd_flags',
