@@ -31,7 +31,7 @@ require_once($SRC_ROOT . '/lib/setup.php');
 /// Force https
 if ($ForceHTTPs) {
 	if (!filter_has_var(INPUT_SERVER, 'HTTPS')) {
-		header('Location: https://'.filter_input(INPUT_SERVER, 'SERVER_ADDR').'/index.php');
+		header('Location: https://'.filter_input(INPUT_SERVER, 'SERVER_ADDR').'/userdblogin.php');
 		exit;
 	}
 }
