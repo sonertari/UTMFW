@@ -1099,7 +1099,10 @@ class System extends Model
 	{
 		exec("/usr/sbin/userdel -r $user 2>&1", $output, $retval);
 		if ($retval === 0) {
-			return TRUE;
+			exec("/usr/sbin/groupdel $user 2>&1", $output, $retval);
+			if ($retval === 0) {
+				return TRUE;
+			}
 		}
 
 		$errout= implode("\n", $output);
