@@ -121,6 +121,10 @@ class Sslproxy extends View
 				'title' => _TITLE2('User Idle Timeout'),
 				'info' => _HELPBOX2('Time users out after this many seconds of idle time.'),
 				),
+			'ValidateProto' => array(
+				'title' => _TITLE2('Validate Protocols'),
+				'info' => _HELPBOX2('Validate proxy spec protocols.'),
+				),
 			);
 	}
 	

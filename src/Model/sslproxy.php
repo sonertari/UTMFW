@@ -251,5 +251,8 @@ $ModelConfig = array(
     'UserTimeout' => array(
         'type' => UINT,
 		),
+    'ValidateProto' => array(
+        'type' => STR_yes_no,
+		),
 	);
 ?>
