@@ -913,6 +913,7 @@ $StatsConf = array(
 			'Cmd' => '/bin/cat <LF>',
 			'SearchRegexpPrefix' => '([[:blank:]=:]+)',
 			'BriefStats' => array(
+				'User' => _STATS('Users'),
 				'Proto' => _STATS('Protocols'),
 				'SrcAddr' => _STATS('Source Addresses'),
 				'DstAddr' => _STATS('Destination Addresses'),
@@ -925,11 +926,12 @@ $StatsConf = array(
 			'Needle' => 'CONN:',
 			'Color' => '#01466b',
 			'NVPs' => array(
+				'User' => _STATS('Users'),
+				'Proto' => _STATS('Protocols'),
 				'SrcAddr' => _STATS('Source Addresses'),
 				'DstAddr' => _STATS('Destination Addresses'),
 				'SProto' => _STATS('SSL Source Protocols'),
 				'DProto' => _STATS('SSL Destination Protocols'),
-				'Proto' => _STATS('Protocols'),
 				'Date' => _STATS('Requests by date'),
 				),
 			),
@@ -942,6 +944,7 @@ $StatsConf = array(
 				'IdleDstAddr' => _STATS('Destination Addresses'),
 				'IdleTime' => _STATS('Idle Times'),
 				'IdleDuration' => _STATS('Durations'),
+				'IdleUser' => _STATS('Users'),
 				),
 			),
 		'Expired' => array(
@@ -952,6 +955,7 @@ $StatsConf = array(
 				'ExpiredSrcAddr' => _STATS('Source Addresses'),
 				'ExpiredDstAddr' => _STATS('Destination Addresses'),
 				'ExpiredIdleTime' => _STATS('Idle Times'),
+				'ExpiredUser' => _STATS('Users'),
 				),
 			),
 		),
