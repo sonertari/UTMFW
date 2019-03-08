@@ -525,8 +525,9 @@ function PrintHGraph($data, $color= 'red', $title= '', $page= 'general', $style=
  * @param string $prefix Regexp to insert before the search string.
  * @param string $postfix Regexp to insert after the search string.
  * @param array $dateArray Datetime to restrict the searches.
+ * @param string $logFile Current log file, used by live stats pages to set the log file to the active one.
  */
-function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE, $needle='', $prefix='', $postfix='', $dateArray=array())
+function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE, $needle='', $prefix='', $postfix='', $dateArray=array(), $logFile= '')
 {
 	global $IMG_PATH, $View, $FormIdCount;
 	?>
@@ -593,6 +594,13 @@ function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE, $needle='', $prefix
 								<input type="hidden" name="Month" value="<?php echo $dateArray['Month'] ?>" />
 								<input type="hidden" name="Day" value="<?php echo $dateArray['Day'] ?>" />
 								<input type="hidden" name="Hour" value="<?php echo $dateArray['Hour'] ?>" />
+								<?php
+								if ($logFile != '') {
+									?>
+									<input type="hidden" name="LogFile" value="<?php echo $logFile ?>" />
+									<?php
+								}
+								?>
 								<input type="hidden" name="Sender" value="Stats" />
 							</form>
 							<a onclick="document.<?php echo $formId ?>.submit()" style="cursor: pointer;" title="<?php echo _TITLE('Click to search in the logs') ?>"><?php echo $name ?></a>
@@ -738,7 +746,7 @@ function PrintMinutesGraphNVPSet($stats, $parent, $conf, $type, $prefix, $postfi
 										if (isset($conf['Divisor'])) {
 											DivideArrayData($nvps, $conf['Divisor']);
 										}
-										PrintNVPs($nvps, _($title), 10, TRUE, $conf['Needle'], $prefix, $postfix, $dateArray);
+										PrintNVPs($nvps, _($title), 10, TRUE, $conf['Needle'], $prefix, $postfix, $dateArray, $logFile);
 										?>
 									</td>
 									<?php
