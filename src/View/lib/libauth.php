@@ -207,7 +207,7 @@ function UserDbAuth($user, $passwd, $desc)
 	$ip= filter_input(INPUT_SERVER, 'REMOTE_ADDR');
 
 	if ($View->Controller($output, 'GetEther', $ip) == FALSE) {
-		PrintHelpWindow(_NOTICE('FAILED') . ":<br>Cannot get ether of ip", 'auto', 'ERROR');
+		PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Cannot get ethernet address of IP'), 'auto', 'ERROR');
 		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get ether of ip');
 		return FALSE;
 	}
@@ -216,7 +216,7 @@ function UserDbAuth($user, $passwd, $desc)
 	// Remove any/all double quotes, because we use double quotes around desc arg in sql statements
 	$desc= str_replace('"', '', $desc);
 	if ($View->Controller($output, 'UpdateUser', $ip, $user, $ether, $desc) == FALSE) {
-		PrintHelpWindow(_NOTICE('FAILED') . ":<br>Cannot update user", 'auto', 'ERROR');
+		PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Cannot update user'), 'auto', 'ERROR');
 		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Cannot update user');
 		return FALSE;
 	}
@@ -270,7 +270,7 @@ function CheckUserDbUser($user, $justcheck= FALSE)
 	$View->Controller($output, 'GetUsers');
 	$users= json_decode($output[0], TRUE);
 	if ($users === NULL || !is_array($users)) {
-		PrintHelpWindow(_NOTICE('FAILED') . ":<br>Users not a valid json or array", 'auto', 'ERROR');
+		PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Users not a valid json or array'), 'auto', 'ERROR');
 		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Users not a valid json or array');
 		return FALSE;
 	}
@@ -278,7 +278,7 @@ function CheckUserDbUser($user, $justcheck= FALSE)
 	if (!in_array($user, array_keys($users))) {
 		if (!$justcheck) {
 			// Invalid user box should look similar to password mismatch one
-			PrintHelpWindow(_NOTICE('FAILED') . ":<br>Authentication failed", 'auto', 'ERROR');
+			PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Authentication failed'), 'auto', 'ERROR');
 			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Not a valid user');
 			// Throttle authentication failures
 			exec('/bin/sleep 5');

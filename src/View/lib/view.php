@@ -198,9 +198,8 @@ class View
 				wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "SSH test command failed: $hostname == $output");
 			}
 		} else {
-			$msg= 'Authentication failed';
-			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, $msg);
-			PrintHelpWindow(_NOTICE('FAILED') . ":<br>$msg", 'auto', 'ERROR');
+			PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Authentication failed'), 'auto', 'ERROR');
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Authentication failed');
 		}
 		return FALSE;
 	}
@@ -214,9 +213,8 @@ class View
 		if ($ssh->login($user, $passwd)) {
 			return TRUE;
 		} else {
-			$msg= 'Authentication failed';
-			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, $msg);
-			PrintHelpWindow(_NOTICE('FAILED') . ":<br>$msg", 'auto', 'ERROR');
+			PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Authentication failed'), 'auto', 'ERROR');
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Authentication failed');
 		}
 		return FALSE;
 	}
