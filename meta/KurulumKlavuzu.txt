@@ -12,7 +12,7 @@ Kurulum kayıtları /root dizini altında bulunabilir.
 
 Kurulum sırasında belirlediğiniz iç ağ arayüzünün IP adresi üzerinden web yönetim arayüzüne ulaşabilirsiniz. Sisteme iç ağdan ssh bağlantısı yapabilirsiniz.
 
-Web arayüzü kullanıcı adları admin ve user'dır. İkisinin parolası da kurulum sırasında girdiğiniz değere ayarlanır.
+Web arayüzü kullanıcı adları admin ve user'dır. Ağ kullanıcı adı utmfw'dür. Hepsinin parolası kurulum sırasında girdiğiniz değere ayarlanır.
 
 Kaynaklar:
 [1] Kurulum iso dosyasındaki INSTALL.amd64
