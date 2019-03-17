@@ -2,7 +2,7 @@ $OpenBSD$
 Index: src/HTTPHeader.cpp
 --- src/HTTPHeader.cpp.orig
 +++ src/HTTPHeader.cpp
-@@ -1112,10 +1112,13 @@ if(!icap) {
+@@ -1103,10 +1103,13 @@ if(!icap) {
  
  String HTTPHeader::getLogUrl(bool withport, bool isssl)
  {
@@ -18,7 +18,7 @@ Index: src/HTTPHeader.cpp
      }
      return answer;
  }
-@@ -1149,6 +1152,14 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
+@@ -1140,6 +1143,14 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
      } else {
          answer = answer.before(" http/"); // just in case!
      }
@@ -33,7 +33,7 @@ Index: src/HTTPHeader.cpp
      if (requestType() == "CONNECT") {
          https = true;
          port = 443;
-@@ -1183,11 +1194,20 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
+@@ -1174,11 +1185,20 @@ String HTTPHeader::getUrl(bool withport, bool isssl)
              // Squid doesn't like requests in this format. Work around the fact.
              header.front() = requestType() + " " + answer + " HTTP/" + header.front().after(" HTTP/");
          } else { // must be in the form GET http://foo.bar:80/ HTML/1.0
@@ -58,7 +58,7 @@ Index: src/HTTPHeader.cpp
              String url(hostname.after("/"));
              url.removeWhiteSpace(); // remove rubbish like ^M and blanks
              if (hostname.endsWith(".")) {
-@@ -1294,7 +1314,10 @@ String HTTPHeader::getCookie(const char *cookie)
+@@ -1278,7 +1298,10 @@ String HTTPHeader::getCookie(const char *cookie)
          if (i->startsWithLower("cookie:")) {
              line = i->after(": ");
              if (line.contains(cookie)) { // We know we have the cookie
@@ -70,7 +70,26 @@ Index: src/HTTPHeader.cpp
                  line.lop(); // Get rid of the '='
                  if (line.contains(";")) {
                      line = line.before(";");
-@@ -1499,6 +1522,26 @@ String HTTPHeader::getReferer()
+@@ -1312,7 +1335,7 @@ void HTTPHeader::setCookie(const char *cookie, const c
+ }
+ 
+ // is this a temporary filter bypass cookie?
+-bool HTTPHeader::isBypassCookie(String url, const char *magic, const char *clientip, const char *user)
++bool HTTPHeader::isBypassCookie(String url, const char *magic, const char *clientip, const char *user, const bool bypass_v2)
+ {
+     String cookie(getCookie("GBYPASS"));
+     if (!cookie.length()) {
+@@ -1325,7 +1348,8 @@ bool HTTPHeader::isBypassCookie(String url, const char
+     String cookietime(cookie.after(cookiehash.toCharArray()));
+     String mymagic(magic);
+     mymagic += clientip;
+-    mymagic += user;
++    if (bypass_v2)
++        mymagic += user;
+     mymagic += cookietime;
+     bool matched = false;
+     while (url.contains(".")) {
+@@ -1370,6 +1394,26 @@ String HTTPHeader::getReferer()
      std::cerr << thread_id << "Found Referer URL:" << line << " Line: " << __LINE__ << " Function: " << __func__ << std::endl;
  #endif
      return line;

@@ -1,5 +1,5 @@
 COMMENT =	content scanning web filter
-DISTNAME =	e2guardian-5.2.2
+DISTNAME =	e2guardian-5.3.2
 CATEGORIES =	www net
 
 HOMEPAGE =	http://www.e2guardian.org/
@@ -13,7 +13,7 @@ WANTLIB =               c m pcre pcreposix stdc++ z
 
 # You may need to download the source package yourself,
 # and copy it under /usr/ports/distfiles/
-MASTER_SITES=	https://github.com/e2guardian/e2guardian/releases/tag/v5.2.2/
+MASTER_SITES=	https://github.com/e2guardian/e2guardian/releases/tag/v5.3.2/
 
 LIB_DEPENDS =           devel/pcre
 

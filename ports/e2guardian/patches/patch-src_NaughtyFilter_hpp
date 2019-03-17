@@ -3,21 +3,13 @@ $OpenBSD$
 Index: src/NaughtyFilter.hpp
 --- src/NaughtyFilter.hpp.orig
 +++ src/NaughtyFilter.hpp
-@@ -70,6 +70,7 @@ class NaughtyFilter
-     bool wasclean = false;
-     bool cachehit = false;
-     bool isbypass = false;
-+    bool setbypasscookie = false;
-     bool iscookiebypass = false;
-     bool isvirusbypass = false;
-     bool isscanbypass = false;
-@@ -106,6 +107,9 @@ class NaughtyFilter
-     String search_words;
+@@ -107,6 +107,9 @@ class NaughtyFilter
      String search_terms;
      struct timeval thestart;
-+
+ 
 +	String sslproxy_ip;
 +	int sslproxy_port;
- 
++
      // 0=none,1=first line,2=all
      int headersent = 0;
+ 

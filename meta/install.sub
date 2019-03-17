@@ -1119,7 +1119,7 @@ THESETS="isc-bind-9.11.4pl2.tgz \
 		p5-Mail-SpamAssassin-3.4.2p0.tgz \
 		p3scan-2.3.2.tgz \
 		smtp-gated-1.4.20.0.tgz \
-		e2guardian-5.2.2.tgz \
+		e2guardian-5.3.2.tgz \
 		blacklists.tar.gz \
 		snort-2.9.11.1p0.tgz \
 		snortrules.tar.gz \
