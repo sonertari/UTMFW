@@ -1085,6 +1085,9 @@ $scanConfig = array(
     'disablecontentscan' => array(
         'type' => STR_on_off,
 		),
+    'contentscanexceptions' => array(
+        'type' => STR_on_off,
+		),
     'deepurlanalysis' => array(
         'type' => STR_on_off,
 		),
@@ -1317,9 +1320,6 @@ $GeneralscanConfig = array(
 		),
     'contentscannertimeout' => array(
         'type' => UINT,
-		),
-    'contentscanexceptions' => array(
-        'type' => STR_on_off,
 		),
     'recheckreplacedurls' => array(
         'type' => STR_on_off,

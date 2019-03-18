@@ -203,6 +203,13 @@ WARNING: This option is highly CPU intensive!'),
 Content scanning primarily is AV scanning (if enabled) but could include other types.
 (on|off) default = off.'),
 		),
+	'contentscanexceptions' => array(
+		'title' => _TITLE2('Content scan exceptions'),
+		'info' => _HELPBOX2('If \'on\' exception sites, urls, users etc will be scanned
+This is probably not desirable behavour as exceptions are supposed to be trusted and will increase load.
+Correct use of grey lists are a better idea.
+(on|off) default = off'),
+		),
 	'deepurlanalysis' => array(
 		'title' => _TITLE2('Enable Deep URL Analysis'),
 		'info' => _HELPBOX2('When enabled, E2 looks for URLs within URLs, checking against the bannedsitelist and bannedurllist. This can be used, for example, to block images originating from banned sites from appearing in Google Images search results, as the original URLs are embedded in the thumbnail GET requests.
@@ -552,13 +559,6 @@ This may be ignored by the configured download manager.'),
 		'info' => _HELPBOX2('Some of the content scanners support using a timeout value to stop processing (eg AV scanning) the file if it takes too long.
 If supported this will be used.
 The default of 60 seconds is probably reasonable.'),
-		),
-	'contentscanexceptions' => array(
-		'title' => _TITLE2('Content scan exceptions'),
-		'info' => _HELPBOX2('If \'on\' exception sites, urls, users etc will be scanned
-This is probably not desirable behavour as exceptions are supposed to be trusted and will increase load.
-Correct use of grey lists are a better idea.
-(on|off) default = off'),
 		),
 	'recheckreplacedurls' => array(
 		'title' => _TITLE2('Re-check replaced URLs'),
