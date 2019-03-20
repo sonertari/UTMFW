@@ -767,8 +767,8 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/Makefile.in snort-2.9.1
 +.NOEXPORT:
 diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.11.1_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c
 --- snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c	1970-01-01 02:00:00.000000000 +0200
-+++ snort-2.9.11.1_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c	2019-03-20 00:52:25.764110315 +0300
-@@ -0,0 +1,521 @@
++++ snort-2.9.11.1_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c	2019-03-20 21:07:51.188528073 +0300
+@@ -0,0 +1,477 @@
 +/****************************************************************************
 + *
 + * Copyright (C) 2017-2019 Soner Tari <sonertari@gmail.com>. All rights reserved.
@@ -990,16 +990,6 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +
 +	PREPROC_PROFILE_START(utmfwPerfStats);
 +
-+// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[192.168.111.130]:443,s\r\n
-+// 9 + 2 + 45 + 2 + 5 + 2 + 45 + 2 + 5 + 2 + 45 + 2 + 5 + 1 + 1 + 2 = 175
-+#define MAX_LINE_LEN 175
-+#define MAX_IPADDR_LEN 45
-+#define MAX_PORT_LEN 5
-+
-+	char *line = NULL;
-+	char *sslproxy_src_addr = NULL;
-+	char *sslproxy_dst_addr = NULL;
-+
 +	if (p->payload && p->payload_size) {
 + 		int port_match = 0;
 +		int i;
@@ -1013,6 +1003,17 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +		if (port_match) {
 +			char *sslproxy = memmem(p->payload, p->payload_size, "SSLproxy:", 9);
 +			if (sslproxy) {
++// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[192.168.111.130]:443,s\r\n
++// 9 + 2 + 45 + 2 + 5 + 2 + 45 + 2 + 5 + 2 + 45 + 2 + 5 + 1 + 1 + 2 = 175
++#define MAX_LINE_LEN 175
++#define MAX_IPADDR_LEN 45
++#define MAX_PORT_LEN 5
++
++				char line[MAX_LINE_LEN + 1];
++				char sslproxy_src_addr[MAX_IPADDR_LEN + 1];
++				char sslproxy_dst_addr[MAX_IPADDR_LEN + 1];
++				char port[MAX_PORT_LEN + 1];
++
 +				int payload_rest_len = p->payload_size - (sslproxy - (char *)p->payload);
 +				char *line_end = memmem(sslproxy, payload_rest_len, "\n", 1);
 +				if (!line_end) {
@@ -1023,12 +1024,6 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +				int line_len = line_end - sslproxy;
 +				if (line_len > MAX_LINE_LEN) {
 +					_dpd.errMsg("UtmfwPreproc: line_len larger than MAX_LINE_LEN: %d\n", line_len);
-+					goto out;
-+				}
-+
-+				line = malloc(line_len + 1);
-+				if (!line) {
-+					_dpd.errMsg("UtmfwPreproc: Cannot allocate for line: %s\n", sslproxy);
 +					goto out;
 +				}
 +
@@ -1065,12 +1060,6 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +					goto out;
 +				}
 +
-+				sslproxy_src_addr = malloc(addr_len + 1);
-+				if (!sslproxy_src_addr) {
-+					_dpd.errMsg("UtmfwPreproc: Cannot malloc for sslproxy_src_addr: %s\n", sslproxy);
-+					goto out;
-+				}
-+
 +				strncpy(sslproxy_src_addr, ip_start, addr_len);
 +				sslproxy_src_addr[addr_len] = '\0';
 +
@@ -1080,16 +1069,9 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +					goto out;
 +				}
 +
-+				char *port = malloc(port_len + 1);
-+				if (!port) {
-+					_dpd.errMsg("UtmfwPreproc: Cannot malloc for src port: %s\n", sslproxy);
-+					goto out;
-+				}
-+
 +				strncpy(port, port_start, port_len);
 +				port[port_len] = '\0';
 +				int sslproxy_src_port = atoi(port);
-+				free(port);
 +				
 +				ip_start = strchr(port_end, '[') + 1;
 +				ip_end = strchr(ip_start, ']');
@@ -1109,12 +1091,6 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +					goto out;
 +				}
 +
-+				sslproxy_dst_addr = malloc(addr_len + 1);
-+				if (!sslproxy_dst_addr) {
-+					_dpd.errMsg("UtmfwPreproc: Cannot malloc for sslproxy_dst_addr: %s\n", sslproxy);
-+					goto out;
-+				}
-+
 +				strncpy(sslproxy_dst_addr, ip_start, addr_len);
 +				sslproxy_dst_addr[addr_len] = '\0';
 +
@@ -1124,16 +1100,9 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +					goto out;
 +				}
 +
-+				port = malloc(port_len + 1);
-+				if (!port) {
-+					_dpd.errMsg("UtmfwPreproc: Cannot malloc for dst port: %s\n", sslproxy);
-+					goto out;
-+				}
-+
 +				strncpy(port, port_start, port_len);
 +				port[port_len] = '\0';
 +				int sslproxy_dst_port = atoi(port);
-+				free(port);
 +
 +				int sslproxy_ssl = strchr(ssl_start, 's') ? 1 : 0;
 +
@@ -1176,13 +1145,6 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +
 +				p->src_port = sslproxy_src_port;
 +				p->dst_port = sslproxy_dst_port;
-+				
-+				free(line);
-+				line = NULL;
-+				free(sslproxy_src_addr);
-+				sslproxy_src_addr = NULL;
-+				free(sslproxy_dst_addr);
-+				sslproxy_dst_addr = NULL;
 +
 +				// Src and dst addresses updated, log alert
 +				_dpd.alertAdd(GENERATOR_UTMFW, DST_PORT_MATCH, 1, 0, 3, DST_PORT_MATCH_STR, 0);
@@ -1199,12 +1161,6 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +		DEBUG_WRAP(DebugMessage(DEBUG_UTMFW, "No payload\n"););
 +	}
 +out:
-+	if (line)
-+		free(line);
-+	if (sslproxy_src_addr)
-+		free(sslproxy_src_addr);
-+	if (sslproxy_dst_addr)
-+		free(sslproxy_dst_addr);
 +	PREPROC_PROFILE_END(utmfwPerfStats);
 +}
 +
