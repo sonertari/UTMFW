@@ -1,21 +1,24 @@
 $ComixWall: patch-p3scan_h,v 1.3 2009/07/25 09:55:30 soner Exp $
---- p3scan.h.orig	Tue Aug  1 15:40:42 2017
-+++ p3scan.h	Wed Aug  2 22:17:55 2017
-@@ -213,6 +213,13 @@ typedef struct proxycontext {
+Index: p3scan.h
+--- p3scan.h.orig
++++ p3scan.h
+@@ -213,6 +213,15 @@ typedef struct proxycontext {
     char          * dspamuser;
     char *        actsvr;
     int           actport;
-+   char *        sslproxy_addr;
++#define MAX_IPADDR_LEN 45
++#define MAX_PORT_LEN 5
++   char          sslproxy_addr[MAX_IPADDR_LEN + 1];
 +   int           sslproxy_port;
-+   char *        sslproxy_src_addr;
-+   char *        sslproxy_src_port;
-+   char *        sslproxy_dst_addr;
-+   char *        sslproxy_dst_port;
++   char          sslproxy_src_addr[MAX_IPADDR_LEN + 1];
++   char          sslproxy_src_port[MAX_PORT_LEN + 1];
++   char          sslproxy_dst_addr[MAX_IPADDR_LEN + 1];
++   char          sslproxy_dst_port[MAX_PORT_LEN + 1];
 +   int           sslproxy_ssl;
     int           extra;
  } proxycontext;
  
-@@ -301,3 +308,4 @@ void w_memory_init(void);
+@@ -301,3 +310,4 @@ void w_memory_init(void);
  typedef void Sigfunc(int);
  
  #endif
