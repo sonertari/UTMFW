@@ -2,6 +2,15 @@ $OpenBSD$
 Index: src/smtp-gated.c
 --- src/smtp-gated.c.orig
 +++ src/smtp-gated.c
+@@ -7,7 +7,7 @@
+  *	(c) Warszawa 2004-2005
+  *	GNU GPL License
+  *
+- *	Copyright (C) 2004-2005 Bart³omiej Korupczynski <bartek@klolik.org>
++ *	Copyright (C) 2004-2005 Bartï¿½omiej Korupczynski <bartek@klolik.org>
+  *
+  *	This program is free software; you can redistribute it and/or 
+  *	modify it under the terms of the GNU General Public License 
 @@ -2210,7 +2210,7 @@ int target_connect(struct session_t *data)
  				SAFE_CLOSE(data->client);
  				exit(0);
@@ -46,7 +55,7 @@ Index: src/smtp-gated.c
  
  	// nie bedzie petli?
  	// dla testow wylacz (albo: wlacz jesli !fixed)
-@@ -2518,8 +2521,24 @@ void connection(struct session_t *data)
+@@ -2518,8 +2521,26 @@ void connection(struct session_t *data)
  		// xclient_startup eats initial greeting and forwards it to client directly
  		// so queueing COMMAND_GREETING would confuse pipelining support
  	} else {
@@ -57,6 +66,8 @@ Index: src/smtp-gated.c
 +			queue_command(COMMAND_OTHER, data);
 +		} else {
 +			fdprintf(data->server, "%s\r\n", data->saved_line);
++			free(data->saved_line);
++			data->saved_line = NULL;
 +
 +			char buffer[1024], *line;
 +			int bufsize = 0;
@@ -73,7 +84,16 @@ Index: src/smtp-gated.c
  	}
  
  	// deskryptor dla select-a
-@@ -3136,7 +3155,107 @@ restart:
+@@ -2957,7 +2978,7 @@ int main(int argc, char* argv[])
+ 			dump_help();
+ 			exit(10);
+ 		case CMD_C:
+-			// nie bierze pod uwagê chroot-a w przypadku ¶cie¿ek!
++			// nie bierze pod uwagï¿½ chroot-a w przypadku ï¿½cieï¿½ek!
+ 			i = dump_config_by_name(arg1, config_options, 0);
+ 			exit(i);
+ 		case CMD_KK:
+@@ -3136,7 +3157,147 @@ restart:
  		log_action(LOG_WARNING, "MEMLEAK_TESTING defined, allocating bogus %s bytes", MEMLEAK_TESTING);
  		malloc(MEMLEAK_TESTING);
  #endif
@@ -81,7 +101,7 @@ Index: src/smtp-gated.c
 +		session_free(&data);
 +		session_init_1(&data, client, origin);
  
-+		// Get SSLproxy info
++		// Get SSLproxy line
 +		fdprintf(data.client, "220 sslproxy - smtp\r\n");
 +
 +		char buffer[1024], *line;
@@ -92,6 +112,7 @@ Index: src/smtp-gated.c
 +
 +    	SET_TIMEOUT(config.timeout_connect);
 +		for (;;) {
++			// fdgetline() returns a NULL-terminated string, replacing '\r' and '\n' with '\0'
 +			if ((line = fdgetline(data.client, buffer, sizeof (buffer), &bufsize, &offset)) == NULL) {
 +				log_action(LOG_INFO, "Done reading client");
 +				break;
@@ -99,7 +120,6 @@ Index: src/smtp-gated.c
 +			// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[74.125.206.108]:465,s
 +			if (!strncasecmp(line, "SSLproxy:", 9)) {
 +				log_action(LOG_DEBUG, line);
-+                data.behind_sslproxy = 1;
 +
 +				char *ip_start = strchr(line, '[') + 1;
 +				char *ip_end = strchr(ip_start, ']');
@@ -107,18 +127,31 @@ Index: src/smtp-gated.c
 +				char *port_end = strchr(port_start, ',');
 +
 +				if (!ip_start || !ip_end || !port_start || !port_end) {
-+					log_action(LOG_CRIT, "Unable to find sslproxy addr fields: %s", line);
++					log_action(LOG_ERR, "Unable to find sslproxy addr: %s", line);
 +					exit(0);
 +				}
 +
 +				int addr_len = ip_end - ip_start;
-+				char actual_target_str[16];
++				if (addr_len > MAX_IPADDR_LEN) {
++					log_action(LOG_ERR, "sslproxy addr_len larger than MAX_IPADDR_LEN: %d\n", addr_len);
++					exit(0);
++				}
++
++				char actual_target_str[MAX_IPADDR_LEN + 1];
 +				strncpy(actual_target_str, ip_start, addr_len);
 +				actual_target_str[addr_len] = '\0';
-+				inet_pton(AF_INET, actual_target_str, &(data.actual_target.sin_addr));
++				if (inet_pton(AF_INET, actual_target_str, &(data.actual_target.sin_addr)) != 1) {
++					log_action(LOG_ERR, "Cannot inet_pton sslproxy addr: %s\n", actual_target_str);
++					exit(0);
++				}
 +
 +				int port_len = port_end - port_start;
-+				char *port = malloc(port_len + 1);
++				if (port_len > MAX_PORT_LEN) {
++					log_action(LOG_ERR, "sslproxy port_len larger than MAX_PORT_LEN: %d\n", port_len);
++					exit(0);
++				}
++
++				char port[MAX_PORT_LEN + 1];
 +				strncpy(port, port_start, port_len);
 +				port[port_len] = '\0';
 +				data.actual_target.sin_port = htons(atoi(port));
@@ -129,17 +162,29 @@ Index: src/smtp-gated.c
 +				port_end = strchr(port_start, ',');
 +
 +				if (!ip_start || !ip_end || !port_start || !port_end) {
-+					log_action(LOG_CRIT, "Unable to find sslproxy src addr fields: %s", line);
++					log_action(LOG_CRIT, "Unable to find sslproxy src addr: %s", line);
 +					exit(0);
 +				}
 +
 +				addr_len = ip_end - ip_start;
++				if (addr_len > MAX_IPADDR_LEN) {
++					log_action(LOG_ERR, "src addr_len larger than MAX_IPADDR_LEN: %d\n", addr_len);
++					exit(0);
++				}
++
 +				strncpy(data.origin_str, ip_start, addr_len);
 +				data.origin_str[addr_len] = '\0';
-+				inet_pton(AF_INET, data.origin_str, &(data.origin.sin_addr));
++				if (inet_pton(AF_INET, data.origin_str, &(data.origin.sin_addr)) != 1) {
++					log_action(LOG_ERR, "Cannot inet_pton src addr: %s\n", data.origin_str);
++					exit(0);
++				}
 +
 +				port_len = port_end - port_start;
-+				port = malloc(port_len + 1);
++				if (port_len > MAX_PORT_LEN) {
++					log_action(LOG_ERR, "src port_len larger than MAX_PORT_LEN: %d\n", port_len);
++					exit(0);
++				}
++
 +				strncpy(port, port_start, port_len);
 +				port[port_len] = '\0';
 +				data.origin.sin_port = htons(atoi(port));
@@ -153,22 +198,37 @@ Index: src/smtp-gated.c
 +				char *ssl_start = port_end + 1;
 +
 +				if (!ip_start || !ip_end || !port_start || !port_end) {
-+					log_action(LOG_CRIT, "Unable to find sslproxy dst addr fields: %s", line);
++					log_action(LOG_CRIT, "Unable to find sslproxy dst addr: %s", line);
 +					exit(0);
 +				}
 +
 +				addr_len = ip_end - ip_start;
++				if (addr_len > MAX_IPADDR_LEN) {
++					log_action(LOG_ERR, "dst addr_len larger than MAX_IPADDR_LEN: %d\n", addr_len);
++					exit(0);
++				}
++
 +				strncpy(data.target_str, ip_start, addr_len);
 +				data.target_str[addr_len] = '\0';
-+				inet_pton(AF_INET, data.target_str, &(data.target.sin_addr));
++				if (inet_pton(AF_INET, data.target_str, &(data.target.sin_addr)) != 1) {
++					log_action(LOG_ERR, "Cannot inet_pton dst addr: %s\n", data.target_str);
++					exit(0);
++				}
 +
 +				port_len = port_end - port_start;
-+				port = malloc(port_len + 1);
++				if (port_len > MAX_PORT_LEN) {
++					log_action(LOG_ERR, "dst port_len larger than MAX_PORT_LEN: %d\n", port_len);
++					exit(0);
++				}
++
 +				strncpy(port, port_start, port_len);
 +				port[port_len] = '\0';
 +				data.target.sin_port = htons(atoi(port));
 +
 +				data.sslproxy_ssl = strchr(ssl_start, 's') ? 1 : 0;
++
++				// Successfully parsed the SSLproxy line, so we are behind an SSLproxy
++                data.behind_sslproxy = 1;
 +			} else {
 +				// @attention Client should not send multiple lines after 220, so grab the first one and continue.
 +				//log_action(LOG_DEBUG, "Client said: %s", line);
@@ -181,7 +241,7 @@ Index: src/smtp-gated.c
  		/* fast DoS checks */
  		if (children >= max_connections_real) {
  			log_action(LOG_INFO, "Rejecting (%d) connection from %s:%d", children, inet_ntoa(origin.sin_addr), ntohs(origin.sin_port));
-@@ -3168,9 +3287,11 @@ restart:
+@@ -3168,9 +3329,11 @@ restart:
  			}
  		}
  
