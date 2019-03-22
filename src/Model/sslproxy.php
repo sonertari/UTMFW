@@ -99,8 +99,8 @@ class Sslproxy extends Model
 	function ParseLogLine($logline, &$cols)
 	{
 		if ($this->ParseSyslogLine($logline, $cols)) {
-			// STATS: thr=1, mld=0, mfd=0, mat=0, mct=0, iib=0, iob=0, eib=0, eob=0, swm=0, uwm=0, to=0, err=0
-			$re= "/^STATS: thr=\d+, mld=(\d+), mfd=(\d+), mat=(\d+), mct=(\d+), iib=(\d+), iob=(\d+), eib=(\d+), eob=(\d+), swm=(\d+), uwm=(\d+), to=(\d+), err=(\d+), si=(\d+)$/";
+			// STATS: thr=1, mld=0, mfd=0, mat=0, mct=0, iib=0, iob=0, eib=0, eob=0, swm=0, uwm=0, to=0, err=0, pc=0, si=1
+			$re= "/^STATS: thr=\d+, mld=(\d+), mfd=(\d+), mat=(\d+), mct=(\d+), iib=(\d+), iob=(\d+), eib=(\d+), eob=(\d+), swm=(\d+), uwm=(\d+), to=(\d+), err=(\d+), pc=(\d+), si=(\d+)$/";
 			if (preg_match($re, $cols['Log'], $match)) {
 				$cols['MaxLoad']= $match[1];
 				$cols['MaxFd']= $match[2];
@@ -114,7 +114,8 @@ class Sslproxy extends Model
 				$cols['UnsetWatermark']= $match[10];
 				$cols['Timeout']= $match[11];
 				$cols['StatsError']= $match[12];
-				$cols['StatsIdx']= $match[13];
+				$cols['PendingSSLCons']= $match[13];
+				$cols['StatsIdx']= $match[14];
 			} else if ($cols['Prio'] == 'ERROR' || $cols['Prio'] == 'CRITICAL') {
 				// ERROR: Error from bufferevent: 0:- 336151570:1042:sslv3 alert bad certificate:20:SSL routines:148:SSL3_READ_BYTES
 				$cols['Error']= $cols['Log'];
