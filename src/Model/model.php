@@ -601,8 +601,6 @@ class Model
 			if (preg_match("/^$user:[^:]+(:.+)$/", $line, $match)) {
 				unset($output);
 				$cmdline= '/usr/bin/chpass -a "' . $user . ':$(/usr/bin/encrypt ' . $passwd . ')' . $match[1] . '"';
-				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "cmdline: $cmdline");
-
 				exec($cmdline, $output, $retval);
 				if ($retval === 0) {
 					return TRUE;
