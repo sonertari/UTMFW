@@ -22,8 +22,11 @@
  * Defs and library functions for Controller.
  */
 
-/// Redirect file for Controller().
+/// Output and error redirect file.
 $TmpFile= '/var/tmp/utmfw/ctlr.out';
+
+/// Return value redirect file.
+$RetvalFile= '/var/tmp/utmfw/retval.out';
 
 /// Matches model names to files. View provides the name only.
 $ModelFiles= array(

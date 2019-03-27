@@ -38,6 +38,8 @@ class Pmacct extends Monitoring
 		global $TmpFile;
 		
 		parent::__construct();
+
+		$this->Proc= 'pmacctd';
 	
 		$this->Commands= array_merge(
 			$this->Commands,
@@ -62,23 +64,14 @@ class Pmacct extends Monitoring
 
 	function Start()
 	{
-		global $TmpFile;
-
-		$this->StartCmd= "/usr/local/sbin/pmacctd -f /etc/pmacct/pmacctd-pnrg.conf > $TmpFile 2>&1 &";
-		$retval_pnrg= parent::Start();
+		$this->StartCmd= '/usr/local/sbin/pmacctd -f /etc/pmacct/pmacctd-pnrg.conf';
+		$retval= parent::Start();
 		
 		/// @todo Should modify pmacct code to report which conf file each child process is using in ps output
-		$this->StartCmd= "/usr/local/sbin/pmacctd -f /etc/pmacct/pmacctd-protograph.conf > $TmpFile 2>&1 &";
-		$retval_protograph= parent::Start();
+		$this->StartCmd= '/usr/local/sbin/pmacctd -f /etc/pmacct/pmacctd-protograph.conf';
+		$retval&= parent::Start();
 
-		// Second Start() needs special treatment due to pmacct not reporting conf file in ps output
-		if ($retval_protograph) {
-			/// @warning Append error out if $retval_protograph is TRUE, because FALSE condition is handled in Start()
-			$errout= $this->GetFile($TmpFile, '');
-			Error($errout);
-		}
-
-		return ($retval_pnrg & $retval_protograph) && ($errout === '');
+		return $retval;
 	}
 
 	function SetIf($if)

@@ -427,7 +427,7 @@ class Model
 	/**
 	 * Start module process(es).
 	 *
-	 * Tries PROC_STAT_TIMEOUT times.
+	 * Waits PROC_STAT_TIMEOUT times.
 	 *
 	 * @todo Actually should stop retrying on error?
 	 *
@@ -435,29 +435,27 @@ class Model
 	 */
 	function Start()
 	{
-		global $TmpFile;
-
-		$this->RunShellCommand($this->StartCmd);
+		global $TmpFile, $RetvalFile;
 		
-		$count= 0;
-		while ($count++ < self::PROC_STAT_TIMEOUT) {
-			if ($this->IsRunning()) {
-				return TRUE;
+		exec($this->StartCmd." > $TmpFile 2>&1 && echo -n '0' > $RetvalFile || echo -n '1' > $RetvalFile &", $output);
+		$retval= file_get_contents($RetvalFile);
+		
+		$running= FALSE;
+		if ($retval === '0') {
+			$count= 0;
+			while (!($running= $this->IsRunning()) && $count++ < self::PROC_STAT_TIMEOUT) {
+				/// @todo Check $TmpFile for error messages, if so break out instead
+				exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 			}
-			/// @todo Check $TmpFile for error messages, if so break out instead
-			exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 		}
 
-		// Check one last time due to the last sleep in the loop
-		if ($this->IsRunning()) {
-			return TRUE;
-		}
-		
-		// Start command is redirected to tmp file
+		// Start command is redirected to tmp file, report its contents, success or failure
 		$output= file_get_contents($TmpFile);
 		Error($output);
-		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Start failed with: $output");
-		return FALSE;
+		if (!$running) {
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Start failed with: $output");
+		}
+		return $running;
 	}
 
 	/**
@@ -898,7 +896,7 @@ class Model
 			}
 		}
 		else {
-			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot copy file $file");
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot copy file: $file");
 		}
 		return FALSE;
 	}
@@ -972,11 +970,11 @@ class Model
 				return TRUE;
 			}
 			else {
-				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot replace in $file");
+				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot replace in: $file");
 			}
 		}
 		else {
-			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot copy file $file");
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot copy file: $file");
 		}
 		return FALSE;
 	}
@@ -997,7 +995,7 @@ class Model
 			return TRUE;
 		}
 		else {
-			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot copy file $file");
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot copy file: $file");
 		}
 		return FALSE;
 	}

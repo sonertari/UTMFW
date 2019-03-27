@@ -104,19 +104,13 @@ class Dhcpd extends Model
 	 */
 	function Start()
 	{
-		global $TmpFile;
-
 		if (($ifs= $this->_getIfs()) !== FALSE) {
 			$ifs= explode("\n", $ifs);
 			$ifs= implode(' ', $ifs);
-			$this->RunShellCommand("/usr/sbin/dhcpd $ifs > $TmpFile 2>&1");
-
-			/// Start command is redirected to tmp file
-			$output= file_get_contents($TmpFile);
-			Error($output);
-			ctlr_syslog(LOG_INFO, __FILE__, __FUNCTION__, __LINE__, "Start output: $output");
-			return $this->IsRunning();
+			$this->StartCmd= "/usr/sbin/dhcpd $ifs";
+			return parent::Start();
 		}
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot get dhcpd ifs");
 		return FALSE;
 	}
 	
@@ -133,7 +127,10 @@ class Dhcpd extends Model
 	function _getIfs()
 	{
 		$ifs= $this->SearchFile($this->rcConfLocal, '/^\h*#*\h*dhcpd_flags\h*=\h*("[^#"]*"|)(\h*|\h*#.*)$/m', 1, '"');
-		return implode ("\n", preg_split('/\h+/', $ifs));
+		if ($ifs !== FALSE) {
+			return implode("\n", preg_split('/\h+/', $ifs));
+		}
+		return FALSE;
 	}
 
 	/**

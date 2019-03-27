@@ -29,11 +29,9 @@ class Ftpproxy extends Model
 	
 	function __construct()
 	{
-		global $TmpFile;
-		
 		parent::__construct();
 		
-		$this->StartCmd= "/usr/sbin/ftp-proxy -vv -D6 > $TmpFile 2>&1 &";
+		$this->StartCmd= '/usr/sbin/ftp-proxy -vv -D6';
 	}
 					
 	function ParseLogLine($logline, &$cols)

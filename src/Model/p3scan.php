@@ -38,11 +38,9 @@ class P3scan extends Model
 	
 	function __construct()
 	{
-		global $TmpFile;
-		
 		parent::__construct();
 		
-		$this->StartCmd= "/usr/local/sbin/p3scan -f /etc/p3scan/p3scan.conf > $TmpFile 2>&1 &";
+		$this->StartCmd= '/usr/local/sbin/p3scan -f /etc/p3scan/p3scan.conf';
 	
 		$this->Commands= array_merge(
 			$this->Commands,

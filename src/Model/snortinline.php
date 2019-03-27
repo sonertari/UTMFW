@@ -35,27 +35,8 @@ class Snortinline extends Snort
 
 	function Start()
 	{
-		global $TmpFile;
-
-		$cmd= "/usr/local/bin/snort -D -d -Q -c $this->ConfFile -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort";
-		$this->RunShellCommand("$cmd > $TmpFile 2>&1");
-
-		$count= 0;
-		while ($count++ < self::PROC_STAT_TIMEOUT) {
-			if ($this->IsRunning()) {
-				return TRUE;
-			}
-			/// @todo Check $TmpFile for error messages, if so break out instead
-			exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
-		}
-
-		/// Start command is redirected to tmp file
-		$output= file_get_contents($TmpFile);
-		Error($output);
-		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Start failed with: $output");
-
-		// Check one last time due to the last sleep in the loop
-		return $this->IsRunning();
+		$this->StartCmd= "/usr/local/bin/snort -D -d -Q -c $this->ConfFile -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort";
+		return parent::Start();
 	}
 
 	function Stop()

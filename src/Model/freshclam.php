@@ -37,11 +37,9 @@ class Freshclam extends Model
 	
 	function __construct()
 	{
-		global $TmpFile;
-		
 		parent::__construct();
 		
-		$this->StartCmd= "/usr/local/bin/freshclam -d > $TmpFile 2>&1 &";
+		$this->StartCmd= '/usr/local/bin/freshclam -d';
 	
 		$this->Commands= array_merge(
 			$this->Commands,

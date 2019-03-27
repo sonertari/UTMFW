@@ -33,11 +33,9 @@ class Spamd extends Model
 	
 	function __construct()
 	{
-		global $TmpFile;
-		
 		parent::__construct();
 		
-		$this->StartCmd= "/usr/libexec/spamd > $TmpFile 2>&1 &";
+		$this->StartCmd= '/usr/libexec/spamd';
 		
 		$this->Commands= array_merge(
 			$this->Commands,

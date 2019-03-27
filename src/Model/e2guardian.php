@@ -45,11 +45,11 @@ class E2guardian extends Model
 	
 	function __construct()
 	{
-		global $TmpFile, $Re_Ip;
+		global $Re_Ip;
 		
 		parent::__construct();
 		
-		$this->StartCmd= "/usr/local/sbin/e2guardian > $TmpFile 2>&1 &";
+		$this->StartCmd= '/usr/local/sbin/e2guardian';
 		
 		$this->re_DgNet= "$Re_Ip\/$Re_Ip";
 		$this->re_DgRange= "$Re_Ip-$Re_Ip";

@@ -166,19 +166,19 @@ if (count($_POST)) {
 		$Value= preg_replace('/\\\\"/', '"', $Value);
 
 		if ($View->Controller($Output, 'SetConfValue', filter_input(INPUT_POST, 'KeyToChange'), $Value, $ViewConfigName, $Group)) {
-			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Configuration changed: '.filter_input(INPUT_POST, 'ConfFile').': '.filter_input(INPUT_POST, 'KeyToChange').' = '.filter_input(INPUT_POST, 'ValueToChange'));
+			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Configuration changed: '.$View->Model.': '.filter_input(INPUT_POST, 'KeyToChange').' = '.filter_input(INPUT_POST, 'ValueToChange'));
 		}
 	}
 	else if (filter_has_var(INPUT_POST, 'Disable')) {
 		/// @warning PHP (?) escapes backslashes, remove first
 		if ($View->Controller($Output, 'DisableConf', RemoveBackSlashes(filter_input(INPUT_POST, 'KeyToChange')), $ViewConfigName, $Group)) {
-			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Configuration disabled: '.filter_input(INPUT_POST, 'ConfFile').': '.filter_input(INPUT_POST, 'KeyToChange'));
+			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Configuration disabled: '.$View->Model.': '.filter_input(INPUT_POST, 'KeyToChange'));
 		}
 	}
 	else if (filter_has_var(INPUT_POST, 'Enable')) {
 		/// @warning PHP (?) escapes backslashes, remove first
 		if ($View->Controller($Output, 'EnableConf', RemoveBackSlashes(filter_input(INPUT_POST, 'KeyToChange')), $ViewConfigName, $Group)) {
-			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Configuration enabled: '.filter_input(INPUT_POST, 'ConfFile').': '.filter_input(INPUT_POST, 'KeyToChange'));
+			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Configuration enabled: '.$View->Model.': '.filter_input(INPUT_POST, 'KeyToChange'));
 		}
 	}
 	else if (filter_has_var(INPUT_POST, 'Reload')) {

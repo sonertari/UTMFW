@@ -35,11 +35,9 @@ class Smtpgated extends Model
 	
 	function __construct()
 	{
-		global $TmpFile;
-		
 		parent::__construct();
 		
-		$this->StartCmd= "/usr/local/sbin/smtp-gated /etc/smtp-gated.conf > $TmpFile 2>&1 &";
+		$this->StartCmd= '/usr/local/sbin/smtp-gated /etc/smtp-gated.conf';
 	}
 
 	function GetVersion()

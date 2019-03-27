@@ -34,7 +34,8 @@ class Httpd extends Model
 	function __construct()
 	{
 		parent::__construct();
-		$this->Proc= 'httpd';
+
+		$this->StartCmd= '/usr/sbin/httpd';
 	}
 
 	function GetVersion()

@@ -37,13 +37,11 @@ class Dante extends Model
 	
 	function __construct()
 	{
-		global $TmpFile;
-		
 		parent::__construct();
 		
 		$this->Proc= 'sockd';
 		
-		$this->StartCmd= "/usr/local/sbin/sockd -D > $TmpFile 2>&1 &";
+		$this->StartCmd= '/usr/local/sbin/sockd -D';
 	
 		$this->Commands= array_merge(
 			$this->Commands,

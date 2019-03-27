@@ -114,27 +114,29 @@ class Openvpn extends Model
 	 */
 	function RestartInstance($conffile)
 	{
-		global $TmpFile;
+		global $TmpFile, $RetvalFile;
 
 		if ($this->StopInstance($conffile)) {
-			$cmd= "/usr/local/sbin/openvpn --config /etc/openvpn/$conffile --daemon --status /var/log/openvpn-status.log 30 > $TmpFile";
-			$this->RunShellCommand($cmd);
+			$startCmd= "/usr/local/sbin/openvpn --config /etc/openvpn/$conffile --daemon --status /var/log/openvpn-status.log 30";
+			exec("$startCmd > $TmpFile 2>&1 && echo -n '0' > $RetvalFile || echo -n '1' > $RetvalFile &", $output);
+			$retval= file_get_contents($RetvalFile);
 
-			$count= 0;
-			while ($count++ < self::PROC_STAT_TIMEOUT) {
-				if ($this->FindPid($conffile) > -1) {
-					return TRUE;
+			$running= FALSE;
+			if ($retval === '0') {
+				$count= 0;
+				while (!($running= ($this->FindPid($conffile) > -1)) && $count++ < self::PROC_STAT_TIMEOUT) {
+					/// @todo Check $TmpFile for error messages, if so break out instead
+					exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 				}
-				exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 			}
 
-			/// Start command is redirected to tmp file
+			// Start command is redirected to tmp file, report its contents, success or failure
 			$output= file_get_contents($TmpFile);
 			Error($output);
-			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Restart failed with: $output");
-			
-			// Check one last time due to the last sleep in the loop
-			return $this->FindPid($conffile) > -1;
+			if (!$running) {
+				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Start failed with: $output");
+			}
+			return $running;
 		}
 		return FALSE;
 	}

@@ -38,11 +38,9 @@ class Symon extends Monitoring
 
 	function __construct()
 	{
-		global $TmpFile;
-		
 		parent::__construct();
 		
-		$this->StartCmd= "/usr/local/libexec/symon > $TmpFile 2>&1 &";
+		$this->StartCmd= '/usr/local/libexec/symon';
 		
 		$this->Commands= array_merge(
 			$this->Commands,

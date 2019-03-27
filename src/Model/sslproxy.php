@@ -35,12 +35,10 @@ class Sslproxy extends Model
 	
 	function __construct()
 	{
-		global $TmpFile;
-		
 		parent::__construct();
 		
 		$this->Proc= 'sslproxy';
-		$this->StartCmd= "/usr/local/bin/sslproxy -f $this->ConfFile > $TmpFile 2>&1 &";
+		$this->StartCmd= "/usr/local/bin/sslproxy -f $this->ConfFile";
 
 		$this->Commands= array_merge(
 			$this->Commands,
@@ -218,6 +216,9 @@ $ModelConfig = array(
     'DisableSSLProto' => array(
 		),
     'Ciphers' => array(
+		),
+    'LeafKeyRSABits' => array(
+        'type' => UINT,
 		),
     'ConnIdleTimeout' => array(
         'type' => UINT,

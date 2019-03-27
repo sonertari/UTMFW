@@ -37,17 +37,13 @@ class Spamassassin extends Model
 
 	public $PidFile= '/var/run/spamassassin.pid';
 
-	public $StartCmd= 'unset LC_ALL; unset LANG; /usr/local/bin/spamd -L -d -x -u _spamdaemon -r /var/run/spamassassin.pid';
-
 	function __construct()
 	{
-		global $TmpFile;
-		
 		parent::__construct();
 		
 		$this->Proc= 'spamd';
 
-		$this->StartCmd= "unset LC_ALL; unset LANG; /usr/local/bin/spamd -L -d -x -u _spamdaemon -r /var/run/spamassassin.pid > $TmpFile 2>&1 &";
+		$this->StartCmd= 'unset LC_ALL; unset LANG; /usr/local/bin/spamd -L -d -x -u _spamdaemon -r /var/run/spamassassin.pid';
 		
 		$this->Commands= array_merge(
 			$this->Commands,

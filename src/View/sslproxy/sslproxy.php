@@ -77,6 +77,10 @@ class Sslproxy extends View
 				'title' => _TITLE2('Ciphers'),
 				'info' => _HELPBOX2('Cipher specification for both server and client SSL/TLS connections.'),
 				),
+			'LeafKeyRSABits' => array(
+				'title' => _TITLE2('Leaf Key RSA Bits'),
+				'info' => _HELPBOX2('Leaf key RSA keysize in bits, use 1024|2048|3072|4096.'),
+				),
 			'ConnIdleTimeout' => array(
 				'title' => _TITLE2('Connection Idle Timeout'),
 				'info' => _HELPBOX2('Close connections after this many seconds of idle time.'),

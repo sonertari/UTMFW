@@ -97,27 +97,28 @@ class Snort extends Model
 
 	function StartInstance($if)
 	{
-		global $TmpFile;
+		global $TmpFile, $RetvalFile;
 
-		$cmd= "/usr/local/bin/snort -i $if -D -d -c $this->ConfFile -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort";
-		$this->RunShellCommand("$cmd > $TmpFile 2>&1");
+		$startCmd= "/usr/local/bin/snort -i $if -D -d -c $this->ConfFile -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort";
+		exec("$startCmd > $TmpFile 2>&1 && echo -n '0' > $RetvalFile || echo -n '1' > $RetvalFile &", $output);
+		$retval= file_get_contents($RetvalFile);
 
-		$count= 0;
-		while ($count++ < self::PROC_STAT_TIMEOUT) {
-			if ($this->IsInstanceRunning($if)) {
-				return TRUE;
+		$running= FALSE;
+		if ($retval === '0') {
+			$count= 0;
+			while (!($running= $this->IsInstanceRunning($if)) && $count++ < self::PROC_STAT_TIMEOUT) {
+				/// @todo Check $TmpFile for error messages, if so break out instead
+				exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 			}
-			/// @todo Check $TmpFile for error messages, if so break out instead
-			exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
 		}
 
-		/// Start command is redirected to tmp file
+		// Start command is redirected to tmp file, report its contents, success or failure
 		$output= file_get_contents($TmpFile);
 		Error($output);
-		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Start failed with: $output");
-
-		// Check one last time due to the last sleep in the loop
-		return $this->IsInstanceRunning($if);
+		if (!$running) {
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Start failed with: $output");
+		}
+		return $running;
 	}
 
 	/**

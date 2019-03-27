@@ -35,11 +35,9 @@ class Clamd extends Model
 	
 	function __construct()
 	{
-		global $TmpFile;
-		
 		parent::__construct();
 		
-		$this->StartCmd= "/usr/local/sbin/clamd -c /etc/clamd.conf > $TmpFile 2>&1 &";
+		$this->StartCmd= '/usr/local/sbin/clamd -c /etc/clamd.conf';
 	}
 
 	function ParseLogLine($logline, &$cols)

@@ -37,11 +37,9 @@ class Snortips extends Model
 	
 	function __construct()
 	{
-		global $TmpFile;
-		
 		parent::__construct();
 		
-		$this->StartCmd= "unset LC_ALL; unset LANG; /usr/local/sbin/snortips > $TmpFile 2>&1 &";
+		$this->StartCmd= 'unset LC_ALL; unset LANG; /usr/local/sbin/snortips';
 
 		$this->Commands= array_merge(
 			$this->Commands,
