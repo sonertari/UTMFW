@@ -1,6 +1,6 @@
 COMMENT=	transparent SSL/TLS proxy to divert decrypted traffic
 
-DISTNAME=	sslproxy-0.5.9
+DISTNAME=	sslproxy-0.6.0
 EXTRACT_SUFX=	.tar.gz
 
 CATEGORIES=	security
@@ -18,9 +18,11 @@ WANTLIB += pthread ssl
 MASTER_SITES=	https://github.com/sonertari/SSLproxy/
 
 LIB_DEPENDS=	devel/libevent2
-BUILD_DEPENDS=	net/libnet/1.1
+BUILD_DEPENDS=	net/libnet/1.1 \
+		databases/sqlite3
 RUN_DEPENDS=	devel/libevent2 \
-		net/libnet/1.1
+		net/libnet/1.1 \
+		databases/sqlite3
 # following is expected with MALLOC_FLAGS J:
 # "cert.t.c:66:F:cert_refcount_inc:cert_refcount_inc_01:0: refcount mismatch"
 # the test deliberately does a use-after-free
