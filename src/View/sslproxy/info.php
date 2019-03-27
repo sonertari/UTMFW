@@ -33,6 +33,6 @@ $View->PrintStatsMaxValues($StatusCheckInterval);
 
 PrintHelpWindow(_HELPWINDOW('The SSL proxy decrypts SSL/TLS encrypted traffic and feeds it into the UTM services. The inline IPS inspects the decrypted traffic for intrusion detection and prevention as well.
 
-The max statistics displayed on this page represent the status of the SSL proxy process as a whole, within the last report interval in seconds. The numbers here may give you an idea on the current load of the proxy. For example, if the max number of file descriptors is too high, you might want to increase the open files limit of the daemon class in login.conf file.'));
+The max statistics displayed on this page represent the status of the SSLproxy process as a whole, within the last report interval in seconds. The numbers here may give you an idea on the current load of the proxy. For example, if the max number of file descriptors is too high, you might want to increase the open files limit, either in the SSLproxy configuration or in login.conf file (daemon class).'));
 require_once($VIEW_PATH.'/footer.php');
 ?>

@@ -111,7 +111,6 @@ etc/dhcpd.conf,644,root,wheel
 etc/doas.conf,644,root,wheel
 etc/freshclam.conf,644,root,wheel
 etc/httpd.conf,644,root,wheel
-etc/login.conf,644,root,wheel
 etc/motd,664,root,wheel
 etc/newsyslog.conf,644,root,wheel
 etc/pf.conf,600,root,wheel

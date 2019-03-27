@@ -129,6 +129,10 @@ class Sslproxy extends View
 				'title' => _TITLE2('Validate Protocols'),
 				'info' => _HELPBOX2('Validate proxy spec protocols.'),
 				),
+			'OpenFilesLimit' => array(
+				'title' => _TITLE2('Open Files Limit'),
+				'info' => _HELPBOX2('Open files limit, use 50-10000.'),
+				),
 			);
 	}
 	

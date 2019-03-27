@@ -256,5 +256,8 @@ $ModelConfig = array(
     'ValidateProto' => array(
         'type' => STR_yes_no,
 		),
+    'OpenFilesLimit' => array(
+        'type' => UINT,
+		),
 	);
 ?>
