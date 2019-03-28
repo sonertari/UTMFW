@@ -15,7 +15,7 @@ Index: src/HTTPHeader.hpp
  
      // grab referer url from headers
      String getReferer();
-+    String parseSSLproxyLine();
++    bool parseSSLproxyLine(String &sslproxy_ip, String &sslproxy_port, String &sslproxy_client_ip, String &sslproxy_client_port, String &sslproxy_ssl, String &sslproxy_user);
  
      HTTPHeader()
      //    : port(0), timeout(120000), contentlength(0), postdata(NULL), dirty(true), is_response(false)

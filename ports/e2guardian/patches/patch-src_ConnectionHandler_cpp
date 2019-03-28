@@ -30,20 +30,21 @@ Index: src/ConnectionHandler.cpp
  #ifdef DGDEBUG
                      std::cerr << thread_id << " No header recd from client - errno: " << err << std::endl;
  #endif
-@@ -781,6 +787,22 @@ int ConnectionHandler::handleConnection(Socket &peerco
+@@ -781,6 +787,23 @@ int ConnectionHandler::handleConnection(Socket &peerco
  
              }
  //
 +            checkme.sslproxy_ip = "";
 +            checkme.sslproxy_port = 0;
-+            String srcaddrport = header.parseSSLproxyLine();
-+            if (!srcaddrport.empty()) {
-+                // 127.0.0.1:34649,192.168.3.24:47286,s
-+                checkme.sslproxy_ip = srcaddrport.before(":").toCharArray();
-+                checkme.sslproxy_port = srcaddrport.after(":").before(",").toInteger();
-+                clientip = srcaddrport.after(",").before(":").toCharArray();
-+                peerconn.setActualPeerAddrPort(srcaddrport.after(",").before(":").toCharArray(), srcaddrport.after(",").after(":").before(",").toInteger());
-+                checkme.is_ssl = (srcaddrport.after(",").after(",") == "s");
++            String sslproxy_ip, sslproxy_port, sslproxy_client_ip, sslproxy_client_port, sslproxy_ssl, sslproxy_user;
++            if (header.parseSSLproxyLine(sslproxy_ip, sslproxy_port, sslproxy_client_ip, sslproxy_client_port, sslproxy_ssl, sslproxy_user)) {
++                checkme.sslproxy_ip = sslproxy_ip;
++                checkme.sslproxy_port = sslproxy_port.toInteger();
++                clientip = sslproxy_client_ip;
++                peerconn.setActualPeerAddrPort(clientip, sslproxy_client_port.toInteger());
++                header.setClientIP(sslproxy_client_ip);
++                checkme.is_ssl = (sslproxy_ssl == "s");
++                clientuser = sslproxy_user;
 +            }
 +
 +            if (checkme.is_ssl && header.header.front().contains("http://")) {
@@ -53,7 +54,7 @@ Index: src/ConnectionHandler.cpp
              // do this normalisation etc just the once at the start.
              checkme.setURL(ismitm);
  
-@@ -2376,7 +2398,7 @@ bool ConnectionHandler::getdnstxt(std::string &clienti
+@@ -2376,7 +2399,7 @@ bool ConnectionHandler::getdnstxt(std::string &clienti
      // get info from DNS
      union {
          HEADER hdr;
@@ -62,7 +63,7 @@ Index: src/ConnectionHandler.cpp
      } response;
      int responseLen;
      ns_msg handle; /* handle for response message */
-@@ -2924,7 +2946,7 @@ bool ConnectionHandler::checkByPass(NaughtyFilter &che
+@@ -2924,7 +2947,7 @@ bool ConnectionHandler::checkByPass(NaughtyFilter &che
              }
          } else if (ldl->fg[filtergroup]->bypass_mode != 0) {
              if (header.isBypassCookie(checkme.urldomain, ldl->fg[filtergroup]->cookie_magic.c_str(),

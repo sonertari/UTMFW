@@ -89,30 +89,48 @@ Index: src/HTTPHeader.cpp
      mymagic += cookietime;
      bool matched = false;
      while (url.contains(".")) {
-@@ -1370,6 +1394,26 @@ String HTTPHeader::getReferer()
+@@ -1370,6 +1394,44 @@ String HTTPHeader::getReferer()
      std::cerr << thread_id << "Found Referer URL:" << line << " Line: " << __LINE__ << " Function: " << __func__ << std::endl;
  #endif
      return line;
 +}
 +
-+String HTTPHeader::parseSSLproxyLine()
++bool HTTPHeader::parseSSLproxyLine(String &sslproxy_ip, String &sslproxy_port, String &sslproxy_client_ip, String &sslproxy_client_port, String &sslproxy_ssl, String &sslproxy_user)
 +{
 +    for (std::deque<String>::iterator i = header.begin(); i != header.end(); i++) {
-+        // SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[74.125.206.108]:465,s
++        // SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[74.125.206.108]:465,s[,soner]
 +        if (i->startsWith("SSLproxy:")) {
++#ifdef DGDEBUG
++            std::cout << "Found SSLproxy header: " << i->toCharArray() << std::endl;
++#endif
 +            String line = i->after("SSLproxy: [");
 +            line.removeWhiteSpace();
-+            // 127.0.0.1:34649,192.168.3.24:47286,s
-+            line = line.before("]") + line.after("]").before(",") + "," +
-+                    line.after(",[").before("]") + line.after(",[").after("]").before(",") + "," + 
-+                    line.after(",[").after(",[").after(",");
++
++			String sslproxy_ipport = line.before(",");
++			sslproxy_ip = sslproxy_ipport.before("]");
++			sslproxy_port = sslproxy_ipport.after("]:");
++			
++			String sslproxy_client_ipport = line.after(",[").before(",");
++			sslproxy_client_ip = sslproxy_client_ipport.before("]");
++			sslproxy_client_port = sslproxy_client_ipport.after("]:");
++
++			sslproxy_ssl = line.after(",[").after(",[").after(",");
++			if (sslproxy_ssl.length() > 1) {
++				sslproxy_user = sslproxy_ssl.after(",");
++				sslproxy_ssl = sslproxy_ssl.before(",");
++			} 
 +#ifdef DGDEBUG
-+            std::cout << "Found SSLproxy header: " << line << std::endl;
++            std::cout << "sslproxy_ip: " << sslproxy_ip << std::endl;
++            std::cout << "sslproxy_port: " << sslproxy_port << std::endl;
++            std::cout << "sslproxy_client_ip: " << sslproxy_client_ip << std::endl;
++            std::cout << "sslproxy_client_port: " << sslproxy_client_port << std::endl;
++            std::cout << "sslproxy_ssl: " << sslproxy_ssl << std::endl;
++            std::cout << "sslproxy_user: " << sslproxy_user << std::endl;
 +#endif
-+            return line;
++            return true;
 +        }
 +    }
-+    return "";
++    return false;
  }
  
  // *

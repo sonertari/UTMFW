@@ -27,9 +27,7 @@ CONFIGURE_ARGS =	--localstatedir=/var \
 			--with-proxyuser=_e2guardian \
 			--with-proxygroup=_e2guardian \
 			--enable-clamd \
-			--enable-segv-backtrace=no \
-			--enable-email \
-			--enable-trickledm
+			--enable-email
 
 pre-configure:
 	@cd ${WRKSRC}; env AUTOCONF_VERSION=${AUTOCONF_VERSION} \
