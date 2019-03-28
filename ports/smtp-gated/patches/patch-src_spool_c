@@ -1,0 +1,101 @@
+$OpenBSD$
+
+Index: src/spool.c
+--- src/spool.c.orig
++++ src/spool.c
+@@ -1,7 +1,7 @@
+ /*
+  * 	spool.c
+  *
+- * 	Copyright (C) 2004-2005 Bart³omiej Korupczynski <bartek@klolik.org>
++ * 	Copyright (C) 2004-2005 Bartï¿½omiej Korupczynski <bartek@klolik.org>
+  *
+  * 	This program is free software; you can redistribute it and/or 
+  * 	modify it under the terms of the GNU General Public License 
+@@ -180,7 +180,7 @@ char* spool_scan(struct session_t *data)
+ 	// skanowanie, jesli jest co skanowac
+ 	if (data->spool_exists && (config.scan_max_size > 0) && (data->size <= config.scan_max_size)) {
+ 		if (IS_FLAG_SET(data->auth, AUTH_FLAG_ACCEPTED) && IS_FLAG_SET(config.auth_skip, AUTH_SKIP_ANTIVIR)) {
+-			log_action(LOG_DEBUG, "SCAN:SKIPPED reason=auth");
++			log_action(LOG_DEBUG, "SCAN:SKIPPED reason=auth, user=%s", data->sslproxy_user);
+ 			scan_res = SCAN_SKIPPED;
+ 			scan_time = -1;
+ 		} else {
+@@ -200,18 +200,18 @@ char* spool_scan(struct session_t *data)
+ 
+ 	if (scan_res == SCAN_OK) {
+ 		// usun plik tymczasowy
+-		log_action(LOG_INFO, "SCAN:CLEAN size=%d, time=%d, src=%s, ident=%s",
+-			data->size, scan_time, data->origin_str, data->ident);
++		log_action(LOG_INFO, "SCAN:CLEAN size=%d, time=%d, src=%s, ident=%s, user=%s",
++			data->size, scan_time, data->origin_str, data->ident, data->sslproxy_user);
+ 	} else if (scan_res == SCAN_SKIPPED) {
+-		log_action(LOG_INFO, "SCAN:SKIPPED size=%d, src=%s, ident=%s",
+-			data->size, data->origin_str, data->ident);
++		log_action(LOG_INFO, "SCAN:SKIPPED size=%d, src=%s, ident=%s, user=%s",
++			data->size, data->origin_str, data->ident, data->sslproxy_user);
+ 	} else if (scan_res == SCAN_VIRUS) {
+ 		if (!scan_result_string) scan_result_string = config.msg_unknown_virus;
+ 		if (IS_FLAG_SET(config.spool_leave_on, LEAVE_ON_VIRUS)) do_unlink = 0;
+ 		SHARED_STATS_INC(viruses);
+ 
+-		log_action(LOG_WARNING, "SCAN:VIRUS size=%d, time=%d, src=%s, ident=%s, virus=%s",
+-			data->size, scan_time, data->origin_str, data->ident, scan_result_string);
++		log_action(LOG_WARNING, "SCAN:VIRUS size=%d, time=%d, src=%s, ident=%s, virus=%s, user=%s",
++			data->size, scan_time, data->origin_str, data->ident, scan_result_string, data->sslproxy_user);
+ 
+ 		snprintf(error, sizeof(error), "%s (%s)", config.msg_virus_found, scan_result_string);
+ 		TERMINATE_STRING(error);
+@@ -220,8 +220,8 @@ char* spool_scan(struct session_t *data)
+ 		found(data, LOCK_ON_VIRUS, FOUND_VIRUS, scan_result_string);
+ 	} else if (scan_res == SCAN_TIMEOUT) {
+ 		if (IS_FLAG_SET(config.spool_leave_on, LEAVE_ON_ERROR)) do_unlink = 0;
+-		log_action(LOG_WARNING, "SCAN:TIMEOUT size=%d, time=%d, src=%s, ident=%s, result=%s",
+-			data->size, scan_time, data->origin_str, data->ident, scan_result_string);
++		log_action(LOG_WARNING, "SCAN:TIMEOUT size=%d, time=%d, src=%s, ident=%s, result=%s, user=%s",
++			data->size, scan_time, data->origin_str, data->ident, scan_result_string, data->sslproxy_user);
+ 		if (!config.ignore_errors) {
+ 			snprintf(error, sizeof(error), "%s", config.msg_scanner_failed);
+ 			TERMINATE_STRING(error);
+@@ -230,8 +230,8 @@ char* spool_scan(struct session_t *data)
+ 	} else {
+ 		// usun plik tymczasowy
+ 		if (IS_FLAG_SET(config.spool_leave_on, LEAVE_ON_ERROR)) do_unlink = 0;
+-		log_action(LOG_ERR, "SCAN:FAILED size=%d, time=%d, src=%s, ident=%s, result=%s",
+-			data->size, scan_time, data->origin_str, data->ident, scan_result_string);
++		log_action(LOG_ERR, "SCAN:FAILED size=%d, time=%d, src=%s, ident=%s, result=%s, user=%s",
++			data->size, scan_time, data->origin_str, data->ident, scan_result_string, data->sslproxy_user);
+ 		if (!config.ignore_errors) {
+ 			snprintf(error, sizeof(error), "%s", config.msg_scanner_failed);
+ 			TERMINATE_STRING(error);
+@@ -246,10 +246,10 @@ char* spool_scan(struct session_t *data)
+ 	if ((config.spam_max_size > 0) && (ret == NULL)) {
+ 		SHARED_CONN_STATUS(state, CONN_SPAM);
+ 		if (is_load_above(config.spam_max_load, &cur_load) == 1) {
+-			log_action(LOG_INFO, "SPAM:SKIPPED size=%d, src=%s, ident=%s, load=%f",
+-				data->size, data->origin_str, data->ident, cur_load);
++			log_action(LOG_INFO, "SPAM:SKIPPED size=%d, src=%s, ident=%s, load=%f, user=%s",
++				data->size, data->origin_str, data->ident, cur_load, data->sslproxy_user);
+ 		} else if (IS_FLAG_SET(data->auth, AUTH_FLAG_ACCEPTED) && IS_FLAG_SET(config.auth_skip, AUTH_SKIP_ANTISPAM)) {
+-			log_action(LOG_DEBUG, "SPAM:SKIPPED reason=auth");
++			log_action(LOG_DEBUG, "SPAM:SKIPPED reason=auth, user=%s", data->sslproxy_user);
+ 		} else if (data->spool_exists && (data->size <= config.spam_max_size)) {
+ 			spam_score = 0.0;
+ 	
+@@ -294,12 +294,12 @@ char* spool_scan(struct session_t *data)
+ 				if (IS_FLAG_SET(config.spool_leave_on, LEAVE_ON_ERROR)) do_unlink = 0;
+ 			}
+ 	
+-			log_action(level, "SPAM:%s size=%d, time=%d, src=%s, ident=%s, score=%f",
++			log_action(level, "SPAM:%s size=%d, time=%d, src=%s, ident=%s, score=%f, user=%s",
+ 				scan_result_string, data->size, scan_time, data->origin_str,
+-				data->ident, spam_score);
++				data->ident, spam_score, data->sslproxy_user);
+ 		} else {
+-			log_action(LOG_INFO, "SPAM:SKIPPED size=%d, src=%s, ident=%s",
+-				data->size, data->origin_str, data->ident);
++			log_action(LOG_INFO, "SPAM:SKIPPED size=%d, src=%s, ident=%s, user=%s",
++				data->size, data->origin_str, data->ident, data->sslproxy_user);
+ 		}
+ 	}
+ 

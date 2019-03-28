@@ -483,6 +483,7 @@ $StatsConf = array(
 			'SearchRegexpPrefix' => "([[:blank:]'\(]+)",
 			'SearchRegexpPostfix' => '([^[:alnum:].]+)',
 			'BriefStats' => array(
+				'SPUser' => _STATS('User'),
 				'Result' => _STATS('Results'),
 				'Virus' => _STATS('Infected'),
 				'User' => _STATS('Account name'),
@@ -515,6 +516,7 @@ $StatsConf = array(
 			'Color' => '#01466b',
 			'NVPs' => array(
 				'Date' => _STATS('Requests by date'),
+				'SPUser' => _STATS('User'),
 				'SrcIP' => _STATS('Source IPs'),
 				'Proto' => _STATS('Protocols'),
 				),
@@ -533,6 +535,7 @@ $StatsConf = array(
 			'Needle' => '( virus:)',
 			'Color' => 'red',
 			'NVPs' => array(
+				'SPUser' => _STATS('User'),
 				'From' => _STATS('Senders'),
 				'To' => _STATS('Recipients'),
 				'Virus' => _STATS('Virus'),
@@ -544,11 +547,13 @@ $StatsConf = array(
 			'Cmd' => '/bin/cat <LF>',
 			'SearchRegexpPrefix' => '([[:blank:]<=:]+)',
 			'BriefStats' => array(
+				'NewUser' => _STATS('Users'),
 				'Scanner' => _STATS('Scan Types'),
 				'Result' => _STATS('Scan Results'),
 				'Sender' => _STATS('Senders'),
 				'Recipient' => _STATS('Recipients'),
-				'SrcIP' => _STATS('Source IPs'),
+				'NewSrcIP' => _STATS('Source IPs'),
+				'NewDstIP' => _STATS('Destination IPs'),
 				'LockedIP' => _STATS('Locked IPs'),
 				'Proto' => _STATS('Protocols'),
 				),
@@ -556,12 +561,13 @@ $StatsConf = array(
 		'Requests' => array(
 			'Title' => _STATS('All requests'),
 			'Cmd' => '/bin/cat <LF>',
-			'Needle' => '(CLOSE |SESSION TAKEOVER: |LOCK:LOCKED)',
+			'Needle' => '(NEW )',
 			'Color' => '#01466b',
 			'NVPs' => array(
 				'Date' => _STATS('Requests by date'),
-				'SrcIP' => _STATS('Source IPs'),
-				'ClosedBy' => _STATS('Closed by'),
+				'NewUser' => _STATS('Users'),
+				'NewSrcIP' => _STATS('Source IPs'),
+				'NewDstIP' => _STATS('Destination IPs'),
 				),
 			'Counters' => array(
 				'Xmted' => array(
@@ -571,7 +577,9 @@ $StatsConf = array(
 					'Needle' => '(CLOSE |SESSION TAKEOVER: |LOCK:LOCKED)',
 					'Divisor' => 1000,
 					'NVPs' => array(
+						'User' => _STATS('Users'),
 						'SrcIP' => _STATS('Source IPs'),
+						'ClosedBy' => _STATS('Closed by'),
 						),
 					),
 				'Rcved' => array(
@@ -581,7 +589,9 @@ $StatsConf = array(
 					'Needle' => '(CLOSE |SESSION TAKEOVER: |LOCK:LOCKED)',
 					'Divisor' => 1000,
 					'NVPs' => array(
+						'User' => _STATS('Users'),
 						'SrcIP' => _STATS('Source IPs'),
+						'ClosedBy' => _STATS('Closed by'),
 						),
 					),
 				'Trns' => array(
@@ -590,7 +600,9 @@ $StatsConf = array(
 					'Color' => 'Blue',
 					'Needle' => '(CLOSE |SESSION TAKEOVER: |LOCK:LOCKED)',
 					'NVPs' => array(
+						'User' => _STATS('Users'),
 						'SrcIP' => _STATS('Source IPs'),
+						'ClosedBy' => _STATS('Closed by'),
 						),
 					),
 				'Rcpts' => array(
@@ -599,7 +611,9 @@ $StatsConf = array(
 					'Color' => '#FF8000',
 					'Needle' => '(CLOSE |SESSION TAKEOVER: |LOCK:LOCKED)',
 					'NVPs' => array(
+						'User' => _STATS('Users'),
 						'SrcIP' => _STATS('Source IPs'),
+						'ClosedBy' => _STATS('Closed by'),
 						),
 					),
 				),
@@ -609,8 +623,9 @@ $StatsConf = array(
 			'Needle' => '(SESSION TAKEOVER: |Rejecting |rejected \[|LOCK:LOCKED)',
 			'Color' => 'red',
 			'NVPs' => array(
-				'SrcIP' => _STATS('Source IPs'),
 				'STReason' => _STATS('Reasons'),
+				'User' => _STATS('Users'),
+				'SrcIP' => _STATS('Source IPs'),
 				),
 			),
 		'Scan' => array(
@@ -618,8 +633,9 @@ $StatsConf = array(
 			'Needle' => 'SCAN:',
 			'Color' => 'blue',
 			'NVPs' => array(
-				'ScanSrcIP' => _STATS('Source IPs'),
 				'Result' => _STATS('Scan Results'),
+				'User' => _STATS('Users'),
+				'ScanSrcIP' => _STATS('Source IPs'),
 				),
 			),
 		'Spam' => array(
@@ -627,8 +643,9 @@ $StatsConf = array(
 			'Needle' => 'SPAM:',
 			'Color' => 'blue',
 			'NVPs' => array(
-				'ScanSrcIP' => _STATS('Source IPs'),
 				'Result' => _STATS('Scan Results'),
+				'User' => _STATS('Users'),
+				'ScanSrcIP' => _STATS('Source IPs'),
 				),
 			),
 		'Results' => array(
@@ -639,6 +656,7 @@ $StatsConf = array(
 				'Sender' => _STATS('Senders'),
 				'Recipient' => _STATS('Recipients'),
 				'RResult' => _STATS('Results'),
+				'User' => _STATS('Users'),
 				),
 			),
 		),

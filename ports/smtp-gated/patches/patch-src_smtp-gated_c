@@ -11,6 +11,37 @@ Index: src/smtp-gated.c
   *
   *	This program is free software; you can redistribute it and/or 
   *	modify it under the terms of the GNU General Public License 
+@@ -964,8 +964,8 @@ void wait_for_quit(struct session_t* data, char* forma
+ 	va_end(ap);
+ 
+ 	SHARED_CONN_STATUS(state, CONN_QUIT);
+-	log_action(LOG_WARNING, "SESSION TAKEOVER: src=%s, ident=%s, trns=%d, reason=%s",
+-		data->origin_str, data->ident, data->transaction, data->message);
++	log_action(LOG_WARNING, "SESSION TAKEOVER: src=%s, ident=%s, trns=%d, reason=%s, user=%s",
++		data->origin_str, data->ident, data->transaction, data->message, data->sslproxy_user);
+ 
+ 	cli_size = 0;
+ 	SET_TIMEOUT(config.timeout_session);
+@@ -1220,8 +1220,8 @@ void flush_addresses(struct session_t *data)
+ 			data->mail_from_logged = 1;
+ 			return;
+ 		} else {
+-			log_action(LOG_INFO|LOG_ALWAYS, "MAIL FROM <%s> RCPT TO: %03d<%s>", 
+-				data->mail_from, data->rcpt_to_code[0], data->rcpt_to[0]);
++			log_action(LOG_INFO|LOG_ALWAYS, "MAIL FROM <%s> RCPT TO: %03d<%s>, user=%s", 
++				data->mail_from, data->rcpt_to_code[0], data->rcpt_to[0], data->sslproxy_user);
+ 			data->mail_from_logged = 1;
+ 			
+ 			free(data->rcpt_to[0]);
+@@ -1270,7 +1270,7 @@ void new_mail_from(struct session_t *data, char *email
+ 		return;
+ 
+ 	if (!accepted) {
+-		log_action(LOG_NOTICE|LOG_ALWAYS, "MAIL FROM <%s> rejected [%d]", email, code);
++		log_action(LOG_NOTICE|LOG_ALWAYS, "MAIL FROM <%s> rejected [%d], user=%s", email, code, data->sslproxy_user);
+ //		free(email);
+ 		return;
+ 	}
 @@ -2210,7 +2210,7 @@ int target_connect(struct session_t *data)
  				SAFE_CLOSE(data->client);
  				exit(0);
@@ -48,10 +79,10 @@ Index: src/smtp-gated.c
  	
  	// log
 -	log_action(LOG_NOTICE|LOG_ALWAYS, "NEW (%d/%d) on=%s:%d, src=%s:%d, ident=%s, dst=%s:%d, id=%" FORMAT_TIME_T ".%" FORMAT_PID_T, 
-+	log_action(LOG_NOTICE|LOG_ALWAYS, "NEW (%d/%d) on=%s:%d, src=%s:%d, ident=%s, dst=%s:%d, %s, id=%" FORMAT_TIME_T ".%" FORMAT_PID_T, 
++	log_action(LOG_NOTICE|LOG_ALWAYS, "NEW (%d/%d) on=%s:%d, src=%s:%d, ident=%s, dst=%s:%d, %s, user=%s, id=%" FORMAT_TIME_T ".%" FORMAT_PID_T, 
  		children, data->ident_count, inet_ntoa(data->local.sin_addr), ntohs(data->local.sin_port), data->origin_str, ntohs(data->origin.sin_port),
 -		data->ident, data->target_str, ntohs(data->target.sin_port), data->start_time, getpid());
-+		data->ident, data->target_str, ntohs(data->target.sin_port), data->sslproxy_ssl ? "smtps" : "smtp", data->start_time, getpid());
++		data->ident, data->target_str, ntohs(data->target.sin_port), data->sslproxy_ssl ? "smtps" : "smtp", data->sslproxy_user, data->start_time, getpid());
  
  	// nie bedzie petli?
  	// dla testow wylacz (albo: wlacz jesli !fixed)
@@ -84,6 +115,18 @@ Index: src/smtp-gated.c
  	}
  
  	// deskryptor dla select-a
+@@ -2604,9 +2625,9 @@ void connection(struct session_t *data)
+ 
+ 	cleanup();
+ 
+-	log_action(LOG_NOTICE|LOG_ALWAYS, "CLOSE by=%s, rcv=%d/%d, trns=%d, rcpts=%d, auth=%d, time=%" FORMAT_TIME_T ", src=%s, ident=%s",
++	log_action(LOG_NOTICE|LOG_ALWAYS, "CLOSE by=%s, rcv=%d/%d, trns=%d, rcpts=%d, auth=%d, time=%" FORMAT_TIME_T ", src=%s, ident=%s, user=%s",
+ 		line_closed_cause(res), data->cli_rx, data->srv_rx, data->transaction, data->rcpts_total, data->auth,
+-		time(NULL)-data->start_time, data->origin_str, data->ident);
++		time(NULL)-data->start_time, data->origin_str, data->ident, data->sslproxy_user);
+ 	exit(0);
+ } /* connection() */
+ 
 @@ -2957,7 +2978,7 @@ int main(int argc, char* argv[])
  			dump_help();
  			exit(10);
@@ -93,7 +136,7 @@ Index: src/smtp-gated.c
  			i = dump_config_by_name(arg1, config_options, 0);
  			exit(i);
  		case CMD_KK:
-@@ -3136,7 +3157,147 @@ restart:
+@@ -3136,7 +3157,175 @@ restart:
  		log_action(LOG_WARNING, "MEMLEAK_TESTING defined, allocating bogus %s bytes", MEMLEAK_TESTING);
  		malloc(MEMLEAK_TESTING);
  #endif
@@ -117,7 +160,7 @@ Index: src/smtp-gated.c
 +				log_action(LOG_INFO, "Done reading client");
 +				break;
 +			}
-+			// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[74.125.206.108]:465,s
++			// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[74.125.206.108]:465,s,soner
 +			if (!strncasecmp(line, "SSLproxy:", 9)) {
 +				log_action(LOG_DEBUG, line);
 +
@@ -195,7 +238,6 @@ Index: src/smtp-gated.c
 +				ip_end = strchr(ip_start, ']');
 +				port_start = strchr(ip_end, ':') + 1;
 +				port_end = strchr(port_start, ',');
-+				char *ssl_start = port_end + 1;
 +
 +				if (!ip_start || !ip_end || !port_start || !port_end) {
 +					log_action(LOG_CRIT, "Unable to find sslproxy dst addr: %s", line);
@@ -225,6 +267,35 @@ Index: src/smtp-gated.c
 +				port[port_len] = '\0';
 +				data.target.sin_port = htons(atoi(port));
 +
++				char *ssl_start = port_end + 1;
++				char *ssl_end = strchr(ssl_start, ',');
++				int ssl_len = 0;
++				if (ssl_end) {
++					// There is user info at the end
++					ssl_len = ssl_end - ssl_start;
++
++					char *user = ssl_end + 1;
++
++					int user_len = strlen(user);
++					if (user_len > MAX_USER_LEN) {
++						log_action(LOG_ERR, "user_len larger than MAX_USER_LEN: %d\n", user_len);
++						exit(0);
++					}
++
++					strncpy(data.sslproxy_user, user, user_len);
++					data.sslproxy_user[user_len] = '\0';
++				} else {
++					ssl_len = strlen(ssl_start);
++
++					strncpy(data.sslproxy_user, "Unknown", 7);
++					data.sslproxy_user[7] = '\0';
++				}
++
++				if (ssl_len > 1) {
++					log_action(LOG_ERR, "ssl_len larger than 1: %d\n", ssl_len);
++					exit(0);
++				}
++
 +				data.sslproxy_ssl = strchr(ssl_start, 's') ? 1 : 0;
 +
 +				// Successfully parsed the SSLproxy line, so we are behind an SSLproxy
@@ -241,7 +312,7 @@ Index: src/smtp-gated.c
  		/* fast DoS checks */
  		if (children >= max_connections_real) {
  			log_action(LOG_INFO, "Rejecting (%d) connection from %s:%d", children, inet_ntoa(origin.sin_addr), ntohs(origin.sin_port));
-@@ -3168,9 +3329,11 @@ restart:
+@@ -3168,9 +3357,11 @@ restart:
  			}
  		}
  

@@ -11,12 +11,13 @@ Index: src/smtp-gated.h
   *
   *	This program is free software; you can redistribute it and/or 
   *	modify it under the terms of the GNU General Public License 
-@@ -283,14 +283,21 @@ struct session_t {
+@@ -283,14 +283,23 @@ struct session_t {
  //	char *client_filename;		// filename "ip-ident" 192.168.100.102-x8Fa8d67
  	char *helo;			// HELO/EHLO string
  
 +#define MAX_IPADDR_LEN 45
 +#define MAX_PORT_LEN 5
++#define MAX_USER_LEN 31
  	struct sockaddr_in origin;	// source (client/NAT) address+port
 -	char origin_str[16];		// source (client/NAT) IP text-address
 -	
@@ -28,6 +29,7 @@ Index: src/smtp-gated.h
  
 +	struct sockaddr_in actual_target;
 +    int sslproxy_ssl;
++	char sslproxy_user[MAX_USER_LEN + 1];
 +    int behind_sslproxy;
 +	char *saved_line;
 +

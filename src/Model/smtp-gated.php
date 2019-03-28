@@ -48,7 +48,7 @@ class Smtpgated extends Model
 					
 	function ParseLogLine($logline, &$cols)
 	{
-		global $Re_Ip;
+		global $Re_Ip, $Re_User;
 
 		if ($this->ParseSyslogLine($logline, $cols)) {
 			$re_scanner= '(SCAN|SPAM)';
@@ -56,35 +56,41 @@ class Smtpgated extends Model
 			$re_nonempty= '(\S+)';
 			$re_num= '(\d+)';
 			$re_srcip= "($Re_Ip)";
-			$re_result= '(.*|)';
+			$re_user= "($Re_User|)";
 
-			//NEW (1/0) on=127.0.0.1:9199, src=192.168.3.24:33262, ident=, dst=74.125.206.108:465, smtps, id=1501826099.14746
-			$re= "/NEW\s+.*,\s+(smtps|smtp),\s+.*$/";
+			//NEW (1/0) on=127.0.0.1:9199, src=127.0.0.1:6834, ident=, dst=127.0.0.1:9199, smtp, user=, id=1553754443.17096
+			//NEW (1/0) on=127.0.0.1:9199, src=192.168.3.24:33262, ident=, dst=74.125.206.108:465, smtps, user=soner, id=1501826099.14746
+			$re= "/NEW\s+.*,\s+src=$re_srcip:\d+,.*\s+dst=$re_srcip:\d+,\s+(smtps|smtp),\s+user=$re_user,\s+.*$/";
 			if (preg_match($re, $logline, $match)) {
-				$cols['Proto']= $match[1];
+				$cols['NewSrcIP']= $match[1];
+				$cols['NewDstIP']= $match[2];
+				$cols['Proto']= $match[3];
+				$cols['NewUser']= $match[4] != '' ? $match[4] : _('Unknown');
 			}
 			
-			//SCAN:CLEAN size=1639, time=0, src=192.168.1.1, ident=
+			//SCAN:CLEAN size=1639, time=0, src=192.168.1.1, ident=, user=soner
 			//SPAM:CLEAN size=337, time=0, src=192.168.1.1, ident=, score=2.900000
 			//SCAN:VIRUS size=1065, time=0, src=192.168.1.1, ident=, virus=Eicar-Test-Signature
-			$re= "/$re_scanner:$re_result\s+size=$re_num,\s+time=$re_num,\s+src=$re_srcip,\s+ident=.*$/";
+			$re= "/$re_scanner:$re_result\s+size=$re_num,\s+time=$re_num,\s+src=$re_srcip,\s+ident=.*,\s+user=$re_user$/";
 			if (preg_match($re, $logline, $match)) {
 				$cols['Scanner']= $match[1];
 				$cols['Result']= $match[2];
 				$cols['Bytes']= $match[3];
 				$cols['ScanSrcIP']= $match[5];
+				$cols['User']= $match[6] != '' ? $match[6] : _('Unknown');
 			}
 		
-			$re= "/$re_scanner:$re_result\s+size=$re_num,\s+src=$re_srcip,\s+ident=.*$/";
+			$re= "/$re_scanner:$re_result\s+size=$re_num,\s+src=$re_srcip,\s+ident=.*,\s+user=$re_user$/";
 			if (preg_match($re, $logline, $match)) {
 				$cols['Scanner']= $match[1];
 				$cols['Result']= $match[2];
 				$cols['Bytes']= $match[3];
 				$cols['ScanSrcIP']= $match[4];
+				$cols['User']= $match[5] != '' ? $match[5] : _('Unknown');
 			}
 		
-			//CLOSE by=server, rcv=442/286, trns=1, rcpts=1, auth=0, time=140183437574146, src=192.168.1.1, ident=
-			$re= "/CLOSE\s+by=$re_nonempty,\s+rcv=$re_num\/$re_num,\s+trns=$re_num,\s+rcpts=$re_num,\s+auth=$re_num,\s+time=$re_num,\s+src=$re_srcip,\s+ident=.*$/";
+			//CLOSE by=server, rcv=442/286, trns=1, rcpts=1, auth=0, time=140183437574146, src=192.168.1.1, ident=, user=soner
+			$re= "/CLOSE\s+by=$re_nonempty,\s+rcv=$re_num\/$re_num,\s+trns=$re_num,\s+rcpts=$re_num,\s+auth=$re_num,\s+time=$re_num,\s+src=$re_srcip,\s+ident=.*,\s+user=$re_user$/";
 			if (preg_match($re, $logline, $match)) {
 				$cols['ClosedBy']= $match[1];
 				$cols['Xmted']= $match[2];
@@ -93,41 +99,47 @@ class Smtpgated extends Model
 				$cols['Rcpts']= $match[5];
 				$cols['Seconds']= $match[7];
 				$cols['SrcIP']= $match[8];
+				$cols['User']= $match[9] != '' ? $match[9] : _('Unknown');
 			}
 		
-			//SESSION TAKEOVER: src=192.168.1.1, ident=, trns=1, reason=Malware found (Eicar-Test-Signature)
-			$re= "/SESSION\s+TAKEOVER:\s+src=$re_srcip,\s+\S+,\s+\S+,\s+reason=$re_result$/";
+			$re_result= '(.*|)';
+			//SESSION TAKEOVER: src=192.168.1.1, ident=, trns=1, reason=Malware found (Eicar-Test-Signature), user=soner
+			$re= "/SESSION\s+TAKEOVER:\s+src=$re_srcip,\s+\S+,\s+\S+,\s+reason=$re_result,\s+user=$re_user$/";
 			if (preg_match($re, $logline, $match)) {
 				$cols['SrcIP']= $match[1];
 				$cols['STReason']= $match[2];
 				$cols['ClosedBy']= 'proxy';
+				$cols['User']= $match[3] != '' ? $match[3] : _('Unknown');
 			}
 		
-			//LOCK:LOCKED src=192.168.1.1, ident=-
-			$re= "/LOCK:LOCKED\s+src=$re_srcip,.*$/";
+			//LOCK:LOCKED src=192.168.1.1, ident=-, user=soner
+			$re= "/LOCK:LOCKED\s+src=$re_srcip,.*,\s+user=$re_user$/";
 			if (preg_match($re, $logline, $match)) {
 				$cols['SrcIP']= $match[1];
 				$cols['LockedIP']= $cols['SrcIP'];
 				$cols['STReason']= 'Locked';
 				$cols['ClosedBy']= 'proxy';
+				$cols['User']= $match[2] != '' ? $match[2] : _('Unknown');
 			}
 
 			$re_result= '(RCPT\s+TO:|rejected)';
 			$re_sender= '(<\S*>|)';
 			$re_recipient= '(<\S*>|)';
 			$re_retcode= '(\[\d+\]|\d+)';
-			//MAIL FROM <sonertari@gmail.com> RCPT TO: 250<sonertari@gmail.com>
-			$re= "/MAIL\s+FROM\s+$re_sender\s+$re_result\s+$re_retcode$re_recipient$/";
+			//MAIL FROM <sonertari@gmail.com> RCPT TO: 250<sonertari@gmail.com>, user=soner
+			$re= "/MAIL\s+FROM\s+$re_sender\s+$re_result\s+$re_retcode$re_recipient,\s+user=$re_user$/";
 			if (preg_match($re, $logline, $match)) {
 				$cols['Sender']= trim($match[1], '<>');
 				$cols['RResult']= $match[2].' '.$match[3];
 				$cols['Recipient']= trim($match[4], '<>');
+				$cols['User']= $match[5] != '' ? $match[5] : _('Unknown');
 			}
 
-			$re= "/^$re_result\s+$re_retcode$re_recipient.*$/";
+			$re= "/^$re_result\s+$re_retcode$re_recipient.*,\s+user=$re_user$/";
 			if (preg_match($re, $cols['Log'], $match)) {
 				$cols['RResult']= $match[1].' '.$match[2];
 				$cols['Recipient']= trim($match[3], '<>');
+				$cols['User']= $match[4] != '' ? $match[4] : _('Unknown');
 			}
 			return TRUE;
 		}

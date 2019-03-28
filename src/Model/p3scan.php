@@ -115,7 +115,7 @@ class P3scan extends Model
 	
 	function ParseLogLine($logline, &$cols)
 	{
-		global $Re_Ip;
+		global $Re_Ip, $Re_User;
 
 		if ($this->ParseSyslogLine($logline, $cols)) {
 			$re= "/USER '(.*)'$/";
@@ -125,11 +125,13 @@ class P3scan extends Model
 			else {
 				$re_clientip= "($Re_Ip)";
 				$re_num= '(\d+)';
+				$re_user= "( spuser ($Re_User)|)";
 
-				$re= "/(POP3S|POP3) Connection from $re_clientip:$re_num$/";
+				$re= "/(POP3S|POP3) Connection from $re_clientip:$re_num$re_user$/";
 				if (preg_match($re, $logline, $match)) {
 					$cols['Proto']= strtolower($match[1]);
 					$cols['SrcIP']= $match[2];
+					$cols['SPUser']= $match[5] !== '' ? $match[5] : _('Unknown');
 				}
 				else {
 					$re= "/Real-server address is $re_clientip:$re_num$/";
@@ -146,13 +148,16 @@ class P3scan extends Model
 							$cols['Bytes']= $match[3];
 						}
 						else {
-							// POP3 from 192.168.10.2:47845 to 10.0.0.10:110 from Soner Tari <sonertari@gmail.com> to sonertari@gmail.com user: soner virus: Eicar-Test-Signature file: /p3scan.8c0Ph
-							$re= "/(POP3S|POP3) from $Re_Ip:\d+ to $Re_Ip:\d+ from (.+) to (.+) user: .+ virus: (.+) file:.*$/";
+							$re_user= "( spuser: ($Re_User)|)";
+
+							// POP3 from 192.168.10.2:47845 to 10.0.0.10:110 from Soner Tari <sonertari@gmail.com> to sonertari@gmail.com user: soner virus: Eicar-Test-Signature file: /p3scan.8c0Ph spuser: soner
+							$re= "/(POP3S|POP3) from $Re_Ip:\d+ to $Re_Ip:\d+ from (.+) to (.+) user: .+ virus: (.+) file:.*$re_user$/";
 							if (preg_match($re, $logline, $match)) {
 								$cols['Proto']= strtolower($match[1]);
 								$cols['From']= $match[2];
 								$cols['To']= $match[3];
 								$cols['Virus']= $match[4];
+								$cols['SPUser']= $match[6] !== '' ? $match[6] : _('Unknown');
 							}
 						}
 					}

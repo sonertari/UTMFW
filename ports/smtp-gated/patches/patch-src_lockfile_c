@@ -1,0 +1,23 @@
+$OpenBSD$
+
+Index: src/lockfile.c
+--- src/lockfile.c.orig
++++ src/lockfile.c
+@@ -1,7 +1,7 @@
+ /*
+  * 	lockfile.c
+  *
+- * 	Copyright (C) 2004-2005 Bart³omiej Korupczynski <bartek@klolik.org>
++ * 	Copyright (C) 2004-2005 Bartï¿½omiej Korupczynski <bartek@klolik.org>
+  *
+  * 	This program is free software; you can redistribute it and/or 
+  * 	modify it under the terms of the GNU General Public License 
+@@ -94,7 +94,7 @@ int lockfile_present(struct session_t *data)
+ 	tmp_ident = EMPTY_STRING(data->ident) ? "-" : data->ident;
+ 
+ 	if ((config.lock_duration == -1) || (time(NULL) - statinfo.st_mtime < config.lock_duration)) {
+-		log_action(LOG_DEBUG, "LOCK:LOCKED src=%s, ident=%s", data->origin_str, tmp_ident);
++		log_action(LOG_DEBUG, "LOCK:LOCKED src=%s, ident=%s, user=%s", data->origin_str, tmp_ident, data->sslproxy_user);
+ 		return 1;
+ 	} else {
+ 		log_action(LOG_INFO, "LOCK:EXPIRED src=%s, ident=%s", data->origin_str, tmp_ident);
