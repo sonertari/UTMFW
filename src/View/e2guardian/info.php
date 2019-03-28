@@ -27,7 +27,7 @@ require_once($VIEW_PATH.'/header.php');
 		
 $View->PrintStatusForm();
 
-PrintHelpWindow(_HELPWINDOW('The number of web filter processes depends on the number of requests from internal network. Minimum and maximum number of processes can be adjusted on the configuration pages.
+PrintHelpWindow(_HELPWINDOW('The web filter runs multithreaded. The maximum number of web filter threads can be adjusted on the configuration pages.
 
 If you modify the configuration of the web filter, you must restart the web filter for the changes to take effect.'));
 require_once($VIEW_PATH.'/footer.php');

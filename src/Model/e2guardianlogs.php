@@ -32,9 +32,9 @@ class E2guardianlogs extends E2guardian
 
 	function ParseLogLine($logline, &$cols)
 	{
-		global $Re_Ip;
+		global $Re_Ip, $Re_User;
 
-		$re_pip= "($Re_Ip|-)";
+		$re_user= "($Re_User|-)";
 		$re_srcip= "($Re_Ip)";
 		$re_link= '(http:\/\/[^ \/]*|https:\/\/[^ \/]*)(\S*)';
 		$re_result= '(.*|)';
@@ -53,9 +53,10 @@ class E2guardianlogs extends E2guardian
 			// - 192.168.1.33 http://URL.com *DENIED* Banned site: URL.com GET 0 0 Cleaning Domains 1 403 -   -
 			// - 192.168.1.34 http://URL.com  GET 1632 0  1 404 text/html   -
 			// - 192.168.1.34 http://URL.com *SCANNED*  GET 5137 -20  1 200 text/html   -
-			$re= "/^$re_pip\s+$re_srcip\s+$re_link\s+$re_result\s+$re_mtd\s+$re_size\s+$re_ttl\s+$re_restorempty\s*$re_num\s+$re_num\s+$re_rest$/";
+			// soner 192.168.1.34 http://URL.com *SCANNED*  GET 5137 -20  1 200 text/html   -
+			$re= "/^$re_user\s+$re_srcip\s+$re_link\s+$re_result\s+$re_mtd\s+$re_size\s+$re_ttl\s+$re_restorempty\s*$re_num\s+$re_num\s+$re_rest$/";
 			if (preg_match($re, $cols['Log'], $match)) {
-				$cols['IPsrc']= $match[1];
+				$cols['User']= $match[1] == '-' ? _('Unknown') : $match[1];
 				$cols['IP']= $match[2];
 				$cols['Link']= $match[3].$match[4];
 				$cols['Scan']= $match[5];

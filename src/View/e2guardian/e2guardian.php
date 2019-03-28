@@ -329,40 +329,6 @@ If this is set to 0, then whenever the set number of violations are made a notif
 	);
 
 /**
- * SSL configuration.
- */
-$sslConfig = array(
-	'sslcertcheck ' => array(
-		'title' => _TITLE2('SSL certificate checking'),
-		'info' => _HELPBOX2('Check that ssl certificates for servers on https connections are valid and signed by a ca in the configured path.'),
-		),
-	'sslmitm' => array(
-		'title' => _TITLE2('SSL man in the middle'),
-		'info' => _HELPBOX2('Forge ssl certificates for all non-exception sites, decrypt the data then re encrypt it using a different private key. Used to filter ssl sites.'),
-		),
-	'onlymitmsslgrey' => array(
-		'title' => _TITLE2('Limit SSL MITM to sites in greysslsitelist(s)'),
-		'info' => _HELPBOX2('SSL sites not matching greysslsitelist will be treat as if sslmitm is off.
-ignored if  sslmitm is off'),
-		),
-	'mitmcheckcert' => array(
-		'title' => _TITLE2('Enable MITM site certificate checking'),
-		'info' => _HELPBOX2('ignored if  sslmitm is off'),
-		),
-	'ssldeniedrewrite' => array(
-		'title' => _TITLE2('Redirect SSL denied page'),
-		'info' => _HELPBOX2('Break SSL protocol and redirect to another HTTPS website for denied page'),
-		),
-	'sslaccessdeniedaddress' => array(
-		'title' => _TITLE2('SSL access denied address'),
-		'info' => _HELPBOX2('The address of your web server to which the static page e2guardian reporting was copied.
-With ssldeniedrewrite off it works only with firefox 
-With ssldeniedrewrite on there are several limitations, SSL warning, basic page, etc, eg this webserver can\'t be listed as an exception in your browser\'s proxy configuration.
-Keep in mind, this is only a trick to avoid blank page, the best way still to use SSLMITM'),
-		),
-	);
-
-/**
  * General basic configuration.
  */
 $GeneralbasicConfig= array(
@@ -601,10 +567,6 @@ $GenerallogsConfig= array(
 		'info' => _HELPBOX2('Perform reverse lookups on client IPs for successful requests.
 If set to on, E2Guardian will look up the forward DNS for the IP of the connecting computer, and log host names (where available) rather than IPs against requests.
 This is not dependent on reverseclientiplookups being enabled; however, if it is, enabling this option does not incur any additional forward DNS requests.'),
-		),
-	'logsslerrors' => array(
-		'title' => _TITLE2('Log ssl errors'),
-		'info' => _HELPBOX2('Log detailed error info regarding SSL error returns.'),
 		),
 	'logconnectionhandlingerrors' => array(
 		'title' => _TITLE2('Log connection handling errors'),

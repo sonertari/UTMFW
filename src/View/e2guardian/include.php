@@ -79,8 +79,6 @@ $Menu = array(
 			'bypass' => _MENU('Bypass'),
 			// Disable email for now
 			//'email' => _MENU('Email'),
-			// Disable SSL MITM for now
-			//'ssl' => _MENU('SSL'),
 			),
 		),
 	'lists' => array(

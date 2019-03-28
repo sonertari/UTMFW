@@ -25,6 +25,7 @@ $LogConf = array(
 		'Fields' => array(
 			'Date' => _TITLE('Date'),
 			'Time' => _TITLE('Time'),
+			'User' => _TITLE('User'),
 			'IP' => _TITLE('IP'),
 			'Link' => _TITLE('Link'),
 			'Scan' => _TITLE('Scan'),
@@ -51,7 +52,7 @@ class E2guardianlogs extends View
 	function __construct()
 	{
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
-		$this->LogsHelpMsg= _HELPWINDOW('Among web filter log messages are page denials, virus scan results, denial bypasses or exceptions. However, some details can be found in HTTP proxy logs only, such as the sizes of file downloads if the download manager is engaged.');
+		$this->LogsHelpMsg= _HELPWINDOW('Among web filter log messages are page denials, virus scan results, denial bypasses or exceptions.');
 	}
 	
 	function FormatLogCols(&$cols)

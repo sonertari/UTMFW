@@ -134,6 +134,10 @@ function ApplyConfig($auto)
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting e2guardian template ips: $lanip");
 		}
 		
+		if (!$View->Controller($output, 'SetIpFilterGrp', '1', 'utmfw')) {
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed adding e2guardian network user utmfw to first group');
+		}
+		
 		$View->Model= 'snortips';
 		if (!$View->Controller($output, 'AddAllowedIp', $lanip)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting snortips whitelist: $lanip");

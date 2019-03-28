@@ -23,7 +23,7 @@
  */
 
 /**
- * Displays DG group IPs in a list with Delete and Add forms.
+ * Displays DG group users in a list with Delete and Add forms.
  *
  * @todo How to get browser's font sizes?
  */
@@ -90,7 +90,7 @@ function PrintFilterGroupIPsForms()
 }
 
 /**
- * Displays DG auth IPs in a list with Delete and Add forms.
+ * Displays DG auth users in a list with Delete and Add forms.
  */
 function PrintFilterAuthIPForms()
 {
@@ -190,22 +190,22 @@ $View->PrintConfOptForm();
 	?>
 </table>
 <?php
-PrintHelpWindow(_HELPWINDOW("Groups are used to grant or revoke certain privileges to IPs, such as which web sites or file types to allow or deny. UTMFW comes with 4 predefined groups by default. However, the web filter is capable of having any number of IP groups.
+PrintHelpWindow(_HELPWINDOW("Groups are used to grant or revoke certain privileges to users, such as which web sites or file types to allow or deny. UTMFW comes with 4 predefined groups by default. However, the web filter is capable of having any number of user groups.
 
 Predefined groups and their basic features are as follows:
 Filter Group 1:
-<ul class='nomargin'><li class='nomargin'>All IPs not defined in other groups are considered in this group by default,</li><li class='nomargin'>Group members are allowed to browse the web according to group configuration,</li><li class='nomargin'>If not specifically disabled, all files are scanned for viruses.</li></ul>
+<ul class='nomargin'><li class='nomargin'>All users not defined in other groups are considered in this group by default,</li><li class='nomargin'>Group members are allowed to browse the web according to group configuration,</li><li class='nomargin'>If not specifically disabled, all files are scanned for viruses.</li></ul>
 Filter Group 2:
 <ul class='nomargin'><li class='nomargin'>Members of this group have unrestricted access to the web,</li><li class='nomargin'>File downloads are not scanned for viruses.</li></ul>
 Filter Group 3:
 <ul class='nomargin'><li class='nomargin'>Members of this group are completely denied of any web access.</li></ul>
 Filter Group 4:
 <ul class='nomargin'><li class='nomargin'>Members of this group have more privileges than Group 1 members, because they can download files without any restrictions,</li><li class='nomargin'>Rest of the configuration for this group is similar to Group 1.</li></ul>
-You can add IP or network addresses to groups. If there is another group with the same entry, it is deleted from that group first, i.e. an IP address can be a member of only one group.
- 
+You can add network users and IP or network addresses to groups. If there is another group with the same entry, it is deleted from that group first, i.e. a user can be a member of only one group.
+
 The format of ip ranges is Start IP address-End IP address, such as 192.168.1.1-192.168.1.253. And that of subnets is IP address/Subnet mask, such as 192.168.1.0/255.255.255.0.
 
-White and black lists give you other methods of allowing or denying certain IP addresses access to the web without needing to add them to any group.
+White and black lists give you other methods of allowing or denying certain users access to the web without needing to add them to any group.
 
 This web interface does not provide an option to delete filter groups. But you can always delete groups on the command line."));
 require_once($VIEW_PATH.'/footer.php');

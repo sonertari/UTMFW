@@ -149,22 +149,22 @@ class E2guardian extends Model
 			$this->Commands,
 			array(
 				'DelIpFilterGrp'=>	array(
-					'argv'	=>	array(IPADR|DGIPRANGE),
+					'argv'	=>	array(IPADR|DGIPRANGE|NAME),
 					'desc'	=>	_('Delete filter group IP'),
 					),
 
 				'SetIpFilterGrp'=>	array(
-					'argv'	=>	array(NUM, IPADR|DGIPRANGE),
+					'argv'	=>	array(NUM, IPADR|DGIPRANGE|NAME),
 					'desc'	=>	_('Add filter group IP'),
 					),
 
 				'DelIp'		=>	array(
-					'argv'	=>	array(NAME, IPADR|DGIPRANGE),
+					'argv'	=>	array(NAME, IPADR|DGIPRANGE|NAME),
 					'desc'	=>	_('Delete IP'),
 					),
 
 				'AddIp'		=>	array(
-					'argv'	=>	array(NAME, IPADR|DGIPRANGE),
+					'argv'	=>	array(NAME, IPADR|DGIPRANGE|NAME),
 					'desc'	=>	_('Add IP'),
 					),
 
@@ -280,7 +280,7 @@ class E2guardian extends Model
 	function SetConfig($confname)
 	{
 		global $GeneralbasicConfig, $GeneralfilterConfig, $GeneralscanConfig, $GenerallogsConfig, $GeneraldownloadsConfig, $GeneraladvancedConfig,
-			$basicConfig, $scanConfig, $bypassConfig, $emailConfig, $sslConfig;
+			$basicConfig, $scanConfig, $bypassConfig, $emailConfig;
 		
 		if ($confname !== '') {
 			$this->Config= ${$confname};
@@ -714,9 +714,9 @@ class E2guardian extends Model
 	 */
 	function GetGrpIps($file, $group= '[^#\s]+')
 	{
-		global $Re_Ip;
+		global $Re_Ip, $Re_User;
 
-		return $this->SearchFileAll($file, "/^\h*($Re_Ip|$this->re_DgNet|$this->re_DgRange)\h*$this->NVPS\h*filter$group\b\h*(|$this->COMC.*)$/m");
+		return $this->SearchFileAll($file, "/^\h*($Re_Ip|$this->re_DgNet|$this->re_DgRange|$Re_User)\h*$this->NVPS\h*filter$group\b\h*(|$this->COMC.*)$/m");
 	}
 
 	/**
@@ -1160,30 +1160,6 @@ $emailConfig = array(
 	);
 
 /**
- * SSL configuration.
- */
-$sslConfig = array(
-    'sslcertcheck ' => array(
-        'type' => STR_on_off,
-		),
-    'sslmitm' => array(
-        'type' => STR_on_off,
-		),
-    'onlymitmsslgrey' => array(
-        'type' => STR_on_off,
-		),
-    'mitmcheckcert' => array(
-        'type' => STR_on_off,
-		),
-    'ssldeniedrewrite' => array(
-        'type' => STR_on_off,
-		),
-    'sslaccessdeniedaddress' => array(
-        'type' => STR_SING_QUOTED,
-		),
-	);
-
-/**
  * General log configuration.
  */
 $GenerallogsConfig = array(
@@ -1205,9 +1181,6 @@ $GenerallogsConfig = array(
     'loglocation' => array(),
     'statlocation' => array(),
     'logclienthostnames' => array(
-        'type' => STR_on_off,
-		),
-    'logsslerrors' => array(
         'type' => STR_on_off,
 		),
     'logconnectionhandlingerrors' => array(
