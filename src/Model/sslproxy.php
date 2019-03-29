@@ -157,17 +157,20 @@ class Sslproxy extends Model
 			'DownloadKB' => 0,
 			);
 		
-		
 		$statsIdx= 0;
 		$load= 0;
 		$upload= 0;
 		$download= 0;
 		foreach ($logs as $l) {
-			$maxStats['Fd']= max(array($maxStats['Fd'], $l['MaxFd']));
-			$maxStats['AccessTime']= max(array($maxStats['AccessTime'], $l['MaxAccessTime']));
-			$maxStats['CreateTime']= max(array($maxStats['CreateTime'], $l['MaxCreateTime']));
+			$maxStats['Fd']= max($maxStats['Fd'], $l['MaxFd']);
+			$maxStats['AccessTime']= max($maxStats['AccessTime'], $l['MaxAccessTime']);
+			$maxStats['CreateTime']= max($maxStats['CreateTime'], $l['MaxCreateTime']);
 
 			if ($statsIdx != $l['StatsIdx']) {
+				$maxStats['Load']= max($maxStats['Load'], $load);
+				$maxStats['UploadKB']= max($maxStats['UploadKB'], $upload);
+				$maxStats['DownloadKB']= max($maxStats['DownloadKB'], $download);
+
 				$statsIdx= $l['StatsIdx'];
 				$load= 0;
 				$upload= 0;
@@ -177,11 +180,12 @@ class Sslproxy extends Model
 			$load+= $l['MaxLoad'];
 			$upload+= $l['IntifInBytes'];
 			$download+= $l['IntifOutBytes'];
-
-			$maxStats['Load']= max(array($maxStats['Load'], $load));
-			$maxStats['UploadKB']= max(array($maxStats['UploadKB'], $upload));
-			$maxStats['DownloadKB']= max(array($maxStats['DownloadKB'], $download));
  		}
+
+		// Update one last time with the accumulated values of the last loop
+		$maxStats['Load']= max($maxStats['Load'], $load);
+		$maxStats['UploadKB']= max($maxStats['UploadKB'], $upload);
+		$maxStats['DownloadKB']= max($maxStats['DownloadKB'], $download);
 
 		$maxStats['UploadKB']= round($maxStats['UploadKB'] / 1000);
 		$maxStats['DownloadKB']= round($maxStats['DownloadKB'] / 1000);

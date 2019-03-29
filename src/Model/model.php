@@ -90,7 +90,7 @@ class Model
 		$this->Config= $ModelConfig;
 
 		$this->prios= array(
-			'EMERGENCY|ALERT|CRITICAL' => _TITLE('<MODEL> has CRITICAL errors'),
+			'CRITICAL|ALERT|EMERGENCY' => _TITLE('<MODEL> has CRITICAL errors'),
 			'ERROR' => _TITLE('<MODEL> has ERRORs'),
 			'WARNING' => _TITLE('<MODEL> has WARNINGs')
 			);
@@ -2583,9 +2583,21 @@ class Model
 		//$logs= $model->_getStatus('(EMERGENCY|emergency|ALERT|alert|CRITICAL|critical|ERROR|error|WARNING|warning):');
 		$logs= $this->_getStatus('');
 
-		$crits= $this->getCriticalErrors($logs);
-		$errs= $this->getErrors($logs);
-		$warns= $this->getWarnings($logs);
+		$crits= array();
+		$errs= array();
+		$warns= array();
+		foreach ($logs as $l) {
+			// Warnings and errors must be more frequent, so check them first
+			if ($this->isPrio($l, 'WARNING')) {
+				$warns[]= $l;
+			}
+			else if ($this->isPrio($l, 'ERROR')) {
+				$errs[]= $l;
+			}
+			else if ($this->isPrio($l, 'CRITICAL') || $this->isPrio($l, 'EMERGENCY') || $this->isPrio($l, 'ALERT')) {
+				$crits[]= $l;
+			}
+		}
 
 		$errorStatus= 'N';
 		if (count($crits)) {
@@ -2625,17 +2637,18 @@ class Model
 
 				// @attention Don't get the logs in the last 60 seconds from now instead, otherwise the errors still important cannot be reported after 60 seconds.
 				$logs= $this->getStatusLogs($this->LogFile, 1000, $needle);
-				if (count($logs)) {
-					// Loop in reverse order to break out asap
-					foreach (array_reverse($logs) as $l) {
-						$dt= DateTime::createFromFormat($this->dateTimeFormat, $l['Date'].' '.$l['Time']);
-						if ($dt) {
-							$ts= $dt->getTimestamp();
-							if ($lastTs - $ts <= $interval) {
-								$lastLogs[]= $l;
-							} else {
-								break;
-							}
+
+				$count= count($logs);
+				// Loop in reverse order to break out asap
+				while (--$count >= 0) {
+					$l= $logs[$count];
+					$dt= DateTime::createFromFormat($this->dateTimeFormat, $l['Date'].' '.$l['Time']);
+					if ($dt) {
+						$ts= $dt->getTimestamp();
+						if ($lastTs - $ts <= $interval) {
+							$lastLogs[]= $l;
+						} else {
+							break;
 						}
 					}
 				}
@@ -2649,76 +2662,40 @@ class Model
 		return $this->_getLiveLogs($file, $count, $re, $needle);		
 	}
 
-	function getCriticalErrors($logs)
-	{
-		return array_merge($this->getPrioLogs($logs, 'EMERGENCY'),
-				$this->getPrioLogs($logs, 'ALERT'),
-				$this->getPrioLogs($logs, 'CRITICAL'));
-	}
-
-	function getErrors($logs)
-	{
-		return $this->getPrioLogs($logs, 'ERROR');
-	}
-
-	function getWarnings($logs)
-	{
-		return $this->getPrioLogs($logs, 'WARNING');
-	}
-
 	function isPrio($log, $prio)
 	{
 		return strtoupper($log['Prio']) == $prio;
-	}
-
-	function getPrioLogs($logs, $needle)
-	{
-		$prioLogs= array();
-		foreach ($logs as $l) {
-			if ($this->isPrio($l, $needle)) {
-				$prioLogs[]= $l;
-			}
-		}
-		return $prioLogs;
 	}
 
 	function GetStatus()
 	{
 		global $ModelsToStat;
 
-		foreach ($this->prios as $p => $msg) {
-			$keys= explode('|', $p);
-			$needleArray= array();
-			foreach ($keys as $k) {
-				$needleArray[]= $k;
-				$needleArray[]= strtolower($k);
-			}
-			$needle= implode('|', $needleArray);
+		// Do not use needles with this _getStatus() call, it (grep) takes too long
+		$logs= $this->_getStatus('');
+		if (count($logs)) {
+			foreach ($this->prios as $p => $msg) {
+				$keys= explode('|', $p);
 
-			$logs= $this->_getStatus($this->formatErrorNeedle($needle));
-			$total= count($logs);
-			if ($total > 0) {
 				$errorStr= '';
-				$count= 0;
+				$shown= 0;
+				$total= 0;
 				foreach ($logs as $l) {
-					$isPrio= FALSE;
-					foreach ($needleArray as $n) {
+					foreach ($keys as $n) {
 						if ($this->isPrio($l, $n)) {
-							$isPrio= TRUE;
-							break;
-						}
-					}
-
-					if ($isPrio) {
-						$errorStr.= "\n" . $l['Log'];
-						$count++;
-						if ($count >= 5 && $total - $count > 0) {
-							$errorStr.= "\n" . str_replace('<COUNT>', $total - $count, _TITLE('And <COUNT> others not shown.'));
+							if ($shown < 5) {
+								$errorStr.= "\n" . $l['Log'];
+								$shown++;
+							}
+							$total++;
 							break;
 						}
 					}
 				}
-				if ($count) {
+				if ($shown) {
+					if ($total > $shown) {
+						$errorStr.= "\n" . str_replace('<COUNT>', $total - $shown, _TITLE('And <COUNT> others not shown.'));
+					}
 					Error(str_replace('<MODEL>', _($ModelsToStat[$this->Name]), _($msg)) . ':' . $errorStr);
 				}
 			}
