@@ -201,7 +201,7 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 							</a>
 							<ul>
 								<li>
-									<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?logout"><?php echo _MENU('Logout') ?> <?php echo $_SESSION['USER'].'@'.filter_input(INPUT_SERVER, 'REMOTE_ADDR') ?></a>
+									<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?logout"><?php echo _MENU('Log out') ?> <?php echo $_SESSION['USER'].'@'.filter_input(INPUT_SERVER, 'REMOTE_ADDR') ?></a>
 								</li>
 								<li>
 									<a href="/system/dashboard.php"><?php echo _MENU('Dashboard') ?></a>

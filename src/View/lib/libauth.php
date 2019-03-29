@@ -208,7 +208,7 @@ function UserDbAuth($user, $passwd, $desc)
 
 	if ($View->Controller($output, 'GetEther', $ip) == FALSE) {
 		PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Cannot get ethernet address of IP'), 'auto', 'ERROR');
-		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get ether of ip');
+		wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get ether of ip');
 		return FALSE;
 	}
 	$ether= $output[0];
@@ -217,13 +217,49 @@ function UserDbAuth($user, $passwd, $desc)
 	$desc= str_replace('"', '', $desc);
 	if ($View->Controller($output, 'UpdateUser', $ip, $user, $ether, $desc) == FALSE) {
 		PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Cannot update user'), 'auto', 'ERROR');
-		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Cannot update user');
+		wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot update user');
 		return FALSE;
 	}
 
 	// If redirection does not work, the help window is displayed
-	PrintHelpWindow('Authentication succeeded, now you can access the Internet', 'auto', 'INFO');
+	PrintHelpWindow(_NOTICE('Authentication succeeded, now you can access the Internet'), 'auto', 'INFO');
 	wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'Authentication succeeded');
+	return TRUE;
+}
+
+function UserDbLogout($user, $passwd)
+{
+	global $View, $UseSSH;
+
+	wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Logout attempt');
+
+	$UseSSH= FALSE;
+
+	if (!CheckUserDbUser($user)) {
+		return FALSE;
+	}
+
+	if (!AuthUserDbUser($user, $passwd)) {
+		return FALSE;
+	}
+
+	$ip= filter_input(INPUT_SERVER, 'REMOTE_ADDR');
+
+	if ($View->Controller($output, 'GetEther', $ip) == FALSE) {
+		PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Cannot get ethernet address of IP'), 'auto', 'ERROR');
+		wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get ether of ip');
+		return FALSE;
+	}
+	$ether= $output[0];
+
+	if ($View->Controller($output, 'LogUserOut', $ip, $user, $ether) == FALSE) {
+		PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Cannot log user out'), 'auto', 'ERROR');
+		wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot log user out');
+		return FALSE;
+	}
+
+	PrintHelpWindow(_NOTICE('User logged out'), 'auto', 'INFO');
+	wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'User logged out');
 	return TRUE;
 }
 
@@ -271,7 +307,7 @@ function CheckUserDbUser($user, $justcheck= FALSE)
 	$users= json_decode($output[0], TRUE);
 	if ($users === NULL || !is_array($users)) {
 		PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Users not a valid json or array'), 'auto', 'ERROR');
-		wui_syslog(LOG_ERROR, __FILE__, __FUNCTION__, __LINE__, 'Users not a valid json or array');
+		wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Users not a valid json or array');
 		return FALSE;
 	}
 

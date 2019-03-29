@@ -67,6 +67,8 @@ if (filter_has_var(INPUT_POST, 'Login')) {
 		header("Location: $Redirect");
 		exit;
 	}
+} else if (filter_has_var(INPUT_POST, 'Logout')) {
+	UserDbLogout(filter_input(INPUT_POST, 'UserName'), filter_input(INPUT_POST, 'Password'));
 }
 
 HTMLHeader('whitesmoke');
@@ -122,6 +124,7 @@ if ($Result == FALSE) {
 							<tr>
 								<td class="button">
 									<input class="button" type="submit" name="Login" value="<?php echo _CONTROL('Log in') ?>"/>
+									<input class="button" type="submit" name="Logout" value="<?php echo _CONTROL('Log out') ?>"/>
 									<?php
 									if ($Redirect !== FALSE) {
 										?>

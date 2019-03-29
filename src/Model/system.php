@@ -265,6 +265,11 @@ class System extends Model
 					'desc'	=>	_('Update user'),
 					),
 
+				'LogUserOut'=>	array(
+					'argv'	=>	array(IPADR, NAME, STR),
+					'desc'	=>	_('Log user out'),
+					),
+
 				'AddUser'	=>	array(
 					'argv'	=>	array(NAME, SHA1STR, STR),
 					'desc'	=>	_('Add user'),
@@ -1057,7 +1062,6 @@ class System extends Model
 				if ($db->exec("UPDATE users SET atime = '$now', desc = \"$desc\" WHERE ip = '$ip' AND user = '$user' AND ether = '$ether'")) {
 					ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Update atime succeessful: $ip, $user, $ether, $desc");
 				} else {
-					Error('Cannot update atime,desc');
 					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot update atime,desc: $ip, $user, $ether, $desc");
 					return FALSE;
 				}
@@ -1065,19 +1069,37 @@ class System extends Model
 				if ($db->exec("UPDATE users SET user = '$user', ether = '$ether', atime = '$now', desc = \"$desc\" WHERE ip = '$ip'")) {
 					ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Update user,ether,atime,desc succeessful: $ip, $user, $ether, $desc");
 				} else {
-					Error('Cannot update user,ether,atime,desc');
 					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot update user,ether,atime,desc: $ip, $user, $ether, $desc");
 					return FALSE;
 				}
 			}
 		} else {
 			if ($db->exec("INSERT INTO users (ip, user, atime, ether, desc) VALUES ('$ip', '$user', '$now', '$ether', \"$desc\")")) {
-				ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Insert ip,user,atime,ether succeessful: $ip, $user, $now, $ether, $desc");
+				ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Insert ip,user,atime,ether,desc succeessful: $ip, $user, $now, $ether, $desc");
 			} else {
-				Error('Cannot insert ip,user,atime,ether,desc');
-				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot insert ip,user,atime,ether: $ip, $user, $now, $ether, $desc");
+				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot insert ip,user,atime,ether,desc: $ip, $user, $now, $ether, $desc");
 				return FALSE;
 			}
+		}
+		return TRUE;
+	}
+
+	function LogUserOut($ip, $user, $ether)
+	{
+		$db= new SQLite3($this->userdb);
+		$results= $db->query("SELECT desc FROM users WHERE ip = '$ip' AND user = '$user' AND ether = '$ether'");
+		if ($results->fetchArray(SQLITE3_ASSOC)) {
+			$dbdesc= $row['DESC'];
+
+			if ($db->exec("DELETE FROM users WHERE ip = '$ip' AND user = '$user' AND ether = '$ether'")) {
+				ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Delete ip,user,ether,desc succeessful: $ip, $user, $ether, $dbdesc");
+			} else {
+				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot delete ip,user,ether,desc: $ip, $user, $ether, $dbdesc");
+				return FALSE;
+			}
+		} else {
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "User not logged in ip,user,ether,desc: $ip, $user, $ether, $dbdesc");
+			return FALSE;
 		}
 		return TRUE;
 	}
