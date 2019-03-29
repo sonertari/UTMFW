@@ -767,8 +767,8 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/Makefile.in snort-2.9.1
 +.NOEXPORT:
 diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.11.1_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c
 --- snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c	1970-01-01 02:00:00.000000000 +0200
-+++ snort-2.9.11.1_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c	2019-03-20 21:07:51.188528073 +0300
-@@ -0,0 +1,477 @@
++++ snort-2.9.11.1_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c	2019-03-29 14:12:08.367920589 +0300
+@@ -0,0 +1,506 @@
 +/****************************************************************************
 + *
 + * Copyright (C) 2017-2019 Soner Tari <sonertari@gmail.com>. All rights reserved.
@@ -1008,7 +1008,7 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +#define MAX_LINE_LEN 175
 +#define MAX_IPADDR_LEN 45
 +#define MAX_PORT_LEN 5
-+
++#define MAX_USER_LEN 31
 +				char line[MAX_LINE_LEN + 1];
 +				char sslproxy_src_addr[MAX_IPADDR_LEN + 1];
 +				char sslproxy_dst_addr[MAX_IPADDR_LEN + 1];
@@ -1077,7 +1077,6 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +				ip_end = strchr(ip_start, ']');
 +				port_start = strchr(ip_end, ':') + 1;
 +				port_end = strchr(port_start, ',');
-+				char *ssl_start = port_end + 1;
 +
 +				if (!ip_start || !ip_end || !port_start || !port_end) {
 +					DEBUG_WRAP(DebugMessage(DEBUG_UTMFW, "Unable to find dst addr\n"););
@@ -1104,10 +1103,40 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +				port[port_len] = '\0';
 +				int sslproxy_dst_port = atoi(port);
 +
++				char *ssl_start = port_end + 1;
++				char *ssl_end = strchr(ssl_start, ',');
++				char sslproxy_user[MAX_USER_LEN + 1];
++				int ssl_len = 0;
++				if (ssl_end) {
++					// There is user info at the end
++					ssl_len = ssl_end - ssl_start;
++
++					char *user = ssl_end + 1;
++
++					int user_len = strlen(user);
++					if (user_len > MAX_USER_LEN) {
++						_dpd.errMsg("UtmfwPreproc: user_len larger than MAX_USER_LEN: %d\n", user_len);
++						goto out;
++					}
++
++					strncpy(sslproxy_user, user, user_len);
++					sslproxy_user[user_len] = '\0';
++				} else {
++					ssl_len = strlen(ssl_start);
++
++					strncpy(sslproxy_user, "Unknown", 7);
++					sslproxy_user[7] = '\0';
++				}
++
++				if (ssl_len > 1) {
++					_dpd.errMsg("UtmfwPreproc: ssl_len larger than 1: %d\n", ssl_len);
++					goto out;
++				}
++
 +				int sslproxy_ssl = strchr(ssl_start, 's') ? 1 : 0;
 +
-+				DEBUG_WRAP(DebugMessage(DEBUG_UTMFW, "Parsed SSLproxy line: srcaddr= %s, srcport= %d, dstaddr= %s, dstport= %d, ssl=%d\n",
-+						sslproxy_src_addr, sslproxy_src_port, sslproxy_dst_addr, sslproxy_dst_port, sslproxy_ssl););
++				DEBUG_WRAP(DebugMessage(DEBUG_UTMFW, "Parsed SSLproxy line: srcaddr= %s, srcport= %d, dstaddr= %s, dstport= %d, ssl=%d, user= %s\n",
++						sslproxy_src_addr, sslproxy_src_port, sslproxy_dst_addr, sslproxy_dst_port, sslproxy_ssl, sslproxy_user););
 +
 +				sfaddr_t *iphdt = &p->ip4h->ip_addrs->ip_src;
 +				struct in6_addr *ipV4address = &iphdt->ip;

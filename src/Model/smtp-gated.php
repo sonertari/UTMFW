@@ -66,6 +66,7 @@ class Smtpgated extends Model
 				$cols['NewDstIP']= $match[2];
 				$cols['Proto']= $match[3];
 				$cols['NewUser']= $match[4] != '' ? $match[4] : _('Unknown');
+				return TRUE;
 			}
 			
 			//SCAN:CLEAN size=1639, time=0, src=192.168.1.1, ident=, user=soner
@@ -78,6 +79,7 @@ class Smtpgated extends Model
 				$cols['Bytes']= $match[3];
 				$cols['ScanSrcIP']= $match[5];
 				$cols['User']= $match[6] != '' ? $match[6] : _('Unknown');
+				return TRUE;
 			}
 		
 			$re= "/$re_scanner:$re_result\s+size=$re_num,\s+src=$re_srcip,\s+ident=.*,\s+user=$re_user$/";
@@ -87,6 +89,7 @@ class Smtpgated extends Model
 				$cols['Bytes']= $match[3];
 				$cols['ScanSrcIP']= $match[4];
 				$cols['User']= $match[5] != '' ? $match[5] : _('Unknown');
+				return TRUE;
 			}
 		
 			//CLOSE by=server, rcv=442/286, trns=1, rcpts=1, auth=0, time=140183437574146, src=192.168.1.1, ident=, user=soner
@@ -100,6 +103,7 @@ class Smtpgated extends Model
 				$cols['Seconds']= $match[7];
 				$cols['SrcIP']= $match[8];
 				$cols['User']= $match[9] != '' ? $match[9] : _('Unknown');
+				return TRUE;
 			}
 		
 			$re_result= '(.*|)';
@@ -110,6 +114,7 @@ class Smtpgated extends Model
 				$cols['STReason']= $match[2];
 				$cols['ClosedBy']= 'proxy';
 				$cols['User']= $match[3] != '' ? $match[3] : _('Unknown');
+				return TRUE;
 			}
 		
 			//LOCK:LOCKED src=192.168.1.1, ident=-, user=soner
@@ -120,6 +125,7 @@ class Smtpgated extends Model
 				$cols['STReason']= 'Locked';
 				$cols['ClosedBy']= 'proxy';
 				$cols['User']= $match[2] != '' ? $match[2] : _('Unknown');
+				return TRUE;
 			}
 
 			$re_result= '(RCPT\s+TO:|rejected)';
@@ -133,6 +139,7 @@ class Smtpgated extends Model
 				$cols['RResult']= $match[2].' '.$match[3];
 				$cols['Recipient']= trim($match[4], '<>');
 				$cols['User']= $match[5] != '' ? $match[5] : _('Unknown');
+				return TRUE;
 			}
 
 			$re= "/^$re_result\s+$re_retcode$re_recipient.*,\s+user=$re_user$/";
@@ -140,6 +147,7 @@ class Smtpgated extends Model
 				$cols['RResult']= $match[1].' '.$match[2];
 				$cols['Recipient']= trim($match[3], '<>');
 				$cols['User']= $match[4] != '' ? $match[4] : _('Unknown');
+				return TRUE;
 			}
 			return TRUE;
 		}

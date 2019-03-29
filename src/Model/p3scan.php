@@ -121,47 +121,48 @@ class P3scan extends Model
 			$re= "/USER '(.*)'$/";
 			if (preg_match($re, $logline, $match)) {
 				$cols['User']= $match[1];
+				return TRUE;
 			}
-			else {
-				$re_clientip= "($Re_Ip)";
-				$re_num= '(\d+)';
-				$re_user= "( spuser ($Re_User)|)";
 
-				$re= "/(POP3S|POP3) Connection from $re_clientip:$re_num$re_user$/";
-				if (preg_match($re, $logline, $match)) {
-					$cols['Proto']= strtolower($match[1]);
-					$cols['SrcIP']= $match[2];
-					$cols['SPUser']= $match[5] !== '' ? $match[5] : _('Unknown');
-				}
-				else {
-					$re= "/Real-server address is $re_clientip:$re_num$/";
-					if (preg_match($re, $logline, $match)) {
-						$cols['DstIP']= $match[1];
-					}
-					else {
-						$re_result= '(.*)';
+			$re_clientip= "($Re_Ip)";
+			$re_num= '(\d+)';
+			$re_user= "( spuser ($Re_User)|)";
 
-						$re= "/Session done \($re_result\). Mails: $re_num Bytes: $re_num$/";
-						if (preg_match($re, $logline, $match)) {
-							$cols['Result']= $match[1];
-							$cols['Mails']= $match[2];
-							$cols['Bytes']= $match[3];
-						}
-						else {
-							$re_user= "( spuser: ($Re_User)|)";
+			$re= "/(POP3S|POP3) Connection from $re_clientip:$re_num$re_user$/";
+			if (preg_match($re, $logline, $match)) {
+				$cols['Proto']= strtolower($match[1]);
+				$cols['SrcIP']= $match[2];
+				$cols['SPUser']= $match[5] !== '' ? $match[5] : _('Unknown');
+				return TRUE;
+			}
 
-							// POP3 from 192.168.10.2:47845 to 10.0.0.10:110 from Soner Tari <sonertari@gmail.com> to sonertari@gmail.com user: soner virus: Eicar-Test-Signature file: /p3scan.8c0Ph spuser: soner
-							$re= "/(POP3S|POP3) from $Re_Ip:\d+ to $Re_Ip:\d+ from (.+) to (.+) user: .+ virus: (.+) file:.*$re_user$/";
-							if (preg_match($re, $logline, $match)) {
-								$cols['Proto']= strtolower($match[1]);
-								$cols['From']= $match[2];
-								$cols['To']= $match[3];
-								$cols['Virus']= $match[4];
-								$cols['SPUser']= $match[6] !== '' ? $match[6] : _('Unknown');
-							}
-						}
-					}
-				}
+			$re= "/Real-server address is $re_clientip:$re_num$/";
+			if (preg_match($re, $logline, $match)) {
+				$cols['DstIP']= $match[1];
+				return TRUE;
+			}
+
+			$re_result= '(.*)';
+
+			$re= "/Session done \($re_result\). Mails: $re_num Bytes: $re_num$/";
+			if (preg_match($re, $logline, $match)) {
+				$cols['Result']= $match[1];
+				$cols['Mails']= $match[2];
+				$cols['Bytes']= $match[3];
+				return TRUE;
+			}
+
+			$re_user= "( spuser: ($Re_User)|)";
+
+			// POP3 from 192.168.10.2:47845 to 10.0.0.10:110 from Soner Tari <sonertari@gmail.com> to sonertari@gmail.com user: soner virus: Eicar-Test-Signature file: /p3scan.8c0Ph spuser: soner
+			$re= "/(POP3S|POP3) from $Re_Ip:\d+ to $Re_Ip:\d+ from (.+) to (.+) user: .+ virus: (.+) file:.*$re_user$/";
+			if (preg_match($re, $logline, $match)) {
+				$cols['Proto']= strtolower($match[1]);
+				$cols['From']= $match[2];
+				$cols['To']= $match[3];
+				$cols['Virus']= $match[4];
+				$cols['SPUser']= $match[6] !== '' ? $match[6] : _('Unknown');
+				return TRUE;
 			}
 			return TRUE;
 		}
