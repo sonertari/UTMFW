@@ -2594,7 +2594,7 @@ class Model
 			else if ($this->isPrio($l, 'ERROR')) {
 				$errs[]= $l;
 			}
-			else if ($this->isPrio($l, 'CRITICAL') || $this->isPrio($l, 'EMERGENCY') || $this->isPrio($l, 'ALERT')) {
+			else if ($this->isPrio($l, 'CRITICAL') || $this->isPrio($l, 'ALERT') || $this->isPrio($l, 'EMERGENCY')) {
 				$crits[]= $l;
 			}
 		}
@@ -2701,11 +2701,6 @@ class Model
 			}
 		}
 		return TRUE;
-	}
-
-	function formatErrorNeedle($needle)
-	{
-		return "($needle):";
 	}
 
 	function _getStatus($needle)
