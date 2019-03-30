@@ -1158,12 +1158,9 @@ function PrintLogHeaderForm($start, $total, $count, $re, $hidden, $needle='', $s
 				<td>
 					<?php echo _TITLE('Regexp').':' ?>
 					<input type="text" name="SearchRegExp" style="width: 300px;" maxlength="200" value="<?php echo $re ?>" />
+					<?php echo _TITLE('Needle').':' ?>
+					<input type="text" name="SearchNeedle" style="width: 100px;" maxlength="200" value="<?php echo $needle ?>" />
 					<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
-					<?php
-					if ($needle !== '') {
-						echo _TITLE('Needle').": ($needle)";
-					}
-					?>
 				</td>
 			</tr>
 			<tr class="evenline">
@@ -1305,12 +1302,7 @@ function UpdateLogsPageSessionVars(&$count, &$re, &$needle)
 		$pageSession['LinesPerPage']= $count;
 	}
 
-	// Reset the SearchNeedle if the user modifies the SearchRegExp
-	if ($pageSession['SearchRegExp'] !== filter_input(INPUT_POST, 'SearchRegExp')) {
-		$pageSession['SearchNeedle']= '';
-	}
-
-	// Empty regexp posted is used to clear the session regexp, use isset() here
+	// Empty regexp posted is used to clear the session regexp
 	if (filter_has_var(INPUT_POST, 'SearchRegExp')) {
 		$pageSession['SearchRegExp']= filter_input(INPUT_POST, 'SearchRegExp');
 	}
