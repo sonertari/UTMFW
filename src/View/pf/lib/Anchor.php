@@ -105,7 +105,7 @@ class Anchor extends FilterBase
 		$this->editIndex= 0;
 		$this->ruleNumber= $ruleNumber;
 
-		$this->editHead($modified);
+		$this->editHead($modified, $testResult, $generateResult, $action);
 
 		$this->editText('identifier', _TITLE('Identifier'), 'anchor-id', NULL, _CONTROL('name, may be nested'));
 
@@ -115,7 +115,7 @@ class Anchor extends FilterBase
 		$this->editInlineRules();
 
 		$this->editComment();
-		$this->editTail($modified, $testResult, $generateResult, $action);
+		$this->editTail();
 	}
 
 	function editInlineRules()

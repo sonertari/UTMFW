@@ -75,7 +75,7 @@ class Table extends Rule
 		$this->editIndex= 0;
 		$this->ruleNumber= $ruleNumber;
 
-		$this->editHead($modified);
+		$this->editHead($modified, $testResult, $generateResult, $action);
 
 		$this->editText('identifier', _TITLE('Identifier'), FALSE, NULL, _CONTROL('string'));
 		$this->editFlags();
@@ -83,7 +83,7 @@ class Table extends Rule
 		$this->editValues('', '', '', '', '');
 
 		$this->editComment();
-		$this->editTail($modified, $testResult, $generateResult, $action);
+		$this->editTail();
 	}
 
 	function editFlags()

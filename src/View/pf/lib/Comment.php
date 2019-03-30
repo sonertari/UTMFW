@@ -80,7 +80,6 @@ class Comment extends Rule
 		?>
 		<h2><?php echo $editHeader . ($modified ? ' (' . _TITLE('modified') . ')' : ''); ?></h2>
 		<form id="editForm" action="<?php echo $this->href . $ruleNumber; ?>" method="post">
-			<textarea cols="80" rows="5" id="comment" name="comment" placeholder="<?php echo _CONTROL('Enter comment here') ?>"><?php echo stripslashes($this->rule['comment']); ?></textarea>
 			<div class="buttons">
 				<input type="submit" id="apply" name="apply" value="<?php echo _CONTROL('Apply') ?>" />
 				<input type="submit" id="save" name="save" value="<?php echo _CONTROL('Save') ?>" <?php echo $modified ? '' : 'disabled'; ?> />
@@ -89,6 +88,7 @@ class Comment extends Rule
 				<label for="forcesave"><?php echo _CONTROL('Save with errors') ?></label>
 				<input type="hidden" name="state" value="<?php echo $action ?>" />
 			</div>
+			<textarea cols="80" rows="5" id="comment" name="comment" placeholder="<?php echo _CONTROL('Enter comment here') ?>"><?php echo stripslashes($this->rule['comment']); ?></textarea>
 		</form>
 		<?php
 	}

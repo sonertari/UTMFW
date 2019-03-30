@@ -104,7 +104,7 @@ class Timeout extends Rule
 		$this->editIndex= 0;
 		$this->ruleNumber= $ruleNumber;
 
-		$this->editHead($modified);
+		$this->editHead($modified, $testResult, $generateResult, $action);
 
 		$this->editFragment();
 		$this->editInterval();
@@ -112,7 +112,7 @@ class Timeout extends Rule
 		$this->editTimeout();
 
 		$this->editComment();
-		$this->editTail($modified, $testResult, $generateResult, $action);
+		$this->editTail();
 	}
 
 	function editTimeout()

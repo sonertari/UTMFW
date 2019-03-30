@@ -54,13 +54,13 @@ class Macro extends Rule
 		$this->editIndex= 0;
 		$this->ruleNumber= $ruleNumber;
 
-		$this->editHead($modified);
+		$this->editHead($modified, $testResult, $generateResult, $action);
 
 		$this->editText('identifier', _TITLE('Identifier'), FALSE, NULL, _CONTROL('valid string'));
 		$this->editValues('value', _TITLE('Value'), 'delValue', 'addValue', _CONTROL('add value'), NULL, 30);
 
 		$this->editComment();
-		$this->editTail($modified, $testResult, $generateResult, $action);
+		$this->editTail();
 	}
 }
 ?>

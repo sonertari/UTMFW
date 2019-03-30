@@ -86,7 +86,7 @@ class Option extends Rule
 		$this->editIndex= 0;
 		$this->ruleNumber= $ruleNumber;
 
-		$this->editHead($modified);
+		$this->editHead($modified, $testResult, $generateResult, $action);
 
 		if (filter_has_var(INPUT_POST, 'state') && filter_has_var(INPUT_POST, 'type')) {
 			$this->rule['type']= filter_input(INPUT_POST, 'type');
@@ -111,7 +111,7 @@ class Option extends Rule
 		if (isset($this->rule['type'])) {
 			$this->editComment();
 		}
-		$this->editTail($modified, $testResult, $generateResult, $action);
+		$this->editTail();
 	}
 
 	function editSelectOption()

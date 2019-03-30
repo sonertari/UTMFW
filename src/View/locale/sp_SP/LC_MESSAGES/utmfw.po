@@ -322,7 +322,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Among web filter log messages are page denials, virus scan results, denial "
+"Among the web filter log messages are page denials, virus scan results, denial "
 "bypasses or exceptions. However, some details can be found in HTTP proxy "
 "logs only, such as the sizes of file downloads if the download manager is "
 "engaged."

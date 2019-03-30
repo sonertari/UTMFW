@@ -52,7 +52,7 @@ class E2guardianlogs extends View
 	function __construct()
 	{
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
-		$this->LogsHelpMsg= _HELPWINDOW('Among web filter log messages are page denials, virus scan results, denial bypasses or exceptions.');
+		$this->LogsHelpMsg= _HELPWINDOW('Among the web filter log messages are page denials, virus scan results, denial bypasses or exceptions.');
 	}
 	
 	function FormatLogCols(&$cols)

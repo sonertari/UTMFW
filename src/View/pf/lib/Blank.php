@@ -86,8 +86,6 @@ class Blank extends Rule
 		?>
 		<h2><?php echo $editHeader . ($modified ? ' (' . _TITLE('modified') . ')' : '') ?></h2>
 		<form id="editForm" action="<?php echo $this->href . $ruleNumber ?>" method="post">
-			<?php echo _TITLE('Number of lines') . ': ' . $count; ?><br>
-			<textarea cols="80" rows="5" id="blank" name="blank" placeholder="<?php echo _CONTROL('Enter blank lines here') ?>"><?php echo $this->rule['blank']; ?></textarea>
 			<div class="buttons">
 				<input type="submit" id="apply" name="apply" value="<?php echo _CONTROL('Apply') ?>" />
 				<input type="submit" id="save" name="save" value="<?php echo _CONTROL('Save') ?>" <?php echo $modified ? '' : 'disabled' ?> />
@@ -96,6 +94,8 @@ class Blank extends Rule
 				<label for="forcesave"><?php echo _CONTROL('Save with errors') ?></label>
 				<input type="hidden" name="state" value="<?php echo $action ?>" />
 			</div>
+			<?php echo _TITLE('Number of lines') . ': ' . $count; ?><br>
+			<textarea cols="80" rows="5" id="blank" name="blank" placeholder="<?php echo _CONTROL('Enter blank lines here') ?>"><?php echo $this->rule['blank']; ?></textarea>
 		</form>
 		<?php
 	}
