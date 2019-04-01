@@ -23,11 +23,11 @@
  */
 
 /**
- * Displays DG group users in a list with Delete and Add forms.
+ * Displays DG group users in a list with Delete and Add buttons.
  *
  * @todo How to get browser's font sizes?
  */
-function PrintFilterGroupIPsForms()
+function PrintFilterGroupUsersForm()
 {
 	global $View;
 	
@@ -55,9 +55,9 @@ function PrintFilterGroupIPsForms()
 				?>
 				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 					<input style="display:none;" type="submit" name="Add" value="<?php echo _CONTROL('Add') ?>"/>
-					<select name="IPs[]" multiple style="width: 250px; height: 100px;">
+					<select name="Users[]" multiple style="width: 250px; height: 100px;">
 					<?php
-					if ($View->Controller($ips, 'GetGroupIpList', $group)) {
+					if ($View->Controller($ips, 'GetGroupUserList', $group)) {
 						for ($i = 0; $i < count($ips); $i++) {
 							?>
 							<option value="<?php echo $ips[$i] ?>"><?php echo $ips[$i] ?></option>
@@ -67,7 +67,7 @@ function PrintFilterGroupIPsForms()
 					?>
 					</select>
 					<input type="submit" name="Delete" value="<?php echo _CONTROL('Delete') ?>"/><br />
-					<input type="text" name="IPToAdd" style="width: 250px;" maxlength="31"/>
+					<input type="text" name="UserToAdd" style="width: 250px;" maxlength="31"/>
 					<input type="submit" name="Add" value="<?php echo _CONTROL('Add') ?>"/>
 					<input type="hidden" name="GroupToChange" value=<?php echo $group ?> />
 				</form>
@@ -90,9 +90,9 @@ function PrintFilterGroupIPsForms()
 }
 
 /**
- * Displays DG auth users in a list with Delete and Add forms.
+ * Displays DG auth users in a list with Delete and Add buttons.
  */
-function PrintFilterAuthIPForms()
+function PrintFilterAuthIPForm()
 {
 	global $View, $Row;
 	
@@ -144,12 +144,12 @@ if (filter_has_var(INPUT_POST, 'Create')) {
 	$View->Controller($Output, 'CreateNewGroup', $_SESSION[$View->Model]['ConfOpt']);
 }
 else if (filter_has_var(INPUT_POST, 'Delete')) {
-	foreach ($_POST['IPs'] as $Ip) {
-		$View->Controller($Output, 'DelIpFilterGrp', $Ip);
+	foreach ($_POST['Users'] as $u) {
+		$View->Controller($Output, 'DelUserFilterGrp', $u);
 	}
 }
-else if (filter_has_var(INPUT_POST, 'Add') && filter_has_var(INPUT_POST, 'IPToAdd')) {
-	$View->Controller($Output, 'SetIpFilterGrp', filter_input(INPUT_POST, 'GroupToChange'), filter_input(INPUT_POST, 'IPToAdd'));
+else if (filter_has_var(INPUT_POST, 'Add') && filter_has_var(INPUT_POST, 'UserToAdd')) {
+	$View->Controller($Output, 'SetUserFilterGrp', filter_input(INPUT_POST, 'UserToAdd'), filter_input(INPUT_POST, 'GroupToChange'));
 }
 else if (filter_has_var(INPUT_POST, 'DeleteAuthIp')) {
 	foreach ($_POST['AuthIPs'] as $Ip) {
@@ -185,8 +185,8 @@ $View->PrintConfOptForm();
 </table>
 <table style="width: auto;">
 	<?php
-	PrintFilterGroupIPsForms();
-	PrintFilterAuthIPForms();
+	PrintFilterGroupUsersForm();
+	PrintFilterAuthIPForm();
 	?>
 </table>
 <?php

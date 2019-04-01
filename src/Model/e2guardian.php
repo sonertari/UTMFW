@@ -148,23 +148,23 @@ class E2guardian extends Model
 		$this->Commands= array_merge(
 			$this->Commands,
 			array(
-				'DelIpFilterGrp'=>	array(
+				'DelUserFilterGrp'=>	array(
 					'argv'	=>	array(IPADR|DGIPRANGE|NAME),
-					'desc'	=>	_('Delete filter group IP'),
+					'desc'	=>	_('Delete filter group user'),
 					),
 
-				'SetIpFilterGrp'=>	array(
-					'argv'	=>	array(NUM, IPADR|DGIPRANGE|NAME),
-					'desc'	=>	_('Add filter group IP'),
+				'SetUserFilterGrp'=>	array(
+					'argv'	=>	array(IPADR|DGIPRANGE|NAME, NUM),
+					'desc'	=>	_('Add filter group user'),
 					),
 
 				'DelIp'		=>	array(
-					'argv'	=>	array(NAME, IPADR|DGIPRANGE|NAME),
+					'argv'	=>	array(NAME, IPADR|DGIPRANGE),
 					'desc'	=>	_('Delete IP'),
 					),
 
 				'AddIp'		=>	array(
-					'argv'	=>	array(NAME, IPADR|DGIPRANGE|NAME),
+					'argv'	=>	array(NAME, IPADR|DGIPRANGE),
 					'desc'	=>	_('Add IP'),
 					),
 
@@ -178,9 +178,9 @@ class E2guardian extends Model
 					'desc'	=>	_('Get group count'),
 					),
 
-				'GetGroupIpList'=>	array(
+				'GetGroupUserList'=>	array(
 					'argv'	=>	array(NUM),
-					'desc'	=>	_('Get group ip list'),
+					'desc'	=>	_('Get group user list'),
 					),
 
 				'GetAuthIpList'=>	array(
@@ -695,24 +695,24 @@ class E2guardian extends Model
 	}
 
 	/**
-	 * Gets ips listed in group
+	 * Gets users listed in group
 	 */
-	function GetGroupIpList($group)
+	function GetGroupUserList($group)
 	{
 		if ($filepath= $this->GetIpgroupsFilePath()) {
-			return Output($this->GetGrpIps($filepath, $group));
+			return Output($this->GetGroupUsers($filepath, $group));
 		}
 		return FALSE;
 	}
 
 	/**
-	 * Gets the list of group IPs.
+	 * Gets the list of group users.
 	 *
 	 * @param string $file Config file pathname.
 	 * @param string $group DG group.
-	 * @return string List of IPs.
+	 * @return string List of users, one on each line.
 	 */
-	function GetGrpIps($file, $group= '[^#\s]+')
+	function GetGroupUsers($file, $group= '[^#\s]+')
 	{
 		global $Re_Ip, $Re_User;
 
@@ -739,36 +739,34 @@ class E2guardian extends Model
 	}
 
 	/**
-	 * Adds IP and filter group pair.
+	 * Adds user and filter group pair.
 	 *
-	 * @todo Arg order differ from DelIpFilterGrp().
-	 * 
-	 * @param string $group Group to add IP to.
-	 * @param string $ip IP to add.
+	 * @param string $user User to add.
+	 * @param string $group Group to add user to.
 	 * @return bool TRUE on success, FALSE on fail.
 	 */
-	function SetIpFilterGrp($group, $ip)
+	function SetUserFilterGrp($user, $group)
 	{
 		if ($file= $this->GetIpgroupsFilePath()) {
-			$this->DelIpFilterGrp($ip, $group);
-			$this->DelIpFilterGrp($ip, '.*');
-			return $this->AppendToFile($file, "$ip = filter$group");
+			$this->DelUserFilterGrp($user, $group);
+			$this->DelUserFilterGrp($user, '.*');
+			return $this->AppendToFile($file, "$user = filter$group");
 		}
 		return FALSE;
 	}
 
 	/**
-	 * Deletes IP and filter group pair.
+	 * Deletes user and filter group pair.
 	 *
-	 * @param string $ip	IP to delete.
-	 * @param string $group	Group to delete IP from.
+	 * @param string $user	User to delete.
+	 * @param string $group	Group to delete user from.
 	 * @return bool TRUE on success, FALSE on fail.
 	 */
-	function DelIpFilterGrp($ip, $group= '[^#\s]+')
+	function DelUserFilterGrp($user, $group= '[^#\s]+')
 	{
 		if ($file= $this->GetIpgroupsFilePath()) {
-			$ip= Escape($ip, '/.');
-			return $this->ReplaceRegexp($file, "/^(\h*$ip\b\h*$this->NVPS\h*filter$group\b\h*.*(\s|))/m", '');
+			$user= Escape($user, '/.');
+			return $this->ReplaceRegexp($file, "/^(\h*$user\b\h*$this->NVPS\h*filter$group\b\h*.*(\s|))/m", '');
 		}
 		return FALSE;
 	}

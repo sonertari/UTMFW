@@ -970,7 +970,8 @@ class Model
 				return TRUE;
 			}
 			else {
-				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot replace in: $file");
+				// Replace failure may not be important, we sometimes search and try to replace possibly nonexistent needles
+				ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Cannot replace in: $file");
 			}
 		}
 		else {
