@@ -48,9 +48,9 @@ $StatusText= array(
 	);
 
 $Prios= array(
-	'Critical' => array('EMERGENCY', 'ALERT', 'CRITICAL'),
-	'Error' => array('ERROR'),
-	'Warning' => array('WARNING', 'NOTICE'),
+	'Critical' => array('EMERGENCY', 'ALERT', 'CRITICAL', 'emergency', 'alert', 'critical'),
+	'Error' => array('ERROR', 'error'),
+	'Warning' => array('WARNING', 'NOTICE', 'warning', 'notice'),
 	);
 
 function Notify($title, $body, $data)
