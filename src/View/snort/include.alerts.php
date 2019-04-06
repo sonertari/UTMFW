@@ -57,10 +57,9 @@ class Snortalerts extends View
 		if (preg_match('/(\d+)/', $line, $match)) {
 			$priority= $match[1];
 
-			if ($priority >= 6) {
+			if ($priority == 1) {
 				$class= 'red';
-			}
-			else if ($priority >= 3) {
+			} else if ($priority == 2) {
 				$class= 'yellow';
 			}
 		}
