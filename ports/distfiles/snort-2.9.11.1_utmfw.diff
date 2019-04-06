@@ -767,7 +767,7 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/Makefile.in snort-2.9.1
 +.NOEXPORT:
 diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.11.1_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c
 --- snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c	1970-01-01 02:00:00.000000000 +0200
-+++ snort-2.9.11.1_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c	2019-03-29 14:12:08.367920589 +0300
++++ snort-2.9.11.1_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c	2019-04-07 00:19:32.324433051 +0300
 @@ -0,0 +1,506 @@
 +/****************************************************************************
 + *
@@ -1003,9 +1003,9 @@ diff -Nur snort-2.9.11.1/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.1
 +		if (port_match) {
 +			char *sslproxy = memmem(p->payload, p->payload_size, "SSLproxy:", 9);
 +			if (sslproxy) {
-+// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[192.168.111.130]:443,s\r\n
-+// 9 + 2 + 45 + 2 + 5 + 2 + 45 + 2 + 5 + 2 + 45 + 2 + 5 + 1 + 1 + 2 = 175
-+#define MAX_LINE_LEN 175
++// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[192.168.111.130]:443,s,soner\r\n
++// 9        + 2 + 45 + 2 + 5  + 2 + 45 + 2 + 5     + 2 + 45 + 2 + 5      + 1 + 1 + 1 + 31 + 2 = 207
++#define MAX_LINE_LEN 207
 +#define MAX_IPADDR_LEN 45
 +#define MAX_PORT_LEN 5
 +#define MAX_USER_LEN 31
