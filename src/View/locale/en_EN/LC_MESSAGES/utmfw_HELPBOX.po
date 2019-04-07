@@ -74,6 +74,9 @@ msgid ""
 "period defined by this value. The unit is in seconds."
 msgstr ""
 
+msgid "Passwords should have at least 8 alphanumeric characters."
+msgstr ""
+
 msgid ""
 "Pfctl commands are executed in a separate process, which returns pfctl "
 "output in a message. Parent process times out waiting for an output message "
@@ -137,6 +140,12 @@ msgid ""
 "periodically, such as Live pages for logs and statistics. The new value "
 "takes effect only for newly created sessions. Note that logging out of the "
 "web user interface does not erase your session values."
+msgstr ""
+
+msgid ""
+"This is the list of clients. The fields on each line are the IP address, "
+"user name, ethernet address, idle time in seconds, and description of the "
+"client."
 msgstr ""
 
 msgid ""

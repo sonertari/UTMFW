@@ -91,10 +91,18 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
+msgid ""
+"Click <a href=\"https://<SERVER_ADDR>/userdbpasswd.php\">here</a> to change "
+"your password"
+msgstr ""
+
 msgid "Click to search in the logs"
 msgstr ""
 
 msgid "Click to search in the stats"
+msgstr ""
+
+msgid "Clients"
 msgstr ""
 
 msgid "Code"
@@ -155,6 +163,9 @@ msgid "Delete"
 msgstr ""
 
 msgid "Delete ruleset"
+msgstr ""
+
+msgid "Description"
 msgstr ""
 
 msgid "Destination"
@@ -604,6 +615,12 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
+msgid "Password Again"
+msgstr ""
+
+msgid "Passwords should have at least 8 alphanumeric characters"
+msgstr ""
+
 msgid "Pfctl Timeout"
 msgstr ""
 
@@ -907,7 +924,13 @@ msgstr ""
 msgid "User"
 msgstr ""
 
+msgid "User Name"
+msgstr ""
+
 msgid "User name"
+msgstr ""
+
+msgid "Users"
 msgstr ""
 
 msgid "Value"
@@ -938,6 +961,9 @@ msgid "Web Server"
 msgstr ""
 
 msgid "When (h)"
+msgstr ""
+
+msgid "You must authenticate to access the Internet"
 msgstr ""
 
 msgid "add file"

@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2019 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009, 2017, 2018.
+# Soner Tari <sonertari@gmail.com>, 2009, 2017, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-05-19 04:32+0300\n"
+"PO-Revision-Date: 2019-04-07 16:54+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -177,12 +177,6 @@ msgstr ""
 "Öndeğer kapalıdır. (on | off)"
 
 msgid ""
-"Break SSL protocol and redirect to another HTTPS website for denied page"
-msgstr ""
-"SSL protokolünü boz ve engelleme sayfası için başka bir HTTPs sitesine "
-"yönlendir"
-
-msgid ""
 "Build bannedsitelist and bannedurllist cache files.\n"
 "This will compare the date stamp of the list file with the date stamp of the "
 "cache file and will recreate as needed.\n"
@@ -206,13 +200,6 @@ msgid "Check for expired connections every this many seconds."
 msgstr ""
 "Zaman aşımına uğramış bağlantıları buradaki saniye cinsinden sürede kontrol "
 "et."
-
-msgid ""
-"Check that ssl certificates for servers on https connections are valid and "
-"signed by a ca in the configured path."
-msgstr ""
-"HTTPs bağlantısındaki sunucuların SSL sertifikalarının geçerli olduğunu ve "
-"ayarlardaki bir CA tarafından imzalandığını kontrol et."
 
 msgid "Cipher specification for both server and client SSL/TLS connections."
 msgstr "Sunucu ve istemcilerin SSL/TLS bağlantıları için şifre tanımı"
@@ -487,15 +474,6 @@ msgstr ""
 
 msgid ""
 "Generate your own with:\n"
-"   openssl dhparam -out dh1024.pem 1024\n"
-"Substitute 2048 for 1024 if you are using 2048 bit keys."
-msgstr ""
-"Kendi dosyanızı aşağıdaki komutla yaratın:\n"
-"   openssl dhparam -out dh1024.pem 1024\n"
-"2048 bitlik anahtarlar kullanıyorsanız 1024 yerine 2048 kullanın."
-
-msgid ""
-"Generate your own with:\n"
 "openssl dhparam -out dh1024.pem 1024\n"
 "Substitute 2048 for 1024 if you are using 2048 bit keys."
 msgstr ""
@@ -753,6 +731,11 @@ msgstr ""
 "sonra siler.\n"
 "öndeğer: Virüslü mesajları Virüs Dizininde tutar"
 
+msgid "Leaf key RSA keysize in bits, use 1024|2048|3072|4096."
+msgstr ""
+"Bit sayısı cinsinden leaf key RSA anahtar boyutu, 1024|2048|3072|4096 "
+"kullanın."
+
 msgid ""
 "List format is:\n"
 "allow|deny localid|all [groupchat|remoteid1 ... remoteidN]\n"
@@ -782,9 +765,6 @@ msgstr "Ağınızdaki web sunucuların listesi."
 
 msgid "Local and remote VPN endpoint IP addresses."
 msgstr "Yerel ve uzak VPN uç IP adresleridir."
-
-msgid "Log detailed error info regarding SSL error returns."
-msgstr "SSL hatalarının detaylı kayıtlarını al"
 
 msgid ""
 "Log if an exception (user, ip, URL, phrase) is matched and so the page gets "
@@ -907,6 +887,9 @@ msgstr "QuietMode ve FascistLogging seçeneklerini kapatır."
 
 msgid "Only webcam sessions on Yahoo are recognized and blocked"
 msgstr "Sadece Yahoo web kamera bağlantıları algılanabilir ve engellenir."
+
+msgid "Open files limit, use 50-10000."
+msgstr "Açık dosya sınırı, 50-10000 kullanın."
 
 msgid "Override default of no subsystems"
 msgstr "Altsistem kullanılmamasını sağlayan öndeğeri değiştirir."
@@ -1082,6 +1065,9 @@ msgid ""
 msgstr ""
 "Referer için HTTP başlık satırını sil. OWASP bu başlığı zafiyet olarak kabul "
 "eder, ve SSLproxy ile tekrar yönlendirme hatalarına sebep olabilir."
+
+msgid "Require authentication for users to use SSLproxy."
+msgstr "SSLproxy kullanıcılarından doğrulama iste."
 
 msgid ""
 "Results are only predictable with user authenticated configs, if enabled the "
@@ -1482,24 +1468,6 @@ msgstr ""
 "bağlanmak istiyorsanız, her IP'yi kendi filterip satırına yazın."
 
 msgid ""
-"The address of your web server to which the static page e2guardian reporting "
-"was copied.\n"
-"With ssldeniedrewrite off it works only with firefox \n"
-"With ssldeniedrewrite on there are several limitations, SSL warning, basic "
-"page, etc, eg this webserver can't be listed as an exception in your "
-"browser's proxy configuration.\n"
-"Keep in mind, this is only a trick to avoid blank page, the best way still "
-"to use SSLMITM"
-msgstr ""
-"Sabit e2guardian raporlama sayfasını kopyaladığınız web sunucunun adresi.\n"
-"ssldeniedrewrite kapalıyken sadece firefox ile çalışır \n"
-"ssldeniedrewrite açıkken bazı sınırlamaları vardır, SSL uyarısı, temel sayfa "
-"gibi, örneğin web tarayıcınızın vekil ayarlarında bu web sunucu "
-"listelenemez.\n"
-"Bunun boş sayfaları önlemek için sadece geçici bir çözüm olduğunu aklınızda "
-"tutun, en iyi yöntem SSLMITM'dir"
-
-msgid ""
 "The headers can be easily spoofed in order to fake the request origin by "
 "setting the X-Forwarded-For header. If you have the \"usexforwardedfor\" "
 "option enabled, you may want to specify the IPs from which this kind of "
@@ -1881,6 +1849,11 @@ msgstr ""
 "Önemli: Bu seçenek kapalıysa virüsler yine de içerik virüsü olarak "
 "kaydedilecektir."
 
+msgid "Time users out after this many seconds of idle time."
+msgstr ""
+"Kullanıcıları saniye cinsinden bu kadar durağan süre sonunda zaman aşımına "
+"uğrat."
+
 msgid "Total of block extensions cannot be higher than this value."
 msgstr "Engelleme uzatmalarının toplamı bu değerden fazla olamaz."
 
@@ -1947,6 +1920,9 @@ msgstr ""
 "HTML kalıp dosyasındaki -FILTERGROUP- yertutucusunu değiştirmek ve grubu "
 "giriş kayıtlarında isimlendirmek için kullanılır\n"
 "Öndeğer boş dizedir"
+
+msgid "Validate proxy spec protocols."
+msgstr "Vekil tanımlama protokollerini doğrula."
 
 msgid "Verify peer using default certificates."
 msgstr "Öntanımlı sertifikalarla karşı tarafı doğrula"

@@ -10,7 +10,13 @@ msgstr ""
 msgid "Are you sure you want to delete the configuration?"
 msgstr ""
 
+msgid "Are you sure you want to delete the selected client(s)?"
+msgstr ""
+
 msgid "Are you sure you want to delete the selected items?"
+msgstr ""
+
+msgid "Are you sure you want to delete the user?"
 msgstr ""
 
 msgid "Are you sure you want to erase statistics files?"
@@ -37,6 +43,12 @@ msgstr ""
 msgid "Are you sure you want to stop the <NAME>?"
 msgstr ""
 
+msgid "Authentication failed"
+msgstr ""
+
+msgid "Authentication succeeded, now you can access the Internet"
+msgstr ""
+
 msgid ""
 "Automatic configuration completed. You might want to check the details now."
 msgstr ""
@@ -45,6 +57,18 @@ msgid "Automatic configuration failed."
 msgstr ""
 
 msgid "Cannot generate rule"
+msgstr ""
+
+msgid "Cannot get ethernet address of IP"
+msgstr ""
+
+msgid "Cannot log user out"
+msgstr ""
+
+msgid "Cannot update user"
+msgstr ""
+
+msgid "Client deleted"
 msgstr ""
 
 msgid "ERROR"
@@ -92,6 +116,9 @@ msgstr ""
 msgid "Main pf rules reloaded"
 msgstr ""
 
+msgid "Need a login name for user"
+msgstr ""
+
 msgid "Not a valid password"
 msgstr ""
 
@@ -125,7 +152,25 @@ msgstr ""
 msgid "There was an error while installing"
 msgstr ""
 
+msgid "User added"
+msgstr ""
+
+msgid "User already exists"
+msgstr ""
+
+msgid "User deleted"
+msgstr ""
+
+msgid "User does not exist"
+msgstr ""
+
+msgid "User logged out"
+msgstr ""
+
 msgid "User password changed"
+msgstr ""
+
+msgid "Users not a valid json or array"
 msgstr ""
 
 msgid "You should select at least one conf file to start the process"

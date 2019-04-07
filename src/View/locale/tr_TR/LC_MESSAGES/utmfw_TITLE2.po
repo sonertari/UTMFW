@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2019 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009, 2017, 2018.
+# Soner Tari <sonertari@gmail.com>, 2009, 2017, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-05-19 04:30+0300\n"
+"PO-Revision-Date: 2019-04-07 14:08+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -79,6 +79,9 @@ msgstr "Arşiv dosya üst sınırı"
 
 msgid "Archive Max Recursion"
 msgstr "Arşiv yineleme üst sınırı"
+
+msgid "Authenticate Users"
+msgstr "Kullanıcıları Doğrula"
 
 msgid "Back Orifice detector"
 msgstr "Back Orifice algılayıcı"
@@ -275,9 +278,6 @@ msgstr "Gömülü URL ağırlıklı hesabı"
 msgid "Enable Deep URL Analysis"
 msgstr "Derin URL analizini aç"
 
-msgid "Enable MITM site certificate checking"
-msgstr "MITM site sertifika kontrolünü aç"
-
 msgid "Enable SSL/TLS"
 msgstr "SSL/TLS'yi aç"
 
@@ -455,6 +455,9 @@ msgstr "Anahtar kelimeler"
 msgid "Language"
 msgstr "Dil"
 
+msgid "Leaf Key RSA Bits"
+msgstr "Leaf Key RSA Bit Sayısı"
+
 msgid "Leases"
 msgstr "Kiralar"
 
@@ -463,9 +466,6 @@ msgstr "Geçici dosyaları bırak"
 
 msgid "Leave spool on"
 msgstr "Kuyruğu bırak"
-
-msgid "Limit SSL MITM to sites in greysslsitelist(s)"
-msgstr "SSL MITM'i greysslsitelist(s) dosyasındaki sitelerle sınırla"
 
 msgid "Listen Address"
 msgstr "Dinleme adresi"
@@ -529,9 +529,6 @@ msgstr "Kimden geldiğini kaydet"
 
 msgid "Log rcpt to"
 msgstr "Alıcıyı kaydet"
-
-msgid "Log ssl errors"
-msgstr "SSL hatalarını kaydet"
 
 msgid "Log typing events"
 msgstr "Yazma olaylarını kaydet"
@@ -686,6 +683,9 @@ msgstr "İçerik uyarısı"
 msgid "Number of filter groups"
 msgstr "Elek grubu sayısı"
 
+msgid "Open Files Limit"
+msgstr "Açık Dosya Sınırı"
+
 msgid "PHP FastCGI Server"
 msgstr "PHP FastCGI Sunucu"
 
@@ -776,9 +776,6 @@ msgstr "Sessiz"
 msgid "Re-check replaced URLs"
 msgstr "Değiştirilen URL'leri tekrar kontrol et"
 
-msgid "Redirect SSL denied page"
-msgstr "SSL engelleme sayfasını yönlendir"
-
 msgid "Remote Server"
 msgstr "Uzaktaki sunucu"
 
@@ -853,15 +850,6 @@ msgstr "SSL Vekil"
 
 msgid "SSL Shutdown Retry Delay"
 msgstr "SSL Sonlandırma Tekrar Deneme Aralığı"
-
-msgid "SSL access denied address"
-msgstr "SSL giriş engelleme adresi"
-
-msgid "SSL certificate checking"
-msgstr "SSL sertifika kontrolü"
-
-msgid "SSL man in the middle"
-msgstr "SSL araya girme saldırısı"
 
 msgid "STARTED"
 msgstr "BAŞLANGIÇ"
@@ -1043,8 +1031,14 @@ msgstr "Bayes kullan"
 msgid "Use xforwarded for"
 msgstr "Xforwarded for kullan"
 
+msgid "User Idle Timeout"
+msgstr "Durağan Kullanıcı Zaman Aşımı"
+
 msgid "User agent regexp"
 msgstr "Ajan düzenli ifadesi kullan"
+
+msgid "Validate Protocols"
+msgstr "Protokolleri Doğrula"
 
 msgid "Verbosity"
 msgstr "Detay seviyesi"

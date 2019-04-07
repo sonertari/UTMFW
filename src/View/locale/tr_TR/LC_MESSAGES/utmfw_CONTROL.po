@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2019 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2018.
+# Soner Tari <sonertari@gmail.com>, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-11-05 22:09+0300\n"
+"PO-Revision-Date: 2019-04-07 16:05+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -71,6 +71,9 @@ msgstr "Engelle"
 
 msgid "Cancel"
 msgstr "İptal"
+
+msgid "Change Password"
+msgstr "Parolayı Değiştir"
 
 msgid "Comment"
 msgstr "Yorum"
@@ -179,6 +182,9 @@ msgstr "Hatalara rağmen yükle"
 
 msgid "Log in"
 msgstr "Gir"
+
+msgid "Log out"
+msgstr "Çık"
 
 msgid "Macro"
 msgstr "Makro"

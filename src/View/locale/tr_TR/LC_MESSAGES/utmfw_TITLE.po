@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2019 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2018.
+# Soner Tari <sonertari@gmail.com>, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-11-05 22:09+0300\n"
+"PO-Revision-Date: 2019-04-07 15:33+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -110,11 +110,21 @@ msgstr "ÖNEMLİ"
 msgid "Category"
 msgstr "Sınıf"
 
+msgid ""
+"Click <a href=\"https://<SERVER_ADDR>/userdbpasswd.php\">here</a> to change "
+"your password"
+msgstr ""
+"Parolanızı değiştirmek için <a href=\"https://<SERVER_ADDR>/userdbpasswd.php"
+"\">buraya</a> tıklayın"
+
 msgid "Click to search in the logs"
 msgstr "Kayıtlarda aramak için tıklayın"
 
 msgid "Click to search in the stats"
 msgstr "İstatistiklerde aramak için tıklayın"
+
+msgid "Clients"
+msgstr "İstemciler"
 
 msgid "Code"
 msgstr "Kod"
@@ -175,6 +185,9 @@ msgstr "Sil"
 
 msgid "Delete ruleset"
 msgstr "Kural listesini sil"
+
+msgid "Description"
+msgstr "Tanım"
 
 msgid "Destination"
 msgstr "Hedef"
@@ -623,6 +636,12 @@ msgstr "Pasif Saldırı Engelleme"
 msgid "Password"
 msgstr "Parola"
 
+msgid "Password Again"
+msgstr "Tekrar Parola"
+
+msgid "Passwords should have at least 8 alphanumeric characters"
+msgstr "Parolalarda en az 8 harf veya rakam bulunmalıdır"
+
 msgid "Pfctl Timeout"
 msgstr "Pfctl Zaman Aşımı"
 
@@ -926,8 +945,14 @@ msgstr "SSH Kullan"
 msgid "User"
 msgstr "Kullanıcı"
 
+msgid "User Name"
+msgstr "Kullanıcı Adı"
+
 msgid "User name"
 msgstr "Kullanıcı adı"
+
+msgid "Users"
+msgstr "Kullanıcılar"
 
 msgid "Value"
 msgstr "Değer"
@@ -958,6 +983,9 @@ msgstr "Web Sunucu"
 
 msgid "When (h)"
 msgstr "Zaman (saat)"
+
+msgid "You must authenticate to access the Internet"
+msgstr "İnternet'e ulaşabilmek için giriş yapmalısınız"
 
 msgid "add file"
 msgstr "dosya ekle"

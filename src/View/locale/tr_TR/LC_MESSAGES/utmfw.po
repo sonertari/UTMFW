@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2019 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2018.
+# Soner Tari <sonertari@gmail.com>, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-12-09 15:07+0300\n"
+"PO-Revision-Date: 2019-04-07 16:05+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -226,8 +226,8 @@ msgstr "Uzt/mime ekle"
 msgid "Add filter"
 msgstr "Elek ekle"
 
-msgid "Add filter group IP"
-msgstr "Elek grup IP adresi ekle"
+msgid "Add filter group user"
+msgstr "Elek grubuna kullanıcı ekle"
 
 msgid "Add host"
 msgstr "Bilgisayar ekle"
@@ -243,6 +243,9 @@ msgstr "Vekil tanımları ekle"
 
 msgid "Add to IP list"
 msgstr "IP listesine ekle"
+
+msgid "Add user"
+msgstr "Kullanıcı ekle"
 
 msgid "Additional mime types"
 msgstr "Ek mime türleri"
@@ -389,15 +392,11 @@ msgstr ""
 "\n"
 
 msgid ""
-"Among the web filter log messages are page denials, virus scan results, denial "
-"bypasses or exceptions. However, some details can be found in HTTP proxy "
-"logs only, such as the sizes of file downloads if the download manager is "
-"engaged."
+"Among the web filter log messages are page denials, virus scan results, "
+"denial bypasses or exceptions."
 msgstr ""
 "Web eleği kayıtları arasında engellemeler, virüs tarama sonuçları, engelleme "
-"kestirmeleri ve istisnaları bulabilirsiniz. Ancak, indirme yöneticisinin "
-"devraldığı dosyaların boyutları gibi detaylar sadece HTTP vekil "
-"kayıtlarındadır."
+"kestirmeleri ve istisnaları bulabilirsiniz."
 
 msgid ""
 "An important setting may be the rewrite header which is used on the subject "
@@ -493,8 +492,14 @@ msgstr "Kural silinecek, emin misiniz?"
 msgid "Are you sure you want to delete the rules file?"
 msgstr "Kural dosyası silinecek, emin misiniz?"
 
+msgid "Are you sure you want to delete the selected client(s)?"
+msgstr "Seçili istemcileri silmek istediğinizden emin misiniz?"
+
 msgid "Are you sure you want to delete the selected items?"
 msgstr "Seçili öğeleri silmek istediğinizden emin misiniz?"
+
+msgid "Are you sure you want to delete the user?"
+msgstr "Kullanıcıyı silmek istediğinizden emin misiniz?"
 
 msgid "Are you sure you want to erase statistics files?"
 msgstr "İstatistik dosyalarını silmek istediğinizden emin misiniz?"
@@ -558,6 +563,15 @@ msgstr "Tag Ata"
 
 msgid "Attack Types"
 msgstr "Saldırı türleri"
+
+msgid "Authenticate Users"
+msgstr "Kullanıcıları Doğrula"
+
+msgid "Authentication failed"
+msgstr "Doğrulama başarısız"
+
+msgid "Authentication succeeded, now you can access the Internet"
+msgstr "Doğrulama başarılı, şimdi İnternet'e ulaşabilirsiniz"
 
 msgid "Automatic config"
 msgstr "Otomatik yapılandırma"
@@ -686,12 +700,6 @@ msgstr "Engellenen Süre (sn)"
 msgid "Blocked requests"
 msgstr "Engellenen istekler"
 
-msgid ""
-"Break SSL protocol and redirect to another HTTPS website for denied page"
-msgstr ""
-"SSL protokolünü boz ve engelleme sayfası için başka bir HTTPs sitesine "
-"yönlendir"
-
 msgid "Broadcast address"
 msgstr "Yayım adresi"
 
@@ -782,6 +790,9 @@ msgstr "Atlanan engellemeler"
 msgid "Bypassing IPs"
 msgstr "Atlayan IP'ler"
 
+msgid "Bypassing users"
+msgstr "Atlayan kullanıcılar"
+
 msgid "Bytes"
 msgstr "Bayt"
 
@@ -827,6 +838,9 @@ msgstr "Pfctl süreci fork edilemedi"
 msgid "Cannot generate rule"
 msgstr "Kural üretilemiyor"
 
+msgid "Cannot get ethernet address of IP"
+msgstr "IP adresin ethernet adresi alınamıyor"
+
 msgid "Cannot get pid"
 msgstr "Pid alınamadı"
 
@@ -836,11 +850,17 @@ msgstr "Pf kural dosyası kurulamadı"
 msgid "Cannot load pf rules"
 msgstr "Pf kuralları yüklenemedi"
 
+msgid "Cannot log user out"
+msgstr "Kullanıcı çıkışı yapılamıyor"
+
 msgid "Cannot read config"
 msgstr "Yapılandırma okunamadı"
 
 msgid "Cannot remove tmp pf file"
 msgstr "Geçici pf dosyası silinemedi"
+
+msgid "Cannot update user"
+msgstr "Kullanıcı güncellenemiyor"
 
 msgid "Cannot write to tmp pf file"
 msgstr "Geçici pf dosyasına yazılamadı"
@@ -863,6 +883,9 @@ msgstr "Sınıf gösterim eşik değeri"
 
 msgid "Certificate"
 msgstr "Sertifika"
+
+msgid "Change Password"
+msgstr "Parolayı Değiştir"
 
 msgid "Change p3scan report language"
 msgstr "P3scan bildirim dilini değiştir"
@@ -894,13 +917,6 @@ msgstr ""
 
 msgid "Check if process running"
 msgstr "Sürecin çalıştığını kontrol et"
-
-msgid ""
-"Check that ssl certificates for servers on https connections are valid and "
-"signed by a ca in the configured path."
-msgstr ""
-"HTTPs bağlantısındaki sunucuların SSL sertifikalarının geçerli olduğunu ve "
-"ayarlardaki bir CA tarafından imzalandığını kontrol et."
 
 msgid "Chinese simplified"
 msgstr "Çince basitleştirilmiş"
@@ -946,6 +962,13 @@ msgstr ""
 msgid "Cleared"
 msgstr "Temizlenme"
 
+msgid ""
+"Click <a href=\"https://<SERVER_ADDR>/userdbpasswd.php\">here</a> to change "
+"your password"
+msgstr ""
+"Parolanızı değiştirmek için <a href=\"https://<SERVER_ADDR>/userdbpasswd.php"
+"\">buraya</a> tıklayın"
+
 msgid "Click to search in the logs"
 msgstr "Kayıtlarda aramak için tıklayın"
 
@@ -957,6 +980,9 @@ msgstr "İstemci"
 
 msgid "Client IPs"
 msgstr "İstemci IP'leri"
+
+msgid "Client deleted"
+msgstr "İstemci silindi"
 
 msgid "Clients"
 msgstr "İstemciler"
@@ -1254,6 +1280,9 @@ msgstr "Uyarı anahtar kelimesini sil"
 msgid "Delete badword"
 msgstr "Uygunsuz kelime sil"
 
+msgid "Delete client"
+msgstr "İstemciyi sil"
+
 msgid "Delete conf"
 msgstr "Yapılandırma sil"
 
@@ -1288,8 +1317,8 @@ msgstr ""
 msgid "Delete filter"
 msgstr "Elek sil"
 
-msgid "Delete filter group IP"
-msgstr "Elek grup IP adresini sil"
+msgid "Delete filter group user"
+msgstr "Elek grup kullanıcısını sil"
 
 msgid "Delete host"
 msgstr "Bilgisayar sil"
@@ -1312,6 +1341,9 @@ msgstr "Kural dosyasını sil"
 msgid "Delete ruleset"
 msgstr "Kural listesini sil"
 
+msgid "Delete user"
+msgstr "Kullanıcıyı sil"
+
 msgid "Denied IPs"
 msgstr "Engellenen IP'ler"
 
@@ -1320,6 +1352,9 @@ msgstr "Engellenen kategoriler"
 
 msgid "Denied requests"
 msgstr "Engellenen istekler"
+
+msgid "Denied users"
+msgstr "Engellenen kullanıcılar"
 
 msgid "Deny OCSP"
 msgstr "OCSP'yi reddet"
@@ -1634,9 +1669,6 @@ msgstr "MesaiSonrası tatil günlerini aç"
 msgid "Enable Deep URL Analysis"
 msgstr "Derin URL analizini aç"
 
-msgid "Enable MITM site certificate checking"
-msgstr "MITM site sertifika kontrolünü aç"
-
 msgid "Enable SSL/TLS"
 msgstr "SSL/TLS'yi aç"
 
@@ -1780,6 +1812,9 @@ msgstr "İstisna IP'ler"
 
 msgid "Exception requests"
 msgstr "İstisna istekler"
+
+msgid "Exception users"
+msgstr "İstisna kullanıcılar"
 
 msgid "Expire"
 msgstr "Zamanaşımı"
@@ -2106,15 +2141,6 @@ msgstr "Hatalara rağmen üret"
 
 msgid ""
 "Generate your own with:\n"
-"   openssl dhparam -out dh1024.pem 1024\n"
-"Substitute 2048 for 1024 if you are using 2048 bit keys."
-msgstr ""
-"Kendi dosyanızı aşağıdaki komutla yaratın:\n"
-"   openssl dhparam -out dh1024.pem 1024\n"
-"2048 bitlik anahtarlar kullanıyorsanız 1024 yerine 2048 kullanın."
-
-msgid ""
-"Generate your own with:\n"
 "openssl dhparam -out dh1024.pem 1024\n"
 "Substitute 2048 for 1024 if you are using 2048 bit keys."
 msgstr ""
@@ -2182,6 +2208,9 @@ msgstr "Auth IP listesini getir"
 msgid "Get badwords"
 msgstr "Uygunsuz kelimeleri getir"
 
+msgid "Get clients"
+msgstr "İstemcileri getir"
+
 msgid "Get config values"
 msgstr "Yapılandırma değerlerini getir"
 
@@ -2212,6 +2241,9 @@ msgstr "Kiralanan DHCP adres sayısını getir"
 msgid "Get disabled rules"
 msgstr "Kapalı kuralları getir"
 
+msgid "Get ether of ip"
+msgstr "IP'nin ethernet adresini getir"
+
 msgid "Get ext/mime list"
 msgstr "Uzt/mime listesini getir"
 
@@ -2224,8 +2256,8 @@ msgstr "Grafiği getir"
 msgid "Get group count"
 msgstr "Grup sayısını getir"
 
-msgid "Get group ip list"
-msgstr "Grup IP listesini getir"
+msgid "Get group user list"
+msgstr "Grup kullanıcı listesini getir"
 
 msgid "Get host graphs"
 msgstr "Bilgisayar grafiklerini getir"
@@ -2294,10 +2326,10 @@ msgid "Get pf queue info"
 msgstr "Pf kuyruk bilgisini getir"
 
 msgid "Get pf rule files"
-msgstr "Pf kural dosyalarını alma"
+msgstr "Pf kural dosyalarını getir"
 
 msgid "Get pf rules"
-msgstr "Pf kurallarını alma"
+msgstr "Pf kurallarını getir"
 
 msgid "Get pf rules info"
 msgstr "Pf kural bilgisini getir"
@@ -2371,6 +2403,9 @@ msgstr "Sistem bilgisini getir"
 msgid "Get tail"
 msgstr "Kuyruğunu getir"
 
+msgid "Get users"
+msgstr "Kullanıcıları getir"
+
 msgid "Graph files"
 msgstr "Grafik dosyaları"
 
@@ -2436,14 +2471,14 @@ msgid "Groups"
 msgstr "Gruplar"
 
 msgid ""
-"Groups are used to grant or revoke certain privileges to IPs, such as which "
-"web sites or file types to allow or deny. UTMFW comes with 4 predefined "
-"groups by default. However, the web filter is capable of having any number "
-"of IP groups.\n"
+"Groups are used to grant or revoke certain privileges to users, such as "
+"which web sites or file types to allow or deny. UTMFW comes with 4 "
+"predefined groups by default. However, the web filter is capable of having "
+"any number of user groups.\n"
 "\n"
 "Predefined groups and their basic features are as follows:\n"
 "Filter Group 1:\n"
-"<ul class='nomargin'><li class='nomargin'>All IPs not defined in other "
+"<ul class='nomargin'><li class='nomargin'>All users not defined in other "
 "groups are considered in this group by default,</li><li "
 "class='nomargin'>Group members are allowed to browse the web according to "
 "group configuration,</li><li class='nomargin'>If not specifically disabled, "
@@ -2460,21 +2495,21 @@ msgid ""
 "privileges than Group 1 members, because they can download files without any "
 "restrictions,</li><li class='nomargin'>Rest of the configuration for this "
 "group is similar to Group 1.</li></ul>\n"
-"You can add IP or network addresses to groups. If there is another group "
-"with the same entry, it is deleted from that group first, i.e. an IP address "
-"can be a member of only one group.\n"
-" \n"
+"You can add network users and IP or network addresses to groups. If there is "
+"another group with the same entry, it is deleted from that group first, i.e. "
+"a user can be a member of only one group.\n"
+"\n"
 "The format of ip ranges is Start IP address-End IP address, such as "
 "192.168.1.1-192.168.1.253. And that of subnets is IP address/Subnet mask, "
 "such as 192.168.1.0/255.255.255.0.\n"
 "\n"
 "White and black lists give you other methods of allowing or denying certain "
-"IP addresses access to the web without needing to add them to any group.\n"
+"users access to the web without needing to add them to any group.\n"
 "\n"
 "This web interface does not provide an option to delete filter groups. But "
 "you can always delete groups on the command line."
 msgstr ""
-"Gruplar belli IP adreslerine öncelikler vermek veya sınırlamak için "
+"Gruplar kullanıcılara belli öncelikler vermek veya sınırlamak için "
 "kullanılır, örneğin web siteleri veya dosya türlerine izin vermek veya "
 "engellemek gibi. UTMFW'de öntanımlı 4 grup bulunur. Ancak web eleğinde "
 "istediğiniz kadar grup yaratabilirsiniz.\n"
@@ -2482,7 +2517,7 @@ msgstr ""
 "Öntanımlı gruplar ve temel özellikleri aşağıdaki gibidir:\n"
 "Elek Grubu 1:\n"
 "<ul class='nomargin'><li class='nomargin'>Diğer gruplarda tanımlı olmayan "
-"tüm IP adreslerinin bu grupta olduğu varsayılır,</li><li "
+"tüm kullanıcıların bu grupta olduğu varsayılır,</li><li "
 "class='nomargin'>Grup yapılandırması uyarınca üyelerin web'e girme yetkisi "
 "vardır,</li><li class='nomargin'>Özellikle devredışı bırakılmadıysa "
 "tümdosyalar virüs taramasından geçirilir.</li></ul>\n"
@@ -2498,15 +2533,15 @@ msgstr ""
 "üyelerinden daha fazla yetkisi vardır, çünkü hiçbir sınırlama olmadan dosya "
 "indirebilirler,</li><li class='nomargin'>Bu grubun geri kalan yapılandırması "
 "birinci grupla aynıdır.</li></ul>\n"
-"Gruplara hem IP hem de ağ adresi girebilirsiniz. Aynı öğeyi içeren başka bir "
-"grup varsa, öncelikle adres o gruptan silinir, yani bir adres sadece bir "
-"grubun üyesi olabilir.\n"
+"Gruplara ağ kullanıcısı, IP ve ağ adresi ekleyebilirsiniz. Aynı öğeyi içeren "
+"başka bir grup varsa, öncelikle adres o gruptan silinir, yani bir kullanıcı "
+"sadece bir grubun üyesi olabilir.\n"
 " \n"
 "IP aralığı formatı Başlangıç IP adresi-Son IP adresi şeklindedir, örneğin "
 "192.168.1.1-192.168.1.253. Ve altağ formatı IP adresi/altağ şablonu "
 "şeklindedir, örneğin 192.168.1.0/255.255.255.0.\n"
 "\n"
-"Beyaz ve kara listeler bazı IP adresleri herhangi bir gruba atamadan web'e "
+"Beyaz ve kara listeler bazı kullanıcıları herhangi bir gruba atamadan web'e "
 "girişlerine izin vermenize veya engellemenize yarar.\n"
 "\n"
 "Elek gruplarını web arayüzünü kullanarak silemezsiniz. Grupları komut "
@@ -2583,7 +2618,7 @@ msgid ""
 "sha1 -`):1000:1000::0:0:UTMFW admin:/home/admin:/bin/ksh\"</code>"
 msgstr ""
 "Buradan admin ve user kullanıcılarının web arayüzü parolasını "
-"değiştirebilirsiniz. Parolalarda toplam en az 8 harf veya rakam olmalıdır.\n"
+"değiştirebilirsiniz. Parolalarda en az 8 harf veya rakam bulunmalıdır.\n"
 "\n"
 "Admin kullanıcısı user kullanıcısının mevcut parolasını bilmiyor olsa da "
 "değiştirebilir. Ama admin parolasını unutursanız, sisteme root olarak girip "
@@ -3143,6 +3178,9 @@ msgstr "Virüslü e-postalar"
 msgid "Infected requests"
 msgstr "Virüslü istekler"
 
+msgid "Infected users"
+msgstr "Virüslü kullanıcılar"
+
 msgid "Infection/Scan Error Bypass"
 msgstr "Virüslü/Tarama hata kestirmesi"
 
@@ -3295,6 +3333,14 @@ msgstr "Dil"
 msgid "Last >>"
 msgstr "Son >>"
 
+msgid "Leaf Key RSA Bits"
+msgstr "Leaf Key RSA Bit Sayısı"
+
+msgid "Leaf key RSA keysize in bits, use 1024|2048|3072|4096."
+msgstr ""
+"Bit sayısı cinsinden leaf key RSA anahtar boyutu, 1024|2048|3072|4096 "
+"kullanın."
+
 msgid "Leases"
 msgstr "Kiralar"
 
@@ -3306,9 +3352,6 @@ msgstr "Kuyruğu bırak"
 
 msgid "Limit"
 msgstr "Sınırlar"
-
-msgid "Limit SSL MITM to sites in greysslsitelist(s)"
-msgstr "SSL MITM'i greysslsitelist(s) dosyasındaki sitelerle sınırla"
 
 msgid "Line"
 msgstr "Satır"
@@ -3457,9 +3500,6 @@ msgstr "İstemci bilgisayar adlarını kaydet"
 msgid "Log connection handling errors"
 msgstr "Bağlantı yönetimi hatalarını kaydet"
 
-msgid "Log detailed error info regarding SSL error returns."
-msgstr "SSL hatalarının detaylı kayıtlarını al"
-
 msgid ""
 "Log files are rotated according to two main criteria: size and time, "
 "whichever is reached first. When a log file is rotated, it is renamed and "
@@ -3536,11 +3576,11 @@ msgstr "Kayıt seviyesi"
 msgid "Log mail from"
 msgstr "Kimden geldiğini kaydet"
 
+msgid "Log out"
+msgstr "Çık"
+
 msgid "Log rcpt to"
 msgstr "Alıcıyı kaydet"
-
-msgid "Log ssl errors"
-msgstr "SSL hatalarını kaydet"
 
 msgid "Log statistics every this many ExpiredConnCheckPeriod periods."
 msgstr ""
@@ -3551,6 +3591,9 @@ msgstr "İstatistikleri syslog'a yaz."
 
 msgid "Log typing events"
 msgstr "Yazma olaylarını kaydet"
+
+msgid "Log user out"
+msgstr "Kullanıcıyı çıkar"
 
 msgid "Logged in user"
 msgstr "Giriş yapmış kullanıcı"
@@ -3927,6 +3970,9 @@ msgstr "Adres Çevirisi"
 msgid "Naughtyness limit"
 msgstr "Uygunsuz içerik sınırı"
 
+msgid "Need a login name for user"
+msgstr "Kullanıcı için bir giriş adı gerekli"
+
 msgid "Needle"
 msgstr "Sorgu"
 
@@ -4187,6 +4233,12 @@ msgstr ""
 msgid "Only webcam sessions on Yahoo are recognized and blocked"
 msgstr "Sadece Yahoo web kamera bağlantıları algılanabilir ve engellenir."
 
+msgid "Open Files Limit"
+msgstr "Açık Dosya Sınırı"
+
+msgid "Open files limit, use 50-10000."
+msgstr "Açık dosya sınırı, 50-10000 kullanın."
+
 msgid ""
 "OpenBSD/spamd is a spam deferral daemon, a fake sendmail-like daemon which "
 "rejects false mail. You can run spamd if there is a mail server in the "
@@ -4362,8 +4414,17 @@ msgstr "Pasif Saldırı Engelleme"
 msgid "Password"
 msgstr "Parola"
 
+msgid "Password Again"
+msgstr "Tekrar Parola"
+
 msgid "Passwords do not match"
 msgstr "Parolalar uyuşmuyor"
+
+msgid "Passwords should have at least 8 alphanumeric characters"
+msgstr "Parolalarda en az 8 harf veya rakam bulunmalıdır"
+
+msgid "Passwords should have at least 8 alphanumeric characters."
+msgstr "Parolalarda en az 8 harf veya rakam bulunmalıdır."
 
 msgid ""
 "Path (sendmail-compatible) email program, with options.\n"
@@ -4714,9 +4775,6 @@ msgstr "Tekrar Yönlendirme Seçenekleri"
 msgid "Redirect Port"
 msgstr "Tekrar Yönlendirme Kapısı"
 
-msgid "Redirect SSL denied page"
-msgstr "SSL engelleme sayfasını yönlendir"
-
 msgid "Redraw"
 msgstr "Tekrar Üret"
 
@@ -4813,6 +4871,9 @@ msgstr "İstekte bulunan IP'ler"
 msgid "Requests by date"
 msgstr "Tarihe göre istekler"
 
+msgid "Requests by user"
+msgstr "İstekte bulunan kullanıcılar"
+
 msgid "Requests bypassed"
 msgstr "Atlanan istekler"
 
@@ -4824,6 +4885,9 @@ msgstr "Virüslü istekler"
 
 msgid "Requests scanned"
 msgstr "Taranan istekler"
+
+msgid "Require authentication for users to use SSLproxy."
+msgstr "SSLproxy kullanıcılarından doğrulama iste."
 
 msgid "Required element missing"
 msgstr "Gerekli eleman yok"
@@ -5068,15 +5132,6 @@ msgstr "SSL Kaynak Protokoller"
 msgid "SSL Verify Peer"
 msgstr "SSL Sunucu Doğrulama"
 
-msgid "SSL access denied address"
-msgstr "SSL giriş engelleme adresi"
-
-msgid "SSL certificate checking"
-msgstr "SSL sertifika kontrolü"
-
-msgid "SSL man in the middle"
-msgstr "SSL araya girme saldırısı"
-
 msgid ""
 "SSL sites not matching greysslsitelist will be treat as if sslmitm is off.\n"
 "ignored if  sslmitm is off"
@@ -5199,6 +5254,9 @@ msgstr "Taranan IP'ler"
 msgid "Scanned requests"
 msgstr "Taranan istekler"
 
+msgid "Scanned users"
+msgstr "Taranan kullanıcılar"
+
 msgid "Scrub"
 msgstr "Kazıma"
 
@@ -5297,6 +5355,9 @@ msgstr "İzinli PF öğesi ekle"
 
 msgid "Set PF restricted"
 msgstr "Sınırlı PF öğesi ekle"
+
+msgid "Set UserAuth URL"
+msgstr "Kullanıcı doğrulama URL'ini ayarla"
 
 msgid "Set afterhours if"
 msgstr "Mesaisonrası arayüzünü ayarla"
@@ -5848,6 +5909,9 @@ msgstr "Metod başına boyut (KB)"
 msgid "Size by Protocol (KB)"
 msgstr "Protokol başına boyut (KB)"
 
+msgid "Size by User (KB)"
+msgstr "Kullanıcı başına boyut (KB)"
+
 msgid "Size by site (KB)"
 msgstr "Site başına boyut (KB)"
 
@@ -6363,11 +6427,12 @@ msgid ""
 "services. The inline IPS inspects the decrypted traffic for intrusion "
 "detection and prevention as well.\n"
 "\n"
-"The max statistics displayed on this page represent the status of the SSL "
-"proxy process as a whole, within the last report interval in seconds. The "
+"The max statistics displayed on this page represent the status of the "
+"SSLproxy process as a whole, within the last report interval in seconds. The "
 "numbers here may give you an idea on the current load of the proxy. For "
 "example, if the max number of file descriptors is too high, you might want "
-"to increase the open files limit of the daemon class in login.conf file."
+"to increase the open files limit, either in the SSLproxy configuration or in "
+"login.conf file (daemon class)."
 msgstr ""
 "SSL vekil SSL/TLS ile şifrelenmiş trafiği çözer ve UTM servislerine "
 "gönderir. Inline IPS de bu çözülmiş trafiği saldırı tespit ve engelleme "
@@ -6376,8 +6441,8 @@ msgstr ""
 "Bu sayfada gösterilen en yüksek istatistikleri SSL vekil sürecinin saniye "
 "cinsinden son raporlama aralığındaki durumunu temsil eder. Buradaki sayılar "
 "vekilin bu aralıktaki yükü hakkında bilgi verebilir. Örneğin, en fazla file "
-"descriptor istatistiği çok yüksekse, login.conf dosyasındaki daemon "
-"sınıfının açık dosya sınırını artırmak isteyebilirsiniz."
+"descriptor istatistiği çok yüksekse, SSLproxy ayarlarından veya login.conf "
+"dosyasından (daemon sınıfı) açık dosya sınırını artırmak isteyebilirsiniz."
 
 msgid "The SSL proxy is an event-driven multi-threaded program."
 msgstr "SSL vekil olaya dayalı çoklu parçacıklı bir programdır."
@@ -6400,24 +6465,6 @@ msgstr ""
 
 msgid "The URL of the Firebase notification service."
 msgstr "Firebase uyarı servisinin URL adresi."
-
-msgid ""
-"The address of your web server to which the static page e2guardian reporting "
-"was copied.\n"
-"With ssldeniedrewrite off it works only with firefox \n"
-"With ssldeniedrewrite on there are several limitations, SSL warning, basic "
-"page, etc, eg this webserver can't be listed as an exception in your "
-"browser's proxy configuration.\n"
-"Keep in mind, this is only a trick to avoid blank page, the best way still "
-"to use SSLMITM"
-msgstr ""
-"Sabit e2guardian raporlama sayfasını kopyaladığınız web sunucunun adresi.\n"
-"ssldeniedrewrite kapalıyken sadece firefox ile çalışır \n"
-"ssldeniedrewrite açıkken bazı sınırlamaları vardır, SSL uyarısı, temel sayfa "
-"gibi, örneğin web tarayıcınızın vekil ayarlarında bu web sunucu "
-"listelenemez.\n"
-"Bunun boş sayfaları önlemek için sadece geçici bir çözüm olduğunu aklınızda "
-"tutun, en iyi yöntem SSLMITM'dir"
 
 msgid ""
 "The headers can be easily spoofed in order to fake the request origin by "
@@ -6475,20 +6522,6 @@ msgstr ""
 "Bu değerden daha az boş alan varsa sorun giderilene kadar p3scan "
 "bağlantılara izin vermeyecektir.\n"
 "öndeğer: 100MB"
-
-msgid ""
-"The number of web filter processes depends on the number of requests from "
-"internal network. Minimum and maximum number of processes can be adjusted on "
-"the configuration pages.\n"
-"\n"
-"If you modify the configuration of the web filter, you must restart the web "
-"filter for the changes to take effect."
-msgstr ""
-"Web eleği süreç sayısı iç ağdan gelen istek sayısına bağlıdır. Süreç "
-"sayısının alt ve üst sınırları yapılandırma sayfalarından değiştirilebilir.\n"
-"\n"
-"Web eleğinin yapılandırmasını değiştirirseniz ayarların geçerli olması için "
-"web eleğini tekrar başlatmanız gerekir."
 
 msgid ""
 "The options below protect your system against Denial of Service attacks "
@@ -6572,6 +6605,19 @@ msgstr ""
 "sayfalarındaki içeriği tarar, bu nedenle İçerik Tarayan Web Eleği olarak "
 "adlandırılır. Bu, site veya url listeleri, karalisteler ve ilgili "
 "sınıflandırmalardan farklı ve ek bir özelliktir."
+
+msgid ""
+"The web filter runs multithreaded. The maximum number of web filter threads "
+"can be adjusted on the configuration pages.\n"
+"\n"
+"If you modify the configuration of the web filter, you must restart the web "
+"filter for the changes to take effect."
+msgstr ""
+"Web eleği çoklu parçacıklı çalışır. Web eleğinin parçacık üst sınırı ayar "
+"sayfalarından değiştirilebilir.\n"
+"\n"
+"Web eleğinin yapılandırmasını değiştirirseniz ayarların geçerli olması için "
+"web eleğini tekrar başlatmanız gerekir."
 
 msgid ""
 "There are 3 possible modes of operation:\n"
@@ -6834,6 +6880,14 @@ msgstr ""
 "Öndeğer sistemin iç arayüz IP adresidir."
 
 msgid ""
+"This is the list of clients. The fields on each line are the IP address, "
+"user name, ethernet address, idle time in seconds, and description of the "
+"client."
+msgstr ""
+"Bu istemci listesidir. Satırlardaki alanlar IP adresi, kullanıcı adı, "
+"ethernet adresi, saniye cinsinden durağan zaman ve istemci tanımıdır."
+
+msgid ""
 "This is the list of interfaces DHCP server listens and distributes IP "
 "leases. Here you should add the interface(s) to start the DHCP server for."
 msgstr ""
@@ -7017,6 +7071,15 @@ msgstr ""
 "-1 = sadece en yüksek puan toplayan sınıflandırmayı gösterir\n"
 "0 = tüm sınıflandırmaları gösterir (öndeğer)\n"
 "> 0 = sınıflandırmanın gösterilmesi için gerekli olan en düşük değerdir"
+
+msgid ""
+"This page allows you to add and delete firewall users, change their "
+"passwords, list and delete active clients. You can setup user authentication "
+"on the configuration page for SSLproxy."
+msgstr ""
+"Bu sayfada firewall kullanıcılarını ekleyip çıkarabilir, parolalarını "
+"değiştirebilir, aktif istemcileri listeleyebilir ve silebilirsiniz. SSLproxy "
+"ayar sayfasından kullanıcı doğrulamayı ayarlayabilirsiniz."
 
 msgid ""
 "This page displays statistical data collected over the log files of this "
@@ -7265,6 +7328,11 @@ msgstr "Süre bitiş zamanı"
 msgid "Time to expire (secs)"
 msgstr "Süre bitim zamanı (sn)"
 
+msgid "Time users out after this many seconds of idle time."
+msgstr ""
+"Kullanıcıları saniye cinsinden bu kadar durağan süre sonunda zaman aşımına "
+"uğrat."
+
 msgid "Timed out running pfctl command"
 msgstr "Pfctl komutu zaman aşımına uğradı"
 
@@ -7355,6 +7423,12 @@ msgstr "KULLANICI"
 
 msgid "UTM FIREWALL"
 msgstr "UTM FIREWALL"
+
+msgid "UTM FIREWALL Change User Password"
+msgstr "UTM FIREWALL Kullanıcı Parolası Değiştirme"
+
+msgid "UTM FIREWALL User Login"
+msgstr "UTM FIREWALL Kullanıcı Girişi"
 
 msgid "UTM Firewall"
 msgstr "UTM Firewall"
@@ -7483,6 +7557,9 @@ msgstr "Desteklenmeyen arayüz yapılandırması"
 msgid "Update mail aliases"
 msgstr "Posta adresi adlarını güncelle"
 
+msgid "Update user"
+msgstr "Kullanıcıyı güncelle"
+
 msgid "Upload"
 msgstr "Karşıya Yükle"
 
@@ -7586,8 +7663,29 @@ msgstr ""
 msgid "User"
 msgstr "Kullanıcı"
 
+msgid "User Idle Timeout"
+msgstr "Durağan Kullanıcı Zaman Aşımı"
+
+msgid "User Name"
+msgstr "Kullanıcı Adı"
+
+msgid "User added"
+msgstr "Kullanıcı eklendi"
+
 msgid "User agent regexp"
 msgstr "Ajan düzenli ifadesi kullan"
+
+msgid "User already exists"
+msgstr "Kullanıcı zaten mevcut"
+
+msgid "User deleted"
+msgstr "Kullanıcı silindi"
+
+msgid "User does not exist"
+msgstr "Kullanıcı mevcut değil"
+
+msgid "User logged out"
+msgstr "Kullanıcı çıkarıldı"
 
 msgid "User name"
 msgstr "Kullanıcı adı"
@@ -7604,7 +7702,10 @@ msgstr ""
 "verilmez."
 
 msgid "Users"
-msgstr "Kullancılar"
+msgstr "Kullanıcılar"
+
+msgid "Users not a valid json or array"
+msgstr "Kullanıcılar geçerli bir json veya array değil"
 
 msgid ""
 "Usually the network time daemon adjusts the system clock according to "
@@ -7622,6 +7723,12 @@ msgstr "VİRÜS ELEĞİ"
 
 msgid "VSZ"
 msgstr "VSZ"
+
+msgid "Validate Protocols"
+msgstr "Protokolleri Doğrula"
+
+msgid "Validate proxy spec protocols."
+msgstr "Vekil tanımlama protokollerini doğrula."
 
 msgid "Validation Error"
 msgstr "Doğrulama Hatası"
@@ -7987,6 +8094,9 @@ msgid ""
 msgstr ""
 "İç ağdaki virüs bulaşmış bilgisayarları belirlemek için bu kayıtları "
 "dikkatli takip edin."
+
+msgid "You must authenticate to access the Internet"
+msgstr "İnternet'e ulaşabilmek için giriş yapmalısınız"
 
 msgid ""
 "You must change the following variables to reflect your local network. The "

@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2019 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2018.
+# Soner Tari <sonertari@gmail.com>, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-09-16 16:44+0300\n"
+"PO-Revision-Date: 2019-04-07 16:01+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -65,7 +65,7 @@ msgid ""
 "sha1 -`):1000:1000::0:0:UTMFW admin:/home/admin:/bin/ksh\"</code>"
 msgstr ""
 "Buradan admin ve user kullanıcılarının web arayüzü parolasını "
-"değiştirebilirsiniz. Parolalarda toplam en az 8 harf veya rakam olmalıdır.\n"
+"değiştirebilirsiniz. Parolalarda en az 8 harf veya rakam bulunmalıdır.\n"
 "\n"
 "Admin kullanıcısı user kullanıcısının mevcut parolasını bilmiyor olsa da "
 "değiştirebilir. Ama admin parolasını unutursanız, sisteme root olarak girip "
@@ -138,6 +138,9 @@ msgid ""
 msgstr ""
 "Uyarılar uyarı sunucusuna burada belirlenen süre boyunca bağlantı kurmaya "
 "çalışır ve sonra zaman aşımına uğrar. Değer saniye cinsindendir."
+
+msgid "Passwords should have at least 8 alphanumeric characters."
+msgstr "Parolalarda en az 8 harf veya rakam bulunmalıdır."
 
 msgid ""
 "Pfctl commands are executed in a separate process, which returns pfctl "
@@ -233,6 +236,14 @@ msgstr ""
 "yenileme değeridir, örneğin kayıt ve istatistik Canlı sayfaları gibi. Yeni "
 "değer yeni yaratılan oturumlar için geçerlidir. Web arayüzünden çıkış "
 "yapmanızın oturum değerlerinizi silmediğini unutmayınız."
+
+msgid ""
+"This is the list of clients. The fields on each line are the IP address, "
+"user name, ethernet address, idle time in seconds, and description of the "
+"client."
+msgstr ""
+"Bu istemci listesidir. Satırlardaki alanlar IP adresi, kullanıcı adı, "
+"ethernet adresi, saniye cinsinden durağan zaman ve istemci tanımıdır."
 
 msgid ""
 "This is the log level for the utmfw web interface. Logs at this level and up "

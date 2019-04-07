@@ -265,7 +265,16 @@ msgstr ""
 msgid "UTM FIREWALL"
 msgstr ""
 
+msgid "UTM FIREWALL Change User Password"
+msgstr ""
+
+msgid "UTM FIREWALL User Login"
+msgstr ""
+
 msgid "UTM Firewall"
+msgstr ""
+
+msgid "Users"
 msgstr ""
 
 msgid "VIRUS FILTER"

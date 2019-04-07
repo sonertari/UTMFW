@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2019 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009, 2017, 2018.
+# Soner Tari <sonertari@gmail.com>, 2009, 2017, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-11-05 22:10+0300\n"
+"PO-Revision-Date: 2019-04-07 16:15+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -44,8 +44,8 @@ msgstr "Uzt/mime ekle"
 msgid "Add filter"
 msgstr "Elek ekle"
 
-msgid "Add filter group IP"
-msgstr "Elek grup IP adresi ekle"
+msgid "Add filter group user"
+msgstr "Elek grubuna kullanıcı ekle"
 
 msgid "Add host"
 msgstr "Bilgisayar ekle"
@@ -61,6 +61,9 @@ msgstr "Vekil tanımları ekle"
 
 msgid "Add to IP list"
 msgstr "IP listesine ekle"
+
+msgid "Add user"
+msgstr "Kullanıcı ekle"
 
 msgid "Age"
 msgstr "Süre"
@@ -170,6 +173,9 @@ msgstr "Uyarı anahtar kelimesini sil"
 msgid "Delete badword"
 msgstr "Uygunsuz kelime sil"
 
+msgid "Delete client"
+msgstr "İstemciyi sil"
+
 msgid "Delete conf"
 msgstr "Yapılandırma sil"
 
@@ -182,8 +188,8 @@ msgstr "Uzt/mime sil"
 msgid "Delete filter"
 msgstr "Elek sil"
 
-msgid "Delete filter group IP"
-msgstr "Elek grup IP adresini sil"
+msgid "Delete filter group user"
+msgstr "Elek grup kullanıcısını sil"
 
 msgid "Delete host"
 msgstr "Bilgisayar sil"
@@ -199,6 +205,9 @@ msgstr "Pf kural dosyası silme"
 
 msgid "Delete proxy specs"
 msgstr "Vekil tanımlarını sil"
+
+msgid "Delete user"
+msgstr "Kullanıcıyı sil"
 
 msgid "Dest"
 msgstr "Hedef"
@@ -386,6 +395,9 @@ msgstr "Auth IP listesini getir"
 msgid "Get badwords"
 msgstr "Uygunsuz kelimeleri getir"
 
+msgid "Get clients"
+msgstr "İstemcileri getir"
+
 msgid "Get config values"
 msgstr "Yapılandırma değerlerini getir"
 
@@ -416,6 +428,9 @@ msgstr "Kiralanan DHCP adres sayısını getir"
 msgid "Get disabled rules"
 msgstr "Kapalı kuralları getir"
 
+msgid "Get ether of ip"
+msgstr "IP'nin ethernet adresini getir"
+
 msgid "Get ext/mime list"
 msgstr "Uzt/mime listesini getir"
 
@@ -428,8 +443,8 @@ msgstr "Grafiği getir"
 msgid "Get group count"
 msgstr "Grup sayısını getir"
 
-msgid "Get group ip list"
-msgstr "Grup IP listesini getir"
+msgid "Get group user list"
+msgstr "Grup kullanıcı listesini getir"
 
 msgid "Get host graphs"
 msgstr "Bilgisayar grafiklerini getir"
@@ -498,10 +513,10 @@ msgid "Get pf queue info"
 msgstr "Pf kuyruk bilgisini getir"
 
 msgid "Get pf rule files"
-msgstr "Pf kural dosyalarını alma"
+msgstr "Pf kural dosyalarını getir"
 
 msgid "Get pf rules"
-msgstr "Pf kurallarını alma"
+msgstr "Pf kurallarını getir"
 
 msgid "Get pf rules info"
 msgstr "Pf kural bilgisini getir"
@@ -574,6 +589,9 @@ msgstr "Sistem bilgisini getir"
 
 msgid "Get tail"
 msgstr "Kuyruğunu getir"
+
+msgid "Get users"
+msgstr "Kullanıcıları getir"
 
 msgid "Group created successfully"
 msgstr "Grup başarıyla yaratıldı"
@@ -658,6 +676,9 @@ msgstr "Fiziksel arayüzleri listele"
 
 msgid "Load Error"
 msgstr "Yükleme Hatası"
+
+msgid "Log user out"
+msgstr "Kullanıcıyı çıkar"
 
 msgid "Make system gateway dynamic"
 msgstr "Sistem ağ geçidini dinamik yap"
@@ -858,6 +879,9 @@ msgstr "İzinli PF öğesi ekle"
 
 msgid "Set PF restricted"
 msgstr "Sınırlı PF öğesi ekle"
+
+msgid "Set UserAuth URL"
+msgstr "Kullanıcı doğrulama URL'ini ayarla"
 
 msgid "Set afterhours if"
 msgstr "Mesaisonrası arayüzünü ayarla"
@@ -1074,6 +1098,9 @@ msgstr "Desteklenmeyen arayüz yapılandırması"
 
 msgid "Update mail aliases"
 msgstr "Posta adresi adlarını güncelle"
+
+msgid "Update user"
+msgstr "Kullanıcıyı güncelle"
 
 msgid "Url wrong"
 msgstr "Url hatalı"

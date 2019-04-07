@@ -53,6 +53,9 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+msgid "Change Password"
+msgstr ""
+
 msgid "Comment"
 msgstr ""
 
@@ -159,6 +162,9 @@ msgid "Load with errors"
 msgstr ""
 
 msgid "Log in"
+msgstr ""
+
+msgid "Log out"
 msgstr ""
 
 msgid "Macro"

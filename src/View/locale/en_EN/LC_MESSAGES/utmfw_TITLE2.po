@@ -61,6 +61,9 @@ msgstr ""
 msgid "Archive Max Recursion"
 msgstr ""
 
+msgid "Authenticate Users"
+msgstr ""
+
 msgid "Back Orifice detector"
 msgstr ""
 
@@ -256,9 +259,6 @@ msgstr ""
 msgid "Enable Deep URL Analysis"
 msgstr ""
 
-msgid "Enable MITM site certificate checking"
-msgstr ""
-
 msgid "Enable SSL/TLS"
 msgstr ""
 
@@ -436,6 +436,9 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+msgid "Leaf Key RSA Bits"
+msgstr ""
+
 msgid "Leases"
 msgstr ""
 
@@ -443,9 +446,6 @@ msgid "Leave Temporary Files"
 msgstr ""
 
 msgid "Leave spool on"
-msgstr ""
-
-msgid "Limit SSL MITM to sites in greysslsitelist(s)"
 msgstr ""
 
 msgid "Listen Address"
@@ -509,9 +509,6 @@ msgid "Log mail from"
 msgstr ""
 
 msgid "Log rcpt to"
-msgstr ""
-
-msgid "Log ssl errors"
 msgstr ""
 
 msgid "Log typing events"
@@ -667,6 +664,9 @@ msgstr ""
 msgid "Number of filter groups"
 msgstr ""
 
+msgid "Open Files Limit"
+msgstr ""
+
 msgid "PHP FastCGI Server"
 msgstr ""
 
@@ -757,9 +757,6 @@ msgstr ""
 msgid "Re-check replaced URLs"
 msgstr ""
 
-msgid "Redirect SSL denied page"
-msgstr ""
-
 msgid "Remote Server"
 msgstr ""
 
@@ -833,15 +830,6 @@ msgid "SSL Proxy"
 msgstr ""
 
 msgid "SSL Shutdown Retry Delay"
-msgstr ""
-
-msgid "SSL access denied address"
-msgstr ""
-
-msgid "SSL certificate checking"
-msgstr ""
-
-msgid "SSL man in the middle"
 msgstr ""
 
 msgid "STARTED"
@@ -1024,7 +1012,13 @@ msgstr ""
 msgid "Use xforwarded for"
 msgstr ""
 
+msgid "User Idle Timeout"
+msgstr ""
+
 msgid "User agent regexp"
+msgstr ""
+
+msgid "Validate Protocols"
 msgstr ""
 
 msgid "Verbosity"

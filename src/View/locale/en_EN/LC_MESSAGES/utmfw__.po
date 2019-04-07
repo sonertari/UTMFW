@@ -25,7 +25,7 @@ msgstr ""
 msgid "Add filter"
 msgstr ""
 
-msgid "Add filter group IP"
+msgid "Add filter group user"
 msgstr ""
 
 msgid "Add host"
@@ -41,6 +41,9 @@ msgid "Add proxy specs"
 msgstr ""
 
 msgid "Add to IP list"
+msgstr ""
+
+msgid "Add user"
 msgstr ""
 
 msgid "Age"
@@ -151,6 +154,9 @@ msgstr ""
 msgid "Delete badword"
 msgstr ""
 
+msgid "Delete client"
+msgstr ""
+
 msgid "Delete conf"
 msgstr ""
 
@@ -163,7 +169,7 @@ msgstr ""
 msgid "Delete filter"
 msgstr ""
 
-msgid "Delete filter group IP"
+msgid "Delete filter group user"
 msgstr ""
 
 msgid "Delete host"
@@ -179,6 +185,9 @@ msgid "Delete pf rule file"
 msgstr ""
 
 msgid "Delete proxy specs"
+msgstr ""
+
+msgid "Delete user"
 msgstr ""
 
 msgid "Dest"
@@ -367,6 +376,9 @@ msgstr ""
 msgid "Get badwords"
 msgstr ""
 
+msgid "Get clients"
+msgstr ""
+
 msgid "Get config values"
 msgstr ""
 
@@ -397,6 +409,9 @@ msgstr ""
 msgid "Get disabled rules"
 msgstr ""
 
+msgid "Get ether of ip"
+msgstr ""
+
 msgid "Get ext/mime list"
 msgstr ""
 
@@ -409,7 +424,7 @@ msgstr ""
 msgid "Get group count"
 msgstr ""
 
-msgid "Get group ip list"
+msgid "Get group user list"
 msgstr ""
 
 msgid "Get host graphs"
@@ -556,6 +571,9 @@ msgstr ""
 msgid "Get tail"
 msgstr ""
 
+msgid "Get users"
+msgstr ""
+
 msgid "Group created successfully"
 msgstr ""
 
@@ -638,6 +656,9 @@ msgid "List physical interfaces"
 msgstr ""
 
 msgid "Load Error"
+msgstr ""
+
+msgid "Log user out"
 msgstr ""
 
 msgid "Make system gateway dynamic"
@@ -835,6 +856,9 @@ msgid "Set PF allowed"
 msgstr ""
 
 msgid "Set PF restricted"
+msgstr ""
+
+msgid "Set UserAuth URL"
 msgstr ""
 
 msgid "Set afterhours if"
@@ -1051,6 +1075,9 @@ msgid "Unsupported interface configuration"
 msgstr ""
 
 msgid "Update mail aliases"
+msgstr ""
+
+msgid "Update user"
 msgstr ""
 
 msgid "Url wrong"

@@ -102,10 +102,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Break SSL protocol and redirect to another HTTPS website for denied page"
-msgstr ""
-
-msgid ""
 "Build bannedsitelist and bannedurllist cache files.\n"
 "This will compare the date stamp of the list file with the date stamp of the "
 "cache file and will recreate as needed.\n"
@@ -117,11 +113,6 @@ msgid ""
 msgstr ""
 
 msgid "Check for expired connections every this many seconds."
-msgstr ""
-
-msgid ""
-"Check that ssl certificates for servers on https connections are valid and "
-"signed by a ca in the configured path."
 msgstr ""
 
 msgid "Cipher specification for both server and client SSL/TLS connections."
@@ -307,11 +298,6 @@ msgid "Force SSL/TLS protocol version only."
 msgstr ""
 
 msgid ""
-"Forge ssl certificates for all non-exception sites, decrypt the data then re "
-"encrypt it using a different private key. Used to filter ssl sites."
-msgstr ""
-
-msgid ""
 "Forwarder is the IP address of a DNS server that the system itself queries. "
 "In simple setups, this is usually the IP address of a DSL modem which "
 "functions as gateway to the Internet."
@@ -487,6 +473,9 @@ msgid ""
 "\t\tdefault: Keep infected messages in Virus Directory"
 msgstr ""
 
+msgid "Leaf key RSA keysize in bits, use 1024|2048|3072|4096."
+msgstr ""
+
 msgid ""
 "List format is:\n"
 "allow|deny localid|all [groupchat|remoteid1 ... remoteidN]\n"
@@ -509,9 +498,6 @@ msgid "List of web servers on your network"
 msgstr ""
 
 msgid "Local and remote VPN endpoint IP addresses."
-msgstr ""
-
-msgid "Log detailed error info regarding SSL error returns."
 msgstr ""
 
 msgid ""
@@ -600,6 +586,9 @@ msgid "Obsoletes QuietMode and FascistLogging"
 msgstr ""
 
 msgid "Only webcam sessions on Yahoo are recognized and blocked"
+msgstr ""
+
+msgid "Open files limit, use 50-10000."
 msgstr ""
 
 msgid "Override default of no subsystems"
@@ -718,6 +707,9 @@ msgid ""
 "and it may cause redirection errors with SSLproxy."
 msgstr ""
 
+msgid "Require authentication for users to use SSLproxy."
+msgstr ""
+
 msgid ""
 "Results are only predictable with user authenticated configs, if enabled the "
 "violation/threshold count is kept track of by the user"
@@ -752,11 +744,6 @@ msgid ""
 msgstr ""
 
 msgid "Rule to be added to the routing table."
-msgstr ""
-
-msgid ""
-"SSL sites not matching greysslsitelist will be treat as if sslmitm is off.\n"
-"ignored if  sslmitm is off"
 msgstr ""
 
 msgid ""
@@ -983,17 +970,6 @@ msgid ""
 "Normally you would have your firewall protecting this, but if you want you "
 "can limit it to a certain IP. To bind to multiple interfaces, specify each "
 "IP on an individual filterip line."
-msgstr ""
-
-msgid ""
-"The address of your web server to which the static page e2guardian reporting "
-"was copied.\n"
-"With ssldeniedrewrite off it works only with firefox \n"
-"With ssldeniedrewrite on there are several limitations, SSL warning, basic "
-"page, etc, eg this webserver can't be listed as an exception in your "
-"browser's proxy configuration.\n"
-"Keep in mind, this is only a trick to avoid blank page, the best way still "
-"to use SSLMITM"
 msgstr ""
 
 msgid ""
@@ -1237,6 +1213,9 @@ msgid ""
 "content infection."
 msgstr ""
 
+msgid "Time users out after this many seconds of idle time."
+msgstr ""
+
 msgid "Total of block extensions cannot be higher than this value."
 msgstr ""
 
@@ -1284,6 +1263,9 @@ msgid ""
 "Used to fill in the -FILTERGROUP- placeholder in the HTML template file, and "
 "to name the group in the access logs\n"
 "Defaults to empty string"
+msgstr ""
+
+msgid "Validate proxy spec protocols."
 msgstr ""
 
 msgid "Verify peer using default certificates."
@@ -1398,9 +1380,6 @@ msgid ""
 "if on it logs some debug info regarding fork()ing and accept()ing which can "
 "usually be ignored.  These are logged by syslog.  It is safe to leave it on "
 "or off"
-msgstr ""
-
-msgid "ignored if  sslmitm is off"
 msgstr ""
 
 msgid "language to use from languagedir, e.g. 'ukenglish'"

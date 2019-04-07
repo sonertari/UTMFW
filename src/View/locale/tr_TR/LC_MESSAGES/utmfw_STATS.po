@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2019 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2018.
+# Soner Tari <sonertari@gmail.com>, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2018-05-19 17:31+0300\n"
+"PO-Revision-Date: 2019-04-07 16:53+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -71,6 +71,9 @@ msgstr "Atlanan engellemeler"
 msgid "Bypassing IPs"
 msgstr "Atlayan IP'ler"
 
+msgid "Bypassing users"
+msgstr "Atlayan kullanıcılar"
+
 msgid "Client"
 msgstr "İstemci"
 
@@ -100,6 +103,9 @@ msgstr "Engellenen kategoriler"
 
 msgid "Denied requests"
 msgstr "Engellenen istekler"
+
+msgid "Denied users"
+msgstr "Engellenen kullanıcılar"
 
 msgid "Destination Addresses"
 msgstr "Hedef Adresler"
@@ -136,6 +142,9 @@ msgstr "İstisna IP'ler"
 
 msgid "Exception requests"
 msgstr "İstisna istekler"
+
+msgid "Exception users"
+msgstr "İstisna kullanıcılar"
 
 msgid "Expired connections"
 msgstr "Zaman aşımına uğramış bağlantılar"
@@ -190,6 +199,9 @@ msgstr "Virüslü e-postalar"
 
 msgid "Infected requests"
 msgstr "Virüslü istekler"
+
+msgid "Infected users"
+msgstr "Virüslü kullanıcılar"
 
 msgid "Links"
 msgstr "Bağlantılar"
@@ -260,6 +272,9 @@ msgstr "İstekte bulunan IP'ler"
 msgid "Requests by date"
 msgstr "Tarihe göre istekler"
 
+msgid "Requests by user"
+msgstr "İstekte bulunan kullanıcılar"
+
 msgid "Requests bypassed"
 msgstr "Atlanan istekler"
 
@@ -296,6 +311,9 @@ msgstr "Taranan IP'ler"
 msgid "Scanned requests"
 msgstr "Taranan istekler"
 
+msgid "Scanned users"
+msgstr "Taranan kullanıcılar"
+
 msgid "Senders"
 msgstr "Göndericiler"
 
@@ -322,6 +340,9 @@ msgstr "Metod başına boyut (KB)"
 
 msgid "Size by Protocol (KB)"
 msgstr "Protokol başına boyut (KB)"
+
+msgid "Size by User (KB)"
+msgstr "Kullanıcı başına boyut (KB)"
 
 msgid "Size by site (KB)"
 msgstr "Site başına boyut (KB)"
@@ -373,6 +394,9 @@ msgstr "Engellemesi kaldırılanlar"
 
 msgid "Uploads (KB)"
 msgstr "Yüklenen (KB)"
+
+msgid "User"
+msgstr "Kullanıcı"
 
 msgid "Users"
 msgstr "Kullancılar"

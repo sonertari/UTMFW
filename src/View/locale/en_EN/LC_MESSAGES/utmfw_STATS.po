@@ -52,6 +52,9 @@ msgstr ""
 msgid "Bypassing IPs"
 msgstr ""
 
+msgid "Bypassing users"
+msgstr ""
+
 msgid "Client"
 msgstr ""
 
@@ -80,6 +83,9 @@ msgid "Denied categories"
 msgstr ""
 
 msgid "Denied requests"
+msgstr ""
+
+msgid "Denied users"
 msgstr ""
 
 msgid "Destination Addresses"
@@ -116,6 +122,9 @@ msgid "Exception IPs"
 msgstr ""
 
 msgid "Exception requests"
+msgstr ""
+
+msgid "Exception users"
 msgstr ""
 
 msgid "Expired connections"
@@ -170,6 +179,9 @@ msgid "Infected e-mails"
 msgstr ""
 
 msgid "Infected requests"
+msgstr ""
+
+msgid "Infected users"
 msgstr ""
 
 msgid "Links"
@@ -241,6 +253,9 @@ msgstr ""
 msgid "Requests by date"
 msgstr ""
 
+msgid "Requests by user"
+msgstr ""
+
 msgid "Requests bypassed"
 msgstr ""
 
@@ -277,6 +292,9 @@ msgstr ""
 msgid "Scanned requests"
 msgstr ""
 
+msgid "Scanned users"
+msgstr ""
+
 msgid "Senders"
 msgstr ""
 
@@ -302,6 +320,9 @@ msgid "Size by Method (KB)"
 msgstr ""
 
 msgid "Size by Protocol (KB)"
+msgstr ""
+
+msgid "Size by User (KB)"
 msgstr ""
 
 msgid "Size by site (KB)"
@@ -353,6 +374,9 @@ msgid "Unblocked Hosts"
 msgstr ""
 
 msgid "Uploads (KB)"
+msgstr ""
+
+msgid "User"
 msgstr ""
 
 msgid "Users"

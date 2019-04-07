@@ -164,7 +164,7 @@ msgstr ""
 msgid "Add filter"
 msgstr ""
 
-msgid "Add filter group IP"
+msgid "Add filter group user"
 msgstr ""
 
 msgid "Add host"
@@ -180,6 +180,9 @@ msgid "Add proxy specs"
 msgstr ""
 
 msgid "Add to IP list"
+msgstr ""
+
+msgid "Add user"
 msgstr ""
 
 msgid "Additional mime types"
@@ -317,10 +320,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Among the web filter log messages are page denials, virus scan results, denial "
-"bypasses or exceptions. However, some details can be found in HTTP proxy "
-"logs only, such as the sizes of file downloads if the download manager is "
-"engaged."
+"Among the web filter log messages are page denials, virus scan results, "
+"denial bypasses or exceptions."
 msgstr ""
 
 msgid ""
@@ -412,7 +413,13 @@ msgstr ""
 msgid "Are you sure you want to delete the rules file?"
 msgstr ""
 
+msgid "Are you sure you want to delete the selected client(s)?"
+msgstr ""
+
 msgid "Are you sure you want to delete the selected items?"
+msgstr ""
+
+msgid "Are you sure you want to delete the user?"
 msgstr ""
 
 msgid "Are you sure you want to erase statistics files?"
@@ -467,6 +474,15 @@ msgid "Assign Tag"
 msgstr ""
 
 msgid "Attack Types"
+msgstr ""
+
+msgid "Authenticate Users"
+msgstr ""
+
+msgid "Authentication failed"
+msgstr ""
+
+msgid "Authentication succeeded, now you can access the Internet"
 msgstr ""
 
 msgid "Automatic config"
@@ -588,10 +604,6 @@ msgstr ""
 msgid "Blocked requests"
 msgstr ""
 
-msgid ""
-"Break SSL protocol and redirect to another HTTPS website for denied page"
-msgstr ""
-
 msgid "Broadcast address"
 msgstr ""
 
@@ -654,6 +666,9 @@ msgstr ""
 msgid "Bypassing IPs"
 msgstr ""
 
+msgid "Bypassing users"
+msgstr ""
+
 msgid "Bytes"
 msgstr ""
 
@@ -699,6 +714,9 @@ msgstr ""
 msgid "Cannot generate rule"
 msgstr ""
 
+msgid "Cannot get ethernet address of IP"
+msgstr ""
+
 msgid "Cannot get pid"
 msgstr ""
 
@@ -708,10 +726,16 @@ msgstr ""
 msgid "Cannot load pf rules"
 msgstr ""
 
+msgid "Cannot log user out"
+msgstr ""
+
 msgid "Cannot read config"
 msgstr ""
 
 msgid "Cannot remove tmp pf file"
+msgstr ""
+
+msgid "Cannot update user"
 msgstr ""
 
 msgid "Cannot write to tmp pf file"
@@ -734,6 +758,9 @@ msgstr ""
 msgid "Certificate"
 msgstr ""
 
+msgid "Change Password"
+msgstr ""
+
 msgid "Change p3scan report language"
 msgstr ""
 
@@ -754,11 +781,6 @@ msgid "Check for expired connections every this many seconds."
 msgstr ""
 
 msgid "Check if process running"
-msgstr ""
-
-msgid ""
-"Check that ssl certificates for servers on https connections are valid and "
-"signed by a ca in the configured path."
 msgstr ""
 
 msgid "Chinese simplified"
@@ -796,6 +818,11 @@ msgstr ""
 msgid "Cleared"
 msgstr ""
 
+msgid ""
+"Click <a href=\"https://<SERVER_ADDR>/userdbpasswd.php\">here</a> to change "
+"your password"
+msgstr ""
+
 msgid "Click to search in the logs"
 msgstr ""
 
@@ -806,6 +833,9 @@ msgid "Client"
 msgstr ""
 
 msgid "Client IPs"
+msgstr ""
+
+msgid "Client deleted"
 msgstr ""
 
 msgid "Clients"
@@ -1079,6 +1109,9 @@ msgstr ""
 msgid "Delete badword"
 msgstr ""
 
+msgid "Delete client"
+msgstr ""
+
 msgid "Delete conf"
 msgstr ""
 
@@ -1105,7 +1138,7 @@ msgstr ""
 msgid "Delete filter"
 msgstr ""
 
-msgid "Delete filter group IP"
+msgid "Delete filter group user"
 msgstr ""
 
 msgid "Delete host"
@@ -1129,6 +1162,9 @@ msgstr ""
 msgid "Delete ruleset"
 msgstr ""
 
+msgid "Delete user"
+msgstr ""
+
 msgid "Denied IPs"
 msgstr ""
 
@@ -1136,6 +1172,9 @@ msgid "Denied categories"
 msgstr ""
 
 msgid "Denied requests"
+msgstr ""
+
+msgid "Denied users"
 msgstr ""
 
 msgid "Deny OCSP"
@@ -1429,9 +1468,6 @@ msgstr ""
 msgid "Enable Deep URL Analysis"
 msgstr ""
 
-msgid "Enable MITM site certificate checking"
-msgstr ""
-
 msgid "Enable SSL/TLS"
 msgstr ""
 
@@ -1559,6 +1595,9 @@ msgid "Exception IPs"
 msgstr ""
 
 msgid "Exception requests"
+msgstr ""
+
+msgid "Exception users"
 msgstr ""
 
 msgid "Expire"
@@ -1786,11 +1825,6 @@ msgstr ""
 msgid "Force quick search"
 msgstr ""
 
-msgid ""
-"Forge ssl certificates for all non-exception sites, decrypt the data then re "
-"encrypt it using a different private key. Used to filter ssl sites."
-msgstr ""
-
 msgid "Forwarded for"
 msgstr ""
 
@@ -1919,6 +1953,9 @@ msgstr ""
 msgid "Get badwords"
 msgstr ""
 
+msgid "Get clients"
+msgstr ""
+
 msgid "Get config values"
 msgstr ""
 
@@ -1949,6 +1986,9 @@ msgstr ""
 msgid "Get disabled rules"
 msgstr ""
 
+msgid "Get ether of ip"
+msgstr ""
+
 msgid "Get ext/mime list"
 msgstr ""
 
@@ -1961,7 +2001,7 @@ msgstr ""
 msgid "Get group count"
 msgstr ""
 
-msgid "Get group ip list"
+msgid "Get group user list"
 msgstr ""
 
 msgid "Get host graphs"
@@ -2108,6 +2148,9 @@ msgstr ""
 msgid "Get tail"
 msgstr ""
 
+msgid "Get users"
+msgstr ""
+
 msgid "Graph files"
 msgstr ""
 
@@ -2159,14 +2202,14 @@ msgid "Groups"
 msgstr ""
 
 msgid ""
-"Groups are used to grant or revoke certain privileges to IPs, such as which "
-"web sites or file types to allow or deny. UTMFW comes with 4 predefined "
-"groups by default. However, the web filter is capable of having any number "
-"of IP groups.\n"
+"Groups are used to grant or revoke certain privileges to users, such as "
+"which web sites or file types to allow or deny. UTMFW comes with 4 "
+"predefined groups by default. However, the web filter is capable of having "
+"any number of user groups.\n"
 "\n"
 "Predefined groups and their basic features are as follows:\n"
 "Filter Group 1:\n"
-"<ul class='nomargin'><li class='nomargin'>All IPs not defined in other "
+"<ul class='nomargin'><li class='nomargin'>All users not defined in other "
 "groups are considered in this group by default,</li><li "
 "class='nomargin'>Group members are allowed to browse the web according to "
 "group configuration,</li><li class='nomargin'>If not specifically disabled, "
@@ -2183,16 +2226,16 @@ msgid ""
 "privileges than Group 1 members, because they can download files without any "
 "restrictions,</li><li class='nomargin'>Rest of the configuration for this "
 "group is similar to Group 1.</li></ul>\n"
-"You can add IP or network addresses to groups. If there is another group "
-"with the same entry, it is deleted from that group first, i.e. an IP address "
-"can be a member of only one group.\n"
-" \n"
+"You can add network users and IP or network addresses to groups. If there is "
+"another group with the same entry, it is deleted from that group first, i.e. "
+"a user can be a member of only one group.\n"
+"\n"
 "The format of ip ranges is Start IP address-End IP address, such as "
 "192.168.1.1-192.168.1.253. And that of subnets is IP address/Subnet mask, "
 "such as 192.168.1.0/255.255.255.0.\n"
 "\n"
 "White and black lists give you other methods of allowing or denying certain "
-"IP addresses access to the web without needing to add them to any group.\n"
+"users access to the web without needing to add them to any group.\n"
 "\n"
 "This web interface does not provide an option to delete filter groups. But "
 "you can always delete groups on the command line."
@@ -2686,6 +2729,9 @@ msgstr ""
 msgid "Infected requests"
 msgstr ""
 
+msgid "Infected users"
+msgstr ""
+
 msgid "Infection/Scan Error Bypass"
 msgstr ""
 
@@ -2825,6 +2871,12 @@ msgstr ""
 msgid "Last >>"
 msgstr ""
 
+msgid "Leaf Key RSA Bits"
+msgstr ""
+
+msgid "Leaf key RSA keysize in bits, use 1024|2048|3072|4096."
+msgstr ""
+
 msgid "Leases"
 msgstr ""
 
@@ -2835,9 +2887,6 @@ msgid "Leave spool on"
 msgstr ""
 
 msgid "Limit"
-msgstr ""
-
-msgid "Limit SSL MITM to sites in greysslsitelist(s)"
 msgstr ""
 
 msgid "Line"
@@ -2981,9 +3030,6 @@ msgstr ""
 msgid "Log connection handling errors"
 msgstr ""
 
-msgid "Log detailed error info regarding SSL error returns."
-msgstr ""
-
 msgid ""
 "Log files are rotated according to two main criteria: size and time, "
 "whichever is reached first. When a log file is rotated, it is renamed and "
@@ -3032,10 +3078,10 @@ msgstr ""
 msgid "Log mail from"
 msgstr ""
 
-msgid "Log rcpt to"
+msgid "Log out"
 msgstr ""
 
-msgid "Log ssl errors"
+msgid "Log rcpt to"
 msgstr ""
 
 msgid "Log statistics every this many ExpiredConnCheckPeriod periods."
@@ -3045,6 +3091,9 @@ msgid "Log statistics to syslog."
 msgstr ""
 
 msgid "Log typing events"
+msgstr ""
+
+msgid "Log user out"
 msgstr ""
 
 msgid "Logged in user"
@@ -3405,6 +3454,9 @@ msgstr ""
 msgid "Naughtyness limit"
 msgstr ""
 
+msgid "Need a login name for user"
+msgstr ""
+
 msgid "Needle"
 msgstr ""
 
@@ -3630,6 +3682,12 @@ msgstr ""
 msgid "Only webcam sessions on Yahoo are recognized and blocked"
 msgstr ""
 
+msgid "Open Files Limit"
+msgstr ""
+
+msgid "Open files limit, use 50-10000."
+msgstr ""
+
 msgid ""
 "OpenBSD/spamd is a spam deferral daemon, a fake sendmail-like daemon which "
 "rejects false mail. You can run spamd if there is a mail server in the "
@@ -3777,7 +3835,16 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
+msgid "Password Again"
+msgstr ""
+
 msgid "Passwords do not match"
+msgstr ""
+
+msgid "Passwords should have at least 8 alphanumeric characters"
+msgstr ""
+
+msgid "Passwords should have at least 8 alphanumeric characters."
 msgstr ""
 
 msgid ""
@@ -4080,9 +4147,6 @@ msgstr ""
 msgid "Redirect Port"
 msgstr ""
 
-msgid "Redirect SSL denied page"
-msgstr ""
-
 msgid "Redraw"
 msgstr ""
 
@@ -4170,6 +4234,9 @@ msgstr ""
 msgid "Requests by date"
 msgstr ""
 
+msgid "Requests by user"
+msgstr ""
+
 msgid "Requests bypassed"
 msgstr ""
 
@@ -4180,6 +4247,9 @@ msgid "Requests infected"
 msgstr ""
 
 msgid "Requests scanned"
+msgstr ""
+
+msgid "Require authentication for users to use SSLproxy."
 msgstr ""
 
 msgid "Required element missing"
@@ -4396,20 +4466,6 @@ msgstr ""
 msgid "SSL Verify Peer"
 msgstr ""
 
-msgid "SSL access denied address"
-msgstr ""
-
-msgid "SSL certificate checking"
-msgstr ""
-
-msgid "SSL man in the middle"
-msgstr ""
-
-msgid ""
-"SSL sites not matching greysslsitelist will be treat as if sslmitm is off.\n"
-"ignored if  sslmitm is off"
-msgstr ""
-
 msgid ""
 "SSL/TLS parms. See the server config file for more description.  It's best "
 "to use a separate .crt/.key file pair for each client.  A single ca file can "
@@ -4509,6 +4565,9 @@ msgstr ""
 msgid "Scanned requests"
 msgstr ""
 
+msgid "Scanned users"
+msgstr ""
+
 msgid "Scrub"
 msgstr ""
 
@@ -4600,6 +4659,9 @@ msgid "Set PF allowed"
 msgstr ""
 
 msgid "Set PF restricted"
+msgstr ""
+
+msgid "Set UserAuth URL"
 msgstr ""
 
 msgid "Set afterhours if"
@@ -5098,6 +5160,9 @@ msgstr ""
 msgid "Size by Protocol (KB)"
 msgstr ""
 
+msgid "Size by User (KB)"
+msgstr ""
+
 msgid "Size by site (KB)"
 msgstr ""
 
@@ -5521,11 +5586,12 @@ msgid ""
 "services. The inline IPS inspects the decrypted traffic for intrusion "
 "detection and prevention as well.\n"
 "\n"
-"The max statistics displayed on this page represent the status of the SSL "
-"proxy process as a whole, within the last report interval in seconds. The "
+"The max statistics displayed on this page represent the status of the "
+"SSLproxy process as a whole, within the last report interval in seconds. The "
 "numbers here may give you an idea on the current load of the proxy. For "
 "example, if the max number of file descriptors is too high, you might want "
-"to increase the open files limit of the daemon class in login.conf file."
+"to increase the open files limit, either in the SSLproxy configuration or in "
+"login.conf file (daemon class)."
 msgstr ""
 
 msgid "The SSL proxy is an event-driven multi-threaded program."
@@ -5543,17 +5609,6 @@ msgid ""
 msgstr ""
 
 msgid "The URL of the Firebase notification service."
-msgstr ""
-
-msgid ""
-"The address of your web server to which the static page e2guardian reporting "
-"was copied.\n"
-"With ssldeniedrewrite off it works only with firefox \n"
-"With ssldeniedrewrite on there are several limitations, SSL warning, basic "
-"page, etc, eg this webserver can't be listed as an exception in your "
-"browser's proxy configuration.\n"
-"Keep in mind, this is only a trick to avoid blank page, the best way still "
-"to use SSLMITM"
 msgstr ""
 
 msgid ""
@@ -5592,15 +5647,6 @@ msgid ""
 "is less than this amount, p3scan will terminate any connections until the "
 "problem is resolved.\n"
 "\t\tdefault: 100MB"
-msgstr ""
-
-msgid ""
-"The number of web filter processes depends on the number of requests from "
-"internal network. Minimum and maximum number of processes can be adjusted on "
-"the configuration pages.\n"
-"\n"
-"If you modify the configuration of the web filter, you must restart the web "
-"filter for the changes to take effect."
 msgstr ""
 
 msgid ""
@@ -5662,6 +5708,14 @@ msgid ""
 "web pages, hence the name Content Scanning Web Filter. This feature of the "
 "web filter is different from and in addition to site or url lists, "
 "blacklists, and related categories."
+msgstr ""
+
+msgid ""
+"The web filter runs multithreaded. The maximum number of web filter threads "
+"can be adjusted on the configuration pages.\n"
+"\n"
+"If you modify the configuration of the web filter, you must restart the web "
+"filter for the changes to take effect."
 msgstr ""
 
 msgid ""
@@ -5841,6 +5895,12 @@ msgid ""
 msgstr ""
 
 msgid ""
+"This is the list of clients. The fields on each line are the IP address, "
+"user name, ethernet address, idle time in seconds, and description of the "
+"client."
+msgstr ""
+
+msgid ""
 "This is the list of interfaces DHCP server listens and distributes IP "
 "leases. Here you should add the interface(s) to start the DHCP server for."
 msgstr ""
@@ -5956,6 +6016,12 @@ msgid ""
 "-1 = display only the highest scoring category\n"
 "0 = display all categories (default)\n"
 "> 0 = minimum score for a category to be displayed"
+msgstr ""
+
+msgid ""
+"This page allows you to add and delete firewall users, change their "
+"passwords, list and delete active clients. You can setup user authentication "
+"on the configuration page for SSLproxy."
 msgstr ""
 
 msgid ""
@@ -6119,6 +6185,9 @@ msgstr ""
 msgid "Time to expire (secs)"
 msgstr ""
 
+msgid "Time users out after this many seconds of idle time."
+msgstr ""
+
 msgid "Timed out running pfctl command"
 msgstr ""
 
@@ -6206,6 +6275,12 @@ msgid "USER"
 msgstr ""
 
 msgid "UTM FIREWALL"
+msgstr ""
+
+msgid "UTM FIREWALL Change User Password"
+msgstr ""
+
+msgid "UTM FIREWALL User Login"
 msgstr ""
 
 msgid "UTM Firewall"
@@ -6303,6 +6378,9 @@ msgstr ""
 msgid "Update mail aliases"
 msgstr ""
 
+msgid "Update user"
+msgstr ""
+
 msgid "Upload"
 msgstr ""
 
@@ -6388,7 +6466,28 @@ msgstr ""
 msgid "User"
 msgstr ""
 
+msgid "User Idle Timeout"
+msgstr ""
+
+msgid "User Name"
+msgstr ""
+
+msgid "User added"
+msgstr ""
+
 msgid "User agent regexp"
+msgstr ""
+
+msgid "User already exists"
+msgstr ""
+
+msgid "User deleted"
+msgstr ""
+
+msgid "User does not exist"
+msgstr ""
+
+msgid "User logged out"
 msgstr ""
 
 msgid "User name"
@@ -6405,6 +6504,9 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
+msgid "Users not a valid json or array"
+msgstr ""
+
 msgid ""
 "Usually the network time daemon adjusts the system clock according to "
 "Internet time servers gradually. But if the clock is too out of sync with "
@@ -6416,6 +6518,12 @@ msgid "VIRUS FILTER"
 msgstr ""
 
 msgid "VSZ"
+msgstr ""
+
+msgid "Validate Protocols"
+msgstr ""
+
+msgid "Validate proxy spec protocols."
 msgstr ""
 
 msgid "Validation Error"
@@ -6705,6 +6813,9 @@ msgid ""
 "the internal network."
 msgstr ""
 
+msgid "You must authenticate to access the Internet"
+msgstr ""
+
 msgid ""
 "You must change the following variables to reflect your local network. The "
 "variable is currently setup for an RFC 1918 address space."
@@ -6795,9 +6906,6 @@ msgid ""
 msgstr ""
 
 msgid "if or macro"
-msgstr ""
-
-msgid "ignored if  sslmitm is off"
 msgstr ""
 
 msgid "interface"
