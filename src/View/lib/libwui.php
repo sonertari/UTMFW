@@ -584,7 +584,7 @@ function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE, $needle='', $prefix
 							//	"($prefix|^)${name}($postfix|$)" :
 							//	"(($prefix|^)${name}$postfix.*($needle)|($needle).*$prefix${name}($postfix|$))";
 
-							$regexp= "($prefix|^)".Escape($name, '()+?')."($postfix|$)";
+							$regexp= "($prefix|^)".Escape($name, '()[]+?')."($postfix|$)";
 
 							/// @attention Do not use href in anchor, otherwise href overrides the onclick action sometimes, hence the cursor style
 							?>
