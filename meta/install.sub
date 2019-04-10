@@ -661,7 +661,6 @@ __EOT
 			php-*)
 				ln -s /usr/local/bin/php-7.0 /usr/local/bin/php
 				pkg_add php-pcntl || _installerror=1
-				pkg_add php-mcrypt || _installerror=1
 				pkg_add php-cgi || _installerror=1
 				pkg_add php-curl || _installerror=1
 				pkg_add php-sqlite3 || _installerror=1

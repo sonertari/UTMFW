@@ -100,19 +100,16 @@ class View
 				if ($UseSSH) {
 					// Subsequent calls use the encrypted password in the cookie, so we should decrypt it first.
 					$ciphertext_base64= $_COOKIE['passwd'];
-					$ciphertext_dec = base64_decode($ciphertext_base64);
+					$ciphertext= base64_decode($ciphertext_base64);
 
-					$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
-					$iv_dec = substr($ciphertext_dec, 0, $iv_size);
+					$iv_size= openssl_cipher_iv_length('AES-256-CBC');
+					$iv= substr($ciphertext, 0, $iv_size);
 
-					$ciphertext_dec = substr($ciphertext_dec, $iv_size);
+					$ciphertext= substr($ciphertext, $iv_size);
 
-					/// @attention Use trim(), since the mcrypt_decrypt() in php-mcrypt-5.6.31 returns with trailing white space of size 8!
-					/// @todo Check why mcrypt_decrypt() returns with trailing white space now
-					/// This issue still persists on OpenBSD 6.4 with PHP 7.0.32.
-					$passwd = trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $_SESSION['cryptKey'], $ciphertext_dec, MCRYPT_MODE_CBC, $iv_dec));
+					$passwd= openssl_decrypt($ciphertext, 'AES-256-CBC', $_SESSION['cryptKey'], OPENSSL_RAW_DATA, $iv);
 
-					$ssh = new Net_SSH2(gethostname());
+					$ssh= new Net_SSH2(gethostname());
 
 					// Give more time to all requests, the default timeout is 10 seconds
 					$ssh->setTimeout(30);

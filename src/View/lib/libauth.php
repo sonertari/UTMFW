@@ -121,7 +121,7 @@ function LogUserOut($reason= 'User logged out')
  * In fact, passwords are double encrypted using:
  * - sha1() right after the user types her password in
  * - encrypt(1) while saving to the password file using chpass(1).
- * - mcrypt_*() while saving as a cookie var.
+ * - openssl_*() while saving as a cookie var.
  * 
  * Also, we always use SSH connections to execute all Controller commands.
  *
@@ -151,15 +151,19 @@ function Authentication($passwd)
 	// Encrypt the password to save as a cookie var.
 	$random= exec('(dmesg; sysctl; route -n show; df; ifconfig -A; hostname) | cksum -q -a sha256 -');
 
-	$cryptKey = pack('H*', $random);
+	$cryptKey= pack('H*', $random);
 
-	$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
-	$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+	$iv_size= openssl_cipher_iv_length('AES-256-CBC');
+	$iv= openssl_random_pseudo_bytes($iv_size);
 
-	$ciphertext = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $cryptKey, $passwd, MCRYPT_MODE_CBC, $iv);
-	$ciphertext = $iv . $ciphertext;
+	$ciphertext= openssl_encrypt($passwd, 'AES-256-CBC', $cryptKey, OPENSSL_RAW_DATA, $iv);
+	if (!$ciphertext) {
+		wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'openssl_encrypt failed: '.openssl_error_string());
+		exit;
+	}
+	$ciphertext= $iv.$ciphertext;
 
-	$ciphertext_base64 = base64_encode($ciphertext);
+	$ciphertext_base64= base64_encode($ciphertext);
 
 	// Save password to the cookie
 	setcookie('passwd', $ciphertext_base64);
