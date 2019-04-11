@@ -96,10 +96,11 @@ define('NET_SSH2_MASK_WINDOW_ADJUST', 0x00000020);
  * @see self::_get_channel_packet()
  * @access private
  */
-define('NET_SSH2_CHANNEL_EXEC',      1); // PuTTy uses 0x100
-define('NET_SSH2_CHANNEL_SHELL',     2);
-define('NET_SSH2_CHANNEL_SUBSYSTEM', 3);
+define('NET_SSH2_CHANNEL_EXEC',          1); // PuTTy uses 0x100
+define('NET_SSH2_CHANNEL_SHELL',         2);
+define('NET_SSH2_CHANNEL_SUBSYSTEM',     3);
 define('NET_SSH2_CHANNEL_AGENT_FORWARD', 4);
+define('NET_SSH2_CHANNEL_KEEP_ALIVE',    5);
 /**#@-*/
 
 /**#@+
@@ -924,6 +925,22 @@ class Net_SSH2
     var $binary_packet_buffer = false;
 
     /**
+     * Preferred Signature Format
+     *
+     * @var string|false
+     * @access private
+     */
+    var $preferred_signature_format = false;
+
+    /**
+     * Authentication Credentials
+     *
+     * @var array
+     * @access private
+     */
+    var $auth = array();
+
+    /**
      * Default Constructor.
      *
      * $host can either be a string, representing the host, or a stream resource.
@@ -951,7 +968,7 @@ class Net_SSH2
 
         if (!class_exists('Crypt_Hash')) {
  			require_once $VIEW_PATH.'/lib/phpseclib/Crypt/Hash.php';
-       }
+        }
 
         // include Crypt_Base so constants can be defined for setCryptoEngine()
         if (!class_exists('Crypt_Base')) {
@@ -1161,11 +1178,12 @@ class Net_SSH2
             }
             $elapsed = strtok(microtime(), ' ') + strtok('') - $start;
 
-            $this->curTimeout-= $elapsed;
-
-            if ($this->curTimeout <= 0) {
-                $this->is_timeout = true;
-                return false;
+            if ($this->curTimeout) {
+                $this->curTimeout-= $elapsed;
+                if ($this->curTimeout < 0) {
+                    $this->is_timeout = true;
+                    return false;
+                }
             }
         }
 
@@ -1214,6 +1232,7 @@ class Net_SSH2
         }
 
         if (feof($this->fsock)) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -1225,7 +1244,7 @@ class Net_SSH2
 
         $this->server_identifier = trim($temp, "\r\n");
         if (strlen($extra)) {
-            $this->errors[] = utf8_decode($extra);
+            $this->errors[] = $extra;
         }
 
         if (version_compare($matches[1], '1.99', '<')) {
@@ -1240,6 +1259,7 @@ class Net_SSH2
         if (!$this->send_kex_first) {
             $response = $this->_get_binary_packet();
             if ($response === false) {
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -1313,6 +1333,8 @@ class Net_SSH2
         );
 
         static $server_host_key_algorithms = array(
+            'rsa-sha2-256', // RFC 8332
+            'rsa-sha2-512', // RFC 8332
             'ssh-rsa', // RECOMMENDED  sign   Raw RSA Key
             'ssh-dss'  // REQUIRED     sign   Raw DSS Key
         );
@@ -1472,6 +1494,7 @@ class Net_SSH2
 
             $kexinit_payload_server = $this->_get_binary_packet();
             if ($kexinit_payload_server === false) {
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -1599,6 +1622,7 @@ class Net_SSH2
 
             $response = $this->_get_binary_packet();
             if ($response === false) {
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -1694,12 +1718,14 @@ class Net_SSH2
         $data = pack('CNa*', $clientKexInitMessage, strlen($eBytes), $eBytes);
 
         if (!$this->_send_binary_packet($data)) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
 
         $response = $this->_get_binary_packet();
         if ($response === false) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -1780,9 +1806,25 @@ class Net_SSH2
             return $this->_disconnect(NET_SSH2_DISCONNECT_KEY_EXCHANGE_FAILED);
         }
 
-        if ($public_key_format != $server_host_key_algorithm || $this->signature_format != $server_host_key_algorithm) {
-            user_error('Server Host Key Algorithm Mismatch');
-            return $this->_disconnect(NET_SSH2_DISCONNECT_KEY_EXCHANGE_FAILED);
+        switch ($server_host_key_algorithm) {
+            case 'ssh-dss':
+                $expected_key_format = 'ssh-dss';
+                break;
+            //case 'rsa-sha2-256':
+            //case 'rsa-sha2-512':
+            //case 'ssh-rsa':
+            default:
+                $expected_key_format = 'ssh-rsa';
+        }
+
+        if ($public_key_format != $expected_key_format || $this->signature_format != $server_host_key_algorithm) {
+            switch (true) {
+                case $this->signature_format == $server_host_key_algorithm:
+                case $server_host_key_algorithm != 'rsa-sha2-256' && $server_host_key_algorithm != 'rsa-sha2-512':
+                case $this->signature_format != 'ssh-rsa':
+                    user_error('Server Host Key Algorithm Mismatch');
+                    return $this->_disconnect(NET_SSH2_DISCONNECT_KEY_EXCHANGE_FAILED);
+            }
         }
 
         $packet = pack(
@@ -1797,6 +1839,7 @@ class Net_SSH2
         $response = $this->_get_binary_packet();
 
         if ($response === false) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -1971,7 +2014,7 @@ class Net_SSH2
 
         if ($this->encrypt) {
             if ($this->crypto_engine) {
-                $this->encrypt->setEngine($this->crypto_engine);
+                $this->encrypt->setPreferredEngine($this->crypto_engine);
             }
             $this->encrypt->enableContinuousBuffer();
             $this->encrypt->disablePadding();
@@ -1991,7 +2034,7 @@ class Net_SSH2
 
         if ($this->decrypt) {
             if ($this->crypto_engine) {
-                $this->decrypt->setEngine($this->crypto_engine);
+                $this->decrypt->setPreferredEngine($this->crypto_engine);
             }
             $this->decrypt->enableContinuousBuffer();
             $this->decrypt->disablePadding();
@@ -2195,6 +2238,7 @@ class Net_SSH2
     function login($username)
     {
         $args = func_get_args();
+        $this->auth[] = $args;
         return call_user_func_array(array(&$this, '_login'), $args);
     }
 
@@ -2266,6 +2310,7 @@ class Net_SSH2
                     }
                     return $this->_login_helper($username, $password);
                 }
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -2322,6 +2367,7 @@ class Net_SSH2
 
             $response = $this->_get_binary_packet();
             if ($response === false) {
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -2380,6 +2426,7 @@ class Net_SSH2
 
         $response = $this->_get_binary_packet();
         if ($response === false) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -2398,7 +2445,7 @@ class Net_SSH2
                     return false;
                 }
                 extract(unpack('Nlength', $this->_string_shift($response, 4)));
-                $this->errors[] = 'SSH_MSG_USERAUTH_PASSWD_CHANGEREQ: ' . utf8_decode($this->_string_shift($response, $length));
+                $this->errors[] = 'SSH_MSG_USERAUTH_PASSWD_CHANGEREQ: ' . $this->_string_shift($response, $length);
                 return $this->_disconnect(NET_SSH2_DISCONNECT_AUTH_CANCELLED_BY_USER);
             case NET_SSH2_MSG_USERAUTH_FAILURE:
                 // can we use keyboard-interactive authentication?  if not then either the login is bad or the server employees
@@ -2480,6 +2527,7 @@ class Net_SSH2
         } else {
             $orig = $response = $this->_get_binary_packet();
             if ($response === false) {
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -2649,6 +2697,21 @@ class Net_SSH2
             $publickey['n']
         );
 
+        switch ($this->signature_format) {
+            case 'rsa-sha2-512':
+                $hash = 'sha512';
+                $signatureType = 'rsa-sha2-512';
+                break;
+            case 'rsa-sha2-256':
+                $hash = 'sha256';
+                $signatureType = 'rsa-sha2-256';
+                break;
+            //case 'ssh-rsa':
+            default:
+                $hash = 'sha1';
+                $signatureType = 'ssh-rsa';
+        }
+
         $part1 = pack(
             'CNa*Na*Na*',
             NET_SSH2_MSG_USERAUTH_REQUEST,
@@ -2659,7 +2722,7 @@ class Net_SSH2
             strlen('publickey'),
             'publickey'
         );
-        $part2 = pack('Na*Na*', strlen('ssh-rsa'), 'ssh-rsa', strlen($publickey), $publickey);
+        $part2 = pack('Na*Na*', strlen($signatureType), $signatureType, strlen($publickey), $publickey);
 
         $packet = $part1 . chr(0) . $part2;
         if (!$this->_send_binary_packet($packet)) {
@@ -2668,6 +2731,7 @@ class Net_SSH2
 
         $response = $this->_get_binary_packet();
         if ($response === false) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -2699,8 +2763,9 @@ class Net_SSH2
 
         $packet = $part1 . chr(1) . $part2;
         $privatekey->setSignatureMode(CRYPT_RSA_SIGNATURE_PKCS1);
+        $privatekey->setHash($hash);
         $signature = $privatekey->sign(pack('Na*a*', strlen($this->session_id), $this->session_id, $packet));
-        $signature = pack('Na*Na*', strlen('ssh-rsa'), 'ssh-rsa', strlen($signature), $signature);
+        $signature = pack('Na*Na*', strlen($signatureType), $signatureType, strlen($signature), $signature);
         $packet.= pack('Na*', strlen($signature), $signature);
 
         if (!$this->_send_binary_packet($packet)) {
@@ -2709,6 +2774,7 @@ class Net_SSH2
 
         $response = $this->_get_binary_packet();
         if ($response === false) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -2835,6 +2901,7 @@ class Net_SSH2
 
             $response = $this->_get_binary_packet();
             if ($response === false) {
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -2975,6 +3042,7 @@ class Net_SSH2
 
         $response = $this->_get_binary_packet();
         if ($response === false) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -3290,6 +3358,66 @@ class Net_SSH2
     }
 
     /**
+     * Pings a server connection, or tries to reconnect if the connection has gone down
+     *
+     * Inspired by http://php.net/manual/en/mysqli.ping.php
+     *
+     * @return bool
+     * @access public
+     */
+    function ping()
+    {
+        if (!$this->isAuthenticated()) {
+            return false;
+        }
+
+        $this->window_size_server_to_client[NET_SSH2_CHANNEL_KEEP_ALIVE] = $this->window_size;
+        $packet_size = 0x4000;
+        $packet = pack(
+            'CNa*N3',
+            NET_SSH2_MSG_CHANNEL_OPEN,
+            strlen('session'),
+            'session',
+            NET_SSH2_CHANNEL_KEEP_ALIVE,
+            $this->window_size_server_to_client[NET_SSH2_CHANNEL_KEEP_ALIVE],
+            $packet_size
+        );
+
+        if (!@$this->_send_binary_packet($packet)) {
+            return $this->_reconnect();
+        }
+
+        $this->channel_status[NET_SSH2_CHANNEL_KEEP_ALIVE] = NET_SSH2_MSG_CHANNEL_OPEN;
+
+        $response = @$this->_get_channel_packet(NET_SSH2_CHANNEL_KEEP_ALIVE);
+        if ($response !== false) {
+            $this->_close_channel(NET_SSH2_CHANNEL_KEEP_ALIVE);
+            return true;
+        }
+
+        return $this->_reconnect();
+    }
+
+    /**
+     * In situ reconnect method
+     *
+     * @return boolean
+     * @access private
+     */
+    function _reconnect()
+    {
+        $this->_reset_connection(NET_SSH2_DISCONNECT_CONNECTION_LOST);
+        $this->retry_connect = true;
+        if (!$this->_connect()) {
+            return false;
+        }
+        foreach ($this->auth as $auth) {
+            $result = call_user_func_array(array(&$this, 'parent::login'), $auth);
+        }
+        return $result;
+    }
+
+    /**
      * Resets a connection for re-use
      *
      * @param int $reason
@@ -3319,8 +3447,8 @@ class Net_SSH2
     function _get_binary_packet($skip_channel_filter = false)
     {
         if (!is_resource($this->fsock) || feof($this->fsock)) {
-            user_error('Connection closed prematurely');
             $this->bitmap = 0;
+            user_error('Connection closed prematurely');
             return false;
         }
 
@@ -3363,8 +3491,8 @@ class Net_SSH2
         while ($remaining_length > 0) {
             $temp = fread($this->fsock, $remaining_length);
             if ($temp === false || feof($this->fsock)) {
-                user_error('Error reading from socket');
                 $this->bitmap = 0;
+                user_error('Error reading from socket');
                 return false;
             }
             $buffer.= $temp;
@@ -3382,8 +3510,8 @@ class Net_SSH2
         if ($this->hmac_check !== false) {
             $hmac = fread($this->fsock, $this->hmac_size);
             if ($hmac === false || strlen($hmac) != $this->hmac_size) {
-                user_error('Error reading socket');
                 $this->bitmap = 0;
+                user_error('Error reading socket');
                 return false;
             } elseif ($hmac != $this->hmac_check->hash(pack('NNCa*', $this->get_seq_no, $packet_length, $padding_length, $payload . $padding))) {
                 user_error('Invalid HMAC');
@@ -3427,7 +3555,7 @@ class Net_SSH2
                     return false;
                 }
                 extract(unpack('Nreason_code/Nlength', $this->_string_shift($payload, 8)));
-                $this->errors[] = 'SSH_MSG_DISCONNECT: ' . $this->disconnect_reasons[$reason_code] . "\r\n" . utf8_decode($this->_string_shift($payload, $length));
+                $this->errors[] = 'SSH_MSG_DISCONNECT: ' . $this->disconnect_reasons[$reason_code] . "\r\n" . $this->_string_shift($payload, $length);
                 $this->bitmap = 0;
                 return false;
             case NET_SSH2_MSG_IGNORE:
@@ -3439,7 +3567,7 @@ class Net_SSH2
                     return false;
                 }
                 extract(unpack('Nlength', $this->_string_shift($payload, 4)));
-                $this->errors[] = 'SSH_MSG_DEBUG: ' . utf8_decode($this->_string_shift($payload, $length));
+                $this->errors[] = 'SSH_MSG_DEBUG: ' . $this->_string_shift($payload, $length);
                 $payload = $this->_get_binary_packet($skip_channel_filter);
                 break;
             case NET_SSH2_MSG_UNIMPLEMENTED:
@@ -3462,7 +3590,7 @@ class Net_SSH2
                 return false;
             }
             extract(unpack('Nlength', $this->_string_shift($payload, 4)));
-            $this->banner_message = utf8_decode($this->_string_shift($payload, $length));
+            $this->banner_message = $this->_string_shift($payload, $length);
             $payload = $this->_get_binary_packet();
         }
 
@@ -3668,7 +3796,12 @@ class Net_SSH2
                 $response = $this->binary_packet_buffer;
                 $this->binary_packet_buffer = false;
             } else {
-                if ($this->curTimeout) {
+                $read = array($this->fsock);
+                $write = $except = null;
+
+                if (!$this->curTimeout) {
+                    @stream_select($read, $write, $except, null);
+                } else {
                     if ($this->curTimeout < 0) {
                         $this->is_timeout = true;
                         return true;
@@ -3691,6 +3824,7 @@ class Net_SSH2
 
                 $response = $this->_get_binary_packet(true);
                 if ($response === false) {
+                    $this->bitmap = 0;
                     user_error('Connection closed by server');
                     return false;
                 }
@@ -3699,10 +3833,6 @@ class Net_SSH2
             if ($client_channel == -1 && $response === true) {
                 return true;
             }
-            if (!strlen($response)) {
-                return '';
-            }
-
             if (!strlen($response)) {
                 return false;
             }
@@ -3925,8 +4055,8 @@ class Net_SSH2
     function _send_binary_packet($data, $logged = null)
     {
         if (!is_resource($this->fsock) || feof($this->fsock)) {
-            user_error('Connection closed prematurely');
             $this->bitmap = 0;
+            user_error('Connection closed prematurely');
             return false;
         }
 
@@ -4587,6 +4717,8 @@ class Net_SSH2
 
                 break;
             case 'ssh-rsa':
+            case 'rsa-sha2-256':
+            case 'rsa-sha2-512':
                 if (strlen($server_public_host_key) < 4) {
                     return false;
                 }
@@ -4613,6 +4745,18 @@ class Net_SSH2
                 }
 
                 $rsa = new Crypt_RSA();
+                switch ($this->signature_format) {
+                    case 'rsa-sha2-512':
+                        $hash = 'sha512';
+                        break;
+                    case 'rsa-sha2-256':
+                        $hash = 'sha256';
+                        break;
+                    //case 'ssh-rsa':
+                    default:
+                        $hash = 'sha1';
+                }
+                $rsa->setHash($hash);
                 $rsa->setSignatureMode(CRYPT_RSA_SIGNATURE_PKCS1);
                 $rsa->loadKey(array('e' => $e, 'n' => $n), CRYPT_RSA_PUBLIC_FORMAT_RAW);
                 if (!$rsa->verify($this->exchange_hash, $signature)) {
@@ -4641,7 +4785,30 @@ class Net_SSH2
                 $s = $s->modPow($e, $n);
                 $s = $s->toBytes();
 
-                $h = pack('N4H*', 0x00302130, 0x0906052B, 0x0E03021A, 0x05000414, sha1($this->exchange_hash));
+                switch ($this->signature_format) {
+                    case 'rsa-sha2-512':
+                        $hash = 'sha512';
+                        break;
+                    case 'rsa-sha2-256':
+                        $hash = 'sha256';
+                        break;
+                    //case 'ssh-rsa':
+                    default:
+                        $hash = 'sha1';
+                }
+                $hashObj = new Crypt_Hash($hash);
+                switch ($this->signature_format) {
+                    case 'rsa-sha2-512':
+                        $h = pack('N5a*', 0x00305130, 0x0D060960, 0x86480165, 0x03040203, 0x05000440, $hashObj->hash($this->exchange_hash));
+                        break;
+                    case 'rsa-sha2-256':
+                        $h = pack('N5a*', 0x00303130, 0x0D060960, 0x86480165, 0x03040201, 0x05000420, $hashObj->hash($this->exchange_hash));
+                        break;
+                    //case 'ssh-rsa':
+                    default:
+                        $hash = 'sha1';
+                        $h = pack('N4a*', 0x00302130, 0x0906052B, 0x0E03021A, 0x05000414, $hashObj->hash($this->exchange_hash));
+                }
                 $h = chr(0x01) . str_repeat(chr(0xFF), $nLength - 2 - strlen($h)) . $h;
 
                 if ($s != $h) {
