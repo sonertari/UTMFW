@@ -48,14 +48,14 @@ class Sslproxy extends Model
 					'desc'	=>	_('Get proxy specs'),
 					),
 
-				'AddSpecs'=>	array(
+				'AddSpec'=>	array(
 					'argv'	=>	array(STR),
-					'desc'	=>	_('Add proxy specs'),
+					'desc'	=>	_('Add proxy spec'),
 					),
 
-				'DelSpecs'=>	array(
+				'DelSpec'=>	array(
 					'argv'	=>	array(STR),
-					'desc'	=>	_('Delete proxy specs'),
+					'desc'	=>	_('Delete proxy spec'),
 					),
 
 				'GetMaxStats'	=> array(
@@ -71,6 +71,21 @@ class Sslproxy extends Model
 				'SetUserAuthURL'	=> array(
 					'argv'	=>	array(IPADR),
 					'desc'	=>	_('Set UserAuth URL'),
+					),
+
+				'GetPassSites'	=> array(
+					'argv'	=>	array(),
+					'desc'	=>	_('Get pass sites'),
+					),
+
+				'AddPassSite'=>	array(
+					'argv'	=>	array(STR),
+					'desc'	=>	_('Add pass site'),
+					),
+
+				'DelPassSite'=>	array(
+					'argv'	=>	array(STR),
+					'desc'	=>	_('Delete pass site'),
 					),
 				)
 			);
@@ -131,19 +146,19 @@ class Sslproxy extends Model
 		// ProxySpec https 127.0.0.1 8443 up:8080
 		return Output($this->SearchFileAll($this->ConfFile, "/^\h*ProxySpec\h*([^\n]+)\h*$/m"));
 	}
-	
-	function AddSpecs($specs)
+
+	function AddSpec($spec)
 	{
-		$this->DelSpecs($specs);
-		return $this->AppendToFile($this->ConfFile, "ProxySpec $specs");
+		$this->DelSpec($spec);
+		return $this->AppendToFile($this->ConfFile, "ProxySpec $spec");
 	}
 
-	function DelSpecs($specs)
+	function DelSpec($spec)
 	{
-		$specs= Escape($specs, '/.');
-		return $this->ReplaceRegexp($this->ConfFile, "/^(ProxySpec\h+$specs\b.*(\s|))/m", '');
+		$spec= Escape($spec, '/.');
+		return $this->ReplaceRegexp($this->ConfFile, "/^(ProxySpec\h+$spec\b.*(\s|))/m", '');
 	}
-	
+
 	function GetMaxStats($interval)
 	{
 		$logs= $this->GetLastLogs('STATS:', $interval);
@@ -202,12 +217,33 @@ class Sslproxy extends Model
 	{
 		return $this->SetNVP($this->ConfFile, 'UserAuthURL', "https://$ip/userdblogin.php");
 	}
+
+	function GetPassSites()
+	{
+		// PassSite example.com
+		return Output($this->SearchFileAll($this->ConfFile, "/^\h*PassSite\h*([^\n]+)\h*$/m"));
+	}
+
+	function AddPassSite($site)
+	{
+		$this->DelPassSite($site);
+		return $this->AppendToFile($this->ConfFile, "PassSite $site");
+	}
+
+	function DelPassSite($site)
+	{
+		$site= Escape($site, '/.*');
+		return $this->ReplaceRegexp($this->ConfFile, "/^(PassSite\h+$site\b.*(\s|))/m", '');
+	}
 }
 
 $ModelConfig = array(
     'CACert' => array(
 		),
     'CAKey' => array(
+		),
+    'Passthrough' => array(
+        'type' => STR_yes_no,
 		),
     'DenyOCSP' => array(
         'type' => STR_yes_no,

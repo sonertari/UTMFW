@@ -906,12 +906,13 @@ class Model
 	 *
 	 * @param string $file Config file.
 	 * @param string $name Name of NVP.
+	 * @param int $set There may be multiple parentheses in $re, which one to return.
 	 * @param string $trimchars Chars to trim in the results.
 	 * @return mixed Value of NVP or NULL on failure.
 	 */
-	function GetNVP($file, $name, $trimchars= '')
+	function GetNVP($file, $name, $set= 0, $trimchars= '')
 	{
-		return $this->SearchFile($file, "/^\h*$name\b\h*$this->NVPS\h*([^$this->COMC'\"\n]*|'[^'\n]*'|\"[^\"\n]*\"|[^$this->COMC\n]*)(\h*|\h*$this->COMC.*)$/m", 1, $trimchars);
+		return $this->SearchFile($file, "/^\h*$name\b\h*$this->NVPS\h*([^$this->COMC'\"\n]*|'[^'\n]*'|\"[^\"\n]*\"|[^$this->COMC\n]*)(\h*|\h*$this->COMC.*)$/m", $set, $trimchars);
 	}
 
 	/**
@@ -923,11 +924,12 @@ class Model
 	 * @param string $trimchars If given, these chars are trimmed on the left or right.
 	 * @return mixed String found or FALSE if no match.
 	 */
-	function SearchFile($file, $re, $set= 1, $trimchars= '')
+	function SearchFile($file, $re, $set= 0, $trimchars= '')
 	{
-		/// @todo What to do with multiple matching NVPs
-		if (preg_match($re, file_get_contents($file), $match)) {
-			$retval= $match[$set];
+		// There may be multiple matching NVPs
+		if (preg_match_all($re, file_get_contents($file), $match)) {
+			// Index 0 always gives full matches, so use index 1
+			$retval= $match[1][$set];
 			if ($trimchars !== '') {
 				$retval= trim($retval, $trimchars);
 			}
@@ -2196,14 +2198,14 @@ class Model
 			if (($output= $this->GetValue($name, $conf, $group)) !== FALSE) {
 				$values[$name]= array(
 					'Value' => $output,
-					'Type' => $this->GetConfValueType($name, $conf),
+					'Type' => $this->GetConfValueType($name),
 					'Enabled' => TRUE,
 					);
 			}
 			else if (($output= $this->GetDisabledValue($name, $conf, $group)) !== FALSE) {
 				$values[$name]= array(
 					'Value' => $output,
-					'Type' => $this->GetConfValueType($name, $conf),
+					'Type' => $this->GetConfValueType($name),
 					'Enabled' => FALSE,
 					);
 			}
@@ -2227,8 +2229,22 @@ class Model
 			return $this->GetName($file, $name);
 		}
 		
-		$value= $this->GetNVP($file, $name);
-		return $value !== FALSE ? "$name=$value" : $value;
+		$validValues= $this->getValidValues($name);
+		$value= FALSE;
+		$set= 0;
+		// Try max 5 possible values
+		while ($set < 5) {
+			$value= $this->GetNVP($file, $name, $set);
+			if ($value === FALSE) {
+				return FALSE;
+			}
+			if (!count($validValues) || in_array($value, $validValues)) {
+				return "$name=$value";
+			}
+			ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Failed validating value: $name: $value");
+			$set++;
+		}
+		return $value;
 	}
 
 	/**
@@ -2241,21 +2257,50 @@ class Model
 		if ((isset($this->Config[$name]['type'])) && ($this->Config[$name]['type'] === FALSE)) {
 			return $this->GetDisabledName($file, $name);
 		}
-		
-		$value= $this->GetDisabledNVP($file, $name);
-		return $value !== FALSE ? "$name=$value" : $value;
+
+		$validValues= $this->getValidValues($name);
+		$value= FALSE;
+		$set= 0;
+		// Try max 5 possible values
+		while ($set < 5) {
+			$value= $this->GetDisabledNVP($file, $name, $set);
+			if ($value === FALSE) {
+				return FALSE;
+			}
+			if (!count($validValues) || in_array($value, $validValues)) {
+				return "$name=$value";
+			}
+			ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Failed validating value: $name: $value");
+			$set++;
+		}
+		return $value;
 	}
-	
+
+	function getValidValues($name)
+	{
+		$validValues= array();
+		$type= $this->Config[$name]['type'];
+		if ($type == STR_on_off) {
+			$validValues= array('on', 'off');
+		} elseif ($type == STR_On_Off) {
+			$validValues= array('On', 'Off');
+		} elseif ($type == STR_yes_no) {
+			$validValues= array('yes', 'no');
+		}
+		return $validValues;
+	}
+
 	/**
 	 * Reads value of commented-out NVP.
 	 *
 	 * @param string $file Config file
 	 * @param string $name Name of NVP
+	 * @param int $set There may be multiple parentheses in $re, which one to return
 	 * @return string Value of commented NVP or NULL on failure
 	 */
-	function GetDisabledNVP($file, $name)
+	function GetDisabledNVP($file, $name, $set= 0)
 	{
-		return $this->SearchFile($file, "/^\h*$this->COMC\h*$name\b\h*$this->NVPS\h*([^$this->COMC'\"\n]*|'[^'\n]*'|\"[^\"\n]*\"|[^$this->COMC\n]*)(\h*|\h*$this->COMC.*)$/m");
+		return $this->SearchFile($file, "/^\h*$this->COMC\h*$name\b\h*$this->NVPS\h*([^$this->COMC'\"\n]*|'[^'\n]*'|\"[^\"\n]*\"|[^$this->COMC\n]*)(\h*|\h*$this->COMC.*)$/m", $set);
 	}
 
 	/**
@@ -2310,15 +2355,13 @@ class Model
 		return FALSE;
 	}
 
-	function GetConfValueType($name, $conf)
+	function GetConfValueType($name)
 	{
 		if (isset($this->Config[$name]['type'])) {
-			$re= $this->Config[$name]['type'];
+			return $this->Config[$name]['type'];
+		} else {
+			return '.*';
 		}
-		else {
-			$re= '.*';
-		}
-		return $re;
 	}
 
 	/**
@@ -2340,7 +2383,7 @@ class Model
 		if ((isset($this->Config[$name]['type'])) && ($this->Config[$name]['type'] === FALSE)) {
 			return $this->EnableName($file, $name);
 		}
-		return $this->EnableNVP($file, $name);
+		return $this->EnableNVP($file, $name, $this->GetConfValueType($name));
 	}
 
 	/**
@@ -2354,7 +2397,7 @@ class Model
 		if ((isset($this->Config[$name]['type'])) && ($this->Config[$name]['type'] === FALSE)) {
 			return $this->DisableName($file, $name);
 		}
-		return $this->DisableNVP($file, $name);
+		return $this->DisableNVP($file, $name, $this->GetConfValueType($name));
 	}
 
 	/**
@@ -2362,11 +2405,12 @@ class Model
 	 *
 	 * @param string $file Config file
 	 * @param string $name Config name
+	 * @param string $type Type regexp of value
 	 * @return bool TRUE on success, FALSE on fail.
 	 */
-	function EnableNVP($file, $name)
+	function EnableNVP($file, $name, $type)
 	{
-		return $this->ReplaceRegexp($file, "/^\h*$this->COMC(\s*$name\b\s*$this->NVPS\s*.*)$/m", '${1}');
+		return $this->ReplaceRegexp($file, "/^\h*$this->COMC(\s*$name\b\s*$this->NVPS\s*$type)$/m", '${1}');
 	}
 
 	/**
@@ -2380,9 +2424,9 @@ class Model
 	/**
 	 * Disables an NVP.
 	 */
-	function DisableNVP($file, $name)
+	function DisableNVP($file, $name, $type)
 	{
-		return $this->ReplaceRegexp($file, "/^(\h*$name\b\s*$this->NVPS\s*.*)$/m", $this->COMC.'${1}');
+		return $this->ReplaceRegexp($file, "/^(\h*$name\b\s*$this->NVPS\s*$type)$/m", $this->COMC.'${1}');
 	}
 
 	/**

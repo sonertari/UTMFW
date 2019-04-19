@@ -176,7 +176,10 @@ msgstr ""
 msgid "Add notifier user"
 msgstr ""
 
-msgid "Add proxy specs"
+msgid "Add pass site"
+msgstr ""
+
+msgid "Add proxy spec"
 msgstr ""
 
 msgid "Add to IP list"
@@ -1150,10 +1153,13 @@ msgstr ""
 msgid "Delete notifier user"
 msgstr ""
 
+msgid "Delete pass site"
+msgstr ""
+
 msgid "Delete pf rule file"
 msgstr ""
 
-msgid "Delete proxy specs"
+msgid "Delete proxy spec"
 msgstr ""
 
 msgid "Delete rules file"
@@ -2056,6 +2062,9 @@ msgid "Get module status"
 msgstr ""
 
 msgid "Get partition list"
+msgstr ""
+
+msgid "Get pass sites"
 msgstr ""
 
 msgid "Get pf info"
@@ -3830,6 +3839,24 @@ msgid "Passive IPS"
 msgstr ""
 
 msgid "Passive Intrusion Prevention"
+msgstr ""
+
+msgid "Passthrough"
+msgstr ""
+
+msgid ""
+"Passthrough SSL connections if they cannot be split because of client cert "
+"auth or no matching cert and no CA, or if SNI or common names in SSL cert "
+"match a PassSite option."
+msgstr ""
+
+msgid "Passthrough Sites"
+msgstr ""
+
+msgid ""
+"Passthrough sites, requires Passthrough option. If the site matches SNI or "
+"common names in the SSL certificate, the connection is passed through the "
+"proxy."
 msgstr ""
 
 msgid "Password"

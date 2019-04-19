@@ -685,6 +685,12 @@ msgstr ""
 msgid "Passive Intrusion Prevention"
 msgstr ""
 
+msgid "Passthrough"
+msgstr ""
+
+msgid "Passthrough Sites"
+msgstr ""
+
 msgid "Pconn timeout"
 msgstr ""
 

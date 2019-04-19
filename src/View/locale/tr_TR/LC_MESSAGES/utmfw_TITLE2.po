@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2019-04-07 14:08+0300\n"
+"PO-Revision-Date: 2019-04-19 21:07+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -703,6 +703,12 @@ msgstr "Paket Eleği"
 
 msgid "Passive Intrusion Prevention"
 msgstr "Pasif Saldırı Engelleme"
+
+msgid "Passthrough"
+msgstr "Doğrudan Geçir"
+
+msgid "Passthrough Sites"
+msgstr "Doğrudan Geçirilecek Siteler"
 
 msgid "Pconn timeout"
 msgstr "Pconn zaman aşımı"

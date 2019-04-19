@@ -57,6 +57,10 @@ class Sslproxy extends View
 				'title' => _TITLE2('CA Key'),
 				'info' => _HELPBOX2('Use CA key (and cert) to sign forged certs.'),
 				),
+			'Passthrough' => array(
+				'title' => _TITLE2('Passthrough'),
+				'info' => _HELPBOX2('Passthrough SSL connections if they cannot be split because of client cert auth or no matching cert and no CA, or if SNI or common names in SSL cert match a PassSite option.'),
+				),
 			'DenyOCSP' => array(
 				'title' => _TITLE2('Deny OCSP'),
 				'info' => _HELPBOX2('Deny all OCSP requests on all proxyspecs.'),
@@ -181,10 +185,7 @@ $View= new Sslproxy();
  */
 function PrintProxySpecsDownloadCACertForm()
 {
-	global $View, $Class;
-	
-	$View->Controller($output, 'GetCACertFileName');
-	$certFile= $output[0];
+	global $View, $Class, $Row;
 	?>
 	<tr class="<?php echo $Class ?>">
 		<td class="title">
@@ -204,9 +205,9 @@ function PrintProxySpecsDownloadCACertForm()
 					}
 					?>
 				</select>
-				<input type="submit" name="Delete" value="<?php echo _CONTROL('Delete') ?>"/><br />
-				<input type="text" name="SpecsToAdd" style="width: 200px;" maxlength="200"/>
-				<input type="submit" name="Add" value="<?php echo _CONTROL('Add') ?>"/>
+				<input type="submit" name="DeleteSpec" value="<?php echo _CONTROL('Delete') ?>"/><br />
+				<input type="text" name="SpecToAdd" style="width: 200px;" maxlength="200"/>
+				<input type="submit" name="AddSpec" value="<?php echo _CONTROL('Add') ?>"/>
 			</form>
 		</td>
 		<td class="none">
@@ -215,6 +216,41 @@ function PrintProxySpecsDownloadCACertForm()
 			?>
 		</td>
 	</tr>
+	<?php $Class= $Row++ % 2 == 0 ? 'evenline' : 'oddline'; ?>
+	<tr class="<?php echo $Class ?>">
+		<td class="title">
+			<?php echo _TITLE2('Passthrough Sites').':' ?>
+		</td>
+		<td>
+			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+				<input style="display:none;" type="submit" name="Add" value="<?php echo _CONTROL('Add') ?>"/>
+				<select name="Sites[]" multiple style="width: 200px; height: 100px;">
+					<?php
+					if ($View->Controller($output, 'GetPassSites')) {
+						foreach ($output as $mirror) {
+							?>
+							<option value="<?php echo $mirror ?>"><?php echo $mirror ?></option>
+							<?php
+						}
+					}
+					?>
+				</select>
+				<input type="submit" name="DeleteSite" value="<?php echo _CONTROL('Delete') ?>"/><br />
+				<input type="text" name="SiteToAdd" style="width: 200px;" maxlength="200"/>
+				<input type="submit" name="AddSite" value="<?php echo _CONTROL('Add') ?>"/>
+			</form>
+		</td>
+		<td class="none">
+			<?php
+			PrintHelpBox(_HELPBOX2("Passthrough sites, requires Passthrough option. If the site matches SNI or common names in the SSL certificate, the connection is passed through the proxy."));
+			?>
+		</td>
+	</tr>
+	<?php
+	$View->Controller($output, 'GetCACertFileName');
+	$certFile= $output[0];
+	$Class= $Row++ % 2 == 0 ? 'evenline' : 'oddline';
+	?>
 	<tr class="<?php echo $Class ?>">
 		<td class="title">
 			<?php echo _TITLE2('Download CA Cert').':' ?>

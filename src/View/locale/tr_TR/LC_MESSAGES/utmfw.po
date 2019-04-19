@@ -238,8 +238,11 @@ msgstr "Liste öğesi ekle"
 msgid "Add notifier user"
 msgstr "Uyarı kullanıcısı ekle"
 
-msgid "Add proxy specs"
-msgstr "Vekil tanımları ekle"
+msgid "Add pass site"
+msgstr "Geçirilecek site ekle"
+
+msgid "Add proxy spec"
+msgstr "Vekil tanımını ekle"
 
 msgid "Add to IP list"
 msgstr "IP listesine ekle"
@@ -1329,11 +1332,14 @@ msgstr "Liste öğesini sil"
 msgid "Delete notifier user"
 msgstr "Uyarı kullanıcısı sil"
 
+msgid "Delete pass site"
+msgstr "Geçirilecek site sil"
+
 msgid "Delete pf rule file"
 msgstr "Pf kural dosyası silme"
 
-msgid "Delete proxy specs"
-msgstr "Vekil tanımlarını sil"
+msgid "Delete proxy spec"
+msgstr "Vekil tanımını sil"
 
 msgid "Delete rules file"
 msgstr "Kural dosyasını sil"
@@ -2312,6 +2318,9 @@ msgstr "Modül durumunu getir"
 
 msgid "Get partition list"
 msgstr "Disk bölümü listesini getir"
+
+msgid "Get pass sites"
+msgstr "Geçirilecek siteleri getir"
 
 msgid "Get pf info"
 msgstr "Pf bilgisini getir"
@@ -4410,6 +4419,30 @@ msgstr "Pasif SES"
 
 msgid "Passive Intrusion Prevention"
 msgstr "Pasif Saldırı Engelleme"
+
+msgid "Passthrough"
+msgstr "Doğrudan Geçir"
+
+msgid ""
+"Passthrough SSL connections if they cannot be split because of client cert "
+"auth or no matching cert and no CA, or if SNI or common names in SSL cert "
+"match a PassSite option."
+msgstr ""
+"SSL bağlantılarını doğrudan geçir, eğer istemci sertifikası istenmişse veya "
+"uyan bir sertifika veya CA yoksa, veya PassSite seçeneklerinden biri SNI "
+"veya SSL sertifikasındaki common names'de geçiyorsa."
+
+msgid "Passthrough Sites"
+msgstr "Doğrudan Geçirilecek Siteler"
+
+msgid ""
+"Passthrough sites, requires Passthrough option. If the site matches SNI or "
+"common names in the SSL certificate, the connection is passed through the "
+"proxy."
+msgstr ""
+"Doğrudan geçirilecek siteler, Passthrough seçeneğini gerektirir. Eğer site "
+"SNI veya SSL sertifikasındaki common names'de varsa, bağlantı doğrudan "
+"geçirilir."
 
 msgid "Password"
 msgstr "Parola"

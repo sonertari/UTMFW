@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.4\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2019-04-07 16:15+0300\n"
+"PO-Revision-Date: 2019-04-19 21:09+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -56,8 +56,11 @@ msgstr "Liste öğesi ekle"
 msgid "Add notifier user"
 msgstr "Uyarı kullanıcısı ekle"
 
-msgid "Add proxy specs"
-msgstr "Vekil tanımları ekle"
+msgid "Add pass site"
+msgstr "Geçirilecek site ekle"
+
+msgid "Add proxy spec"
+msgstr "Vekil tanımını ekle"
 
 msgid "Add to IP list"
 msgstr "IP listesine ekle"
@@ -200,11 +203,14 @@ msgstr "Liste öğesini sil"
 msgid "Delete notifier user"
 msgstr "Uyarı kullanıcısı sil"
 
+msgid "Delete pass site"
+msgstr "Geçirilecek site sil"
+
 msgid "Delete pf rule file"
 msgstr "Pf kural dosyası silme"
 
-msgid "Delete proxy specs"
-msgstr "Vekil tanımlarını sil"
+msgid "Delete proxy spec"
+msgstr "Vekil tanımını sil"
 
 msgid "Delete user"
 msgstr "Kullanıcıyı sil"
@@ -499,6 +505,9 @@ msgstr "Modül durumunu getir"
 
 msgid "Get partition list"
 msgstr "Disk bölümü listesini getir"
+
+msgid "Get pass sites"
+msgstr "Geçirilecek siteleri getir"
 
 msgid "Get pf info"
 msgstr "Pf bilgisini getir"

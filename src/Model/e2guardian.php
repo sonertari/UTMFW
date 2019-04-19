@@ -429,7 +429,7 @@ class E2guardian extends Model
 	 */
 	function GetFilterConfFilePath($file, $name)
 	{
-		return $this->GetNVP($file, $name, "'");
+		return $this->GetNVP($file, $name, 0, "'");
 	}
 
 	/**
@@ -456,7 +456,7 @@ class E2guardian extends Model
 	function GetFilterKeyConfFilePath($file, $key, $name)
 	{
 		//iplist = 'name=exceptionclient,messageno=600,path=/etc/e2guardian/lists/exceptioniplist'
-		return $this->SearchFile($file, "/^\h*$key\h*$this->NVPS\h*'\h*name\h*=\h*$name\b[^$this->COMC'\"\n]*,\h*path\h*=\h*([^$this->COMC'\"\n]*|'[^'\n]*'|\"[^\"\n]*\"|[^$this->COMC\n]*)(\h*|\h*$this->COMC.*)$/m", 1, "'");
+		return $this->SearchFile($file, "/^\h*$key\h*$this->NVPS\h*'\h*name\h*=\h*$name\b[^$this->COMC'\"\n]*,\h*path\h*=\h*([^$this->COMC'\"\n]*|'[^'\n]*'|\"[^\"\n]*\"|[^$this->COMC\n]*)(\h*|\h*$this->COMC.*)$/m", 0, "'");
 	}
 
 	/**

@@ -126,7 +126,7 @@ class Dhcpd extends Model
 
 	function _getIfs()
 	{
-		$ifs= $this->SearchFile($this->rcConfLocal, '/^\h*#*\h*dhcpd_flags\h*=\h*("[^#"]*"|)(\h*|\h*#.*)$/m', 1, '"');
+		$ifs= $this->SearchFile($this->rcConfLocal, '/^\h*#*\h*dhcpd_flags\h*=\h*("[^#"]*"|)(\h*|\h*#.*)$/m', 0, '"');
 		if ($ifs !== FALSE) {
 			return implode("\n", preg_split('/\h+/', $ifs));
 		}
