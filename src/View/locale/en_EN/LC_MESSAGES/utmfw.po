@@ -3854,7 +3854,8 @@ msgid "Passthrough Sites"
 msgstr ""
 
 msgid ""
-"Passthrough sites, requires Passthrough option. If the site matches SNI or "
+"Passthrough sites, requires Passthrough option. The format is site "
+"[(clientaddr|(user|*) [description keyword])]. If the site matches SNI or "
 "common names in the SSL certificate, the connection is passed through the "
 "proxy."
 msgstr ""
@@ -4082,9 +4083,6 @@ msgstr ""
 msgid ""
 "Proxy settings\n"
 "\t\tDefault: disabled"
-msgstr ""
-
-msgid "Proxy specification format is type listenaddr+port up:utmport."
 msgstr ""
 
 msgid "Proxy timeout"
@@ -5701,6 +5699,9 @@ msgid ""
 msgstr ""
 
 msgid "The process is taking too long, thus will run in the background."
+msgstr ""
+
+msgid "The proxy specification format is type listenaddr+port up:utmport."
 msgstr ""
 
 msgid "The settings on this page are valid filter-wide."

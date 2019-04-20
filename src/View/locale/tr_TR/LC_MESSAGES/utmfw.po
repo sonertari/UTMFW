@@ -4436,12 +4436,14 @@ msgid "Passthrough Sites"
 msgstr "Doğrudan Geçirilecek Siteler"
 
 msgid ""
-"Passthrough sites, requires Passthrough option. If the site matches SNI or "
+"Passthrough sites, requires Passthrough option. The format is site "
+"[(clientaddr|(user|*) [description keyword])]. If the site matches SNI or "
 "common names in the SSL certificate, the connection is passed through the "
 "proxy."
 msgstr ""
-"Doğrudan geçirilecek siteler, Passthrough seçeneğini gerektirir. Eğer site "
-"SNI veya SSL sertifikasındaki common names'de varsa, bağlantı doğrudan "
+"Doğrudan geçirilecek siteler, Passthrough seçeneğini gerektirir. Şablonu "
+"site [(istemciadresi|(kullanıcı|*) [tanımlama anahtar kelimesi])]'dir. Eğer "
+"site SNI veya SSL sertifikasındaki common names'de varsa, bağlantı doğrudan "
 "geçirilir."
 
 msgid "Password"
@@ -4710,9 +4712,6 @@ msgid ""
 msgstr ""
 "Vekil ayarlarıdır.\n"
 "Öndeğer: kapalı"
-
-msgid "Proxy specification format is type listenaddr+port up:utmport."
-msgstr "Vekil tanımlama şablonu tip dinlenenadres+kapı up:utmkapı'dır"
 
 msgid "Proxy timeout"
 msgstr "Vekil zaman aşımı"
@@ -6594,6 +6593,9 @@ msgstr ""
 
 msgid "The process is taking too long, thus will run in the background."
 msgstr "Sürecin işlemesi uzun zaman aldığından arka planda çalıştırılacaktır."
+
+msgid "The proxy specification format is type listenaddr+port up:utmport."
+msgstr "Vekil tanımlama şablonu tip dinlenenadres+kapı up:utmkapı'dır"
 
 msgid "The settings on this page are valid filter-wide."
 msgstr "Bu sayfadaki ayarlar eleğin tümü için geçerlidir."

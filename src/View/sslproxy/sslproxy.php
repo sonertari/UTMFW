@@ -212,7 +212,7 @@ function PrintProxySpecsDownloadCACertForm()
 		</td>
 		<td class="none">
 			<?php
-			PrintHelpBox(_HELPBOX2("Proxy specification format is type listenaddr+port up:utmport."));
+			PrintHelpBox(_HELPBOX2("The proxy specification format is type listenaddr+port up:utmport."));
 			?>
 		</td>
 	</tr>
@@ -242,7 +242,7 @@ function PrintProxySpecsDownloadCACertForm()
 		</td>
 		<td class="none">
 			<?php
-			PrintHelpBox(_HELPBOX2("Passthrough sites, requires Passthrough option. If the site matches SNI or common names in the SSL certificate, the connection is passed through the proxy."));
+			PrintHelpBox(_HELPBOX2("Passthrough sites, requires Passthrough option. The format is site [(clientaddr|(user|*) [description keyword])]. If the site matches SNI or common names in the SSL certificate, the connection is passed through the proxy."));
 			?>
 		</td>
 	</tr>
