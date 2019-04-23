@@ -194,7 +194,7 @@ function PrintProxySpecsDownloadCACertForm()
 		<td>
 			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 				<input style="display:none;" type="submit" name="Add" value="<?php echo _CONTROL('Add') ?>"/>
-				<select name="Specs[]" multiple style="width: 200px; height: 100px;">
+				<select name="Specs[]" multiple style="width: 300px; height: 100px;">
 					<?php
 					if ($View->Controller($output, 'GetSpecs')) {
 						foreach ($output as $mirror) {
@@ -206,7 +206,7 @@ function PrintProxySpecsDownloadCACertForm()
 					?>
 				</select>
 				<input type="submit" name="DeleteSpec" value="<?php echo _CONTROL('Delete') ?>"/><br />
-				<input type="text" name="SpecToAdd" style="width: 200px;" maxlength="200"/>
+				<input type="text" name="SpecToAdd" style="width: 300px;" maxlength="200"/>
 				<input type="submit" name="AddSpec" value="<?php echo _CONTROL('Add') ?>"/>
 			</form>
 		</td>
@@ -224,7 +224,7 @@ function PrintProxySpecsDownloadCACertForm()
 		<td>
 			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 				<input style="display:none;" type="submit" name="Add" value="<?php echo _CONTROL('Add') ?>"/>
-				<select name="Sites[]" multiple style="width: 200px; height: 100px;">
+				<select name="Sites[]" multiple style="width: 300px; height: 100px;">
 					<?php
 					if ($View->Controller($output, 'GetPassSites')) {
 						foreach ($output as $mirror) {
@@ -236,7 +236,7 @@ function PrintProxySpecsDownloadCACertForm()
 					?>
 				</select>
 				<input type="submit" name="DeleteSite" value="<?php echo _CONTROL('Delete') ?>"/><br />
-				<input type="text" name="SiteToAdd" style="width: 200px;" maxlength="200"/>
+				<input type="text" name="SiteToAdd" style="width: 300px;" maxlength="300"/>
 				<input type="submit" name="AddSite" value="<?php echo _CONTROL('Add') ?>"/>
 			</form>
 		</td>

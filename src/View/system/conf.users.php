@@ -127,7 +127,7 @@ require_once($VIEW_PATH.'/header.php');
 				<?php echo _TITLE('Users').':' ?>
 			</td>
 			<td>
-				<select name="SelectedUser" style="width: 300px;">
+				<select name="SelectedUser" size="10" style="width: 300px; height: 100px;">
 					<?php
 					foreach ($users as $user => $userName) {
 						$value= "$user:$userName";
