@@ -74,8 +74,9 @@ function wui_syslog($prio, $file, $func, $line, $msg)
 		if ($prio <= $LOG_LEVEL) {
 			$useratip= $_SESSION['USER'].'@'.filter_input(INPUT_SERVER, 'REMOTE_ADDR');
 			$func= $func == '' ? 'NA' : $func;
-			$log= "$LOG_PRIOS[$prio] $useratip $file: $func ($line): $msg\n";
+			$log= "$LOG_PRIOS[$prio] $useratip $file: $func ($line): $msg";
 			if (!syslog($prio, $log)) {
+				$log.= "\n";
 				if (!fwrite(STDERR, $log)) {
 					echo $log;
 				}

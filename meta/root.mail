@@ -1,12 +1,14 @@
-From sonertari@gmail.com Sun Ara  9 06:40:10 EET 2018
+From sonertari@gmail.com Thu Apr 25 06:50:00 EET 2019
 Return-Path: root
-Date: Ara  9 06:40:10 EET 2018
+Date: Apr 25 06:50:00 EET 2019
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 6.4.1!
+Subject: Welcome to UTMFW 6.5!
 
 Highlights of this release are:
-- OpenBSD 6.4-stable as of December 9th, 2018
-- E2Guardian 5.2.2 (without Squid HTTP proxy)
-- SSLproxy 0.5.9
+- User authentication by SSLproxy 0.6.0
+- User-based web filtering and user statistics for http/pop3/smtp
+- OpenBSD 6.5
+- PHP 7.3, E2Guardian 5.3.2 with support for SSLproxy users
+- Variety of other updates and improvements
 

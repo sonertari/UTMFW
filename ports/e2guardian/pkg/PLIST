@@ -1,8 +1,8 @@
 @comment $OpenBSD: PLIST,v$
 @conflict e2guardian-*-clamav
 @pkgpath www/e2guardian,clamav
-@newgroup _e2guardian:589
-@newuser _e2guardian:589:589:daemon:E2Guardian:/nonexistent:/sbin/nologin
+@newgroup _e2guardian:902
+@newuser _e2guardian:902:902:daemon:E2Guardian:/nonexistent:/sbin/nologin
 @man man/man8/e2guardian.8
 @bin sbin/e2guardian
 share/doc/e2guardian/

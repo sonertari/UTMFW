@@ -205,8 +205,9 @@ function ctlr_syslog($prio, $file, $func, $line, $msg)
 		
 		if ($prio <= $LOG_LEVEL) {
 			$func= $func == '' ? 'NA' : $func;
-			$log= "$LOG_PRIOS[$prio] $file: $func ($line): $msg\n";
+			$log= "$LOG_PRIOS[$prio] $file: $func ($line): $msg";
 			if (!syslog($prio, $log)) {
+				$log.= "\n";
 				if (!fwrite(STDERR, $log)) {
 					echo $log;
 				}

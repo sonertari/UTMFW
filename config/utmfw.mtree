@@ -20,7 +20,7 @@ daily.cvd		type=file mode=0644 uid=539 gid=539
 main.cvd		type=file mode=0644 uid=539 gid=539
 main.cld		type=file mode=0644 uid=539 gid=539
 ..	#var/db/clamav
-imspector		type=dir mode=0755 uid=702 gid=702 flags=none
+imspector		type=dir mode=0755 uid=903 gid=903 flags=none
 ..	#var/db/imspector
 spamassassin		type=dir mode=0755 uid=506 gid=506 flags=none
 tmp			type=dir mode=0755 uid=506 gid=506 flags=none
@@ -30,11 +30,11 @@ users.db		type=file mode=0644 uname=root gname=wheel
 ..	#var/db
 log			type=dir mode=0755 uname=root gname=wheel
 doas			type=file mode=0600 uname=root gname=wheel
-e2guardian		type=dir mode=0755 uid=589 gid=589 flags=none
+e2guardian		type=dir mode=0755 uid=902 gid=902 flags=none
 access.log		type=file mode=0640 uname=root gname=wheel
 e2guardian.log	type=file mode=0640 uname=root gname=wheel
 ..	#var/log/e2guardian
-imspector		type=dir mode=0755 uid=702 gid=702 flags=none
+imspector		type=dir mode=0755 uid=903 gid=903 flags=none
 ..	#var/log/imspector
 snort			type=dir mode=0755 uname=root gname=wheel flags=none
 snort.log		type=file mode=0640 uname=root gname=wheel
@@ -65,16 +65,16 @@ named.conf		type=file mode=0640 uname=root gname=_bind
 ..	#var/named/etc
 ..	#var/named
 spool			type=dir mode=0755 uname=root gname=wheel
-p3scan			type=dir mode=0700 uid=701 gid=701 flags=none
-children		type=dir mode=0700 uid=701 gid=701 flags=none
+p3scan			type=dir mode=0700 uid=900 gid=900 flags=none
+children		type=dir mode=0700 uid=900 gid=900 flags=none
 ..	#var/spool/p3scan/children
-notify			type=dir mode=0700 uid=701 gid=701 flags=none
+notify			type=dir mode=0700 uid=900 gid=900 flags=none
 ..	#var/spool/p3scan/notify
 ..	#var/spool/p3scan
-smtp-gated		type=dir mode=0770 uid=700 gid=539 flags=none
-lock			type=dir mode=0770 uid=700 gid=539 flags=none
+smtp-gated		type=dir mode=0770 uid=901 gid=539 flags=none
+lock			type=dir mode=0770 uid=901 gid=539 flags=none
 ..	#var/spool/smtp-gated/lock
-msg			type=dir mode=0770 uid=700 gid=539 flags=none
+msg			type=dir mode=0770 uid=901 gid=539 flags=none
 ..	#var/spool/smtp-gated/msg
 ..	#var/spool/smtp-gated
 ..	#var/spool
@@ -221,11 +221,11 @@ p3scan.conf		type=file mode=0644 uname=root gname=wheel
 pfre			type=dir mode=0755 uname=root gname=wheel
 pf.conf.afterhours	type=file mode=0600 uname=root gname=wheel
 ..	#etc/pfre
-php-7.2			type=dir mode=0755 uname=root gname=wheel
+php-7.3			type=dir mode=0755 uname=root gname=wheel
 curl.ini		type=file mode=0644 uname=root gname=wheel
 pcntl.ini		type=file mode=0644 uname=root gname=wheel
 sqlite.ini		type=file mode=0644 uname=root gname=wheel
-..	#etc/php-7.2
+..	#etc/php-7.3
 pmacct			type=dir mode=0755 uname=root gname=wheel
 pmacctd-pnrg.conf	type=file mode=0644 uname=root gname=wheel
 pmacctd-protograph.conf	type=file mode=0644 uname=root gname=wheel
@@ -255,7 +255,7 @@ motd			type=file mode=0664 uname=root gname=wheel
 newsyslog.conf		type=file mode=0644 uname=root gname=wheel
 pf.conf			type=file mode=0600 uname=root gname=wheel
 pf.restrictedips	type=file mode=0600 uname=root gname=wheel
-php-7.2.ini			type=file mode=0644 uname=root gname=wheel
+php-7.3.ini			type=file mode=0644 uname=root gname=wheel
 php-fpm.conf		type=file mode=0644 uname=root gname=wheel
 rc.conf.local		type=file mode=0644 uname=root gname=wheel
 rc.local		type=file mode=0644 uname=root gname=wheel
