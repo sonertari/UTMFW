@@ -125,7 +125,7 @@ class Lexer {
 	}
 	$item = '';
 	while ($item == '') {
-	    if (count($this->lineitems) == 0) {
+	    if (!is_array($this->lineitems) || count($this->lineitems) == 0) {
 		$this->_get_next_line();
 		if ($this->eof) {
 		    return;

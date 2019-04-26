@@ -46,9 +46,9 @@ class Timeout extends Rule
 	{
 		if (count($this->rule['timeout'])) {
 			reset($this->rule['timeout']);
-			while (list($timeout, $kvps)= each($this->rule['timeout'])) {	
+			foreach ($this->rule['timeout'] as $timeout => $kvps) {
 				$timeout= $timeout == 'all' ? '' : "$timeout.";
-				while (list($key, $val)= each($kvps)) {
+				foreach ($kvps as $key => $val) {
 					$this->arr[]= "$timeout$key: $val";
 				}
 			}

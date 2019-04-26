@@ -251,22 +251,19 @@ class Timeout extends Rule
 			reset($this->rule['timeout']);
 
 			if (count($this->rule['timeout']) == 1 && count(array_values($this->rule['timeout'][key($this->rule['timeout'])])) == 1) {
-				list($timeout, $kvps)= each($this->rule['timeout']);
+				$timeout= key($this->rule['timeout']);
+				$kvps= current($this->rule['timeout']);
 				$timeout= $timeout == 'all' ? '' : "$timeout.";
 
-				list($key, $val)= each($kvps);
+				$key= key($kvps);
+				$val= current($kvps);
 				$this->arr[]= "$timeout$key $val";
 			} else {
-				while (list($timeout, $kvps)= each($this->rule['timeout'])) {
+				foreach ($this->rule['timeout'] as $timeout => $kvps) {
 					$timeout= $timeout == 'all' ? '' : "$timeout.";
 
-					if (count($kvps) == 1) {
-						list($key, $val)= each($kvps);
+					foreach ($kvps as $key => $val) {
 						$this->arr[]= "$timeout$key $val";
-					} else {
-						while (list($key, $val)= each($kvps)) {
-							$this->arr[]= "$timeout$key $val";
-						}
 					}
 				}
 			}

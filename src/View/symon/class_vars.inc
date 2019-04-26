@@ -62,11 +62,12 @@ class Vars {
 	global $chr2html;
 
 	reset($this->vars);
-	list($k, $v) = each($this->vars);
+	$k= key($this->vars);
+	$v= current($this->vars);
 	$r = strtr($k, $chr2html).'="'.
 		strtr($v, $chr2html).'"';
 
-	while (list($k, $v) = each($this->vars)) {
+	foreach ($this->vars as $k => $v) {
 	    $r .= ', '.strtr($k, $chr2html).'="'.
 		strtr($v, $chr2html).'"';
 	}

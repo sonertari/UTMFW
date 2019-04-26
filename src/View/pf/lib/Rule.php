@@ -628,7 +628,7 @@ class Rule
 					unset($array[$key]);
 				} elseif (count($array[$key]) == 1 && $flatten && !in_array($key, array('timeout', 'limit', 'log'))) {
 					// Array has only one element, convert from array to simple NVP
-					list($k, $v)= each($array[$key]);
+					$v= current($array[$key]);
 					unset($array[$key]);
 					$array[$key]= $v;
 				}

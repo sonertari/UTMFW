@@ -37,7 +37,7 @@ class Limit extends Rule
 			$this->arr= array();
 			if (count($this->rule['limit'])) {
 				reset($this->rule['limit']);
-				while (list($key, $val)= each($this->rule['limit'])) {
+				foreach ($this->rule['limit'] as $key => $val) {
 					$this->arr[]= "$key: $val";
 				}
 			}
