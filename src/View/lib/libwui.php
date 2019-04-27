@@ -663,7 +663,7 @@ function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style, $prefix,
 			<td>
 				<?php
 				$printFunc($data, $conf['Color'], _($conf['Title']), $page, $style, $conf['Needle']);
-				if (count($conf['NVPs']) > 0) {
+				if (array_key_exists('NVPs', $conf) && count($conf['NVPs']) > 0) {
 					?>
 					<table>
 						<?php
@@ -730,7 +730,7 @@ function PrintMinutesGraphNVPSet($stats, $parent, $conf, $type, $prefix, $postfi
 			<td>
 				<?php
 				$printGraphFunc($data, $conf['Color'], _($conf['Title']), 'hourly', 'Hourly', $conf['Needle'], $logFile);
-				if (count($conf['NVPs']) > 0) {
+				if (array_key_exists('NVPs', $conf) && count($conf['NVPs']) > 0) {
 					?>
 					<table>
 						<tr>
