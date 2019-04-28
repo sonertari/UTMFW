@@ -109,7 +109,7 @@ class View
 
 					$passwd= openssl_decrypt($ciphertext, 'AES-256-CBC', $_SESSION['cryptKey'], OPENSSL_RAW_DATA, $iv);
 
-					$ssh= new Net_SSH2(gethostname());
+					$ssh= new Net_SSH2('localhost');
 
 					// Give more time to all requests, the default timeout is 10 seconds
 					$ssh->setTimeout(30);
@@ -182,11 +182,9 @@ class View
 	 */
 	function CheckAuthentication($user, $passwd)
 	{
-		$hostname= gethostname();
-
-		$ssh = new Net_SSH2($hostname);
-
+		$ssh = new Net_SSH2('localhost');
 		if ($ssh->login($user, $passwd)) {
+			$hostname= gethostname();
 			/// @attention Trim the newline
 			$output= trim($ssh->exec('hostname'));
 			if ($hostname == $output) {
@@ -203,10 +201,7 @@ class View
 
 	function CheckUserDbAuthentication($user, $passwd)
 	{
-		$hostname= gethostname();
-
-		$ssh = new Net_SSH2($hostname);
-
+		$ssh = new Net_SSH2('localhost');
 		if ($ssh->login($user, $passwd)) {
 			return TRUE;
 		} else {
