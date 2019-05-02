@@ -242,9 +242,6 @@ $ModelConfig = array(
 		),
     'CAKey' => array(
 		),
-    'Passthrough' => array(
-        'type' => STR_yes_no,
-		),
     'DenyOCSP' => array(
         'type' => STR_yes_no,
 		),

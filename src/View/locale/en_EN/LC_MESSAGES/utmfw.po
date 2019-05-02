@@ -3846,18 +3846,16 @@ msgstr ""
 
 msgid ""
 "Passthrough SSL connections if they cannot be split because of client cert "
-"auth or no matching cert and no CA, or if SNI or common names in SSL cert "
-"match a PassSite option."
+"auth or no matching cert and no CA."
 msgstr ""
 
 msgid "Passthrough Sites"
 msgstr ""
 
 msgid ""
-"Passthrough sites, requires Passthrough option. The format is site "
-"[(clientaddr|(user|*) [description keyword])]. If the site matches SNI or "
-"common names in the SSL certificate, the connection is passed through the "
-"proxy."
+"Passthrough sites. The format is site [(clientaddr|(user|*) [description "
+"keyword])]. If the site matches SNI or common names in the SSL certificate, "
+"the connection is passed through the proxy."
 msgstr ""
 
 msgid "Password"

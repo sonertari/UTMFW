@@ -57,10 +57,6 @@ class Sslproxy extends View
 				'title' => _TITLE2('CA Key'),
 				'info' => _HELPBOX2('Use CA key (and cert) to sign forged certs.'),
 				),
-			'Passthrough' => array(
-				'title' => _TITLE2('Passthrough'),
-				'info' => _HELPBOX2('Passthrough SSL connections if they cannot be split because of client cert auth or no matching cert and no CA, or if SNI or common names in SSL cert match a PassSite option.'),
-				),
 			'DenyOCSP' => array(
 				'title' => _TITLE2('Deny OCSP'),
 				'info' => _HELPBOX2('Deny all OCSP requests on all proxyspecs.'),
@@ -242,7 +238,7 @@ function PrintProxySpecsDownloadCACertForm()
 		</td>
 		<td class="none">
 			<?php
-			PrintHelpBox(_HELPBOX2("Passthrough sites, requires Passthrough option. The format is site [(clientaddr|(user|*) [description keyword])]. If the site matches SNI or common names in the SSL certificate, the connection is passed through the proxy."));
+			PrintHelpBox(_HELPBOX2("Passthrough sites. The format is site [(clientaddr|(user|*) [description keyword])]. If the site matches SNI or common names in the SSL certificate, the connection is passed through the proxy."));
 			?>
 		</td>
 	</tr>
