@@ -29,8 +29,8 @@ class Queue extends Rule
 		$this->dispInterface();
 		$this->dispValue('parent', _TITLE('Parent'));
 		$this->dispBandwidth('bandwidth', 'bw', _TITLE('Bandwidth'), 3);
-		$this->dispBandwidth('min', 'min', _TITLE('Min'));
-		$this->dispBandwidth('max', 'max', _TITLE('Max'));
+		$this->dispBandwidth('min', 'min', _TITLE('Min'), 1);
+		$this->dispBandwidth('max', 'max', _TITLE('Max'), 1);
 		$this->dispValue('flows', _TITLE('Flows'));
 		$this->dispValue('quantum', _TITLE('Quantum'));
 		$this->dispValue('qlimit', _TITLE('Qlimit'));
