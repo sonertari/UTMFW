@@ -931,7 +931,7 @@ class Rule
 		global $IMG_PATH;
 		?>
 		<a target="<?php echo $label ?>" href="/pf/pf.conf.html#<?php echo $label ?>">
-			<img src="<?php echo "$IMG_PATH/help.png" ?>" name="<?php $label ?>" alt="(?)" border="0" width="12" height="12">
+			<img src="<?php echo "$IMG_PATH/help.png" ?>" name="<?php echo $label ?>" alt="(?)" border="0" width="12" height="12">
 		</a>
 		<?php
 	}
