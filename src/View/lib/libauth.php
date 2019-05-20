@@ -68,6 +68,7 @@ function wui_syslog($prio, $file, $func, $line, $msg)
 {
 	global $LOG_LEVEL, $LOG_PRIOS;
 
+	$msg= trim($msg);
 	try {
 		openlog('wui', LOG_PID, LOG_LOCAL0);
 		
