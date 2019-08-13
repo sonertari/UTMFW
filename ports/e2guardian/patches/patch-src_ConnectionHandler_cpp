@@ -2,7 +2,7 @@ $OpenBSD$
 Index: src/ConnectionHandler.cpp
 --- src/ConnectionHandler.cpp.orig
 +++ src/ConnectionHandler.cpp
-@@ -473,8 +473,13 @@ ConnectionHandler::connectUpstream(Socket &sock, Naugh
+@@ -485,8 +485,14 @@ ConnectionHandler::connectUpstream(Socket &sock, Naugh
          cm.upfailure = false;
          if (cm.isdirect) {
              String des_ip;
@@ -15,10 +15,11 @@ Index: src/ConnectionHandler.cpp
 +                } else {
 +                    des_ip = cm.urldomain;
 +                }
-                 sock.setTimeout(o.connect_timeout);
- #ifdef DGDEBUG
-                 std::cerr << thread_id << "Connecting to IPHost " << des_ip << " port " << port << std::endl;
-@@ -692,8 +697,9 @@ int ConnectionHandler::handleConnection(Socket &peerco
++
+                 if (may_be_loop) {  // check check_ip list
+                     bool do_break = false;
+                     if (o.check_ip.size() > 0) {
+@@ -735,8 +741,9 @@ int ConnectionHandler::handleConnection(Socket &peerco
                      //int pport = peerconn.getPeerSourcePort();
                      std::string peerIP = peerconn.getPeerIP();
  
@@ -30,7 +31,7 @@ Index: src/ConnectionHandler.cpp
  #ifdef DGDEBUG
                      std::cerr << thread_id << " No header recd from client - errno: " << err << std::endl;
  #endif
-@@ -781,6 +787,23 @@ int ConnectionHandler::handleConnection(Socket &peerco
+@@ -824,6 +831,23 @@ int ConnectionHandler::handleConnection(Socket &peerco
  
              }
  //
@@ -54,7 +55,7 @@ Index: src/ConnectionHandler.cpp
              // do this normalisation etc just the once at the start.
              checkme.setURL(ismitm);
  
-@@ -2376,7 +2399,7 @@ bool ConnectionHandler::getdnstxt(std::string &clienti
+@@ -2421,7 +2445,7 @@ bool ConnectionHandler::getdnstxt(std::string &clienti
      // get info from DNS
      union {
          HEADER hdr;
@@ -63,7 +64,7 @@ Index: src/ConnectionHandler.cpp
      } response;
      int responseLen;
      ns_msg handle; /* handle for response message */
-@@ -2924,7 +2947,7 @@ bool ConnectionHandler::checkByPass(NaughtyFilter &che
+@@ -2972,7 +2996,7 @@ bool ConnectionHandler::checkByPass(NaughtyFilter &che
              }
          } else if (ldl->fg[filtergroup]->bypass_mode != 0) {
              if (header.isBypassCookie(checkme.urldomain, ldl->fg[filtergroup]->cookie_magic.c_str(),

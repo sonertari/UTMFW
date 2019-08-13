@@ -537,6 +537,9 @@ msgid ""
 "\t\tDefault: disabled"
 msgstr ""
 
+msgid "Max SSL/TLS protocol version."
+msgstr ""
+
 msgid ""
 "Maximal depth directories are scanned at.\n"
 "\t\tDefault: 15"
@@ -545,6 +548,9 @@ msgstr ""
 msgid ""
 "Maximal number of threads running at the same time.\n"
 "\t\tDefault: 10"
+msgstr ""
+
+msgid "Min SSL/TLS protocol version."
 msgstr ""
 
 msgid "Most clients don't need to bind to a specific local port number."
@@ -609,11 +615,6 @@ msgid ""
 "use 0 for a complete block\n"
 "use higher (e.g. 512 = 512Kbytes) for limiting\n"
 "use -1 for no blocking"
-msgstr ""
-
-msgid ""
-"Passthrough SSL connections if they cannot be split because of client cert "
-"auth or no matching cert and no CA."
 msgstr ""
 
 msgid ""

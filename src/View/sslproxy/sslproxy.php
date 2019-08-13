@@ -73,6 +73,14 @@ class Sslproxy extends View
 				'title' => _TITLE2('Disable SSL Protocol'),
 				'info' => _HELPBOX2('Disable SSL/TLS protocol version.'),
 				),
+			'MinSSLProto' => array(
+				'title' => _TITLE2('Min SSL Protocol'),
+				'info' => _HELPBOX2('Min SSL/TLS protocol version.'),
+				),
+			'MaxSSLProto' => array(
+				'title' => _TITLE2('Max SSL Protocol'),
+				'info' => _HELPBOX2('Max SSL/TLS protocol version.'),
+				),
 			'Ciphers' => array(
 				'title' => _TITLE2('Ciphers'),
 				'info' => _HELPBOX2('Cipher specification for both server and client SSL/TLS connections.'),

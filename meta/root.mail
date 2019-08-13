@@ -1,14 +1,11 @@
-From sonertari@gmail.com Mon May  6 06:50:00 EET 2019
+From sonertari@gmail.com Tue Aug 13 06:50:10 EET 2019
 Return-Path: root
-Date: May  6 06:50:00 EET 2019
+Date: Aug 13 06:50:10 EET 2019
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 6.5!
+Subject: Welcome to UTMFW 6.5.1!
 
 Highlights of this release are:
-- User authentication by SSLproxy 0.6.0
-- User-based web filtering and user statistics for http/pop3/smtp
-- OpenBSD 6.5
-- PHP 7.3, E2Guardian 5.3.2 with support for SSLproxy users
-- Variety of other updates and improvements
+- SSLproxy 0.7.0 and Libevent 2.1.11
+- E2Guardian 5.3.3
 

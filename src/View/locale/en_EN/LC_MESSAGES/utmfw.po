@@ -3259,6 +3259,12 @@ msgstr ""
 msgid "Max Packet Rate"
 msgstr ""
 
+msgid "Max SSL Protocol"
+msgstr ""
+
+msgid "Max SSL/TLS protocol version."
+msgstr ""
+
 msgid "Max Single Host States"
 msgstr ""
 
@@ -3369,6 +3375,12 @@ msgid "Mimes"
 msgstr ""
 
 msgid "Min"
+msgstr ""
+
+msgid "Min SSL Protocol"
+msgstr ""
+
+msgid "Min SSL/TLS protocol version."
 msgstr ""
 
 msgid "Min TTL"
@@ -3839,14 +3851,6 @@ msgid "Passive IPS"
 msgstr ""
 
 msgid "Passive Intrusion Prevention"
-msgstr ""
-
-msgid "Passthrough"
-msgstr ""
-
-msgid ""
-"Passthrough SSL connections if they cannot be split because of client cert "
-"auth or no matching cert and no CA."
 msgstr ""
 
 msgid "Passthrough Sites"

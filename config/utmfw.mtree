@@ -126,9 +126,9 @@ bannedregexpurllist3	type=file mode=0644 uname=root gname=wheel
 bannedsitelist	type=file mode=0644 uname=root gname=wheel
 bannedsitelist2	type=file mode=0644 uname=root gname=wheel
 bannedsitelist3	type=file mode=0644 uname=root gname=wheel
-bannedsitelistwithbypass	type=file mode=0644 uname=root gname=wheel
-bannedsitelistwithbypass2	type=file mode=0644 uname=root gname=wheel
-bannedsitelistwithbypass3	type=file mode=0644 uname=root gname=wheel
+domainsnobypass	type=file mode=0644 uname=root gname=wheel
+domainsnobypass2	type=file mode=0644 uname=root gname=wheel
+domainsnobypass3	type=file mode=0644 uname=root gname=wheel
 bannedurllist	type=file mode=0644 uname=root gname=wheel
 bannedurllist2	type=file mode=0644 uname=root gname=wheel
 bannedurllist3	type=file mode=0644 uname=root gname=wheel

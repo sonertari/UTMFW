@@ -6,7 +6,7 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The installation iso file for the amd64 arch is available for download at [utmfw65\_20190506\_amd64.iso](https://drive.google.com/file/d/1djOr_Mc3NEt-nmnMbm1jtmJhHlF3Jy9z/view?usp=sharing). Make sure the SHA256 checksum is correct: f6c9ac66b328a1efcbda34df123cfa01f9cbdfbe9a0aac04ccb20ee7a065fc68.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.5 comes with OpenBSD 6.5-stable including all updates until May 6th, 2019.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.5.1 comes with OpenBSD 6.5-stable including all updates until August 13th, 2019.
 
 UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -104,7 +104,7 @@ However, the source tree has links to OpenBSD install sets and packages, which s
 	+ Copy the required install sets to the appropriate locations to fix the broken links in the sources.
 - Packages:
 	+ Download the required packages available on the OpenBSD mirrors.
-	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, e2guardian, p3scan, smtp-gated, snort, imspector, snortips, and libevent 2.1.8 (see `ports` and `ports/distfiles`).
+	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, e2guardian, p3scan, smtp-gated, snort, imspector, snortips, and libevent 2.1.11 (see `ports` and `ports/distfiles`).
 	+ Copy them to the appropriate locations to fix the broken links in the sources.
 
 Note that you can strip down xbase and xfont install sets to reduce the size of the iso file. Copy or link them to the appropriate locations under `openbsd/utmfw`.

@@ -13,9 +13,9 @@ etc/e2guardian/lists/bannedregexpurllist3,644,root,wheel
 etc/e2guardian/lists/bannedsitelist,644,root,wheel
 etc/e2guardian/lists/bannedsitelist2,644,root,wheel
 etc/e2guardian/lists/bannedsitelist3,644,root,wheel
-etc/e2guardian/lists/bannedsitelistwithbypass,644,root,wheel
-etc/e2guardian/lists/bannedsitelistwithbypass2,644,root,wheel
-etc/e2guardian/lists/bannedsitelistwithbypass3,644,root,wheel
+etc/e2guardian/lists/domainsnobypass,644,root,wheel
+etc/e2guardian/lists/domainsnobypass2,644,root,wheel
+etc/e2guardian/lists/domainsnobypass3,644,root,wheel
 etc/e2guardian/lists/bannedurllist,644,root,wheel
 etc/e2guardian/lists/bannedurllist2,644,root,wheel
 etc/e2guardian/lists/bannedurllist3,644,root,wheel

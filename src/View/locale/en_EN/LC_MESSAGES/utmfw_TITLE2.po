@@ -559,6 +559,9 @@ msgstr ""
 msgid "Max Log Item Length"
 msgstr ""
 
+msgid "Max SSL Protocol"
+msgstr ""
+
 msgid "Max Threads"
 msgstr ""
 
@@ -614,6 +617,9 @@ msgid "Maximum virus scan size"
 msgstr ""
 
 msgid "Mime"
+msgstr ""
+
+msgid "Min SSL Protocol"
 msgstr ""
 
 msgid "Min children"
@@ -683,9 +689,6 @@ msgid "Packet Filter"
 msgstr ""
 
 msgid "Passive Intrusion Prevention"
-msgstr ""
-
-msgid "Passthrough"
 msgstr ""
 
 msgid "Passthrough Sites"

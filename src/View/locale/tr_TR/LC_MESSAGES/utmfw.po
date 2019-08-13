@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.5\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2019-04-07 16:05+0300\n"
+"PO-Revision-Date: 2019-08-13 12:45+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -3770,6 +3770,12 @@ msgstr "En Yüksek MSS"
 msgid "Max Packet Rate"
 msgstr "En Yüksek Paket Hızı"
 
+msgid "Max SSL Protocol"
+msgstr "En yüksek SSL protokolü"
+
+msgid "Max SSL/TLS protocol version."
+msgstr "En yüksek SSL/TLS protokol sürümünü kullan."
+
 msgid "Max Single Host States"
 msgstr "Tek Adres için En Fazla Durum Sayısı"
 
@@ -3885,6 +3891,12 @@ msgstr "Mime'lar"
 
 msgid "Min"
 msgstr "En az"
+
+msgid "Min SSL Protocol"
+msgstr "En alçak SSL protokolü"
+
+msgid "Min SSL/TLS protocol version."
+msgstr "En alçak SSL/TLS protokol sürümünü kullan."
 
 msgid "Min TTL"
 msgstr "En düşük TTL"
@@ -4419,16 +4431,6 @@ msgstr "Pasif SES"
 
 msgid "Passive Intrusion Prevention"
 msgstr "Pasif Saldırı Engelleme"
-
-msgid "Passthrough"
-msgstr "Doğrudan Geçir"
-
-msgid ""
-"Passthrough SSL connections if they cannot be split because of client cert "
-"auth or no matching cert and no CA."
-msgstr ""
-"SSL bağlantılarını doğrudan geçir, eğer istemci sertifikası istenmişse veya "
-"uyan bir sertifika ve CA yoksa."
 
 msgid "Passthrough Sites"
 msgstr "Doğrudan Geçirilecek Siteler"

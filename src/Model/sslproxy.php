@@ -252,6 +252,10 @@ $ModelConfig = array(
 		),
     'DisableSSLProto' => array(
 		),
+    'MinSSLProto' => array(
+		),
+    'MaxSSLProto' => array(
+		),
     'Ciphers' => array(
 		),
     'LeafKeyRSABits' => array(

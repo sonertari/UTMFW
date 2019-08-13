@@ -17,6 +17,6 @@ Index: src/Socket.hpp
      int my_port;
 +    std::string actualPeerAddr;
 +    int actualPeerPort;
-     bool ieof;
+     bool ieof = false;
  };
  

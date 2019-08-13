@@ -3,7 +3,7 @@ $OpenBSD$
 Index: src/FatController.cpp
 --- src/FatController.cpp.orig
 +++ src/FatController.cpp
-@@ -1036,7 +1036,7 @@ void log_listener(std::string log_location, bool logco
+@@ -1037,7 +1037,7 @@ void log_listener(std::string log_location, bool logco
                              postdata + "\"";
                  break;
              case 1:
@@ -12,7 +12,7 @@ Index: src/FatController.cpp
                              + how + " " + ssize + " " + sweight + " " + cat + " " + stringgroup + " "
                              + stringcode + " " + mimetype + " " + clienthost + " " + ldl->fg[filtergroup]->name + " "
                              + useragent + " " + params + " " + o.logid_1 + " " + o.logid_2 + " " + postdata;
-@@ -1077,7 +1077,7 @@ void log_listener(std::string log_location, bool logco
+@@ -1078,7 +1078,7 @@ void log_listener(std::string log_location, bool logco
          if (!logsyslog)
              *logfile << builtline << std::endl; // append the line
          else
@@ -21,7 +21,7 @@ Index: src/FatController.cpp
  #ifdef DGDEBUG
          std::cerr << itemcount << " " << builtline << std::endl;
  #endif
-@@ -1673,12 +1673,11 @@ int fc_controlit()   //
+@@ -1694,12 +1694,11 @@ int fc_controlit()   //
              gentlereload = false;
              continue;        //  OK to continue even if gentle failed - just continue to use previous lists
          }
@@ -38,7 +38,7 @@ Index: src/FatController.cpp
              }
          } else {
              if (rc == SIGUSR1)
-@@ -1691,7 +1690,7 @@ int fc_controlit()   //
+@@ -1712,7 +1711,7 @@ int fc_controlit()   //
              std::cerr << "signal:" << rc << std::endl;
  #endif
              if (o.logconerror) {

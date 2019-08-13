@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.5\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2019-04-19 21:07+0300\n"
+"PO-Revision-Date: 2019-08-13 12:43+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -578,6 +578,9 @@ msgstr "Dizin yenileme üst sınırı"
 msgid "Max Log Item Length"
 msgstr "Kayıt öğesi uzunluk üst sınırı"
 
+msgid "Max SSL Protocol"
+msgstr "En yüksek SSL protokolü"
+
 msgid "Max Threads"
 msgstr "İşparçacığı üst sınırı"
 
@@ -634,6 +637,9 @@ msgstr "Virüs tarama boyutu üst sınırı"
 
 msgid "Mime"
 msgstr "Mime"
+
+msgid "Min SSL Protocol"
+msgstr "En alçak SSL protokolü"
 
 msgid "Min children"
 msgstr "Alt süreç alt sınırı"
@@ -703,9 +709,6 @@ msgstr "Paket Eleği"
 
 msgid "Passive Intrusion Prevention"
 msgstr "Pasif Saldırı Engelleme"
-
-msgid "Passthrough"
-msgstr "Doğrudan Geçir"
 
 msgid "Passthrough Sites"
 msgstr "Doğrudan Geçirilecek Siteler"

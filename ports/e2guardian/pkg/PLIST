@@ -235,7 +235,6 @@ share/examples/e2guardian/lists/bannedsiteiplist
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedsiteiplist
 share/examples/e2guardian/lists/bannedsitelist
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedsitelist
-share/examples/e2guardian/lists/bannedsitelistwithbypass
 share/examples/e2guardian/lists/bannedsslsiteiplist
 @sample ${SYSCONFDIR}/e2guardian/lists/bannedsslsiteiplist
 share/examples/e2guardian/lists/bannedsslsitelist
