@@ -142,7 +142,10 @@ define('NET_SSH2_READ_SIMPLE',  1);
  */
 define('NET_SSH2_READ_REGEX', 2);
 /**
- * Returns when a string matching the regular expression $expect is found
+ * Returns whenever a data packet is received.
+ *
+ * Some data packets may only contain a single character so it may be necessary
+ * to call read() multiple times when using this option
  */
 define('NET_SSH2_READ_NEXT', 3);
 /**#@-*/
@@ -3412,7 +3415,7 @@ class Net_SSH2
             return false;
         }
         foreach ($this->auth as $auth) {
-            $result = call_user_func_array(array(&$this, 'parent::login'), $auth);
+            $result = call_user_func_array(array(&$this, 'login'), $auth);
         }
         return $result;
     }
@@ -3816,6 +3819,7 @@ class Net_SSH2
                     // on windows this returns a "Warning: Invalid CRT parameters detected" error
                     if (!@stream_select($read, $write, $except, $sec, $usec) && !count($read)) {
                         $this->is_timeout = true;
+                        $this->_close_channel($client_channel);
                         return true;
                     }
                     $elapsed = strtok(microtime(), ' ') + strtok('') - $start;
