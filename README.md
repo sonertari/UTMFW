@@ -75,7 +75,7 @@ Installation logs can be found under the /root directory.
 
 You can access the web administration interface using the IP address of the system's internal interface you have selected during installation. You can log in to the system over ssh from internal network.
 
-Web interface user names are admin and user. Both are set to the same password you provide during installation.
+Web interface user names are admin and user. Network user is utmfw. All are set to the same password you have provided during installation.
 
 References:
 
