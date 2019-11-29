@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_dynamic-preprocessors_imap_Makefile_in,v 1.12 2018/01/28 03:09:12 lteo Exp $
+$OpenBSD: patch-src_dynamic-preprocessors_imap_Makefile_in,v 1.14 2019/08/29 02:47:15 lteo Exp $
 Index: src/dynamic-preprocessors/imap/Makefile.in
 --- src/dynamic-preprocessors/imap/Makefile.in.orig
 +++ src/dynamic-preprocessors/imap/Makefile.in

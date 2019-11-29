@@ -2,7 +2,7 @@
 # This file is distributed under the same license as UTMFW.
 msgid ""
 msgstr ""
-"Project-Id-Version: UTMFW 6.5\n"
+"Project-Id-Version: UTMFW 6.6\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
 "PO-Revision-Date: 2009-12-01 02:29+0100\n"

@@ -102,6 +102,15 @@ Index: p3scan.c
        p->errmsg=1;
        context_uninit(p);
        config->emergency="Unable to get available space!";
+@@ -1198,7 +1208,7 @@ void set_defaultparams(struct proxycontext * p){
+          }
+          pclose(scanner);
+          if (vlen < 512) virdef[vlen-1]='\0';
+-         else virdef[512]='\0';
++         else virdef[511]='\0';
+          paramlist_set(p->params, "%VDINFO%", virdef);
+       }
+    } else paramlist_set(p->params, "%VDINFO%", NULL);
 @@ -1575,6 +1585,8 @@ int proxy(struct proxycontext *p){
     int   loc,loc2,first=1;
     char  *tmp=NULL;

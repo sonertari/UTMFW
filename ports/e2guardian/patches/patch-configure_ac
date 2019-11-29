@@ -12,3 +12,12 @@ Index: configure.ac
  
  # asking user if they want clamd support
  AC_MSG_CHECKING(for clamd support)
+@@ -592,7 +592,7 @@ else
+ 	LIBS="${LIBS} -lssl -lcrypto"
+ 	AC_DEFINE([__SSLMITM],[],[Define to enable SSL MITM ])
+ 	AC_DEFINE([__SSLCERT],[],[Define to enable SSL CERT ])
+-	PKG_CHECK_MODULES([OPENSSL],[ openssl >= 1.0.1])
++	PKG_CHECK_MODULES([OPENSSL],[openssl])
+ fi],
+ [
+ 	AC_MSG_RESULT(no)

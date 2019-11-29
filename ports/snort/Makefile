@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.101 2019/02/12 22:19:52 sthen Exp $
+# $OpenBSD: Makefile,v 1.105 2019/08/29 02:47:15 lteo Exp $
 
 COMMENT =		highly flexible sniffer/NIDS
 
-DISTNAME =		snort-2.9.13
-RULESV =		29130
+DISTNAME =		snort-2.9.15
+RULESV =		29150
 SUBST_VARS =		RULESV
 
 CATEGORIES =		net security
@@ -13,9 +13,10 @@ HOMEPAGE =		https://www.snort.org/
 MAINTAINER =		Markus Lude <markus.lude@gmx.de>
 
 # GPLv2
-PERMIT_PACKAGE_CDROM =	Yes
+PERMIT_PACKAGE =	Yes
 
-WANTLIB =		c crypto daq dnet luajit-5.1 lzma m nghttp2 pcap pcre pthread z
+WANTLIB += c c++abi crypto daq dnet luajit-5.1 lzma m nghttp2
+WANTLIB += pcap pcre pthread z
 
 MASTER_SITES =		https://www.snort.org/downloads/snort/
 

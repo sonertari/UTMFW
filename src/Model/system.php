@@ -492,6 +492,11 @@ class System extends Model
 			if (($contents= $this->GetFile($file)) !== FALSE) {
 				$re= '^\s*(inet|dhcp)\s*(\S*)\s*(\S*)\s*(\S*)\s*(\S*)\s*$';
 				if (preg_match("/$re/m", $contents, $match)) {
+					// OpenBSD 6.6 uses hex if mask in hostname.if file
+					// Convert if mask from hex to ip: 0xffffff00 -> 255.255.255.0
+					if ($match[3] !== '') {
+						$match[3]= long2ip(hexdec($match[3]));
+					}
 					return json_encode(array_slice($match, 1));
 				}
 			}
@@ -659,10 +664,16 @@ class System extends Model
 	{
 		global $Re_Ip;
 		
+		// OpenBSD 6.6 uses hex if mask in hostname.if file
+		// Convert if mask from ip to hex: 255.255.255.0 -> 0xffffff00
+		if ($mask !== '') {
+			$mask= '0x'.dechex(ip2long($mask));
+		}
+
 		// Trim whitespace caused by empty strings
 		$ifconf= trim("$type $ip $mask $bc $opt");
 		// UTMFW supports only these configuration
-		if (preg_match("/^inet\s*$Re_Ip\s*$Re_Ip\s*($Re_Ip|).*$/", $ifconf)
+		if (preg_match("/^inet\s*$Re_Ip\s*[x0-9a-f]+\s*($Re_Ip|).*$/", $ifconf)
 			|| preg_match('/^dhcp\s*NONE\s*NONE\s*NONE.*$/', $ifconf)
 			|| preg_match('/^dhcp$/', $ifconf)) {
 			/// @warning Need a new line char at the end of hostname.if, otherwise /etc/netstart fails

@@ -15,7 +15,7 @@ SHARED_LIBS+=	event_openssl   0.0	# 6.9
 SHARED_LIBS+=	event_pthreads  0.0	# 6.9
 
 # BSD
-PERMIT_PACKAGE_CDROM=	Yes
+PERMIT_PACKAGE=	Yes
 
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=levent/}
 

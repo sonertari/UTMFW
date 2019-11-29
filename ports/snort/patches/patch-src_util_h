@@ -1,4 +1,5 @@
-$OpenBSD: patch-src_util_h,v 1.7 2014/01/30 03:23:48 lteo Exp $
+$OpenBSD: patch-src_util_h,v 1.8 2019/06/02 02:07:44 lteo Exp $
+
 Index: src/util.h
 --- src/util.h.orig
 +++ src/util.h

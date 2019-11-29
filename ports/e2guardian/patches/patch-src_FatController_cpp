@@ -3,7 +3,27 @@ $OpenBSD$
 Index: src/FatController.cpp
 --- src/FatController.cpp.orig
 +++ src/FatController.cpp
-@@ -1037,7 +1037,7 @@ void log_listener(std::string log_location, bool logco
+@@ -46,6 +46,10 @@
+ #include <openssl/conf.h>
+ #endif //__SSLMITM
+ 
++#if defined(__OpenBSD__)
++#include <sys/syscall.h>
++#endif
++
+ #include "FatController.hpp"
+ #include "ConnectionHandler.hpp"
+ #include "DynamicURLList.hpp"
+@@ -194,7 +198,7 @@ void stat_rec::reset()
+     	fprintf(fs, "%s	%d	%d	%d	%d	%ld	%ld	%ld	 %ld	%d	 %d\n", buffer, o.http_workers,
+         bc, o.http_worker_Q.size(), o.log_Q->size(), cnx, cps, rqx, rqs, mfd, LC);
+     } else {
+-        fprintf(fs, "%ld	%d	%d	%d	%d	%ld	%ld	%ld	%ld	%d	%d\n", now, o.http_workers,
++        fprintf(fs, "%lld      %d      %d      %d      %d      %ld     %ld     %ld     %ld     %d      %d\n", (long long)now, o.http_workers,
+         bc, o.http_worker_Q.size(), o.log_Q->size(), cnx, cps, rqx, rqs, mfd, LC);
+     }
+ 
+@@ -1037,7 +1041,7 @@ void log_listener(std::string log_location, bool logco
                              postdata + "\"";
                  break;
              case 1:
@@ -12,7 +32,7 @@ Index: src/FatController.cpp
                              + how + " " + ssize + " " + sweight + " " + cat + " " + stringgroup + " "
                              + stringcode + " " + mimetype + " " + clienthost + " " + ldl->fg[filtergroup]->name + " "
                              + useragent + " " + params + " " + o.logid_1 + " " + o.logid_2 + " " + postdata;
-@@ -1078,7 +1078,7 @@ void log_listener(std::string log_location, bool logco
+@@ -1078,7 +1082,7 @@ void log_listener(std::string log_location, bool logco
          if (!logsyslog)
              *logfile << builtline << std::endl; // append the line
          else
@@ -21,29 +41,15 @@ Index: src/FatController.cpp
  #ifdef DGDEBUG
          std::cerr << itemcount << " " << builtline << std::endl;
  #endif
-@@ -1694,12 +1694,11 @@ int fc_controlit()   //
-             gentlereload = false;
-             continue;        //  OK to continue even if gentle failed - just continue to use previous lists
+@@ -1696,7 +1700,11 @@ int fc_controlit()   //
          }
--        timeout.tv_sec = 5;
--        timeout.tv_nsec = (long) 0;
--        rc = sigtimedwait(&signal_set, NULL, &timeout);
--        if (rc < 0) {
-+        // OpenBSD does not have sigtimedwait(), sigwait() does not return until a signal arrives
-+        int retval = sigwait(&signal_set, &rc);
-+        if (retval < 0) {
+         timeout.tv_sec = 5;
+         timeout.tv_nsec = (long) 0;
++#if defined(__OpenBSD__)
++        rc = syscall(SYS___thrsigdivert, signal_set, NULL, &timeout);
++#else
+         rc = sigtimedwait(&signal_set, NULL, &timeout);
++#endif
+         if (rc < 0) {
              if (errno != EAGAIN) {
--                syslog(LOG_INFO, "%sUnexpected error from sigtimedwait() %d %s", thread_id.c_str(), errno, strerror(errno));
-+                syslog(LOG_INFO, "%sUnexpected error from sigwait() %d %s", thread_id.c_str(), errno, strerror(errno));
-             }
-         } else {
-             if (rc == SIGUSR1)
-@@ -1712,7 +1711,7 @@ int fc_controlit()   //
-             std::cerr << "signal:" << rc << std::endl;
- #endif
-             if (o.logconerror) {
--                syslog(LOG_INFO, "%ssigtimedwait() signal %d recd:", thread_id.c_str(), rc);
-+                syslog(LOG_INFO, "%ssigwait() signal %d recd:", thread_id.c_str(), rc);
-             }
-         }
-         int q_size = o.http_worker_Q.size();
+                 syslog(LOG_INFO, "%sUnexpected error from sigtimedwait() %d %s", thread_id.c_str(), errno, strerror(errno));

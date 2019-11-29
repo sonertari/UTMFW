@@ -174,7 +174,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              option is specified.  The logged packets are sent to a pflog(4)
              interface, by default <span class="underline">pflog0</span>; pflog0 is monitored by the
              pflogd(8) logging daemon which logs to the file <span class="underline">/var/log/pflog</span> in
-             pcap(3) binary format.
+             pcap binary format.
 
              The keywords <span class="bold">all</span>, <span class="bold">matches</span>, <span class="bold">to</span>, and <span class="bold">user</span> are optional and can be
              combined using commas, but must be enclosed in parentheses if
@@ -765,13 +765,14 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
            weights are selected more often.  <span class="bold">sticky-address</span> is as described
            above.
 
-     <span class="bold">source-hash</span> [<span class="underline">key</span>]
+     <span class="bold">source-hash</span> [<span class="underline">key</span>] [<span class="bold">sticky-address</span>]
            The <span class="bold">source-hash</span> option uses a hash of the source address to
            determine the redirection address, ensuring that the redirection
            address is always the same for a given source.  An optional <span class="underline">key</span> can
            be specified after this keyword either in hex or as a string; by
            default pfctl(8) randomly generates a key for source-hash every
-           time the ruleset is reloaded.
+           time the ruleset is reloaded.  <span class="bold">sticky-address</span> is as described
+           above.
 
 <a name="static-port"></a>
      <span class="bold">static-port</span>
@@ -831,6 +832,8 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                      UNREACHABLE is returned for blocked UDP packets, and all
                      other packets are silently dropped.
 
+             The default value is <span class="bold">drop</span>.
+
 <a name="debug"></a>
      <span class="bold">set</span> <span class="bold">debug</span> <span class="underline">level</span>
              Set the debug <span class="underline">level</span>, which limits the severity of log messages
@@ -838,7 +841,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              ordered list (highest to lowest): <span class="bold">emerg</span>, <span class="bold">alert</span>, <span class="bold">crit</span>, <span class="bold">err</span>,
              <span class="bold">warning</span>, <span class="bold">notice</span>, <span class="bold">info</span>, and <span class="bold">debug</span>.  These keywords correspond to
              the similar (LOG_) values specified to the syslog(3) library
-             routine.
+             routine.  The default value is <span class="bold">err</span>.
 
 <a name="fingerprints"></a>
      <span class="bold">set</span> <span class="bold">fingerprints</span> <span class="underline">filename</span>
@@ -848,6 +851,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              this option.  Setting this option may leave a small period of
              time where the fingerprints referenced by the currently active
              ruleset are inconsistent until the new ruleset finishes loading.
+             The default location for fingerprints is <span class="underline">/etc/pf.os</span>.
 
 <a name="hostid"></a>
      <span class="bold">set</span> <span class="bold">hostid</span> <span class="underline">number</span>
@@ -902,6 +906,18 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 
                    set limit { states 20000, frags 2000, src-nodes 2000 }
 
+             pf(4) has the following defaults:
+
+             states           PFSTATE_HIWAT             (100000)
+             tables           PFR_KTABLE_HIWAT          (1000)
+             table-entries    PFR_KENTRY_HIWAT          (200000)
+             table-entries    PFR_KENTRY_HIWAT_SMALL    (100000)
+             frags            NMBCLUSTERS/32            (platform dependent)
+
+             NMBCLUSTERS defines the total number of packets which can exist
+             in-system at any one time.  Refer to &lt;<span class="underline">machine/param.h</span>&gt; for the
+             platform-specific value.
+
 <a name="loginterface"></a>
      <span class="bold">set</span> <span class="bold">loginterface</span> <span class="underline">interface</span> | <span class="bold">none</span>
              Enable collection of packet and byte count statistics for the
@@ -918,6 +934,8 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              One can disable the loginterface using:
 
                    set loginterface none
+
+             The default value is <span class="bold">none</span>.
 
 <a name="optimization"></a>
      <span class="bold">set</span> <span class="bold">optimization</span> <span class="underline">environment</span>
@@ -941,6 +959,8 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              <span class="bold">satellite</span>
                      Alias for <span class="bold">high-latency</span>.
 
+             The default value is <span class="bold">normal</span>.
+
 <a name="reassemble"></a>
      <span class="bold">set</span> <span class="bold">reassemble</span> <span class="bold">yes</span> | <span class="bold">no</span> [<span class="bold">no-df</span>]
              The <span class="bold">reassemble</span> option is used to enable or disable the reassembly
@@ -948,6 +968,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              If <span class="bold">no-df</span> is also specified, fragments with the "dont-fragment"
              bit set are reassembled too, instead of being dropped; the
              reassembled packet will have the "dont-fragment" bit cleared.
+             The default value is <span class="bold">yes</span>.
 
 <a name="ruleset-optimization"></a>
      <span class="bold">set</span> <span class="bold">ruleset-optimization</span> <span class="underline">level</span>
@@ -985,7 +1006,8 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              be useful on loopback and other virtual interfaces, when packet
              filtering is not desired and can have unexpected effects.  <span class="underline">ifspec</span>
              is only evaluated when the ruleset is loaded; interfaces created
-             later will not be skipped.
+             later will not be skipped.  PF filters traffic on all interfaces
+             by default.
 
 <a name="state-defaults"></a>
      <span class="bold">set</span> <span class="bold">state-defaults</span> <span class="underline">state-option</span>, <span class="underline">...</span>
@@ -1033,12 +1055,16 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 <a name="Timeout"></a>
      <span class="bold">set</span> <span class="bold">timeout</span> <span class="underline">variable</span> <span class="underline">value</span>
 <a name="frag"></a>
-             <span class="bold">frag</span>       Seconds before an unassembled fragment is expired.
+             <span class="bold">frag</span>       Seconds before an unassembled fragment is expired (60
+                        by default).
 <a name="interval"></a>
-             <span class="bold">interval</span>   Interval between purging expired states and fragments.
+             <span class="bold">interval</span>   Interval between purging expired states and fragments
+                        (10 seconds by default).
 <a name="src.track"></a>
              <span class="bold">src.track</span>  Length of time to retain a source tracking entry after
-                        the last state expires.
+                        the last state expires (0 by default, which means
+                        there is no global limit.  The value is defined by the
+                        rule which creates the state.).
 
 <a name="tcp_timeout"></a>
              When a packet matches a stateful connection, the seconds to live
@@ -1048,21 +1074,21 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              may improve the performance of the firewall at the risk of
              dropping valid idle connections.
 
-             <span class="bold">tcp.closed</span>
+             <span class="bold">tcp.closed</span> (90 seconds by default)
                      The state after one endpoint sends an RST.
-             <span class="bold">tcp.closing</span>
+             <span class="bold">tcp.closing</span> (900 seconds by default)
                      The state after the first FIN has been sent.
-             <span class="bold">tcp.established</span>
+             <span class="bold">tcp.established</span> (24 hours by default)
                      The fully established state.
-             <span class="bold">tcp.finwait</span>
+             <span class="bold">tcp.finwait</span> (45 seconds by default)
                      The state after both FINs have been exchanged and the
                      connection is closed.  Some hosts (notably web servers on
                      Solaris) send TCP packets even after closing the
                      connection.  Increasing <span class="bold">tcp.finwait</span> (and possibly
                      <span class="bold">tcp.closing</span>) can prevent blocking of such packets.
-             <span class="bold">tcp.first</span>
+             <span class="bold">tcp.first</span> (120 seconds by default)
                      The state after the first packet.
-             <span class="bold">tcp.opening</span>
+             <span class="bold">tcp.opening</span> (30 seconds by default)
                      The state after the second packet but before both
                      endpoints have acknowledged the connection.
 
@@ -1071,37 +1097,37 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              ICMP and UDP are handled in a fashion similar to TCP, but with a
              much more limited set of states:
 
-             <span class="bold">icmp.error</span>
+             <span class="bold">icmp.error</span> (10 seconds by default)
                      The state after an ICMP error came back in response to an
                      ICMP packet.
-             <span class="bold">icmp.first</span>
+             <span class="bold">icmp.first</span> (20 seconds by default)
                      The state after the first packet.
-             <span class="bold">udp.first</span>
+             <span class="bold">udp.first</span> (60 seconds by default)
                      The state after the first packet.
-             <span class="bold">udp.multiple</span>
+             <span class="bold">udp.multiple</span> (60 seconds by default)
                      The state if both hosts have sent packets.
-             <span class="bold">udp.single</span>
+             <span class="bold">udp.single</span> (30 seconds by default)
                      The state if the source host sends more than one packet
                      but the destination host has never sent one back.
 
 <a name="other_timeout"></a>
              Other protocols are handled similarly to UDP:
 
-             <span class="bold">other.first</span>
-             <span class="bold">other.multiple</span>
-             <span class="bold">other.single</span>
+             <span class="bold">other.first</span> (60 seconds by default)
+             <span class="bold">other.multiple</span> (60 seconds by default)
+             <span class="bold">other.single</span> (30 seconds by default)
 
 <a name="adaptive_timeout"></a>
              Timeout values can be reduced adaptively as the number of state
              table entries grows.
 
-             <span class="bold">adaptive.end</span>
+             <span class="bold">adaptive.end</span> (60000 states by default)
                      When reaching this number of state entries, all timeout
                      values become zero, effectively purging all state entries
                      immediately.  This value is used to define the scale
                      factor; it should not actually be reached (set a lower
                      state limit, see below).
-             <span class="bold">adaptive.start</span>
+             <span class="bold">adaptive.start</span> (120000 states by default)
                      When the number of state entries exceeds this value,
                      adaptive scaling begins.  All timeout values are scaled
                      linearly with factor (adaptive.end - number of states) /
@@ -1126,6 +1152,10 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 
              With 9000 state table entries, the timeout values are scaled to
              50% (tcp.first 60, tcp.established 43200).
+
+     "pfctl -F Reset" restores default values for following options: debug,
+     all limit options, loginterface, reassemble, skip, syncookies, all
+     timeouts.
 
 <a name="Queue"></a>
 <span class="bold">QUEUEING</span>
@@ -2246,7 +2276,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 <span class="bold">HISTORY</span>
      The <span class="bold">pf.conf</span> file format first appeared in OpenBSD 3.0.
 
-OpenBSD 6.5                      July 12, 2018                     OpenBSD 6.5
+OpenBSD 6.6                     August 30, 2019                    OpenBSD 6.6
 </pre>
 </body>
 </html>

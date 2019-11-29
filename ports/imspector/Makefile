@@ -9,11 +9,9 @@ MASTER_SITES=		${HOMEPAGE}/downloads/
 MAINTAINER=		Soner Tari <soner@comixwall.org>
 
 # GPL
-PERMIT_PACKAGE_CDROM=	Yes
-PERMIT_PACKAGE_FTP=	Yes
-PERMIT_DISTFILES_FTP=	Yes
+PERMIT_PACKAGE=	Yes
 
-WANTLIB=		c m stdc++
+WANTLIB+=		${COMPILER_LIBCXX} c m
 CONFIGURE_STYLE=	No
 BUILD_DEPENDS=		databases/sqlite3
 

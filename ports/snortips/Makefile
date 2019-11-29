@@ -9,9 +9,7 @@ HOMEPAGE=		https://github.com/sonertari/SnortIPS
 MAINTAINER=		Soner Tari <sonertari@gmail.com>
 
 # BSD
-PERMIT_PACKAGE_CDROM=	Yes
-PERMIT_PACKAGE_FTP=	Yes 
-PERMIT_DISTFILES_FTP=	Yes 
+PERMIT_PACKAGE=	Yes
 
 MASTER_SITES=		${HOMEPAGE}/dmdocuments/
 

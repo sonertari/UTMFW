@@ -10,7 +10,7 @@ HOMEPAGE=	https://github.com/sonertari/SSLproxy
 MAINTAINER=	Soner Tari <sonertari@gmail.com>
 
 # SSLproxy: BSD, khash.h (header-based library): MIT
-PERMIT_PACKAGE_CDROM=	Yes
+PERMIT_PACKAGE=	Yes
 
 WANTLIB += c crypto event_core event_extra event_openssl event_pthreads
 WANTLIB += pthread ssl

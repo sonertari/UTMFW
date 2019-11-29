@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: UTMFW 6.5\n"
+"Project-Id-Version: UTMFW 6.6\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
 "PO-Revision-Date: 2019-04-07 16:01+0300\n"
