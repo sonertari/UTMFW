@@ -712,11 +712,4 @@ function _HELPBOX2($str)
 {
 	return _($str);
 }
-
-/// @todo Check if we need _STATS() in the View
-///// For classifying gettext strings into files.
-//function _STATS($str)
-//{
-//	return _($str);
-//}
 ?>
