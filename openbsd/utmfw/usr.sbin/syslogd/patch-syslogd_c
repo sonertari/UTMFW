@@ -1,6 +1,6 @@
---- syslogd.c.orig	2018-10-27 02:58:05.163862868 +0300
-+++ syslogd.c	2018-10-27 02:46:40.433861902 +0300
-@@ -1677,6 +1677,9 @@
+--- syslogd.c.orig	Fri Jul  5 16:23:27 2019
++++ syslogd.c	Thu Nov 28 15:43:32 2019
+@@ -1689,6 +1689,9 @@
  
  struct timeval	now;
  
@@ -10,7 +10,7 @@
  /*
   * Log a message to the appropriate log files, users, etc. based on
   * the priority.
-@@ -1802,6 +1805,43 @@
+@@ -1815,6 +1818,43 @@
  	}
  	prog[i] = 0;
  
@@ -54,7 +54,7 @@
  	/* log the message to the particular outputs */
  	if (!Initialized) {
  		f = &consfile;
-@@ -1815,7 +1855,7 @@
+@@ -1828,7 +1868,7 @@
  			f->f_type = F_CONSOLE;
  		}
  		init_dropped++;
@@ -63,7 +63,7 @@
  	}
  	SIMPLEQ_FOREACH(f, &Files, f_next) {
  		/* skip messages that are incorrect priority */
-@@ -1887,6 +1927,9 @@
+@@ -1900,6 +1940,9 @@
  		if (f->f_quick)
  			break;
  	}

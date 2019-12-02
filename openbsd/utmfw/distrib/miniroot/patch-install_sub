@@ -1,6 +1,6 @@
---- install.sub.orig	Sat Sep 22 12:12:36 2018
-+++ install.sub	Sun Oct 28 02:00:20 2018
-@@ -1235,7 +1235,7 @@
+--- install.sub.orig	Tue Oct  1 05:11:41 2019
++++ install.sub	Thu Nov 28 15:32:42 2019
+@@ -1243,7 +1243,7 @@
  
  # Set up IPv4 and IPv6 interface configuration.
  configure_ifs() {
@@ -9,16 +9,16 @@
  
  	# Always need lo0 configured.
  	ifconfig lo0 inet 127.0.0.1/8
-@@ -1243,6 +1243,8 @@
+@@ -1251,6 +1251,8 @@
  	# In case of restart, delete previous default gateway config.
  	rm -f /tmp/i/mygate
  
 +	_iflist=$(get_ifs)
 +
  	while :; do
- 		# Discover last configured vlan interface and increment it's
+ 		# Discover last configured vlan interface and increment its
  		# minor for the next offered vlan interface.
-@@ -1251,7 +1253,7 @@
+@@ -1259,7 +1261,7 @@
  
  		ask_which "network interface" "do you wish to configure" \
  			"\$(get_ifs) vlan${_vi:-0}" \
@@ -27,7 +27,7 @@
  		[[ $resp == done ]] && break
  
  		_if=$resp
-@@ -1281,10 +1283,12 @@
+@@ -1289,10 +1291,12 @@
  		if [[ -f $_hn ]]; then
  			chmod 640 $_hn
  			: ${_first:=$_if}
@@ -41,7 +41,7 @@
  	done
  }
  
-@@ -1542,8 +1546,9 @@
+@@ -1550,8 +1554,9 @@
  	# Try to prefetch and control checksum of the set files.
  	# Use dummy for loop as combined assignment and do { ... } while(0).
  	for _issue in ''; do
@@ -52,8 +52,8 @@
  
  		if ! $_srclocal; then
  			! _tmpfs_list=$(prefetcharea_fs_list) &&
-@@ -1586,7 +1591,7 @@
- 		# The bsd.rd only download/verify/install assumes that the sets
+@@ -1594,7 +1599,7 @@
+ 		# The bsd.rd only download/verify/install assumes the sets
  		# location of the next release. So use the right signature file.
  		$UPGRADE_BSDRD &&
 -			PUB_KEY=/mnt/etc/signify/openbsd-$((VERSION + 1))-base.pub
@@ -61,7 +61,7 @@
  
  		# Verify signature file with public keys.
  		! unpriv -f "$_cfile" \
-@@ -1633,7 +1638,7 @@
+@@ -1643,7 +1648,7 @@
  
  	[[ -n $_unver ]] && : ${_issue:="Unverified sets:" ${_unver% }}
  	if [[ -n $_issue ]] &&
@@ -70,7 +70,7 @@
  		[[ -d $_tmpsrc ]] && rm -rf "$_tmpsrc"
  		$AI && exit 1
  		return
-@@ -2055,20 +2060,6 @@
+@@ -2092,20 +2097,6 @@
  	ask_yn "Start sshd(8) by default?" yes
  	START_SSHD=$resp
  
@@ -91,7 +91,7 @@
  	if [[ -n $CDEV ]]; then
  		_d=${CPROM:-$CDEV}
  		[[ -n $CONSOLE ]] && _cdef=yes
-@@ -2099,6 +2090,9 @@
+@@ -2136,6 +2127,9 @@
  			;;
  		root|daemon|operator|bin|build|sshd|www|nobody|ftp)
  			;;
@@ -101,7 +101,7 @@
  		[a-z]*([-a-z0-9_]))
  			((${#resp} <= 31)) && break
  			;;
-@@ -2897,7 +2891,6 @@
+@@ -2941,7 +2935,6 @@
  	questions
  
  	# Gather information for setting up the initial user account.
@@ -109,7 +109,7 @@
  	ask_root_sshd
  
  	# Set TZ variable based on zonefile and user selection.
-@@ -3263,7 +3256,7 @@
+@@ -3360,7 +3353,7 @@
  INSTALL_METHOD=
  NIFS=0
  export PS1="$MODE# "
@@ -118,7 +118,7 @@
  ROOTDEV=
  ROOTDISK=
  SETDIR="$VNAME/$ARCH"
-@@ -3302,14 +3295,14 @@
+@@ -3399,14 +3392,14 @@
  # Selected sets will be installed in the order they are listed in $ALLSETS.
  # Ensure that siteXX.tgz is the *last* set listed so its contents overwrite
  # the contents of the other sets, not the other way around.

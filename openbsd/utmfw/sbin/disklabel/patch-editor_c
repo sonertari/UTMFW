@@ -1,5 +1,5 @@
---- editor.c.orig	Fri Nov 29 22:00:03 2019
-+++ editor.c	Fri Nov 29 22:04:51 2019
+--- editor.c.orig	Fri Nov 29 22:09:57 2019
++++ editor.c	Fri Nov 29 22:10:40 2019
 @@ -88,24 +88,20 @@
  
  /* entries for swap and var are changed by editor_allocspace() */

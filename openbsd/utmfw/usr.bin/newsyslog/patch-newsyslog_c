@@ -1,5 +1,5 @@
---- newsyslog.c.orig	2018-10-27 02:55:45.190636143 +0300
-+++ newsyslog.c	2018-10-27 02:33:58.807187015 +0300
+--- newsyslog.c.orig	Fri Jun 28 16:35:02 2019
++++ newsyslog.c	Thu Nov 28 15:42:06 2019
 @@ -144,7 +144,7 @@
  char	*conf = CONF;		/* Configuration file to use */
  time_t	timenow;

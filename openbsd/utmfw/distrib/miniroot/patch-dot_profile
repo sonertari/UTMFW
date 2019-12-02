@@ -1,6 +1,6 @@
---- dot.profile.orig	Mon Oct 29 20:04:02 2018
-+++ dot.profile	Mon Oct 29 20:09:47 2018
-@@ -100,13 +100,13 @@
+--- dot.profile.orig	Sun Apr 28 01:08:58 2019
++++ dot.profile	Thu Nov 28 15:26:43 2019
+@@ -103,13 +103,13 @@
  	fi
  
  	while :; do
@@ -17,7 +17,7 @@
  		else
  			# User has made a choice; stop the read timeout.
  			[[ -n $timer_pid ]] && kill $timer_pid 2>/dev/null
-@@ -114,9 +114,7 @@
+@@ -117,9 +117,7 @@
  		fi
  
  		case $REPLY in
