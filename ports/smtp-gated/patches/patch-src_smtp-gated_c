@@ -42,7 +42,31 @@ Index: src/smtp-gated.c
  //		free(email);
  		return;
  	}
-@@ -2210,7 +2210,7 @@ int target_connect(struct session_t *data)
+@@ -1968,13 +1968,17 @@ line_status server_callback(char *buffer, char *pos, i
+ 			break;
+ 
+ 		case COMMAND_STARTTLS:
+-			if (code == 220) {
+-				destroy_addresses(data);
+-				if (!IS_FLAG_SET(config.spool_leave_on, LEAVE_ON_ALWAYS))
+-					spool_remove(data);
+-				direct = "starttls";
++			if (!data->behind_sslproxy) {
++				if (code == 220) {
++					destroy_addresses(data);
++					if (!IS_FLAG_SET(config.spool_leave_on, LEAVE_ON_ALWAYS))
++						spool_remove(data);
++					direct = "starttls";
++				} else {
++					log_action(LOG_DEBUG, "DIRECT:CANCELLED cause=starttls code=%d", code);
++				}
+ 			} else {
+-				log_action(LOG_DEBUG, "DIRECT:CANCELLED cause=starttls code=%d", code);
++				log_action(LOG_DEBUG, "DIRECT:CANCELLED cause=behind_sslproxy code=%d", code);
+ 			}
+ 			break;
+ 
+@@ -2210,7 +2214,7 @@ int target_connect(struct session_t *data)
  				SAFE_CLOSE(data->client);
  				exit(0);
  			}
@@ -51,7 +75,7 @@ Index: src/smtp-gated.c
  			res = errno;
  
  			// drop privileges entirely, not needed anymore
-@@ -2239,7 +2239,7 @@ int target_connect(struct session_t *data)
+@@ -2239,7 +2243,7 @@ int target_connect(struct session_t *data)
  		case MODE_PF:
  		case MODE_REMOTE:
  		case MODE_REMOTE_UDP:
@@ -60,21 +84,21 @@ Index: src/smtp-gated.c
  			break;
  		default:
  			log_action(LOG_CRIT, "!BUG! target_connect(): data->mode=%d", data->mode);
-@@ -2427,8 +2427,11 @@ void connection(struct session_t *data)
+@@ -2427,8 +2431,11 @@ void connection(struct session_t *data)
  
  	session_init_2(data);
  
 -	// dane serwera docelowego
 -	if (!target_lookup(data)) exit(1);
-+    if (!data->behind_sslproxy) {
-+    	// dane serwera docelowego
-+	    if (!target_lookup(data)) exit(1);
-+		data->actual_target = data->target;
-+    }
++	if (!data->behind_sslproxy) {
++		// dane serwera docelowego
++		if (!target_lookup(data)) exit(1);
++			data->actual_target = data->target;
++	}
  
  	if (lockfile_ident_present(data)) {
  		SHARED_STATS_INC(rejects_lock);
-@@ -2477,9 +2480,9 @@ void connection(struct session_t *data)
+@@ -2477,9 +2484,9 @@ void connection(struct session_t *data)
  	}
  	
  	// log
@@ -86,7 +110,7 @@ Index: src/smtp-gated.c
  
  	// nie bedzie petli?
  	// dla testow wylacz (albo: wlacz jesli !fixed)
-@@ -2518,8 +2521,26 @@ void connection(struct session_t *data)
+@@ -2518,8 +2525,14 @@ void connection(struct session_t *data)
  		// xclient_startup eats initial greeting and forwards it to client directly
  		// so queueing COMMAND_GREETING would confuse pipelining support
  	} else {
@@ -99,23 +123,11 @@ Index: src/smtp-gated.c
 +			fdprintf(data->server, "%s\r\n", data->saved_line);
 +			free(data->saved_line);
 +			data->saved_line = NULL;
-+
-+			char buffer[1024], *line;
-+			int bufsize = 0;
-+			int offset = 0;
-+			SET_TIMEOUT(config.timeout_connect);
-+			if ((line = fdgetline(data->server, buffer, sizeof(buffer), &bufsize, &offset)) != NULL) {
-+				if (strncasecmp(line, "220 ", 4)) {
-+					// Consume 220 reply, forward others to the client
-+					fdprintf(data->client, "%s\r\n", line);
-+				}
-+			}
-+			CLEAR_TIMEOUT();
 +		}
  	}
  
  	// deskryptor dla select-a
-@@ -2604,9 +2625,9 @@ void connection(struct session_t *data)
+@@ -2604,9 +2617,9 @@ void connection(struct session_t *data)
  
  	cleanup();
  
@@ -127,7 +139,7 @@ Index: src/smtp-gated.c
  	exit(0);
  } /* connection() */
  
-@@ -2957,7 +2978,7 @@ int main(int argc, char* argv[])
+@@ -2957,7 +2970,7 @@ int main(int argc, char* argv[])
  			dump_help();
  			exit(10);
  		case CMD_C:
@@ -136,7 +148,7 @@ Index: src/smtp-gated.c
  			i = dump_config_by_name(arg1, config_options, 0);
  			exit(i);
  		case CMD_KK:
-@@ -3136,7 +3157,175 @@ restart:
+@@ -3136,7 +3149,172 @@ restart:
  		log_action(LOG_WARNING, "MEMLEAK_TESTING defined, allocating bogus %s bytes", MEMLEAK_TESTING);
  		malloc(MEMLEAK_TESTING);
  #endif
@@ -144,16 +156,13 @@ Index: src/smtp-gated.c
 +		session_free(&data);
 +		session_init_1(&data, client, origin);
  
-+		// Get SSLproxy line
-+		fdprintf(data.client, "220 sslproxy - smtp\r\n");
-+
 +		char buffer[1024], *line;
 +		int bufsize = 0;
-+        int offset = 0;
++		int offset = 0;
 +		data.saved_line = NULL;
-+        data.behind_sslproxy = 0;
++		data.behind_sslproxy = 0;
 +
-+    	SET_TIMEOUT(config.timeout_connect);
++		SET_TIMEOUT(config.timeout_connect);
 +		for (;;) {
 +			// fdgetline() returns a NULL-terminated string, replacing '\r' and '\n' with '\0'
 +			if ((line = fdgetline(data.client, buffer, sizeof (buffer), &bufsize, &offset)) == NULL) {
@@ -299,7 +308,7 @@ Index: src/smtp-gated.c
 +				data.sslproxy_ssl = strchr(ssl_start, 's') ? 1 : 0;
 +
 +				// Successfully parsed the SSLproxy line, so we are behind an SSLproxy
-+                data.behind_sslproxy = 1;
++				data.behind_sslproxy = 1;
 +			} else {
 +				// @attention Client should not send multiple lines after 220, so grab the first one and continue.
 +				//log_action(LOG_DEBUG, "Client said: %s", line);
@@ -307,12 +316,12 @@ Index: src/smtp-gated.c
 +				break;
 +			}
 +		}
-+    	CLEAR_TIMEOUT();
++		CLEAR_TIMEOUT();
 +
  		/* fast DoS checks */
  		if (children >= max_connections_real) {
  			log_action(LOG_INFO, "Rejecting (%d) connection from %s:%d", children, inet_ntoa(origin.sin_addr), ntohs(origin.sin_port));
-@@ -3168,9 +3357,11 @@ restart:
+@@ -3168,9 +3346,11 @@ restart:
  			}
  		}
  
