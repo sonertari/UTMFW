@@ -97,10 +97,6 @@ class Sslproxy extends View
 				'title' => _TITLE2('Expired Connection Check Period'),
 				'info' => _HELPBOX2('Check for expired connections every this many seconds.'),
 				),
-			'SSLShutdownRetryDelay' => array(
-				'title' => _TITLE2('SSL Shutdown Retry Delay'),
-				'info' => _HELPBOX2('Retry to shut ssl conns down after this many micro seconds. Increasing this delay may avoid dirty shutdowns on slow connections, but increases resource usage, such as file desriptors and memory.'),
-				),
 			'LogStats' => array(
 				'title' => _TITLE2('Log Statistics'),
 				'info' => _HELPBOX2('Log statistics to syslog.'),

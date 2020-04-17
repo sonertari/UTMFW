@@ -267,9 +267,6 @@ $ModelConfig = array(
     'ExpiredConnCheckPeriod' => array(
         'type' => UINT,
 		),
-    'SSLShutdownRetryDelay' => array(
-        'type' => UINT,
-		),
     'LogStats' => array(
         'type' => STR_yes_no,
 		),
