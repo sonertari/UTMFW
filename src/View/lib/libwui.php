@@ -1024,7 +1024,7 @@ function SumData(&$data, $stats)
  */
 function SetRefreshInterval()
 {
-	global $View;
+	global $View, $TopMenu;
 
 	if (filter_has_var(INPUT_POST, 'RefreshInterval')) {
 		if (preg_match('/^\d+$/', filter_input(INPUT_POST, 'RefreshInterval'))) {
