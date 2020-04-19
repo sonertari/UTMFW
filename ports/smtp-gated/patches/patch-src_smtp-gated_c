@@ -148,7 +148,7 @@ Index: src/smtp-gated.c
  			i = dump_config_by_name(arg1, config_options, 0);
  			exit(i);
  		case CMD_KK:
-@@ -3136,7 +3149,172 @@ restart:
+@@ -3136,7 +3149,266 @@ restart:
  		log_action(LOG_WARNING, "MEMLEAK_TESTING defined, allocating bogus %s bytes", MEMLEAK_TESTING);
  		malloc(MEMLEAK_TESTING);
  #endif
@@ -161,6 +161,7 @@ Index: src/smtp-gated.c
 +		int offset = 0;
 +		data.saved_line = NULL;
 +		data.behind_sslproxy = 0;
++		int sslproxy_error = 0;
 +
 +		SET_TIMEOUT(config.timeout_connect);
 +		for (;;) {
@@ -170,71 +171,122 @@ Index: src/smtp-gated.c
 +				break;
 +			}
 +			// SSLproxy: [127.0.0.1]:34649,[192.168.3.24]:47286,[74.125.206.108]:465,s,soner
-+			if (!strncasecmp(line, "SSLproxy:", 9)) {
++			if (!data.behind_sslproxy && !strncasecmp(line, "SSLproxy:", 9)) {
 +				log_action(LOG_DEBUG, line);
 +
-+				char *ip_start = strchr(line, '[') + 1;
-+				char *ip_end = strchr(ip_start, ']');
-+				char *port_start = strchr(ip_end, ':') + 1;
-+				char *port_end = strchr(port_start, ',');
++				// The checks here cannot cover all possible error conditions
++				// But we should at least avoid crashes, for example caused by passing NULL pointers to str*() functions
++				char *ip_start = strchr(line, '[');
++				if (!ip_start) {
++					log_action(LOG_ERR, "Unable to find sslproxy ip_start: %s\n", line);
++					sslproxy_error = 1;
++					break;
++				}
++				ip_start++;
 +
-+				if (!ip_start || !ip_end || !port_start || !port_end) {
-+					log_action(LOG_ERR, "Unable to find sslproxy addr: %s", line);
-+					exit(0);
++				char *ip_end = strchr(ip_start, ']');
++				if (!ip_end) {
++					log_action(LOG_ERR, "Unable to find sslproxy ip_end: %s\n", line);
++					sslproxy_error = 1;
++					break;
++				}
++
++				char *port_start = strchr(ip_end, ':');
++				if (!port_start) {
++					log_action(LOG_ERR, "Unable to find sslproxy port_start: %s\n", line);
++					sslproxy_error = 1;
++					break;
++				}
++				port_start++;
++
++				char *port_end = strchr(port_start, ',');
++				if (!port_end) {
++					log_action(LOG_ERR, "Unable to find sslproxy port_end: %s\n", line);
++					sslproxy_error = 1;
++					break;
 +				}
 +
 +				int addr_len = ip_end - ip_start;
 +				if (addr_len > MAX_IPADDR_LEN) {
-+					log_action(LOG_ERR, "sslproxy addr_len larger than MAX_IPADDR_LEN: %d\n", addr_len);
-+					exit(0);
++					log_action(LOG_ERR, "sslproxy addr_len greater than MAX_IPADDR_LEN: %d\n", addr_len);
++					sslproxy_error = 1;
++					break;
 +				}
 +
-+				char actual_target_str[MAX_IPADDR_LEN + 1];
++				// We can use addr_len for size restriction here, because we check it against MAX_IPADDR_LEN above
++				char actual_target_str[addr_len + 1];
 +				strncpy(actual_target_str, ip_start, addr_len);
 +				actual_target_str[addr_len] = '\0';
 +				if (inet_pton(AF_INET, actual_target_str, &(data.actual_target.sin_addr)) != 1) {
 +					log_action(LOG_ERR, "Cannot inet_pton sslproxy addr: %s\n", actual_target_str);
-+					exit(0);
++					sslproxy_error = 1;
++					break;
 +				}
 +
 +				int port_len = port_end - port_start;
 +				if (port_len > MAX_PORT_LEN) {
-+					log_action(LOG_ERR, "sslproxy port_len larger than MAX_PORT_LEN: %d\n", port_len);
-+					exit(0);
++					log_action(LOG_ERR, "sslproxy port_len greater than MAX_PORT_LEN: %d\n", port_len);
++					sslproxy_error = 1;
++					break;
 +				}
 +
++				// @attention Do not use port_len as array size here, because we reuse the port array below possibly with greater port_len
 +				char port[MAX_PORT_LEN + 1];
++				// We can use port_len for size restriction here, because we check it against MAX_PORT_LEN above
 +				strncpy(port, port_start, port_len);
 +				port[port_len] = '\0';
 +				data.actual_target.sin_port = htons(atoi(port));
 +				
-+				ip_start = strchr(port_end, '[') + 1;
-+				ip_end = strchr(ip_start, ']');
-+				port_start = strchr(ip_end, ':') + 1;
-+				port_end = strchr(port_start, ',');
++				ip_start = strchr(port_end, '[');
++				if (!ip_start) {
++					log_action(LOG_ERR, "Unable to find sslproxy src ip_start: %s\n", line);
++					sslproxy_error = 1;
++					break;
++				}
++				ip_start++;
 +
-+				if (!ip_start || !ip_end || !port_start || !port_end) {
-+					log_action(LOG_CRIT, "Unable to find sslproxy src addr: %s", line);
-+					exit(0);
++				ip_end = strchr(ip_start, ']');
++				if (!ip_end) {
++					log_action(LOG_ERR, "Unable to find sslproxy src ip_end: %s\n", line);
++					sslproxy_error = 1;
++					break;
++				}
++
++				port_start = strchr(ip_end, ':');
++				if (!port_start) {
++					log_action(LOG_ERR, "Unable to find sslproxy src port_start: %s\n", line);
++					sslproxy_error = 1;
++					break;
++				}
++				port_start++;
++
++				port_end = strchr(port_start, ',');
++				if (!port_end) {
++					log_action(LOG_ERR, "Unable to find sslproxy src port_end: %s\n", line);
++					sslproxy_error = 1;
++					break;
 +				}
 +
 +				addr_len = ip_end - ip_start;
 +				if (addr_len > MAX_IPADDR_LEN) {
-+					log_action(LOG_ERR, "src addr_len larger than MAX_IPADDR_LEN: %d\n", addr_len);
-+					exit(0);
++					log_action(LOG_ERR, "src addr_len greater than MAX_IPADDR_LEN: %d\n", addr_len);
++					sslproxy_error = 1;
++					break;
 +				}
 +
 +				strncpy(data.origin_str, ip_start, addr_len);
 +				data.origin_str[addr_len] = '\0';
 +				if (inet_pton(AF_INET, data.origin_str, &(data.origin.sin_addr)) != 1) {
 +					log_action(LOG_ERR, "Cannot inet_pton src addr: %s\n", data.origin_str);
-+					exit(0);
++					sslproxy_error = 1;
++					break;
 +				}
 +
 +				port_len = port_end - port_start;
 +				if (port_len > MAX_PORT_LEN) {
-+					log_action(LOG_ERR, "src port_len larger than MAX_PORT_LEN: %d\n", port_len);
-+					exit(0);
++					log_action(LOG_ERR, "src port_len greater than MAX_PORT_LEN: %d\n", port_len);
++					sslproxy_error = 1;
++					break;
 +				}
 +
 +				strncpy(port, port_start, port_len);
@@ -243,33 +295,56 @@ Index: src/smtp-gated.c
 +				
 +				origin = data.origin;
 +
-+				ip_start = strchr(port_end, '[') + 1;
-+				ip_end = strchr(ip_start, ']');
-+				port_start = strchr(ip_end, ':') + 1;
-+				port_end = strchr(port_start, ',');
++				ip_start = strchr(port_end, '[');
++				if (!ip_start) {
++					log_action(LOG_ERR, "Unable to find sslproxy dst ip_start: %s\n", line);
++					sslproxy_error = 1;
++					break;
++				}
++				ip_start++;
 +
-+				if (!ip_start || !ip_end || !port_start || !port_end) {
-+					log_action(LOG_CRIT, "Unable to find sslproxy dst addr: %s", line);
-+					exit(0);
++				ip_end = strchr(ip_start, ']');
++				if (!ip_end) {
++					log_action(LOG_ERR, "Unable to find sslproxy dst ip_end: %s\n", line);
++					sslproxy_error = 1;
++					break;
++				}
++
++				port_start = strchr(ip_end, ':');
++				if (!port_start) {
++					log_action(LOG_ERR, "Unable to find sslproxy dst port_start: %s\n", line);
++					sslproxy_error = 1;
++					break;
++				}
++				port_start++;
++
++				port_end = strchr(port_start, ',');
++				if (!port_end) {
++					log_action(LOG_ERR, "Unable to find sslproxy dst port_end: %s\n", line);
++					sslproxy_error = 1;
++					break;
 +				}
 +
 +				addr_len = ip_end - ip_start;
 +				if (addr_len > MAX_IPADDR_LEN) {
-+					log_action(LOG_ERR, "dst addr_len larger than MAX_IPADDR_LEN: %d\n", addr_len);
-+					exit(0);
++					log_action(LOG_ERR, "dst addr_len greater than MAX_IPADDR_LEN: %d\n", addr_len);
++					sslproxy_error = 1;
++					break;
 +				}
 +
 +				strncpy(data.target_str, ip_start, addr_len);
 +				data.target_str[addr_len] = '\0';
 +				if (inet_pton(AF_INET, data.target_str, &(data.target.sin_addr)) != 1) {
 +					log_action(LOG_ERR, "Cannot inet_pton dst addr: %s\n", data.target_str);
-+					exit(0);
++					sslproxy_error = 1;
++					break;
 +				}
 +
 +				port_len = port_end - port_start;
 +				if (port_len > MAX_PORT_LEN) {
-+					log_action(LOG_ERR, "dst port_len larger than MAX_PORT_LEN: %d\n", port_len);
-+					exit(0);
++					log_action(LOG_ERR, "dst port_len greater than MAX_PORT_LEN: %d\n", port_len);
++					sslproxy_error = 1;
++					break;
 +				}
 +
 +				strncpy(port, port_start, port_len);
@@ -285,27 +360,38 @@ Index: src/smtp-gated.c
 +
 +					char *user = ssl_end + 1;
 +
++					// It is safe to use strlen() here, because fdgetline() trims the \r\n at the end of line
 +					int user_len = strlen(user);
 +					if (user_len > MAX_USER_LEN) {
-+						log_action(LOG_ERR, "user_len larger than MAX_USER_LEN: %d\n", user_len);
-+						exit(0);
++						log_action(LOG_ERR, "user_len greater than MAX_USER_LEN: %d\n", user_len);
++						sslproxy_error = 1;
++						break;
 +					}
 +
++					// We can use user_len for size restriction here, because we check it against MAX_USER_LEN above
 +					strncpy(data.sslproxy_user, user, user_len);
 +					data.sslproxy_user[user_len] = '\0';
 +				} else {
++					// It is safe to use strlen() here, because fdgetline() trims the \r\n at the end of line
 +					ssl_len = strlen(ssl_start);
 +
 +					strncpy(data.sslproxy_user, "Unknown", 7);
 +					data.sslproxy_user[7] = '\0';
 +				}
 +
-+				if (ssl_len > 1) {
-+					log_action(LOG_ERR, "ssl_len larger than 1: %d\n", ssl_len);
-+					exit(0);
++				if (ssl_len != 1) {
++					log_action(LOG_ERR, "ssl_len not 1: %d\n", ssl_len);
++					sslproxy_error = 1;
++					break;
 +				}
 +
-+				data.sslproxy_ssl = strchr(ssl_start, 's') ? 1 : 0;
++				if (ssl_start[0] != 'p' && ssl_start[0] != 's') {
++					log_action(LOG_ERR, "ssl char not p/s: %c\n", ssl_start[0]);
++					sslproxy_error = 1;
++					break;
++				}
++
++				data.sslproxy_ssl = ssl_start[0] = 's' ? 1 : 0;
 +
 +				// Successfully parsed the SSLproxy line, so we are behind an SSLproxy
 +				data.behind_sslproxy = 1;
@@ -318,10 +404,18 @@ Index: src/smtp-gated.c
 +		}
 +		CLEAR_TIMEOUT();
 +
++		if (sslproxy_error) {
++			log_action(LOG_INFO, "SSLproxy error in connection from %s:%d", inet_ntoa(origin.sin_addr), ntohs(origin.sin_port));
++			fdprintf(client, "%03d %s %s\n", CONN_REJ_CODE, config.proxy_name, "SSLproxy error");
++			SAFE_CLOSE(client);
++			stats->rejects_other++;
++			continue;
++		}
++
  		/* fast DoS checks */
  		if (children >= max_connections_real) {
  			log_action(LOG_INFO, "Rejecting (%d) connection from %s:%d", children, inet_ntoa(origin.sin_addr), ntohs(origin.sin_port));
-@@ -3168,9 +3346,11 @@ restart:
+@@ -3168,9 +3440,11 @@ restart:
  			}
  		}
  
