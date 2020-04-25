@@ -767,8 +767,8 @@ diff -Nur snort-2.9.15/src/dynamic-preprocessors/utmfw/Makefile.in snort-2.9.15_
 +.NOEXPORT:
 diff -Nur snort-2.9.15/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.15_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c
 --- snort-2.9.15/src/dynamic-preprocessors/utmfw/spp_utmfw.c	1970-01-01 02:00:00.000000000 +0200
-+++ snort-2.9.15_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c	2020-04-20 21:45:17.251782564 +0300
-@@ -0,0 +1,763 @@
++++ snort-2.9.15_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c	2020-04-25 23:17:03.126170994 +0300
+@@ -0,0 +1,744 @@
 +/****************************************************************************
 + *
 + * Copyright (C) 2017-2020 Soner Tari <sonertari@gmail.com>. All rights reserved.
@@ -801,29 +801,12 @@ diff -Nur snort-2.9.15/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.15_
 + * This file is part of the UTMFW project dynamically loadable preprocessor.
 + *
 + * NOTES:
-+ * "preprocessor normalize_tcp: block" should be disabled for this preprocessor
-+ * to work properly, i.e. do not allow packet drops during TCP normalization. 
-+ * Otherwise, connections fail and snort keeps reporting the original/unmodified 
-+ * packets. Other normalize_tcp options seem to be fine.
-+ * 
-+ * Snort sometimes fails to feed the packets from the server to the client to this 
-+ * preprocessor after we translate the SessionControlBlock addresses, as a result
-+ * we cannot translate the addresses in those packets. This random 
-+ * issue seems to happen because the session cache functions get confused after 
-+ * we modify the SessionControlBlock of the session. Apparently, we are not 
-+ * supposed to modify the SessionControlBlock here. Unfortunately, this issue 
-+ * seems to happen in about 50% of the connections.
-+ * 
 + * If this preprocessor successfully translates the addresses, the rules make 
 + * use of and the logs report those translated addresses correctly.
 + * 
 + * Note that we cannot translate the addresses in the packets until we receive 
 + * the first packet with the SSLproxy line. Those are usually the three-way
 + * handshake packets.
-+ * 
-+ * TODO:
-+ * If we cannot solve the issue mentioned above, we should patch the Session 
-+ * preprocessor with this code, so that it works all the time.
 + */
 +
 +#include <assert.h>
@@ -927,9 +910,9 @@ diff -Nur snort-2.9.15/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.15_
 +#define DST_PORT_MATCH_STR "utmfw_dpp: dst port match, packet processed for SSLproxy"
 +#define MAX_PORTS 10
 +
-+const int MAJOR_VERSION = 1;
-+const int MINOR_VERSION = 1;
-+const int BUILD_VERSION = 1;
++const int MAJOR_VERSION = 2;
++const int MINOR_VERSION = 0;
++const int BUILD_VERSION = 0;
 +const char *PREPROC_NAME = "UTMFW_PP";
 +
 +#define UtmfwSetup DYNAMIC_PREPROC_SETUP
@@ -1083,14 +1066,12 @@ diff -Nur snort-2.9.15/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.15_
 +		DynamicPreprocessorFatalMessage("Streaming & reassembly must be enabled for utmfw preprocessor\n");
 +	}
 +
-+	// "preprocessor normalize_tcp: block" should be disabled for this preprocessor
-+	// to work properly. Other normalize_tcp options seem to be fine.
++	// Register ports with session and stream
++	_dpd.sessionAPI->enable_preproc_all_ports_all_policies(sc, PP_UTMFW, PROTO_BIT__TCP);
 +
 +	int i;
 +	for (i = 0; config->portsToListen[i] != -1 && i < MAX_PORTS; i++) {
-+		// @attention Register ports with session and stream, otherwise we cannot get any packets
-+		_dpd.sessionAPI->enable_preproc_for_port(sc, PP_UTMFW, PROTO_BIT__TCP, config->portsToListen[i]);
-+		// The SSLproxy info is in the packets from client to server only, but we should translate addresses in both directions
++		// SSLproxy info is in packets from client to server only, but we should translate addresses in both directions
 +		_dpd.streamAPI->register_reassembly_port(NULL, config->portsToListen[i], SSN_DIR_FROM_SERVER | SSN_DIR_FROM_CLIENT);
 +	}
 +
@@ -1532,6 +1513,45 @@ diff -Nur snort-2.9.15/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.15_
 +}
 +#endif
 +
+diff -Nur snort-2.9.15/src/preprocessors/spp_session.c snort-2.9.15_utmfw/src/preprocessors/spp_session.c
+--- snort-2.9.15/src/preprocessors/spp_session.c	2019-10-03 09:42:32.000000000 +0300
++++ snort-2.9.15_utmfw/src/preprocessors/spp_session.c	2020-04-25 21:45:03.737359887 +0300
+@@ -1943,7 +1943,7 @@
+ 
+     if(IS_IP4(p))
+     {
+-        if (sfip_fast_eq4(&p->ip4h->ip_addrs->ip_src, &scb->client_ip))
++        if (sfip_fast_eq4(&p->ip4h->ip_addrs->ip_src, &scb->client_ip) && p->sp == scb->client_port)
+         {
+             if (GET_IPH_PROTO(p) == IPPROTO_TCP)
+                 determinePacketDirection(p, p->tcph->th_sport, scb->client_port, true);
+@@ -1952,7 +1952,7 @@
+             else
+                 p->packet_flags |= PKT_FROM_CLIENT;
+         }
+-        else if (sfip_fast_eq4(&p->ip4h->ip_addrs->ip_dst, &scb->client_ip))
++        else if (sfip_fast_eq4(&p->ip4h->ip_addrs->ip_dst, &scb->client_ip) && p->dp == scb->client_port)
+         {
+             if (GET_IPH_PROTO(p) == IPPROTO_TCP)
+                 determinePacketDirection(p, p->tcph->th_dport, scb->client_port, false);
+@@ -1964,7 +1964,7 @@
+     }
+     else /* IS_IP6(p) */
+     {
+-        if (sfip_fast_eq6(&p->ip6h->ip_addrs->ip_src, &scb->client_ip))
++        if (sfip_fast_eq6(&p->ip6h->ip_addrs->ip_src, &scb->client_ip) && p->sp == scb->client_port)
+         {
+             if (GET_IPH_PROTO(p) == IPPROTO_TCP)
+                 determinePacketDirection(p, p->tcph->th_sport, scb->client_port, true);
+@@ -1973,7 +1973,7 @@
+             else
+                 p->packet_flags |= PKT_FROM_CLIENT;
+         }
+-        else if (sfip_fast_eq6(&p->ip6h->ip_addrs->ip_dst, &scb->client_ip))
++        else if (sfip_fast_eq6(&p->ip6h->ip_addrs->ip_dst, &scb->client_ip) && p->dp == scb->client_port)
+         {
+             if (GET_IPH_PROTO(p) == IPPROTO_TCP)
+                 determinePacketDirection(p, p->tcph->th_dport, scb->client_port, false);
 diff -Nur snort-2.9.15/src/snort_debug.h snort-2.9.15_utmfw/src/snort_debug.h
 --- snort-2.9.15/src/snort_debug.h	2019-10-03 09:42:32.000000000 +0300
 +++ snort-2.9.15_utmfw/src/snort_debug.h	2019-11-30 22:41:39.032646350 +0300
