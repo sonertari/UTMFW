@@ -767,8 +767,8 @@ diff -Nur snort-2.9.15/src/dynamic-preprocessors/utmfw/Makefile.in snort-2.9.15_
 +.NOEXPORT:
 diff -Nur snort-2.9.15/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.15_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c
 --- snort-2.9.15/src/dynamic-preprocessors/utmfw/spp_utmfw.c	1970-01-01 02:00:00.000000000 +0200
-+++ snort-2.9.15_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c	2020-04-25 23:17:03.126170994 +0300
-@@ -0,0 +1,744 @@
++++ snort-2.9.15_utmfw/src/dynamic-preprocessors/utmfw/spp_utmfw.c	2020-04-26 22:21:43.102812313 +0300
+@@ -0,0 +1,753 @@
 +/****************************************************************************
 + *
 + * Copyright (C) 2017-2020 Soner Tari <sonertari@gmail.com>. All rights reserved.
@@ -807,6 +807,11 @@ diff -Nur snort-2.9.15/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.15_
 + * Note that we cannot translate the addresses in the packets until we receive 
 + * the first packet with the SSLproxy line. Those are usually the three-way
 + * handshake packets.
++ * 
++ * Setting the packet established flag by scb->ha_state.session_flags |= SSNFLAG_ESTABLISHED
++ * fixes the rules with flow: established option. However, a copy of the packet 
++ * with the SSLproxy line still remains as stale, and eventually times out, or 
++ * is processed while snort terminates, whichever happens first.
 + */
 +
 +#include <assert.h>
@@ -1402,6 +1407,10 @@ diff -Nur snort-2.9.15/src/dynamic-preprocessors/utmfw/spp_utmfw.c snort-2.9.15_
 +			scb->server_ip.ia32[3] = *((uint32_t *)&dst_addr);
 +			scb->server_port = htons(sslproxy_dst_port);
 +			DEBUG_WRAP(DebugMessage(DEBUG_UTMFW, "NEW dst = %s:%u\n", inet_ntoa(&scb->server_ip), sslproxy_dst_port););
++
++			// Set conn established, otherwise rules with flow established option do not work
++			// @attention Note that we cannot set packet established flag directly: p->flags |= PKT_STREAM_EST, MarkupPacketFlags() does that for us
++			scb->ha_state.session_flags |= SSNFLAG_ESTABLISHED;
 +
 +			// Src and dst addresses updated, log alert
 +			_dpd.alertAdd(GENERATOR_UTMFW, DST_PORT_MATCH, 1, 0, 3, DST_PORT_MATCH_STR, 0);
