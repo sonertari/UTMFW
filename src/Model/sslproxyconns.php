@@ -49,8 +49,8 @@ class Sslproxyconns extends Sslproxy
 				$cols['DProto']= $match[8];
 				$cols['User']= $match[10];
 			} else {
-				// IDLE: thr=0, id=1, ce=1 cc=1, at=0 ct=0, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443, user=soner, valid=0, pc=0
-				$re= "/^IDLE: thr=(\d+), id=(\d+),.*, at=(\d+) ct=(\d+), src_addr=(\S+|-):(\d+|-), dst_addr=(\S+|-):(\d+|-), user=(\S+|-), valid=\d+, pc=\d+$/";
+				// IDLE: thr=0, id=1, ce=1 cc=1, at=0 ct=0, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443, user=soner, valid=0
+				$re= "/^IDLE: thr=(\d+), id=(\d+),.*, at=(\d+) ct=(\d+), src_addr=(\S+|-):(\d+|-), dst_addr=(\S+|-):(\d+|-), user=(\S+|-), valid=\d+$/";
 				if (preg_match($re, $cols['Log'], $match)) {
 					$cols['ThreadIdx']= $match[1];
 					$cols['ConnIdx']= $match[2];
