@@ -49,8 +49,8 @@ class Sslproxyconns extends Sslproxy
 				$cols['DProto']= $match[8];
 				$cols['User']= $match[10];
 			} else {
-				// IDLE: thr=0, id=1, ce=1 cc=1, at=0 ct=0, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443, user=soner, valid=0
-				$re= "/^IDLE: thr=\d+, id=\d+,.*, at=(\d+) ct=(\d+), src_addr=(\S+|-):(\d+|-), dst_addr=(\S+|-):(\d+|-), user=(\S+|-), valid=\d+$/";
+				// IDLE: atime=114, ctime=114, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443, user=soner, valid=0
+				$re= "/^IDLE: atime=(\d+), ctime=(\d+), src_addr=(\S+|-):(\d+|-), dst_addr=(\S+|-):(\d+|-), user=(\S+|-), valid=\d+$/";
 				if (preg_match($re, $cols['Log'], $match)) {
 					$cols['IdleTime']= $match[1];
 					$cols['IdleDuration']= $match[2];
@@ -58,8 +58,8 @@ class Sslproxyconns extends Sslproxy
 					$cols['IdleDstAddr']= $match[5];
 					$cols['IdleUser']= $match[7];
 				} else {
-					// EXPIRED: thr=1, id=1, time=0, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443, user=soner, valid=0
-					$re= "/^EXPIRED: thr=\d+, id=\d+, time=(\d+), src_addr=(\S+|-):(\d+|-), dst_addr=(\S+|-):(\d+|-), user=(\S+|-), valid=\d+$/";
+					// EXPIRED: atime=124, ctime=124, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443, user=soner, valid=0
+					$re= "/^EXPIRED: atime=(\d+), ctime=\d+, src_addr=(\S+|-):(\d+|-), dst_addr=(\S+|-):(\d+|-), user=(\S+|-), valid=\d+$/";
 					if (preg_match($re, $cols['Log'], $match)) {
 						$cols['ExpiredIdleTime']= $match[1];
 						$cols['ExpiredSrcAddr']= $match[2];
