@@ -461,7 +461,7 @@ function ValidateArgs($commands, $command, $argv, $check)
 
 	$helpmsg= $commands[$command]['desc'];
 	$logmsg= $commands[$command]['desc'];
-	
+
 	$valid= FALSE;
 	// Check each argument in order
 	for ($argpos= 0; $argpos < $check; $argpos++) {

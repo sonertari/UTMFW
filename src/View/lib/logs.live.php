@@ -42,7 +42,7 @@ $View->Controller($Output, 'GetFileLineCount', $LogFile, $SearchRegExp);
 $LogSize= $Output[0];
 
 require_once($VIEW_PATH.'/header.php');
-		
+
 PrintLiveLogHeaderForm();
 ?>
 <table id="logline">

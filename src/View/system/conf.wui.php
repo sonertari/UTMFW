@@ -167,7 +167,7 @@ require_once($VIEW_PATH.'/header.php');
 				PrintHelpBox(_HELPBOX('Here you can change the web administration interface passwords for admin and user. Passwords should have at least 8 alphanumeric characters.
 
 Admin can change the user password without knowing the current user password. But if you forget the admin password, you should login to the system as root and run the following on the command line to set the password to soner123:
-<code>/usr/bin/chpass -a "admin:$(/usr/bin/encrypt `/bin/echo -n soner123 | sha1 -`):1000:1000::0:0:UTMFW admin:/home/admin:/bin/ksh"</code>'));
+<code>/usr/bin/chpass -a "admin:$(/usr/bin/encrypt `/bin/echo -n soner123 | sha1 -`):1000:1000::0:0:UTMFW admin:/home/admin:/home/admin/ctlr"</code>'));
 				?>
 			</td>
 		</tr>

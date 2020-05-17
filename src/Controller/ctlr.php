@@ -52,6 +52,11 @@ if (filter_has_var(INPUT_SERVER, 'SERVER_ADDR')) {
 
 $ArgV= array_slice($argv, 1);
 
+// -c is added when phpseclib channel exec() is used, discard it
+if ($ArgV[0] === '-c') {
+	$ArgV= array_slice($ArgV, 1);
+}
+
 if ($ArgV[0] === '-t') {
 	$ArgV= array_slice($ArgV, 1);
 
@@ -63,9 +68,14 @@ if ($ArgV[0] === '-t') {
 	$INSTALL_USER= posix_getpwuid(posix_getuid())['name'];
 }
 
+// We enclose each shell argument between single quotes, even if empty,
+// concat and enclose them between double quotes, and then pass it here as a single shell arg.
+if (preg_match_all("/'([^']*)'/", $ArgV[0], $match)) {
+	$ArgV= $match[1];
+}
+
 // Controller runs using the session locale of View
 $Locale= $ArgV[0];
-
 $View= $ArgV[1];
 
 if (array_key_exists($View, $ModelFiles)) {

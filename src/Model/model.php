@@ -565,7 +565,11 @@ class Model
 
 					if ($retval === 0) {
 						exec("cd /etc/skel; /bin/cp -pR . /home/$user 2>&1", $output, $retval);
-						exec("/bin/echo '/usr/bin/doas /var/www/htdocs/utmfw/Controller/ctlr.php \"\$@\"' > /home/$user/ctlr 2>&1");
+
+						exec("/bin/echo '#!/bin/sh -' > /home/$user/ctlr 2>&1");
+						exec("/bin/echo '/usr/bin/doas /var/www/htdocs/utmfw/Controller/ctlr.php \"\$@\"' >> /home/$user/ctlr 2>&1");
+						exec("/sbin/chown $user /home/$user/ctlr 2>&1");
+						exec("/bin/chmod 100 /home/$user/ctlr 2>&1");
 
 						if ($retval === 0) {
 							exec("/usr/sbin/pwd_mkdb -p /etc/master.passwd 2>&1", $output, $retval);

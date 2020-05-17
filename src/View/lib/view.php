@@ -91,14 +91,17 @@ class View
 
 			if ($this->EscapeArgs($argv, $cmdline)) {
 				$locale= $_SESSION['Locale'];
-				$cmdline= "/usr/bin/doas $ctlr $locale $this->Model $cmdline";
 				
 				// Init command output
 				$outputArray= array();
 
 				$executed= TRUE;
 				if ($UseSSH) {
-					// Subsequent calls use the encrypted password in the cookie, so we should decrypt it first.
+					// The login shells of admin and user users are set to ctlr, so we just pass down the args
+					// @attention All args should be enclosed between single quotes, otherwise the shell expands them
+					$cmdline= "'$locale' '$this->Model' $cmdline";
+
+					// Subsequent calls use the encrypted password in the cookie, so we should decrypt it first
 					$ciphertext_base64= $_COOKIE['passwd'];
 					$ciphertext= base64_decode($ciphertext_base64);
 
@@ -129,6 +132,8 @@ class View
 						$executed= FALSE;
 					}
 				} else {
+					// Runs the command as the www user
+					$cmdline= "/usr/bin/doas $ctlr $locale $this->Model $cmdline";
 					/// @bug http://bugs.php.net/bug.php?id=49847, fixed/closed in SVN on 141009
 					exec($cmdline, $outputArray);
 				}
@@ -144,12 +149,12 @@ class View
 						$errorStr= $decoded[1];
 						$retval= $decoded[2];
 					} else {
-						$msg= "Failed decoding output: $outputArray[0]";
+						$msg= 'Failed decoding output: '.print_r($outputArray[0], TRUE);
 						wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "$msg, ($cmdline)");
 						PrintHelpWindow($msg, 'auto', 'ERROR');
 					}
 
-					// Show error, if any
+					// Show errors, if any
 					if ($errorStr !== '') {
 						$error= explode("\n", $errorStr);
 
@@ -185,12 +190,23 @@ class View
 		$ssh = new Net_SSH2('localhost');
 		if ($ssh->login($user, $passwd)) {
 			$hostname= gethostname();
-			/// @attention Trim the newline
-			$output= trim($ssh->exec('hostname'));
-			if ($hostname == $output) {
+
+			$locale= $_SESSION['Locale'];
+			$cmdline= "'$locale' '$this->Model' 'GetMyName'";
+			$output= $ssh->exec($cmdline);
+			$decoded= json_decode($output, TRUE);
+			if ($decoded !== NULL && is_array($decoded)) {
+				$output= explode("\n", $decoded[0]);
+			} else {
+				$msg= 'Failed decoding output: '.print_r($output, TRUE);
+				wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "$msg, ($cmdline)");
+				PrintHelpWindow($msg, 'auto', 'ERROR');
+			}
+
+			if ($hostname == $output[0]) {
 				return TRUE;
 			} else {
-				wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "SSH test command failed: $hostname == $output");
+				wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "SSH test command failed: $hostname == $output[0]");
 			}
 		} else {
 			PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('Authentication failed'), 'auto', 'ERROR');
@@ -224,7 +240,7 @@ class View
 			$cmd= $argv[0];
 			$argv= array_slice($argv, 1);
   	
-			$cmdline= $cmd;
+			$cmdline= escapeshellarg($cmd);
 			foreach ($argv as $arg) {
 				$cmdline.= ' '.escapeshellarg($arg);
 			}
