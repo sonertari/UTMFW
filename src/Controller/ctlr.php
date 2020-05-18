@@ -68,45 +68,56 @@ if ($ArgV[0] === '-t') {
 	$INSTALL_USER= posix_getpwuid(posix_getuid())['name'];
 }
 
-// We enclose each shell argument between single quotes, even if empty,
-// concat and enclose them between double quotes, and then pass it here as a single shell arg.
-// This is for calling ctlr over ssh, otherwise each arg is passed separately,
-// i.e. normally Arg 0 contains just the locale arg without the enclosing single quotes.
-// We need explode() instead of preg_match_all() here, because regex cannot handle escaped single quotes
-if (count($ArgV) == 1) {
-	$ArgV= explode("' '", $ArgV[0]);
-	for ($i= 0; $i < count($ArgV); $i++) {
-		$ArgV[$i]= trim($ArgV[$i], "'");
-	}
+$retval= 1;
+
+// Arg 0 contains all of the args as a json encoded string
+if (count($ArgV) !== 1) {
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Too many args: '.print_r($ArgV, TRUE));
+	goto out;
+}
+
+$decoded= json_decode($ArgV[0], TRUE);
+if ($decoded !== NULL && is_array($decoded)) {
+	$ArgV= $decoded;
+} else {
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed decoding args: '.print_r($ArgV, TRUE));
+	goto out;
+}
+
+if (count($ArgV) < 3) {
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Not enough args: '.print_r($ArgV, TRUE));
+	goto out;
 }
 
 // Controller runs using the session locale of View
 $Locale= $ArgV[0];
 $View= $ArgV[1];
+$Command= $ArgV[2];
+
+$ArgV= array_slice($ArgV, 3);
 
 if (array_key_exists($View, $ModelFiles)) {
 	require_once($MODEL_PATH . '/' . $ModelFiles[$View]);
-}
-else {
-	ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "View not in ModelFiles: $View");
+} else {
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "View not in ModelFiles: $View");
+	goto out;
 }
 
 if (class_exists($Models[$View])) {
 	$Model= new $Models[$View]();
-}
-else {
+} else {
 	require_once($MODEL_PATH.'/model.php');
 	$Model= new Model();
-	ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "View not in Models: $View");
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "View not in Models: $View");
+	goto out;
 }
 
-$Command= $ArgV[2];
-
-/// @attention Do not set locale until after model file is included and model is created,
-/// otherwise strings recorded into logs are also translated, such as the strings on Commands array of models.
-/// Strings cannot be untranslated.
+/// @attention Do not set the locale until after the model file is included and the model is created,
+/// otherwise strings recorded into logs are also translated, such as the strings on the Commands array of models.
+/// Strings cannot be detranslated.
 if (!array_key_exists($Locale, $LOCALES)) {
-	$Locale= $DefaultLocale;
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Locale not in LOCALES: $Locale");
+	goto out;
 }
 
 putenv('LC_ALL='.$Locale);
@@ -117,80 +128,59 @@ bindtextdomain($Domain, $VIEW_PATH.'/locale');
 bind_textdomain_codeset($Domain, $LOCALES[$Locale]['Codeset']);
 textdomain($Domain);
 
-$retval= 1;
-
-// Postpone this arg count check until after the locale is set
-if (count($ArgV) < 3) {
-	$ErrorStr= print_r($ArgV, TRUE);
-	Error(_('Not enough args').": $ErrorStr");
-	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Not enough args: $ErrorStr");
-}
-else if (method_exists($Model, $Command)) {
-	$ArgV= array_slice($ArgV, 3);
-
-	if (array_key_exists($Command, $Model->Commands)) {
-		$run= FALSE;
-
-		ComputeArgCounts($Model->Commands, $ArgV, $Command, $ActualArgC, $ExpectedArgC, $AcceptableArgC, $ArgCheckC);
-
-		// Extra args are OK for now, will drop later
-		if ($ActualArgC >= $AcceptableArgC) {
-			if ($ArgCheckC === 0) {
-				$run= TRUE;
-			}
-			else {
-				// Check only the relevant args
-				$run= ValidateArgs($Model->Commands, $Command, $ArgV, $ArgCheckC);
-			}
-		}
-		else {
-			$ErrorStr= "[$AcceptableArgC]: $ActualArgC";
-			Error(_('Not enough args')." $ErrorStr");
-			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Not enough args $ErrorStr");
-		}
-
-		if ($run) {
-			if ($ActualArgC > $ExpectedArgC) {
-				$ErrorStr= "[$ExpectedArgC]: $ActualArgC: ".implode(', ', array_slice($ArgV, $ExpectedArgC));
-
-				// Drop extra arguments before passing to the function
-				$ArgV= array_slice($ArgV, 0, $ExpectedArgC);
-
-				Error(_('Too many args, truncating')." $ErrorStr");
-				ctlr_syslog(LOG_WARNING, __FILE__, __FUNCTION__, __LINE__, "Too many args, truncating $ErrorStr");
-			}
-
-			if (call_user_func_array(array($Model, $Command), $ArgV)) {
-				$retval= 0;
-			}
-		}
-		else {
-			Error(_('Not running command').": $Command");
-			ctlr_syslog(LOG_WARNING, __FILE__, __FUNCTION__, __LINE__, "Not running command: $Command");
-		}
-	}
-	else {
-		Error(_('Unsupported command').": $Command");
-		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Unsupported command: $Command");
-	}
-}
-else {
+if (!method_exists($Model, $Command)) {
 	$ErrorStr= "$Models[$View]->$Command()";
 	Error(_('Method does not exist').": $ErrorStr");
-	ctlr_syslog(LOG_WARNING, __FILE__, __FUNCTION__, __LINE__, "Method does not exist: $ErrorStr");
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Method does not exist: $ErrorStr");
+	goto out;
 }
 
+if (!array_key_exists($Command, $Model->Commands)) {
+	Error(_('Unsupported command').": $Command");
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Unsupported command: $Command");
+	goto out;
+}
+
+ComputeArgCounts($Model->Commands, $ArgV, $Command, $ActualArgC, $ExpectedArgC, $AcceptableArgC, $ArgCheckC);
+
+if ($ActualArgC < $AcceptableArgC) {
+	$ErrorStr= "[$AcceptableArgC]: $ActualArgC";
+	Error(_('Not enough args')." $ErrorStr");
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Not enough args $ErrorStr");
+	goto out;
+}
+
+if ($ActualArgC > $ExpectedArgC) {
+	$ErrorStr= "[$ExpectedArgC]: $ActualArgC: ".implode(', ', array_slice($ArgV, $ExpectedArgC));
+	Error(_('Too many args')." $ErrorStr");
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Too many args $ErrorStr");
+	goto out;
+}
+
+// Check only the relevant args
+if ($ArgCheckC === 0 || ValidateArgs($Model->Commands, $Command, $ArgV, $ArgCheckC)) {
+	if (call_user_func_array(array($Model, $Command), $ArgV)) {
+		$retval= 0;
+	} else {
+		ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Command failed: $Command");
+	}
+} else {
+	Error(_('Not running command').": $Command");
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Not running command: $Command");
+}
+
+out:
 /// @attention Always return errors, success or fail.
 /// @attention We need to include $retval in the array too, because phpseclib exec() does not provide access to retval.
 // Return an encoded array, so that the caller can easily separate output, error, and retval
 $msg= array($Output, $Error, $retval);
-/// @attention If json_encode() inserts slashes, it is hard to decode the base64 encoded graph string on the receiving end
+/// @attention If json_encode() inserts slashes, it is hard to decode the base64 encoded graph string at the receiving end
 $encoded= json_encode($msg, JSON_UNESCAPED_SLASHES);
 
 if ($encoded !== NULL) {
 	echo $encoded;
 } else {
-	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed encoding output and error: ' . print_r($msg, TRUE));
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed encoding output, error, and retval: '.print_r($msg, TRUE));
 }
 
 exit($retval);
