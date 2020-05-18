@@ -89,7 +89,10 @@ class View
 			// Arg 0 is $output, skip it
 			$argv= array_slice($argv, 1);
 
-			if ($this->EscapeArgs($argv, $cmdline)) {
+			// Don't use escapeshellarg() for args passed over ssh,
+			// it breaks the way we parse the args passed to the Controller over ssh.
+			// Otherwise we should use escapeshellarg() for exec().
+			if ($this->EscapeArgs($argv, !$UseSSH, $cmdline)) {
 				$locale= $_SESSION['Locale'];
 				
 				// Init command output
@@ -231,10 +234,11 @@ class View
 	 * Escapes the arguments passed to Controller() and builds the command line.
 	 *
 	 * @param array $argv Command and arguments array.
+	 * @param bool $use_escapeshellarg Whether to use escapeshellarg() or Escape().
 	 * @param string $cmdline Actual command line to run.
 	 * @return bool TRUE on success, FALSE on fail.
 	 */
-	function EscapeArgs($argv, &$cmdline)
+	function EscapeArgs($argv, $use_escapeshellarg, &$cmdline)
 	{
 		if (count($argv) > 0) {
 			$cmd= $argv[0];
@@ -242,7 +246,11 @@ class View
   	
 			$cmdline= escapeshellarg($cmd);
 			foreach ($argv as $arg) {
-				$cmdline.= ' '.escapeshellarg($arg);
+				if ($use_escapeshellarg) {
+					$cmdline.= ' '.escapeshellarg($arg);
+				} else {
+					$cmdline.= " '".Escape($arg, "'")."'";
+				}
 			}
 			return TRUE;
 		}

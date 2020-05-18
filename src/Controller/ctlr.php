@@ -70,8 +70,14 @@ if ($ArgV[0] === '-t') {
 
 // We enclose each shell argument between single quotes, even if empty,
 // concat and enclose them between double quotes, and then pass it here as a single shell arg.
-if (preg_match_all("/'([^']*)'/", $ArgV[0], $match)) {
-	$ArgV= $match[1];
+// This is for calling ctlr over ssh, otherwise each arg is passed separately,
+// i.e. normally Arg 0 contains just the locale arg without the enclosing single quotes.
+// We need explode() instead of preg_match_all() here, because regex cannot handle escaped single quotes
+if (count($ArgV) == 1) {
+	$ArgV= explode("' '", $ArgV[0]);
+	for ($i= 0; $i < count($ArgV); $i++) {
+		$ArgV[$i]= trim($ArgV[$i], "'");
+	}
 }
 
 // Controller runs using the session locale of View
@@ -113,7 +119,13 @@ textdomain($Domain);
 
 $retval= 1;
 
-if (method_exists($Model, $Command)) {
+// Postpone this arg count check until after the locale is set
+if (count($ArgV) < 3) {
+	$ErrorStr= print_r($ArgV, TRUE);
+	Error(_('Not enough args').": $ErrorStr");
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Not enough args: $ErrorStr");
+}
+else if (method_exists($Model, $Command)) {
 	$ArgV= array_slice($ArgV, 3);
 
 	if (array_key_exists($Command, $Model->Commands)) {
