@@ -71,18 +71,24 @@ if ($ArgV[0] === '-t') {
 $retval= 1;
 
 // Arg 0 contains all of the args as a json encoded string
-if (count($ArgV) !== 1) {
+if (count($ArgV) < 1) {
+	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Not enough args: '.print_r($ArgV, TRUE));
+	goto out;
+}
+
+if (count($ArgV) > 1) {
 	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Too many args: '.print_r($ArgV, TRUE));
 	goto out;
 }
 
 $decoded= json_decode($ArgV[0], TRUE);
-if ($decoded !== NULL && is_array($decoded)) {
-	$ArgV= $decoded;
-} else {
+
+if ($decoded == NULL || !is_array($decoded)) {
 	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed decoding args: '.print_r($ArgV, TRUE));
 	goto out;
 }
+
+$ArgV= $decoded;
 
 if (count($ArgV) < 3) {
 	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Not enough args: '.print_r($ArgV, TRUE));
@@ -94,23 +100,20 @@ $Locale= $ArgV[0];
 $View= $ArgV[1];
 $Command= $ArgV[2];
 
-$ArgV= array_slice($ArgV, 3);
-
-if (array_key_exists($View, $ModelFiles)) {
-	require_once($MODEL_PATH . '/' . $ModelFiles[$View]);
-} else {
+if (!array_key_exists($View, $ModelFiles)) {
 	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "View not in ModelFiles: $View");
 	goto out;
 }
 
-if (class_exists($Models[$View])) {
-	$Model= new $Models[$View]();
-} else {
-	require_once($MODEL_PATH.'/model.php');
-	$Model= new Model();
+require_once($MODEL_PATH . '/' . $ModelFiles[$View]);
+
+if (!class_exists($Models[$View])) {
+	Error(_('View not in Models').": $View");
 	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "View not in Models: $View");
 	goto out;
 }
+
+$Model= new $Models[$View]();
 
 /// @attention Do not set the locale until after the model file is included and the model is created,
 /// otherwise strings recorded into logs are also translated, such as the strings on the Commands array of models.
@@ -141,6 +144,9 @@ if (!array_key_exists($Command, $Model->Commands)) {
 	goto out;
 }
 
+// Discard locale, view, and command before computing arg counts
+$ArgV= array_slice($ArgV, 3);
+
 ComputeArgCounts($Model->Commands, $ArgV, $Command, $ActualArgC, $ExpectedArgC, $AcceptableArgC, $ArgCheckC);
 
 if ($ActualArgC < $AcceptableArgC) {
@@ -158,16 +164,18 @@ if ($ActualArgC > $ExpectedArgC) {
 }
 
 // Check only the relevant args
-if ($ArgCheckC === 0 || ValidateArgs($Model->Commands, $Command, $ArgV, $ArgCheckC)) {
-	if (call_user_func_array(array($Model, $Command), $ArgV)) {
-		$retval= 0;
-	} else {
-		ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Command failed: $Command");
-	}
-} else {
+if ($ArgCheckC > 0 && !ValidateArgs($Model->Commands, $Command, $ArgV, $ArgCheckC)) {
 	Error(_('Not running command').": $Command");
 	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Not running command: $Command");
+	goto out;
 }
+
+if (!call_user_func_array(array($Model, $Command), $ArgV)) {
+	ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Command failed: $Command");
+	goto out;
+}
+
+$retval= 0;
 
 out:
 /// @attention Always return errors, success or fail.
