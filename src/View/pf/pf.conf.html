@@ -590,6 +590,15 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                    block out proto tcp all
                    pass  out proto tcp from self user { &lt; 1000, dhartmei }
 
+             The example below permits users with uid between 1000 and 1500 to
+             open connections:
+
+                   block out proto tcp all
+                   pass  out proto tcp from self user { 999 &gt;&lt; 1501 }
+
+             The `:' operator, which works for port number matching, does not
+             work for <span class="bold">user</span> and <span class="bold">group</span> match.
+
 <a name="Nat"></a>
    <span class="bold">Translation</span>
      Translation options modify either the source or destination address and
@@ -1121,17 +1130,17 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              Timeout values can be reduced adaptively as the number of state
              table entries grows.
 
-             <span class="bold">adaptive.end</span> (60000 states by default)
+             <span class="bold">adaptive.start</span> (60000 states by default)
+                     When the number of state entries exceeds this value,
+                     adaptive scaling begins.  All timeout values are scaled
+                     linearly with factor (adaptive.end - number of states) /
+                     (adaptive.end - adaptive.start).
+             <span class="bold">adaptive.end</span> (120000 states by default)
                      When reaching this number of state entries, all timeout
                      values become zero, effectively purging all state entries
                      immediately.  This value is used to define the scale
                      factor; it should not actually be reached (set a lower
                      state limit, see below).
-             <span class="bold">adaptive.start</span> (120000 states by default)
-                     When the number of state entries exceeds this value,
-                     adaptive scaling begins.  All timeout values are scaled
-                     linearly with factor (adaptive.end - number of states) /
-                     (adaptive.end - adaptive.start).
 
              Adaptive timeouts are enabled by default, with an adaptive.start
              value equal to 60% of the state limit, and an adaptive.end value
@@ -1153,8 +1162,8 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              With 9000 state table entries, the timeout values are scaled to
              50% (tcp.first 60, tcp.established 43200).
 
-     "pfctl -F Reset" restores default values for following options: debug,
-     all limit options, loginterface, reassemble, skip, syncookies, all
+     "pfctl -F Reset" restores default values for the following options:
+     debug, all limit options, loginterface, reassemble, skip, syncookies, all
      timeouts.
 
 <a name="Queue"></a>
@@ -2264,11 +2273,12 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      include        = "include" filename
 
 <span class="bold">FILES</span>
-     <span class="underline">/etc/hosts</span>         Host name database.
-     <span class="underline">/etc/pf.conf</span>       Default location of the ruleset file.
-     <span class="underline">/etc/pf.os</span>         Default location of OS fingerprints.
-     <span class="underline">/etc/protocols</span>     Protocol name database.
-     <span class="underline">/etc/services</span>      Service name database.
+     <span class="underline">/etc/hosts</span>             Host name database.
+     <span class="underline">/etc/pf.conf</span>           Default location of the ruleset file.
+     <span class="underline">/etc/examples/pf.conf</span>  Example ruleset file.
+     <span class="underline">/etc/pf.os</span>             Default location of OS fingerprints.
+     <span class="underline">/etc/protocols</span>         Protocol name database.
+     <span class="underline">/etc/services</span>          Service name database.
 
 <span class="bold">SEE</span> <span class="bold">ALSO</span>
      pf(4), pflow(4), pfsync(4), pf.os(5), pfctl(8), pflogd(8)
