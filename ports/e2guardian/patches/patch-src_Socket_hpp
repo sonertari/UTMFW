@@ -11,7 +11,7 @@ Index: src/Socket.hpp
      // get local IP
      std::string getLocalIP();
      int getLocalPort();
-@@ -142,6 +144,8 @@ class Socket : public BaseSocket
+@@ -145,6 +147,8 @@ class Socket : public BaseSocket
      struct sockaddr_in my_adr;
      struct sockaddr_in peer_adr;
      int my_port;

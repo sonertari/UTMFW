@@ -41,15 +41,3 @@ Index: src/FatController.cpp
  #ifdef DGDEBUG
          std::cerr << itemcount << " " << builtline << std::endl;
  #endif
-@@ -1696,7 +1700,11 @@ int fc_controlit()   //
-         }
-         timeout.tv_sec = 5;
-         timeout.tv_nsec = (long) 0;
-+#if defined(__OpenBSD__)
-+        rc = syscall(SYS___thrsigdivert, signal_set, NULL, &timeout);
-+#else
-         rc = sigtimedwait(&signal_set, NULL, &timeout);
-+#endif
-         if (rc < 0) {
-             if (errno != EAGAIN) {
-                 syslog(LOG_INFO, "%sUnexpected error from sigtimedwait() %d %s", thread_id.c_str(), errno, strerror(errno));
