@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2004-2019 Soner Tari
+# Copyright (C) 2004-2020 Soner Tari
 #
 # This file is part of UTMFW.
 #
@@ -19,7 +19,7 @@
 ARCH=amd64
 
 ROOT_PATH=$(pwd)
-VERSION='6.6'
+VERSION='6.7'
 SUBVERSION=_$(date +%Y%m%d)
 VMAJ=${VERSION%%\.*}
 VMIN=${VERSION##*\.}
@@ -54,7 +54,7 @@ ISO_FILE=utmfw${VMAJ}${VMIN}${SUBVERSION}_${ARCH}.iso
 SYS_ID="OpenBSD ${VERSION} ${ARCH}"
 VOL_ID="UTMFW ${VERSION}${SUBVERSION} ${ARCH}"
 PREP_ID="Soner Tari <sonertari@gmail.org>"
-PUBLISH_ID="Copyright (C) 2018 Soner Tari, The UTMFW project"
+PUBLISH_ID="Copyright (C) 2020 Soner Tari, The UTMFW project"
 APP_ID="UTMFW is a UTM firewall running on OpenBSD ${VERSION}"
 
 echo $SYS_ID
