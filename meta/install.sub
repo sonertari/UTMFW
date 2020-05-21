@@ -659,7 +659,7 @@ __EOT
 				pkg_add rrdtool || _installerror=1
 				;;
 			php-*)
-				ln -s /usr/local/bin/php-7.3 /usr/local/bin/php
+				ln -s /usr/local/bin/php-7.4 /usr/local/bin/php
 				pkg_add php-pcntl || _installerror=1
 				pkg_add php-cgi || _installerror=1
 				pkg_add php-curl || _installerror=1
@@ -1122,7 +1122,7 @@ THESETS="isc-bind-9.11.11v0.tgz \
 		symon-2.88p5.tgz \
 		pmacct-1.7.1.tgz \
 		pftop-0.7p19.tgz \
-		php-7.3.10.tgz \
+		php-7.4.5p0.tgz \
 		$CW_WEBIF_TARFILE \
 		$CW_CONFIG_TARFILE"
 

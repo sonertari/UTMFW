@@ -16,9 +16,9 @@
 echo '\nStarting UTMFW services...'
 
 # Start PHP FastCGI server
-if [ -x /usr/local/sbin/php-fpm-7.3 ]; then
+if [ -x /usr/local/sbin/php-fpm-7.4 ]; then
 	echo 'PHP FastCGI server'
-	/usr/local/sbin/php-fpm-7.3
+	/usr/local/sbin/php-fpm-7.4
 fi
 
 # Start ISC DNS server

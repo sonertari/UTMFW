@@ -92,9 +92,9 @@ etc/p3scan/p3scan-tr-utf8.mail,644,root,wheel
 etc/p3scan/p3scan-nl.mail,644,root,wheel
 etc/p3scan/p3scan.conf,644,root,wheel
 etc/pfre/pf.conf.afterhours,600,root,wheel
-etc/php-7.3/curl.ini,644,root,bin
-etc/php-7.3/pcntl.ini,644,root,bin
-etc/php-7.3/sqlite.ini,644,root,bin
+etc/php-7.4/curl.ini,644,root,bin
+etc/php-7.4/pcntl.ini,644,root,bin
+etc/php-7.4/sqlite.ini,644,root,bin
 etc/pmacct/pmacctd-pnrg.conf,644,root,wheel
 etc/pmacct/pmacctd-protograph.conf,644,root,wheel
 etc/snort/snort.conf,644,root,wheel
@@ -114,7 +114,7 @@ etc/motd,664,root,wheel
 etc/newsyslog.conf,644,root,wheel
 etc/pf.conf,600,root,wheel
 etc/pf.restrictedips,600,root,wheel
-etc/php-7.3.ini,644,root,daemon
+etc/php-7.4.ini,644,root,daemon
 etc/php-fpm.conf,644,root,wheel
 etc/rc.conf.local,644,root,wheel
 etc/rc.local,644,root,wheel
