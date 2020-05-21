@@ -8,12 +8,12 @@
 -	{   MEG(80),       MEG(256),  10, "swap"	},
 -	{  MEG(120),         GIG(4),   8, "/tmp"	},
 -	{   MEG(80),         GIG(4),  13, "/var"	},
--	{ MEG(1500),         GIG(3),   5, "/usr"	},
+-	{ MEG(1500),         GIG(6),  10, "/usr"	},
 -	{  MEG(384),         GIG(1),   3, "/usr/X11R6"	},
 -	{    GIG(1),        GIG(20),  15, "/usr/local"	},
 -	{ MEG(1300),         GIG(2),   2, "/usr/src"	},
 -	{    GIG(5),         GIG(6),   4, "/usr/obj"	},
--	{    GIG(1),       GIG(300),  35, "/home"	}
+-	{    GIG(1),       GIG(300),  30, "/home"	}
 +	{    GIG(1),         GIG(2),  10, "/"		},
 +	{  MEG(500),         GIG(2),  15, "swap"	},
 +	{  MEG(500),         GIG(2),   5, "/tmp"	},
