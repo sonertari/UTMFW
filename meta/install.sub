@@ -618,7 +618,7 @@ __EOT
 				;;
 			esac
 
-			# Upgrade not supported on 6.7
+			# Upgrade not supported anymore
 			#if [[ $MODE == upgrade ]] ;then
 			#fi
 
@@ -711,6 +711,9 @@ __EOT
 			/usr/sbin/mtree -Uedqn -p $BACKUPDIR -f $MTREE && backup_config_files
 			/usr/sbin/mtree -Uedqn -p $DESTDIR -f $MTREE && install_config_files
 
+			# set_dir_perms() is disabled since we don't support upgrade anymore
+			#[[ $MODE == upgrade ]] && set_dir_perms
+
 			_mtreedir=$DESTDIR/etc/mtree
 			[[ ! -d $_mtreedir ]] && mkdir -p $_mtreedir
 			cp $MTREE $_mtreedir
@@ -722,6 +725,9 @@ __EOT
 			ln -sf p3scan-en.mail p3scan.mail
 
 			chmod 770 $DESTDIR/var/clamav/tmp/ || _installerror=1
+
+			# Otherwise named gives permission denied errors
+			chown -R _bind:_bind $DESTDIR/var/named/ || _installerror=1
 			;;
 
 		$CW_WEBIF_TARFILE)

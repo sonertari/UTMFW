@@ -30,7 +30,7 @@ users.db		type=file mode=0644 uname=root gname=wheel
 ..	#var/db
 log			type=dir mode=0755 uname=root gname=wheel
 doas			type=file mode=0600 uname=root gname=wheel
-e2guardian		type=dir mode=0755 uid=902 gid=902 flags=none
+e2guardian		type=dir mode=0755 uid=842 gid=842 flags=none
 access.log		type=file mode=0640 uname=root gname=wheel
 e2guardian.log	type=file mode=0640 uname=root gname=wheel
 ..	#var/log/e2guardian
@@ -59,9 +59,9 @@ sslproxy.log		type=file mode=0640 uname=root gname=wheel
 conns.log		type=file mode=0640 uname=root gname=wheel
 ..	#var/log/sslproxy
 ..	#var/log
-named			type=dir mode=0755 uname=root gname=_bind
-etc			type=dir mode=0750 uname=root gname=_bind
-named.conf		type=file mode=0640 uname=root gname=_bind
+named			type=dir mode=0755 uname=_bind gname=_bind flags=none
+etc			type=dir mode=0750 uname=_bind gname=_bind
+named.conf		type=file mode=0640 uname=_bind gname=_bind
 ..	#var/named/etc
 ..	#var/named
 spool			type=dir mode=0755 uname=root gname=wheel
