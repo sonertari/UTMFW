@@ -1,9 +1,17 @@
-From sonertari@gmail.com Sun May 31 07:07:00 EET 2020
+From sonertari@gmail.com Sun May 31 06:07:00 EET 2020
 Return-Path: root
-Date: May 31 07:07:00 EET 2020
+Date: May 31 06:07:00 EET 2020
 From: sonertari@gmail.com (Soner Tari)
 To: root
 Subject: Welcome to UTMFW 6.7!
 
-Highlights of this release are OpenBSD 6.7 and updated packages.
+Highlights of this release are:
+- OpenBSD 6.7 and updated packages
+- SSLproxy 0.8.0
+- UTMFW preprocessor 2.0 for Snort IPS
+- Improved SSLproxy parsers
+- ctlr as login shell of admin and user users
+- STARTTLS configuration for smtp
+- E2Guardian 5.3.4
+- PHP 7.4
 
