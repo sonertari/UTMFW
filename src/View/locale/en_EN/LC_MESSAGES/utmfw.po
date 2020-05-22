@@ -2309,7 +2309,7 @@ msgid ""
 "system as root and run the following on the command line to set the password "
 "to soner123:\n"
 "<code>/usr/bin/chpass -a \"admin:$(/usr/bin/encrypt `/bin/echo -n soner123 | "
-"sha1 -`):1000:1000::0:0:UTMFW admin:/home/admin:/bin/ksh\"</code>"
+"sha1 -`):1000:1000::0:0:UTMFW admin:/home/admin:/home/admin/ctlr\"</code>"
 msgstr ""
 
 msgid ""
@@ -4311,12 +4311,6 @@ msgid ""
 "violation/threshold count is kept track of by the user"
 msgstr ""
 
-msgid ""
-"Retry to shut ssl conns down after this many micro seconds. Increasing this "
-"delay may avoid dirty shutdowns on slow connections, but increases resource "
-"usage, such as file desriptors and memory."
-msgstr ""
-
 msgid "Reverse address lookups"
 msgstr ""
 
@@ -4482,9 +4476,6 @@ msgid "SSL PROXY"
 msgstr ""
 
 msgid "SSL Proxy"
-msgstr ""
-
-msgid "SSL Shutdown Retry Delay"
 msgstr ""
 
 msgid "SSL Source Protocols"
@@ -6236,7 +6227,7 @@ msgstr ""
 msgid "Token"
 msgstr ""
 
-msgid "Too many args, truncating"
+msgid "Too many args"
 msgstr ""
 
 msgid "Total Download (KB)"
@@ -6581,6 +6572,9 @@ msgid "Version"
 msgstr ""
 
 msgid "Vertical"
+msgstr ""
+
+msgid "View not in Models"
 msgstr ""
 
 msgid "Violations"

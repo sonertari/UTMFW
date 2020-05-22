@@ -1044,7 +1044,7 @@ msgstr ""
 msgid "Timed out running pfctl command"
 msgstr ""
 
-msgid "Too many args, truncating"
+msgid "Too many args"
 msgstr ""
 
 msgid "Turkish"
@@ -1096,6 +1096,9 @@ msgid "VSZ"
 msgstr ""
 
 msgid "Validation Error"
+msgstr ""
+
+msgid "View not in Models"
 msgstr ""
 
 msgid "Web Filter IP range wrong"

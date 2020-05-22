@@ -838,9 +838,6 @@ msgstr ""
 msgid "SSL Proxy"
 msgstr ""
 
-msgid "SSL Shutdown Retry Delay"
-msgstr ""
-
 msgid "STARTED"
 msgstr ""
 

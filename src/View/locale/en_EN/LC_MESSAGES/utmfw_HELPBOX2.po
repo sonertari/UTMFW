@@ -725,12 +725,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Retry to shut ssl conns down after this many micro seconds. Increasing this "
-"delay may avoid dirty shutdowns on slow connections, but increases resource "
-"usage, such as file desriptors and memory."
-msgstr ""
-
-msgid ""
 "Reverse lookups for banned and exception IP lists.\n"
 "If set to on, E2Guardian will look up the forward DNS for the IP of the "
 "connecting computer.  This means you can put in hostnames in the "

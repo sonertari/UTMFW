@@ -28,7 +28,7 @@ msgid ""
 "system as root and run the following on the command line to set the password "
 "to soner123:\n"
 "<code>/usr/bin/chpass -a \"admin:$(/usr/bin/encrypt `/bin/echo -n soner123 | "
-"sha1 -`):1000:1000::0:0:UTMFW admin:/home/admin:/bin/ksh\"</code>"
+"sha1 -`):1000:1000::0:0:UTMFW admin:/home/admin:/home/admin/ctlr\"</code>"
 msgstr ""
 
 msgid ""

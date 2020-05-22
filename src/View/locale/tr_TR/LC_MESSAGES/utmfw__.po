@@ -1066,8 +1066,8 @@ msgstr "Sürecin işlemesi uzun zaman aldığından arka planda çalıştırıla
 msgid "Timed out running pfctl command"
 msgstr "Pfctl komutu zaman aşımına uğradı"
 
-msgid "Too many args, truncating"
-msgstr "Fazla argümanlar atıldı"
+msgid "Too many args"
+msgstr "Argüman sayısı fazla"
 
 msgid "Turkish"
 msgstr "Türkçe"
@@ -1119,6 +1119,9 @@ msgstr "VSZ"
 
 msgid "Validation Error"
 msgstr "Doğrulama Hatası"
+
+msgid "View not in Models"
+msgstr "View Modeller arasında bulunamadı"
 
 msgid "Web Filter IP range wrong"
 msgstr "Web Eleği IP aralığı hatalı"

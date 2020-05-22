@@ -857,9 +857,6 @@ msgstr "SSL sıkıştırma"
 msgid "SSL Proxy"
 msgstr "SSL Vekil"
 
-msgid "SSL Shutdown Retry Delay"
-msgstr "SSL Sonlandırma Tekrar Deneme Aralığı"
-
 msgid "STARTED"
 msgstr "BAŞLANGIÇ"
 
