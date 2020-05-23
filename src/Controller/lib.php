@@ -515,4 +515,140 @@ function ValidateArgs($commands, $command, $argv, $check)
 	}
 	return $valid;
 }
+
+/**
+ * Expands command line args.
+ *
+ * @param array $ArgV Argument vector, modified
+ * @param string $Locale The Locale to set
+ * @param string $View The View to find the Model
+ * @param string $Command Model command to call
+ * @return bool Validation result
+ */
+function ExpandArgs(&$ArgV, &$Locale, &$View, &$Command)
+{
+	global $ModelFiles;
+
+	$valid= FALSE;
+
+	// Arg 0 contains all of the args as a json encoded string
+	if (count($ArgV) < 1) {
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Not enough args: '.print_r($ArgV, TRUE));
+		goto out;
+	}
+
+	if (count($ArgV) > 1) {
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Too many args: '.print_r($ArgV, TRUE));
+		goto out;
+	}
+
+	$decoded= json_decode($ArgV[0], TRUE);
+
+	if ($decoded == NULL || !is_array($decoded)) {
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed decoding args: '.print_r($ArgV, TRUE));
+		goto out;
+	}
+
+	$ArgV= $decoded;
+
+	if (count($ArgV) < 3) {
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Not enough args: '.print_r($ArgV, TRUE));
+		goto out;
+	}
+
+	// Controller runs using the session locale of View
+	$Locale= $ArgV[0];
+	$View= $ArgV[1];
+	$Command= $ArgV[2];
+	// Discard locale, view, and command before computing arg counts
+	$ArgV= array_slice($ArgV, 3);
+
+	$valid= TRUE;
+out:
+	return $valid;
+}
+
+/**
+ * Validates command line.
+ *
+ * @param array $ArgV Argument vector
+ * @param string $Locale The Locale to set
+ * @param string $View The View to find the Model
+ * @param string $Command Model command to call
+ * @param bool $validateargs Whether to validate command args
+ * @param object $Model Model class created
+ * @return bool Validation result
+ */
+function ValidateCommand($ArgV, $Locale, $View, $Command, $validateargs, &$Model)
+{
+	global $Models, $LOCALES, $VIEW_PATH;
+
+	if (!class_exists($Models[$View])) {
+		Error(_('View not in Models').": $View");
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "View not in Models: $View");
+		goto out;
+	}
+
+	$Model= new $Models[$View]();
+
+	/// @attention Do not set the locale until after the model file is included and the model is created,
+	/// otherwise strings recorded into logs are also translated, such as the strings on the Commands array of models.
+	/// Strings cannot be detranslated.
+	if (!array_key_exists($Locale, $LOCALES)) {
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Locale not in LOCALES: $Locale");
+		goto out;
+	}
+
+	putenv('LC_ALL='.$Locale);
+	putenv('LANG='.$Locale);
+
+	$Domain= 'utmfw';
+	bindtextdomain($Domain, $VIEW_PATH.'/locale');
+	bind_textdomain_codeset($Domain, $LOCALES[$Locale]['Codeset']);
+	textdomain($Domain);
+
+	if (!method_exists($Model, $Command)) {
+		$ErrorStr= "$Models[$View]->$Command()";
+		Error(_('Method does not exist').": $ErrorStr");
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Method does not exist: $ErrorStr");
+		goto out;
+	}
+
+	if (!array_key_exists($Command, $Model->Commands)) {
+		Error(_('Unsupported command').": $Command");
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Unsupported command: $Command");
+		goto out;
+	}
+
+	if (!$validateargs) {
+		goto out2;
+	}
+
+	ComputeArgCounts($Model->Commands, $ArgV, $Command, $ActualArgC, $ExpectedArgC, $AcceptableArgC, $ArgCheckC);
+
+	if ($ActualArgC < $AcceptableArgC) {
+		$ErrorStr= "[$AcceptableArgC]: $ActualArgC";
+		Error(_('Not enough args')." $ErrorStr");
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Not enough args $ErrorStr");
+		goto out;
+	}
+
+	if ($ActualArgC > $ExpectedArgC) {
+		$ErrorStr= "[$ExpectedArgC]: $ActualArgC: ".implode(', ', array_slice($ArgV, $ExpectedArgC));
+		Error(_('Too many args')." $ErrorStr");
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Too many args $ErrorStr");
+		goto out;
+	}
+
+	// Check only the relevant args
+	if ($ArgCheckC > 0 && !ValidateArgs($Model->Commands, $Command, $ArgV, $ArgCheckC)) {
+		Error(_('Not running command').": $Command");
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Not running command: $Command");
+		goto out;
+	}
+out2:
+	$valid= TRUE;
+out:
+	return $valid;
+}
 ?>

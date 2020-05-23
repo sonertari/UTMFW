@@ -310,6 +310,9 @@ msgstr ""
 msgid "Failed testing pf rules"
 msgstr ""
 
+msgid "Failed validating command line"
+msgstr ""
+
 msgid "Filename not accepted"
 msgstr ""
 

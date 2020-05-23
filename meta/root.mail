@@ -10,7 +10,7 @@ Highlights of this release are:
 - SSLproxy 0.8.0
 - UTMFW preprocessor 2.0 for Snort IPS
 - Improved SSLproxy parsers
-- ctlr as login shell of admin and user users
+- sh.php as login shell of admin and user users
 - STARTTLS configuration for smtp
 - E2Guardian 5.3.4
 - PHP 7.4

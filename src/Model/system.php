@@ -1010,7 +1010,7 @@ class System extends Model
 	function GetUsers()
 	{
 		$users= array();
-		//soner:*:1002:1002:Soner Tari:/home/soner:/usr/bin/whoami
+		//soner:*:1002:1002:Soner Tari:/var/empty:/usr/bin/whoami
 		$re= "(\w+):\*:\d+:\d+:([^:]*):[^:]*:/usr/bin/whoami";
 		if (preg_match_all("|^\h*($re)\h*$|m", file_get_contents('/etc/passwd'), $match)) {
 			$output= array_values($match[1]);
@@ -1117,7 +1117,7 @@ class System extends Model
 
 	function AddUser($user, $passwd, $comment)
 	{
-		exec("/usr/sbin/useradd -p $(/usr/bin/encrypt $passwd) -c '$comment' -s /usr/bin/whoami $user 2>&1", $output, $retval);
+		exec("/usr/sbin/useradd -p $(/usr/bin/encrypt $passwd) -c '$comment' -d /var/empty -s /usr/bin/whoami $user 2>&1", $output, $retval);
 		if ($retval === 0) {
 			return TRUE;
 		}

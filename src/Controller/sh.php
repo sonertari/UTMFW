@@ -20,10 +20,23 @@
  */
 
 /** @file
- * Proxy to run all shell commands.
- * 
- * This way we have only one entry in doas.conf.
- * 
+ * Login shell for users.
+ *
+ * We set login shells of admin and user users to sh.php.
+ *
+ * Using a shell script to pass args to Controller commands would expand
+ * those args, hence might cause security issues.
+ *
+ * Now instead we make sure args are never expanded and users cannot drop to a
+ * command shell:
+ * - use sh.php as login shell
+ * - pass all args to it as an ssh command (-c option) without any shell
+ *   expansion
+ * - validate all args within sh.php
+ * - convert them to a string enclosed between single quotes (so no expansion
+ *   again)
+ * - exec ctlr.php passing the args string to it
+ *
  * @todo Continually check for security issues.
  */
 
@@ -52,24 +65,15 @@ if (filter_has_var(INPUT_SERVER, 'SERVER_ADDR')) {
 
 $ArgV= array_slice($argv, 1);
 
-$ValidateArgs= TRUE;
-if ($ArgV[0] === '-n') {
+// -c is added when phpseclib channel exec() is used, discard it
+if ($ArgV[0] === '-c') {
 	$ArgV= array_slice($ArgV, 1);
-	$ValidateArgs= FALSE;
-}
-
-if ($ArgV[0] === '-t') {
-	$ArgV= array_slice($ArgV, 1);
-
-	$TEST_ROOT= dirname(dirname(dirname(__FILE__)));
-	$TEST_DIR= '/tests/phpunit/root';
-	$TEST_DIR_PATH= $TEST_ROOT . $TEST_DIR;
-	$TEST_DIR_SRC= $TEST_DIR . '/var/www/htdocs/utmfw';
-
-	$INSTALL_USER= posix_getpwuid(posix_getuid())['name'];
 }
 
 $retval= 1;
+
+// Set $args before calling Validate(), it modifies $ArgV
+$args= implode(' ', $ArgV);
 
 if (!ExpandArgs($ArgV, $Locale, $View, $Command)) {
 	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed expanding args: '.print_r($argv, TRUE));
@@ -81,29 +85,27 @@ if (!array_key_exists($View, $ModelFiles)) {
 	goto out;
 }
 
-// Include the model file here to make the vars in the model file global
+// The vars in the model file must be global, so include it here
 require_once($MODEL_PATH . '/' . $ModelFiles[$View]);
 
-if (!ValidateCommand($ArgV, $Locale, $View, $Command, $ValidateArgs, $Model)) {
+if (!ValidateCommand($ArgV, $Locale, $View, $Command, TRUE, $Model)) {
 	$ErrorStr= print_r($argv, TRUE);
 	Error(_('Failed validating command line')." $ErrorStr");
 	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed validating command line: $ErrorStr");
 	goto out;
 }
 
-if (!call_user_func_array(array($Model, $Command), $ArgV)) {
-	ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Command failed: $Command");
-	goto out;
-}
+$cwd= dirname(__FILE__);
 
-$retval= 0;
+// Run the ctlr using doas and passing -n for no arg validation, as we have already done that above
+exec("/usr/bin/doas $cwd/ctlr.php -n '$args' 2>&1", $encoded, $retval);
+// There must be only one element in $encoded array, but do not miss the others if any
+$encoded= implode(' ', $encoded);
+echo $encoded;
+exit($retval);
 
 out:
-/// @attention Always return errors, success or fail.
-/// @attention We need to include $retval in the array too, because phpseclib exec() does not provide access to retval.
-// Return an encoded array, so that the caller can easily separate output, error, and retval
 $msg= array($Output, $Error, $retval);
-/// @attention If json_encode() inserts slashes, it is hard to decode the base64 encoded graph string at the receiving end
 $encoded= json_encode($msg, JSON_UNESCAPED_SLASHES);
 
 if ($encoded !== NULL) {
@@ -111,6 +113,5 @@ if ($encoded !== NULL) {
 } else {
 	ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed encoding output, error, and retval: '.print_r($msg, TRUE));
 }
-
 exit($retval);
 ?>

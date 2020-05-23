@@ -329,6 +329,9 @@ msgstr "Pfctl komutu başarısız oldu"
 msgid "Failed testing pf rules"
 msgstr "Pf kurallarının testi başarısız oldu"
 
+msgid "Failed validating command line"
+msgstr "Komut satırı doğrulaması başarısız oldu"
+
 msgid "Filename not accepted"
 msgstr "Dosya adı kabul edilmedi"
 

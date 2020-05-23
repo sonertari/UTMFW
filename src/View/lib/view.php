@@ -115,7 +115,7 @@ class View
 					$ssh->setTimeout(30);
 
 					if ($ssh->login($_SESSION['USER'], $passwd)) {
-						// The login shells of admin and user users are set to ctlr, so we just pass down the args
+						// The login shells of admin and user users are set to sh.php, so we just pass down the args
 						$outputArray[0]= $ssh->exec($encoded_args);
 						if ($ssh->isTimeout()) {
 							$msg= 'SSH exec timed out';

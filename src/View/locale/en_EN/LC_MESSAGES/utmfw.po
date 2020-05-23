@@ -1699,6 +1699,9 @@ msgstr ""
 msgid "Failed users"
 msgstr ""
 
+msgid "Failed validating command line"
+msgstr ""
+
 msgid "Failure reason"
 msgstr ""
 
@@ -2309,7 +2312,8 @@ msgid ""
 "system as root and run the following on the command line to set the password "
 "to soner123:\n"
 "<code>/usr/bin/chpass -a \"admin:$(/usr/bin/encrypt `/bin/echo -n soner123 | "
-"sha1 -`):1000:1000::0:0:UTMFW admin:/home/admin:/home/admin/ctlr\"</code>"
+"sha1 -`):1000:1000::0:0:UTMFW admin:/var/empty:/var/www/htdocs/utmfw/"
+"Controller/sh.php\"</code>"
 msgstr ""
 
 msgid ""

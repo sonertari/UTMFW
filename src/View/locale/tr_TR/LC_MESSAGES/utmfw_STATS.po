@@ -162,7 +162,7 @@ msgid "Failed queries"
 msgstr "Başarısız sorgular"
 
 msgid "Failed users"
-msgstr "Başarısız kullancıılar"
+msgstr "Başarısız kullanıcılar"
 
 msgid "Failure reason"
 msgstr "Başarısızlık sebebi"

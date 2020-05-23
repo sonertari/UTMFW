@@ -553,7 +553,7 @@ class Model
 
 		// If the user does not exist
 		if ($retval !== 0 && count($output) == 0) {
-			$uline= "$user:$(/usr/bin/encrypt $passwd):$uid:$uid::0:0:UTMFW $user:/home/$user:/home/$user/ctlr";
+			$uline= "$user:$(/usr/bin/encrypt $passwd):$uid:$uid::0:0:UTMFW $user:/var/empty:/var/www/htdocs/utmfw/Controller/sh.php";
 			exec("/bin/echo $uline >>/etc/master.passwd 2>&1", $output, $retval);
 
 			if ($retval === 0) {
@@ -561,24 +561,8 @@ class Model
 				exec("/bin/echo $gline >>/etc/group 2>&1", $output, $retval);
 
 				if ($retval === 0) {
-					exec("/bin/mkdir -p /home/$user 2>&1", $output, $retval);
-
-					if ($retval === 0) {
-						exec("cd /etc/skel; /bin/cp -pR . /home/$user 2>&1", $output, $retval);
-
-						if ($retval === 0) {
-							exec("/usr/sbin/pwd_mkdb -p /etc/master.passwd 2>&1", $output, $retval);
-
-							if ($retval === 0) {
-								exec("/bin/echo '#!/bin/sh -' > /home/$user/ctlr 2>&1");
-								exec("/bin/echo '/usr/bin/doas /var/www/htdocs/utmfw/Controller/ctlr.php \"\$@\"' >> /home/$user/ctlr 2>&1");
-								exec("/bin/chmod 100 /home/$user/ctlr 2>&1");
-								// chown only after adding user
-								exec("/sbin/chown $user /home/$user/ctlr 2>&1", $output, $retval);
-								return $retval === 0;
-							}
-						}
-					}
+					exec("/usr/sbin/pwd_mkdb -p /etc/master.passwd 2>&1", $output, $retval);
+					return $retval === 0;
 				}
 			}
 		}
