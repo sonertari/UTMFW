@@ -46,7 +46,7 @@
  * Include File_ASN1
  */
 if (!class_exists('File_ASN1')) {
-    include_once 'ASN1.php';
+    include_once $VIEW_PATH.'/lib/phpseclib/File/ASN1.php';
 }
 
 /**
@@ -344,8 +344,10 @@ class File_X509
      */
     function __construct()
     {
+        global $VIEW_PATH;
+
         if (!class_exists('Math_BigInteger')) {
-            include_once 'Math/BigInteger.php';
+            include_once $VIEW_PATH.'/lib/phpseclib/Math/BigInteger.php';
         }
 
         // Explicitly Tagged Module, 1988 Syntax
@@ -976,6 +978,13 @@ class File_X509
         );
 
         $this->AuthorityInfoAccessSyntax = array(
+            'type'     => FILE_ASN1_TYPE_SEQUENCE,
+            'min'      => 1,
+            'max'      => -1,
+            'children' => $AccessDescription
+        );
+
+        $this->SubjectInfoAccessSyntax = array(
             'type'     => FILE_ASN1_TYPE_SEQUENCE,
             'min'      => 1,
             'max'      => -1,
@@ -1650,7 +1659,10 @@ class File_X509
                    corresponding to the extension type identified by extnID */
                 $map = $this->_getMapping($id);
                 if (!is_bool($map)) {
-                    $mapped = $asn1->asn1map($decoded[0], $map, array('iPAddress' => array($this, '_decodeIP')));
+                    $decoder = $id == 'id-ce-nameConstraints' ?
+                        array($this, '_decodeNameConstraintIP') :
+                        array($this, '_decodeIP');
+                    $mapped = $asn1->asn1map($decoded[0], $map, array('iPAddress' => $decoder));
                     $value = $mapped === false ? $decoded[0] : $mapped;
 
                     if ($id == 'id-ce-certificatePolicies') {
@@ -1919,6 +1931,8 @@ class File_X509
                 return $this->ExtKeyUsageSyntax;
             case 'id-pe-authorityInfoAccess':
                 return $this->AuthorityInfoAccessSyntax;
+            case 'id-pe-subjectInfoAccess':
+                return $this->SubjectInfoAccessSyntax;
             case 'id-ce-subjectAltName':
                 return $this->SubjectAltName;
             case 'id-ce-subjectDirectoryAttributes':
@@ -2445,10 +2459,12 @@ class File_X509
      */
     function _validateSignature($publicKeyAlgorithm, $publicKey, $signatureAlgorithm, $signature, $signatureSubject)
     {
+        global $VIEW_PATH;
+
         switch ($publicKeyAlgorithm) {
             case 'rsaEncryption':
                 if (!class_exists('Crypt_RSA')) {
-                    include_once 'Crypt/RSA.php';
+                    include_once $VIEW_PATH.'/lib/phpseclib/Crypt/RSA.php';
                 }
                 $rsa = new Crypt_RSA();
                 $rsa->loadKey($publicKey);
@@ -2556,17 +2572,35 @@ class File_X509
     }
 
     /**
+     * Decodes an IP address in a name constraints extension
+     *
+     * Takes in a base64 encoded "blob" and returns a human readable IP address / mask
+     *
+     * @param string $ip
+     * @access private
+     * @return array
+     */
+    function _decodeNameConstraintIP($ip)
+    {
+        $ip = base64_decode($ip);
+        list(, $ip, $mask) = unpack('N2', $ip);
+        return [long2ip($ip), long2ip($mask)];
+    }
+
+    /**
      * Encodes an IP address
      *
      * Takes a human readable IP address into a base64-encoded "blob"
      *
-     * @param string $ip
+     * @param string|array $ip
      * @access private
      * @return string
      */
     function _encodeIP($ip)
     {
-        return base64_encode(pack('N', ip2long($ip)));
+        return is_string($ip) ?
+            base64_encode(pack('N', ip2long($ip))) :
+            base64_encode(pack('NN', ip2long($ip[0]), ip2long($ip[1])));
     }
 
     /**
@@ -2843,6 +2877,8 @@ class File_X509
      */
     function getDN($format = FILE_X509_DN_ARRAY, $dn = null)
     {
+        global $VIEW_PATH;
+
         if (!isset($dn)) {
             $dn = isset($this->currentCert['tbsCertList']) ? $this->currentCert['tbsCertList']['issuer'] : $this->dn;
         }
@@ -2892,7 +2928,7 @@ class File_X509
             case FILE_X509_DN_HASH:
                 $dn = $this->getDN(FILE_X509_DN_CANON, $dn);
                 if (!class_exists('Crypt_Hash')) {
-                    include_once 'Crypt/Hash.php';
+                    include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Hash.php';
                 }
                 $hash = new Crypt_Hash('sha1');
                 $hash = $hash->hash($dn);
@@ -3172,6 +3208,8 @@ class File_X509
      */
     function getPublicKey()
     {
+        global $VIEW_PATH;
+
         if (isset($this->publicKey)) {
             return $this->publicKey;
         }
@@ -3193,7 +3231,7 @@ class File_X509
         switch ($keyinfo['algorithm']['algorithm']) {
             case 'rsaEncryption':
                 if (!class_exists('Crypt_RSA')) {
-                    include_once 'Crypt/RSA.php';
+                    include_once $VIEW_PATH.'/lib/phpseclib/Crypt/RSA.php';
                 }
                 $publicKey = new Crypt_RSA();
                 $publicKey->loadKey($key);
@@ -3215,6 +3253,8 @@ class File_X509
      */
     function loadCSR($csr, $mode = FILE_X509_FORMAT_AUTO_DETECT)
     {
+        global $VIEW_PATH;
+
         if (is_array($csr) && isset($csr['certificationRequestInfo'])) {
             unset($this->currentCert);
             unset($this->currentKeyIdentifier);
@@ -3274,7 +3314,7 @@ class File_X509
         switch ($algorithm) {
             case 'rsaEncryption':
                 if (!class_exists('Crypt_RSA')) {
-                    include_once 'Crypt/RSA.php';
+                    include_once $VIEW_PATH.'/lib/phpseclib/Crypt/RSA.php';
                 }
                 $this->publicKey = new Crypt_RSA();
                 $this->publicKey->loadKey($key);
@@ -3355,6 +3395,8 @@ class File_X509
      */
     function loadSPKAC($spkac)
     {
+        global $VIEW_PATH;
+
         if (is_array($spkac) && isset($spkac['publicKeyAndChallenge'])) {
             unset($this->currentCert);
             unset($this->currentKeyIdentifier);
@@ -3404,7 +3446,7 @@ class File_X509
         switch ($algorithm) {
             case 'rsaEncryption':
                 if (!class_exists('Crypt_RSA')) {
-                    include_once 'Crypt/RSA.php';
+                    include_once $VIEW_PATH.'/lib/phpseclib/Crypt/RSA.php';
                 }
                 $this->publicKey = new Crypt_RSA();
                 $this->publicKey->loadKey($key);
@@ -3635,6 +3677,8 @@ class File_X509
      */
     function sign($issuer, $subject, $signatureAlgorithm = 'sha1WithRSAEncryption')
     {
+        global $VIEW_PATH;
+
         if (!is_object($issuer->privateKey) || empty($issuer->dn)) {
             return false;
         }
@@ -3691,7 +3735,7 @@ class File_X509
                 $serialNumber = $this->serialNumber;
             } else {
                 if (!function_exists('crypt_random_string')) {
-                    include_once 'Crypt/Random.php';
+                    include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Random.php';
                 }
                 /* "The serial number MUST be a positive integer"
                    "Conforming CAs MUST NOT use serialNumber values longer than 20 octets."
@@ -4717,6 +4761,8 @@ class File_X509
      */
     function computeKeyIdentifier($key = null, $method = 1)
     {
+        global $VIEW_PATH;
+
         if (is_null($key)) {
             $key = $this;
         }
@@ -4744,7 +4790,7 @@ class File_X509
                 $raw = base64_decode($raw);
                 // If the key is private, compute identifier from its corresponding public key.
                 if (!class_exists('Crypt_RSA')) {
-                    include_once 'Crypt/RSA.php';
+                    include_once $VIEW_PATH.'/lib/phpseclib/Crypt/RSA.php';
                 }
                 $key = new Crypt_RSA();
                 if (!$key->loadKey($raw)) {
@@ -4776,7 +4822,7 @@ class File_X509
 
         // Now we have the key string: compute its sha-1 sum.
         if (!class_exists('Crypt_Hash')) {
-            include_once 'Crypt/Hash.php';
+            include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Hash.php';
         }
         $hash = new Crypt_Hash('sha1');
         $hash = $hash->hash($key);

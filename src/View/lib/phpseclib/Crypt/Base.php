@@ -644,6 +644,8 @@ class Crypt_Base
      */
     function setPassword($password, $method = 'pbkdf2')
     {
+        global $VIEW_PATH;
+
         $key = '';
 
         switch ($method) {
@@ -670,7 +672,7 @@ class Crypt_Base
                 switch (true) {
                     case $method == 'pbkdf1':
                         if (!class_exists('Crypt_Hash')) {
-                            include_once 'Crypt/Hash.php';
+                            include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Hash.php';
                         }
                         $hashObj = new Crypt_Hash();
                         $hashObj->setHash($hash);
@@ -693,7 +695,7 @@ class Crypt_Base
                     case !function_exists('hash_algos'):
                     case !in_array($hash, hash_algos()):
                         if (!class_exists('Crypt_Hash')) {
-                            include_once 'Crypt/Hash.php';
+                            include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Hash.php';
                         }
                         $i = 1;
                         $hmac = new Crypt_Hash();

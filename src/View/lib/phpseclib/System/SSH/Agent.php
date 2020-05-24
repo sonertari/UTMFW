@@ -396,6 +396,8 @@ class System_SSH_Agent
      */
     function requestIdentities()
     {
+        global $VIEW_PATH;
+
         if (!$this->fsock) {
             return array();
         }
@@ -428,7 +430,7 @@ class System_SSH_Agent
             switch ($key_type) {
                 case 'ssh-rsa':
                     if (!class_exists('Crypt_RSA')) {
-                        include_once 'Crypt/RSA.php';
+                        include_once $VIEW_PATH.'/lib/phpseclib/Crypt/RSA.php';
                     }
                     $key = new Crypt_RSA();
                     $key->loadKey($key_str);

@@ -259,11 +259,13 @@ class File_ASN1
      */
     function __construct()
     {
+        global $VIEW_PATH;
+
         static $static_init = null;
         if (!$static_init) {
             $static_init = true;
             if (!class_exists('Math_BigInteger')) {
-                include_once 'Math/BigInteger.php';
+                include_once $VIEW_PATH.'/lib/phpseclib/Math/BigInteger.php';
             }
         }
     }
@@ -787,7 +789,14 @@ class File_ASN1
             case FILE_ASN1_TYPE_UTC_TIME:
             case FILE_ASN1_TYPE_GENERALIZED_TIME:
                 if (class_exists('DateTime')) {
-                    if (isset($mapping['implicit'])) {
+                    // for explicitly tagged optional stuff
+                    if (is_array($decoded['content'])) {
+                        $decoded['content'] = $decoded['content'][0]['content'];
+                    }
+                    // for implicitly tagged optional stuff
+                    // in theory, doing isset($mapping['implicit']) would work but malformed certs do exist
+                    // in the wild that OpenSSL decodes without issue so we'll support them as well
+                    if (!is_object($decoded['content'])) {
                         $decoded['content'] = $this->_decodeDateTime($decoded['content'], $decoded['type']);
                     }
                     if (!$decoded['content']) {
@@ -795,7 +804,10 @@ class File_ASN1
                     }
                     return $decoded['content']->format($this->format);
                 } else {
-                    if (isset($mapping['implicit'])) {
+                    if (is_array($decoded['content'])) {
+                        $decoded['content'] = $decoded['content'][0]['content'];
+                    }
+                    if (!is_int($decoded['content'])) {
                         $decoded['content'] = $this->_decodeUnixTime($decoded['content'], $decoded['type']);
                     }
                     return @date($this->format, $decoded['content']);
@@ -937,7 +949,7 @@ class File_ASN1
                     if ($mapping['type'] == FILE_ASN1_TYPE_SET) {
                         sort($value);
                     }
-                    $value = implode($value, '');
+                    $value = implode('', $value);
                     break;
                 }
 

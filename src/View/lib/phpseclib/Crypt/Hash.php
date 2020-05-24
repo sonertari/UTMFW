@@ -654,8 +654,10 @@ class Crypt_Hash
      */
     function _sha512($m)
     {
+        global $VIEW_PATH;
+
         if (!class_exists('Math_BigInteger')) {
-            include_once 'Math/BigInteger.php';
+            include_once $VIEW_PATH.'/lib/phpseclib/Math/BigInteger.php';
         }
 
         static $init384, $init512, $k;

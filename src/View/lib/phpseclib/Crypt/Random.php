@@ -67,6 +67,8 @@ if (!function_exists('crypt_random_string')) {
      */
     function crypt_random_string($length)
     {
+        global $VIEW_PATH;
+
         if (!$length) {
             return '';
         }
@@ -199,37 +201,37 @@ if (!function_exists('crypt_random_string')) {
             switch (true) {
                 case phpseclib_resolve_include_path('Crypt/AES.php'):
                     if (!class_exists('Crypt_AES')) {
-                        include_once 'AES.php';
+                        include_once $VIEW_PATH.'/lib/phpseclib/Crypt/AES.php';
                     }
                     $crypto = new Crypt_AES(CRYPT_AES_MODE_CTR);
                     break;
                 case phpseclib_resolve_include_path('Crypt/Twofish.php'):
                     if (!class_exists('Crypt_Twofish')) {
-                        include_once 'Twofish.php';
+                        include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Twofish.php';
                     }
                     $crypto = new Crypt_Twofish(CRYPT_TWOFISH_MODE_CTR);
                     break;
                 case phpseclib_resolve_include_path('Crypt/Blowfish.php'):
                     if (!class_exists('Crypt_Blowfish')) {
-                        include_once 'Blowfish.php';
+                        include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Blowfish.php';
                     }
                     $crypto = new Crypt_Blowfish(CRYPT_BLOWFISH_MODE_CTR);
                     break;
                 case phpseclib_resolve_include_path('Crypt/TripleDES.php'):
                     if (!class_exists('Crypt_TripleDES')) {
-                        include_once 'TripleDES.php';
+                        include_once $VIEW_PATH.'/lib/phpseclib/Crypt/TripleDES.php';
                     }
                     $crypto = new Crypt_TripleDES(CRYPT_DES_MODE_CTR);
                     break;
                 case phpseclib_resolve_include_path('Crypt/DES.php'):
                     if (!class_exists('Crypt_DES')) {
-                        include_once 'DES.php';
+                        include_once $VIEW_PATH.'/lib/phpseclib/Crypt/DES.php';
                     }
                     $crypto = new Crypt_DES(CRYPT_DES_MODE_CTR);
                     break;
                 case phpseclib_resolve_include_path('Crypt/RC4.php'):
                     if (!class_exists('Crypt_RC4')) {
-                        include_once 'RC4.php';
+                        include_once $VIEW_PATH.'/lib/phpseclib/Crypt/RC4.php';
                     }
                     $crypto = new Crypt_RC4();
                     break;

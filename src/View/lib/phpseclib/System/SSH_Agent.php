@@ -36,4 +36,4 @@
  * @internal  See http://api.libssh.org/rfc/PROTOCOL.agent
  */
 
-require_once 'SSH/Agent.php';
+require_once $VIEW_PATH.'/lib/phpseclib/System/SSH/Agent.php';
