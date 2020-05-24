@@ -57,6 +57,22 @@ bayes_auto_learn 1
 #
 # normalize_charset 1
 
+#   Textual body scan limit    (default: 50000)
+#
+#   Amount of data per email text/* mimepart, that will be run through body
+#   rules.  This enables safer and faster scanning of large messages,
+#   perhaps having very large textual attachments.  There should be no need
+#   to change this well tested default.
+#
+# body_part_scan_size 50000
+
+#   Textual rawbody data scan limit    (default: 500000)
+#
+#   Amount of data per email text/* mimepart, that will be run through
+#   rawbody rules.
+#
+# rawbody_part_scan_size 500000
+
 #   Some shortcircuiting, if the plugin is enabled
 # 
 ifplugin Mail::SpamAssassin::Plugin::Shortcircuit
@@ -64,6 +80,10 @@ ifplugin Mail::SpamAssassin::Plugin::Shortcircuit
 #   default: strongly-whitelisted mails are *really* whitelisted now, if the
 #   shortcircuiting plugin is active, causing early exit to save CPU load.
 #   Uncomment to turn this on
+#
+#   SpamAssassin tries hard not to launch DNS queries before priority -100. 
+#   If you want to shortcircuit without launching unneeded queries, make
+#   sure such rule priority is below -100. These examples are already:
 #
 # shortcircuit USER_IN_WHITELIST       on
 # shortcircuit USER_IN_DEF_WHITELIST   on
