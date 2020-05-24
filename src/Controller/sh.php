@@ -72,7 +72,7 @@ if ($ArgV[0] === '-c') {
 
 $retval= 1;
 
-// Set $args before calling Validate(), it modifies $ArgV
+// Set $args before expanding and validating args, before $ArgV is modified
 $args= implode(' ', $ArgV);
 
 if (!ExpandArgs($ArgV, $Locale, $View, $Command)) {
