@@ -1265,6 +1265,9 @@ $GeneralfilterConfig = array(
     'createlistcachefiles' => array(
         'type' => STR_on_off,
 		),
+    'maxheaderlines' => array(
+        'type' => UINT,
+		),
 	);
 
 /**

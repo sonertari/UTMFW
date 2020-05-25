@@ -2902,6 +2902,13 @@ msgstr ""
 msgid "Limit"
 msgstr ""
 
+msgid ""
+"Limit number of http header lines in a request/response (to guard against "
+"attacks)\n"
+"Minimum 10 max 250\n"
+"default 50"
+msgstr ""
+
 msgid "Line"
 msgstr ""
 
@@ -3252,6 +3259,9 @@ msgid "Max Connection Rate"
 msgstr ""
 
 msgid "Max Directory Recursion"
+msgstr ""
+
+msgid "Max HTTP header lines"
 msgstr ""
 
 msgid "Max Log Item Length"

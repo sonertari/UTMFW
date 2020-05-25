@@ -469,6 +469,12 @@ On slow computers this will be significant.
 Fast computers do not need this option.
 on | off'),
 		),
+	'maxheaderlines' => array(
+		'title' => _TITLE2('Max HTTP header lines'),
+		'info' => _HELPBOX2('Limit number of http header lines in a request/response (to guard against attacks)
+Minimum 10 max 250
+default 50'),
+		),
 	);
 
 /**

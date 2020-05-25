@@ -556,6 +556,9 @@ msgstr ""
 msgid "Max Directory Recursion"
 msgstr ""
 
+msgid "Max HTTP header lines"
+msgstr ""
+
 msgid "Max Log Item Length"
 msgstr ""
 

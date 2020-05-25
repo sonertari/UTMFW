@@ -477,6 +477,13 @@ msgid "Leaf key RSA keysize in bits, use 1024|2048|3072|4096."
 msgstr ""
 
 msgid ""
+"Limit number of http header lines in a request/response (to guard against "
+"attacks)\n"
+"Minimum 10 max 250\n"
+"default 50"
+msgstr ""
+
+msgid ""
 "List format is:\n"
 "allow|deny localid|all [groupchat|remoteid1 ... remoteidN]\n"
 "\n"
