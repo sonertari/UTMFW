@@ -8,10 +8,11 @@ Subject: Welcome to UTMFW 6.7!
 Highlights of this release are:
 - OpenBSD 6.7 and updated packages
 - SSLproxy 0.8.0
-- UTMFW preprocessor 2.0 for Snort IPS
+- SSLproxy preprocessor 2.0 for Snort IPS
 - Improved SSLproxy parsers
 - sh.php as login shell of admin and user users
 - STARTTLS configuration for smtp
+- Snort 2.9.16
 - E2Guardian 5.3.4
 - PHP 7.4
 

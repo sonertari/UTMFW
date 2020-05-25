@@ -14,9 +14,9 @@ lib/snort_dynamicengine/libsf_engine.a
 @comment lib/snort_dynamicengine/libsf_engine.la
 lib/snort_dynamicengine/libsf_engine.so
 lib/snort_dynamicpreprocessor/
-lib/snort_dynamicpreprocessor/lib_sslproxy_dpp.a
-@comment lib/snort_dynamicpreprocessor/lib_sslproxy_dpp.la
-lib/snort_dynamicpreprocessor/lib_sslproxy_dpp.so
+lib/snort_dynamicpreprocessor/lib_utmfw_dpp.a
+@comment lib/snort_dynamicpreprocessor/lib_utmfw_dpp.la
+lib/snort_dynamicpreprocessor/lib_utmfw_dpp.so
 lib/snort_dynamicpreprocessor/libsf_appid_preproc.a
 lib/snort_dynamicpreprocessor/libsf_appid_preproc.la
 lib/snort_dynamicpreprocessor/libsf_appid_preproc.so

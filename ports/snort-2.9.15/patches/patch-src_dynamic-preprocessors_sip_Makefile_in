@@ -11,7 +11,7 @@ Index: src/dynamic-preprocessors/sip/Makefile.in
  @SO_WITH_STATIC_LIB_TRUE@libsf_sip_preproc_la_LIBADD =  \
  @SO_WITH_STATIC_LIB_TRUE@	../libsf_dynamic_preproc.la \
  @SO_WITH_STATIC_LIB_TRUE@	$(am__append_1)
-@@ -587,7 +587,7 @@ distdir-am: $(DISTFILES)
+@@ -586,7 +586,7 @@ distdir-am: $(DISTFILES)
  	done
  check-am: all-am
  check: check-am
