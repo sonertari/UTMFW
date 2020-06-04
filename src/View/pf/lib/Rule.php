@@ -612,6 +612,7 @@ class Rule
 	 * 
 	 * @param array $array Array to delete empty values from.
 	 * @param bool $flatten Whether to flatten arrays with single values.
+	 * @return array Converted array.
 	 */
 	function inputDelEmptyRecursive($array, $flatten)
 	{
@@ -683,7 +684,7 @@ class Rule
 	 * @param string $key Id and name of the checkbox.
 	 * @param string $title Title for the key.
 	 * @param string $help Anchor in the html file for the pf.conf(5) man page.
-	 * @param int $size Size of the input.
+	 * @param mixed $size Size of the input, int or NULL.
 	 * @param string $hint Hint text.
 	 */
 	function editText($key, $title, $help= NULL, $size= 0, $hint= '')
@@ -715,7 +716,7 @@ class Rule
 	 * @param string $addName Id of input box.
 	 * @param string $hint Hint text.
 	 * @param string $help Anchor in the html file for the pf.conf(5) man page.
-	 * @param int $size Size of the input.
+	 * @param mixed $size Size of the input, int or NULL.
 	 * @param bool $disabled Condition to disable the input
 	 */
 	function editValues($key, $title, $delName, $addName, $hint, $help= NULL, $size= 0, $disabled= FALSE)
@@ -867,9 +868,9 @@ class Rule
 	 * Followed by add input box.
 	 *
 	 * @param mixed $value Value for delete link, array or string.
-	 * @param string $name Get input var name, usually with a del prefix
-	 * @param string $prefix Prefix to print
-	 * @param string $postfix Postfix to print
+	 * @param string $name Get input var name, usually with a del prefix.
+	 * @param string $prefix Prefix to print.
+	 * @param string $postfix Postfix to print.
 	 */
 	function editDeleteValueLinks($value, $name, $prefix= '', $postfix= '')
 	{
@@ -904,11 +905,11 @@ class Rule
 	 * Used for multi-value fields in rules.
 	 *
 	 * @param string $id Id of the input
-	 * @param string $label Label
-	 * @param string $hint Hint text
-	 * @param string $value Value instead of hint
-	 * @param int $size Size of the input
-	 * @param bool $disabled Condition to disable the input
+	 * @param mixed $label Label, string or NULL.
+	 * @param string $hint Hint text.
+	 * @param string $value Value instead of hint.
+	 * @param mixed $size Size of the input, int or NULL.
+	 * @param bool $disabled Condition to disable the input.
 	 */
 	function editAddValueBox($id, $label, $hint, $size= 0, $disabled= FALSE)
 	{

@@ -246,6 +246,8 @@ class RuleSet
 	 * Returns the number of a new rule to be appended to the end of the ruleset.
 	 * 
 	 * This is simply the count of the rules in the ruleset, because the list is zero-based.
+	 * 
+	 * @return int New rule number.
 	 */
 	function nextRuleNumber()
 	{
@@ -337,7 +339,7 @@ class RuleSet
 	 * TRUE for $assoc param, to convert objects to arrays.
 	 * 
 	 * @param int $ruleNumber The number of the rule to test.
-	 * @param object $ruleObj The rule object to test.
+	 * @param \View\Rule $ruleObj The rule object to test.
 	 * @return bool Test result returned from the Model.
 	 */
 	function test($ruleNumber, $ruleObj)
@@ -437,7 +439,8 @@ class RuleSet
 	 * 
 	 * @return array List of queues.
 	 */
-	function getQueueNames() {
+	function getQueueNames()
+	{
 		$queues= array();
 		foreach ($this->rules as $ruleObj) {
 			if  ($ruleObj->cat == 'Queue') {

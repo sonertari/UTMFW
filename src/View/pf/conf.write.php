@@ -20,9 +20,9 @@
 
 require_once ('pf.php');
 
-$printNumbers= TRUE;
+$printNumbers= 1;
 if (count($_POST) && !filter_has_var(INPUT_POST, 'numbers')) {
-	$printNumbers= FALSE;
+	$printNumbers= 0;
 }
 
 $testResult= $View->Controller($Output, 'TestPfRules', json_encode($View->RuleSet->rules));
@@ -45,8 +45,7 @@ if (filter_has_var(INPUT_POST, 'forcedisplay')) {
 
 $StrRules= array();
 if ($testResult || $force) {
-	/// @todo Check why we cannot pass FALSE as numbers param
-	$generated= $View->Controller($StrRules, 'GeneratePfRules', json_encode($View->RuleSet->rules), $printNumbers ? 1 : 0, $force);
+	$generated= $View->Controller($StrRules, 'GeneratePfRules', json_encode($View->RuleSet->rules), $printNumbers, $force);
 }
 
 require_once($VIEW_PATH.'/header.php');

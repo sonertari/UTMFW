@@ -71,7 +71,7 @@ function PrintHelpBox($msg= '', $width= 300)
  * @warning $Width type should be string, because some functions use 'auto'.
  *
  * @param string $msg Message to display.
- * @param int $width Box width, defaults to auto.
+ * @param mixed $width Box width, defaults to auto.
  * @param string $type Image type to display.
  */
 function PrintHelpWindow($msg, $width= 'auto', $type= 'INFO')

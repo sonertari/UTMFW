@@ -257,9 +257,9 @@ class Rule
 	 * If a key in typedef is marked as 'require', it should exist in the rule array, otherwise is an error.
 	 * 
 	 * @param array $arr Rule array.
-	 * @param array $key Key to search in both rule array and typedef.
+	 * @param string $key Key to search in both rule array and typedef.
 	 * @param array $def Validation definition.
-	 * @param array $parent If the value is an array within another array, this param represents the key of the parent array. Used in error reporting.
+	 * @param string $parent If the value is an array within another array, this param represents the key of the parent array. Used in error reporting.
 	 * @param bool $force Parameter to pass to validation function.
 	 * @return bool TRUE if validated, FALSE if not.
 	 */
@@ -300,9 +300,9 @@ class Rule
 	 * the rule element does not have 'multi' or 'values'.
 	 * 
 	 * @param array $arr Rule array.
-	 * @param array $key Key to search in both rule array and typedef.
+	 * @param string $key Key to search in both rule array and typedef.
 	 * @param array $def Validation definition.
-	 * @param array $parent If the value is an array within another array, this param represents the key of the parent array. Used in error reporting.
+	 * @param string $parent If the value is an array within another array, this param represents the key of the parent array. Used in error reporting.
 	 * @param bool $force Parameter to pass to validation function.
 	 * @return bool TRUE if validated, FALSE if not.
 	 */
@@ -350,10 +350,10 @@ class Rule
 	 * 
 	 * Validation method should be defined as a regex or a function. Otherwise is an error.
 	 * 
-	 * @param array $arr Rule array.
-	 * @param array $key Key to search in both rule array and typedef.
+	 * @param string $key Key to search in both rule array and typedef.
+	 * @param mixed $value Value to validate, array or string.
 	 * @param array $def Validation definition.
-	 * @param array $parent If the value is an array within another array, this param represents the key of the parent array. Used in error reporting.
+	 * @param string $parent If the value is an array within another array, this param represents the key of the parent array. Used in error reporting.
 	 * @param bool $force Parameter to pass to validation function.
 	 * @return bool TRUE if validated, FALSE if not.
 	 */
@@ -799,7 +799,7 @@ class Rule
 	 * Caller may supply a leading and/or a trailing string to print.
 	 * 
  	 * @param string $key Key to print the value of.
- 	 * @param string $head Optional leading string.
+ 	 * @param string $head Optional leading string, may be NULL.
  	 * @param string $tail Optional trailing string.
 	 */
 	function genValue($key, $head= '', $tail= '')
@@ -829,7 +829,7 @@ class Rule
 	/**
 	 * Prints the given values in delimiters.
 	 * 
- 	 * @param array $items Values to print.
+ 	 * @param mixed $items Values to print, array or string.
  	 * @param string $head Optional leading string.
 	 * @param string $delimPre Opening delimiter.
 	 * @param string $delimPost Closing delimiter.

@@ -420,10 +420,10 @@ function IsDgSubCat($str)
  * @param array $commands Available commands for the current model
  * @param array $argv Argument vector
  * @param string $cmd Method name, key to $commands
- * @param int $actual Given arg count
- * @param int $expected Expected arg count
- * @param int $acceptable Acceptable arg count
- * @param int $check Arg count used while validating
+ * @param int $actual Given arg count [out]
+ * @param int $expected Expected arg count [out]
+ * @param int $acceptable Acceptable arg count [out]
+ * @param int $check Arg count used while validating [out]
  */
 function ComputeArgCounts($commands, $argv, $cmd, &$actual, &$expected, &$acceptable, &$check)
 {
@@ -527,8 +527,6 @@ function ValidateArgs($commands, $command, $argv, $check)
  */
 function ExpandArgs(&$ArgV, &$Locale, &$View, &$Command)
 {
-	global $ModelFiles;
-
 	$valid= FALSE;
 
 	// Arg 0 contains all of the args as a json encoded string

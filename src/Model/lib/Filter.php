@@ -250,6 +250,14 @@ class Filter extends FilterBase
 		}
 	}
 
+	/**
+	 * Generates rule.
+	 * 
+	 * The output of this function is returned to the View on the command line,
+	 * so we return the generated rule string.
+	 * 
+	 * @return string String rule.
+	 */
 	function generate()
 	{
 		$this->genAction();

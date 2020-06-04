@@ -132,6 +132,8 @@ class Anchor extends FilterBase
 	 * Generates anchor rule.
 	 * 
 	 * Inline rules are always appended to the end.
+	 * 
+	 * @return string String rule.
 	 */
 	function generate()
 	{
@@ -176,6 +178,7 @@ class Anchor extends FilterBase
  * 
  * @param string $str List of rule definitions in an array.
  * @param bool $force If set, continues checking and validating even if there are errors or $MaxAnchorNesting is reached.
+ * @return bool TRUE if $str has inline anchor.
  */
 function IsInlineAnchor($str, $force= FALSE)
 {

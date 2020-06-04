@@ -64,6 +64,7 @@ class RuleSet
 	 *
 	 * @param array $rulesArray List of rule definitions in an array.
 	 * @param bool $force Used to override validation or other types of errors, hence forces loading of rules.
+	 * @return bool Load result.
 	 */
 	function load($rulesArray, $force= FALSE)
 	{
@@ -117,6 +118,7 @@ class RuleSet
 	 *
 	 * @param string $text Rule set in string format to parse.
 	 * @param bool $force Used to override validation or other types of errors, hence forces loading of rules.
+	 * @return bool Validation result.
 	 */
 	function parse($text, $force= FALSE)
 	{
@@ -263,6 +265,7 @@ class RuleSet
 	 * method validates the rules in the ruleset.
 	 *
 	 * @param bool $force Used to override validation or other types of errors, hence forces loading of rules.
+	 * @return bool Validation result.
 	 */
 	function validate($force= FALSE)
 	{
@@ -356,6 +359,7 @@ class RuleSet
 	 * The default on the Display page is to print line numbers in front of each line. 
 	 *
 	 * @param bool $printNumbers Print line numbers.
+	 * @return string Generated rules.
 	 */
 	function generate($printNumbers= FALSE)
 	{
