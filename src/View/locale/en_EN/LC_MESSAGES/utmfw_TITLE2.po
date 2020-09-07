@@ -136,6 +136,9 @@ msgstr ""
 msgid "Cipher"
 msgstr ""
 
+msgid "Cipher Suites"
+msgstr ""
+
 msgid "Ciphers"
 msgstr ""
 

@@ -119,6 +119,11 @@ msgid "Cipher specification for both server and client SSL/TLS connections."
 msgstr ""
 
 msgid ""
+"Cipher suite specification for both server and client SSL/TLS connections. "
+"This is for TLS 1.3 only."
+msgstr ""
+
+msgid ""
 "ClamAV can scan within archives and compressed files.\n"
 "\t\tDefault: enabled"
 msgstr ""

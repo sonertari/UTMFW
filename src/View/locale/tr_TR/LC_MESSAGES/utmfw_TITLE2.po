@@ -1,21 +1,21 @@
 # Copyright (C) 2004-2020 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009, 2017-2020.
+# Soner Tari <sonertari@gmail.com>, 2009-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.7\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2020-05-25 16:39+0300\n"
+"PO-Revision-Date: 2020-09-07 23:14+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
-"Language: Turkish\n"
-"Language-Team: Turkish <sonertari@gmail.com>\n"
+"Language: tr\n"
+"Language-Team: Turkish <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 3.36.0\n"
 
 msgid "%MEM"
 msgstr "BELLEK%"
@@ -154,6 +154,9 @@ msgstr "Sertifika"
 
 msgid "Cipher"
 msgstr "Şifre"
+
+msgid "Cipher Suites"
+msgstr "Şifre Takımları"
 
 msgid "Ciphers"
 msgstr "Şifreler"

@@ -257,6 +257,8 @@ $ModelConfig = array(
 		),
     'Ciphers' => array(
 		),
+    'CipherSuites' => array(
+		),
     'LeafKeyRSABits' => array(
         'type' => UINT,
 		),

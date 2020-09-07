@@ -927,8 +927,18 @@ msgstr "Çince basitleştirilmiş"
 msgid "Cipher"
 msgstr "Şifre"
 
+msgid "Cipher Suites"
+msgstr "Şifre Takımları"
+
 msgid "Cipher specification for both server and client SSL/TLS connections."
-msgstr "Sunucu ve istemcilerin SSL/TLS bağlantıları için şifre tanımı"
+msgstr "Sunucu ve istemcilerin SSL/TLS bağlantıları için şifre tanımı."
+
+msgid ""
+"Cipher suite specification for both server and client SSL/TLS connections. "
+"This is for TLS 1.3 only."
+msgstr ""
+"Sunucu ve istemcilerin SSL/TLS bağlantıları için şifre takımı tanımı. Sadece "
+"TLS 1.3 içindir."
 
 msgid "Ciphers"
 msgstr "Şifreler"

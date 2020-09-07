@@ -85,6 +85,10 @@ class Sslproxy extends View
 				'title' => _TITLE2('Ciphers'),
 				'info' => _HELPBOX2('Cipher specification for both server and client SSL/TLS connections.'),
 				),
+			'CipherSuites' => array(
+				'title' => _TITLE2('Cipher Suites'),
+				'info' => _HELPBOX2('Cipher suite specification for both server and client SSL/TLS connections. This is for TLS 1.3 only.'),
+				),
 			'LeafKeyRSABits' => array(
 				'title' => _TITLE2('Leaf Key RSA Bits'),
 				'info' => _HELPBOX2('Leaf key RSA keysize in bits, use 1024|2048|3072|4096.'),
