@@ -4,9 +4,9 @@ UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on prod
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
-The installation iso file for the amd64 arch is available for download at [utmfw67\_20200605\_amd64.iso](https://drive.google.com/file/d/1ZOHTkxaHtWDH5Poz8qmrox0WsHspRFzO/view?usp=sharing). Make sure the SHA256 checksum is correct: 50bebb6b945bde21254042b372b45e5b3f35a9d97c8c2d060ee3d1e98f1c4153.
+The installation iso file for the amd64 arch is available for download at [utmfw67\_20200907\_amd64.iso](https://drive.google.com/file/d/103ZtKIl-xoivH7Xl_8BtkpTp9E-qD36B/view?usp=sharing). Make sure the SHA256 checksum is correct: 067ac561cb97cef0c21522bf165b1971106ea964a2b1ab8c3fdf9cc1911a163c.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.7 comes with OpenBSD 6.7-stable including all updates until May 25th, 2020.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.7.1 comes with OpenBSD 6.7-stable including all updates until September 6th, 2020.
 
 UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
