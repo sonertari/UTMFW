@@ -1079,7 +1079,7 @@ __EOT
 # #######################################################################
 # Initial actions common to both installs and upgrades.
 # #######################################################################
-VERSION='6.7'
+VERSION='6.8'
 ARCH=$(/usr/bin/machine)
 
 VMAJ=${VERSION%%\.*}
@@ -1110,9 +1110,9 @@ CDDEVS=$(scan_dmesg "${MDCDDEVS:-/^cd[0-9][0-9]* /s/ .*//p}")
 [[ -z $CDDEVS ]] && CDDEVS="cd0,cd1,cd2"
 
 # Selected sets will be installed in the order they are listed in $THESETS.
-THESETS="isc-bind-9.16.2v0.tgz \
+THESETS="isc-bind-9.16.7v0.tgz \
 		sslproxy-0.8.1.tgz \
-		clamav-0.102.2.tgz \
+		clamav-0.103.0.tgz \
 		clamavdb.tar.gz \
 		p5-Mail-SpamAssassin-3.4.4.tgz \
 		p3scan-2.3.2.tgz \
@@ -1123,12 +1123,12 @@ THESETS="isc-bind-9.16.2v0.tgz \
 		snortrules.tar.gz \
 		snortips-6.2.2.tgz \
 		imspector-0.9.tgz \
-		openvpn-2.4.9.tgz \
+		openvpn-2.4.9p0.tgz \
 		dante-1.4.2p0.tgz \
-		symon-2.88p5.tgz \
+		symon-2.88p6.tgz \
 		pmacct-1.7.1.tgz \
 		pftop-0.7p19.tgz \
-		php-7.4.5p0.tgz \
+		php-7.4.10.tgz \
 		$CW_WEBIF_TARFILE \
 		$CW_CONFIG_TARFILE"
 
