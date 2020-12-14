@@ -2,7 +2,7 @@
 
 COMMENT=	event notification library
 
-V=		2.1.11
+V=		2.1.12
 DISTNAME=	libevent-$V-stable
 PKGNAME=	libevent-$V
 CATEGORIES=	devel
