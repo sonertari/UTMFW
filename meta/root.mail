@@ -7,4 +7,6 @@ Subject: Welcome to UTMFW 6.8!
 
 Highlights of this release are:
 - OpenBSD 6.8-stable
+- SSLproxy 0.8.2 and libevent 2.1.12
+- Snort 2.9.17
 

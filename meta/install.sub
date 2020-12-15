@@ -1119,7 +1119,7 @@ THESETS="isc-bind-9.16.7v0.tgz \
 		smtp-gated-1.4.20.0.tgz \
 		e2guardian-5.3.4.tgz \
 		blacklists.tar.gz \
-		snort-2.9.16.tgz \
+		snort-2.9.17.tgz \
 		snortrules.tar.gz \
 		snortips-6.2.2.tgz \
 		imspector-0.9.tgz \
