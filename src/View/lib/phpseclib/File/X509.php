@@ -2220,7 +2220,11 @@ class File_X509
                 }
 
                 while (!feof($fsock)) {
-                    $data.= fread($fsock, 1024);
+                    $temp = fread($fsock, 1024);
+                    if ($temp === false) {
+                        return false;
+                    }
+                    $data.= $temp;
                 }
 
                 break;
@@ -2269,7 +2273,7 @@ class File_X509
             return false;
         }
 
-        $parent = new static();
+        $parent = new File_X509();
         $parent->CAs = $this->CAs;
         /*
          "Conforming applications that support HTTP or FTP for accessing
@@ -2584,7 +2588,7 @@ class File_X509
     {
         $ip = base64_decode($ip);
         list(, $ip, $mask) = unpack('N2', $ip);
-        return [long2ip($ip), long2ip($mask)];
+        return array(long2ip($ip), long2ip($mask));
     }
 
     /**
@@ -3006,7 +3010,7 @@ class File_X509
             } elseif (is_object($value) && strtolower(get_class($value)) == 'file_asn1_element') {
                 // @codingStandardsIgnoreStart
                 $callback = version_compare(PHP_VERSION, '5.3.0') >= 0 ?
-                    function ($x) { return "\x" . bin2hex($x[0]); } :
+                    eval('return function ($x) { return "\x" . bin2hex($x[0]); };') :
                     create_function('$x', 'return "\x" . bin2hex($x[0]);');
                 // @codingStandardsIgnoreEnd
                 $value = strtoupper(preg_replace_callback('#[^\x20-\x7E]#', $callback, $value->element));

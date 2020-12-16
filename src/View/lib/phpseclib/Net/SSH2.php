@@ -598,6 +598,20 @@ class Net_SSH2
     var $window_size = 0x7FFFFFFF;
 
     /**
+     * What we resize the window to
+     *
+     * When PuTTY resizes the window it doesn't add an additional 0x7FFFFFFF bytes - it adds 0x40000000 bytes.
+     * Some SFTP clients (GoAnywhere) don't support adding 0x7FFFFFFF to the window size after the fact so
+     * we'll just do what PuTTY does
+     *
+     * @var int
+     * @see self::_send_channel_packet()
+     * @see self::exec()
+     * @access private
+     */
+    var $window_resize = 0x40000000;
+
+    /**
      * Window size, server to client
      *
      * Window size indexed by channel
@@ -1240,7 +1254,11 @@ class Net_SSH2
                 $elapsed = strtok(microtime(), ' ') + strtok('') - $start;
                 $this->curTimeout-= $elapsed;
             }
-            $temp.= fgets($this->fsock, 255);
+            $subtemp = fgets($this->fsock, 255);
+            if ($subtemp === '' || $subtemp === false) {
+                return false;
+            }
+            $temp.= $subtemp;
         }
 
         if (feof($this->fsock)) {
@@ -1551,6 +1569,7 @@ class Net_SSH2
             if (!$this->_send_binary_packet($packet)) {
                 return false;
             }
+            $this->_updateLogHistory('UNKNOWN (34)', 'NET_SSH2_MSG_KEXDH_GEX_REQUEST');
 
             $response = $this->_get_binary_packet();
             if ($response === false) {
@@ -1566,6 +1585,7 @@ class Net_SSH2
                 user_error('Expected SSH_MSG_KEX_DH_GEX_GROUP');
                 return false;
             }
+            $this->_updateLogHistory('NET_SSH2_MSG_KEXDH_REPLY', 'NET_SSH2_MSG_KEXDH_GEX_GROUP');
 
             if (strlen($response) < 4) {
                 return false;
@@ -1654,6 +1674,9 @@ class Net_SSH2
             user_error('Connection closed by server');
             return false;
         }
+        if ($clientKexInitMessage == NET_SSH2_MSG_KEXDH_GEX_INIT) {
+            $this->_updateLogHistory('UNKNOWN (32)', 'NET_SSH2_MSG_KEXDH_GEX_INIT');
+        }
 
         $response = $this->_get_binary_packet();
         if ($response === false) {
@@ -1667,8 +1690,14 @@ class Net_SSH2
         extract(unpack('Ctype', $this->_string_shift($response, 1)));
 
         if ($type != $serverKexReplyMessage) {
-            user_error('Expected SSH_MSG_KEXDH_REPLY');
+            $expected = $serverKexReplyMessage == NET_SSH2_MSG_KEXDH_GEX_REPLY ?
+                'SSH_MSG_KEXDH_GEX_REPLY' :
+                'SSH_MSG_KEXDH_REPLY';
+            user_error("Expected $expected");
             return false;
+        }
+        if ($serverKexReplyMessage == NET_SSH2_MSG_KEXDH_GEX_REPLY) {
+            $this->_updateLogHistory('UNKNOWN (33)', 'NET_SSH2_MSG_KEXDH_GEX_REPLY');
         }
 
         if (strlen($response) < 4) {
@@ -2013,13 +2042,11 @@ class Net_SSH2
                     include_once $VIEW_PATH.'/lib/phpseclib/Crypt/TripleDES.php';
                 }
                 return new Crypt_TripleDES();
-                break;
             case '3des-ctr':
                 if (!class_exists('Crypt_TripleDES')) {
                     include_once $VIEW_PATH.'/lib/phpseclib/Crypt/TripleDES.php';
                 }
                 return new Crypt_TripleDES(CRYPT_DES_MODE_CTR);
-                break;
             case 'aes256-cbc':
             case 'aes192-cbc':
             case 'aes128-cbc':
@@ -2027,7 +2054,6 @@ class Net_SSH2
                     include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Rijndael.php';
                 }
                 return new Crypt_Rijndael();
-                break;
             case 'aes256-ctr':
             case 'aes192-ctr':
             case 'aes128-ctr':
@@ -2035,20 +2061,16 @@ class Net_SSH2
                     include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Rijndael.php';
                 }
                 return new Crypt_Rijndael(CRYPT_RIJNDAEL_MODE_CTR);
-                $this->encrypt_block_size = 16; // eg. 128 / 8
-                break;
             case 'blowfish-cbc':
                 if (!class_exists('Crypt_Blowfish')) {
                     include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Blowfish.php';
                 }
                 return new Crypt_Blowfish();
-                break;
             case 'blowfish-ctr':
                 if (!class_exists('Crypt_Blowfish')) {
                     include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Blowfish.php';
                 }
                 return new Crypt_Blowfish(CRYPT_BLOWFISH_MODE_CTR);
-                break;
             case 'twofish128-cbc':
             case 'twofish192-cbc':
             case 'twofish256-cbc':
@@ -2057,7 +2079,6 @@ class Net_SSH2
                     include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Twofish.php';
                 }
                 return new Crypt_Twofish();
-                break;
             case 'twofish128-ctr':
             case 'twofish192-ctr':
             case 'twofish256-ctr':
@@ -2065,7 +2086,6 @@ class Net_SSH2
                     include_once $VIEW_PATH.'/lib/phpseclib/Crypt/Twofish.php';
                 }
                 return new Crypt_Twofish(CRYPT_TWOFISH_MODE_CTR);
-                break;
             case 'arcfour':
             case 'arcfour128':
             case 'arcfour256':
@@ -2073,7 +2093,6 @@ class Net_SSH2
                     include_once $VIEW_PATH.'/lib/phpseclib/Crypt/RC4.php';
                 }
                 return new Crypt_RC4();
-                break;
             case 'none':
                 //return new Crypt_Null();
         }
@@ -2117,6 +2136,15 @@ class Net_SSH2
     {
         $args = func_get_args();
         $this->auth[] = $args;
+
+        // try logging with 'none' as an authentication method first since that's what
+        // PuTTY does
+        if ($this->_login($username)) {
+            return true;
+        }
+        if (count($args) == 1) {
+            return false;
+        }
         return call_user_func_array(array(&$this, '_login'), $args);
     }
 
@@ -2316,9 +2344,7 @@ class Net_SSH2
 
         switch ($type) {
             case NET_SSH2_MSG_USERAUTH_PASSWD_CHANGEREQ: // in theory, the password can be changed
-                if (defined('NET_SSH2_LOGGING')) {
-                    $this->message_number_log[count($this->message_number_log) - 1] = 'NET_SSH2_MSG_USERAUTH_PASSWD_CHANGEREQ';
-                }
+                $this->_updateLogHistory('UNKNOWN (60)', 'NET_SSH2_MSG_USERAUTH_PASSWD_CHANGEREQ');
                 if (strlen($response) < 4) {
                     return false;
                 }
@@ -2469,12 +2495,8 @@ class Net_SSH2
                 // see http://tools.ietf.org/html/rfc4256#section-3.2
                 if (strlen($this->last_interactive_response)) {
                     $this->last_interactive_response = '';
-                } elseif (defined('NET_SSH2_LOGGING')) {
-                    $this->message_number_log[count($this->message_number_log) - 1] = str_replace(
-                        'UNKNOWN',
-                        'NET_SSH2_MSG_USERAUTH_INFO_REQUEST',
-                        $this->message_number_log[count($this->message_number_log) - 1]
-                    );
+                } else {
+                    $this->_updateLogHistory('UNKNOWN (60)', 'NET_SSH2_MSG_USERAUTH_INFO_REQUEST');
                 }
 
                 if (!count($responses) && $num_prompts) {
@@ -2497,13 +2519,7 @@ class Net_SSH2
                     return false;
                 }
 
-                if (defined('NET_SSH2_LOGGING') && NET_SSH2_LOGGING == NET_SSH2_LOG_COMPLEX) {
-                    $this->message_number_log[count($this->message_number_log) - 1] = str_replace(
-                        'UNKNOWN',
-                        'NET_SSH2_MSG_USERAUTH_INFO_RESPONSE',
-                        $this->message_number_log[count($this->message_number_log) - 1]
-                    );
-                }
+                $this->_updateLogHistory('UNKNOWN (61)', 'NET_SSH2_MSG_USERAUTH_INFO_RESPONSE');
 
                 /*
                    After receiving the response, the server MUST send either an
@@ -2630,13 +2646,7 @@ class Net_SSH2
             case NET_SSH2_MSG_USERAUTH_PK_OK:
                 // we'll just take it on faith that the public key blob and the public key algorithm name are as
                 // they should be
-                if (defined('NET_SSH2_LOGGING') && NET_SSH2_LOGGING == NET_SSH2_LOG_COMPLEX) {
-                    $this->message_number_log[count($this->message_number_log) - 1] = str_replace(
-                        'UNKNOWN',
-                        'NET_SSH2_MSG_USERAUTH_PK_OK',
-                        $this->message_number_log[count($this->message_number_log) - 1]
-                    );
-                }
+                $this->_updateLogHistory('UNKNOWN (60)', 'NET_SSH2_MSG_USERAUTH_PK_OK');
         }
 
         $packet = $part1 . chr(1) . $part2;
@@ -3013,7 +3023,7 @@ class Net_SSH2
      * @see self::write()
      * @param string $expect
      * @param int $mode
-     * @return string
+     * @return string|bool
      * @access public
      */
     function read($expect = '', $mode = NET_SSH2_READ_SIMPLE)
@@ -3737,11 +3747,13 @@ class Net_SSH2
 
                 // resize the window, if appropriate
                 if ($this->window_size_server_to_client[$channel] < 0) {
-                    $packet = pack('CNN', NET_SSH2_MSG_CHANNEL_WINDOW_ADJUST, $this->server_channels[$channel], $this->window_size);
+                // PuTTY does something more analogous to the following:
+                //if ($this->window_size_server_to_client[$channel] < 0x3FFFFFFF) {
+                    $packet = pack('CNN', NET_SSH2_MSG_CHANNEL_WINDOW_ADJUST, $this->server_channels[$channel], $this->window_resize);
                     if (!$this->_send_binary_packet($packet)) {
                         return false;
                     }
-                    $this->window_size_server_to_client[$channel]+= $this->window_size;
+                    $this->window_size_server_to_client[$channel]+= $this->window_resize;
                 }
 
                 switch ($type) {
@@ -3903,7 +3915,7 @@ class Net_SSH2
                     $this->channel_buffers[$channel][] = $data;
                     break;
                 case NET_SSH2_MSG_CHANNEL_CLOSE:
-                    $this->curTimeout = 0;
+                    $this->curTimeout = 5;
 
                     if ($this->bitmap & NET_SSH2_MASK_SHELL) {
                         $this->bitmap&= ~NET_SSH2_MASK_SHELL;
@@ -4132,9 +4144,13 @@ class Net_SSH2
 
         $this->channel_status[$client_channel] = NET_SSH2_MSG_CHANNEL_CLOSE;
 
-        $this->curTimeout = 0;
+        $this->curTimeout = 5;
 
         while (!is_bool($this->_get_channel_packet($client_channel))) {
+        }
+
+        if ($this->is_timeout) {
+            $this->disconnect();
         }
 
         if ($want_reply) {
@@ -4492,7 +4508,7 @@ class Net_SSH2
      * @return array
      * @access public
      */
-    public function getServerAlgorithms()
+    function getServerAlgorithms()
     {
         $this->_connect();
 
@@ -4612,10 +4628,7 @@ class Net_SSH2
                 switch ($algo) {
                     case 'arcfour128':
                     case 'arcfour256':
-                        if ($engine == CRYPT_ENGINE_INTERNAL) {
-                            $algos = array_diff($algos, array($algo));
-                            $ciphers[] = $algo;
-                        } else {
+                        if ($engine != CRYPT_ENGINE_INTERNAL) {
                             continue 2;
                         }
                 }
@@ -5074,5 +5087,23 @@ class Net_SSH2
     {
         $this->windowColumns = $columns;
         $this->windowRows = $rows;
+    }
+
+    /**
+     * Update packet types in log history
+     *
+     * @param string $old
+     * @param string $new
+     * @access private
+     */
+    function _updateLogHistory($old, $new)
+    {
+        if (defined('NET_SSH2_LOGGING') && NET_SSH2_LOGGING == NET_SSH2_LOG_COMPLEX) {
+            $this->message_number_log[count($this->message_number_log) - 1] = str_replace(
+                $old,
+                $new,
+                $this->message_number_log[count($this->message_number_log) - 1]
+            );
+        }
     }
 }
