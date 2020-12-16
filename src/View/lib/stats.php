@@ -47,23 +47,26 @@ function PrintModalPieChart()
 		function generateChart(dataset, title) {
 			modal.style.display = 'block';
 
-			var keys = d3.keys(dataset);
-			var values = d3.values(dataset);
+			var keys = Object.keys(dataset);
+			var values = Object.values(dataset);
 
 			var dataSum = d3.sum(values);
 
+			// Use index to get key from dataset to display it on slicetip
+			// {key => {index => value}}
 			var chartDataset = {};
 			var curSum = 0;
 			for (var j = 0; j < keys.length; ++j) {
 				if (j > 10) {
-					chartDataset['others'] = dataSum - curSum;
+					chartDataset['others'] = {index: j, value: dataSum - curSum};
 					break;
 				}
-				chartDataset[keys[j]] = values[j];
+				chartDataset[keys[j]] = {index: j, value: values[j]};
 				curSum += values[j];
 			}
 
-			var pie = d3.pie();
+			// Use an accessor to get value as pie data
+			var pie = d3.pie().value((d) => d.value);
 			var w = 400;
 			var h = 400;
 			var outerRadius = w / 2;
@@ -83,7 +86,7 @@ function PrintModalPieChart()
 
 			// Set up groups
 			var arcs = svg.selectAll('g.arc')
-				.data(pie(d3.values(chartDataset)))
+				.data(pie(Object.values(chartDataset)))
 				.enter()
 				.append('g')
 				.attr('class', 'arc')
@@ -97,13 +100,12 @@ function PrintModalPieChart()
 					return color(i);
 				})
 				.attr('d', arc)
-				.on('mouseover', function(d, i) {
-					d3.select(this).style('opacity', 0.7);
+				.on('mouseover', (event, d) => {
+					d3.select(event.currentTarget).style('opacity', 0.7);
 
 					// Get the mouse pointer's x/y values for the tooltip
-					var mousePos = d3.mouse(document.body);
-					var x = mousePos[0] + 25;
-					var y = mousePos[1] + 25;
+					var x = event.x + 25;
+					var y = event.y + 25;
 
 					// Update the tooltip position and contents
 					slicetip
@@ -115,7 +117,7 @@ function PrintModalPieChart()
 						.text(title);
 					slicetip
 						.select('#key')
-						.text(d3.keys(chartDataset)[i]);
+						.text(Object.keys(chartDataset)[d.data.index]);
 					slicetip
 						.select('#value')
 						.text(Math.round(100 * d.value / dataSum) + '%: ' + d.value + '/' + dataSum);
@@ -123,8 +125,8 @@ function PrintModalPieChart()
 					// Show the tooltip
 					slicetip.classed('hidden', false);
 				})
-				.on('mouseout', function(d, i) {
-					d3.select(this)
+				.on('mouseout', (event) => {
+					d3.select(event.currentTarget)
 						.transition()
 						.duration(500)
 						.style('opacity', 1);
@@ -140,7 +142,7 @@ function PrintModalPieChart()
 				.attr('text-anchor', 'middle')
 				.attr('font-weight', 'bold')
 				.text(function (d, i) {
-					return (d.value / dataSum > .05) ? d3.keys(chartDataset)[i] : '';
+					return (d.value / dataSum > .05) ? Object.keys(chartDataset)[i] : '';
 				});
 		};
 
@@ -150,9 +152,12 @@ function PrintModalPieChart()
 		// When the user clicks on the modal or <span> (x), close the modal
 		function close() {
 			var chart = document.getElementById('pieChart');
-			chart.parentNode.removeChild(chart);
-			slicetip.classed('hidden', true);
-			modal.style.display = 'none';
+			// This function is called twice, for both xbtn and modal
+			if (chart) {
+				chart.parentNode.removeChild(chart);
+				slicetip.classed('hidden', true);
+				modal.style.display = 'none';
+			}
 		}
 		xbtn.onclick = close;
 		modal.onclick = close;
