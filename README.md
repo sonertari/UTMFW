@@ -87,6 +87,8 @@ References:
 
 The purpose in this section is to build the installation iso file using the createiso script at the root of the project source tree. You are expected to be doing these on an OpenBSD 6.8 and have installed git, gettext, and doxygen on it.
 
+### Build summary
+
 The createiso script:
 
 - Clones the git repo of the project to a tmp folder.
@@ -110,3 +112,172 @@ However, the source tree has links to OpenBSD install sets and packages, which s
 Note that you can strip down xbase and xfont install sets to reduce the size of the iso file. Copy or link them to the appropriate locations under `openbsd/utmfw`.
 
 Now you can run the createiso script which should produce an iso file in the same folder as itself.
+
+### Build steps
+
+The following are steps you can follow to build UTMFW yourself. Some of these steps can be automated by a script. You can modify these steps to suit your needs.
+
+- Install OpenBSD:
+	+ Download installXY.iso from an OpenBSD mirror
+	+ Create a new VM with 60GB disk, choose a size based on your needs
+	+ Add a separate 8GB disk for /dest, which will be needed to make release(8)
+	+ Start VM and install OpenBSD
+	+ Create a local user
+	+ During installation mount the dest disk to /dest
+	+ Add noperm to /dest in /etc/fstab
+    + Make /dest owned by build:wodj and set its perms to 700
+    + Create /dest/dest/ and /dest/rel/ folders
+
+- Fetch UTMFW sources and update if upgrading:
+	+ Install git
+	+ Clone UTMFW to your home folder
+
+	+ Bump version number X.Y in the sources, if upgrading
+		+ cd/amd64/etc/boot.conf
+		+ meta/createiso
+		+ meta/install.sub
+		+ src/create_po.sh
+		+ Doxyfile
+		+ README.md
+		+ src/lib/defs.php
+
+	+ Bump version number XY in the sources, if upgrading
+		+ README.md
+
+	+ Update based on release date, project changes, and news, if upgrading
+		+ config/etc/motd
+		+ meta/root.mail
+		+ README.md
+
+	+ Update copyright if necessary
+
+- Generate signify key pair:
+    + Save .pub and .sec to docs/signify
+    + Copy .pub to meta/etc/signify/
+    + Copy .pub to /etc/signify/
+
+- Update packages:
+	+ Install OpenBSD packages
+		+ Set the download mirror, use the existing cache if any
+            ```
+            PKG_PATH=/var/db/pkg_cache/:https://cdn.openbsd.org/pub/OpenBSD/X.Y/packages/amd64/
+            ```
+		+ Save the depends under PKG_CACHE, which will be used later on to update the packages in the iso file
+            ```
+            export PKG_CACHE=/var/db/pkg_utmfw/
+            ```
+		+ isc-bind
+		+ clamav
+		+ p5-Mail-SpamAssassin
+		+ snort
+		+ openvpn
+		+ dante
+		+ symon
+		+ symux
+		+ pmacct
+		+ pftop
+		+ php
+
+	+ Build and create UTMFW packages:
+		+ Extract ports.tar.gz under /usr/
+		+ Copy port folders of the UTMFW packages under ports to /usr/ports/{net,security}
+		+ Copy the source tar balls of the UTMFW packages to /user/ports/distfiles
+		+ Append daemon users of UTMFW packages to /usr/ports/infrastructure/db/user.list
+            ```
+            900 _p3scan             _p3scan         net/p3scan
+            901 _smtp-gated         _smtp-gated     net/smtp-gated
+            903 _imspector          _imspector      net/imspector
+            904 _sslproxy           _sslproxy       security/sslproxy
+            ```
+		+ Install pkg depends of each UTMFW package before making them, so port does not try to build and install itself
+		+ Obtain the snort sources, apply the snort diff under ports/distfiles, compress as tarball with the same name as the original tarball of the sources  
+		+ Make the UTMFW packages
+		    + libevent, if different from OpenBSD packages
+			+ sslproxy
+			+ p3scan
+			+ smtp-gated: use the source tarball under ports/distfiles
+			+ imspector: use the source tarball under ports/distfiles
+			+ e2guardian
+			+ snortips
+			+ snort: use the source tarball generated above
+		+ Sign all of the UTMFW packages using signify, for example:
+            ```
+            signify -Sz -s utmfw-XY.sec -m /usr/ports/packages/amd64/all/sslproxy-0.8.2.tgz -x ~/sslproxy-0.8.2.tgz
+            ```
+	+ Update the links under cd/amd64/X.Y/packages/ with the UTMFW packages made above
+	+ Keep the links for blacklists.tar.gz, clamavdb.tar.gz, e2guardian, imspector, p3scan, smtp-gated, snortips, sslproxy, snort, libevent
+
+	+ Install UTMFW packages using their signed packages
+		+ Save the depends under PKG_CACHE
+            ```
+            export PKG_CACHE=/var/db/pkg_utmfw/
+            ```
+		+ libevent, if different from OpenBSD packages
+		+ sslproxy
+		+ p3scan
+		+ smtp-gated
+		+ e2guardian
+		+ snortips
+		+ imspector
+		+ snort
+
+	+ Update the links under cd/amd64/X.Y/packages/ with the OpenBSD packages saved under PKG_CACHE
+
+- Update meta/install.sub:
+    + Update the versions of the packages listed in THESETS
+
+- Make release(8):
+    + Extract src.tar.gz and and sys.tar.gz under /usr/src/
+    + Apply the patches under openbsd/utmfw
+	+ Follow the instructions in release(8), this step takes about 6 hours on a relatively fast computer
+		+ Use export DESTDIR=/dest/dest/ RELEASEDIR=/dest/rel/
+		+ Build kernel and reboot
+		+ Build system
+		+ Make release
+    + Copy install sets under /dest/rel/ to ~/OpenBSD/X.Y/amd64/
+
+- Update install sets:
+	+ Update the links for install sets under cd/amd64/X.Y/amd64 using the install sets under ~/OpenBSD/X.Y/amd64/ made above
+	+ Remove the old links
+	+ Copy the xbaseXY.tgz install set from installXY.iso to docs/expat/amd64/xbaseXY.tgz
+	+ Copy the xfontXY.tgz install set from installXY.iso to docs/fonts/amd64/xfontXY.tgz
+
+- Update configuration files under config to the new versions of packages:
+    + Also update Doxyfile if doxygen version changed
+
+- Generate new ssl certs for httpd, sslproxy, and openvpn:
+    + Copy them to config/etc/ssl, config/etc/sslproxy, and config/etc/openvpn
+
+- Update PFRE:
+    + Update PFRE to current version, support changes in pf if any
+    + Create man2web package and install
+    + Produce pf.conf.html from pf.conf(2) using man2web
+    + Merge PFRE changes from the previous pf.conf.html, most importantly the anchors
+
+- Update phpseclib to its new version if any:
+    + Merge UTMFW changes from the previous version
+
+- Update d3js to its new version if any:
+    + Fix any issues caused by API changes if any
+
+- Update the registered snortrules.tar.gz:
+	+ Make sure the directory structure is the same as the one in the old snortrules.tar.gz
+	+ Add black and white list files
+	+ Compress
+
+- Update blacklists.tar.gz:
+	+ Download the black list
+	+ Run the cats.php script to prepend category descriptions to each file
+	+ Compress
+
+- Update clamavdb.tar.gz:
+	+ Download virus db files
+	+ Compress
+
+- Strip xbase and xfont:
+	+ Make sure the contents are the same as in the one in the old iso file, except for the version numbers
+	+ SECURITY: Be very careful about the permissions of the directories and files in these install sets, they should be the same as the original files
+
+- Run the createiso script:
+	+ Install gettext-tools and doxygen for translations and documentation
+	+ Run ./createiso under ~/utmfw/
