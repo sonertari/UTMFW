@@ -4,7 +4,7 @@ UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on prod
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
-The installation iso file for the amd64 arch is available for download at [utmfw68\_20201217\_amd64.iso](https://drive.google.com/file/d/103ZtKIl-xoivH7Xl_8BtkpTp9E-qD36B/view?usp=sharing). Make sure the SHA256 checksum is correct: 067ac561cb97cef0c21522bf165b1971106ea964a2b1ab8c3fdf9cc1911a163c.
+The installation iso file for the amd64 arch is available for download at [utmfw68\_20201217\_amd64.iso](https://drive.google.com/file/d/1Jk5TVTIKaZXVtGadhZ9T_rtZxBA4YuRt/view?usp=sharing). Make sure the SHA256 checksum is correct: f9c5428cd395f77f8093b08b6107e15cd0b8705e37c25d4de6972263ffdab9fd.
 
 UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.8 comes with OpenBSD 6.8-stable including all updates until December 12th, 2020.
 
@@ -244,9 +244,6 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 
 - Update configuration files under config to the new versions of packages:
     + Also update Doxyfile if doxygen version changed
-
-- Generate new ssl certs for httpd, sslproxy, and openvpn:
-    + Copy them to config/etc/ssl, config/etc/sslproxy, and config/etc/openvpn
 
 - Update PFRE:
     + Update PFRE to current version, support changes in pf if any
