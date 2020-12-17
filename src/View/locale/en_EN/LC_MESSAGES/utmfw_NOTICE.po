@@ -22,6 +22,9 @@ msgstr ""
 msgid "Are you sure you want to erase statistics files?"
 msgstr ""
 
+msgid "Are you sure you want to generate SSL key pairs?"
+msgstr ""
+
 msgid "Are you sure you want to reinitialize graph files?"
 msgstr ""
 
@@ -138,6 +141,13 @@ msgid "Rules loaded"
 msgstr ""
 
 msgid "Ruleset deleted"
+msgstr ""
+
+msgid "SSL key pair generation failed."
+msgstr ""
+
+msgid ""
+"SSL key pairs generated. You should restart the services or the system now."
 msgstr ""
 
 msgid "Saved"

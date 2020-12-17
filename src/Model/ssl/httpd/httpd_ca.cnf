@@ -1,0 +1,28 @@
+# Run the following commands to generate ca.key and ca.crt for httpd
+# Ideally, check the serial in the last crt and increment
+# ATTENTION: httpd server crt should be signed with this CA
+
+# openssl genrsa -out ca.key 2048
+# openssl req -new -nodes -x509 -sha256 -out ca.crt -key ca.key -config httpd_ca.cnf -extensions v3_ca -set_serial 1 -days 365
+
+[ req ]
+distinguished_name	= req_distinguished_name
+
+[ req_distinguished_name ]
+countryName				= Country Name (2 letter code)
+countryName_min			= 2
+countryName_max			= 2
+stateOrProvinceName		= State or Province Name (full name)
+localityName			= Locality Name (eg, city)
+0.organizationName		= Organization Name (eg, company)
+organizationalUnitName	= Organizational Unit Name (eg, section)
+commonName				= Common Name (eg, fully qualified host name)
+commonName_max			= 64
+emailAddress			= Email Address
+emailAddress_max		= 64
+
+[ v3_ca ]
+basicConstraints        = CA:TRUE
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always,issuer:always
+

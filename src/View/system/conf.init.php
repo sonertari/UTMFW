@@ -36,6 +36,14 @@ else if (filter_has_var(INPUT_POST, 'Reinitialize')) {
 else if (filter_has_var(INPUT_POST, 'Delete')) {
 	$View->Controller($Output, 'DeleteStats');
 }
+else if (filter_has_var(INPUT_POST, 'Generate')) {
+	if ($View->Controller($Output, 'GenerateSSLKeyPairs', filter_input(INPUT_POST, 'SetSerial'))) {
+		PrintHelpWindow(_NOTICE('SSL key pairs generated. You should restart the services or the system now.'), 'auto', 'INFO');
+	}
+	else {
+		PrintHelpWindow(_NOTICE('SSL key pair generation failed.'), 'auto', 'ERROR');
+	}
+}
 
 require_once($VIEW_PATH.'/header.php');
 ?>
@@ -94,6 +102,23 @@ This may be necessary if these files are corrupted and you cannot see any graphs
 		<td class="none">
 			<?php
 			PrintHelpBox(_HELPBOX('This button allows you to delete all the statistics and uncompressed log files created by this user interface. Note that deleting these files does not mean that accumulated statistics are lost forever. <b>Original log files under /var/log folder are not affected by this action</b> either. These files will be recreated, and statistics will be recollected, the next time you access Statistics or Logs pages.'));
+			?>
+		</td>
+	</tr>
+	<tr class="evenline">
+		<td class="title">
+			<?php echo _TITLE('Generate SSL key pairs').':' ?>
+		</td>
+		<td>
+			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+				<?php echo _TITLE('set serial to') ?>
+				<input type="text" name="SetSerial" style="width: 50px;" maxlength="4" value="1" />
+				<input type="submit" name="Generate" value="<?php echo _CONTROL('Generate') ?>" onclick="return confirm('<?php echo _NOTICE('Are you sure you want to generate SSL key pairs?') ?>')"/>
+			</form>
+		</td>
+		<td class="none">
+			<?php
+			PrintHelpBox(_HELPBOX('This button allows you to generate or regenerate the SSL key pairs for httpd, openvpn, and sslproxy. You should restart these services or the system to use the new SSL key pairs. Make sure you increment the serial number on each new release.'));
 			?>
 		</td>
 	</tr>

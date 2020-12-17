@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2020 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009, 2017-2020.
+# Soner Tari <sonertari@gmail.com>, 2009-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.8\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2019-04-19 21:09+0300\n"
+"PO-Revision-Date: 2020-12-17 21:12+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 3.36.0\n"
 
 msgid "%CPU"
 msgstr "CPU%"
@@ -340,6 +340,9 @@ msgstr "Dosya yolu yanlış"
 
 msgid "French"
 msgstr "Fransızca"
+
+msgid "Generate SSL key pairs"
+msgstr "SSL anahtarlarını üret"
 
 msgid "Generate pf rule"
 msgstr "Pf kural üretimi"

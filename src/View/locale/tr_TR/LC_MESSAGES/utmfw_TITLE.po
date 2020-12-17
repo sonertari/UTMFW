@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.8\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2019-04-07 15:33+0300\n"
+"PO-Revision-Date: 2020-12-17 21:13+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 3.36.0\n"
 
 msgid "#Blocked"
 msgstr "Engellenmiş#"
@@ -311,6 +311,9 @@ msgstr "Fonksiyon"
 
 msgid "Gateway"
 msgstr "Ağ geçidi"
+
+msgid "Generate SSL key pairs"
+msgstr "SSL anahtarlarını üret"
 
 msgid "Graph files"
 msgstr "Grafik dosyaları"
@@ -1019,6 +1022,9 @@ msgstr "ikincil"
 
 msgid "secs"
 msgstr "sn"
+
+msgid "set serial to"
+msgstr "seri numarası"
 
 msgid "to"
 msgstr "kaydet"

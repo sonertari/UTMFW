@@ -322,6 +322,9 @@ msgstr ""
 msgid "French"
 msgstr ""
 
+msgid "Generate SSL key pairs"
+msgstr ""
+
 msgid "Generate pf rule"
 msgstr ""
 

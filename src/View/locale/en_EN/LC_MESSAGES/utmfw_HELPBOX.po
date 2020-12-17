@@ -127,6 +127,13 @@ msgid ""
 msgstr ""
 
 msgid ""
+"This button allows you to generate or regenerate the SSL key pairs for "
+"httpd, openvpn, and sslproxy. You should restart these services or the "
+"system to use the new SSL key pairs. Make sure you increment the serial "
+"number on each new release."
+msgstr ""
+
+msgid ""
 "This is the default gateway used by the system to reach the Internet, and "
 "may have been assigned dynamically. You can make your gateway configuration "
 "static or dynamic. If you make dynamic, static gateway file will be deleted. "

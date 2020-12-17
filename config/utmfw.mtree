@@ -194,14 +194,9 @@ aliases			type=file mode=0644 uname=root gname=wheel
 smtpd.conf			type=file mode=0644 uname=root gname=wheel
 ..	#etc/mail
 openvpn			type=dir mode=0755 uname=root gname=wheel
-ca.crt			type=file mode=0444 uname=root gname=wheel
 client.conf		type=file mode=0644 uname=root gname=wheel
-client.crt		type=file mode=0444 uname=root gname=wheel
-client.key		type=file mode=0400 uname=root gname=wheel
 dh2048.pem		type=file mode=0444 uname=root gname=wheel
 server.conf		type=file mode=0644 uname=root gname=wheel
-server.crt		type=file mode=0444 uname=root gname=wheel
-server.key		type=file mode=0400 uname=root gname=wheel
 ..	#etc/openvpn
 p3scan			type=dir mode=0755 uname=root gname=wheel
 p3scan.mail		type=link mode=0644 uname=root gname=wheel
@@ -235,15 +230,7 @@ snort.conf		type=file mode=0644 uname=root gname=wheel
 snortinline.conf		type=file mode=0644 uname=root gname=wheel
 snortips.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/snort
-ssl			type=dir mode=0755 uname=root gname=wheel
-private			type=dir mode=0755 uname=root gname=wheel
-server.key		type=file mode=0644 uname=root gname=bin
-..	#etc/ssl/private
-server.crt		type=file mode=0644 uname=root gname=bin
-..	#etc/ssl
 sslproxy			type=dir mode=0755 uname=root gname=wheel
-ca.crt		type=file mode=0644 uname=root gname=bin
-ca.key		type=file mode=0644 uname=root gname=bin
 sslproxy.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/sslproxy
 clamd.conf		type=file mode=0644 uname=root gname=wheel

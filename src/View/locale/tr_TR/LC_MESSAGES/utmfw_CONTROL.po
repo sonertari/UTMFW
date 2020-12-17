@@ -144,6 +144,9 @@ msgstr "Buraya satıriçi kuralları girin"
 msgid "Filter"
 msgstr "Elek"
 
+msgid "Generate"
+msgstr "Üret"
+
 msgid "Generate with errors"
 msgstr "Hatalara rağmen üret"
 

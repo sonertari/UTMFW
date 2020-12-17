@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.8\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2019-04-07 15:40+0300\n"
+"PO-Revision-Date: 2020-12-17 21:15+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 3.36.0\n"
 
 msgid ""
 "Analysis of statistical data may take a long time to process. Please be "
@@ -42,6 +42,9 @@ msgstr "Kullanıcıyı silmek istediğinizden emin misiniz?"
 
 msgid "Are you sure you want to erase statistics files?"
 msgstr "İstatistik dosyalarını silmek istediğinizden emin misiniz?"
+
+msgid "Are you sure you want to generate SSL key pairs?"
+msgstr "SSL anahtarlarını üretmek istediğinizden emin misiniz?"
 
 msgid "Are you sure you want to reinitialize graph files?"
 msgstr "Grafik dosyalarını sıfırlamak istediğinizden emin misiniz?"
@@ -161,6 +164,15 @@ msgstr "Kurallar yüklendi"
 
 msgid "Ruleset deleted"
 msgstr "Kural listesi silindi"
+
+msgid "SSL key pair generation failed."
+msgstr "SSL anahtar üretimi başarısız oldu."
+
+msgid ""
+"SSL key pairs generated. You should restart the services or the system now."
+msgstr ""
+"SSL anahtarları üretildi. Şimdi servisleri veya sistemi tekrar "
+"başlatmalısınız."
 
 msgid "Saved"
 msgstr "Kaydedildi"

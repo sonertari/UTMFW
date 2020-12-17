@@ -1,0 +1,34 @@
+# Run the following commands to generate server.key and server.crt for UTMFW, signed by UTMFW CA
+# Ideally, check the serial in the last crt and increment
+
+# ATTENTION: Do not use the SSLproxy CA to sign, 
+# otherwise Firefox complains with "the same serial is issued by the same CA", 
+# because SSLproxy uses that CA to sign other web sites with the same serial, apparently
+# So, create/use a separate CA to sign the httpd server crt, see httpd_ca.cnf to create a new CA
+
+# openssl req -new -nodes -sha256 -keyout server.key -out server.csr -config httpd.cnf
+# openssl x509 -req -CA ca.crt -CAkey ca.key -in server.csr -out server.crt -extensions server -set_serial 1 -days 365
+
+[ req ]
+distinguished_name	= req_distinguished_name
+
+[ req_distinguished_name ]
+countryName				= Country Name (2 letter code)
+countryName_min			= 2
+countryName_max			= 2
+stateOrProvinceName		= State or Province Name (full name)
+localityName			= Locality Name (eg, city)
+0.organizationName		= Organization Name (eg, company)
+organizationalUnitName	= Organizational Unit Name (eg, section)
+commonName				= Common Name (eg, fully qualified host name)
+commonName_max			= 64
+emailAddress			= Email Address
+emailAddress_max		= 64
+
+[ server ]
+basicConstraints        = CA:FALSE
+nsCertType              = server
+nsComment               = "UTMFW Certificate"
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always,issuer:always
+
