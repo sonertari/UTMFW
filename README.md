@@ -125,7 +125,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Create a local user
 	+ During installation mount the dest disk to /dest
 	+ Add noperm to /dest in /etc/fstab
-    + Make /dest owned by build:wodj and set its perms to 700
+    + Make /dest owned by build:wobj and set its perms to 700
     + Create /dest/dest/ and /dest/rel/ folders
 
 - Fetch UTMFW sources and update if upgrading:
@@ -154,7 +154,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 - Generate signify key pair:
     + Save .pub and .sec to docs/signify
     + Copy .pub to meta/etc/signify/
-    + Copy .pub to /etc/signify/
+    + Copy .pub to /etc/signify/, .pub file is copied into the bsd.rd file while making release(8) to verify install sets during installation
 
 - Update packages:
 	+ Install OpenBSD packages
@@ -176,7 +176,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ symux
 		+ pmacct
 		+ pftop
-		+ php
+		+ php, php-cgi, php-curl, php-pcntl, php-sqlite3
 
 	+ Build and create UTMFW packages:
 		+ Extract ports.tar.gz under /usr/
@@ -243,7 +243,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Copy the xfontXY.tgz install set from installXY.iso to docs/fonts/amd64/xfontXY.tgz
 
 - Update configuration files under config to the new versions of packages:
-    + Also update Doxyfile if doxygen version changed
+    + Also update Doxyfile if the doxygen version changed
 
 - Update PFRE:
     + Update PFRE to current version, support changes in pf if any
