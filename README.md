@@ -31,7 +31,7 @@ UTMFW includes the following software, alongside what is already available on a 
 - ISC DNS server
 - PHP
 
-![Dashboard](https://github.com/sonertari/UTMFW/blob/master/screenshots/Dashboard.png)
+![Dashboard](https://github.com/sonertari/UTMFW/blob/develop/screenshots/Dashboard.png)
 
 The web user interface of UTMFW helps you manage your firewall:
 
