@@ -4,9 +4,9 @@ UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on prod
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
-The installation iso file for the amd64 arch is available for download at [utmfw68\_20201217\_amd64.iso](https://drive.google.com/file/d/1Jk5TVTIKaZXVtGadhZ9T_rtZxBA4YuRt/view?usp=sharing). Make sure the SHA256 checksum is correct: f9c5428cd395f77f8093b08b6107e15cd0b8705e37c25d4de6972263ffdab9fd.
+The installation iso file for the amd64 arch is available for download at [utmfw68\_20210212\_amd64.iso](https://drive.google.com/file/d/1Jk5TVTIKaZXVtGadhZ9T_rtZxBA4YuRt/view?usp=sharing). Make sure the SHA256 checksum is correct: f9c5428cd395f77f8093b08b6107e15cd0b8705e37c25d4de6972263ffdab9fd.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.8 comes with OpenBSD 6.8-stable including all updates until December 12th, 2020.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.8.1 comes with OpenBSD 6.8-stable including all updates until February 12th, 2021.
 
 UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -31,12 +31,13 @@ UTMFW includes the following software, alongside what is already available on a 
 - ISC DNS server
 - PHP
 
-![Console](https://github.com/sonertari/UTMFW/blob/master/screenshots/Console.png)
+![Dashboard](https://github.com/sonertari/UTMFW/blob/master/screenshots/Dashboard.png)
 
 The web user interface of UTMFW helps you manage your firewall:
 
-- Dashboard provides an overview of system status. If enabled, Notifier sends the system status as Firebase push notifications to the Android application, [A4PFFW](https://github.com/sonertari/A4PFFW).
-- System, network, and service configuration can be achieved on the web interface.
+- Dashboard displays an overview of system status using graphs and statistics counters. You can click on those graphs and counters to go to their details on the web user interface.
+- Notifier sends the system status as Firebase push notifications to the Android application, [A4PFFW](https://github.com/sonertari/A4PFFW).
+- System, network, and service configuration can be achieved on the web user interface.
 - Pf rules are maintained using PFRE.
 - Information on hosts, interfaces, pf rules, states, and queues are provided in a tabular form.
 - System, pf, network, and internal clients can be monitored via graphs.
@@ -48,7 +49,7 @@ The web user interface of UTMFW helps you manage your firewall:
 - The web interface supports languages other than English: Turkish, Chinese, Dutch, Russian, French, Spanish.
 - The web interface configuration pages are designed such that changes you may have made to the configuration files on the command line (such as comments you might have added) remain intact after you configure a module using the web interface.
 
-![Dashboard](https://github.com/sonertari/UTMFW/blob/master/screenshots/Dashboard.png)
+![Console](https://github.com/sonertari/UTMFW/blob/master/screenshots/Console.png)
 
 ## How to install
 
