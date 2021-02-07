@@ -1697,7 +1697,7 @@ class System extends Model
 	}
 
 	/**
-	 * Generates SSL key pairs for https, openvpn, and sslproxy.
+	 * Generates SSL key pairs for httpd, openvpn, and sslproxy.
 	 * 
 	 * @return bool TRUE on success, FALSE on fail.
 	 */

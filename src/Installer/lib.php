@@ -532,10 +532,10 @@ function CreateUsers()
 function GenerateSSLKeyPairs()
 {
 	global $View;
-	
+
 	// In case
 	$View->Model= 'system';
-	
+
 	echo "\nGenerating the SSL key pairs for httpd, openvpn, and sslproxy\n";
 	$serial= '1';
 	$n= readline2("Set serial to? [1] ");
