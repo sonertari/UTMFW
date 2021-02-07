@@ -36,7 +36,7 @@ class Sslproxy extends View
 {
 	public $Model= 'sslproxy';
 	public $Layout= 'sslproxy';
-	
+
 	function __construct()
 	{
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
@@ -143,7 +143,7 @@ class Sslproxy extends View
 				),
 			);
 	}
-	
+
 	function PrintStatsMaxValues($interval)
 	{
 		$key2Titles = array(
@@ -178,6 +178,58 @@ class Sslproxy extends View
 		}
 		?>
 		</table>
+		<?php
+	}
+
+	static function DisplayDashboardExtras()
+	{
+		global $ServiceInfo;
+		?>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/sslproxy/connstats.php"><img src="/system/dashboard/sslproxy.png" name="sslproxy" alt="sslproxy" title="<?php echo _TITLE2('Connections handled by the SSL Proxy') ?>"></a>
+			</td>
+		</tr>
+		<tr>
+			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Current number of connections handled by the SSL Proxy') ?>">
+				<a class="transparent-white" href="/sslproxy/conns.php">
+				<div id="count" style="background-color: #008194">
+					<table>
+						<tr class="count">
+							<td class="count">
+							<?php echo $ServiceInfo['sslproxy']['conns'] ?>
+							</td>
+						</tr>
+						<tr>
+							<td class="prio">
+							<?php echo _TITLE('CONNECTIONS') ?>
+							</td>
+						</tr>
+					</table>
+				</div>
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Current number of file descriptors used by the SSL Proxy') ?>">
+				<a class="transparent-white" href="/sslproxy/logs.php">
+				<div id="count" style="background-color: #da5400">
+					<table>
+						<tr class="count">
+							<td class="count">
+							<?php echo $ServiceInfo['sslproxy']['fds'] ?>
+							</td>
+						</tr>
+						<tr>
+							<td class="prio">
+							<?php echo _TITLE('FILE DESCRIPTORS') ?>
+							</td>
+						</tr>
+					</table>
+				</div>
+				</a>
+			</td>
+		</tr>
 		<?php
 	}
 }

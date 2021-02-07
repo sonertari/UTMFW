@@ -76,7 +76,7 @@ class P3scan extends View
 {
 	public $Model= 'p3scan';
 	public $Layout= 'p3scan';
-	
+
 	function __construct()
 	{
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
@@ -124,6 +124,17 @@ class P3scan extends View
 	function FormatLogCols(&$cols)
 	{
 		$cols['Log']= htmlspecialchars($cols['Log']);
+	}
+
+	static function DisplayDashboardExtras()
+	{
+		?>
+		<tr>
+			<td colspan="4"">
+				<a class="transparent" href="/p3scan/stats.php"><img src="/system/dashboard/p3scan.png" name="p3scan" alt="p3scan" title="<?php echo _TITLE2('Requests handled by the POP3 Proxy') ?>"></a>
+			</td>
+		</tr>
+		<?php
 	}
 }
 

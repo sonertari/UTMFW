@@ -1037,10 +1037,11 @@ $ModelsToStat= array(
 	'ftp-proxy' => _TITLE('FTP Proxy'),
 	'dante' => _TITLE('SOCKS Proxy'),
 	'spamd' => _TITLE('SPAM Deferral'),
-	'httpd' => _TITLE('Web Server'),
+	'httpd' => _TITLE('Web User Interface'),
 	'symon' => _TITLE('Symon'),
 	'symux' => _TITLE('Symux'),
 	'pmacct' => _TITLE('Pmacct'),
+	'collectd' => _TITLE('Collectd'),
 	);
 
 $PF_CONFIG_PATH= '/etc/pfre';

@@ -33,6 +33,10 @@ $Menu = array(
 			'live' => _MENU('Live'),
 			),
 		),
+	'conf' => array(
+		'Name' => _MENU('Config'),
+		'Perms' => $ADMIN,
+		),
 	);
 
 $LogConf = array(

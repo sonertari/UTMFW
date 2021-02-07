@@ -186,6 +186,17 @@ class Clamd extends View
 				),
 			);
 	}
+
+	static function DisplayDashboardExtras()
+	{
+		?>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/clamav/stats.php"><img src="/system/dashboard/clamd.png" name="clamd" alt="clamd" title="<?php echo _TITLE2('Virus scans completed by the Virus Filter') ?>"></a>
+			</td>
+		</tr>
+		<?php
+	}
 }
 
 $View= new Clamd();

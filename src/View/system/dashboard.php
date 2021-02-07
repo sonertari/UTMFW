@@ -18,26 +18,54 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// @attention The following three lines are for the case that the Dashboard is requested from the right menu, instead of System>Info>Dashboard
-require_once('include.php');
+require_once('../lib/vars.php');
+
+// XXX: Store the system vars
+$SaveMenu= $Menu;
+$SavedLogConf= $LogConf;
+
+require_once($VIEW_PATH.'/httpd/httpd.php');
+require_once($VIEW_PATH.'/pf/pf.php');
+require_once($VIEW_PATH.'/sslproxy/sslproxy.php');
+require_once($VIEW_PATH.'/named/include.php');
+require_once($VIEW_PATH.'/dhcpd/include.php');
+require_once($VIEW_PATH.'/ftp-proxy/include.php');
+require_once($VIEW_PATH.'/e2guardian/e2guardian.php');
+require_once($VIEW_PATH.'/clamav/clamd.php');
+require_once($VIEW_PATH.'/clamav/freshclam.php');
+require_once($VIEW_PATH.'/spamassassin/include.php');
+require_once($VIEW_PATH.'/imspector/imspector.php');
+require_once($VIEW_PATH.'/dante/include.php');
+require_once($VIEW_PATH.'/openvpn/include.php');
+require_once($VIEW_PATH.'/spamd/include.php');
+require_once($VIEW_PATH.'/snort/snort.php');
+require_once($VIEW_PATH.'/snortips/include.php');
+require_once($VIEW_PATH.'/p3scan/include.php');
+require_once($VIEW_PATH.'/smtp-gated/include.php');
+require_once($VIEW_PATH.'/openssh/include.php');
+
+// Restore the system vars
+$View= new System();
+$Menu= $SaveMenu;
+$LogConf= $SavedLogConf;
+
 $TopMenu= 'info';
 $Submenu= 'dashboard';
 
-$ServiceStatus= array();
-if ($View->Controller($Output, 'GetServiceStatus')) {
-	$ServiceStatus= json_decode($Output[0], TRUE);
+$LastDashboardInterval= '10min';
+if (filter_has_var(INPUT_GET, 'interval')) {
+	$LastDashboardInterval= filter_input(INPUT_GET, 'interval');
+} else if ($_SESSION['system']['DashboardInterval']) {
+	$LastDashboardInterval= $_SESSION['system']['DashboardInterval'];
 }
+$_SESSION['system']['DashboardInterval']= $LastDashboardInterval;
 
-const COLUMN_COUNT= 4;
-
-$StatusTitles= array(
-	'C' => _TITLE('Critical Error'),
-	'E' => _TITLE('Error'),
-	'W' => _TITLE('Warning'),
-	'R' => _TITLE('Running'),
-	'S' => _TITLE('Stopped'),
-	'N' => _TITLE('No Errors'),
-	);
+$ServiceStatus= array();
+if ($View->Controller($Output, 'GetServiceStatus', TRUE, $LastDashboardInterval)) {
+	$Output= json_decode($Output[0], TRUE);
+	$ServiceInfo= $Output['info'];
+	$ServiceStatus= $Output['status'];
+}
 
 $ModuleNames= array(
 	'snortinline' => 'snort',
@@ -46,6 +74,7 @@ $ModuleNames= array(
 	'symon' => 'monitoring',
 	'symux' => 'monitoring',
 	'pmacct' => 'monitoring',
+	'collectd' => 'monitoring',
 	);
 
 $SubmenuNames= array(
@@ -53,6 +82,8 @@ $SubmenuNames= array(
 	'pf' => 'pf',
 	'dhcpd' => 'dhcpd',
 	);
+
+$ShowDataRangeSelector= TRUE;
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
@@ -65,10 +96,83 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 	$Error+= $ServiceStatus[$Module]['Error'];
 	$Warning+= $ServiceStatus[$Module]['Warning'];
 }
+
+function DisplayModuleStatus($Module, $DisplayDashboardExtrasFunc= FALSE)
+{
+	global $ModelsToStat, $ServiceStatus, $ModuleNames, $SubmenuNames, $Status2Images, $StatusTitles, $IMG_PATH;
+
+	if (array_key_exists($Module, $ModuleNames)) {
+		$ModuleName= $ModuleNames[$Module];
+	} else {
+		$ModuleName= $Module;
+	}
+
+	if (array_key_exists($Module, $SubmenuNames)) {
+		$SubmenuName= $SubmenuNames[$Module];
+	} else {
+		$SubmenuName= 'info';
+	}
+
+	$Caption = $ModelsToStat[$Module];
+
+	$RunStatus= $ServiceStatus[$Module]['Status'];
+	$ErrorStatus= $ServiceStatus[$Module]['ErrorStatus'];
+
+	$StatusImage= $Status2Images[$RunStatus];
+	$ErrorStatusImage= $Status2Images[$ErrorStatus];
+
+	$Critical= $ServiceStatus[$Module]['Critical'];
+	$Error= $ServiceStatus[$Module]['Error'];
+	$Warning= $ServiceStatus[$Module]['Warning'];
+
+	$ErrorCounts= array();
+	if ($Critical) {
+		$ErrorCounts[]= _TITLE('Critical').': '.$Critical;
+	}
+	if ($Error) {
+		$ErrorCounts[]= _TITLE('Error').': '.$Error;
+	}
+	if ($Warning) {
+		$ErrorCounts[]= _TITLE('Warning').': '.$Warning;
+	}
+	$ErrorCountsStr= implode(', ', $ErrorCounts);
+	?>
+	<tr>
+		<td class="module">
+			<a class="transparent" href="<?php echo "/$ModuleName/info.php?submenu=$SubmenuName" ?>">
+			<div>
+				<table>
+					<tr>
+						<td class="moduleimage">
+							<img src="<?php echo $IMG_PATH.$StatusImage ?>" name="<?php echo $RunStatus ?>" alt="<?php echo $RunStatus ?>" title="<?php echo $StatusTitles[$RunStatus] ?>" align="absmiddle">
+						</td>
+						<td class="moduleimage">
+							<img src="<?php echo $IMG_PATH.$ErrorStatusImage ?>" name="<?php echo $ErrorStatus ?>" alt="<?php echo $ErrorStatus ?>" title="<?php echo $StatusTitles[$ErrorStatus] ?>" align="absmiddle">
+						</td>
+						<td class="modulecaption">
+							<strong><?php echo _($Caption) ?></strong>
+						</td>
+						<td class="moduleerrorcounts">
+							<?php echo $ErrorCountsStr ?>
+						</td>
+					</tr>
+					<?php
+					if ($DisplayDashboardExtrasFunc) {
+						$DisplayDashboardExtrasFunc();
+					}
+					?>
+				</table>
+			</div>
+			</a>
+		</td>
+	</tr>
+	<?php
+}
+
 ?>
 <table id="dashboard">
 	<tr>
-		<td>
+		<td title="<?php echo _TITLE2('Total number of critical errors reported by the system and services') ?>">
 			<div class="critical">
 				<table>
 					<tr>
@@ -84,7 +188,7 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 				</table>
 			</div>
 		</td>
-		<td>
+		<td title="<?php echo _TITLE2('Total number of errors reported by the system and services') ?>">
 			<div class="error">
 				<table>
 					<tr>
@@ -100,7 +204,7 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 				</table>
 			</div>
 		</td>
-		<td>
+		<td title="<?php echo _TITLE2('Total number of warnings reported by the system and services') ?>">
 			<div class="warning">
 				<table>
 					<tr>
@@ -116,109 +220,103 @@ foreach ($ServiceStatus as $Module => $StatusArray) {
 				</table>
 			</div>
 		</td>
-	</tr>
-</table>
-<table id="modulestatus">
-	<tr>
-		<td>
-			<strong><?php echo _TITLE('Module Status').':' ?></strong>
+		<td title="<?php echo _TITLE2('Ping times for two hosts') ?>">
+			<div class="img">
+				<img src="/system/dashboard/ping.png" name="ping" alt="ping">
+			</div>
+		</td>
+		<td title="<?php echo _TITLE2('Total number of users currently logged in to the system') ?>">
+			<div class="users">
+				<table>
+					<tr>
+						<td class="count" >
+							<?php echo $ServiceInfo['system']['users'] ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="prio">
+							<?php echo _TITLE('USERS') ?>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</td>
+		<td title="<?php echo _TITLE2('System uptime since the last boot up') ?>">
+			<div class="uptime">
+				<table>
+					<tr>
+						<td class="uptime-count" >
+							<?php echo $ServiceInfo['system']['uptime'] ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="prio">
+							<?php echo _TITLE('UPTIME') ?>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</td>
 	</tr>
-	<?php
-	$Id= 0;
-	foreach ($Status2Images as $Status => $Image) {
-		$moduleCount= 0;
-		foreach ($ModelsToStat as $Module => $Caption) {
-			if (array_key_exists($Module, $ServiceStatus) &&
-					($Status == $ServiceStatus[$Module]['Status'] || $Status == $ServiceStatus[$Module]['ErrorStatus'])) {
-
-				$RunStatus= $ServiceStatus[$Module]['Status'];
-				$ErrorStatus= $ServiceStatus[$Module]['ErrorStatus'];
-
-				// XXX?
-				if ($Status == $RunStatus) {
-					$StatusImage= $Image;
-					$ErrorStatusImage= $Status2Images[$ErrorStatus];
-				}
-				else if ($Status == $ErrorStatus) {
-					$StatusImage= $Status2Images[$RunStatus];
-					$ErrorStatusImage= $Image;
-				}
-
-				$Critical= $ServiceStatus[$Module]['Critical'];
-				$Error= $ServiceStatus[$Module]['Error'];
-				$Warning= $ServiceStatus[$Module]['Warning'];
-				$Logs= $ServiceStatus[$Module]['Logs'];
-
-				$ErrorCounts= array();
-				if ($Critical) {
-					$ErrorCounts[]= _TITLE('Critical').': '.$Critical;
-				}
-				if ($Error) {
-					$ErrorCounts[]= _TITLE('Error').': '.$Error;
-				}
-				if ($Warning) {
-					$ErrorCounts[]= _TITLE('Warning').': '.$Warning;
-				}
-				$ErrorCountsStr= implode(', ', $ErrorCounts);
-
-				// XXX
-				$ServiceStatus[$Module]['Status']= '';
-				$ServiceStatus[$Module]['ErrorStatus']= '';
-
-				if ($moduleCount % COLUMN_COUNT == 0) {
-					?>
-					<tr>
-					<?php
-				}
-
-				$FormId= 'form'.$Id++;
-
-				if (array_key_exists($Module, $ModuleNames)) {
-					$ModuleName= $ModuleNames[$Module];
-				} else {
-					$ModuleName= $Module;
-				}
-
-				if (array_key_exists($Module, $SubmenuNames)) {
-					$SubmenuName= $SubmenuNames[$Module];
-				} else {
-					$SubmenuName= 'info';
-				}
-				?>
-				<td class="module">
-					<form id="<?php echo $FormId ?>" name="<?php echo $FormId ?>" action="<?php echo "/$ModuleName/info.php?submenu=$SubmenuName" ?>" method="post"></form>
-					<div onclick="document.<?php echo $FormId ?>.submit()">
-						<table>
-							<tr>
-								<td class="moduleimage">
-									<img src="<?php echo $IMG_PATH.$StatusImage ?>" name="<?php echo $RunStatus ?>" alt="<?php echo $RunStatus ?>" title="<?php echo $StatusTitles[$RunStatus] ?>" align="absmiddle">
-								</td>
-								<td class="moduleimage">
-									<img src="<?php echo $IMG_PATH.$ErrorStatusImage ?>" name="<?php echo $ErrorStatus ?>" alt="<?php echo $ErrorStatus ?>" title="<?php echo $StatusTitles[$ErrorStatus] ?>" align="absmiddle">
-								</td>
-								<td class="modulecaption">
-									<strong><?php echo _($Caption) ?></strong>
-								</td>
-							</tr>
-							<tr>
-								<td class="moduleerrorcounts" colspan="3">
-									<?php echo $ErrorCountsStr ?>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</td>
+</table>
+<table>
+	<tr style="vertical-align: top">
+		<td>
+			<table id="modulestatus">
 				<?php
-				if (++$moduleCount % COLUMN_COUNT == 0) {
-					?>
-					</tr>
-					<?php
-				}
-			}
-		}
-	}
-	?>
+				DisplayModuleStatus('system', fn() => System::DisplayDashboardExtras());
+				DisplayModuleStatus('pmacct', fn() => System::DisplayPmacctDashboardExtras());
+				DisplayModuleStatus('symon');
+				DisplayModuleStatus('symux');
+				DisplayModuleStatus('collectd');
+				?>
+			</table>
+		</td>
+		<td>
+			<table id="modulestatus">
+				<?php
+				DisplayModuleStatus('pf', fn() => Pf::DisplayDashboardExtras());
+				DisplayModuleStatus('imspector');
+				DisplayModuleStatus('dante');
+				?>
+			</table>
+		</td>
+		<td>
+			<table id="modulestatus">
+				<?php
+				DisplayModuleStatus('sslproxy', fn() => SSLproxy::DisplayDashboardExtras());
+				DisplayModuleStatus('named', fn() => Named::DisplayDashboardExtras());
+				DisplayModuleStatus('dhcpd', fn() => Dhcpd::DisplayDashboardExtras());
+				DisplayModuleStatus('ftp-proxy', fn() => Ftpproxy::DisplayDashboardExtras());
+				?>
+			</table>
+		</td>
+		<td>
+			<table id="modulestatus">
+				<?php
+				DisplayModuleStatus('e2guardian', fn() => E2guardian::DisplayDashboardExtras());
+				DisplayModuleStatus('clamd', fn() => Clamd::DisplayDashboardExtras());
+				DisplayModuleStatus('freshclam');
+				DisplayModuleStatus('spamassassin', fn() => Spamassassin::DisplayDashboardExtras());
+				DisplayModuleStatus('openssh', fn() => Openssh::DisplayDashboardExtras());
+				DisplayModuleStatus('openvpn');
+				DisplayModuleStatus('spamd');
+				?>
+			</table>
+		</td>
+		<td>
+			<table id="modulestatus">
+				<?php
+				DisplayModuleStatus('snort', fn() => Snort::DisplayDashboardExtras());
+				DisplayModuleStatus('snortinline');
+				DisplayModuleStatus('snortips');
+				DisplayModuleStatus('p3scan', fn() => P3scan::DisplayDashboardExtras());
+				DisplayModuleStatus('smtp-gated', fn() => Smtpgated::DisplayDashboardExtras());
+				DisplayModuleStatus('httpd', fn() => Httpd::DisplayDashboardExtras());
+				?>
+			</table>
+		</td>
+	</tr>
 </table>
 <?php
 require_once($VIEW_PATH.'/footer.php');

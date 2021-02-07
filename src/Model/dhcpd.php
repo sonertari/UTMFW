@@ -282,6 +282,17 @@ class Dhcpd extends Model
 		return $retval;
 	}
 
+	function _getModuleStatus($generate_info= FALSE, $start= 0)
+	{
+		$status= parent::_getModuleStatus($generate_info, $start);
+
+		if ($generate_info) {
+			$status['info']['leases']= $this->_getLeasesLineCount();
+			$status['info']['hosts']= $this->_getArpTableLineCount();
+		}
+		return $status;
+	}
+
 	/**
 	 * Gets arp table.
 	 * 
@@ -332,7 +343,12 @@ class Dhcpd extends Model
 
 	function GetArpTableLineCount($re= '')
 	{
-		return Output(count($this->_getArpTable($re)));
+		return Output($this->_getArpTableLineCount($re));
+	}
+
+	function _getArpTableLineCount($re= '')
+	{
+		return count($this->_getArpTable($re));
 	}
 
 	/**
@@ -405,7 +421,12 @@ class Dhcpd extends Model
 
 	function GetLeasesLineCount($re= '')
 	{
-		return Output(count($this->_getLeases($re)));
+		return Output($this->_getLeasesLineCount($re));
+	}
+
+	function _getLeasesLineCount($re= '')
+	{
+		return count($this->_getLeases($re));
 	}
 }
 ?>

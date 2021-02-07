@@ -76,7 +76,7 @@ class Smtpgated extends View
 {
 	public $Model= 'smtp-gated';
 	public $Layout= 'smtp-gated';
-	
+
 	function __construct()
 	{
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
@@ -145,12 +145,23 @@ class Smtpgated extends View
 				),
 			);
 	}
-	
+
 	function FormatLogCols(&$cols)
 	{
 		$cols['Log']= htmlspecialchars($cols['Log']);
 		$cols['Sender']= htmlspecialchars($cols['Sender']);
 		$cols['Recipient']= htmlspecialchars($cols['Recipient']);
+	}
+
+	static function DisplayDashboardExtras()
+	{
+		?>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/smtp-gated/stats.php"><img src="/system/dashboard/smtp-gated.png" name="smtp-gated" alt="smtp-gated" title="<?php echo _TITLE2('Requests handled by the SMTP Proxy') ?>"></a>
+			</td>
+		</tr>
+		<?php
 	}
 }
 

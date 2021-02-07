@@ -77,12 +77,23 @@ class Named extends View
 {
 	public $Model= 'named';
 	public $Layout= 'named';
-	
+
 	function __construct()
 	{
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
 		$this->Caption= _TITLE('DNS Server');
 		$this->LogsHelpMsg= _HELPWINDOW('DNS server logs all name lookups. You should see many requests from the system itself along with those from internal clients.');
+	}
+
+	static function DisplayDashboardExtras()
+	{
+		?>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/named/stats.php"><img src="/system/dashboard/dns.png" name="dns" alt="dns" title="<?php echo _TITLE2('Requests handled by the DNS Server') ?>"></a>
+			</td>
+		</tr>
+		<?php
 	}
 }
 

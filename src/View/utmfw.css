@@ -96,6 +96,32 @@ a:hover
 	background: white;
 }
 
+a.transparent
+{
+	/*XXX*/
+ 	color: black;
+}
+
+a.transparent-white
+{
+	/*XXX*/
+ 	color: white;
+}
+
+a:hover.transparent
+{
+	/*XXX*/
+ 	color: black;
+	background: transparent;
+}
+
+a:hover.transparent-white
+{
+	/*XXX*/
+ 	color: white;
+	background: transparent;
+}
+
 /*
  * Menu
  */
@@ -314,7 +340,7 @@ ul#navigation ul li a
  */
 #dashboard
 {
-	width: 600px;
+	width: auto;
 	text-align: center;
 	color: white;
 	font-family: sans-serif;
@@ -341,6 +367,69 @@ ul#navigation ul li a
 	pointer-events: none;
 }
 
+#dashboard #count
+{
+	width: auto;
+	margin: 5px;
+}
+
+#dashboard .halfcountleft
+{
+	width: 50%;
+	padding: 5px 2px 5px 5px;
+}
+
+#dashboard .halfcountright
+{
+	width: 50%;
+	padding: 5px 5px 5px 2px;
+}
+
+#dashboard div.halfcount
+{
+	width: auto;
+}
+
+#dashboard td.part
+{
+	font-size: 12px;
+	color: black;
+	text-align: left;
+	padding-left: 5px;
+}
+
+#dashboard table.part
+{
+	width: 300px;
+	margin: 0 2px 2px 2px;
+}
+
+#dashboard td.partleft
+{
+	height: auto;
+	padding: 5px;
+	-webkit-border-radius: 5px 0 0 5px;
+	-moz-border-radius: 5px 0 0 5px;
+	border-radius: 5px 0 0 5px;
+	-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+	pointer-events: none;
+}
+
+#dashboard td.partright
+{
+	height: auto;
+	padding: 5px;
+	-webkit-border-radius: 0 5px 5px 0;
+	-moz-border-radius: 0 5px 5px 0;
+	border-radius: 0 5px 5px 0;
+	-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+	pointer-events: none;
+}
+
 #dashboard div.critical
 {
 	background-color: #e72626;
@@ -362,6 +451,30 @@ ul#navigation ul li a
 	border-top: 1px solid black;
 }
 
+#dashboard div.uptime
+{
+	background-color: green;
+	width: max-content;
+}
+
+#dashboard div.img
+{
+	background-color: #eaedef;
+	width: auto;
+}
+
+#dashboard .uptime-count
+{
+	font-size: 30px;
+	height: 60px;
+	padding: 0;
+}
+
+#dashboard div.users
+{
+	background-color: blue;
+}
+
 #dashboard .count
 {
 	font-size: 50px;
@@ -374,14 +487,8 @@ ul#navigation ul li a
 	padding: 2px 0 0 0;
 }
 
-#modulestatus
-{
-	width: 600px;
-}
 #modulestatus div
 {
-	width: 150px;
-	height: auto;
 	padding: 5px;
 	background-color: #eaedef;
 	cursor: pointer;
@@ -395,12 +502,13 @@ ul#navigation ul li a
 
 #modulestatus td
 {
+	margin: 0;
 	padding: 0;
 }
 
 #modulestatus td.module
 {
-	padding: 6px 12px 6px 0px;
+	padding: 5px 0px 5px 0px;
 	vertical-align: top;
 }
 

@@ -76,7 +76,7 @@ class Spamassassin extends View
 {
 	public $Model= 'spamassassin';
 	public $Layout= 'spamassassin';
-	
+
 	function __construct()
 	{
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
@@ -123,7 +123,7 @@ class Spamassassin extends View
 				),
 			);
 	}
-	
+
 	function FormatDate($date)
 	{
 		global $MonthNames;
@@ -134,6 +134,17 @@ class Spamassassin extends View
 	function FormatLogCols(&$cols)
 	{
 		$cols['Log']= htmlspecialchars($cols['Log']);
+	}
+
+	static function DisplayDashboardExtras()
+	{
+		?>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/spamassassin/stats.php"><img src="/system/dashboard/spamassassin.png" name="spamassassin" alt="spamassassin" title="<?php echo _TITLE2('SPAM scans completed by the SPAM Filter') ?>"></a>
+			</td>
+		</tr>
+		<?php
 	}
 }
 

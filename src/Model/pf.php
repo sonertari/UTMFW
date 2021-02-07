@@ -312,6 +312,16 @@ class Pf extends Model
 		}
 	}
 
+	function _getModuleStatus($generate_info= FALSE, $start= 0)
+	{
+		$status= parent::_getModuleStatus($generate_info, $start);
+
+		if ($generate_info) {
+			$status['info']['states']= $this->_getStateCount();
+		}
+		return $status;
+	}
+
 	/**
 	 * Runs pfctl info commands.
 	 * 
@@ -1189,6 +1199,11 @@ class Pf extends Model
 	 */
 	function GetStateCount($re= '')
 	{
+		return Output($this->_getStateCount($re));
+	}
+
+	function _getStateCount($re= '')
+	{
 		// Skip header lines by grepping for In or Out
 		// Empty $re is not an issue for grep, greps all
 		$cmd= "$this->pftopCmd | /usr/bin/egrep -a 'In|Out'";
@@ -1197,9 +1212,8 @@ class Pf extends Model
 			$cmd.= " | /usr/bin/grep -a -E $re";
 		}
 		$cmd.= ' | /usr/bin/wc -l';
-		exec($cmd, $output, $retval);
 		// OpenBSD wc returns with leading blanks
-		return Output(trim($this->RunShellCommand($cmd)));
+		return trim($this->RunShellCommand($cmd));
 	}
 
 	/**

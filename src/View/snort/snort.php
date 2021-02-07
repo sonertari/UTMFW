@@ -156,6 +156,38 @@ class Snort extends View
 		</table>
 		<?php
 	}
+
+	static function DisplayDashboardExtras()
+	{
+		global $ServiceInfo;
+		?>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/snort/stats.php"><img src="/system/dashboard/snort.png" name="idp" alt="idp" title="<?php echo _TITLE2('Alerts issued by the IDS and Inline IPS') ?>"></a>
+			</td>
+		</tr>
+		<tr>
+			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Current number of alerts issued by the IDS and Inline IPS') ?>">
+				<a class="transparent-white" href="/snort/alerts.php">
+				<div id="count" style="background-color: blueviolet">
+					<table>
+						<tr class="count">
+							<td class="count">
+							<?php echo $ServiceInfo['snort']['alerts'] ?>
+							</td>
+						</tr>
+						<tr>
+							<td class="prio">
+							<?php echo _TITLE('ALERTS') ?>
+							</td>
+						</tr>
+					</table>
+				</div>
+				</a>
+			</td>
+		</tr>
+		<?php
+	}
 }
 
 $View= new Snort();

@@ -102,6 +102,38 @@ class E2guardian extends View
 		</table>
 		<?php
 	}
+
+	static function DisplayDashboardExtras()
+	{
+		global $ServiceInfo;
+		?>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/e2guardian/stats.php"><img src="/system/dashboard/e2guardian.png" name="e2guardian" alt="e2guardian" title="<?php echo _TITLE2('Requests handled by the Web Filter') ?>"></a>
+			</td>
+		</tr>
+		<tr>
+			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Current number of requests handled by the Web Filter') ?>">
+				<a class="transparent-white" href="/e2guardian/accesslogs.php">
+				<div id="count" style="background-color: #673f00">
+					<table>
+						<tr class="count">
+							<td class="count">
+							<?php echo $ServiceInfo['e2guardian']['requests'] ?>
+							</td>
+						</tr>
+						<tr>
+							<td class="prio">
+							<?php echo _TITLE('REQUESTS') ?>
+							</td>
+						</tr>
+					</table>
+				</div>
+				</a>
+			</td>
+		</tr>
+		<?php
+	}
 }
 
 $View= new E2guardian();

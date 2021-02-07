@@ -65,6 +65,7 @@ $ModelFiles= array(
 	'symon'				=> 'symon.php',
 	'symux'				=> 'symux.php',
 	'pmacct'			=> 'pmacct.php',
+	'collectd'			=> 'collectd.php',
 	'monitoring'		=> 'monitoring.php',
 	'docs'				=> 'docs.php',
 	);
@@ -106,6 +107,7 @@ $Models= array(
 	'symon'				=> 'Symon',
 	'symux'				=> 'Symux',
 	'pmacct'			=> 'Pmacct',
+	'collectd'			=> 'Collectd',
 	'monitoring'		=> 'Monitoring',
 	'docs'				=> 'Docs',
 	);

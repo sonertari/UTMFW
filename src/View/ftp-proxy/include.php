@@ -72,6 +72,17 @@ class Ftpproxy extends View
 		$this->Caption= _TITLE('FTP Proxy');
 		$this->LogsHelpMsg= _HELPWINDOW('By default, FTP proxy logs connections but not all connection details.');
 	}
+
+	static function DisplayDashboardExtras()
+	{
+		?>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/ftp-proxy/graphs.php"><img src="/system/dashboard/ftp-proxy.png" name="ftp-proxy" alt="ftp-proxy" title="<?php echo _TITLE2('Connections handled by the FTP Proxy') ?>"></a>
+			</td>
+		</tr>
+		<?php
+	}
 }
 
 $View= new Ftpproxy();

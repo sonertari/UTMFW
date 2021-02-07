@@ -71,7 +71,7 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 				<nav id="nav">
 					<ul id="navigation">
 						<li>
-							<a class="menuwithimage" href="#">
+							<a class="menuwithimage" href="/system/info.php?submenu=dashboard" title="<?php echo _TITLE2('Dashboard') ?>">
 								<span class="menuwithimage">UTMFW</span>
 								<img class="menuwithimage" src="/images/menu.png" name="Menu" alt="Menu" align="absmiddle">
 								<?php
@@ -168,7 +168,7 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 						<li>
 							<a class="menuwithimage" href="#">
 								<?php $_SESSION['Timeout']= time() + $SessionTimeout; ?>
-								<span id="timeout"></span>
+								<span id="timeout" title="<?php echo _TITLE2('The time remaining before the current session times out') ?>"></span>
 								<script language="javascript" type="text/javascript">
 									<!--
 									// Add one to session timeout start, to LogUserOut() after redirect below (it's PHP's task)
@@ -197,14 +197,14 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 									// -->
 								</script>
 								<img class="menuwithimage" src="/images/rightmenu.png" name="Right Menu" alt="Right Menu" align="absmiddle">
-								<span class="menuwithimage"><?php echo exec('/bin/date "+%d.%m.%Y %H:%M"') ?></span>
+								<span class="menuwithimage" title="<?php echo _TITLE2('System date and time') ?>"><?php echo exec('/bin/date "+%d.%m.%Y %H:%M"') ?></span>
 							</a>
 							<ul>
 								<li>
 									<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?logout"><?php echo _MENU('Logout') ?> <?php echo $_SESSION['USER'].'@'.filter_input(INPUT_SERVER, 'REMOTE_ADDR') ?></a>
 								</li>
 								<li>
-									<a href="/system/dashboard.php"><?php echo _MENU('Dashboard') ?></a>
+									<a href="/system/info.php?submenu=dashboard"><?php echo _MENU('Dashboard') ?></a>
 								</li>
 								<li>
 									<a href="/info/help.php"><?php echo _MENU('Help') ?></a>
@@ -240,6 +240,47 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 								</li>
 							</ul>
 						</li>
+						<?php
+						if (isset($ShowDataRangeSelector) && $ShowDataRangeSelector) {
+							$DashboardIntervals= array(
+								'1min' => _MENU('1 min'),
+								'5min' => _MENU('5 mins'),
+								'10min' => _MENU('10 mins'),
+								'30min' => _MENU('30 mins'),
+								'1hour' => _MENU('1 hour'),
+								'3hour' => _MENU('3 hours'),
+								'6hour' => _MENU('6 hours'),
+								'12hour' => _MENU('12 hours'),
+								'1day' => _MENU('1 days'),
+								'3day' => _MENU('3 days'),
+								'1week' => _MENU('1 week'),
+								'1month' => _MENU('1 month'),
+								'3month' => _MENU('3 months'),
+								'6month' => _MENU('6 months'),
+								'1year' => _MENU('1 year'),
+								);
+							$LastDashboardIntervalStr= preg_replace('/<INTERVAL>/', $DashboardIntervals[$LastDashboardInterval], _MENU('Last <INTERVAL>'));
+							?>
+							<li title="<?php echo _TITLE2('The period of time from now backwards for the data displayed on the dashboard') ?>">
+								<a class="menuwithimage" href="#">
+									<img class="menuwithimage" src="/images/menu.png" name="Menu" alt="Menu" align="absmiddle">
+									<span class="menuwithimage"><?php echo $LastDashboardIntervalStr ?></span>
+								</a>
+								<ul>
+								<?php
+								foreach ($DashboardIntervals as $interval => $title) {
+									?>
+									<li>
+										<a href="/system/info.php?submenu=dashboard&interval=<?php echo $interval ?>"><?php echo $title ?></a>
+									</li>
+									<?php
+								}
+								?>
+								</ul>
+							</li>
+							<?php
+						}
+						?>
 					</ul>
 				</nav>
 			</div>

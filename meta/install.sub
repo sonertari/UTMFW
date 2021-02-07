@@ -410,6 +410,7 @@ GetPkgDesc() {
 		dante-*) 				pkgdesc="SOCKS Proxy" ;;
 		symon-*) 				pkgdesc="System Monitoring" ;;
 		pmacct-*) 				pkgdesc="Network Monitoring" ;;
+		collectd-*) 			pkgdesc="System statistics collection" ;;
 		pftop-*) 				pkgdesc="Packet Filter Monitoring" ;;
 		php-*) 				pkgdesc="PHP" ;;
 		$CW_WEBIF_TARFILE) 		pkgdesc="Web Administration Interface" ;;
@@ -657,6 +658,10 @@ __EOT
 				;;
 			pmacct-*)	echo "Installing rrdtool..."
 				pkg_add rrdtool || _installerror=1
+				;;
+			collectd-*)	echo "Installing collectd..."
+				pkg_add collectd-rrdtool || _installerror=1
+				pkg_add collectd-ping || _installerror=1
 				;;
 			php-*)
 				ln -s /usr/local/bin/php-7.4 /usr/local/bin/php
@@ -1127,6 +1132,7 @@ THESETS="isc-bind-9.16.7v0.tgz \
 		dante-1.4.2p0.tgz \
 		symon-2.88p6.tgz \
 		pmacct-1.7.1.tgz \
+		collectd-5.8.1p0.tgz \
 		pftop-0.7p19.tgz \
 		php-7.4.10.tgz \
 		$CW_WEBIF_TARFILE \

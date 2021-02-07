@@ -161,6 +161,46 @@ class Pf extends View
 		</tr>
 		<?php
 	}
+
+	static function DisplayDashboardExtras()
+	{
+		global $ServiceInfo;
+		?>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/pf/graphs.php?submenu=states"><img src="/system/dashboard/pf.png" name="pf" alt="pf" title="<?php echo _TITLE2('States and state searches on the Packet Filter') ?>"></a>
+			</td>
+		</tr>
+		<tr>
+			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Current number of states') ?>">
+				<a class="transparent-white" href="/pf/info.php?submenu=states">
+				<div id="count" style="background-color: #a800ae">
+					<table>
+						<tr class="count">
+							<td class="count">
+							<?php echo $ServiceInfo['pf']['states'] ?>
+							</td>
+						</tr>
+						<tr>
+							<td class="prio">
+							<?php echo _TITLE('STATES') ?>
+							</td>
+						</tr>
+					</table>
+				</div>
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/pf/graphs.php?submenu=transfer"><img src="/system/dashboard/dataxfer.png" name="transfer" alt="transfer" title="<?php echo _TITLE2('Data transfer between internal and external interfaces') ?>"></a><br>
+				<a class="transparent" href="/pf/graphs.php?submenu=ifs#Internal%20Interface"><img src="/system/dashboard/intif.png" name="intif" alt="intif" title="<?php echo _TITLE2('Traffic on the internal interface') ?>"></a><br>
+				<a class="transparent" href="/pf/graphs.php?submenu=ifs#External%20Interface"><img src="/system/dashboard/extif.png" name="extif" alt="extif" title="<?php echo _TITLE2('Traffic on the external interface') ?>"></a><br>
+				<a class="transparent" href="/pf/graphs.php?submenu=ifs#Loopback%20Interface"><img src="/system/dashboard/loif.png" name="loif" alt="loif" title="<?php echo _TITLE2('Traffice on the loopback interface') ?>"></a>
+			</td>
+		</tr>
+		<?php
+	}
 }
 
 $View= new Pf();

@@ -146,6 +146,57 @@ class Openssh extends View
 				),
 			);
 	}
+
+	static function DisplayDashboardExtras()
+	{
+		global $ServiceInfo;
+		?>
+		<tr>
+			<td colspan="4">
+				<table>
+					<tr id="dashboard">
+						<td class="halfcountleft" title="<?php echo _TITLE2('Successful logins to the SSH Server') ?>">
+							<a class="transparent-white" href="/openssh/stats.php">
+							<div class="halfcount" style="background-color: green">
+								<table>
+									<tr class="count">
+										<td class="count">
+										<?php echo $ServiceInfo['openssh']['accepted'] ?>
+										</td>
+									</tr>
+									<tr>
+										<td class="prio">
+										<?php echo _TITLE('ACCEPTED') ?>
+										</td>
+									</tr>
+								</table>
+							</div>
+							</a>
+						</td>
+						<td class="halfcountright" title="<?php echo _TITLE2('Failed login attempts to the SSH Server') ?>">
+							<a class="transparent-white" href="/openssh/stats.php">
+							<div class="halfcount" style="background-color: red">
+								<table>
+									<tr class="count">
+										<td class="count">
+										<?php echo $ServiceInfo['openssh']['failed'] ?>
+										</td>
+									</tr>
+									<tr>
+										<td class="prio">
+										<?php echo _TITLE('FAILED') ?>
+										</td>
+									</tr>
+								</table>
+							</div>
+							</a>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<?php
+	}
 }
 
 $View= new Openssh();

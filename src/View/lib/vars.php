@@ -149,6 +149,15 @@ $Status2Images= array(
 	'N' => 'noerror.png',
 	);
 
+$StatusTitles= array(
+	'C' => _TITLE('Critical Error'),
+	'E' => _TITLE('Error'),
+	'W' => _TITLE('Warning'),
+	'R' => _TITLE('Running'),
+	'S' => _TITLE('Stopped'),
+	'N' => _TITLE('No Errors'),
+	);
+
 require_once($VIEW_PATH . '/lib/libwui.php');
 
 $TopMenu= str_replace('.php', '', basename(filter_input(INPUT_SERVER, 'PHP_SELF')));

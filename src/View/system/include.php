@@ -119,10 +119,111 @@ class System extends View
 		$this->Caption= _TITLE('System');
 		$this->LogsHelpMsg= _HELPWINDOW('This page shows system-wide logs. Most services on UTMFW write to their own log files, but a few processes may log messages to this system file. Pay special attention to error messages.');
 	}
-	
+
 	function FormatLogCols(&$cols)
 	{
 		$cols['Log']= wordwrap($cols['Log'], 150, '<br />', TRUE);
+	}
+
+	static function DisplayDashboardExtras()
+	{
+		global $ServiceInfo;
+		?>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/system/graphs.php?submenu=cpus"><img src="/system/dashboard/cpu.png" name="cpu" alt="cpu" title="<?php echo _TITLE2('CPU load of the system') ?>"></a><br>
+				<a class="transparent" href="/system/graphs.php?submenu=memory"><img src="/system/dashboard/memory.png" name="memory" alt="memory" title="<?php echo _TITLE2('Memory usage') ?>"></a><br>
+				<a class="transparent" href="/system/graphs.php?submenu=disks"><img src="/system/dashboard/diskio.png" name="diskio" alt="diskio" title="<?php echo _TITLE2('Disk input and output') ?>"></a>
+			</td>
+		</tr>
+		<tr id="dashboard">
+			<td class="part" colspan="4" title="<?php echo _TITLE2('Disk partition usage') ?>">
+				<a class="transparent" href="/system/graphs.php?submenu=partitions">
+				<table class="part">
+					<tr>
+						<td>
+							<table class="part">
+								<tr>
+									<td class="partleft" style="background-color: brown; width: <?php echo $ServiceInfo['system']['partitions']['/'] != '0%' ? $ServiceInfo['system']['partitions']['/'] : '0.1%'; ?>"></td>
+									<td class="partright" style="background-color: whitesmoke"><?php echo $ServiceInfo['system']['partitions']['/']; ?></td>
+								</tr>
+							</table>
+						</td>
+						<td class="part">/</td>
+					</tr>
+				</table>
+				</a>
+			</td>
+		</tr>
+		<tr id="dashboard">
+			<td class="part" colspan="4" title="<?php echo _TITLE2('Disk partition usage') ?>">
+				<a class="transparent" href="/system/graphs.php?submenu=partitions">
+				<table class="part">
+					<tr>
+						<td>
+							<table class="part">
+								<tr>
+									<td class="partleft" style="background-color: green; width: <?php echo $ServiceInfo['system']['partitions']['/tmp'] != '0%' ? $ServiceInfo['system']['partitions']['/tmp'] : '0.1%'; ?>"></td>
+									<td class="partright" style="background-color: whitesmoke"><?php echo $ServiceInfo['system']['partitions']['/tmp']; ?></td>
+								</tr>
+							</table>
+						</td>
+						<td class="part">/tmp</td>
+					</tr>
+				</table>
+				</a>
+			</td>
+		</tr>
+		<tr id="dashboard">
+			<td class="part" colspan="4" title="<?php echo _TITLE2('Disk partition usage') ?>">
+				<a class="transparent" href="/system/graphs.php?submenu=partitions">
+				<table class="part">
+					<tr>
+						<td>
+							<table class="part">
+								<tr>
+									<td class="partleft" style="background-color: blue; width: <?php echo $ServiceInfo['system']['partitions']['/usr'] != '0%' ? $ServiceInfo['system']['partitions']['/usr'] : '0.1%'; ?>"></td>
+									<td class="partright" style="background-color: whitesmoke"><?php echo $ServiceInfo['system']['partitions']['/usr']; ?></td>
+								</tr>
+							</table>
+						</td>
+						<td class="part">/usr</td>
+					</tr>
+				</table>
+				</a>
+			</td>
+		</tr>
+		<tr id="dashboard">
+			<td class="part" colspan="4" title="<?php echo _TITLE2('Disk partition usage') ?>">
+				<a class="transparent" href="/system/graphs.php?submenu=partitions">
+				<table class="part">
+					<tr>
+						<td>
+							<table class="part">
+								<tr>
+									<td class="partleft" style="background-color: orange; width: <?php echo $ServiceInfo['system']['partitions']['/var'] != '0%' ? $ServiceInfo['system']['partitions']['/var'] : '0.1%'; ?>"></td>
+									<td class="partright" style="background-color: whitesmoke"><?php echo $ServiceInfo['system']['partitions']['/var']; ?></td>
+								</tr>
+							</table>
+						</td>
+						<td class="part">/var</td>
+					</tr>
+				</table>
+				</a>
+			</td>
+		</tr>
+		<?php
+	}
+
+	static function DisplayPmacctDashboardExtras()
+	{
+		?>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/pf/graphs.php?submenu=protocol"><img src="/system/dashboard/protocols.png" name="protocols" alt="protocols" title="<?php echo _TITLE2('Network protocol usage') ?>"></a>
+			</td>
+		</tr>
+		<?php
 	}
 }
 

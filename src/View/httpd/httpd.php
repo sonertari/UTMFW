@@ -53,10 +53,21 @@ class Httpd extends View
 				),
 			);
 	}
-	
+
 	function FormatLogCols(&$cols)
 	{
 		$cols['Log']= htmlspecialchars($cols['Log']);
+	}
+
+	static function DisplayDashboardExtras()
+	{
+		?>
+		<tr>
+			<td colspan="4">
+				<a class="transparent" href="/httpd/graphs.php"><img src="/system/dashboard/httpd_cpu.png" name="cpu" alt="cpu" title="<?php echo _TITLE2('CPU load of the Web User Interface') ?>"></a>
+			</td>
+		</tr>
+		<?php
 	}
 }
 

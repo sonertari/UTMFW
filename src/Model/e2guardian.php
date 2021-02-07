@@ -263,6 +263,16 @@ class E2guardian extends Model
 			);
 	}
 
+	function _getModuleStatus($generate_info= FALSE, $start= 0)
+	{
+		$status= parent::_getModuleStatus($generate_info, $start);
+
+		if ($generate_info) {
+			$status['info']['requests']= count($this->GetLastLogs('', $start));
+		}
+		return $status;
+	}
+
 	function GetConfFile($confname, $group)
 	{
 		if ($confname === 'GeneraldownloadsConfig') {

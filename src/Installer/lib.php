@@ -189,6 +189,11 @@ function ApplyConfig($auto)
 			}
 		}
 
+		$View->Model= 'collectd';
+		if (!$View->Controller($output, 'SetGatewayPingHost', $mygate)) {
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting gateway ping host: $mygate");
+		}
+
 		return TRUE;
 	}
 	catch (Exception $e) {

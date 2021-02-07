@@ -102,6 +102,18 @@ class Sslproxy extends Model
 		return $this->Kill();
 	}
 
+	function _getModuleStatus($generate_info= FALSE, $start= 0)
+	{
+		$status= parent::_getModuleStatus($generate_info, $start);
+
+		if ($generate_info) {
+			$maxStats= $this->_getMaxStats($start != 0 ? $start : 60);
+			$status['info']['conns']= $maxStats['Load'];
+			$status['info']['fds']= $maxStats['Fd'];
+		}
+		return $status;
+	}
+
 	/**
 	 * Parses SSLproxy logs.
 	 *
@@ -160,6 +172,11 @@ class Sslproxy extends Model
 
 	function GetMaxStats($interval)
 	{
+		return Output(json_encode($this->_getMaxStats($interval)));
+	}
+
+	function _getMaxStats($interval)
+	{
 		$logs= $this->GetLastLogs('STATS:', $interval);
 
 		$maxStats= array(
@@ -204,7 +221,7 @@ class Sslproxy extends Model
 		$maxStats['UploadKB']= round($maxStats['UploadKB'] / 1000);
 		$maxStats['DownloadKB']= round($maxStats['DownloadKB'] / 1000);
 
-		return Output(json_encode($maxStats));
+		return $maxStats;
 	}
 
 	function GetCACertFileName()
