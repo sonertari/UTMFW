@@ -35,7 +35,7 @@ $UseSSH= FALSE;
 $DefaultReloadRate= 10;
 
 /// Time server to use.
-$TimeServer= 'us.pool.ntp.org';
+$TimeServer= '0.ubuntu.pool.ntp.org';
 
 /// How many NVP sets will be printed horizontally.
 $NvpColCount= 2;
