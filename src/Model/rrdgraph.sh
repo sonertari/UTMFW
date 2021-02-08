@@ -54,7 +54,7 @@ SYMON_RRD_ROOT="/var/www/htdocs/utmfw/View/symon/rrds/localhost"
 PMACCT_RRD_ROOT="/var/www/htdocs/utmfw/View/pmacct/protograph"
 
 # Ping plugin
-rrdtool graph ping.png $GENERAL_OPTS -w 358 -h 75 -s $START \
+/usr/local/bin/rrdtool graph ping.png $GENERAL_OPTS -w 358 -h 75 -s $START \
     -t "Ping Times" \
     DEF:gateway=$COLLECTD_RRD_ROOT/ping/ping-$PING_GATEWAY_ADDR.rrd:value:AVERAGE \
     DEF:remote=$COLLECTD_RRD_ROOT/ping/ping-$PING_REMOTE_ADDR.rrd:value:AVERAGE \
@@ -62,7 +62,7 @@ rrdtool graph ping.png $GENERAL_OPTS -w 358 -h 75 -s $START \
     STACK:gateway#FF0000:gateway
 
 # System
-rrdtool graph cpu.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph cpu.png $GENERAL_OPTS $SIZE -s $START \
     -t "CPU" \
     -u 100 \
     --rigid \
@@ -79,7 +79,7 @@ rrdtool graph cpu.png $GENERAL_OPTS $SIZE -s $START \
     STACK:D#9932CC:interrupt \
     STACK:E#F5FFFA:idle
 
-rrdtool graph memory.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph memory.png $GENERAL_OPTS $SIZE -s $START \
     -t "Memory" \
     -b 1024 \
     DEF:A=$SYMON_RRD_ROOT/mem.rrd:real_active:AVERAGE \
@@ -95,7 +95,7 @@ rrdtool graph memory.png $GENERAL_OPTS $SIZE -s $START \
     LINE1:D#888C00:"swap used" \
     LINE2:E#FF8C00:"swap total"
 
-rrdtool graph diskio.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph diskio.png $GENERAL_OPTS $SIZE -s $START \
     -t "Disk I/O" \
     DEF:rx=$SYMON_RRD_ROOT/io_wd0.rrd:rxfer:AVERAGE \
     DEF:wx=$SYMON_RRD_ROOT/io_wd0.rrd:wxfer:AVERAGE \
@@ -113,7 +113,7 @@ rrdtool graph diskio.png $GENERAL_OPTS $SIZE -s $START \
     LINE1:seeks#F5FFFA:seeks
 
 # Pmacct protocols
-rrdtool graph protocols.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph protocols.png $GENERAL_OPTS $SIZE -s $START \
     -t "Protocols" \
     DEF:alltraf=$PMACCT_RRD_ROOT/utmfw.rrd:all:AVERAGE \
     DEF:ftptraf=$PMACCT_RRD_ROOT/utmfw.rrd:ftp:AVERAGE \
@@ -138,7 +138,7 @@ rrdtool graph protocols.png $GENERAL_OPTS $SIZE -s $START \
     LINE1:unknownbits#F49028:unknown
 
 # Packet Filter
-rrdtool graph pf.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph pf.png $GENERAL_OPTS $SIZE -s $START \
     -t "States" \
     DEF:s=$SYMON_RRD_ROOT/pf.rrd:states_entries:AVERAGE \
     DEF:si=$SYMON_RRD_ROOT/pf.rrd:states_inserts:AVERAGE \
@@ -150,7 +150,7 @@ rrdtool graph pf.png $GENERAL_OPTS $SIZE -s $START \
     LINE1:si#0000FF:inserts \
     LINE2:ss#008194:state_searches
 
-rrdtool graph dataxfer.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph dataxfer.png $GENERAL_OPTS $SIZE -s $START \
     -t "Data Transfer" \
     DEF:A=$SYMON_RRD_ROOT/pf.rrd:bytes_v4_in:AVERAGE \
     DEF:B=$SYMON_RRD_ROOT/pf.rrd:bytes_v4_out:AVERAGE \
@@ -163,7 +163,7 @@ rrdtool graph dataxfer.png $GENERAL_OPTS $SIZE -s $START \
     AREA:inb#008194:incoming \
     LINE1:outb#da5400:outgoing
 
-rrdtool graph intif.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph intif.png $GENERAL_OPTS $SIZE -s $START \
     -t "Internal Interface" \
     DEF:in=$SYMON_RRD_ROOT/if_em1.rrd:ibytes:AVERAGE \
     DEF:out=$SYMON_RRD_ROOT/if_em1.rrd:obytes:AVERAGE \
@@ -228,7 +228,7 @@ rrdtool graph intif.png $GENERAL_OPTS $SIZE -s $START \
     STACK:n90#0571B0:" <90%" \
     STACK:n100#000000:" <100%"
 
-rrdtool graph extif.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph extif.png $GENERAL_OPTS $SIZE -s $START \
     -t "External Interface" \
     DEF:in=$SYMON_RRD_ROOT/if_em0.rrd:ibytes:AVERAGE \
     DEF:out=$SYMON_RRD_ROOT/if_em0.rrd:obytes:AVERAGE \
@@ -293,7 +293,7 @@ rrdtool graph extif.png $GENERAL_OPTS $SIZE -s $START \
     STACK:n90#0571B0:" <90%" \
     STACK:n100#000000:" <100%"
 
-rrdtool graph loif.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph loif.png $GENERAL_OPTS $SIZE -s $START \
     -t "Loopback Interface" \
     DEF:in=$SYMON_RRD_ROOT/if_lo0.rrd:ibytes:AVERAGE \
     DEF:out=$SYMON_RRD_ROOT/if_lo0.rrd:obytes:AVERAGE \
@@ -359,7 +359,7 @@ rrdtool graph loif.png $GENERAL_OPTS $SIZE -s $START \
     STACK:n100#000000:" <100%"
 
 # SSL Proxy
-rrdtool graph sslproxy.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph sslproxy.png $GENERAL_OPTS $SIZE -s $START \
     -t "Connections" \
     DEF:all=$COLLECTD_RRD_ROOT/tail-sslproxy/derive-all.rrd:value:AVERAGE \
     DEF:idle=$COLLECTD_RRD_ROOT/tail-sslproxy/derive-idle.rrd:value:AVERAGE \
@@ -369,7 +369,7 @@ rrdtool graph sslproxy.png $GENERAL_OPTS $SIZE -s $START \
     STACK:expired#00b91e:expired
 
 # DNS Server
-rrdtool graph dns.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph dns.png $GENERAL_OPTS $SIZE -s $START \
     -t "Queries" \
     DEF:all=$COLLECTD_RRD_ROOT/tail-named/derive-all.rrd:value:AVERAGE \
     DEF:failed=$COLLECTD_RRD_ROOT/tail-named/derive-failed.rrd:value:AVERAGE \
@@ -377,13 +377,13 @@ rrdtool graph dns.png $GENERAL_OPTS $SIZE -s $START \
     STACK:failed#FF0000:failed
 
 # FTP Proxy
-rrdtool graph ftp-proxy.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph ftp-proxy.png $GENERAL_OPTS $SIZE -s $START \
     -t "Connections" \
     DEF:all=$COLLECTD_RRD_ROOT/tail-ftp-proxy/derive-all.rrd:value:AVERAGE \
     AREA:all#da5400:all
 
 # Web Filter
-rrdtool graph e2guardian.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph e2guardian.png $GENERAL_OPTS $SIZE -s $START \
     -t "Requests" \
     DEF:all=$COLLECTD_RRD_ROOT/tail-e2guardian/derive-all.rrd:value:AVERAGE \
     DEF:scanned=$COLLECTD_RRD_ROOT/tail-e2guardian/derive-scanned.rrd:value:AVERAGE \
@@ -397,7 +397,7 @@ rrdtool graph e2guardian.png $GENERAL_OPTS $SIZE -s $START \
     AREA:exception#b200bf:except
 
 # Virus Filter
-rrdtool graph clamd.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph clamd.png $GENERAL_OPTS $SIZE -s $START \
     -t "Scan Results" \
     DEF:all=$COLLECTD_RRD_ROOT/tail-clamd/derive-all.rrd:value:AVERAGE \
     DEF:ok=$COLLECTD_RRD_ROOT/tail-clamd/derive-ok.rrd:value:AVERAGE \
@@ -407,7 +407,7 @@ rrdtool graph clamd.png $GENERAL_OPTS $SIZE -s $START \
     STACK:found#00b91e:found
 
 # SPAM Filter
-rrdtool graph spamassassin.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph spamassassin.png $GENERAL_OPTS $SIZE -s $START \
     -t "Scan Results" \
     DEF:spam=$COLLECTD_RRD_ROOT/tail-spamassassin/derive-spam.rrd:value:AVERAGE \
     DEF:ham=$COLLECTD_RRD_ROOT/tail-spamassassin/derive-ham.rrd:value:AVERAGE \
@@ -415,13 +415,13 @@ rrdtool graph spamassassin.png $GENERAL_OPTS $SIZE -s $START \
     AREA:ham#bf8700:ham
 
 # IDS
-rrdtool graph snort.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph snort.png $GENERAL_OPTS $SIZE -s $START \
     -t "Alerts" \
     DEF:alert=$COLLECTD_RRD_ROOT/tail-snort/derive-alert.rrd:value:AVERAGE \
     AREA:alert#da5400:alert
 
 # POP3 Proxy
-rrdtool graph p3scan.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph p3scan.png $GENERAL_OPTS $SIZE -s $START \
     -t "Requests" \
     DEF:requests=$COLLECTD_RRD_ROOT/tail-p3scan/derive-requests.rrd:value:AVERAGE \
     DEF:infected=$COLLECTD_RRD_ROOT/tail-p3scan/derive-infected.rrd:value:AVERAGE \
@@ -429,7 +429,7 @@ rrdtool graph p3scan.png $GENERAL_OPTS $SIZE -s $START \
     LINE1:infected#da5400:infected
 
 # SMTP Proxy
-rrdtool graph smtp-gated.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph smtp-gated.png $GENERAL_OPTS $SIZE -s $START \
     -t "Requests" \
     DEF:requests=$COLLECTD_RRD_ROOT/tail-smtp-gated/derive-requests.rrd:value:AVERAGE \
     DEF:rejected=$COLLECTD_RRD_ROOT/tail-smtp-gated/derive-rejected.rrd:value:AVERAGE \
@@ -437,7 +437,7 @@ rrdtool graph smtp-gated.png $GENERAL_OPTS $SIZE -s $START \
     LINE1:rejected#da5400:rejected
 
 # Web User Interface
-rrdtool graph httpd_cpu.png $GENERAL_OPTS $SIZE -s $START \
+/usr/local/bin/rrdtool graph httpd_cpu.png $GENERAL_OPTS $SIZE -s $START \
     -t "CPU Load" \
     DEF:uticks=$SYMON_RRD_ROOT/proc_httpd.rrd:uticks:AVERAGE \
     DEF:sticks=$SYMON_RRD_ROOT/proc_httpd.rrd:sticks:AVERAGE \
