@@ -77,8 +77,9 @@ if ($ApplyDefaults) {
 		$DateArray['Hour']= exec('/bin/date +%H');
 	}
 	else {
-		$View->Controller($Output, 'GetLogStartDate', $LogFile);
-		$LogsStartDate= $Output[0];
+		if ($LogFile !== FALSE && $View->Controller($Output, 'GetLogStartDate', $LogFile)) {
+			$LogsStartDate= $Output[0];
+		}
 
 		if (preg_match('/^(.*)\s(\d+):\d+:\d+$/', $LogsStartDate, $match)) {
 			$Date= $match[1];
@@ -103,9 +104,10 @@ $Date= $View->FormatDate($DateArray);
 
 $ViewStatsConf= $StatsConf[$View->Model];
 
-$View->Controller($Output, 'GetStats', $LogFile, json_encode($DateArray), 'COLLECT');
-$Stats= json_decode($Output[0], TRUE);
-$DateStats= $Stats['Date'];
+if ($LogFile !== FALSE && $View->Controller($Output, 'GetStats', $LogFile, json_encode($DateArray), 'COLLECT')) {
+	$Stats= json_decode($Output[0], TRUE);
+	$DateStats= $Stats['Date'];
+}
 
 require_once($VIEW_PATH . '/header.php');
 

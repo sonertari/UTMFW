@@ -69,8 +69,9 @@ $_SESSION[$View->Model][$Submenu]['Day']= $DateArray['Day'];
 $_SESSION[$View->Model][$Submenu]['Hour']= $DateArray['Hour'];
 $_SESSION[$View->Model][$Submenu]['Minute']= $DateArray['Minute'];
 
-$View->Controller($Output, 'GetFileLineCount', $LogFile, $SearchRegExp, $SearchNeedle, $DateArray['Month'], $DateArray['Day'], $DateArray['Hour'], $DateArray['Minute']);
-$LogSize= $Output[0];
+if ($LogFile !== FALSE && $View->Controller($Output, 'GetFileLineCount', $LogFile, $SearchRegExp, $SearchNeedle, $DateArray['Month'], $DateArray['Day'], $DateArray['Hour'], $DateArray['Minute'])) {
+	$LogSize= $Output[0];
+}
 
 ProcessNavigationButtons($LinesPerPage, $LogSize, $StartLine, $HeadStart);
 
@@ -84,8 +85,9 @@ PrintLogHeaderForm($StartLine, $LogSize, $LinesPerPage, $SearchRegExp, $CustomHi
 	<?php
 	PrintTableHeaders($View->Model);
 
-	$View->Controller($Output, 'GetLogs', $LogFile, $HeadStart, $LinesPerPage, $SearchRegExp, $SearchNeedle, $DateArray['Month'], $DateArray['Day'], $DateArray['Hour'], $DateArray['Minute']);
-	$Logs= json_decode($Output[0], TRUE);
+	if ($LogFile !== FALSE && $View->Controller($Output, 'GetLogs', $LogFile, $HeadStart, $LinesPerPage, $SearchRegExp, $SearchNeedle, $DateArray['Month'], $DateArray['Day'], $DateArray['Hour'], $DateArray['Minute'])) {
+		$Logs= json_decode($Output[0], TRUE);
+	}
 	
 	$LineCount= $StartLine + 1;
 	$LastLineNum= $StartLine + min(array(count($Logs), $LinesPerPage));

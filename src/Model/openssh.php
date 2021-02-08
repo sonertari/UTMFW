@@ -102,6 +102,10 @@ class Openssh extends Model
 
 	function _getFileLineCount($file, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
+		if (!$this->ValidateLogFile($file)) {
+			return FALSE;
+		}
+
 		$cmd= "/usr/bin/grep -a ' sshd\[' $file";
 
 		if ($month != '' || $day != '' || $hour != '' || $minute != '') {
@@ -126,6 +130,10 @@ class Openssh extends Model
 
 	function GetLogs($file, $end, $count, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
+		if (!$this->ValidateLogFile($file)) {
+			return FALSE;
+		}
+
 		$cmd= "/usr/bin/grep -a ' sshd\[' $file";
 
 		if ($month != '' || $day != '' || $hour != '' || $minute != '') {
@@ -158,6 +166,10 @@ class Openssh extends Model
 	
 	function _getLiveLogs($file, $count, $re= '', $needle= '')
 	{
+		if (!$this->ValidateLogFile($file)) {
+			return FALSE;
+		}
+
 		$cmd= "/usr/bin/grep -a ' sshd\[' $file";
 		if ($re !== '') {
 			$re= escapeshellarg($re);

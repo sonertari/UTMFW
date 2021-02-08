@@ -295,7 +295,9 @@ class View
 	{
 		global $IMG_PATH, $ADMIN, $Status2Images, $StatusTitles;
 
-		$this->Controller($output, 'GetModuleStatus');
+		if (!$this->Controller($output, 'GetModuleStatus')) {
+			return;
+		}
 		$status= json_decode($output[0], TRUE);
 
 		$running= $status['Status'] == 'R';
@@ -508,9 +510,10 @@ class View
 	 */
 	function PrintStats($file= '')
 	{
-		$this->Controller($output, 'GetProcStatLines', $file);
-		$stats= json_decode($output[0], TRUE);
-		PrintNVPs($stats, _STATS('General Statistics'), 50, FALSE, FALSE);
+		if ($file !== FALSE && $this->Controller($output, 'GetProcStatLines', $file)) {
+			$stats= json_decode($output[0], TRUE);
+			PrintNVPs($stats, _STATS('General Statistics'), 50, FALSE, FALSE);
+		}
 	}
 
 	/**

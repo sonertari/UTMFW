@@ -37,6 +37,10 @@ $PfctlTimeout= 5;
 /// Interval to check module status for displaying.
 $StatusCheckInterval= 60;
 
+/// Max size in MB for log files to process. The WUI slows down if we try to process larger log files.
+/// This size should be determined based on the specs of the hardware.
+$MaxLogFileSize= 50;
+
 /// Default locale for both View and Controller.
 $DefaultLocale= 'en_EN';
 

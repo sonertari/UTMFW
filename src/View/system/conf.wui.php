@@ -93,6 +93,13 @@ if (count($_POST)) {
 			require($SRC_ROOT . '/lib/setup.php');
 		}
 	}
+	else if (filter_has_var(INPUT_POST, 'MaxLogFileSize')) {
+		if ($View->Controller($Output, 'SetMaxLogFileSize', filter_input(INPUT_POST, 'MaxLogFileSize'))) {
+			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'MaxLogFileSize set: '.filter_input(INPUT_POST, 'MaxLogFileSize'));
+			// Reset $MaxLogFileSize to its new value
+			require($SRC_ROOT . '/lib/setup.php');
+		}
+	}
 	else {
 		if (filter_has_var(INPUT_POST, 'DisableHelpBoxes')) {
 			if ($View->Controller($Output, 'SetHelpBox', 'FALSE')) {
@@ -384,6 +391,22 @@ Admin can change the user password without knowing the current user password. Bu
 		<td class="none">
 			<?php
 			PrintHelpBox(_HELPBOX('This is the time interval in seconds to check module statuses for displaying.'));
+			?>
+		</td>
+	</tr>
+	<tr class="evenline">
+		<td class="title">
+			<?php echo _TITLE('Max Log File Size').':' ?>
+		</td>
+		<td>
+			<form action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>" method="post">
+				<input type="text" name="MaxLogFileSize" style="width: 50px;" maxlength="3" value="<?php echo $MaxLogFileSize ?>"/>
+				<input type="submit" id="ApplyMaxLogFileSize" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
+			</form>
+		</td>
+		<td class="none">
+			<?php
+			PrintHelpBox(_HELPBOX('This is the max size in MB for log files to process. The WUI slows down if we try to process larger log files. This size should be determined based on the specs of the hardware.'));
 			?>
 		</td>
 	</tr>
