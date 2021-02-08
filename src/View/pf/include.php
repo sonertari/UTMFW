@@ -95,6 +95,7 @@ $Menu = array(
 			'mbufs' => _MENU('Mbufs'),
 			'hosts' => _MENU('Hosts'),
 			'protocol' => _MENU('Protocols'),
+			'ping' => _MENU('Ping Times'),
 			),
 		),
 	'logs' => array(

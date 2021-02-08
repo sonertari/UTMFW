@@ -52,6 +52,11 @@ switch ($Submenu) {
 		$View->Layout= 'protograph';
 		$View->GraphHelpMsg= _HELPWINDOW('This graph shows overall network usage based on certain protocols. Note that each protocol may cover more than one port.');
 		break;
+
+	case 'ping':
+		$View->Layout= 'ping';
+		$View->GraphHelpMsg= _HELPWINDOW('This graph shows ping times and drop rates for gateway and remote hosts.');
+		break;
 }
 
 require_once('../lib/graphs.php');

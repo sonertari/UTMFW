@@ -626,6 +626,56 @@ GPRINT:Bused:LAST: %4.1lf %s\n
 
 	break;
 
+	case 'ping':
+		$COLLECTD_RRD_ROOT= '/var/collectd/localhost';
+
+		require_once('../monitoring/include.php');
+		$View->Model= 'collectd';
+		$PingHosts= $View->Controller($Output, 'GetPingHosts');
+		if ($PingHosts) {
+			$output= json_decode($Output[0], TRUE);
+			$PING_GATEWAY_ADDR= $output[0];
+			$PING_REMOTE_ADDR= $output[1];
+		} else {
+			warning('Cannot get ping hosts<br>');
+			return '';
+		}
+
+		return '
+-v time (ms) and droprate (#ps)
+-t %title%
+-w %width%
+-h %heigth%
+-s %start%
+-e %end%
+DEF:gateway='."$COLLECTD_RRD_ROOT/ping/ping-$PING_GATEWAY_ADDR.rrd".':value:AVERAGE
+DEF:remote='."$COLLECTD_RRD_ROOT/ping/ping-$PING_REMOTE_ADDR.rrd".':value:AVERAGE
+DEF:gatewaydr='."$COLLECTD_RRD_ROOT/ping/ping_droprate-$PING_GATEWAY_ADDR.rrd".':value:AVERAGE
+DEF:remotedr='."$COLLECTD_RRD_ROOT/ping/ping_droprate-$PING_REMOTE_ADDR.rrd".':value:AVERAGE
+COMMENT:                       max        min        avg        last\n
+AREA:remote#FF8C00:Remote times    
+GPRINT:remote:MAX:%6.2lf ms
+GPRINT:remote:MIN:%6.2lf ms
+GPRINT:remote:AVERAGE:%6.2lf ms
+GPRINT:remote:LAST:%6.2lf ms\n
+AREA:gateway#FF0000:Gateway times   
+GPRINT:gateway:MAX:%6.2lf ms
+GPRINT:gateway:MIN:%6.2lf ms
+GPRINT:gateway:AVERAGE:%6.2lf ms
+GPRINT:gateway:LAST:%6.2lf ms\n
+LINE1:remotedr#0000FF:Remote droprate 
+GPRINT:remotedr:MAX:%6.2lf ps
+GPRINT:remotedr:MIN:%6.2lf ps
+GPRINT:remotedr:AVERAGE:%6.2lf ps
+GPRINT:remotedr:LAST:%6.2lf ps\n
+LINE1:gatewaydr#00FF00:Gateway droprate
+GPRINT:gatewaydr:MAX:%6.2lf ps
+GPRINT:gatewaydr:MIN:%6.2lf ps
+GPRINT:gatewaydr:AVERAGE:%6.2lf ps
+GPRINT:gatewaydr:LAST:%6.2lf ps\n
+';
+	break;
+
     default:
 	return "";
 	break;

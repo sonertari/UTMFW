@@ -1,0 +1,5 @@
+# Layout to show ping times
+
+group	name="Ping Times";
+# ping.rrd is for symon function _parse_filename() which searches rrdtype ("ping" in this case) in rrdfile
+graph   rrdfile=ping.rrd, title="Ping Times";

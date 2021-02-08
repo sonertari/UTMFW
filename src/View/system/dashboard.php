@@ -221,9 +221,11 @@ function DisplayModuleStatus($Module, $DisplayDashboardExtrasFunc= FALSE)
 			</div>
 		</td>
 		<td title="<?php echo _TITLE2('Ping times for two hosts') ?>">
+			<a class="transparent" href="/pf/graphs.php?submenu=ping">
 			<div class="img">
 				<img src="/system/dashboard/ping.png" name="ping" alt="ping">
 			</div>
+			</a>
 		</td>
 		<td title="<?php echo _TITLE2('Average ping time within last minute to the gateway') ?>">
 			<div class="gateway">

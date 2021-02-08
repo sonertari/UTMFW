@@ -277,6 +277,7 @@ class Layout {
 			_TITLE('Network Protocol Usage'),
 			_TITLE('Number of Processes'),
 			_TITLE('Process CPU Load'),
+			_TITLE('Ping Times'),
 		);
 		
 		$graphs= array();
