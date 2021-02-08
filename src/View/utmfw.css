@@ -470,9 +470,22 @@ ul#navigation ul li a
 	padding: 0;
 }
 
+#dashboard div.gateway
+{
+	background-color: red;
+	width: max-content;
+}
+
+#dashboard div.remote
+{
+	background-color: #FF8C00;
+	width: max-content;
+}
+
 #dashboard div.users
 {
 	background-color: blue;
+	width: max-content;
 }
 
 #dashboard .count

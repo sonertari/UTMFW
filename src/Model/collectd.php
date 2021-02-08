@@ -30,6 +30,7 @@ class Collectd extends Monitoring
 	public $VersionCmd= '/usr/local/sbin/collectd -h 2>&1';
 
 	protected $LogFilter= 'collectd';
+	protected $RrdFolder= '/var/collectd/localhost/ping';
 
 	function __construct()
 	{
@@ -63,6 +64,38 @@ class Collectd extends Monitoring
 		return Output(explode(',', $this->RunShellCommand($this->VersionCmd.' | /usr/bin/head -21 | /usr/bin/tail -1'))[0]);
 	}
 
+	function _getModuleStatus($generate_info= FALSE, $start= 0)
+	{
+		$status= parent::_getModuleStatus($generate_info, $start);
+
+		if ($generate_info) {
+			$gateway_host= $this->getGatewayPingHost();
+			$status['info']['gateway_ping_time']= $this->getPingAverage($gateway_host);
+
+			$remote_host= $this->getRemotePingHost();
+			$status['info']['remote_ping_time']= $this->getPingAverage($remote_host);
+		}
+		return $status;
+	}
+
+	function getPingAverage($host, $start= '1min')
+	{
+		exec("/usr/local/bin/rrdtool fetch -s -$start $this->RrdFolder/ping-$host.rrd AVERAGE", $output);
+		$total= 0;
+		$count= 0;
+		foreach ($output as $a) {
+			// 1612786040: nan
+			// 1612785390: 7.0429000000e+01
+			if (preg_match('/^\d+:\s*(\S+)$/', $a, $match)) {
+				if ($match[1] != 'nan') {
+					$total+= floatval($match[1]);
+					$count++;
+				}
+			}
+		}
+		return sprintf('%6.1lf ms', $count ? $total/$count : '0');
+	}
+
 	/**
 	 * Gets the first two hosts set for the collectd ping plugin.
 	 *
@@ -81,35 +114,35 @@ class Collectd extends Monitoring
 			Error(_('System has no gateway'));
 		}
 
-		$gateway_host= $this->_getGatewayPingHost();
+		$gateway_host= $this->getGatewayPingHost();
 		if ($gateway !== $gateway_host) {
 			Error(_('System and ping gateway addresses do not match').": $gateway, $gateway_host");
 		}
 
-		return Output(json_encode(array($gateway_host, $this->_getRemotePingHost())));
+		return Output(json_encode(array($gateway_host, $this->getRemotePingHost())));
 	}
 
-	function _getGatewayPingHost()
+	function getGatewayPingHost()
 	{
 		return $this->SearchFileAll($this->ConfFile, '|^<Plugin ping>\s+Host\s+"(\S+)"\s+Host\s+"(\S+)"\s+</Plugin>$|m', 1);
 	}
 
-	function _getRemotePingHost()
+	function getRemotePingHost()
 	{
 		return $this->SearchFileAll($this->ConfFile, '|^<Plugin ping>\s+Host\s+"(\S+)"\s+Host\s+"(\S+)"\s+</Plugin>$|m', 2);
 	}
 
 	function SetGatewayPingHost($host)
 	{
-		$gateway_host= $this->_getGatewayPingHost();
-		$remote_host= $this->_getRemotePingHost();
+		$gateway_host= $this->getGatewayPingHost();
+		$remote_host= $this->getRemotePingHost();
 		return $this->ReplaceRegexp($this->ConfFile, "|^(<Plugin ping>\s+Host\s+\")($gateway_host)(\"\s+Host\s+\"$remote_host\"\s+</Plugin>)$|m", '${1}'.$host.'${3}');
 	}
 
 	function SetRemotePingHost($host)
 	{
-		$gateway_host= $this->_getGatewayPingHost();
-		$remote_host= $this->_getRemotePingHost();
+		$gateway_host= $this->getGatewayPingHost();
+		$remote_host= $this->getRemotePingHost();
 		return $this->ReplaceRegexp($this->ConfFile, "|^(<Plugin ping>\s+Host\s+\"$gateway_host\"\s+Host\s+\")($remote_host)(\"\s+</Plugin>)$|m", '${1}'.$host.'${3}');
 	}
 }

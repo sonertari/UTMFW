@@ -54,7 +54,7 @@ SYMON_RRD_ROOT="/var/www/htdocs/utmfw/View/symon/rrds/localhost"
 PMACCT_RRD_ROOT="/var/www/htdocs/utmfw/View/pmacct/protograph"
 
 # Ping plugin
-rrdtool graph ping.png $GENERAL_OPTS -w 700 -h 75 -s $START \
+rrdtool graph ping.png $GENERAL_OPTS -w 358 -h 75 -s $START \
     -t "Ping Times" \
     DEF:gateway=$COLLECTD_RRD_ROOT/ping/ping-$PING_GATEWAY_ADDR.rrd:value:AVERAGE \
     DEF:remote=$COLLECTD_RRD_ROOT/ping/ping-$PING_REMOTE_ADDR.rrd:value:AVERAGE \

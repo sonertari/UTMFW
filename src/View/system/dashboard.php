@@ -225,6 +225,38 @@ function DisplayModuleStatus($Module, $DisplayDashboardExtrasFunc= FALSE)
 				<img src="/system/dashboard/ping.png" name="ping" alt="ping">
 			</div>
 		</td>
+		<td title="<?php echo _TITLE2('Average ping time within last minute to the gateway') ?>">
+			<div class="gateway">
+				<table>
+					<tr>
+						<td class="uptime-count" >
+							<?php echo $ServiceInfo['collectd']['gateway_ping_time'] ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="prio">
+							<?php echo _TITLE('GATEWAY') ?>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</td>
+		<td title="<?php echo _TITLE2('Average ping time within last minute to the remote host') ?>">
+			<div class="remote">
+				<table>
+					<tr>
+						<td class="uptime-count" >
+							<?php echo $ServiceInfo['collectd']['remote_ping_time'] ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="prio">
+							<?php echo _TITLE('REMOTE') ?>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</td>
 		<td title="<?php echo _TITLE2('Total number of users currently logged in to the system') ?>">
 			<div class="users">
 				<table>

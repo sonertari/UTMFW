@@ -2727,8 +2727,8 @@ class Model
 			require_once($MODEL_PATH.'/'.$ModelFiles['collectd']);
 
 			$model= new $Models['collectd']();
-			$gateway= $model->_getGatewayPingHost();
-			$remote_target= $model->_getRemotePingHost();
+			$gateway= $model->getGatewayPingHost();
+			$remote_target= $model->getRemotePingHost();
 
 			exec("doas sh $MODEL_PATH/rrdgraph.sh -$start $gateway $remote_target");
 		}
