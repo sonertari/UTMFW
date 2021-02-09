@@ -771,7 +771,7 @@ diff -Nur snort-2.9.17/src/dynamic-preprocessors/sslproxy/spp_sslproxy.c snort-2
 @@ -0,0 +1,753 @@
 +/****************************************************************************
 + *
-+ * Copyright (C) 2017-2020 Soner Tari <sonertari@gmail.com>. All rights reserved.
++ * Copyright (C) 2017-2021 Soner Tari <sonertari@gmail.com>. All rights reserved.
 + *
 + * This program is free software; you can redistribute it and/or modify
 + * it under the terms of the GNU General Public License Version 2 as
