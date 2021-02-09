@@ -263,7 +263,7 @@ function DisplayModuleStatus($Module, $DisplayDashboardExtrasFunc= FALSE)
 			<div class="users">
 				<table>
 					<tr>
-						<td class="count" >
+						<td class="uptime-count" >
 							<?php echo $ServiceInfo['system']['users'] ?>
 						</td>
 					</tr>
