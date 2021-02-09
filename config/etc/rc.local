@@ -45,6 +45,11 @@ if [ -x /usr/local/sbin/pmacctd ]; then
 	/usr/local/sbin/pmacctd -f /etc/pmacct/pmacctd-protograph.conf >/dev/null 2>&1
 fi
 
+if [ -x /usr/local/sbin/collectd ]; then
+	echo -n ', system statistics'
+	/usr/local/sbin/collectd >/dev/null 2>&1
+fi
+
 echo -n '\nAnti-virus/spam:'
 # Start ClamAV and freshclam daemons
 mkdir /var/run/clamav
