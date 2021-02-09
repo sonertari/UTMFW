@@ -1035,6 +1035,21 @@ class Model
 		return Output(json_encode($dateArray));
 	}
 
+	function getSystemGateway()
+	{
+		$gateway= '';
+		if (($mygate= $this->_getStaticGateway()) !== FALSE) {
+			$gateway= trim($mygate);
+		} else if (($mygate= $this->_getDynamicGateway()) !== FALSE) {
+			$gateway= trim($mygate);
+		}
+
+		if ($gateway === '') {
+			Error(_('System has no gateway'));
+		}
+		return $gateway;
+	}
+
 	function _getStaticGateway()
 	{
 		return $this->GetFile($this->confDir.'mygate');

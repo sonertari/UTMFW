@@ -947,6 +947,22 @@ class System extends Model
 	{
 		// Refresh pf rules too
 		$cmd= "/bin/sh /etc/netstart 2>&1 && /sbin/pfctl -f $this->PfRulesFile 2>&1";
+
+		// Down/up extif too, in case the gateway changes
+		$extif= $this->_getExtIf();
+		if ($extif !== FALSE) {
+			$extif= trim($extif, '"');
+			$cmd.= " && /sbin/ifconfig $extif down 2>&1 && /sbin/ifconfig $extif up 2>&1";
+		}
+
+		// Delete the arp entry for the old gateway, in case the new gateway has the same IP address
+		// Otherwise, the system cannot reach the new gateway, continues to use the old ethernet address,
+		// ping, nslookup, or others don't work (extif becomes effectively down).
+		$gateway= $this->getSystemGateway();
+		if ($gateway !== '') {
+			$cmd.= " && /usr/sbin/arp -nd $gateway 2>&1";
+		}
+
 		exec($cmd, $output, $retval);
 		if ($retval === 0) {
 			return TRUE;

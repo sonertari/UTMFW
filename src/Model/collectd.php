@@ -103,17 +103,7 @@ class Collectd extends Monitoring
 	 */
 	function GetPingHosts()
 	{
-		$gateway= '';
-		if (($mygate= $this->_getStaticGateway()) !== FALSE) {
-			$gateway= trim($mygate);
-		} else if (($mygate= $this->_getDynamicGateway()) !== FALSE) {
-			$gateway= trim($mygate);
-		}
-
-		if ($gateway === '') {
-			Error(_('System has no gateway'));
-		}
-
+		$gateway= $this->getSystemGateway();
 		$gateway_host= $this->getGatewayPingHost();
 		if ($gateway !== $gateway_host) {
 			Error(_('System and ping gateway addresses do not match').": $gateway, $gateway_host");
