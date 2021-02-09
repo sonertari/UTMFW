@@ -97,6 +97,7 @@ etc/snort/snortinline.conf,644,root,wheel
 etc/snort/snortips.conf,644,root,wheel
 etc/sslproxy/sslproxy.conf,644,root,wheel
 etc/clamd.conf,644,root,wheel
+etc/collectd.conf,640,root,_collectd
 etc/dhcpd.conf,644,root,wheel
 etc/doas.conf,644,root,wheel
 etc/freshclam.conf,644,root,wheel

@@ -234,6 +234,7 @@ sslproxy			type=dir mode=0755 uname=root gname=wheel
 sslproxy.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/sslproxy
 clamd.conf		type=file mode=0644 uname=root gname=wheel
+collectd.conf		type=file mode=0640 uname=root gname=_collectd
 dhcpd.conf		type=file mode=0644 uname=root gname=wheel
 doas.conf		type=file mode=0644 uname=root gname=wheel
 freshclam.conf		type=file mode=0644 uname=root gname=wheel
