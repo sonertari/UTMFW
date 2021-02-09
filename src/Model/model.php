@@ -1615,12 +1615,11 @@ class Model
 	function GetOrigFileName($logfile)
 	{
 		$origfilename= basename($logfile);
-		if (basename($this->LogFile) !== $origfilename) {
+		// Do not append an extra .gz to compressed files
+		if ((basename($this->LogFile) !== $origfilename) && !preg_match('/\.gz$/', $origfilename)) {
 			$origfilename.= '.gz';
 		}
-		$origfile= dirname($this->LogFile).'/'.$origfilename;
-		
-		return $origfile;
+		return dirname($this->LogFile).'/'.$origfilename;
 	}
 
 	/**
