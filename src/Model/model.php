@@ -2744,7 +2744,8 @@ class Model
 			$gateway= $model->getGatewayPingHost();
 			$remote_target= $model->getRemotePingHost();
 
-			exec("doas sh $MODEL_PATH/rrdgraph.sh -$start $gateway $remote_target");
+			exec("doas sh $MODEL_PATH/rrdgraph.sh -$start $gateway $remote_target", $output, $retval);
+			Error(implode("\n", $output));
 		}
 
 		$status= array();
