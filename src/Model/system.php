@@ -797,7 +797,7 @@ class System extends Model
 		else {
 			$result= FALSE;
 		}
-		
+
 		// pnrg
 		exec("/bin/rm -f ${VIEW_PATH}/pmacct/protograph/utmfw.rrd 2>&1", $output, $retval);
 		if ($retval === 0) {
@@ -809,13 +809,24 @@ class System extends Model
 		else {
 			$result= FALSE;
 		}
-		
+
 		// protograph
 		exec("/bin/rm -f ${VIEW_PATH}/pmacct/pnrg/spool/*.{gif,cgi,rrd,desc} 2>&1", $output, $retval);
 		if ($retval !== 0) {
 			$result= FALSE;
 		}
-				
+
+		// collectd
+		exec("/bin/rm -rf /var/collectd/localhost/* 2>&1", $output, $retval);
+		if ($retval !== 0) {
+			$result= FALSE;
+		}
+
+		exec("/bin/rm -f ${VIEW_PATH}/system/dashboard/* 2>&1", $output, $retval);
+		if ($retval !== 0) {
+			$result= FALSE;
+		}
+
 		if (!$result) {
 			$errout= implode("\n", $output);
 			Error($errout);
