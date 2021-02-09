@@ -103,9 +103,9 @@ function PrintModalPieChart()
 				.on('mouseover', (event, d) => {
 					d3.select(event.currentTarget).style('opacity', 0.7);
 
-					// Get the mouse pointer's x/y values for the tooltip
-					var x = event.x + 25;
-					var y = event.y + 25;
+					// Get the mouse pointer's x/y page coords for the tooltip
+					var x = event.pageX + 25;
+					var y = event.pageY + 25;
 
 					// Update the tooltip position and contents
 					slicetip
