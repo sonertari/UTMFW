@@ -406,7 +406,7 @@ Admin can change the user password without knowing the current user password. Bu
 		</td>
 		<td class="none">
 			<?php
-			PrintHelpBox(_HELPBOX('This is the max size in MB for log files to process. The WUI slows down if we try to process larger log files. This size should be determined based on the specs of the hardware.'));
+			PrintHelpBox(_HELPBOX('This is the max size in MB for log files to process. The WUI slows down if we try to process larger log files. This size should be determined based on the specs of the hardware. The default file size for log rotation is 10 MB for most log files in newsyslog.conf.'));
 			?>
 		</td>
 	</tr>

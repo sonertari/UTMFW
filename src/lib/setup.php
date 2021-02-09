@@ -39,7 +39,8 @@ $StatusCheckInterval= 60;
 
 /// Max size in MB for log files to process. The WUI slows down if we try to process larger log files.
 /// This size should be determined based on the specs of the hardware.
-$MaxLogFileSize= 50;
+/// The default file size for log rotation is 10 MB for most log files in newsyslog.conf.
+$MaxLogFileSize= 10;
 
 /// Default locale for both View and Controller.
 $DefaultLocale= 'en_EN';
