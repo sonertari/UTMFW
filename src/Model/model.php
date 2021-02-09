@@ -183,9 +183,9 @@ class Model
 					'desc'	=>	_('Set status check interval'),
 					),
 
-				'SetMaxLogFileSize'=>	array(
+				'SetMaxFileSizeToProcess'=>	array(
 					'argv'	=>	array(NUM),
-					'desc'	=>	_('Set max log file size'),
+					'desc'	=>	_('Set max file size to process'),
 					),
 
 				'GetReloadRate'=>	array(
@@ -747,12 +747,12 @@ class Model
 	}
 
 	/**
-	 * Sets max log file size.
+	 * Sets max file size to process.
 	 *
 	 * @param int $size Max size in MB.
 	 * @return bool TRUE on success, FALSE on fail.
 	 */
-	function SetMaxLogFileSize($size)
+	function SetMaxFileSizeToProcess($size)
 	{
 		global $ROOT, $TEST_DIR_SRC;
 
@@ -763,7 +763,7 @@ class Model
 		}
 
 		// Append semi-colon to new value, this setting is a PHP line
-		return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$MaxLogFileSize', $size.';');
+		return $this->SetNVP($ROOT . $TEST_DIR_SRC . '/lib/setup.php', '\$MaxFileSizeToProcess', $size.';');
 	}
 
 	/**
@@ -1120,7 +1120,7 @@ class Model
 			$file= $this->LogFile;
 		}
 
-		if (!$this->ValidateLogFile($file)) {
+		if (!$this->ValidateFile($file)) {
 			return FALSE;
 		}
 
@@ -1335,7 +1335,7 @@ class Model
 
 	function _getFileLineCount($file, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
-		if (!$this->ValidateLogFile($file)) {
+		if (!$this->ValidateFile($file)) {
 			return FALSE;
 		}
 
@@ -1391,7 +1391,7 @@ class Model
 	 */
 	function GetLogs($file, $end, $count, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
-		if (!$this->ValidateLogFile($file)) {
+		if (!$this->ValidateFile($file)) {
 			return FALSE;
 		}
 
@@ -1463,7 +1463,7 @@ class Model
 	 */
 	function _getLiveLogs($file, $count, $re= '', $needle= '')
 	{
-		if (!$this->ValidateLogFile($file)) {
+		if (!$this->ValidateFile($file)) {
 			return FALSE;
 		}
 
@@ -1592,7 +1592,7 @@ class Model
 	 */
 	function PrepareFileForDownload($file)
 	{
-		if (!$this->ValidateLogFile($file)) {
+		if (!$this->ValidateFile($file)) {
 			return FALSE;
 		}
 
@@ -1650,7 +1650,7 @@ class Model
 	{
 		global $StatsConf;
 
-		if (!$this->ValidateLogFile($logfile)) {
+		if (!$this->ValidateFile($logfile)) {
 			return FALSE;
 		}
 
@@ -1689,7 +1689,7 @@ class Model
 	 */
 	function CopyLogFileToTmp($file, $tmpdir)
 	{
-		if (!$this->ValidateLogFile($file)) {
+		if (!$this->ValidateFile($file)) {
 			return FALSE;
 		}
 
@@ -1736,7 +1736,7 @@ class Model
 	{
 		global $StatsConf;
 
-		if (!$this->ValidateLogFile($logfile)) {
+		if (!$this->ValidateFile($logfile)) {
 			return FALSE;
 		}
 
@@ -1810,7 +1810,7 @@ class Model
 
 	function _getStats($logfile, $date, $collecthours= '')
 	{
-		if (!$this->ValidateLogFile($logfile)) {
+		if (!$this->ValidateFile($logfile)) {
 			return FALSE;
 		}
 
@@ -1859,21 +1859,19 @@ class Model
 		return json_encode($stats);
 	}
 
-	function ValidateLogFile($logfile)
+	function ValidateFile($file)
 	{
-		global $MaxLogFileSize;
+		global $MaxFileSizeToProcess;
 
-		/// @todo Should we validate $logfile too?
-		$origfile= $this->GetOrigFileName($logfile);
-		if (!file_exists($origfile)) {
-			Error(_('Log file does not exit').': '.$origfile);
+		if (!file_exists($file)) {
+			Error(_('File does not exit').': '.$file);
 			return FALSE;
 		}
 
-		$filestat= stat($origfile);
-		if ($filestat['size'] > $MaxLogFileSize*1000000) {
-			$error_msg= preg_replace('/<SIZE>/', $MaxLogFileSize, _('File too large, will not process files larger than <SIZE> MB'));
-			Error("$error_msg: $origfile = ".$filestat['size']);
+		$filestat= stat($file);
+		if ($filestat['size'] > $MaxFileSizeToProcess*1000000) {
+			$error_msg= preg_replace('/<SIZE>/', $MaxFileSizeToProcess, _('File too large, will not process files larger than <SIZE> MB'));
+			Error("$error_msg: $file = ".$filestat['size']);
 			return FALSE;
 		}
 		return TRUE;
@@ -2845,7 +2843,7 @@ class Model
 
 	function GetLastLogs($needle, $interval= 60)
 	{
-		if (!$this->ValidateLogFile($this->LogFile)) {
+		if (!$this->ValidateFile($this->LogFile)) {
 			return FALSE;
 		}
 

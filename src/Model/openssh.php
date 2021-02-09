@@ -102,7 +102,7 @@ class Openssh extends Model
 
 	function _getFileLineCount($file, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
-		if (!$this->ValidateLogFile($file)) {
+		if (!$this->ValidateFile($file)) {
 			return FALSE;
 		}
 
@@ -130,7 +130,7 @@ class Openssh extends Model
 
 	function GetLogs($file, $end, $count, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')
 	{
-		if (!$this->ValidateLogFile($file)) {
+		if (!$this->ValidateFile($file)) {
 			return FALSE;
 		}
 
@@ -166,7 +166,7 @@ class Openssh extends Model
 	
 	function _getLiveLogs($file, $count, $re= '', $needle= '')
 	{
-		if (!$this->ValidateLogFile($file)) {
+		if (!$this->ValidateFile($file)) {
 			return FALSE;
 		}
 

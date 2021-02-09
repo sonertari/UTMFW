@@ -1126,7 +1126,7 @@ class Pf extends Model
 	{
 		global $TCPDUMP;
 		
-		if (!$this->ValidateLogFile($file)) {
+		if (!$this->ValidateFile($file)) {
 			return FALSE;
 		}
 
@@ -1156,7 +1156,7 @@ class Pf extends Model
 	{
 		global $TCPDUMP;
 
-		if (!$this->ValidateLogFile($file)) {
+		if (!$this->ValidateFile($file)) {
 			return FALSE;
 		}
 
@@ -1201,7 +1201,7 @@ class Pf extends Model
 	{
 		global $TCPDUMP;
 		
-		if (!$this->ValidateLogFile($file)) {
+		if (!$this->ValidateFile($file)) {
 			return FALSE;
 		}
 

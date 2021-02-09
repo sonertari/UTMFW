@@ -93,10 +93,10 @@ if (count($_POST)) {
 			require($SRC_ROOT . '/lib/setup.php');
 		}
 	}
-	else if (filter_has_var(INPUT_POST, 'MaxLogFileSize')) {
-		if ($View->Controller($Output, 'SetMaxLogFileSize', filter_input(INPUT_POST, 'MaxLogFileSize'))) {
-			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'MaxLogFileSize set: '.filter_input(INPUT_POST, 'MaxLogFileSize'));
-			// Reset $MaxLogFileSize to its new value
+	else if (filter_has_var(INPUT_POST, 'MaxFileSizeToProcess')) {
+		if ($View->Controller($Output, 'SetMaxFileSizeToProcess', filter_input(INPUT_POST, 'MaxFileSizeToProcess'))) {
+			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'MaxFileSizeToProcess set: '.filter_input(INPUT_POST, 'MaxFileSizeToProcess'));
+			// Reset $MaxFileSizeToProcess to its new value
 			require($SRC_ROOT . '/lib/setup.php');
 		}
 	}
@@ -396,17 +396,17 @@ Admin can change the user password without knowing the current user password. Bu
 	</tr>
 	<tr class="evenline">
 		<td class="title">
-			<?php echo _TITLE('Max Log File Size').':' ?>
+			<?php echo _TITLE('Max File Size To Process').':' ?>
 		</td>
 		<td>
 			<form action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>" method="post">
-				<input type="text" name="MaxLogFileSize" style="width: 50px;" maxlength="3" value="<?php echo $MaxLogFileSize ?>"/>
-				<input type="submit" id="ApplyMaxLogFileSize" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
+				<input type="text" name="MaxFileSizeToProcess" style="width: 50px;" maxlength="3" value="<?php echo $MaxFileSizeToProcess ?>"/>
+				<input type="submit" id="ApplyMaxFileSizeToProcess" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
 			</form>
 		</td>
 		<td class="none">
 			<?php
-			PrintHelpBox(_HELPBOX('This is the max size in MB for log files to process. The WUI slows down if we try to process larger log files. This size should be determined based on the specs of the hardware. The default file size for log rotation is 10 MB for most log files in newsyslog.conf.'));
+			PrintHelpBox(_HELPBOX('This is the max size in MB for log and statistics files to process. This limit is used for files downloaded from the WUI too. The WUI slows down if we try to process larger files. This size should be determined based on the specs of the hardware. The default file size for log rotation is 10 MB for most log files in newsyslog.conf.'));
 			?>
 		</td>
 	</tr>
