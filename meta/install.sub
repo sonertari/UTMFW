@@ -1116,7 +1116,7 @@ CDDEVS=$(scan_dmesg "${MDCDDEVS:-/^cd[0-9][0-9]* /s/ .*//p}")
 
 # Selected sets will be installed in the order they are listed in $THESETS.
 THESETS="isc-bind-9.16.7v0.tgz \
-		sslproxy-0.8.2.tgz \
+		sslproxy-0.8.3.tgz \
 		clamav-0.103.0.tgz \
 		clamavdb.tar.gz \
 		p5-Mail-SpamAssassin-3.4.4.tgz \
