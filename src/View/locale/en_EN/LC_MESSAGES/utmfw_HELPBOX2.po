@@ -112,6 +112,9 @@ msgid ""
 "on | off"
 msgstr ""
 
+msgid "By default, the first ping host is the system gateway."
+msgstr ""
+
 msgid "Check for expired connections every this many seconds."
 msgstr ""
 
@@ -1040,6 +1043,9 @@ msgid ""
 msgstr ""
 
 msgid "The proxy specification format is type listenaddr+port up:utmport."
+msgstr ""
+
+msgid "The second ping host is on the Internet."
 msgstr ""
 
 msgid ""

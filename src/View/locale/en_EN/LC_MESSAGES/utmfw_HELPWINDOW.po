@@ -124,6 +124,11 @@ msgid ""
 "Clamd logs virus scan results, virus database checks, and database reloads."
 msgstr ""
 
+msgid ""
+"Collectd is configured to ping two hosts. Here you can configure them both. "
+"You should restart the collectd process to activate your changes."
+msgstr ""
+
 msgid "Collection of search engines and directory sites."
 msgstr ""
 
@@ -955,6 +960,10 @@ msgstr ""
 msgid ""
 "This graph shows overall network usage based on certain protocols. Note that "
 "each protocol may cover more than one port."
+msgstr ""
+
+msgid ""
+"This graph shows ping times and drop rates for gateway and remote hosts."
 msgstr ""
 
 msgid ""

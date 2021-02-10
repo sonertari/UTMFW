@@ -25,6 +25,12 @@ msgstr ""
 msgid "<RULE_TYPE> rule"
 msgstr ""
 
+msgid "ACCEPTED"
+msgstr ""
+
+msgid "ALERTS"
+msgstr ""
+
 msgid "Act"
 msgstr ""
 
@@ -79,6 +85,9 @@ msgstr ""
 msgid "Business Hours"
 msgstr ""
 
+msgid "CONNECTIONS"
+msgstr ""
+
 msgid "CPU Load"
 msgstr ""
 
@@ -106,6 +115,9 @@ msgid "Clients"
 msgstr ""
 
 msgid "Code"
+msgstr ""
+
+msgid "Collectd"
 msgstr ""
 
 msgid "Comment"
@@ -243,6 +255,12 @@ msgstr ""
 msgid "External interface"
 msgstr ""
 
+msgid "FAILED"
+msgstr ""
+
+msgid "FILE DESCRIPTORS"
+msgstr ""
+
 msgid "FTP Proxy"
 msgstr ""
 
@@ -288,6 +306,9 @@ msgstr ""
 msgid "Function"
 msgstr ""
 
+msgid "GATEWAY"
+msgstr ""
+
 msgid "Gateway"
 msgstr ""
 
@@ -298,6 +319,9 @@ msgid "Graph files"
 msgstr ""
 
 msgid "Group"
+msgstr ""
+
+msgid "HOSTS"
 msgstr ""
 
 msgid "Help Boxes"
@@ -387,6 +411,9 @@ msgstr ""
 msgid "Intrusion Detection"
 msgstr ""
 
+msgid "LEASES"
+msgstr ""
+
 msgid "Label"
 msgstr ""
 
@@ -465,6 +492,9 @@ msgstr ""
 msgid "Max Connection Rate"
 msgstr ""
 
+msgid "Max File Size To Process"
+msgstr ""
+
 msgid "Max MSS"
 msgstr ""
 
@@ -496,9 +526,6 @@ msgid "Min-ttl"
 msgstr ""
 
 msgid "Minute"
-msgstr ""
-
-msgid "Module Status"
 msgstr ""
 
 msgid "Month"
@@ -630,6 +657,9 @@ msgstr ""
 msgid "Physical Memory"
 msgstr ""
 
+msgid "Ping Times"
+msgstr ""
+
 msgid "Pmacct"
 msgstr ""
 
@@ -667,6 +697,12 @@ msgid "Queue"
 msgstr ""
 
 msgid "Quick"
+msgstr ""
+
+msgid "REMOTE"
+msgstr ""
+
+msgid "REQUESTS"
 msgstr ""
 
 msgid "Reason"
@@ -757,6 +793,9 @@ msgid "SSL Proxy"
 msgstr ""
 
 msgid "SSL Verify Peer"
+msgstr ""
+
+msgid "STATES"
 msgstr ""
 
 msgid "Save ruleset"
@@ -912,6 +951,12 @@ msgstr ""
 msgid "UDP Timeouts"
 msgstr ""
 
+msgid "UPTIME"
+msgstr ""
+
+msgid "USERS"
+msgstr ""
+
 msgid "Upload rules file"
 msgstr ""
 
@@ -961,6 +1006,9 @@ msgid "Web Filter"
 msgstr ""
 
 msgid "Web Server"
+msgstr ""
+
+msgid "Web User Interface"
 msgstr ""
 
 msgid "When (h)"

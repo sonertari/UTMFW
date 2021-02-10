@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.8\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2020-12-17 21:13+0300\n"
+"PO-Revision-Date: 2021-02-10 16:52+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -43,6 +43,12 @@ msgstr "<MODEL>: UYARILAR var"
 
 msgid "<RULE_TYPE> rule"
 msgstr "<RULE_TYPE> kuralı"
+
+msgid "ACCEPTED"
+msgstr "BAŞARILI"
+
+msgid "ALERTS"
+msgstr "UYARILAR"
 
 msgid "Act"
 msgstr "İşlem"
@@ -98,6 +104,9 @@ msgstr "İş günleri"
 msgid "Business Hours"
 msgstr "İş saatleri"
 
+msgid "CONNECTIONS"
+msgstr "BAĞLANTILAR"
+
 msgid "CPU Load"
 msgstr "İşlemci Yükü"
 
@@ -128,6 +137,9 @@ msgstr "İstemciler"
 
 msgid "Code"
 msgstr "Kod"
+
+msgid "Collectd"
+msgstr "Collectd"
 
 msgid "Comment"
 msgstr "Yorum"
@@ -264,6 +276,12 @@ msgstr "Dış Arayüz"
 msgid "External interface"
 msgstr "Dış arayüz"
 
+msgid "FAILED"
+msgstr "BAŞARISIZ"
+
+msgid "FILE DESCRIPTORS"
+msgstr "DOSYA TANIMLAYICILAR"
+
 msgid "FTP Proxy"
 msgstr "FTP Vekil"
 
@@ -309,6 +327,9 @@ msgstr "Yönlendirme Adresinden"
 msgid "Function"
 msgstr "Fonksiyon"
 
+msgid "GATEWAY"
+msgstr "AĞ GEÇİDİ"
+
 msgid "Gateway"
 msgstr "Ağ geçidi"
 
@@ -320,6 +341,9 @@ msgstr "Grafik dosyaları"
 
 msgid "Group"
 msgstr "Grup"
+
+msgid "HOSTS"
+msgstr "CİHAZLAR"
 
 msgid "Help Boxes"
 msgstr "Yardım Kutuları"
@@ -408,6 +432,9 @@ msgstr "Zaman Aralığı"
 msgid "Intrusion Detection"
 msgstr "Saldırı Tespit"
 
+msgid "LEASES"
+msgstr "KİRALAMALAR"
+
 msgid "Label"
 msgstr "Etiket"
 
@@ -485,6 +512,9 @@ msgstr "En Fazla Bağlantı"
 
 msgid "Max Connection Rate"
 msgstr "En Yüksek Bağlantı Hızı"
+
+msgid "Max File Size To Process"
+msgstr "İşlenecek En Fazla Dosya Boyutu"
 
 msgid "Max MSS"
 msgstr "En Yüksek MSS"
@@ -651,6 +681,9 @@ msgstr "Pfctl Zaman Aşımı"
 msgid "Physical Memory"
 msgstr "Fiziksel Bellek"
 
+msgid "Ping Times"
+msgstr "Ping Süreleri"
+
 msgid "Pmacct"
 msgstr "Pmacct"
 
@@ -689,6 +722,12 @@ msgstr "Kuyruk"
 
 msgid "Quick"
 msgstr "Hemen Uygula"
+
+msgid "REMOTE"
+msgstr "UZAK"
+
+msgid "REQUESTS"
+msgstr "İSTEKLER"
 
 msgid "Reason"
 msgstr "Sebep"
@@ -779,6 +818,9 @@ msgstr "SSL Vekil"
 
 msgid "SSL Verify Peer"
 msgstr "SSL Sunucu Doğrulama"
+
+msgid "STATES"
+msgstr "DURUMLAR"
 
 msgid "Save ruleset"
 msgstr "Kural listesini kaydet"
@@ -933,6 +975,12 @@ msgstr "Tür"
 msgid "UDP Timeouts"
 msgstr "UDP Zaman Aşımları"
 
+msgid "UPTIME"
+msgstr "SÜRE"
+
+msgid "USERS"
+msgstr "KULLNC"
+
 msgid "Upload rules file"
 msgstr "Kural dosyasını karşıya yükle"
 
@@ -983,6 +1031,9 @@ msgstr "Web Eleği"
 
 msgid "Web Server"
 msgstr "Web Sunucu"
+
+msgid "Web User Interface"
+msgstr "Web Arayüzü"
 
 msgid "When (h)"
 msgstr "Zaman (saat)"

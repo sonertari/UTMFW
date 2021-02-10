@@ -28,6 +28,9 @@ msgstr ""
 msgid "After hours"
 msgstr ""
 
+msgid "Alerts issued by the IDS and Inline IPS"
+msgstr ""
+
 msgid "Allow Wrong Host"
 msgstr ""
 
@@ -62,6 +65,12 @@ msgid "Archive Max Recursion"
 msgstr ""
 
 msgid "Authenticate Users"
+msgstr ""
+
+msgid "Average ping time within last minute to the gateway"
+msgstr ""
+
+msgid "Average ping time within last minute to the remote host"
 msgstr ""
 
 msgid "Back Orifice detector"
@@ -127,6 +136,12 @@ msgstr ""
 msgid "COMMAND"
 msgstr ""
 
+msgid "CPU load of the Web User Interface"
+msgstr ""
+
+msgid "CPU load of the system"
+msgstr ""
+
 msgid "Category display threshold"
 msgstr ""
 
@@ -160,6 +175,12 @@ msgstr ""
 msgid "Connections"
 msgstr ""
 
+msgid "Connections handled by the FTP Proxy"
+msgstr ""
+
+msgid "Connections handled by the SSL Proxy"
+msgstr ""
+
 msgid "Content Admin"
 msgstr ""
 
@@ -178,6 +199,27 @@ msgstr ""
 msgid "Create list cache files"
 msgstr ""
 
+msgid "Current number of alerts issued by the IDS and Inline IPS"
+msgstr ""
+
+msgid "Current number of connections handled by the SSL Proxy"
+msgstr ""
+
+msgid "Current number of file descriptors used by the SSL Proxy"
+msgstr ""
+
+msgid "Current number of hosts on the system ARP table"
+msgstr ""
+
+msgid "Current number of leases assigned to clients by the DHCP Server"
+msgstr ""
+
+msgid "Current number of requests handled by the Web Filter"
+msgstr ""
+
+msgid "Current number of states"
+msgstr ""
+
 msgid "DHCP Server"
 msgstr ""
 
@@ -188,6 +230,12 @@ msgid "DNS Server"
 msgstr ""
 
 msgid "DNS_SERVERS"
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+msgid "Data transfer between internal and external interfaces"
 msgstr ""
 
 msgid "Database Checks"
@@ -250,6 +298,12 @@ msgstr ""
 msgid "Disabled Rules"
 msgstr ""
 
+msgid "Disk input and output"
+msgstr ""
+
+msgid "Disk partition usage"
+msgstr ""
+
 msgid "Download CA Cert"
 msgstr ""
 
@@ -278,6 +332,9 @@ msgid "Ext"
 msgstr ""
 
 msgid "FTP Proxy"
+msgstr ""
+
+msgid "Failed login attempts to the SSH Server"
 msgstr ""
 
 msgid "File Descriptors"
@@ -332,6 +389,9 @@ msgid "GROUP"
 msgstr ""
 
 msgid "Gateway"
+msgstr ""
+
+msgid "Gateway ping host"
 msgstr ""
 
 msgid "Gentle child restart"
@@ -622,6 +682,9 @@ msgstr ""
 msgid "Maximum virus scan size"
 msgstr ""
 
+msgid "Memory usage"
+msgstr ""
+
 msgid "Mime"
 msgstr ""
 
@@ -650,6 +713,9 @@ msgid "Network Time"
 msgstr ""
 
 msgid "Network Topology"
+msgstr ""
+
+msgid "Network protocol usage"
 msgstr ""
 
 msgid "No bind"
@@ -721,6 +787,9 @@ msgstr ""
 msgid "Ping"
 msgstr ""
 
+msgid "Ping times for two hosts"
+msgstr ""
+
 msgid "Pmacct Network Monitoring"
 msgstr ""
 
@@ -778,6 +847,9 @@ msgstr ""
 msgid "Remote User"
 msgstr ""
 
+msgid "Remote ping host"
+msgstr ""
+
 msgid "Remove HTTP Accept-Encoding"
 msgstr ""
 
@@ -794,6 +866,18 @@ msgid "Report safe"
 msgstr ""
 
 msgid "Reporting level"
+msgstr ""
+
+msgid "Requests handled by the DNS Server"
+msgstr ""
+
+msgid "Requests handled by the POP3 Proxy"
+msgstr ""
+
+msgid "Requests handled by the SMTP Proxy"
+msgstr ""
+
+msgid "Requests handled by the Web Filter"
 msgstr ""
 
 msgid "Required score"
@@ -830,6 +914,9 @@ msgid "SMTP_SERVERS"
 msgstr ""
 
 msgid "SOCKS Proxy"
+msgstr ""
+
+msgid "SPAM scans completed by the SPAM Filter"
 msgstr ""
 
 msgid "SQL_SERVERS"
@@ -922,6 +1009,9 @@ msgstr ""
 msgid "Start Servers"
 msgstr ""
 
+msgid "States and state searches on the Packet Filter"
+msgstr ""
+
 msgid "Statistics Period"
 msgstr ""
 
@@ -929,6 +1019,9 @@ msgid "Subnet mask"
 msgstr ""
 
 msgid "Subsystem sftp"
+msgstr ""
+
+msgid "Successful logins to the SSH Server"
 msgstr ""
 
 msgid "Sun"
@@ -944,6 +1037,12 @@ msgid "Syslog Facility"
 msgstr ""
 
 msgid "System"
+msgstr ""
+
+msgid "System date and time"
+msgstr ""
+
+msgid "System uptime since the last boot up"
 msgstr ""
 
 msgid "TCP Keep Alive"
@@ -962,6 +1061,13 @@ msgid "Temporary Denied Page Bypass"
 msgstr ""
 
 msgid "Temporary Denied Page Bypass Secret Key"
+msgstr ""
+
+msgid ""
+"The period of time from now backwards for the data displayed on the dashboard"
+msgstr ""
+
+msgid "The time remaining before the current session times out"
 msgstr ""
 
 msgid "Threshold"
@@ -986,6 +1092,27 @@ msgid "Total Download (KB)"
 msgstr ""
 
 msgid "Total Upload (KB)"
+msgstr ""
+
+msgid "Total number of critical errors reported by the system and services"
+msgstr ""
+
+msgid "Total number of errors reported by the system and services"
+msgstr ""
+
+msgid "Total number of users currently logged in to the system"
+msgstr ""
+
+msgid "Total number of warnings reported by the system and services"
+msgstr ""
+
+msgid "Traffic on the external interface"
+msgstr ""
+
+msgid "Traffic on the internal interface"
+msgstr ""
+
+msgid "Traffice on the loopback interface"
 msgstr ""
 
 msgid "Trickle delay"
@@ -1046,6 +1173,9 @@ msgid "Virus DB Update"
 msgstr ""
 
 msgid "Virus Filter"
+msgstr ""
+
+msgid "Virus scans completed by the Virus Filter"
 msgstr ""
 
 msgid "Web Access Denied Reporting"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.8\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2020-09-07 23:14+0300\n"
+"PO-Revision-Date: 2021-02-10 21:38+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: tr\n"
 "Language-Team: Turkish <>\n"
@@ -47,6 +47,9 @@ msgstr "Gelişmiş Güç Yönetimi"
 msgid "After hours"
 msgstr "Mesai sonrası"
 
+msgid "Alerts issued by the IDS and Inline IPS"
+msgstr "Saldırı Algılama ve Engelleme Sistemlerinin uyarıları"
+
 msgid "Allow Wrong Host"
 msgstr "Yanlış Sistem İsmine İzin Ver"
 
@@ -82,6 +85,12 @@ msgstr "Arşiv yineleme üst sınırı"
 
 msgid "Authenticate Users"
 msgstr "Kullanıcıları Doğrula"
+
+msgid "Average ping time within last minute to the gateway"
+msgstr "Ağ geçidi ping sürelerinin son dakika ortalaması"
+
+msgid "Average ping time within last minute to the remote host"
+msgstr "Uzak hedef ping sürelerinin son dakika ortalaması"
 
 msgid "Back Orifice detector"
 msgstr "Back Orifice algılayıcı"
@@ -146,6 +155,12 @@ msgstr "CGI Sunucu"
 msgid "COMMAND"
 msgstr "KOMUT"
 
+msgid "CPU load of the Web User Interface"
+msgstr "Web Arayüzünün işlemci yükü"
+
+msgid "CPU load of the system"
+msgstr "Sistemin işlemci yükü"
+
 msgid "Category display threshold"
 msgstr "Sınıf gösterim eşik değeri"
 
@@ -179,6 +194,12 @@ msgstr "Durağan Bağlantı Zaman Aşım Süresi"
 msgid "Connections"
 msgstr "Bağlantılar"
 
+msgid "Connections handled by the FTP Proxy"
+msgstr "FTP vekile yapılan bağlantılar"
+
+msgid "Connections handled by the SSL Proxy"
+msgstr "SSL vekile yapılan bağlantılar"
+
 msgid "Content Admin"
 msgstr "İçerik yöneticisi"
 
@@ -197,6 +218,27 @@ msgstr "Elek grubu yarat"
 msgid "Create list cache files"
 msgstr "Liste önbellek dosyalarını yarat"
 
+msgid "Current number of alerts issued by the IDS and Inline IPS"
+msgstr "Saldırı Algılama ve Engelleme sistemlerinin uyarı sayısı"
+
+msgid "Current number of connections handled by the SSL Proxy"
+msgstr "SSL vekile yapılan bağlantıların sayısı"
+
+msgid "Current number of file descriptors used by the SSL Proxy"
+msgstr "SSL vekil tarafından kullanılan dosya tanımlayıcı sayısı"
+
+msgid "Current number of hosts on the system ARP table"
+msgstr "Sistemin ARP tablosundaki cihaz sayısı"
+
+msgid "Current number of leases assigned to clients by the DHCP Server"
+msgstr "DHCP sunucu tarafından istemcilere atanan kiralamaların sayısı"
+
+msgid "Current number of requests handled by the Web Filter"
+msgstr "Web eleğine yapılan isteklerin sayısı"
+
+msgid "Current number of states"
+msgstr "Durumların sayısı"
+
 msgid "DHCP Server"
 msgstr "DHCP Sunucu"
 
@@ -208,6 +250,12 @@ msgstr "DNS Sunucu"
 
 msgid "DNS_SERVERS"
 msgstr "DNS_SERVERS"
+
+msgid "Dashboard"
+msgstr "Gösterge paneli"
+
+msgid "Data transfer between internal and external interfaces"
+msgstr "İç ve dış arayüzler arasındaki veri aktarımı"
 
 msgid "Database Checks"
 msgstr "Veritabanı kontrolleri"
@@ -269,6 +317,12 @@ msgstr "Kapalı"
 msgid "Disabled Rules"
 msgstr "Kapatılmış Kurallar"
 
+msgid "Disk input and output"
+msgstr "Disk girdi ve çıktıları"
+
+msgid "Disk partition usage"
+msgstr "Disk bölümü kullanımı"
+
 msgid "Download CA Cert"
 msgstr "CA Sertifikasını İndir"
 
@@ -298,6 +352,9 @@ msgstr "Uznt"
 
 msgid "FTP Proxy"
 msgstr "FTP Vekil"
+
+msgid "Failed login attempts to the SSH Server"
+msgstr "SSH sunucuya yapılan başarısız giriş denemeleri"
 
 msgid "File Descriptors"
 msgstr "File Descriptor'lar"
@@ -352,6 +409,9 @@ msgstr "GRUP"
 
 msgid "Gateway"
 msgstr "Ağ geçidi"
+
+msgid "Gateway ping host"
+msgstr "Ağ geçidi hedefi"
 
 msgid "Gentle child restart"
 msgstr "Dikkatli alt-süreç tekrar başlatma"
@@ -641,6 +701,9 @@ msgstr "Spam tarama boyutu üst sınırı"
 msgid "Maximum virus scan size"
 msgstr "Virüs tarama boyutu üst sınırı"
 
+msgid "Memory usage"
+msgstr "Bellek kullanımı"
+
 msgid "Mime"
 msgstr "Mime"
 
@@ -670,6 +733,9 @@ msgstr "Ağ Zamanı"
 
 msgid "Network Topology"
 msgstr "Ağ Topolojisi"
+
+msgid "Network protocol usage"
+msgstr "Ağ protokol kullanımı"
 
 msgid "No bind"
 msgstr "Bağlantısız"
@@ -740,6 +806,9 @@ msgstr "Tümce elek kipi"
 msgid "Ping"
 msgstr "Ping"
 
+msgid "Ping times for two hosts"
+msgstr "İki hedef için ping süreleri"
+
 msgid "Pmacct Network Monitoring"
 msgstr "Pmacct Ağ Gözlemleme"
 
@@ -797,6 +866,9 @@ msgstr "Uzaktaki sunucu"
 msgid "Remote User"
 msgstr "Uzaktaki Kullanıcı"
 
+msgid "Remote ping host"
+msgstr "Uzak ping hedefi"
+
 msgid "Remove HTTP Accept-Encoding"
 msgstr "HTTP Accept-Encoding'i Sil"
 
@@ -814,6 +886,18 @@ msgstr "Güvenli bildirim"
 
 msgid "Reporting level"
 msgstr "Bildirim seviyesi"
+
+msgid "Requests handled by the DNS Server"
+msgstr "DNS sunucuya yapılan istekler"
+
+msgid "Requests handled by the POP3 Proxy"
+msgstr "POP vekile yapılan istekler"
+
+msgid "Requests handled by the SMTP Proxy"
+msgstr "SMTP vekile yapılan istekler"
+
+msgid "Requests handled by the Web Filter"
+msgstr "Web eleğine yapılan istekler"
 
 msgid "Required score"
 msgstr "Gerekli puan"
@@ -850,6 +934,9 @@ msgstr "SMTP_SERVERS"
 
 msgid "SOCKS Proxy"
 msgstr "SOCKS Vekil"
+
+msgid "SPAM scans completed by the SPAM Filter"
+msgstr "SPAM eleğinin tamamladığı taramalar"
 
 msgid "SQL_SERVERS"
 msgstr "SQL_SERVERS"
@@ -941,6 +1028,9 @@ msgstr "Spamd Beyaz VT"
 msgid "Start Servers"
 msgstr "Başlangıç sunucu sayısı"
 
+msgid "States and state searches on the Packet Filter"
+msgstr "Paket eleğinin durumları ve durum sorguları"
+
 msgid "Statistics Period"
 msgstr "İstatistik Periyodu"
 
@@ -949,6 +1039,9 @@ msgstr "Altağ şablonu"
 
 msgid "Subsystem sftp"
 msgstr "Alt-sistem sftp"
+
+msgid "Successful logins to the SSH Server"
+msgstr "SSH sunucuya yapılan başarılı girişler"
 
 msgid "Sun"
 msgstr "Paz"
@@ -964,6 +1057,12 @@ msgstr "Syslog düzeneği"
 
 msgid "System"
 msgstr "Sistem"
+
+msgid "System date and time"
+msgstr "Sistem tarih saati"
+
+msgid "System uptime since the last boot up"
+msgstr "Sistemin son açılışından bu yana geçen süre"
 
 msgid "TCP Keep Alive"
 msgstr "TCP canlı tutma"
@@ -982,6 +1081,13 @@ msgstr "Geçici engelleme sayfası kestirmesi"
 
 msgid "Temporary Denied Page Bypass Secret Key"
 msgstr "Geçici engelleme sayfası kestirme gizli anahtarı"
+
+msgid ""
+"The period of time from now backwards for the data displayed on the dashboard"
+msgstr "Gösterge panelindeki verinin şu andan itibaren geçmişe doğru süresi"
+
+msgid "The time remaining before the current session times out"
+msgstr "Mevcut oturumun zaman aşımına kalan süre"
 
 msgid "Threshold"
 msgstr "Eşik"
@@ -1006,6 +1112,27 @@ msgstr "Toplam İndirilen (KB)"
 
 msgid "Total Upload (KB)"
 msgstr "Toplam Yüklenen (KB)"
+
+msgid "Total number of critical errors reported by the system and services"
+msgstr "Sistem ve servisler tarafında bildirilen toplam önemli hata sayısı"
+
+msgid "Total number of errors reported by the system and services"
+msgstr "Sistem ve servisler tarafında bildirilen toplam hata sayısı"
+
+msgid "Total number of users currently logged in to the system"
+msgstr "Şu anda sisteme giriş yapmış toplam kullanıcı sayısı"
+
+msgid "Total number of warnings reported by the system and services"
+msgstr "Sistem ve servisler tarafında bildirilen toplam uyarı sayısı"
+
+msgid "Traffic on the external interface"
+msgstr "Dış ağ arayüzündeki trafik"
+
+msgid "Traffic on the internal interface"
+msgstr "İç ağ arayüzündeki trafik"
+
+msgid "Traffice on the loopback interface"
+msgstr "Döngü arayüzündeki trafik"
 
 msgid "Trickle delay"
 msgstr "Süzülme geçiktirmesi"
@@ -1066,6 +1193,9 @@ msgstr "Virüs VT Güncelleme"
 
 msgid "Virus Filter"
 msgstr "Virüs Eleği"
+
+msgid "Virus scans completed by the Virus Filter"
+msgstr "Virüs tarayıcı tarafından tamamlanan taramalar"
 
 msgid "Web Access Denied Reporting"
 msgstr "Web girişi engelleme bildirimi"

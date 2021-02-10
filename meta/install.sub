@@ -410,7 +410,7 @@ GetPkgDesc() {
 		dante-*) 				pkgdesc="SOCKS Proxy" ;;
 		symon-*) 				pkgdesc="System Monitoring" ;;
 		pmacct-*) 				pkgdesc="Network Monitoring" ;;
-		collectd-*) 			pkgdesc="System statistics collection" ;;
+		collectd-*) 			pkgdesc="System Statistics" ;;
 		pftop-*) 				pkgdesc="Packet Filter Monitoring" ;;
 		php-*) 				pkgdesc="PHP" ;;
 		$CW_WEBIF_TARFILE) 		pkgdesc="Web Administration Interface" ;;

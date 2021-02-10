@@ -63,13 +63,58 @@ msgstr ""
 msgid "0-100% or 0-1"
 msgstr ""
 
+msgid "1 day"
+msgstr ""
+
+msgid "1 hour"
+msgstr ""
+
+msgid "1 min"
+msgstr ""
+
 msgid "1 minute average"
+msgstr ""
+
+msgid "1 month"
+msgstr ""
+
+msgid "1 week"
+msgstr ""
+
+msgid "1 year"
+msgstr ""
+
+msgid "10 mins"
+msgstr ""
+
+msgid "12 hours"
 msgstr ""
 
 msgid "15 minute average"
 msgstr ""
 
+msgid "3 days"
+msgstr ""
+
+msgid "3 hours"
+msgstr ""
+
+msgid "3 months"
+msgstr ""
+
+msgid "30 mins"
+msgstr ""
+
+msgid "5 mins"
+msgstr ""
+
 msgid "5 minute average"
+msgstr ""
+
+msgid "6 hours"
+msgstr ""
+
+msgid "6 months"
 msgstr ""
 
 msgid "< Previous"
@@ -101,10 +146,16 @@ msgid ""
 "It is not advised to configure the internal interface as dhcp."
 msgstr ""
 
+msgid "ACCEPTED"
+msgstr ""
+
 msgid "ACL"
 msgstr ""
 
 msgid "ACL gives you fine-grained control over who can access the IM proxy."
+msgstr ""
+
+msgid "ALERTS"
 msgstr ""
 
 msgid "AV Admin"
@@ -219,6 +270,9 @@ msgid ""
 msgstr ""
 
 msgid "Alerts"
+msgstr ""
+
+msgid "Alerts issued by the IDS and Inline IPS"
 msgstr ""
 
 msgid "All"
@@ -504,6 +558,12 @@ msgstr ""
 msgid "Automatic configuration failed."
 msgstr ""
 
+msgid "Average ping time within last minute to the gateway"
+msgstr ""
+
+msgid "Average ping time within last minute to the remote host"
+msgstr ""
+
 msgid "Back Orifice detector"
 msgstr ""
 
@@ -663,6 +723,9 @@ msgid ""
 "DNS server by modifying configuration files."
 msgstr ""
 
+msgid "By default, the first ping host is the system gateway."
+msgstr ""
+
 msgid "Bypass"
 msgstr ""
 
@@ -693,7 +756,16 @@ msgstr ""
 msgid "COMMAND"
 msgstr ""
 
+msgid "CONNECTIONS"
+msgstr ""
+
 msgid "CPU Load"
+msgstr ""
+
+msgid "CPU load of the Web User Interface"
+msgstr ""
+
+msgid "CPU load of the system"
 msgstr ""
 
 msgid "CPUs"
@@ -864,6 +936,14 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
+msgid "Collectd"
+msgstr ""
+
+msgid ""
+"Collectd is configured to ping two hosts. Here you can configure them both. "
+"You should restart the collectd process to activate your changes."
+msgstr ""
+
 msgid "Collection of search engines and directory sites."
 msgstr ""
 
@@ -929,6 +1009,12 @@ msgstr ""
 msgid "Connections by date"
 msgstr ""
 
+msgid "Connections handled by the FTP Proxy"
+msgstr ""
+
+msgid "Connections handled by the SSL Proxy"
+msgstr ""
+
 msgid "Conns"
 msgstr ""
 
@@ -978,6 +1064,27 @@ msgid "Critical Error"
 msgstr ""
 
 msgid "Current Password"
+msgstr ""
+
+msgid "Current number of alerts issued by the IDS and Inline IPS"
+msgstr ""
+
+msgid "Current number of connections handled by the SSL Proxy"
+msgstr ""
+
+msgid "Current number of file descriptors used by the SSL Proxy"
+msgstr ""
+
+msgid "Current number of hosts on the system ARP table"
+msgstr ""
+
+msgid "Current number of leases assigned to clients by the DHCP Server"
+msgstr ""
+
+msgid "Current number of requests handled by the Web Filter"
+msgstr ""
+
+msgid "Current number of states"
 msgstr ""
 
 msgid "Customised filtered text (message text or filename follows in response)"
@@ -1044,6 +1151,9 @@ msgid "Dashboard"
 msgstr ""
 
 msgid "Data Transfer"
+msgstr ""
+
+msgid "Data transfer between internal and external interfaces"
 msgstr ""
 
 msgid "Database Checks"
@@ -1331,6 +1441,12 @@ msgid ""
 msgstr ""
 
 msgid "Disk I/O"
+msgstr ""
+
+msgid "Disk input and output"
+msgstr ""
+
+msgid "Disk partition usage"
 msgstr ""
 
 msgid "Disks"
@@ -1659,6 +1775,9 @@ msgstr ""
 msgid "FATAL ERRORS in creating new group"
 msgstr ""
 
+msgid "FILE DESCRIPTORS"
+msgstr ""
+
 msgid "FTP PROXY"
 msgstr ""
 
@@ -1684,6 +1803,9 @@ msgid "Failed loading main pf rules"
 msgstr ""
 
 msgid "Failed loading pf rules"
+msgstr ""
+
+msgid "Failed login attempts to the SSH Server"
 msgstr ""
 
 msgid "Failed queries"
@@ -1730,6 +1852,12 @@ msgid "File"
 msgstr ""
 
 msgid "File Descriptors"
+msgstr ""
+
+msgid "File does not exit"
+msgstr ""
+
+msgid "File too large, will not process files larger than <SIZE> MB"
 msgstr ""
 
 msgid "File uploaded"
@@ -1883,6 +2011,9 @@ msgstr ""
 msgid "Function"
 msgstr ""
 
+msgid "GATEWAY"
+msgstr ""
+
 msgid "GG"
 msgstr ""
 
@@ -1890,6 +2021,9 @@ msgid "GROUP"
 msgstr ""
 
 msgid "Gateway"
+msgstr ""
+
+msgid "Gateway ping host"
 msgstr ""
 
 msgid "General"
@@ -2117,6 +2251,9 @@ msgstr ""
 msgid "Get pf timeout info"
 msgstr ""
 
+msgid "Get ping hosts"
+msgstr ""
+
 msgid "Get process list"
 msgstr ""
 
@@ -2271,6 +2408,9 @@ msgid ""
 msgstr ""
 
 msgid "HOME_NET"
+msgstr ""
+
+msgid "HOSTS"
 msgstr ""
 
 msgid "HTTP Codes"
@@ -2892,10 +3032,16 @@ msgstr ""
 msgid "Keywords"
 msgstr ""
 
+msgid "LEASES"
+msgstr ""
+
 msgid "Label"
 msgstr ""
 
 msgid "Language"
+msgstr ""
+
+msgid "Last <INTERVAL>"
 msgstr ""
 
 msgid "Last >>"
@@ -3278,6 +3424,9 @@ msgstr ""
 msgid "Max Directory Recursion"
 msgstr ""
 
+msgid "Max File Size To Process"
+msgstr ""
+
 msgid "Max HTTP header lines"
 msgstr ""
 
@@ -3387,6 +3536,9 @@ msgstr ""
 msgid "Memory Usage"
 msgstr ""
 
+msgid "Memory usage"
+msgstr ""
+
 msgid "Messages from all OpenVPN processes are recorded in the same log file."
 msgstr ""
 
@@ -3432,9 +3584,6 @@ msgstr ""
 msgid ""
 "Model agency, model and supermodel fan pages and other model sites "
 "presenting model photos. No porn pictures."
-msgstr ""
-
-msgid "Module Status"
 msgstr ""
 
 msgid "Mon"
@@ -3536,6 +3685,9 @@ msgid ""
 "Network interfaces are listed here. You can configure an interface as dhcp "
 "or inet. Changes made here do not take effect until you restart the network "
 "or reboot the system."
+msgstr ""
+
+msgid "Network protocol usage"
 msgstr ""
 
 msgid "New Password"
@@ -3987,6 +4139,12 @@ msgstr ""
 msgid "Ping"
 msgstr ""
 
+msgid "Ping Times"
+msgstr ""
+
+msgid "Ping times for two hosts"
+msgstr ""
+
 msgid "Pmacct"
 msgstr ""
 
@@ -4145,6 +4303,12 @@ msgstr ""
 msgid "Quiet"
 msgstr ""
 
+msgid "REMOTE"
+msgstr ""
+
+msgid "REQUESTS"
+msgstr ""
+
 msgid "RSS"
 msgstr ""
 
@@ -4251,6 +4415,9 @@ msgstr ""
 msgid "Remote User"
 msgstr ""
 
+msgid "Remote ping host"
+msgstr ""
+
 msgid "Remove HTTP Accept-Encoding"
 msgstr ""
 
@@ -4299,6 +4466,18 @@ msgid "Requests bypassed"
 msgstr ""
 
 msgid "Requests denied"
+msgstr ""
+
+msgid "Requests handled by the DNS Server"
+msgstr ""
+
+msgid "Requests handled by the POP3 Proxy"
+msgstr ""
+
+msgid "Requests handled by the SMTP Proxy"
+msgstr ""
+
+msgid "Requests handled by the Web Filter"
 msgstr ""
 
 msgid "Requests infected"
@@ -4482,6 +4661,9 @@ msgstr ""
 msgid "SPAM Filter"
 msgstr ""
 
+msgid "SPAM scans completed by the SPAM Filter"
+msgstr ""
+
 msgid "SPAMD"
 msgstr ""
 
@@ -4540,6 +4722,9 @@ msgid "STARTED"
 msgstr ""
 
 msgid "STAT"
+msgstr ""
+
+msgid "STATES"
 msgstr ""
 
 msgid "SUCCESS"
@@ -4738,6 +4923,9 @@ msgstr ""
 msgid "Set force HTTPs"
 msgstr ""
 
+msgid "Set gateway ping host"
+msgstr ""
+
 msgid ""
 "Set headers which may provide inappropriate cues to the Bayesian classifier"
 msgstr ""
@@ -4766,6 +4954,9 @@ msgstr ""
 msgid "Set max anchor nesting"
 msgstr ""
 
+msgid "Set max file size to process"
+msgstr ""
+
 msgid "Set name value pair"
 msgstr ""
 
@@ -4791,6 +4982,9 @@ msgid "Set pmacct net"
 msgstr ""
 
 msgid "Set reload rate"
+msgstr ""
+
+msgid "Set remote ping host"
 msgstr ""
 
 msgid "Set remote time"
@@ -5407,6 +5601,9 @@ msgstr ""
 msgid "States"
 msgstr ""
 
+msgid "States and state searches on the Packet Filter"
+msgstr ""
+
 msgid "Static Port"
 msgstr ""
 
@@ -5488,6 +5685,9 @@ msgstr ""
 msgid "Successful logins"
 msgstr ""
 
+msgid "Successful logins to the SSH Server"
+msgstr ""
+
 msgid "Sun"
 msgstr ""
 
@@ -5512,6 +5712,15 @@ msgstr ""
 msgid "System"
 msgstr ""
 
+msgid "System and ping gateway addresses do not match"
+msgstr ""
+
+msgid "System date and time"
+msgstr ""
+
+msgid "System has no gateway"
+msgstr ""
+
 msgid "System is going down..."
 msgstr ""
 
@@ -5522,6 +5731,9 @@ msgid "System restart"
 msgstr ""
 
 msgid "System shutdown"
+msgstr ""
+
+msgid "System uptime since the last boot up"
 msgstr ""
 
 msgid "TCP Flags"
@@ -5725,6 +5937,10 @@ msgid ""
 msgstr ""
 
 msgid ""
+"The period of time from now backwards for the data displayed on the dashboard"
+msgstr ""
+
+msgid ""
 "The persist options will try to avoid accessing certain resources on restart "
 "that may no longer be accessible because of the privilege downgrade."
 msgstr ""
@@ -5733,6 +5949,9 @@ msgid "The process is taking too long, thus will run in the background."
 msgstr ""
 
 msgid "The proxy specification format is type listenaddr+port up:utmport."
+msgstr ""
+
+msgid "The second ping host is on the Internet."
 msgstr ""
 
 msgid "The settings on this page are valid filter-wide."
@@ -5749,6 +5968,9 @@ msgstr ""
 
 msgid ""
 "The system will send service statuses containing one of these keywords only."
+msgstr ""
+
+msgid "The time remaining before the current session times out"
 msgstr ""
 
 msgid ""
@@ -5889,6 +6111,10 @@ msgid ""
 msgstr ""
 
 msgid ""
+"This graph shows ping times and drop rates for gateway and remote hosts."
+msgstr ""
+
+msgid ""
 "This graph shows the data transfer rate of packet filter. The transfer is "
 "between interfaces."
 msgstr ""
@@ -5975,6 +6201,14 @@ msgid ""
 "This is the log level for the utmfw web interface. Logs at this level and up "
 "will be recorded in WUI and Controller log files. This setting does not "
 "effect other services."
+msgstr ""
+
+msgid ""
+"This is the max size in MB for log and statistics files to process. This "
+"limit is used for files downloaded from the WUI too. The WUI slows down if "
+"we try to process larger files. This size should be determined based on the "
+"specs of the hardware. The default file size for log rotation is 10 MB for "
+"most log files in newsyslog.conf."
 msgstr ""
 
 msgid ""
@@ -6284,7 +6518,28 @@ msgstr ""
 msgid "Total deferred time (sec)"
 msgstr ""
 
+msgid "Total number of critical errors reported by the system and services"
+msgstr ""
+
+msgid "Total number of errors reported by the system and services"
+msgstr ""
+
+msgid "Total number of users currently logged in to the system"
+msgstr ""
+
+msgid "Total number of warnings reported by the system and services"
+msgstr ""
+
 msgid "Total of block extensions cannot be higher than this value."
+msgstr ""
+
+msgid "Traffic on the external interface"
+msgstr ""
+
+msgid "Traffic on the internal interface"
+msgstr ""
+
+msgid "Traffice on the loopback interface"
 msgstr ""
 
 msgid "Transfer"
@@ -6329,6 +6584,9 @@ msgstr ""
 msgid "UDP Timeouts"
 msgstr ""
 
+msgid "UPTIME"
+msgstr ""
+
 msgid "URLs"
 msgstr ""
 
@@ -6338,6 +6596,9 @@ msgid ""
 msgstr ""
 
 msgid "USER"
+msgstr ""
+
+msgid "USERS"
 msgstr ""
 
 msgid "UTM FIREWALL"
@@ -6649,6 +6910,9 @@ msgstr ""
 msgid "Virus URLs"
 msgstr ""
 
+msgid "Virus scans completed by the Virus Filter"
+msgstr ""
+
 msgid "WARNING"
 msgstr ""
 
@@ -6683,6 +6947,9 @@ msgid "Web Server"
 msgstr ""
 
 msgid "Web Server (WUI)"
+msgstr ""
+
+msgid "Web User Interface"
 msgstr ""
 
 msgid "Wed"

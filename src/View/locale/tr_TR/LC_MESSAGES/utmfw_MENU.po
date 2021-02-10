@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.8\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2019-04-07 15:41+0300\n"
+"PO-Revision-Date: 2021-02-10 16:45+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -15,7 +15,52 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 3.36.0\n"
+
+msgid "1 day"
+msgstr "1 gün"
+
+msgid "1 hour"
+msgstr "1 saat"
+
+msgid "1 min"
+msgstr "1 dakika"
+
+msgid "1 month"
+msgstr "1 ay"
+
+msgid "1 week"
+msgstr "1 hafta"
+
+msgid "1 year"
+msgstr "1 yıl"
+
+msgid "10 mins"
+msgstr "10 dakika"
+
+msgid "12 hours"
+msgstr "12 saat"
+
+msgid "3 days"
+msgstr "3 gün"
+
+msgid "3 hours"
+msgstr "3 saat"
+
+msgid "3 months"
+msgstr "3 ay"
+
+msgid "30 mins"
+msgstr "30 dakika"
+
+msgid "5 mins"
+msgstr "5 dakika"
+
+msgid "6 hours"
+msgstr "6 saat"
+
+msgid "6 months"
+msgstr "6 ay"
 
 msgid "ACL"
 msgstr "ACL"
@@ -164,6 +209,9 @@ msgstr "Arayüzler"
 msgid "Language"
 msgstr "Dil"
 
+msgid "Last <INTERVAL>"
+msgstr "Son <INTERVAL>"
+
 msgid "Lists"
 msgstr "Listeler"
 
@@ -220,6 +268,9 @@ msgstr "Pf"
 
 msgid "Phrases"
 msgstr "Tümceler"
+
+msgid "Ping Times"
+msgstr "Ping Süreleri"
 
 msgid "Processes"
 msgstr "Süreçler"

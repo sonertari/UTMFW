@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2021 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009-2020.
+# Soner Tari <sonertari@gmail.com>, 2009-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 6.8\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2020-09-07 23:08+0300\n"
+"PO-Revision-Date: 2021-02-10 16:29+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: tr\n"
 "Language-Team: Turkish <>\n"
@@ -195,6 +195,9 @@ msgstr ""
 "Yavaş makinalarda bu çok önemlidir.\n"
 "Hızlı bilgisayarların buna ihtiyacı yoktur.\n"
 "on | off"
+
+msgid "By default, the first ping host is the system gateway."
+msgstr "Öndeğer olarak ilk ping hedefi sistem ağ geçididir."
 
 msgid "Check for expired connections every this many seconds."
 msgstr ""
@@ -1568,6 +1571,9 @@ msgstr ""
 
 msgid "The proxy specification format is type listenaddr+port up:utmport."
 msgstr "Vekil tanımlama şablonu tip dinlenenadres+kapı up:utmkapı'dır"
+
+msgid "The second ping host is on the Internet."
+msgstr "İkinci ping hedefi İnternet'teki bir adrestir."
 
 msgid ""
 "The strategy used for options in the default sshd_config shipped with "

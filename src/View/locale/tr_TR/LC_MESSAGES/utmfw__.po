@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.8\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2020-12-17 21:12+0300\n"
+"PO-Revision-Date: 2021-02-10 16:20+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -332,6 +332,12 @@ msgstr "Pf kurallarının testi başarısız oldu"
 msgid "Failed validating command line"
 msgstr "Komut satırı doğrulaması başarısız oldu"
 
+msgid "File does not exit"
+msgstr "Dosya mevcut değil"
+
+msgid "File too large, will not process files larger than <SIZE> MB"
+msgstr "Dosya fazla büyük,<SIZE> MB'dan büyük dosyalar işlenmez"
+
 msgid "Filename not accepted"
 msgstr "Dosya adı kabul edilmedi"
 
@@ -544,6 +550,9 @@ msgstr "Pf durumlarını getir"
 
 msgid "Get pf timeout info"
 msgstr "Pf zaman aşımı bilgisini getir"
+
+msgid "Get ping hosts"
+msgstr "Ping hedeflerini getir"
 
 msgid "Get process list"
 msgstr "Süreç listesini getir"
@@ -916,6 +925,9 @@ msgstr "E-posta adresini ayarla"
 msgid "Set force HTTPs"
 msgstr "HTTPs uygulamayı ayarla"
 
+msgid "Set gateway ping host"
+msgstr "Ağ geçidi ping hedefini ayarla"
+
 msgid "Set help boxes"
 msgstr "Yardım kutularını ayarla"
 
@@ -939,6 +951,9 @@ msgstr "man.cgi adresini ayarla"
 
 msgid "Set max anchor nesting"
 msgstr "En fazla içiçe çapa sayısını ayarla"
+
+msgid "Set max file size to process"
+msgstr "İşlenecek en fazla dosya boyutunu ayarla"
 
 msgid "Set name value pair"
 msgstr "Ad değer çiftini ayarla"
@@ -966,6 +981,9 @@ msgstr "Pmacct ağını ayarla"
 
 msgid "Set reload rate"
 msgstr "Tekrar yükleme sıklığını ayarla"
+
+msgid "Set remote ping host"
+msgstr "Uzak ping hedefini ayarla"
 
 msgid "Set remote time"
 msgstr "Uzak zamanı ayarla"
@@ -1053,6 +1071,12 @@ msgstr "Dizi hatalı"
 
 msgid "Subcat wrong"
 msgstr "Alt sınıf yanlış"
+
+msgid "System and ping gateway addresses do not match"
+msgstr "Sistem ve ping ağ geçit adresleri uyuşmuyor"
+
+msgid "System has no gateway"
+msgstr "Sistemin ağ geçidi yok"
 
 msgid "System restart"
 msgstr "Sistem tekrar başlatma"

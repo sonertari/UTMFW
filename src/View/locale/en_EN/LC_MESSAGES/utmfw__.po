@@ -313,6 +313,12 @@ msgstr ""
 msgid "Failed validating command line"
 msgstr ""
 
+msgid "File does not exit"
+msgstr ""
+
+msgid "File too large, will not process files larger than <SIZE> MB"
+msgstr ""
+
 msgid "Filename not accepted"
 msgstr ""
 
@@ -524,6 +530,9 @@ msgid "Get pf states"
 msgstr ""
 
 msgid "Get pf timeout info"
+msgstr ""
+
+msgid "Get ping hosts"
 msgstr ""
 
 msgid "Get process list"
@@ -894,6 +903,9 @@ msgstr ""
 msgid "Set force HTTPs"
 msgstr ""
 
+msgid "Set gateway ping host"
+msgstr ""
+
 msgid "Set help boxes"
 msgstr ""
 
@@ -916,6 +928,9 @@ msgid "Set man.cgi home"
 msgstr ""
 
 msgid "Set max anchor nesting"
+msgstr ""
+
+msgid "Set max file size to process"
 msgstr ""
 
 msgid "Set name value pair"
@@ -943,6 +958,9 @@ msgid "Set pmacct net"
 msgstr ""
 
 msgid "Set reload rate"
+msgstr ""
+
+msgid "Set remote ping host"
 msgstr ""
 
 msgid "Set remote time"
@@ -1030,6 +1048,12 @@ msgid "String wrong"
 msgstr ""
 
 msgid "Subcat wrong"
+msgstr ""
+
+msgid "System and ping gateway addresses do not match"
+msgstr ""
+
+msgid "System has no gateway"
 msgstr ""
 
 msgid "System restart"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.8\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2020-05-25 16:45+0300\n"
+"PO-Revision-Date: 2021-02-10 16:45+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -116,14 +116,59 @@ msgstr ""
 msgid "0-100% or 0-1"
 msgstr "%0-100 ya da 0-1"
 
+msgid "1 day"
+msgstr "1 gün"
+
+msgid "1 hour"
+msgstr "1 saat"
+
+msgid "1 min"
+msgstr "1 dakika"
+
 msgid "1 minute average"
 msgstr "1 dakikalık ortalama"
+
+msgid "1 month"
+msgstr "1 ay"
+
+msgid "1 week"
+msgstr "1 hafta"
+
+msgid "1 year"
+msgstr "1 yıl"
+
+msgid "10 mins"
+msgstr "10 dakika"
+
+msgid "12 hours"
+msgstr "12 saat"
 
 msgid "15 minute average"
 msgstr "15 dakikalık ortalama"
 
+msgid "3 days"
+msgstr "3 gün"
+
+msgid "3 hours"
+msgstr "3 saat"
+
+msgid "3 months"
+msgstr "3 ay"
+
+msgid "30 mins"
+msgstr "30 dakika"
+
+msgid "5 mins"
+msgstr "5 dakika"
+
 msgid "5 minute average"
 msgstr "5 dakikalık ortalama"
+
+msgid "6 hours"
+msgstr "6 saat"
+
+msgid "6 months"
+msgstr "6 ay"
 
 msgid "< Previous"
 msgstr "< Önceki"
@@ -162,12 +207,18 @@ msgstr ""
 "\n"
 "İç ağ arayüzünü dhcp olarak yapılandırmanız tavsiye edilmez."
 
+msgid "ACCEPTED"
+msgstr "BAŞARILI"
+
 msgid "ACL"
 msgstr "ACL"
 
 msgid "ACL gives you fine-grained control over who can access the IM proxy."
 msgstr ""
 "ACL kullanarak Mesajlaşma vekiline girişleri daha detaylı ayarlayabilirsiniz."
+
+msgid "ALERTS"
+msgstr "UYARILAR"
 
 msgid "AV Admin"
 msgstr "AV yöneticisi"
@@ -285,6 +336,9 @@ msgstr ""
 
 msgid "Alerts"
 msgstr "Uyarılar"
+
+msgid "Alerts issued by the IDS and Inline IPS"
+msgstr "Saldırı Algılama ve Engelleme Sistemlerinin uyarıları"
 
 msgid "All"
 msgstr "Hepsi"
@@ -593,6 +647,12 @@ msgstr ""
 msgid "Automatic configuration failed."
 msgstr "Otomatik yapılandırma başarısız oldu."
 
+msgid "Average ping time within last minute to the gateway"
+msgstr "Ağ geçidi ping sürelerinin son dakika ortalaması"
+
+msgid "Average ping time within last minute to the remote host"
+msgstr "Uzak hedef ping sürelerinin son dakika ortalaması"
+
 msgid "Back Orifice detector"
 msgstr "Back Orifice algılayıcı"
 
@@ -787,6 +847,9 @@ msgstr ""
 "kayıtları yapılmamıştır ve önbellek kullanılmamaktadır. Ancak yapılandırma "
 "dosyalarını değiştirerek DNS sunucunun tüm özelliklerini kullanabilirsiniz."
 
+msgid "By default, the first ping host is the system gateway."
+msgstr "Öndeğer olarak ilk ping hedefi sistem ağ geçididir."
+
 msgid "Bypass"
 msgstr "Kestirme"
 
@@ -817,8 +880,17 @@ msgstr "CGI Sunucu"
 msgid "COMMAND"
 msgstr "KOMUT"
 
+msgid "CONNECTIONS"
+msgstr "BAĞLANTILAR"
+
 msgid "CPU Load"
 msgstr "İşlemci Yükü"
+
+msgid "CPU load of the Web User Interface"
+msgstr "Web Arayüzünün işlemci yükü"
+
+msgid "CPU load of the system"
+msgstr "Sistemin işlemci yükü"
 
 msgid "CPUs"
 msgstr "İşlemciler"
@@ -1012,6 +1084,17 @@ msgstr "Kapatan"
 msgid "Code"
 msgstr "Kod"
 
+msgid "Collectd"
+msgstr "Collectd"
+
+msgid ""
+"Collectd is configured to ping two hosts. Here you can configure them both. "
+"You should restart the collectd process to activate your changes."
+msgstr ""
+"Collectd iki hedefi ping'leyecek şekilde ayarlanmıştır. Burada ikisini de "
+"ayarlayabilirsiniz. Değişiklikleri etkinleştirmek için collectd sürecini "
+"tekrar başlatmalısınız."
+
 msgid "Collection of search engines and directory sites."
 msgstr ""
 
@@ -1086,6 +1169,12 @@ msgstr "Bağlantılar"
 msgid "Connections by date"
 msgstr "Tarihe göre bağlantılar"
 
+msgid "Connections handled by the FTP Proxy"
+msgstr "FTP vekile yapılan bağlantılar"
+
+msgid "Connections handled by the SSL Proxy"
+msgstr "SSL vekile yapılan bağlantılar"
+
 msgid "Conns"
 msgstr "Bağlantılar"
 
@@ -1136,6 +1225,27 @@ msgstr "Önemli Hata"
 
 msgid "Current Password"
 msgstr "Mevcut Parola"
+
+msgid "Current number of alerts issued by the IDS and Inline IPS"
+msgstr "Saldırı Algılama ve Engelleme sistemlerinin uyarı sayısı"
+
+msgid "Current number of connections handled by the SSL Proxy"
+msgstr "SSL vekile yapılan bağlantıların sayısı"
+
+msgid "Current number of file descriptors used by the SSL Proxy"
+msgstr "SSL vekil tarafından kullanılan dosya tanımlayıcı sayısı"
+
+msgid "Current number of hosts on the system ARP table"
+msgstr "Sistemin ARP tablosundaki cihaz sayısı"
+
+msgid "Current number of leases assigned to clients by the DHCP Server"
+msgstr "DHCP sunucu tarafından istemcilere atanan kiralamaların sayısı"
+
+msgid "Current number of requests handled by the Web Filter"
+msgstr "Web eleğine yapılan isteklerin sayısı"
+
+msgid "Current number of states"
+msgstr "Durumların sayısı"
 
 msgid "Customised filtered text (message text or filename follows in response)"
 msgstr ""
@@ -1210,6 +1320,9 @@ msgstr "Gösterge Paneli"
 
 msgid "Data Transfer"
 msgstr "Veri Aktarımı"
+
+msgid "Data transfer between internal and external interfaces"
+msgstr "İç ve dış arayüzler arasındaki veri aktarımı"
 
 msgid "Database Checks"
 msgstr "Veritabanı kontrolleri"
@@ -1518,6 +1631,12 @@ msgstr ""
 
 msgid "Disk I/O"
 msgstr "Disk Yazma/Okuma"
+
+msgid "Disk input and output"
+msgstr "Disk girdi ve çıktıları"
+
+msgid "Disk partition usage"
+msgstr "Disk bölümü kullanımı"
 
 msgid "Disks"
 msgstr "Diskler"
@@ -1877,6 +1996,9 @@ msgstr "BAŞARISIZ"
 msgid "FATAL ERRORS in creating new group"
 msgstr "Yeni grup yaratırken CİDDİ HATALAR oluştu"
 
+msgid "FILE DESCRIPTORS"
+msgstr "DOSYA TANIMLAYICILAR"
+
 msgid "FTP PROXY"
 msgstr "FTP VEKİL"
 
@@ -1903,6 +2025,9 @@ msgstr "Ana pf kurallarının yüklenmesi başarısız oldu"
 
 msgid "Failed loading pf rules"
 msgstr "Pf kural yüklemesi başarısız oldu"
+
+msgid "Failed login attempts to the SSH Server"
+msgstr "SSH sunucuya yapılan başarısız giriş denemeleri"
 
 msgid "Failed queries"
 msgstr "Başarısız sorgular"
@@ -1953,6 +2078,12 @@ msgstr "Dosya"
 
 msgid "File Descriptors"
 msgstr "File Descriptor'lar"
+
+msgid "File does not exit"
+msgstr "Dosya mevcut değil"
+
+msgid "File too large, will not process files larger than <SIZE> MB"
+msgstr "Dosya fazla büyük,<SIZE> MB'dan büyük dosyalar işlenmez"
 
 msgid "File uploaded"
 msgstr "Dosya karşıya yüklendi"
@@ -2137,6 +2268,9 @@ msgstr "Yönlendirme Adresinden"
 msgid "Function"
 msgstr "Fonksiyon"
 
+msgid "GATEWAY"
+msgstr "AĞ GEÇİDİ"
+
 msgid "GG"
 msgstr "GG"
 
@@ -2145,6 +2279,9 @@ msgstr "GRUP"
 
 msgid "Gateway"
 msgstr "Ağ geçidi"
+
+msgid "Gateway ping host"
+msgstr "Ağ geçidi hedefi"
 
 msgid "General"
 msgstr "Genel"
@@ -2374,6 +2511,9 @@ msgstr "Pf durumlarını getir"
 msgid "Get pf timeout info"
 msgstr "Pf zaman aşımı bilgisini getir"
 
+msgid "Get ping hosts"
+msgstr "Ping hedeflerini getir"
+
 msgid "Get process list"
 msgstr "Süreç listesini getir"
 
@@ -2580,6 +2720,9 @@ msgstr ""
 
 msgid "HOME_NET"
 msgstr "HOME_NET"
+
+msgid "HOSTS"
+msgstr "CİHAZLAR"
 
 msgid "HTTP Codes"
 msgstr "HTTP Kodu"
@@ -3357,11 +3500,17 @@ msgstr "Canlı tutma"
 msgid "Keywords"
 msgstr "Anahtar kelimeler"
 
+msgid "LEASES"
+msgstr "KİRALAMALAR"
+
 msgid "Label"
 msgstr "Etiket"
 
 msgid "Language"
 msgstr "Dil"
+
+msgid "Last <INTERVAL>"
+msgstr "Son <INTERVAL>"
 
 msgid "Last >>"
 msgstr "Son >>"
@@ -3796,6 +3945,9 @@ msgstr "En Yüksek Bağlantı Hızı"
 msgid "Max Directory Recursion"
 msgstr "Dizin yenileme üst sınırı"
 
+msgid "Max File Size To Process"
+msgstr "İşlenecek En Fazla Dosya Boyutu"
+
 msgid "Max HTTP header lines"
 msgstr "HTTP başlığı satır üst sınırı"
 
@@ -3908,6 +4060,9 @@ msgstr "Bellek"
 
 msgid "Memory Usage"
 msgstr "Bellek Kullanımı"
+
+msgid "Memory usage"
+msgstr "Bellek kullanımı"
 
 msgid "Messages from all OpenVPN processes are recorded in the same log file."
 msgstr "Tüm OpenVPN süreçleri mesajlarını aynı kayıt dosyasına kaydeder."
@@ -4068,6 +4223,9 @@ msgstr ""
 "Burada ağ arayüzleri listelenmektedir. Arayüzleri dhcp veya inet olarak "
 "ayarlayabilirsiniz. Burada yaptığınız değişiklikler ağı veya sistemi tekrar "
 "başlatana kadar geçerli olmazlar."
+
+msgid "Network protocol usage"
+msgstr "Ağ protokol kullanımı"
 
 msgid "New Password"
 msgstr "Yeni Parola"
@@ -4599,6 +4757,12 @@ msgstr "Fiziksel Bellek"
 msgid "Ping"
 msgstr "Ping"
 
+msgid "Ping Times"
+msgstr "Ping Süreleri"
+
+msgid "Ping times for two hosts"
+msgstr "İki hedef için ping süreleri"
+
 msgid "Pmacct"
 msgstr "Pmacct"
 
@@ -4776,6 +4940,12 @@ msgstr "Hemen Uygula"
 msgid "Quiet"
 msgstr "Sessiz"
 
+msgid "REMOTE"
+msgstr "UZAK"
+
+msgid "REQUESTS"
+msgstr "İSTEKLER"
+
 msgid "RSS"
 msgstr "RSS"
 
@@ -4893,6 +5063,9 @@ msgstr "Uzaktaki sunucu"
 msgid "Remote User"
 msgstr "Uzaktaki Kullanıcı"
 
+msgid "Remote ping host"
+msgstr "Uzak ping hedefi"
+
 msgid "Remove HTTP Accept-Encoding"
 msgstr "HTTP Accept-Encoding'i Sil"
 
@@ -4947,6 +5120,18 @@ msgstr "Atlanan istekler"
 
 msgid "Requests denied"
 msgstr "Engellenen istekler"
+
+msgid "Requests handled by the DNS Server"
+msgstr "DNS sunucuya yapılan istekler"
+
+msgid "Requests handled by the POP3 Proxy"
+msgstr "POP vekile yapılan istekler"
+
+msgid "Requests handled by the SMTP Proxy"
+msgstr "SMTP vekile yapılan istekler"
+
+msgid "Requests handled by the Web Filter"
+msgstr "Web eleğine yapılan istekler"
 
 msgid "Requests infected"
 msgstr "Virüslü istekler"
@@ -5154,6 +5339,9 @@ msgstr "SPAM ELEĞİ"
 msgid "SPAM Filter"
 msgstr "SPAM Eleği"
 
+msgid "SPAM scans completed by the SPAM Filter"
+msgstr "SPAM eleğinin tamamladığı taramalar"
+
 msgid "SPAMD"
 msgstr "SPAMD"
 
@@ -5232,6 +5420,9 @@ msgstr "BAŞLANGIÇ"
 
 msgid "STAT"
 msgstr "DURUM"
+
+msgid "STATES"
+msgstr "DURUMLAR"
 
 msgid "SUCCESS"
 msgstr "BAŞARILI"
@@ -5441,6 +5632,9 @@ msgstr "E-posta adresini ayarla"
 msgid "Set force HTTPs"
 msgstr "HTTPs uygulamayı ayarla"
 
+msgid "Set gateway ping host"
+msgstr "Ağ geçidi ping hedefini ayarla"
+
 msgid ""
 "Set headers which may provide inappropriate cues to the Bayesian classifier"
 msgstr "Bayes sınıflandırıcıya yanlış ipucu verebilecek başlıkları ayarlar."
@@ -5469,6 +5663,9 @@ msgstr "man.cgi adresini ayarla"
 msgid "Set max anchor nesting"
 msgstr "En fazla içiçe çapa sayısını ayarla"
 
+msgid "Set max file size to process"
+msgstr "İşlenecek en fazla dosya boyutunu ayarla"
+
 msgid "Set name value pair"
 msgstr "Ad değer çiftini ayarla"
 
@@ -5495,6 +5692,9 @@ msgstr "Pmacct ağını ayarla"
 
 msgid "Set reload rate"
 msgstr "Tekrar yükleme sıklığını ayarla"
+
+msgid "Set remote ping host"
+msgstr "Uzak ping hedefini ayarla"
 
 msgid "Set remote time"
 msgstr "Uzak zamanı ayarla"
@@ -6202,6 +6402,9 @@ msgstr "Durum Takip Eden Elek"
 msgid "States"
 msgstr "Durumlar"
 
+msgid "States and state searches on the Packet Filter"
+msgstr "Paket eleğinin durumları ve durum sorguları"
+
 msgid "Static Port"
 msgstr "Sabit Kapı"
 
@@ -6296,6 +6499,9 @@ msgstr "Alt-sistem sftp"
 msgid "Successful logins"
 msgstr "Başarılı girişler"
 
+msgid "Successful logins to the SSH Server"
+msgstr "SSH sunucuya yapılan başarılı girişler"
+
 msgid "Sun"
 msgstr "Paz"
 
@@ -6320,6 +6526,15 @@ msgstr "Syslog düzeneği"
 msgid "System"
 msgstr "Sistem"
 
+msgid "System and ping gateway addresses do not match"
+msgstr "Sistem ve ping ağ geçit adresleri uyuşmuyor"
+
+msgid "System date and time"
+msgstr "Sistem tarih saati"
+
+msgid "System has no gateway"
+msgstr "Sistemin ağ geçidi yok"
+
 msgid "System is going down..."
 msgstr "Sistem kapatılıyor..."
 
@@ -6331,6 +6546,9 @@ msgstr "Sistem tekrar başlatma"
 
 msgid "System shutdown"
 msgstr "Sistem kapatma"
+
+msgid "System uptime since the last boot up"
+msgstr "Sistemin son açılışından bu yana geçen süre"
 
 msgid "TCP Flags"
 msgstr "TCP Bayrakları"
@@ -6617,6 +6835,10 @@ msgstr ""
 "Engelleme sayfası ve kayıtlarda belirtilir."
 
 msgid ""
+"The period of time from now backwards for the data displayed on the dashboard"
+msgstr "Gösterge panelindeki verinin şu andan itibaren geçmişe doğru süresi"
+
+msgid ""
 "The persist options will try to avoid accessing certain resources on restart "
 "that may no longer be accessible because of the privilege downgrade."
 msgstr ""
@@ -6628,6 +6850,9 @@ msgstr "Sürecin işlemesi uzun zaman aldığından arka planda çalıştırıla
 
 msgid "The proxy specification format is type listenaddr+port up:utmport."
 msgstr "Vekil tanımlama şablonu tip dinlenenadres+kapı up:utmkapı'dır"
+
+msgid "The second ping host is on the Internet."
+msgstr "İkinci ping hedefi İnternet'teki bir adrestir."
 
 msgid "The settings on this page are valid filter-wide."
 msgstr "Bu sayfadaki ayarlar eleğin tümü için geçerlidir."
@@ -6647,6 +6872,9 @@ msgid ""
 "The system will send service statuses containing one of these keywords only."
 msgstr ""
 "Sistem bu anahtar kelimelerden birini içeren servis durumlarını gönderir."
+
+msgid "The time remaining before the current session times out"
+msgstr "Mevcut oturumun zaman aşımına kalan süre"
 
 msgid ""
 "The web filter can decrypt SSL content, scan as if plain, and then re-"
@@ -6846,6 +7074,12 @@ msgstr ""
 "protokolün birden fazla kapıyı kapsayabileceğini unutmayın."
 
 msgid ""
+"This graph shows ping times and drop rates for gateway and remote hosts."
+msgstr ""
+"Bu grafik ağ geçidi ve uzak ping hedefleri için ping zamanları ve başarısız "
+"pıng oranlarını gösterir."
+
+msgid ""
 "This graph shows the data transfer rate of packet filter. The transfer is "
 "between interfaces."
 msgstr ""
@@ -6980,6 +7214,19 @@ msgstr ""
 "Bu ayar utmfw web arayüzünün kayıt seviyesini belirler. Bu seviye ve "
 "üzerindeki kayıtlar WUI ve Controller kayıt dosyalarına kaydedilir. Bu ayar "
 "diğer servisleri etkilemez."
+
+msgid ""
+"This is the max size in MB for log and statistics files to process. This "
+"limit is used for files downloaded from the WUI too. The WUI slows down if "
+"we try to process larger files. This size should be determined based on the "
+"specs of the hardware. The default file size for log rotation is 10 MB for "
+"most log files in newsyslog.conf."
+msgstr ""
+"Bu işlenecek kayıt ve istatistik dosyalarının MB cinsinden en fazla "
+"boyutudur. Bu sınır web arayüzünden indirilen dosyalar için de kullanılır. "
+"Web arayüzü daha büyük dosyaları işlemeye çalışırsa çok yavaşlar. Bu boyut "
+"donanım özelliklerine göre belirlenmelidir. Çoğu kayıt dosyaları için "
+"newsyslog.conf dosyasındaki kayıt döndürme öndeğer boyutu 10 MB'dır."
 
 msgid ""
 "This is the maximum number of threads, i.e. concurrent connections. If more "
@@ -7441,8 +7688,29 @@ msgstr "Toplam Yüklenen (KB)"
 msgid "Total deferred time (sec)"
 msgstr "Toplam geciktirme süresi (sn)"
 
+msgid "Total number of critical errors reported by the system and services"
+msgstr "Sistem ve servisler tarafında bildirilen toplam önemli hata sayısı"
+
+msgid "Total number of errors reported by the system and services"
+msgstr "Sistem ve servisler tarafında bildirilen toplam hata sayısı"
+
+msgid "Total number of users currently logged in to the system"
+msgstr "Şu anda sisteme giriş yapmış toplam kullanıcı sayısı"
+
+msgid "Total number of warnings reported by the system and services"
+msgstr "Sistem ve servisler tarafında bildirilen toplam uyarı sayısı"
+
 msgid "Total of block extensions cannot be higher than this value."
 msgstr "Engelleme uzatmalarının toplamı bu değerden fazla olamaz."
+
+msgid "Traffic on the external interface"
+msgstr "Dış ağ arayüzündeki trafik"
+
+msgid "Traffic on the internal interface"
+msgstr "İç ağ arayüzündeki trafik"
+
+msgid "Traffice on the loopback interface"
+msgstr "Döngü arayüzündeki trafik"
 
 msgid "Transfer"
 msgstr "Aktarım"
@@ -7486,6 +7754,9 @@ msgstr "Tür"
 msgid "UDP Timeouts"
 msgstr "UDP Zaman Aşımları"
 
+msgid "UPTIME"
+msgstr "SÜRE"
+
 msgid "URLs"
 msgstr "URL'ler"
 
@@ -7498,6 +7769,9 @@ msgstr ""
 
 msgid "USER"
 msgstr "KULLANICI"
+
+msgid "USERS"
+msgstr "KULLNC"
 
 msgid "UTM FIREWALL"
 msgstr "UTM FIREWALL"
@@ -7865,6 +8139,9 @@ msgstr "Virüs Site"
 msgid "Virus URLs"
 msgstr "Virüs URL"
 
+msgid "Virus scans completed by the Virus Filter"
+msgstr "Virüs tarayıcı tarafından tamamlanan taramalar"
+
 msgid "WARNING"
 msgstr "UYARI"
 
@@ -7900,6 +8177,9 @@ msgstr "Web Sunucu"
 
 msgid "Web Server (WUI)"
 msgstr "Web Sunucu (Web Arayüzü)"
+
+msgid "Web User Interface"
+msgstr "Web Arayüzü"
 
 msgid "Wed"
 msgstr "Çar"

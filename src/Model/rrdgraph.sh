@@ -60,7 +60,7 @@ GATEWAY_RRD="$COLLECTD_RRD_ROOT/ping/ping-$PING_GATEWAY_ADDR.rrd"
 REMOTE_RRD="$COLLECTD_RRD_ROOT/ping/ping-$PING_REMOTE_ADDR.rrd"
 
 if [[ ! -f $REMOTE_RRD ]]; then
-    echo "Cannot find $REMOTE_RRD, the remote ping host may be down"
+    echo "Cannot find $REMOTE_RRD, the remote ping host may be unreachable"
 
     $RRDTOOL graph ping.png $GENERAL_OPTS -w 358 -h 75 -s $START \
         -t "Ping Times" \

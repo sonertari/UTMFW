@@ -46,7 +46,7 @@ if [ -x /usr/local/sbin/pmacctd ]; then
 fi
 
 if [ -x /usr/local/sbin/collectd ]; then
-	echo -n ', system statistics'
+	echo -n ', statistics'
 	/usr/local/sbin/collectd >/dev/null 2>&1
 fi
 
