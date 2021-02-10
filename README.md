@@ -41,13 +41,13 @@ The web user interface of UTMFW helps you manage your firewall:
 - Pf rules are maintained using PFRE.
 - Information on hosts, interfaces, pf rules, states, and queues are provided in a tabular form.
 - System, pf, network, and internal clients can be monitored via graphs.
-- Logs can be viewed and downloaded on the web interface. Compressed log files are supported.
+- Logs can be viewed and downloaded on the web user interface. Compressed log files are supported.
 - Statistics collected over logs are displayed in bar charts and top lists. Bar charts and top lists are clickable, so you don't need to touch your keyboard to search anything on the statistics pages. You can view the top lists on pie charts too. Statistics over compressed log files are supported.
-- The web interface provides many help boxes and windows, which can be disabled.
-- Man pages of OpenBSD and installed software can be accessed and searched on the web interface.
-- There are two users who can log in to the web interface. Unprivileged user does not have access rights to configuration pages, thus cannot interfere with system settings, and cannot even change user password (i.e. you can safely give the unprivileged user's password to your boss).
-- The web interface supports languages other than English: Turkish, Chinese, Dutch, Russian, French, Spanish.
-- The web interface configuration pages are designed such that changes you may have made to the configuration files on the command line (such as comments you might have added) remain intact after you configure a module using the web interface.
+- The web user interface provides many help boxes and windows, which can be disabled.
+- Man pages of OpenBSD and installed software can be accessed and searched on the web user interface.
+- There are two users who can log in to the web user interface. Unprivileged user does not have access rights to configuration pages, thus cannot interfere with system settings, and cannot even change user password (i.e. you can safely give the unprivileged user's password to your boss).
+- The web user interface supports languages other than English: Turkish, Chinese, Dutch, Russian, French, Spanish.
+- The web user interface configuration pages are designed such that changes you may have made to the configuration files on the command line (such as comments you might have added) remain intact after you configure a module using the web user interface.
 
 ![Console](https://github.com/sonertari/UTMFW/blob/master/screenshots/Console.png)
 
