@@ -78,6 +78,13 @@ class Collectd extends Monitoring
 		return $status;
 	}
 
+	/**
+	 * Gets the averate of ping times to the given ping host for the last minute.
+	 *
+	 * @param string $host Ping host.
+	 * @param string $start Period of time backwards from now, in rrdgraph style.
+	 * @return string Average ping time in float ms.
+	 */
 	function getPingAverage($host, $start= '1min')
 	{
 		exec("/usr/local/bin/rrdtool fetch -s -$start $this->RrdFolder/ping-$host.rrd AVERAGE", $output);

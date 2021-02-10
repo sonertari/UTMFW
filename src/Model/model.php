@@ -1035,6 +1035,11 @@ class Model
 		return Output(json_encode($dateArray));
 	}
 
+	/**
+	 * Gets system gateway, static or dynamic.
+	 *
+	 * @return string Gateway.
+	 */
 	function getSystemGateway()
 	{
 		$gateway= '';
@@ -1859,6 +1864,12 @@ class Model
 		return json_encode($stats);
 	}
 
+	/**
+	 * Checks if the given file exists and not larger than $MaxFileSizeToProcess in MBs.
+	 *
+	 * @param string $file File pathname.
+	 * @return bool TRUE on success, FALSE on fail.
+	 */
 	function ValidateFile($file)
 	{
 		global $MaxFileSizeToProcess;
