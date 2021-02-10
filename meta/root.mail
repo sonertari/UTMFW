@@ -1,12 +1,12 @@
-From sonertari@gmail.com Thu Dec 17 06:08:00 EET 2020
+From sonertari@gmail.com Fri Feb 12 06:08:01 EET 2021
 Return-Path: root
-Date: Dec 17 06:08:00 EET 2020
+Date: Feb 12 06:08:01 EET 2021
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 6.8!
+Subject: Welcome to UTMFW 6.8.1!
 
 Highlights of this release are:
+- The new Dashboard
 - OpenBSD 6.8-stable
-- SSLproxy 0.8.2 and libevent 2.1.12
-- Snort 2.9.17
+- SSLproxy 0.8.3
 
