@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.8\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2021-02-10 16:45+0300\n"
+"PO-Revision-Date: 2021-02-11 18:30+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: Turkish\n"
 "Language-Team: Turkish <sonertari@gmail.com>\n"
@@ -1086,6 +1086,9 @@ msgstr "Kod"
 
 msgid "Collectd"
 msgstr "Collectd"
+
+msgid "Collectd System Statistics"
+msgstr "Collectd Sistem İstatistikleri"
 
 msgid ""
 "Collectd is configured to ping two hosts. Here you can configure them both. "

@@ -939,6 +939,9 @@ msgstr ""
 msgid "Collectd"
 msgstr ""
 
+msgid "Collectd System Statistics"
+msgstr ""
+
 msgid ""
 "Collectd is configured to ping two hosts. Here you can configure them both. "
 "You should restart the collectd process to activate your changes."

@@ -157,6 +157,9 @@ msgstr ""
 msgid "Ciphers"
 msgstr ""
 
+msgid "Collectd System Statistics"
+msgstr ""
+
 msgid "Compression"
 msgstr ""
 

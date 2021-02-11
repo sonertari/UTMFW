@@ -52,6 +52,7 @@ $ServiceDescs= array(
 	'/usr/local/libexec/symux'		=> _TITLE2('Symux System Monitoring'),
 	'/usr/local/libexec/symon'		=> _TITLE2('Symon System Monitoring'),
 	'/usr/local/sbin/pmacctd'		=> _TITLE2('Pmacct Network Monitoring'),
+	'/usr/local/sbin/collectd'		=> _TITLE2('Collectd System Statistics'),
 	'pf'							=> _TITLE2('Packet Filter'),
 	'httpd_flags'					=> _TITLE2('Web Server (WUI)'),
 	'slowcgi_flags'					=> _TITLE2('CGI Server'),

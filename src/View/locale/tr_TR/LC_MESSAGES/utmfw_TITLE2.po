@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.8\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2021-02-10 21:38+0300\n"
+"PO-Revision-Date: 2021-02-11 18:30+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: tr\n"
 "Language-Team: Turkish <>\n"
@@ -175,6 +175,9 @@ msgstr "Şifre Takımları"
 
 msgid "Ciphers"
 msgstr "Şifreler"
+
+msgid "Collectd System Statistics"
+msgstr "Collectd Sistem İstatistikleri"
 
 msgid "Compression"
 msgstr "Sıkıştırma"

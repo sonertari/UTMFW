@@ -81,6 +81,7 @@ class System extends Model
 			'/usr/local/libexec/symux',
 			'/usr/local/libexec/symon',
 			'/usr/local/sbin/pmacctd',
+			'/usr/local/sbin/collectd',
 			);
 
 		/// rc.conf.local module search strings and descriptions
