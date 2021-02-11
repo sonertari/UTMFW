@@ -629,6 +629,8 @@ GPRINT:Bused:LAST: %4.1lf %s\n
 	case 'ping':
 		$COLLECTD_RRD_ROOT= '/var/collectd/localhost';
 
+		// XXX
+		global $ALL_USERS, $ADMIN;
 		require_once('../monitoring/include.php');
 		$View->Model= 'collectd';
 		$PingHosts= $View->Controller($Output, 'GetPingHosts');
