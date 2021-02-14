@@ -659,7 +659,7 @@ __EOT
 			pmacct-*)	echo "Installing rrdtool..."
 				pkg_add rrdtool || _installerror=1
 				;;
-			collectd-*)	echo "Installing collectd..."
+			collectd-*)	echo "Installing collectd plugins..."
 				pkg_add collectd-rrdtool || _installerror=1
 				pkg_add collectd-ping || _installerror=1
 				;;
