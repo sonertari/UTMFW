@@ -549,9 +549,6 @@ msgstr "En düşük-ttl"
 msgid "Minute"
 msgstr "Dakika"
 
-msgid "Module Status"
-msgstr "Modül Durumu"
-
 msgid "Month"
 msgstr "Ay"
 

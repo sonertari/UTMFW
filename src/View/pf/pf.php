@@ -196,7 +196,7 @@ class Pf extends View
 				<a class="transparent" href="/pf/graphs.php?submenu=transfer"><img src="/system/dashboard/dataxfer.png" name="transfer" alt="transfer" title="<?php echo _TITLE2('Data transfer between internal and external interfaces') ?>"></a><br>
 				<a class="transparent" href="/pf/graphs.php?submenu=ifs#Internal%20Interface"><img src="/system/dashboard/intif.png" name="intif" alt="intif" title="<?php echo _TITLE2('Traffic on the internal interface') ?>"></a><br>
 				<a class="transparent" href="/pf/graphs.php?submenu=ifs#External%20Interface"><img src="/system/dashboard/extif.png" name="extif" alt="extif" title="<?php echo _TITLE2('Traffic on the external interface') ?>"></a><br>
-				<a class="transparent" href="/pf/graphs.php?submenu=ifs#Loopback%20Interface"><img src="/system/dashboard/loif.png" name="loif" alt="loif" title="<?php echo _TITLE2('Traffice on the loopback interface') ?>"></a>
+				<a class="transparent" href="/pf/graphs.php?submenu=ifs#Loopback%20Interface"><img src="/system/dashboard/loif.png" name="loif" alt="loif" title="<?php echo _TITLE2('Traffic on the loopback interface') ?>"></a>
 			</td>
 		</tr>
 		<?php

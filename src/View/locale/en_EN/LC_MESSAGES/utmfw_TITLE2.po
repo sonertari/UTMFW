@@ -1115,7 +1115,7 @@ msgstr ""
 msgid "Traffic on the internal interface"
 msgstr ""
 
-msgid "Traffice on the loopback interface"
+msgid "Traffic on the loopback interface"
 msgstr ""
 
 msgid "Trickle delay"

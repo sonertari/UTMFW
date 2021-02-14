@@ -4114,9 +4114,6 @@ msgid ""
 "presenting model photos. No porn pictures."
 msgstr ""
 
-msgid "Module Status"
-msgstr "Modül Durumu"
-
 msgid "Mon"
 msgstr "Pzt"
 
@@ -7712,7 +7709,7 @@ msgstr "Dış ağ arayüzündeki trafik"
 msgid "Traffic on the internal interface"
 msgstr "İç ağ arayüzündeki trafik"
 
-msgid "Traffice on the loopback interface"
+msgid "Traffic on the loopback interface"
 msgstr "Döngü arayüzündeki trafik"
 
 msgid "Transfer"
