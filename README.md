@@ -10,6 +10,8 @@ UTMFW is an updated version of ComixWall. However, there are a few major changes
 
 UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
+![Dashboard](https://github.com/sonertari/UTMFW/blob/master/screenshots/Dashboard.png)
+
 ## Features
 
 UTMFW includes the following software, alongside what is already available on a basic OpenBSD installation:
@@ -31,7 +33,7 @@ UTMFW includes the following software, alongside what is already available on a 
 - ISC DNS server
 - PHP
 
-![Dashboard](https://github.com/sonertari/UTMFW/blob/master/screenshots/Dashboard.png)
+![Console](https://github.com/sonertari/UTMFW/blob/master/screenshots/Console.png)
 
 The web user interface of UTMFW helps you manage your firewall:
 
@@ -49,7 +51,7 @@ The web user interface of UTMFW helps you manage your firewall:
 - The web user interface supports languages other than English: Turkish, Chinese, Dutch, Russian, French, Spanish.
 - The web user interface configuration pages are designed such that changes you may have made to the configuration files on the command line (such as comments you might have added) remain intact after you configure a module using the web user interface.
 
-![Console](https://github.com/sonertari/UTMFW/blob/master/screenshots/Console.png)
+![UI Design](https://github.com/sonertari/UTMFW/blob/master/screenshots/UIDesign.png)
 
 ## How to install
 
