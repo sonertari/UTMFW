@@ -22,19 +22,19 @@
 /** @file
  * Login shell for users.
  *
- * We set login shells of admin and user users to sh.php.
+ * We set the login shells of admin and user users to sh.php.
  *
- * Using a shell script to pass args to Controller commands would expand
- * those args, hence might cause security issues.
+ * Using a shell script to pass args to the Controller commands would expand
+ * those args, hence could cause security issues.
  *
- * Now instead we make sure args are never expanded and users cannot drop to a
- * command shell:
+ * Now instead we make sure the args are never expanded and the users cannot
+ * drop to a command shell:
  * - use sh.php as login shell
- * - pass all args to it as an ssh command (-c option) without any shell
- *   expansion
+ * - pass all args to it as an ssh command (the -c option of phpseclib channel
+ *   exec), without any shell expansion
  * - validate all args within sh.php
- * - convert them to a string enclosed between single quotes (so no expansion
- *   again)
+ * - convert them to a string enclosed between single quotes, so no expansion
+ *   again
  * - exec ctlr.php passing the args string to it
  *
  * @todo Continually check for security issues.
