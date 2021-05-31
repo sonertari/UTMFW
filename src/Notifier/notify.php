@@ -53,6 +53,17 @@ $Prios= array(
 	'Warning' => array('WARNING', 'NOTICE', 'warning', 'notice'),
 	);
 
+/**
+ * Satisfies Controller.
+ * 
+ * This is due to common code used by all. Otherwise, the Controller cannot display help windows.
+ */
+function PrintHelpWindow($msg, $width= 'auto', $type= 'INFO')
+{
+	$msg= preg_replace('?<br\s*(|/)>?', ' ', $msg);
+	echo "$type: $msg\n";
+}
+
 function Notify($title, $body, $data)
 {
 	global $NotifierHost, $NotifierAPIKey, $NotifierUsers, $NotifierSSLVerifyPeer, $NotifierTimeout;
