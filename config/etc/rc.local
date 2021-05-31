@@ -16,9 +16,9 @@
 echo '\nStarting UTMFW services...'
 
 # Start PHP FastCGI server
-if [ -x /usr/local/sbin/php-fpm-7.4 ]; then
+if [ -x /usr/local/sbin/php-fpm-8.0 ]; then
 	echo 'PHP FastCGI server'
-	/usr/local/sbin/php-fpm-7.4
+	/usr/local/sbin/php-fpm-8.0
 fi
 
 # Start ISC DNS server
@@ -60,7 +60,7 @@ if [ -x /usr/local/sbin/clamd ]; then
 
 	if [ -x /usr/local/bin/freshclam ]; then
 		echo -n ', virus db'
-		/usr/local/bin/freshclam -d
+		/usr/local/bin/freshclam -d >/dev/null 2>&1
 	fi
 fi
 

@@ -4,9 +4,9 @@ UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on prod
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
-The installation iso file for the amd64 arch is available for download at [utmfw68\_20210211\_amd64.iso](https://drive.google.com/file/d/1RTaktvGkXiHIWagZ2nYbTlruQJ2LR3gH/view?usp=sharing). Make sure the SHA256 checksum is correct: 954ee6ba2793406cefcfed0d108db4e736f2da9bff2ea6117276c96660dc3c3d.
+The installation iso file for the amd64 arch is available for download at [utmfw69\_20210531\_amd64.iso](https://drive.google.com/file/d/1RTaktvGkXiHIWagZ2nYbTlruQJ2LR3gH/view?usp=sharing). Make sure the SHA256 checksum is correct: 954ee6ba2793406cefcfed0d108db4e736f2da9bff2ea6117276c96660dc3c3d.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.8.1 comes with OpenBSD 6.8-stable including all updates until February 10th, 2021.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.9 comes with OpenBSD 6.9-stable including all updates until May 31st, 2021.
 
 UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -88,7 +88,7 @@ References:
 
 ## How to build
 
-The purpose in this section is to build the installation iso file using the createiso script at the root of the project source tree. You are expected to be doing these on an OpenBSD 6.8 and have installed git, gettext, and doxygen on it.
+The purpose in this section is to build the installation iso file using the createiso script at the root of the project source tree. You are expected to be doing these on an OpenBSD 6.9 and have installed git, gettext, and doxygen on it.
 
 ### Build summary
 
@@ -109,7 +109,7 @@ However, the source tree has links to OpenBSD install sets and packages, which s
 	+ Copy the required install sets to the appropriate locations to fix the broken links in the sources.
 - Packages:
 	+ Download the required packages available on the OpenBSD mirrors.
-	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, e2guardian, p3scan, smtp-gated, snort, imspector, snortips, and libevent 2.1.11 (see `ports` and `ports/distfiles`).
+	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, e2guardian, p3scan, smtp-gated, snort, imspector, snortips, and libevent 2.1.12 (see `ports` and `ports/distfiles`).
 	+ Copy them to the appropriate locations to fix the broken links in the sources.
 
 Note that you can strip down xbase and xfont install sets to reduce the size of the iso file. Copy or link them to the appropriate locations under `openbsd/utmfw`.
@@ -125,7 +125,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Create a new VM with 60GB disk, choose a size based on your needs
 	+ Add a separate 8GB disk for /dest, which will be needed to make release(8)
 	+ Start VM and install OpenBSD
-	+ Create a local user
+	+ Create a local user, after reboot add it to /etc/doas.conf
 	+ During installation mount the dest disk to /dest
 	+ Add noperm to /dest in /etc/fstab
     + Make /dest owned by build:wobj and set its perms to 700
@@ -143,11 +143,16 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ Doxyfile
 		+ README.md
 		+ src/lib/defs.php
+		+ cd/amd64/X.Y/
+		+ openbsd/X.Y/
+		+ .po files under src/View/locale/
 
 	+ Bump the version number XY in the sources, if upgrading
 		+ README.md
+		+ openbsd/utmfw/expat/amd64/xbaseXY.tgz
+		+ openbsd/utmfw/fonts/amd64/xfontXY.tgz
 
-	+ Update based on the release date, project changes, and news, if upgrading
+	+ Update based on the version number, release date, project changes, and news, if upgrading
 		+ config/etc/motd
 		+ meta/root.mail
 		+ README.md
@@ -155,15 +160,16 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Update copyright if necessary
 
 - Generate the signify key pair:
-    + Save .pub and .sec to docs/signify
-    + Copy .pub to meta/etc/signify/
-    + Copy .pub to /etc/signify/, .pub file is copied into the bsd.rd file while making release(8) to verify install sets during installation
+	+ `signify -G -p utmfw-XY.pub -s utmfw-XY.sec`
+    + Save utmfw-XY.pub and utmfw-XY.sec to docs/signify
+    + Copy utmfw-XY.pub to meta/etc/signify/
+    + Copy utmfw-XY.pub to /etc/signify/, the utmfw-XY.pub file is copied into the bsd.rd file while making release(8), to verify install sets during installation
 
 - Update the packages:
 	+ Install the OpenBSD packages
 		+ Set the download mirror, use the existing cache if any
             ```
-            PKG_PATH=/var/db/pkg_cache/:https://cdn.openbsd.org/pub/OpenBSD/X.Y/packages/amd64/
+            export PKG_PATH=/var/db/pkg_cache/:https://cdn.openbsd.org/pub/OpenBSD/X.Y/packages/amd64/
             ```
 		+ Save the depends under PKG_CACHE, which will be used later on to update the packages in the iso file
             ```
@@ -172,7 +178,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ isc-bind
 		+ clamav
 		+ p5-Mail-SpamAssassin
-		+ snort
+		+ snort, to download its dependencies
 		+ openvpn
 		+ dante
 		+ symon
@@ -181,11 +187,12 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ pftop
 		+ php, php-cgi, php-curl, php-pcntl, php-sqlite3
 
-	+ Build and create the UTMFW packages:
+	+ Build and create the UTMFW packages
 		+ Extract ports.tar.gz under /usr/
-		+ Copy the port folders of the UTMFW packages under ports to /usr/ports/{net,security}
-		+ Copy the source tar balls of the UTMFW packages to /user/ports/distfiles
-		+ Append the daemon users of UTMFW packages to /usr/ports/infrastructure/db/user.list
+		+ Copy the port folders of the UTMFW packages under ports to /usr/ports/{net,security,www}
+		+ Obtain the snort sources, apply the snort diff under ports/distfiles, compress as tarball with the same name as the original tarball of the sources  
+		+ Copy the source tarballs of the UTMFW packages to /user/ports/distfiles
+		+ Append the daemon users of UTMFW packages to /usr/ports/infrastructure/db/user.list, but note that bsd.port.mk does not like blank lines at the bottom of user.list
             ```
             900 _p3scan             _p3scan         net/p3scan
             901 _smtp-gated         _smtp-gated     net/smtp-gated
@@ -193,9 +200,8 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
             904 _sslproxy           _sslproxy       security/sslproxy
             ```
 		+ Install the pkg depends of each UTMFW package before making them, so that the port system does not try to build and install them itself
-		+ Obtain the snort sources, apply the snort diff under ports/distfiles, compress as tarball with the same name as the original tarball of the sources  
 		+ Make the UTMFW packages
-		    + libevent, if different from the OpenBSD packages
+		    + libevent, if not using the OpenBSD package
 			+ sslproxy
 			+ p3scan
 			+ smtp-gated: use the source tarball under ports/distfiles
@@ -205,17 +211,16 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 			+ snort: use the source tarball generated above
 		+ Sign all of the UTMFW packages using signify, for example:
             ```
-            signify -Sz -s utmfw-XY.sec -m /usr/ports/packages/amd64/all/sslproxy-0.8.2.tgz -x ~/sslproxy-0.8.2.tgz
+            signify -Sz -s utmfw-XY.sec -m /usr/ports/packages/amd64/all/sslproxy-0.8.3.tgz -x ~/sslproxy-0.8.3.tgz
             ```
 	+ Update the links under cd/amd64/X.Y/packages/ with the UTMFW packages made above
-	+ Keep the links for blacklists.tar.gz, clamavdb.tar.gz, e2guardian, imspector, p3scan, smtp-gated, snortips, sslproxy, snort, libevent
 
-	+ Install the UTMFW packages using their signed packages
+	+ Install the UTMFW packages using their signed packages, to download their dependencies
 		+ Save the depends under PKG_CACHE
             ```
             export PKG_CACHE=/var/db/pkg_utmfw/
             ```
-		+ libevent, if different from the OpenBSD packages
+		+ libevent, if not using the OpenBSD package
 		+ sslproxy
 		+ p3scan
 		+ smtp-gated
@@ -226,17 +231,30 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 
 	+ Update the links under cd/amd64/X.Y/packages/ with the OpenBSD packages saved under PKG_CACHE
 
+	+ Keep the links for
+		+ blacklists.tar.gz
+		+ clamavdb.tar.gz
+		+ snortrules.tar.gz
+		+ imspector
+		+ p3scan
+		+ smtp-gated
+		+ snortips
+		+ sslproxy
+		+ snort
+		+ e2guardian
+		+ libevent, if not using the OpenBSD package
+
 - Update meta/install.sub:
     + Update the versions of the packages listed in THESETS
 
 - Make release(8):
     + Extract src.tar.gz and and sys.tar.gz under /usr/src/
     + Apply the patches under openbsd/utmfw
+	+ Update the sources with the stable branch changes if any
 	+ Follow the instructions in release(8), this step takes about 6 hours on a relatively fast computer
-		+ Use the dest and rel folders created above: `export DESTDIR=/dest/dest/ RELEASEDIR=/dest/rel/`
 		+ Build the kernel and reboot
-		+ Build the system
-		+ Make the release
+		+ Build the base system
+		+ Make the release, use the dest and rel folders created above: `export DESTDIR=/dest/dest/ RELEASEDIR=/dest/rel/`
     + Copy the install sets under /dest/rel/ to ~/OpenBSD/X.Y/amd64/
 
 - Update the install sets:
@@ -246,12 +264,12 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Copy the xfontXY.tgz install set from installXY.iso to docs/fonts/amd64/xfontXY.tgz
 
 - Update the configuration files under config with the ones in the new versions of packages:
-    + Also update Doxyfile if the doxygen version changed
+    + Also update Doxyfile if the doxygen version has changed
 
 - Update PFRE:
     + Update PFRE to the current version, support changes in pf if any
-    + Create the man2web package and install
-    + Produce pf.conf.html from pf.conf(2) using man2web
+    + Create and install the man2web package
+    + Produce pf.conf.html from pf.conf(5) using man2web
     + Merge PFRE changes from the previous pf.conf.html, most importantly the anchors
 
 - Update phpseclib to its new version if any:

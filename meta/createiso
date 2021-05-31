@@ -19,7 +19,7 @@
 ARCH=amd64
 
 ROOT_PATH=$(pwd)
-VERSION='6.8'
+VERSION='6.9'
 SUBVERSION=_$(date +%Y%m%d)
 VMAJ=${VERSION%%\.*}
 VMIN=${VERSION##*\.}

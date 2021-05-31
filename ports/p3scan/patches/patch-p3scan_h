@@ -20,7 +20,17 @@ Index: p3scan.h
     int           extra;
  } proxycontext;
  
-@@ -301,3 +312,4 @@ void w_memory_init(void);
+@@ -291,13 +302,10 @@ typedef struct memory_list {
+   struct memory_list *prev;
+ } memory_list;
+ 
+-// The global memory allocation list used by the memory management wrappers
+-memory_list *memory_list_head;
+-// The global couter indicating the number of bytes allocated
+-unsigned long global_memory_count;
+ // A one-time initialization function to setup the memory list and global memory count variables
+ void w_memory_init(void);
+ 
  typedef void Sigfunc(int);
  
  #endif

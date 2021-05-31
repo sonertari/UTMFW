@@ -1,6 +1,7 @@
 $ComixWall: patch-scanner_trophie_c,v 1.3 2009/07/25 09:55:30 soner Exp $
---- scanner_trophie.c.orig	Mon Dec 12 17:05:01 2005
-+++ scanner_trophie.c	Fri Nov 16 17:54:34 2007
+Index: scanner_trophie.c
+--- scanner_trophie.c.orig
++++ scanner_trophie.c
 @@ -41,11 +41,11 @@
  #include <sys/wait.h>
  #include <sys/stat.h>
@@ -14,6 +15,15 @@ $ComixWall: patch-scanner_trophie_c,v 1.3 2009/07/25 09:55:30 soner Exp $
  
  #include "p3scan.h"
  
+@@ -54,7 +54,7 @@
+ extern void * w_malloc(size_t bytes);
+ extern void w_free(void *f_address);
+ 
+-struct configuration_t * config;
++extern struct configuration_t * config;
+ 
+ static int  trophie_fd;    // fd for log
+ static int  connected;     // have done connect
 @@ -65,7 +65,7 @@ static int trophie_socket_connect(struct proxycontext 
     if (trophie_fd == -1){
        bzero((char *)&trophie_socket, sizeof(trophie_socket));

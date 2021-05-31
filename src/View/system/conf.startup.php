@@ -36,7 +36,7 @@ if (count($_POST)) {
 require_once($VIEW_PATH.'/header.php');
 
 $ServiceDescs= array(
-	'/usr/local/sbin/php-fpm-7.4'	=> _TITLE2('PHP FastCGI Server'),
+	'/usr/local/sbin/php-fpm-8.0'	=> _TITLE2('PHP FastCGI Server'),
 	'/usr/local/sbin/named'			=> _TITLE2('DNS Server'),
 	'/usr/local/bin/sslproxy'		=> _TITLE2('SSL Proxy'),
 	'/usr/local/sbin/e2guardian'	=> _TITLE2('Web Filter'),

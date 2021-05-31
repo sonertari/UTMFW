@@ -815,11 +815,12 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 
 <a name="route-to"></a>
      <span class="bold">route-to</span>  The <span class="bold">route-to</span> option routes the packet to the specified
-               interface with an optional address for the next hop.  When a
-               <span class="bold">route-to</span> rule creates state, only packets that pass in the same
-               direction as the filter rule specifies will be routed in this
-               way.  Packets passing in the opposite direction (replies) are
-               not affected and are routed normally.
+               destination address instead of the destination address in the
+               packet header.  When a <span class="bold">route-to</span> rule creates state, only
+               packets that pass in the same direction as the filter rule
+               specifies will be routed in this way.  Packets passing in the
+               opposite direction (replies) are not affected and are routed
+               normally.
 
      For the <span class="bold">dup-to</span>, <span class="bold">reply-to</span>, and <span class="bold">route-to</span> route options for which there is a
      single redirection address which has a subnet mask smaller than 32 for
@@ -1591,6 +1592,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      <span class="bold">modulate</span> <span class="bold">state</span>.
 
      Rules with <span class="bold">synproxy</span> <span class="bold">state</span> will not work if pf(4) operates on a bridge(4).
+     Also they act on incoming SYN packets only.
 
      Example:
 
@@ -2187,8 +2189,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      interface-list = [ "!" ] ( interface-name | interface-group )
                       [ [ "," ] interface-list ]
      route          = ( "route-to" | "reply-to" | "dup-to" )
-                      ( routehost | "{" routehost-list "}" )
-                      [ pooltype ]
+                      ( redirhost | "{" redirhost-list "}" )
      af             = "inet" | "inet6"
 
      protospec      = "proto" ( proto-name | proto-number |
@@ -2207,14 +2208,11 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                       address [ "/" mask-bits ] [ "weight" number ] |
                       "&lt;" string "&gt;" )
      redirhost      = address [ "/" mask-bits ]
-     routehost      = host | host "@" interface-name |
-                      "(" interface-name [ address [ "/" mask-bits ] ] ")"
      address        = ( interface-name | interface-group |
                       "(" ( interface-name | interface-group ) ")" |
                       hostname | ipv4-dotted-quad | ipv6-coloned-hex )
      host-list      = host [ [ "," ] host-list ]
      redirhost-list = redirhost [ [ "," ] redirhost-list ]
-     routehost-list = routehost [ [ "," ] routehost-list ]
 
      port           = "port" ( unary-op | binary-op | "{" op-list "}" )
      portspec       = "port" ( number | name ) [ ":" ( "*" | number | name ) ]
@@ -2286,7 +2284,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 <span class="bold">HISTORY</span>
      The <span class="bold">pf.conf</span> file format first appeared in OpenBSD 3.0.
 
-OpenBSD 6.8                    February 10, 2020                   OpenBSD 6.8
+OpenBSD 6.9                    February 1, 2021                    OpenBSD 6.9
 </pre>
 </body>
 </html>

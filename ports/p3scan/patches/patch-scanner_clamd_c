@@ -1,6 +1,16 @@
 $ComixWall: patch-scanner_clamd_c,v 1.3 2009/07/25 09:55:30 soner Exp $
---- scanner_clamd.c.orig	Mon Dec 12 17:05:01 2005
-+++ scanner_clamd.c	Tue Nov 13 20:54:51 2007
+Index: scanner_clamd.c
+--- scanner_clamd.c.orig
++++ scanner_clamd.c
+@@ -60,7 +60,7 @@
+ #define DEFAULT_PORT    "3310"
+ #define COMMAND         "STREAM\r\n"
+ #undef DEBUG_MESSAGE
+-struct configuration_t * config;
++extern struct configuration_t * config;
+ 
+ extern char *substr(char *string, int start, size_t count);
+ extern int checktimeout(struct proxycontext *p);
 @@ -99,7 +99,8 @@ int check(struct proxycontext *p, char * filetoscan, c
        loc2 = tmp-config->virusscanner+1;
        len=strlen(config->virusscanner);

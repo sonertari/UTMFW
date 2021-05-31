@@ -1,7 +1,8 @@
 $ComixWall: patch-scanner_avpd_c,v 1.2 2009/07/25 09:55:30 soner Exp $
---- scanner_avpd.c.orig	Mon Dec 12 17:05:01 2005
-+++ scanner_avpd.c	Mon Nov 12 21:33:40 2007
-@@ -43,12 +43,12 @@
+Index: scanner_avpd.c
+--- scanner_avpd.c.orig
++++ scanner_avpd.c
+@@ -43,18 +43,18 @@
  #include <time.h>
  #include <sys/time.h>
  #include <errno.h>
@@ -15,6 +16,13 @@ $ComixWall: patch-scanner_avpd_c,v 1.2 2009/07/25 09:55:30 soner Exp $
  
  #include "p3scan.h"
  
+ #define DEFAULT_SOCKET_PATH "/var/run"
+ 
+-struct configuration_t * config;
++extern struct configuration_t * config;
+ 
+ extern void * w_malloc(size_t bytes);
+ extern void w_free(void *f_address);
 @@ -79,7 +79,7 @@ static int avp_socket_connect(struct proxycontext *p){
     if (avp_fd == -1){
        bzero((char *)&avp_socket, sizeof(avp_socket));

@@ -52,7 +52,18 @@ Index: p3scan.c
  
  #include "p3scan.h"
  #include "getline_ssl.h"
-@@ -105,6 +108,13 @@ extern int filecount;
+@@ -85,6 +88,10 @@ TODO: Wanted: no iptables support
+ /* globals */
+ int numprocs;
+ struct configuration_t * config;
++// The global memory allocation list used by the memory management wrappers
++memory_list *memory_list_head;
++// The global couter indicating the number of bytes allocated
++unsigned long global_memory_count;
+ 
+ /* p->ismail legend:
+    ismail=0 not processing a message - parsing client commands
+@@ -105,6 +112,13 @@ extern int filecount;
  extern int MIMEH_set_outputdir(char *);
  #endif
  
@@ -66,7 +77,7 @@ Index: p3scan.c
  static int sockfd; /* has to be global, do_sigterm_main() want's to close them */
  
  /* the proxycontext is global for do_sigterm_proxy().
-@@ -152,7 +162,7 @@ void do_log(int level, const char *fmt,...){
+@@ -152,7 +166,7 @@ void do_log(int level, const char *fmt,...){
     if (!config->debug && config->quiet && level==LOG_NOTICE) return;
     va_start(az,fmt);
     vsnprintf(puffer, 4000, fmt, az);
@@ -75,7 +86,7 @@ Index: p3scan.c
     if (!config->debug){
       openlog(config->syslogname, LOGOPT, LOGFAC);
       syslog(LOG_NOTICE, "%s\n", puffer);
-@@ -401,7 +411,7 @@ char *right(char *string, size_t i){
+@@ -401,7 +415,7 @@ char *right(char *string, size_t i){
  
     if (i > strlength) i = strlength;
     buf = stralloc(i);
@@ -84,7 +95,7 @@ Index: p3scan.c
     return buf;
  }
  
-@@ -699,7 +709,7 @@ int scan_mailfile(struct proxycontext *p){
+@@ -699,7 +713,7 @@ int scan_mailfile(struct proxycontext *p){
  #define COPYMSG "/var/spool/p3scan/copymsg "
     FILE * scanner;
     static char  line[4096*16];
@@ -93,7 +104,7 @@ Index: p3scan.c
     int htmlfd=0;
  
     ret=checktimeout(p);
-@@ -720,7 +730,7 @@ int scan_mailfile(struct proxycontext *p){
+@@ -720,7 +734,7 @@ int scan_mailfile(struct proxycontext *p){
     what the user determines is enough room in p3scan.conf
     This was already done... but it is also dynamic so check again.
     */
@@ -102,7 +113,7 @@ Index: p3scan.c
        p->errmsg=1;
        context_uninit(p);
        config->emergency="Unable to get available space!";
-@@ -1198,7 +1208,7 @@ void set_defaultparams(struct proxycontext * p){
+@@ -1198,7 +1212,7 @@ void set_defaultparams(struct proxycontext * p){
           }
           pclose(scanner);
           if (vlen < 512) virdef[vlen-1]='\0';
@@ -111,7 +122,7 @@ Index: p3scan.c
           paramlist_set(p->params, "%VDINFO%", virdef);
        }
     } else paramlist_set(p->params, "%VDINFO%", NULL);
-@@ -1575,6 +1585,8 @@ int proxy(struct proxycontext *p){
+@@ -1575,6 +1589,8 @@ int proxy(struct proxycontext *p){
     int   loc,loc2,first=1;
     char  *tmp=NULL;
     char  *tmp2=NULL;
@@ -120,7 +131,7 @@ Index: p3scan.c
  
     p->now = time(NULL);
     p->header_fd=-1;
-@@ -1583,6 +1595,31 @@ int proxy(struct proxycontext *p){
+@@ -1583,6 +1599,31 @@ int proxy(struct proxycontext *p){
     p->usessl=0;
  
     p->server_addr.sin_family = AF_INET;
@@ -152,7 +163,7 @@ Index: p3scan.c
     /*
     // For testing:
     do_log(LOG_DEBUG,"Going to emergency mode...");
-@@ -1595,6 +1632,8 @@ int proxy(struct proxycontext *p){
+@@ -1595,6 +1636,8 @@ int proxy(struct proxycontext *p){
           do_log(LOG_CRIT, "ERR: Can't send +OK to client!");
           return 1;
        }
@@ -161,7 +172,7 @@ Index: p3scan.c
        while(1){
           clientret=getlinep3(p->client_fd, p->clientbuf);
           if (clientret==GETLINE_OK){
-@@ -1619,13 +1658,7 @@ int proxy(struct proxycontext *p){
+@@ -1619,13 +1662,7 @@ int proxy(struct proxycontext *p){
                 p->dspamuser=strdup(substr(p->clientbuf->line,5,loc-5));
                 p->actsvr=strdup(substr(p->clientbuf->line,loc+1,loc2-loc-1));
                 p->actport=atoi(strdup(substr(p->clientbuf->line,loc2+1,len-loc2)));
@@ -175,7 +186,7 @@ Index: p3scan.c
                 p->clientbuf->linelen=GETLINE_LINE_NULL;
                 break;
              } else {
-@@ -1636,14 +1669,234 @@ int proxy(struct proxycontext *p){
+@@ -1636,14 +1673,234 @@ int proxy(struct proxycontext *p){
                 }
                 do_log(LOG_DEBUG,"Told client: -ERR Not Identified");
              }
@@ -415,7 +426,7 @@ Index: p3scan.c
           /* try to avoid loop */
           if (((ntohl(p->server_addr.sin_addr.s_addr) == INADDR_LOOPBACK)
           && p->server_addr.sin_port == config->addr.sin_port )
-@@ -1658,6 +1911,7 @@ int proxy(struct proxycontext *p){
+@@ -1658,6 +1915,7 @@ int proxy(struct proxycontext *p){
           p->server_addr.sin_port = config->targetaddr.sin_port;
        }
     }
@@ -423,7 +434,7 @@ Index: p3scan.c
     /* open socket to 'real-server' */
     if ((p->server_fd = socket(PF_INET, SOCK_STREAM, 0)) < 0){
        do_log(LOG_CRIT, "ERR: Cannot open socket to real-server");
-@@ -1670,23 +1924,50 @@ int proxy(struct proxycontext *p){
+@@ -1670,23 +1928,50 @@ int proxy(struct proxycontext *p){
  #endif
     p->serverbuf=linebuf_init(4096);
     p->params=paramlist_init();
@@ -482,7 +493,7 @@ Index: p3scan.c
        return 1;
     }
     set_defaultparams(p);
-@@ -1700,7 +1981,13 @@ int proxy(struct proxycontext *p){
+@@ -1700,7 +1985,13 @@ int proxy(struct proxycontext *p){
     while (1){
  
        /* read from client */
@@ -497,7 +508,7 @@ Index: p3scan.c
        if (clientret<0){
          if (clientret==GETLINE_TOO_LONG){
            do_log(LOG_DEBUG, "Line too long: Getting rest of line.");
-@@ -2093,13 +2380,13 @@ int proxy(struct proxycontext *p){
+@@ -2093,13 +2384,13 @@ int proxy(struct proxycontext *p){
                       paramlist_set(p->params, "%MAILFILE%", p->mailfile);
                       if (config->delit) paramlist_set(p->params, "%P3SCANID%", config->notify);
                       else paramlist_set(p->params, "%P3SCANID%", p->filename);
@@ -513,7 +524,7 @@ Index: p3scan.c
                       );
                       if (do_virusaction(p)!=0){
                          if (p->cksmtp) {
-@@ -2332,402 +2619,407 @@ void usage(char * progname){
+@@ -2332,402 +2623,407 @@ void usage(char * progname){
     "\n"
     );
  }
@@ -1302,7 +1313,7 @@ Index: p3scan.c
     config=w_malloc(sizeof(struct configuration_t));
     /* set defaults for in, char* to NULL */
     config->debug=DEBUG;
-@@ -2772,7 +3064,7 @@ void parseoptions(int argc, char **argv){
+@@ -2772,7 +3068,7 @@ void parseoptions(int argc, char **argv){
     config->emergcon=NULL;
     config->emergency=NULL;
     /* parse line args, but for the first time only configfile/version/help */
@@ -1311,7 +1322,7 @@ Index: p3scan.c
     /* parse configfile */
     if (!config->configfile){
        config->configfile=strdup(CONFIGFILE); //TODO: 24 bytes in 1 blocks are definitely lost in loss record 2 of 2
-@@ -2800,7 +3092,7 @@ void parseoptions(int argc, char **argv){
+@@ -2800,7 +3096,7 @@ void parseoptions(int argc, char **argv){
                          rest=line+i+ii+1;
                          if (rest && strlen(rest)>0 ){
                             pargv[pargc][strlen(pargv[pargc])]='=';
@@ -1320,7 +1331,7 @@ Index: p3scan.c
                          }
                       }
                    }
-@@ -2812,11 +3104,11 @@ void parseoptions(int argc, char **argv){
+@@ -2812,11 +3108,11 @@ void parseoptions(int argc, char **argv){
        close(fp);
        linebuf_uninit(cf);
        pargv[pargc]=NULL;
@@ -1334,7 +1345,7 @@ Index: p3scan.c
     if (error){
        printf(
        "Commandline options/configfile are not ok\n"
-@@ -2873,7 +3165,7 @@ int main(int argc, char ** argv){
+@@ -2873,7 +3169,7 @@ int main(int argc, char ** argv){
     int connfd=0, i=0, cuid=0;
     int abortfd=0;
     struct sockaddr_in  addr;
@@ -1343,7 +1354,7 @@ Index: p3scan.c
     pid_t pid;
     int stat=0;
     FILE * fp;
-@@ -2882,12 +3174,12 @@ int main(int argc, char ** argv){
+@@ -2882,12 +3178,12 @@ int main(int argc, char ** argv){
     char * responsemsg;
     int virusdirlen=0;
     char chownit[100];
@@ -1358,7 +1369,7 @@ Index: p3scan.c
  
     w_memory_init();                  // We need to initialize our memory allocation routines
  
-@@ -2931,11 +3223,14 @@ int main(int argc, char ** argv){
+@@ -2931,11 +3227,14 @@ int main(int argc, char ** argv){
        do_log(LOG_NOTICE, "Changing uid (we are root)");
        pws = getpwnam(config->runasuser);
        if (pws == NULL) do_log(LOG_EMERG,"ERR: Unknown User '%s'",config->runasuser);
@@ -1374,7 +1385,7 @@ Index: p3scan.c
     if (p3signal(SIGCHLD, do_sigchld)<0) do_log(LOG_EMERG, "ERR: Could not set signal handler SIGCHLD");
     if (p3signal(SIGTERM, do_sigterm_main)<0) do_log(LOG_EMERG, "ERR: Could not set signal handler SIGTERM main");
     if (p3signal(SIGINT, do_sigterm_main)<0) do_log(LOG_EMERG, "ERR: Could not set signal handler SIGINT main");
-@@ -3024,7 +3319,7 @@ int main(int argc, char ** argv){
+@@ -3024,7 +3323,7 @@ int main(int argc, char ** argv){
           numprocs++;
           do_log(LOG_DEBUG, "Forked, pid=%i, numprocs=%i", pid, numprocs);
           close (connfd);
@@ -1383,7 +1394,7 @@ Index: p3scan.c
              we don't need "them" (connfd?), child process takes care of that */
           if (numprocs>=config->maxchilds){
              do_log(LOG_WARNING, "MAX_CHILDS (%i) reached!", config->maxchilds);
-@@ -3036,7 +3331,7 @@ int main(int argc, char ** argv){
+@@ -3036,7 +3335,7 @@ int main(int argc, char ** argv){
        }else{
           /* child */
           config->child=1;
@@ -1392,7 +1403,7 @@ Index: p3scan.c
              config->emergency="Unable to get available space!";
              do_log(LOG_EMERG, "ERR: Unable to get available space!");
              return SCANNER_RET_CRIT; // Should never reach here, but keep it clean. :)
-@@ -3107,3 +3402,4 @@ int main(int argc, char ** argv){
+@@ -3107,3 +3406,4 @@ int main(int argc, char ** argv){
     do_sigterm_main(-1);
     return 0;
  }

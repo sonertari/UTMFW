@@ -7,7 +7,7 @@ DISTNAME=	libevent-$V-stable
 PKGNAME=	libevent-$V
 CATEGORIES=	devel
 #HOMEPAGE=	http://monkey.org/~provos/libevent/
-HOMEPAGE=	https://github.com/libevent/libevent/releases/download/release-2.1.11-stable/
+HOMEPAGE=	https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/
 
 SHARED_LIBS+=	event_core      1.1	# 6.9
 SHARED_LIBS+=	event_extra     0.1	# 6.9

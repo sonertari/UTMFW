@@ -1,6 +1,7 @@
 $ComixWall: patch-scanner_sample_c,v 1.2 2009/07/25 09:55:30 soner Exp $
---- scanner_sample.c.orig	Mon Nov 12 19:59:46 2007
-+++ scanner_sample.c	Mon Nov 12 19:50:41 2007
+Index: scanner_sample.c
+--- scanner_sample.c.orig
++++ scanner_sample.c
 @@ -35,7 +35,7 @@
   */
  
@@ -10,3 +11,12 @@ $ComixWall: patch-scanner_sample_c,v 1.2 2009/07/25 09:55:30 soner Exp $
  #include <sys/un.h>
  #include <sys/socket.h>
  
+@@ -50,7 +50,7 @@ extern void * w_malloc(size_t bytes);
+ extern void w_free(void *f_address);
+ 
+ /* usually we need p3scan's config, so make it global */
+-struct configuration_t * config;
++extern struct configuration_t * config;
+ 
+ /* if you need some globals, make them static! */
+ static int  connected;

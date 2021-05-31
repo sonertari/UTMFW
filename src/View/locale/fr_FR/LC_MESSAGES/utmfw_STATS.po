@@ -3,7 +3,7 @@
 # AGASSE Baptiste <baptiste.agasse@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: UTMFW 6.8\n"
+"Project-Id-Version: UTMFW 6.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
 "PO-Revision-Date: 2009-12-07 19:07+0100\n"

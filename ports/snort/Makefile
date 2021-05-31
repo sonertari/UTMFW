@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.107 2020/05/27 02:32:10 lteo Exp $
+# $OpenBSD: Makefile,v 1.109 2021/04/07 02:00:52 lteo Exp $
 
 COMMENT =		highly flexible sniffer/NIDS
 
-DISTNAME =		snort-2.9.17
-RULESV =		29170
+DISTNAME =		snort-2.9.17.1
+RULESV =		29171
 SUBST_VARS =		RULESV
 
 CATEGORIES =		net security
@@ -28,7 +28,7 @@ CONFIGURE_STYLE =	autoconf
 CONFIGURE_ARGS +=	--disable-static-daq \
 			--enable-non-ether-decoders
 
-#LIBTOOL_FLAGS =		--tag=disable-static
+LIBTOOL_FLAGS =		--tag=disable-static
 
 LIB_DEPENDS =		archivers/xz \
 			devel/pcre \

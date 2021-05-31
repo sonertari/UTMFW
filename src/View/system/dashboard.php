@@ -21,7 +21,7 @@
 require_once('../lib/vars.php');
 
 // XXX: Store the system vars
-$SaveMenu= $Menu;
+$SavedMenu= $Menu;
 $SavedLogConf= $LogConf;
 
 require_once($VIEW_PATH.'/httpd/httpd.php');
@@ -46,7 +46,7 @@ require_once($VIEW_PATH.'/openssh/include.php');
 
 // Restore the system vars
 $View= new System();
-$Menu= $SaveMenu;
+$Menu= $SavedMenu;
 $LogConf= $SavedLogConf;
 
 $TopMenu= 'info';

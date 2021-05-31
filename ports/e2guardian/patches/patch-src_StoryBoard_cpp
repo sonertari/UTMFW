@@ -3,7 +3,7 @@ $OpenBSD$
 Index: src/StoryBoard.cpp
 --- src/StoryBoard.cpp.orig
 +++ src/StoryBoard.cpp
-@@ -640,7 +640,10 @@ bool StoryBoard::runFunct(unsigned int fID, NaughtyFil
+@@ -642,7 +642,10 @@ bool StoryBoard::runFunct(unsigned int fID, NaughtyFil
                      cm.isGrey = false;
                      cm.isBlocked = false;
                      //cm.exceptionreason = o.language_list.getTranslation(cm.message_no);

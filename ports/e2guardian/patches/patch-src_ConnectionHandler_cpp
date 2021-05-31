@@ -55,7 +55,7 @@ Index: src/ConnectionHandler.cpp
              // do this normalisation etc just the once at the start.
              checkme.setURL(ismitm);
  
-@@ -2544,7 +2568,7 @@ bool ConnectionHandler::getdnstxt(std::string &clienti
+@@ -2548,7 +2572,7 @@ bool ConnectionHandler::getdnstxt(std::string &clienti
      // get info from DNS
      union {
          HEADER hdr;
@@ -64,12 +64,3 @@ Index: src/ConnectionHandler.cpp
      } response;
      int responseLen;
      ns_msg handle; /* handle for response message */
-@@ -3108,7 +3132,7 @@ bool ConnectionHandler::checkByPass(NaughtyFilter &che
-             }
-         } else if (ldl->fg[filtergroup]->bypass_mode != 0) {
-             if (header.isBypassCookie(checkme.urldomain, ldl->fg[filtergroup]->cookie_magic.c_str(),
--                                      clientip.c_str(), clientuser.c_str())) {
-+                                      clientip.c_str(), clientuser.c_str(), ldl->fg[filtergroup]->bypass_v2)) {
- #ifdef DGDEBUG
-                 std::cerr << thread_id << " -Bypass cookie match" << std::endl;
- #endif

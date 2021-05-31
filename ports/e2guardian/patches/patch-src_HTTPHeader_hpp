@@ -2,15 +2,6 @@ $OpenBSD$
 Index: src/HTTPHeader.hpp
 --- src/HTTPHeader.hpp.orig
 +++ src/HTTPHeader.hpp
-@@ -170,7 +170,7 @@ class HTTPHeader
- 
-     // Bypass URL & Cookie funcs
- 
--    bool isBypassCookie(String url, const char *magic, const char *clientip, const char *user);
-+    bool isBypassCookie(String url, const char *magic, const char *clientip, const char *user, const bool bypass_v2);
-     void chopBypass(String url, bool infectionbypass);
-     void chopScanBypass(String url);
-     // add cookie to outgoing headers with given name & value
 @@ -182,6 +182,7 @@ class HTTPHeader
  
      // grab referer url from headers

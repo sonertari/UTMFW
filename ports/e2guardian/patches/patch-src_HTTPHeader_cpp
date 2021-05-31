@@ -70,26 +70,7 @@ Index: src/HTTPHeader.cpp
                  line.lop(); // Get rid of the '='
                  if (line.contains(";")) {
                      line = line.before(";");
-@@ -1312,7 +1335,7 @@ void HTTPHeader::setCookie(const char *cookie, const c
- }
- 
- // is this a temporary filter bypass cookie?
--bool HTTPHeader::isBypassCookie(String url, const char *magic, const char *clientip, const char *user)
-+bool HTTPHeader::isBypassCookie(String url, const char *magic, const char *clientip, const char *user, const bool bypass_v2)
- {
-     String cookie(getCookie("GBYPASS"));
-     if (!cookie.length()) {
-@@ -1325,7 +1348,8 @@ bool HTTPHeader::isBypassCookie(String url, const char
-     String cookietime(cookie.after(cookiehash.toCharArray()));
-     String mymagic(magic);
-     mymagic += clientip;
--    mymagic += user;
-+    if (bypass_v2)
-+        mymagic += user;
-     mymagic += cookietime;
-     bool matched = false;
-     while (url.contains(".")) {
-@@ -1370,6 +1394,44 @@ String HTTPHeader::getReferer()
+@@ -1370,6 +1393,44 @@ String HTTPHeader::getReferer()
      std::cerr << thread_id << "Found Referer URL:" << line << " Line: " << __LINE__ << " Function: " << __func__ << std::endl;
  #endif
      return line;

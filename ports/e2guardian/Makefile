@@ -2,7 +2,7 @@
 
 GH_ACCOUNT =	e2guardian
 GH_PROJECT =	e2guardian
-GH_TAGNAME =	v5.3.4
+GH_TAGNAME =	v5.3.5
 
 COMMENT =	content scanning web filter
 CATEGORIES =	www net
