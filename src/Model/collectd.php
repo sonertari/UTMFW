@@ -87,16 +87,18 @@ class Collectd extends Monitoring
 	 */
 	function getPingAverage($host, $start= '1min')
 	{
-		exec("/usr/local/bin/rrdtool fetch -s -$start $this->RrdFolder/ping-$host.rrd AVERAGE", $output);
 		$total= 0;
 		$count= 0;
-		foreach ($output as $a) {
-			// 1612786040: nan
-			// 1612785390: 7.0429000000e+01
-			if (preg_match('/^\d+:\s*(\S+)$/', $a, $match)) {
-				if ($match[1] != 'nan') {
-					$total+= floatval($match[1]);
-					$count++;
+		if (file_exists("$this->RrdFolder/ping-$host.rrd")) {
+			exec("/usr/local/bin/rrdtool fetch -s -$start $this->RrdFolder/ping-$host.rrd AVERAGE", $output);
+			foreach ($output as $a) {
+				// 1612786040: nan
+				// 1612785390: 7.0429000000e+01
+				if (preg_match('/^\d+:\s*(\S+)$/', $a, $match)) {
+					if ($match[1] != 'nan') {
+						$total+= floatval($match[1]);
+						$count++;
+					}
 				}
 			}
 		}
