@@ -73,7 +73,8 @@ function wui_syslog($prio, $file, $func, $line, $msg)
 		openlog('wui', LOG_PID, LOG_LOCAL0);
 		
 		if ($prio <= $LOG_LEVEL) {
-			$useratip= $_SESSION['USER'].'@'.filter_input(INPUT_SERVER, 'REMOTE_ADDR');
+			$user= array_key_exists('USER', $_SESSION) ? $_SESSION['USER'] : 'NA';
+			$useratip= $user.'@'.filter_input(INPUT_SERVER, 'REMOTE_ADDR');
 			$func= $func == '' ? 'NA' : $func;
 			$log= "$LOG_PRIOS[$prio] $useratip $file: $func ($line): $msg";
 			if (!syslog($prio, $log)) {
