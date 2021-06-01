@@ -105,6 +105,7 @@ localhost		type=dir mode=0755 uname=root gname=wheel flags=none
 logs			type=dir mode=0755 uname=root gname=daemon
 access.log		type=file mode=0644 uname=root gname=daemon
 error.log		type=file mode=0644 uname=root gname=daemon
+php.log			type=file mode=0644 uname=root gname=daemon
 ..	#var/www/logs
 ..	#var/www
 ..	#var
