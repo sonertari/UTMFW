@@ -4,7 +4,7 @@ UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on prod
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
-The installation iso file for the amd64 arch is available for download at [utmfw69\_20210531\_amd64.iso](https://drive.google.com/file/d/1RTaktvGkXiHIWagZ2nYbTlruQJ2LR3gH/view?usp=sharing). Make sure the SHA256 checksum is correct: 954ee6ba2793406cefcfed0d108db4e736f2da9bff2ea6117276c96660dc3c3d.
+The installation iso file for the amd64 arch is available for download at [utmfw69\_20210531\_amd64.iso](https://drive.google.com/file/d/1h6HPYrzJ-0iG5usLGpameAUYCJfLia-U/view?usp=sharing). Make sure the SHA256 checksum is correct: 279f51fe01498bafe108477f181f10976373f7fc9041cf724f69d0b2a5eeb17b.
 
 You can follow the instructions on [this OpenBSD journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file into a bootable USB image you can write to a USB stick. The only catch is that if the installation script cannot find the install sets, you should choose the disk option and that the disk partition is not mounted yet, and point it to the USB stick with the correct path to the install sets (the default path the script offers is the same path as in the UTMFW image too, so you just hit Enter at that point).
 
