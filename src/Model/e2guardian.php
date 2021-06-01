@@ -265,10 +265,15 @@ class E2guardian extends Model
 
 	function _getModuleStatus($generate_info= FALSE, $start= 0)
 	{
+		global $MODEL_PATH, $ModelFiles;
+
 		$status= parent::_getModuleStatus($generate_info, $start);
 
 		if ($generate_info) {
-			$status['info']['requests']= count($this->GetLastLogs('', $start));
+			require_once($MODEL_PATH.'/'.$ModelFiles['e2guardianlogs']);
+
+			$model= new E2guardianlogs();
+			$status['info']['requests']= count($model->GetLastLogs('', $start));
 		}
 		return $status;
 	}
