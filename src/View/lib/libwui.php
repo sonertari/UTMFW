@@ -1083,7 +1083,7 @@ function ProcessStartLine(&$startline)
 		}
 	}
 
-	if ($pageSession['StartLine']) {
+	if (isset($pageSession['StartLine'])) {
 		$startline= $pageSession['StartLine'];
 	}
 	else {
@@ -1293,7 +1293,7 @@ function UpdateLogsPageSessionVars(&$count, &$re, &$needle)
 		}
 	}
 
-	if ($pageSession['LinesPerPage']) {
+	if (isset($pageSession['LinesPerPage'])) {
 		$count= $pageSession['LinesPerPage'];
 	}
 	else {
@@ -1306,7 +1306,7 @@ function UpdateLogsPageSessionVars(&$count, &$re, &$needle)
 		$pageSession['SearchRegExp']= filter_input(INPUT_POST, 'SearchRegExp');
 	}
 
-	if ($pageSession['SearchRegExp']) {
+	if (isset($pageSession['SearchRegExp'])) {
 		$re= RemoveBackSlashes($pageSession['SearchRegExp']);
 		$pageSession['SearchRegExp']= $re;
 	}
@@ -1318,7 +1318,7 @@ function UpdateLogsPageSessionVars(&$count, &$re, &$needle)
 		$pageSession['SearchNeedle']= filter_input(INPUT_POST, 'SearchNeedle');
 	}
 
-	if ($pageSession['SearchNeedle']) {
+	if (isset($pageSession['SearchNeedle'])) {
 		$needle= RemoveBackSlashes($pageSession['SearchNeedle']);
 		$pageSession['SearchNeedle']= $needle;
 	}
