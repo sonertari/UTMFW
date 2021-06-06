@@ -1114,7 +1114,7 @@ class Model
 	 * Gets the log file under the tmp folder.
 	 *
 	 * Updates the tmp file if the original file is modified.
-	 * Updates the stat info of the file in the tmp statistics file, which is used to check file modificaton.
+	 * Updates the stat info of the file in the tmp statistics file, which is used to check file modification.
 	 *
 	 * @param string $file Original file name.
 	 * @return string Pathname of the log file.
@@ -1949,9 +1949,9 @@ class Model
 		$briefstats= array();
 		$linecount= 0;
 
-		$statsdefs= $StatsConf[$this->Name];
+		if (isset($StatsConf[$this->Name])) {
+			$statsdefs= $StatsConf[$this->Name];
 
-		if (isset($statsdefs)) {
 			$needle= '';
 			if (isset($statsdefs['Total']['Needle'])) {
 				$needle= $statsdefs['Total']['Needle'];
