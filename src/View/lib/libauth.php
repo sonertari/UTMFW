@@ -406,35 +406,33 @@ function SetSubmenu($default)
 {
 	global $View, $Menu, $TopMenu;
 
-	$page= basename($_SERVER['PHP_SELF']);
-
 	if (filter_has_var(INPUT_GET, 'submenu')) {
 		$submenu= filter_input(INPUT_GET, 'submenu');
 		if (array_key_exists($submenu, $Menu[$TopMenu]['SubMenu'])) {
-			$_SESSION[$View->Model][$TopMenu]['submenu']= $submenu;
+			$_SESSION[$View->Module][$TopMenu]['submenu']= $submenu;
 		}
 		else {
-			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "No such submenu for $View->Model>$TopMenu: " . $submenu);
+			wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "No such submenu for $View->Module>$TopMenu: " . $submenu);
 			echo _TITLE('Resource not available').": $TopMenu.php?submenu=" . $submenu;
 			exit(1);
 		}
 	}
 
-	if ($_SESSION[$View->Model][$TopMenu]['submenu']) {
-		$submenu= $_SESSION[$View->Model][$TopMenu]['submenu'];
+	if ($_SESSION[$View->Module][$TopMenu]['submenu']) {
+		$submenu= $_SESSION[$View->Module][$TopMenu]['submenu'];
 	}
 	else {
 		$submenu= $default;
 	}
 
-	$_SESSION[$View->Model][$TopMenu]['submenu']= $submenu;
+	$_SESSION[$View->Module][$TopMenu]['submenu']= $submenu;
 	return $submenu;
 }
 
 /**
  * Sets session topmenu variable.
  *
- * View object does not exists yet when this function is called
+ * View object does not exist yet when this function is called
  * in index.php files, hence the $view parameter.
  *
  * @param string $view Module name
