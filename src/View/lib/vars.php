@@ -166,4 +166,6 @@ $TopMenu= str_replace('.php', '', basename(filter_input(INPUT_SERVER, 'PHP_SELF'
 
 /// Used as arg to PrintProcessTable() to print the number of processes at the top.
 define('PRINT_COUNT', TRUE);
+
+$Reload= FALSE;
 ?>
