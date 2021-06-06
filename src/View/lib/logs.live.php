@@ -44,7 +44,7 @@ if ($View->Controller($Output, 'GetFileLineCount', $LogFile, $SearchRegExp)) {
 
 require_once($VIEW_PATH.'/header.php');
 
-PrintLiveLogHeaderForm();
+PrintLiveLogHeaderForm($LinesPerPage, $SearchRegExp);
 ?>
 <table id="logline">
 	<?php

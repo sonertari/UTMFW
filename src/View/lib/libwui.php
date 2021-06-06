@@ -1247,7 +1247,7 @@ function PrintLogHeaderForm($start, $total, $count, $re, $hidden, $needle='', $s
  *
  * Uses session variables.
  */
-function PrintLiveLogHeaderForm()
+function PrintLiveLogHeaderForm($count, $re)
 {
 	global $View, $TopMenu;
 	?>
@@ -1259,10 +1259,10 @@ function PrintLiveLogHeaderForm()
 					<?php echo _TITLE('secs') ?>
 				</td>
 				<td>
-					<?php echo _TITLE('Lines per page').':' ?><input type="text" name="LinesPerPage" style="width: 20px;" maxlength="2" value="<?php echo $_SESSION[$View->Model][$TopMenu]['LinesPerPage'] ?>" />
+					<?php echo _TITLE('Lines per page').':' ?><input type="text" name="LinesPerPage" style="width: 20px;" maxlength="2" value="<?php echo $count ?>" />
 				</td>
 				<td>
-					<?php echo _TITLE('Regexp').':' ?><input type="text" name="SearchRegExp" style="width: 300px;" maxlength="200" value="<?php echo $_SESSION[$View->Model][$TopMenu]['SearchRegExp'] ?>" />
+					<?php echo _TITLE('Regexp').':' ?><input type="text" name="SearchRegExp" style="width: 300px;" maxlength="200" value="<?php echo $re ?>" />
 					<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
 				</td>
 			</tr>
