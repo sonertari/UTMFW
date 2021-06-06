@@ -418,7 +418,11 @@ function SetSubmenu($default)
 		}
 	}
 
-	if ($_SESSION[$View->Module][$TopMenu]['submenu']) {
+	if (!isset($_SESSION[$View->Module][$TopMenu])) {
+		$_SESSION[$View->Module][]= $TopMenu;
+	}
+
+	if (isset($_SESSION[$View->Module][$TopMenu]['submenu'])) {
 		$submenu= $_SESSION[$View->Module][$TopMenu]['submenu'];
 	}
 	else {
