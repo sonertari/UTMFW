@@ -267,9 +267,15 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 								<ul>
 								<?php
 								foreach ($DashboardIntervals as $interval => $title) {
+									$LiStyle= '';
+									$AStyle= '';
+									if ($LastDashboardInterval == $interval) {
+										$LiStyle= ACTIVE_LI_STYLE;
+										$AStyle= ACTIVE_A_STYLE;
+									}
 									?>
-									<li>
-										<a href="/system/info.php?submenu=dashboard&interval=<?php echo $interval ?>"><?php echo $title ?></a>
+									<li<?php echo $LiStyle ?>>
+										<a href="/system/info.php?submenu=dashboard&interval=<?php echo $interval ?>"<?php echo $AStyle ?>><?php echo $title ?></a>
 									</li>
 									<?php
 								}
