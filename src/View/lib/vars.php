@@ -168,4 +168,5 @@ $TopMenu= str_replace('.php', '', basename(filter_input(INPUT_SERVER, 'PHP_SELF'
 define('PRINT_COUNT', TRUE);
 
 $Reload= FALSE;
+$CustomHiddenInputs= '';
 ?>
