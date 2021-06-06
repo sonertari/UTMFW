@@ -295,9 +295,8 @@ class View
 	{
 		global $IMG_PATH, $ADMIN, $Status2Images, $StatusTitles;
 
-		if (!$this->Controller($output, 'GetModuleStatus')) {
-			return;
-		}
+		$this->Controller($output, 'GetModuleStatus');
+
 		$status= json_decode($output[0], TRUE);
 
 		$running= $status['Status'] == 'R';

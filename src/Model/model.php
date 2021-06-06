@@ -2795,19 +2795,28 @@ class Model
 	function GetModuleStatus()
 	{
 		$module_status= $this->_getModuleStatus();
-		if ($module_status === FALSE) {
-			return FALSE;
-		}
 		return Output(json_encode($module_status['status']));
 	}
 
 	function _getModuleStatus($generate_info= FALSE, $start= 0)
 	{
+		$runStatus= $this->IsRunning()? 'R':'S';
+
 		// @attention Don't use long extended regexps with grep, grep takes too long
 		//$logs= $model->_getStatus('(EMERGENCY|emergency|ALERT|alert|CRITICAL|critical|ERROR|error|WARNING|warning):');
 		$logs= $this->_getStatus('', $start);
 		if ($logs === FALSE) {
-			return FALSE;
+			return array(
+				'status' => array(
+					'Status' => $runStatus,
+					'ErrorStatus' => 'U',
+					'Critical' => 0,
+					'Error' => 0,
+					'Warning' => 0,
+					'Logs' => array(),
+					),
+				'info' => array()
+				);
 		}
 
 		$crits= array();
@@ -2841,7 +2850,7 @@ class Model
 
 		return array(
 			'status' => array(
-				'Status' => $this->IsRunning()? 'R':'S',
+				'Status' => $runStatus,
 				'ErrorStatus' => $errorStatus,
 				'Critical' => count($crits),
 				'Error' => count($errs),

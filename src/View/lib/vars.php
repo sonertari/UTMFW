@@ -147,6 +147,7 @@ $Status2Images= array(
 	'R' => 'running.png',
 	'S' => 'stop.png',
 	'N' => 'noerror.png',
+	'U' => 'warning2.png',
 	);
 
 $StatusTitles= array(
@@ -156,6 +157,7 @@ $StatusTitles= array(
 	'R' => _TITLE('Running'),
 	'S' => _TITLE('Stopped'),
 	'N' => _TITLE('No Errors'),
+	'U' => _TITLE('Unknown'),
 	);
 
 require_once($VIEW_PATH . '/lib/libwui.php');
