@@ -212,7 +212,7 @@ Intrusion alerts produced by the IDS are guesses, hence there may be false posit
 							</td>
 						</tr>
 						<tr class="evenline">
-							<td class="center" colspan="<?php echo $showDateTimeSelect ? 2:3 ?>">
+							<td class="center" colspan="2">
 								<input type="submit" name="First" value="<?php echo _CONTROL('<< First') ?>"/>
 								<input type="submit" name="Previous" value="<?php echo _CONTROL('< Previous') ?>"/>
 								<input type="submit" name="Next" value="<?php echo _CONTROL('Next >') ?>"/>

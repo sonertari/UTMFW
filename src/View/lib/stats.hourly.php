@@ -104,7 +104,9 @@ $_SESSION[$View->Model][$Submenu]['Day']= $DateArray['Day'];
 $_SESSION[$View->Model][$Submenu]['Hour']= $DateArray['Hour'];
 $_SESSION[$View->Model][$Submenu]['GraphType']= $GraphType;
 
-$Hour= $DateArray['Hour'];
+if (isset($DateArray['Hour'])) {
+	$Hour= $DateArray['Hour'];
+}
 $Date= $View->FormatDate($DateArray);
 
 $ViewStatsConf= $StatsConf[$View->Model];
@@ -119,7 +121,9 @@ if (!isset($ViewStatsConf['Total']['SearchRegexpPostfix'])) {
 $DateStats= array();
 if ($LogFile !== FALSE && $View->Controller($Output, 'GetStats', $LogFile, json_encode($DateArray), 'COLLECT')) {
 	$Stats= json_decode($Output[0], TRUE);
-	$DateStats= $Stats['Date'];
+	if (isset($Stats['Date'])) {
+		$DateStats= $Stats['Date'];
+	}
 }
 
 require_once($VIEW_PATH . '/header.php');

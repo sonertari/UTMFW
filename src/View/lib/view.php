@@ -338,7 +338,7 @@ class View
 						<?php
 						/// Only admin can start/stop the processes
 						if (in_array($_SESSION['USER'], $ADMIN)) {
-							if ($button) {
+							if (isset($button)) {
 								?>
 								<input type="submit" name="<?php echo $button ?>" value="<?php echo _($button) ?>" onclick="return confirm('<?php echo $confirm ?>')"/>
 								<?php

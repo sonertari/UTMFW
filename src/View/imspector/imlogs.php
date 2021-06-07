@@ -107,7 +107,7 @@ require_once($VIEW_PATH.'/header.php');
 				<?php
 				if (!empty($Output)) {
 					foreach ($Output as $Protocol) {
-						$Selected= $Protocol === $Proto ? ' selected' : '';
+						$Selected= isset($Proto) && $Protocol === $Proto ? ' selected' : '';
 						?>
 						<option value="<?php echo $Protocol ?>"<?php echo $Selected ?>><?php echo $Protocol ?></option>
 						<?php
@@ -192,7 +192,7 @@ require_once($VIEW_PATH.'/header.php');
 	</tr>
 </table>
 <?php
-if ($Session) {
+if (isset($Session)) {
 	$View->Controller($Output, 'GetImLogFile', $Proto, $LocalUser, $RemoteUser, $Session);
 	$LogFile= Escape($Output[0], ';{}');
 	$_SESSION[$View->Model]['LogFile']= $LogFile;

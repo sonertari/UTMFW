@@ -81,7 +81,9 @@ if ($LogFile !== FALSE && $View->Controller($Output, 'GetAllStats', $LogFile, $G
 	$AllStats= json_decode($Output[0], TRUE);
 	$Stats= json_decode($AllStats['stats'], TRUE);
 	$BriefStats= json_decode($AllStats['briefstats'], TRUE);
-	$DateStats= $Stats['Date'];
+	if (isset($Stats['Date'])) {
+		$DateStats= $Stats['Date'];
+	}
 }
 
 require_once($VIEW_PATH . '/header.php');

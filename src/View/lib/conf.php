@@ -22,6 +22,9 @@
  * Main configuration file included by all configuration pages.
  */
 
+/// @todo Is there a way to get browser's current font width to use here?
+define('CHAR_WIDTH', '5.75');
+
 /**
  * Displays an NVP configuration form, usually a textbox and buttons.
  *
@@ -54,9 +57,6 @@ function PrintNVPForm($values)
 				<td>
 					<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 						<?php
-						/// @todo Is there a way to get browser's current font width to use here?
-						define('CHAR_WIDTH', '5.75');
-
 						$found= preg_match("|^$name=(.*)$|", $valueconf['Value'], $match);
 						if ($found) {
 							// There are values like this: /usr/local/bin/send_sms 123456789 "VIRUS ALERT: %v"
@@ -156,8 +156,12 @@ function PrintReloadConfigForm()
 	<?php
 }
 
+if (!isset($ViewConfigName)) {
+	$ViewConfigName= '';
+}
+
 // Reset to 0 for modules other than E2guardian and Snort, otherwise Controller complains about arg type of Group
-$Group= $_SESSION[$View->Model]['ConfOpt'] ? $_SESSION[$View->Model]['ConfOpt'] : 0;
+$Group= isset($_SESSION[$View->Model]['ConfOpt']) ? $_SESSION[$View->Model]['ConfOpt'] : 0;
 
 if (count($_POST)) {
 	if (filter_has_var(INPUT_POST, 'Apply')) {
@@ -207,7 +211,9 @@ if (isset($PRINT_CONFOPT_FORM) && $PRINT_CONFOPT_FORM) {
 
 	if (isset($CustomFunc)) {
 		$Class= $Row++ % 2 == 0 ? 'evenline' : 'oddline';
-		$CustomFunc($CustomFuncParam);
+		if (isset($CustomFuncParam)) {
+			$CustomFunc($CustomFuncParam);
+		}
 	}
 
 	if ($View->Controller($output, 'GetConfigValues', $ViewConfigName, $Group)) {

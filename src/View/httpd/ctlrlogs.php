@@ -33,7 +33,7 @@ $LogConf = array(
 			'Log' => _TITLE('Log'),
 			),
 		'HighlightLogs' => array(
-			'Col' => 'LogLevel',
+			'Col' => 'Prio',
 			'REs' => array(
 				'red' => array('LOG_EMERG', 'LOG_ALERT', 'LOG_CRIT', 'LOG_ERR'),
 				'yellow' => array('LOG_WARNING'),
@@ -56,9 +56,11 @@ class Ctlrlogs extends View
 	{
 		global $ROOT;
 
-		$filepath= $cols['File'];
-		if (preg_match("|^($ROOT)(.*)$|", $filepath, $match)) {
-			$cols['File']= '<a title="'.$filepath.'">'.$match[2].'</a>';
+		if (isset($cols['File'])) {
+			$filepath= $cols['File'];
+			if (preg_match("|^($ROOT)(.*)$|", $filepath, $match)) {
+				$cols['File']= '<a title="'.$filepath.'">'.$match[2].'</a>';
+			}
 		}
 	}
 }

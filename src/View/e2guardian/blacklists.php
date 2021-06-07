@@ -192,8 +192,8 @@ if (filter_has_var(INPUT_POST, 'Defaults')) {
 	}
 }
 
-$LogFile= $_SESSION[$View->Model]['LogFile'];
-$SearchSite= $_SESSION[$View->Model]['SearchSite'];
+$LogFile= isset($_SESSION[$View->Model]['LogFile']) ? $_SESSION[$View->Model]['LogFile'] : '';
+$SearchSite= isset($_SESSION[$View->Model]['SearchSite']) ? $_SESSION[$View->Model]['SearchSite'] : '';
 
 require_once($VIEW_PATH.'/header.php');
 		

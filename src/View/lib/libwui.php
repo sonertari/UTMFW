@@ -1385,7 +1385,7 @@ function PrintLogCols($linenum, $cols, $lastlinenum= -1, $class= '', $module= ''
 			$nowrap = ($field == 'Date' || $field == 'DateTime') ? ' nowrap' : '';
 			?>
 			<td<?php echo ($cellClass == '') ? '':' class="'.$cellClass.'"' ?><?php echo $nowrap ?>>
-				<?php echo $cols[$field] ?>
+				<?php echo isset($cols[$field]) ? $cols[$field] : '' ?>
 			</td>
 			<?php
 		}

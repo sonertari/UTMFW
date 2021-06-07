@@ -2194,8 +2194,9 @@ class Model
 		foreach ($statsdefs as $stat => $statconf) {
 			if (isset($statconf['Counters'])) {
 				foreach ($statconf['Counters'] as $counter => $conf) {
-					$value= $values[$conf['Field']];
-					if (isset($value)) {
+					if (isset($values[$conf['Field']])) {
+						$value= $values[$conf['Field']];
+
 						if (!isset($stats[$counter])) {
 							$stats[$counter]= array();
 						}
@@ -2367,13 +2368,15 @@ class Model
 	function getValidValues($name)
 	{
 		$validValues= array();
-		$type= $this->Config[$name]['type'];
-		if ($type == STR_on_off) {
-			$validValues= array('on', 'off');
-		} elseif ($type == STR_On_Off) {
-			$validValues= array('On', 'Off');
-		} elseif ($type == STR_yes_no) {
-			$validValues= array('yes', 'no');
+		if (isset($this->Config[$name]['type'])) {
+			$type= $this->Config[$name]['type'];
+			if ($type == STR_on_off) {
+				$validValues= array('on', 'off');
+			} elseif ($type == STR_On_Off) {
+				$validValues= array('On', 'Off');
+			} elseif ($type == STR_yes_no) {
+				$validValues= array('yes', 'no');
+			}
 		}
 		return $validValues;
 	}
