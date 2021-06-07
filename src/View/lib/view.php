@@ -145,7 +145,12 @@ class View
 					if ($decoded !== NULL && is_array($decoded)) {
 						$output= explode("\n", $decoded[0]);
 						$errorStr= $decoded[1];
-						$retval= $decoded[2];
+						// FALSE returned by the Model function is json_encoded/decoded as string 'false'
+						if ($decoded[0] == 'false') {
+							$retval= 1;
+						} else {
+							$retval= $decoded[2];
+						}
 					} else {
 						$msg= 'Failed decoding output: '.print_r($outputArray[0], TRUE);
 						wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "$msg, ($encoded_args)");
