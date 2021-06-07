@@ -112,7 +112,12 @@ class Collectd extends Monitoring
 	 */
 	function GetPingHosts()
 	{
-		$gateway= $this->getSystemGateway();
+		global $MODEL_PATH;
+
+		require_once($MODEL_PATH.'/system.php');
+		$system= new System();
+		$gateway= $system->getSystemGateway();
+
 		$gateway_host= $this->getGatewayPingHost();
 		if ($gateway !== $gateway_host) {
 			Error(_('System and ping gateway addresses do not match').": $gateway, $gateway_host");

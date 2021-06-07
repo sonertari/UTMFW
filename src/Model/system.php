@@ -532,6 +532,54 @@ class System extends Model
 	}
 
 	/**
+	 * Gets system gateway, static or dynamic.
+	 *
+	 * @return string Gateway.
+	 */
+	function getSystemGateway()
+	{
+		$gateway= '';
+		if (($mygate= $this->_getStaticGateway()) !== FALSE) {
+			$gateway= trim($mygate);
+		} else if (($mygate= $this->_getDynamicGateway()) !== FALSE) {
+			$gateway= trim($mygate);
+		}
+
+		if ($gateway === '') {
+			Error(_('System has no gateway'));
+		}
+		return $gateway;
+	}
+
+	function _getStaticGateway()
+	{
+		return $this->GetFile($this->confDir.'mygate');
+	}
+
+	function _getDynamicGateway()
+	{
+		global $Re_Ip;
+
+		$cmd= "/sbin/route -n get default | /usr/bin/grep gateway 2>&1";
+		exec($cmd, $output, $retval);
+		if ($retval === 0) {
+			if (count($output) > 0) {
+				#    gateway: 10.0.0.2
+				$re= "\s*gateway:\s*($Re_Ip)\s*";
+				if (preg_match("/$re/m", $output[0], $match)) {
+					return $match[1];
+				}
+			}
+		}
+		else {
+			$errout= implode("\n", $output);
+			Error($errout);
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Get dynamic gateway failed: $errout");
+		}
+		return FALSE;
+	}
+
+	/**
 	 * Reads hostname, gateway, and interface configuration.
 	 * 
 	 * @return array Configuration.
