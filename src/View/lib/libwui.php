@@ -656,6 +656,10 @@ function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style, $prefix,
 	if (isset($conf['Divisor'])) {
 		DivideArrayData($data, $conf['Divisor']);
 	}
+
+	if (!isset($conf['Needle'])) {
+		$conf['Needle']= '';
+	}
 	?>
 	<table id="statset">
 		<tr>
@@ -722,6 +726,10 @@ function PrintMinutesGraphNVPSet($stats, $parent, $conf, $type, $prefix, $postfi
 
 	if (isset($conf['Divisor'])) {
 		DivideArrayData($data, $conf['Divisor']);
+	}
+
+	if (!isset($conf['Needle'])) {
+		$conf['Needle']= '';
 	}
 	?>
 	<table id="statset">
