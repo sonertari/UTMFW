@@ -29,7 +29,7 @@ function PrintDateTimeForm($remotetime)
 {
 	global $TimeServer;
 
-	if ($_SESSION['TimeServer']) {
+	if (isset($_SESSION['TimeServer'])) {
 		$TimeServer= $_SESSION['TimeServer'];
 	}
 
