@@ -75,11 +75,13 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 								<span class="menuwithimage">UTMFW</span>
 								<img class="menuwithimage" src="/images/menu.png" name="Menu" alt="Menu" align="absmiddle">
 								<?php
-								$ModuleConf= $UTMFW_MODULES[$View->Module];
-								if (in_array($View->Module, $ExistingModules) && in_array($_SESSION['USER'], $ModuleConf['Perms'])) {
-									?>
-									<span class="menuwithimage"><?php echo _($ModuleConf['Name']) ?></span>
-									<?php
+								if (array_key_exists($View->Module, $UTMFW_MODULES)) {
+									$ModuleConf= $UTMFW_MODULES[$View->Module];
+									if (in_array($View->Module, $ExistingModules) && in_array($_SESSION['USER'], $ModuleConf['Perms'])) {
+										?>
+										<span class="menuwithimage"><?php echo _($ModuleConf['Name']) ?></span>
+										<?php
+									}
 								}
 								?>
 							</a>
