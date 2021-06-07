@@ -39,12 +39,12 @@ if (!$PageActivated) {
 }
 
 // Start sending the page
-if (!isset($_SESSION[$View->Module][$TopMenu]['ReloadRate'])) {
-	$_SESSION[$View->Module][$TopMenu]['ReloadRate']= $DefaultReloadRate;
+if (!isset($_SESSION[$View->Model][$TopMenu]['ReloadRate'])) {
+	$_SESSION[$View->Model][$TopMenu]['ReloadRate']= $DefaultReloadRate;
 }
 
 if ($Reload) {
-	HTMLHeader(NULL, $_SESSION[$View->Module][$TopMenu]['ReloadRate']);
+	HTMLHeader(NULL, $_SESSION[$View->Model][$TopMenu]['ReloadRate']);
 }
 else {
 	HTMLHeader();
