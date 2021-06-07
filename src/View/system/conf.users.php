@@ -28,9 +28,11 @@ if ($ForceHTTPs) {
 
 require_once('include.php');
 
+$Selected= '';
+$SelectedUser= '';
+$SelectedUserName= '';
+
 if (count($_POST)) {
-	$SelectedUser= '';
-	$SelectedUserName= '';
 	if (filter_has_var(INPUT_POST, 'SelectedUser') && (filter_has_var(INPUT_POST, 'Delete') || filter_has_var(INPUT_POST, 'Select') || filter_has_var(INPUT_POST, 'Filter'))) {
 		$Selected= filter_input(INPUT_POST, 'SelectedUser');
 		$SelectedArray= explode(':', filter_input(INPUT_POST, 'SelectedUser'));
