@@ -117,7 +117,7 @@ class Snort extends View
 		if (filter_has_var(INPUT_POST, 'ConfOpt')) {
 			$conf= filter_input(INPUT_POST, 'ConfOpt');
 		}
-		else if ($_SESSION[$this->Model]['ConfOpt']) {
+		else if (isset($_SESSION[$this->Model]['ConfOpt'])) {
 			$conf= $_SESSION[$this->Model]['ConfOpt'];
 		}
 		else {

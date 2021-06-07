@@ -79,16 +79,16 @@ if (filter_has_var(INPUT_POST, 'Session')) {
 	$_SESSION[$View->Model]['Session']= filter_input(INPUT_POST, 'Session');
 }
 
-if ($_SESSION[$View->Model]['Proto']) {
+if (isset($_SESSION[$View->Model]['Proto'])) {
 	$Proto= $_SESSION[$View->Model]['Proto'];
 }
-if ($_SESSION[$View->Model]['LocalUser']) {
+if (isset($_SESSION[$View->Model]['LocalUser'])) {
 	$LocalUser= $_SESSION[$View->Model]['LocalUser'];
 }
-if ($_SESSION[$View->Model]['RemoteUser']) {
+if (isset($_SESSION[$View->Model]['RemoteUser'])) {
 	$RemoteUser= $_SESSION[$View->Model]['RemoteUser'];
 }
-if ($_SESSION[$View->Model]['Session']) {
+if (isset($_SESSION[$View->Model]['Session'])) {
 	$Session= $_SESSION[$View->Model]['Session'];
 }
 

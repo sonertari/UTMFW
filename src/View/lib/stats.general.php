@@ -41,12 +41,12 @@ if (count($_POST)) {
 		$GraphType= filter_input(INPUT_POST, 'GraphType');
 	}
 	else {
-		if ($_SESSION[$View->Model][$Submenu]['GraphType']) {
+		if (isset($_SESSION[$View->Model][$Submenu]['GraphType'])) {
 			$GraphType= $_SESSION[$View->Model][$Submenu]['GraphType'];
 		}
 	}
 }
-else if ($_SESSION[$View->Model][$Submenu]['GraphStyle']) {
+else if (isset($_SESSION[$View->Model][$Submenu]['GraphStyle'])) {
 	/// @attention Daily style does not set GraphType, do not check it in if condition
 	$GraphStyle= $_SESSION[$View->Model][$Submenu]['GraphStyle'];
 	$GraphType= $_SESSION[$View->Model][$Submenu]['GraphType'];

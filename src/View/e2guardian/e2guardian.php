@@ -62,7 +62,7 @@ class E2guardian extends View
 		if (filter_has_var(INPUT_POST, 'ConfOpt')) {
 			$group= filter_input(INPUT_POST, 'ConfOpt');
 		}
-		else if ($_SESSION[$this->Model]['ConfOpt']) {
+		else if (isset($_SESSION[$this->Model]['ConfOpt'])) {
 			$group= $_SESSION[$this->Model]['ConfOpt'];
 		}
 		else {

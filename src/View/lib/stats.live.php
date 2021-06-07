@@ -40,7 +40,7 @@ if (count($_POST)) {
 	$GraphType= filter_input(INPUT_POST, 'GraphType');
 	$_SESSION[$View->Model]['GraphType']= $GraphType;
 }
-else if ($_SESSION[$View->Model]['GraphType']) {
+else if (isset($_SESSION[$View->Model]['GraphType'])) {
 	$GraphType= $_SESSION[$View->Model]['GraphType'];
 }
 

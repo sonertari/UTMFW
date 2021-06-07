@@ -55,7 +55,7 @@ $Submenu= 'dashboard';
 $LastDashboardInterval= '10min';
 if (filter_has_var(INPUT_GET, 'interval')) {
 	$LastDashboardInterval= filter_input(INPUT_GET, 'interval');
-} else if ($_SESSION['system']['DashboardInterval']) {
+} else if (isset($_SESSION['system']['DashboardInterval'])) {
 	$LastDashboardInterval= $_SESSION['system']['DashboardInterval'];
 }
 $_SESSION['system']['DashboardInterval']= $LastDashboardInterval;

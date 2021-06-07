@@ -123,7 +123,7 @@ $UTMFW_MODULES = array(
 
 require_once($VIEW_PATH . '/lib/libauth.php');
 
-if ($_SESSION['Timeout']) {
+if (isset($_SESSION['Timeout'])) {
 	if ($_SESSION['Timeout'] <= time()) {
 		LogUserOut('Session expired');
 	}

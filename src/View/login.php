@@ -60,7 +60,7 @@ if (filter_has_var(INPUT_POST, 'Login')) {
 
 	// Encrypt the password immediately
 	Authentication(sha1(filter_input(INPUT_POST, 'Password')));
-} elseif ($_SESSION['Timeout']) {
+} elseif (isset($_SESSION['Timeout'])) {
 	// If user was already logged out, do not check timeout, LogUserOut() sets timeout to -1
 	// Otherwise results in a loop
 	wui_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Session timeout: ' . $_SESSION['Timeout'] . ', time: ' . time());

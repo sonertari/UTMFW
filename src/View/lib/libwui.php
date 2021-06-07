@@ -150,7 +150,7 @@ function GetLogFile()
 
 	if (filter_has_var(INPUT_POST, 'LogFile')) {
 		$logfile= filter_input(INPUT_POST, 'LogFile');
-	} else if ($_SESSION[$View->Model]['LogFile']) {
+	} else if (isset($_SESSION[$View->Model]['LogFile'])) {
 		$logfile= $_SESSION[$View->Model]['LogFile'];
 	}
 

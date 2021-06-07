@@ -46,7 +46,7 @@ function PrintConfSelectForm($module, $helpmsg= '')
 	<?php
 }
 
-if ($_SESSION[$View->Model][basename($_SERVER['PHP_SELF'])]['ConfFile']) {
+if (isset($_SESSION[$View->Model][basename($_SERVER['PHP_SELF'])]['ConfFile'])) {
 	$ConfigFile= $_SESSION[$View->Model][basename($_SERVER['PHP_SELF'])]['ConfFile'];
 }
 

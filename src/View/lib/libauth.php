@@ -445,7 +445,7 @@ function SetSubmenu($default)
  */
 function SetTopMenu($view, $default= 'info')
 {
-	if ($_SESSION[$view]['topmenu']) {
+	if (isset($_SESSION[$view]['topmenu'])) {
 		$topmenu= $_SESSION[$view]['topmenu'];
 	}
 	else {
