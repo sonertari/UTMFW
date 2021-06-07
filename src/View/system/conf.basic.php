@@ -53,7 +53,7 @@ function PrintDateTimeForm($remotetime)
 				<input type="submit" name="Display" value="<?php echo _CONTROL('Display') ?>"/>
 				<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>" onclick="return confirm('<?php echo $confirm ?>')"/>
 				<?php
-				if (isset($remotetime)) {
+				if ($remotetime) {
 					echo '<br />'.$remotetime;
 				}
 				?>
@@ -90,6 +90,7 @@ function PrintDateTimeForm($remotetime)
 	<?php
 }
 
+$RemoteTime= FALSE;
 
 if (count($_POST)) {
 	if (filter_has_var(INPUT_POST, 'Year') && filter_has_var(INPUT_POST, 'Month') && filter_has_var(INPUT_POST, 'Day') && filter_has_var(INPUT_POST, 'Hour') && filter_has_var(INPUT_POST, 'Minute')) {
