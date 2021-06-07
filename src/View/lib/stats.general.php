@@ -63,6 +63,15 @@ if ($GraphStyle == 'Hourly') {
 
 $ViewStatsConf= $StatsConf[$View->Model];
 
+if (!isset($ViewStatsConf['Total']['SearchRegexpPrefix'])) {
+	$ViewStatsConf['Total']['SearchRegexpPrefix']= '';
+}
+if (!isset($ViewStatsConf['Total']['SearchRegexpPostfix'])) {
+	$ViewStatsConf['Total']['SearchRegexpPostfix']= '';
+}
+
+$BriefStats= array();
+$DateStats= array();
 if ($LogFile !== FALSE && $View->Controller($Output, 'GetAllStats', $LogFile, $GraphStyle == 'Hourly' ? 'COLLECT' : '')) {
 	$AllStats= json_decode($Output[0], TRUE);
 	$Stats= json_decode($AllStats['stats'], TRUE);
@@ -117,7 +126,9 @@ PrintModalPieChart();
 
 			if (isset($ViewStatsConf['Total']['BriefStats'])) {
 				foreach ($ViewStatsConf['Total']['BriefStats'] as $Field => $Name) {
-					PrintNVPs($BriefStats[$Field], _($Name), 50, TRUE, $ViewStatsConf['Total']['Needle'], $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix']);
+					if (isset($BriefStats[$Field])) {
+						PrintNVPs($BriefStats[$Field], _($Name), 50, TRUE, $ViewStatsConf['Total']['Needle'], $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix']);
+					}
 				}
 			}
 			?>

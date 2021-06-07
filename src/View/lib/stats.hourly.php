@@ -31,6 +31,10 @@ $LogFile= GetLogFile();
 
 $ApplyDefaults= TRUE;
 
+$DateArray['Month']= exec('/bin/date +%m');
+$DateArray['Day']= exec('/bin/date +%d');
+$DateArray['Hour']= exec('/bin/date +%H');
+
 // Will apply defaults if log file changed
 if (!isset($_SESSION[$View->Model][$Submenu]['PrevLogFile']) || $LogFile === $_SESSION[$View->Model][$Submenu]['PrevLogFile'] ||
 		// Sender input indicates that the user has clicked on an item on a Stats page, so we should process what that page posts
@@ -77,6 +81,7 @@ if ($ApplyDefaults) {
 		$DateArray['Hour']= exec('/bin/date +%H');
 	}
 	else {
+		$LogsStartDate= $View->FormatDate($DateArray);
 		if ($LogFile !== FALSE && $View->Controller($Output, 'GetLogStartDate', $LogFile)) {
 			$LogsStartDate= $Output[0];
 		}
@@ -104,6 +109,14 @@ $Date= $View->FormatDate($DateArray);
 
 $ViewStatsConf= $StatsConf[$View->Model];
 
+if (!isset($ViewStatsConf['Total']['SearchRegexpPrefix'])) {
+	$ViewStatsConf['Total']['SearchRegexpPrefix']= '';
+}
+if (!isset($ViewStatsConf['Total']['SearchRegexpPostfix'])) {
+	$ViewStatsConf['Total']['SearchRegexpPostfix']= '';
+}
+
+$DateStats= array();
 if ($LogFile !== FALSE && $View->Controller($Output, 'GetStats', $LogFile, json_encode($DateArray), 'COLLECT')) {
 	$Stats= json_decode($Output[0], TRUE);
 	$DateStats= $Stats['Date'];
@@ -167,13 +180,13 @@ PrintLogFileChooser($LogFile);
 PrintModalPieChart();
 
 foreach ($ViewStatsConf as $Name => $Conf) {
-	if (isset($Conf['Color'])) {
+	if (isset($Conf['Color']) && isset($DateStats[$Date]['Hours'][$Hour])) {
 		PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix'], $DateArray);
 	}
 }
 
 foreach ($ViewStatsConf as $Name => $CurConf) {
-	if (isset($CurConf['Counters'])) {
+	if (isset($CurConf['Counters']) && isset($DateStats[$Date]['Hours'][$Hour])) {
 		foreach ($CurConf['Counters'] as $Name => $Conf) {
 			PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix'], $DateArray);
 		}

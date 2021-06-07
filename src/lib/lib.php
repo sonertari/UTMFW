@@ -98,4 +98,12 @@ function Escape($str, $chars, $no_double_escapes= TRUE)
 	}
  	return $str;
 }
+
+function AddValueCreateKey(&$data, $name, $value)
+{
+	if (!isset($data[$name])) {
+		$data[$name]= 0;
+	}
+	$data[$name]+= $value;
+}
 ?>

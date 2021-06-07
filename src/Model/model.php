@@ -1990,9 +1990,8 @@ class Model
 
 						// Collect the fields listed under BriefStats
 						foreach ($briefstatsdefs as $name => $title) {
-							$value= $values[$name];
-							if (isset($value)) {
-								$briefstats[$name][$value]+= 1;
+							if (isset($values[$name])) {
+								AddValueCreateKey($briefstats[$name], $values[$name], 1);
 							}
 						}
 					}
@@ -2038,7 +2037,7 @@ class Model
 	 */
 	function GetHourRegexp($date)
 	{
-		if ($date['Hour'] == '') {
+		if (!isset($date['Hour']) || $date['Hour'] == '') {
 			$re= '.*';
 		}
 		else {
@@ -2238,19 +2237,22 @@ class Model
 	 */
 	function IncStats($line, $values, $statsdefs, &$stats)
 	{
-		$stats['Sum']+= 1;
+		AddValueCreateKey($stats, 'Sum', 1);
 
 		foreach ($statsdefs as $stat => $statconf) {
 			if (isset($statconf['Counters'])) {
 				foreach ($statconf['Counters'] as $counter => $conf) {
 					$value= $values[$conf['Field']];
 					if (isset($value)) {
-						$stats[$counter]['Sum']+= $value;
+						if (!isset($stats[$counter])) {
+							$stats[$counter]= array();
+						}
+						AddValueCreateKey($stats[$counter], 'Sum', $value);
 
 						if (isset($conf['NVPs'])) {
 							foreach ($conf['NVPs'] as $name => $title) {
 								if (isset($values[$name])) {
-									$stats[$counter][$name][$values[$name]]+= $value;
+									AddValueCreateKey($stats[$counter][$name], $values[$name], $value);
 								}
 							}
 						}
@@ -2262,12 +2264,15 @@ class Model
 		foreach ($statsdefs as $stat => $conf) {
 			if (isset($conf['Needle'])) {
 				if (preg_match('/'.$conf['Needle'].'/', $line)) {
-					$stats[$stat]['Sum']+= 1;
+					if (!isset($stats[$stat])) {
+						$stats[$stat]= array();
+					}
+					AddValueCreateKey($stats[$stat], 'Sum', 1);
 
 					if (isset($conf['NVPs'])) {
 						foreach ($conf['NVPs'] as $name => $title) {
 							if (isset($values[$name])) {
-								$stats[$stat][$name][$values[$name]]+= 1;
+								AddValueCreateKey($stats[$stat][$name], $values[$name], 1);
 							}
 						}
 					}
@@ -2292,13 +2297,13 @@ class Model
 	function CollectMinuteStats($statsdefs, $min, $values, $line, &$hourstats)
 	{
 		$minstats= &$hourstats['Mins'][$min];
-		$minstats['Sum']+= 1;
+		AddValueCreateKey($minstats, 'Sum', 1);
 
 		foreach ($statsdefs as $stat => $statconf) {
 			if (isset($statconf['Counters'])) {
 				foreach ($statconf['Counters'] as $counter => $conf) {
 					if (isset($values[$conf['Field']])) {
-						$minstats[$counter]+= $values[$conf['Field']];
+						AddValueCreateKey($minstats, $counter, $values[$conf['Field']]);
 					}
 				}
 			}
@@ -2307,7 +2312,7 @@ class Model
 		foreach ($statsdefs as $stat => $conf) {
 			if (isset($conf['Needle'])) {
 				if (preg_match('/'.$conf['Needle'].'/', $line)) {
-					$minstats[$stat]+= 1;
+					AddValueCreateKey($minstats, $stat, 1);
 				}
 			}
 		}

@@ -113,6 +113,14 @@ $_SESSION[$View->Model][$Submenu]['GraphStyle']= $GraphStyle;
 
 $ViewStatsConf= $StatsConf[$View->Model];
 
+if (!isset($ViewStatsConf['Total']['SearchRegexpPrefix'])) {
+	$ViewStatsConf['Total']['SearchRegexpPrefix']= '';
+}
+if (!isset($ViewStatsConf['Total']['SearchRegexpPostfix'])) {
+	$ViewStatsConf['Total']['SearchRegexpPostfix']= '';
+}
+
+$DateStats= array();
 if ($LogFile !== FALSE && $View->Controller($Output, 'GetStats', $LogFile, json_encode($DateArray), $GraphStyle == 'Hourly' ? 'COLLECT' : '')) {
 	$Stats= json_decode($Output[0], TRUE);
 	$DateStats= $Stats['Date'];

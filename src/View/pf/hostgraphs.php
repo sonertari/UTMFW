@@ -22,6 +22,7 @@ require_once('include.php');
 
 $PnrgImgPath= '../pmacct/pnrg/spool/';
 
+$Ip= '';
 if (filter_has_var(INPUT_POST, 'IP')) {
 	$Ip= filter_input(INPUT_POST, 'IP');
 }
@@ -36,11 +37,12 @@ require_once($VIEW_PATH.'/header.php');
 				<select name="IP" onchange="document.ipform.submit()">
 				<?php
 				$View->Controller($Output, 'GetHostGraphsList', $Ip);
-				foreach ($Output as $Host) {
-					if (!isset($Ip)) {
-						$Ip= $Host;
-					}
 
+				if ($Ip == '' && count($Output)) {
+					$Ip= $Output[0];
+				}
+
+				foreach ($Output as $Host) {
 					$Selected= $Host === $Ip ? ' selected' : '';
 					?>
 					<option value="<?php echo $Host ?>"<?php echo $Selected ?>><?php echo $Host ?></option>

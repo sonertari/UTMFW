@@ -49,6 +49,14 @@ $Date= $View->FormatDate($DateArray);
 
 $ViewStatsConf= $StatsConf[$View->Model];
 
+if (!isset($ViewStatsConf['Total']['SearchRegexpPrefix'])) {
+	$ViewStatsConf['Total']['SearchRegexpPrefix']= '';
+}
+if (!isset($ViewStatsConf['Total']['SearchRegexpPostfix'])) {
+	$ViewStatsConf['Total']['SearchRegexpPostfix']= '';
+}
+
+$DateStats= array();
 if ($View->Controller($Output, 'GetStats', $LogFile, json_encode($DateArray), 'COLLECT')) {
 	$Stats= json_decode($Output[0], TRUE);
 	$DateStats= $Stats['Date'];
@@ -79,13 +87,13 @@ require_once($VIEW_PATH . '/header.php');
 PrintModalPieChart();
 
 foreach ($ViewStatsConf as $Name => $Conf) {
-	if (isset($Conf['Color'])) {
+	if (isset($Conf['Color']) && isset($DateStats[$Date]['Hours'][$Hour])) {
 		PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix'], $DateArray, $LogFile);
 	}
 }
 
 foreach ($ViewStatsConf as $Name => $CurConf) {
-	if (isset($CurConf['Counters'])) {
+	if (isset($CurConf['Counters']) && isset($DateStats[$Date]['Hours'][$Hour])) {
 		foreach ($CurConf['Counters'] as $Name => $Conf) {
 			PrintMinutesGraphNVPSet($DateStats[$Date]['Hours'][$Hour], $Name, $Conf, $GraphType, $ViewStatsConf['Total']['SearchRegexpPrefix'], $ViewStatsConf['Total']['SearchRegexpPostfix'], $DateArray, $LogFile);
 		}

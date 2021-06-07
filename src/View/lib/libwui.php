@@ -263,9 +263,9 @@ function PrintNVPsVGraph($data, $color= 'red', $title= '')
 			}
 			?>
 			<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $View->StatsPage ?>?submenu=daily" method="post">
-				<input type="hidden" name="Month" value="<?php echo $dateArray['Month'] ?>" />
-				<input type="hidden" name="Day" value="<?php echo $dateArray['Day'] ?>" />
-				<input type="hidden" name="Hour" value="<?php echo $dateArray['Hour'] ?>" />
+				<input type="hidden" name="Month" value="<?php echo isset($dateArray['Month']) ? $dateArray['Month'] : '' ?>" />
+				<input type="hidden" name="Day" value="<?php echo isset($dateArray['Day']) ? $dateArray['Day'] : '' ?>" />
+				<input type="hidden" name="Hour" value="<?php echo isset($dateArray['Hour']) ? $dateArray['Hour'] : '' ?>" />
 				<input type="hidden" name="Apply" value="Apply" />
 				<input type="hidden" name="Sender" value="Stats" />
 			</form>
@@ -369,10 +369,10 @@ function PrintVGraph($data, $color= 'red', $title= '', $page= 'general', $style=
 					<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $action ?>" method="post">
 						<input type="hidden" name="SearchRegExp" value="" />
 						<input type="hidden" name="SearchNeedle" value="<?php echo $needle ?>" />
-						<input type="hidden" name="Month" value="<?php echo $dateArray['Month'] ?>" />
-						<input type="hidden" name="Day" value="<?php echo $dateArray['Day'] ?>" />
-						<input type="hidden" name="Hour" value="<?php echo $dateArray['Hour'] ?>" />
-						<input type="hidden" name="Minute" value="<?php echo $dateArray['Minute'] ?>" />
+						<input type="hidden" name="Month" value="<?php echo isset($dateArray['Month']) ? $dateArray['Month'] : '' ?>" />
+						<input type="hidden" name="Day" value="<?php echo isset($dateArray['Day']) ? $dateArray['Day'] : '' ?>" />
+						<input type="hidden" name="Hour" value="<?php echo isset($dateArray['Hour']) ? $dateArray['Hour'] : '' ?>" />
+						<input type="hidden" name="Minute" value="<?php echo isset($dateArray['Minute']) ? $dateArray['Minute'] : '' ?>" />
 						<?php
 						if ($logFile != '') {
 							?>
@@ -464,10 +464,10 @@ function PrintHGraph($data, $color= 'red', $title= '', $page= 'general', $style=
 				<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $action ?>" method="post">
 					<input type="hidden" name="SearchRegExp" value="" />
 					<input type="hidden" name="SearchNeedle" value="<?php echo $needle ?>" />
-					<input type="hidden" name="Month" value="<?php echo $dateArray['Month'] ?>" />
-					<input type="hidden" name="Day" value="<?php echo $dateArray['Day'] ?>" />
-					<input type="hidden" name="Hour" value="<?php echo $dateArray['Hour'] ?>" />
-					<input type="hidden" name="Minute" value="<?php echo $dateArray['Minute'] ?>" />
+					<input type="hidden" name="Month" value="<?php echo isset($dateArray['Month']) ? $dateArray['Month'] : '' ?>" />
+					<input type="hidden" name="Day" value="<?php echo isset($dateArray['Day']) ? $dateArray['Day'] : '' ?>" />
+					<input type="hidden" name="Hour" value="<?php echo isset($dateArray['Hour']) ? $dateArray['Hour'] : '' ?>" />
+					<input type="hidden" name="Minute" value="<?php echo isset($dateArray['Minute']) ? $dateArray['Minute'] : '' ?>" />
 					<?php
 					if ($logFile != '') {
 						?>
@@ -590,9 +590,9 @@ function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE, $needle='', $prefix
 							<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $View->LogsPage ?>?submenu=archives" method="post">
 								<input type="hidden" name="SearchRegExp" value="<?php echo $regexp ?>" />
 								<input type="hidden" name="SearchNeedle" value="<?php echo $needle ?>" />
-								<input type="hidden" name="Month" value="<?php echo $dateArray['Month'] ?>" />
-								<input type="hidden" name="Day" value="<?php echo $dateArray['Day'] ?>" />
-								<input type="hidden" name="Hour" value="<?php echo $dateArray['Hour'] ?>" />
+								<input type="hidden" name="Month" value="<?php echo isset($dateArray['Month']) ? $dateArray['Month'] : '' ?>" />
+								<input type="hidden" name="Day" value="<?php echo isset($dateArray['Day']) ? $dateArray['Day'] : '' ?>" />
+								<input type="hidden" name="Hour" value="<?php echo isset($dateArray['Hour']) ? $dateArray['Hour'] : '' ?>" />
 								<?php
 								if ($logFile != '') {
 									?>
@@ -865,29 +865,16 @@ function FillGraphDataRange(&$data, $stats, $dateArray, $range, $parent)
 {
 	global $View;
 
-	if ($dateArray['Month'] == '') {
-		for ($m= 1; $m <= 12; $m++) {
-			$m= sprintf('%02d', $m);
-			for ($d= 1; $d <= 31; $d++) {
-				$d= sprintf('%02d', $d);
-				$dateArray['Month']= $m;
-				$dateArray['Day']= $d;
-				$date= $View->FormatDate($dateArray);
-				FillGraphData($data, $stats[$date]['Hours'], $range, $parent, 'Sum', $dateArray);
-			}
-		}
-	}
-	else if ($dateArray['Day'] == '') {
-		for ($d= 1; $d <= 31; $d++) {
-			$d= sprintf('%02d', $d);
-			$dateArray['Day']= $d;
-			$date= $View->FormatDate($dateArray);
-			FillGraphData($data, $stats[$date]['Hours'], $range, $parent, 'Sum', $dateArray);
+	if ($dateArray['Month'] == '' || $dateArray['Day'] == '') {
+		foreach ($stats as $date => $hourStats) {
+			FillGraphData($data, $hourStats['Hours'], $range, $parent, 'Sum', $dateArray);
 		}
 	}
 	else {
 		$date= $View->FormatDate($dateArray);
-		FillGraphData($data, $stats[$date]['Hours'], $range, $parent, 'Sum', $dateArray);
+		if (isset($stats[$date]['Hours'])) {
+			FillGraphData($data, $stats[$date]['Hours'], $range, $parent, 'Sum', $dateArray);
+		}
 	}
 }
 
@@ -913,10 +900,16 @@ function FillGraphData(&$data, $stats, $range, $parent, $name= '', $dateArray=ar
 		for ($hm= 0; $hm < $range; $hm++) {
 			$hm= sprintf('%02d', $hm);
 
+			if (!isset($data[$hm])) {
+				$data[$hm]= array();
+			}
+
 			/// @attention All hours and minutes should be initialized with 0,
 			/// even if there is no stats for them
 			// Such initialization is faster than any if condition
-			$data[$hm]['value']+= 0;
+			if (!isset($data[$hm]['value'])) {
+				$data[$hm]['value']= 0;
+			}
 
 			if (!isset($data[$hm]['date'])) {
 				if ($range == 24) {
@@ -955,27 +948,16 @@ function FillNVPs(&$data, $stats, $datearray, $parent, $name, $style)
 {
 	global $View;
 
-	if ($datearray['Month'] == '') {
-		for ($m= 1; $m <= 12; $m++) {
-			$m= sprintf('%02d', $m);
-			for ($d= 1; $d <= 31; $d++) {
-				$datearray['Month']= $m;
-				$datearray['Day']= sprintf('%02d', $d);
-				$date= $View->FormatDate($datearray);
-				MergeStats($data, $stats[$date], $parent, $name, $style);
-			}
-		}
-	}
-	else if ($datearray['Day'] == '') {
-		for ($d= 1; $d <= 31; $d++) {
-			$datearray['Day']= sprintf('%02d', $d);
-			$date= $View->FormatDate($datearray);
-			MergeStats($data, $stats[$date], $parent, $name, $style);
+	if ($datearray['Month'] == '' || $datearray['Day'] == '') {
+		foreach ($stats as $date => $dateStats) {
+			MergeStats($data, $dateStats, $parent, $name, $style);
 		}
 	}
 	else {
 		$date= $View->FormatDate($datearray);
-		MergeStats($data, $stats[$date], $parent, $name, $style);
+		if (isset($stats[$date])) {
+			MergeStats($data, $stats[$date], $parent, $name, $style);
+		}
 	}
 }
 
@@ -996,13 +978,18 @@ function FillNVPs(&$data, $stats, $datearray, $parent, $name, $style)
 function MergeStats(&$data, $stats, $parent, $name, $style)
 {
 	if ($style == _('Hourly')) {
-		for ($h= 0; $h < 60; $h++) {
-			$h= sprintf('%02d', $h);
-			SumData($data, $stats['Hours'][$h][$parent][$name]);
+		if (isset($stats['Hours'])) {
+			foreach ($stats['Hours'] as $h => $hourStats) {
+				if (isset($hourStats[$parent][$name])) {
+					SumData($data, $hourStats[$parent][$name]);
+				}
+			}
 		}
 	}
 	else {
-		SumData($data, $stats[$parent][$name]);
+		if (isset($stats[$parent][$name])) {
+			SumData($data, $stats[$parent][$name]);
+		}
 	}
 }
 
@@ -1011,10 +998,8 @@ function MergeStats(&$data, $stats, $parent, $name, $style)
  */
 function SumData(&$data, $stats)
 {
-	if (isset($stats)) {
-		foreach ($stats as $name => $value) {
-			$data[$name]+= $value;
-		}
+	foreach ($stats as $name => $value) {
+		AddValueCreateKey($data, $name, $value);
 	}
 }
 
