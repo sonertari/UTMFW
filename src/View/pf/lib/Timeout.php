@@ -133,7 +133,7 @@ class Timeout extends Rule
 				<?php echo _TITLE('Fragment').':' ?>
 			</td>
 			<td>
-				<input type="text" id="frag" name="frag" size="10" value="<?php echo $this->rule['timeout']['all']['frag']; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+				<input type="text" id="frag" name="frag" size="10" value="<?php echo isset($this->rule['timeout']['all']['frag']) ? $this->rule['timeout']['all']['frag'] : ''; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
 				<?php $this->editHelp('frag') ?>
 			</td>
 		</tr>
@@ -148,7 +148,7 @@ class Timeout extends Rule
 				<?php echo _TITLE('Interval').':' ?>
 			</td>
 			<td>
-				<input type="text" id="interval" name="interval" size="10" value="<?php echo $this->rule['timeout']['all']['interval']; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+				<input type="text" id="interval" name="interval" size="10" value="<?php echo isset($this->rule['timeout']['all']['interval']) ? $this->rule['timeout']['all']['interval'] : ''; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
 				<?php $this->editHelp('interval') ?>
 			</td>
 		</tr>
@@ -163,7 +163,7 @@ class Timeout extends Rule
 				<?php echo _TITLE('Source Track Timeout').':' ?>
 			</td>
 			<td>
-				<input type="text" id="src_track" name="src_track" size="10" value="<?php echo $this->rule['timeout']['all']['src.track']; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+				<input type="text" id="src_track" name="src_track" size="10" value="<?php echo isset($this->rule['timeout']['all']['src.track']) ? $this->rule['timeout']['all']['src.track'] : ''; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
 				<?php $this->editHelp('src.track') ?>
 			</td>
 		</tr>
@@ -276,7 +276,7 @@ class Timeout extends Rule
 		?>
 		<tr>
 			<td class="ifs">
-				<input type="text" size="10" id="<?php echo $timeout ?>_<?php echo $key ?>" name="<?php echo $timeout ?>_<?php echo $key ?>" value="<?php echo $this->rule['timeout'][$timeout][$key]; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+				<input type="text" size="10" id="<?php echo $timeout ?>_<?php echo $key ?>" name="<?php echo $timeout ?>_<?php echo $key ?>" value="<?php echo isset($this->rule['timeout'][$timeout][$key]) ? $this->rule['timeout'][$timeout][$key] : ''; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
 			</td>
 			<td class="optitle"><?php echo $key ?></td>
 		</tr>

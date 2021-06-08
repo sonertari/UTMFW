@@ -86,6 +86,7 @@ if ($ApplyDefaults) {
 			$LogsStartDate= $Output[0];
 		}
 
+		$Date= '';
 		if (preg_match('/^(.*)\s(\d+):\d+:\d+$/', $LogsStartDate, $match)) {
 			$Date= $match[1];
 			$Hour= $match[2];

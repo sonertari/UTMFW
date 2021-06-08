@@ -120,7 +120,7 @@ class State extends Timeout
 		$this->inputBool('pflow');
 
 		$this->inputBool('if-bound');
-		if (!$this->rule['if-bound']) {
+		if (!isset($this->rule['if-bound'])) {
 			$this->inputBool('floating');
 		}
 
@@ -171,9 +171,9 @@ class State extends Timeout
 				<?php echo _TITLE('Interface Binding').':' ?>
 			</td>
 			<td>
-				<input type="checkbox" id="if-bound" name="if-bound" value="if-bound" <?php echo ($this->rule['if-bound'] ? 'checked' : ''); ?> <?php echo (isset($this->rule['floating']) ? 'disabled' : ''); ?> />
+				<input type="checkbox" id="if-bound" name="if-bound" value="if-bound" <?php echo (isset($this->rule['if-bound']) && $this->rule['if-bound'] ? 'checked' : ''); ?> <?php echo (isset($this->rule['floating']) ? 'disabled' : ''); ?> />
 				<label for="if-bound">if-bound</label>
-				<input type="checkbox" id="floating" name="floating" value="floating" <?php echo ($this->rule['floating'] ? 'checked' : ''); ?> <?php echo (isset($this->rule['if-bound']) ? 'disabled' : ''); ?> />
+				<input type="checkbox" id="floating" name="floating" value="floating" <?php echo (isset($this->rule['floating']) && $this->rule['floating'] ? 'checked' : ''); ?> <?php echo (isset($this->rule['if-bound']) ? 'disabled' : ''); ?> />
 				<label for="floating">floating</label>
 				<?php $this->editHelp('if-binding') ?>
 			</td>
@@ -189,10 +189,10 @@ class State extends Timeout
 				<?php echo _TITLE('Overload').':' ?>
 			</td>
 			<td>
-				<input type="text" size="20" id="overload" name="overload" value="<?php echo $this->rule['overload']; ?>"  placeholder="<?php echo _CONTROL('string') ?>"/>
-				<input type="checkbox" id="flush" name="flush" value="flush" <?php echo ($this->rule['flush'] ? 'checked' : ''); ?> <?php echo (!isset($this->rule['overload']) ? 'disabled' : ''); ?> />
+				<input type="text" size="20" id="overload" name="overload" value="<?php echo isset($this->rule['overload']) ? $this->rule['overload'] : ''; ?>"  placeholder="<?php echo _CONTROL('string') ?>"/>
+				<input type="checkbox" id="flush" name="flush" value="flush" <?php echo (isset($this->rule['flush']) && $this->rule['flush'] ? 'checked' : ''); ?> <?php echo (!isset($this->rule['overload']) ? 'disabled' : ''); ?> />
 				<label for="flush">flush</label>
-				<input type="checkbox" id="global" name="global" value="global" <?php echo ($this->rule['global'] ? 'checked' : ''); ?> <?php echo (!isset($this->rule['flush']) ? 'disabled' : ''); ?> />
+				<input type="checkbox" id="global" name="global" value="global" <?php echo (isset($this->rule['global']) && $this->rule['global'] ? 'checked' : ''); ?> <?php echo (!isset($this->rule['flush']) ? 'disabled' : ''); ?> />
 				<label for="global">global</label>
 				<?php $this->editHelp('overload') ?>
 			</td>
@@ -208,11 +208,11 @@ class State extends Timeout
 				<?php echo _TITLE('Enable Source Track').':' ?>
 			</td>
 			<td>
-				<input type="checkbox" id="source-track" name="source-track" value="source-track" <?php echo ($this->rule['source-track'] ? 'checked' : ''); ?> />
+				<input type="checkbox" id="source-track" name="source-track" value="source-track" <?php echo (isset($this->rule['source-track']) && $this->rule['source-track'] ? 'checked' : ''); ?> />
 				<select id="source-track-option" name="source-track-option" <?php echo (!isset($this->rule['source-track']) ? 'disabled' : ''); ?>>
 					<option value=""></option>
-					<option value="rule" <?php echo ($this->rule['source-track-option'] == 'rule' ? 'selected' : ''); ?>>rule</option>
-					<option value="global" <?php echo ($this->rule['source-track-option'] == 'global' ? 'selected' : ''); ?>>global</option>
+					<option value="rule" <?php echo (isset($this->rule['source-track-option']) && $this->rule['source-track-option'] == 'rule' ? 'selected' : ''); ?>>rule</option>
+					<option value="global" <?php echo (isset($this->rule['source-track-option']) && $this->rule['source-track-option'] == 'global' ? 'selected' : ''); ?>>global</option>
 				</select>
 				<?php $this->editHelp('source-track') ?>
 			</td>

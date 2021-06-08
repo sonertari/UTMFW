@@ -40,15 +40,19 @@ class FilterBase extends State
 	function dispAction()
 	{
 		?>
-		<td title="<?php echo _TITLE('Action') ?>" class="<?php echo $this->rule['action']; ?>" nowrap="nowrap">
-			<?php echo $this->rule['action']; ?>
+		<td title="<?php echo _TITLE('Action') ?>" class="<?php echo isset($this->rule['action']) ? $this->rule['action'] : ''; ?>" nowrap="nowrap">
+			<?php
+			if (isset($this->rule['action'])) {
+				echo $this->rule['action'];
+			}
+			?>
 		</td>
 		<?php
 	}
 
 	function dispSrcDest()
 	{
-		if ($this->rule['all']) {
+		if (isset($this->rule['all'])) {
 			?>
 			<td title="<?php echo _TITLE('Source->Destination') ?>" colspan="4" class="all">
 				all
@@ -66,7 +70,11 @@ class FilterBase extends State
 				?>
 			</td>
 			<td title="<?php echo _TITLE('Source Port') ?>">
-				<?php $this->printHostPort($this->rule['fromport']); ?>
+				<?php
+				if (isset($this->rule['fromport'])) {
+					$this->printHostPort($this->rule['fromport']);
+				}
+				?>
 			</td>
 			<td title="<?php echo _TITLE('Destination') ?>">
 				<?php
@@ -78,7 +86,11 @@ class FilterBase extends State
 				?>
 			</td>
 			<td title="<?php echo _TITLE('Destination Port') ?>">
-				<?php $this->printHostPort($this->rule['toport']); ?>
+				<?php
+				if (isset($this->rule['toport'])) {
+					$this->printHostPort($this->rule['toport']);
+				}
+				?>
 			</td>
 			<?php
 		}
@@ -116,7 +128,7 @@ class FilterBase extends State
 		$this->inputDel('from', 'delFrom');
 		$this->inputAdd('from', 'addFrom');
 
-		if (!$this->rule['from']) {
+		if (!isset($this->rule['from'])) {
 			$this->inputKey('fromroute');
 		}
 
@@ -126,7 +138,7 @@ class FilterBase extends State
 		$this->inputDel('to', 'delTo');
 		$this->inputAdd('to', 'addTo');
 
-		if (!$this->rule['to']) {
+		if (!isset($this->rule['to'])) {
 			$this->inputKey('toroute');
 		}
 
@@ -303,8 +315,8 @@ class FilterBase extends State
 			<td>
 				<select id="direction" name="direction">
 					<option value="" label=""></option>
-					<option value="in" label="in" <?php echo ($this->rule['direction'] == 'in' ? 'selected' : ''); ?>>in</option>
-					<option value="out" label="out" <?php echo ($this->rule['direction'] == 'out' ? 'selected' : ''); ?>>out</option>
+					<option value="in" label="in" <?php echo (isset($this->rule['direction']) && $this->rule['direction'] == 'in' ? 'selected' : ''); ?>>in</option>
+					<option value="out" label="out" <?php echo (isset($this->rule['direction']) && $this->rule['direction'] == 'out' ? 'selected' : ''); ?>>out</option>
 				</select>
 				<?php $this->editHelp('direction') ?>
 			</td>
@@ -322,10 +334,12 @@ class FilterBase extends State
 			</td>
 			<td>
 				<?php
-				$this->editDeleteValueLinks($this->rule[$key], $delName);
+				if (isset($this->rule[$key])) {
+					$this->editDeleteValueLinks($this->rule[$key], $delName);
+				}
 				$this->editAddValueBox($addName, NULL, $hint, $size, $disabled || isset($this->rule[$key . 'route']));
 				?>
-				<input type="text" id="<?php echo $key . 'route' ?>" name="<?php echo $key . 'route' ?>" value="<?php echo $this->rule[$key . 'route']; ?>" size="20" placeholder="<?php echo _CONTROL('label') ?>" <?php echo $disabled || isset($this->rule[$key]) ? 'disabled' : ''; ?> />
+				<input type="text" id="<?php echo $key . 'route' ?>" name="<?php echo $key . 'route' ?>" value="<?php echo isset($this->rule[$key . 'route']) ? $this->rule[$key . 'route'] : ''; ?>" size="20" placeholder="<?php echo _CONTROL('label') ?>" <?php echo $disabled || isset($this->rule[$key]) ? 'disabled' : ''; ?> />
 				<label for="<?php echo $key . 'route' ?>">route</label>
 				<?php
 				if ($help !== FALSE) {
@@ -347,10 +361,10 @@ class FilterBase extends State
 			<td>
 				<select id="state-filter" name="state-filter">
 					<option value=""></option>
-					<option value="no" <?php echo ($this->rule['state-filter'] == 'no' ? 'selected' : ''); ?>>No State</option>
-					<option value="keep" <?php echo ($this->rule['state-filter'] == 'keep' ? 'selected' : ''); ?>>Keep State</option>
-					<option value="modulate" <?php echo ($this->rule['state-filter'] == 'modulate' ? 'selected' : ''); ?>>Modulate State</option>
-					<option value="synproxy" <?php echo ($this->rule['state-filter'] == 'synproxy' ? 'selected' : ''); ?>>Synproxy</option>
+					<option value="no" <?php echo (isset($this->rule['state-filter']) && $this->rule['state-filter'] == 'no' ? 'selected' : ''); ?>>No State</option>
+					<option value="keep" <?php echo (isset($this->rule['state-filter']) && $this->rule['state-filter'] == 'keep' ? 'selected' : ''); ?>>Keep State</option>
+					<option value="modulate" <?php echo (isset($this->rule['state-filter']) && $this->rule['state-filter'] == 'modulate' ? 'selected' : ''); ?>>Modulate State</option>
+					<option value="synproxy" <?php echo (isset($this->rule['state-filter']) && $this->rule['state-filter'] == 'synproxy' ? 'selected' : ''); ?>>Synproxy</option>
 				</select>
 				<?php $this->editHelp('state-filter') ?>
 			</td>
@@ -372,7 +386,9 @@ class FilterBase extends State
 				</td>
 				<td>
 					<?php
-					$this->editDeleteValueLinks($this->rule[$key . '-type'], $delName);
+					if (isset($this->rule[$key . '-type'])) {
+						$this->editDeleteValueLinks($this->rule[$key . '-type'], $delName);
+					}
 					?>
 					<input type="text" id="<?php echo $key; ?>-type" name="<?php echo $key; ?>-type" placeholder="<?php echo _CONTROL('number or name') ?>" />
 					<label for="<?php echo $key; ?>-type">type</label>
@@ -408,10 +424,13 @@ class FilterBase extends State
 					?>
 					<option value=""><?php echo _CONTROL('none') ?></option>
 					<?php
-					if (!is_array($this->rule['queue'])) {
-						$queuePri= $this->rule['queue'];
-					} else {
-						$queuePri= $this->rule['queue'][0];
+					$queuePri= '';
+					if (isset($this->rule['queue'])) {
+						if (!is_array($this->rule['queue'])) {
+							$queuePri= $this->rule['queue'];
+						} else {
+							$queuePri= $this->rule['queue'][0];
+						}
 					}
 					foreach ($queueNames as $queue) {
 						?>
@@ -436,7 +455,7 @@ class FilterBase extends State
 					if (isset($this->rule['queue'])) {
 						foreach ($queueNames as $queue) {
 							?>
-							<option value="<?php echo $queue; ?>" <?php echo $this->rule['queue'][1] == $queue ? 'selected' : ''; ?>><?php echo $queue; ?></option>
+							<option value="<?php echo $queue; ?>" <?php echo isset($this->rule['queue'][1]) && $this->rule['queue'][1] == $queue ? 'selected' : ''; ?>><?php echo $queue; ?></option>
 							<?php
 						}
 					}
@@ -458,9 +477,9 @@ class FilterBase extends State
 				<?php echo _TITLE('Match Tagged') . ':' ?>
 			</td>
 			<td>
-				<input type="text" id="tagged" name="tagged" value="<?php echo $this->rule['tagged']; ?>" placeholder="<?php echo _CONTROL('string') ?>" />
+				<input type="text" id="tagged" name="tagged" value="<?php echo isset($this->rule['tagged']) ? $this->rule['tagged'] : ''; ?>" placeholder="<?php echo _CONTROL('string') ?>" />
 				<?php $this->editHelp('tagged'); ?>
-				<input type="checkbox" id="not-tagged" name="not-tagged" value="not-tagged" <?php echo ($this->rule['not-tagged'] ? 'checked' : ''); ?> <?php echo (!isset($this->rule['tagged']) ? 'disabled' : ''); ?> />
+				<input type="checkbox" id="not-tagged" name="not-tagged" value="not-tagged" <?php echo (isset($this->rule['not-tagged']) ? 'checked' : ''); ?> <?php echo (!isset($this->rule['tagged']) ? 'disabled' : ''); ?> />
 				<label for="not-tagged"><?php echo _TITLE('negated') ?></label>
 			</td>
 		</tr>
@@ -475,9 +494,9 @@ class FilterBase extends State
 				<?php echo _TITLE('Received on Interface') . ':' ?>
 			</td>
 			<td>
-				<input type="text" id="received-on" name="received-on" value="<?php echo $this->rule['received-on']; ?>" size="10" placeholder="<?php echo _CONTROL('if or macro') ?>" />
+				<input type="text" id="received-on" name="received-on" value="<?php echo isset($this->rule['received-on']) ? $this->rule['received-on'] : ''; ?>" size="10" placeholder="<?php echo _CONTROL('if or macro') ?>" />
 				<?php $this->editHelp('received-on'); ?>
-				<input type="checkbox" id="not-received-on" name="not-received-on" value="not-received-on" <?php echo ($this->rule['not-received-on'] ? 'checked' : ''); ?> <?php echo (!isset($this->rule['received-on']) ? 'disabled' : ''); ?> />
+				<input type="checkbox" id="not-received-on" name="not-received-on" value="not-received-on" <?php echo (isset($this->rule['not-received-on']) ? 'checked' : ''); ?> <?php echo (!isset($this->rule['received-on']) ? 'disabled' : ''); ?> />
 				<label for="not-received-on"><?php echo _TITLE('negated') ?></label>
 			</td>
 		</tr>

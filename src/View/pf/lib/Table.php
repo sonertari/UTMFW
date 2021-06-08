@@ -48,8 +48,12 @@ class Table extends Rule
 		?>
 		<td title="<?php echo _TITLE('Values') ?>" colspan="8">
 			<?php
-			$this->printValue($this->rule['data']);
-			$this->printValue($this->rule['file'], 'file "', '"');
+			if (isset($this->rule['data'])) {
+				$this->printValue($this->rule['data']);
+			}
+			if (isset($this->rule['file'])) {
+				$this->printValue($this->rule['file'], 'file "', '"');
+			}
 			?>
 		</td>
 		<?php
@@ -94,15 +98,15 @@ class Table extends Rule
 				<?php echo _TITLE('Flags').':' ?>
 			</td>
 			<td>
-				<input type="checkbox" id="const" name="const" value="const" <?php echo $this->rule['const'] ? 'checked' : ''; ?> />
+				<input type="checkbox" id="const" name="const" value="const" <?php echo isset($this->rule['const']) ? 'checked' : ''; ?> />
 				<label for="const">const</label>
 				<?php $this->editHelp('const') ?>
 				<br>
-				<input type="checkbox" id="persist" name="persist" value="persist" <?php echo $this->rule['persist'] ? 'checked' : ''; ?> />
+				<input type="checkbox" id="persist" name="persist" value="persist" <?php echo isset($this->rule['persist']) ? 'checked' : ''; ?> />
 				<label for="persist">persist</label>
 				<?php $this->editHelp('persist') ?>
 				<br>
-				<input type="checkbox" id="counters" name="counters" value="counters" <?php echo $this->rule['counters'] ? 'checked' : ''; ?> />
+				<input type="checkbox" id="counters" name="counters" value="counters" <?php echo isset($this->rule['counters']) ? 'checked' : ''; ?> />
 				<label for="counters">counters</label>
 				<?php $this->editHelp('counters') ?>
 			</td>
@@ -119,8 +123,12 @@ class Table extends Rule
 			</td>
 			<td>
 				<?php
-				$this->editDeleteValueLinks($this->rule['data'], 'delValue');
-				$this->editDeleteValueLinks($this->rule['file'], 'delFile', 'file "', '"');
+				if (isset($this->rule['data'])) {
+					$this->editDeleteValueLinks($this->rule['data'], 'delValue');
+				}
+				if (isset($this->rule['file'])) {
+					$this->editDeleteValueLinks($this->rule['file'], 'delFile', 'file "', '"');
+				}
 				$this->editAddValueBox('addValue', _TITLE('add host or network'), _CONTROL('host or network'), 30);
 				echo '<br />';
 				$this->editAddValueBox('addFile', _TITLE('add file'), _CONTROL('filename'), 30);

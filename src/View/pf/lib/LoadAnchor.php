@@ -33,10 +33,18 @@ class LoadAnchor extends Rule
 	{
 		?>
 		<td title="<?php echo _TITLE('Anchor') ?>">
-			<?php echo $this->rule['anchor']; ?>
+			<?php
+			if (isset($this->rule['anchor'])) {
+				echo $this->rule['anchor'];
+			}
+			?>
 		</td>
 		<td title="<?php echo _TITLE('File') ?>" colspan="11">
-			<?php echo $this->rule['file']; ?>
+			<?php
+			if (isset($this->rule['file'])) {
+				echo $this->rule['file'];
+			}
+			?>
 		</td>
 		<?php
 	}

@@ -101,8 +101,8 @@ class AfTo extends Filter
 			<td>
 				<select id="rediraf" name="rediraf">
 					<option value="" label=""></option>
-					<option value="inet" label="inet" <?php echo ($this->rule['rediraf'] == 'inet' ? 'selected' : ''); ?>>inet</option>
-					<option value="inet6" label="inet6" <?php echo ($this->rule['rediraf'] == 'inet6' ? 'selected' : ''); ?>>inet6</option>
+					<option value="inet" label="inet" <?php echo (isset($this->rule['rediraf']) && $this->rule['rediraf'] == 'inet' ? 'selected' : ''); ?>>inet</option>
+					<option value="inet6" label="inet6" <?php echo (isset($this->rule['rediraf']) && $this->rule['rediraf'] == 'inet6' ? 'selected' : ''); ?>>inet6</option>
 				</select>			
 				<?php $this->editHelp('address-family') ?>
 			</td>

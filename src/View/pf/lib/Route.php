@@ -96,9 +96,9 @@ class Route extends Filter
 			</td>
 			<td>
 				<select id="type" name="type">
-					<option value="dup-to" <?php echo ($this->rule['type'] == 'dup-to' ? 'selected' : ''); ?>>dup-to</option>
-					<option value="reply-to" <?php echo ($this->rule['type'] == 'reply-to' ? 'selected' : ''); ?>>reply-to</option>
-					<option value="route-to" <?php echo ($this->rule['type'] == 'route-to' ? 'selected' : ''); ?>>route-to</option>
+					<option value="dup-to" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'dup-to' ? 'selected' : ''); ?>>dup-to</option>
+					<option value="reply-to" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'reply-to' ? 'selected' : ''); ?>>reply-to</option>
+					<option value="route-to" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'route-to' ? 'selected' : ''); ?>>route-to</option>
 				</select>
 				<?php $this->editHelp($this->rule['type']) ?>
 			</td>

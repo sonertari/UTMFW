@@ -69,7 +69,11 @@ class Anchor extends FilterBase
 	{
 		?>
 		<td title="<?php echo _TITLE('Inline rules') ?>" colspan="2" nowrap="nowrap">
-			<?php echo str_replace("\t", "<code>\t</code><code>\t</code>", nl2br(htmlentities($this->rule['inline']))); ?>
+			<?php
+			if (isset($this->rule['inline'])) {
+				echo str_replace("\t", "<code>\t</code><code>\t</code>", nl2br(htmlentities($this->rule['inline'])));
+			}
+			?>
 		</td>
 		<?php
 	}
@@ -126,7 +130,7 @@ class Anchor extends FilterBase
 				<?php echo _TITLE('Inline Rules').':' ?>
 			</td>
 			<td>
-				<textarea cols="80" rows="5" id="inline" name="inline" placeholder="<?php echo _CONTROL('Enter inline rules here') ?>"><?php echo $this->rule['inline']; ?></textarea>
+				<textarea cols="80" rows="5" id="inline" name="inline" placeholder="<?php echo _CONTROL('Enter inline rules here') ?>"><?php echo isset($this->rule['inline']) ? $this->rule['inline'] : ''; ?></textarea>
 				<?php $this->editHelp('inline') ?>
 			</td>
 		</tr>

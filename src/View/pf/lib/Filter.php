@@ -117,9 +117,9 @@ class Filter extends FilterBase
 			</td>
 			<td>
 				<select id="action" name="action">
-					<option label="pass" <?php echo $this->rule['action'] == 'pass' ? 'selected' : ''; ?>>pass</option>
-					<option label="match" <?php echo $this->rule['action'] == 'match' ? 'selected' : ''; ?>>match</option>
-					<option label="block" <?php echo $this->rule['action'] == 'block' ? 'selected' : ''; ?>>block</option>
+					<option label="pass" <?php echo isset($this->rule['action']) && $this->rule['action'] == 'pass' ? 'selected' : ''; ?>>pass</option>
+					<option label="match" <?php echo isset($this->rule['action']) && $this->rule['action'] == 'match' ? 'selected' : ''; ?>>match</option>
+					<option label="block" <?php echo isset($this->rule['action']) && $this->rule['action'] == 'block' ? 'selected' : ''; ?>>block</option>
 				</select>
 				<?php
 				$this->editHelp($this->rule['action']);
@@ -142,17 +142,17 @@ class Filter extends FilterBase
 			<td>
 				<select id="blockoption" name="blockoption">
 					<option value=""></option>
-					<option value="drop" <?php echo ($this->rule['blockoption'] == 'drop' ? 'selected' : ''); ?>>drop</option>
-					<option value="return" <?php echo ($this->rule['blockoption'] == 'return' ? 'selected' : ''); ?>>return</option>
-					<option value="return-rst" <?php echo ($this->rule['blockoption'] == 'return-rst' ? 'selected' : ''); ?>>return-rst</option>
-					<option value="return-icmp" <?php echo ($this->rule['blockoption'] == 'return-icmp' ? 'selected' : ''); ?>>return-icmp</option>
-					<option value="return-icmp6" <?php echo ($this->rule['blockoption'] == 'return-icmp6' ? 'selected' : ''); ?>>return-icmp6</option>
+					<option value="drop" <?php echo (isset($this->rule['blockoption']) && $this->rule['blockoption'] == 'drop' ? 'selected' : ''); ?>>drop</option>
+					<option value="return" <?php echo (isset($this->rule['blockoption']) && $this->rule['blockoption'] == 'return' ? 'selected' : ''); ?>>return</option>
+					<option value="return-rst" <?php echo (isset($this->rule['blockoption']) && $this->rule['blockoption'] == 'return-rst' ? 'selected' : ''); ?>>return-rst</option>
+					<option value="return-icmp" <?php echo (isset($this->rule['blockoption']) && $this->rule['blockoption'] == 'return-icmp' ? 'selected' : ''); ?>>return-icmp</option>
+					<option value="return-icmp6" <?php echo (isset($this->rule['blockoption']) && $this->rule['blockoption'] == 'return-icmp6' ? 'selected' : ''); ?>>return-icmp6</option>
 				</select>
-				<input type="text" name="block-ttl" id="block-ttl" value="<?php echo $this->rule['block-ttl']; ?>" size="20" placeholder="<?php echo _CONTROL('number') ?>" <?php echo $this->rule['blockoption'] == 'return-rst' ? '' : 'disabled' ?> />
+				<input type="text" name="block-ttl" id="block-ttl" value="<?php echo isset($this->rule['block-ttl']) ? $this->rule['block-ttl'] : ''; ?>" size="20" placeholder="<?php echo _CONTROL('number') ?>" <?php echo isset($this->rule['blockoption']) && $this->rule['blockoption'] == 'return-rst' ? '' : 'disabled' ?> />
 				<label for="block-ttl">ttl</label>
-				<input type="text" name="block-icmpcode" id="block-icmpcode" value="<?php echo $this->rule['block-icmpcode']; ?>" size="20" placeholder="<?php echo _CONTROL('number or abbrev.') ?>" <?php echo $this->rule['blockoption'] == 'return-icmp' ? '' : 'disabled' ?> />
+				<input type="text" name="block-icmpcode" id="block-icmpcode" value="<?php echo isset($this->rule['block-icmpcode']) ? $this->rule['block-icmpcode'] : ''; ?>" size="20" placeholder="<?php echo _CONTROL('number or abbrev.') ?>" <?php echo isset($this->rule['blockoption']) && $this->rule['blockoption'] == 'return-icmp' ? '' : 'disabled' ?> />
 				<label for="block-icmpcode">icmpcode</label>
-				<input type="text" name="block-icmp6code" id="block-icmp6code" value="<?php echo $this->rule['block-icmp6code']; ?>" size="20" placeholder="<?php echo _CONTROL('number or abbrev.') ?>" <?php echo (isset($this->rule['block-icmpcode']) && $this->rule['blockoption'] == 'return-icmp') || $this->rule['blockoption'] == 'return-icmp6' ? '' : 'disabled' ?> />
+				<input type="text" name="block-icmp6code" id="block-icmp6code" value="<?php echo isset($this->rule['block-icmp6code']) ? $this->rule['block-icmp6code'] : ''; ?>" size="20" placeholder="<?php echo _CONTROL('number or abbrev.') ?>" <?php echo isset($this->rule['blockoption']) && ((isset($this->rule['block-icmpcode']) && $this->rule['blockoption'] == 'return-icmp') || $this->rule['blockoption'] == 'return-icmp6') ? '' : 'disabled' ?> />
 				<label for="block-icmp6code">icmp6code</label>
 				<?php $this->editHelp('block') ?>
 			</td>
@@ -169,11 +169,13 @@ class Filter extends FilterBase
 			</td>
 			<td>
 				<?php
-				$this->editDeleteValueLinks($this->rule['interface'], 'delInterface');
+				if (isset($this->rule['interface'])) {
+					$this->editDeleteValueLinks($this->rule['interface'], 'delInterface');
+				}
 				$this->editAddValueBox('addInterface', NULL, _CONTROL('if or macro'), 10, isset($this->rule['rdomain']));
 				$this->editHelp('interface');
 				?>
-				<input type="text" name="rdomain" id="rdomain" value="<?php echo $this->rule['rdomain']; ?>" size="10" placeholder="<?php echo _CONTROL('number') ?>" <?php echo isset($this->rule['interface']) ? 'disabled' : '' ?> />
+				<input type="text" name="rdomain" id="rdomain" value="<?php echo isset($this->rule['rdomain']) ? $this->rule['rdomain'] : ''; ?>" size="10" placeholder="<?php echo _CONTROL('number') ?>" <?php echo isset($this->rule['interface']) ? 'disabled' : '' ?> />
 				<label for="rdomain">routing domain</label>
 				<?php $this->editHelp('rdomain') ?>
 			</td>
@@ -189,24 +191,24 @@ class Filter extends FilterBase
 				<?php echo _TITLE('Redirect Options').':' ?>
 			</td>
 			<td>
-				<input type="checkbox" id="bitmask" name="bitmask" <?php echo ($this->rule['least-states'] || $this->rule['random'] || $this->rule['round-robin'] || $this->rule['source-hash'] ? 'disabled' : ''); ?> value="bitmask" <?php echo ($this->rule['bitmask'] ? 'checked' : ''); ?> />
+				<input type="checkbox" id="bitmask" name="bitmask" <?php echo (isset($this->rule['least-states']) || isset($this->rule['random']) || isset($this->rule['round-robin']) || isset($this->rule['source-hash']) ? 'disabled' : ''); ?> value="bitmask" <?php echo (isset($this->rule['bitmask']) && $this->rule['bitmask'] ? 'checked' : ''); ?> />
 				<label for="bitmask">bitmask</label>
 				<br>
-				<input type="checkbox" id="least-states" name="least-states" <?php echo ($this->rule['bitmask'] || $this->rule['random'] || $this->rule['round-robin'] || $this->rule['source-hash'] ? 'disabled' : ''); ?> value="least-states" <?php echo ($this->rule['least-states'] ? 'checked' : ''); ?> />
+				<input type="checkbox" id="least-states" name="least-states" <?php echo (isset($this->rule['bitmask']) || isset($this->rule['random']) || isset($this->rule['round-robin']) || isset($this->rule['source-hash']) ? 'disabled' : ''); ?> value="least-states" <?php echo (isset($this->rule['least-states']) && $this->rule['least-states'] ? 'checked' : ''); ?> />
 				<label for="least-states">least-states</label>
 				<br>
-				<input type="checkbox" id="random" name="random" <?php echo ($this->rule['bitmask'] || $this->rule['least-states'] || $this->rule['round-robin'] || $this->rule['source-hash'] ? 'disabled' : ''); ?> value="random" <?php echo ($this->rule['random'] ? 'checked' : ''); ?> />
+				<input type="checkbox" id="random" name="random" <?php echo (isset($this->rule['bitmask']) || isset($this->rule['least-states']) || isset($this->rule['round-robin']) || isset($this->rule['source-hash']) ? 'disabled' : ''); ?> value="random" <?php echo (isset($this->rule['random']) && $this->rule['random'] ? 'checked' : ''); ?> />
 				<label for="random">random</label>
 				<br>
-				<input type="checkbox" id="round-robin" name="round-robin" <?php echo ($this->rule['bitmask'] || $this->rule['least-states'] || $this->rule['random'] || $this->rule['source-hash'] ? 'disabled' : ''); ?> value="round-robin" <?php echo ($this->rule['round-robin'] ? 'checked' : ''); ?> />
+				<input type="checkbox" id="round-robin" name="round-robin" <?php echo (isset($this->rule['bitmask']) || isset($this->rule['least-states']) || isset($this->rule['random']) || isset($this->rule['source-hash']) ? 'disabled' : ''); ?> value="round-robin" <?php echo (isset($this->rule['round-robin']) && $this->rule['round-robin'] ? 'checked' : ''); ?> />
 				<label for="round-robin">round-robin</label>
 				<br>
-				<input type="checkbox" id="source-hash" name="source-hash" <?php echo ($this->rule['bitmask'] || $this->rule['least-states'] || $this->rule['random'] || $this->rule['round-robin'] ? 'disabled' : ''); ?> value="source-hash" <?php echo ($this->rule['source-hash'] ? 'checked' : ''); ?> />
+				<input type="checkbox" id="source-hash" name="source-hash" <?php echo (isset($this->rule['bitmask']) || isset($this->rule['least-states']) || isset($this->rule['random']) || isset($this->rule['round-robin']) ? 'disabled' : ''); ?> value="source-hash" <?php echo (isset($this->rule['source-hash']) && $this->rule['source-hash'] ? 'checked' : ''); ?> />
 				<label for="source-hash">source-hash</label>
-				<input type="text" id="source-hash-key" name="source-hash-key" <?php echo ($this->rule['source-hash'] ? '' : 'disabled'); ?> value="<?php echo $this->rule['source-hash-key']; ?>" size="32" />
+				<input type="text" id="source-hash-key" name="source-hash-key" <?php echo (isset($this->rule['source-hash']) ? '' : 'disabled'); ?> value="<?php echo isset($this->rule['source-hash-key']) ? $this->rule['source-hash-key'] : ''; ?>" size="32" />
 				<label for="source-hash-key">key</label>
 				<br>
-				<input type="checkbox" id="sticky-address" name="sticky-address" <?php echo ($this->rule['bitmask'] || $this->rule['least-states'] || $this->rule['random'] || $this->rule['round-robin'] || $this->rule['source-hash'] ? '' : 'disabled'); ?> value="sticky-address" <?php echo ($this->rule['sticky-address'] ? 'checked' : ''); ?> />
+				<input type="checkbox" id="sticky-address" name="sticky-address" <?php echo (isset($this->rule['bitmask']) || isset($this->rule['least-states']) || isset($this->rule['random']) || isset($this->rule['round-robin']) || isset($this->rule['source-hash']) ? '' : 'disabled'); ?> value="sticky-address" <?php echo (isset($this->rule['sticky-address']) && $this->rule['sticky-address'] ? 'checked' : ''); ?> />
 				<label for="sticky-address">sticky-address</label>
 				<?php $this->editHelp('rdr-method') ?>
 			</td>

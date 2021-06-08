@@ -41,7 +41,7 @@ class Scrub extends Filter
 	{
 		?>
 		<td title="<?php echo _TITLE('Options') ?>">
-			<?php echo ($this->rule['no-df'] ? 'no-df<br>' : '') . ($this->rule['random-id'] ? 'random-id<br>' : '') . ($this->rule['reassemble'] ? 'reassemble ' . $this->rule['reassemble'] . '<br>' : ''); ?>
+			<?php echo (isset($this->rule['no-df']) ? 'no-df<br>' : '') . (isset($this->rule['random-id']) ? 'random-id<br>' : '') . (isset($this->rule['reassemble']) ? 'reassemble ' . $this->rule['reassemble'] . '<br>' : ''); ?>
 		</td>
 		<?php
 	}
@@ -100,15 +100,15 @@ class Scrub extends Filter
 				<?php echo _TITLE('Scrub Options').':' ?>
 			</td>
 			<td>
-				<input type="checkbox" id="no-df" name="no-df" value="no-df" <?php echo ($this->rule['no-df'] ? 'checked' : '')?> />
+				<input type="checkbox" id="no-df" name="no-df" value="no-df" <?php echo (isset($this->rule['no-df']) ? 'checked' : '')?> />
 				<label for="no-df">no-df</label>
 				<?php $this->editHelp('no-df') ?>
 				<br>
-				<input type="checkbox" id="random-id" name="random-id" value="random-id" <?php echo ($this->rule['random-id'] ? 'checked' : '')?> />
+				<input type="checkbox" id="random-id" name="random-id" value="random-id" <?php echo (isset($this->rule['random-id']) ? 'checked' : '')?> />
 				<label for="random-id">random-id</label>
 				<?php $this->editHelp('random-id') ?>
 				<br>
-				<input type="checkbox" id="reassemble" name="reassemble" value="tcp" <?php echo ($this->rule['reassemble'] == 'tcp' ? 'checked' : '')?> />
+				<input type="checkbox" id="reassemble" name="reassemble" value="tcp" <?php echo (isset($this->rule['reassemble']) && $this->rule['reassemble'] == 'tcp' ? 'checked' : '')?> />
 				<label for="reassemble">reassemble tcp</label>
 				<?php $this->editHelp('reassemble-tcp') ?>
 			</td>

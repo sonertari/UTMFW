@@ -80,7 +80,7 @@ class Limit extends Rule
 				<?php echo _TITLE('States').':' ?>
 			</td>
 			<td>
-				<input type="text" size="10" id="states" name="states" value="<?php echo $this->rule['limit']['states']; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+				<input type="text" size="10" id="states" name="states" value="<?php echo isset($this->rule['limit']['states']) ? $this->rule['limit']['states'] : ''; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
 				<?php $this->editHelp('states') ?>
 			</td>
 		</tr>
@@ -89,7 +89,7 @@ class Limit extends Rule
 				<?php echo _TITLE('Frags').':' ?>
 			</td>
 			<td>
-				<input type="text" size="10" id="frags" name="frags" value="<?php echo $this->rule['limit']['frags']; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+				<input type="text" size="10" id="frags" name="frags" value="<?php echo isset($this->rule['limit']['frags']) ? $this->rule['limit']['frags'] : ''; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
 				<?php $this->editHelp('frags') ?>
 			</td>
 		</tr>
@@ -98,7 +98,7 @@ class Limit extends Rule
 				<?php echo _TITLE('Src Nodes').':' ?>
 			</td>
 			<td>
-				<input type="text" size="10" id="srcnodes" name="src-nodes" value="<?php echo $this->rule['limit']['src-nodes']; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+				<input type="text" size="10" id="srcnodes" name="src-nodes" value="<?php echo isset($this->rule['limit']['src-nodes']) ? $this->rule['limit']['src-nodes'] : ''; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
 				<?php $this->editHelp('src-nodes') ?>
 			</td>
 		</tr>
@@ -107,7 +107,7 @@ class Limit extends Rule
 				<?php echo _TITLE('Tables').':' ?>
 			</td>
 			<td>
-				<input type="text" size="10" id="tables" name="tables" value="<?php echo $this->rule['limit']['tables']; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+				<input type="text" size="10" id="tables" name="tables" value="<?php echo isset($this->rule['limit']['tables']) ? $this->rule['limit']['tables'] : ''; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
 				<?php $this->editHelp('tables') ?>
 			</td>
 		</tr>
@@ -116,7 +116,7 @@ class Limit extends Rule
 				<?php echo _TITLE('Table Entries').':' ?>
 			</td>
 			<td>
-				<input type="text" size="10" id="table-entries" name="table-entries" value="<?php echo $this->rule['limit']['table-entries']; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+				<input type="text" size="10" id="table-entries" name="table-entries" value="<?php echo isset($this->rule['limit']['table-entries']) ? $this->rule['limit']['table-entries'] : ''; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
 				<?php $this->editHelp('table-entries') ?>
 			</td>
 		</tr>

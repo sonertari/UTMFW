@@ -44,6 +44,7 @@ if (filter_has_var(INPUT_POST, 'forcedisplay')) {
 }
 
 $StrRules= array();
+$generated= FALSE;
 if ($testResult || $force) {
 	$generated= $View->Controller($StrRules, 'GeneratePfRules', json_encode($View->RuleSet->rules), $printNumbers, $force);
 }

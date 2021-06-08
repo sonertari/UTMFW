@@ -126,17 +126,17 @@ class Option extends Rule
 			</td>
 			<td>
 				<select id="type" name="type">
-					<option value="block-policy" <?php echo ($this->rule['type'] == 'block-policy' ? 'selected' : ''); ?>>block-policy</option>
-					<option value="optimization" <?php echo ($this->rule['type'] == 'optimization' ? 'selected' : ''); ?>>optimization</option>
-					<option value="ruleset-optimization" <?php echo ($this->rule['type'] == 'ruleset-optimization' ? 'selected' : ''); ?>>ruleset-optimization</option>
-					<option value="state-policy" <?php echo ($this->rule['type'] == 'state-policy' ? 'selected' : ''); ?>>state-policy</option>
-					<option value="fingerprints" <?php echo ($this->rule['type'] == 'fingerprints' ? 'selected' : ''); ?>>fingerprints</option>
-					<option value="hostid" <?php echo ($this->rule['type'] == 'hostid' ? 'selected' : ''); ?>>hostid</option>
-					<option value="loginterface" <?php echo ($this->rule['type'] == 'loginterface' ? 'selected' : ''); ?>>loginterface</option>
-					<option value="debug" <?php echo ($this->rule['type'] == 'debug' ? 'selected' : ''); ?>>debug</option>
-					<option value="skip" <?php echo ($this->rule['type'] == 'skip' ? 'selected' : ''); ?>>skip</option>
-					<option value="reassemble" <?php echo ($this->rule['type'] == 'reassemble' ? 'selected' : ''); ?>>reassemble</option>
-					<option value="syncookies" <?php echo ($this->rule['type'] == 'syncookies' ? 'selected' : ''); ?>>syncookies</option>
+					<option value="block-policy" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'block-policy' ? 'selected' : ''); ?>>block-policy</option>
+					<option value="optimization" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'optimization' ? 'selected' : ''); ?>>optimization</option>
+					<option value="ruleset-optimization" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'ruleset-optimization' ? 'selected' : ''); ?>>ruleset-optimization</option>
+					<option value="state-policy" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'state-policy' ? 'selected' : ''); ?>>state-policy</option>
+					<option value="fingerprints" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'fingerprints' ? 'selected' : ''); ?>>fingerprints</option>
+					<option value="hostid" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'hostid' ? 'selected' : ''); ?>>hostid</option>
+					<option value="loginterface" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'loginterface' ? 'selected' : ''); ?>>loginterface</option>
+					<option value="debug" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'debug' ? 'selected' : ''); ?>>debug</option>
+					<option value="skip" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'skip' ? 'selected' : ''); ?>>skip</option>
+					<option value="reassemble" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'reassemble' ? 'selected' : ''); ?>>reassemble</option>
+					<option value="syncookies" <?php echo (isset($this->rule['type']) && $this->rule['type'] == 'syncookies' ? 'selected' : ''); ?>>syncookies</option>
 				</select>
 			</td>
 		</tr>
@@ -153,8 +153,8 @@ class Option extends Rule
 				</td>
 				<td>
 					<select id="block-policy" name="block-policy">
-						<option value="drop" label="drop" <?php echo ($this->rule['block-policy'] == 'drop' ? 'selected' : ''); ?>>drop</option>
-						<option value="return" label="return" <?php echo ($this->rule['block-policy'] == 'return' ? 'selected' : ''); ?>>return</option>
+						<option value="drop" label="drop" <?php echo (isset($this->rule['block-policy']) && $this->rule['block-policy'] == 'drop' ? 'selected' : ''); ?>>drop</option>
+						<option value="return" label="return" <?php echo (isset($this->rule['block-policy']) && $this->rule['block-policy'] == 'return' ? 'selected' : ''); ?>>return</option>
 					</select>
 					<?php $this->editHelp('block-policy') ?>
 				</td>
@@ -173,11 +173,11 @@ class Option extends Rule
 				</td>
 				<td>
 					<select id="optimization" name="optimization">
-						<option value="normal" <?php echo ($this->rule['optimization'] == 'normal' ? 'selected' : ''); ?>>normal</option>
-						<option value="high-latency" <?php echo ($this->rule['optimization'] == 'high-latency' ? 'selected' : ''); ?>>high-latency</option>
-						<option value="satellite" <?php echo ($this->rule['optimization'] == 'satellite' ? 'selected' : ''); ?>>satellite</option>
-						<option value="aggressive" <?php echo ($this->rule['optimization'] == 'aggressive' ? 'selected' : ''); ?>>aggressive</option>
-						<option value="conservative" <?php echo ($this->rule['optimization'] == 'conservative' ? 'selected' : ''); ?>>conservative</option>
+						<option value="normal" <?php echo (isset($this->rule['optimization']) && $this->rule['optimization'] == 'normal' ? 'selected' : ''); ?>>normal</option>
+						<option value="high-latency" <?php echo (isset($this->rule['optimization']) && $this->rule['optimization'] == 'high-latency' ? 'selected' : ''); ?>>high-latency</option>
+						<option value="satellite" <?php echo (isset($this->rule['optimization']) && $this->rule['optimization'] == 'satellite' ? 'selected' : ''); ?>>satellite</option>
+						<option value="aggressive" <?php echo (isset($this->rule['optimization']) && $this->rule['optimization'] == 'aggressive' ? 'selected' : ''); ?>>aggressive</option>
+						<option value="conservative" <?php echo (isset($this->rule['optimization']) && $this->rule['optimization'] == 'conservative' ? 'selected' : ''); ?>>conservative</option>
 					</select>
 					<?php $this->editHelp('optimization') ?>
 				</td>
@@ -196,9 +196,9 @@ class Option extends Rule
 				</td>
 				<td>
 					<select id="ruleset-optimization" name="ruleset-optimization">
-						<option value="none" <?php echo ($this->rule['ruleset-optimization'] == 'none' ? 'selected' : ''); ?>>none</option>
-						<option value="basic" <?php echo ($this->rule['ruleset-optimization'] == 'basic' ? 'selected' : ''); ?>>basic</option>
-						<option value="profile" <?php echo ($this->rule['ruleset-optimization'] == 'profile' ? 'selected' : ''); ?>>profile</option>
+						<option value="none" <?php echo (isset($this->rule['ruleset-optimization']) && $this->rule['ruleset-optimization'] == 'none' ? 'selected' : ''); ?>>none</option>
+						<option value="basic" <?php echo (isset($this->rule['ruleset-optimization']) && $this->rule['ruleset-optimization'] == 'basic' ? 'selected' : ''); ?>>basic</option>
+						<option value="profile" <?php echo (isset($this->rule['ruleset-optimization']) && $this->rule['ruleset-optimization'] == 'profile' ? 'selected' : ''); ?>>profile</option>
 					</select>
 					<?php $this->editHelp('ruleset-optimization') ?>
 				</td>
@@ -217,8 +217,8 @@ class Option extends Rule
 				</td>
 				<td>
 					<select id="state-policy" name="state-policy">
-						<option value="if-bound" <?php echo ($this->rule['state-policy'] == 'if-bound' ? 'selected' : ''); ?>>if-bound</option>
-						<option value="floating" <?php echo ($this->rule['state-policy'] == 'floating' ? 'selected' : ''); ?>>floating</option>
+						<option value="if-bound" <?php echo (isset($this->rule['state-policy']) && $this->rule['state-policy'] == 'if-bound' ? 'selected' : ''); ?>>if-bound</option>
+						<option value="floating" <?php echo (isset($this->rule['state-policy']) && $this->rule['state-policy'] == 'floating' ? 'selected' : ''); ?>>floating</option>
 					</select>
 					<?php $this->editHelp('state-policy') ?>
 				</td>
@@ -236,7 +236,7 @@ class Option extends Rule
 					<?php echo _TITLE('Fingerprints File').':' ?>
 				</td>
 				<td>
-					<input type="text" size="50" id="fingerprints" name="fingerprints" value="<?php echo $this->rule['fingerprints']; ?>" placeholder="<?php echo _CONTROL('filename') ?>"/>
+					<input type="text" size="50" id="fingerprints" name="fingerprints" value="<?php echo isset($this->rule['fingerprints']) ? $this->rule['fingerprints'] : ''; ?>" placeholder="<?php echo _CONTROL('filename') ?>"/>
 					<?php $this->editHelp('fingerprints') ?>
 				</td>
 			</tr>
@@ -253,7 +253,7 @@ class Option extends Rule
 					<?php echo _TITLE('Host Id').':' ?>
 				</td>
 				<td>
-					<input type="text" size="20" id="hostid" name="hostid" value="<?php echo $this->rule['hostid']; ?>"  placeholder="<?php echo _CONTROL('number') ?>"/>
+					<input type="text" size="20" id="hostid" name="hostid" value="<?php echo isset($this->rule['hostid']) ? $this->rule['hostid'] : ''; ?>"  placeholder="<?php echo _CONTROL('number') ?>"/>
 					<?php $this->editHelp('hostid') ?>
 				</td>
 			</tr>
@@ -270,7 +270,7 @@ class Option extends Rule
 					<?php echo _TITLE('Log Interface').':' ?>
 				</td>
 				<td>
-					<input type="text" size="10" id="loginterface" name="loginterface" value="<?php echo $this->rule['loginterface']; ?>"  placeholder="<?php echo _CONTROL('interface') ?>"/>
+					<input type="text" size="10" id="loginterface" name="loginterface" value="<?php echo isset($this->rule['loginterface']) ? $this->rule['loginterface'] : ''; ?>"  placeholder="<?php echo _CONTROL('interface') ?>"/>
 					<?php $this->editHelp('loginterface') ?>
 				</td>
 			</tr>
@@ -288,14 +288,14 @@ class Option extends Rule
 				</td>
 				<td>
 					<select id="debug" name="debug">
-						<option value="emerg" <?php echo ($this->rule['debug'] == 'emerg' ? 'selected' : ''); ?>>emerg</option>
-						<option value="alert" <?php echo ($this->rule['debug'] == 'alert' ? 'selected' : ''); ?>>alert</option>
-						<option value="crit" <?php echo ($this->rule['debug'] == 'crit' ? 'selected' : ''); ?>>crit</option>
-						<option value="err" <?php echo ($this->rule['debug'] == 'err' ? 'selected' : ''); ?>>err</option>
-						<option value="warning" <?php echo ($this->rule['debug'] == 'warning' ? 'selected' : ''); ?>>warning</option>
-						<option value="notice" <?php echo ($this->rule['debug'] == 'notice' ? 'selected' : ''); ?>>notice</option>
-						<option value="info" <?php echo ($this->rule['debug'] == 'info' ? 'selected' : ''); ?>>info</option>
-						<option value="debug" <?php echo ($this->rule['debug'] == 'debug' ? 'selected' : ''); ?>>debug</option>
+						<option value="emerg" <?php echo (isset($this->rule['debug']) && $this->rule['debug'] == 'emerg' ? 'selected' : ''); ?>>emerg</option>
+						<option value="alert" <?php echo (isset($this->rule['debug']) && $this->rule['debug'] == 'alert' ? 'selected' : ''); ?>>alert</option>
+						<option value="crit" <?php echo (isset($this->rule['debug']) && $this->rule['debug'] == 'crit' ? 'selected' : ''); ?>>crit</option>
+						<option value="err" <?php echo (isset($this->rule['debug']) && $this->rule['debug'] == 'err' ? 'selected' : ''); ?>>err</option>
+						<option value="warning" <?php echo (isset($this->rule['debug']) && $this->rule['debug'] == 'warning' ? 'selected' : ''); ?>>warning</option>
+						<option value="notice" <?php echo (isset($this->rule['debug']) && $this->rule['debug'] == 'notice' ? 'selected' : ''); ?>>notice</option>
+						<option value="info" <?php echo (isset($this->rule['debug']) && $this->rule['debug'] == 'info' ? 'selected' : ''); ?>>info</option>
+						<option value="debug" <?php echo (isset($this->rule['debug']) && $this->rule['debug'] == 'debug' ? 'selected' : ''); ?>>debug</option>
 					</select>
 					<?php $this->editHelp('debug') ?>
 				</td>
@@ -314,7 +314,9 @@ class Option extends Rule
 				</td>
 				<td>
 					<?php
-					$this->editDeleteValueLinks($this->rule['skip'], 'delSkip');
+					if (isset($this->rule['skip'])) {
+						$this->editDeleteValueLinks($this->rule['skip'], 'delSkip');
+					}
 					$this->editAddValueBox('addSkip', NULL, _CONTROL('if or macro'), 40);
 					$this->editHelp('skip');
 					?>
@@ -334,11 +336,11 @@ class Option extends Rule
 				</td>
 				<td>
 					<select id="reassemble" name="reassemble">
-						<option value="yes" <?php echo ($this->rule['reassemble'] == 'yes' ? 'selected' : ''); ?>><?php echo _CONTROL('yes') ?></option>
-						<option value="no" <?php echo ($this->rule['reassemble'] == 'no' ? 'selected' : ''); ?>><?php echo _CONTROL('no') ?></option>
+						<option value="yes" <?php echo (isset($this->rule['reassemble']) && $this->rule['reassemble'] == 'yes' ? 'selected' : ''); ?>><?php echo _CONTROL('yes') ?></option>
+						<option value="no" <?php echo (isset($this->rule['reassemble']) && $this->rule['reassemble'] == 'no' ? 'selected' : ''); ?>><?php echo _CONTROL('no') ?></option>
 					</select>
 					<?php $this->editHelp('reassemble') ?>
-					<input type="checkbox" id="no-df" name="no-df" value="no-df" <?php echo ($this->rule['no-df'] ? 'checked' : ''); ?> />
+					<input type="checkbox" id="no-df" name="no-df" value="no-df" <?php echo (isset($this->rule['no-df']) && $this->rule['no-df'] ? 'checked' : ''); ?> />
 					<label for="no-df">no-df</label>
 				</td>
 			</tr>
@@ -356,13 +358,13 @@ class Option extends Rule
 				</td>
 				<td>
 					<select id="syncookies" name="syncookies">
-						<option value="never" <?php echo ($this->rule['syncookies'] == 'never' ? 'selected' : ''); ?>><?php echo _CONTROL('never') ?></option>
-						<option value="always" <?php echo ($this->rule['syncookies'] == 'always' ? 'selected' : ''); ?>><?php echo _CONTROL('always') ?></option>
-						<option value="adaptive" <?php echo ($this->rule['syncookies'] == 'adaptive' ? 'selected' : ''); ?>><?php echo _CONTROL('adaptive') ?></option>
+						<option value="never" <?php echo (isset($this->rule['syncookies']) && $this->rule['syncookies'] == 'never' ? 'selected' : ''); ?>><?php echo _CONTROL('never') ?></option>
+						<option value="always" <?php echo (isset($this->rule['syncookies']) && $this->rule['syncookies'] == 'always' ? 'selected' : ''); ?>><?php echo _CONTROL('always') ?></option>
+						<option value="adaptive" <?php echo (isset($this->rule['syncookies']) && $this->rule['syncookies'] == 'adaptive' ? 'selected' : ''); ?>><?php echo _CONTROL('adaptive') ?></option>
 					</select>
-					<input type="text" id="start" name="start" value="<?php echo $this->rule['start']; ?>" size="10" placeholder="<?php echo _CONTROL('number%') ?>" <?php echo $this->rule['syncookies'] !== 'adaptive' ? 'disabled' : ''; ?> />
+					<input type="text" id="start" name="start" value="<?php echo isset($this->rule['start']) ? $this->rule['start'] : ''; ?>" size="10" placeholder="<?php echo _CONTROL('number%') ?>" <?php echo isset($this->rule['syncookies']) && $this->rule['syncookies'] !== 'adaptive' ? 'disabled' : ''; ?> />
 					<label for="start">start</label>
-					<input type="text" id="end" name="end" value="<?php echo $this->rule['end']; ?>" size="10" placeholder="<?php echo _CONTROL('number%') ?>" <?php echo $this->rule['syncookies'] !== 'adaptive' ? 'disabled' : ''; ?> />
+					<input type="text" id="end" name="end" value="<?php echo isset($this->rule['end']) ? $this->rule['end'] : ''; ?>" size="10" placeholder="<?php echo _CONTROL('number%') ?>" <?php echo isset($this->rule['syncookies']) && $this->rule['syncookies'] !== 'adaptive' ? 'disabled' : ''; ?> />
 					<label for="end">end</label>
 					<?php $this->editHelp('syncookies') ?>
 				</td>

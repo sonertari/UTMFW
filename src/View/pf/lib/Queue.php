@@ -42,7 +42,7 @@ class Queue extends Rule
 	{
 		?>
 		<td title="<?php echo $title; ?>" colspan="<?php echo $colspan; ?>">
-			<?php echo $this->rule[$key] . ($this->rule["$pre-burst"] ? '<br>burst: ' . $this->rule["$pre-burst"] : '') . ($this->rule["$pre-time"] ? '<br>time: ' . $this->rule["$pre-time"] : ''); ?>
+			<?php echo (isset($this->rule[$key]) ? $this->rule[$key] : '') . (isset($this->rule["$pre-burst"]) ? '<br>burst: ' . $this->rule["$pre-burst"] : '') . (isset($this->rule["$pre-time"]) ? '<br>time: ' . $this->rule["$pre-time"] : ''); ?>
 		</td>
 		<?php
 	}
@@ -103,20 +103,20 @@ class Queue extends Rule
 				<table style="width: auto;">
 					<tr>
 						<td class="ifs">
-							<input type="text" id="<?php echo $key ?>" name="<?php echo $key ?>" size="15" value="<?php echo $this->rule[$key]; ?>" placeholder="<?php echo _CONTROL('number[(K|M|G)]') ?>" />
+							<input type="text" id="<?php echo $key ?>" name="<?php echo $key ?>" size="15" value="<?php echo isset($this->rule[$key]) ? $this->rule[$key] : ''; ?>" placeholder="<?php echo _CONTROL('number[(K|M|G)]') ?>" />
 						</td>
 						<td class="optitle"><?php echo $key ?><?php $this->editHelp('bandwidth') ?></td>
 					</tr>
 					<tr>
 						<td class="ifs">
-							<input type="text" id="<?php echo $pre ?>-burst" name="<?php echo $pre ?>-burst" size="15" value="<?php echo $this->rule["$pre-burst"]; ?>"
+							<input type="text" id="<?php echo $pre ?>-burst" name="<?php echo $pre ?>-burst" size="15" value="<?php echo isset($this->rule["$pre-burst"]) ? $this->rule["$pre-burst"] : ''; ?>"
 								   placeholder="<?php echo _CONTROL('number[(K|M|G)]') ?>" <?php echo isset($this->rule[$key]) ? '' : 'disabled'; ?> />
 						</td>
 						<td class="optitle">burst</td>
 					</tr>
 					<tr>
 						<td class="ifs">
-							<input type="text" id="<?php echo $pre ?>-time" name="<?php echo $pre ?>-time" size="15" value="<?php echo $this->rule["$pre-time"]; ?>"
+							<input type="text" id="<?php echo $pre ?>-time" name="<?php echo $pre ?>-time" size="15" value="<?php echo isset($this->rule["$pre-time"]) ? $this->rule["$pre-time"] : ''; ?>"
 								   placeholder="<?php echo _CONTROL('number(ms)') ?>" <?php echo isset($this->rule[$key]) ? '' : 'disabled'; ?> />
 						</td>
 						<td class="optitle">time</td>
