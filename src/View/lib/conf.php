@@ -213,6 +213,8 @@ if (isset($PRINT_CONFOPT_FORM) && $PRINT_CONFOPT_FORM) {
 		$Class= $Row++ % 2 == 0 ? 'evenline' : 'oddline';
 		if (isset($CustomFuncParam)) {
 			$CustomFunc($CustomFuncParam);
+		} else {
+			$CustomFunc();
 		}
 	}
 
