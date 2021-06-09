@@ -225,7 +225,7 @@ class Option extends Rule
 		if (isset($this->rule['syncookies'])) {
 			$this->genOption('syncookies');
 			if ($this->rule['syncookies'] === 'adaptive') {
-				$this->str.= ' (start ' . $this->rule['start'] . ', end ' . $this->rule['end'] . ')';
+				$this->str.= ' (start ' . (isset($this->rule['start']) ? $this->rule['start'] : '') . ', end ' . (isset($this->rule['end']) ? $this->rule['end'] : '') . ')';
 			}
 		}
 	}

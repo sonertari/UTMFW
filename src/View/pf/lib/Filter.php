@@ -122,12 +122,14 @@ class Filter extends FilterBase
 					<option label="block" <?php echo isset($this->rule['action']) && $this->rule['action'] == 'block' ? 'selected' : ''; ?>>block</option>
 				</select>
 				<?php
-				$this->editHelp($this->rule['action']);
+				if (isset($this->rule['action'])) {
+					$this->editHelp($this->rule['action']);
+				}
 				?>
 			</td>
 		</tr>
 		<?php
-		if ($this->rule['action'] == 'block') {
+		if (isset($this->rule['action']) && $this->rule['action'] == 'block') {
 			$this->editBlockOption();
 		}
 	}

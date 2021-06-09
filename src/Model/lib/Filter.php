@@ -272,9 +272,11 @@ class Filter extends FilterBase
 
 	function genAction()
 	{
-		$this->str= $this->rule['action'];
-		if ($this->rule['action'] == 'block') {
-			$this->genBlockOption();
+		if (isset($this->rule['action'])) {
+			$this->str= $this->rule['action'];
+			if ($this->rule['action'] == 'block') {
+				$this->genBlockOption();
+			}
 		}
 	}
 

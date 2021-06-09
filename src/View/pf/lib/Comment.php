@@ -36,14 +36,21 @@ class Comment extends Rule
 	 */
 	function countLines()
 	{
-		return count(explode("\n", $this->rule['comment'])) - 1;
+		if (isset($this->rule['comment'])) {
+			return count(explode("\n", $this->rule['comment'])) - 1;
+		}
+		return 0;
 	}
 
 	function dispComment()
 	{
 		?>
 		<td class="comment" colspan="13">
-			<?php echo nl2br(htmlentities(stripslashes($this->rule['comment']))); ?>
+			<?php
+			if (isset($this->rule['comment'])) {
+				echo nl2br(htmlentities(stripslashes($this->rule['comment'])));
+			}
+			?>
 		</td>
 		<?php
 	}
@@ -88,7 +95,7 @@ class Comment extends Rule
 				<label for="forcesave"><?php echo _CONTROL('Save with errors') ?></label>
 				<input type="hidden" name="state" value="<?php echo $action ?>" />
 			</div>
-			<textarea cols="80" rows="5" id="comment" name="comment" placeholder="<?php echo _CONTROL('Enter comment here') ?>"><?php echo stripslashes($this->rule['comment']); ?></textarea>
+			<textarea cols="80" rows="5" id="comment" name="comment" placeholder="<?php echo _CONTROL('Enter comment here') ?>"><?php echo isset($this->rule['comment']) ? stripslashes($this->rule['comment']) : ''; ?></textarea>
 		</form>
 		<?php
 	}

@@ -443,7 +443,7 @@ class RuleSet
 	{
 		$queues= array();
 		foreach ($this->rules as $ruleObj) {
-			if  ($ruleObj->cat == 'Queue') {
+			if  ($ruleObj->cat == 'Queue' && isset($ruleObj->rule['name'])) {
 				$queues[]= $ruleObj->rule['name'];
 			}
 		}

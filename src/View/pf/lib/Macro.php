@@ -34,7 +34,11 @@ class Macro extends Rule
 		$this->dispValue('identifier', _TITLE('Id'));
 		?>
 		<td title="<?php echo _TITLE('Value') ?>" colspan="11">
-			<?php $this->printValue($this->rule['value']); ?>
+			<?php
+			if (isset($this->rule['value'])) {
+				$this->printValue($this->rule['value']);
+			}
+			?>
 		</td>
 		<?php
 	}

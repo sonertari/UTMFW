@@ -35,7 +35,7 @@ class Limit extends Rule
 		<td title="<?php echo _TITLE('Limit') ?>" colspan="12">
 			<?php
 			$this->arr= array();
-			if (count($this->rule['limit'])) {
+			if (isset($this->rule['limit']) && count($this->rule['limit'])) {
 				reset($this->rule['limit']);
 				foreach ($this->rule['limit'] as $key => $val) {
 					$this->arr[]= "$key: $val";

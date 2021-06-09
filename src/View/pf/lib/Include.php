@@ -36,7 +36,11 @@ class _Include extends Rule
 			<?php echo 'include' ?>
 		</td>
 		<td title="<?php echo _TITLE('File') ?>" colspan="11">
-			<?php echo $this->rule['file'] ?>
+			<?php
+			if (isset($this->rule['file'])) {
+				echo $this->rule['file'];
+			}
+			?>
 		</td>
 		<?php
 	}

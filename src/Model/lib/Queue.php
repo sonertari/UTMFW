@@ -159,7 +159,7 @@ class Queue extends Rule
 
 	function generate()
 	{
-		$this->str= 'queue ' . $this->rule['name'];
+		$this->str= 'queue ' . (isset($this->rule['name']) ? $this->rule['name'] : '');
 		$this->genInterface();
 		$this->genValue('parent', 'parent ');
 		$this->genBandwidth('bandwidth', 'bw');

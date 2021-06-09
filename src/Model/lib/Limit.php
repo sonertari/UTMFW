@@ -98,7 +98,7 @@ class Limit extends Rule
 	{
 		$this->str= '';
 
-		if (count($this->rule['limit'])) {
+		if (isset($this->rule['limit']) && count($this->rule['limit'])) {
 			reset($this->rule['limit']);
 
 			if (count($this->rule['limit']) == 1) {

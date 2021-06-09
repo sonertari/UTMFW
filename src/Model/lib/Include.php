@@ -62,7 +62,7 @@ class _Include extends Rule
 
 	function generate()
 	{
-		$this->str= 'include "' . $this->rule['file'] . '"';
+		$this->str= 'include "' . (isset($this->rule['file']) ? $this->rule['file'] : '') . '"';
 
 		$this->genComment();
 		$this->str.= "\n";

@@ -38,7 +38,11 @@ class Table extends Rule
 	{
 		?>
 		<td title="Id">
-			<?php echo htmlentities($this->rule['identifier']); ?>
+			<?php
+			if (isset($this->rule['identifier'])) {
+				echo htmlentities($this->rule['identifier']);
+			}
+			?>
 		</td>
 		<?php
 	}

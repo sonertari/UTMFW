@@ -222,7 +222,7 @@ class Timeout extends Rule
 	 */
 	function genTimeout()
 	{
-		if (count($this->rule['timeout'])) {
+		if (isset($this->rule['timeout']) && count($this->rule['timeout'])) {
 			$this->arr= array();
 
 			$this->genTimeoutOpts();
@@ -247,7 +247,7 @@ class Timeout extends Rule
 	 */
 	function genTimeoutOpts()
 	{
-		if (count($this->rule['timeout'])) {
+		if (isset($this->rule['timeout']) && count($this->rule['timeout'])) {
 			reset($this->rule['timeout']);
 
 			if (count($this->rule['timeout']) == 1 && count(array_values($this->rule['timeout'][key($this->rule['timeout'])])) == 1) {

@@ -55,7 +55,11 @@ class Anchor extends FilterBase
 	{
 		?>
 		<td title="<?php echo _TITLE('Id') ?>" nowrap="nowrap">
-			<?php echo $this->rule['identifier']; ?>
+			<?php
+			if (isset($this->rule['identifier'])) {
+				echo $this->rule['identifier'];
+			}
+			?>
 		</td>
 		<?php
 	}

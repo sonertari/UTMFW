@@ -77,7 +77,10 @@ class Blank extends Rule
 	{
 		global $ruleCategoryNames;
 
-		$count= count(explode("\n", $this->rule['blank'])) - 1;
+		$count= 0;
+		if (isset($this->rule['blank'])) {
+			$count= count(explode("\n", $this->rule['blank'])) - 1;
+		}
 
 		$ruleType= $ruleCategoryNames[$this->ref];
 		$editHeader= _TITLE('Edit <RULE_TYPE> Rule <RULE_NUMBER>');
@@ -95,7 +98,7 @@ class Blank extends Rule
 				<input type="hidden" name="state" value="<?php echo $action ?>" />
 			</div>
 			<?php echo _TITLE('Number of lines') . ': ' . $count; ?><br>
-			<textarea cols="80" rows="5" id="blank" name="blank" placeholder="<?php echo _CONTROL('Enter blank lines here') ?>"><?php echo $this->rule['blank']; ?></textarea>
+			<textarea cols="80" rows="5" id="blank" name="blank" placeholder="<?php echo _CONTROL('Enter blank lines here') ?>"><?php echo isset($this->rule['blank']) ? $this->rule['blank'] : ''; ?></textarea>
 		</form>
 		<?php
 	}

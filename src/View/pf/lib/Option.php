@@ -34,24 +34,26 @@ class Option extends Rule
 		?>
 		<td title="<?php echo _TITLE('Option') ?>" colspan="12">
 			<?php
-			$value= $this->rule[$this->rule['type']];
-			if (in_array($this->rule['type'], array('loginterface', 'optimization', 'ruleset-optimization', 'block-policy', 'state-policy', 'debug', 'fingerprints', 'hostid'))) {
-				echo $this->rule['type'] . ": $value";
-			} elseif ($this->rule['type'] == 'skip') {
-				if (!is_array($value)) {
-					echo "skip on $value";
-				} else {
-					echo 'skip on ' . implode(', ', $value);
-				}
-			} elseif ($this->rule['type'] == 'reassemble') {
-				echo $this->rule['type'] . ": $value";
-				if (isset($this->rule['no-df'])) {
-					echo ' no-df';
-				}
-			} elseif ($this->rule['type'] == 'syncookies') {
-				echo $this->rule['type'] . ": $value";
-				if ($value === 'adaptive') {
-					echo ' (start ' . $this->rule['start'] . ', end ' . $this->rule['end'] . ')';
+			if (isset($this->rule['type'])) {
+				$value= isset($this->rule[$this->rule['type']]) ? $this->rule[$this->rule['type']] : '';
+				if (in_array($this->rule['type'], array('loginterface', 'optimization', 'ruleset-optimization', 'block-policy', 'state-policy', 'debug', 'fingerprints', 'hostid'))) {
+					echo $this->rule['type'] . ": $value";
+				} elseif ($this->rule['type'] == 'skip') {
+					if (!is_array($value)) {
+						echo "skip on $value";
+					} else {
+						echo 'skip on ' . implode(', ', $value);
+					}
+				} elseif ($this->rule['type'] == 'reassemble') {
+					echo $this->rule['type'] . ": $value";
+					if (isset($this->rule['no-df'])) {
+						echo ' no-df';
+					}
+				} elseif ($this->rule['type'] == 'syncookies') {
+					echo $this->rule['type'] . ": $value";
+					if ($value === 'adaptive') {
+						echo ' (start ' . (isset($this->rule['start']) ? $this->rule['start'] : '') . ', end ' . (isset($this->rule['end']) ? $this->rule['end'] : '') . ')';
+					}
 				}
 			}
 			?>
@@ -145,7 +147,7 @@ class Option extends Rule
 
 	function editBlockPolicy()
 	{
-		if ($this->rule['type'] == 'block-policy') {
+		if (isset($this->rule['type']) && $this->rule['type'] == 'block-policy') {
 			?>
 			<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 				<td class="title">
@@ -165,7 +167,7 @@ class Option extends Rule
 
 	function editOptimization()
 	{
-		if ($this->rule['type'] == 'optimization') {
+		if (isset($this->rule['type']) && $this->rule['type'] == 'optimization') {
 			?>
 			<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 				<td class="title">
@@ -188,7 +190,7 @@ class Option extends Rule
 
 	function editRulesetOptimization()
 	{
-		if ($this->rule['type'] == 'ruleset-optimization') {
+		if (isset($this->rule['type']) && $this->rule['type'] == 'ruleset-optimization') {
 			?>
 			<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 				<td class="title">
@@ -209,7 +211,7 @@ class Option extends Rule
 
 	function editStatePolicy()
 	{
-		if ($this->rule['type'] == 'state-policy') {
+		if (isset($this->rule['type']) && $this->rule['type'] == 'state-policy') {
 			?>
 			<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 				<td class="title">
@@ -229,7 +231,7 @@ class Option extends Rule
 
 	function editFingerprints()
 	{
-		if ($this->rule['type'] == 'fingerprints') {
+		if (isset($this->rule['type']) && $this->rule['type'] == 'fingerprints') {
 			?>
 			<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 				<td class="title">
@@ -246,7 +248,7 @@ class Option extends Rule
 
 	function editHostid()
 	{
-		if ($this->rule['type'] == 'hostid') {
+		if (isset($this->rule['type']) && $this->rule['type'] == 'hostid') {
 			?>
 			<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 				<td class="title">
@@ -263,7 +265,7 @@ class Option extends Rule
 
 	function editLogInterface()
 	{
-		if ($this->rule['type'] == 'loginterface') {
+		if (isset($this->rule['type']) && $this->rule['type'] == 'loginterface') {
 			?>
 			<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 				<td class="title">
@@ -280,7 +282,7 @@ class Option extends Rule
 
 	function editDebug()
 	{
-		if ($this->rule['type'] == 'debug') {
+		if (isset($this->rule['type']) && $this->rule['type'] == 'debug') {
 			?>
 			<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 				<td class="title">
@@ -306,7 +308,7 @@ class Option extends Rule
 
 	function editSkip()
 	{
-		if ($this->rule['type'] == 'skip') {
+		if (isset($this->rule['type']) && $this->rule['type'] == 'skip') {
 			?>
 			<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 				<td class="title">
@@ -328,7 +330,7 @@ class Option extends Rule
 
 	function editReassemble()
 	{
-		if ($this->rule['type'] == 'reassemble') {
+		if (isset($this->rule['type']) && $this->rule['type'] == 'reassemble') {
 			?>
 			<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 				<td class="title">
@@ -350,7 +352,7 @@ class Option extends Rule
 
 	function editSyncookies()
 	{
-		if ($this->rule['type'] == 'syncookies') {
+		if (isset($this->rule['type']) && $this->rule['type'] == 'syncookies') {
 			?>
 			<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 				<td class="title">

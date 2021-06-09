@@ -44,7 +44,7 @@ class Timeout extends Rule
 
 	function dispTimeoutOpts()
 	{
-		if (count($this->rule['timeout'])) {
+		if (isset($this->rule['timeout']) && count($this->rule['timeout'])) {
 			reset($this->rule['timeout']);
 			foreach ($this->rule['timeout'] as $timeout => $kvps) {
 				$timeout= $timeout == 'all' ? '' : "$timeout.";
