@@ -2558,22 +2558,6 @@ class Model
 	}
 	
 	/**
-	 * Extracts IP address assigned to an interface.
-	 *
-	 * @param string $if Interface name.
-	 * @return mixed IP of the interface or FALSE.
-	 */
-	function GetIpAddr($if)
-	{
-		global $Re_Ip;
-
-		if (file_exists($this->confDir."hostname.$if")) {
-			return $this->SearchFile($this->confDir."hostname.$if", "/^\h*inet\h*($Re_Ip)\h*$Re_Ip\b.*$/m");
-		}
-		return FALSE;
-	}
-
-	/**
 	 * Sends HUP to the module pid.
 	 */
 	function Reload()

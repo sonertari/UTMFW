@@ -181,7 +181,7 @@ class Snortips extends Model
 		if ($list == 'whitelist') {
 			$ifs= explode("\n", $this->_getPhyIfs());
 			foreach ($ifs as $if) {
-				if ($ifip= $this->GetIpAddr($if)) {
+				if ($ifip= $this->getIpAddr($if)) {
 					$systemips[]= $ifip;
 				}
 			}
@@ -200,6 +200,22 @@ class Snortips extends Model
 			}
 		}
 		return $retval;
+	}
+
+	/**
+	 * Extracts IP address assigned to an interface.
+	 *
+	 * @param string $if Interface name.
+	 * @return mixed IP of the interface or FALSE.
+	 */
+	function getIpAddr($if)
+	{
+		global $Re_Ip;
+
+		if (file_exists("/etc/hostname.$if")) {
+			return $this->SearchFile("/etc/hostname.$if", "/^\h*inet\h*($Re_Ip)\h*$Re_Ip\b.*$/m");
+		}
+		return FALSE;
 	}
 
 	/**
