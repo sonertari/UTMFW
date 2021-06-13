@@ -592,9 +592,8 @@ class View
 	{
 		global $LogConf;
 
-		$logstr= isset($LogConf[$this->Model]['HighlightLogs']['Col']) ?
-			$cols[$LogConf[$this->Model]['HighlightLogs']['Col']] :
-			implode(' ', $cols);
+		$logstr= isset($LogConf[$this->Model]['HighlightLogs']['Col']) && isset($cols[$LogConf[$this->Model]['HighlightLogs']['Col']]) ?
+			$cols[$LogConf[$this->Model]['HighlightLogs']['Col']] : implode(' ', $cols);
 
 		$class= $this->getLogLineClass($logstr, $cols);
 		PrintLogCols($linenum, $cols, $lastlinenum, $class);

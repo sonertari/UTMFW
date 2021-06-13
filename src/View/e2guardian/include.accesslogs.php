@@ -58,6 +58,7 @@ class E2guardianlogs extends View
 	function FormatLogCols(&$cols)
 	{
 		$link= $cols['Link'];
+		$linkbase= '';
 		if (preg_match('?^(http(|s)://[^/]*)?', $cols['Link'], $match)) {
 			$linkbase= $match[1];
 		}
