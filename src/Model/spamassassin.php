@@ -247,6 +247,8 @@ class Spamassassin extends Model
 	}
 }
 
+define('SpamAssassinIPNET', '(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})|(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,2})|(\d{1,3}\.\d{1,3}\.\d{1,3}\.)');
+
 $ModelConfig = array(
     'rewrite_header Subject' => array(
 		),
@@ -254,7 +256,7 @@ $ModelConfig = array(
         'type' => UINT_0_2,
 		),
     'trusted_networks' => array(
-        'type' => IP,
+        'type' => SpamAssassinIPNET,
 		),
     'lock_method' => array(
 		),
