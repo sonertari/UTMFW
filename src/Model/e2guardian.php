@@ -377,6 +377,7 @@ class E2guardian extends Model
 
 	function DisableExt($file, $ext)
 	{
+		/// @todo Handle multiple entries with the same name
 		$ext= Escape($ext, './');
 		return $this->ReplaceRegexp($file, "/^(\h*$ext(\h*$this->COMC.*|\h*))$/m", $this->COMC.'${1}');
 	}
@@ -391,6 +392,7 @@ class E2guardian extends Model
 
 	function EnableExt($file, $ext)
 	{
+		/// @todo Handle multiple entries with the same name
 		$ext= Escape($ext, './');
 		return $this->ReplaceRegexp($file, "/^\h*$this->COMC(\h*$ext(\h*$this->COMC.*|\h*))$/m", '${1}');
 	}
@@ -526,6 +528,8 @@ class E2guardian extends Model
 
 	/**
 	 * Gets the list of extensions.
+	 *
+	 * @todo Handle multiple entries with the same name
 	 *
 	 * @param string $file Config file pathname.
 	 * @return string List of extensions.
