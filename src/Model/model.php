@@ -2501,7 +2501,8 @@ class Model
 	 */
 	function EnableNVP($file, $name, $type)
 	{
-		return $this->ReplaceRegexp($file, "/^\h*$this->COMC(\s*$name\b\s*$this->NVPS\s*$type)$/m", '${1}');
+		/// @attention Value may be empty, so we allow for empty values with the re ($type|), while enabling
+		return $this->ReplaceRegexp($file, "/^\h*$this->COMC(\s*$name\b\s*$this->NVPS\s*($type|))$/m", '${1}');
 	}
 
 	/**
@@ -2517,7 +2518,8 @@ class Model
 	 */
 	function DisableNVP($file, $name, $type)
 	{
-		return $this->ReplaceRegexp($file, "/^(\h*$name\b\s*$this->NVPS\s*$type)$/m", $this->COMC.'${1}');
+		/// @attention Value may be empty, so we allow for empty values with the re ($type|), while disabling
+		return $this->ReplaceRegexp($file, "/^(\h*$name\b\s*$this->NVPS\s*($type|))$/m", $this->COMC.'${1}');
 	}
 
 	/**
