@@ -72,7 +72,7 @@ class Spamd extends Model
 		/// @attention Always start spamlogd, do not check $retval, spamd may take some time to start
 		// spamlogd_flags="-i em1"
 		if (($if= $this->GetNVP($this->rcConfLocal, 'spamlogd_flags', 0, '"')) === FALSE) {
-			if (($if= $this->GetDisabledNVP($this->rcConfLocal, 'spamlogd_flags', '"')) === FALSE) {
+			if (($if= $this->GetDisabledNVP($this->rcConfLocal, 'spamlogd_flags', 0, '"')) === FALSE) {
 				return FALSE;
 			}
 		}

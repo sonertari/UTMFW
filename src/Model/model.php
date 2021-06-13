@@ -2387,11 +2387,12 @@ class Model
 	 * @param string $file Config file
 	 * @param string $name Name of NVP
 	 * @param int $set There may be multiple parentheses in $re, which one to return
+	 * @param string $trimchars If given, these chars are trimmed on the left or right.
 	 * @return string Value of commented NVP or NULL on failure
 	 */
-	function GetDisabledNVP($file, $name, $set= 0)
+	function GetDisabledNVP($file, $name, $set= 0, $trimchars= '')
 	{
-		return $this->SearchFile($file, "/^\h*$this->COMC\h*$name\b\h*$this->NVPS\h*([^$this->COMC'\"\n]*|'[^'\n]*'|\"[^\"\n]*\"|[^$this->COMC\n]*)(\h*|\h*$this->COMC.*)$/m", $set);
+		return $this->SearchFile($file, "/^\h*$this->COMC\h*$name\b\h*$this->NVPS\h*([^$this->COMC'\"\n]*|'[^'\n]*'|\"[^\"\n]*\"|[^$this->COMC\n]*)(\h*|\h*$this->COMC.*)$/m", $set, $trimchars);
 	}
 
 	/**
