@@ -39,8 +39,8 @@ class Model
 	public $StartCmd= '';
 
 	/// Max number of iterations to try while starting or stopping processes.
-	const PROC_STAT_TIMEOUT= 100;
-	const PROC_STAT_SLEEP_TIME= .3;
+	const PROC_STAT_TIMEOUT= 30;
+	const PROC_STAT_SLEEP_TIME= 1;
 	
 	/**
 	 * Argument lists and descriptions of commands.
