@@ -583,6 +583,8 @@ function ValidateCommand($ArgV, $Locale, $View, $Command, $validateargs, &$Model
 {
 	global $Models, $LOCALES, $VIEW_PATH;
 
+	$valid= FALSE;
+
 	if (!class_exists($Models[$View])) {
 		Error(_('View not in Models').": $View");
 		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "View not in Models: $View");
