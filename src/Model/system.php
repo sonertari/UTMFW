@@ -628,9 +628,13 @@ class System extends Model
 
 		if ($generate_info) {
 			$uptime= $this->RunShellCommand('/usr/bin/uptime');
-			preg_match('/up (.*), (\d+) user.*/', $uptime, $match);
-			$status['info']['uptime']= $match[1];
-			$status['info']['users']= $match[2];
+			if (preg_match('/up (.*), (\d+) user.*/', $uptime, $match)) {
+				$status['info']['uptime']= $match[1];
+				$status['info']['users']= $match[2];
+			} else {
+				$status['info']['uptime']= '';
+				$status['info']['users']= '';
+			}
 
 			/// @attention Don't call $this->_getPartitions() instead, it needs an explode()
 			exec('/bin/df -h | /usr/bin/egrep "^\/dev"', $parts);
