@@ -195,6 +195,7 @@ $ModelConfig = array(
     'spool_leave_on' => array(
 		),
     'log_helo' => array(
+        'type' => STR_yes_no,
 		),
     'log_mail_from' => array(
 		),
