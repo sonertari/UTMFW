@@ -85,17 +85,15 @@ class Openvpn extends View
 	{
 		global $ViewConfigName, $ClientConfig, $ServerConfig;
 
-		if (isset($file)) {
-			$_SESSION[$this->Model][basename($_SERVER['PHP_SELF'])]['ConfFile']= $file;
-			
-			if ($this->Controller($output, 'IsClientConf', $file)) {
-				$this->Config= $ClientConfig;
-			}
-			else {
-				$this->Config= $ServerConfig;
-			}
-			$ViewConfigName= $file;
+		$_SESSION[$this->Model][basename($_SERVER['PHP_SELF'])]['ConfFile']= $file;
+
+		if ($this->Controller($output, 'IsClientConf', $file)) {
+			$this->Config= $ClientConfig;
 		}
+		else {
+			$this->Config= $ServerConfig;
+		}
+		$ViewConfigName= $file;
 	}
 
 	/**
