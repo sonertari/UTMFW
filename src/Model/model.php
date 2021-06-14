@@ -1496,8 +1496,11 @@ class Model
 		if (!preg_match('/.*\.gz$/', $file)) {
 			$logline= $this->GetFileFirstLine($file);
 			
-			$this->ParseLogLine($logline, $cols);
-			return $cols['Date'].' '.$cols['Time'];
+			if ($this->ParseLogLine($logline, $cols)) {
+				return $cols['Date'].' '.$cols['Time'];
+			} else {
+				return _('Unknown');
+			}
 		}
 		return _('Compressed');
 	}
