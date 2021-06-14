@@ -23,7 +23,7 @@
  */
 
 /// Project version.
-define('VERSION', '6.9');
+define('VERSION', '6.9.1');
 
 $ROOT= dirname(dirname(dirname(__FILE__)));
 $SRC_ROOT= dirname(dirname(__FILE__));

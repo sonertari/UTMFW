@@ -1,11 +1,10 @@
-From sonertari@gmail.com Mon May 31 06:09:00 EET 2021
+From sonertari@gmail.com Mon Jun 14 06:09:01 EET 2021
 Return-Path: root
-Date: May 31 06:09:00 EET 2021
+Date: Jun 14 06:09:01 EET 2021
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 6.9!
+Subject: Welcome to UTMFW 6.9.1!
 
-Highlights of this release are:
-- OpenBSD 6.9-stable
-- PHP 8.0.3
+This release fixes various issues in the WUI source code, the PHP 8 
+compatibility and in general.
 
