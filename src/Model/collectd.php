@@ -65,7 +65,7 @@ class Collectd extends Monitoring
 	}
 
 	/**
-	 * Kills collectd with the -KILL signal.
+	 * Kills collectd with the KILL signal, if the parent Stop() call fails.
 	 *
 	 * If a ping target is not reachable, we have to kill collectd passing 
 	 * the -KILL signal.
@@ -74,7 +74,12 @@ class Collectd extends Monitoring
 	 */
 	function Stop()
 	{
-		return $this->Pkill($this->Proc, '-KILL');
+		$killed= parent::Stop();
+		if (!$killed) {
+			ctlr_syslog(LOG_INFO, __FILE__, __FUNCTION__, __LINE__, "Pkill $this->Proc with KILL signal");
+			$killed= $this->Pkill($this->Proc, '-KILL');
+		}
+		return $killed;
 	}
 
 	function _getModuleStatus($generate_info= FALSE, $start= 0)
