@@ -71,6 +71,13 @@ if (count($_POST)) {
 						if ($View->Controller($Output, 'AddUser', $User, sha1($Password), filter_input(INPUT_POST, 'UserName'))) {
 							PrintHelpWindow(_NOTICE('User added').': '.$User);
 							wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "User added: $User");
+
+							// XXX
+							$View->Model= 'e2guardian';
+							if (!$View->Controller($output, 'SetUserFilterGrp', $User, '1')) {
+								wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed adding e2guardian network user $User to first group");
+							}
+							$View->Model= 'system';
 						}
 						else {
 							wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "User add failed: $User");
