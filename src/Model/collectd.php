@@ -64,6 +64,19 @@ class Collectd extends Monitoring
 		return Output(explode(',', $this->RunShellCommand($this->VersionCmd.' | /usr/bin/head -21 | /usr/bin/tail -1'))[0]);
 	}
 
+	/**
+	 * Kills collectd with the -KILL signal.
+	 *
+	 * If a ping target is not reachable, we have to kill collectd passing 
+	 * the -KILL signal.
+	 *
+	 * @return bool TRUE on success, FALSE on fail.
+	 */
+	function Stop()
+	{
+		return $this->Pkill($this->Proc, '-KILL');
+	}
+
 	function _getModuleStatus($generate_info= FALSE, $start= 0)
 	{
 		$status= parent::_getModuleStatus($generate_info, $start);

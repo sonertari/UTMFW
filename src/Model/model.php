@@ -482,13 +482,14 @@ class Model
 	 * @todo Actually should stop retrying on error?
 	 *
 	 * @param string $proc Process name
+	 * @param string $args Args to pass to pkill, e.g. signal name or number
 	 * @return bool TRUE on success, FALSE on fail.
 	 */
-	function Pkill($proc)
+	function Pkill($proc, $args='')
 	{
 		global $TmpFile;
 		
-		$cmd= '/usr/bin/pkill -x '.$proc;
+		$cmd= "/usr/bin/pkill $args -x $proc";
 		
 		$count= 0;
 		while ($count++ < self::PROC_STAT_TIMEOUT) {
