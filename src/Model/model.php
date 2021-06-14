@@ -1929,24 +1929,25 @@ class Model
 
 				foreach ($lines as $line) {
 					unset($values);
-					$this->ParseLogLine($line, $values);
-	 				// Post-processing modifies link and/or datetime values.
-					$this->PostProcessCols($values);
+					if ($this->ParseLogLine($line, $values)) {
+						// Post-processing modifies link and/or datetime values.
+						$this->PostProcessCols($values);
 
-					$this->CollectDayStats($statsdefs, $values, $line, $stats);
+						$this->CollectDayStats($statsdefs, $values, $line, $stats);
 
-					$briefstatsdefs= $statsdefs['Total']['BriefStats'];
+						$briefstatsdefs= $statsdefs['Total']['BriefStats'];
 
-					if (isset($briefstatsdefs)) {
-						if (!isset($briefstatsdefs['Date'])) {
-							// Always collect Date field
-							$briefstatsdefs['Date'] = _('Requests by date');
-						}
+						if (isset($briefstatsdefs)) {
+							if (!isset($briefstatsdefs['Date'])) {
+								// Always collect Date field
+								$briefstatsdefs['Date'] = _('Requests by date');
+							}
 
-						// Collect the fields listed under BriefStats
-						foreach ($briefstatsdefs as $name => $title) {
-							if (isset($values[$name])) {
-								AddValueCreateKey($briefstats[$name], $values[$name], 1);
+							// Collect the fields listed under BriefStats
+							foreach ($briefstatsdefs as $name => $title) {
+								if (isset($values[$name])) {
+									AddValueCreateKey($briefstats[$name], $values[$name], 1);
+								}
 							}
 						}
 					}
