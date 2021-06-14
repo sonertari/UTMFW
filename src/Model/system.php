@@ -937,7 +937,7 @@ class System extends Model
 		global $TmpFile;
 		
 		// First make sure there are no running rdate processes.
-		$this->Pkill('rdate');
+		$this->Pkill('rdate', '-KILL');
 		$this->RunShellCommand("/usr/sbin/rdate -p $timeserver > $TmpFile 2>&1 &");
 		return TRUE;
 	}
@@ -952,7 +952,7 @@ class System extends Model
 		global $TmpFile;
 
 		// First make sure there are no running rdate processes.
-		$this->Pkill('rdate');
+		$this->Pkill('rdate', '-KILL');
 		/// @todo All such networking calls should run on a separate thread, similar to pfctl tests.
 		// Note that this command runs on the background.
 		$this->RunShellCommand("/usr/sbin/rdate $timeserver > $TmpFile 2>&1 &");
