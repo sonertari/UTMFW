@@ -159,12 +159,12 @@ require_once($VIEW_PATH.'/header.php');
 			}
 		
 			$IfConfigured= '';
+			$IfType= $IfIp= $IfMask= $IfBc= $IfOpt= $IfLladdr= $IfIp2= $IfMask2= $IfBc2= '';
 			if ($View->Controller($Output, 'GetIfConfig', $If)) {
-				list($IfType, $IfIp, $IfMask, $IfBc, $IfOpt)= json_decode($Output[0], TRUE);
+				list($IfType, $IfIp, $IfMask, $IfBc, $IfOpt, $IfLladdr, $IfIp2, $IfMask2, $IfBc2)= json_decode($Output[0], TRUE);
 			} else {
 				$IfConfigured= '<br />('._('unconfigured').')';
 				$CanDelete= FALSE;
-				$IfType= $IfIp= $IfMask= $IfBc= $IfOpt= '';
 			}
 
 			$Class= $Row++ % 2 == 0 ? 'evenline' : 'oddline';
@@ -185,19 +185,23 @@ require_once($VIEW_PATH.'/header.php');
 										</tr>
 										<tr>
 											<td class="iftitle">ip</td>
-											<td class="ifs"><input type="text" name="InterfaceIP" style="width: 100px;" maxlength="15" value="<?php echo $IfIp ?>"/></td>
+											<td class="ifs"><input type="text" name="InterfaceIP" style="width: 100px;" maxlength="15" value="<?php echo $IfIp ?>" placeholder="<?php echo $IfIp2 ?>"/></td>
 										</tr>
 										<tr>
 											<td class="iftitle">netmask</td>
-											<td class="ifs"><input type="text" name="IfMask" style="width: 100px;" maxlength="15" value="<?php echo $IfMask ?>"/></td>
+											<td class="ifs"><input type="text" name="IfMask" style="width: 100px;" maxlength="15" value="<?php echo $IfMask ?>" placeholder="<?php echo $IfMask2 ?>"/></td>
 										</tr>
 										<tr>
 											<td class="iftitle">broadcast</td>
-											<td class="ifs"><input type="text" name="IfBc" style="width: 100px;" maxlength="15" value="<?php echo $IfBc ?>"/></td>
+											<td class="ifs"><input type="text" name="IfBc" style="width: 100px;" maxlength="15" value="<?php echo $IfBc ?>" placeholder="<?php echo $IfBc2 ?>"/></td>
 										</tr>
 										<tr>
 											<td class="iftitle">options</td>
 											<td class="ifs"><input type="text" name="IfOpt" style="width: 100px;" maxlength="15" value="<?php echo $IfOpt ?>"/></td>
+										</tr>
+										<tr>
+											<td class="iftitle">lladdr</td>
+											<td class="ifs"><?php echo $IfLladdr ?></td>
 										</tr>
 										<tr>
 											<td class="ifs"></td>

@@ -499,11 +499,36 @@ class System extends Model
 			if (($contents= $this->GetFile($file)) !== FALSE) {
 				$re= '^\s*(inet|dhcp)\s*(\S*)\s*(\S*)\s*(\S*)\s*(\S*)\s*$';
 				if (preg_match("/$re/m", $contents, $match)) {
-					// OpenBSD 6.6 uses hex if mask in hostname.if file
+					// OpenBSD 6.6 onwards uses hex if mask in hostname.if file
 					// Convert if mask from hex to ip: 0xffffff00 -> 255.255.255.0
 					if ($match[3] !== '') {
 						$match[3]= long2ip(hexdec($match[3]));
 					}
+
+					$output= $this->RunShellCommand("/sbin/ifconfig $if | /usr/bin/grep -E '(inet |lladdr )'");
+					// lladdr aa:bb:cc:dd:ee:ff
+					// inet 192.168.0.1 netmask 0xffffff00 broadcast 192.168.0.255
+					if (preg_match('/lladdr\s*(\S+)/m', $output, $config)) {
+						$match[]= $config[1];
+					} else {
+						$match[]= '';
+					}
+					if (preg_match('/inet\s*(\S+)/m', $output, $config)) {
+						$match[]= $config[1];
+					} else {
+						$match[]= '';
+					}
+					if (preg_match('/netmask\s*(\S+)/m', $output, $config)) {
+						$match[]= long2ip(hexdec($config[1]));
+					} else {
+						$match[]= '';
+					}
+					if (preg_match('/broadcast\s*(\S+)/m', $output, $config)) {
+						$match[]= $config[1];
+					} else {
+						$match[]= '';
+					}
+
 					return json_encode(array_slice($match, 1));
 				}
 			}
