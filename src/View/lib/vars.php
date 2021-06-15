@@ -163,6 +163,7 @@ $StatusTitles= array(
 require_once($VIEW_PATH . '/lib/libwui.php');
 
 $TopMenu= str_replace('.php', '', basename(filter_input(INPUT_SERVER, 'PHP_SELF')));
+$Submenu= '';
 
 /// Used as arg to PrintProcessTable() to print the number of processes at the top.
 define('PRINT_COUNT', TRUE);
