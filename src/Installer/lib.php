@@ -406,10 +406,10 @@ function PrintIfConfig($lanif, $wanif)
 	$warn= FALSE;
 	
 	echo "\nInterface assignment:\n";
-	$lanconfig= trim(implode(' ', $Config['Ifs'][$lanif]));
+	$lanconfig= trim(implode(' ', array_slice($Config['Ifs'][$lanif], 0, 5)));
 	$lanconfig= $lanconfig === '' ? 'not configured':$lanconfig;
 	echo "  internal= $lanif ($lanconfig)\n";
-	$wanconfig= trim(implode(' ', $Config['Ifs'][$wanif]));
+	$wanconfig= trim(implode(' ', array_slice($Config['Ifs'][$wanif], 0, 5)));
 	$wanconfig= $wanconfig === '' ? 'not configured':$wanconfig;
 	echo "  external= $wanif ($wanconfig)\n\n";
 	
@@ -423,11 +423,9 @@ function PrintIfConfig($lanif, $wanif)
 		$warn= TRUE;
 	}
 
-	if (isset($Config['Ifs'][$lanif][0])) {
-		if ($Config['Ifs'][$lanif][0] === 'dhcp') {
-			echo "WARNING: Internal interface is configured as dhcp\n";
-			$warn= TRUE;
-		}
+	if (isset($Config['Ifs'][$lanif][0]) && $Config['Ifs'][$lanif][0] === 'dhcp') {
+		echo "WARNING: Internal interface is configured as dhcp\n";
+		$warn= TRUE;
 	}
 	return $warn;
 }
