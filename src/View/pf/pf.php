@@ -209,7 +209,7 @@ class Pf extends View
 $View= new Pf();
 
 // Load the main pf configuration if the ruleset is empty
-if ($View->RuleSet->filename == '') {
+if (in_array($_SESSION['USER'], $ADMIN) && $View->RuleSet->filename == '') {
 	$filepath= '/etc/pf.conf';
 	$ruleSet= new RuleSet();
 	if ($ruleSet->load($filepath, 0, TRUE)) {
