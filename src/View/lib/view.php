@@ -516,7 +516,9 @@ class View
 	{
 		if ($file !== FALSE && $this->Controller($output, 'GetProcStatLines', $file)) {
 			$stats= json_decode($output[0], TRUE);
-			PrintNVPs($stats, _STATS('General Statistics'), 50, FALSE, FALSE);
+			if ($stats !== NULL && is_array($stats)) {
+				PrintNVPs($stats, _STATS('General Statistics'), 50, FALSE, FALSE);
+			}
 		}
 	}
 

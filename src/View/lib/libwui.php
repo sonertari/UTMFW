@@ -237,10 +237,6 @@ function PrintNVPsVGraph($data, $color= 'red', $title= '')
 {
 	global $FormIdCount, $View;
 
-	if (!isset($data)) {
-		$data= array();
-	}
-
 	$dataValues= array_map(function ($a) { return $a['value']; }, $data);
 
 	$max= 0;
@@ -322,10 +318,6 @@ function PrintNVPsVGraph($data, $color= 'red', $title= '')
 function PrintVGraph($data, $color= 'red', $title= '', $page= 'general', $style= 'Daily', $needle= '', $logFile= '')
 {
 	global $FormIdCount, $View;
-
-	if (!isset($data)) {
-		$data= array();
-	}
 
 	$dataValues= array_map(function ($a) { return $a['value']; }, $data);
 
@@ -426,10 +418,6 @@ function PrintVGraph($data, $color= 'red', $title= '', $page= 'general', $style=
 function PrintHGraph($data, $color= 'red', $title= '', $page= 'general', $style= 'Daily', $needle= '', $logFile= '')
 {
 	global $FormIdCount, $View;
-
-	if (!isset($data)) {
-		$data= array();
-	}
 
 	$dataValues= array_map(function ($a) { return $a['value']; }, $data);
 
@@ -533,93 +521,91 @@ function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE, $needle='', $prefix
 	<strong><?php echo $title ?></strong>
 	<table id="stats">
 		<?php
-		if (isset($nvps)) {
-			arsort($nvps);
+		arsort($nvps);
 
-			$count= 0;
-			foreach ($nvps as $n => $value) {
-				?>
-				<tr>
-					<td class="value">
-						<?php echo $value ?>
-					</td>
-					<td class="name">
-						<?php
-						// Empty strings print default gettext header lines otherwise
-						$name= $n !== '' ? _(htmlspecialchars($n)):'-';
-						
-						// Needle can be used to disable log searches
-						if ($needle === FALSE) {
-							echo $name;
-						} else {
-							// Need unique ids for each form for submission to work
-							$formId = 'form'.$FormIdCount++;
-
-							// Need SearchRegExp and action URL supplied externally
-							// Regex should search for a case sensitive exact match, otherwise github matches live.github or GITHUB too
-
-							// Caveats of this regexp method:
-							// @todo P3scan Number of e-mails Clean Exit: Searches all, need a separate parser, e.g. for (Clean Exit). Mails: 1
-							// @todo P3scan pop3s: Cannot find pop3s, need to make POP3S lowercase
-							// @todo Smtp-gated Source IPs: Searches and finds all IPs, not just source (or destination), the same issue with other modules
-							// @todo Openssh briefstats password: Searches and finds all password words, not just failed attempts
-							// @todo syslog "last message repeated x times": Causes more date lines in brief stats than can be parsed, need -rr option in OpenBSD 6.x/syslog
-							// @todo Briefstats should use the Total Needle too, otherwise we cannot get general statistics for, say, spamassassin
-
-							// Use default pre/postfixes if not supplied by the caller
-							if ($prefix == '') {
-								// @attention Use [[:blank:]]+, [:blank:]+ does not work
-								$prefix= '([[:blank:]]+)';
-							}
-
-							if ($postfix == '') {
-								$postfix= '([^[:alnum:]]+)';
-							}
-
-							/// @attention Do not use the needle in the regexp, use it separately, or grep takes too long,
-							// ~30 secs if search name is long, as in SSLproxy error or warning messages. Two cascaded greps are very fast.
-							// Otherwise, the following would/could do the same job.
-							//$regexp= $needle == '' ?
-							//	"($prefix|^)${name}($postfix|$)" :
-							//	"(($prefix|^)${name}$postfix.*($needle)|($needle).*$prefix${name}($postfix|$))";
-
-							$regexp= "($prefix|^)".Escape($name, '()[]+?')."($postfix|$)";
-
-							/// @attention Do not use href in anchor, otherwise href overrides the onclick action sometimes, hence the cursor style
-							?>
-							<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $View->LogsPage ?>?submenu=archives" method="post">
-								<input type="hidden" name="SearchRegExp" value="<?php echo $regexp ?>" />
-								<input type="hidden" name="SearchNeedle" value="<?php echo $needle ?>" />
-								<input type="hidden" name="Month" value="<?php echo isset($dateArray['Month']) ? $dateArray['Month'] : '' ?>" />
-								<input type="hidden" name="Day" value="<?php echo isset($dateArray['Day']) ? $dateArray['Day'] : '' ?>" />
-								<input type="hidden" name="Hour" value="<?php echo isset($dateArray['Hour']) ? $dateArray['Hour'] : '' ?>" />
-								<?php
-								if ($logFile != '') {
-									?>
-									<input type="hidden" name="LogFile" value="<?php echo $logFile ?>" />
-									<?php
-								}
-								?>
-								<input type="hidden" name="Sender" value="Stats" />
-							</form>
-							<a onclick="document.<?php echo $formId ?>.submit()" style="cursor: pointer;" title="<?php echo _TITLE('Click to search in the logs') ?>"><?php echo $name ?></a>
-							<?php
-						}
-						?>
-					</td>
+		$count= 0;
+		foreach ($nvps as $n => $value) {
+			?>
+			<tr>
+				<td class="value">
+					<?php echo $value ?>
+				</td>
+				<td class="name">
 					<?php
-					if ($count == 0 && $pie) {
+					// Empty strings print default gettext header lines otherwise
+					$name= $n !== '' ? _(htmlspecialchars($n)):'-';
+
+					// Needle can be used to disable log searches
+					if ($needle === FALSE) {
+						echo $name;
+					} else {
+						// Need unique ids for each form for submission to work
+						$formId = 'form'.$FormIdCount++;
+
+						// Need SearchRegExp and action URL supplied externally
+						// Regex should search for a case sensitive exact match, otherwise github matches live.github or GITHUB too
+
+						// Caveats of this regexp method:
+						// @todo P3scan Number of e-mails Clean Exit: Searches all, need a separate parser, e.g. for (Clean Exit). Mails: 1
+						// @todo P3scan pop3s: Cannot find pop3s, need to make POP3S lowercase
+						// @todo Smtp-gated Source IPs: Searches and finds all IPs, not just source (or destination), the same issue with other modules
+						// @todo Openssh briefstats password: Searches and finds all password words, not just failed attempts
+						// @todo syslog "last message repeated x times": Causes more date lines in brief stats than can be parsed, need -rr option in OpenBSD 6.x/syslog
+						// @todo Briefstats should use the Total Needle too, otherwise we cannot get general statistics for, say, spamassassin
+
+						// Use default pre/postfixes if not supplied by the caller
+						if ($prefix == '') {
+							// @attention Use [[:blank:]]+, [:blank:]+ does not work
+							$prefix= '([[:blank:]]+)';
+						}
+
+						if ($postfix == '') {
+							$postfix= '([^[:alnum:]]+)';
+						}
+
+						/// @attention Do not use the needle in the regexp, use it separately, or grep takes too long,
+						// ~30 secs if search name is long, as in SSLproxy error or warning messages. Two cascaded greps are very fast.
+						// Otherwise, the following would/could do the same job.
+						//$regexp= $needle == '' ?
+						//	"($prefix|^)${name}($postfix|$)" :
+						//	"(($prefix|^)${name}$postfix.*($needle)|($needle).*$prefix${name}($postfix|$))";
+
+						$regexp= "($prefix|^)".Escape($name, '()[]+?')."($postfix|$)";
+
+						/// @attention Do not use href in anchor, otherwise href overrides the onclick action sometimes, hence the cursor style
 						?>
-						<img id="chart" class="chart-trigger" onclick="generateChart(<?php echo str_replace('"', "'", str_replace("'", "\'", json_encode($nvps))) ?>, <?php echo "'".str_replace("'", "\'", $title)."'" ?>);"
-							src="<?php echo $IMG_PATH.'chart.png' ?>" name="<?php echo $title ?>" alt="<?php echo $title ?>" align="absmiddle" >
+						<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $View->LogsPage ?>?submenu=archives" method="post">
+							<input type="hidden" name="SearchRegExp" value="<?php echo $regexp ?>" />
+							<input type="hidden" name="SearchNeedle" value="<?php echo $needle ?>" />
+							<input type="hidden" name="Month" value="<?php echo isset($dateArray['Month']) ? $dateArray['Month'] : '' ?>" />
+							<input type="hidden" name="Day" value="<?php echo isset($dateArray['Day']) ? $dateArray['Day'] : '' ?>" />
+							<input type="hidden" name="Hour" value="<?php echo isset($dateArray['Hour']) ? $dateArray['Hour'] : '' ?>" />
+							<?php
+							if ($logFile != '') {
+								?>
+								<input type="hidden" name="LogFile" value="<?php echo $logFile ?>" />
+								<?php
+							}
+							?>
+							<input type="hidden" name="Sender" value="Stats" />
+						</form>
+						<a onclick="document.<?php echo $formId ?>.submit()" style="cursor: pointer;" title="<?php echo _TITLE('Click to search in the logs') ?>"><?php echo $name ?></a>
 						<?php
 					}
 					?>
-				</tr>
+				</td>
 				<?php
-				if (++$count >= $maxcount) {
-					break;
+				if ($count == 0 && $pie) {
+					?>
+					<img id="chart" class="chart-trigger" onclick="generateChart(<?php echo str_replace('"', "'", str_replace("'", "\'", json_encode($nvps))) ?>, <?php echo "'".str_replace("'", "\'", $title)."'" ?>);"
+						src="<?php echo $IMG_PATH.'chart.png' ?>" name="<?php echo $title ?>" alt="<?php echo $title ?>" align="absmiddle" >
+					<?php
 				}
+				?>
+			</tr>
+			<?php
+			if (++$count >= $maxcount) {
+				break;
 			}
 		}
 		?>
@@ -642,6 +628,8 @@ function PrintNVPs($nvps, $title, $maxcount= 100, $pie=TRUE, $needle='', $prefix
 function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style, $prefix, $postfix, $page)
 {
 	global $NvpColCount;
+
+	$data= array();
 
 	// The default is Horizontal
 	$printFunc= ($type == 'Vertical') ? 'PrintVGraph' : 'PrintHGraph';
@@ -720,9 +708,13 @@ function PrintGraphNVPSet($stats, $date, $parent, $conf, $type, $style, $prefix,
  */
 function PrintMinutesGraphNVPSet($stats, $parent, $conf, $type, $prefix, $postfix, $dateArray, $logFile='')
 {
+	$data= array();
+
 	// The default is Horizontal
 	$printGraphFunc= ($type == 'Vertical') ? 'PrintVGraph' : 'PrintHGraph';
-	FillGraphData($data, $stats['Mins'], 60, $parent, '', $dateArray);
+	if (isset($stats['Mins'])) {
+		FillGraphData($data, $stats['Mins'], 60, $parent, '', $dateArray);
+	}
 
 	if (isset($conf['Divisor'])) {
 		DivideArrayData($data, $conf['Divisor']);
@@ -748,7 +740,6 @@ function PrintMinutesGraphNVPSet($stats, $parent, $conf, $type, $prefix, $postfi
 									?>
 									<td class="nvps">
 										<?php
-										unset($nvps);
 										$nvps= $stats[$parent][$name];
 										if (isset($conf['Divisor'])) {
 											DivideArrayData($nvps, $conf['Divisor']);
@@ -781,7 +772,7 @@ function PrintMinutesGraphNVPSet($stats, $parent, $conf, $type, $prefix, $postfi
  */
 function DivideArrayData(&$data, $divisor)
 {
-	if (isset($data) && ($divisor != 0)) {
+	if ($divisor != 0) {
 		foreach ($data as $name => $value) {
 			if (is_array($value)) {
 				$data[$name]['value']= ceil($data[$name]['value'] / $divisor);
@@ -875,7 +866,9 @@ function FillGraphDataRange(&$data, $stats, $dateArray, $range, $parent)
 
 	if ($dateArray['Month'] == '' || $dateArray['Day'] == '') {
 		foreach ($stats as $date => $hourStats) {
-			FillGraphData($data, $hourStats['Hours'], $range, $parent, 'Sum', $dateArray);
+			if (isset($hourStats['Hours'])) {
+				FillGraphData($data, $hourStats['Hours'], $range, $parent, 'Sum', $dateArray);
+			}
 		}
 	}
 	else {
@@ -904,39 +897,37 @@ function FillGraphDataRange(&$data, $stats, $dateArray, $range, $parent)
  */
 function FillGraphData(&$data, $stats, $range, $parent, $name= '', $dateArray=array())
 {
-	if (isset($stats)) {
-		for ($hm= 0; $hm < $range; $hm++) {
-			$hm= sprintf('%02d', $hm);
+	for ($hm= 0; $hm < $range; $hm++) {
+		$hm= sprintf('%02d', $hm);
 
-			if (!isset($data[$hm])) {
-				$data[$hm]= array();
-			}
+		if (!isset($data[$hm])) {
+			$data[$hm]= array();
+		}
 
-			/// @attention All hours and minutes should be initialized with 0,
-			/// even if there is no stats for them
-			// Such initialization is faster than any if condition
-			if (!isset($data[$hm]['value'])) {
-				$data[$hm]['value']= 0;
-			}
+		/// @attention All hours and minutes should be initialized with 0,
+		/// even if there is no stats for them
+		// Such initialization is faster than any if condition
+		if (!isset($data[$hm]['value'])) {
+			$data[$hm]['value']= 0;
+		}
 
-			if (!isset($data[$hm]['date'])) {
-				if ($range == 24) {
-					$dateArray['Hour']= $hm;
-				} else {
-					$dateArray['Minute']= $hm;
-				}
-				$data[$hm]['date']= $dateArray;
+		if (!isset($data[$hm]['date'])) {
+			if ($range == 24) {
+				$dateArray['Hour']= $hm;
+			} else {
+				$dateArray['Minute']= $hm;
 			}
+			$data[$hm]['date']= $dateArray;
+		}
 
-			if ($name != '') {
-				if (isset($stats[$hm][$parent][$name])) {
-					$data[$hm]['value']+= $stats[$hm][$parent][$name];
-				}
+		if ($name != '') {
+			if (isset($stats[$hm][$parent][$name])) {
+				$data[$hm]['value']+= $stats[$hm][$parent][$name];
 			}
-			else {
-				if (isset($stats[$hm][$parent])) {
-					$data[$hm]['value']+= $stats[$hm][$parent];
-				}
+		}
+		else {
+			if (isset($stats[$hm][$parent])) {
+				$data[$hm]['value']+= $stats[$hm][$parent];
 			}
 		}
 	}
