@@ -25,6 +25,20 @@
 
 require_once('../lib/vars.php');
 
+/**
+ * Prints archives log help box.
+ */
+function PrintLogsHelp($msg)
+{
+	$msg.= ($msg !== '' ? "\n\n" : '')._HELPWINDOW('Log keeping capacity of UTMFW is limited only by the size of the disks on your system.
+
+If you are not seeing as many number of lines as you were expecting, this may be because the log file has turned over and put in a compressed archive file. The default maximum number of archive files for most services is 100, and can be configured on the system configuration pages. Depending on how busy a service it is, this many log archives may mean months of logging in most cases. You can download the log files using the Download button.
+
+You can search the logs by entering keywords or extended regular expressions in Regexp box. Regular expressions are de-facto standard for text searching.');
+
+	PrintHelpWindow($msg);
+}
+
 $View->UploadLogFile();
 
 $LogFile= GetLogFile();
@@ -99,6 +113,6 @@ PrintLogHeaderForm($StartLine, $LogSize, $LinesPerPage, $SearchRegExp, $CustomHi
 	?>
 </table>
 <?php
-PrintHelpWindow($View->LogsHelpMsg);
+PrintLogsHelp($View->LogsHelpMsg);
 require_once($VIEW_PATH.'/footer.php');
 ?>

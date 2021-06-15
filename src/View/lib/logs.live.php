@@ -30,6 +30,18 @@
  */
 require_once('../lib/vars.php');
 
+/**
+ * Prints live logs help box.
+ */
+function PrintLiveLogsHelp($msg)
+{
+	$msg.= ($msg !== '' ? "\n\n" : '')._HELPWINDOW('If you are not seeing as many number of lines as you were expecting, this may be because the log file has turned over and put in a compressed archive file.
+
+You can search the logs by entering keywords or extended regular expressions in Regexp box. Regular expressions are de-facto standard for text searching.');
+
+	PrintHelpWindow($msg);
+}
+
 $Reload= TRUE;
 SetRefreshInterval();
 
@@ -68,6 +80,6 @@ PrintLiveLogHeaderForm($LinesPerPage, $SearchRegExp);
 	?>
 </table>
 <?php
-PrintHelpWindow($View->LogsHelpMsg);
+PrintLiveLogsHelp($View->LogsHelpMsg);
 require_once($VIEW_PATH.'/footer.php');
 ?>
