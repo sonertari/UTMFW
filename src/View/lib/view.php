@@ -378,8 +378,9 @@ class View
 		</table>
 		<?php
 		if ($running && $printprocs) {
-			$this->Controller($output, 'GetProcList');
-			$this->PrintProcessTable(json_decode($output[0], TRUE), $printcount);
+			if ($this->Controller($output, 'GetProcList')) {
+				$this->PrintProcessTable(json_decode($output[0], TRUE), $printcount);
+			}
 		}
 	}
 

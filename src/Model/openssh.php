@@ -84,14 +84,16 @@ class Openssh extends Model
 		$status= parent::_getModuleStatus($generate_info, $start);
 
 		if ($generate_info) {
-			$logs= $this->GetLastLogs('( Accepted | Failed )', $start);
 			$accepted= 0;
 			$failed= 0;
-			foreach ($logs as $l) {
-				if ($l['Accepted']) {
-					$accepted++;
-				} else {
-					$failed++;
+			$logs= $this->GetLastLogs('( Accepted | Failed )', $start);
+			if ($logs) {
+				foreach ($logs as $l) {
+					if ($l['Accepted']) {
+						$accepted++;
+					} else {
+						$failed++;
+					}
 				}
 			}
 			$status['info']['accepted']= $accepted;

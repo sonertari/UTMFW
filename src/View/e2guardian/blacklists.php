@@ -204,8 +204,10 @@ if ($LogFile) {
 	ProcessStartLine($StartLine);
 	UpdateLogsPageSessionVars($LinesPerPage, $SearchRegExp, $SearchNeedle);
 
-	$View->Controller($Output, 'GetFileLineCount', $LogFile, $SearchRegExp);
-	$LogSize= $Output[0];
+	$LogSize= 0;
+	if ($View->Controller($Output, 'GetFileLineCount', $LogFile, $SearchRegExp)) {
+		$LogSize= $Output[0];
+	}
 
 	ProcessNavigationButtons($LinesPerPage, $LogSize, $StartLine, $HeadStart);
 
@@ -215,8 +217,10 @@ if ($LogFile) {
 		<?php
 		PrintTableHeaders($View->Model);
 
-		$View->Controller($Output, 'GetLogs', $LogFile, $HeadStart, $LinesPerPage, $SearchRegExp);
-		$Logs= json_decode($Output[0], TRUE);
+		$Logs= array();
+		if ($View->Controller($Output, 'GetLogs', $LogFile, $HeadStart, $LinesPerPage, $SearchRegExp)) {
+			$Logs= json_decode($Output[0], TRUE);
+		}
 
 		$LineCount= $StartLine + 1;
 		$LastLineNum= $StartLine + min(array(count($Logs), $LinesPerPage));

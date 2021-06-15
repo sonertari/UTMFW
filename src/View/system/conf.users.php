@@ -119,9 +119,11 @@ if (count($_POST)) {
 	}
 }
 
+$users= array();
 if ($View->Controller($Output, 'GetUsers')) {
 	$users= json_decode($Output[0]);
 }
+$clients= array();
 if ($View->Controller($Output, 'GetClients', filter_has_var(INPUT_POST, 'Filter') ? $SelectedUser : '')) {
 	/// @attention Need $assoc param set to TRUE here, otherwise we get an object instead
 	$clients= json_decode($Output[0], TRUE);

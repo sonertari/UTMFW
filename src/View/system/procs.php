@@ -27,8 +27,9 @@ require_once('include.php');
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 
-$View->Controller($Output, 'GetProcList');
-$View->PrintProcessTable(json_decode($Output[0], TRUE), TRUE);
+if ($View->Controller($Output, 'GetProcList')) {
+	$View->PrintProcessTable(json_decode($Output[0], TRUE), TRUE);
+}
 
 require_once($VIEW_PATH.'/footer.php');
 ?>

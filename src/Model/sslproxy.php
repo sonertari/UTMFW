@@ -178,6 +178,9 @@ class Sslproxy extends Model
 	function _getMaxStats($interval)
 	{
 		$logs= $this->GetLastLogs('STATS:', $interval);
+		if ($logs === FALSE) {
+			$logs= array();
+		}
 
 		$maxStats= array(
 			'Load' => 0,

@@ -273,7 +273,8 @@ class E2guardian extends Model
 			require_once($MODEL_PATH.'/'.$ModelFiles['e2guardianlogs']);
 
 			$model= new E2guardianlogs();
-			$status['info']['requests']= count($model->GetLastLogs('', $start));
+			$logs= $model->GetLastLogs('', $start);
+			$status['info']['requests']= $logs ? count($logs) : 0;
 		}
 		return $status;
 	}

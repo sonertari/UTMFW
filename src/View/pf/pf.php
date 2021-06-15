@@ -88,8 +88,11 @@ class Pf extends View
 		global $HeadStart, $StartLine, $StateCount, $LinesPerPage, $SearchRegExp;
 
 		PrintLogHeaderForm($StartLine, $StateCount, $LinesPerPage, $SearchRegExp, '');
-		$this->Controller($output, 'GetStateList', $HeadStart, $LinesPerPage, $SearchRegExp);
-		$states= json_decode($output[0], TRUE);
+
+		$states= array();
+		if ($this->Controller($output, 'GetStateList', $HeadStart, $LinesPerPage, $SearchRegExp)) {
+			$states= json_decode($output[0], TRUE);
+		}
 
 		$total= count($states);
 		if ($total > 0) {

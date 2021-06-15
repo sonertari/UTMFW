@@ -636,8 +636,8 @@ GPRINT:Bused:LAST: %4.1lf %s\n
 		$PingHosts= $View->Controller($Output, 'GetPingHosts');
 		if ($PingHosts) {
 			$output= json_decode($Output[0], TRUE);
-			$PING_GATEWAY_ADDR= $output[0];
-			$PING_REMOTE_ADDR= $output[1];
+			$PING_GATEWAY_ADDR= $output[0] ? $output[0] : '';
+			$PING_REMOTE_ADDR= $output[1] ? $output[1] : '';
 		} else {
 			warning('Cannot get ping hosts<br>');
 			return '';

@@ -20,8 +20,10 @@
 
 require_once('pf.php');
 
-$View->Controller($Output, 'GetPfRulesInfo');
-$rules= json_decode($Output[0], TRUE);
+$rules= array();
+if ($View->Controller($Output, 'GetPfRulesInfo')) {
+	$rules= json_decode($Output[0], TRUE);
+}
 
 $Reload= TRUE;
 require_once($VIEW_PATH . '/header.php');

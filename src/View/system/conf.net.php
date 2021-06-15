@@ -159,11 +159,13 @@ require_once($VIEW_PATH.'/header.php');
 			}
 		
 			$IfConfigured= '';
-			if (!$View->Controller($Output, 'GetIfConfig', $If)) {
+			if ($View->Controller($Output, 'GetIfConfig', $If)) {
+				list($IfType, $IfIp, $IfMask, $IfBc, $IfOpt)= json_decode($Output[0], TRUE);
+			} else {
 				$IfConfigured= '<br />('._('unconfigured').')';
 				$CanDelete= FALSE;
+				$IfType= $IfIp= $IfMask= $IfBc= $IfOpt= '';
 			}
-			list($IfType, $IfIp, $IfMask, $IfBc, $IfOpt)= json_decode($Output[0], TRUE);
 
 			$Class= $Row++ % 2 == 0 ? 'evenline' : 'oddline';
 			?>

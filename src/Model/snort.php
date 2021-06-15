@@ -189,7 +189,8 @@ class Snort extends Model
 		if ($generate_info) {
 			require_once($MODEL_PATH.'/snortalerts.php');
 			$snortalerts= new Snortalerts();
-			$status['info']['alerts']= count($snortalerts->GetLastLogs(' -> ', $start));
+			$logs= $snortalerts->GetLastLogs(' -> ', $start);
+			$status['info']['alerts']= $logs ? count($logs) : 0;
 		}
 		return $status;
 	}

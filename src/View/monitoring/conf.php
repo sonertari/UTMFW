@@ -36,8 +36,8 @@ require_once($VIEW_PATH.'/header.php');
 	<?php
 	if ($PingHosts) {
 		$output= json_decode($Output[0], TRUE);
-		$GatewayPingHost= $output[0];
-		$RemotePingHost= $output[1];
+		$GatewayPingHost= $output[0] ? $output[0] : '';
+		$RemotePingHost= $output[1] ? $output[1] : '';
 		?>
 		<tr class="oddline">
 			<td class="title">
