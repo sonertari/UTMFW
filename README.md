@@ -1,25 +1,27 @@
 # UTMFW
 
-UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use [A4PFFW](https://github.com/sonertari/A4PFFW) and [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
+UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW), which can display the notifications sent from UTMFW, and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
+
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.9.1 comes with OpenBSD 6.9-stable including all updates until June 14th, 2021.
+
+UTMFW supports the deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
+
+![Dashboard](https://github.com/sonertari/UTMFW/blob/master/screenshots/Dashboard.png)
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
+## Download
+
 The installation iso file for the amd64 arch is available for download at [utmfw69\_20210616\_amd64.iso](https://drive.google.com/file/d/1lblsUSFTmv5dj2W3D_sOSL5hLGgig8nv/view?usp=sharing). Make sure the SHA256 checksum is correct: ee4330543508b8691dfbc8ec8edc468b63ebe913e9ee3ac98d6771cbd98acb98.
 
-You can follow the instructions on [this OpenBSD journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file into a bootable USB image you can write to a USB stick. The only catch is that if the installation script cannot find the install sets, you should choose the disk option and that the disk partition is not mounted yet, and point it to the USB stick with the correct path to the install sets (the default path the script offers is the same path as in the image too, so you just hit Enter at that point).
-
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as SSLproxy, Snort Inline IPS, PFRE, E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.9.1 comes with OpenBSD 6.9-stable including all updates until June 14th, 2021.
-
-UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
-
-![Dashboard](https://github.com/sonertari/UTMFW/blob/master/screenshots/Dashboard.png)
+You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file into a bootable USB image you can write to a USB stick. The only catch is that if the installation script cannot find the install sets, you should choose the disk option and that the disk partition is not mounted yet, and point it to the USB stick with the correct path to the install sets (the default path the script offers is the same path as in the image too, so you just hit Enter at that point).
 
 ## Features
 
 UTMFW includes the following software, alongside what is already available on a basic OpenBSD installation:
 
-- SSLproxy: Transparent SSL/TLS proxy for deep SSL inspection
-- PFRE: Packet Filter Rule Editor
+- [SSLproxy](https://github.com/sonertari/SSLproxy): Transparent SSL/TLS proxy for deep SSL inspection
+- [PFRE](https://github.com/sonertari/PFRE): Packet Filter Rule Editor
 - E2Guardian: Web filter, anti-virus using ClamAV, blacklists
 - Snort: Intrusion detection and inline prevention system, with the latest rules
 - SnortIPS: Passive intrusion prevention software
@@ -42,7 +44,7 @@ The web user interface of UTMFW helps you manage your firewall:
 - Dashboard displays an overview of system status using graphs and statistics counters. You can click on those graphs and counters to go to their details on the web user interface.
 - Notifier sends the system status as Firebase push notifications to the Android application, [A4PFFW](https://github.com/sonertari/A4PFFW).
 - System, network, and service configuration can be achieved on the web user interface.
-- Pf rules are maintained using PFRE.
+- Pf rules are maintained using [PFRE](https://github.com/sonertari/PFRE).
 - Information on hosts, interfaces, pf rules, states, and queues are provided in tabular form.
 - System, pf, network, and internal clients can be monitored via graphs.
 - Logs can be viewed and downloaded on the web user interface. Compressed log files are supported.
@@ -52,6 +54,8 @@ The web user interface of UTMFW helps you manage your firewall:
 - There are two users who can log in to the web user interface. Unprivileged user does not have access rights to configuration pages, thus cannot interfere with system settings, and cannot even change user password (i.e. you can safely give the unprivileged user's password to your boss).
 - The web user interface supports languages other than English: Turkish, Chinese, Dutch, Russian, French, Spanish.
 - The web user interface configuration pages are designed such that changes you may have made to the configuration files on the command line (such as comments you might have added) remain intact after you configure a module using the web user interface.
+
+UTMFW uses the same design decisions and implementation as the [PFRE](https://github.com/sonertari/PFRE) project. See its README for details.
 
 ![UI Design](https://github.com/sonertari/UTMFW/blob/master/screenshots/UIDesign.png)
 
