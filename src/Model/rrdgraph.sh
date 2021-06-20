@@ -37,6 +37,7 @@ if [[ -f cpu.png ]]; then
 
     if [[ $TIMEDIFF -lt 10 ]]; then
 	    echo "Will NOT generate dashboard graphs too frequently, last generate time < 10 sec: $TIMEDIFF"
+		exit 1
     fi
 fi
 
@@ -468,3 +469,5 @@ $RRDTOOL graph httpd_cpu.png $GENERAL_OPTS $SIZE -s $START \
     AREA:uticks#008194:uticks \
     STACK:sticks#da5400:sticks \
     STACK:iticks#9932CC:iticks >/dev/null
+
+exit 0
