@@ -24,16 +24,25 @@ if [ $# -lt 3 ]; then
 	exit 1
 fi
 
-START=$1
-PING_GATEWAY_ADDR=$2
-PING_REMOTE_ADDR=$3
-
 GRAPHS_FOLDER="/var/www/htdocs/utmfw/View/system/dashboard"
 
 # Make sure the graphs output folder exists
 [[ ! -d $GRAPHS_FOLDER ]] && mkdir -p $GRAPHS_FOLDER
 # Go to the graphs output folder
 cd $GRAPHS_FOLDER
+
+if [[ -f cpu.png ]]; then
+    eval $(stat -s cpu.png)
+    TIMEDIFF=$(($(date "+%s")-$st_mtime))
+
+    if [[ $TIMEDIFF -lt 10 ]]; then
+	    echo "Will NOT generate dashboard graphs too frequently, last generate time < 10 sec: $TIMEDIFF"
+    fi
+fi
+
+START=$1
+PING_GATEWAY_ADDR=$2
+PING_REMOTE_ADDR=$3
 
 # -i|--interlaced: "If images are interlaced they become visible on browsers more quickly."
 # -E|--slope-mode: "Some people favor a more 'organic' look for their graphs"
@@ -459,4 +468,3 @@ $RRDTOOL graph httpd_cpu.png $GENERAL_OPTS $SIZE -s $START \
     AREA:uticks#008194:uticks \
     STACK:sticks#da5400:sticks \
     STACK:iticks#9932CC:iticks >/dev/null
-
