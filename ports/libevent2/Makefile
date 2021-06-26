@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.11 2015/01/06 21:28:05 sthen Exp $
+# $OpenBSD: Makefile,v 1.18 2020/03/31 19:06:06 kn Exp $
 
 COMMENT=	event notification library
 
@@ -6,25 +6,27 @@ V=		2.1.12
 DISTNAME=	libevent-$V-stable
 PKGNAME=	libevent-$V
 CATEGORIES=	devel
-#HOMEPAGE=	http://monkey.org/~provos/libevent/
-HOMEPAGE=	https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/
+HOMEPAGE=	https://libevent.org/
 
-SHARED_LIBS+=	event_core      1.1	# 6.9
-SHARED_LIBS+=	event_extra     0.1	# 6.9
-SHARED_LIBS+=	event_openssl   0.0	# 6.9
-SHARED_LIBS+=	event_pthreads  0.0	# 6.9
+SHARED_LIBS+=	event_core	2.0	# 7.0
+SHARED_LIBS+=	event_extra	1.0	# 7.0
+SHARED_LIBS+=	event_openssl	1.0	# 7.0
+SHARED_LIBS+=	event_pthreads	0.0	# 7.0
 
 # BSD
 PERMIT_PACKAGE=	Yes
 
-MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=levent/}
+MASTER_SITES=	https://github.com/libevent/libevent/releases/download/release-$V-stable/
 
 WANTLIB=	crypto pthread ssl
 
 CONFIGURE_STYLE=gnu
-CONFIGURE_ARGS=	${CONFIGURE_SHARED}
+
+DEBUG_PACKAGES=	${BUILD_PACKAGES}
 
 MAKE_FLAGS=	RELEASE=""
+
+SEPARATE_BUILD =Yes
 
 # Skip compatibility bits that conflict with libevent1
 FAKE_FLAGS=	LIBEVENT_LIBS_LA="libevent_core.la libevent_extra.la \
