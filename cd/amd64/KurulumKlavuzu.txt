@@ -1,1 +1,1 @@
-../../meta/KurulumKlavuzu.txt
+../../meta/amd64/KurulumKlavuzu.txt
