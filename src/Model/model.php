@@ -2705,7 +2705,39 @@ class Model
 			$gateway= $model->getGatewayPingHost();
 			$remote_target= $model->getRemotePingHost();
 
-			exec("doas sh $MODEL_PATH/rrdgraph.sh -$start $gateway $remote_target", $output, $retval);
+			if (($intif= $this->_getIntIf()) !== FALSE) {
+				$intif= trim($intif, '"');
+			} else {
+				$intif= 'lan0';
+				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get internal interface name');
+			}
+
+			if (($extif= $this->_getExtIf()) !== FALSE) {
+				$extif= trim($extif, '"');
+			} else {
+				$extif= 'wan0';
+				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get external interface name');
+			}
+
+			// @attention Use $model, not $this here, otherwise $this is an instance of System class, which has its own _getPartitions() method
+			// $model is an instance of Collectd, so its base class Model has the _getPartitions() method we want
+			$partitions= $model->_getPartitions();
+
+			$disks= array();
+			foreach ($partitions as $part => $mdir) {
+				if (preg_match('|/dev/((\w+\d+)[a-z]+)|', $part, $match)) {
+					if (!in_array($match[2], $disks)) {
+						$disks[]= $match[2];
+					}
+				}
+			}
+
+			$disk= 'wd0';
+			if (count($disks) > 0) {
+				$disk= $disks[0];
+			}
+
+			exec("doas sh $MODEL_PATH/rrdgraph.sh -$start $gateway $remote_target $intif $extif $disk", $output, $retval);
 			Error(implode("\n", $output));
 		}
 
