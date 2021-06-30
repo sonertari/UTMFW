@@ -496,7 +496,7 @@ backup_config_files() {
 	cd $BACKUPDIR
 	tar cpzf ../$BACKUPFILE *
 	cp ../$BACKUPFILE /root
-	cd -
+	cd - >/dev/null
 }
 
 # Install UTMFW configuration files
