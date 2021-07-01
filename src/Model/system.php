@@ -662,7 +662,7 @@ class System extends Model
 			}
 
 			/// @attention Don't call $this->_getPartitions() instead, it needs an explode()
-			exec('/bin/df -h | /usr/bin/egrep "^\/dev"', $parts);
+			exec('/bin/df -h', $parts);
 			$partitions= array();
 			foreach ($parts as $p) {
 				if (preg_match('/^(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)$/', $p, $match)) {
