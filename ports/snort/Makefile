@@ -15,7 +15,7 @@ MAINTAINER =		Markus Lude <markus.lude@gmx.de>
 # GPLv2
 PERMIT_PACKAGE =	Yes
 
-WANTLIB += c c++abi crypto daq dnet luajit-5.1 lzma m nghttp2
+WANTLIB += c c++abi crypto daq dnet lzma m nghttp2
 WANTLIB += pcap pcre pthread z
 
 MASTER_SITES =		https://www.snort.org/downloads/snort/
@@ -26,13 +26,13 @@ AUTOMAKE_VERSION=       1.13
 SEPARATE_BUILD =	Yes
 CONFIGURE_STYLE =	autoconf
 CONFIGURE_ARGS +=	--disable-static-daq \
-			--enable-non-ether-decoders
+			--enable-non-ether-decoders \
+			--disable-open-appid
 
 LIBTOOL_FLAGS =		--tag=disable-static
 
 LIB_DEPENDS =		archivers/xz \
 			devel/pcre \
-			lang/luajit \
 			net/daq \
 			net/libdnet \
 			www/nghttp2
@@ -45,8 +45,6 @@ PREPROC =		decoder.rules preprocessor.rules
 DOCS =			AUTHORS CREDITS README README.* *.pdf TODO USAGE \
 			WISHLIST
 
-pre-configure:
-	@cd ${WRKSRC}; ${SUBST_CMD} etc/snort.conf tools/appid_detector_builder.sh
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/snort
