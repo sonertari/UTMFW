@@ -74,6 +74,7 @@ if ($View->Controller($Output, 'GetConfig')) {
 	if (InitIfs()) {
 		if (!$Auto) {
 			GetIfSelection();
+			EnableHostap();
 			CreateUsers();
 			GenerateSSLKeyPairs();
 		}

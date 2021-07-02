@@ -168,7 +168,7 @@ class System extends Model
 
 				'SetIf'		=>	array(
 					/// @todo Is there any pattern or size for options, 6th param?
-					'argv'	=>	array(NAME, NAME, IPADR|NAME|EMPTYSTR, IPADR|NAME|EMPTYSTR, IPADR|NAME|EMPTYSTR, STR|EMPTYSTR),
+					'argv'	=>	array(NAME, NAME, IPADR|NAME|EMPTYSTR, IPADR|NAME|EMPTYSTR, IPADR|NAME|EMPTYSTR, STR|EMPTYSTR, NAME|EMPTYSTR, NAME|EMPTYSTR, STR|EMPTYSTR, NAME|EMPTYSTR),
 					'desc'	=>	_('Configure an interface'),
 					),
 
@@ -407,6 +407,11 @@ class System extends Model
 					'argv'	=>	array(NUM),
 					'desc'	=>	_('Generate SSL key pairs'),
 					),
+
+				'EnableHostap'	=>	array(
+					'argv'	=>	array(NAME),
+					'desc'	=>	_('Enable hostap on an interface'),
+					),
 				)
 			);
 	}
@@ -497,40 +502,62 @@ class System extends Model
 		$file= $this->confDir."hostname.".$if;
 		if (file_exists($file)) {
 			if (($contents= $this->GetFile($file)) !== FALSE) {
-				$re= '^\s*(inet|dhcp)\s*(\S*)\s*(\S*)\s*(\S*)\s*(\S*)\s*$';
-				if (preg_match("/$re/m", $contents, $match)) {
-					// OpenBSD 6.6 onwards uses hex if mask in hostname.if file
-					// Convert if mask from hex to ip: 0xffffff00 -> 255.255.255.0
-					if ($match[3] !== '') {
-						$match[3]= long2ip(hexdec($match[3]));
-					}
+				$contents= explode("\n", $contents);
 
-					$output= $this->RunShellCommand("/sbin/ifconfig $if | /usr/bin/grep -E '(inet |lladdr )'");
-					// lladdr aa:bb:cc:dd:ee:ff
-					// inet 192.168.0.1 netmask 0xffffff00 broadcast 192.168.0.255
-					if (preg_match('/lladdr\s*(\S+)/m', $output, $config)) {
-						$match[]= $config[1];
-					} else {
-						$match[]= '';
-					}
-					if (preg_match('/inet\s*(\S+)/m', $output, $config)) {
-						$match[]= $config[1];
-					} else {
-						$match[]= '';
-					}
-					if (preg_match('/netmask\s*(\S+)/m', $output, $config)) {
-						$match[]= long2ip(hexdec($config[1]));
-					} else {
-						$match[]= '';
-					}
-					if (preg_match('/broadcast\s*(\S+)/m', $output, $config)) {
-						$match[]= $config[1];
-					} else {
-						$match[]= '';
-					}
+				$inet= array('', '', '', '', '', '', '', '', '');
+				$nwid= array('', '', '');
+				$hostap= array('');
+				$wifi= array('');
 
-					return json_encode(array_slice($match, 1));
+				foreach ($contents as $line) {
+					if (preg_match("/^(inet|dhcp)\s*(\S*)\s*(\S*)\s*(\S*)\s*(\S*)$/", $line, $match)) {
+						$inet= $match;
+						// OpenBSD 6.6 onwards uses hex if mask in hostname.if file
+						// Convert if mask from hex to ip: 0xffffff00 -> 255.255.255.0
+						if ($inet[3] !== '') {
+							$inet[3]= long2ip(hexdec($inet[3]));
+						}
+
+						$output= $this->RunShellCommand("/sbin/ifconfig $if | /usr/bin/grep -E '(inet |lladdr )'");
+						// lladdr aa:bb:cc:dd:ee:ff
+						// inet 192.168.0.1 netmask 0xffffff00 broadcast 192.168.0.255
+						if (preg_match('/lladdr\s*(\S+)/m', $output, $match)) {
+							$inet[]= $match[1];
+						} else {
+							$inet[]= '';
+						}
+						if (preg_match('/inet\s*(\S+)/m', $output, $match)) {
+							$inet[]= $match[1];
+						} else {
+							$inet[]= '';
+						}
+						if (preg_match('/netmask\s*(\S+)/m', $output, $match)) {
+							$inet[]= long2ip(hexdec($match[1]));
+						} else {
+							$inet[]= '';
+						}
+						if (preg_match('/broadcast\s*(\S+)/m', $output, $match)) {
+							$inet[]= $match[1];
+						} else {
+							$inet[]= '';
+						}
+					}
+					// Search in hostname.$if contents
+					// inet 192.168.0.1 0xffffff00
+					// nwid mynwid wpakey mykey
+					// mediaopt hostap
+					else if (preg_match('/nwid\s+(\S+)\s*(\S*)\s*(\S*)/', $line, $match)) {
+						$nwid= array($match[1], $match[2], $match[3]);
+					}
+					else if (preg_match('/mediaopt (hostap)/', $line, $match)) {
+						$hostap= array($match[1]);
+					}
 				}
+
+				if ($this->isWifiIf($if)) {
+					$wifi= array('wifi');
+				}
+				return json_encode(array_merge(array_slice($inet, 1), $nwid, $hostap, $wifi));
 			}
 		}
 		return FALSE;
@@ -737,9 +764,13 @@ class System extends Model
 	 * @param string $mask Netmask.
 	 * @param string $bc Broadcast address.
 	 * @param string $opt Options.
+	 * @param string $nwid Network id for wifi.
+	 * @param string $keytype Type of key for wifi.
+	 * @param string $key Key for wifi.
+	 * @param string $hostap Whether to enable Host AP for wifi.
 	 * @return mixed Return value of file_put_contents() or FALSE on fail.
 	 */
-	function SetIf($if, $type, $ip, $mask, $bc, $opt)
+	function SetIf($if, $type, $ip, $mask, $bc, $opt, $nwid, $keytype, $key, $hostap)
 	{
 		global $Re_Ip;
 		
@@ -749,13 +780,27 @@ class System extends Model
 			$mask= '0x'.dechex(ip2long($mask));
 		}
 
+		// UTMFW supports only these configuration options
 		// Trim whitespace caused by empty strings
 		$ifconf= trim("$type $ip $mask $bc $opt");
-		// UTMFW supports only these configuration
-		if (preg_match("/^inet\s*$Re_Ip\s*[x0-9a-f]+\s*($Re_Ip|).*$/", $ifconf)
-			|| preg_match('/^dhcp\s*NONE\s*NONE\s*NONE.*$/', $ifconf)
-			|| preg_match('/^dhcp$/', $ifconf)) {
-			/// @warning Need a new line char at the end of hostname.if, otherwise /etc/netstart fails
+
+		if ($nwid !== '') {
+			$ifconf.= "\n".trim("nwid $nwid");
+			if ($keytype !== '' && $key !== '') {
+				$ifconf.= ' '.trim("$keytype $key");
+			}
+		}
+
+		if ($hostap == 'on') {
+			$ifconf.= "\nmediaopt hostap";
+		}
+
+		// @todo Args passed to this function are validated by the Controller, but we can implement some semantic validation too
+		if (preg_match("/^inet\s*$Re_Ip\s*[x0-9a-f]+\s*($Re_Ip|).*$/m", $ifconf)
+			|| preg_match('/^dhcp\s*NONE\s*NONE\s*NONE.*$/m', $ifconf)
+			|| preg_match('/^dhcp$/m', $ifconf)
+			|| preg_match('/dhcp/m', $ifconf) && ($hostap === '')) {
+			/// @attention Need a new line char at the end of hostname.if, otherwise /etc/netstart fails
 			/// Since file_put_contents() removes the last new line char, we append a PHP_EOL.
 			return file_put_contents($this->confDir.'hostname.'.$if, $ifconf.PHP_EOL);
 		}
@@ -1034,30 +1079,49 @@ class System extends Model
 	 */
 	function NetStart()
 	{
-		// Refresh pf rules too
-		$cmd= "/bin/sh /etc/netstart 2>&1 && /sbin/pfctl -f $this->PfRulesFile 2>&1";
+		$cmd= array();
 
-		// Down/up extif too, in case the gateway changes
+		$intif= $this->_getIntIf();
+		if ($intif !== FALSE) {
+			$intif= trim($intif, '"');
+			if ($this->isWifiIf($intif)) {
+				// Clear all wifi configuration, ifconfig down or /etc/netstart don't clear them
+				$cmd[]= "/sbin/ifconfig $intif -mediaopt hostap -nwid -wpakey -nwkey 2>&1";
+			}
+			$cmd[]= "/sbin/ifconfig $intif down 2>&1";
+		} else {
+			Error('Cannot get intif');
+		}
+
+		// Down extif too, in case the gateway changes
 		$extif= $this->_getExtIf();
 		if ($extif !== FALSE) {
 			$extif= trim($extif, '"');
-			$cmd.= " && /sbin/ifconfig $extif down 2>&1 && /sbin/ifconfig $extif up 2>&1";
+			$cmd[]= "/sbin/ifconfig $extif down 2>&1";
+		} else {
+			Error('Cannot get extif');
 		}
+
+		// Refresh pf rules too
+		$cmd[]= "/bin/sh /etc/netstart 2>&1 && /sbin/pfctl -f $this->PfRulesFile 2>&1";
 
 		// Delete the arp entry for the old gateway, in case the new gateway has the same IP address
 		// Otherwise, the system cannot reach the new gateway, continues to use the old ethernet address,
 		// ping, nslookup, or others don't work (extif becomes effectively down).
 		$gateway= $this->getSystemGateway();
 		if ($gateway !== '') {
-			$cmd.= " && /usr/sbin/arp -nd $gateway 2>&1";
+			$cmd[]= "/usr/sbin/arp -nd $gateway 2>&1";
 		}
 
-		exec($cmd, $output, $retval);
+		$cmdline= implode(' && ', $cmd);
+
+		exec($cmdline, $output, $retval);
+		$errout= implode("\n", $output);
+		Error($errout);
+
 		if ($retval === 0) {
 			return TRUE;
 		}
-		$errout= implode("\n", $output);
-		Error($errout);
 		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Netstart failed: $errout");
 		return FALSE;
 	}
@@ -1818,6 +1882,25 @@ class System extends Model
 		$errout= implode("\n", $output);
 		Error($errout);
 		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Generate SSL key pairs failed: $errout");
+		return FALSE;
+	}
+
+	/**
+	 * Enables hostap on the given interface.
+	 * 
+	 * @return bool TRUE on success, FALSE on fail.
+	 */
+	function EnableHostap($if)
+	{
+		$file= $this->confDir."hostname.".$if;
+		if (file_exists($file)) {
+			if (($contents= $this->GetFile($file)) !== FALSE) {
+				if (!preg_match("/mediaopt hostap/m", $contents, $match)) {
+					exec("/bin/echo 'mediaopt hostap' >>$file 2>&1", $output, $retval);
+					return TRUE;
+				}
+			}
+		}
 		return FALSE;
 	}
 }

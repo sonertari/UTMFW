@@ -1631,6 +1631,9 @@ msgstr ""
 msgid "Enable ext/mime"
 msgstr ""
 
+msgid "Enable hostap on an interface"
+msgstr ""
+
 msgid ""
 "Enable internal e-mail scanner.\n"
 "\t\tDefault: enabled"

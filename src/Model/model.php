@@ -543,6 +543,12 @@ class Model
 		return $this->GetNVP($this->PfRulesFile, 'ext_if');
 	}
 
+	function isWifiIf($if)
+	{
+		exec("ifconfig $if 2>/dev/null | grep -q \"^[[:space:]]*ieee80211:\"", $output, $retval);
+		return $retval === 0;
+	}
+
 	/**
 	 * Creates a system user.
 	 * 

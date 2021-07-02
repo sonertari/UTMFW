@@ -359,7 +359,7 @@ function GetIfSelection()
 		}
 		PrintIfConfig($lanif, $wanif);
 		
-		$selection= ReadIfSelection("Internal interface ($iflist or enter) [$lanif] ", $ifs);
+		$selection= ReadSelection("Internal interface ($iflist or enter) [$lanif] ", $ifs);
 		if ($selection !== '') {
 			$lanif= $selection;
 		}
@@ -370,7 +370,7 @@ function GetIfSelection()
 		}
 		PrintIfConfig($lanif, $wanif);
 		
-		$selection= ReadIfSelection("External interface ($iflist or enter) [$wanif] ", $ifs);
+		$selection= ReadSelection("External interface ($iflist or enter) [$wanif] ", $ifs);
 		if ($selection !== '') {
 			$wanif= $selection;
 		}
@@ -430,18 +430,43 @@ function PrintIfConfig($lanif, $wanif)
 	return $warn;
 }
 
+function EnableHostap()
+{
+	global $View, $Config;
+
+	// In case
+	$View->Model= 'system';
+	$intif= $Config['IntIf'];
+
+	exec("ifconfig $intif 2>/dev/null | grep -q \"^[[:space:]]*ieee80211:\"", $output, $retval);
+
+	if ($retval === 0) {
+		$driver= rtrim($intif, '0..9');
+		$selection= ReadSelection("\nEnable hostap on $intif (make sure $driver(4) supports Host AP mode)? [yes] ", array('yes', 'no'));
+		if ($selection === '' || $selection === 'yes') {
+			if (!$View->Controller($Output, 'EnableHostap', $intif)) {
+				$msg= "Failed enabling hostap on $intif";
+				wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, $msg);
+				echo "\n$msg.\n";
+			} else {
+				echo "\nHostap enabled on $intif.\n";
+			}
+		}
+	}
+}
+
 /**
- * Prompts for and reads internal/external interface selection.
+ * Prompts for and reads user selection.
  *
  * @param string $prompt Message to display.
- * @param array $ifs Interface names.
+ * @param array $opts Valid options.
  * @return string User input.
  */
-function ReadIfSelection($prompt, $ifs)
+function ReadSelection($prompt, $opts)
 {
 	while (TRUE) {
 		$selection= readline2($prompt);
-		if (($selection === '') || in_array($selection, $ifs)) {
+		if (($selection === '') || in_array($selection, $opts)) {
 			return $selection;
 		}
 		echo "\nInvalid choice\n";

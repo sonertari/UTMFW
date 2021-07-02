@@ -74,7 +74,12 @@ if (count($_POST)) {
 	// Other vars may be empty strings, do not check
 	else if (filter_has_var(INPUT_POST, 'IfName')) {
 		if (filter_has_var(INPUT_POST, 'Apply')) {
-			$View->Controller($Output, 'SetIf', filter_input(INPUT_POST, 'IfName'), filter_input(INPUT_POST, 'IfType'), filter_input(INPUT_POST, 'InterfaceIP'), filter_input(INPUT_POST, 'IfMask'), filter_input(INPUT_POST, 'IfBc'), filter_input(INPUT_POST, 'IfOpt'));
+			$View->Controller($Output, 'SetIf', filter_input(INPUT_POST, 'IfName'), filter_input(INPUT_POST, 'IfType'), filter_input(INPUT_POST, 'InterfaceIP'),
+					filter_input(INPUT_POST, 'IfMask'), filter_input(INPUT_POST, 'IfBc'), filter_input(INPUT_POST, 'IfOpt'),
+					filter_has_var(INPUT_POST, 'IfNwId') ? filter_input(INPUT_POST, 'IfNwId') : '',
+					filter_has_var(INPUT_POST, 'IfKeyType') ? filter_input(INPUT_POST, 'IfKeyType') : '',
+					filter_has_var(INPUT_POST, 'IfKey') ? filter_input(INPUT_POST, 'IfKey') : '',
+					filter_has_var(INPUT_POST, 'IfHostap') ? filter_input(INPUT_POST, 'IfHostap') : '');
 		}
 		else if (filter_has_var(INPUT_POST, 'Delete')) {
 			$View->Controller($Output, 'DeleteIf', filter_input(INPUT_POST, 'IfName'));
@@ -159,9 +164,9 @@ require_once($VIEW_PATH.'/header.php');
 			}
 		
 			$IfConfigured= '';
-			$IfType= $IfIp= $IfMask= $IfBc= $IfOpt= $IfLladdr= $IfIp2= $IfMask2= $IfBc2= '';
+			$IfType= $IfIp= $IfMask= $IfBc= $IfOpt= $IfLladdr= $IfIp2= $IfMask2= $IfBc2= $IfNwId= $IfKeyType= $IfKey= $IfHostap= $IfWifi='';
 			if ($View->Controller($Output, 'GetIfConfig', $If)) {
-				list($IfType, $IfIp, $IfMask, $IfBc, $IfOpt, $IfLladdr, $IfIp2, $IfMask2, $IfBc2)= json_decode($Output[0], TRUE);
+				list($IfType, $IfIp, $IfMask, $IfBc, $IfOpt, $IfLladdr, $IfIp2, $IfMask2, $IfBc2, $IfNwId, $IfKeyType, $IfKey, $IfHostap, $IfWifi)= json_decode($Output[0], TRUE);
 			} else {
 				$IfConfigured= '<br />('._('unconfigured').')';
 				$CanDelete= FALSE;
@@ -203,6 +208,34 @@ require_once($VIEW_PATH.'/header.php');
 											<td class="iftitle">lladdr</td>
 											<td class="ifs"><?php echo $IfLladdr ?></td>
 										</tr>
+										<?php
+										if ($IntIf === $If && $IfWifi == 'wifi') {
+											?>
+											<tr>
+												<td class="iftitle">nwid</td>
+												<td class="ifs"><input type="text" name="IfNwId" style="width: 200px;" maxlength="50" value="<?php echo $IfNwId ?>"/></td>
+											</tr>
+											<tr>
+												<td class="iftitle">keytype</td>
+												<td class="ifs">
+													<select name="IfKeyType">
+														<option value=""></option>
+														<option <?php echo $IfKeyType == 'wpakey' ? 'selected' : '' ?> value="wpakey">WPA</option>
+														<option <?php echo $IfKeyType == 'nwkey' ? 'selected' : '' ?> value="nwkey">WEP</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td class="iftitle">key</td>
+												<td class="ifs"><input type="text" name="IfKey" style="width: 200px;" maxlength="50" value="<?php echo $IfKey ?>"/></td>
+											</tr>
+											<tr>
+												<td class="iftitle">hostap</td>
+												<td class="ifs"><input name="IfHostap" type="checkbox" <?php echo $IfHostap == 'hostap' ? 'checked' : '' ?>></td>
+											</tr>
+											<?php
+										}
+										?>
 										<tr>
 											<td class="ifs"></td>
 											<td class="ifs">
@@ -236,20 +269,27 @@ require_once($VIEW_PATH.'/header.php');
 		</td>
 		<td>
 			<?php
-			if ($View->Controller($MyGate, 'GetStaticGateway')) {
-				?>
-				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-					<input type="text" name="MyGate" style="width: 100px;" maxlength="50" value="<?php echo $MyGate[0] ?>" />
-					<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
-					<input type="submit" name="MakeDynamic" value="<?php echo _CONTROL('Make Dynamic') ?>"/>
-				</form>
-				<?php
-			}
-			else if ($View->Controller($Gateway, 'GetDynamicGateway')) {
+			if ($View->Controller($Gateway, 'GetDynamicGateway')) {
 				?>
 				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 					<?php echo $Gateway[0] ?>
 					<input type="submit" name="MakeStatic" value="<?php echo _CONTROL('Make Static') ?>"/>
+				</form>
+				<?php
+			}
+			else {
+				$GetStaticGatewaySuccess= $View->Controller($MyGate, 'GetStaticGateway');
+				?>
+				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+					<input type="text" name="MyGate" style="width: 100px;" maxlength="50" value="<?php echo $MyGate[0] ?>" />
+					<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
+					<?php
+					if ($GetStaticGatewaySuccess) {
+						?>
+						<input type="submit" name="MakeDynamic" value="<?php echo _CONTROL('Make Dynamic') ?>"/>
+						<?php
+					}
+					?>
 				</form>
 				<?php
 			}

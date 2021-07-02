@@ -275,6 +275,9 @@ msgstr "Yapılandırmayı aç"
 msgid "Enable ext/mime"
 msgstr "Uzt/mime aç"
 
+msgid "Enable hostap on an interface"
+msgstr "Bir arayüzün hostap modunu aç"
+
 msgid "Enable notifier"
 msgstr "Uyarıları aç"
 

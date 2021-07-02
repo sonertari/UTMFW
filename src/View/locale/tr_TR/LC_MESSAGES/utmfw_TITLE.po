@@ -978,6 +978,9 @@ msgstr "SÜRE"
 msgid "USERS"
 msgstr "KULLNC"
 
+msgid "Unknown"
+msgstr "Bilinmeyen"
+
 msgid "Upload rules file"
 msgstr "Kural dosyasını karşıya yükle"
 
