@@ -269,7 +269,8 @@ require_once($VIEW_PATH.'/header.php');
 		</td>
 		<td>
 			<?php
-			if ($View->Controller($Gateway, 'GetDynamicGateway')) {
+			$GetStaticGatewaySuccess= $View->Controller($MyGate, 'GetStaticGateway');
+			if (!$GetStaticGatewaySuccess && $View->Controller($Gateway, 'GetDynamicGateway')) {
 				?>
 				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 					<?php echo $Gateway[0] ?>
@@ -278,7 +279,6 @@ require_once($VIEW_PATH.'/header.php');
 				<?php
 			}
 			else {
-				$GetStaticGatewaySuccess= $View->Controller($MyGate, 'GetStaticGateway');
 				?>
 				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 					<input type="text" name="MyGate" style="width: 100px;" maxlength="50" value="<?php echo $MyGate[0] ?>" />
