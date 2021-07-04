@@ -1,10 +1,12 @@
-From sonertari@gmail.com Mon Jun 14 06:09:01 EET 2021
+From sonertari@gmail.com Mon Jul  5 06:09:02 EET 2021
 Return-Path: root
-Date: Jun 14 06:09:01 EET 2021
+Date: Jun  5 06:09:02 EET 2021
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 6.9.1!
+Subject: Welcome to UTMFW 6.9.2!
 
-This release fixes various issues in the WUI source code, the PHP 8 
-compatibility and in general.
+Highlights of this release are:
+- Raspberry Pi 4, the first arm64 platform supported
+- Wifi adapter support both during installation and on the WUI, also as Host AP
+- Various other fixes and improvements
 
