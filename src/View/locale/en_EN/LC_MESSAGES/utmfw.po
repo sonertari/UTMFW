@@ -5733,6 +5733,9 @@ msgstr ""
 msgid "System is restarting..."
 msgstr ""
 
+msgid "System is starting up..."
+msgstr ""
+
 msgid "System restart"
 msgstr ""
 

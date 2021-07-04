@@ -6544,6 +6544,9 @@ msgstr "Sistem kapatılıyor..."
 msgid "System is restarting..."
 msgstr "Sistem tekrar başlıyor..."
 
+msgid "System is starting up..."
+msgstr "Sistem başlıyor..."
+
 msgid "System restart"
 msgstr "Sistem tekrar başlatma"
 

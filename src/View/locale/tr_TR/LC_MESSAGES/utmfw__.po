@@ -1081,6 +1081,9 @@ msgstr "Sistem ve ping ağ geçit adresleri uyuşmuyor"
 msgid "System has no gateway"
 msgstr "Sistemin ağ geçidi yok"
 
+msgid "System is starting up..."
+msgstr "Sistem başlıyor..."
+
 msgid "System restart"
 msgstr "Sistem tekrar başlatma"
 

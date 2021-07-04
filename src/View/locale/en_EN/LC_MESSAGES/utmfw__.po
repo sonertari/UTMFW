@@ -1059,6 +1059,9 @@ msgstr ""
 msgid "System has no gateway"
 msgstr ""
 
+msgid "System is starting up..."
+msgstr ""
+
 msgid "System restart"
 msgstr ""
 

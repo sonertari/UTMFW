@@ -8,7 +8,9 @@
 # please see /etc/rc.securelevel.
 #
 
-/bin/mkdir -p /var/tmp/utmfw/
+mkdir -p /var/tmp/utmfw/
+
+touch /var/tmp/utmfw/.starting_utmfw
 
 /usr/bin/env PATH=$PATH:/usr/local/bin /var/www/htdocs/utmfw/Installer/install.php -f
 # The line above should have been commented out after first boot
@@ -136,4 +138,7 @@ fi
 echo
 banner utmfw
 echo 'is ready...\n'
+
 echo -n "a~a." > /dev/speaker &
+
+rm /var/tmp/utmfw/.starting_utmfw

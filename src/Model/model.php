@@ -2779,6 +2779,10 @@ class Model
 			$output['info']= $info;
 		}
 
+		if (file_exists('/var/tmp/utmfw/.starting_utmfw')) {
+			Error(_('System is starting up...'));
+		}
+
 		return Output(json_encode($output));
 	}
 
