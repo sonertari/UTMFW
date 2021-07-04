@@ -344,13 +344,6 @@ Intrusion alerts produced by the IDS are guesses, hence there may be false posit
 		</td>
 		<?php
 	}
-	
-	function FormatDate($date)
-	{
-		global $MonthNames;
-
-		return $MonthNames[$date['Month']].' '.sprintf('%02d', $date['Day']);
-	}
 }
 
 $View= new Snortips();

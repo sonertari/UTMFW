@@ -148,7 +148,7 @@ class Spamassassin extends Model
 		$cmd= "/usr/bin/grep -a ' spamd\[' $file";
 
 		if ($month != '' || $day != '' || $hour != '' || $minute != '') {
-			$cmd.= ' | /usr/bin/grep -a -E "' . $this->formatDateHourRegexpDayLeadingZero($month, $day, $hour, $minute) . '"';
+			$cmd.= ' | /usr/bin/grep -a -E "' . $this->formatDateHourRegexp($month, $day, $hour, $minute) . '"';
 		}
 
 		if ($needle != '') {
@@ -176,7 +176,7 @@ class Spamassassin extends Model
 		$cmd= "/usr/bin/grep -a ' spamd\[' $file";
 
 		if ($month != '' || $day != '' || $hour != '' || $minute != '') {
-			$cmd.= ' | /usr/bin/grep -a -E "' . $this->formatDateHourRegexpDayLeadingZero($month, $day, $hour, $minute) . '"';
+			$cmd.= ' | /usr/bin/grep -a -E "' . $this->formatDateHourRegexp($month, $day, $hour, $minute) . '"';
 		}
 
 		if ($needle != '') {
@@ -225,25 +225,6 @@ class Spamassassin extends Model
 			}
 		}
 		return $logs;
-	}
-
-	function GetDateRegexp($date)
-	{
-		global $MonthNames;
-
-		if ($date['Month'] == '') {
-			$re= '.*';
-		}
-		else {
-			$re= $MonthNames[$date['Month']].'\s+';
-			if ($date['Day'] == '') {
-				$re.= '.*';
-			}
-			else {
-				$re.= sprintf('%02d', $date['Day']);
-			}
-		}
-		return $re;
 	}
 }
 
