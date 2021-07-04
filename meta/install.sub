@@ -1055,6 +1055,11 @@ finish_up() {
 		/var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh || INSTALL_ERROR=1
 	fi
 
+	# The symon configuration which require the use of sysctl should be run on first start, see ApplyConfig() in Installer/lib.php
+	echo '/usr/bin/env PATH=$PATH:/usr/local/bin /var/www/htdocs/utmfw/Installer/install.php -a' >>/etc/rc.firsttime
+	echo '/bin/echo "Creating symon rrd files..."' >>/etc/rc.firsttime
+	echo '/bin/sh /usr/local/share/examples/symon/c_smrrds.sh all' >>/etc/rc.firsttime
+
 	if [ $INSTALL_ERROR -eq 1 ]; then
 		cat <<__EOT
 

@@ -203,27 +203,6 @@ function ApplyConfig($auto)
 }
 
 /**
- * Configuration which cannot be completed during installation.
- */
-function FirstBootTasks()
-{
-	global $Config, $View;
-
-	// Run symon script to create rrd files
-	exec('/bin/sh /usr/local/share/examples/symon/c_smrrds.sh all');
-
-	// Disable rc.local line which leads to this function call
-	$file= '/etc/rc.local';
-	if (copy($file, $file.'.bak')) {
-		$re= '|^(\h*/usr/bin/env\h+PATH=\$PATH:/usr/local/bin\h+/var/www/htdocs/utmfw/Installer/install\.php\h+-f\h*)|ms';
-		$contents= preg_replace($re, '#${1}', file_get_contents($file), 1, $count);
-		if ($contents !== NULL && $count === 1) {
-			file_put_contents($file, $contents);
-		}
-	}
-}
-
-/**
  * Computes network, broadcast, and CIDR net addresses, given ip and netmask.
  *
  * Quoting from nice explanations here:
