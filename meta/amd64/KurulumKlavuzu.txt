@@ -1,8 +1,8 @@
-UTMFW kurulumu oldukça rahat anlaşılır ve kolaydır, sadece ekrandaki açıklamaları takip edin ve soruları cevaplayın. Bütün sorular için önerilen cevapları kabul etmeniz tavsiye edilir. Nitekim, ilk sorudan sonuncuya kadar önerilen cevapları onaylayarak kurulumu tamamlayabilirsiniz. İstisnalar sadece ağ yapılandırma ve parola ayarlarıdır.
+UTMFW kurulumu oldukça rahat anlaşılır ve kolaydır, sadece ekrandaki açıklamaları takip edin ve soruları cevaplayın. Bütün sorular için önerilen cevapları kabul etmeniz tavsiye edilir. Nitekim, ilk sorudan sonuncuya kadar önerilen cevapları onaylayarak kurulumu tamamlayabilirsiniz. İstisnalar sadece ağ yapılandırma, parola ayarları ve disk seçimidir.
 
 Otomatik disk bölümlendirme özelliği sizin için bir disk düzeni önerecektir. Önerilen bölüm düzeni çoğu kurulum için yeterlidir, onaylayarak geçin.
 
-İki ağ arayüzü yapılandırdığınızdan emin olun. İç ve dış arayüzleri seçmeniz daha sonra istenecektir.
+İki ağ arayüzü yapılandırdığınızdan emin olun. İç ve dış arayüzleri seçmeniz daha sonra istenecektir. İç kablosuz ağ arayüzünü Host AP olarak ayarlayabilirsiniz.
 
 Bütün kurulum setleri ve yazılım paketleri seçilmiş olarak gelir, onaylayarak geçin.
 
@@ -15,6 +15,6 @@ Kurulum sırasında belirlediğiniz iç ağ arayüzünün IP adresi üzerinden w
 Web arayüzü kullanıcı adları admin ve user'dır. Ağ kullanıcı adı utmfw'dür. Hepsinin parolası kurulum sırasında girdiğiniz değere ayarlanır.
 
 Kaynaklar:
-[1] Kurulum iso dosyasındaki INSTALL.amd64
-[2] Desteklenen donanımlar için https://www.openbsd.org/amd64.html
-[3] OpenBSD kurulum detayları için https://www.openbsd.org/faq/faq4.html
+[1] Kurulum iso dosyasındaki INSTALL.amd64.
+[2] Desteklenen donanımlar için https://www.openbsd.org/amd64.html.
+[3] OpenBSD kurulum detayları için https://www.openbsd.org/faq/faq4.html.

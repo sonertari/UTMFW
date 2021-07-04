@@ -1,8 +1,8 @@
-UTMFW installation is very intuitive and easy, just follow the instructions on the screen and answer the questions asked. You are advised to accept the default answers to all the questions. In fact, the installation can be completed by accepting default answers all the way from the first question until the last. The only obvious exceptions are network configuration and password setup.
+UTMFW installation is very intuitive and easy, just follow the instructions on the screen and answer the questions asked. You are advised to accept the default answers to all the questions. In fact, the installation can be completed by accepting default answers all the way from the first question until the last. The only exceptions are network configuration, password setup, and installation disk selection.
 
 Auto allocator will provide a partition layout recommended for your disk. Suggested partitioning should be suitable for most installations, simply accept it.
 
-Make sure you configure two network interfaces. You will be asked to choose internal and external interfaces later on.
+Make sure you configure two network interfaces. You will be asked to choose internal and external interfaces later on. You can configure the internal wifi interface in Host AP mode.
 
 All of the install sets and software packages are selected by default, simply accept the selections.
 
@@ -15,6 +15,6 @@ You can access the web administration interface using the IP address of the syst
 Web interface user names are admin and user. Network user is utmfw. All are set to the same password you provide during installation.
 
 References:
-[1] INSTALL.amd64 in the installation iso file
-[2] https://www.openbsd.org/amd64.html for supported hardware
-[3] https://www.openbsd.org/faq/faq4.html for OpenBSD installation guide
+[1] INSTALL.amd64 in the installation iso file.
+[2] https://www.openbsd.org/amd64.html for supported hardware.
+[3] https://www.openbsd.org/faq/faq4.html for OpenBSD installation guide.
