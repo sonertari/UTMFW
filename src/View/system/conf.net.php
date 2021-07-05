@@ -209,7 +209,7 @@ require_once($VIEW_PATH.'/header.php');
 											<td class="ifs"><?php echo $IfLladdr ?></td>
 										</tr>
 										<?php
-										if ($IntIf === $If && $IfWifi == 'wifi') {
+										if ($IfWifi == 'wifi') {
 											?>
 											<tr>
 												<td class="iftitle">nwid</td>
@@ -229,11 +229,15 @@ require_once($VIEW_PATH.'/header.php');
 												<td class="iftitle">key</td>
 												<td class="ifs"><input type="text" name="IfKey" style="width: 200px;" maxlength="50" value="<?php echo $IfKey ?>"/></td>
 											</tr>
-											<tr>
-												<td class="iftitle">hostap</td>
-												<td class="ifs"><input name="IfHostap" type="checkbox" <?php echo $IfHostap == 'hostap' ? 'checked' : '' ?>></td>
-											</tr>
 											<?php
+											if ($IntIf === $If) {
+												?>
+												<tr>
+													<td class="iftitle">hostap</td>
+													<td class="ifs"><input name="IfHostap" type="checkbox" <?php echo $IfHostap == 'hostap' ? 'checked' : '' ?>></td>
+												</tr>
+												<?php
+											}
 										}
 										?>
 										<tr>
