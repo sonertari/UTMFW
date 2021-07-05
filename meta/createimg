@@ -99,7 +99,7 @@ mkdir $ROOT_PATH/$SITE_DIR
 cd $ROOT_PATH/$SITE_DIR
 doas rm -rf *
 for site in $SITE_CONTENTS; do
-	cp -r $ROOT_PATH/meta/$site .
+	cp -R $ROOT_PATH/meta/$site .
 done
 cp -R $ROOT_PATH/openbsd/$INSTALL_SETS_PATH/firmware ./etc/
 echo "set tty fb0" > ./etc/boot.conf
@@ -120,10 +120,7 @@ rm SHA256
 
 echo "Creating image: $IMG_FILE"
 
-rm $IMG_FILE
-
 cd $ROOT_PATH/$CD_PATH
-echo "$VOL_ID\n$SYS_ID\n$APP_ID\n$PUBLISH_ID\n$PREP_ID" > README.txt
 
 # All sizes are in sectors
 MSDOSSTART=32768
@@ -143,12 +140,11 @@ IMG_SIZE=$(($FS_SIZE + $FFSSTART))
 echo "Image size $IMG_SIZE sectors"
 
 cd $ROOT_PATH
+rm $IMG_FILE
 
 doas umount ./img_ffs
 doas umount ./img_msdos
 doas vnconfig -u vnd0
-
-rm $IMG_FILE
 
 # 1 sector = 512 bytes
 # SECURITY: Do not seek, write zeros
@@ -176,6 +172,7 @@ doas mount -o-l /dev/vnd0i ./img_msdos
 doas cp -R -L -v $ROOT_PATH/$CD_PATH/* ./img_ffs/
 
 doas cp -R -v openbsd/$INSTALL_SETS_PATH/BOOT/* ./img_msdos
+echo "$VOL_ID\n$SYS_ID\n$APP_ID\n$PUBLISH_ID\n$PREP_ID" > ./img_msdos/README.txt
 
 doas umount ./img_ffs
 doas umount ./img_msdos
