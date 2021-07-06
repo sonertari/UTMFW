@@ -14,11 +14,11 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The UTMFW project releases two installation files:
 
-- The installation iso file for the amd64 arch is available for download at [utmfw69\_20210616\_amd64.iso](https://drive.google.com/file/d/1lblsUSFTmv5dj2W3D_sOSL5hLGgig8nv/view?usp=sharing). Make sure the SHA256 checksum is correct: ee4330543508b8691dfbc8ec8edc468b63ebe913e9ee3ac98d6771cbd98acb98.
+- The installation iso file for the amd64 arch is available for download at [utmfw69\_20210706\_amd64.iso](https://drive.google.com/file/d/1pWwsmDgU_mpRPJ9gkjBJ67kpHI0agdHK/view?usp=sharing). Make sure the SHA256 checksum is correct: 581ae7b01011cf2dc6c39e43cd1ce210e3f31327d4ff7d07439ffe7238a160db.
 
-- The installation img file for the arm64 arch is available for download at [utmfw69\_20210704\_arm64.img](https://drive.google.com/file/d/1lblsUSFTmv5dj2W3D_sOSL5hLGgig8nv/view?usp=sharing). Make sure the SHA256 checksum is correct: 7a181d6b5aed117ac805d069d509f5aa2a99eab6732f2f3765938a91ed13ba44. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- The installation img file for the arm64 arch is available for download at [utmfw69\_20210706\_arm64.img](https://drive.google.com/file/d/1-bEbetcXNV-UVP7mYHvuTbmhjvSS2ASY/view?usp=sharing). Make sure the SHA256 checksum is correct: c06579d55e03514ff271063aae64170ed22aef53b96b4092c001f5cba3410bad. The only arm64 platform supported is Raspberry Pi 4 Model B.
 
-You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file for the amd64 arch into a bootable image you can write to a USB drive or an SD card.
+You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file for the amd64 arch into a bootable image you can write on a USB drive or an SD card.
 
 ## Features
 
@@ -65,7 +65,7 @@ UTMFW uses the same design decisions and implementation as the [PFRE](https://gi
 
 ## How to install
 
-Download the installation file for your platform and follow the instructions in the installation guide available in the file. Below are the same instructions.
+Download the installation iso or img file for your platform and follow the instructions in the installation guide available in the file. Below are the same instructions.
 
 ### Installation Guide
 
@@ -109,11 +109,11 @@ A few notes about UTMFW installation:
 - Make sure the date and time of the system is correct, otherwise:
 	+ The certificates forged by SSLproxy will be rejected by client applications, hence the connections will fail.
 	+ SSLproxy will not verify server certificates with date and time in the future or in the past, hence the connections will fail.
-	+ After fixing the date and time of the system during normal operation, the system statistics and monitoring programs may stop updating the RRD files due to significant time difference since the last update. So you may need to delete the statistics files and reinit the RRD files using the WUI, and restart either the statistics and monitoring programs or the system.
+	+ After fixing the date and time of the system during normal operation, the system statistics and monitoring programs may stop updating the RRD files due to significant time difference since last update. So you may need to delete the statistics files and reinit the RRD files using the WUI, and restart either the statistics and monitoring programs or the system.
 
 ## How to build
 
-The purpose in this section is to build the installation file using the createiso or the createimg script at the root of the project source tree. You are expected to be doing these on an OpenBSD 6.9 and have installed git, gettext, and doxygen on it.
+The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 6.9 and have installed git, gettext, and doxygen on it.
 
 ### Build summary
 
@@ -137,9 +137,9 @@ However, the source tree has links to OpenBSD install sets and packages, which s
 	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, e2guardian, p3scan, smtp-gated, snort, imspector, snortips, and libevent 2.1.12 (see `ports` and `ports/distfiles`).
 	+ Copy them to the appropriate locations to fix the broken links in the sources.
 
-Note that you can strip down xbase and xfont install sets to reduce the size of the iso or the img file. Copy or link them to the appropriate locations under `openbsd/utmfw`.
+Note that you can strip down xbase and xfont install sets to reduce the size of the iso and img files. Copy or link them to the appropriate locations under `openbsd/utmfw`.
 
-Now you can run the createiso or the createimg script, which should produce an iso or an img file, respectively, in the same folder as itself.
+Now you can run the createiso or createimg script, which should produce an iso or img file, respectively, in the same folder as itself.
 
 ### Build steps
 
@@ -157,7 +157,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 
 - Configure OpenBSD:
 	+ Create a local user, after reboot add it to /etc/doas.conf
-	+ Create a separate partition mounted to /dest, which will be needed to make release(8)
+	+ Create a separate partition mounted on /dest, which will be needed to make release(8)
 	+ Add noperm to /dest in /etc/fstab
     + Make /dest owned by build:wobj and set its perms to 700
     + Create /dest/dest/ and /dest/rel/ folders
@@ -170,6 +170,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ cd/amd64/etc/boot.conf
 		+ cd/arm64/etc/boot.conf
 		+ meta/createiso
+		+ meta/createimg
 		+ meta/install.sub
 		+ src/create_po.sh
 		+ Doxyfile
@@ -206,7 +207,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
             ```
             export PKG_PATH=/var/db/pkg_cache/:https://cdn.openbsd.org/pub/OpenBSD/X.Y/packages/amd64/
             ```
-		+ Save the depends under PKG_CACHE, which will be used later on to update the packages in the iso file
+		+ Save the depends under PKG_CACHE, which will be used later on to update the packages in the iso and img files
             ```
             export PKG_CACHE=/var/db/pkg_utmfw/
             ```
@@ -300,9 +301,9 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Update the links for install sets under cd/arm64/X.Y/arm64 using the install sets under ~/OpenBSD/X.Y/arm64/ made above
 	+ Remove the old links
 	+ Copy the xbaseXY.tgz install set from installXY.iso to docs/expat/amd64/xbaseXY.tgz
-	+ Copy the xbaseXY.tgz install set from installXY.iso to docs/expat/arm64/xbaseXY.tgz
+	+ Copy the xbaseXY.tgz install set from installXY.img to docs/expat/arm64/xbaseXY.tgz
 	+ Copy the xfontXY.tgz install set from installXY.iso to docs/fonts/amd64/xfontXY.tgz
-	+ Copy the xfontXY.tgz install set from installXY.iso to docs/fonts/arm64/xfontXY.tgz
+	+ Copy the xfontXY.tgz install set from installXY.img to docs/fonts/arm64/xfontXY.tgz
 	+ Copy the files under the BOOT partition of installXY.img for the arm64 arch to ~/OpenBSD/X.Y/arm64/BOOT/
 	+ Download and copy [the Broadcom wifi drivers](https://github.com/pftf/RPi4/tree/master/firmware/brcm) for Raspberry Pi 4 to ~/OpenBSD/X.Y/arm64/firmware/
 
@@ -336,7 +337,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Compress
 
 - Strip xbase and xfont:
-	+ Make sure the contents are the same as in the one in the old iso file, except for the version numbers
+	+ Make sure the contents are the same as in the files in the old iso and img files, except for the version numbers
 	+ SECURITY: Be very careful about the permissions of the directories and files in these install sets, they should be the same as the original files
 
 - Run the create script:
