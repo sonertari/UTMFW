@@ -28,6 +28,12 @@ class Snortinline extends Snort
 	
 	protected $psCmd= '/bin/ps arwwx -o pid,start,%cpu,time,%mem,rss,vsz,stat,pri,nice,tty,user,group,command | /usr/bin/grep "\-Q" | /usr/bin/grep -v -e grep | /usr/bin/grep -E <PROC>';
 
+	function __construct()
+	{
+		parent::__construct();
+		$this->CollectdName= 'snort';
+	}
+
 	function GetVersion()
 	{
 		return FALSE;

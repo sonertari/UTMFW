@@ -1,0 +1,16 @@
+#!/bin/ksh
+#
+# $OpenBSD: collectd.rc,v 1.4 2018/01/11 19:27:10 rpe Exp $
+
+daemon="${TRUEPREFIX}/sbin/collectd"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_pre() {
+	chgrp _collectd /etc/collectd.conf
+	chmod g+r /etc/collectd.conf
+}
+
+rc_cmd $1

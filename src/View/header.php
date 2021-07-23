@@ -248,16 +248,11 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 								'10min' => _MENU('10 mins'),
 								'30min' => _MENU('30 mins'),
 								'1hour' => _MENU('1 hour'),
-								'3hour' => _MENU('3 hours'),
-								'6hour' => _MENU('6 hours'),
 								'12hour' => _MENU('12 hours'),
 								'1day' => _MENU('1 day'),
-								'3day' => _MENU('3 days'),
 								'1week' => _MENU('1 week'),
 								'1month' => _MENU('1 month'),
-								'3month' => _MENU('3 months'),
 								'6month' => _MENU('6 months'),
-								'1year' => _MENU('1 year'),
 								);
 							$LastDashboardIntervalStr= preg_replace('/<INTERVAL>/', $DashboardIntervals[$LastDashboardInterval], _MENU('Last <INTERVAL>'));
 							?>

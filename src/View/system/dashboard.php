@@ -60,6 +60,10 @@ if (filter_has_var(INPUT_GET, 'interval')) {
 }
 $_SESSION['system']['DashboardInterval']= $LastDashboardInterval;
 
+if ($StatusCheckInterval !== $DashboardIntervals2Seconds[$LastDashboardInterval]) {
+	$View->Controller($Output, 'SetStatusCheckInterval', $DashboardIntervals2Seconds[$LastDashboardInterval]);
+}
+
 $ServiceStatus= array();
 if ($View->Controller($Output, 'GetServiceStatus', TRUE, $LastDashboardInterval)) {
 	$Output= json_decode($Output[0], TRUE);

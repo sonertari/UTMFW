@@ -203,9 +203,9 @@ class Spamassassin extends Model
 		return Output(json_encode($logs));
 	}
 	
-	function _getLiveLogs($file, $count, $re= '', $needle= '')
+	function _getLiveLogs($file, $count, $re= '', $needle= '', $reportFileExistResult= TRUE)
 	{
-		if (!$this->ValidateFile($file)) {
+		if (!$this->ValidateFile($file, $reportFileExistResult)) {
 			return FALSE;
 		}
 

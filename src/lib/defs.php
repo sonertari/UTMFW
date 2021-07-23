@@ -1044,6 +1044,19 @@ $ModelsToStat= array(
 	'collectd' => _TITLE('Collectd'),
 	);
 
+$DashboardIntervals2Seconds= array(
+	'1min' => 60,
+	'5min' => 300,
+	'10min' => 600,
+	'30min' => 1800,
+	'1hour' => 3600,
+	'12hour' => 43200,
+	'1day' => 86400,
+	'1week' => 604800,
+	'1month' => 2592000,
+	'6month' => 15552000,
+	);
+
 $PF_CONFIG_PATH= '/etc/pfre';
 $TMP_PATH= '/tmp';
 

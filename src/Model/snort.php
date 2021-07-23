@@ -180,17 +180,12 @@ class Snort extends Model
 		return FALSE;
 	}
 
-	function _getModuleStatus($generate_info= FALSE, $start= 0)
+	function _getModuleStatus($start, $generate_info= FALSE)
 	{
-		global $MODEL_PATH;
-
-		$status= parent::_getModuleStatus($generate_info, $start);
+		$status= parent::_getModuleStatus($start, $generate_info);
 
 		if ($generate_info) {
-			require_once($MODEL_PATH.'/snortalerts.php');
-			$snortalerts= new Snortalerts();
-			$logs= $snortalerts->GetLastLogs(' -> ', $start);
-			$status['info']['alerts']= $logs ? count($logs) : 0;
+			$status['info']['alerts']= $this->getRrdValue('derive-alert.rrd', $start, $result);
 		}
 		return $status;
 	}

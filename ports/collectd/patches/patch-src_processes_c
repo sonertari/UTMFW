@@ -1,0 +1,14 @@
+$OpenBSD: patch-src_processes_c,v 1.11 2018/04/28 14:40:26 landry Exp $
+
+Index: src/processes.c
+--- src/processes.c.orig
++++ src/processes.c
+@@ -169,7 +169,7 @@
+ #if defined(ARG_MAX) && (ARG_MAX < 4096)
+ #define CMDLINE_BUFFER_SIZE ARG_MAX
+ #else
+-#define CMDLINE_BUFFER_SIZE 4096
++#define CMDLINE_BUFFER_SIZE 4*4096
+ #endif
+ #endif
+ 

@@ -1,0 +1,348 @@
+$OpenBSD$
+
+Index: src/notify_fifo.c
+--- src/notify_fifo.c.orig
++++ src/notify_fifo.c
+@@ -0,0 +1,342 @@
++/**
++ * collectd - src/notify_fifo.c
++ *
++ * Copyright(c) 2021 Soner Tari. All rights reserved.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ *
++ * Authors:
++ *   Soner Tari <sonertari@gmail.com>
++ **/
++
++#include "collectd.h"
++
++#include "plugin.h"
++#include "utils/common/common.h"
++
++#define PLUGIN_NAME "notify_fifo"
++
++#define MAX_LEN 256
++char basedir[MAX_LEN + 1] = "/tmp/";
++
++#define MAX_LINE_LEN 1024
++
++int global_capacity = 5;
++
++typedef struct notify_fifo_ctx_s {
++	char *filename;
++	char *plugin;
++	char *plugin_instance;
++	char *type;
++	int capacity;
++	struct notify_fifo_ctx_s *next;
++} notify_fifo_ctx_t;
++
++static notify_fifo_ctx_t *notify_fifo_ctx = NULL;
++
++static int notify_fifo_config_fifo(oconfig_item_t *ci) {
++	char *filename = NULL;
++	char *plugin = NULL;
++	char *plugin_instance = NULL;
++	char *type = NULL;
++	int capacity = global_capacity;
++	int ret = 0;
++
++	ret = cf_util_get_string(ci, &filename);
++	if (ret != 0) {
++		ERROR(PLUGIN_NAME ": Error getting filename");
++		goto err;
++	}
++
++	if (strlen(filename) > MAX_LEN) {
++		ERROR(PLUGIN_NAME ": filename too long: %zu", strlen(filename));
++		goto err;
++	}
++
++	// cf_util_get_string() frees before assigning
++	plugin = strdup("");
++	plugin_instance = strdup("");
++	type = strdup("");
++
++	for (int i = 0; i < ci->children_num; i++) {
++		oconfig_item_t *child = ci->children + i;
++		if (strcasecmp("Plugin", child->key) == 0)
++			ret = cf_util_get_string(child, &plugin);
++		else if (strcasecmp("PluginInstance", child->key) == 0)
++			ret = cf_util_get_string(child, &plugin_instance);
++		else if (strcasecmp("Type", child->key) == 0)
++			ret = cf_util_get_string(child, &type);
++		else if (strcasecmp("Capacity", child->key) == 0)
++			ret = cf_util_get_int(child, &capacity);
++		else {
++			ERROR(PLUGIN_NAME ": Invalid configuration option \"%s\"", child->key);
++			goto err;
++		}
++
++		if (ret != 0) {
++			ERROR(PLUGIN_NAME ": Error getting %s option", child->key);
++			goto err;
++		}
++	}
++
++	size_t basedir_len = strlen(basedir);
++	size_t filepath_len = basedir_len + (basedir[basedir_len - 1] != '/' ? 1 : 0) + strlen(filename) + 1;
++	char *filepath = malloc(filepath_len);
++	if (!filepath) {
++		ERROR(PLUGIN_NAME ": Cannot malloc filepath");
++		goto err;
++	}
++
++	if (snprintf(filepath, filepath_len, "%s%s%s", basedir, basedir[basedir_len - 1] != '/' ? "/" : "", filename) < 0) {
++		ERROR(PLUGIN_NAME ": Cannot snprintf filepath");
++		free(filepath);
++		goto err;
++	}
++
++	filename = filepath;
++
++	notify_fifo_ctx_t *ctx = notify_fifo_ctx;
++	while (ctx) {
++		if (strcasecmp(ctx->filename, filename) == 0 && strcasecmp(ctx->plugin, plugin) == 0 &&
++				strcasecmp(ctx->plugin_instance, plugin_instance) == 0 && strcasecmp(ctx->type, type) == 0) {
++			ERROR(PLUGIN_NAME ": fifo already exists: %s, %s, %s, %s, %i", ctx->filename, ctx->plugin, ctx->plugin_instance, ctx->type, ctx->capacity);
++			goto err;
++		}
++		ctx = ctx->next;
++	}
++
++	notify_fifo_ctx_t *fifo = malloc(sizeof (notify_fifo_ctx_t));
++	if (!fifo) {
++		ERROR(PLUGIN_NAME ": Cannot malloc fifo");
++		goto err;
++	}
++	memset(fifo, 0, sizeof (notify_fifo_ctx_t));
++
++	fifo->filename = filename;
++	fifo->plugin = plugin;
++	fifo->plugin_instance = plugin_instance;
++	fifo->type = type;
++	fifo->capacity = capacity;
++
++	DEBUG(PLUGIN_NAME " fifo: %s, %s, %s, %s, %i", fifo->filename, fifo->plugin, fifo->plugin_instance, fifo->type, fifo->capacity);
++
++	fifo->next = notify_fifo_ctx;
++	notify_fifo_ctx = fifo;
++
++	return 0;
++
++err:
++	if (filename)
++		free(filename);
++	if (plugin)
++		free(plugin);
++	if (plugin_instance)
++		free(plugin_instance);
++	if (type)
++		free(type);
++
++	return -1;
++}
++
++static int notify_fifo_config(oconfig_item_t *ci) {
++	// Each notify_fifo config block can redefine BaseDir and Capacity
++	DEBUG(PLUGIN_NAME " BaseDir: %s", basedir);
++	DEBUG(PLUGIN_NAME " Capacity: %i", global_capacity);
++
++	for (int i = 0; i < ci->children_num; i++) {
++		oconfig_item_t *child = ci->children + i;
++
++		if (strcasecmp("Fifo", child->key) == 0) {
++			if (notify_fifo_config_fifo(child) != 0) {
++				return -1;
++			}
++		} else if (strcasecmp("BaseDir", child->key) == 0) {
++			char *tmp = NULL;
++			if (cf_util_get_string(child, &tmp) != 0) {
++				ERROR(PLUGIN_NAME ": Error getting %s option", child->key);
++				return -1;
++			}
++
++			if (strlen(tmp) > MAX_LEN) {
++				ERROR(PLUGIN_NAME ": BaseDir too long: %zu", strlen(tmp));
++				free(tmp);
++				return -1;
++			}
++			
++			strncpy(basedir, tmp, MAX_LEN);
++			free(tmp);
++			DEBUG(PLUGIN_NAME " set BaseDir: %s", basedir);
++		} else if (strcasecmp("Capacity", child->key) == 0) {
++			if (cf_util_get_int(child, &global_capacity) != 0) {
++				ERROR(PLUGIN_NAME ": Error getting %s option", child->key);
++				return -1;
++			}
++			DEBUG(PLUGIN_NAME " set Capacity: %i", global_capacity);
++		} else {
++			ERROR(PLUGIN_NAME ": Invalid configuration option \"%s\"", child->key);
++			return -1;
++		}
++	}
++
++	return 0;
++}
++
++static int notify_fifo_add(const char *filename, const int capacity, const char *str) {
++	char *tail[capacity];
++
++	size_t len = strlen(str);
++	if (len > MAX_LINE_LEN) {
++		ERROR(PLUGIN_NAME " line to add too long, discarding [%zu]: %s", len, str);
++		return -1;
++	}
++
++	// Mode a+ creates filename if it does not exist, and allows for reading
++	FILE *fd = fopen(filename, "a+");
++	if (!fd) {
++		ERROR(PLUGIN_NAME ": Cannot open file a+ %s", filename);
++		return -1;
++	}
++
++	// Set the read position to the beginning, for OpenBSD (and Android/BSD/MacOS)
++	rewind(fd);
++
++	memset(tail, 0, sizeof (tail));
++
++	int repair = 0;
++	int line_count = 0;
++	int i = 0;
++	// TODO: Use a non-zero n to limit read size, and malloc tail[i] before passing down
++	size_t n = 0;
++	ssize_t nread;
++	while ((nread = getline(&tail[i], &n, fd)) != -1) {
++		if (nread > MAX_LINE_LEN) {
++			// Free and skip this line, but increment counters, so tail[i] will be NULL
++			ERROR(PLUGIN_NAME " getline read too long, reinit fifo and discard %i [%zu]: %s", i, nread, tail[i]);
++			sfree(tail[i]);
++			repair = 1;
++		} else {
++			DEBUG(PLUGIN_NAME " getline %i [%zu]: %s", i, nread, tail[i]);
++		}
++		line_count++;
++		i = (i + 1) % capacity;
++	}
++
++	if (ferror(fd)) {
++		ERROR(PLUGIN_NAME ": getline error, reinit fifo: %s", filename);
++		repair = 1;
++	}
++
++	if (!feof(fd)) {
++		ERROR(PLUGIN_NAME ": getline not eof, reinit fifo: %s", filename);
++		repair = 1;
++	}
++
++	if (line_count >= capacity || repair) {
++		// Do not call freopen(), its behavior differs on different platforms
++		fclose(fd);
++
++		// Truncate filename by opening w+
++		fd = fopen(filename, "w+");
++		if (!fd) {
++			ERROR(PLUGIN_NAME ": Cannot reopen file w+ %s", filename);
++			return -1;
++		}
++
++		int last = i;
++		for (i = (i + 1) % capacity; i != last; i = (i + 1) % capacity) {
++			// tail[i] may be NULL, if nread > MAX_LINE_LEN or ferror() or !feof()
++			if (tail[i]) {
++				DEBUG(PLUGIN_NAME " fprintf %i: %s", i, tail[i]);
++				fprintf(fd, "%s", tail[i]);
++			} else {
++				DEBUG(PLUGIN_NAME " tail[%i] is NULL", i);
++			}
++		}
++	}
++
++	// Now, filename is open either a+ ready to write to its end only or w+ with the write position at its end
++	DEBUG(PLUGIN_NAME " fprintf: %s\n", str);
++	fprintf(fd, "%s\n", str);
++	fclose(fd);
++
++	for (i = 0; i < capacity; i++) {
++		if (tail[i])
++			free(tail[i]);
++	}
++
++	return 0;
++}
++
++static int notify_fifo_notify(const notification_t *n, user_data_t *ud) {
++	if (!n->meta) {
++		ERROR(PLUGIN_NAME ": No meta in notification");
++		return -1;
++	}
++
++	if (NM_TYPE_STRING != n->meta->type) {
++		ERROR(PLUGIN_NAME ": Unsupported meta->type: %i", n->meta->type);
++		return -1;
++	}
++
++	char *filename = NULL;
++	int capacity = 0;
++
++	notify_fifo_ctx_t *fifo = notify_fifo_ctx;
++	while (fifo) {
++		if (strcasecmp(fifo->plugin, n->plugin) == 0 && strcasecmp(fifo->plugin_instance, n->plugin_instance) == 0 && strcasecmp(fifo->type, n->type) == 0) {
++			filename = fifo->filename;
++			capacity = fifo->capacity;
++			break;
++		}
++		fifo = fifo->next;
++	}
++
++	if (!filename) {
++		ERROR(PLUGIN_NAME ": Cannot find fifo config to apply to %s, %s, %s", n->plugin, n->plugin_instance, n->type);
++		return -1;
++	}
++
++	return notify_fifo_add(filename, capacity, n->meta->nm_value.nm_string);
++}
++
++static int notify_fifo_shutdown(void) {
++	notify_fifo_ctx_t *ctx = notify_fifo_ctx;
++	while (ctx) {
++		notify_fifo_ctx_t *c = ctx;
++		ctx = ctx->next;
++		if (c->filename)
++			free(c->filename);
++		if (c->plugin)
++			free(c->plugin);
++		if (c->plugin_instance)
++			free(c->plugin_instance);
++		if (c->type)
++			free(c->type);
++		free(c);
++	}
++
++	return 0;
++}
++
++void module_register(void) {
++	plugin_register_complex_config(PLUGIN_NAME, notify_fifo_config);
++	plugin_register_notification(PLUGIN_NAME, notify_fifo_notify, NULL);
++	plugin_register_shutdown(PLUGIN_NAME, notify_fifo_shutdown);
++}
++

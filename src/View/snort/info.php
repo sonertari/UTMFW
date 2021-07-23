@@ -46,6 +46,8 @@ if (filter_has_var(INPUT_POST, 'Model')) {
 	}
 }
 
+$View->Controller($Output, 'GetStatus');
+
 $View->Model= 'snortinline';
 $View->ProcessStartStopRequests();
 

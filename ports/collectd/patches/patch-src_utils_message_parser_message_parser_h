@@ -1,0 +1,14 @@
+$OpenBSD$
+
+Index: src/utils/message_parser/message_parser.h
+--- src/utils/message_parser/message_parser.h.orig
++++ src/utils/message_parser/message_parser.h
+@@ -58,7 +58,7 @@ typedef struct message_pattern_s {
+ 
+ typedef struct message_item_s {
+   char name[32];
+-  char value[64];
++  char value[256];
+   void *user_data;
+   void (*free_user_data)(void *data);
+ } message_item_t;

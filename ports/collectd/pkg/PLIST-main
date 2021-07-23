@@ -1,0 +1,60 @@
+@comment $OpenBSD: PLIST-main,v 1.14 2018/11/18 19:39:29 landry Exp $
+@newgroup _collectd:652
+@newuser _collectd:652:652:daemon:Collectd Daemon:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/collectd
+@bin bin/collectd-nagios
+@bin bin/collectd-tg
+@bin bin/collectdctl
+include/collectd/
+include/collectd/client.h
+include/collectd/lcc_features.h
+include/collectd/network.h
+include/collectd/network_buffer.h
+include/collectd/network_parse.h
+include/collectd/server.h
+include/collectd/types.h
+lib/collectd/
+@so lib/collectd/cpu.so
+@so lib/collectd/logparser.so
+@so lib/collectd/notify_fifo.so
+@so lib/collectd/syslog.so
+@so lib/collectd/tail.so
+@comment lib/libcollectdclient.la
+@lib lib/libcollectdclient.so.${LIBcollectdclient_VERSION}
+lib/pkgconfig/libcollectdclient.pc
+@comment libdata/perl5/${MACHINE_ARCH}-openbsd/
+@comment libdata/perl5/${MACHINE_ARCH}-openbsd/perllocal.pod
+libdata/perl5/site_perl/Collectd/
+libdata/perl5/site_perl/Collectd.pm
+libdata/perl5/site_perl/Collectd/Plugins/
+libdata/perl5/site_perl/Collectd/Plugins/OpenVZ.pm
+libdata/perl5/site_perl/Collectd/Unixsock.pm
+@man man/man1/collectd-nagios.1
+@man man/man1/collectd-tg.1
+@man man/man1/collectd.1
+@man man/man1/collectdctl.1
+@man man/man1/collectdmon.1
+@man man/man3p/Collectd::Unixsock.3p
+@man man/man5/collectd-email.5
+@man man/man5/collectd-exec.5
+@man man/man5/collectd-java.5
+@man man/man5/collectd-lua.5
+@man man/man5/collectd-perl.5
+@man man/man5/collectd-python.5
+@man man/man5/collectd-snmp.5
+@man man/man5/collectd-threshold.5
+@man man/man5/collectd-unixsock.5
+@man man/man5/collectd.conf.5
+@man man/man5/types.db.5
+@bin sbin/collectd
+@bin sbin/collectdmon
+share/collectd/
+share/collectd/postgresql_default.conf
+share/collectd/types.db
+share/doc/pkg-readmes/${PKGSTEM}
+@owner _collectd
+@group _collectd
+@sample /var/collectd/
+@owner
+@group
+share/examples/collectd.conf

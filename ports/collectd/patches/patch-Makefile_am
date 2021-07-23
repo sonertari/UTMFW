@@ -1,0 +1,56 @@
+$OpenBSD$
+
+Index: Makefile.am
+--- Makefile.am.orig
++++ Makefile.am
+@@ -8,7 +8,7 @@ cpkglocalstatedir=${localstatedir}
+ else
+ cpkgdatadir=$(pkgdatadir)
+ cpkglibdir=$(pkglibdir)
+-cpkglocalstatedir=${localstatedir}/lib/${PACKAGE_NAME}
++cpkglocalstatedir=${localstatedir}/${PACKAGE_NAME}
+ endif
+ 
+ BUILT_SOURCES = \
+@@ -281,7 +281,7 @@ collectd_SOURCES += src/daemon/cmd.c
+ endif
+ 
+ if BUILD_FEATURE_DAEMON
+-collectd_CPPFLAGS += -DPIDFILE='"${localstatedir}/run/${PACKAGE_NAME}.pid"'
++collectd_CPPFLAGS += -DPIDFILE='"${localstatedir}/${PACKAGE_NAME}/${PACKAGE_NAME}.pid"'
+ endif
+ 
+ # The daemon needs to call sg_init, so we need to link it against libstatgrab,
+@@ -1586,6 +1586,13 @@ notify_email_la_LDFLAGS = $(PLUGIN_LDFLAGS) $(BUILD_WI
+ notify_email_la_LIBADD = $(BUILD_WITH_LIBESMTP_LIBS)
+ endif
+ 
++if BUILD_PLUGIN_NOTIFY_FIFO
++pkglib_LTLIBRARIES += notify_fifo.la
++notify_fifo_la_SOURCES = src/notify_fifo.c
++notify_fifo_la_CPPFLAGS = $(AM_CPPFLAGS)
++notify_fifo_la_LDFLAGS = $(PLUGIN_LDFLAGS) -lm
++endif
++
+ if BUILD_PLUGIN_NOTIFY_NAGIOS
+ pkglib_LTLIBRARIES += notify_nagios.la
+ notify_nagios_la_SOURCES = src/notify_nagios.c
+@@ -2423,16 +2430,8 @@ endif
+ endif
+ 
+ install-exec-hook:
+-	$(mkinstalldirs) $(DESTDIR)$(localstatedir)/run
+-	$(mkinstalldirs) $(DESTDIR)$(localstatedir)/lib/$(PACKAGE_NAME)
+-	$(mkinstalldirs) $(DESTDIR)$(localstatedir)/log
+-	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)
+-	if test -e $(DESTDIR)$(sysconfdir)/collectd.conf; \
+-	then \
+-		$(INSTALL) -m 0640 $(builddir)/src/collectd.conf $(DESTDIR)$(sysconfdir)/collectd.conf.pkg-orig; \
+-	else \
+-		$(INSTALL) -m 0640 $(builddir)/src/collectd.conf $(DESTDIR)$(sysconfdir)/collectd.conf; \
+-	fi; \
++	$(mkinstalldirs) ${PREFIX}/share/examples
++	$(INSTALL) -m 0644 $(srcdir)/src/collectd.conf ${PREFIX}/share/examples/collectd.conf;
+ 	$(mkinstalldirs) $(DESTDIR)$(cpkgdatadir)
+ 	$(INSTALL) -m 0644 $(srcdir)/src/types.db $(DESTDIR)$(cpkgdatadir)/types.db;
+ 	$(INSTALL) -m 0644 $(srcdir)/src/postgresql_default.conf \

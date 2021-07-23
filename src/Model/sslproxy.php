@@ -102,14 +102,13 @@ class Sslproxy extends Model
 		return $this->Kill();
 	}
 
-	function _getModuleStatus($generate_info= FALSE, $start= 0)
+	function _getModuleStatus($start, $generate_info= FALSE)
 	{
-		$status= parent::_getModuleStatus($generate_info, $start);
+		$status= parent::_getModuleStatus($start, $generate_info);
 
 		if ($generate_info) {
-			$maxStats= $this->_getMaxStats($start != 0 ? $start : 60);
-			$status['info']['conns']= $maxStats['Load'];
-			$status['info']['fds']= $maxStats['Fd'];
+			$status['info']['conns']= $this->getRrdValue('derive-mld.rrd', $start, $result);
+			$status['info']['fds']= $this->getRrdValue('gauge-mfd.rrd', $start, $result, 'gauge');
 		}
 		return $status;
 	}
@@ -175,55 +174,14 @@ class Sslproxy extends Model
 		return Output(json_encode($this->_getMaxStats($interval)));
 	}
 
-	function _getMaxStats($interval)
+	function _getMaxStats($start)
 	{
-		$logs= $this->GetLastLogs('STATS:', $interval);
-		if ($logs === FALSE) {
-			$logs= array();
-		}
-
-		$maxStats= array(
-			'Load' => 0,
-			'Fd' => 0,
-			'AccessTime' => 0,
-			'CreateTime' => 0,
-			'UploadKB' => 0,
-			'DownloadKB' => 0,
-			);
-		
-		$statsIdx= 0;
-		$load= 0;
-		$upload= 0;
-		$download= 0;
-		foreach ($logs as $l) {
-			$maxStats['Fd']= max($maxStats['Fd'], $l['MaxFd']);
-			$maxStats['AccessTime']= max($maxStats['AccessTime'], $l['MaxAccessTime']);
-			$maxStats['CreateTime']= max($maxStats['CreateTime'], $l['MaxCreateTime']);
-
-			if ($statsIdx != $l['StatsIdx']) {
-				$maxStats['Load']= max($maxStats['Load'], $load);
-				$maxStats['UploadKB']= max($maxStats['UploadKB'], $upload);
-				$maxStats['DownloadKB']= max($maxStats['DownloadKB'], $download);
-
-				$statsIdx= $l['StatsIdx'];
-				$load= 0;
-				$upload= 0;
-				$download= 0;
-			}
-
-			$load+= $l['MaxLoad'];
-			$upload+= $l['IntifInBytes'];
-			$download+= $l['IntifOutBytes'];
- 		}
-
-		// Update one last time with the accumulated values of the last loop
-		$maxStats['Load']= max($maxStats['Load'], $load);
-		$maxStats['UploadKB']= max($maxStats['UploadKB'], $upload);
-		$maxStats['DownloadKB']= max($maxStats['DownloadKB'], $download);
-
-		$maxStats['UploadKB']= round($maxStats['UploadKB'] / 1000);
-		$maxStats['DownloadKB']= round($maxStats['DownloadKB'] / 1000);
-
+		$maxStats['Load']= $this->getRrdValue('derive-mld.rrd', $start, $result);
+		$maxStats['UploadKB']= round($this->getRrdValue('derive-iib.rrd', $start, $result) / 1000);
+		$maxStats['DownloadKB']= round($this->getRrdValue('derive-iob.rrd', $start, $result) / 1000);
+		$maxStats['Fd']= $this->getRrdValue('gauge-mfd.rrd', $start, $result, 'gauge');
+		$maxStats['AccessTime']= $this->getRrdValue('gauge-mat.rrd', $start, $result, 'gauge');
+		$maxStats['CreateTime']= $this->getRrdValue('gauge-mct.rrd', $start, $result, 'gauge');
 		return $maxStats;
 	}
 

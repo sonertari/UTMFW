@@ -30,13 +30,14 @@ class Collectd extends Monitoring
 	public $VersionCmd= '/usr/local/sbin/collectd -h 2>&1';
 
 	protected $LogFilter= 'collectd';
-	protected $RrdFolder= '/var/collectd/localhost/ping';
+	private $RrdFolder= '';
 
 	function __construct()
 	{
 		parent::__construct();
 
 		$this->StartCmd= '/usr/local/sbin/collectd';
+		$this->RrdFolder= "{$this->CollectdRrdFolder}/ping";
 
 		$this->Commands= array_merge(
 			$this->Commands,
@@ -82,11 +83,12 @@ class Collectd extends Monitoring
 		return $killed;
 	}
 
-	function _getModuleStatus($generate_info= FALSE, $start= 0)
+	function _getModuleStatus($start, $generate_info= FALSE)
 	{
-		$status= parent::_getModuleStatus($generate_info, $start);
+		$status= parent::_getModuleStatus($start, $generate_info);
 
 		if ($generate_info) {
+			// We are interested in the ping times in the last 60 seconds only
 			$gateway_host= $this->getGatewayPingHost();
 			$status['info']['gateway_ping_time']= $this->getPingAverage($gateway_host);
 
@@ -97,23 +99,25 @@ class Collectd extends Monitoring
 	}
 
 	/**
-	 * Gets the averate of ping times to the given ping host for the last minute.
+	 * Gets the average of ping times to the given ping host for the given period.
 	 *
 	 * @param string $host Ping host.
-	 * @param string $start Period of time backwards from now, in rrdgraph style.
+	 * @param string $start Period of time backwards from now, in seconds.
 	 * @return string Average ping time in float ms.
 	 */
-	function getPingAverage($host, $start= '1min')
+	function getPingAverage($host, $start= 60)
 	{
 		$total= 0;
 		$count= 0;
 		if (file_exists("$this->RrdFolder/ping-$host.rrd")) {
 			exec("/usr/local/bin/rrdtool fetch -s -$start $this->RrdFolder/ping-$host.rrd AVERAGE", $output);
+
 			foreach ($output as $a) {
 				// 1612786040: nan
 				// 1612785390: 7.0429000000e+01
 				if (preg_match('/^\d+:\s*(\S+)$/', $a, $match)) {
 					if ($match[1] != 'nan') {
+						/// @attention Do not multiply value with rrd resolution, the dataset type of ping plugin is gauge
 						$total+= floatval($match[1]);
 						$count++;
 					}

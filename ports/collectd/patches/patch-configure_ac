@@ -1,0 +1,29 @@
+$OpenBSD: patch-configure_ac,v 1.1 2018/07/09 07:02:20 sthen Exp $
+
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -358,6 +358,7 @@ AC_CHECK_HEADERS([netinet/udp.h], [], [],
+ 
+ # For cpu modules
+ AC_CHECK_HEADERS([sys/dkstat.h])
++AC_CHECK_HEADERS([sys/sched.h])
+ if test "x$ac_system" = "xDarwin"; then
+   AC_CHECK_HEADERS(
+     [ \
+@@ -7123,6 +7124,7 @@ AC_PLUGIN([nfs],                 [$plugin_nfs],       
+ AC_PLUGIN([nginx],               [$with_libcurl],             [nginx statistics])
+ AC_PLUGIN([notify_desktop],      [$with_libnotify],           [Desktop notifications])
+ AC_PLUGIN([notify_email],        [$with_libesmtp],            [Email notifier])
++AC_PLUGIN([notify_fifo],         [yes],                       [FIFO notification plugin])
+ AC_PLUGIN([notify_nagios],       [yes],                       [Nagios notification plugin])
+ AC_PLUGIN([ntpd],                [yes],                       [NTPd statistics])
+ AC_PLUGIN([numa],                [$plugin_numa],              [NUMA virtual memory statistics])
+@@ -7570,6 +7572,7 @@ AC_MSG_RESULT([    nfs . . . . . . . . . $enable_nfs])
+ AC_MSG_RESULT([    nginx . . . . . . . . $enable_nginx])
+ AC_MSG_RESULT([    notify_desktop  . . . $enable_notify_desktop])
+ AC_MSG_RESULT([    notify_email  . . . . $enable_notify_email])
++AC_MSG_RESULT([    notify_fifo   . . . . $enable_notify_fifo])
+ AC_MSG_RESULT([    notify_nagios . . . . $enable_notify_nagios])
+ AC_MSG_RESULT([    ntpd  . . . . . . . . $enable_ntpd])
+ AC_MSG_RESULT([    numa  . . . . . . . . $enable_numa])

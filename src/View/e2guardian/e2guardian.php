@@ -113,7 +113,7 @@ class E2guardian extends View
 			</td>
 		</tr>
 		<tr>
-			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Current number of requests handled by the Web Filter') ?>">
+			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Number of requests handled by the Web Filter') ?>">
 				<a class="transparent-white" href="/e2guardian/accesslogs.php">
 				<div id="count" style="background-color: #673f00">
 					<table>

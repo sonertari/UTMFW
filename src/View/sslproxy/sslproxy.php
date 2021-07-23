@@ -191,7 +191,7 @@ class Sslproxy extends View
 			</td>
 		</tr>
 		<tr>
-			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Current number of connections handled by the SSL Proxy') ?>">
+			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Number of connections handled by the SSL Proxy') ?>">
 				<a class="transparent-white" href="/sslproxy/conns.php">
 				<div id="count" style="background-color: #008194">
 					<table>
@@ -211,7 +211,7 @@ class Sslproxy extends View
 			</td>
 		</tr>
 		<tr>
-			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Current number of file descriptors used by the SSL Proxy') ?>">
+			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Number of file descriptors used by the SSL Proxy') ?>">
 				<a class="transparent-white" href="/sslproxy/logs.php">
 				<div id="count" style="background-color: #da5400">
 					<table>

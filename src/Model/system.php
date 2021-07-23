@@ -674,9 +674,9 @@ class System extends Model
 		return Output(json_encode($config));
 	}
 
-	function _getModuleStatus($generate_info= FALSE, $start= 0)
+	function _getModuleStatus($start, $generate_info= FALSE)
 	{
-		$status= parent::_getModuleStatus($generate_info, $start);
+		$status= parent::_getModuleStatus($start, $generate_info);
 
 		if ($generate_info) {
 			$uptime= $this->RunShellCommand('/usr/bin/uptime');
@@ -934,6 +934,7 @@ class System extends Model
 		}
 
 		// protograph
+		// list.gif is used by pnrg-indexmaker.pl, which we never execute, so we can safely remove *.gif
 		exec("/bin/rm -f ${VIEW_PATH}/pmacct/pnrg/spool/*.{gif,cgi,rrd,desc} 2>&1", $output, $retval);
 		if ($retval !== 0) {
 			$result= FALSE;

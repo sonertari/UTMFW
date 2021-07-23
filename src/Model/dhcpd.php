@@ -282,9 +282,9 @@ class Dhcpd extends Model
 		return $retval;
 	}
 
-	function _getModuleStatus($generate_info= FALSE, $start= 0)
+	function _getModuleStatus($start, $generate_info= FALSE)
 	{
-		$status= parent::_getModuleStatus($generate_info, $start);
+		$status= parent::_getModuleStatus($start, $generate_info);
 
 		if ($generate_info) {
 			$status['info']['leases']= $this->_getLeasesLineCount();

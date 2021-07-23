@@ -263,18 +263,12 @@ class E2guardian extends Model
 			);
 	}
 
-	function _getModuleStatus($generate_info= FALSE, $start= 0)
+	function _getModuleStatus($start, $generate_info= FALSE)
 	{
-		global $MODEL_PATH, $ModelFiles;
-
-		$status= parent::_getModuleStatus($generate_info, $start);
+		$status= parent::_getModuleStatus($start, $generate_info);
 
 		if ($generate_info) {
-			require_once($MODEL_PATH.'/'.$ModelFiles['e2guardianlogs']);
-
-			$model= new E2guardianlogs();
-			$logs= $model->GetLastLogs('', $start);
-			$status['info']['requests']= $logs ? count($logs) : 0;
+			$status['info']['requests']= $this->getRrdValue('derive-all.rrd', $start, $result);
 		}
 		return $status;
 	}

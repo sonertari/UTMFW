@@ -97,7 +97,7 @@ class Dhcpd extends View
 			<td colspan="4">
 				<table>
 					<tr id="dashboard">
-						<td class="halfcountleft" title="<?php echo _TITLE2('Current number of leases assigned to clients by the DHCP Server') ?>">
+						<td class="halfcountleft" title="<?php echo _TITLE2('Number of leases assigned to clients by the DHCP Server') ?>">
 							<a class="transparent-white" href="/dhcpd/info.php?submenu=dhcpd">
 							<div class="halfcount" style="background-color: blue">
 								<table>
@@ -115,7 +115,7 @@ class Dhcpd extends View
 							</div>
 							</a>
 						</td>
-						<td class="halfcountright" title="<?php echo _TITLE2('Current number of hosts on the system ARP table') ?>">
+						<td class="halfcountright" title="<?php echo _TITLE2('Number of hosts on the system ARP table') ?>">
 							<a class="transparent-white" href="/dhcpd/info.php?submenu=arptable">
 							<div class="halfcount" style="background-color: #490067">
 								<table>

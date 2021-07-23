@@ -167,7 +167,7 @@ class Snort extends View
 			</td>
 		</tr>
 		<tr>
-			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Current number of alerts issued by the IDS and Inline IPS') ?>">
+			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Number of alerts issued by the IDS and Inline IPS') ?>">
 				<a class="transparent-white" href="/snort/alerts.php">
 				<div id="count" style="background-color: blueviolet">
 					<table>

@@ -12,6 +12,11 @@ mkdir -p /var/tmp/utmfw/
 
 touch /var/tmp/utmfw/.starting_utmfw
 
+mkdir /var/tmp/utmfw/fifo/
+
+# Set the pf debug level to warn for module status (the default is err)
+/sbin/pfctl -x warn
+
 echo '\nStarting UTMFW services...'
 
 # Start PHP FastCGI server

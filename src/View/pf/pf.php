@@ -175,7 +175,7 @@ class Pf extends View
 			</td>
 		</tr>
 		<tr>
-			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Current number of states') ?>">
+			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Number of states') ?>">
 				<a class="transparent-white" href="/pf/info.php?submenu=states">
 				<div id="count" style="background-color: #a800ae">
 					<table>

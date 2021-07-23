@@ -26,9 +26,9 @@ require_once($MODEL_PATH.'/include.php');
 
 class Model
 {
+	/// @attention Should be updated in constructors of children
 	public $Name= '';
 
-	/// @attention Should be updated in constructors of children
 	public $Proc= '';
 	public $User= '';
 
@@ -71,29 +71,27 @@ class Model
 
 	public $PidFile= '';
 
+	/// Used in collectd rrd and fifo file names
+	protected $CollectdName= '';
+	protected $CollectdRrdFolder= '/var/collectd/localhost';
+	protected $CollectdFifoFolder= '/tmp/utmfw/fifo';
+
 	protected $newSyslogConf= '/etc/newsyslog.conf';
 
 	/// This datetime format is for error logs, not access logs.
 	/// Certain modules use the default syslog format.
 	protected $dateTimeFormat= 'M j H:i:s';
 
-	protected $prios= array();
-
 	function __construct()
 	{
 		global $ModelConfig;
 		
 		$this->Proc= $this->Name;
+		$this->CollectdName= $this->Name;
 
 		$this->TmpLogsDir= '/var/tmp/utmfw/logs/'.get_class($this).'/';
 
 		$this->Config= $ModelConfig;
-
-		$this->prios= array(
-			'CRITICAL|ALERT|EMERGENCY' => _TITLE('<MODEL> has CRITICAL errors'),
-			'ERROR' => _TITLE('<MODEL> has ERRORs'),
-			'WARNING' => _TITLE('<MODEL> has WARNINGs')
-			);
 
 		$this->Commands= array_merge(
 			$this->Commands,
@@ -1425,9 +1423,9 @@ class Model
 	 * 
 	 * @param string $needle Second regexp to further restrict the result set.
 	 */
-	function _getLiveLogs($file, $count, $re= '', $needle= '')
+	function _getLiveLogs($file, $count, $re= '', $needle= '', $reportFileExistResult= TRUE)
 	{
-		if (!$this->ValidateFile($file)) {
+		if (!$this->ValidateFile($file, $reportFileExistResult)) {
 			return FALSE;
 		}
 
@@ -1830,14 +1828,17 @@ class Model
 	 * Checks if the given file exists and not larger than $MaxFileSizeToProcess in MBs.
 	 *
 	 * @param string $file File pathname.
+	 * @param string $reportFileExistResult Whether to report if file does not exist.
 	 * @return bool TRUE on success, FALSE on fail.
 	 */
-	function ValidateFile($file)
+	function ValidateFile($file, $reportFileExistResult= TRUE)
 	{
 		global $MaxFileSizeToProcess;
 
 		if (!file_exists($file)) {
-			Error(_('File does not exit').': '.$file);
+			if ($reportFileExistResult) {
+				Error(_('File does not exit').': '.$file);
+			}
 			return FALSE;
 		}
 
@@ -2684,25 +2685,7 @@ class Model
 	 */
 	function GetServiceStatus($generate_info= FALSE, $start= '10min')
 	{
-		global $MODEL_PATH, $ModelFiles, $Models, $ModelsToStat;
-
-		$DashboardIntervals2Seconds= array(
-			'1min' => 60,
-			'5min' => 300,
-			'10min' => 600,
-			'30min' => 1800,
-			'1hour' => 3600,
-			'3hour' => 10800,
-			'6hour' => 21600,
-			'12hour' => 43200,
-			'1day' => 86400,
-			'3day' => 259200,
-			'1week' => 604800,
-			'1month' => 2592000,
-			'3month' => 7776000,
-			'6month' => 15552000,
-			'1year' => 31104000,
-			);
+		global $MODEL_PATH, $ModelFiles, $Models, $ModelsToStat, $DashboardIntervals2Seconds;
 
 		if ($generate_info) {
 			require_once($MODEL_PATH.'/'.$ModelFiles['collectd']);
@@ -2756,7 +2739,7 @@ class Model
 				if (class_exists($Models[$name])) {
 					$model= new $Models[$name]();
 					// Pass interval down to _getModuleStatus()
-					$module_status= $model->_getModuleStatus($generate_info, $DashboardIntervals2Seconds[$start]);
+					$module_status= $model->_getModuleStatus($DashboardIntervals2Seconds[$start], $generate_info);
 					if ($module_status !== FALSE) {
 						$status[$name]= $module_status['status'];
 						if ($generate_info) {
@@ -2788,171 +2771,234 @@ class Model
 
 	function GetModuleStatus()
 	{
-		$module_status= $this->_getModuleStatus();
+		global $StatusCheckInterval;
+
+		$module_status= $this->_getModuleStatus($StatusCheckInterval);
 		return Output(json_encode($module_status['status']));
 	}
 
-	function _getModuleStatus($generate_info= FALSE, $start= 0)
+	function _getModuleStatus($start, $generate_info= FALSE)
 	{
-		$runStatus= $this->IsRunning()? 'R':'S';
+		$runStatus= $this->IsRunning() ? 'R' : 'S';
 
-		// @attention Don't use long extended regexps with grep, grep takes too long
-		//$logs= $model->_getStatus('(EMERGENCY|emergency|ALERT|alert|CRITICAL|critical|ERROR|error|WARNING|warning):');
-		$logs= $this->_getStatus('', $start);
-		if ($logs === FALSE) {
-			return array(
-				'status' => array(
-					'Status' => $runStatus,
-					'ErrorStatus' => 'U',
-					'Critical' => 0,
-					'Error' => 0,
-					'Warning' => 0,
-					'Logs' => array(),
-					),
-				'info' => array()
-				);
-		}
-
-		$crits= array();
-		$errs= array();
-		$warns= array();
-		foreach ($logs as $l) {
-			// Warnings and errors must be more frequent, so check them first
-			if ($this->isPrio($l, 'WARNING')) {
-				$warns[]= $l;
-			}
-			else if ($this->isPrio($l, 'ERROR')) {
-				$errs[]= $l;
-			}
-			else if ($this->isPrio($l, 'CRITICAL') || $this->isPrio($l, 'ALERT') || $this->isPrio($l, 'EMERGENCY')) {
-				$crits[]= $l;
-			}
-		}
-
-		$errorStatus= 'N';
-		if (count($crits)) {
-			$errorStatus= 'C';
-		}
-		else if (count($errs)) {
-			$errorStatus= 'E';
-		}
-		else if (count($warns)) {
-			$errorStatus= 'W';
-		}
-
-		$prioLogs= array_merge($crits, $errs, $warns);
-
-		return array(
+		$status= array(
 			'status' => array(
 				'Status' => $runStatus,
-				'ErrorStatus' => $errorStatus,
-				'Critical' => count($crits),
-				'Error' => count($errs),
-				'Warning' => count($warns),
-				'Logs' => $prioLogs,
+				'ErrorStatus' => 'U',
+				'Critical' => 0,
+				'Error' => 0,
+				'Warning' => 0,
+				'Logs' => array(),
 				),
 			'info' => array()
 			);
+
+		$logs= $this->getFifoLogs($start);
+		if ($logs !== FALSE) {
+			$status['status']['Logs']= $logs;
+		}
+
+		$result= array(
+			'critical' => TRUE,
+			'error' => TRUE,
+			'warning' => TRUE,
+			);
+
+		foreach (array('warning', 'error', 'critical') as $prio) {
+			$status['status'][ucfirst($prio)]= $this->getRrdValue("derive-$prio.rrd", $start, $result[$prio]);
+		}
+
+		if ($status['status']['Critical']) {
+			$status['status']['ErrorStatus']= 'C';
+		}
+		else if ($status['status']['Error']) {
+			$status['status']['ErrorStatus']= 'E';
+		}
+		else if ($status['status']['Warning']) {
+			$status['status']['ErrorStatus']= 'W';
+		}
+		else if ($result['critical'] && $result['error'] && $result['warning']) {
+			$status['status']['ErrorStatus']= 'N';
+		}
+
+		return $status;
 	}
 
-	function GetLastLogs($needle, $interval= 60)
+	function getFifoLogs($interval= 60)
 	{
-		if (!$this->ValidateFile($this->LogFile)) {
-			return FALSE;
-		}
-
-		// @attention Get the last datetime in the logs, so do not use the $needle
-		$logs= $this->getStatusLogs($this->LogFile, 1);
-		if ($logs === FALSE) {
-			return FALSE;
-		}
-
 		$lastLogs= array();
-		if (count($logs) == 1) {
-			$lastLine= $logs[0];
-			// @attention Always check the retval of createFromFormat(), it may fail due to format mismatch, e.g. log rotation lines
-			$dt= DateTime::createFromFormat($this->dateTimeFormat, $lastLine['Date'].' '.$lastLine['Time']);
-			if ($dt) {
-				$lastTs= $dt->getTimestamp();
+		$rv= FALSE;
 
-				// @attention Don't get the logs in the last 60 seconds from now instead, otherwise the errors still important cannot be reported after 60 seconds.
-				// XXX: 10000 is too large, but the Dashboard may pass down 1 year as the $interval var
-				$logs= $this->getStatusLogs($this->LogFile, 10000, $needle);
+		foreach (array('warning', 'error', 'critical') as $prio) {
+			// We could get Capacity from collectd.conf, but each fifo may have its own Capacity definition
+			// So we use 100
+			$logs= $this->_getLiveLogs("{$this->CollectdFifoFolder}/{$this->CollectdName}_$prio.fifo", 100, '', '', FALSE);
+			if ($logs === FALSE) {
+				continue;
+			}
 
-				$count= count($logs);
-				// Loop in reverse order to break out asap
-				while (--$count >= 0) {
-					$l= $logs[$count];
-					$dt= DateTime::createFromFormat($this->dateTimeFormat, $l['Date'].' '.$l['Time']);
-					if ($dt) {
-						$ts= $dt->getTimestamp();
-						if ($lastTs - $ts <= $interval) {
-							$lastLogs[]= $l;
-						} else {
-							break;
+			$rv= TRUE;
+
+			$count= count($logs);
+			if ($count > 0) {
+				/// @attention Don't call date_create('now') to get current time, it uses UTC in php.ini, but the timezone in the logs may be different
+				// Create datetime from /bin/date output to match the timezone in the logs
+				$dt= DateTime::createFromFormat($this->dateTimeFormat, exec('/bin/date "+%b %e %H:%M:%S"'));
+				if ($dt) {
+					$lastTs= $dt->getTimestamp();
+
+					// Loop in reverse order to break out asap
+					while (--$count >= 0) {
+						$l= $logs[$count];
+
+						// @attention Always check the retval of createFromFormat(), it may fail due to format mismatch, e.g. log rotation lines
+						$dt= DateTime::createFromFormat($this->dateTimeFormat, $l['Date'].' '.$l['Time']);
+						if ($dt) {
+							$ts= $dt->getTimestamp();
+							if ($lastTs - $ts <= $interval) {
+								$lastLogs[]= $l;
+							} else {
+								break;
+							}
 						}
 					}
 				}
 			}
 		}
-		return $lastLogs;
+		return $rv ? $lastLogs : FALSE;
 	}
 
-	function getStatusLogs($file, $count, $re= '', $needle= '')
+	function getRrdValue($rrd, $start= 60, &$result, $type= 'derive')
 	{
-		return $this->_getLiveLogs($file, $count, $re, $needle);		
+		$result= FALSE;
+
+		$rrd= "{$this->CollectdRrdFolder}/tail-{$this->CollectdName}/$rrd";
+
+		if (!file_exists($rrd)) {
+			Error(_('RRD file does not exist').': '.$rrd);
+			ctlr_syslog(LOG_INFO, __FILE__, __FUNCTION__, __LINE__, "RRD file does not exist: $rrd");
+			return 0;
+		}
+
+		$value= 0;
+
+		// Ask rrdtool to use the highest resolution possible: 10 seconds
+		// Passing -r $start can produce shorter output, but it is not reliable, seems too lossy
+		$cmd= "/usr/local/bin/rrdtool fetch $rrd AVERAGE -s -$start -r 10";
+
+		exec($cmd, $output, $retval);
+		if ($retval === 0) {
+			if ($type == 'derive') {
+				/// @attention We cannot use the Interval in collectd.conf
+				// rrdfetch chooses its own resolution close to what we asked for
+				// so we have to compute it ourselves in the output
+				$resolution= $this->getRrdfetchResolution($output);
+				if (!$resolution) {
+					Error(_('Cannot determine the resolution in rrdfetch output').": $cmd");
+					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot determine the resolution in rrdfetch output: $cmd");
+					return 0;
+				}
+			}
+
+			foreach ($output as $o) {
+				if (preg_match('/^\d+:\s+(\S+)$/', $o, $match)) {
+					if ($match[1] != 'nan') {
+						$v= floatval($match[1]);
+						if ($type == 'gauge') {
+							$value= max($value, $v);
+						} else {
+							$value+= $v * $resolution;
+						}
+					}
+				}
+			}
+		} else {
+			Error(_('Failed executing rrdfetch').": $cmd");
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed executing rrdfetch: $cmd");
+			return 0;
+		}
+
+		$result= TRUE;
+		return intval($value);
 	}
 
-	function isPrio($log, $prio)
+	function getRrdfetchResolution($output)
 	{
-		return array_key_exists('Prio', $log) && strtoupper($log['Prio']) == $prio;
+		$resolution= 0;
+		$startTime= 0;
+		foreach ($output as $o) {
+			// 1626645180: 0.0000000000e+00
+			if (preg_match('/^(\d+):\s+\S+$/', $o, $match)) {
+				if (!$startTime) {
+					$startTime= intval($match[1]);
+				} else {
+					// endTime - startTime
+					$resolution= intval($match[1]) - $startTime;
+					break;
+				}
+			}
+		}
+		return $resolution;
 	}
 
 	function GetStatus()
 	{
-		global $ModelsToStat;
+		global $ModelsToStat, $StatusCheckInterval;
 
-		// Do not use needles with this _getStatus() call, it (grep) takes too long
-		$logs= $this->_getStatus('');
+		$logs= $this->getFifoLogs($StatusCheckInterval);
 		if ($logs === FALSE) {
 			return FALSE;
 		}
 
 		if (count($logs)) {
-			foreach ($this->prios as $p => $msg) {
-				$keys= explode('|', $p);
+			$prios= array(
+				'critical' => array(
+					'key' => 'CRITICAL|ALERT|EMERGENCY',
+					'msg' => _TITLE('<MODEL> has CRITICAL errors'),
+					),
+				'error' => array(
+					'key' => 'ERROR',
+					'msg' => _TITLE('<MODEL> has ERRORs'),
+					),
+				'warning' => array(
+					'key' => 'WARNING',
+					'msg' => _TITLE('<MODEL> has WARNINGs'),
+					),
+				);
+
+			foreach ($prios as $prio => $p) {
+				$keys= explode('|', $p['key']);
 
 				$errorStr= '';
 				$shown= 0;
-				$total= 0;
 				foreach ($logs as $l) {
-					foreach ($keys as $n) {
-						if ($this->isPrio($l, $n)) {
+					foreach ($keys as $k) {
+						if ($this->isPrio($l, $k)) {
 							if ($shown < 5) {
 								$errorStr.= "\n" . $l['Log'];
 								$shown++;
 							}
-							$total++;
 							break;
 						}
 					}
 				}
+
 				if ($shown) {
+					$total= $this->getRrdValue("derive-$prio.rrd", $StatusCheckInterval, $result);
 					if ($total > $shown) {
 						$errorStr.= "\n" . str_replace('<COUNT>', $total - $shown, _TITLE('And <COUNT> others not shown.'));
 					}
-					Error(str_replace('<MODEL>', _($ModelsToStat[$this->Name]), _($msg)) . ':' . $errorStr);
+					Error(str_replace('<MODEL>', _($ModelsToStat[$this->Name]), _($p['msg'])) . ':' . $errorStr);
 				}
 			}
+			Error(str_replace('<INTERVAL>', $StatusCheckInterval, _TITLE('In the last <INTERVAL> seconds.')) );
 		}
 		return TRUE;
 	}
 
-	function _getStatus($needle, $start= 0)
+	function isPrio($log, $prio)
 	{
-		global $StatusCheckInterval;
-
-		return $this->GetLastLogs($needle, $start != 0 ? $start : $StatusCheckInterval);
+		return array_key_exists('Prio', $log) && strtoupper($log['Prio']) == $prio;
 	}
 
 	/**
