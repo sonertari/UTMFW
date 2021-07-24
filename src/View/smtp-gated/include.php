@@ -63,6 +63,7 @@ $LogConf = array(
 			'Log' => _TITLE('Log'),
 			),
 		'HighlightLogs' => array(
+			'Col' => 'Log',
 			'REs' => array(
 				'red' => array('VIRUS', 'FOUND', 'SESSION TAKEOVER', 'LOCK:LOCKED'),
 				'yellow' => array('LOCK:EXPIRED', 'NEW'),

@@ -30,6 +30,7 @@ $LogConf = array(
 			'Log' => _TITLE('Log'),
 			),
 		'HighlightLogs' => array(
+			'Col' => 'Log',
 			'REs' => array(
 				'red' => array('\berror\b'),
 				'yellow' => array('\bnotice\b'),

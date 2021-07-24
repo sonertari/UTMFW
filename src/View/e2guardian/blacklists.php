@@ -26,11 +26,6 @@ $LogConf = array(
 			'Category' => _TITLE('Category'),
 			'Site' => _TITLE('Site'),
 			),
-		'HighlightLogs' => array(
-			'REs' => array(
-				// Do not highlight any blacklist search result
-				),
-			),
 		),
 	);
 

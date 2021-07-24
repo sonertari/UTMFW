@@ -30,6 +30,7 @@ $LogConf = array(
 			'Log' => _TITLE('Log'),
 			),
 		'HighlightLogs' => array(
+			'Col' => 'Log',
 			'REs' => array(
 				'red' => array('failed', 'ERROR:'),
 				'yellow' => array('Waiting to lock database directory', 'WARNING:'),

@@ -48,13 +48,7 @@ class View
 	 */
 	public $Config= array();
 
-	var $genericREs= array(
-		'red' => array('\berror\b'),
-		'yellow' => array('\bwarning\b'),
-		'green' => array('\bsuccess'),
-		);
-
-	var $prioClasses= array(
+	private $prioClasses= array(
 		'EMERGENCY' => 'red',
 		'emergency' => 'red',
 		'ALERT' => 'red',
@@ -595,10 +589,7 @@ class View
 	{
 		global $LogConf;
 
-		$logstr= isset($LogConf[$this->Model]['HighlightLogs']['Col']) && isset($cols[$LogConf[$this->Model]['HighlightLogs']['Col']]) ?
-			$cols[$LogConf[$this->Model]['HighlightLogs']['Col']] : implode(' ', $cols);
-
-		$class= $this->getLogLineClass($logstr, $cols);
+		$class= $this->getLogLineClass($cols);
 		PrintLogCols($linenum, $cols, $lastlinenum, $class);
 	}
 
@@ -607,39 +598,34 @@ class View
 	 *
 	 * Keywords are obtained from arrays in $LogConf.
 	 *
-	 * @param string $logstr Log string to search for keywords
 	 * @param array $cols Parsed log line
 	 * @return string Log line color class.
 	 */
-	function getLogLineClass($logstr, $cols)
+	function getLogLineClass($cols)
 	{
 		global $LogConf;
 
-		$logREs= isset($LogConf[$this->Model]['HighlightLogs']['REs']) ? $LogConf[$this->Model]['HighlightLogs']['REs'] : $this->genericREs;
-
 		$class= '';
-		if (array_key_exists('Prio', $cols)) {
-			if (array_key_exists($cols['Prio'], $this->prioClasses)) {
-				$class= $this->prioClasses[$cols['Prio']];
-			}
+		if (array_key_exists('Prio', $cols) && array_key_exists($cols['Prio'], $this->prioClasses)) {
+			$class= $this->prioClasses[$cols['Prio']];
 		}
 
-		$done= FALSE;
-		foreach ($logREs as $color => $res) {
-			foreach ($res as $re) {
-				$r= Escape($re, '/');
-				if (preg_match("/$r/", $logstr)) {
-					$class= $color;
-					/// Exit on first match, i.e. precedence: red, yellow, green
-					$done= TRUE;
-					break;
+		if (isset($LogConf[$this->Model]['HighlightLogs']['Col']) && isset($LogConf[$this->Model]['HighlightLogs']['REs'])) {
+			// Make sure the log column exists, log rotation lines do not have module specific columns
+			if (isset($cols[$LogConf[$this->Model]['HighlightLogs']['Col']])) {
+				foreach ($LogConf[$this->Model]['HighlightLogs']['REs'] as $color => $res) {
+					foreach ($res as $re) {
+						$r= Escape($re, '/');
+						if (preg_match("/$r/", $cols[$LogConf[$this->Model]['HighlightLogs']['Col']])) {
+							$class= $color;
+							// Exit on first match, i.e. precedence: red, yellow, green
+							goto out;
+						}
+					}
 				}
 			}
-			if ($done) {
-				// Exit on first match
-				break;
-			}
 		}
+out:
 		return $class;
 	}
 

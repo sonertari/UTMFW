@@ -34,9 +34,6 @@ $LogConf = array(
 			'DstIP' => _TITLE('DstIP'),
 			'DPort' => _TITLE('DPort'),
 			),
-		'HighlightLogs' => array(
-			'Col' => 'Prio',
-			),
 		),
 	);
 
@@ -51,10 +48,10 @@ class Snortalerts extends View
 		$this->LogsHelpMsg= _HELPWINDOW('These are intrusion alerts. Note that these alerts can be considered as guesses at best. While configuring the IPS, make use of priorities and keywords.');
 	}
 	
-	function getLogLineClass($line, $cols)
+	function getLogLineClass($cols)
 	{
 		$class= '';
-		if (preg_match('/(\d+)/', $line, $match)) {
+		if (preg_match('/(\d+)/', $cols['Prio'], $match)) {
 			$priority= $match[1];
 
 			if ($priority == 1) {

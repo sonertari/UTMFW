@@ -30,6 +30,7 @@ $LogConf = array(
 			'Log' => _TITLE('Log'),
 			),
 		'HighlightLogs' => array(
+			'Col' => 'Log',
 			'REs' => array(
 				'red' => array('FOUND', 'ERROR'),
 				'yellow' => array('Started', 'Database modification detected'),

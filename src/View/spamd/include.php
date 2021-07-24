@@ -59,6 +59,7 @@ $LogConf = array(
 			'Log' => _TITLE('Log'),
 			),
 		'HighlightLogs' => array(
+			'Col' => 'Log',
 			'REs' => array(
 				'red' => array(),
 				'yellow' => array('\bconnected\b'),

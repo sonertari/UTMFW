@@ -49,6 +49,7 @@ $LogConf = array(
 			'Log' => _TITLE('Log'),
 			),
 		'HighlightLogs' => array(
+			'Col' => 'Log',
 			'REs' => array(
 				'red' => array('Connection timed out', 'Connection refused', 'Connection reset by peer'),
 				'yellow' => array('remote close'),

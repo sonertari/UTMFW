@@ -63,6 +63,7 @@ $LogConf = array(
 			'Log' => _TITLE('Log'),
 			),
 		'HighlightLogs' => array(
+			'Col' => 'Log',
 			'REs' => array(
 				'red' => array('Blocking', 'already blocked', 'Exiting'),
 				'green' => array('Unblocking'),
@@ -108,19 +109,6 @@ Intrusion alerts produced by the IDS are guesses, hence there may be false posit
 				'info' => _HELPBOX2('Total of block extensions cannot be higher than this value.'),
 				),
 			);
-	}
-
-	/**
-	 * Displays parsed log line.
-	 *
-	 * @param array $cols Columns parsed.
-	 * @param int $linenum Line number to print as the first column.
-	 * @param array $lastlinenum Last line number, used to detect the last line
-	 */
-	function PrintLogLine($cols, $linenum, $lastlinenum)
-	{
-		$class= $this->getLogLineClass($cols['Log'], $cols);
-		PrintLogCols($linenum, $cols, $lastlinenum, $class);
 	}
 
 	/**

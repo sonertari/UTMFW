@@ -63,6 +63,7 @@ $LogConf = array(
 			'Log' => _TITLE('Log'),
 			),
 		'HighlightLogs' => array(
+			'Col' => 'Log',
 			'REs' => array(
 				'red' => array('Critial abort', 'Cannot connect', 'ERR:', '\bvirus:'),
 				'yellow' => array('Connection from\b'),

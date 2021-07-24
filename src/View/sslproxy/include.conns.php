@@ -30,6 +30,7 @@ $LogConf = array(
 			'Log' => _TITLE('Log'),
 			),
 		'HighlightLogs' => array(
+			'Col' => 'Log',
 			'REs' => array(
 				'red' => array('EXPIRED:'),
 				'yellow' => array('IDLE:'),
@@ -50,19 +51,6 @@ class Sslproxyconns extends View
 		$this->LogsHelpMsg= _HELPWINDOW('The SSL proxy takes 3 different kinds of connection logs: (1) CONN for connection details at establisment time, (2) IDLE for slow connections, and (3) EXPIRED for timed-out connections which are closed by the SSL proxy.');
 	}
 
-	/**
-	 * Displays parsed log line.
-	 *
-	 * @param array $cols Columns parsed.
-	 * @param int $linenum Line number to print as the first column.
-	 * @param array $lastlinenum Last line number, used to detect the last line
-	 */
-	function PrintLogLine($cols, $linenum, $lastlinenum)
-	{
-		$class= $this->getLogLineClass($cols['Log'], $cols);
-		PrintLogCols($linenum, $cols, $lastlinenum, $class);
-	}
-	
 	function FormatLogCols(&$cols)
 	{
 		$cols['Log']= wordwrap($cols['Log'], 150, '<br />', TRUE);

@@ -29,6 +29,7 @@ $LogConf = array(
 			'Log' => _TITLE('Log'),
 			),
 		'HighlightLogs' => array(
+			'Col' => 'User',
 			'REs' => array(
 				/// v0.7 log format confuses old format parser
 				/// Incrementing by 1 in im parser elsewhere for v0.7
@@ -49,12 +50,6 @@ class Imlogs extends View
 	function __construct()
 	{
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
-	}
-
-	function PrintLogLine($cols, $linenum, $lastlinenum)
-	{
-		$class= $this->getLogLineClass($cols['User'], $cols);
-		PrintLogCols($linenum, $cols, $lastlinenum, $class);
 	}
 }
 
