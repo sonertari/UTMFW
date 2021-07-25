@@ -102,7 +102,7 @@ for site in $SITE_CONTENTS; do
 	cp -R $ROOT_PATH/meta/$site .
 done
 cp -R $ROOT_PATH/openbsd/$INSTALL_SETS_PATH/firmware ./etc/
-echo "set tty fb0" > ./etc/boot.conf
+echo "set tty fb0\nset timeout 5" > ./etc/boot.conf
 doas chown -R root:wheel *
 tar czhf $SITE_FILE $SITE_CONTENTS
 ln -fs $ROOT_PATH/$SITE_DIR/$SITE_FILE $ROOT_PATH/$CD_PATH/$INSTALL_SETS_PATH/$SITE_FILE
