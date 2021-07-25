@@ -386,9 +386,9 @@ class Dhcpd extends Model
 		$re_mac= '\s*hardware\s+\w+\s+(\w+:\w+:\w+:\w+:\w+:\w+)\s*';
 		$re_uid= '\s*uid\s+(.+)\s*';
 		$re_host= '\s*(client-hostname|hostname)\s+"(.+)"\s*';
-		$re_abandoned= '(\s*(abandoned);\s*|)';
+		$re_status= '\s*(\S+)\s*';
 		
-		$re_lease= "/\s*lease\s+($Re_Ip)\s*\{$re_starts;$re_ends;($re_mac;|)($re_uid;|)$re_abandoned\s*$re_host;\s*\}\s*/m";
+		$re_lease= "/lease\s+($Re_Ip)\s*\{($re_starts;|)($re_ends;|)($re_mac;|)($re_uid;|)($re_status;|)($re_host;|)\s*\}/m";
 
 		$lines= $this->GetFile($this->leasesFile);
 		
@@ -399,11 +399,11 @@ class Dhcpd extends Model
 			$lineCount= 0;
 			foreach ($match as $fields) {
 				$cols['IP']= $fields[1];
-				$cols['Start']= "$fields[3] $fields[4]";
-				$cols['End']= "$fields[6] $fields[7]";
-				$cols['MAC']= $fields[9];
-				$cols['Status']= $fields[13];
-				$cols['Host']= $fields[15];
+				$cols['Start']= "$fields[4] $fields[5]";
+				$cols['End']= "$fields[8] $fields[9]";
+				$cols['MAC']= $fields[11];
+				$cols['Status']= isset($fields[15]) ? $fields[15] : '';
+				$cols['Host']= isset($fields[18]) ? $fields[18] : '';
 
 				/// @attention Empty $re matches all
 				if (preg_match('/'.Escape($re, '/').'/m', $fields[0]) && (($end == 0 && $count == 0) || ($line >= $start && $lineCount < $count))) {
