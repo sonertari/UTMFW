@@ -412,6 +412,26 @@ class System extends Model
 					'argv'	=>	array(NAME),
 					'desc'	=>	_('Enable hostap on an interface'),
 					),
+
+				'GetMFSConfig'	=>	array(
+					'argv'	=>	array(),
+					'desc'	=>	_('Get MFS config'),
+					),
+
+				'SetMFS'	=>	array(
+					'argv'	=>	array(NAME),
+					'desc'	=>	_('Set MFS'),
+					),
+
+				'SetMFSSize'	=>	array(
+					'argv'	=>	array(MFSSIZE),
+					'desc'	=>	_('Set MFS size'),
+					),
+
+				'SetSyncMFS'	=>	array(
+					'argv'	=>	array(NAME),
+					'desc'	=>	_('Set sync MFS'),
+					),
 				)
 			);
 	}
@@ -898,7 +918,7 @@ class System extends Model
 	}
 
 	/**
-	 * Deletes all graph files and recreates them if necessary.
+	 * Deletes all graph files and recreates them as necessary.
 	 * 
 	 * @return bool TRUE on success, FALSE on fail.
 	 */
@@ -908,9 +928,9 @@ class System extends Model
 
 		$result= TRUE;
 		// symon
-		exec("/bin/rm -f ${VIEW_PATH}/symon/cache/* 2>&1", $output, $retval);
+		exec("/bin/rm -f /var/log/utmfw/symon/cache/* 2>&1", $output, $retval);
 		// Failing to clear the cache dir is not fatal
-		exec("/bin/rm -f ${VIEW_PATH}/symon/rrds/localhost/*.rrd 2>&1", $output, $retval);
+		exec("/bin/rm -f /var/log/utmfw/symon/rrds/localhost/*.rrd 2>&1", $output, $retval);
 		if ($retval === 0) {
 			exec('/bin/sh /usr/local/share/examples/symon/c_smrrds.sh all 2>&1', $output, $retval);
 			if ($retval !== 0) {
@@ -922,7 +942,7 @@ class System extends Model
 		}
 
 		// pnrg
-		exec("/bin/rm -f ${VIEW_PATH}/pmacct/protograph/utmfw.rrd 2>&1", $output, $retval);
+		exec("/bin/rm -f /var/log/utmfw/pmacct/protograph/utmfw.rrd 2>&1", $output, $retval);
 		if ($retval === 0) {
 			exec("/bin/sh ${VIEW_PATH}/pmacct/protograph/createrrd.sh 2>&1", $output, $retval);
 			if ($retval !== 0) {
@@ -935,18 +955,18 @@ class System extends Model
 
 		// protograph
 		// list.gif is used by pnrg-indexmaker.pl, which we never execute, so we can safely remove *.gif
-		exec("/bin/rm -f ${VIEW_PATH}/pmacct/pnrg/spool/*.{gif,cgi,rrd,desc} 2>&1", $output, $retval);
+		exec("/bin/rm -f /var/log/utmfw/pmacct/pnrg/*.{gif,cgi,rrd,desc} 2>&1", $output, $retval);
 		if ($retval !== 0) {
 			$result= FALSE;
 		}
 
 		// collectd
-		exec("/bin/rm -rf /var/collectd/localhost/* 2>&1", $output, $retval);
+		exec("/bin/rm -rf /var/log/utmfw/collectd/rrd/localhost/* 2>&1", $output, $retval);
 		if ($retval !== 0) {
 			$result= FALSE;
 		}
 
-		exec("/bin/rm -f ${VIEW_PATH}/system/dashboard/* 2>&1", $output, $retval);
+		exec("/bin/rm -f /var/log/utmfw/dashboard/* 2>&1", $output, $retval);
 		if ($retval !== 0) {
 			$result= FALSE;
 		}
@@ -966,7 +986,8 @@ class System extends Model
 	 */
 	function DeleteStats()
 	{
-		exec('/bin/rm -rf /var/tmp/utmfw/* 2>&1', $output, $retval);
+		// Do not remove the base folders, but the folders and/or files under them
+		exec('/bin/rm -rf /var/log/utmfw/logs/* /var/log/utmfw/stats/* /var/log/utmfw/out/* 2>&1', $output, $retval);
 		if ($retval === 0) {
 			return TRUE;
 		}
@@ -1894,15 +1915,78 @@ class System extends Model
 	function EnableHostap($if)
 	{
 		$file= $this->confDir."hostname.".$if;
-		if (file_exists($file)) {
-			if (($contents= $this->GetFile($file)) !== FALSE) {
-				if (!preg_match("/mediaopt hostap/m", $contents, $match)) {
-					exec("/bin/echo 'mediaopt hostap' >>$file 2>&1", $output, $retval);
-					return TRUE;
-				}
+		if (($contents= $this->GetFile($file)) !== FALSE) {
+			if (!preg_match("/mediaopt hostap/m", $contents, $match)) {
+				exec("/bin/echo 'mediaopt hostap' >>$file 2>&1", $output, $retval);
+				return TRUE;
 			}
 		}
 		return FALSE;
+	}
+
+	function GetMFSConfig()
+	{
+		$retval= TRUE;
+
+		$MFSConfig= array(
+			'enable' => 'Unknown',
+			'size' => 'Unknown',
+			'sync' => 'Unknown',
+			);
+
+		$file= $this->confDir.'rc';
+		if (($contents= $this->GetFile($file)) !== FALSE) {
+			if (preg_match("/^USE_MFS=(yes|no)$/m", $contents, $match)) {
+				$MFSConfig['enable']= $match[1];
+			} else {
+				ERROR(_('Cannot get mount MFS'));
+				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get USE_MFS');
+				$retval= FALSE;
+			}
+			if (preg_match("/^MFS_SIZE=(\d+[kKmMgG]*)$/m", $contents, $match)) {
+				$MFSConfig['size']= $match[1];
+			} else {
+				ERROR(_('Cannot get MFS size'));
+				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get MFS_SIZE');
+				$retval= FALSE;
+			}
+		} else {
+			ERROR(_('Cannot get contents of /etc/rc'));
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot get contents of file: $file");
+			$retval= FALSE;
+		}
+
+		$file= $this->confDir.'sync.var';
+		if (($contents= $this->GetFile($file)) !== FALSE) {
+			if (preg_match("/^SYNC_MFS=(yes|no)$/m", $contents, $match)) {
+				$MFSConfig['sync']= $match[1];
+			} else {
+				ERROR(_('Cannot get persistent MFS'));
+				ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot get SYNC_MFS');
+				$retval= FALSE;
+			}
+		} else {
+			ERROR(_('Cannot get contents of /etc/sync.var'));
+			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot get contents of file: $file");
+			$retval= FALSE;
+		}
+
+		return $retval ? Output(json_encode($MFSConfig)) : FALSE;
+	}
+
+	function SetMFS($value)
+	{
+		return $this->SetNVP('/etc/rc', 'USE_MFS', $value);
+	}
+
+	function SetMFSSize($value)
+	{
+		return $this->SetNVP('/etc/rc', 'MFS_SIZE', $value);
+	}
+
+	function SetSyncMFS($value)
+	{
+		return $this->SetNVP('/etc/sync.var', 'SYNC_MFS', $value);
 	}
 }
 ?>

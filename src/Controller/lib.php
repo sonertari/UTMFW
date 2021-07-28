@@ -23,10 +23,10 @@
  */
 
 /// Output and error redirect file.
-$TmpFile= '/var/tmp/utmfw/ctlr.out';
+$TmpFile= '/var/log/utmfw/out/ctlr.out';
 
 /// Return value redirect file.
-$RetvalFile= '/var/tmp/utmfw/retval.out';
+$RetvalFile= '/var/log/utmfw/out/retval.out';
 
 /// Matches model names to files. View provides the name only.
 $ModelFiles= array(
@@ -227,6 +227,10 @@ $ArgTypes= array(
 		'func'	=> 'IsDgSubCat',
 		'desc'	=> _('Subcat wrong'),
 		),
+	MFSSIZE	=>	array(
+		'func'	=> 'IsMfsSize',
+		'desc'	=> _('Mfs size wrong'),
+		),
 );
 
 $MonthDays= array(
@@ -414,6 +418,11 @@ function IsDgSubCat($str)
 {
 	// Subcats may contain / char
 	return preg_match('|' . RE_DGSUBCAT . '|', $str);
+}
+
+function IsMfsSize($str)
+{
+	return preg_match('/^\d+[kKmMgG]*$/', $str);
 }
 
 /**

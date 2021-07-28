@@ -1,6 +1,6 @@
 # Layout to show pf usage
 
-group	name="State Statistics", pf_rrd=/var/www/htdocs/utmfw/View/symon/rrds/localhost/pf.rrd;
+group	name="State Statistics", pf_rrd=/var/log/utmfw/symon/rrds/localhost/pf.rrd;
 # State addition and removals graph
 graph	template='-v states
 -w %width%
@@ -36,10 +36,10 @@ GPRINT:ss:MAX:%6.2lf
 GPRINT:ss:LAST:%6.2lf\n
 ';
 
-group	name="State Searches vs Packets", pf_rrd=/var/www/htdocs/utmfw/View/symon/rrds/localhost/pf.rrd,
-		   lan_rrd=/var/www/htdocs/utmfw/View/symon/rrds/localhost/if_lan0.rrd,
-		   wan_rrd=/var/www/htdocs/utmfw/View/symon/rrds/localhost/if_wan0.rrd,
-		   lo_rrd=/var/www/htdocs/utmfw/View/symon/rrds/localhost/if_lo0.rrd;
+group	name="State Searches vs Packets", pf_rrd=/var/log/utmfw/symon/rrds/localhost/pf.rrd,
+		   lan_rrd=/var/log/utmfw/symon/rrds/localhost/if_lan0.rrd,
+		   wan_rrd=/var/log/utmfw/symon/rrds/localhost/if_wan0.rrd,
+		   lo_rrd=/var/log/utmfw/symon/rrds/localhost/if_lo0.rrd;
 
 # State searches + how many packets from which interfaces
 graph template='-v states

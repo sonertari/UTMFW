@@ -70,6 +70,7 @@ if ($View->Controller($Output, 'GetConfig')) {
 			EnableHostap();
 			CreateUsers();
 			GenerateSSLKeyPairs();
+			ConfigMFS();
 		}
 		
 		if (ApplyConfig($Auto)) {

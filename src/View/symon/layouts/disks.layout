@@ -1,2 +1,2 @@
 group	name="Disk I/O";
-graph	rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/io_wd0.rrd, title="Disk wd0";
+graph	rrdfile=/var/log/utmfw/symon/rrds/localhost/io_wd0.rrd, title="Disk wd0";

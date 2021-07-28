@@ -1,4 +1,4 @@
-/usr/local/bin/rrdtool create /var/www/htdocs/utmfw/View/pmacct/protograph/utmfw.rrd --step 60 \
+/usr/local/bin/rrdtool create /var/log/utmfw/pmacct/protograph/utmfw.rrd --step 60 \
   DS:all:GAUGE:120:U:U \
   DS:ftp:GAUGE:120:U:U \
   DS:ssh:GAUGE:120:U:U \

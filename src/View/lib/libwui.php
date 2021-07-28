@@ -255,7 +255,7 @@ function PrintNVPsVGraph($data, $color= 'red', $title= '')
 
 			$width= 0;
 			if ($value > 0) {
-				$width= intval(100 * $value / $max);
+				$width= round(100 * $value / $max);
 			}
 			?>
 			<form id="<?php echo $formId ?>" name="<?php echo $formId ?>" action="<?php echo $View->StatsPage ?>?submenu=daily" method="post">
@@ -346,7 +346,7 @@ function PrintVGraph($data, $color= 'red', $title= '', $page= 'general', $style=
 						$data[$i]['value']= 0;
 					}
 					if ($data[$i]['value'] > 0) {
-						$width= intval(100 * $data[$i]['value'] / $max);
+						$width= round(100 * $data[$i]['value'] / $max);
 					}
 
 					$dateArray= $data[$i]['date'];
@@ -477,7 +477,7 @@ function PrintHGraph($data, $color= 'red', $title= '', $page= 'general', $style=
 								}
 								if ($data[$i]['value'] > 0) {
 									echo $data[$i]['value'];
-									$height= intval(100 * $data[$i]['value'] / $max);
+									$height= round(100 * $data[$i]['value'] / $max);
 								}
 								?>
 							</td>

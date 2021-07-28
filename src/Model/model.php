@@ -73,8 +73,8 @@ class Model
 
 	/// Used in collectd rrd and fifo file names
 	protected $CollectdName= '';
-	protected $CollectdRrdFolder= '/var/collectd/localhost';
-	protected $CollectdFifoFolder= '/tmp/utmfw/fifo';
+	protected $CollectdRrdFolder= '/var/log/utmfw/collectd/rrd/localhost';
+	protected $CollectdFifoFolder= '/var/log/utmfw/collectd/fifo';
 
 	protected $newSyslogConf= '/etc/newsyslog.conf';
 
@@ -89,7 +89,7 @@ class Model
 		$this->Proc= $this->Name;
 		$this->CollectdName= $this->Name;
 
-		$this->TmpLogsDir= '/var/tmp/utmfw/logs/'.get_class($this).'/';
+		$this->TmpLogsDir= '/var/log/utmfw/logs/'.get_class($this).'/';
 
 		$this->Config= $ModelConfig;
 
@@ -1561,7 +1561,7 @@ class Model
 			return FALSE;
 		}
 
-		$tmpdir= '/var/tmp/utmfw/downloads';
+		$tmpdir= '/var/log/utmfw/downloads';
 		$retval= 0;
 		if (!file_exists($tmpdir)) {
 			exec("/bin/mkdir -p $tmpdir 2>&1", $output, $retval);
@@ -1658,7 +1658,11 @@ class Model
 			return FALSE;
 		}
 
-		exec("/bin/mkdir -p $tmpdir 2>&1", $output, $retval);
+		$retval= 0;
+		if (!file_exists($tmpdir)) {
+			exec("/bin/mkdir -p $tmpdir 2>&1", $output, $retval);
+		}
+
 		if ($retval === 0) {
 			exec("/bin/cp $file $tmpdir 2>&1", $output, $retval);
 			if ($retval === 0) {
@@ -1686,6 +1690,7 @@ class Model
 		else {
 			ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'mkdir failed: '.$tmpdir);
 		}
+
 		Error(implode("\n", $output));
 		return FALSE;
 	}
@@ -2085,7 +2090,7 @@ class Model
 	{
 		$origfilename= basename($this->GetOrigFileName($logfile));
 
-		$statsdir= '/var/tmp/utmfw/stats/'.get_class($this);
+		$statsdir= '/var/log/utmfw/stats/'.get_class($this);
 		$statsfile= "$statsdir/$origfilename";
 
 		return $statsfile;
@@ -2762,7 +2767,7 @@ class Model
 			$output['info']= $info;
 		}
 
-		if (file_exists('/var/tmp/utmfw/.starting_utmfw')) {
+		if (file_exists('/var/log/utmfw/.starting')) {
 			Error(_('System is starting up...'));
 		}
 
@@ -2919,7 +2924,7 @@ class Model
 		}
 
 		$result= TRUE;
-		return intval($value);
+		return round($value);
 	}
 
 	function getRrdfetchResolution($output)

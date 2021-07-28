@@ -28,7 +28,7 @@ class Httpdlogs extends Httpd
 {
 	public $Name= 'httpdlogs';
 	
-	public $LogFile= '/var/www/logs/access.log';
+	public $LogFile= '/var/log/httpd/access.log';
 
 	function ParseLogLine($logline, &$cols)
 	{

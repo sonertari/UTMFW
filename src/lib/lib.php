@@ -43,11 +43,8 @@ function IsFilePath($filepath)
 		|| preg_match("?^($TEST_DIR_PATH|)/etc/\w[\w.\-_]*$?", $filepath)
 		// Uploaded tmp files
 		|| preg_match("?^($TEST_DIR_PATH|)$TMP_PATH/\w[\w.\-_]*$?", $filepath)
-		// Log files
+		// Log files, statistics and uncompressed logs
 		|| preg_match('?^/var/log/\w[\w./\-_]*$?', $filepath)
-		// Statistics and uncompressed logs
-		|| preg_match('?^/var/tmp/utmfw/\w[\w.\-_/]*$?', $filepath)
-		|| preg_match('|^/var/www/logs/\w[\w./\-_]*$|', $filepath)
 		// Messaging logs
 		|| preg_match('|^/var/log/imspector/\w[^$`]*$|', $filepath)
 		|| preg_match('|^/etc/sslproxy/ca.crt$|', $filepath);

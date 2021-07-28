@@ -24,7 +24,7 @@ if [ $# -lt 6 ]; then
 	exit 1
 fi
 
-GRAPHS_FOLDER="/tmp/utmfw/dashboard"
+GRAPHS_FOLDER="/var/log/utmfw/dashboard"
 VIEW_GRAPHS_FOLDER="/var/www/htdocs/utmfw/View/system"
 
 # Make sure the graphs output folder exists
@@ -63,9 +63,9 @@ GENERAL_OPTS="-i -E -x none -y none -g --border 0 -D -c CANVAS#eaedef11 -c BACK#
 # Default graph dimensions, except for the ping graph
 SIZE="-w 358 -h 130"
 
-COLLECTD_RRD_ROOT="/var/collectd/localhost"
-SYMON_RRD_ROOT="/var/www/htdocs/utmfw/View/symon/rrds/localhost"
-PMACCT_RRD_ROOT="/var/www/htdocs/utmfw/View/pmacct/protograph"
+COLLECTD_RRD_ROOT="/var/log/utmfw/collectd/rrd/localhost"
+SYMON_RRD_ROOT="/var/log/utmfw/symon/rrds/localhost"
+PMACCT_RRD_ROOT="/var/log/utmfw/pmacct/protograph"
 
 RRDTOOL="/usr/local/bin/rrdtool"
 

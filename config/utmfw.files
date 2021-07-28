@@ -1,5 +1,25 @@
 # Hand-crafted specification for UTMFW configuration files.
 # These files should exist in utmfw-config-X.Y.tar.gz.
+etc/collectd/clamav.conf,644,root,wheel
+etc/collectd/dante.conf,644,root,wheel
+etc/collectd/dhcpd.conf,644,root,wheel
+etc/collectd/e2guardian.conf,644,root,wheel
+etc/collectd/ftp-proxy.conf,644,root,wheel
+etc/collectd/httpd.conf,644,root,wheel
+etc/collectd/imspector.conf,644,root,wheel
+etc/collectd/monitoring.conf,644,root,wheel
+etc/collectd/named.conf,644,root,wheel
+etc/collectd/openssh.conf,644,root,wheel
+etc/collectd/openvpn.conf,644,root,wheel
+etc/collectd/p3scan.conf,644,root,wheel
+etc/collectd/pf.conf,644,root,wheel
+etc/collectd/smtp-gated.conf,644,root,wheel
+etc/collectd/snort.conf,644,root,wheel
+etc/collectd/snortips.conf,644,root,wheel
+etc/collectd/spamassassin.conf,644,root,wheel
+etc/collectd/spamd.conf,644,root,wheel
+etc/collectd/sslproxy.conf,644,root,wheel
+etc/collectd/system.conf,644,root,wheel
 etc/e2guardian/downloadmanagers/default.conf,644,root,wheel
 etc/e2guardian/downloadmanagers/fancy.conf,644,root,wheel
 etc/e2guardian/lists/bannedextensionlist2,644,root,wheel
@@ -102,12 +122,14 @@ etc/dhcpd.conf,644,root,wheel
 etc/doas.conf,644,root,wheel
 etc/freshclam.conf,644,root,wheel
 etc/httpd.conf,644,root,wheel
+etc/make.var,644,root,wheel
 etc/motd,664,root,wheel
 etc/newsyslog.conf,644,root,wheel
 etc/pf.conf,600,root,wheel
 etc/pf.restrictedips,600,root,wheel
 etc/php-8.0.ini,644,root,daemon
 etc/php-fpm.conf,644,root,wheel
+etc/rc,644,root,wheel
 etc/rc.conf.local,644,root,wheel
 etc/rc.local,644,root,wheel
 etc/rc.shutdown,644,root,wheel
@@ -115,6 +137,7 @@ etc/smtp-gated.conf,644,root,wheel
 etc/sockd.conf,644,root,wheel
 etc/symon.conf,644,root,wheel
 etc/symux.conf,644,root,wheel
+etc/sync.var,644,root,wheel
 etc/sysctl.conf,644,root,wheel
 etc/syslog.conf,644,root,wheel
 usr/local/share/e2guardian/languages/chinese/fancydmtemplate.html,644,root,wheel
@@ -141,6 +164,8 @@ var/db/users.db,644,root,wheel
 var/log/doas,600,root,wheel
 var/log/e2guardian/access.log,640,root,wheel
 var/log/e2guardian/e2guardian.log,640,root,wheel
+var/log/httpd/access.log,640,root,daemon
+var/log/httpd/error.log,640,root,daemon
 var/log/snort/snort.log,640,root,wheel
 var/log/snort/alert.log,640,root,wheel
 var/log/clamd.log,640,539,wheel
@@ -160,5 +185,4 @@ var/log/spamd.log,640,root,wheel
 var/log/sslproxy/sslproxy.log,640,root,wheel
 var/log/sslproxy/conns.log,640,root,wheel
 var/named/etc/named.conf,640,root,_bind
-var/www/logs/access.log,640,root,daemon
-var/www/logs/error.log,640,root,daemon
+var/rsync.rules,644,root,wheel

@@ -1,7 +1,7 @@
 #group	name="Web Filter Load";
-#graph	rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/proc_e2guardian.rrd, title="Web Filter Load";
+#graph	rrdfile=/var/log/utmfw/symon/rrds/localhost/proc_e2guardian.rrd, title="Web Filter Load";
 
-group	name="Number of Processes", rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/proc_e2guardian.rrd;
+group	name="Number of Processes", rrdfile=/var/log/utmfw/symon/rrds/localhost/proc_e2guardian.rrd;
 # Web Filter Load graph
 graph	template='-t Number of Processes
 -v processes/s
@@ -35,7 +35,7 @@ GPRINT:rsssz:MAX:%6.2lf %s
 GPRINT:rsssz:LAST:%6.2lf %s\n
 ';
 
-group	name="Process CPU Load", rrdfile=/var/www/htdocs/utmfw/View/symon/rrds/localhost/proc_e2guardian.rrd;
+group	name="Process CPU Load", rrdfile=/var/log/utmfw/symon/rrds/localhost/proc_e2guardian.rrd;
 # Web Filter Load graph
 graph	template='-t Process CPU Load
 -v ticks/s

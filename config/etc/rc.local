@@ -8,14 +8,11 @@
 # please see /etc/rc.securelevel.
 #
 
-mkdir -p /var/tmp/utmfw/
+START_TIME=$(date "+%s")
 
-touch /var/tmp/utmfw/.starting_utmfw
+sh /etc/make.var
 
-mkdir /var/tmp/utmfw/fifo/
-
-# Set the pf debug level to warn for module status (the default is err)
-/sbin/pfctl -x warn
+touch /var/log/utmfw/.starting
 
 echo '\nStarting UTMFW services...'
 
@@ -56,7 +53,7 @@ fi
 
 echo -n '\nAnti-virus/spam:'
 # Start ClamAV and freshclam daemons
-mkdir /var/run/clamav
+[[ ! -d /var/run/clamav ]] && mkdir /var/run/clamav
 chown _clamav:_clamav /var/run/clamav
 if [ -x /usr/local/sbin/clamd ]; then
 	echo -n ' virus'
@@ -77,7 +74,7 @@ fi
 echo -n '\nIntrusion detection and prevention:'
 # Start Snort IDS for WAN and LAN, and Snort IPS inline
 if [ -x /usr/local/bin/snort ]; then
-	mkdir /var/run/snort
+	[[ ! -d /var/run/snort ]] && mkdir /var/run/snort
 	chown _snort /var/run/snort
 	echo -n ' ids'
 	/usr/local/bin/snort -i lan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort >/dev/null 2>&1
@@ -96,14 +93,14 @@ echo -n '\nProxies:'
 # Start p3scan: pop3 virus and spam filter
 if [ -x /usr/local/sbin/p3scan ]; then
 	echo -n ' pop3'
-	mkdir /var/run/p3scan
+	[[ ! -d /var/run/p3scan ]] && mkdir /var/run/p3scan
 	chown _p3scan /var/run/p3scan
 	/usr/local/sbin/p3scan -f /etc/p3scan/p3scan.conf
 fi
 
 # Start smtp-gated: smtp virus and spam filter
 if [ -x /usr/local/sbin/smtp-gated ]; then
-	mkdir /var/run/smtp-gated
+	[[ ! -d /var/run/smtp-gated ]] && mkdir /var/run/smtp-gated
 	chown _smtp-gated /var/run/smtp-gated
 	echo -n ', smtp'
 	/usr/local/sbin/smtp-gated /etc/smtp-gated.conf
@@ -111,7 +108,7 @@ fi
 
 # Starting IM proxy
 if [ -x /usr/local/sbin/imspector ]; then
-	mkdir /tmp/imspector
+	[[ ! -d /tmp/imspector ]] && mkdir /tmp/imspector
 	chown -R _imspector:_imspector /tmp/imspector
 	echo -n ', im'
 	/usr/local/sbin/imspector -c /etc/imspector/imspector.conf
@@ -125,7 +122,7 @@ fi
 
 # Start E2Guardian content filter
 if [ -x /usr/local/sbin/e2guardian ]; then
-	mkdir /tmp/e2guardian
+	[[ ! -d /tmp/e2guardian ]] && mkdir /tmp/e2guardian
 	chown -R _e2guardian:_clamav /tmp/e2guardian
 	echo -n '\nWeb filter'
 	/usr/local/sbin/e2guardian >/dev/null 2>&1
@@ -139,8 +136,11 @@ fi
 
 echo
 banner utmfw
-echo 'is ready...\n'
 
 echo -n "a~a." > /dev/speaker &
 
-rm /var/tmp/utmfw/.starting_utmfw
+END_TIME=$(date "+%s")
+
+echo "is ready... (in $(($END_TIME - $START_TIME)) seconds)\n"
+
+rm /var/log/utmfw/.starting

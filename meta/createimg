@@ -99,9 +99,9 @@ mkdir $ROOT_PATH/$SITE_DIR
 cd $ROOT_PATH/$SITE_DIR
 doas rm -rf *
 for site in $SITE_CONTENTS; do
-	cp -R $ROOT_PATH/meta/$site .
+	cp -R -v $ROOT_PATH/meta/$site .
 done
-cp -R $ROOT_PATH/openbsd/$INSTALL_SETS_PATH/firmware ./etc/
+cp -R -v $ROOT_PATH/openbsd/$INSTALL_SETS_PATH/firmware ./etc/
 echo "set tty fb0\nset timeout 5" > ./etc/boot.conf
 doas chown -R root:wheel *
 tar czhf $SITE_FILE $SITE_CONTENTS

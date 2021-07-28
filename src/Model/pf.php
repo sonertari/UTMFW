@@ -45,7 +45,7 @@ class Pf extends Model
 
 	private $PNRG_IMG_DIR;
 
-	private $tmpCrontab= '/var/tmp/utmfw/root';
+	private $tmpCrontab= '/var/log/utmfw/out/root';
 
 	private $PF_PATH= '';
 
@@ -64,7 +64,7 @@ class Pf extends Model
 
 		parent::__construct();
 
-		$this->PNRG_IMG_DIR= $VIEW_PATH.'/pmacct/pnrg/spool/';
+		$this->PNRG_IMG_DIR= '/var/log/utmfw/pmacct/pnrg/';
 
 		$this->PF_PATH= $VIEW_PATH.'/pf';
 

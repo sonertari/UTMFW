@@ -30,7 +30,7 @@ class Symon extends Monitoring
 	public $User= '_symon';
 	
 	private $layoutsPath= '/var/www/htdocs/utmfw/View/symon/layouts';
-	private $rrdsPath= '/var/www/htdocs/utmfw/View/symon/rrds/localhost';
+	private $rrdsPath= '/var/log/utmfw/symon/rrds/localhost';
 	
 	public $VersionCmd= '/usr/local/libexec/symon -v 2>&1';
 
@@ -256,7 +256,7 @@ class Symon extends Monitoring
 
 	function GetGraph($file)
 	{
-		$graphFile= "/var/www/htdocs/utmfw/View/symon/cache/$file";
+		$graphFile= "/var/log/utmfw/symon/cache/$file";
 		$base64Graph= '';
 
 		if (file_exists($graphFile)) {

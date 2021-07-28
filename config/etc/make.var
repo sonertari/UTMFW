@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+# Creates and populates the /var/log/utmfw directory structure
+# Creates rrd files for symon and pmacct
+# Also creates link to pmacct/pnrg in httpd root
+
+BASEDIR=/var/log/utmfw
+
+[[ ! -d $BASEDIR ]] && mkdir $BASEDIR
+
+[[ ! -d $BASEDIR/collectd ]] && mkdir $BASEDIR/collectd
+[[ ! -d $BASEDIR/collectd/fifo ]] && mkdir $BASEDIR/collectd/fifo
+[[ ! -d $BASEDIR/collectd/rrd ]] && mkdir $BASEDIR/collectd/rrd
+
+[[ ! -d $BASEDIR/out ]] && mkdir $BASEDIR/out
+
+[[ ! -d $BASEDIR/symon ]] && mkdir $BASEDIR/symon
+
+if [[ ! -d $BASEDIR/symon/cache ]]; then
+	mkdir $BASEDIR/symon/cache
+	chmod 777 $BASEDIR/symon/cache
+fi
+
+if [[ ! -d $BASEDIR/symon/rrds ]]; then
+	mkdir $BASEDIR/symon/rrds
+	chmod 755 $BASEDIR/symon/rrds
+fi
+
+if [[ ! -d $BASEDIR/symon/rrds/localhost ]]; then
+	mkdir $BASEDIR/symon/rrds/localhost
+	chmod 755 $BASEDIR/symon/rrds/localhost
+	/bin/echo "Creating symon rrd files..."
+	/bin/sh /usr/local/share/examples/symon/c_smrrds.sh all
+fi
+
+[[ ! -d $BASEDIR/pmacct ]] && mkdir $BASEDIR/pmacct
+[[ ! -d $BASEDIR/pmacct/pnrg ]] && mkdir $BASEDIR/pmacct/pnrg
+[[ ! -d /var/www/htdocs/utmfw/View/pmacct/pnrg/spool ]] && \
+	ln -fs $BASEDIR/pmacct/pnrg /var/www/htdocs/utmfw/View/pmacct/pnrg/spool
+
+if [[ ! -d $BASEDIR/pmacct/protograph ]]; then
+	mkdir $BASEDIR/pmacct/protograph
+	/bin/echo "Creating pmacct rrd files..."
+	/bin/sh /var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh
+fi

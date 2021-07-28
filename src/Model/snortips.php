@@ -25,7 +25,7 @@ class Snortips extends Model
 	public $Name= 'snortips';
 	public $User= 'root';
 
-	private $sigMsgFile= '/var/tmp/snortips.sigmsg';
+	private $sigMsgFile= '/tmp/snortips.sigmsg';
 
 	public $NVPS= '\h';
 	public $ConfFile= '/etc/snort/snortips.conf';

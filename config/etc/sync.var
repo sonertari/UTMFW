@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# Syncs /var/log to /var/log.sync, if /var/log is mounted as mfs
+# During boot up, /etc/rc moves /var/log.sync to /var/log to populate the mfs /var/log via mount_mfs
+# This script is executed in /etc/rc.shutdown (which is executed in /etc/rc) and crontab of root
+
+# Turn off Strict Bourne shell.
+set +o sh
+
+SYNC_MFS=yes
+
+if [[ $SYNC_MFS == yes ]]; then
+	# Keep syncing as long as /var/log is mounted as mfs,
+	# no matter mfs is enabled in /etc/rc or not (USE_MFS is yes or no)
+	# /etc/rc always tries to use /var/log.sync if exists
+	if (($(mount -t mfs | grep "on[[:blank:]]*/var/log[[:blank:]]" | wc -l)+0 == 1)); then
+		echo "\nSyncing /var/log ..."
+
+		RSYNC_RULES=/var/rsync.rules
+		RSYNC_SRC=/var/log
+
+		RSYNC_DST=/var/log.sync
+		[[ ! -d $RSYNC_DST ]] && mkdir $RSYNC_DST
+
+		RSYNC_OUT="$RSYNC_DST/rsync.out"
+
+		# Remove rsync.out if exists, rsync appends to it
+		[[ -f $RSYNC_OUT ]] && rm $RSYNC_OUT
+
+		# Use the full path of rsync, /etc/rc does not add /usr/local/bin to $PATH
+		/usr/local/bin/rsync --log-file=$RSYNC_OUT --stats -av --exclude-from=$RSYNC_RULES $RSYNC_SRC/ $RSYNC_DST/ 2>&1
+
+		# Append the retval of rsync too, so /etc/rc can check if rsync was successful or not
+		echo "$?" >>$RSYNC_OUT
+	fi
+fi

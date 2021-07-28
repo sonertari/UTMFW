@@ -8,6 +8,10 @@
 #
 powerdown=YES	# set to YES for powerdown
 
-echo "syncing disks before audio warning..."
+echo "\nSyncing disks before audio warning..."
+
+# sync the mfs /var/log
+/bin/sh /etc/sync.var
+
 /bin/sync
 echo -n "e." > /dev/speaker

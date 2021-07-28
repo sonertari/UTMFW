@@ -1,0 +1,10 @@
+- rsync.out
+- *.old
+- *.gif
+- *.out
+- *.png
+- /utmfw/.starting
+- /utmfw/dashboard/***
+- /utmfw/downloads/***
+- /utmfw/out/***
+- /utmfw/symon/cache/***

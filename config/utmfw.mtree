@@ -34,6 +34,10 @@ e2guardian		type=dir mode=0755 uid=842 gid=842 flags=none
 access.log		type=file mode=0640 uname=root gname=wheel
 e2guardian.log	type=file mode=0640 uname=root gname=wheel
 ..	#var/log/e2guardian
+httpd			type=dir mode=0755 uname=root gname=daemon
+access.log		type=file mode=0644 uname=root gname=daemon
+error.log		type=file mode=0644 uname=root gname=daemon
+..	#var/log/httpd
 imspector		type=dir mode=0755 uid=903 gid=903 flags=none
 ..	#var/log/imspector
 snort			type=dir mode=0755 uname=root gname=wheel flags=none
@@ -41,8 +45,8 @@ snort.log		type=file mode=0640 uname=root gname=wheel
 alert.log		type=file mode=0640 uname=root gname=wheel
 ..	#var/log/snort
 clamd.log		type=file mode=0640 uid=539 gname=wheel
-ctlr.log			type=file mode=0640 uname=root gname=wheel
-wui.log		type=file mode=0640 uname=root gname=wheel
+ctlr.log		type=file mode=0640 uname=root gname=wheel
+wui.log			type=file mode=0640 uname=root gname=wheel
 dhcpd.log		type=file mode=0640 uname=root gname=wheel
 freshclam.log		type=file mode=0640 uid=539 gname=wheel
 ftp-proxy.log		type=file mode=0640 uname=root gname=wheel
@@ -54,7 +58,7 @@ p3scan.log		type=file mode=0640 uname=root gname=wheel
 smtp-gated.log		type=file mode=0640 uname=root gname=wheel
 snortips.log		type=file mode=0640 uname=root gname=wheel
 spamd.log		type=file mode=0640 uname=root gname=wheel
-sslproxy			type=dir mode=0755 uname=root gname=wheel flags=none
+sslproxy		type=dir mode=0755 uname=root gname=wheel flags=none
 sslproxy.log		type=file mode=0640 uname=root gname=wheel
 conns.log		type=file mode=0640 uname=root gname=wheel
 ..	#var/log/sslproxy
@@ -78,37 +82,44 @@ msg			type=dir mode=0770 uid=901 gid=539 flags=none
 ..	#var/spool/smtp-gated/msg
 ..	#var/spool/smtp-gated
 ..	#var/spool
-tmp			type=dir mode=0755 uname=root gname=wheel
-utmfw		type=dir mode=0755 uname=root gname=wheel flags=none
-..	#var/tmp/utmfw
-..	#var/tmp
 virusmails		type=dir mode=0700 uid=539 gid=539 flags=none
 ..	#var/virusmails
 www			type=dir mode=0755 uname=root gname=daemon
 htdocs			type=dir mode=0755 uname=root gname=wheel
-utmfw		type=dir mode=0755 uname=root gname=wheel
+utmfw			type=dir mode=0755 uname=root gname=wheel
 View			type=dir mode=0755 uname=root gname=wheel
 cgi-bin			type=dir mode=0755 uname=root gname=daemon
 man.cgi			type=file mode=0511 uname=root gname=bin
 ..	#var/www/htdocs/utmfw/View/cgi-bin
-symon			type=dir mode=0755 uname=root gname=wheel
-cache			type=dir mode=0777 uname=root gname=wheel flags=none
-..	#var/www/htdocs/utmfw/View/symon/cache
-rrds			type=dir mode=0755 uname=root gname=wheel flags=none
-localhost		type=dir mode=0755 uname=root gname=wheel flags=none
-..	#var/www/htdocs/utmfw/View/symon/rrds/localhost
-..	#var/www/htdocs/utmfw/View/symon/rrds
-..	#var/www/htdocs/utmfw/View/symon
 ..	#var/www/htdocs/utmfw/View
 ..	#var/www/htdocs/utmfw
 ..	#var/www/htdocs
-logs			type=dir mode=0755 uname=root gname=daemon
-access.log		type=file mode=0644 uname=root gname=daemon
-error.log		type=file mode=0644 uname=root gname=daemon
-..	#var/www/logs
 ..	#var/www
+rsync.rules		type=file mode=0644 uname=root gname=wheel
 ..	#var
 etc			type=dir mode=0755 uname=root gname=wheel
+collectd		type=dir mode=0755 uname=root gname=wheel
+clamav.conf		type=file mode=0644 uname=root gname=wheel
+dante.conf		type=file mode=0644 uname=root gname=wheel
+dhcpd.conf		type=file mode=0644 uname=root gname=wheel
+e2guardian.conf		type=file mode=0644 uname=root gname=wheel
+ftp-proxy.conf		type=file mode=0644 uname=root gname=wheel
+httpd.conf		type=file mode=0644 uname=root gname=wheel
+imspector.conf		type=file mode=0644 uname=root gname=wheel
+monitoring.conf		type=file mode=0644 uname=root gname=wheel
+named.conf		type=file mode=0644 uname=root gname=wheel
+openssh.conf		type=file mode=0644 uname=root gname=wheel
+openvpn.conf		type=file mode=0644 uname=root gname=wheel
+p3scan.conf		type=file mode=0644 uname=root gname=wheel
+pf.conf			type=file mode=0644 uname=root gname=wheel
+smtp-gated.conf		type=file mode=0644 uname=root gname=wheel
+snort.conf		type=file mode=0644 uname=root gname=wheel
+snortips.conf		type=file mode=0644 uname=root gname=wheel
+spamassassin.conf	type=file mode=0644 uname=root gname=wheel
+spamd.conf		type=file mode=0644 uname=root gname=wheel
+sslproxy.conf		type=file mode=0644 uname=root gname=wheel
+system.conf		type=file mode=0644 uname=root gname=wheel
+..	#etc/collectd
 e2guardian		type=dir mode=0755 uname=root gname=wheel
 downloadmanagers	type=dir mode=0755 uname=root gname=wheel
 default.conf		type=file mode=0644 uname=root gname=wheel
@@ -123,15 +134,15 @@ bannedregexpheaderlist2	type=file mode=0644 uname=root gname=wheel
 bannedregexpheaderlist3	type=file mode=0644 uname=root gname=wheel
 bannedregexpurllist2	type=file mode=0644 uname=root gname=wheel
 bannedregexpurllist3	type=file mode=0644 uname=root gname=wheel
-bannedsitelist	type=file mode=0644 uname=root gname=wheel
-bannedsitelist2	type=file mode=0644 uname=root gname=wheel
-bannedsitelist3	type=file mode=0644 uname=root gname=wheel
-domainsnobypass	type=file mode=0644 uname=root gname=wheel
+bannedsitelist		type=file mode=0644 uname=root gname=wheel
+bannedsitelist2		type=file mode=0644 uname=root gname=wheel
+bannedsitelist3		type=file mode=0644 uname=root gname=wheel
+domainsnobypass		type=file mode=0644 uname=root gname=wheel
 domainsnobypass2	type=file mode=0644 uname=root gname=wheel
 domainsnobypass3	type=file mode=0644 uname=root gname=wheel
-bannedurllist	type=file mode=0644 uname=root gname=wheel
-bannedurllist2	type=file mode=0644 uname=root gname=wheel
-bannedurllist3	type=file mode=0644 uname=root gname=wheel
+bannedurllist		type=file mode=0644 uname=root gname=wheel
+bannedurllist2		type=file mode=0644 uname=root gname=wheel
+bannedurllist3		type=file mode=0644 uname=root gname=wheel
 contentregexplist2	type=file mode=0644 uname=root gname=wheel
 contentregexplist3	type=file mode=0644 uname=root gname=wheel
 exceptionextensionlist2	type=file mode=0644 uname=root gname=wheel
@@ -150,21 +161,21 @@ exceptionsitelist3	type=file mode=0644 uname=root gname=wheel
 exceptionurllist	type=file mode=0644 uname=root gname=wheel
 exceptionurllist2	type=file mode=0644 uname=root gname=wheel
 exceptionurllist3	type=file mode=0644 uname=root gname=wheel
-greysitelist	type=file mode=0644 uname=root gname=wheel
-greysitelist2	type=file mode=0644 uname=root gname=wheel
-greysitelist3	type=file mode=0644 uname=root gname=wheel
-greyurllist	type=file mode=0644 uname=root gname=wheel
-greyurllist2	type=file mode=0644 uname=root gname=wheel
-greyurllist3	type=file mode=0644 uname=root gname=wheel
+greysitelist		type=file mode=0644 uname=root gname=wheel
+greysitelist2		type=file mode=0644 uname=root gname=wheel
+greysitelist3		type=file mode=0644 uname=root gname=wheel
+greyurllist		type=file mode=0644 uname=root gname=wheel
+greyurllist2		type=file mode=0644 uname=root gname=wheel
+greyurllist3		type=file mode=0644 uname=root gname=wheel
 headerregexplist2	type=file mode=0644 uname=root gname=wheel
 headerregexplist3	type=file mode=0644 uname=root gname=wheel
 sslsiteregexplist2	type=file mode=0644 uname=root gname=wheel
 sslsiteregexplist3	type=file mode=0644 uname=root gname=wheel
-urlregexplist2	type=file mode=0644 uname=root gname=wheel
-urlregexplist3	type=file mode=0644 uname=root gname=wheel
+urlregexplist2		type=file mode=0644 uname=root gname=wheel
+urlregexplist3		type=file mode=0644 uname=root gname=wheel
 weightedphraselist	type=file mode=0644 uname=root gname=wheel
 ..	#etc/e2guardian/lists
-e2guardian.conf	type=file mode=0644 uname=root gname=wheel
+e2guardian.conf		type=file mode=0644 uname=root gname=wheel
 e2guardianf1.conf	type=file mode=0644 uname=root gname=wheel
 e2guardianf1.story	type=file mode=0644 uname=root gname=wheel
 e2guardianf2.conf	type=file mode=0644 uname=root gname=wheel
@@ -174,7 +185,7 @@ e2guardianf3.story	type=file mode=0644 uname=root gname=wheel
 e2guardianf4.conf	type=file mode=0644 uname=root gname=wheel
 ..	#etc/e2guardian
 imspector		type=dir mode=0755 uname=root gname=wheel
-acl.txt		type=file mode=0644 uname=root gname=wheel
+acl.txt			type=file mode=0644 uname=root gname=wheel
 badwords.txt		type=file mode=0644 uname=root gname=wheel
 imspector.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/imspector
@@ -191,7 +202,7 @@ local-pt_br.cf		type=file mode=0644 uname=root gname=wheel
 local-tr.cf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/mail/spamassassin
 aliases			type=file mode=0644 uname=root gname=wheel
-smtpd.conf			type=file mode=0644 uname=root gname=wheel
+smtpd.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/mail
 openvpn			type=dir mode=0755 uname=root gname=wheel
 client.conf		type=file mode=0644 uname=root gname=wheel
@@ -227,10 +238,10 @@ pmacctd-protograph.conf	type=file mode=0644 uname=root gname=wheel
 ..	#etc/pmacct
 snort			type=dir mode=0755 uname=root gname=wheel
 snort.conf		type=file mode=0644 uname=root gname=wheel
-snortinline.conf		type=file mode=0644 uname=root gname=wheel
+snortinline.conf	type=file mode=0644 uname=root gname=wheel
 snortips.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/snort
-sslproxy			type=dir mode=0755 uname=root gname=wheel
+sslproxy		type=dir mode=0755 uname=root gname=wheel
 sslproxy.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/sslproxy
 clamd.conf		type=file mode=0644 uname=root gname=wheel
@@ -239,12 +250,14 @@ dhcpd.conf		type=file mode=0644 uname=root gname=wheel
 doas.conf		type=file mode=0644 uname=root gname=wheel
 freshclam.conf		type=file mode=0644 uname=root gname=wheel
 httpd.conf		type=file mode=0644 uname=root gname=wheel
+make.var		type=file mode=0644 uname=root gname=wheel
 motd			type=file mode=0664 uname=root gname=wheel
 newsyslog.conf		type=file mode=0644 uname=root gname=wheel
 pf.conf			type=file mode=0600 uname=root gname=wheel
 pf.restrictedips	type=file mode=0600 uname=root gname=wheel
-php-8.0.ini			type=file mode=0644 uname=root gname=wheel
+php-8.0.ini		type=file mode=0644 uname=root gname=wheel
 php-fpm.conf		type=file mode=0644 uname=root gname=wheel
+rc			type=file mode=0644 uname=root gname=wheel
 rc.conf.local		type=file mode=0644 uname=root gname=wheel
 rc.local		type=file mode=0644 uname=root gname=wheel
 rc.shutdown		type=file mode=0644 uname=root gname=wheel
@@ -252,6 +265,7 @@ smtp-gated.conf		type=file mode=0644 uname=root gname=wheel
 sockd.conf		type=file mode=0644 uname=root gname=wheel
 symon.conf		type=file mode=0644 uname=root gname=wheel
 symux.conf		type=file mode=0644 uname=root gname=wheel
+sync.var		type=file mode=0644 uname=root gname=wheel
 sysctl.conf		type=file mode=0644 uname=root gname=wheel
 syslog.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc

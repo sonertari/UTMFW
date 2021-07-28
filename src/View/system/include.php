@@ -142,14 +142,14 @@ class System extends View
 				<table class="part">
 					<tr>
 						<td>
-							<table class="part">
+							<table class="part" style="width: 275px;">
 								<tr>
 									<td class="partleft" style="background-color: brown; width: <?php echo $ServiceInfo['system']['partitions']['/'] != '0%' ? $ServiceInfo['system']['partitions']['/'] : '0.1%'; ?>"></td>
 									<td class="partright" style="background-color: whitesmoke"><?php echo $ServiceInfo['system']['partitions']['/']; ?></td>
 								</tr>
 							</table>
 						</td>
-						<td class="part">/</td>
+						<td class="part" style="width: 100px;">/</td>
 					</tr>
 				</table>
 				</a>
@@ -161,14 +161,14 @@ class System extends View
 				<table class="part">
 					<tr>
 						<td>
-							<table class="part">
+							<table class="part" style="width: 275px;">
 								<tr>
 									<td class="partleft" style="background-color: green; width: <?php echo $ServiceInfo['system']['partitions']['/tmp'] != '0%' ? $ServiceInfo['system']['partitions']['/tmp'] : '0.1%'; ?>"></td>
 									<td class="partright" style="background-color: whitesmoke"><?php echo $ServiceInfo['system']['partitions']['/tmp']; ?></td>
 								</tr>
 							</table>
 						</td>
-						<td class="part">/tmp</td>
+						<td class="part" style="width: 100px;">/tmp</td>
 					</tr>
 				</table>
 				</a>
@@ -180,14 +180,14 @@ class System extends View
 				<table class="part">
 					<tr>
 						<td>
-							<table class="part">
+							<table class="part" style="width: 275px;">
 								<tr>
 									<td class="partleft" style="background-color: blue; width: <?php echo $ServiceInfo['system']['partitions']['/usr'] != '0%' ? $ServiceInfo['system']['partitions']['/usr'] : '0.1%'; ?>"></td>
 									<td class="partright" style="background-color: whitesmoke"><?php echo $ServiceInfo['system']['partitions']['/usr']; ?></td>
 								</tr>
 							</table>
 						</td>
-						<td class="part">/usr</td>
+						<td class="part" style="width: 100px;">/usr</td>
 					</tr>
 				</table>
 				</a>
@@ -199,20 +199,43 @@ class System extends View
 				<table class="part">
 					<tr>
 						<td>
-							<table class="part">
+							<table class="part" style="width: 275px;">
 								<tr>
 									<td class="partleft" style="background-color: orange; width: <?php echo $ServiceInfo['system']['partitions']['/var'] != '0%' ? $ServiceInfo['system']['partitions']['/var'] : '0.1%'; ?>"></td>
 									<td class="partright" style="background-color: whitesmoke"><?php echo $ServiceInfo['system']['partitions']['/var']; ?></td>
 								</tr>
 							</table>
 						</td>
-						<td class="part">/var</td>
+						<td class="part" style="width: 100px;">/var</td>
 					</tr>
 				</table>
 				</a>
 			</td>
 		</tr>
 		<?php
+		if (isset($ServiceInfo['system']['partitions']['/var/log'])) {
+			?>
+			<tr id="dashboard">
+				<td class="part" colspan="4" title="<?php echo _TITLE2('Disk partition usage') ?>">
+					<a class="transparent" href="/system/graphs.php?submenu=partitions">
+						<table class="part">
+						<tr>
+							<td>
+								<table class="part" style="width: 275px;">
+									<tr>
+										<td class="partleft" style="background-color: red; width: <?php echo $ServiceInfo['system']['partitions']['/var/log'] != '0%' ? $ServiceInfo['system']['partitions']['/var/log'] : '0.1%'; ?>"></td>
+										<td class="partright" style="background-color: whitesmoke"><?php echo $ServiceInfo['system']['partitions']['/var/log']; ?></td>
+									</tr>
+								</table>
+							</td>
+							<td class="part" style="width: 100px;">/var/log</td>
+						</tr>
+					</table>
+					</a>
+				</td>
+			</tr>
+			<?php
+		}
 	}
 
 	static function DisplayPmacctDashboardExtras()

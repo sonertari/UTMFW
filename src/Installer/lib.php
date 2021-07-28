@@ -552,6 +552,83 @@ function GenerateSSLKeyPairs()
 	echo "\nYou can generate the SSL key pairs on the WUI too.\n";
 }
 
+function ConfigMFS()
+{
+	global $View;
+
+	// In case
+	$View->Model= 'system';
+
+	echo "\nIf the system has enough memory, you can mount /var/log as MFS\n";
+	$selection= ReadSelection("\nEnable MFS? [yes] ", array('yes', 'no'));
+
+	if ($selection === '') {
+		$selection= 'yes';
+	}
+
+	if (!$View->Controller($Output, 'SetMFS', $selection)) {
+		$msg= "Failed setting MFS to $selection";
+		wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, $msg);
+		echo "\n$msg.\n";
+	} else {
+		if ($selection == 'yes') {
+			echo "\nMFS /var/log enabled.\n";
+		} else {
+			echo "\nMFS /var/log disabled.\n";
+		}
+	}
+
+	$MFSConfig= FALSE;
+	if ($View->Controller($Output, 'GetMFSConfig')) {
+		$MFSConfig= json_decode($Output[0], TRUE);
+	}
+
+	if (!$MFSConfig) {
+		echo "\nCannot configure MFS\n";
+		return;
+	}
+
+	$mfs_enabled= $MFSConfig['enable'] == 'yes';
+
+	if ($mfs_enabled) {
+		$size= $MFSConfig['size'];
+
+		echo "\nMFS size of 1024m or more is recommended\n";
+
+		$s= readline2("Set MFS size to? [$size] ");
+		if (preg_match('/^\d+[kKmMgG]*$/', $s)) {
+			$size= $s;
+		}
+		echo "Setting MFS size to $size\n";
+
+		if (!$View->Controller($Output, 'SetMFSSize', $size)) {
+			$msg= "Failed setting MFS size to $size";
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, $msg);
+			echo "\n$msg.\n";
+		}
+
+		echo "\nMFS /var/log can be set to persist, so its contents are not lost on shutdown\n";
+		echo "Note that syncing /var/log to disk can take some time\n";
+		$selection= ReadSelection("\nEnable persistent MFS? [yes] ", array('yes', 'no'));
+
+		if ($selection === '') {
+			$selection= 'yes';
+		}
+
+		if (!$View->Controller($Output, 'SetSyncMFS', $selection)) {
+			$msg= "Failed setting sync MFS to $selection";
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, $msg);
+			echo "\n$msg.\n";
+		} else {
+			if ($selection == 'yes') {
+				echo "\nPersistent MFS enabled.\n";
+			} else {
+				echo "\nPersistent MFS disabled.\n";
+			}
+		}
+	}
+}
+
 /**
  * Reads typed chars without echo.
  *

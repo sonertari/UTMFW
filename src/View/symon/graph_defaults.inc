@@ -627,7 +627,7 @@ GPRINT:Bused:LAST: %4.1lf %s\n
 	break;
 
 	case 'ping':
-		$COLLECTD_RRD_ROOT= '/var/collectd/localhost';
+		$COLLECTD_RRD_ROOT= '/var/log/utmfw/collectd/rrd/localhost';
 
 		// XXX
 		global $ALL_USERS, $ADMIN;

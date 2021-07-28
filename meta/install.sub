@@ -733,6 +733,9 @@ __EOT
 
 			# Otherwise named gives permission denied errors
 			chown -R _bind:_bind $DESTDIR/var/named/ || _installerror=1
+
+			# rsync is used by the modified rc scripts to sync the mfs /var/log to disk
+			pkg_add rsync || _installerror=1
 			;;
 
 		$CW_WEBIF_TARFILE)
@@ -1050,15 +1053,8 @@ finish_up() {
 		/usr/local/bin/php /var/www/htdocs/utmfw/Installer/install.php || INSTALL_ERROR=1
 	fi
 
-	if [[ -x /var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh ]]; then
-		echo "Creating pmacct rrd files..."
-		/var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh || INSTALL_ERROR=1
-	fi
-
 	# The symon configuration which require the use of sysctl should be run on first start, see ApplyConfig() in Installer/lib.php
 	echo '/usr/bin/env PATH=$PATH:/usr/local/bin /var/www/htdocs/utmfw/Installer/install.php -a' >>/etc/rc.firsttime
-	echo '/bin/echo "Creating symon rrd files..."' >>/etc/rc.firsttime
-	echo '/bin/sh /usr/local/share/examples/symon/c_smrrds.sh all' >>/etc/rc.firsttime
 
 	if [ $INSTALL_ERROR -eq 1 ]; then
 		cat <<__EOT
@@ -1137,7 +1133,7 @@ THESETS="isc-bind-9.16.10v2.tgz \
 		dante-1.4.2p0.tgz \
 		symon-2.88p6.tgz \
 		pmacct-1.7.6.tgz \
-		collectd-5.8.1p0.tgz \
+		collectd-5.12.0p0.tgz \
 		pftop-0.7p19.tgz \
 		php-8.0.3.tgz \
 		$CW_WEBIF_TARFILE \

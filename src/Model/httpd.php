@@ -27,7 +27,7 @@ class Httpd extends Model
 	
 	public $NVPS= '\h';
 	public $ConfFile= '/etc/httpd.conf';
-	public $LogFile= '/var/www/logs/error.log';
+	public $LogFile= '/var/log/httpd/error.log';
 
 	private $phpVersionCmd= '/usr/local/bin/php -v';
 

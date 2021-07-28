@@ -44,35 +44,59 @@ else if (filter_has_var(INPUT_POST, 'Generate')) {
 		PrintHelpWindow(_NOTICE('SSL key pair generation failed.'), 'auto', 'ERROR');
 	}
 }
+else if (filter_has_var(INPUT_POST, 'DisableMFS')) {
+	if ($View->Controller($Output, 'SetMFS', 'no')) {
+		wui_syslog(LOG_INFO, __FILE__, __FUNCTION__, __LINE__, 'Disable MFS');
+	}
+}
+else if (filter_has_var(INPUT_POST, 'EnableMFS')) {
+	if ($View->Controller($Output, 'SetMFS', 'yes')) {
+		wui_syslog(LOG_INFO, __FILE__, __FUNCTION__, __LINE__, 'Enable MFS');
+	}
+}
+else if (filter_has_var(INPUT_POST, 'SetMFSSize')) {
+	if ($View->Controller($Output, 'SetMFSSize', filter_input(INPUT_POST, 'MFSSize'))) {
+		wui_syslog(LOG_INFO, __FILE__, __FUNCTION__, __LINE__, 'Enable sync MFS');
+	}
+}
+else if (filter_has_var(INPUT_POST, 'DisableSyncMFS')) {
+	if ($View->Controller($Output, 'SetSyncMFS', 'no')) {
+		wui_syslog(LOG_INFO, __FILE__, __FUNCTION__, __LINE__, 'Disable sync MFS');
+	}
+}
+else if (filter_has_var(INPUT_POST, 'EnableSyncMFS')) {
+	if ($View->Controller($Output, 'SetSyncMFS', 'yes')) {
+		wui_syslog(LOG_INFO, __FILE__, __FUNCTION__, __LINE__, 'Enable sync MFS');
+	}
+}
+
+$MFSConfig= FALSE;
+if ($View->Controller($Output, 'GetMFSConfig')) {
+	$MFSConfig= json_decode($Output[0], TRUE);
+}
 
 require_once($VIEW_PATH.'/header.php');
 ?>
 <table id="nvp">
-	<?php
-	if ($View->Controller($Interfaces, 'GetPhyIfs')) {
-		?>
-		<tr class="oddline">
-			<td class="title">
-				<?php echo _TITLE('Automatic config').':' ?>
-			</td>
-			<td>
-				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-					<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
-				</form>
-			</td>
-			<td class="none">
-				<?php
-				PrintHelpBox(_HELPBOX('Changes to system configuration should be applied system-wide.
+	<tr class="oddline">
+		<td class="title">
+			<?php echo _TITLE('Automatic config').':' ?>
+		</td>
+		<td>
+			<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+				<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
+			</form>
+		</td>
+		<td class="none">
+			<?php
+			PrintHelpBox(_HELPBOX('Changes to system configuration should be applied system-wide.
 
 <b>If you modify basic or network settings, you are advised to use this button.</b>
 
 Internal and external physical interface names are obtained from packet filter configuration, i.e. int_if and ext_if macros.'));
-				?>
-			</td>
-		</tr>
-		<?php
-	}
-	?>
+			?>
+		</td>
+	</tr>
 	<tr class="evenline">
 		<td class="title">
 			<?php echo _TITLE('Graph files').':' ?>
@@ -122,10 +146,78 @@ This may be necessary if these files are corrupted and you cannot see any graphs
 			?>
 		</td>
 	</tr>
+	<tr class="oddline">
+		<td class="title">
+			<?php echo _TITLE('Memory file system').':' ?>
+		</td>
+		<td>
+			<?php
+			if ($MFSConfig) {
+				$MFSEnabled= $MFSConfig['enable'] == 'yes';
+				$MFSEnableButton= $MFSEnabled ? 'Disable' : 'Enable';
+				$MFSEnableButtonValue= $MFSEnabled ? _CONTROL('Disable') : _CONTROL('Enable');
+				$MFSEnableMessage= $MFSEnabled ? _NOTICE('Are you sure you want to disable MFS?') : _NOTICE('Are you sure you want to enable MFS?');
+
+				$MFSSyncEnabled= $MFSConfig['sync'] == 'yes';
+				$MFSSyncButton= $MFSSyncEnabled ? 'Disable' : 'Enable';
+				$MFSSyncButtonValue= $MFSSyncEnabled ? _CONTROL('Disable') : _CONTROL('Enable');
+				$MFSSyncMessage= $MFSSyncEnabled ? _NOTICE('Are you sure you want to disable persistent MFS?') : _NOTICE('Are you sure you want to enable persistent MFS?');
+				?>
+				<table>
+					<tr>
+						<td class="iftitle">
+							<?php echo _TITLE('mount as mfs') ?>
+						</td>
+						<td class="ifs">
+							<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+								<input type="submit" name="<?php echo $MFSEnableButton ?>MFS" value="<?php echo $MFSEnableButtonValue ?>" onclick="return confirm('<?php echo $MFSEnableMessage ?>')"/>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td class="iftitle">
+							<?php echo _TITLE('set mfs size') ?>
+						</td>
+						<td class="ifs">
+							<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+								<input type="text" name="MFSSize" style="width: 100px;" maxlength="20" value="<?php echo $MFSConfig['size'] ?>" />
+								<input type="submit" name="SetMFSSize" value="<?php echo _CONTROL('Apply') ?>" onclick="return confirm('<?php echo _NOTICE('Are you sure you want to set the size of MFS?') ?>')"/>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td class="iftitle">
+							<?php echo _TITLE('persist mfs') ?>
+						</td>
+						<td class="ifs">
+							<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+								<input type="submit" name="<?php echo $MFSSyncButton ?>SyncMFS" value="<?php echo $MFSSyncButtonValue ?>" onclick="return confirm('<?php echo $MFSSyncMessage ?>')"/>
+							</form>
+						</td>
+					</tr>
+				</table>
+				<?php
+			} else {
+				echo _TITLE('Cannot get MFS configuration');
+			}
+			?>
+		</td>
+		<td class="none">
+			<?php
+			PrintHelpBox(_HELPBOX('If there is enough memeory on the system, mounting /var/log on a memory-based file system can improve the performance of the system, especially if the disk is slow. These settings configure /var/log as MFS.
+
+If you enable MFS, /var/log is mounted as MFS on the next boot.
+
+If you enable persistent MFS, the system starts syncing /var/log to disk, periodically and during shutdown, so that its contents are not lost and can be used after reboot. Note that syncing /var/log to disk may take some time.
+
+You are advised to choose an MFS size of at least 1024m.'));
+			?>
+		</td>
+	</tr>
 </table>
 <?php
 PrintHelpWindow(_HELPWINDOW('Buttons on this page should help you apply the new configuration system-wide when you change certain system settings or hardware.
 
-The web user interface stores statistics under /var/tmp/utmfw folder. The statistics are updated incrementally when new messages are appended to log files. When user selects a compressed log file for viewing or statistics, its uncompressed copy is saved under the same folder also. This strategy greatly improves the performance of Statistics and Logs pages, and enables other features of the web user interface. Since these statistics and uncompressed log files may take up a lot of disk space, you are advised to keep your /var partition as large as possible.'));
+The web user interface stores statistics under /var/log/utmfw folder. The statistics are updated incrementally when new messages are appended to log files. When user selects a compressed log file for viewing or statistics, its uncompressed copy is saved under the same folder too. This strategy greatly improves the performance of Statistics and Logs pages, and enables other features of the web user interface. Since these statistics and uncompressed log files may take up a lot of disk space, you are advised to have a large partition holding /var/log.'));
 require_once($VIEW_PATH.'/footer.php');
 ?>

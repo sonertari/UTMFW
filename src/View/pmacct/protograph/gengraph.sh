@@ -1,8 +1,8 @@
 #!/bin/sh
 
 HOST=utmfw
-RRD=/var/www/htdocs/utmfw/View/pmacct/protograph/${HOST}.rrd
-IMAGE_NAME=/var/www/htdocs/utmfw/View/pmacct/protograph/${HOST}-hourly.gif
+RRD=/var/log/utmfw/pmacct/protograph/${HOST}.rrd
+IMAGE_NAME=/var/log/utmfw/pmacct/protograph/${HOST}-hourly.gif
 DURATION=3600
 
 /usr/local/bin/rrdtool graph ${IMAGE_NAME} --start -${DURATION} -v "bits per second" -F -t "Overall Protocol (Port) Usage" \
