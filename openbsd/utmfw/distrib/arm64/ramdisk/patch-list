@@ -1,16 +1,17 @@
---- list.orig	Sun Jun 27 06:48:18 2021
-+++ list	Sun Jun 27 07:02:12 2021
-@@ -90,6 +90,9 @@
+--- list.orig	Sun Apr 18 00:19:40 2021
++++ list	Mon Jun 28 01:50:29 2021
+@@ -90,6 +90,10 @@
  COPY	${DESTDIR}/etc/firmware/atu-rfmd2958-int etc/firmware/atu-rfmd2958-int
  COPY	${DESTDIR}/etc/firmware/atu-rfmd2958smc-ext etc/firmware/atu-rfmd2958smc-ext
  COPY	${DESTDIR}/etc/firmware/atu-rfmd2958smc-int etc/firmware/atu-rfmd2958smc-int
 +COPY	/etc/firmware/brcmfmac43455-sdio.bin etc/firmware/brcmfmac43455-sdio.bin
 +COPY	/etc/firmware/brcmfmac43455-sdio.clm_blob etc/firmware/brcmfmac43455-sdio.clm_blob
 +COPY	/etc/firmware/brcmfmac43455-sdio.txt etc/firmware/brcmfmac43455-sdio.txt
++COPY	/etc/firmware/urtwn-rtl8192eu_nic etc/firmware/urtwn-rtl8192eu_nic
  
  MKDIR	usr/mdec/rpi
  COPY	/usr/local/share/raspberrypi-firmware/boot/bcm2710-rpi-2-b.dtb usr/mdec/rpi/bcm2710-rpi-2-b.dtb
-@@ -119,6 +122,7 @@
+@@ -119,6 +123,7 @@
  COPY	${CURDIR}/../../miniroot/master.passwd	etc/master.passwd
  SPECIAL	pwd_mkdb -p -d etc master.passwd; rm etc/master.passwd
  COPY	${DESTDIR}/etc/signify/openbsd-${OSrev}-base.pub	etc/signify/openbsd-${OSrev}-base.pub
