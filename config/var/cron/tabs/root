@@ -34,4 +34,4 @@ HOME=/var/log
 #*/1	*	*	*	*	/usr/bin/env PATH=$PATH:/usr/local/bin /usr/local/bin/php /var/www/htdocs/utmfw/Notifier/notify.php > /dev/null
 
 # sync the mfs /var/log
-0	*	*	*	*	/bin/sh /etc/sync.var
+15	*	*	*	*	/bin/sh /etc/sync.var
