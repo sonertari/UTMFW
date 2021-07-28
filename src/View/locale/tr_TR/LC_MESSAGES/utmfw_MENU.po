@@ -32,32 +32,17 @@ msgstr "1 ay"
 msgid "1 week"
 msgstr "1 hafta"
 
-msgid "1 year"
-msgstr "1 yıl"
-
 msgid "10 mins"
 msgstr "10 dakika"
 
 msgid "12 hours"
 msgstr "12 saat"
 
-msgid "3 days"
-msgstr "3 gün"
-
-msgid "3 hours"
-msgstr "3 saat"
-
-msgid "3 months"
-msgstr "3 ay"
-
 msgid "30 mins"
 msgstr "30 dakika"
 
 msgid "5 mins"
 msgstr "5 dakika"
-
-msgid "6 hours"
-msgstr "6 saat"
 
 msgid "6 months"
 msgstr "6 ay"

@@ -97,6 +97,9 @@ msgstr ""
 msgid "CRITICAL"
 msgstr ""
 
+msgid "Cannot get MFS configuration"
+msgstr ""
+
 msgid "Category"
 msgstr ""
 
@@ -381,6 +384,9 @@ msgstr ""
 msgid "If"
 msgstr ""
 
+msgid "In the last <INTERVAL> seconds."
+msgstr ""
+
 msgid "Inline IPS"
 msgstr ""
 
@@ -514,6 +520,9 @@ msgid "Mbuf Statistics"
 msgstr ""
 
 msgid "Memory Usage"
+msgstr ""
+
+msgid "Memory file system"
 msgstr ""
 
 msgid "Min"
@@ -894,9 +903,6 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-msgid "Status Check Interval"
-msgstr ""
-
 msgid "Stopped"
 msgstr ""
 
@@ -1041,7 +1047,13 @@ msgstr ""
 msgid "modified"
 msgstr ""
 
+msgid "mount as mfs"
+msgstr ""
+
 msgid "negated"
+msgstr ""
+
+msgid "persist mfs"
 msgstr ""
 
 msgid "primary"
@@ -1051,6 +1063,9 @@ msgid "secondary"
 msgstr ""
 
 msgid "secs"
+msgstr ""
+
+msgid "set mfs size"
 msgstr ""
 
 msgid "set serial to"

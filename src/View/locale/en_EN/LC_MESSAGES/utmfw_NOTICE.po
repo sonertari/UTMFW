@@ -19,6 +19,18 @@ msgstr ""
 msgid "Are you sure you want to delete the user?"
 msgstr ""
 
+msgid "Are you sure you want to disable MFS?"
+msgstr ""
+
+msgid "Are you sure you want to disable persistent MFS?"
+msgstr ""
+
+msgid "Are you sure you want to enable MFS?"
+msgstr ""
+
+msgid "Are you sure you want to enable persistent MFS?"
+msgstr ""
+
 msgid "Are you sure you want to erase statistics files?"
 msgstr ""
 
@@ -38,6 +50,9 @@ msgid "Are you sure you want to rotate the logs?"
 msgstr ""
 
 msgid "Are you sure you want to set the date?"
+msgstr ""
+
+msgid "Are you sure you want to set the size of MFS?"
 msgstr ""
 
 msgid "Are you sure you want to start the <NAME>?"

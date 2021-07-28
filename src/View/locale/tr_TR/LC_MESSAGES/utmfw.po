@@ -134,9 +134,6 @@ msgstr "1 ay"
 msgid "1 week"
 msgstr "1 hafta"
 
-msgid "1 year"
-msgstr "1 yıl"
-
 msgid "10 mins"
 msgstr "10 dakika"
 
@@ -146,15 +143,6 @@ msgstr "12 saat"
 msgid "15 minute average"
 msgstr "15 dakikalık ortalama"
 
-msgid "3 days"
-msgstr "3 gün"
-
-msgid "3 hours"
-msgstr "3 saat"
-
-msgid "3 months"
-msgstr "3 ay"
-
 msgid "30 mins"
 msgstr "30 dakika"
 
@@ -163,9 +151,6 @@ msgstr "5 dakika"
 
 msgid "5 minute average"
 msgstr "5 dakikalık ortalama"
-
-msgid "6 hours"
-msgstr "6 saat"
 
 msgid "6 months"
 msgstr "6 ay"
@@ -558,6 +543,18 @@ msgstr "Seçili öğeleri silmek istediğinizden emin misiniz?"
 msgid "Are you sure you want to delete the user?"
 msgstr "Kullanıcıyı silmek istediğinizden emin misiniz?"
 
+msgid "Are you sure you want to disable MFS?"
+msgstr "MFS'i devre dışı bırakmak istediğinizden emin misiniz?"
+
+msgid "Are you sure you want to disable persistent MFS?"
+msgstr "Kalıcı MFS'i devre dışı bırakmak istediğinizden emin misiniz?"
+
+msgid "Are you sure you want to enable MFS?"
+msgstr "MFS'i etkinleştirmek istediğinizden emin misiniz?"
+
+msgid "Are you sure you want to enable persistent MFS?"
+msgstr "Kalıcı MFS'i etkinleştirmek istediğinizden emin misiniz?"
+
 msgid "Are you sure you want to erase statistics files?"
 msgstr "İstatistik dosyalarını silmek istediğinizden emin misiniz?"
 
@@ -578,6 +575,9 @@ msgstr "Kayıtları döndürmek istediğinizden emin misiniz?"
 
 msgid "Are you sure you want to set the date?"
 msgstr "Tarihi ayarlamak istediğinizden emin misiniz?"
+
+msgid "Are you sure you want to set the size of MFS?"
+msgstr "MFS boyutunu ayarlamak istediğinizden emin misiniz?"
 
 msgid "Are you sure you want to start the <NAME>?"
 msgstr "<NAME>: başlatmak istediğinizden emin misiniz?"
@@ -805,11 +805,11 @@ msgid ""
 "The web user interface stores statistics under /var/log/utmfw folder. The "
 "statistics are updated incrementally when new messages are appended to log "
 "files. When user selects a compressed log file for viewing or statistics, "
-"its uncompressed copy is saved under the same folder also. This strategy "
+"its uncompressed copy is saved under the same folder too. This strategy "
 "greatly improves the performance of Statistics and Logs pages, and enables "
 "other features of the web user interface. Since these statistics and "
 "uncompressed log files may take up a lot of disk space, you are advised to "
-"keep your /var partition as large as possible."
+"have a large partition holding /var/log."
 msgstr ""
 "Bu sayfadaki tuşlar sistem ayarlarını veya donanımını değiştirdiğinizde yeni "
 "ayarları sistemin geneline uygulamanıza yardımcı olur.\n"
@@ -820,8 +820,8 @@ msgstr ""
 "istatistik için seçtiğinde, dosyanın açılmış kopyası aynı dizin altına "
 "kaydedilir. Bu yöntem sayesinde İstatistik ve Kayıt sayfaları oldukça hızlı "
 "çalışır, ve web arayüzünün bazı özellikleri desteklenir. Bu istatistik ve "
-"açılmış kayıt dosyaları geniş yer kaplayabileceğinden /var disk bölümünü "
-"olabildiğince geniş tutmanız tavsiye edilir."
+"açılmış kayıt dosyaları geniş yer kaplayabileceğinden /var/log klasörünü "
+"tutan disk bölümünü olabildiğince geniş tutmanız tavsiye edilir."
 
 msgid ""
 "By default, Clamd accepts virus scan requests from processes running on the "
@@ -907,6 +907,9 @@ msgstr "İptal"
 msgid "Cannot add"
 msgstr "Eklenemiyor"
 
+msgid "Cannot determine the resolution in rrdfetch output"
+msgstr "rrdfetch komutunun çıktısından çözünürlük belirlenemedi"
+
 msgid "Cannot find group configuration file"
 msgstr "Grup yapılandırma dosyası bulunamıyor"
 
@@ -916,8 +919,26 @@ msgstr "Pfctl süreci fork edilemedi"
 msgid "Cannot generate rule"
 msgstr "Kural üretilemiyor"
 
+msgid "Cannot get MFS configuration"
+msgstr "MFS ayarları alınamadı"
+
+msgid "Cannot get MFS size"
+msgstr "MFS boyutu alınamadı"
+
+msgid "Cannot get contents of /etc/rc"
+msgstr "/etc/rc içeriği alınamadı"
+
+msgid "Cannot get contents of /etc/sync.var"
+msgstr "/etc/sync.var içeriği alınamadı"
+
 msgid "Cannot get ethernet address of IP"
 msgstr "IP adresin ethernet adresi alınamıyor"
+
+msgid "Cannot get mount MFS"
+msgstr "MFS yükleme ayarı alınamadı"
+
+msgid "Cannot get persistent MFS"
+msgstr "Kalıcı MFS ayarı alınamadı"
 
 msgid "Cannot get pid"
 msgstr "Pid alınamadı"
@@ -1228,27 +1249,6 @@ msgstr "Önemli Hata"
 
 msgid "Current Password"
 msgstr "Mevcut Parola"
-
-msgid "Current number of alerts issued by the IDS and Inline IPS"
-msgstr "Saldırı Algılama ve Engelleme sistemlerinin uyarı sayısı"
-
-msgid "Current number of connections handled by the SSL Proxy"
-msgstr "SSL vekile yapılan bağlantıların sayısı"
-
-msgid "Current number of file descriptors used by the SSL Proxy"
-msgstr "SSL vekil tarafından kullanılan dosya tanımlayıcı sayısı"
-
-msgid "Current number of hosts on the system ARP table"
-msgstr "Sistemin ARP tablosundaki cihaz sayısı"
-
-msgid "Current number of leases assigned to clients by the DHCP Server"
-msgstr "DHCP sunucu tarafından istemcilere atanan kiralamaların sayısı"
-
-msgid "Current number of requests handled by the Web Filter"
-msgstr "Web eleğine yapılan isteklerin sayısı"
-
-msgid "Current number of states"
-msgstr "Durumların sayısı"
 
 msgid "Customised filtered text (message text or filename follows in response)"
 msgstr ""
@@ -2023,6 +2023,9 @@ msgstr "Silme işlemli başarısız oldu"
 msgid "Failed downloading, cannot generate pf rules"
 msgstr "İndirme işlemi başarısız oldu, pf kuralları üretilemiyor"
 
+msgid "Failed executing rrdfetch"
+msgstr "rrdfetch komutu başarısız oldu"
+
 msgid "Failed loading"
 msgstr "Yükleme işlemi başarısız oldu"
 
@@ -2223,14 +2226,6 @@ msgstr "Sadece SSL/TLS protokol sürümüne zorla."
 msgid "Force quick search"
 msgstr "Hızlı arama"
 
-msgid ""
-"Forge ssl certificates for all non-exception sites, decrypt the data then re "
-"encrypt it using a different private key. Used to filter ssl sites."
-msgstr ""
-"Ayrıcalıkı olmayan tüm siteler için SSL sertifikalarını taklit et, "
-"veriyideşifre et ve farklı bir özel gizli anahtarla tekrar şifrele. SSL "
-"siteleri elektengeçirmek için kullanılır."
-
 msgid "Forwarded for"
 msgstr "İletim"
 
@@ -2351,6 +2346,9 @@ msgstr "DNS sunucunun dinlediği IP adresini getir"
 
 msgid "Get IPS info"
 msgstr "SES bilgisini getir"
+
+msgid "Get MFS config"
+msgstr "MFS ayarlarını getir"
 
 msgid "Get PF allowed"
 msgstr "İzin verilen PF öğelerini getir"
@@ -3246,6 +3244,34 @@ msgstr ""
 "mailer)\n"
 "öndeğer usesmtp = off"
 
+msgid ""
+"If there is enough memeory on the system, mounting /var/log on a memory-"
+"based file system can improve the performance of the system, especially if "
+"the disk is slow. These settings configure /var/log as MFS.\n"
+"\n"
+"If you enable MFS, /var/log is mounted as MFS on the next boot.\n"
+"\n"
+"If you enable persistent MFS, the system starts syncing /var/log to disk, "
+"periodically and during shutdown, so that its contents are not lost and can "
+"be used after reboot. Note that syncing /var/log to disk may take some "
+"time.\n"
+"\n"
+"You are advised to choose an MFS size of at least 1024m."
+msgstr ""
+"Sistemde yeterli bellek varsa, /var/log klasörünü bellek tabanlı dosya "
+"sistemi olarak yüklemek özellikle disk yavaşsa sistem performansını "
+"iyileştirebilir. Bu ayarlar /var/log klasörünü MFS olarak yapılandırır.\n"
+"\n"
+"MFS'i etkinleştirirseniz, /var/log bir sonraki başlamada MFS olarak "
+"yüklenecektir.\n"
+"\n"
+"Kalıcı MFS'i etkinleştirirseniz, sistem /var/log klasörünü belli aralıklarla "
+"ve kapanma sırasında diske kaydeder, bu sayede klasörün içeriği kaybolmaz ve "
+"sistem yeniden başlarken kullanılabilir. /var/log klasörünü diske kaydetmek "
+"zaman alabilir.\n"
+"\n"
+"En az 1024m büyüklüğünde bir MFS boyutu seçmeniz tavsiye edilir."
+
 msgid "If yes, both priority and keyword should match to block IPs."
 msgstr ""
 "Yes olarak ayarlanmışsa, IP'lerin engellenmesi için öncelik ve anahtar "
@@ -3319,6 +3345,9 @@ msgstr ""
 "ikonları silinir.\n"
 "0 = kapalı\n"
 "1 = açık (öndeğer)"
+
+msgid "In the last <INTERVAL> seconds."
+msgstr "Son <INTERVAL> saniyede."
 
 msgid ""
 "In these manual pages, you can find extensive information about the system "
@@ -4070,6 +4099,9 @@ msgstr "Bellek Kullanımı"
 msgid "Memory usage"
 msgstr "Bellek kullanımı"
 
+msgid "Memory-based file system"
+msgstr "Bellek tabanlı dosya sistemi"
+
 msgid "Messages from all OpenVPN processes are recorded in the same log file."
 msgstr "Tüm OpenVPN süreçleri mesajlarını aynı kayıt dosyasına kaydeder."
 
@@ -4078,6 +4110,9 @@ msgstr "Yöntem bulunamadı"
 
 msgid "Methods"
 msgstr "Yöntemler"
+
+msgid "Mfs size wrong"
+msgstr "Mfs boyutu hatalı"
 
 msgid "Mime"
 msgstr "Mime"
@@ -4377,6 +4412,12 @@ msgstr "Sayı"
 msgid "Number of Processes"
 msgstr "Süreç Sayısı"
 
+msgid "Number of alerts issued by the IDS and Inline IPS"
+msgstr "Saldırı Algılama ve Engelleme sistemlerinin uyarı sayısı"
+
+msgid "Number of connections handled by the SSL Proxy"
+msgstr "SSL vekile yapılan bağlantıların sayısı"
+
 msgid ""
 "Number of database checks per day.\n"
 "\t\tDefault: 12 (every two hours)"
@@ -4386,6 +4427,9 @@ msgstr ""
 
 msgid "Number of e-mails"
 msgstr "E-posta sayısı"
+
+msgid "Number of file descriptors used by the SSL Proxy"
+msgstr "SSL vekil tarafından kullanılan dosya tanımlayıcı sayısı"
 
 msgid ""
 "Number of files to be scanned within an archive.\n"
@@ -4399,6 +4443,12 @@ msgstr ""
 msgid "Number of filter groups"
 msgstr "Elek grubu sayısı"
 
+msgid "Number of hosts on the system ARP table"
+msgstr "Sistemin ARP tablosundaki cihaz sayısı"
+
+msgid "Number of leases assigned to clients by the DHCP Server"
+msgstr "DHCP sunucu tarafından istemcilere atanan kiralamaların sayısı"
+
 msgid "Number of lines"
 msgstr "Satır sayısı"
 
@@ -4408,11 +4458,17 @@ msgstr "Mesaj sayısı"
 msgid "Number of processes"
 msgstr "Süreç sayısı"
 
+msgid "Number of requests handled by the Web Filter"
+msgstr "Web eleğine yapılan isteklerin sayısı"
+
 msgid ""
 "Number of servers to start initially --- should be a reasonable ballpark "
 "figure."
 msgstr ""
 "Başlangıçta çalıştırılacak sunucu sayısı, ortalama bir değer seçilmelidir."
+
+msgid "Number of states"
+msgstr "Durumların sayısı"
 
 msgid ""
 "Number of violations before notification. Setting to 0 will never trigger a "
@@ -4949,6 +5005,9 @@ msgstr "UZAK"
 msgid "REQUESTS"
 msgstr "İSTEKLER"
 
+msgid "RRD file does not exist"
+msgstr "RRD dosya bulunamadı"
+
 msgid "RSS"
 msgstr "RSS"
 
@@ -5388,14 +5447,6 @@ msgstr ""
 "başlatmalısınız."
 
 msgid ""
-"SSL sites not matching greysslsitelist will be treat as if sslmitm is off.\n"
-"ignored if  sslmitm is off"
-msgstr ""
-"Greysslsitelist'de olmayan SSL sitelerine sslmitm kapalıymış gibi "
-"davranılır.\n"
-"sslmitm kapalıysa dikkate alınmaz"
-
-msgid ""
 "SSL/TLS parms. See the server config file for more description.  It's best "
 "to use a separate .crt/.key file pair for each client.  A single ca file can "
 "be used for all clients."
@@ -5608,6 +5659,12 @@ msgstr "DNS yönlendirmelerini ayarla"
 msgid "Set IP DNS listens on"
 msgstr "DNS sunucunun dinlediği IP adresini ayarla"
 
+msgid "Set MFS"
+msgstr "MFS'i ayarla"
+
+msgid "Set MFS size"
+msgstr "MFS boyutunu ayarla"
+
 msgid "Set PF allowed"
 msgstr "İzinli PF öğesi ekle"
 
@@ -5728,6 +5785,9 @@ msgstr "Symon disk bölümlerini ayarla"
 
 msgid "Set symon sensors"
 msgstr "Symon sensörlerini ayarla"
+
+msgid "Set sync MFS"
+msgstr "MFS kaydetmeyi ayarla"
 
 msgid "Set system clock"
 msgstr "Sistem saatini ayarla"
@@ -6430,9 +6490,6 @@ msgstr ""
 
 msgid "Status"
 msgstr "Durum"
-
-msgid "Status Check Interval"
-msgstr "Durum Kontrol Aralığı"
 
 msgid "Stop"
 msgstr "Durdur"
@@ -7313,11 +7370,6 @@ msgid ""
 msgstr ""
 "Bu sistem adıdır. Sistem adını değiştiriseniz, otomatik yapılandırma tuşu "
 "ile bunu sistemin geneline uygulayıp sistemi tekrar başlatın."
-
-msgid ""
-"This is the time interval in seconds to check module statuses for displaying."
-msgstr ""
-"Bu modül durumlarını göstermek için saniye cinsinden kontrol aralığıdır."
 
 msgid ""
 "This name server is a BIND 9 compatible DNS server, which runs in a chroot "
@@ -8565,9 +8617,6 @@ msgstr ""
 msgid "if or macro"
 msgstr "arayüz veya makro"
 
-msgid "ignored if  sslmitm is off"
-msgstr "sslmitm kapalıysa gözardı edilir"
-
 msgid "interface"
 msgstr "arayüz"
 
@@ -8600,6 +8649,9 @@ msgstr "dak"
 
 msgid "modified"
 msgstr "değişmiş"
+
+msgid "mount as mfs"
+msgstr "mfs olarak yükle"
 
 msgid "move to"
 msgstr "taşınacak yer"
@@ -8655,6 +8707,9 @@ msgstr "on|off ( öndeğer off )"
 msgid "os name or macro"
 msgstr "sistem adı veya makro"
 
+msgid "persist mfs"
+msgstr "mfs kalıcı olsun"
+
 msgid "primary"
 msgstr "birincil"
 
@@ -8675,6 +8730,9 @@ msgstr "ikincil"
 
 msgid "secs"
 msgstr "sn"
+
+msgid "set mfs size"
+msgstr "mfs boyutunu ayarla"
 
 msgid "set serial to"
 msgstr "seri numarası"

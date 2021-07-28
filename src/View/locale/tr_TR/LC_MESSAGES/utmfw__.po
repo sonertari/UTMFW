@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2021-02-10 16:20+0300\n"
+"PO-Revision-Date: 2021-07-28 22:41+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
-"Language: Turkish\n"
-"Language-Team: Turkish <sonertari@gmail.com>\n"
+"Language: tr\n"
+"Language-Team: Turkish <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -95,11 +95,29 @@ msgstr "Bayt"
 msgid "Cannot add"
 msgstr "Eklenemiyor"
 
+msgid "Cannot determine the resolution in rrdfetch output"
+msgstr "rrdfetch komutunun çıktısından çözünürlük belirlenemedi"
+
 msgid "Cannot find group configuration file"
 msgstr "Grup yapılandırma dosyası bulunamıyor"
 
 msgid "Cannot fork pfctl process"
 msgstr "Pfctl süreci fork edilemedi"
+
+msgid "Cannot get MFS size"
+msgstr "MFS boyutu alınamadı"
+
+msgid "Cannot get contents of /etc/rc"
+msgstr "/etc/rc içeriği alınamadı"
+
+msgid "Cannot get contents of /etc/sync.var"
+msgstr "/etc/sync.var içeriği alınamadı"
+
+msgid "Cannot get mount MFS"
+msgstr "MFS yükleme ayarı alınamadı"
+
+msgid "Cannot get persistent MFS"
+msgstr "Kalıcı MFS ayarı alınamadı"
 
 msgid "Cannot get pid"
 msgstr "Pid alınamadı"
@@ -320,6 +338,9 @@ msgstr "Yeni grup yaratırken CİDDİ HATALAR oluştu"
 msgid "Failed creating or attaching to message queue"
 msgstr "Mesaj kuyruğu yaratılamadı veya bağlantı başarısız oldu"
 
+msgid "Failed executing rrdfetch"
+msgstr "rrdfetch komutu başarısız oldu"
+
 msgid "Failed loading pf rules"
 msgstr "Pf kural yüklemesi başarısız oldu"
 
@@ -388,6 +409,9 @@ msgstr "DNS sunucunun dinlediği IP adresini getir"
 
 msgid "Get IPS info"
 msgstr "SES bilgisini getir"
+
+msgid "Get MFS config"
+msgstr "MFS ayarlarını getir"
 
 msgid "Get PF allowed"
 msgstr "İzin verilen PF öğelerini getir"
@@ -719,6 +743,9 @@ msgstr "En Yüksek Değerler"
 msgid "Method does not exist"
 msgstr "Yöntem bulunamadı"
 
+msgid "Mfs size wrong"
+msgstr "Mfs boyutu hatalı"
+
 msgid "Mime type wrong"
 msgstr "Mime türü hatalı"
 
@@ -832,6 +859,9 @@ msgstr "Proto"
 msgid "Queue Length"
 msgstr "Kuyruk Boyu"
 
+msgid "RRD file does not exist"
+msgstr "RRD dosya bulunamadı"
+
 msgid "RSS"
 msgstr "RSS"
 
@@ -900,6 +930,12 @@ msgstr "DNS yönlendirmelerini ayarla"
 
 msgid "Set IP DNS listens on"
 msgstr "DNS sunucunun dinlediği IP adresini ayarla"
+
+msgid "Set MFS"
+msgstr "MFS'i ayarla"
+
+msgid "Set MFS size"
+msgstr "MFS boyutunu ayarla"
 
 msgid "Set PF allowed"
 msgstr "İzinli PF öğesi ekle"
@@ -1017,6 +1053,9 @@ msgstr "Symon disk bölümlerini ayarla"
 
 msgid "Set symon sensors"
 msgstr "Symon sensörlerini ayarla"
+
+msgid "Set sync MFS"
+msgstr "MFS kaydetmeyi ayarla"
 
 msgid "Set system clock"
 msgstr "Sistem saatini ayarla"

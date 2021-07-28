@@ -76,10 +76,28 @@ msgstr ""
 msgid "Cannot add"
 msgstr ""
 
+msgid "Cannot determine the resolution in rrdfetch output"
+msgstr ""
+
 msgid "Cannot find group configuration file"
 msgstr ""
 
 msgid "Cannot fork pfctl process"
+msgstr ""
+
+msgid "Cannot get MFS size"
+msgstr ""
+
+msgid "Cannot get contents of /etc/rc"
+msgstr ""
+
+msgid "Cannot get contents of /etc/sync.var"
+msgstr ""
+
+msgid "Cannot get mount MFS"
+msgstr ""
+
+msgid "Cannot get persistent MFS"
 msgstr ""
 
 msgid "Cannot get pid"
@@ -301,6 +319,9 @@ msgstr ""
 msgid "Failed creating or attaching to message queue"
 msgstr ""
 
+msgid "Failed executing rrdfetch"
+msgstr ""
+
 msgid "Failed loading pf rules"
 msgstr ""
 
@@ -368,6 +389,9 @@ msgid "Get IP DNS listens on"
 msgstr ""
 
 msgid "Get IPS info"
+msgstr ""
+
+msgid "Get MFS config"
 msgstr ""
 
 msgid "Get PF allowed"
@@ -700,6 +724,9 @@ msgstr ""
 msgid "Method does not exist"
 msgstr ""
 
+msgid "Mfs size wrong"
+msgstr ""
+
 msgid "Mime type wrong"
 msgstr ""
 
@@ -810,6 +837,9 @@ msgstr ""
 msgid "Queue Length"
 msgstr ""
 
+msgid "RRD file does not exist"
+msgstr ""
+
 msgid "RSS"
 msgstr ""
 
@@ -877,6 +907,12 @@ msgid "Set DNS forwarders"
 msgstr ""
 
 msgid "Set IP DNS listens on"
+msgstr ""
+
+msgid "Set MFS"
+msgstr ""
+
+msgid "Set MFS size"
 msgstr ""
 
 msgid "Set PF allowed"
@@ -994,6 +1030,9 @@ msgid "Set symon partitions"
 msgstr ""
 
 msgid "Set symon sensors"
+msgstr ""
+
+msgid "Set sync MFS"
 msgstr ""
 
 msgid "Set system clock"

@@ -202,27 +202,6 @@ msgstr ""
 msgid "Create list cache files"
 msgstr ""
 
-msgid "Current number of alerts issued by the IDS and Inline IPS"
-msgstr ""
-
-msgid "Current number of connections handled by the SSL Proxy"
-msgstr ""
-
-msgid "Current number of file descriptors used by the SSL Proxy"
-msgstr ""
-
-msgid "Current number of hosts on the system ARP table"
-msgstr ""
-
-msgid "Current number of leases assigned to clients by the DHCP Server"
-msgstr ""
-
-msgid "Current number of requests handled by the Web Filter"
-msgstr ""
-
-msgid "Current number of states"
-msgstr ""
-
 msgid "DHCP Server"
 msgstr ""
 
@@ -742,7 +721,28 @@ msgstr ""
 msgid "Notify Content"
 msgstr ""
 
+msgid "Number of alerts issued by the IDS and Inline IPS"
+msgstr ""
+
+msgid "Number of connections handled by the SSL Proxy"
+msgstr ""
+
+msgid "Number of file descriptors used by the SSL Proxy"
+msgstr ""
+
 msgid "Number of filter groups"
+msgstr ""
+
+msgid "Number of hosts on the system ARP table"
+msgstr ""
+
+msgid "Number of leases assigned to clients by the DHCP Server"
+msgstr ""
+
+msgid "Number of requests handled by the Web Filter"
+msgstr ""
+
+msgid "Number of states"
 msgstr ""
 
 msgid "Open Files Limit"

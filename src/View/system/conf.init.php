@@ -148,7 +148,7 @@ This may be necessary if these files are corrupted and you cannot see any graphs
 	</tr>
 	<tr class="oddline">
 		<td class="title">
-			<?php echo _TITLE('Memory file system').':' ?>
+			<?php echo _TITLE('Memory-based file system').':' ?>
 		</td>
 		<td>
 			<?php

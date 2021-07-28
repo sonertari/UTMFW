@@ -13,31 +13,16 @@ msgstr ""
 msgid "1 week"
 msgstr ""
 
-msgid "1 year"
-msgstr ""
-
 msgid "10 mins"
 msgstr ""
 
 msgid "12 hours"
 msgstr ""
 
-msgid "3 days"
-msgstr ""
-
-msgid "3 hours"
-msgstr ""
-
-msgid "3 months"
-msgstr ""
-
 msgid "30 mins"
 msgstr ""
 
 msgid "5 mins"
-msgstr ""
-
-msgid "6 hours"
 msgstr ""
 
 msgid "6 months"

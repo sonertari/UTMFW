@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2021-02-11 18:30+0300\n"
+"PO-Revision-Date: 2021-07-28 22:16+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
-"Language: Turkish\n"
-"Language-Team: Turkish <sonertari@gmail.com>\n"
+"Language: tr\n"
+"Language-Team: Turkish <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -220,27 +220,6 @@ msgstr "Elek grubu yarat"
 
 msgid "Create list cache files"
 msgstr "Liste önbellek dosyalarını yarat"
-
-msgid "Current number of alerts issued by the IDS and Inline IPS"
-msgstr "Saldırı Algılama ve Engelleme sistemlerinin uyarı sayısı"
-
-msgid "Current number of connections handled by the SSL Proxy"
-msgstr "SSL vekile yapılan bağlantıların sayısı"
-
-msgid "Current number of file descriptors used by the SSL Proxy"
-msgstr "SSL vekil tarafından kullanılan dosya tanımlayıcı sayısı"
-
-msgid "Current number of hosts on the system ARP table"
-msgstr "Sistemin ARP tablosundaki cihaz sayısı"
-
-msgid "Current number of leases assigned to clients by the DHCP Server"
-msgstr "DHCP sunucu tarafından istemcilere atanan kiralamaların sayısı"
-
-msgid "Current number of requests handled by the Web Filter"
-msgstr "Web eleğine yapılan isteklerin sayısı"
-
-msgid "Current number of states"
-msgstr "Durumların sayısı"
 
 msgid "DHCP Server"
 msgstr "DHCP Sunucu"
@@ -761,8 +740,29 @@ msgstr "AV'yi uyar"
 msgid "Notify Content"
 msgstr "İçerik uyarısı"
 
+msgid "Number of alerts issued by the IDS and Inline IPS"
+msgstr "Saldırı Algılama ve Engelleme sistemlerinin uyarı sayısı"
+
+msgid "Number of connections handled by the SSL Proxy"
+msgstr "SSL vekile yapılan bağlantıların sayısı"
+
+msgid "Number of file descriptors used by the SSL Proxy"
+msgstr "SSL vekil tarafından kullanılan dosya tanımlayıcı sayısı"
+
 msgid "Number of filter groups"
 msgstr "Elek grubu sayısı"
+
+msgid "Number of hosts on the system ARP table"
+msgstr "Sistemin ARP tablosundaki cihaz sayısı"
+
+msgid "Number of leases assigned to clients by the DHCP Server"
+msgstr "DHCP sunucu tarafından istemcilere atanan kiralamaların sayısı"
+
+msgid "Number of requests handled by the Web Filter"
+msgstr "Web eleğine yapılan isteklerin sayısı"
+
+msgid "Number of states"
+msgstr "Durumların sayısı"
 
 msgid "Open Files Limit"
 msgstr "Açık Dosya Sınırı"

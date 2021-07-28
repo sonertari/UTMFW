@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2021-02-10 16:52+0300\n"
+"PO-Revision-Date: 2021-07-28 22:20+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
-"Language: Turkish\n"
-"Language-Team: Turkish <sonertari@gmail.com>\n"
+"Language: tr\n"
+"Language-Team: Turkish <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -115,6 +115,9 @@ msgstr "İşlemciler"
 
 msgid "CRITICAL"
 msgstr "ÖNEMLİ"
+
+msgid "Cannot get MFS configuration"
+msgstr "MFS ayarları alınamadı"
 
 msgid "Category"
 msgstr "Sınıf"
@@ -402,6 +405,9 @@ msgstr "Tanımlayıcı"
 msgid "If"
 msgstr "Arayüz"
 
+msgid "In the last <INTERVAL> seconds."
+msgstr "Son <INTERVAL> saniyede."
+
 msgid "Inline IPS"
 msgstr "Inline SES"
 
@@ -536,6 +542,9 @@ msgstr "Mbuf İstatistikleri"
 
 msgid "Memory Usage"
 msgstr "Bellek Kullanımı"
+
+msgid "Memory-based file system"
+msgstr "Bellek tabanlı dosya sistemi"
 
 msgid "Min"
 msgstr "En az"
@@ -915,9 +924,6 @@ msgstr "İstatistik ve açılmış kayıt dosyaları"
 msgid "Status"
 msgstr "Durum"
 
-msgid "Status Check Interval"
-msgstr "Durum Kontrol Aralığı"
-
 msgid "Stopped"
 msgstr "Durmuş"
 
@@ -1062,8 +1068,14 @@ msgstr "çalışıyor"
 msgid "modified"
 msgstr "değişmiş"
 
+msgid "mount as mfs"
+msgstr "mfs olarak yükle"
+
 msgid "negated"
 msgstr "ters çevir"
+
+msgid "persist mfs"
+msgstr "mfs kalıcı olsun"
 
 msgid "primary"
 msgstr "birincil"
@@ -1073,6 +1085,9 @@ msgstr "ikincil"
 
 msgid "secs"
 msgstr "sn"
+
+msgid "set mfs size"
+msgstr "mfs boyutunu ayarla"
 
 msgid "set serial to"
 msgstr "seri numarası"

@@ -81,9 +81,6 @@ msgstr ""
 msgid "1 week"
 msgstr ""
 
-msgid "1 year"
-msgstr ""
-
 msgid "10 mins"
 msgstr ""
 
@@ -93,15 +90,6 @@ msgstr ""
 msgid "15 minute average"
 msgstr ""
 
-msgid "3 days"
-msgstr ""
-
-msgid "3 hours"
-msgstr ""
-
-msgid "3 months"
-msgstr ""
-
 msgid "30 mins"
 msgstr ""
 
@@ -109,9 +97,6 @@ msgid "5 mins"
 msgstr ""
 
 msgid "5 minute average"
-msgstr ""
-
-msgid "6 hours"
 msgstr ""
 
 msgid "6 months"
@@ -479,6 +464,18 @@ msgstr ""
 msgid "Are you sure you want to delete the user?"
 msgstr ""
 
+msgid "Are you sure you want to disable MFS?"
+msgstr ""
+
+msgid "Are you sure you want to disable persistent MFS?"
+msgstr ""
+
+msgid "Are you sure you want to enable MFS?"
+msgstr ""
+
+msgid "Are you sure you want to enable persistent MFS?"
+msgstr ""
+
 msgid "Are you sure you want to erase statistics files?"
 msgstr ""
 
@@ -498,6 +495,9 @@ msgid "Are you sure you want to rotate the logs?"
 msgstr ""
 
 msgid "Are you sure you want to set the date?"
+msgstr ""
+
+msgid "Are you sure you want to set the size of MFS?"
 msgstr ""
 
 msgid "Are you sure you want to start the <NAME>?"
@@ -700,11 +700,11 @@ msgid ""
 "The web user interface stores statistics under /var/log/utmfw folder. The "
 "statistics are updated incrementally when new messages are appended to log "
 "files. When user selects a compressed log file for viewing or statistics, "
-"its uncompressed copy is saved under the same folder also. This strategy "
+"its uncompressed copy is saved under the same folder too. This strategy "
 "greatly improves the performance of Statistics and Logs pages, and enables "
 "other features of the web user interface. Since these statistics and "
 "uncompressed log files may take up a lot of disk space, you are advised to "
-"keep your /var partition as large as possible."
+"have a large partition holding /var/log."
 msgstr ""
 
 msgid ""
@@ -783,6 +783,9 @@ msgstr ""
 msgid "Cannot add"
 msgstr ""
 
+msgid "Cannot determine the resolution in rrdfetch output"
+msgstr ""
+
 msgid "Cannot find group configuration file"
 msgstr ""
 
@@ -792,7 +795,25 @@ msgstr ""
 msgid "Cannot generate rule"
 msgstr ""
 
+msgid "Cannot get MFS configuration"
+msgstr ""
+
+msgid "Cannot get MFS size"
+msgstr ""
+
+msgid "Cannot get contents of /etc/rc"
+msgstr ""
+
+msgid "Cannot get contents of /etc/sync.var"
+msgstr ""
+
 msgid "Cannot get ethernet address of IP"
+msgstr ""
+
+msgid "Cannot get mount MFS"
+msgstr ""
+
+msgid "Cannot get persistent MFS"
 msgstr ""
 
 msgid "Cannot get pid"
@@ -1067,27 +1088,6 @@ msgid "Critical Error"
 msgstr ""
 
 msgid "Current Password"
-msgstr ""
-
-msgid "Current number of alerts issued by the IDS and Inline IPS"
-msgstr ""
-
-msgid "Current number of connections handled by the SSL Proxy"
-msgstr ""
-
-msgid "Current number of file descriptors used by the SSL Proxy"
-msgstr ""
-
-msgid "Current number of hosts on the system ARP table"
-msgstr ""
-
-msgid "Current number of leases assigned to clients by the DHCP Server"
-msgstr ""
-
-msgid "Current number of requests handled by the Web Filter"
-msgstr ""
-
-msgid "Current number of states"
 msgstr ""
 
 msgid "Customised filtered text (message text or filename follows in response)"
@@ -1802,6 +1802,9 @@ msgstr ""
 msgid "Failed downloading, cannot generate pf rules"
 msgstr ""
 
+msgid "Failed executing rrdfetch"
+msgstr ""
+
 msgid "Failed loading"
 msgstr ""
 
@@ -2090,6 +2093,9 @@ msgid "Get IP DNS listens on"
 msgstr ""
 
 msgid "Get IPS info"
+msgstr ""
+
+msgid "Get MFS config"
 msgstr ""
 
 msgid "Get PF allowed"
@@ -2819,6 +2825,21 @@ msgid ""
 "default usesmtp = off"
 msgstr ""
 
+msgid ""
+"If there is enough memeory on the system, mounting /var/log on a memory-"
+"based file system can improve the performance of the system, especially if "
+"the disk is slow. These settings configure /var/log as MFS.\n"
+"\n"
+"If you enable MFS, /var/log is mounted as MFS on the next boot.\n"
+"\n"
+"If you enable persistent MFS, the system starts syncing /var/log to disk, "
+"periodically and during shutdown, so that its contents are not lost and can "
+"be used after reboot. Note that syncing /var/log to disk may take some "
+"time.\n"
+"\n"
+"You are advised to choose an MFS size of at least 1024m."
+msgstr ""
+
 msgid "If yes, both priority and keyword should match to block IPs."
 msgstr ""
 
@@ -2865,6 +2886,9 @@ msgid ""
 "domains.\n"
 "0 = off\n"
 "1 = on (default)"
+msgstr ""
+
+msgid "In the last <INTERVAL> seconds."
 msgstr ""
 
 msgid ""
@@ -3542,6 +3566,9 @@ msgstr ""
 msgid "Memory Usage"
 msgstr ""
 
+msgid "Memory file system"
+msgstr ""
+
 msgid "Memory usage"
 msgstr ""
 
@@ -3552,6 +3579,9 @@ msgid "Method does not exist"
 msgstr ""
 
 msgid "Methods"
+msgstr ""
+
+msgid "Mfs size wrong"
 msgstr ""
 
 msgid "Mime"
@@ -3827,12 +3857,21 @@ msgstr ""
 msgid "Number of Processes"
 msgstr ""
 
+msgid "Number of alerts issued by the IDS and Inline IPS"
+msgstr ""
+
+msgid "Number of connections handled by the SSL Proxy"
+msgstr ""
+
 msgid ""
 "Number of database checks per day.\n"
 "\t\tDefault: 12 (every two hours)"
 msgstr ""
 
 msgid "Number of e-mails"
+msgstr ""
+
+msgid "Number of file descriptors used by the SSL Proxy"
 msgstr ""
 
 msgid ""
@@ -3844,6 +3883,12 @@ msgstr ""
 msgid "Number of filter groups"
 msgstr ""
 
+msgid "Number of hosts on the system ARP table"
+msgstr ""
+
+msgid "Number of leases assigned to clients by the DHCP Server"
+msgstr ""
+
 msgid "Number of lines"
 msgstr ""
 
@@ -3853,9 +3898,15 @@ msgstr ""
 msgid "Number of processes"
 msgstr ""
 
+msgid "Number of requests handled by the Web Filter"
+msgstr ""
+
 msgid ""
 "Number of servers to start initially --- should be a reasonable ballpark "
 "figure."
+msgstr ""
+
+msgid "Number of states"
 msgstr ""
 
 msgid ""
@@ -4313,6 +4364,9 @@ msgid "REMOTE"
 msgstr ""
 
 msgid "REQUESTS"
+msgstr ""
+
+msgid "RRD file does not exist"
 msgstr ""
 
 msgid "RSS"
@@ -4902,6 +4956,12 @@ msgstr ""
 msgid "Set IP DNS listens on"
 msgstr ""
 
+msgid "Set MFS"
+msgstr ""
+
+msgid "Set MFS size"
+msgstr ""
+
 msgid "Set PF allowed"
 msgstr ""
 
@@ -5021,6 +5081,9 @@ msgid "Set symon partitions"
 msgstr ""
 
 msgid "Set symon sensors"
+msgstr ""
+
+msgid "Set sync MFS"
 msgstr ""
 
 msgid "Set system clock"
@@ -5628,9 +5691,6 @@ msgid ""
 msgstr ""
 
 msgid "Status"
-msgstr ""
-
-msgid "Status Check Interval"
 msgstr ""
 
 msgid "Stop"
@@ -6271,10 +6331,6 @@ msgstr ""
 msgid ""
 "This is the system name. If you change the hostname, use automatic "
 "configuration button to apply it system-wide, and reboot the system."
-msgstr ""
-
-msgid ""
-"This is the time interval in seconds to check module statuses for displaying."
 msgstr ""
 
 msgid ""
@@ -7286,6 +7342,9 @@ msgstr ""
 msgid "modified"
 msgstr ""
 
+msgid "mount as mfs"
+msgstr ""
+
 msgid "move to"
 msgstr ""
 
@@ -7340,6 +7399,9 @@ msgstr ""
 msgid "os name or macro"
 msgstr ""
 
+msgid "persist mfs"
+msgstr ""
+
 msgid "primary"
 msgstr ""
 
@@ -7359,6 +7421,9 @@ msgid "secondary"
 msgstr ""
 
 msgid "secs"
+msgstr ""
+
+msgid "set mfs size"
 msgstr ""
 
 msgid "set serial to"
