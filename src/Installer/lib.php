@@ -38,7 +38,7 @@ function PrintHelpWindow($msg, $width= 'auto', $type= 'INFO')
  * 
  * @return bool TRUE on success, FALSE on fail.
  */
-function ApplyConfig($auto)
+function ApplyConfig()
 {
 	global $Config, $View, $Re_Ip;
 
@@ -177,16 +177,12 @@ function ApplyConfig($auto)
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed setting symon partitions');
 		}
 
-		/// @attention There is an issue with sysctl on OpenBSD 5.9; it does not return on chrooted install environment
-		// Hence, the following symon configuration which require the use of sysctl should be run during normal operation instead
-		if ($auto) {
-			if (!$View->Controller($output, 'SetSensors')) {
-				wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed setting symon sensors');
-			}
+		if (!$View->Controller($output, 'SetSensors')) {
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed setting symon sensors');
+		}
 
-			if (!$View->Controller($output, 'SetConf', $lanif, $wanif)) {
-				wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed setting symon conf');
-			}
+		if (!$View->Controller($output, 'SetConf', $lanif, $wanif)) {
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed setting symon conf');
 		}
 
 		$View->Model= 'collectd';

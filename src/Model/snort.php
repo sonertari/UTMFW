@@ -99,7 +99,7 @@ class Snort extends Model
 	{
 		global $TmpFile, $RetvalFile;
 
-		$startCmd= "/usr/local/bin/snort -i $if -D -d -c $this->ConfFile -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort";
+		$startCmd= "/usr/local/bin/snort -i $if -D -d -c $this->ConfFile -u _snort -g _snort -b -l /var/log/snort --pid-path /var/log/utmfw/run/snort";
 		exec("$startCmd > $TmpFile 2>&1 && echo -n '0' > $RetvalFile || echo -n '1' > $RetvalFile &", $output);
 		$retval= file_get_contents($RetvalFile);
 

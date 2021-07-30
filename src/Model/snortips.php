@@ -25,16 +25,17 @@ class Snortips extends Model
 	public $Name= 'snortips';
 	public $User= 'root';
 
-	private $sigMsgFile= '/tmp/snortips.sigmsg';
+	private $sigMsgFile= '/var/log/utmfw/tmp/snortips.sigmsg';
 
 	public $NVPS= '\h';
 	public $ConfFile= '/etc/snort/snortips.conf';
 	public $LogFile= '/var/log/snortips.log';
-	
+
 	public $VersionCmd= 'unset LC_ALL; unset LANG; /usr/local/sbin/snortips -V';
-	
-	public $PidFile= '/var/run/snortips.pid';
-	
+
+	public $PidFile= '/var/log/utmfw/run/snortips.pid';
+	private $dumpFile= '/var/log/utmfw/db/snortips';
+
 	function __construct()
 	{
 		parent::__construct();
@@ -120,16 +121,16 @@ class Snortips extends Model
 		global $Re_Ip, $Re_Net;
 
 		// Clear the file if this function spawns too fast (do not read the same contents again)
-		$this->PutFile('/var/db/snortips', '');
+		$this->PutFile($this->dumpFile, '');
 		
 		if ($this->IsRunning()) {
-			$this->RunShellCommand('/bin/kill -INFO $(/bin/cat /var/run/snortips.pid)');
+			$this->RunShellCommand("/bin/kill -INFO $(/bin/cat $this->PidFile)");
 			
 			/// @todo Use communication over shared memory (e.g. pipes) with SnortIPS instead
 			$eof= FALSE;
 			$count= 0;
 			while ($count++ < self::PROC_STAT_TIMEOUT) {
-				if ($items= $this->GetFile('/var/db/snortips')) {
+				if ($items= $this->GetFile($this->dumpFile)) {
 					// Check for EOF
 					if (preg_match("/^\.$/m", $items)) {
 						$eof= TRUE;
@@ -276,7 +277,7 @@ class Snortips extends Model
 	 */
 	function UnblockAll()
 	{
-		return $this->RunShellCommand('/bin/kill -USR2 $(/bin/cat /var/run/snortips.pid)');
+		return $this->RunShellCommand("/bin/kill -USR2 $(/bin/cat $this->PidFile)");
 	}
 
 	/**
@@ -291,7 +292,7 @@ class Snortips extends Model
 		}
 		// file_put_contents() accepts array as data
 		file_put_contents($this->sigMsgFile, $contents, LOCK_EX);
-		return $this->RunShellCommand('/bin/kill -USR1 $(/bin/cat /var/run/snortips.pid)');
+		return $this->RunShellCommand("/bin/kill -USR1 $(/bin/cat $this->PidFile)");
 	}
 
 	/**
@@ -300,7 +301,7 @@ class Snortips extends Model
 	function BlockIP($ip, $time= '')
 	{
 		file_put_contents($this->sigMsgFile, rtrim("B $ip $time"), LOCK_EX);
-		return $this->RunShellCommand('/bin/kill -USR1 $(/bin/cat /var/run/snortips.pid)');
+		return $this->RunShellCommand("/bin/kill -USR1 $(/bin/cat $this->PidFile)");
 	}
 
 	/**

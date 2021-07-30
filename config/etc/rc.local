@@ -10,8 +10,6 @@
 
 START_TIME=$(date "+%s")
 
-sh /etc/make.var
-
 touch /var/log/utmfw/.starting
 
 echo '\nStarting UTMFW services...'
@@ -53,8 +51,8 @@ fi
 
 echo -n '\nAnti-virus/spam:'
 # Start ClamAV and freshclam daemons
-[[ ! -d /var/run/clamav ]] && mkdir /var/run/clamav
-chown _clamav:_clamav /var/run/clamav
+[[ ! -d /var/log/utmfw/run/clamav ]] && mkdir /var/log/utmfw/run/clamav
+chown _clamav:_clamav /var/log/utmfw/run/clamav
 if [ -x /usr/local/sbin/clamd ]; then
 	echo -n ' virus'
 	/usr/local/sbin/clamd -c /etc/clamd.conf >/dev/null 2>&1
@@ -68,19 +66,19 @@ fi
 # Start SpamAssassin
 if [ -x /usr/local/bin/spamd ]; then
 	echo -n ', spam'
-	/usr/local/bin/spamd -L -d -x -u _spamdaemon -r /var/run/spamassassin.pid
+	/usr/local/bin/spamd -L -d -x -u _spamdaemon -r /var/log/utmfw/run/spamassassin.pid
 fi
 
 echo -n '\nIntrusion detection and prevention:'
 # Start Snort IDS for WAN and LAN, and Snort IPS inline
 if [ -x /usr/local/bin/snort ]; then
-	[[ ! -d /var/run/snort ]] && mkdir /var/run/snort
-	chown _snort /var/run/snort
+	[[ ! -d /var/log/utmfw/run/snort ]] && mkdir /var/log/utmfw/run/snort
+	chown _snort /var/log/utmfw/run/snort
 	echo -n ' ids'
-	/usr/local/bin/snort -i lan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort >/dev/null 2>&1
-#	/usr/local/bin/snort -i wan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort >/dev/null 2>&1
+	/usr/local/bin/snort -i lan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/log/snort --pid-path /var/log/utmfw/run/snort >/dev/null 2>&1
+#	/usr/local/bin/snort -i wan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/log/snort --pid-path /var/log/utmfw/run/snort >/dev/null 2>&1
 	echo -n ', inline ips'
-	/usr/local/bin/snort -D -d -Q -c /etc/snort/snortinline.conf -u _snort -g _snort -b -l /var/snort/log --pid-path /var/run/snort >/dev/null 2>&1
+	/usr/local/bin/snort -D -d -Q -c /etc/snort/snortinline.conf -u _snort -g _snort -b -l /var/log/snort --pid-path /var/log/utmfw/run/snort >/dev/null 2>&1
 fi
 
 # Start SnortIPS
@@ -93,15 +91,15 @@ echo -n '\nProxies:'
 # Start p3scan: pop3 virus and spam filter
 if [ -x /usr/local/sbin/p3scan ]; then
 	echo -n ' pop3'
-	[[ ! -d /var/run/p3scan ]] && mkdir /var/run/p3scan
-	chown _p3scan /var/run/p3scan
+	[[ ! -d /var/log/utmfw/run/p3scan ]] && mkdir /var/log/utmfw/run/p3scan
+	chown _p3scan /var/log/utmfw/run/p3scan
 	/usr/local/sbin/p3scan -f /etc/p3scan/p3scan.conf
 fi
 
 # Start smtp-gated: smtp virus and spam filter
 if [ -x /usr/local/sbin/smtp-gated ]; then
-	[[ ! -d /var/run/smtp-gated ]] && mkdir /var/run/smtp-gated
-	chown _smtp-gated /var/run/smtp-gated
+	[[ ! -d /var/log/utmfw/run/smtp-gated ]] && mkdir /var/log/utmfw/run/smtp-gated
+	chown _smtp-gated /var/log/utmfw/run/smtp-gated
 	echo -n ', smtp'
 	/usr/local/sbin/smtp-gated /etc/smtp-gated.conf
 fi
@@ -117,13 +115,13 @@ fi
 # Start SOCKS proxy
 if [ -x /usr/local/sbin/sockd ]; then
 	echo -n ', socks'
-	/usr/local/sbin/sockd -D >/dev/null 2>&1
+	/usr/local/sbin/sockd -D -p /var/log/utmfw/run/sockd.pid >/dev/null 2>&1
 fi
 
 # Start E2Guardian content filter
 if [ -x /usr/local/sbin/e2guardian ]; then
-	[[ ! -d /tmp/e2guardian ]] && mkdir /tmp/e2guardian
-	chown -R _e2guardian:_clamav /tmp/e2guardian
+	[[ ! -d /var/log/utmfw/tmp/e2guardian ]] && mkdir /var/log/utmfw/tmp/e2guardian
+	chown -R _e2guardian:_clamav /var/log/utmfw/tmp/e2guardian
 	echo -n '\nWeb filter'
 	/usr/local/sbin/e2guardian >/dev/null 2>&1
 fi

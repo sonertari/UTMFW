@@ -674,6 +674,7 @@ __EOT
 			;;
 
 		clamavdb.*)
+			# Backup clamav db, used to init clamav db in make.var, if necessary
 			_clamavdbdir=$ROOTDIR/var/db/clamav
 
 			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_clamavdbdir || _installerror=1
@@ -729,20 +730,19 @@ __EOT
 			cd $DESTDIR/etc/p3scan/
 			ln -sf p3scan-en.mail p3scan.mail
 
-			chmod 770 $DESTDIR/var/clamav/tmp/ || _installerror=1
-
 			# Otherwise named gives permission denied errors
 			chown -R _bind:_bind $DESTDIR/var/named/ || _installerror=1
 
 			# rsync is used by the modified rc scripts to sync the mfs /var/log to disk
+			echo "Installing rsync..."
 			pkg_add rsync || _installerror=1
 			;;
 
 		$CW_WEBIF_TARFILE)
 			resp=y
-			_webifparent=$ROOTDIR/var/www/htdocs
-			_webifdir=$ROOTDIR/var/www/htdocs/utmfw
-			
+			_webifparent=$ROOTDIR/var/log/utmfw
+			_webifdir=$ROOTDIR/var/log/utmfw/wui
+
 			[[ -d $_webifdir ]] && mv $_webifdir $_webifdir.orig
 			[[ ! -d $_webifparent ]] && mkdir -p $_webifparent
 			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_webifparent || _installerror=1
@@ -1048,13 +1048,10 @@ install_sets() {
 finish_up() {
 	/sbin/ldconfig /usr/local/lib /usr/X11R6/lib/ || INSTALL_ERROR=1
 
-	if [[ -f /var/www/htdocs/utmfw/Installer/install.php ]]; then
+	if [[ -f /var/log/utmfw/wui/Installer/install.php ]]; then
 		echo "Running post-install script..."
-		/usr/local/bin/php /var/www/htdocs/utmfw/Installer/install.php || INSTALL_ERROR=1
+		/usr/local/bin/php /var/log/utmfw/wui/Installer/install.php || INSTALL_ERROR=1
 	fi
-
-	# The symon configuration which require the use of sysctl should be run on first start, see ApplyConfig() in Installer/lib.php
-	echo '/usr/bin/env PATH=$PATH:/usr/local/bin /var/www/htdocs/utmfw/Installer/install.php -a' >>/etc/rc.firsttime
 
 	if [ $INSTALL_ERROR -eq 1 ]; then
 		cat <<__EOT

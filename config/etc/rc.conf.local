@@ -9,4 +9,4 @@ ftpproxy_flags="-vv -D6"
 apmd_flags="-A"
 syslogd_flags="-rr"
 httpd_flags=
-slowcgi_flags="-p/"
+slowcgi_flags="-p/ -s /var/log/utmfw/run/slowcgi.sock"

@@ -20,6 +20,7 @@ etc/collectd/spamassassin.conf,644,root,wheel
 etc/collectd/spamd.conf,644,root,wheel
 etc/collectd/sslproxy.conf,644,root,wheel
 etc/collectd/system.conf,644,root,wheel
+etc/e2guardian/contentscanners/clamdscan.conf,644,root,wheel
 etc/e2guardian/downloadmanagers/default.conf,644,root,wheel
 etc/e2guardian/downloadmanagers/fancy.conf,644,root,wheel
 etc/e2guardian/lists/bannedextensionlist2,644,root,wheel
@@ -168,11 +169,11 @@ var/log/httpd/access.log,640,root,daemon
 var/log/httpd/error.log,640,root,daemon
 var/log/snort/snort.log,640,root,wheel
 var/log/snort/alert.log,640,root,wheel
-var/log/clamd.log,640,539,wheel
+var/log/clamd.log,640,_clamav,wheel
 var/log/ctlr.log,640,root,wheel
 var/log/wui.log,640,root,wheel
 var/log/dhcpd.log,640,root,wheel
-var/log/freshclam.log,640,539,wheel
+var/log/freshclam.log,640,_clamav,wheel
 var/log/ftp-proxy.log,640,root,wheel
 var/log/imspector.log,640,root,wheel
 var/log/monitoring.log,640,root,wheel
@@ -181,6 +182,7 @@ var/log/openvpn.log,640,root,wheel
 var/log/p3scan.log,640,root,wheel
 var/log/smtp-gated.log,640,root,wheel
 var/log/snortips.log,640,root,wheel
+var/log/sockd.log,640,root,wheel
 var/log/spamd.log,640,root,wheel
 var/log/sslproxy/sslproxy.log,640,root,wheel
 var/log/sslproxy/conns.log,640,root,wheel

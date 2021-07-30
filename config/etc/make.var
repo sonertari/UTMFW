@@ -29,17 +29,128 @@ fi
 if [[ ! -d $BASEDIR/symon/rrds/localhost ]]; then
 	mkdir $BASEDIR/symon/rrds/localhost
 	chmod 755 $BASEDIR/symon/rrds/localhost
-	/bin/echo "Creating symon rrd files..."
-	/bin/sh /usr/local/share/examples/symon/c_smrrds.sh all
+	echo "Creating symon rrd files..."
+	sh /usr/local/share/examples/symon/c_smrrds.sh all
 fi
 
 [[ ! -d $BASEDIR/pmacct ]] && mkdir $BASEDIR/pmacct
 [[ ! -d $BASEDIR/pmacct/pnrg ]] && mkdir $BASEDIR/pmacct/pnrg
-[[ ! -d /var/www/htdocs/utmfw/View/pmacct/pnrg/spool ]] && \
-	ln -fs $BASEDIR/pmacct/pnrg /var/www/htdocs/utmfw/View/pmacct/pnrg/spool
+
+[[ ! -d $BASEDIR/db ]] && mkdir $BASEDIR/db
+
+[[ ! -f $BASEDIR/db/users.db ]] && cp -v /var/db/users.db $BASEDIR/db/
+
+[[ ! -d $BASEDIR/db/imspector ]] && mkdir $BASEDIR/db/imspector
+chown _imspector:_imspector $BASEDIR/db/imspector
+
+[[ ! -d $BASEDIR/db/spamassassin ]] && mkdir $BASEDIR/db/spamassassin
+[[ ! -d $BASEDIR/db/spamassassin/tmp ]] && mkdir $BASEDIR/db/spamassassin/tmp
+chown -R _spamdaemon:_spamdaemon $BASEDIR/db/spamassassin
+
+echo "Restoring clamav virus database..."
+
+ORIG_CLAMAVDIR=/var/log.orig/utmfw/db/clamav
+RSYNC_CLAMAV_OUT=$ORIG_CLAMAVDIR/rsync.out
+
+init=1
+
+# Pass the -a option to cp to create the clamav folder
+if [[ -d $ORIG_CLAMAVDIR ]] && [[ -f $RSYNC_CLAMAV_OUT ]]; then
+	RSYNC_CLAMAV_RETVAL=$(tail -1 $RSYNC_CLAMAV_OUT)
+	if [[ $RSYNC_CLAMAV_RETVAL == 0 ]]; then
+		echo "Restoring $BASEDIR/db/clamav from $ORIG_CLAMAVDIR"
+
+		/usr/local/bin/rsync --stats -av --exclude=rsync.out $ORIG_CLAMAVDIR/ $BASEDIR/db/clamav/ 2>&1
+		init=$?
+
+		[[ $? != 0 ]] && echo "Failed restoring $BASEDIR/db/clamav from $ORIG_CLAMAVDIR (code $?)"
+	else
+		echo "Non-zero rsync retval, not restoring $BASEDIR/db/clamav from $ORIG_CLAMAVDIR (code $RSYNC_CLAMAV_RETVAL)"
+	fi
+fi
+
+if [[ $init != 0 ]]; then
+	INSTALL_CLAMAVDIR=/var/db/clamav
+	if [[ -d $INSTALL_CLAMAVDIR ]]; then
+		echo "Restoring $BASEDIR/db/clamav from $INSTALL_CLAMAVDIR"
+
+		/usr/local/bin/rsync --stats -av $INSTALL_CLAMAVDIR/ $BASEDIR/db/clamav/ 2>&1
+
+		[[ $? != 0 ]] && echo "Failed restoring $BASEDIR/db/clamav from $INSTALL_CLAMAVDIR (code $?)"
+	else
+		echo "No $INSTALL_CLAMAVDIR, not restoring $BASEDIR/db/clamav from $INSTALL_CLAMAVDIR "
+	fi
+fi
+
+[[ ! -d $BASEDIR/run ]] && mkdir $BASEDIR/run
+
+[[ ! -d $BASEDIR/run/e2guardian ]] && mkdir $BASEDIR/run/e2guardian
+[[ ! -f $BASEDIR/run/e2guardian/transparent1x1.gif ]] && cp -v /usr/local/share/e2guardian/transparent1x1.gif $BASEDIR/run/e2guardian/
+[[ ! -f $BASEDIR/run/e2guardian/blockedflash.swf ]] && cp -v /usr/local/share/e2guardian/blockedflash.swf $BASEDIR/run/e2guardian/
+
+[[ ! -d $BASEDIR/spool ]] && mkdir $BASEDIR/spool
+
+[[ ! -d $BASEDIR/spool/p3scan ]] && mkdir $BASEDIR/spool/p3scan
+[[ ! -d $BASEDIR/spool/p3scan/children ]] && mkdir $BASEDIR/spool/p3scan/children
+[[ ! -d $BASEDIR/spool/p3scan/notify ]] && mkdir $BASEDIR/spool/p3scan/notify
+chown -R _p3scan:_p3scan $BASEDIR/spool/p3scan
+chmod -R 700 $BASEDIR/spool/p3scan
+
+[[ ! -d $BASEDIR/spool/smtp-gated ]] && mkdir $BASEDIR/spool/smtp-gated
+[[ ! -d $BASEDIR/spool/smtp-gated/lock ]] && mkdir $BASEDIR/spool/smtp-gated/lock
+[[ ! -d $BASEDIR/spool/smtp-gated/msg ]] && mkdir $BASEDIR/spool/smtp-gated/msg
+chown -R _smtp-gated:_clamav $BASEDIR/spool/smtp-gated
+chmod -R 770 $BASEDIR/spool/smtp-gated
+
+[[ ! -d $BASEDIR/tmp ]] && mkdir $BASEDIR/tmp
+chmod 1777 $BASEDIR/tmp
+
+echo "Restoring wui..."
+
+ORIG_WUIDIR=/var/log.orig/utmfw/wui
+RSYNC_WUI_OUT=$ORIG_WUIDIR/rsync.out
+
+init=1
+
+# Pass the -a option to cp to create the wui folder
+if [[ -d $ORIG_WUIDIR ]] && [[ -f $RSYNC_WUI_OUT ]]; then
+	RSYNC_WUI_RETVAL=$(tail -1 $RSYNC_WUI_OUT)
+	if [[ $RSYNC_WUI_RETVAL == 0 ]]; then
+		echo "Restoring $BASEDIR/wui from $ORIG_WUIDIR"
+
+		/usr/local/bin/rsync --stats -av --exclude=rsync.out $ORIG_WUIDIR/ $BASEDIR/wui/ 2>&1
+		init=$?
+
+		[[ $? != 0 ]] && echo "Failed restoring $BASEDIR/wui from $ORIG_WUIDIR (code $?)"
+	else
+		echo "Non-zero rsync retval, not restoring $BASEDIR/wui from $ORIG_WUIDIR (code $RSYNC_WUI_RETVAL)"
+	fi
+fi
+
+if [[ $init != 0 ]]; then
+	INSTALL_WUIDIR=/var/www/htdocs/utmfw
+	if [[ -d $INSTALL_WUIDIR ]]; then
+		echo "Restoring $BASEDIR/wui from $INSTALL_WUIDIR"
+
+		/usr/local/bin/rsync --stats -av $INSTALL_WUIDIR/ $BASEDIR/wui/ 2>&1
+
+		[[ $? != 0 ]] && echo "Failed restoring $BASEDIR/wui from $INSTALL_WUIDIR (code $?)"
+	else
+		echo "No $INSTALL_WUIDIR, not restoring $BASEDIR/wui from $INSTALL_WUIDIR "
+	fi
+fi
+
+[[ ! -d $BASEDIR/wui/View/pmacct/pnrg/spool ]] && ln -fs $BASEDIR/pmacct/pnrg $BASEDIR/wui/View/pmacct/pnrg/spool
 
 if [[ ! -d $BASEDIR/pmacct/protograph ]]; then
 	mkdir $BASEDIR/pmacct/protograph
-	/bin/echo "Creating pmacct rrd files..."
-	/bin/sh /var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh
+	echo "Creating pmacct rrd files..."
+	sh $BASEDIR/wui/View/pmacct/protograph/createrrd.sh
 fi
+
+[[ -d $BASEDIR/wui/View/cgi-bin ]] && chown root:daemon $BASEDIR/wui/View/cgi-bin
+if [[ -f $BASEDIR/wui/View/cgi-bin/man.cgi ]]; then
+    chown root:bin $BASEDIR/wui/View/cgi-bin/man.cgi
+    chmod 511 $BASEDIR/wui/View/cgi-bin/man.cgi
+fi
+

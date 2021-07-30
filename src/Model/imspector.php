@@ -35,7 +35,7 @@ class Imspector extends Model
 	private $badwordsFile= '/etc/imspector/badwords.txt';
 	private $aclFile= '/etc/imspector/acl.txt';
 
-	public $PidFile= '/var/run/imspector.pid';
+	public $PidFile= '/var/log/utmfw/run/imspector.pid';
 	
 	function __construct()
 	{

@@ -1061,7 +1061,7 @@ $PF_CONFIG_PATH= '/etc/pfre';
 $TMP_PATH= '/tmp';
 
 $TEST_DIR_PATH= '';
-/// @attention Necessary to set to '/utmfw' instead of '' to fix $ROOT . $TEST_DIR_SRC in model.php
-$TEST_DIR_SRC= '/utmfw';
+/// @attention Necessary to set to '/wui' instead of '' to fix $ROOT . $TEST_DIR_SRC in model.php
+$TEST_DIR_SRC= '/wui';
 $INSTALL_USER= 'root';
 ?>

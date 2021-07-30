@@ -9,28 +9,61 @@ set +o sh
 
 SYNC_MFS=yes
 
-if [[ $SYNC_MFS == yes ]]; then
-	# Keep syncing as long as /var/log is mounted as mfs,
-	# no matter mfs is enabled in /etc/rc or not (USE_MFS is yes or no)
-	# /etc/rc always tries to use /var/log.sync if exists
-	if (($(mount -t mfs | grep "on[[:blank:]]*/var/log[[:blank:]]" | wc -l)+0 == 1)); then
-		echo "\nSyncing /var/log ..."
+[[ $SYNC_MFS != yes ]] && exit
 
-		RSYNC_RULES=/var/rsync.rules
-		RSYNC_SRC=/var/log
+(($(mount -t mfs | grep "on[[:blank:]]*/var/log[[:blank:]]" | wc -l)+0 != 1)) && exit
 
-		RSYNC_DST=/var/log.sync
-		[[ ! -d $RSYNC_DST ]] && mkdir $RSYNC_DST
+# Keep syncing as long as /var/log is mounted as mfs,
+# no matter mfs is enabled in /etc/rc or not (USE_MFS is yes or no)
+# /etc/rc always tries to use /var/log.sync if exists
+echo "\nSyncing /var/log ..."
 
-		RSYNC_OUT="$RSYNC_DST/rsync.out"
+RSYNC_RULES=/var/rsync.rules
+RSYNC_SRC=/var/log
 
-		# Remove rsync.out if exists, rsync appends to it
-		[[ -f $RSYNC_OUT ]] && rm $RSYNC_OUT
+RSYNC_DST=/var/log.sync
+[[ ! -d $RSYNC_DST ]] && mkdir $RSYNC_DST
 
-		# Use the full path of rsync, /etc/rc does not add /usr/local/bin to $PATH
-		/usr/local/bin/rsync --log-file=$RSYNC_OUT --stats -av --exclude-from=$RSYNC_RULES $RSYNC_SRC/ $RSYNC_DST/ 2>&1
+RSYNC_OUT="$RSYNC_DST/rsync.out"
 
-		# Append the retval of rsync too, so /etc/rc can check if rsync was successful or not
-		echo "$?" >>$RSYNC_OUT
-	fi
+# Remove rsync.out if exists, rsync appends to it
+[[ -f $RSYNC_OUT ]] && rm $RSYNC_OUT
+
+# Use the full path of rsync, /etc/rc does not add /usr/local/bin to $PATH
+/usr/local/bin/rsync --log-file=$RSYNC_OUT --stats -av --exclude-from=$RSYNC_RULES $RSYNC_SRC/ $RSYNC_DST/ 2>&1
+
+# Append the retval of rsync too, so /etc/rc can check if rsync was successful or not
+echo "$?" >>$RSYNC_OUT
+
+RSYNC_WUI_SRC=$RSYNC_DST/utmfw/wui
+RSYNC_WUI_DST=/var/log.orig/utmfw/wui
+
+if [[ $? == 0 ]]; then
+	RSYNC_WUI_OUT="$RSYNC_WUI_DST/rsync.out"
+	[[ -f $RSYNC_WUI_OUT ]] && rm $RSYNC_WUI_OUT
+
+	echo "Syncing $RSYNC_WUI_SRC to $RSYNC_WUI_DST"
+	/usr/local/bin/rsync --log-file=$RSYNC_WUI_OUT --stats -av $RSYNC_WUI_SRC/ $RSYNC_WUI_DST/ 2>&1
+
+	echo "$?" >>$RSYNC_WUI_OUT
+
+	[[ $? != 0 ]] && echo "Failed syncing $RSYNC_WUI_SRC to $RSYNC_WUI_DST (code $?)"
+else
+	echo "Non-zero rsync retval, not syncing $RSYNC_WUI_SRC to $RSYNC_WUI_DST (code $?)"
 fi
+
+RSYNC_CLAMAV_SRC=$RSYNC_SRC/utmfw/db/clamav
+RSYNC_CLAMAV_DST=/var/log.orig/utmfw/db/clamav
+
+RSYNC_CLAMAV_OUT="$RSYNC_CLAMAV_DST/rsync.out"
+[[ -f $RSYNC_CLAMAV_OUT ]] && rm $RSYNC_CLAMAV_OUT
+
+[[ ! -d $RSYNC_CLAMAV_DST ]] && mkdir -p $RSYNC_CLAMAV_DST
+
+echo "Syncing $RSYNC_CLAMAV_SRC to $RSYNC_CLAMAV_DST"
+/usr/local/bin/rsync --log-file=$RSYNC_CLAMAV_OUT --stats -av $RSYNC_CLAMAV_SRC/ $RSYNC_CLAMAV_DST/ 2>&1
+
+echo "$?" >>$RSYNC_CLAMAV_OUT
+
+[[ $? != 0 ]] && echo "Failed syncing $RSYNC_CLAMAV_SRC to $RSYNC_CLAMAV_DST (code $?)"
+

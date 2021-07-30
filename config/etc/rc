@@ -389,53 +389,6 @@ ln -fh /bsd /bsd.booted
 
 rm -f /fastboot
 
-USE_MFS=yes
-MFS_SIZE=1024m
-
-LOG_SYNC=/var/log.sync
-RSYNC_OUT=$LOG_SYNC/rsync.out
-LOG_LAST=/var/log.last
-LOG=/var/log
-
-# Back up the orig /var/log on the first boot
-[[ ! -d /var/log.orig ]] && cp -av /var/log /var/log.orig
-
-# Try to move /var/log.sync to /var/log, even if mfs is not enabled
-# This is necessary on the first boot after mfs is disabled
-if [[ -d $LOG_SYNC ]] && [[ -f $RSYNC_OUT ]]; then
-	RSYNC_RETVAL=$(tail -1 $RSYNC_OUT)
-	if [[ $RSYNC_RETVAL == 0 ]]; then
-		[[ -d $LOG_LAST ]] && rm -rf $LOG_LAST
-		mv $LOG $LOG_LAST
-		mv $LOG_SYNC $LOG
-		echo "Moved $LOG_SYNC to $LOG, the last $LOG is in $LOG_LAST"
-	else
-		echo "Non-zero rsync error code in $RSYNC_OUT: $RSYNC_RETVAL\nnot moving $LOG_SYNC to $LOG"
-		tail -2 $RSYNC_OUT
-	fi
-else
-	echo "No $LOG_SYNC or $RSYNC_OUT\nnot moving $LOG_SYNC to $LOG"
-fi
-
-# Mount /var/log as mfs even if sync checks above fail
-# Checks will fail the first time mfs is enabled,
-# and after disabling and re-enabling mfs,
-# but we try to make sure /var/log has the most recent contents
-if [[ $USE_MFS == yes ]]; then
-	# Make sure the system has at least one swap space
-	if (($(swapctl -l | grep -v Device | wc -l)+0 > 0)); then
-		echo "Mounting $LOG as mfs"
-
-		# Pick the first swap space listed
-		SWAP=$(swapctl -l | grep -v Device | head -1 | cut -d\  -f 1)
-
-		# Mount as mfs and populate with the current /var/log
-		mount_mfs -o rw,nodev,nosuid,async -s $MFS_SIZE -P $LOG $SWAP $LOG
-	else
-		echo "Cannot find any swap space, not mounting $LOG as mfs"
-	fi
-fi
-
 # Set flags on ttys.
 ttyflags -a
 
@@ -497,6 +450,69 @@ echo 'starting network'
 ifconfig -g carp carpdemote 128
 
 sh /etc/netstart
+
+LOG=/var/log
+
+# Back up the orig /var/log on first boot
+if [[ ! -d /var/log.orig ]]; then
+    # Configure after netstart
+	env PATH=$PATH:/usr/local/bin $LOG/utmfw/wui/Installer/install.php -a
+
+	# Backup wui, used to init wui in make.var, if necessary
+	# Copy after system configuration, install.php modifies certain wui files
+	cp -av $LOG/utmfw/wui /var/www/htdocs/utmfw
+
+	# Init the /var structure
+	sh /etc/make.var
+
+	cp -av $LOG $LOG.orig
+fi
+
+LOG_SYNC=/var/log.sync
+RSYNC_OUT=$LOG_SYNC/rsync.out
+LOG_LAST=/var/log.last
+
+# Try to move /var/log.sync to /var/log, even if mfs is not enabled
+# This is necessary on the first boot after mfs is disabled
+if [[ -d $LOG_SYNC ]] && [[ -f $RSYNC_OUT ]]; then
+	RSYNC_RETVAL=$(tail -1 $RSYNC_OUT)
+	if [[ $RSYNC_RETVAL == 0 ]]; then
+		[[ -d $LOG_LAST ]] && rm -rf $LOG_LAST
+		mv $LOG $LOG_LAST
+		mv $LOG_SYNC $LOG
+		echo "Moved $LOG_SYNC to $LOG, the last $LOG is in $LOG_LAST"
+	else
+		echo "Non-zero rsync error code in $RSYNC_OUT: $RSYNC_RETVAL\nnot moving $LOG_SYNC to $LOG"
+		tail -2 $RSYNC_OUT
+	fi
+else
+	echo "No $LOG_SYNC or $RSYNC_OUT\nnot moving $LOG_SYNC to $LOG"
+fi
+
+USE_MFS=yes
+MFS_SIZE=1024m
+
+# Mount /var/log as mfs even if sync checks above fail
+# Checks will fail the first time mfs is enabled,
+# and after disabling and re-enabling mfs,
+# but we try to make sure /var/log has the most recent contents
+if [[ $USE_MFS == yes ]]; then
+	# Make sure the system has at least one swap space
+	if (($(swapctl -l | grep -v Device | wc -l)+0 > 0)); then
+		echo "Mounting $LOG as mfs"
+
+		# Pick the first swap space listed
+		SWAP=$(swapctl -l | grep -v Device | head -1 | cut -d\  -f 1)
+
+		# Mount as mfs and populate with the current /var/log
+		mount_mfs -o rw,nodev,nosuid,async -s $MFS_SIZE -P $LOG $SWAP $LOG
+	else
+		echo "Cannot find any swap space, not mounting $LOG as mfs"
+	fi
+fi
+
+# Make sure we always have a /var directory structure we can work on
+sh /etc/make.var
 
 mount -s /usr >/dev/null 2>&1
 mount -s /var >/dev/null 2>&1

@@ -17,11 +17,11 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 #
 
-my $rrd_create = '/var/www/htdocs/utmfw/View/pmacct/pnrg/pnrg-create.pl';
-my $rrd_update = '/var/www/htdocs/utmfw/View/pmacct/pnrg/pnrg-update.pl';
+my $rrd_create = '/var/log/utmfw/wui/View/pmacct/pnrg/pnrg-create.pl';
+my $rrd_update = '/var/log/utmfw/wui/View/pmacct/pnrg/pnrg-update.pl';
 my $pmacct_client = '/usr/local/bin/pmacct';
-my $memtable_in  = "$pmacct_client -s -p /tmp/pmacct_in.pipe";
-my $memtable_out = "$pmacct_client -s -p /tmp/pmacct_out.pipe";
+my $memtable_in  = "$pmacct_client -s -p /var/log/utmfw/run/pmacct_in.pipe";
+my $memtable_out = "$pmacct_client -s -p /var/log/utmfw/run/pmacct_out.pipe";
 
 use Getopt::Long;
 

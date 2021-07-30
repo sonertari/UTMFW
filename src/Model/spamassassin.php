@@ -35,7 +35,7 @@ class Spamassassin extends Model
 	/// Have to unset LC_ALL and LANG, otherwise perl complains
 	public $VersionCmd= 'unset LC_ALL; unset LANG; /usr/local/bin/spamd -V';
 
-	public $PidFile= '/var/run/spamassassin.pid';
+	public $PidFile= '/var/log/utmfw/run/spamassassin.pid';
 
 	function __construct()
 	{
@@ -43,7 +43,7 @@ class Spamassassin extends Model
 		
 		$this->Proc= 'spamd';
 
-		$this->StartCmd= 'unset LC_ALL; unset LANG; /usr/local/bin/spamd -L -d -x -u _spamdaemon -r /var/run/spamassassin.pid';
+		$this->StartCmd= "unset LC_ALL; unset LANG; /usr/local/bin/spamd -L -d -x -u _spamdaemon -r $this->PidFile";
 		
 		$this->Commands= array_merge(
 			$this->Commands,

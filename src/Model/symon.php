@@ -29,7 +29,7 @@ class Symon extends Monitoring
 	public $Name= 'symon';
 	public $User= '_symon';
 	
-	private $layoutsPath= '/var/www/htdocs/utmfw/View/symon/layouts';
+	private $layoutsPath= '/var/log/utmfw/wui/View/symon/layouts';
 	private $rrdsPath= '/var/log/utmfw/symon/rrds/localhost';
 	
 	public $VersionCmd= '/usr/local/libexec/symon -v 2>&1';

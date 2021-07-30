@@ -563,7 +563,7 @@ class Model
 
 		// If the user does not exist
 		if ($retval !== 0 && count($output) == 0) {
-			$uline= "$user:$(/usr/bin/encrypt $passwd):$uid:$uid::0:0:UTMFW $user:/var/empty:/var/www/htdocs/utmfw/Controller/sh.php";
+			$uline= "$user:$(/usr/bin/encrypt $passwd):$uid:$uid::0:0:UTMFW $user:/var/empty:/var/log/utmfw/wui/Controller/sh.php";
 			exec("/bin/echo $uline >>/etc/master.passwd 2>&1", $output, $retval);
 
 			if ($retval === 0) {
@@ -3019,7 +3019,7 @@ class Model
 
 	function _getSysCtl($option)
 	{
-		return $this->RunShellCommand("/sbin/sysctl $option");
+		return $this->RunShellCommand("/sbin/sysctl $option 2>&1");
 	}
 
 	/**
