@@ -10,6 +10,9 @@
 
 START_TIME=$(date "+%s")
 
+# Make sure we always have a /var directory structure we can work on
+sh /etc/make.var
+
 touch /var/log/utmfw/.starting
 
 echo '\nStarting UTMFW services...'

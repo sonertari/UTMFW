@@ -674,7 +674,6 @@ __EOT
 			;;
 
 		clamavdb.*)
-			# Backup clamav db, used to init clamav db in make.var, if necessary
 			_clamavdbdir=$ROOTDIR/var/db/clamav
 
 			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_clamavdbdir || _installerror=1
@@ -740,8 +739,8 @@ __EOT
 
 		$CW_WEBIF_TARFILE)
 			resp=y
-			_webifparent=$ROOTDIR/var/log/utmfw
-			_webifdir=$ROOTDIR/var/log/utmfw/wui
+			_webifparent=$ROOTDIR/var/www/htdocs
+			_webifdir=$ROOTDIR/var/www/htdocs/utmfw
 
 			[[ -d $_webifdir ]] && mv $_webifdir $_webifdir.orig
 			[[ ! -d $_webifparent ]] && mkdir -p $_webifparent
@@ -1046,11 +1045,11 @@ install_sets() {
 }
 
 finish_up() {
-	/sbin/ldconfig /usr/local/lib /usr/X11R6/lib/ || INSTALL_ERROR=1
+	/sbin/ldconfig /usr/local/lib /usr/X11R6/lib || INSTALL_ERROR=1
 
-	if [[ -f /var/log/utmfw/wui/Installer/install.php ]]; then
+	if [[ -f /var/www/htdocs/utmfw/Installer/install.php ]]; then
 		echo "Running post-install script..."
-		/usr/local/bin/php /var/log/utmfw/wui/Installer/install.php || INSTALL_ERROR=1
+		/usr/local/bin/php /var/www/htdocs/utmfw/Installer/install.php || INSTALL_ERROR=1
 	fi
 
 	if [ $INSTALL_ERROR -eq 1 ]; then

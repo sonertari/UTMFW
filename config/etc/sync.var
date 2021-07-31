@@ -34,36 +34,3 @@ RSYNC_OUT="$RSYNC_DST/rsync.out"
 
 # Append the retval of rsync too, so /etc/rc can check if rsync was successful or not
 echo "$?" >>$RSYNC_OUT
-
-RSYNC_WUI_SRC=$RSYNC_DST/utmfw/wui
-RSYNC_WUI_DST=/var/log.orig/utmfw/wui
-
-if [[ $? == 0 ]]; then
-	RSYNC_WUI_OUT="$RSYNC_WUI_DST/rsync.out"
-	[[ -f $RSYNC_WUI_OUT ]] && rm $RSYNC_WUI_OUT
-
-	echo "Syncing $RSYNC_WUI_SRC to $RSYNC_WUI_DST"
-	/usr/local/bin/rsync --log-file=$RSYNC_WUI_OUT --stats -av $RSYNC_WUI_SRC/ $RSYNC_WUI_DST/ 2>&1
-
-	echo "$?" >>$RSYNC_WUI_OUT
-
-	[[ $? != 0 ]] && echo "Failed syncing $RSYNC_WUI_SRC to $RSYNC_WUI_DST (code $?)"
-else
-	echo "Non-zero rsync retval, not syncing $RSYNC_WUI_SRC to $RSYNC_WUI_DST (code $?)"
-fi
-
-RSYNC_CLAMAV_SRC=$RSYNC_SRC/utmfw/db/clamav
-RSYNC_CLAMAV_DST=/var/log.orig/utmfw/db/clamav
-
-RSYNC_CLAMAV_OUT="$RSYNC_CLAMAV_DST/rsync.out"
-[[ -f $RSYNC_CLAMAV_OUT ]] && rm $RSYNC_CLAMAV_OUT
-
-[[ ! -d $RSYNC_CLAMAV_DST ]] && mkdir -p $RSYNC_CLAMAV_DST
-
-echo "Syncing $RSYNC_CLAMAV_SRC to $RSYNC_CLAMAV_DST"
-/usr/local/bin/rsync --log-file=$RSYNC_CLAMAV_OUT --stats -av $RSYNC_CLAMAV_SRC/ $RSYNC_CLAMAV_DST/ 2>&1
-
-echo "$?" >>$RSYNC_CLAMAV_OUT
-
-[[ $? != 0 ]] && echo "Failed syncing $RSYNC_CLAMAV_SRC to $RSYNC_CLAMAV_DST (code $?)"
-

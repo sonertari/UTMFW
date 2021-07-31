@@ -57,6 +57,17 @@ etc			type=dir mode=0750 uname=_bind gname=_bind
 named.conf		type=file mode=0640 uname=_bind gname=_bind
 ..	#var/named/etc
 ..	#var/named
+www			type=dir mode=0755 uname=root gname=daemon
+htdocs			type=dir mode=0755 uname=root gname=wheel
+utmfw			type=dir mode=0755 uname=root gname=wheel
+View			type=dir mode=0755 uname=root gname=wheel
+cgi-bin			type=dir mode=0755 uname=root gname=daemon
+man.cgi			type=file mode=0511 uname=root gname=bin
+..	#var/www/htdocs/utmfw/View/cgi-bin
+..	#var/www/htdocs/utmfw/View
+..	#var/www/htdocs/utmfw
+..	#var/www/htdocs
+..	#var/www
 rsync.rules		type=file mode=0644 uname=root gname=wheel
 ..	#var
 etc			type=dir mode=0755 uname=root gname=wheel

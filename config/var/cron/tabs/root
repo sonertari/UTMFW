@@ -27,11 +27,11 @@ HOME=/var/log
 #*	*	*	*	7		/sbin/pfctl -a AfterHours -f /etc/pfre/pf.conf.afterhours
 
 # pmacct pnrg protograph
-*/1	*	*	*	*	/var/log/utmfw/wui/View/pmacct/pnrg/pnrg-wrapper.sh > /dev/null
-*/1	*	*	*	*	/bin/sh /var/log/utmfw/wui/View/pmacct/protograph/cron.sh > /dev/null
+*/1	*	*	*	*	/var/www/htdocs/utmfw/View/pmacct/pnrg/pnrg-wrapper.sh > /dev/null
+*/1	*	*	*	*	/bin/sh /var/www/htdocs/utmfw/View/pmacct/protograph/cron.sh > /dev/null
 
 # Notifier
-#*/1	*	*	*	*	/usr/bin/env PATH=$PATH:/usr/local/bin /usr/local/bin/php /var/log/utmfw/wui/Notifier/notify.php > /dev/null
+#*/1	*	*	*	*	/usr/bin/env PATH=$PATH:/usr/local/bin /usr/local/bin/php /var/www/htdocs/utmfw/Notifier/notify.php > /dev/null
 
 # sync the mfs /var/log
 15	*	*	*	*	/bin/sh /etc/sync.var

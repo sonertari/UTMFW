@@ -64,7 +64,7 @@ if ($ArgV[0] === '-t') {
 	$TEST_ROOT= dirname(dirname(dirname(__FILE__)));
 	$TEST_DIR= '/tests/phpunit/root';
 	$TEST_DIR_PATH= $TEST_ROOT . $TEST_DIR;
-	$TEST_DIR_SRC= $TEST_DIR . '/var/log/utmfw/wui';
+	$TEST_DIR_SRC= $TEST_DIR . '/var/www/htdocs/utmfw';
 
 	$INSTALL_USER= posix_getpwuid(posix_getuid())['name'];
 }

@@ -1192,7 +1192,7 @@ class System extends Model
 	function SetManCgiHome($ip)
 	{
 		$re= '|^(\s*\$www\{\'home\'\}\h*=\h*\')(.*)(\'\h*;\h*)$|m';
-		return $this->ReplaceRegexp('/var/log/utmfw/wui/View/cgi-bin/man.cgi', $re, '${1}'."https://$ip".'${3}');
+		return $this->ReplaceRegexp('/var/www/htdocs/utmfw/View/cgi-bin/man.cgi', $re, '${1}'."https://$ip".'${3}');
 	}
 
 	/**
@@ -1697,7 +1697,7 @@ class System extends Model
 
 	function IsNotifierEnabled()
 	{
-		$stat= $this->SearchFile($this->rootCronTab, '?^\h*(#|)\h*\*/1\h+\*\h+\*\h+\*\h+\*\h+/usr/bin/env\h+PATH=\$PATH:/usr/local/bin\h+/usr/local/bin/php\h+/var/log/utmfw/wui/Notifier/notify.php\h+.*$?m');
+		$stat= $this->SearchFile($this->rootCronTab, '?^\h*(#|)\h*\*/1\h+\*\h+\*\h+\*\h+\*\h+/usr/bin/env\h+PATH=\$PATH:/usr/local/bin\h+/usr/local/bin/php\h+/var/www/htdocs/utmfw/Notifier/notify.php\h+.*$?m');
 		return ($stat === '');
 	}
 
@@ -1707,7 +1707,7 @@ class System extends Model
 		// Do not use PutFile(), it expects file to exist
 		file_put_contents($tmp, $this->getRootCronTab(), LOCK_EX);
 
-		$retval= $this->ReplaceRegexp($tmp, '?^(\h*\*/1\h+\*\h+\*\h+\*\h+\*\h+/usr/bin/env\h+PATH=\$PATH:/usr/local/bin\h+/usr/local/bin/php\h+/var/log/utmfw/wui/Notifier/notify.php\h+.*)$?m', '#${1}');
+		$retval= $this->ReplaceRegexp($tmp, '?^(\h*\*/1\h+\*\h+\*\h+\*\h+\*\h+/usr/bin/env\h+PATH=\$PATH:/usr/local/bin\h+/usr/local/bin/php\h+/var/www/htdocs/utmfw/Notifier/notify.php\h+.*)$?m', '#${1}');
 		if (file_exists($tmp.'.bak')) {
 			unlink($tmp.'.bak');
 		}
@@ -1727,7 +1727,7 @@ class System extends Model
 		// Do not use PutFile(), it expects file to exist
 		file_put_contents($tmp, $this->getRootCronTab(), LOCK_EX);
 
-		$retval= $this->ReplaceRegexp($tmp, '?^\h*#(\h*\*/1\h+\*\h+\*\h+\*\h+\*\h+/usr/bin/env\h+PATH=\$PATH:/usr/local/bin\h+/usr/local/bin/php\h+/var/log/utmfw/wui/Notifier/notify.php\h+.*$)?m', '${1}');
+		$retval= $this->ReplaceRegexp($tmp, '?^\h*#(\h*\*/1\h+\*\h+\*\h+\*\h+\*\h+/usr/bin/env\h+PATH=\$PATH:/usr/local/bin\h+/usr/local/bin/php\h+/var/www/htdocs/utmfw/Notifier/notify.php\h+.*$)?m', '${1}');
 		if (file_exists($tmp.'.bak')) {
 			unlink($tmp.'.bak');
 		}

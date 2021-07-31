@@ -2481,7 +2481,7 @@ msgid ""
 "system as root and run the following on the command line to set the password "
 "to soner123:\n"
 "<code>/usr/bin/chpass -a \"admin:$(/usr/bin/encrypt `/bin/echo -n soner123 | "
-"sha1 -`):1000:1000::0:0:UTMFW admin:/var/empty:/var/log/utmfw/wui/"
+"sha1 -`):1000:1000::0:0:UTMFW admin:/var/empty:/var/www/htdocs/utmfw/"
 "Controller/sh.php\"</code>"
 msgstr ""
 

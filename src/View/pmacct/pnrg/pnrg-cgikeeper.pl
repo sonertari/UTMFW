@@ -19,7 +19,7 @@
 
 use Getopt::Long;
 
-my $template = '/var/log/utmfw/wui/View/pmacct/pnrg/templates/cgi.tm';
+my $template = '/var/www/htdocs/utmfw/View/pmacct/pnrg/templates/cgi.tm';
 my $spooldir = '';
 
 GetOptions(

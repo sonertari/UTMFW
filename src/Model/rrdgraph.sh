@@ -25,7 +25,7 @@ if [ $# -lt 6 ]; then
 fi
 
 GRAPHS_FOLDER="/var/log/utmfw/dashboard"
-VIEW_GRAPHS_FOLDER="/var/log/utmfw/wui/View/system"
+VIEW_GRAPHS_FOLDER="/var/www/htdocs/utmfw/View/system"
 
 # Make sure the graphs output folder exists
 [[ ! -d $GRAPHS_FOLDER ]] && mkdir -p $GRAPHS_FOLDER && ln -fs $GRAPHS_FOLDER $VIEW_GRAPHS_FOLDER

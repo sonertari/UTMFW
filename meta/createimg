@@ -82,9 +82,9 @@ doxygen Doxyfile
 echo "Creating $WEBIF package: $WEBIF_FILE"
 
 cd $ROOT_PATH/$TMP/$PROJECT_NAME
-rm -rf wui
-mv src wui
-tar czf $ROOT_PATH/$TMP/$WEBIF_FILE wui
+rm -rf $PROJECT_NAME
+mv src $PROJECT_NAME
+tar czf $ROOT_PATH/$TMP/$WEBIF_FILE $PROJECT_NAME
 ln -fs $ROOT_PATH/$TMP/$WEBIF_FILE $ROOT_PATH/$CD_PATH/$PKG_PATH/$WEBIF_FILE
 
 echo "Creating $CONFIG package: $CONFIG_FILE"
