@@ -14,7 +14,7 @@ SYNC_MFS=yes
 (($(mount -t mfs | grep "on[[:blank:]]*/var/log[[:blank:]]" | wc -l)+0 != 1)) && exit
 
 # Keep syncing as long as /var/log is mounted as mfs,
-# no matter mfs is enabled in /etc/rc or not (USE_MFS is yes or no)
+# no matter mfs is enabled in /etc/rc or not (if USE_MFS is yes or no)
 # /etc/rc always tries to use /var/log.sync if exists
 echo "\nSyncing /var/log ..."
 

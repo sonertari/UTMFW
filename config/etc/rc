@@ -398,7 +398,8 @@ LOG_LAST=/var/log.last
 # This is necessary on the first boot after mfs is disabled
 if [[ -d $LOG_SYNC ]] && [[ -f $RSYNC_OUT ]]; then
 	RSYNC_RETVAL=$(tail -1 $RSYNC_OUT)
-	if [[ $RSYNC_RETVAL == 0 ]]; then
+	# Ignore vanished-file error (code 24)
+	if [[ $RSYNC_RETVAL == 0 || $RSYNC_RETVAL == 24 ]]; then
 		[[ -d $LOG_LAST ]] && rm -rf $LOG_LAST
 		mv $LOG $LOG_LAST
 		mv $LOG_SYNC $LOG

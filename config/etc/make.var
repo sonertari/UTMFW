@@ -36,6 +36,16 @@ fi
 [[ ! -d $BASEDIR/pmacct ]] && mkdir $BASEDIR/pmacct
 [[ ! -d $BASEDIR/pmacct/pnrg ]] && mkdir $BASEDIR/pmacct/pnrg
 
+VIEWDIR=/var/www/htdocs/utmfw/View
+
+if [[ ! -d $BASEDIR/pmacct/protograph ]]; then
+	mkdir $BASEDIR/pmacct/protograph
+	echo "Creating pmacct rrd files..."
+	sh $VIEWDIR/pmacct/protograph/createrrd.sh
+fi
+
+[[ ! -d $VIEWDIR/pmacct/pnrg/spool ]] && ln -fs $BASEDIR/pmacct/pnrg $VIEWDIR/pmacct/pnrg/spool
+
 [[ ! -d $BASEDIR/db ]] && mkdir $BASEDIR/db
 
 [[ ! -f $BASEDIR/db/users.db ]] && cp -v /var/db/users.db $BASEDIR/db/
@@ -69,12 +79,4 @@ chmod -R 770 $BASEDIR/spool/smtp-gated
 
 [[ ! -d $BASEDIR/tmp ]] && mkdir $BASEDIR/tmp
 chmod 1777 $BASEDIR/tmp
-
-[[ ! -d /var/www/htdocs/utmfw/View/pmacct/pnrg/spool ]] && ln -fs $BASEDIR/pmacct/pnrg /var/www/htdocs/utmfw/View/pmacct/pnrg/spool
-
-if [[ ! -d $BASEDIR/pmacct/protograph ]]; then
-	mkdir $BASEDIR/pmacct/protograph
-	echo "Creating pmacct rrd files..."
-	sh /var/www/htdocs/utmfw/View/pmacct/protograph/createrrd.sh
-fi
 
