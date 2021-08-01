@@ -1052,6 +1052,9 @@ finish_up() {
 		/usr/local/bin/php /var/www/htdocs/utmfw/Installer/install.php || INSTALL_ERROR=1
 	fi
 
+	# Update mandoc.db to avoid bogus entry errors
+	/usr/sbin/makewhatis /usr/share/man || INSTALL_ERROR=1
+
 	if [ $INSTALL_ERROR -eq 1 ]; then
 		cat <<__EOT
 
