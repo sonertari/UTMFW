@@ -11,8 +11,9 @@
 
 - /utmfw/dashboard/***
 - /utmfw/downloads/***
+- /utmfw/logs/***
 - /utmfw/out/***
 - /utmfw/run/***
+- /utmfw/stats/***
 - /utmfw/symon/cache/***
 - /utmfw/tmp/***
-
