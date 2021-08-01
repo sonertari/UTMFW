@@ -2688,7 +2688,7 @@ class Model
 	/**
 	 * Gets service statuses.
 	 */
-	function GetServiceStatus($generate_info= FALSE, $start= '10min')
+	function GetServiceStatus($generate_info= 0, $start= '10min')
 	{
 		global $MODEL_PATH, $ModelFiles, $Models, $ModelsToStat, $DashboardIntervals2Seconds;
 

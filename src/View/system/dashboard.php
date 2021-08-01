@@ -65,7 +65,7 @@ if ($StatusCheckInterval !== $DashboardIntervals2Seconds[$LastDashboardInterval]
 }
 
 $ServiceStatus= array();
-if ($View->Controller($Output, 'GetServiceStatus', TRUE, $LastDashboardInterval)) {
+if ($View->Controller($Output, 'GetServiceStatus', 1, $LastDashboardInterval)) {
 	$Output= json_decode($Output[0], TRUE);
 	$ServiceInfo= $Output['info'];
 	$ServiceStatus= $Output['status'];
