@@ -1,0 +1,113 @@
+#!/bin/sh
+# Copyright (C) 2004-2021 Soner Tari
+#
+# This file is part of UTMFW.
+#
+# UTMFW is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# UTMFW is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
+
+export ROOT_PATH=$(pwd)
+VERSION='6.9'
+export SUBVERSION=_$(date +%Y%m%d)
+export VMAJ=${VERSION%%\.*}
+export VMIN=${VERSION##*\.}
+
+TMP=tmp
+
+export SITE_DIR=site
+SITE_CONTENTS="install.site install.sub root.mail etc"
+SITE_FILE=site${VMAJ}${VMIN}.tgz
+
+PROJECT_NAME=utmfw
+
+LOCALE_PATH=locale
+LOCALES_LIST="tr_TR sp_SP ru_RU zh_CN nl_NL fr_FR"
+
+WEBIF=webif
+WEBIF_FILE=utmfw-$WEBIF-${VMAJ}.${VMIN}.tar.gz
+
+CONFIG=config
+CONFIG_FILE=utmfw-$CONFIG-${VMAJ}.${VMIN}.tar.gz
+
+PKG_PATH=packages
+
+SECRET_KEY=$ROOT_PATH/docs/signify/utmfw-${VMAJ}${VMIN}.sec
+
+export CD_PATH=cd/${ARCH}
+export INSTALL_SETS_PATH=${VERSION}/${ARCH}
+export SYS_ID="OpenBSD ${VERSION} ${ARCH}"
+export VOL_ID="UTMFW ${VERSION}${SUBVERSION} ${ARCH}"
+export PREP_ID="Soner Tari <sonertari@gmail.org>"
+export PUBLISH_ID="Copyright (C) 2021 Soner Tari, The UTMFW project"
+export APP_ID="UTMFW is a UTM firewall running on OpenBSD ${VERSION}"
+
+echo $SYS_ID
+echo $VOL_ID
+echo $APP_ID
+echo "========================="
+
+echo "Cloning $PROJECT_NAME git repo"
+
+mkdir $ROOT_PATH/$TMP/
+cd $ROOT_PATH/$TMP/
+rm -rf *
+git clone $ROOT_PATH
+
+echo "Generating gettext translations"
+
+for locale in $LOCALES_LIST; do
+	cd $ROOT_PATH/$TMP/$PROJECT_NAME/src/View/$LOCALE_PATH/$locale/LC_MESSAGES
+	msgfmt -o utmfw.mo utmfw.po
+done
+
+echo "Generating source documention"
+
+cd $ROOT_PATH/$TMP/$PROJECT_NAME
+doxygen Doxyfile
+
+echo "Creating $WEBIF package: $WEBIF_FILE"
+
+cd $ROOT_PATH/$TMP/$PROJECT_NAME
+rm -rf $PROJECT_NAME
+mv src $PROJECT_NAME
+tar czf $ROOT_PATH/$TMP/$WEBIF_FILE $PROJECT_NAME
+ln -fs $ROOT_PATH/$TMP/$WEBIF_FILE $ROOT_PATH/$CD_PATH/$PKG_PATH/$WEBIF_FILE
+
+echo "Creating $CONFIG package: $CONFIG_FILE"
+
+cd $ROOT_PATH/$TMP/$PROJECT_NAME
+tar czf $ROOT_PATH/$TMP/$CONFIG_FILE $CONFIG
+ln -fs $ROOT_PATH/$TMP/$CONFIG_FILE $ROOT_PATH/$CD_PATH/$PKG_PATH/$CONFIG_FILE
+
+echo "Creating site install set: $SITE_FILE"
+
+mkdir $ROOT_PATH/$SITE_DIR
+cd $ROOT_PATH/$SITE_DIR
+doas rm -rf *
+for site in $SITE_CONTENTS; do
+	cp -R -v $ROOT_PATH/meta/$site .
+done
+doas chown -R root:wheel *
+tar czhf $SITE_FILE $SITE_CONTENTS
+ln -fs $ROOT_PATH/$SITE_DIR/$SITE_FILE $ROOT_PATH/$CD_PATH/$INSTALL_SETS_PATH/$SITE_FILE
+
+echo "Generating SHA256.sig"
+
+cd $ROOT_PATH/$CD_PATH/$INSTALL_SETS_PATH/
+for exclude in $EXCLUDE_FROM_SHA256; do
+	rm $exclude
+done
+
+cksum -a SHA256 * > SHA256
+signify -S -s $SECRET_KEY -m SHA256 -e -x SHA256.sig
+rm SHA256
