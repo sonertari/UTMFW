@@ -243,8 +243,13 @@ class System extends Model
 					),
 
 				'NetStart'	=>	array(
-					'argv'	=>	array(),
+					'argv'	=>	array(NAME|NONE),
 					'desc'	=>	_('Restart network'),
+					),
+
+				'IfUpDown'	=>	array(
+					'argv'	=>	array(NAME, BOOL),
+					'desc'	=>	_('Interface up or down'),
 					),
 
 				'GetUsers'=>	array(
@@ -528,6 +533,7 @@ class System extends Model
 				$nwid= array('', '', '');
 				$hostap= array('');
 				$wifi= array('');
+				$up= array('');
 
 				foreach ($contents as $line) {
 					if (preg_match("/^(inet|dhcp)\s*(\S*)\s*(\S*)\s*(\S*)\s*(\S*)$/", $line, $match)) {
@@ -577,8 +583,21 @@ class System extends Model
 				if ($this->isWifiIf($if)) {
 					$wifi= array('wifi');
 				}
-				return json_encode(array_merge(array_slice($inet, 1), $nwid, $hostap, $wifi));
+
+				if ($this->isIfUp($if)) {
+					$up= array('up');
+				}
+				return json_encode(array_merge(array_slice($inet, 1), $nwid, $hostap, $wifi, $up));
 			}
+		}
+		return FALSE;
+	}
+
+	function isIfUp($if)
+	{
+		exec("/sbin/ifconfig $if | grep \"[[:space:]]*flags=\"", $output, $retval);
+		if (preg_match('/(<UP,|\bUP\b)/', $output[0])) {
+			return TRUE;
 		}
 		return FALSE;
 	}
@@ -1088,7 +1107,7 @@ class System extends Model
 		}
 		return Output($retval);
 	}
-	
+
 	/**
 	 * Restarts the network.
 	 * 
@@ -1098,20 +1117,23 @@ class System extends Model
 	 * For example, if you change the IP address of int_if, you need to reload the rules;
 	 * otherwise, pf would still be running with rules using the old IP address of int_if.
 	 * 
+	 * @param string $if Interface name, or empty for both intif and extif.
 	 * @return bool TRUE on success, FALSE on fail.
 	 */
-	function NetStart()
+	function NetStart($if= '')
 	{
 		$cmd= array();
 
 		$intif= $this->_getIntIf();
 		if ($intif !== FALSE) {
 			$intif= trim($intif, '"');
-			if ($this->isWifiIf($intif)) {
-				// Clear all wifi configuration, ifconfig down or /etc/netstart don't clear them
-				$cmd[]= "/sbin/ifconfig $intif -mediaopt hostap -nwid -wpakey -nwkey 2>&1";
+			if ($if == '' || $if == $intif) {
+				if ($this->isWifiIf($intif)) {
+					// Clear all wifi configuration, ifconfig down or /etc/netstart don't clear them
+					$cmd[]= "/sbin/ifconfig $intif -mediaopt hostap -nwid -wpakey -nwkey 2>&1";
+				}
+				$cmd[]= "/sbin/ifconfig $intif down 2>&1";
 			}
-			$cmd[]= "/sbin/ifconfig $intif down 2>&1";
 		} else {
 			Error('Cannot get intif');
 		}
@@ -1120,20 +1142,25 @@ class System extends Model
 		$extif= $this->_getExtIf();
 		if ($extif !== FALSE) {
 			$extif= trim($extif, '"');
-			$cmd[]= "/sbin/ifconfig $extif down 2>&1";
+			if ($if == '' || $if == $extif) {
+				$cmd[]= "/sbin/ifconfig $extif down 2>&1";
+			}
 		} else {
 			Error('Cannot get extif');
 		}
 
 		// Refresh pf rules too
-		$cmd[]= "/bin/sh /etc/netstart 2>&1 && /sbin/pfctl -f $this->PfRulesFile 2>&1";
+		// Pass $if as arg, passing empty string is fine
+		$cmd[]= "/bin/sh /etc/netstart $if 2>&1 && /sbin/pfctl -f $this->PfRulesFile 2>&1";
 
-		// Delete the arp entry for the old gateway, in case the new gateway has the same IP address
-		// Otherwise, the system cannot reach the new gateway, continues to use the old ethernet address,
-		// ping, nslookup, or others don't work (extif becomes effectively down).
-		$gateway= $this->getSystemGateway();
-		if ($gateway !== '') {
-			$cmd[]= "/usr/sbin/arp -nd $gateway 2>&1";
+		if ($if == '' || $if == $extif) {
+			// Delete the arp entry for the old gateway, in case the new gateway has the same IP address
+			// Otherwise, the system cannot reach the new gateway, continues to use the old ethernet address,
+			// ping, nslookup, or others don't work (extif becomes effectively down).
+			$gateway= $this->getSystemGateway();
+			if ($gateway !== '') {
+				$cmd[]= "/usr/sbin/arp -nd $gateway 2>&1";
+			}
 		}
 
 		$cmdline= implode(' && ', $cmd);
@@ -1148,7 +1175,21 @@ class System extends Model
 		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Netstart failed: $errout");
 		return FALSE;
 	}
-	
+
+	function IfUpDown($if, $updown)
+	{
+		$updown= $updown ? 'up' : 'down';
+		exec("/sbin/ifconfig $if $updown 2>&1", $output, $retval);
+		$errout= implode("\n", $output);
+		Error($errout);
+
+		if ($retval === 0) {
+			return TRUE;
+		}
+		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "IfUpDown failed: $errout");
+		return FALSE;
+	}
+
 	/**
 	 * Reads all processes from ps output.
 	 *

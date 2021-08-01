@@ -81,6 +81,15 @@ if (count($_POST)) {
 					filter_has_var(INPUT_POST, 'IfKey') ? filter_input(INPUT_POST, 'IfKey') : '',
 					filter_has_var(INPUT_POST, 'IfHostap') ? filter_input(INPUT_POST, 'IfHostap') : '');
 		}
+		else if (filter_has_var(INPUT_POST, 'Restart')) {
+			$View->Controller($Output, 'NetStart', filter_input(INPUT_POST, 'IfName'));
+		}
+		else if (filter_has_var(INPUT_POST, 'Up')) {
+			$View->Controller($Output, 'IfUpDown', filter_input(INPUT_POST, 'IfName'), 1);
+		}
+		else if (filter_has_var(INPUT_POST, 'Down')) {
+			$View->Controller($Output, 'IfUpDown', filter_input(INPUT_POST, 'IfName'), 0);
+		}
 		else if (filter_has_var(INPUT_POST, 'Delete')) {
 			$View->Controller($Output, 'DeleteIf', filter_input(INPUT_POST, 'IfName'));
 		}
@@ -164,9 +173,9 @@ require_once($VIEW_PATH.'/header.php');
 			}
 		
 			$IfConfigured= '';
-			$IfType= $IfIp= $IfMask= $IfBc= $IfOpt= $IfLladdr= $IfIp2= $IfMask2= $IfBc2= $IfNwId= $IfKeyType= $IfKey= $IfHostap= $IfWifi='';
+			$IfType= $IfIp= $IfMask= $IfBc= $IfOpt= $IfLladdr= $IfIp2= $IfMask2= $IfBc2= $IfNwId= $IfKeyType= $IfKey= $IfHostap= $IfWifi= $IfUp='';
 			if ($View->Controller($Output, 'GetIfConfig', $If)) {
-				list($IfType, $IfIp, $IfMask, $IfBc, $IfOpt, $IfLladdr, $IfIp2, $IfMask2, $IfBc2, $IfNwId, $IfKeyType, $IfKey, $IfHostap, $IfWifi)= json_decode($Output[0], TRUE);
+				list($IfType, $IfIp, $IfMask, $IfBc, $IfOpt, $IfLladdr, $IfIp2, $IfMask2, $IfBc2, $IfNwId, $IfKeyType, $IfKey, $IfHostap, $IfWifi, $IfUp)= json_decode($Output[0], TRUE);
 			} else {
 				$IfConfigured= '<br />('._('unconfigured').')';
 				$CanDelete= FALSE;
@@ -245,9 +254,24 @@ require_once($VIEW_PATH.'/header.php');
 											<td class="ifs">
 												<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
 												<?php
+												$confirm= _NOTICE('Are you sure you want to restart the interface <IF>?');
+												$confirm= preg_replace('/<IF>/', $If, $confirm);
+
+												$UpName= $IfUp == 'up' ? 'Down' : 'Up';
+												$UpButton= $IfUp == 'up' ? _CONTROL('Down') : _CONTROL('Up');
+
+												$confirm_updown= _NOTICE('Are you sure you want to <ENABLE> the interface <IF>?');
+												$confirm_updown= preg_replace('/<ENABLE>/', $IfUp == 'up' ? _NOTICE('disable') : _NOTICE('enable'), $confirm_updown);
+												$confirm_updown= preg_replace('/<IF>/', $If, $confirm_updown);
+												?>
+												<input type="submit" name="Restart" value="<?php echo _CONTROL('Restart') ?>" onclick="return confirm('<?php echo $confirm ?>')"/>
+												<input type="submit" name="<?php echo $UpName ?>" value="<?php echo $UpButton ?>" onclick="return confirm('<?php echo $confirm_updown ?>')"/>
+												<?php
 												if ($CanDelete) {
+													$confirm= _NOTICE('Are you sure you want to delete the interface <IF>?');
+													$confirm= preg_replace('/<IF>/', $If, $confirm);
 													?>
-													<input type="submit" name="Delete" value="<?php echo _CONTROL('Delete') ?>"/>
+													<input type="submit" name="Delete" value="<?php echo _CONTROL('Delete') ?>" onclick="return confirm('<?php echo $confirm ?>')"/>
 													<?php
 												}
 												?>
