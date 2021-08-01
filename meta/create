@@ -110,4 +110,8 @@ done
 
 cksum -a SHA256 * > SHA256
 signify -S -s $SECRET_KEY -m SHA256 -e -x SHA256.sig
+if [[ $? != 0 ]]; then
+	echo "signify failed, exiting..."
+	exit 1
+fi
 rm SHA256
