@@ -86,16 +86,10 @@ class Dnsmasq extends Model
 
 	function ParseLogLine($logline, &$cols)
 	{
-		global $Re_Ip;
-
 		if ($this->ParseSyslogLine($logline, $cols)) {
-			$re_ip= "($Re_Ip)";
-			$re_domain= '(\S+)';
-			$re_type= '(\S+)';
-
 			// query[A] www.openbsd.org from 192.168.0.2
 			// query[AAAA] 1.ubuntu.pool.ntp.org from 192.168.0.2
-			$re= "/query\[$re_type]\s+$re_domain\s+from\s+$re_ip/";
+			$re= "/query\[(\S+)\]\s+(\S+)\s+from\s+(\S+)/";
 			if (preg_match($re, $cols['Log'], $match)) {
 				// Type field is for statistics only, not shown on Logs pages
 				$cols['Type']= $match[1];
@@ -106,13 +100,16 @@ class Dnsmasq extends Model
 				// Since we have further parsed the Log field now, update it
 				$cols['Log']= $cols['Reason'].' '.$cols['Type'];
 			} else {
-				// config error is REFUSED
-				if (preg_match('/REFUSED/', $cols['Log'])) {
-					$cols['Reason']= 'REFUSED';
+				// cached yahoo.com is 74.6.231.20
+				// cached detectportal.firefox.com is <CNAME>
+				// cached connectivity-check.ubuntu.com is NODATA-IPv6
+				if (preg_match("/^cached\s+(\S+)\s+is\s+/", $cols['Log'])) {
+					$cols['Reason']= 'cached';
+					$cols['Log']= htmlentities($cols['Log']);
 				} else {
-					// cached yahoo.com is 74.6.231.20
-					if (preg_match('/cached\s+$re_domain\s+is\s+$re_ip/', $cols['Log'])) {
-						$cols['Reason']= 'cached';
+					// config error is REFUSED
+					if (preg_match('/\s+is\s+REFUSED$/', $cols['Log'])) {
+						$cols['Reason']= 'REFUSED';
 					}
 				}
 			}
