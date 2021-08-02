@@ -33,7 +33,7 @@ class Dante extends Model
 	public $LogFile= '/var/log/sockd.log';
 	public $VersionCmd= '/usr/local/sbin/sockd -v';
 	
-	public $PidFile= '/var/run/sockd.pid';
+	public $PidFile= '/var/log/utmfw/run/sockd.pid';
 	
 	function __construct()
 	{

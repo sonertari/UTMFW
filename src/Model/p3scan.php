@@ -34,7 +34,7 @@ class P3scan extends Model
 
 	public $VersionCmd= '/usr/local/sbin/p3scan -v';
 
-	public $PidFile= '/var/run/p3scan/p3scan.pid';
+	public $PidFile= '/var/log/utmfw/run/p3scan/p3scan.pid';
 	
 	function __construct()
 	{

@@ -33,7 +33,7 @@ class Freshclam extends Model
 	public $ConfFile= '/etc/freshclam.conf';
 	public $LogFile= '/var/log/freshclam.log';
 	
-	public $PidFile= '/var/run/clamav/freshclam.pid';
+	public $PidFile= '/var/log/utmfw/run/clamav/freshclam.pid';
 	
 	function __construct()
 	{

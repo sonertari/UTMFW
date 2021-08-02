@@ -31,7 +31,7 @@ class Sslproxy extends Model
 	
 	public $VersionCmd= '/usr/local/bin/sslproxy -V 2>&1';
 	
-	public $PidFile= '/var/run/sslproxy.pid';
+	public $PidFile= '/var/log/utmfw/run/sslproxy.pid';
 	
 	function __construct()
 	{
