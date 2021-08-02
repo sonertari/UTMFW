@@ -18,13 +18,14 @@
 
 ARCH=arm64
 
+add_platform_site_files() {
+	cp -R -v $ROOT_PATH/openbsd/$INSTALL_SETS_PATH/firmware $ROOT_PATH/$SITE_DIR/etc/
+	echo "set tty fb0\nset timeout 5" > $ROOT_PATH/$SITE_DIR/etc/boot.conf
+}
+
 EXCLUDE_FROM_SHA256="SHA256 SHA256.sig"
 
 . ./meta/create
-
-cd $ROOT_PATH/$SITE_DIR
-cp -R -v $ROOT_PATH/openbsd/$INSTALL_SETS_PATH/firmware ./etc/
-echo "set tty fb0\nset timeout 5" > ./etc/boot.conf
 
 IMG_FILE=utmfw${VMAJ}${VMIN}${SUBVERSION}_${ARCH}.img
 

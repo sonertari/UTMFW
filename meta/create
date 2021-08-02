@@ -97,6 +97,9 @@ doas rm -rf *
 for site in $SITE_CONTENTS; do
 	cp -R -v $ROOT_PATH/meta/$site .
 done
+
+add_platform_site_files
+
 doas chown -R root:wheel *
 tar czhf $SITE_FILE $SITE_CONTENTS
 ln -fs $ROOT_PATH/$SITE_DIR/$SITE_FILE $ROOT_PATH/$CD_PATH/$INSTALL_SETS_PATH/$SITE_FILE

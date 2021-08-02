@@ -18,6 +18,9 @@
 
 ARCH=amd64
 
+add_platform_site_files() {
+}
+
 EXCLUDE_FROM_SHA256="boot.catalog SHA256 SHA256.sig"
 
 . ./meta/create
