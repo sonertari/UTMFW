@@ -62,7 +62,7 @@ function ApplyConfig()
 		if (!$View->Controller($output, 'SetIntnet', $lancidr)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting pf internal net: $lancidr");
 		}
-		
+
 		if (!$View->Controller($output, 'SetAfterhoursIf', $lanif)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting pf afterhours interface: $lanif");
 		}
@@ -71,95 +71,91 @@ function ApplyConfig()
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting pf restricted ip: $lancidr");
 		}
 
-		$View->Model= 'named';
-		if (! $View->Controller($output, 'SetListenOn', $lanip)) {
-			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting listen-on: $lanip");
+		$View->Model= 'dnsmasq';
+		if (! $View->Controller($output, 'SetListenOn', $lanif)) {
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting listen-on: $lanif");
 		}
-		
-		if (!$View->Controller($output, 'SetForwarders', $mygate)) {
-			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting forwarders: $mygate");
-		}
-		
+
 		$View->Model= 'system';
 		$host= "$lanip	$myname ".explode(".", $myname)[0];
 		if (!$View->Controller($output, 'AddHost', $host)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting hosts: $host");
 		}
-		
+
 		if (!$View->Controller($output, 'SetManCgiHome', $lanip)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting man.cgi home: $lanip");
 		}
-		
+
 		$View->Model= 'sslproxy';
 		if (!$View->Controller($output, 'SetUserAuthURL', $lanip)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting userauth url: $lanip");
 		}
-		
+
 		$View->Model= 'dhcpd';
 		ComputeDhcpdIpRange($lanip, $lannet, $lanbc, $min, $max);
 		if (!$View->Controller($output, 'SetDhcpdConf', $lanip, $lanmask, $lannet, $lanbc, $min, $max)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting dhcpd configuration: $lanip, $lanmask, $lannet, $lanbc, $min, $max");
 		}
-		
+
 		if (!$View->Controller($output, 'AddIf', $lanif)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting dhcpd interface: $lanif");
 		}
-		
+
 		$View->Model= 'snort';
 		if (!$View->Controller($output, 'SetStartupIfs', $lanif, $wanif)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting snort interfaces: $lanif, $wanif");
 		}
-		
+
 		$View->Model= 'spamd';
 		if (!$View->Controller($output, 'SetStartupIf', $wanif)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting spamlogd interfaces: $wanif");
 		}
-		
+
 		$View->Model= 'dante';
 		if (!$View->Controller($output, 'SetIfs', $lanif, $wanif)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting dante interfaces: $lanif, $wanif");
 		}
-		
+
 		if (!$View->Controller($output, 'SetIntnet', $lancidr)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting dante internal net: $lancidr");
 		}
-		
+
 		$View->Model= 'smtp-gated';
 		if (!$View->Controller($output, 'SetConfValue', 'proxy_name', $myname, '', '')) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting smtp-gated proxy_name: $myname");
 		}
-		
+
 		$View->Model= 'e2guardian';
 		if (!$View->Controller($output, 'SetTemplateIps', $lanip)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting e2guardian template ips: $lanip");
 		}
-		
+
 		if (!$View->Controller($output, 'SetUserFilterGrp', 'utmfw', '1')) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed adding e2guardian network user utmfw to first group');
 		}
-		
+
 		$View->Model= 'snortips';
 		if (!$View->Controller($output, 'AddAllowedIp', $lanip)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting snortips whitelist: $lanip");
 		}
-		
+
 		if (preg_match("/^$Re_Ip$/", $wanip)) {
 			if (!$View->Controller($output, 'AddAllowedIp', $wanip)) {
 				wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting snortips whitelist: $wanip");
 			}
 		}
-		
+
 		if (preg_match("/^$Re_Ip$/", $mygate)) {
 			if (!$View->Controller($output, 'AddAllowedIp', $mygate)) {
 				wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting snortips whitelist: $mygate");
 			}
 		}
-		
+
 		$View->Model= 'pmacct';
 		if (!$View->Controller($output, 'SetIf', $lanif)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting pmacct if: $lanif");
 		}
-		
+
 		if (!$View->Controller($output, 'SetNet', $lancidr)) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting pmacct network: $lancidr");
 		}

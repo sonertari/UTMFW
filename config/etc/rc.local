@@ -23,10 +23,9 @@ if [ -x /usr/local/sbin/php-fpm-8.0 ]; then
 	/usr/local/sbin/php-fpm-8.0
 fi
 
-# Start ISC DNS server
-if [ -x /usr/local/sbin/named ]; then
-	echo 'DNS server'
-	/usr/local/sbin/named -t /var/named
+if [ -x /usr/local/sbin/dnsmasq ]; then
+	echo 'DNS forwarder'
+	/usr/local/sbin/dnsmasq
 fi
 
 echo -n 'Monitoring:'

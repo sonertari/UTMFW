@@ -66,7 +66,7 @@ class System extends Model
 		 */
 		$this->rcLocalServices= array(
 			'/usr/local/sbin/php-fpm-8.0',
-			'/usr/local/sbin/named',
+			'/usr/local/sbin/dnsmasq',
 			'/usr/local/bin/sslproxy',
 			'/usr/local/sbin/e2guardian',
 			'/usr/local/bin/snort',

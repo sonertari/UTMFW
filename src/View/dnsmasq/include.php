@@ -54,7 +54,7 @@ $Menu = array(
 	);
 
 $LogConf = array(
-	'named' => array(
+	'dnsmasq' => array(
 		'Fields' => array(
 			'Date' => _TITLE('Date'),
 			'Time' => _TITLE('Time'),
@@ -65,25 +65,25 @@ $LogConf = array(
 			'Log' => _TITLE('Log'),
 			),
 		'HighlightLogs' => array(
-			'Col' => 'Log',
+			'Col' => 'Reason',
 			'REs' => array(
-				'red' => array('failed'),
-				'yellow' => array('success'),
+				'red' => array('REFUSED'),
+				'yellow' => array('cached'),
 				),
 			),
 		),
 	);
 
-class Named extends View
+class Dnsmasq extends View
 {
-	public $Model= 'named';
-	public $Layout= 'named';
+	public $Model= 'dnsmasq';
+	public $Layout= 'dnsmasq';
 
 	function __construct()
 	{
 		$this->Module= basename(dirname($_SERVER['PHP_SELF']));
-		$this->Caption= _TITLE('DNS Server');
-		$this->LogsHelpMsg= _HELPWINDOW('DNS server logs all name lookups. You should see many requests from the system itself along with those from internal clients.');
+		$this->Caption= _TITLE('DNS Forwarder');
+		$this->LogsHelpMsg= _HELPWINDOW('DNS forwarder logs all queries.');
 	}
 
 	static function DisplayDashboardExtras()
@@ -91,12 +91,12 @@ class Named extends View
 		?>
 		<tr>
 			<td colspan="4">
-				<a class="transparent" href="/named/stats.php"><img src="/system/dashboard/dns.png" name="dns" alt="dns" title="<?php echo _TITLE2('Requests handled by the DNS Server') ?>"></a>
+				<a class="transparent" href="/dnsmasq/stats.php"><img src="/system/dashboard/dns.png" name="dns" alt="dns" title="<?php echo _TITLE2('Queries handled by the DNS forwarder') ?>"></a>
 			</td>
 		</tr>
 		<?php
 	}
 }
 
-$View= new Named();
+$View= new Dnsmasq();
 ?>

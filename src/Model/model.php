@@ -3272,7 +3272,7 @@ $ModelsToLogConfig= array(
 	'smtp-gated',
 	'imspector',
 	'dhcpd',
-	'named',
+	'dnsmasq',
 	'openvpn',
 	'openssh',
 	'ftp-proxy',

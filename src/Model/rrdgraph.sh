@@ -396,13 +396,15 @@ $RRDTOOL graph sslproxy.png $GENERAL_OPTS $SIZE -s $START \
     STACK:idle#bf8700:idle \
     STACK:expired#00b91e:expired >/dev/null
 
-# DNS Server
+# DNS Forwarder
 $RRDTOOL graph dns.png $GENERAL_OPTS $SIZE -s $START \
     -t "Queries" \
-    DEF:all=$COLLECTD_RRD_ROOT/tail-named/derive-all.rrd:value:AVERAGE \
-    DEF:failed=$COLLECTD_RRD_ROOT/tail-named/derive-failed.rrd:value:AVERAGE \
-    AREA:all#008194:all \
-    STACK:failed#FF0000:failed >/dev/null
+    DEF:query=$COLLECTD_RRD_ROOT/tail-dnsmasq/derive-query.rrd:value:AVERAGE \
+    DEF:refused=$COLLECTD_RRD_ROOT/tail-dnsmasq/derive-refused.rrd:value:AVERAGE \
+    DEF:cached=$COLLECTD_RRD_ROOT/tail-dnsmasq/derive-cached.rrd:value:AVERAGE \
+    AREA:query#008194:query \
+    STACK:refused#da5400:refused \
+    STACK:cached#bf8700:cached >/dev/null
 
 # FTP Proxy
 $RRDTOOL graph ftp-proxy.png $GENERAL_OPTS $SIZE -s $START \

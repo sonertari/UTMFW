@@ -3,12 +3,12 @@
 etc/collectd/clamav.conf,644,root,wheel
 etc/collectd/dante.conf,644,root,wheel
 etc/collectd/dhcpd.conf,644,root,wheel
+etc/collectd/dnsmasq.conf,644,root,wheel
 etc/collectd/e2guardian.conf,644,root,wheel
 etc/collectd/ftp-proxy.conf,644,root,wheel
 etc/collectd/httpd.conf,644,root,wheel
 etc/collectd/imspector.conf,644,root,wheel
 etc/collectd/monitoring.conf,644,root,wheel
-etc/collectd/named.conf,644,root,wheel
 etc/collectd/openssh.conf,644,root,wheel
 etc/collectd/openvpn.conf,644,root,wheel
 etc/collectd/p3scan.conf,644,root,wheel
@@ -120,6 +120,7 @@ etc/sslproxy/sslproxy.conf,644,root,wheel
 etc/clamd.conf,644,root,wheel
 etc/collectd.conf,640,root,_collectd
 etc/dhcpd.conf,644,root,wheel
+etc/dnsmasq.conf,644,root,wheel
 etc/doas.conf,644,root,wheel
 etc/freshclam.conf,644,root,wheel
 etc/httpd.conf,644,root,wheel
@@ -173,11 +174,11 @@ var/log/clamd.log,640,_clamav,wheel
 var/log/ctlr.log,640,root,wheel
 var/log/wui.log,640,root,wheel
 var/log/dhcpd.log,640,root,wheel
+var/log/dnsmasq.log,640,root,wheel
 var/log/freshclam.log,640,_clamav,wheel
 var/log/ftp-proxy.log,640,root,wheel
 var/log/imspector.log,640,root,wheel
 var/log/monitoring.log,640,root,wheel
-var/log/named.log,640,root,wheel
 var/log/openvpn.log,640,root,wheel
 var/log/p3scan.log,640,root,wheel
 var/log/smtp-gated.log,640,root,wheel
@@ -186,5 +187,4 @@ var/log/sockd.log,640,root,wheel
 var/log/spamd.log,640,root,wheel
 var/log/sslproxy/sslproxy.log,640,root,wheel
 var/log/sslproxy/conns.log,640,root,wheel
-var/named/etc/named.conf,640,root,_bind
 var/rsync.rules,644,root,wheel

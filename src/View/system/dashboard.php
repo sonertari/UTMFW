@@ -27,7 +27,7 @@ $SavedLogConf= $LogConf;
 require_once($VIEW_PATH.'/httpd/httpd.php');
 require_once($VIEW_PATH.'/pf/pf.php');
 require_once($VIEW_PATH.'/sslproxy/sslproxy.php');
-require_once($VIEW_PATH.'/named/include.php');
+require_once($VIEW_PATH.'/dnsmasq/include.php');
 require_once($VIEW_PATH.'/dhcpd/include.php');
 require_once($VIEW_PATH.'/ftp-proxy/include.php');
 require_once($VIEW_PATH.'/e2guardian/e2guardian.php');
@@ -323,7 +323,7 @@ function DisplayModuleStatus($Module, $DisplayDashboardExtrasFunc= FALSE)
 			<table id="modulestatus">
 				<?php
 				DisplayModuleStatus('sslproxy', fn() => SSLproxy::DisplayDashboardExtras());
-				DisplayModuleStatus('named', fn() => Named::DisplayDashboardExtras());
+				DisplayModuleStatus('dnsmasq', fn() => Dnsmasq::DisplayDashboardExtras());
 				DisplayModuleStatus('dhcpd', fn() => Dhcpd::DisplayDashboardExtras());
 				DisplayModuleStatus('ftp-proxy', fn() => Ftpproxy::DisplayDashboardExtras());
 				?>

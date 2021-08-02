@@ -37,7 +37,7 @@ require_once($VIEW_PATH.'/header.php');
 
 $ServiceDescs= array(
 	'/usr/local/sbin/php-fpm-8.0'	=> _TITLE2('PHP FastCGI Server'),
-	'/usr/local/sbin/named'			=> _TITLE2('DNS Server'),
+	'/usr/local/sbin/dnsmasq'		=> _TITLE2('DNS Forwarder'),
 	'/usr/local/bin/sslproxy'		=> _TITLE2('SSL Proxy'),
 	'/usr/local/sbin/e2guardian'	=> _TITLE2('Web Filter'),
 	'/usr/local/bin/snort'			=> _TITLE2('Intrusion Detection and Prevention'),

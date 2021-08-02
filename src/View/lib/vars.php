@@ -87,7 +87,7 @@ $UTMFW_MODULES = array(
 		'Name' => _MENU('DHCP'),
 		'Perms' => $ALL_USERS,
 		),
-	'named' => array(
+	'dnsmasq' => array(
 		'Name' => _MENU('DNS'),
 		'Perms' => $ALL_USERS,
 		),

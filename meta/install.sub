@@ -393,14 +393,14 @@ makedev() {
 GetPkgDesc() {
 
 	case $1 in
-		isc-bind-*) 				pkgdesc="DNS Server" ;;
-		sslproxy-*) 				pkgdesc="SSL Proxy" ;;
+		dnsmasq-*) 				pkgdesc="DNS Forwarder" ;;
+		sslproxy-*) 			pkgdesc="SSL Proxy" ;;
 		clamav-*) 				pkgdesc="Virus Scanner" ;;
 		clamavdb.*) 			pkgdesc="Virus Database" ;;
-		p5-Mail-SpamAssassin-*) pkgdesc="SPAM Scanner" ;;
+		p5-Mail-SpamAssassin-*)	pkgdesc="SPAM Scanner" ;;
 		p3scan-*) 				pkgdesc="POP3 Proxy" ;;
 		smtp-gated-*) 			pkgdesc="SMTP Proxy" ;;
-		e2guardian-*) 		pkgdesc="Web Filter" ;;
+		e2guardian-*)			pkgdesc="Web Filter" ;;
 		blacklists.*) 			pkgdesc="Web Filter Blacklists" ;;
 		snort-*) 				pkgdesc="IDP: IDS and Inline IPS" ;;
 		snortrules.*)			pkgdesc="IDP Rules" ;;
@@ -412,7 +412,7 @@ GetPkgDesc() {
 		pmacct-*) 				pkgdesc="Network Monitoring" ;;
 		collectd-*) 			pkgdesc="System Statistics" ;;
 		pftop-*) 				pkgdesc="Packet Filter Monitoring" ;;
-		php-*) 				pkgdesc="PHP" ;;
+		php-*)					pkgdesc="PHP" ;;
 		$CW_WEBIF_TARFILE) 		pkgdesc="Web Administration Interface" ;;
 		$CW_CONFIG_TARFILE) 	pkgdesc="Configuration Files" ;;
 		*) 						return 1 ;;
@@ -728,9 +728,6 @@ __EOT
 
 			cd $DESTDIR/etc/p3scan/
 			ln -sf p3scan-en.mail p3scan.mail
-
-			# Otherwise named gives permission denied errors
-			chown -R _bind:_bind $DESTDIR/var/named/ || _installerror=1
 
 			# rsync is used by the modified rc scripts to sync the mfs /var/log to disk
 			echo "Installing rsync..."
@@ -1115,7 +1112,7 @@ CDDEVS=$(scan_dmesg "${MDCDDEVS:-/^cd[0-9][0-9]* /s/ .*//p}")
 [[ -z $CDDEVS ]] && CDDEVS="cd0,cd1,cd2"
 
 # Selected sets will be installed in the order they are listed in $THESETS.
-THESETS="isc-bind-9.16.10v2.tgz \
+THESETS="dnsmasq-2.85.tgz \
 		sslproxy-0.8.3.tgz \
 		clamav-0.103.2.tgz \
 		clamavdb.tar.gz \

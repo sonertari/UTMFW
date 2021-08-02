@@ -27,6 +27,6 @@ require_once($VIEW_PATH.'/header.php');
 		
 $View->PrintStatusForm();
 
-PrintHelpWindow(_HELPWINDOW('This name server is a BIND 9 compatible DNS server, which runs in a chroot jail.'));
+PrintHelpWindow(_HELPWINDOW('The DNS forwarder sends all queries to the name servers in /etc/resolv.conf.'));
 require_once($VIEW_PATH.'/footer.php');
 ?>

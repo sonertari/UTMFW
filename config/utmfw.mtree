@@ -36,11 +36,11 @@ clamd.log		type=file mode=0640 uname=_clamav gname=wheel
 ctlr.log		type=file mode=0640 uname=root gname=wheel
 wui.log			type=file mode=0640 uname=root gname=wheel
 dhcpd.log		type=file mode=0640 uname=root gname=wheel
+dnsmasq.log		type=file mode=0640 uname=root gname=wheel
 freshclam.log		type=file mode=0640 uname=_clamav gname=wheel
 ftp-proxy.log		type=file mode=0640 uname=root gname=wheel
 imspector.log		type=file mode=0640 uname=root gname=wheel
 monitoring.log		type=file mode=0640 uname=root gname=wheel
-named.log		type=file mode=0640 uname=root gname=wheel
 openvpn.log		type=file mode=0640 uname=root gname=wheel
 p3scan.log		type=file mode=0640 uname=root gname=wheel
 smtp-gated.log		type=file mode=0640 uname=root gname=wheel
@@ -52,11 +52,6 @@ sslproxy.log		type=file mode=0640 uname=root gname=wheel
 conns.log		type=file mode=0640 uname=root gname=wheel
 ..	#var/log/sslproxy
 ..	#var/log
-named			type=dir mode=0755 uname=_bind gname=_bind flags=none
-etc			type=dir mode=0750 uname=_bind gname=_bind
-named.conf		type=file mode=0640 uname=_bind gname=_bind
-..	#var/named/etc
-..	#var/named
 www			type=dir mode=0755 uname=root gname=daemon
 htdocs			type=dir mode=0755 uname=root gname=wheel
 utmfw			type=dir mode=0755 uname=root gname=wheel
@@ -75,12 +70,12 @@ collectd		type=dir mode=0755 uname=root gname=wheel
 clamav.conf		type=file mode=0644 uname=root gname=wheel
 dante.conf		type=file mode=0644 uname=root gname=wheel
 dhcpd.conf		type=file mode=0644 uname=root gname=wheel
+dnsmasq.conf		type=file mode=0644 uname=root gname=wheel
 e2guardian.conf		type=file mode=0644 uname=root gname=wheel
 ftp-proxy.conf		type=file mode=0644 uname=root gname=wheel
 httpd.conf		type=file mode=0644 uname=root gname=wheel
 imspector.conf		type=file mode=0644 uname=root gname=wheel
 monitoring.conf		type=file mode=0644 uname=root gname=wheel
-named.conf		type=file mode=0644 uname=root gname=wheel
 openssh.conf		type=file mode=0644 uname=root gname=wheel
 openvpn.conf		type=file mode=0644 uname=root gname=wheel
 p3scan.conf		type=file mode=0644 uname=root gname=wheel

@@ -174,7 +174,7 @@ class Symon extends Monitoring
 			'perl',
 			'sshd',
 			'smtp-gated',
-			'named',
+			'dnsmasq',
 			'dhcpd',
 			'sockd',
 			'imspector',
