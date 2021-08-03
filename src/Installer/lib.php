@@ -348,7 +348,7 @@ function GetIfSelection()
 
 		$warn= PrintIfConfig($lanif, $wanif);
 		
-		$selection= readline2('Type done to accept or press enter to try again: ');
+		$selection= readline2("Type 'done' to accept or press enter to try again: ");
 		if ($selection === 'done') {
 			break;
 		}
@@ -412,6 +412,8 @@ function EnableHostap()
 	exec("ifconfig $intif 2>/dev/null | grep -q \"^[[:space:]]*ieee80211:\"", $output, $retval);
 
 	if ($retval === 0) {
+		echo "\nInternal interface $intif is a Wi-fi interface";
+
 		$driver= rtrim($intif, '0..9');
 		$selection= ReadSelection("\nEnable hostap on $intif (make sure $driver(4) supports Host AP mode)? [yes] ", array('yes', 'no'));
 		if ($selection === '' || $selection === 'yes') {
@@ -530,11 +532,13 @@ function GenerateSSLKeyPairs()
 	// In case
 	$View->Model= 'system';
 
-	echo "\nGenerating the SSL key pairs for httpd, openvpn, and sslproxy\n";
+	echo "Generating the SSL key pairs for httpd, openvpn, and sslproxy\n";
 	$serial= '1';
 	$n= readline2("Set serial to? [1] ");
 	if (preg_match('/^\d{1,4}$/', $n)) {
 		$serial= $n;
+	} else if ($n !== '') {
+		echo "\nInvalid serial\n";
 	}
 	echo "Setting serial to $serial\n";
 
@@ -551,7 +555,7 @@ function ConfigMFS()
 	// In case
 	$View->Model= 'system';
 
-	echo "\nIf the system has enough memory, you can mount /var/log as MFS\n";
+	echo "\nIf the system has enough memory, you can mount /var/log as MFS";
 	$selection= ReadSelection("\nEnable MFS? [yes] ", array('yes', 'no'));
 
 	if ($selection === '') {
@@ -587,11 +591,13 @@ function ConfigMFS()
 
 		echo "\nMFS size of 1024m or more is recommended\n";
 
-		$s= readline2("Set MFS size to? [$size] ");
+		$s= readline2("Set MFS size to (you can use k/m/g or K/M/G suffix)? [$size] ");
 		if (preg_match('/^\d+[kKmMgG]*$/', $s)) {
 			$size= $s;
+		} else if ($s !== '') {
+			echo "\nInvalid MFS size\n";
 		}
-		echo "Setting MFS size to $size\n";
+		echo "\nSetting MFS size to $size\n";
 
 		if (!$View->Controller($Output, 'SetMFSSize', $size)) {
 			$msg= "Failed setting MFS size to $size";
@@ -600,7 +606,7 @@ function ConfigMFS()
 		}
 
 		echo "\nMFS /var/log can be set to persist, so its contents are not lost on shutdown\n";
-		echo "Note that syncing /var/log to disk can take some time\n";
+		echo "Note that syncing /var/log to disk can take some time";
 		$selection= ReadSelection("\nEnable persistent MFS? [yes] ", array('yes', 'no'));
 
 		if ($selection === '') {
@@ -619,6 +625,7 @@ function ConfigMFS()
 			}
 		}
 	}
+	echo "\n";
 }
 
 /**

@@ -16,15 +16,15 @@
 # You should have received a copy of the GNU General Public License
 # along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
 
-export ROOT_PATH=$(pwd)
+ROOT_PATH=$(pwd)
 VERSION='6.9'
-export SUBVERSION=_$(date +%Y%m%d)
-export VMAJ=${VERSION%%\.*}
-export VMIN=${VERSION##*\.}
+SUBVERSION=_$(date +%Y%m%d)
+VMAJ=${VERSION%%\.*}
+VMIN=${VERSION##*\.}
 
 TMP=tmp
 
-export SITE_DIR=site
+SITE_DIR=site
 SITE_CONTENTS="install.site install.sub root.mail etc"
 SITE_FILE=site${VMAJ}${VMIN}.tgz
 
@@ -43,13 +43,13 @@ PKG_PATH=packages
 
 SECRET_KEY=$ROOT_PATH/docs/signify/utmfw-${VMAJ}${VMIN}.sec
 
-export CD_PATH=cd/${ARCH}
-export INSTALL_SETS_PATH=${VERSION}/${ARCH}
-export SYS_ID="OpenBSD ${VERSION} ${ARCH}"
-export VOL_ID="UTMFW ${VERSION}${SUBVERSION} ${ARCH}"
-export PREP_ID="Soner Tari <sonertari@gmail.org>"
-export PUBLISH_ID="Copyright (C) 2021 Soner Tari, The UTMFW project"
-export APP_ID="UTMFW is a UTM firewall running on OpenBSD ${VERSION}"
+CD_PATH=cd/${ARCH}
+INSTALL_SETS_PATH=${VERSION}/${ARCH}
+SYS_ID="OpenBSD ${VERSION} ${ARCH}"
+VOL_ID="UTMFW ${VERSION}${SUBVERSION} ${ARCH}"
+PREP_ID="Soner Tari <sonertari@gmail.org>"
+PUBLISH_ID="Copyright (C) 2021 Soner Tari, The UTMFW project"
+APP_ID="UTMFW is a UTM firewall running on OpenBSD ${VERSION}"
 
 echo $SYS_ID
 echo $VOL_ID

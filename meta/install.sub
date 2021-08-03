@@ -699,6 +699,10 @@ __EOT
 			;;
 
 		$CW_CONFIG_TARFILE)
+			# rsync is used by the modified rc scripts to sync the mfs /var/log to disk
+			echo "Installing rsync..."
+			pkg_add rsync || _installerror=1
+
 			[[ ! -d $DESTDIR ]] && mkdir -p $DESTDIR
 			[[ ! -d $DESTDIR ]] && (echo "No such directory: $DESTDIR"; INSTALL_ERROR=1; continue)
 
@@ -728,10 +732,6 @@ __EOT
 
 			cd $DESTDIR/etc/p3scan/
 			ln -sf p3scan-en.mail p3scan.mail
-
-			# rsync is used by the modified rc scripts to sync the mfs /var/log to disk
-			echo "Installing rsync..."
-			pkg_add rsync || _installerror=1
 			;;
 
 		$CW_WEBIF_TARFILE)
@@ -1042,6 +1042,7 @@ install_sets() {
 }
 
 finish_up() {
+	echo "Updating ld.so hints..."
 	/sbin/ldconfig /usr/local/lib /usr/X11R6/lib || INSTALL_ERROR=1
 
 	if [[ -f /var/www/htdocs/utmfw/Installer/install.php ]]; then
@@ -1050,6 +1051,7 @@ finish_up() {
 	fi
 
 	# Update mandoc.db to avoid bogus entry errors
+	echo "\nUpdating mandoc.db ..."
 	/usr/sbin/makewhatis /usr/share/man || INSTALL_ERROR=1
 
 	if [ $INSTALL_ERROR -eq 1 ]; then
