@@ -103,6 +103,7 @@ class Dnsmasq extends Model
 				// cached yahoo.com is 74.6.231.20
 				// cached detectportal.firefox.com is <CNAME>
 				// cached connectivity-check.ubuntu.com is NODATA-IPv6
+				// cached 192.168.190.1 is NXDOMAIN
 				if (preg_match("/^cached\s+(\S+)\s+is\s+/", $cols['Log'])) {
 					$cols['Reason']= 'cached';
 					$cols['Log']= htmlentities($cols['Log']);

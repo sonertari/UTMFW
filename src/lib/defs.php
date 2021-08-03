@@ -415,7 +415,7 @@ $StatsConf = array(
 				),
 			),
 		'Cached' => array(
-			'Title' => _STATS('Cache hits'),
+			'Title' => _STATS('Cached queries'),
 			'Needle' => '( cached )',
 			'Color' => 'Yellow',
 			'NVPs' => array(
