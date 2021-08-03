@@ -3,7 +3,7 @@ $OpenBSD$
 Index: src/notify_fifo.c
 --- src/notify_fifo.c.orig
 +++ src/notify_fifo.c
-@@ -0,0 +1,342 @@
+@@ -0,0 +1,343 @@
 +/**
 + * collectd - src/notify_fifo.c
 + *
@@ -115,6 +115,7 @@ Index: src/notify_fifo.c
 +		goto err;
 +	}
 +
++	free(filename);
 +	filename = filepath;
 +
 +	notify_fifo_ctx_t *ctx = notify_fifo_ctx;
@@ -233,7 +234,7 @@ Index: src/notify_fifo.c
 +	while ((nread = getline(&tail[i], &n, fd)) != -1) {
 +		if (nread > MAX_LINE_LEN) {
 +			// Free and skip this line, but increment counters, so tail[i] will be NULL
-+			ERROR(PLUGIN_NAME " getline read too long, reinit fifo and discard %i [%zu]: %s", i, nread, tail[i]);
++			ERROR(PLUGIN_NAME " getline read too long, repair fifo and discard %i [%zu]: %s", i, nread, tail[i]);
 +			sfree(tail[i]);
 +			repair = 1;
 +		} else {
@@ -244,12 +245,12 @@ Index: src/notify_fifo.c
 +	}
 +
 +	if (ferror(fd)) {
-+		ERROR(PLUGIN_NAME ": getline error, reinit fifo: %s", filename);
++		ERROR(PLUGIN_NAME ": getline error, repair fifo: %s", filename);
 +		repair = 1;
 +	}
 +
 +	if (!feof(fd)) {
-+		ERROR(PLUGIN_NAME ": getline not eof, reinit fifo: %s", filename);
++		ERROR(PLUGIN_NAME ": getline not eof, repair fifo: %s", filename);
 +		repair = 1;
 +	}
 +
