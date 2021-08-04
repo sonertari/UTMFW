@@ -312,11 +312,11 @@ class Pf extends Model
 		}
 	}
 
-	function _getModuleStatus($start, $generate_info= FALSE)
+	function _getModuleStatus($start, $generate_info= FALSE, $do_cache= TRUE)
 	{
 		/// @todo Should we get more status info from pfctl -s info output?
 		// For example, the memory counter seems important: 'memory could not be allocated'
-		$status= parent::_getModuleStatus($start, $generate_info);
+		$status= parent::_getModuleStatus($start, $generate_info, $do_cache);
 
 		if ($generate_info) {
 			$status['info']['states']= $this->_getStateCount();

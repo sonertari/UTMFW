@@ -263,9 +263,9 @@ class E2guardian extends Model
 			);
 	}
 
-	function _getModuleStatus($start, $generate_info= FALSE)
+	function _getModuleStatus($start, $generate_info= FALSE, $do_cache= TRUE)
 	{
-		$status= parent::_getModuleStatus($start, $generate_info);
+		$status= parent::_getModuleStatus($start, $generate_info, $do_cache);
 
 		if ($generate_info) {
 			$status['info']['requests']= $this->getRrdValue('derive-all.rrd', $start, $result);

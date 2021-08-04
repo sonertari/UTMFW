@@ -778,11 +778,16 @@ class Model
 	 */
 	function GetReloadRate()
 	{
+		return Output($this->_getReloadRate());
+	}
+
+	function _getReloadRate()
+	{
 		global $VIEW_PATH;
 
 		require($VIEW_PATH.'/lib/setup.php');
 		
-		return Output($DefaultReloadRate);
+		return $DefaultReloadRate;
 	}
 	
 	/**
@@ -2688,11 +2693,19 @@ class Model
 	/**
 	 * Gets service statuses.
 	 */
-	function GetServiceStatus($generate_info= 0, $start= '10min')
+	function GetServiceStatus($get_info= 0, $start= '10min')
 	{
 		global $MODEL_PATH, $ModelFiles, $Models, $ModelsToStat, $DashboardIntervals2Seconds;
 
-		if ($generate_info) {
+		$info= array();
+		$cacheInfo= '/var/log/utmfw/cache/info.json';
+		$generate_info= FALSE;
+
+		if ($get_info && !$this->getCachedContents($cacheInfo, $info)) {
+			$generate_info= TRUE;
+		}
+
+		if ($get_info && $generate_info) {
 			require_once($MODEL_PATH.'/'.$ModelFiles['collectd']);
 
 			$model= new $Models['collectd']();
@@ -2736,34 +2749,45 @@ class Model
 		}
 
 		$status= array();
-		$info= array();
-		foreach ($ModelsToStat as $name => $caption) {
-			if (array_key_exists($name, $ModelFiles)) {
-				require_once($MODEL_PATH.'/'.$ModelFiles[$name]);
+		$cacheStatus= '/var/log/utmfw/cache/status.json';
 
-				if (class_exists($Models[$name])) {
-					$model= new $Models[$name]();
-					// Pass interval down to _getModuleStatus()
-					$module_status= $model->_getModuleStatus($DashboardIntervals2Seconds[$start], $generate_info);
-					if ($module_status !== FALSE) {
-						$status[$name]= $module_status['status'];
-						if ($generate_info) {
-							$info[$name]= $module_status['info'];
+		if (!$this->getCachedContents($cacheStatus, $status)) {
+			foreach ($ModelsToStat as $name => $caption) {
+				if (array_key_exists($name, $ModelFiles)) {
+					require_once($MODEL_PATH.'/'.$ModelFiles[$name]);
+
+					if (class_exists($Models[$name])) {
+						$model= new $Models[$name]();
+
+						// Pass interval down to _getModuleStatus()
+						// Do not cache module status individually here, we accumulate and cache them all in status.json below
+						$module_status= $model->_getModuleStatus($DashboardIntervals2Seconds[$start], $get_info && $generate_info, FALSE);
+						if ($module_status !== FALSE) {
+							$status[$name]= $module_status['status'];
+							if ($get_info) {
+								$info[$name]= $module_status['info'];
+							}
 						}
+					}
+					else {
+						ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in Models: $name");
 					}
 				}
 				else {
-					ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in Models: $name");
+					ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in ModelFiles: $name");
 				}
 			}
-			else {
-				ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in ModelFiles: $name");
-			}
+
+			file_put_contents($cacheStatus, json_encode($status), LOCK_EX);
+		}
+
+		if ($generate_info) {
+			file_put_contents($cacheInfo, json_encode($info), LOCK_EX);
 		}
 
 		$output= array();
 		$output['status']= $status;
-		if ($generate_info) {
+		if ($get_info) {
 			$output['info']= $info;
 		}
 
@@ -2774,6 +2798,28 @@ class Model
 		return Output(json_encode($output));
 	}
 
+	function getCachedContents($filename, &$contents)
+	{
+		if (file_exists($filename)) {
+			$now= intval(exec('date "+%s"'));
+			$ctime= intval(stat($filename)['ctime']);
+			$diff= $now - $ctime;
+
+			$reload_rate= $this->_getReloadRate();
+
+			if ($diff < $reload_rate) {
+				if ($cachedContents= json_decode(file_get_contents($filename), TRUE)) {
+					ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, "Using cached contents from $filename, refresh interval < default reload rate: $diff < $reload_rate seconds");
+					$contents= $cachedContents;
+					return TRUE;
+				} else {
+					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot json_decode cached contents');
+				}
+			}
+		}
+		return FALSE;
+	}
+
 	function GetModuleStatus()
 	{
 		global $StatusCheckInterval;
@@ -2782,48 +2828,57 @@ class Model
 		return Output(json_encode($module_status['status']));
 	}
 
-	function _getModuleStatus($start, $generate_info= FALSE)
+	function _getModuleStatus($start, $generate_info= FALSE, $do_cache= TRUE)
 	{
-		$runStatus= $this->IsRunning() ? 'R' : 'S';
+		$status= array();
+		$cache= "/var/log/utmfw/cache/{$this->CollectdName}_status.json";
 
-		$status= array(
-			'status' => array(
-				'Status' => $runStatus,
-				'ErrorStatus' => 'U',
-				'Critical' => 0,
-				'Error' => 0,
-				'Warning' => 0,
-				'Logs' => array(),
-				),
-			'info' => array()
-			);
+		if (!$this->getCachedContents($cache, $status)) {
+			$runStatus= $this->IsRunning() ? 'R' : 'S';
 
-		$logs= $this->getFifoLogs($start);
-		if ($logs !== FALSE) {
-			$status['status']['Logs']= $logs;
-		}
+			$status= array(
+				'status' => array(
+					'Status' => $runStatus,
+					'ErrorStatus' => 'U',
+					'Critical' => 0,
+					'Error' => 0,
+					'Warning' => 0,
+					'Logs' => array(),
+					),
+				'info' => array()
+				);
 
-		$result= array(
-			'critical' => TRUE,
-			'error' => TRUE,
-			'warning' => TRUE,
-			);
+			$logs= $this->getFifoLogs($start);
+			if ($logs !== FALSE) {
+				$status['status']['Logs']= $logs;
+			}
 
-		foreach (array('warning', 'error', 'critical') as $prio) {
-			$status['status'][ucfirst($prio)]= $this->getRrdValue("derive-$prio.rrd", $start, $result[$prio]);
-		}
+			$result= array(
+				'critical' => TRUE,
+				'error' => TRUE,
+				'warning' => TRUE,
+				);
 
-		if ($status['status']['Critical']) {
-			$status['status']['ErrorStatus']= 'C';
-		}
-		else if ($status['status']['Error']) {
-			$status['status']['ErrorStatus']= 'E';
-		}
-		else if ($status['status']['Warning']) {
-			$status['status']['ErrorStatus']= 'W';
-		}
-		else if ($result['critical'] && $result['error'] && $result['warning']) {
-			$status['status']['ErrorStatus']= 'N';
+			foreach (array('warning', 'error', 'critical') as $prio) {
+				$status['status'][ucfirst($prio)]= $this->getRrdValue("derive-$prio.rrd", $start, $result[$prio]);
+			}
+
+			if ($status['status']['Critical']) {
+				$status['status']['ErrorStatus']= 'C';
+			}
+			else if ($status['status']['Error']) {
+				$status['status']['ErrorStatus']= 'E';
+			}
+			else if ($status['status']['Warning']) {
+				$status['status']['ErrorStatus']= 'W';
+			}
+			else if ($result['critical'] && $result['error'] && $result['warning']) {
+				$status['status']['ErrorStatus']= 'N';
+			}
+
+			if ($do_cache) {
+				file_put_contents($cache, json_encode($status), LOCK_EX);
+			}
 		}
 
 		return $status;

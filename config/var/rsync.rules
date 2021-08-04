@@ -9,6 +9,7 @@
 - *.socket
 - /utmfw/.starting
 
+- /utmfw/cache/***
 - /utmfw/dashboard/***
 - /utmfw/downloads/***
 - /utmfw/logs/***

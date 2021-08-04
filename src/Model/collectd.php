@@ -83,9 +83,9 @@ class Collectd extends Monitoring
 		return $killed;
 	}
 
-	function _getModuleStatus($start, $generate_info= FALSE)
+	function _getModuleStatus($start, $generate_info= FALSE, $do_cache= TRUE)
 	{
-		$status= parent::_getModuleStatus($start, $generate_info);
+		$status= parent::_getModuleStatus($start, $generate_info, $do_cache);
 
 		if ($generate_info) {
 			// We are interested in the ping times in the last 60 seconds only

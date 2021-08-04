@@ -714,9 +714,9 @@ class System extends Model
 		return Output(json_encode($config));
 	}
 
-	function _getModuleStatus($start, $generate_info= FALSE)
+	function _getModuleStatus($start, $generate_info= FALSE, $do_cache= TRUE)
 	{
-		$status= parent::_getModuleStatus($start, $generate_info);
+		$status= parent::_getModuleStatus($start, $generate_info, $do_cache);
 
 		if ($generate_info) {
 			$uptime= $this->RunShellCommand('/usr/bin/uptime');

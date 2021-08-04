@@ -8,6 +8,8 @@ BASEDIR=/var/log/utmfw
 
 [[ ! -d $BASEDIR ]] && mkdir $BASEDIR
 
+[[ ! -d $BASEDIR/cache ]] && mkdir $BASEDIR/cache
+
 [[ ! -d $BASEDIR/collectd ]] && mkdir $BASEDIR/collectd
 [[ ! -d $BASEDIR/collectd/fifo ]] && mkdir $BASEDIR/collectd/fifo
 [[ ! -d $BASEDIR/collectd/rrd ]] && mkdir $BASEDIR/collectd/rrd
