@@ -124,7 +124,7 @@ class Collectd extends Monitoring
 				}
 			}
 		}
-		return sprintf('%6.1lf ms', $count ? $total/$count : '0');
+		return sprintf('%.1lf ms', $count ? $total/$count : '0');
 	}
 
 	/**
