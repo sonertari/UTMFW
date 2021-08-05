@@ -248,7 +248,7 @@ function FilterPreviousLogs()
 {
 	global $ServiceStatus;
 
-	$notifierFile= '/var/log/utmfw/out/NotifierServiceStatus.json';
+	$notifierFile= UTMFWDIR.'/out/NotifierServiceStatus.json';
 
 	$previousServiceStatus= array();
 	if (file_exists($notifierFile)) {

@@ -41,7 +41,7 @@ class E2guardian extends Model
 						
 	public $VersionCmd= '/usr/local/sbin/e2guardian -v';
 
-	public $PidFile= '/var/log/utmfw/run/e2guardian.pid';
+	public $PidFile= UTMFWDIR.'/run/e2guardian.pid';
 	
 	function __construct()
 	{

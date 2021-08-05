@@ -31,7 +31,7 @@ class Clamd extends Model
 	
 	public $VersionCmd= '/usr/local/sbin/clamd -V';
 	
-	public $PidFile= '/var/log/utmfw/run/clamav/clamd.pid';
+	public $PidFile= UTMFWDIR.'/run/clamav/clamd.pid';
 	
 	function __construct()
 	{

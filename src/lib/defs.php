@@ -31,6 +31,8 @@ $SRC_ROOT= dirname(dirname(__FILE__));
 $VIEW_PATH= $SRC_ROOT . '/View';
 $MODEL_PATH= $SRC_ROOT . '/Model';
 
+define('UTMFWDIR', '/var/log/utmfw');
+
 /// Syslog priority strings.
 $LOG_PRIOS= array(
 	'LOG_EMERG',	// system is unusable

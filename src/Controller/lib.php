@@ -23,10 +23,10 @@
  */
 
 /// Output and error redirect file.
-$TmpFile= '/var/log/utmfw/out/ctlr.out';
+$TmpFile= UTMFWDIR.'/out/ctlr.out';
 
 /// Return value redirect file.
-$RetvalFile= '/var/log/utmfw/out/retval.out';
+$RetvalFile= UTMFWDIR.'/out/retval.out';
 
 /// Matches model names to files. View provides the name only.
 $ModelFiles= array(

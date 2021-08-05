@@ -41,7 +41,7 @@ class System extends Model
 	private $rootCronTab= '/var/cron/tabs/root';
 	private $cronDir= '/var/cron/';
 
-	private $userdb= '/var/log/utmfw/db/users.db';
+	private $userdb= UTMFWDIR.'/db/users.db';
 
 	function __construct()
 	{
@@ -948,9 +948,9 @@ class System extends Model
 
 		$result= TRUE;
 		// symon
-		exec("/bin/rm -f /var/log/utmfw/symon/cache/* 2>&1", $output, $retval);
+		exec("/bin/rm -f {$this->UTMFWDIR}/symon/cache/* 2>&1", $output, $retval);
 		// Failing to clear the cache dir is not fatal
-		exec("/bin/rm -f /var/log/utmfw/symon/rrds/localhost/*.rrd 2>&1", $output, $retval);
+		exec("/bin/rm -f {$this->UTMFWDIR}/symon/rrds/localhost/*.rrd 2>&1", $output, $retval);
 		if ($retval === 0) {
 			exec('/bin/sh /usr/local/share/examples/symon/c_smrrds.sh all 2>&1', $output, $retval);
 			if ($retval !== 0) {
@@ -962,9 +962,9 @@ class System extends Model
 		}
 
 		// pnrg
-		exec("/bin/rm -f /var/log/utmfw/pmacct/protograph/utmfw.rrd 2>&1", $output, $retval);
+		exec("/bin/rm -f {$this->UTMFWDIR}/pmacct/protograph/utmfw.rrd 2>&1", $output, $retval);
 		if ($retval === 0) {
-			exec("/bin/sh ${VIEW_PATH}/pmacct/protograph/createrrd.sh 2>&1", $output, $retval);
+			exec("/bin/sh {$VIEW_PATH}/pmacct/protograph/createrrd.sh 2>&1", $output, $retval);
 			if ($retval !== 0) {
 				$result= FALSE;
 			}
@@ -975,18 +975,18 @@ class System extends Model
 
 		// protograph
 		// list.gif is used by pnrg-indexmaker.pl, which we never execute, so we can safely remove *.gif
-		exec("/bin/rm -f /var/log/utmfw/pmacct/pnrg/*.{gif,cgi,rrd,desc} 2>&1", $output, $retval);
+		exec("/bin/rm -f {$this->UTMFWDIR}/pmacct/pnrg/*.{gif,cgi,rrd,desc} 2>&1", $output, $retval);
 		if ($retval !== 0) {
 			$result= FALSE;
 		}
 
 		// collectd
-		exec("/bin/rm -rf /var/log/utmfw/collectd/rrd/localhost/* 2>&1", $output, $retval);
+		exec("/bin/rm -rf {$this->UTMFWDIR}/collectd/rrd/localhost/* 2>&1", $output, $retval);
 		if ($retval !== 0) {
 			$result= FALSE;
 		}
 
-		exec("/bin/rm -f /var/log/utmfw/dashboard/* 2>&1", $output, $retval);
+		exec("/bin/rm -f {$this->UTMFWDIR}/dashboard/* 2>&1", $output, $retval);
 		if ($retval !== 0) {
 			$result= FALSE;
 		}
@@ -1007,7 +1007,7 @@ class System extends Model
 	function DeleteStats()
 	{
 		// Do not remove the base folders, but the folders and/or files under them
-		exec('/bin/rm -rf /var/log/utmfw/logs/* /var/log/utmfw/stats/* /var/log/utmfw/out/* 2>&1', $output, $retval);
+		exec("/bin/rm -rf {$this->UTMFWDIR}/logs/* {$this->UTMFWDIR}/stats/* {$this->UTMFWDIR}/out/* 2>&1", $output, $retval);
 		if ($retval === 0) {
 			return TRUE;
 		}

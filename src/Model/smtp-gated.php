@@ -31,7 +31,7 @@ class Smtpgated extends Model
 	
 	public $VersionCmd= '/usr/local/sbin/smtp-gated -v';
 	
-	public $PidFile= '/var/log/utmfw/run/smtp-gated/smtp-gated.pid';
+	public $PidFile= UTMFWDIR.'/run/smtp-gated/smtp-gated.pid';
 	
 	function __construct()
 	{

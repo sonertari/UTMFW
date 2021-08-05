@@ -25,7 +25,7 @@ class Snortips extends Model
 	public $Name= 'snortips';
 	public $User= 'root';
 
-	private $sigMsgFile= '/var/log/utmfw/tmp/snortips.sigmsg';
+	private $sigMsgFile= UTMFWDIR.'/tmp/snortips.sigmsg';
 
 	public $NVPS= '\h';
 	public $ConfFile= '/etc/snort/snortips.conf';
@@ -33,8 +33,8 @@ class Snortips extends Model
 
 	public $VersionCmd= 'unset LC_ALL; unset LANG; /usr/local/sbin/snortips -V';
 
-	public $PidFile= '/var/log/utmfw/run/snortips.pid';
-	private $dumpFile= '/var/log/utmfw/db/snortips';
+	public $PidFile= UTMFWDIR.'/run/snortips.pid';
+	private $dumpFile= UTMFWDIR.'/db/snortips';
 
 	function __construct()
 	{

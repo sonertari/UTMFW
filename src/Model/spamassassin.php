@@ -35,7 +35,7 @@ class Spamassassin extends Model
 	/// Have to unset LC_ALL and LANG, otherwise perl complains
 	public $VersionCmd= 'unset LC_ALL; unset LANG; /usr/local/bin/spamd -V';
 
-	public $PidFile= '/var/log/utmfw/run/spamassassin.pid';
+	public $PidFile= UTMFWDIR.'/run/spamassassin.pid';
 
 	function __construct()
 	{

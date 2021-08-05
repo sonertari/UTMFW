@@ -41,7 +41,7 @@ class Snortinline extends Snort
 
 	function Start()
 	{
-		$this->StartCmd= "/usr/local/bin/snort -D -d -Q -c $this->ConfFile -u _snort -g _snort -b -l /var/log/snort --pid-path /var/log/utmfw/run/snort";
+		$this->StartCmd= "/usr/local/bin/snort -D -d -Q -c $this->ConfFile -u _snort -g _snort -b -l /var/log/snort --pid-path {$this->UTMFWDIR}/run/snort";
 		return parent::Start();
 	}
 

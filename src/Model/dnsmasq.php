@@ -30,7 +30,7 @@ class Dnsmasq extends Model
 
 	public $VersionCmd= '/usr/local/sbin/dnsmasq -v';
 
-	public $PidFile= '/var/log/utmfw/run/dnsmasq.pid';
+	public $PidFile= UTMFWDIR.'/run/dnsmasq.pid';
 
 	function __construct()
 	{

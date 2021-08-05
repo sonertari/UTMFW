@@ -28,7 +28,7 @@ class Blacklists extends E2guardian
 {
 	public $Name= 'blacklists';
 	
-	public $LogFile= '/var/log/utmfw/out/search.out';
+	public $LogFile= UTMFWDIR.'/out/search.out';
 	
 	private $blacklistsPath= '';
 

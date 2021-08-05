@@ -69,12 +69,15 @@ class Model
 	
 	public $VersionCmd= '';
 
+	/// Makes the UTMFWDIR define easier to use in functions, without adding a global var
+	protected $UTMFWDIR= UTMFWDIR;
+
 	public $PidFile= '';
 
 	/// Used in collectd rrd and fifo file names
 	protected $CollectdName= '';
-	protected $CollectdRrdFolder= '/var/log/utmfw/collectd/rrd/localhost';
-	protected $CollectdFifoFolder= '/var/log/utmfw/collectd/fifo';
+	protected $CollectdRrdFolder= UTMFWDIR.'/collectd/rrd/localhost';
+	protected $CollectdFifoFolder= UTMFWDIR.'/collectd/fifo';
 
 	protected $newSyslogConf= '/etc/newsyslog.conf';
 
@@ -89,7 +92,7 @@ class Model
 		$this->Proc= $this->Name;
 		$this->CollectdName= $this->Name;
 
-		$this->TmpLogsDir= '/var/log/utmfw/logs/'.get_class($this).'/';
+		$this->TmpLogsDir= UTMFWDIR.'/logs/'.get_class($this).'/';
 
 		$this->Config= $ModelConfig;
 
@@ -1566,7 +1569,7 @@ class Model
 			return FALSE;
 		}
 
-		$tmpdir= '/var/log/utmfw/downloads';
+		$tmpdir= UTMFWDIR.'/downloads';
 		$retval= 0;
 		if (!file_exists($tmpdir)) {
 			exec("/bin/mkdir -p $tmpdir 2>&1", $output, $retval);
@@ -2095,7 +2098,7 @@ class Model
 	{
 		$origfilename= basename($this->GetOrigFileName($logfile));
 
-		$statsdir= '/var/log/utmfw/stats/'.get_class($this);
+		$statsdir= UTMFWDIR.'/stats/'.get_class($this);
 		$statsfile= "$statsdir/$origfilename";
 
 		return $statsfile;
@@ -2698,7 +2701,7 @@ class Model
 		global $MODEL_PATH, $ModelFiles, $Models, $ModelsToStat, $DashboardIntervals2Seconds;
 
 		$info= array();
-		$cacheInfo= '/var/log/utmfw/cache/info.json';
+		$cacheInfo= UTMFWDIR.'/cache/info.json';
 		$generate_info= FALSE;
 
 		if ($get_info && !$this->getCachedContents($cacheInfo, $info)) {
@@ -2749,7 +2752,7 @@ class Model
 		}
 
 		$status= array();
-		$cacheStatus= '/var/log/utmfw/cache/status.json';
+		$cacheStatus= UTMFWDIR.'/cache/status.json';
 
 		if (!$this->getCachedContents($cacheStatus, $status)) {
 			foreach ($ModelsToStat as $name => $caption) {
@@ -2791,7 +2794,7 @@ class Model
 			$output['info']= $info;
 		}
 
-		if (file_exists('/var/log/utmfw/.starting')) {
+		if (file_exists(UTMFWDIR.'/.starting')) {
 			Error(_('System is starting up...'));
 		}
 
@@ -2813,7 +2816,7 @@ class Model
 					$contents= $cachedContents;
 					return TRUE;
 				} else {
-					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Cannot json_decode cached contents');
+					ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Cannot json_decode cached contents from $filename");
 				}
 			}
 		}
@@ -2831,7 +2834,7 @@ class Model
 	function _getModuleStatus($start, $generate_info= FALSE, $do_cache= TRUE)
 	{
 		$status= array();
-		$cache= "/var/log/utmfw/cache/{$this->CollectdName}_status.json";
+		$cache= "{$this->UTMFWDIR}/cache/{$this->CollectdName}_status.json";
 
 		if (!$this->getCachedContents($cache, $status)) {
 			$runStatus= $this->IsRunning() ? 'R' : 'S';
