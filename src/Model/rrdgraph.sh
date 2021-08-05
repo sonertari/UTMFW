@@ -19,8 +19,8 @@
 # Some of the rrd graph options used here are borrowed from symon and pmacct 
 # rrd graph scripts.
 
-if [ $# -lt 6 ]; then
-	echo "$0: Not enough arguments [6]: $#"
+if [ $# -lt 7 ]; then
+	echo "$0: Not enough arguments [7]: $#"
 	exit 1
 fi
 
@@ -32,7 +32,9 @@ VIEW_GRAPHS_FOLDER="/var/www/htdocs/utmfw/View/system"
 # Go to the graphs output folder
 cd $GRAPHS_FOLDER
 
-if [[ -f cpu.png ]]; then
+FORCE_GENERATE=$7
+
+if [[ $FORCE_GENERATE == 0 && -f cpu.png ]]; then
     eval $(stat -s cpu.png)
     TIMEDIFF=$(($(date "+%s")-$st_mtime))
 

@@ -60,12 +60,14 @@ if (filter_has_var(INPUT_GET, 'interval')) {
 }
 $_SESSION['system']['DashboardInterval']= $LastDashboardInterval;
 
+$ForceGenerate= 0;
 if ($StatusCheckInterval !== $DashboardIntervals2Seconds[$LastDashboardInterval]) {
 	$View->Controller($Output, 'SetStatusCheckInterval', $DashboardIntervals2Seconds[$LastDashboardInterval]);
+	$ForceGenerate= 1;
 }
 
 $ServiceStatus= array();
-if ($View->Controller($Output, 'GetServiceStatus', 1, $LastDashboardInterval)) {
+if ($View->Controller($Output, 'GetServiceStatus', 1, $LastDashboardInterval, $ForceGenerate)) {
 	$Output= json_decode($Output[0], TRUE);
 	$ServiceInfo= $Output['info'];
 	$ServiceStatus= $Output['status'];
