@@ -2696,13 +2696,17 @@ class Model
 	/**
 	 * Gets service statuses.
 	 */
-	function GetServiceStatus($get_info= 0, $start= '10min', $force_generate= 0)
+	function GetServiceStatus($get_info= 0, $start= '10min', $interval_changed= 0)
 	{
 		global $MODEL_PATH, $ModelFiles, $Models, $ModelsToStat, $DashboardIntervals2Seconds;
 
+		if ($interval_changed) {
+			$this->SetStatusCheckInterval($DashboardIntervals2Seconds[$start]);
+		}
+
 		$info= array();
 		$cacheInfo= UTMFWDIR.'/cache/info.json';
-		$generate_info= $force_generate;
+		$generate_info= $interval_changed;
 
 		if ($get_info && !$generate_info && !$this->getCachedContents($cacheInfo, $info)) {
 			$generate_info= TRUE;
@@ -2747,14 +2751,14 @@ class Model
 				$disk= $disks[0];
 			}
 
-			exec("doas sh $MODEL_PATH/rrdgraph.sh -$start $gateway $remote_target $intif $extif $disk $force_generate", $output, $retval);
+			exec("doas sh $MODEL_PATH/rrdgraph.sh -$start $gateway $remote_target $intif $extif $disk $interval_changed", $output, $retval);
 			Error(implode("\n", $output));
 		}
 
 		$status= array();
 		$cacheStatus= UTMFWDIR.'/cache/status.json';
 
-		if ($force_generate || !$this->getCachedContents($cacheStatus, $status)) {
+		if ($interval_changed || !$this->getCachedContents($cacheStatus, $status)) {
 			foreach ($ModelsToStat as $name => $caption) {
 				if (array_key_exists($name, $ModelFiles)) {
 					require_once($MODEL_PATH.'/'.$ModelFiles[$name]);

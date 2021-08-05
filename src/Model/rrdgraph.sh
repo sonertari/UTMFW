@@ -32,9 +32,9 @@ VIEW_GRAPHS_FOLDER="/var/www/htdocs/utmfw/View/system"
 # Go to the graphs output folder
 cd $GRAPHS_FOLDER
 
-FORCE_GENERATE=$7
+INTERVAL_CHANGED=$7
 
-if [[ $FORCE_GENERATE == 0 && -f cpu.png ]]; then
+if [[ $INTERVAL_CHANGED == 0 && -f cpu.png ]]; then
     eval $(stat -s cpu.png)
     TIMEDIFF=$(($(date "+%s")-$st_mtime))
 
