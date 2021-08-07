@@ -2,7 +2,7 @@
 
 UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW), which can display the notifications sent from UTMFW, and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.9.2 comes with OpenBSD 6.9-stable including all updates until June 14th, 2021.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.9.3 comes with OpenBSD 6.9-stable including all updates until August 7th, 2021.
 
 UTMFW supports the deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -14,9 +14,9 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The UTMFW project releases two installation files:
 
-- The installation iso file for the amd64 arch is available for download at [utmfw69\_20210706\_amd64.iso](https://drive.google.com/file/d/1pWwsmDgU_mpRPJ9gkjBJ67kpHI0agdHK/view?usp=sharing). Make sure the SHA256 checksum is correct: 581ae7b01011cf2dc6c39e43cd1ce210e3f31327d4ff7d07439ffe7238a160db.
+- The installation iso file for the amd64 arch is available for download at [utmfw69\_20210812\_amd64.iso](https://drive.google.com/file/d/1pWwsmDgU_mpRPJ9gkjBJ67kpHI0agdHK/view?usp=sharing). Make sure the SHA256 checksum is correct: 581ae7b01011cf2dc6c39e43cd1ce210e3f31327d4ff7d07439ffe7238a160db.
 
-- The installation img file for the arm64 arch is available for download at [utmfw69\_20210706\_arm64.img](https://drive.google.com/file/d/1-bEbetcXNV-UVP7mYHvuTbmhjvSS2ASY/view?usp=sharing). Make sure the SHA256 checksum is correct: c06579d55e03514ff271063aae64170ed22aef53b96b4092c001f5cba3410bad. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- The installation img file for the arm64 arch is available for download at [utmfw69\_20210812\_arm64.img](https://drive.google.com/file/d/1-bEbetcXNV-UVP7mYHvuTbmhjvSS2ASY/view?usp=sharing). Make sure the SHA256 checksum is correct: c06579d55e03514ff271063aae64170ed22aef53b96b4092c001f5cba3410bad. The only arm64 platform supported is Raspberry Pi 4 Model B.
 
 You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file for the amd64 arch into a bootable image you can write on a USB drive or an SD card.
 
@@ -36,9 +36,10 @@ UTMFW includes the following software, alongside what is already available on a 
 - Dante: SOCKS proxy
 - IMSpector: IM proxy which supports IRC and others.
 - OpenVPN: Virtual private networking
-- Symon system monitoring software
+- Symon: System monitoring software
 - Pmacct: Network monitoring via graphs
-- ISC DNS server
+- Collectd: System metrics collection engine
+- Dnsmasq: DNS forwarder
 - PHP
 
 ![Console](https://github.com/sonertari/UTMFW/blob/master/screenshots/Console.png)
@@ -101,7 +102,7 @@ A few notes about UTMFW installation:
 - All install sets including siteXY.tgz are selected by default, so you cannot 'not' install UTMFW by mistake.
 - OpenBSD installation questions are modified according to the needs of UTMFW. For example, X11 related questions are never asked.
 - Make sure you have at least 2GB RAM. And an 8GB HD should be enough.
-- If you install on an SD card, make sure it is fast enough.
+- If you install on an SD card, make sure it is fast enough. If you install on a slow disk, but you have enough RAM, you can enable memory-based file system (MFS), which is the default.
 - After installation:
 	+ When you first try to log in to the WUI, ignore the certificate warning issued by your web browser and proceed to the WUI.
 	+ Download the ca.crt from the SSLproxy Config page on the WUI, and install it on your web browser or other client application as a trusted CA certificate. You can install the ca.crt in the trust store on Android phones, but Android applications may not use that trust store. So you may need to use the PassSite option of SSLproxy for such applications.
@@ -134,7 +135,7 @@ However, the source tree has links to OpenBSD install sets and packages, which s
 	+ Copy the required install sets to the appropriate locations to fix the broken links in the sources.
 - Packages:
 	+ Download the required packages available on the OpenBSD mirrors.
-	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, e2guardian, p3scan, smtp-gated, snort, imspector, snortips, and libevent 2.1.12 (see `ports` and `ports/distfiles`).
+	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, e2guardian, p3scan, smtp-gated, snort, imspector, snortips, libevent 2.1.12, and collectd (see `ports` and `ports/distfiles`).
 	+ Copy them to the appropriate locations to fix the broken links in the sources.
 
 Note that you can strip down xbase and xfont install sets to reduce the size of the iso and img files. Copy or link them to the appropriate locations under `openbsd/utmfw`.
@@ -169,8 +170,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Bump the version number X.Y in the sources, if upgrading
 		+ cd/amd64/etc/boot.conf
 		+ cd/arm64/etc/boot.conf
-		+ meta/createiso
-		+ meta/createimg
+		+ meta/create
 		+ meta/install.sub
 		+ src/create_po.sh
 		+ Doxyfile
@@ -211,7 +211,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
             ```
             export PKG_CACHE=/var/db/pkg_utmfw/
             ```
-		+ isc-bind
+		+ dnsmasq
 		+ clamav
 		+ p5-Mail-SpamAssassin
 		+ snort, to download its dependencies
@@ -225,7 +225,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 
 	+ Build and create the UTMFW packages
 		+ Extract ports.tar.gz under /usr/
-		+ Copy the port folders of the UTMFW packages under ports to /usr/ports/{net,security,www}
+		+ Copy the port folders of the UTMFW packages under ports to /usr/ports/{net,security,www,devel,sysutils}
 		+ Obtain the snort sources, apply the snort diff under ports/distfiles, compress as tarball with the same name as the original tarball of the sources
 		+ Copy the source tarballs of the UTMFW packages to /user/ports/distfiles
 		+ Append the daemon users of UTMFW packages to /usr/ports/infrastructure/db/user.list, but note that bsd.port.mk does not like blank lines at the bottom of user.list
@@ -235,7 +235,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
             903 _imspector          _imspector      net/imspector
             904 _sslproxy           _sslproxy       security/sslproxy
             ```
-		+ Install the pkg depends of each UTMFW package before making them, so that the port system does not try to build and install them itself
+		+ Install the pkg depends of each UTMFW package before making them, so that the ports system does not try to build and install them itself
 		+ Make the UTMFW packages
 		    + libevent, if not using the OpenBSD package
 			+ sslproxy
@@ -245,6 +245,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 			+ e2guardian
 			+ snortips
 			+ snort: use the source tarball generated above
+			+ collectd
 		+ Sign all of the UTMFW packages using signify, for example:
             ```
             signify -Sz -s utmfw-XY.sec -m /usr/ports/packages/amd64/all/sslproxy-0.8.3.tgz -x ~/sslproxy-0.8.3.tgz
@@ -264,6 +265,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ snortips
 		+ imspector
 		+ snort
+		+ collectd
 
 	+ Update the links under cd/amd64/X.Y/packages/ with the OpenBSD packages saved under PKG_CACHE
 
@@ -279,6 +281,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ snort
 		+ e2guardian
 		+ libevent, if not using the OpenBSD package
+		+ collectd
 
 - Update meta/install.sub:
     + Update the versions of the packages listed in THESETS
