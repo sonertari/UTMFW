@@ -15,10 +15,10 @@
 -	{    GIG(5),         GIG(6),   4, "/usr/obj"	},
 -	{    GIG(1),       GIG(300),  30, "/home"	}
 +	{    GIG(1),         GIG(2),  10, "/"		},
-+	{  MEG(500),         GIG(2),  15, "swap"	},
++	{    GIG(2),         GIG(8),  25, "swap"	},
 +	{  MEG(500),         GIG(2),   5, "/tmp"	},
-+	{    GIG(2),         GIG(4),  20, "/usr"	},
-+	{    GIG(3),       GIG(690),  50, "/var"	}
++	{ MEG(1500),         GIG(4),  20, "/usr"	},
++	{    GIG(2),       GIG(684),  40, "/var"	}
  	/* Anything beyond this leave for the user to decide */
  };
  
@@ -27,11 +27,11 @@
 -	{   MEG(80),       MEG(256),  10, "swap"	},
 -	{ MEG(1300),         GIG(3),  78, "/usr"	},
 -	{  MEG(256),         GIG(2),   7, "/home"	}
-+	{  MEG(500),         GIG(1),  10, "/"		},
-+	{  MEG(200),         GIG(1),  15, "swap"	},
-+	{  MEG(200),         GIG(1),   5, "/tmp"	},
-+	{ MEG(1300),         GIG(2),  30, "/usr"	},
-+	{  MEG(256),         GIG(3),  40, "/var"	}
++	{  MEG(300),         GIG(1),  10, "/"		},
++	{  MEG(400),      MEG(2500),  25, "swap"	},
++	{  MEG(200),       MEG(500),   5, "/tmp"	},
++	{ MEG(1300),         GIG(2),  20, "/usr"	},
++	{  MEG(256),         GIG(2),  40, "/var"	}
  };
  
  struct space_allocation alloc_small[] = {
