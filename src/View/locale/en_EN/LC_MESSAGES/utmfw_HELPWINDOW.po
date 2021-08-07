@@ -106,13 +106,6 @@ msgid "By default, FTP proxy logs connections but not all connection details."
 msgstr ""
 
 msgid ""
-"By default, a simple DNS configuration is provided; only one forwarders is "
-"configured, which you can modify on this page. There are no zone records "
-"defined, and caching is disabled. However, you can obtain a full-featured "
-"DNS server by modifying configuration files."
-msgstr ""
-
-msgid ""
 "Categories in Weightedlist are blocked according to the sum of assigned "
 "weights to each phrase."
 msgstr ""
@@ -150,9 +143,7 @@ msgid ""
 "can be monitored on this page."
 msgstr ""
 
-msgid ""
-"DNS server logs all name lookups. You should see many requests from the "
-"system itself along with those from internal clients."
+msgid "DNS forwarder logs all queries."
 msgstr ""
 
 msgid "Description"
@@ -788,6 +779,10 @@ msgid ""
 msgstr ""
 
 msgid ""
+"The DNS forwarder sends all queries to the name servers in /etc/resolv.conf."
+msgstr ""
+
+msgid ""
 "The IDS produces many alerts. Some alerts may be more serious than others, "
 "hence most alerts have priorities. You can configure the IPS to block only "
 "alerts at a certain priority and up. Each alert also contains log and "
@@ -974,11 +969,6 @@ msgstr ""
 msgid ""
 "This is the state table of the Packet Filter. All active stateful "
 "connections should appear in this list."
-msgstr ""
-
-msgid ""
-"This name server is a BIND 9 compatible DNS server, which runs in a chroot "
-"jail."
 msgstr ""
 
 msgid ""
@@ -1177,6 +1167,9 @@ msgstr ""
 
 msgid ""
 "You should configure the IDS based on the services running on your network."
+msgstr ""
+
+msgid "You should restart the DNS forwarder for the changes to take effect."
 msgstr ""
 
 msgid "You should restart the SSL proxy for the changes to take effect."

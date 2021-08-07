@@ -4,6 +4,9 @@ msgid ""
 "increase considerably."
 msgstr ""
 
+msgid "Are you sure you want to <ACTION> the interface <IF>?"
+msgstr ""
+
 msgid "Are you sure you want to create a new group?"
 msgstr ""
 
@@ -202,6 +205,18 @@ msgid "You should select at least one conf file to start the process"
 msgstr ""
 
 msgid "You should select at least one interface to start IDS for"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "disable"
+msgstr ""
+
+msgid "enable"
+msgstr ""
+
+msgid "restart"
 msgstr ""
 
 msgid "ruleset has errors"

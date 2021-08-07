@@ -254,24 +254,25 @@ require_once($VIEW_PATH.'/header.php');
 											<td class="ifs">
 												<input type="submit" name="Apply" value="<?php echo _CONTROL('Apply') ?>"/>
 												<?php
-												$confirm= _NOTICE('Are you sure you want to restart the interface <IF>?');
-												$confirm= preg_replace('/<IF>/', $If, $confirm);
+												$confirm= _NOTICE('Are you sure you want to <ACTION> the interface <IF>?');
+
+												$confirm_restart= preg_replace('/<ACTION>/', _NOTICE('restart'), $confirm);
+												$confirm_restart= preg_replace('/<IF>/', $If, $confirm_restart);
 
 												$UpName= $IfUp == 'up' ? 'Down' : 'Up';
 												$UpButton= $IfUp == 'up' ? _CONTROL('Down') : _CONTROL('Up');
 
-												$confirm_updown= _NOTICE('Are you sure you want to <ENABLE> the interface <IF>?');
-												$confirm_updown= preg_replace('/<ENABLE>/', $IfUp == 'up' ? _NOTICE('disable') : _NOTICE('enable'), $confirm_updown);
+												$confirm_updown= preg_replace('/<ACTION>/', $IfUp == 'up' ? _NOTICE('disable') : _NOTICE('enable'), $confirm);
 												$confirm_updown= preg_replace('/<IF>/', $If, $confirm_updown);
 												?>
-												<input type="submit" name="Restart" value="<?php echo _CONTROL('Restart') ?>" onclick="return confirm('<?php echo $confirm ?>')"/>
+												<input type="submit" name="Restart" value="<?php echo _CONTROL('Restart') ?>" onclick="return confirm('<?php echo $confirm_restart ?>')"/>
 												<input type="submit" name="<?php echo $UpName ?>" value="<?php echo $UpButton ?>" onclick="return confirm('<?php echo $confirm_updown ?>')"/>
 												<?php
 												if ($CanDelete) {
-													$confirm= _NOTICE('Are you sure you want to delete the interface <IF>?');
-													$confirm= preg_replace('/<IF>/', $If, $confirm);
+													$confirm_delete= preg_replace('/<ACTION>/', _NOTICE('delete'), $confirm);
+													$confirm_delete= preg_replace('/<IF>/', $If, $confirm_delete);
 													?>
-													<input type="submit" name="Delete" value="<?php echo _CONTROL('Delete') ?>" onclick="return confirm('<?php echo $confirm ?>')"/>
+													<input type="submit" name="Delete" value="<?php echo _CONTROL('Delete') ?>" onclick="return confirm('<?php echo $confirm_delete ?>')"/>
 													<?php
 												}
 												?>

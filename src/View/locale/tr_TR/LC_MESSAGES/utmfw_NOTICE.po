@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2021-07-28 22:25+0300\n"
+"PO-Revision-Date: 2021-08-07 18:04+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: tr\n"
 "Language-Team: Turkish <>\n"
@@ -24,6 +24,9 @@ msgid ""
 msgstr ""
 "İstatistik verilerinin analizi uzun zaman alabilir. Lütfen sabırlı olun. "
 "Ayrıca, bu sayfayı sık yenilerseniz işlemci yükü fazlasıyla artabilir."
+
+msgid "Are you sure you want to <ACTION> the interface <IF>?"
+msgstr "<IF> arayüzünü <ACTION> istediğinizden emin misiniz?"
 
 msgid "Are you sure you want to create a new group?"
 msgstr "Yeni bir grup yaratmak istediğinizden emin misiniz?"
@@ -227,6 +230,18 @@ msgstr "Süreci başlatmak için en az bir conf dosyası seçmelisiniz"
 
 msgid "You should select at least one interface to start IDS for"
 msgstr "STS'yi başlatmak için en az bir ağ arayüzü seçmelisiniz"
+
+msgid "delete"
+msgstr "silmek"
+
+msgid "disable"
+msgstr "devre dışı bırakmak"
+
+msgid "enable"
+msgstr "etkinleştirmek"
+
+msgid "restart"
+msgstr "tekrar başlatmak"
 
 msgid "ruleset has errors"
 msgstr "kural listesinde hata var"

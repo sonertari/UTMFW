@@ -147,7 +147,7 @@ msgstr ""
 msgid "DHCP Server"
 msgstr ""
 
-msgid "DNS Server"
+msgid "DNS Forwarder"
 msgstr ""
 
 msgid "DPort"
@@ -522,7 +522,7 @@ msgstr ""
 msgid "Memory Usage"
 msgstr ""
 
-msgid "Memory file system"
+msgid "Memory-based file system"
 msgstr ""
 
 msgid "Min"

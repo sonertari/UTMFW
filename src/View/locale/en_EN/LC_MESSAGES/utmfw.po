@@ -434,6 +434,9 @@ msgid ""
 "server."
 msgstr ""
 
+msgid "Are you sure you want to <ACTION> the interface <IF>?"
+msgstr ""
+
 msgid "Are you sure you want to <BUTTON_VALUE> secure HTTP?"
 msgstr ""
 
@@ -716,13 +719,6 @@ msgstr ""
 msgid "By default, FTP proxy logs connections but not all connection details."
 msgstr ""
 
-msgid ""
-"By default, a simple DNS configuration is provided; only one forwarders is "
-"configured, which you can modify on this page. There are no zone records "
-"defined, and caching is disabled. However, you can obtain a full-featured "
-"DNS server by modifying configuration files."
-msgstr ""
-
 msgid "By default, the first ping host is the system gateway."
 msgstr ""
 
@@ -775,6 +771,9 @@ msgid "CRITICAL"
 msgstr ""
 
 msgid "CTLR Logs"
+msgstr ""
+
+msgid "Cached queries"
 msgstr ""
 
 msgid "Cancel"
@@ -1133,12 +1132,10 @@ msgstr ""
 msgid "DNS Database Info"
 msgstr ""
 
-msgid "DNS Server"
+msgid "DNS Forwarder"
 msgstr ""
 
-msgid ""
-"DNS server logs all name lookups. You should see many requests from the "
-"system itself along with those from internal clients."
+msgid "DNS forwarder logs all queries."
 msgstr ""
 
 msgid "DNS_SERVERS"
@@ -1500,6 +1497,9 @@ msgid "Domains"
 msgstr ""
 
 msgid "Domains and urls of TV and radio stations."
+msgstr ""
+
+msgid "Down"
 msgstr ""
 
 msgid "Download"
@@ -1985,15 +1985,6 @@ msgstr ""
 msgid "Forwarded for"
 msgstr ""
 
-msgid ""
-"Forwarder is the IP address of a DNS server that the system itself queries. "
-"In simple setups, this is usually the IP address of a DSL modem which "
-"functions as gateway to the Internet."
-msgstr ""
-
-msgid "Forwarders"
-msgstr ""
-
 msgid "Fragment"
 msgstr ""
 
@@ -2084,12 +2075,6 @@ msgid "Get DHCP interfaces"
 msgstr ""
 
 msgid "Get DHCP option"
-msgstr ""
-
-msgid "Get DNS forwarders"
-msgstr ""
-
-msgid "Get IP DNS listens on"
 msgstr ""
 
 msgid "Get IPS info"
@@ -2189,6 +2174,9 @@ msgid "Get inactive cats"
 msgstr ""
 
 msgid "Get int_if"
+msgstr ""
+
+msgid "Get interface DNS forwarder listens on"
 msgstr ""
 
 msgid "Get line count"
@@ -3007,6 +2995,9 @@ msgstr ""
 msgid "Interface Configuration"
 msgstr ""
 
+msgid "Interface up or down"
+msgstr ""
+
 msgid "Interfaces"
 msgstr ""
 
@@ -3566,10 +3557,10 @@ msgstr ""
 msgid "Memory Usage"
 msgstr ""
 
-msgid "Memory file system"
+msgid "Memory usage"
 msgstr ""
 
-msgid "Memory usage"
+msgid "Memory-based file system"
 msgstr ""
 
 msgid "Messages from all OpenVPN processes are recorded in the same log file."
@@ -4342,6 +4333,9 @@ msgstr ""
 msgid "Quantum"
 msgstr ""
 
+msgid "Queries handled by the DNS forwarder"
+msgstr ""
+
 msgid "Query types"
 msgstr ""
 
@@ -4526,9 +4520,6 @@ msgid "Requests bypassed"
 msgstr ""
 
 msgid "Requests denied"
-msgstr ""
-
-msgid "Requests handled by the DNS Server"
 msgstr ""
 
 msgid "Requests handled by the POP3 Proxy"
@@ -4950,12 +4941,6 @@ msgstr ""
 msgid "Session Timeout"
 msgstr ""
 
-msgid "Set DNS forwarders"
-msgstr ""
-
-msgid "Set IP DNS listens on"
-msgstr ""
-
 msgid "Set MFS"
 msgstr ""
 
@@ -5000,6 +4985,9 @@ msgid "Set help boxes"
 msgstr ""
 
 msgid "Set ifs"
+msgstr ""
+
+msgid "Set interface DNS forwarder listens on"
 msgstr ""
 
 msgid "Set interfaces"
@@ -5864,6 +5852,10 @@ msgid ""
 "TCP Keep Alive and Use DNS options may help you resolve some issues."
 msgstr ""
 
+msgid ""
+"The DNS forwarder sends all queries to the name servers in /etc/resolv.conf."
+msgstr ""
+
 msgid "The Firebase API key for the project, i.e. the Android application."
 msgstr ""
 
@@ -5892,9 +5884,6 @@ msgid ""
 "\n"
 "Updated Snort rules for your version of the software are released "
 "periodically. Make sure you have appropriate rules installed on your system."
-msgstr ""
-
-msgid "The IP address that the DNS server listens on."
 msgstr ""
 
 msgid ""
@@ -5955,6 +5944,9 @@ msgid ""
 "header is allowed, such as another upstream proxy server for instance If you "
 "want authorize multiple IPs, specify each one on an individual "
 "xforwardedforfilterip line."
+msgstr ""
+
+msgid "The interface that the DNS forwarder binds to listen for queries."
 msgstr ""
 
 msgid ""
@@ -6331,11 +6323,6 @@ msgstr ""
 msgid ""
 "This is the system name. If you change the hostname, use automatic "
 "configuration button to apply it system-wide, and reboot the system."
-msgstr ""
-
-msgid ""
-"This name server is a BIND 9 compatible DNS server, which runs in a chroot "
-"jail."
 msgstr ""
 
 msgid ""
@@ -6765,6 +6752,9 @@ msgid "Unsupported command"
 msgstr ""
 
 msgid "Unsupported interface configuration"
+msgstr ""
+
+msgid "Up"
 msgstr ""
 
 msgid "Update mail aliases"
@@ -7226,6 +7216,9 @@ msgid ""
 "You should configure the IDS based on the services running on your network."
 msgstr ""
 
+msgid "You should restart the DNS forwarder for the changes to take effect."
+msgstr ""
+
 msgid "You should restart the SSL proxy for the changes to take effect."
 msgstr ""
 
@@ -7273,7 +7266,13 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
+msgid "disable"
+msgstr ""
+
 msgid "disabled"
+msgstr ""
+
+msgid "enable"
 msgstr ""
 
 msgid "enabled"
@@ -7406,6 +7405,9 @@ msgid "primary"
 msgstr ""
 
 msgid "protocol"
+msgstr ""
+
+msgid "restart"
 msgstr ""
 
 msgid "ruleset has errors"

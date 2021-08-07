@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2021-07-28 22:41+0300\n"
+"PO-Revision-Date: 2021-08-07 18:17+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: tr\n"
 "Language-Team: Turkish <>\n"
@@ -401,12 +401,6 @@ msgstr "DHCP arayüzlerini getir"
 msgid "Get DHCP option"
 msgstr "DHCP seçeneğini getir"
 
-msgid "Get DNS forwarders"
-msgstr "DNS yönlendirmelerini getir"
-
-msgid "Get IP DNS listens on"
-msgstr "DNS sunucunun dinlediği IP adresini getir"
-
 msgid "Get IPS info"
 msgstr "SES bilgisini getir"
 
@@ -505,6 +499,9 @@ msgstr "Kapalı sınıflandırmaları getir"
 
 msgid "Get int_if"
 msgstr "int_if'i getir"
+
+msgid "Get interface DNS forwarder listens on"
+msgstr "DNS ileticinin dinlediği arayüzü getir"
 
 msgid "Get line count"
 msgstr "Satır sayısını getir"
@@ -700,6 +697,9 @@ msgstr "Eklenme"
 
 msgid "Install pf rules"
 msgstr "Pf kurallarını kurma"
+
+msgid "Interface up or down"
+msgstr "Arayüzü aç veya kapat"
 
 msgid "Intrusion Detection"
 msgstr "Saldırı Tespit"
@@ -925,12 +925,6 @@ msgstr "Site sorgula"
 msgid "Select log file"
 msgstr "Kayıt dosyası seç"
 
-msgid "Set DNS forwarders"
-msgstr "DNS yönlendirmelerini ayarla"
-
-msgid "Set IP DNS listens on"
-msgstr "DNS sunucunun dinlediği IP adresini ayarla"
-
 msgid "Set MFS"
 msgstr "MFS'i ayarla"
 
@@ -972,6 +966,9 @@ msgstr "Yardım kutularını ayarla"
 
 msgid "Set ifs"
 msgstr "Arayüzleri ayarla"
+
+msgid "Set interface DNS forwarder listens on"
+msgstr "DNS ileticinin dinlediği arayüzü ayarla"
 
 msgid "Set interfaces"
 msgstr "Arayüzleri ayarla"

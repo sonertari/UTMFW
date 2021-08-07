@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: UTMFW 6.9\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2021-07-28 22:16+0300\n"
+"PO-Revision-Date: 2021-08-07 17:47+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: tr\n"
 "Language-Team: Turkish <>\n"
@@ -227,8 +227,8 @@ msgstr "DHCP Sunucu"
 msgid "DNS Database Info"
 msgstr "DNS veritabanı bilgisi"
 
-msgid "DNS Server"
-msgstr "DNS Sunucu"
+msgid "DNS Forwarder"
+msgstr "DNS İletici"
 
 msgid "DNS_SERVERS"
 msgstr "DNS_SERVERS"
@@ -376,9 +376,6 @@ msgstr "Hızlı arama"
 
 msgid "Forwarded for"
 msgstr "İletim"
-
-msgid "Forwarders"
-msgstr "İletilenler"
 
 msgid "Fri"
 msgstr "Cum"
@@ -857,6 +854,9 @@ msgstr "Vekil başlık değişimi"
 msgid "Proxy timeout"
 msgstr "Vekil zaman aşımı"
 
+msgid "Queries handled by the DNS forwarder"
+msgstr "DNS iletici tarafından işlenen sorgular"
+
 msgid "Quiet"
 msgstr "Sessiz"
 
@@ -889,9 +889,6 @@ msgstr "Güvenli bildirim"
 
 msgid "Reporting level"
 msgstr "Bildirim seviyesi"
-
-msgid "Requests handled by the DNS Server"
-msgstr "DNS sunucuya yapılan istekler"
 
 msgid "Requests handled by the POP3 Proxy"
 msgstr "POP vekile yapılan istekler"

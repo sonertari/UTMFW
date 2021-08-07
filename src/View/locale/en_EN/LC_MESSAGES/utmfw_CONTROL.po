@@ -98,6 +98,9 @@ msgstr ""
 msgid "Divert Packet"
 msgstr ""
 
+msgid "Down"
+msgstr ""
+
 msgid "Download"
 msgstr ""
 
@@ -270,6 +273,9 @@ msgid "Unblock"
 msgstr ""
 
 msgid "Unblock All"
+msgstr ""
+
+msgid "Up"
 msgstr ""
 
 msgid "Upload"

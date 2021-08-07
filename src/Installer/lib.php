@@ -491,7 +491,7 @@ function CreateUsers()
 					wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'User created: admin');
 					// Update user password
 					if ($View->Controller($output, 'CreateUser', 'user', $sha1Passwd, 1001)) {
-						echo "Successfully created WUI users: 'admin' and 'user'.\n\n";
+						echo "\nSuccessfully created WUI users: 'admin' and 'user'.\n";
 						wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'User created: user');
 					}
 					else {
@@ -505,7 +505,7 @@ function CreateUsers()
 				}
 
 				if ($View->Controller($output, 'AddUser', 'utmfw', $sha1Passwd, 'UTMFW network user')) {
-					echo "Successfully created network user 'utmfw'.\n\n";
+					echo "Successfully created network user 'utmfw'.\n";
 					wui_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, 'User created: utmfw');
 				}
 				else {
@@ -532,7 +532,7 @@ function GenerateSSLKeyPairs()
 	// In case
 	$View->Model= 'system';
 
-	echo "Generating the SSL key pairs for httpd, openvpn, and sslproxy\n";
+	echo "\nGenerating the SSL key pairs for httpd, openvpn, and sslproxy\n";
 	$serial= '1';
 	$n= readline2("Set serial to? [1] ");
 	if (preg_match('/^\d{1,4}$/', $n)) {

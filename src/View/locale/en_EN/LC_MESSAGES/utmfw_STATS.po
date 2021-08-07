@@ -55,6 +55,9 @@ msgstr ""
 msgid "Bypassing users"
 msgstr ""
 
+msgid "Cached queries"
+msgstr ""
+
 msgid "Client"
 msgstr ""
 
@@ -230,6 +233,9 @@ msgid "Protocols"
 msgstr ""
 
 msgid "Query types"
+msgstr ""
+
+msgid "Reason"
 msgstr ""
 
 msgid "Reasons"

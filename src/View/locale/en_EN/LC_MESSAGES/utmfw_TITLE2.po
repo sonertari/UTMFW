@@ -208,7 +208,7 @@ msgstr ""
 msgid "DNS Database Info"
 msgstr ""
 
-msgid "DNS Server"
+msgid "DNS Forwarder"
 msgstr ""
 
 msgid "DNS_SERVERS"
@@ -356,9 +356,6 @@ msgid "Force quick search"
 msgstr ""
 
 msgid "Forwarded for"
-msgstr ""
-
-msgid "Forwarders"
 msgstr ""
 
 msgid "Fri"
@@ -838,6 +835,9 @@ msgstr ""
 msgid "Proxy timeout"
 msgstr ""
 
+msgid "Queries handled by the DNS forwarder"
+msgstr ""
+
 msgid "Quiet"
 msgstr ""
 
@@ -869,9 +869,6 @@ msgid "Report safe"
 msgstr ""
 
 msgid "Reporting level"
-msgstr ""
-
-msgid "Requests handled by the DNS Server"
 msgstr ""
 
 msgid "Requests handled by the POP3 Proxy"

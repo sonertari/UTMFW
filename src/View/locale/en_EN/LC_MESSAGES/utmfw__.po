@@ -382,12 +382,6 @@ msgstr ""
 msgid "Get DHCP option"
 msgstr ""
 
-msgid "Get DNS forwarders"
-msgstr ""
-
-msgid "Get IP DNS listens on"
-msgstr ""
-
 msgid "Get IPS info"
 msgstr ""
 
@@ -485,6 +479,9 @@ msgid "Get inactive cats"
 msgstr ""
 
 msgid "Get int_if"
+msgstr ""
+
+msgid "Get interface DNS forwarder listens on"
 msgstr ""
 
 msgid "Get line count"
@@ -680,6 +677,9 @@ msgid "Inserted"
 msgstr ""
 
 msgid "Install pf rules"
+msgstr ""
+
+msgid "Interface up or down"
 msgstr ""
 
 msgid "Intrusion Detection"
@@ -903,12 +903,6 @@ msgstr ""
 msgid "Select log file"
 msgstr ""
 
-msgid "Set DNS forwarders"
-msgstr ""
-
-msgid "Set IP DNS listens on"
-msgstr ""
-
 msgid "Set MFS"
 msgstr ""
 
@@ -949,6 +943,9 @@ msgid "Set help boxes"
 msgstr ""
 
 msgid "Set ifs"
+msgstr ""
+
+msgid "Set interface DNS forwarder listens on"
 msgstr ""
 
 msgid "Set interfaces"

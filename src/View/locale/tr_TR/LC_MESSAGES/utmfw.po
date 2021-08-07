@@ -513,6 +513,9 @@ msgid ""
 "server."
 msgstr "TCP veya UDP istemciyi ayarlar. Sunucudaki aynı değeri kullanın."
 
+msgid "Are you sure you want to <ACTION> the interface <IF>?"
+msgstr "<IF> arayüzünü <ACTION> istediğinizden emin misiniz?"
+
 msgid "Are you sure you want to <BUTTON_VALUE> secure HTTP?"
 msgstr "Kriptolu HTTP <BUTTON_VALUE>ılacak, emin misiniz?"
 
@@ -836,17 +839,6 @@ msgstr ""
 "Varsayılan olarak FTP vekil tüm detaylar olmasa da bağlantıların hepsini "
 "kaydeder."
 
-msgid ""
-"By default, a simple DNS configuration is provided; only one forwarders is "
-"configured, which you can modify on this page. There are no zone records "
-"defined, and caching is disabled. However, you can obtain a full-featured "
-"DNS server by modifying configuration files."
-msgstr ""
-"Öndeğer olarak basit bir DNS yapılandırması sağlanmıştır; sadece bir adet "
-"yönlendirme ayarı yapılmıştır ve bu sayfadan değiştirilebilir. Zone "
-"kayıtları yapılmamıştır ve önbellek kullanılmamaktadır. Ancak yapılandırma "
-"dosyalarını değiştirerek DNS sunucunun tüm özelliklerini kullanabilirsiniz."
-
 msgid "By default, the first ping host is the system gateway."
 msgstr "Öndeğer olarak ilk ping hedefi sistem ağ geçididir."
 
@@ -900,6 +892,9 @@ msgstr "ÖNEMLİ"
 
 msgid "CTLR Logs"
 msgstr "CTLR Kayıtları"
+
+msgid "Cached queries"
+msgstr "Saklanan sorgular"
 
 msgid "Cancel"
 msgstr "İptal"
@@ -1299,15 +1294,11 @@ msgstr "DNS"
 msgid "DNS Database Info"
 msgstr "DNS veritabanı bilgisi"
 
-msgid "DNS Server"
-msgstr "DNS Sunucu"
+msgid "DNS Forwarder"
+msgstr "DNS İletici"
 
-msgid ""
-"DNS server logs all name lookups. You should see many requests from the "
-"system itself along with those from internal clients."
-msgstr ""
-"DNS sunucu tüm ad aramalarını kaydeder. İç ağdaki istemciler yanında "
-"sistemin kendisinden gelen pekçok istek görebilirsiniz."
+msgid "DNS forwarder logs all queries."
+msgstr "DNS iletici tüm sorguları kaydeder."
 
 msgid "DNS_SERVERS"
 msgstr "DNS_SERVERS"
@@ -1692,6 +1683,9 @@ msgstr "Alanadları"
 
 msgid "Domains and urls of TV and radio stations."
 msgstr ""
+
+msgid "Down"
+msgstr "Kapat"
 
 msgid "Download"
 msgstr "İndir"
@@ -2229,18 +2223,6 @@ msgstr "Hızlı arama"
 msgid "Forwarded for"
 msgstr "İletim"
 
-msgid ""
-"Forwarder is the IP address of a DNS server that the system itself queries. "
-"In simple setups, this is usually the IP address of a DSL modem which "
-"functions as gateway to the Internet."
-msgstr ""
-"Yönlendirilen adres sistemin kendisinin sorguladığı bir DNS sunucu IP "
-"adresidir. Basit kurulumlarda İnternet'e geçit sağlayan bir DSL modemin IP "
-"adresidir."
-
-msgid "Forwarders"
-msgstr "İletilenler"
-
 msgid "Fragment"
 msgstr "Parça"
 
@@ -2337,12 +2319,6 @@ msgstr "DHCP arayüzlerini getir"
 
 msgid "Get DHCP option"
 msgstr "DHCP seçeneğini getir"
-
-msgid "Get DNS forwarders"
-msgstr "DNS yönlendirmelerini getir"
-
-msgid "Get IP DNS listens on"
-msgstr "DNS sunucunun dinlediği IP adresini getir"
 
 msgid "Get IPS info"
 msgstr "SES bilgisini getir"
@@ -2442,6 +2418,9 @@ msgstr "Kapalı sınıflandırmaları getir"
 
 msgid "Get int_if"
 msgstr "int_if'i getir"
+
+msgid "Get interface DNS forwarder listens on"
+msgstr "DNS ileticinin dinlediği arayüzü getir"
 
 msgid "Get line count"
 msgstr "Satır sayısını getir"
@@ -3475,6 +3454,9 @@ msgstr "Arayüz Bağlantısı"
 
 msgid "Interface Configuration"
 msgstr "Arayüz yapılandırma"
+
+msgid "Interface up or down"
+msgstr "Arayüzü aç veya kapat"
 
 msgid "Interfaces"
 msgstr "Arayüzler"
@@ -4981,6 +4963,9 @@ msgstr "Kuyruk Boyu"
 msgid "Quantum"
 msgstr "Kuantum"
 
+msgid "Queries handled by the DNS forwarder"
+msgstr "DNS iletici tarafından işlenen sorgular"
+
 msgid "Query types"
 msgstr "Sorgu türleri"
 
@@ -5182,9 +5167,6 @@ msgstr "Atlanan istekler"
 
 msgid "Requests denied"
 msgstr "Engellenen istekler"
-
-msgid "Requests handled by the DNS Server"
-msgstr "DNS sunucuya yapılan istekler"
 
 msgid "Requests handled by the POP3 Proxy"
 msgstr "POP vekile yapılan istekler"
@@ -5653,12 +5635,6 @@ msgstr "Bağlantı kesme"
 msgid "Session Timeout"
 msgstr "Oturum Zaman Aşımı"
 
-msgid "Set DNS forwarders"
-msgstr "DNS yönlendirmelerini ayarla"
-
-msgid "Set IP DNS listens on"
-msgstr "DNS sunucunun dinlediği IP adresini ayarla"
-
 msgid "Set MFS"
 msgstr "MFS'i ayarla"
 
@@ -5704,6 +5680,9 @@ msgstr "Yardım kutularını ayarla"
 
 msgid "Set ifs"
 msgstr "Arayüzleri ayarla"
+
+msgid "Set interface DNS forwarder listens on"
+msgstr "DNS ileticinin dinlediği arayüzü ayarla"
 
 msgid "Set interfaces"
 msgstr "Arayüzleri ayarla"
@@ -6676,6 +6655,12 @@ msgstr ""
 "verilmektedir. TCP Canlı Tutma ve DNS Kullanma seçenekleri bazı sorunları "
 "çözmede yardımcı olabilir."
 
+msgid ""
+"The DNS forwarder sends all queries to the name servers in /etc/resolv.conf."
+msgstr ""
+"DNS iletici tüm sorguları /etc/resolv.conf dosyasındaki DNS sunucularına "
+"gönderir."
+
 msgid "The Firebase API key for the project, i.e. the Android application."
 msgstr "Projenin Android uygulamasının Firebase API anahtarı."
 
@@ -6726,9 +6711,6 @@ msgstr ""
 "\n"
 "Yazılım versiyonunuz için güncellenmiş Snort kuralları aralıklarla "
 "çıkarılmaktadır. Sisteminizde uygun kuralların yüklü olduğundan emin olun."
-
-msgid "The IP address that the DNS server listens on."
-msgstr "DNS sunucunun dinlediği IP adresi."
 
 msgid ""
 "The IP that E2Guardian listens on.  If left blank E2Guardian will listen on "
@@ -6824,6 +6806,9 @@ msgstr ""
 "bu tür başlıklara izin verilen IP adreslerini listelemek isteyebilirsiniz, "
 "örneğin başka bir vekil sunucu gibi. Örneğin, birden fazla IP adresine izin "
 "vermek isterseniz, her birini ayrı xforwardedforfilterip satırında belirtin."
+
+msgid "The interface that the DNS forwarder binds to listen for queries."
+msgstr "DNS ileticinin sorguları dinlemek için bağlandığı arayüz."
 
 msgid ""
 "The interval between log status entries when proxy is not responding minimum "
@@ -7370,11 +7355,6 @@ msgid ""
 msgstr ""
 "Bu sistem adıdır. Sistem adını değiştiriseniz, otomatik yapılandırma tuşu "
 "ile bunu sistemin geneline uygulayıp sistemi tekrar başlatın."
-
-msgid ""
-"This name server is a BIND 9 compatible DNS server, which runs in a chroot "
-"jail."
-msgstr "Bu BIND 9 uyumlu ve chroot kafesinde çalışan bir ad sunucudur."
 
 msgid ""
 "This option determines whether members of this group have their web access "
@@ -7964,6 +7944,9 @@ msgstr "Desteklenmeyen komut"
 msgid "Unsupported interface configuration"
 msgstr "Desteklenmeyen arayüz yapılandırması"
 
+msgid "Up"
+msgstr "Aç"
+
 msgid "Update mail aliases"
 msgstr "Posta adresi adlarını güncelle"
 
@@ -8529,6 +8512,9 @@ msgid ""
 msgstr ""
 "Ağınızda çalışan servisleri göz önünde tutarak STS'yi yapılandırmalısınız."
 
+msgid "You should restart the DNS forwarder for the changes to take effect."
+msgstr "Ayarları etkinleştirmek için DNS ileticiyi tekrar başlatmanız gerekir."
+
 msgid "You should restart the SSL proxy for the changes to take effect."
 msgstr "Değişikliklerin uygulanması için SSL vekili tekrar başlatmalısınız."
 
@@ -8578,8 +8564,14 @@ msgstr "öntanım S/SA"
 msgid "delete"
 msgstr "sil"
 
+msgid "disable"
+msgstr "devre dışı bırakmak"
+
 msgid "disabled"
 msgstr "kapalı"
+
+msgid "enable"
+msgstr "etkinleştirmek"
 
 msgid "enabled"
 msgstr "açık"
@@ -8715,6 +8707,9 @@ msgstr "birincil"
 
 msgid "protocol"
 msgstr "protokol"
+
+msgid "restart"
+msgstr "tekrar başlatmak"
 
 msgid "ruleset has errors"
 msgstr "kural listesinde hata var"

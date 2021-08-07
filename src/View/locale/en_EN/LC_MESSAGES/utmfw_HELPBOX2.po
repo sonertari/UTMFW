@@ -306,12 +306,6 @@ msgid "Force SSL/TLS protocol version only."
 msgstr ""
 
 msgid ""
-"Forwarder is the IP address of a DNS server that the system itself queries. "
-"In simple setups, this is usually the IP address of a DSL modem which "
-"functions as gateway to the Internet."
-msgstr ""
-
-msgid ""
 "Generate your own with:\n"
 "openssl dhparam -out dh1024.pem 1024\n"
 "Substitute 2048 for 1024 if you are using 2048 bit keys."
@@ -979,9 +973,6 @@ msgstr ""
 msgid "Temporary block duration in seconds on each alert."
 msgstr ""
 
-msgid "The IP address that the DNS server listens on."
-msgstr ""
-
 msgid ""
 "The IP that E2Guardian listens on.  If left blank E2Guardian will listen on "
 "all IPs.  That would include all NICs, loopback, modem, etc.\n"
@@ -997,6 +988,9 @@ msgid ""
 "header is allowed, such as another upstream proxy server for instance If you "
 "want authorize multiple IPs, specify each one on an individual "
 "xforwardedforfilterip line."
+msgstr ""
+
+msgid "The interface that the DNS forwarder binds to listen for queries."
 msgstr ""
 
 msgid ""

@@ -117,6 +117,9 @@ msgstr "Yön Değiştirme"
 msgid "Divert Packet"
 msgstr "Paket Yön Değiştirme"
 
+msgid "Down"
+msgstr "Kapat"
+
 msgid "Download"
 msgstr "İndir"
 
@@ -290,6 +293,9 @@ msgstr "Engellemeyi Kaldır"
 
 msgid "Unblock All"
 msgstr "Hepsini Kaldır"
+
+msgid "Up"
+msgstr "Aç"
 
 msgid "Upload"
 msgstr "Karşıya Yükle"
