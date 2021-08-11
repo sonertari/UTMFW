@@ -263,14 +263,9 @@ class E2guardian extends Model
 			);
 	}
 
-	function _getModuleStatus($start, $generate_info= FALSE, $do_cache= TRUE)
+	function _getModuleInfo($start)
 	{
-		$status= parent::_getModuleStatus($start, $generate_info, $do_cache);
-
-		if ($generate_info) {
-			$status['info']['requests']= $this->getRrdValue('derive-all.rrd', $start, $result);
-		}
-		return $status;
+		return array('requests'	=>	$this->getRrdValue('derive-all.rrd', $start, $result));
 	}
 
 	function GetConfFile($confname, $group)

@@ -83,19 +83,13 @@ class Collectd extends Monitoring
 		return $killed;
 	}
 
-	function _getModuleStatus($start, $generate_info= FALSE, $do_cache= TRUE)
+	function _getModuleInfo($start)
 	{
-		$status= parent::_getModuleStatus($start, $generate_info, $do_cache);
-
-		if ($generate_info) {
-			// We are interested in the ping times in the last 60 seconds only
-			$gateway_host= $this->getGatewayPingHost();
-			$status['info']['gateway_ping_time']= $this->getPingAverage($gateway_host);
-
-			$remote_host= $this->getRemotePingHost();
-			$status['info']['remote_ping_time']= $this->getPingAverage($remote_host);
-		}
-		return $status;
+		// We are interested in the ping times in the last 60 seconds only
+		return array(
+			'gateway_ping_time'	=>	$this->getPingAverage($this->getGatewayPingHost()),
+			'remote_ping_time'	=>	$this->getPingAverage($this->getRemotePingHost()),
+			);
 	}
 
 	/**

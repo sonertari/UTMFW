@@ -79,15 +79,12 @@ class Openssh extends Model
 		return FALSE;
 	}
 
-	function _getModuleStatus($start, $generate_info= FALSE, $do_cache= TRUE)
+	function _getModuleInfo($start)
 	{
-		$status= parent::_getModuleStatus($start, $generate_info, $do_cache);
-
-		if ($generate_info) {
-			$status['info']['accepted']= $this->getRrdValue('derive-accepted.rrd', $start, $result);
-			$status['info']['failed']= $this->getRrdValue('derive-failed.rrd', $start, $result);
-		}
-		return $status;
+		return array(
+			'accepted'	=>	$this->getRrdValue('derive-accepted.rrd', $start, $result),
+			'failed'	=>	$this->getRrdValue('derive-failed.rrd', $start, $result),
+			);
 	}
 
 	function _getFileLineCount($file, $re= '', $needle= '', $month='', $day='', $hour='', $minute='')

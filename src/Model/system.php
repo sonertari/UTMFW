@@ -714,31 +714,30 @@ class System extends Model
 		return Output(json_encode($config));
 	}
 
-	function _getModuleStatus($start, $generate_info= FALSE, $do_cache= TRUE)
+	function _getModuleInfo($start)
 	{
-		$status= parent::_getModuleStatus($start, $generate_info, $do_cache);
+		$info= array();
 
-		if ($generate_info) {
-			$uptime= $this->RunShellCommand('/usr/bin/uptime');
-			if (preg_match('/up (.*), (\d+) user.*/', $uptime, $match)) {
-				$status['info']['uptime']= $match[1];
-				$status['info']['users']= $match[2];
-			} else {
-				$status['info']['uptime']= '';
-				$status['info']['users']= '';
-			}
-
-			/// @attention Don't call $this->_getPartitions() instead, it needs an explode()
-			exec('/bin/df -h', $parts);
-			$partitions= array();
-			foreach ($parts as $p) {
-				if (preg_match('/^(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)$/', $p, $match)) {
-					$partitions[$match[6]]= $match[5];
-				}
-			}
-			$status['info']['partitions']= $partitions;
+		$uptime= $this->RunShellCommand('/usr/bin/uptime');
+		if (preg_match('/up (.*), (\d+) user.*/', $uptime, $match)) {
+			$info['uptime']= $match[1];
+			$info['users']= $match[2];
+		} else {
+			$info['uptime']= '';
+			$info['users']= '';
 		}
-		return $status;
+
+		/// @attention Don't call $this->_getPartitions() instead, it needs an explode()
+		exec('/bin/df -h', $parts);
+		$partitions= array();
+		foreach ($parts as $p) {
+			if (preg_match('/^(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)$/', $p, $match)) {
+				$partitions[$match[6]]= $match[5];
+			}
+		}
+		$info['partitions']= $partitions;
+
+		return $info;
 	}
 
 	/**

@@ -102,15 +102,12 @@ class Sslproxy extends Model
 		return $this->Kill();
 	}
 
-	function _getModuleStatus($start, $generate_info= FALSE, $do_cache= TRUE)
+	function _getModuleInfo($start)
 	{
-		$status= parent::_getModuleStatus($start, $generate_info, $do_cache);
-
-		if ($generate_info) {
-			$status['info']['conns']= $this->getRrdValue('derive-mld.rrd', $start, $result);
-			$status['info']['fds']= $this->getRrdValue('gauge-mfd.rrd', $start, $result, 'gauge');
-		}
-		return $status;
+		return array(
+			'conns'	=> $this->getRrdValue('derive-mld.rrd', $start, $result),
+			'fds'	=> $this->getRrdValue('gauge-mfd.rrd', $start, $result, 'gauge'),
+			);
 	}
 
 	/**

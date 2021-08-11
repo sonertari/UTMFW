@@ -2706,14 +2706,8 @@ class Model
 
 		$info= array();
 		$cacheInfo= UTMFWDIR.'/cache/info.json';
-		$generate_info= $interval_changed;
 
-		if ($get_info && !$generate_info && !$this->getCachedContents($cacheInfo, $info)) {
-			$generate_info= TRUE;
-		}
-
-		if ($get_info && $generate_info) {
-			require_once($MODEL_PATH.'/'.$ModelFiles['collectd']);
+		if ($get_info && ($interval_changed || !$this->getCachedContents($cacheInfo, $info))) {			require_once($MODEL_PATH.'/'.$ModelFiles['collectd']);
 
 			$model= new $Models['collectd']();
 			$gateway= $model->getGatewayPingHost();
@@ -2753,6 +2747,18 @@ class Model
 
 			exec("doas sh $MODEL_PATH/rrdgraph.sh -$start $gateway $remote_target $intif $extif $disk $interval_changed", $output, $retval);
 			Error(implode("\n", $output));
+
+			foreach ($ModelsToStat as $name => $caption) {
+				require_once($MODEL_PATH.'/'.$ModelFiles[$name]);
+				$model= new $Models[$name]();
+
+				$module_info= $model->_getModuleInfo($DashboardIntervals2Seconds[$start]);
+				if ($module_info !== FALSE) {
+					$info[$name]= $module_info;
+				}
+			}
+
+			file_put_contents($cacheInfo, json_encode($info), LOCK_EX);
 		}
 
 		$status= array();
@@ -2760,36 +2766,17 @@ class Model
 
 		if ($interval_changed || !$this->getCachedContents($cacheStatus, $status)) {
 			foreach ($ModelsToStat as $name => $caption) {
-				if (array_key_exists($name, $ModelFiles)) {
-					require_once($MODEL_PATH.'/'.$ModelFiles[$name]);
+				require_once($MODEL_PATH.'/'.$ModelFiles[$name]);
+				$model= new $Models[$name]();
 
-					if (class_exists($Models[$name])) {
-						$model= new $Models[$name]();
-
-						// Pass interval down to _getModuleStatus()
-						// Do not cache module status individually here, we accumulate and cache them all in status.json below
-						$module_status= $model->_getModuleStatus($DashboardIntervals2Seconds[$start], $get_info && $generate_info, FALSE);
-						if ($module_status !== FALSE) {
-							$status[$name]= $module_status['status'];
-							if ($get_info) {
-								$info[$name]= $module_status['info'];
-							}
-						}
-					}
-					else {
-						ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in Models: $name");
-					}
-				}
-				else {
-					ctlr_syslog(LOG_NOTICE, __FILE__, __FUNCTION__, __LINE__, "Not in ModelFiles: $name");
+				// Do not cache module status individually here, we accumulate and cache them all in status.json below
+				$module_status= $model->_getModuleStatus($DashboardIntervals2Seconds[$start], FALSE);
+				if ($module_status !== FALSE) {
+					$status[$name]= $module_status;
 				}
 			}
 
 			file_put_contents($cacheStatus, json_encode($status), LOCK_EX);
-		}
-
-		if ($generate_info) {
-			file_put_contents($cacheInfo, json_encode($info), LOCK_EX);
 		}
 
 		$output= array();
@@ -2831,11 +2818,10 @@ class Model
 	{
 		global $StatusCheckInterval;
 
-		$module_status= $this->_getModuleStatus($StatusCheckInterval);
-		return Output(json_encode($module_status['status']));
+		return Output(json_encode($this->_getModuleStatus($StatusCheckInterval)));
 	}
 
-	function _getModuleStatus($start, $generate_info= FALSE, $do_cache= TRUE)
+	function _getModuleStatus($start, $do_cache= TRUE)
 	{
 		$status= array();
 		$cache= "{$this->UTMFWDIR}/cache/{$this->CollectdName}_status.json";
@@ -2844,20 +2830,17 @@ class Model
 			$runStatus= $this->IsRunning() ? 'R' : 'S';
 
 			$status= array(
-				'status' => array(
-					'Status' => $runStatus,
-					'ErrorStatus' => 'U',
-					'Critical' => 0,
-					'Error' => 0,
-					'Warning' => 0,
-					'Logs' => array(),
-					),
-				'info' => array()
+				'Status' => $runStatus,
+				'ErrorStatus' => 'U',
+				'Critical' => 0,
+				'Error' => 0,
+				'Warning' => 0,
+				'Logs' => array(),
 				);
 
 			$logs= $this->getFifoLogs($start);
 			if ($logs !== FALSE) {
-				$status['status']['Logs']= $logs;
+				$status['Logs']= $logs;
 			}
 
 			$result= array(
@@ -2867,20 +2850,20 @@ class Model
 				);
 
 			foreach (array('warning', 'error', 'critical') as $prio) {
-				$status['status'][ucfirst($prio)]= $this->getRrdValue("derive-$prio.rrd", $start, $result[$prio]);
+				$status[ucfirst($prio)]= $this->getRrdValue("derive-$prio.rrd", $start, $result[$prio]);
 			}
 
-			if ($status['status']['Critical']) {
-				$status['status']['ErrorStatus']= 'C';
+			if ($status['Critical']) {
+				$status['ErrorStatus']= 'C';
 			}
-			else if ($status['status']['Error']) {
-				$status['status']['ErrorStatus']= 'E';
+			else if ($status['Error']) {
+				$status['ErrorStatus']= 'E';
 			}
-			else if ($status['status']['Warning']) {
-				$status['status']['ErrorStatus']= 'W';
+			else if ($status['Warning']) {
+				$status['ErrorStatus']= 'W';
 			}
 			else if ($result['critical'] && $result['error'] && $result['warning']) {
-				$status['status']['ErrorStatus']= 'N';
+				$status['ErrorStatus']= 'N';
 			}
 
 			if ($do_cache) {
@@ -2889,6 +2872,11 @@ class Model
 		}
 
 		return $status;
+	}
+
+	function _getModuleInfo($start)
+	{
+		return FALSE;
 	}
 
 	function getFifoLogs($interval= 60)
