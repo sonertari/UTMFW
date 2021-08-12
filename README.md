@@ -14,9 +14,9 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The UTMFW project releases two installation files:
 
-- The installation iso file for the amd64 arch is available for download at [utmfw69\_20210812\_amd64.iso](https://drive.google.com/file/d/1pWwsmDgU_mpRPJ9gkjBJ67kpHI0agdHK/view?usp=sharing). Make sure the SHA256 checksum is correct: 581ae7b01011cf2dc6c39e43cd1ce210e3f31327d4ff7d07439ffe7238a160db.
+- The installation iso file for the amd64 arch is available for download at [utmfw69\_20210812\_amd64.iso](https://drive.google.com/file/d/1um6aknbVl56YUhQJZdI2b-p7-R5vGAGq/view?usp=sharing). Make sure the SHA256 checksum is correct: 5364989ced263405f837b76aff2b0386862f84bf51e5c672c87c027956cac9bf.
 
-- The installation img file for the arm64 arch is available for download at [utmfw69\_20210812\_arm64.img](https://drive.google.com/file/d/1-bEbetcXNV-UVP7mYHvuTbmhjvSS2ASY/view?usp=sharing). Make sure the SHA256 checksum is correct: c06579d55e03514ff271063aae64170ed22aef53b96b4092c001f5cba3410bad. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- The installation img file for the arm64 arch is available for download at [utmfw69\_20210812\_arm64.img](https://drive.google.com/file/d/1-Bvr571RmW1kZ4h_sgrnqI3x5P5DC068/view?usp=sharing). Make sure the SHA256 checksum is correct: 242f282a2862bad0c51dbe97b1a4d5f376fd4296ae59bc01f13ac84d7a506c15. The only arm64 platform supported is Raspberry Pi 4 Model B.
 
 You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file for the amd64 arch into a bootable image you can write on a USB drive or an SD card.
 
