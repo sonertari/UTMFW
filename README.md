@@ -68,6 +68,8 @@ UTMFW uses the same design decisions and implementation as the [PFRE](https://gi
 
 Download the installation iso or img file for your platform and follow the instructions in the installation guide available in the file. Below are the same instructions.
 
+You can also find [the output of a sample installation on the wiki](https://github.com/sonertari/UTMFW/wiki/Sample-Installation).
+
 ### Installation Guide
 
 UTMFW installation is very intuitive and easy, just follow the instructions on the screen and answer the questions asked. You are advised to accept the default answers to all the questions. In fact, the installation can be completed by accepting default answers all the way from the first question until the last. The only exceptions are network configuration, password setup, and installation disk selection.
