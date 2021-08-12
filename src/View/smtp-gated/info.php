@@ -20,12 +20,12 @@
 
 require_once('include.php');
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm();
+$View->PrintStatusForm($generate_status);
 
 PrintHelpWindow(_HELPWINDOW('SMTP proxy is used to scan outgoing e-mails for viruses and spam. Make sure virus and spam scanners are running before starting this proxy.'));
 require_once($VIEW_PATH.'/footer.php');

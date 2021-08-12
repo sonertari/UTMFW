@@ -20,7 +20,7 @@
 
 require_once('pf.php');
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 
 $View->Controller($Output, 'GetPfInfo');
 $PfInfo= implode("\n", $Output);
@@ -34,7 +34,7 @@ $PfTimeout= implode("\n", $Output);
 $Reload= TRUE;
 require_once($VIEW_PATH . '/header.php');
 
-$View->PrintStatusForm(FALSE, TRUE, FALSE);
+$View->PrintStatusForm($generate_status, FALSE, TRUE, FALSE);
 ?>
 <table class="shadowbox" style="padding-right: 12px;">
 	<tr>

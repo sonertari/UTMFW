@@ -20,12 +20,12 @@
 
 require_once('include.php');
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm(PRINT_COUNT);
+$View->PrintStatusForm($generate_status, PRINT_COUNT);
 
 PrintHelpWindow(_HELPWINDOW('SOCKS proxy is used by clients which support SOCKS protocol, such as file sharing applications. If you do not plan on providing support for SOCKS-enabled applications, you can stop this proxy. Some client applications fail to use the SOCKS proxy fully, even if they are configured correctly. Check the packet filter logs for blocked packets.'));
 require_once($VIEW_PATH.'/footer.php');

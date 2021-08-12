@@ -20,12 +20,12 @@
 
 require_once('include.php');
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm();
+$View->PrintStatusForm($generate_status);
 
 PrintHelpWindow(_HELPWINDOW('OpenSSH is the de-facto standard secure shell. If you stop OpenSSH, you cannot establish shell connections to the system remotely.'));
 require_once($VIEW_PATH.'/footer.php');

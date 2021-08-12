@@ -20,12 +20,12 @@
 
 require_once('include.php');
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm();
+$View->PrintStatusForm($generate_status);
 
 PrintHelpWindow(_HELPWINDOW('Internal clients connect to FTP servers on the external network via this FTP proxy. Since FTP protocol makes use of ports other than the ftp ports, allowing requests to ftp ports only is not enough. You need to run an FTP proxy.'));
 require_once($VIEW_PATH.'/footer.php');

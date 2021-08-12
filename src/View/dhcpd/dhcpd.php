@@ -22,12 +22,12 @@
  * Info, arp output, and list of leases.
  */
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 
-$View->PrintStatusForm();
+$View->PrintStatusForm($generate_status);
 ?>
 <strong><?php echo _TITLE2('Leases').':' ?></strong>
 <?php

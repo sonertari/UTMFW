@@ -8524,6 +8524,9 @@ msgstr "Süreci başlatmak için en az bir conf dosyası seçmelisiniz"
 msgid "You should select at least one interface to start IDS for"
 msgstr "STS'yi başlatmak için en az bir ağ arayüzü seçmelisiniz"
 
+msgid "You should select at least one interface to stop IDS for"
+msgstr "STS'yi durdurmak için en az bir ağ arayüzü seçmelisiniz"
+
 msgid ""
 "You should take into account that there may be computers with static IP "
 "addresses or using BOOTP protocol, and choose a range accordingly."

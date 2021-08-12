@@ -20,12 +20,12 @@
 
 require_once('httpd.php');
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 		
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm(PRINT_COUNT);
+$View->PrintStatusForm($generate_status, PRINT_COUNT);
 PrintHelpWindow(_HELPWINDOW('This web administration interface is served by OpenBSD/httpd. If you stop the web server, you will lose your connection to this web interface. You can restart it on the command line.'));
 require_once($VIEW_PATH.'/footer.php');
 ?>

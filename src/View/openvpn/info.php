@@ -49,11 +49,14 @@ function PrintConfStartStopForm()
 	}
 }
 
+$generate_status= 0;
+
 if (filter_has_var(INPUT_POST, 'Start')) {
 	if (filter_has_var(INPUT_POST, 'ConfFiles')) {
 		foreach ($_POST['ConfFiles'] as $file) {
 			$View->Controller($Output, 'RestartInstance', $file);
 		}
+		$generate_status= 1;
 	}
 	else {
 		PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('You should select at least one conf file to start the process'), 'auto', 'ERROR');
@@ -69,6 +72,7 @@ else if (filter_has_var(INPUT_POST, 'Stop')) {
 		// Snort inline IPS
 		$View->Stop();
 	}
+	$generate_status= 1;
 }
 
 $View->Controller($Output, 'GetStatus');
@@ -76,7 +80,7 @@ $View->Controller($Output, 'GetStatus');
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm(FALSE, FALSE);
+$View->PrintStatusForm($generate_status, FALSE, FALSE);
 PrintConfStartStopForm();
 
 PrintHelpWindow(_HELPWINDOW('OpenVPN is a virtual private networking solution based on OpenSSL. You should create different configuration for servers and clients, and start OpenVPN accordingly.'));

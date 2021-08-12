@@ -20,17 +20,17 @@
 
 require_once('clamd.php');
 $Clamd= $View;
-$Clamd->ProcessStartStopRequests();
+$generate_clamd_status= $Clamd->ProcessStartStopRequests();
 
 require_once('freshclam.php');
 $Freshclam= $View;
-$Freshclam->ProcessStartStopRequests();
+$generate_freshclam_status= $Freshclam->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$Clamd->PrintStatusForm();
-$Freshclam->PrintStatusForm();
+$Clamd->PrintStatusForm($generate_clamd_status);
+$Freshclam->PrintStatusForm($generate_freshclam_status);
 
 PrintHelpWindow(_HELPWINDOW('UTMFW uses ClamAV for all virus scanning purposes. Freshclam checks and updates ClamAV virus database periodically. By default, the database is updated every hour. You may not be able to stop or restart freshclam instance once it starts the update process; wait for a minute and try again.'));
 require_once($VIEW_PATH.'/footer.php');

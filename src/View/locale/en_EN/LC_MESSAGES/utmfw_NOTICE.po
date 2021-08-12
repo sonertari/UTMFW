@@ -207,6 +207,9 @@ msgstr ""
 msgid "You should select at least one interface to start IDS for"
 msgstr ""
 
+msgid "You should select at least one interface to stop IDS for"
+msgstr ""
+
 msgid "delete"
 msgstr ""
 

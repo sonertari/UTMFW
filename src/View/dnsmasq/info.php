@@ -20,12 +20,12 @@
 
 require_once('include.php');
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm();
+$View->PrintStatusForm($generate_status, PRINT_COUNT);
 
 PrintHelpWindow(_HELPWINDOW('The DNS forwarder sends all queries to the name servers in /etc/resolv.conf.'));
 require_once($VIEW_PATH.'/footer.php');

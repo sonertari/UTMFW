@@ -20,6 +20,8 @@
 
 require_once('snort.php');
 
+$generate_snort_status= 0;
+
 if (filter_has_var(INPUT_POST, 'Model')) {
 	if (filter_input(INPUT_POST, 'Model') == $View->Model) {
 		if (filter_has_var(INPUT_POST, 'Start')) {
@@ -28,6 +30,7 @@ if (filter_has_var(INPUT_POST, 'Model')) {
 					$View->Controller($Output, 'StopInstance', $If);
 					$View->Controller($Output, 'StartInstance', $If);
 				}
+				$generate_snort_status= 1;
 			}
 			else {
 				PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('You should select at least one interface to start IDS for'), 'auto', 'ERROR');
@@ -38,9 +41,10 @@ if (filter_has_var(INPUT_POST, 'Model')) {
 				foreach ($_POST['Interfaces'] as $If) {
 					$View->Controller($Output, 'StopInstance', $If);
 				}
+				$generate_snort_status= 1;
 			}
 			else {
-				$View->Stop();
+				PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('You should select at least one interface to stop IDS for'), 'auto', 'ERROR');
 			}
 		}
 	}
@@ -49,19 +53,19 @@ if (filter_has_var(INPUT_POST, 'Model')) {
 $View->Controller($Output, 'GetStatus');
 
 $View->Model= 'snortinline';
-$View->ProcessStartStopRequests();
+$generate_snortinline_status= $View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
 $View->Model= 'snort';
 $View->Caption= _('Intrusion Detection');
-$View->PrintStatusForm(FALSE, FALSE);
+$View->PrintStatusForm($generate_snort_status, FALSE, FALSE);
 $View->PrintInterfaceSelectForm();
 
 $View->Model= 'snortinline';
 $View->Caption= _TITLE('Inline Intrusion Prevention');
-$View->PrintStatusForm();
+$View->PrintStatusForm($generate_snortinline_status);
 
 PrintHelpWindow(_HELPWINDOW('You can run multiple Intrusion Detection processes, one for each network interface. The IDS listens to such interfaces in promiscuous mode.
 

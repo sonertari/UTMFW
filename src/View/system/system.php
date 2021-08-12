@@ -68,7 +68,7 @@ if (!$GoingDown) {
 require_once($VIEW_PATH.'/header.php');
 
 if (!$GoingDown) {
-	$View->PrintStatusForm(FALSE, TRUE, FALSE, TRUE);
+	$View->PrintStatusForm(0, FALSE, TRUE, FALSE, TRUE);
 	?>
 	<table id="nvp" class="shadowbox" style="width: 600px;">
 		<tr class="oddline">

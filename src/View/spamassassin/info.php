@@ -20,12 +20,12 @@
 
 require_once('include.php');
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm();
+$View->PrintStatusForm($generate_status);
 
 PrintHelpWindow(_HELPWINDOW('SpamAssassin is a bayesian content scanner and is used in scanning incoming POP3 and outgoing SMTP e-mails for spam content. If SpamAssassin identifies an e-mail as spam, it marks the subject line with a warning message and provides a list of reasons in the body of the e-mail.'));
 require_once($VIEW_PATH.'/footer.php');

@@ -271,30 +271,39 @@ class View
 	 */
 	function ProcessStartStopRequests()
 	{
+		$generate_status= 0;
+
 		if (filter_has_var(INPUT_POST, 'Model')) {
 			if (filter_input(INPUT_POST, 'Model') == $this->Model) {
 				if (filter_has_var(INPUT_POST, 'Start')) {
 					$this->Restart();
+					$generate_status= 1;
 				}
 				else if (filter_has_var(INPUT_POST, 'Stop')) {
 					$this->Stop();
+					$generate_status= 1;
 				}
 			}
 		}
 		$this->Controller($Output, 'GetStatus');
+
+		return $generate_status;
 	}
 
 	/**
 	 * Displays module status, software version, Restart/Stop buttons, and process table.
 	 *
+	 * @param boolean $generate_status Force generate module status, do not use cached status, necessary after process start/stop
 	 * @param boolean $printcount Whether to print number of running processes too
 	 * @param boolean $showbuttons Show Start/Stop buttons
+	 * @param boolean $printprocs Whether to print the process table
+	 * @param boolean $showrestartbutton Show Restart button, for System Info page
 	 */
-	function PrintStatusForm($printcount= FALSE, $showbuttons= TRUE, $printprocs= TRUE, $showrestartbutton= FALSE)
+	function PrintStatusForm($generate_status= 0, $printcount= FALSE, $showbuttons= TRUE, $printprocs= TRUE, $showrestartbutton= FALSE)
 	{
 		global $IMG_PATH, $ADMIN, $Status2Images, $StatusTitles;
 
-		$this->Controller($output, 'GetModuleStatus');
+		$this->Controller($output, 'GetModuleStatus', $generate_status);
 
 		$status= json_decode($output[0], TRUE);
 

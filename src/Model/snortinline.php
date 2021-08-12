@@ -87,10 +87,10 @@ class Snortinline extends Snort
 	 */
 	function IsRunning($proc= '')
 	{
-		$re= "\/usr\/local\/bin\/snort\s+[^\n]*-Q\s+[^\n]*";
+		$re= "/usr/local/bin/snort\s+[^\n]*-Q\s+[^\n]*";
 
 		$output= $this->RunShellCommand('/bin/ps arwwx -U_snort');
-		if (preg_match("/$re/m", $output)) {
+		if (preg_match("|$re|m", $output)) {
 			return TRUE;
 		}
 		return FALSE;

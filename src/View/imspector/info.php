@@ -20,12 +20,12 @@
 
 require_once('imspector.php');
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm();
+$View->PrintStatusForm($generate_status);
 
 PrintHelpWindow(_HELPWINDOW('IMSpector supports MSN, ICQ/AIM, Yahoo, and IRC protocols. IM Proxy can log all messages exchanged in text conversations.'));
 require_once($VIEW_PATH.'/footer.php');

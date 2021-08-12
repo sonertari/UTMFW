@@ -280,7 +280,8 @@ class Model
 					),
 				
 				'GetModuleStatus'	=>	array(
-					'argv'	=>	array(),
+					// Trailing comma to avoid syntax error
+					'argv'	=>	array(BOOL,),
 					'desc'	=>	_('Get module status'),
 					),
 				
@@ -2770,7 +2771,7 @@ class Model
 				$model= new $Models[$name]();
 
 				// Do not cache module status individually here, we accumulate and cache them all in status.json below
-				$module_status= $model->_getModuleStatus($DashboardIntervals2Seconds[$start], FALSE);
+				$module_status= $model->_getModuleStatus($DashboardIntervals2Seconds[$start], 1, 0);
 				if ($module_status !== FALSE) {
 					$status[$name]= $module_status;
 				}
@@ -2814,19 +2815,19 @@ class Model
 		return FALSE;
 	}
 
-	function GetModuleStatus()
+	function GetModuleStatus($generate_status)
 	{
 		global $StatusCheckInterval;
 
-		return Output(json_encode($this->_getModuleStatus($StatusCheckInterval)));
+		return Output(json_encode($this->_getModuleStatus($StatusCheckInterval, $generate_status)));
 	}
 
-	function _getModuleStatus($start, $do_cache= TRUE)
+	function _getModuleStatus($start, $generate_status, $do_cache= 1)
 	{
 		$status= array();
-		$cache= "{$this->UTMFWDIR}/cache/{$this->CollectdName}_status.json";
+		$cache= "{$this->UTMFWDIR}/cache/{$this->Name}_status.json";
 
-		if (!$this->getCachedContents($cache, $status)) {
+		if ($generate_status || !$this->getCachedContents($cache, $status)) {
 			$runStatus= $this->IsRunning() ? 'R' : 'S';
 
 			$status= array(

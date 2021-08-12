@@ -20,12 +20,12 @@
 
 require_once('e2guardian.php');
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm();
+$View->PrintStatusForm($generate_status);
 
 PrintHelpWindow(_HELPWINDOW('The web filter runs multithreaded. The maximum number of web filter threads can be adjusted on the configuration pages.
 

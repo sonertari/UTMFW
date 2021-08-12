@@ -20,7 +20,7 @@
 
 require_once('include.php');
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 
 if (count($_POST)) {
 	if (filter_has_var(INPUT_POST, 'UnblockAll')) {
@@ -37,7 +37,7 @@ if (count($_POST)) {
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm();
+$View->PrintStatusForm($generate_status);
 ?>
 <table style="width: 600px;">
 	<tr>

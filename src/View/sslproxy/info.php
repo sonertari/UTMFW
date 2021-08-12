@@ -20,12 +20,12 @@
 
 require_once('sslproxy.php');
 
-$View->ProcessStartStopRequests();
+$generate_status= $View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->PrintStatusForm();
+$View->PrintStatusForm($generate_status);
 ?>
 <strong><?php echo _('Statistics') ?></strong>
 <?php
