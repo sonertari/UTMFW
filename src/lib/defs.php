@@ -1066,10 +1066,12 @@ $DashboardIntervals2Seconds= array(
 	);
 
 $PF_CONFIG_PATH= '/etc/pfre';
-$TMP_PATH= '/tmp';
+$TMP_PATH= '/var/log/utmfw/tmp';
 
 $TEST_DIR_PATH= '';
 /// @attention Necessary to set to '/utmfw' instead of '' to fix $ROOT . $TEST_DIR_SRC in model.php
 $TEST_DIR_SRC= '/utmfw';
 $INSTALL_USER= 'root';
+
+$SSLPROXY_CONFIG_PATH= '/etc/sslproxy';
 ?>

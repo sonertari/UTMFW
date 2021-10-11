@@ -24,9 +24,8 @@ class Blank extends Rule
 {
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispBlank();
-		$this->dispTailEditLinks($ruleNumber, $count);
 	}
 	
 	/**
@@ -42,9 +41,10 @@ class Blank extends Rule
 	function dispBlank()
 	{
 		?>
-		<td class="blank" colspan="13">
-			<?php echo nl2br($this->rule['blank']); ?>
-		</td>
+			<td class="blank" colspan="13">
+				<?php echo nl2br($this->rule['blank']); ?>
+			</td>
+		</tr>
 		<?php
 	}
 

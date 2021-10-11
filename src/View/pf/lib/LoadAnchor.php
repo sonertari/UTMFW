@@ -24,9 +24,9 @@ class LoadAnchor extends Rule
 {
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispAnchor();
-		$this->dispTail($ruleNumber, $count);
+		$this->dispTail($ruleNumber);
 	}
 	
 	function dispAnchor()

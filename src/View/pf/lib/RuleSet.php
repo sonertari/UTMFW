@@ -82,9 +82,9 @@ class RuleSet
 
 		$retval= TRUE;
 		if ($filename == '/etc/pf.conf') {
-			$retval= $View->Controller($Output, 'GetPfRules', $filename, 0, $force);
+			$retval= $View->Controller($Output, 'GetRules', $filename, 0, $force);
 		} else {
-			$retval= $View->Controller($Output, 'GetPfRules', $filename, $tmp, $force);
+			$retval= $View->Controller($Output, 'GetRules', $filename, $tmp, $force);
 		}
 
 		if ($retval !== FALSE || $force) {
@@ -349,7 +349,7 @@ class RuleSet
 		$rulesArray= array_slice(json_decode(json_encode($this), TRUE)['rules'], 0, $ruleNumber);
 		$rulesArray[]= json_decode(json_encode($ruleObj), TRUE);
 
-		return $View->Controller($Output, 'TestPfRules', json_encode($rulesArray));
+		return $View->Controller($Output, 'TestRules', json_encode($rulesArray));
 	}
 	
 	/**

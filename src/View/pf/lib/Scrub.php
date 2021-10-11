@@ -24,7 +24,7 @@ class Scrub extends Filter
 {
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispAction();
 		$this->dispValue('direction', _TITLE('Direction'));
 		$this->dispInterface();
@@ -34,7 +34,7 @@ class Scrub extends Filter
 		$this->dispValue('min-ttl', _TITLE('Min-ttl'));
 		$this->dispValue('max-mss', _TITLE('Max-mss'));
 		$this->dispScrubOpts();
-		$this->dispTail($ruleNumber, $count);
+		$this->dispTail($ruleNumber);
 	}
 
 	function dispScrubOpts()

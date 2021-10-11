@@ -24,7 +24,7 @@ class FilterBase extends State
 {
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispAction();
 		$this->dispValue('direction', _TITLE('Direction'));
 		$this->dispInterface();
@@ -34,7 +34,7 @@ class FilterBase extends State
 		$this->dispSrcDest();
 		$this->dispValue('state-filter', _TITLE('State'));
 		$this->dispQueue();
-		$this->dispTail($ruleNumber, $count);
+		$this->dispTail($ruleNumber);
 	}
 	
 	function dispAction()

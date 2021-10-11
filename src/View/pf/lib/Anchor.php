@@ -24,7 +24,7 @@ class Anchor extends FilterBase
 {
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispAction();
 		$this->dispValue('direction', _TITLE('Direction'));
 		$this->dispInterface();
@@ -33,7 +33,7 @@ class Anchor extends FilterBase
 		$this->dispValue('state-filter', _TITLE('State'));
 		$this->dispQueue();
 		$this->dispInline();
-		$this->dispTail($ruleNumber, $count);
+		$this->dispTail($ruleNumber);
 	}
 	
 	/**

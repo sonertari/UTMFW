@@ -24,9 +24,9 @@ class Limit extends Rule
 {
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispLimit();
-		$this->dispTail($ruleNumber, $count);
+		$this->dispTail($ruleNumber);
 	}
 	
 	function dispLimit()

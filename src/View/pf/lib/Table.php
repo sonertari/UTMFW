@@ -24,14 +24,14 @@ class Table extends Rule
 {
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispId();
 		$this->dispKey('const', _TITLE('Flag'));
 		$this->dispKey('persist', _TITLE('Flag'));
 		$this->dispKey('counters', _TITLE('Flag'));
 		// Dummy params
 		$this->dispValues('', '');
-		$this->dispTail($ruleNumber, $count);
+		$this->dispTail($ruleNumber);
 	}
 
 	function dispId()

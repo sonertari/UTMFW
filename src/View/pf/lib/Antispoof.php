@@ -24,13 +24,13 @@ class Antispoof extends Rule
 {
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispInterface();
 		$this->dispKey('quick', _TITLE('Quick'));
 		$this->dispValue('af', _TITLE('Address Family'));
 		$this->dispLog(8);
 		$this->dispValue('label', _TITLE('Label'));
-		$this->dispTail($ruleNumber, $count);
+		$this->dispTail($ruleNumber);
 	}
 	
 	function input()

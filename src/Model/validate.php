@@ -139,4 +139,16 @@ define('RE_SOURCETRACKOPTION', '^(rule|global)$');
 $RE_ICMPOPT= '[\w-]{1,20}';
 define('RE_ICMPTYPE', "^$RE_ICMPOPT(| code $RE_ICMPOPT)$");
 define('RE_ICMPCODE', "^$RE_ICMPOPT$");
+
+$SPRE_ALLNONE= '[!]{0,1}\*';
+define('SPRE_ACTION', '^(Divert|Split|Pass|Block|Match)$');
+define('SPRE_VALUE', '^.{1,200}$');
+define('SPRE_ID', "^$RE_MACRO_VAR$");
+define('SPRE_WORD', "^(${RE_ID}[*]{0,1}|$RE_MACRO_VAR|$SPRE_ALLNONE)$");
+define('SPRE_IP', "^(${RE_IP}[*]{0,1}|$RE_MACRO_VAR|$SPRE_ALLNONE)$");
+define('SPRE_PORT', "^(\d{1,5}[*]{0,1}|$RE_MACRO_VAR|$SPRE_ALLNONE)$");
+define('SPRE_HOST', "^([\w.\/_*]{1,100}|${RE_IP}[*]{0,1}|$RE_MACRO_VAR|$SPRE_ALLNONE)$");
+define('SPRE_LOG', "^([!]{0,1}(connect|master|cert|content|pcap|mirror)|$SPRE_ALLNONE)$");
+define('SPRE_PROTO', "^(tcp|ssl|http|https|pop3|pop3s|smtp|smtps|autossl)$");
+define('SPRE_NATENGINE', "^(pf|ipfw|netfilter|tproxy)$");
 ?>

@@ -20,29 +20,6 @@
 
 require_once('sslproxy.php');
 
-$View->UploadLogFile();
-
-if (filter_has_var(INPUT_POST, 'DeleteSpec')) {
-	/// @attention Specs is an array, so filter_input() does not work here.
-	foreach ($_POST['Specs'] as $Specs) {
-		$View->Controller($Output, 'DelSpec', $Specs);
-	}
-}
-if (filter_has_var(INPUT_POST, 'AddSpec') && filter_has_var(INPUT_POST, 'SpecToAdd')) {
-	$View->Controller($Output, 'AddSpec', filter_input(INPUT_POST, 'SpecToAdd'));
-}
-
-if (filter_has_var(INPUT_POST, 'DeleteSite')) {
-	/// @attention Sites is an array, so filter_input() does not work here.
-	foreach ($_POST['Sites'] as $Site) {
-		$View->Controller($Output, 'DelPassSite', $Site);
-	}
-}
-if (filter_has_var(INPUT_POST, 'AddSite') && filter_has_var(INPUT_POST, 'SiteToAdd')) {
-	$View->Controller($Output, 'AddPassSite', filter_input(INPUT_POST, 'SiteToAdd'));
-}
-
-$CustomFunc= 'PrintProxySpecsDownloadCACertForm';
-
-require_once('../lib/conf.php');
+$Submenu= SetSubmenu('editor');
+require_once("conf.$Submenu.php");
 ?>

@@ -46,7 +46,7 @@ if (isset($edit) && array_key_exists($edit, $ruleType2Class)) {
 		$force= 1;
 	}
 
-	$generateResult= $View->Controller($Output, 'GeneratePfRule', json_encode($ruleObj), $ruleNumber, $force);
+	$generateResult= $View->Controller($Output, 'GenerateRule', json_encode($ruleObj), $ruleNumber, $force);
 	if ($generateResult || $force) {
 		/// @attention Inline anchor rules are multi-line, hence implode.
 		$ruleStr= implode("\n", $Output);

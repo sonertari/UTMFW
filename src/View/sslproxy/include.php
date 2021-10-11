@@ -20,6 +20,25 @@
 
 require_once('../lib/vars.php');
 
+require_once($SRC_ROOT.'/lib/defs.php');
+require_once($SRC_ROOT.'/lib/setup.php');
+require_once($SRC_ROOT.'/lib/lib.php');
+
+require_once($VIEW_PATH.'/lib/setup.php');
+
+$SSLPROXY_PATH= $VIEW_PATH.'/sslproxy';
+
+require_once($SSLPROXY_PATH.'/lib/RuleSet.php');
+require_once($SSLPROXY_PATH.'/lib/Rule.php');
+require_once($SSLPROXY_PATH.'/lib/ProxySpecLine.php');
+require_once($SSLPROXY_PATH.'/lib/ProxySpecStruct.php');
+require_once($SSLPROXY_PATH.'/lib/Filter.php');
+require_once($SSLPROXY_PATH.'/lib/Macro.php');
+require_once($SSLPROXY_PATH.'/lib/Option.php');
+require_once($SSLPROXY_PATH.'/lib/Include.php');
+require_once($SSLPROXY_PATH.'/lib/Comment.php');
+require_once($SSLPROXY_PATH.'/lib/Blank.php');
+
 $Menu = array(
 	'info' => array(
 		'Name' => _MENU('Info'),
@@ -70,6 +89,11 @@ $Menu = array(
 	'conf' => array(
 		'Name' => _MENU('Config'),
 		'Perms' => $ADMIN,
+		'SubMenu' => array(
+			'editor' => _MENU('Editor'),
+			'write' => _MENU('Display & Install'),
+			'files' => _MENU('Load & Save'),
+			),
 		),
 	);
 ?>

@@ -24,9 +24,9 @@ class _Include extends Rule
 {
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispInclude();
-		$this->dispTail($ruleNumber, $count);
+		$this->dispTail($ruleNumber);
 	}
 	
 	function dispInclude()
@@ -70,7 +70,7 @@ class _Include extends Rule
 	{
 		global $View, $PF_CONFIG_PATH;
 
-		$View->Controller($ruleFiles, 'GetPfRuleFiles');
+		$View->Controller($ruleFiles, 'GetRuleFiles');
 		?>
 		<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 			<td class="title">

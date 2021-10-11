@@ -560,6 +560,28 @@ ul#navigation ul li a
 	background-color: #fff79f;
 }
 
+.split
+{
+	background-color: #ffc107;
+}
+
+.divert
+{
+	background-color: blue;
+	color: white;
+}
+
+.define
+{
+	background-color: hotpink;
+}
+
+.proxyspec
+{
+	background-color: teal;
+	color: white;
+}
+
 .comment
 {
 	border-bottom: 1px solid #CCC;
@@ -592,7 +614,7 @@ ul#navigation ul li a
 
 .category
 {
-	background-color: white;
+	text-align: left;
 }
 
 .edit

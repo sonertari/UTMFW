@@ -25,10 +25,10 @@ if (count($_POST) && !filter_has_var(INPUT_POST, 'numbers')) {
 	$printNumbers= 0;
 }
 
-$testResult= $View->Controller($Output, 'TestPfRules', json_encode($View->RuleSet->rules));
+$testResult= $View->Controller($Output, 'TestRules', json_encode($View->RuleSet->rules));
 if ($testResult) {
 	if (filter_has_var(INPUT_POST, 'install') && filter_input(INPUT_POST, 'install') == _CONTROL('Install')) {
-		if ($View->Controller($Output, 'InstallPfRules', json_encode($View->RuleSet->rules))) {
+		if ($View->Controller($Output, 'InstallRules', json_encode($View->RuleSet->rules))) {
 			PrintHelpWindow(_NOTICE('Installed successfully'));
 		} else {
 			PrintHelpWindow('<br>' . _NOTICE('There was an error while installing'), NULL, 'ERROR');
@@ -46,7 +46,7 @@ if (filter_has_var(INPUT_POST, 'forcedisplay')) {
 $StrRules= array();
 $generated= FALSE;
 if ($testResult || $force) {
-	$generated= $View->Controller($StrRules, 'GeneratePfRules', json_encode($View->RuleSet->rules), $printNumbers, $force);
+	$generated= $View->Controller($StrRules, 'GenerateRules', json_encode($View->RuleSet->rules), $printNumbers, $force);
 }
 
 require_once($VIEW_PATH.'/header.php');

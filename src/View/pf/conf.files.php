@@ -76,9 +76,9 @@ if (filter_has_var(INPUT_POST, 'save')) {
 	$savefile= basename(filter_input(INPUT_POST, 'saveFilename'));
 	$filepath= "$PF_CONFIG_PATH/$savefile";
 
-	if ($force || $View->Controller($Output, 'TestPfRules', json_encode($View->RuleSet->rules))) {
+	if ($force || $View->Controller($Output, 'TestRules', json_encode($View->RuleSet->rules))) {
 		/// @attention Use 0, not FALSE for boolean here, otherwise arg type check fails
-		if ($View->Controller($Output, 'InstallPfRules', json_encode($View->RuleSet->rules), $filepath, 0, $force)) {
+		if ($View->Controller($Output, 'InstallRules', json_encode($View->RuleSet->rules), $filepath, 0, $force)) {
 			$View->RuleSet->filename= $filepath;
 			PrintHelpWindow(_NOTICE('Saved') . ": $filepath");
 		} else {
@@ -95,7 +95,7 @@ if (filter_has_var(INPUT_POST, 'remove')) {
 	$deleteFile= basename(filter_input(INPUT_POST, 'deleteFilename'));
 	$filepath= "$PF_CONFIG_PATH/$deleteFile";
 	
-	if ($View->Controller($Output, 'DeletePfRuleFile', $filepath)) {
+	if ($View->Controller($Output, 'DeleteRuleFile', $filepath)) {
 		PrintHelpWindow(_NOTICE('Rules file deleted') . ": $filepath");
 	} else {
 		PrintHelpWindow('<br>' . _NOTICE('Failed deleting') . ": $filepath", NULL, 'ERROR');
@@ -129,7 +129,7 @@ if (filter_has_var(INPUT_POST, 'download')) {
 		$force= 1;
 	}
 
-	if ($View->Controller($Output, 'GeneratePfRules', json_encode($View->RuleSet->rules), 0, $force) || $force) {
+	if ($View->Controller($Output, 'GenerateRules', json_encode($View->RuleSet->rules), 0, $force) || $force) {
 		if (filter_has_var(INPUT_SERVER, 'HTTP_USER_AGENT') && preg_match("/MSIE/", filter_input(INPUT_SERVER, 'HTTP_USER_AGENT'))) {
 			// For IE
 			ini_set('zlib.output_compression', 'Off');
@@ -152,7 +152,7 @@ if (filter_has_var(INPUT_POST, 'download')) {
 	}
 }
 
-$View->Controller($Output, 'GetPfRuleFiles');
+$View->Controller($Output, 'GetRuleFiles');
 $ruleFiles= $Output;
 
 require_once($VIEW_PATH.'/header.php');

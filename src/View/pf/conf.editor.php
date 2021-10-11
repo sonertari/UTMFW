@@ -148,7 +148,7 @@ if (filter_has_var(INPUT_POST, 'deleteAll')) {
 	PrintHelpWindow(_NOTICE('Ruleset deleted'));
 }
 
-$View->Controller($Output, 'TestPfRules', json_encode($View->RuleSet->rules));
+$View->Controller($Output, 'TestRules', json_encode($View->RuleSet->rules));
 
 require_once($VIEW_PATH.'/header.php');
 ?>
@@ -181,11 +181,11 @@ echo _TITLE('Rules file') . ': ' . $View->RuleSet->filename . ($View->RuleSet->u
 <table id="logline">
 	<tr>
 		<th><?php echo _TITLE('Rule') ?></th>
+		<th><?php echo _TITLE('Edit') ?></th>
 		<th><?php echo _TITLE('Type') ?></th>
 		<th><?php echo _TITLE('Line') ?></th>
 		<th colspan="12"><?php echo _TITLE('Rule') ?></th>
 		<th><?php echo _TITLE('Comment') ?></th>
-		<th><?php echo _TITLE('Edit') ?></th>
 	</tr>
 	<?php
 	$ruleNumber= 0;

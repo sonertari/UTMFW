@@ -24,9 +24,8 @@ class Comment extends Rule
 {
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispComment();
-		$this->dispTailEditLinks($ruleNumber, $count);
 	}
 
 	/**
@@ -45,13 +44,14 @@ class Comment extends Rule
 	function dispComment()
 	{
 		?>
-		<td class="comment" colspan="13">
-			<?php
-			if (isset($this->rule['comment'])) {
-				echo nl2br(htmlentities(stripslashes($this->rule['comment'])));
-			}
-			?>
-		</td>
+			<td class="comment" colspan="13">
+				<?php
+				if (isset($this->rule['comment'])) {
+					echo nl2br(htmlentities(stripslashes($this->rule['comment'])));
+				}
+				?>
+			</td>
+		</tr>
 		<?php
 	}
 

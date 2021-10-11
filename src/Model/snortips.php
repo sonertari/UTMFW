@@ -31,6 +31,8 @@ class Snortips extends Model
 	public $ConfFile= '/etc/snort/snortips.conf';
 	public $LogFile= '/var/log/snortips.log';
 
+	public $IpListFile= '/etc/snort/snortips.conf';
+
 	public $VersionCmd= 'unset LC_ALL; unset LANG; /usr/local/sbin/snortips -V';
 
 	public $PidFile= UTMFWDIR.'/run/snortips.pid';

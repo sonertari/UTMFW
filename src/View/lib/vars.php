@@ -36,6 +36,18 @@ $LogConf= array();
 require_once($VIEW_PATH . '/lib/view.php');
 /// @todo Remove this line, but needed for rule editor for now
 require_once($VIEW_PATH . '/pf/include.php');
+// For SSLproxy rule editor
+$SSLPROXY_PATH= $VIEW_PATH.'/sslproxy';
+require_once($SSLPROXY_PATH.'/lib/RuleSet.php');
+require_once($SSLPROXY_PATH.'/lib/Rule.php');
+require_once($SSLPROXY_PATH.'/lib/ProxySpecLine.php');
+require_once($SSLPROXY_PATH.'/lib/ProxySpecStruct.php');
+require_once($SSLPROXY_PATH.'/lib/Filter.php');
+require_once($SSLPROXY_PATH.'/lib/Macro.php');
+require_once($SSLPROXY_PATH.'/lib/Option.php');
+require_once($SSLPROXY_PATH.'/lib/Include.php');
+require_once($SSLPROXY_PATH.'/lib/Comment.php');
+require_once($SSLPROXY_PATH.'/lib/Blank.php');
 
 /// Left menu items with captions and user permissions.
 $UTMFW_MODULES = array(

@@ -24,7 +24,7 @@ class Queue extends Rule
 {
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispValue('name', _TITLE('Name'));
 		$this->dispInterface();
 		$this->dispValue('parent', _TITLE('Parent'));
@@ -35,7 +35,7 @@ class Queue extends Rule
 		$this->dispValue('quantum', _TITLE('Quantum'));
 		$this->dispValue('qlimit', _TITLE('Qlimit'));
 		$this->dispKey('default', _TITLE('Default'));
-		$this->dispTail($ruleNumber, $count);
+		$this->dispTail($ruleNumber);
 	}
 	
 	function dispBandwidth($key, $pre, $title, $colspan)

@@ -108,10 +108,13 @@ class Rule
 	 * Prints rule number, rule type, and line number.
 	 * 
 	 * Used by almost all rule types.
+	 * Passes $count to dispHeadEditLinks() to disable up or down edit links of the first and
+	 * the last rule in the rule set.
 	 *
 	 * @param int $ruleNumber Rule number.
+	 * @param int $count Number of rules in the ruleset.
 	 */
-	function dispHead($ruleNumber)
+	function dispHead($ruleNumber, $count)
 	{
 		global $lineNumber, $ruleCategoryNames;
 
@@ -124,6 +127,9 @@ class Rule
 			<td title="<?php echo _TITLE('Rule number') ?>" class="center">
 				<?php echo $ruleNumber; ?>
 			</td>
+			<?php
+			$this->dispHeadEditLinks($ruleNumber, $count);
+			?>
 			<td title="<?php echo _TITLE('Category') ?>" class="category">
 				<?php echo $ruleType; ?>
 			</td>
@@ -158,24 +164,21 @@ class Rule
 	 * Prints inline comments and edit links.
 	 * 
 	 * Used by almost all rule types.
-	 * Passes $count to dispTailEditLinks() to disable up or down edit links of the first and
-	 * the last rule in the rule set.
 	 *
 	 * @param int $ruleNumber Rule number.
-	 * @param int $count Number of rules in the ruleset.
 	 */
-	function dispTail($ruleNumber, $count)
+	function dispTail($ruleNumber)
 	{
 		?>
-		<td class="comment">
-			<?php
-			if (isset($this->rule['comment'])) {
-				echo htmlentities(stripslashes($this->rule['comment']));
-			}
-			?>
-		</td>
+			<td class="comment">
+				<?php
+				if (isset($this->rule['comment'])) {
+					echo htmlentities(stripslashes($this->rule['comment']));
+				}
+				?>
+			</td>
+		</tr>
 		<?php
-		$this->dispTailEditLinks($ruleNumber, $count);
 	}
 
 	/**
@@ -189,7 +192,7 @@ class Rule
 	 * @param int $ruleNumber Rule number.
 	 * @param int $count Number of rules in the ruleset.
 	 */
-	function dispTailEditLinks($ruleNumber, $count)
+	function dispHeadEditLinks($ruleNumber, $count)
 	{
 		?>
 			<td class="<?php echo ($ruleNumber % 2 ? 'editoddline' : 'edit') ?>">
@@ -197,7 +200,6 @@ class Rule
 				$this->dispEditLinks($ruleNumber, $count);
 				?>
 			</td>
-		</tr>
 		<?php
 	}
 
@@ -216,21 +218,28 @@ class Rule
 	{
 		global $ruleCategoryNames;
 		?>
-		<a href="<?php echo $this->href . $ruleNumber ?>" title="<?php echo _TITLE('Edit') ?>">e</a>
+		<a href="<?php echo $this->href . $ruleNumber ?>" title="<?php echo _TITLE('Edit') ?>">
+			<input type="button" value="E" /></a>
 		<?php
 		if ($ruleNumber > 0) {
 			?>
-			<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?<?php echo $up ?>=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Move up') ?>">u</a>
+			<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?<?php echo $up ?>=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Move up') ?>">
+				<input type="button" value="U" /></a>
 			<?php
 		} else {
-			echo ' u ';
+			?>
+			<input type="button" value="U" title="<?php echo _TITLE('Move up') ?>" disabled/>
+			<?php
 		}
 		if ($ruleNumber < $count) {
 			?>
-			<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?<?php echo $down ?>=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Move down') ?>">d</a>
+			<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?<?php echo $down ?>=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Move down') ?>">
+				<input type="button" value="D" /></a>
 			<?php
 		} else {
-			echo ' d ';
+			?>
+			<input type="button" value="D" title="<?php echo _TITLE('Move down') ?>" disabled/>
+			<?php
 		}
 
 		$ruleType= $ruleCategoryNames[$this->ref];
@@ -238,7 +247,8 @@ class Rule
 		$confirmMsg= str_replace('<RULE_TYPE>', $ruleType, $confirmMsg);
 		$confirmMsg= str_replace('<RULE_NUMBER>', $ruleNumber, $confirmMsg);
 		?>
-		<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?<?php echo $del ?>=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Delete') ?>" onclick="return confirm('<?php echo $confirmMsg ?>')">x</a>
+		<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?<?php echo $del ?>=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Delete') ?>" onclick="return confirm('<?php echo $confirmMsg ?>')">
+			<input type="button" value="X" /></a>
 		<?php
 	}
 

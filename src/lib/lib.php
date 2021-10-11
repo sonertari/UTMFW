@@ -47,7 +47,7 @@ function IsFilePath($filepath)
 		|| preg_match('?^/var/log/\w[\w./\-_]*$?', $filepath)
 		// Messaging logs
 		|| preg_match('|^/var/log/imspector/\w[^$`]*$|', $filepath)
-		|| preg_match('|^/etc/sslproxy/ca.crt$|', $filepath);
+		|| preg_match('|^/etc/sslproxy/\w[^$`]*$|', $filepath);
 }
 
 /**

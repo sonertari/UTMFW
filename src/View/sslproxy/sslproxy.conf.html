@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC
+	"-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style type="text/css">
+	BODY {font-family: arial, helvetica, sans-serif; }
+	SPAN.bold { color: navy; font-weight: bold; }
+	SPAN.underline { color: purple; text-decoration: underline; }
+	A:link {color: blue; text-decoration: none; }
+	A:visited {color: blue; text-decoration: none; }
+	A:hover {text-decoration: underline; }
+</style>
+<title>Man Page Lookup - sslproxy.conf
+</title>
+</head>
+<body>
+<pre>
+sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
+
+<span class="bold">NAME</span>
+       <span class="bold">sslproxy.conf</span> - Configuration file for SSLproxy
+
+<span class="bold">DESCRIPTION</span>
+       The file sslproxy.conf configures SSLproxy, sslproxy(1).
+
+<span class="bold">FILE</span> <span class="bold">FORMAT</span>
+       The file consists of comments and options with arguments. Each line
+       which starts with a hash (<span class="bold">#</span>) symbol is ignored by the parser. Options
+       and arguments are of the form <span class="bold">Option</span> <span class="bold">Argument</span>.
+
+       Structured proxyspecs are defined between curly braces. The opening
+       curly brace should be on the same line as the ProxySpec keyword. The
+       closing curly brace and option-argument pairs should be on a line of
+       their own.
+
+       The arguments are of the following types:
+
+       <span class="bold">BOOL</span>   Boolean value (yes/no).
+
+       <span class="bold">STRING</span> String.
+
+       <span class="bold">NUMBER</span> Unsigned integer.
+<a name="Option"></a>
+<span class="bold">DIRECTIVES</span>
+       When an option is not used (hashed or doesn't exist in the
+       configuration file) sslproxy takes a default action. If an option is
+       defined outside any structured proxyspec, then it is used as a global
+       default. If an option does not have a command line equivalent, -o
+       opt=val option can be used to override it on the command line.
+
+       Note that the ordering of options, rules, and proxyspecs in
+       configuration files (and on the command line) is important. For
+       example, rules and proxyspecs can only make use of the options defined
+       earlier.
+<a name="CACert"></a>
+       <span class="bold">CACert</span> <span class="bold">STRING</span>
+              Use CA cert (and key) to sign forged certs. Equivalent to -c
+              command line option.
+<a name="CAKey"></a>
+       <span class="bold">CAKey</span> <span class="bold">STRING</span>
+              Use CA key (and cert) to sign forged certs. Equivalent to -k
+              command line option.
+<a name="ClientCert"></a>
+       <span class="bold">ClientCert</span> <span class="bold">STRING</span>
+              Use cert from pemfile when destination requests client certs.
+              Equivalent to -a command line option.
+<a name="ClientKey"></a>
+       <span class="bold">ClientKey</span> <span class="bold">STRING</span>
+              Use key from pemfile when destination requests client certs.
+              Equivalent to -b command line option.
+<a name="CAChain"></a>
+       <span class="bold">CAChain</span> <span class="bold">STRING</span>
+              Use CA chain from pemfile (intermediate and root CA certs).
+              Equivalent to -C command line option.
+<a name="LeafKey"></a>
+       <span class="bold">LeafKey</span> <span class="bold">STRING</span>
+              Use key from pemfile for leaf certs. Equivalent to -K command
+              line option.
+              Default: generate
+<a name="LeafCRLURL"></a>
+       <span class="bold">LeafCRLURL</span> <span class="bold">STRING</span>
+              Use URL as CRL distribution point for all forged certs.
+              Equivalent to -q command line option.
+<a name="LeafCertDir"></a>
+       <span class="bold">LeafCertDir</span> <span class="bold">STRING</span>
+              Use cert+chain+key PEM files from certdir to target all sites
+              matching the common names (non-matching: generate if CA).
+              Equivalent to -t command line option.
+<a name="DefaultLeafCert"></a>
+       <span class="bold">DefaultLeafCert</span> <span class="bold">STRING</span>
+              Use cert+chain+key from PEM file for leaf certificates if there
+              is no match in <span class="bold">LeafCertDir</span>. Equivalent to -A command line
+              option.
+<a name="WriteGenCertsDir"></a>
+       <span class="bold">WriteGenCertsDir</span> <span class="bold">STRING</span>
+              Write leaf key and only generated certificates to gendir.
+              Equivalent to -w command line option.
+<a name="WriteAllCertsDir"></a>
+       <span class="bold">WriteAllCertsDir</span> <span class="bold">STRING</span>
+              Write leaf key and all certificates to gendir. Equivalent to -W
+              command line option.
+<a name="DenyOCSP"></a>
+       <span class="bold">DenyOCSP</span> <span class="bold">BOOL</span>
+              Deny all OCSP requests on all proxyspecs. Equivalent to -O
+              command line option.
+<a name="Passthrough"></a>
+       <span class="bold">Passthrough</span> <span class="bold">BOOL</span>
+              Passthrough SSL connections if they cannot be split because of
+              client cert auth or no matching cert and no CA. Equivalent to -P
+              command line option.
+              Default: drop
+<a name="DHGroupParams"></a>
+       <span class="bold">DHGroupParams</span> <span class="bold">STRING</span>
+              Use DH group params from pemfile. Equivalent to -g command line
+              option.
+              Default: keyfiles or auto
+<a name="ECDHCurve"></a>
+       <span class="bold">ECDHCurve</span> <span class="bold">STRING</span>
+              Use ECDH named curve. Equivalent to -G command line option.
+              Default: prime256v1
+<a name="SSLCompression"></a>
+       <span class="bold">SSLCompression</span> <span class="bold">BOOL</span>
+              Enable/disable SSL/TLS compression on all connections.
+              Equivalent to -Z command line option.
+<a name="ForceSSLProto"></a>
+       <span class="bold">ForceSSLProto</span> <span class="bold">STRING</span>
+              Force SSL/TLS protocol version only. Equivalent to -r command
+              line option.
+              Default: all
+<a name="DisableSSLProto"></a>
+       <span class="bold">DisableSSLProto</span> <span class="bold">STRING</span>
+              Disable SSL/TLS protocol version. Equivalent to -R command line
+              option.
+              Default: none
+<a name="Ciphers"></a>
+       <span class="bold">Ciphers</span> <span class="bold">STRING</span>
+              Use the given OpenSSL ciphers spec. Equivalent to -s command
+              line option.
+              Default: ALL:-aNULL
+<a name="CipherSuites"></a>
+       <span class="bold">CipherSuites</span> <span class="bold">STRING</span>
+              Use the given OpenSSL ciphersuites spec. The ciphersuites spec
+              is for TLS 1.3.  Equivalent to -U command line option.
+              Default:
+              TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256
+<a name="LeafKeyRSABits"></a>
+       <span class="bold">LeafKeyRSABits</span> <span class="bold">NUMBER</span>
+              Leaf key RSA keysize in bits, use 1024|2048|3072|4096.
+              Default: 2048
+<a name="OpenSSLEngine"></a>
+       <span class="bold">OpenSSLEngine</span> <span class="bold">STRING</span>
+              The OpenSSL engine to activate.  Equivalent to -x command line
+              option.
+<a name="NATEngine"></a>
+       <span class="bold">NATEngine</span> <span class="bold">STRING</span>
+              Specify default NAT engine to use. Equivalent to -e command line
+              option.
+<a name="User"></a>
+       <span class="bold">User</span> <span class="bold">STRING</span>
+              Drop privileges to user. Equivalent to -u command line option.
+              Default: nobody, if run as root
+<a name="Group"></a>
+       <span class="bold">Group</span> <span class="bold">STRING</span>
+              Drop privileges to group. Equivalent to -m command line option.
+              Default: Primary group of user
+<a name="Chroot"></a>
+       <span class="bold">Chroot</span> <span class="bold">STRING</span>
+              chroot() to jaildir (impacts sni proxyspecs, see sslproxy(1)).
+              Equivalent to -j command line option.
+<a name="PidFile"></a>
+       <span class="bold">PidFile</span> <span class="bold">STRING</span>
+              Write pid to file. Equivalent to -p command line option.
+<a name="ConnectLog"></a>
+       <span class="bold">ConnectLog</span> <span class="bold">STRING</span>
+              Connect log: log one line summary per connection to logfile.
+              Equivalent to -l command line option.
+<a name="ContentLog"></a>
+       <span class="bold">ContentLog</span> <span class="bold">STRING</span>
+              Content log: full data to file or named pipe (excludes
+              ContentLogDir/ContentLogPathSpec). Equivalent to -L command line
+              option.
+<a name="ContentLogDir"></a>
+       <span class="bold">ContentLogDir</span> <span class="bold">STRING</span>
+              Content log: full data to separate files in dir (excludes
+              ContentLog/ContentLogPathSpec). Equivalent to -S command line
+              option.
+<a name="ContentLogPathSpec"></a>
+       <span class="bold">ContentLogPathSpec</span> <span class="bold">STRING</span>
+              Content log: full data to sep files with % subst (excludes
+              ContentLog/ContentLogDir). Equivalent to -F command line option.
+<a name="LogProcInfo"></a>
+       <span class="bold">LogProcInfo</span> <span class="bold">BOOL</span>
+              Look up local process owning each connection for logging.
+              Equivalent to -i command line option.
+<a name="PcapLog"></a>
+       <span class="bold">PcapLog</span> <span class="bold">STRING</span>
+              Pcap log: packets to pcapfile (excludes
+              PcapLogDir/PcapLogPathSpec). Equivalent to -X command line
+              option.
+<a name="PcapLogDir"></a>
+       <span class="bold">PcapLogDir</span> <span class="bold">STRING</span>
+              Pcap log: packets to separate files in dir (excludes
+              PcapLog/PcapLogPathSpec). Equivalent to -Y command line option.
+<a name="PcapLogPathSpec"></a>
+       <span class="bold">PcapLogPathSpec</span> <span class="bold">STRING</span>
+              Pcap log: packets to sep files with % subst (excludes
+              PcapLog/PcapLogDir). Equivalent to -y command line option.
+<a name="MirrorIf"></a>
+       <span class="bold">MirrorIf</span> <span class="bold">STRING</span>
+              Mirror packets to interface. Equivalent to -I command line
+              option.
+<a name="MirrorTarget"></a>
+       <span class="bold">MirrorTarget</span> <span class="bold">STRING</span>
+              Mirror packets to target address (used with MirrorIf).
+              Equivalent to -T command line option. Not used if the target is
+              irrelevant (e.g. mirror to dummy device)
+<a name="MasterKeyLog"></a>
+       <span class="bold">MasterKeyLog</span> <span class="bold">STRING</span>
+              Log master keys to logfile in SSLKEYLOGFILE format. Equivalent
+              to -M command line option.
+<a name="Daemon"></a>
+       <span class="bold">Daemon</span> <span class="bold">BOOL</span>
+              Daemon mode: run in background, log error messages to syslog.
+              Equivalent to -d command line option.
+<a name="Debug"></a>
+       <span class="bold">Debug</span> <span class="bold">BOOL</span>
+              Debug mode: run in foreground, log debug messages on stderr.
+              Equivalent to -D command line option.
+<a name="DebugLevel"></a>
+       <span class="bold">DebugLevel</span> <span class="bold">NUMBER</span>
+              Verbose debug level, 2-4.
+<a name="ConnIdleTimeout"></a>
+       <span class="bold">ConnIdleTimeout</span> <span class="bold">NUMBER</span>
+              Close connections after this many seconds of idle time.
+              Default: 120
+<a name="ExpiredConnCheckPeriod"></a>
+       <span class="bold">ExpiredConnCheckPeriod</span> <span class="bold">NUMBER</span>
+              Check for expired connections every this many seconds.
+              Default: 10.
+<a name="LogStats"></a>
+       <span class="bold">LogStats</span> <span class="bold">BOOL</span>
+              Log statistics to syslog. Equivalent to -J command line option.
+              Default: yes
+<a name="StatsPeriod"></a>
+       <span class="bold">StatsPeriod</span> <span class="bold">NUMBER</span>
+              Log statistics every this many ExpiredConnCheckPeriod periods.
+              Default: 1
+<a name="RemoveHTTPAcceptEncoding"></a>
+       <span class="bold">RemoveHTTPAcceptEncoding</span> <span class="bold">BOOL</span>
+              Remove HTTP header line for Accept-Encoding.
+              Default: yes
+<a name="RemoveHTTPReferer"></a>
+       <span class="bold">RemoveHTTPReferer</span> <span class="bold">BOOL</span>
+              Remove HTTP header line for Referer.
+              Default: yes
+<a name="VerifyPeer"></a>
+       <span class="bold">VerifyPeer</span> <span class="bold">BOOL</span>
+              Verify peer using default certificates.
+              Default: yes
+<a name="AllowWrongHost"></a>
+       <span class="bold">AllowWrongHost</span> <span class="bold">BOOL</span>
+              When disabled, never add the SNI to forged certificates, even if
+              the SNI provided by the client does not match the server
+              certificate's CN/SAN. Helps pass the wrong.host test at
+              https://badssl.com.
+              Default: no
+<a name="UserAuth"></a>
+       <span class="bold">UserAuth</span> <span class="bold">BOOL</span>
+              Require authentication for users to use SSLproxy.
+              Default: no
+<a name="DivertUsers"></a>
+       <span class="bold">DivertUsers</span> <span class="bold">STRING</span>
+              Comma separated list of users. Connections from these users are
+              diverted to listening programs. Users not listed in DivertUsers
+              or PassUsers are blocked.  Max of 50 users can be listed.
+<a name="PassUsers"></a>
+       <span class="bold">PassUsers</span> <span class="bold">STRING</span>
+              Comma separated list of users. Connections from these users are
+              simply passed through to their original destinations, not
+              diverted to listening programs.  Users not listed in DivertUsers
+              or PassUsers are blocked.  Max of 50 users can be listed.
+<a name="UserDBPath"></a>
+       <span class="bold">UserDBPath</span> <span class="bold">STRING</span>
+              Path to user db file.
+<a name="UserTimeout"></a>
+       <span class="bold">UserTimeout</span> <span class="bold">NUMBER</span>
+              Time users out after this many seconds of idle time.
+              Default: 300.
+<a name="UserAuthURL"></a>
+       <span class="bold">UserAuthURL</span> <span class="bold">STRING</span>
+              Redirect URL for users to log in to the system.
+<a name="ValidateProto"></a>
+       <span class="bold">ValidateProto</span> <span class="bold">BOOL</span>
+              Validate proxy spec protocols.
+              Default: no
+<a name="MaxHTTPHeaderSize"></a>
+       <span class="bold">MaxHTTPHeaderSize</span> <span class="bold">NUMBER</span>
+              Max HTTP header size in bytes for protocol validation.
+              Default: 8192.
+<a name="OpenFilesLimit"></a>
+       <span class="bold">OpenFilesLimit</span> <span class="bold">NUMBER</span>
+              Set open files limit, use 50-10000.
+              Default: System-wide limit.
+<a name="Divert"></a>
+       <span class="bold">Divert</span> <span class="bold">BOOL</span>
+              Set divert or split mode of operation, globally or per-
+              proxyspec.  The Divert option is not equivalent to the command
+              line -n option.
+              Default: yes
+<a name="PassSite"></a>
+       <span class="bold">PassSite</span> <span class="bold">STRING</span>
+              Passthrough site: site[*] [(clientaddr|user|*) [description
+              desc]].  PassSite option is a special form of Pass filtering
+              rule. All PassSite rules can be written as Pass filter rules.
+              The PassSite option will be deprecated in favor of filter rules
+              in the future. If the site matches SNI or common names in the
+              SSL certificate, the connection is passed through the proxy. Per
+              site filters can be defined using client IP addresses, users,
+              and description. '*' matches all client IP addresses or users.
+              User auth should be enabled for user and description filtering
+              to work. Case is ignored while matching description.  Multiple
+              sites are allowed, one on each line. PassSite rules can search
+              for exact or substring matches. Append an asterisk to the site
+              field to search for substring match. Note that the substring
+              search is not a regex or wildcard search, and that the asterisk
+              at the end is removed before search.
+<a name="Include"></a>
+       <span class="bold">Include</span> <span class="bold">STRING</span>
+              Load configuration from an include file.
+
+              Recursive include files are not allowed. The Include option
+              cannot be used in include files.
+<a name="Macro"></a>
+       <span class="bold">Define</span> <span class="bold">STRING</span>
+              Define macro to be used in filtering rules. Macro names must
+              start with a $ char. The macro name must be followed by words
+              separated with spaces. For example,
+
+                   Define $macro value1 value2
+
+              Recursive macro definitions are not allowed.
+<a name="Divert"></a>
+       <span class="bold">Divert</span> <span class="bold">STRING</span>
+              Divert filtering rule diverts packets to listening program,
+              allowing SSL inspection by listening program and content logging
+              of packets.
+<a name="Split"></a>
+       <span class="bold">Split</span> <span class="bold">STRING</span>
+              Split filtering rule splits the connection but does not divert
+              packets to listening program, effectively disabling SSL
+              inspection by listening program, but allowing content logging of
+              packets.
+<a name="Pass"></a>
+       <span class="bold">Pass</span> <span class="bold">STRING</span>
+              Pass filtering rule passes the connection through by engaging
+              passthrough mode, effectively disabling SSL inspection and
+              content logging of packets.
+<a name="Block"></a>
+       <span class="bold">Block</span> <span class="bold">STRING</span>
+              Block filtering rule terminates the connection.
+<a name="Match"></a>
+       <span class="bold">Match</span> <span class="bold">STRING</span>
+              Match filtering rule specifies log actions for the connection
+              without changing its filter action.
+
+              The syntax of filtering rules is as follows:
+
+              (Divert|Split|Pass|Block|Match)
+               ([from (
+                   user (username[*]|$macro|*) [desc (desc[*]|$macro|*)]|
+                   desc (desc[*]|$macro|*)|
+                   ip (clientip[*]|$macro|*)|
+                   *)]
+                [to (
+                   (sni (servername[*]|$macro|*)|
+                    cn (commonname[*]|$macro|*)|
+                    host (host[*]|$macro|*)|
+                    uri (uri[*]|$macro|*)|
+                    ip (serverip[*]|$macro|*)) [port
+              (serverport[*]|$macro|*)]|
+                   port (serverport[*]|$macro|*)|
+                   *)]
+                [log ([[!]connect] [[!]master] [[!]cert]
+                      [[!]content] [[!]pcap] [[!]mirror] [$macro]|[!]*)]
+                |*) [# comment]
+
+              See sslproxy(1) for the details.
+<a name="ProxySpecLine"></a>
+       <span class="bold">ProxySpec</span> <span class="bold">STRING</span>
+              One line proxy specification: type listenaddr+port up:port
+              ua:addr ra:addr.  The other options of one line proxyspecs are
+              set to the global configuration preceding them. Multiple specs
+              are allowed, one on each line.
+<a name="ProxySpecStruct"></a>
+       <span class="bold">ProxySpec</span> <span class="bold">{</span>
+              Proto
+              Addr
+              Port
+              Divert
+              DivertAddr
+              DivertPort
+              ReturnAddr
+              NatEngine
+              SNIPort
+              TargetAddr
+              TargetPort
+              DenyOCSP
+              Passthrough
+              CACert
+              CAKey
+              ClientCert
+              ClientKey
+              CAChain
+              DHGroupParams
+              ECDHCurve
+              SSLCompression
+              ForceSSLProto
+              DisableSSLProto
+              Ciphers
+              CipherSuites
+              RemoveHTTPAcceptEncoding
+              RemoveHTTPReferer
+              VerifyPeer
+              UserAuth
+              DivertUsers
+              PassUsers
+              UserTimeout
+              UserAuthURL
+              ValidateProto
+              PassSite
+              Define
+              Divert|Split|Pass|Block|Match filtering rules
+              <span class="bold">}</span>
+
+              Structured proxy specifications may consist of the options
+              listed above. The Addr and Port options are mandatory, and
+              equivalent to listenaddr and port options in one line
+              proxyspecs, respectively. If an option is not specified, the
+              global default value is used.
+
+<span class="bold">FILES</span>
+       /etc/sslproxy/sslproxy.conf
+
+<span class="bold">AUTHOR</span>
+       The config file facility was added by Soner Tari &lt;sonertari@gmail.com&gt;.
+
+<span class="bold">SEE</span> <span class="bold">ALSO</span>
+       sslproxy(1)
+
+v0.8.7                          29 August 2021                sslproxy.conf(5)
+</pre>
+</body>
+</html>

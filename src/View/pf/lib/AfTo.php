@@ -29,7 +29,7 @@ class AfTo extends Filter
 
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispAction();
 		$this->dispValue('direction', _TITLE('Direction'));
 		$this->dispInterface();
@@ -39,7 +39,7 @@ class AfTo extends Filter
 		$this->dispValue('rediraf', _TITLE('Redirect Address Family'));
 		$this->dispValues('redirhost', _TITLE('From Redirect Host'));
 		$this->dispValues('toredirhost', _TITLE('To Redirect Host'));
-		$this->dispTail($ruleNumber, $count);
+		$this->dispTail($ruleNumber);
 	}
 	
 	function input()

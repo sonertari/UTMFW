@@ -29,7 +29,7 @@ class DivertTo extends Filter
 
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispAction();
 		$this->dispValue('direction', _TITLE('Direction'));
 		$this->dispInterface();
@@ -39,7 +39,7 @@ class DivertTo extends Filter
 		$this->dispSrcDest();
 		$this->dispValue('diverthost', _TITLE('Divert Host'));
 		$this->dispValue('divertport', _TITLE('Divert Port'));
-		$this->dispTail($ruleNumber, $count);
+		$this->dispTail($ruleNumber);
 	}
 	
 	function input()

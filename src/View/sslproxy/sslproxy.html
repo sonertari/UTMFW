@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC
+	"-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style type="text/css">
+	BODY {font-family: arial, helvetica, sans-serif; }
+	SPAN.bold { color: navy; font-weight: bold; }
+	SPAN.underline { color: purple; text-decoration: underline; }
+	A:link {color: blue; text-decoration: none; }
+	A:visited {color: blue; text-decoration: none; }
+	A:hover {text-decoration: underline; }
+</style>
+<title>Man Page Lookup - sslproxy
+</title>
+</head>
+<body>
+<pre>
+sslproxy(1)                        SSLproxy                        sslproxy(1)
+
+<span class="bold">NAME</span>
+       sslproxy -- transparent SSL/TLS proxy for decrypting and diverting
+       network traffic to other programs for deep SSL inspection
+
+<span class="bold">SYNOPSIS</span>
+       <span class="bold">sslproxy</span> [<span class="bold">-kCKqwWOPZdDgGsrRxeumjplLSFXYyTIMiab</span>] <span class="bold">-c</span> <span class="underline">pem</span> <span class="underline">proxyspecs</span> [...]
+       <span class="bold">sslproxy</span> [<span class="bold">-kCKqwWOPZdDgGsrRxeumjplLSFXYyTIMiab</span>] <span class="bold">-c</span> <span class="underline">pem</span> <span class="bold">-t</span> <span class="underline">dir</span>
+       <span class="underline">proxyspecs</span> [...]
+       <span class="bold">sslproxy</span> [<span class="bold">-OPZwWdDgGsrRxeumjplLSFXYyTIMiab</span>] <span class="bold">-t</span> <span class="underline">dir</span> <span class="underline">proxyspecs</span> [...]
+       <span class="bold">sslproxy</span> <span class="bold">[-kCKwWOPZdDgGsrRxeumjplLSFXYyTIMi]</span> <span class="bold">-f</span> <span class="underline">conffile</span>
+       <span class="bold">sslproxy</span> <span class="bold">-E</span>
+       <span class="bold">sslproxy</span> <span class="bold">-V</span>
+       <span class="bold">sslproxy</span> <span class="bold">-h</span>
+
+<span class="bold">DESCRIPTION</span>
+       SSLproxy is a proxy for SSL/TLS encrypted network connections. It is
+       intended to be used for decrypting and diverting network traffic to
+       other programs, such as UTM services, for deep SSL inspection.
+
+       The UTMFW project uses SSLproxy to decyrpt and feed network traffic
+       into its UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline
+       IPS; and also indirectly into Virus Scanner and Spam Filter through
+       those UTM software.  Given that most of the Internet traffic is
+       encrypted now, it wouldn't be possible without SSLproxy to deeply
+       inspect most of the network traffic passing through UTMFW.
+
+<span class="bold">Mode</span> <span class="bold">of</span> <span class="bold">operation</span>
+       SSLproxy is designed to transparently terminate connections that are
+       redirected to it using a network address translation engine. SSLproxy
+       then terminates SSL/TLS and initiates a new SSL/TLS connection to the
+       original destination address. Packets received on the client side are
+       decrypted and sent to the program listening on a port given in the
+       proxy specification. SSLproxy inserts in the first packet the address
+       and port it is expecting to receive the packets back from the program.
+       Upon receiving the packets back, SSLproxy re-encrypts and sends them to
+       their original destination. The return traffic follows the same path
+       back to the client in reverse order.
+
+       This is similar in principle to divert sockets, divert(4), where the
+       packet filter diverts the packets to a program listening on a divert
+       socket, and after processing the packets the program reinjects them
+       into the kernel. If there is no program listening on that divert socket
+       or the program does not reinject the packets into the kernel, the
+       connection is effectively blocked. In the case of SSLproxy, SSLproxy
+       acts as both the packet filter and the kernel, and the communication
+       occurs over networking sockets.
+
+       SSLproxy supports split mode of operation similar to SSLsplit as well.
+       In split mode, packets are not diverted to listening programs,
+       effectively making SSLproxy behave similar to SSLsplit, but not exactly
+       like it, because SSLproxy has certain features non-existent in
+       SSLsplit, such as user authentication and protocol validation. Also,
+       note that the implementation of proxy core in SSLproxy is different
+       from the one in SSLsplit, for example the proxy core in SSLproxy runs
+       lockless, whereas SSLsplit implementation uses thread manager level
+       locks (which does not necessarily make sslproxy run faster than
+       sslsplit). In SSLproxy, split mode can be defined globally or per-
+       proxyspec.
+
+       SSLproxy does not automagically redirect any network traffic.  To
+       actually implement a proxy, you also need to redirect the traffic to
+       the system running <span class="bold">sslproxy</span>.  Your options include running <span class="bold">sslproxy</span> on
+       a legitimate router, ARP spoofing, ND spoofing, DNS poisoning,
+       deploying a rogue access point (e.g. using hostap mode), physical
+       recabling, malicious VLAN reconfiguration or route injection,
+       /etc/hosts modification and so on.
+
+     <span class="bold">Proxy</span> <span class="bold">specification</span>
+       For example, given the following proxy specification:
+
+       https 127.0.0.1 8443 up:8080
+
+       SSLproxy listens for HTTPS connections on 127.0.0.1:8443. Upon
+       receiving a connection from the Client, it decrypts and diverts the
+       packets to a Program listening on 127.0.0.1:8080. The default divert
+       address is 127.0.0.1, which can be configured by the ua option. After
+       processing the packets, the Program gives them back to SSLproxy
+       listening on a dynamically assigned address, which the Program obtains
+       from the SSLproxy line in the first packet in the connection. Then
+       SSLproxy re-encrypts and sends the packets to the Server.
+
+       The response from the Server follows the same path back to the Client
+       in reverse order.
+
+       See the SSLsplit documentation for split style and structured
+       proxyspecs.
+
+     <span class="bold">SSLproxy</span> <span class="bold">line</span>
+       A sample line SSLproxy inserts into the first packet in the connection
+       is the following:
+
+       SSLproxy:
+       [127.0.0.1]:34649,[192.168.3.24]:47286,[192.168.111.130]:443,s
+
+       The first IP:port pair is a dynamically assigned address that SSLproxy
+       expects the program send the packets back to it. The second and third
+       IP:port pairs are the actual source and destination addresses of the
+       connection respectively. Since the program receives the packets from
+       SSLproxy, it cannot determine the source and destination addresses of
+       the packets by itself, e.g by asking the NAT engine, hence must rely on
+       the information in the SSLproxy line. The last letter is either s or p,
+       for SSL/TLS encrypted or plain traffic respectively. This information
+       is also important for the program, because it cannot reliably determine
+       if the actual network traffic it is processing was encrypted or not
+       before being diverted to it.
+
+     <span class="bold">Listening</span> <span class="bold">program</span>
+       The program that packets are diverted to should support this mode of
+       operation.  Specifically, it should be able to recognize the SSLproxy
+       address in the first packet, and give the first and subsequent packets
+       back to SSLproxy listening on that address, instead of sending them to
+       the original destination as it normally would.
+
+       You can use any software as a listening program as long as it supports
+       this mode of operation. So existing or new software developed in any
+       programming language can be modified to be used with SSLproxy to
+       inspect and/or modify any or all parts of the packets diverted to it.
+
+       You can offload the system SSLproxy is running on by diverting packets
+       to remote listening programs too. For example, given the following
+       proxy specification:
+
+       https 127.0.0.1 8443 up:8080 ua:192.168.0.1 ra:192.168.1.1
+
+       The ua option instructs SSLproxy to divert packets to 192.168.0.1:8080,
+       instead of 127.0.0.1:8080 as in the previous proxyspec example. Also,
+       the ra option instructs SSLproxy to listen for returned packets from
+       the program on 192.168.1.1, instead of 127.0.0.1 as in the previous
+       SSLproxy line.
+
+       Accordingly, the SSLproxy line now becomes:
+
+       SSLproxy:
+       [192.168.1.1]:34649,[192.168.3.24]:47286,[192.168.111.130]:443,s
+
+       So, the listening program can be running on a machine anywhere in the
+       world.  Since the packets between SSLproxy and the listening program
+       are always unencrypted, you should be careful while using such a setup.
+
+<a name="proto"></a>
+<span class="bold">Protocols</span>
+     <span class="bold">Supported</span> <span class="bold">protocols</span>
+       SSLproxy supports plain TCP, plain SSL, HTTP, HTTPS, POP3, POP3S, SMTP,
+       and SMTPS connections over both IPv4 and IPv6. It also has the ability
+       to dynamically upgrade plain TCP to SSL in order to generically support
+       SMTP STARTTLS and similar upgrade mechanisms. Depending on the version
+       of OpenSSL, SSLproxy supports SSL 3.0, TLS 1.0, TLS 1.1, TLS 1.2, and
+       TLS 1.3, and optionally SSL 2.0 as well. SSLproxy supports Server Name
+       Indication (SNI), but not Encrypted SNI in TLS 1.3. It is able to work
+       with RSA, DSA and ECDSA keys and DHE and ECDHE cipher suites.
+
+       The following features of SSLproxy are IPv4 only:
+        - Divert addresses for listening programs in proxyspecs
+        - SSLproxy return addresses dynamically assigned to connections
+        - IP addresses in the ua and ra options
+        - IP and ethernet addresses of clients in user authentication
+        - Target IP and ethernet addresses in mirror logging
+
+     <span class="bold">OCSP,</span> <span class="bold">HPKP,</span> <span class="bold">HSTS,</span> <span class="bold">Upgrade</span> <span class="bold">et</span> <span class="bold">al.</span>
+       SSLproxy implements a number of defences against mechanisms which would
+       normally prevent MitM attacks or make them more difficult. SSLproxy can
+       deny OCSP requests in a generic way. For HTTP and HTTPS connections,
+       SSLproxy mangles headers to prevent server-instructed public key
+       pinning (HPKP), avoid strict transport security restrictions (HSTS),
+       avoid Certificate Transparency enforcement (Expect-CT) and prevent
+       switching to QUIC/SPDY, HTTP/2 or WebSockets (Upgrade, Alternate
+       Protocols). HTTP compression, encodings and keep-alive are disabled to
+       make the logs more readable.
+
+       Another reason to disable persistent connections is to reduce file
+       descriptor usage. Accordingly, connections are closed if they remain
+       idle for a certain period of time. The default timeout is 120 seconds,
+       which can be configured by the ConnIdleTimeout option.
+
+     <span class="bold">Protocol</span> <span class="bold">validation</span>
+       Protocol validation makes sure the traffic handled by a proxyspec is
+       using the protocol specified in that proxyspec. The ValidateProto
+       option can be used to enable global and/or per-proxyspec protocol
+       validation. This feature currently supports HTTP, POP3, and SMTP
+       protocols. If a connection cannot pass protocol validation, then it is
+       terminated.
+
+       SSLproxy uses only client requests for protocol validation. However, it
+       also validates SMTP responses until it starts processing the packets
+       from the client. If there is no excessive fragmentation, the first
+       couple of packets in the connection should be enough for validating
+       protocols.
+
+<span class="bold">Certificates</span>
+     <span class="bold">Certificate</span> <span class="bold">forging</span>
+       For SSL and HTTPS connections, SSLproxy generates and signs forged
+       X509v3 certificates on-the-fly, mimicking the original server
+       certificate's subject DN, subjectAltName extension and other
+       characteristics. SSLproxy has the ability to use existing certificates
+       of which the private key is available, instead of generating forged
+       ones. SSLproxy supports NULL-prefix CN certificates but otherwise does
+       not implement exploits against specific certificate verification
+       vulnerabilities in SSL/TLS stacks.
+
+     <span class="bold">Certificate</span> <span class="bold">verification</span>
+       SSLproxy verifies upstream certificates by default. If the verification
+       fails, the connection is terminated immediately. This is in contrast to
+       SSLsplit, because in order to maximize the chances that a connection
+       can be successfully split, SSLsplit accepts all certificates by
+       default, including self-signed ones. See the risks of SSL inspection
+       for the reasons of this difference. You can disable this feature by the
+       VerifyPeer option.
+
+     <span class="bold">Client</span> <span class="bold">certificates</span>
+       SSLproxy uses the certificate and key from the pemfiles configured by
+       the ClientCert and ClientKey options when the destination requests
+       client certificates. These options can be defined globally and/or per-
+       proxyspec.
+
+       Alternatively, you can use Pass filtering rules to pass through certain
+       destinations requesting client certificates.
+
+<span class="bold">User</span> <span class="bold">authentication</span>
+       If the UserAuth option is enabled, SSLproxy requires network users to
+       log in to the system to establish connections to the external network.
+
+       SSLproxy determines the user owner of a connection using a users table
+       in an SQLite3 database configured by the UserDBPath option. The users
+       table should be created using the following SQL statement:
+
+       CREATE TABLE USERS(
+          IP             CHAR(45)     PRIMARY KEY     NOT NULL,
+          USER           CHAR(31)     NOT NULL,
+          ETHER          CHAR(17)     NOT NULL,
+          ATIME          INT          NOT NULL,
+          DESC           CHAR(50) );
+
+       SSLproxy does not create this users table or the database file by
+       itself, nor does it log users in or out. So the database file and the
+       users table should already exist at the location pointed to by the
+       UserDBPath option. An external program should log users in and out on
+       the users table. The external program should fill out all the fields in
+       user records, except perhaps for the DESC field, which can be left
+       blank.
+
+       When SSLproxy accepts a connection,
+
+        - It searches the client IP address of the connection in the users
+       table. If the client IP address is not in the users table, the
+       connection is redirected to a login page configured by the UserAuthURL
+       option.
+        - If SSLproxy finds a user record for the client IP address in the
+       users table, it obtains the ethernet address of the client IP address
+       from the arp cache of the system, and compares it with the value in the
+       user record for that IP address. If the ethernet addresses do not
+       match, the connection is redirected to the login page.
+        - If the ethernet addresses match, SSLproxy compares the atime value
+       in the user record with the current system time. If the difference is
+       greater than the value configured by the UserTimeout option, the
+       connection is redirected to the login page.
+
+       If the connection passes all these checks, SSLproxy proceeds with
+       establishing the connection.
+
+       The atime of the IP address in the users table is updated with the
+       system time while the connection is being terminated. Since this atime
+       update is executed using a privsep command, it is expensive. So, to
+       reduce the frequency of such updates, it is deferred until after the
+       user idle time is more than half of the timeout period.
+
+       If a description text is provided in the DESC field, it can be used
+       with filtering rules to treat the user logged in from different
+       locations, i.e.  from different client IP addresses, separately.
+
+       If the UserAuth option is enabled, the user owner of the connection is
+       appended at the end of the SSLproxy line, so that the listening program
+       can parse and use this information in its logic and/or logging:
+
+       SSLproxy:
+       [127.0.0.1]:34649,[192.168.3.24]:47286,[192.168.111.130]:443,s,soner
+
+       The user authentication feature is currently available on OpenBSD and
+       Linux only.
+
+<a name="Filter"></a>
+<span class="bold">Filtering</span> <span class="bold">rules</span>
+       SSLproxy can divert, split, pass, block, or match connections based on
+       filtering rules. Filtering rules can be defined globally or per-
+       proxyspec.
+
+        - Divert action diverts packets to listening program, allowing SSL
+       inspection by listening program and content logging of packets
+        - Split action splits the connection but does not divert packets to
+       listening program, effectively disabling SSL inspection by listening
+       program, but allowing content logging of packets
+        - Pass action passes the connection through by engaging passthrough
+       mode, effectively disabling SSL inspection and content logging of
+       packets
+        - Block action terminates the connection
+        - Match action specifies log actions for the connection without
+       changing its filter action
+
+       The syntax of filtering rules is as follows:
+
+       (Divert|Split|Pass|Block|Match)
+        ([from (
+            user (username[*]|$macro|*) [desc (desc[*]|$macro|*)]|
+            desc (desc[*]|$macro|*)|
+            ip (clientip[*]|$macro|*)|
+            *)]
+         [to (
+            (sni (servername[*]|$macro|*)|
+             cn (commonname[*]|$macro|*)|
+             host (host[*]|$macro|*)|
+             uri (uri[*]|$macro|*)|
+             ip (serverip[*]|$macro|*)) [port (serverport[*]|$macro|*)]|
+            port (serverport[*]|$macro|*)|
+            *)]
+         [log ([[!]connect] [[!]master] [[!]cert]
+               [[!]content] [[!]pcap] [[!]mirror] [$macro]|[!]*)]
+         |*) [# comment]
+
+       The definition of which connections the rule action will be applied to
+       is achieved by the from and to parts of a filtering rule and by the
+       proxyspec that the rule is defined for.
+
+<a name="from"></a>
+<a name="to"></a>
+        - The from part of a rule defines source filter based on client IP
+       address, user and/or description, or * for all.
+        - The to part defines destination filter based on server IP and/or
+       port, SNI or Common Names of SSL connections, Host or URI fields in
+       HTTP Request headers, or * for all.
+           + Dst Host type of rules use the ip site field
+           + SSL type of rules use the sni or cn site field
+           + HTTP type of rules use the host or uri site field
+           + All rule types can use the port field
+        - The proxyspec handling the connection defines the protocol filter
+       for the connection.
+
+<a name="log"></a>
+       If and how a connection should be logged is specified using the log
+       part of filtering rules:
+
+        - connect enables logging connection information to connect log file
+        - master enables logging of master keys
+        - cert enables logging of generated certificates
+        - content enables logging packet contents to content log file
+        - pcap enables writing packets to pcap files
+        - mirror enables mirroring packets to mirror interfaces or targets
+
+       You can add a negation prefix ! to a log action to disable that
+       logging.
+
+       For example, if the following rules are defined in a structured HTTPS
+       proxyspec,
+
+        Split from user soner desc notebook to sni example.com log content
+        Pass from user soner desc android to cn .fbcdn.net*
+
+       The first filtering rule above splits but does not divert HTTPS
+       connections from the user soner who has logged in with the description
+       notebook to SSL sites with the SNI of example.com. Also, the rule
+       specifies that the packet contents of the matching connection be
+       written to content log file configured globally.
+
+       The second rule passes through HTTPS connections from the user soner
+       who has logged in with the description android to SSL sites with the
+       Common Names containing the substring .fbcdn.net anywhere in it (notice
+       the asterisk at the end). Since connection contents cannot be written
+       to log files in passthrough mode, the rule does not specify any content
+       log action.
+
+       The default filter action is Divert. So, if those are the only
+       filtering rules in that proxyspec, the other connections are diverted
+       to the listening program specified in that proxyspec, without writing
+       any logs.
+
+       If you want to enable, say, connect logging for the other connections
+       handled by that proxyspec, without changing their default Divert filter
+       action, you can add a third filtering rule to that proxyspec:
+
+        Match * log connect
+
+       Note that the second example above is a filtering rule you can use to
+       resolve one of the certificate issues preventing the Facebook
+       application on Android smartphones to connect to the Internet behind
+       sslproxy.
+
+       Filtering rules are applied based on certain precedence orders:
+
+        - More specific rules have higher precedence. Log actions increase
+       rule precedence too, but this effects log actions only, not the
+       precedence of filter actions.
+        - The precedence of filter types is as HTTP &gt; SSL &gt; Dst Host. Because,
+       the application order of filter types is as Dst Host &gt; SSL &gt; HTTP, and
+       a filter type can override the actions of a preceding filter type.
+        - The precedence of filter actions is as Divert &gt; Split &gt; Pass &gt;
+       Block. This is only for the same type of filtering rules.
+        - The precedence of site fields is as sni &gt; cn for SSL filter and host
+       &gt; uri for HTTP filter.
+
+       For example, the pass action of a Dst Host filter rule is taken before
+       the split action of an SSL filter rule with the same from definition,
+       due to the precedence order of filter types. Or, the pass action of a
+       rule with sni site field is taken before the split action of the same
+       rule with cn site field, due to the precedence order of site fields.
+
+       In terms of possible filter actions,
+
+        - Dst Host filtering rules can take all of the filter and log actions.
+        - SSL filtering rules can take all of the filter and log actions.
+        - HTTP filtering rules can take match and block filter actions, can
+       keep enabled divert and split modes, but cannot take pass action. Also,
+       HTTP filtering rules can only disable logging.
+
+       Log actions do not configure any loggers. Global loggers for respective
+       log actions should have been configured for those log actions to have
+       any effect.
+
+       If no filtering rules are defined for a proxyspec, all log actions for
+       that proxyspec are enabled. Otherwise, all log actions are disabled,
+       and filtering rules should enable them specifically.
+
+       Macro expansion is supported. The Define option can be used for
+       defining macros to be used in filtering rules. Macro names must start
+       with a $ char.  The macro name must be followed by words separated with
+       spaces.
+
+       You can append an asterisk * to the fields in filtering rules for
+       substring matching. Otherwise, the filter searches for an exact match
+       with the field in the rule. The filter uses B-trees for exact string
+       matching and Aho-Corasick machines for substring matching.
+
+       The ordering of filtering rules is important. The ordering of from, to,
+       and log parts is not important. The ordering of log actions is not
+       important.
+
+       If the UserAuth option is disabled, only client IP addresses can be
+       used in the from part of filtering rules.
+
+     <span class="bold">Excluding</span> <span class="bold">sites</span> <span class="bold">from</span> <span class="bold">SSL</span> <span class="bold">inspection</span>
+       PassSite option is a special form of Pass filtering rule. PassSite
+       rules can be written as Pass filtering rules. The PassSite option will
+       be deprecated in favor of filtering rules in the future.
+
+       PassSite option allows certain SSL sites to be excluded from SSL
+       inspection.  If a PassSite matches the SNI or common names in the SSL
+       certificate of a connection, that connection is passed through the
+       proxy without being diverted to the listening program. SSLproxy engages
+       the Passthrough mode for that purpose. For example, sites requiring
+       client authentication can be added as PassSite.
+
+       Per-site filters can be defined using client IP addresses, users, and
+       description. If the UserAuth option is disabled, only client IP
+       addresses can be used in PassSite filters. Multiple sites can be
+       defined, one on each line.  PassSite rules can search for exact or
+       substring matches. PassSite rules do not support macro expansion.
+
+     <span class="bold">User</span> <span class="bold">control</span> <span class="bold">lists</span>
+       User control lists can be implemented using filtering rules. The
+       DivertUsers and PassUsers options will be deprecated in favor of
+       filtering rules in the future.
+
+       DivertUsers and PassUsers options can be used to divert, pass through,
+       or block users.
+
+        - If neither DivertUsers nor PassUsers is defined, all users are
+       diverted to listening programs.
+        - Connections from users in DivertUsers, if defined, are diverted to
+       listening programs.
+        - Connections from users in PassUsers, if defined, are simply passed
+       through to their original destinations. SSLproxy engages the
+       Passthrough mode for that purpose.
+        - If both DivertUsers and PassUsers are defined, users not listed in
+       either of the lists are blocked. SSLproxy simply terminates their
+       connections.
+        - If *no* DivertUsers list is defined, only users *not* listed in
+       PassUsers are diverted to listening programs.
+
+       These user control lists can be defined globally or per-proxyspec. User
+       control lists do not support macro expansion.
+
+<span class="bold">Logging</span>
+       Logging options include traditional SSLproxy connect and content log
+       files as well as PCAP files and mirroring decrypted traffic to a
+       network interface.  Additionally, certificates, master secrets and
+       local process information can be logged. Filtering rules can
+       selectively modify connection logging.
+
+<span class="bold">OPTIONS</span>
+       <span class="bold">-a</span> <span class="underline">pemfile</span>
+              Use client certificate from <span class="underline">pemfile</span> when destination server
+              requests a client certificate.
+
+       <span class="bold">-A</span> <span class="underline">pemfile</span>
+              Use private key, certificate and certificate chain from PEM file
+              <span class="underline">pemfile</span> as leaf certificate instead of generating a leaf
+              certificate on the fly.  The PEM file must contain a single
+              private key, a single certificate and optionally intermediate
+              and root CA certificates to use as certificate chain.  When
+              using <span class="bold">-t</span>, SSLproxy will first attempt to use a matching
+              certificate loaded from <span class="underline">certdir</span>.  If <span class="bold">-t</span> is also used and a
+              connection matches any certificate in the directory specified
+              with the <span class="bold">-t</span> option, that matching certificate is used instead,
+              taking precedence over the certificate specified with <span class="bold">-A</span>.
+
+       <span class="bold">-b</span> <span class="underline">pemfile</span>
+              Use client private key from <span class="underline">pemfile</span> when destination server
+              requests a client certificate.
+
+       <span class="bold">-c</span> <span class="underline">pemfile</span>
+              Use CA certificate from <span class="underline">pemfile</span> to sign certificates forged on-
+              the-fly.  If <span class="underline">pemfile</span> also contains the matching CA private key,
+              it is also loaded, otherwise it must be provided with <span class="bold">-k</span>.  If
+              <span class="underline">pemfile</span> also contains Diffie-Hellman group parameters, they are
+              also loaded, otherwise they can be provided with <span class="bold">-g</span>.  If <span class="bold">-t</span> is
+              also given, SSLproxy will only forge a certificate if there is
+              no matching certificate in the provided certificate directory.
+
+       <span class="bold">-C</span> <span class="underline">pemfile</span>
+              Use CA certificates from <span class="underline">pemfile</span> as extra certificates in the
+              certificate chain.  This is needed if the CA given with <span class="bold">-k</span> and
+              <span class="bold">-c</span> is a sub-CA, in which case any intermediate CA certificates
+              and the root CA certificate must be included in the certificate
+              chain.
+
+       <span class="bold">-d</span>     Detach from TTY and run as a daemon, logging error messages to
+              syslog instead of standard error.
+
+       <span class="bold">-D</span> <span class="underline">level</span>
+              Run in debug mode, log lots of debugging information to standard
+              error.  This also forces foreground mode and cannot be used with
+              <span class="bold">-d</span>. Debug <span class="underline">level</span> can be a number from 1 to 4, a higher number
+              meaning more verbosity.
+
+       <span class="bold">-e</span> <span class="underline">engine</span>
+              Use <span class="underline">engine</span> as the default NAT engine for <span class="underline">proxyspecs</span> without
+              explicit NAT engine, static destination address or SNI mode.
+              <span class="underline">engine</span> can be any of the NAT engines supported by the system, as
+              returned by <span class="bold">-E</span>.
+
+       <span class="bold">-E</span>     List all supported NAT engines available on the system and exit.
+              See NAT ENGINES for a list of NAT engines currently supported by
+              SSLproxy.
+
+       <span class="bold">-f</span> <span class="underline">conffile</span>
+              Read configuration from <span class="underline">conffile</span>. Configuration files can use
+              the Include option for loading configuration from an include
+              file too. Note that the ordering of options, rules, and
+              proxyspecs in configuration files (and on the command line) is
+              important. For example, rules and proxyspecs can only make use
+              of the options defined earlier.
+
+       <span class="bold">-F</span> <span class="underline">logspec</span>
+              Log connection content to separate log files with the given path
+              specification (see LOG SPECIFICATIONS below).  For each
+              connection, a log file will be written, which will contain both
+              directions of data as transmitted.  Information about the
+              connection will be contained in the filename only.  Only one of
+              <span class="bold">-F</span>, <span class="bold">-L</span> and <span class="bold">-S</span> may be used (last one wins).
+
+       <span class="bold">-g</span> <span class="underline">pemfile</span>
+              Use Diffie-Hellman group parameters from <span class="underline">pemfile</span> for Ephemereal
+              Diffie-Hellman (EDH/DHE) cipher suites.  If <span class="bold">-g</span> is not given,
+              SSLproxy first tries to load DH parameters from the PEM files
+              given by <span class="bold">-K</span>, <span class="bold">-k</span> or <span class="bold">-c</span>.  If no DH parameters are found in the key
+              files, built-in group parameters are automatically used.  The <span class="bold">-g</span>
+              option is only available if SSLproxy was built against a version
+              of OpenSSL which supports Diffie-Hellman cipher suites.
+
+       <span class="bold">-G</span> <span class="underline">curve</span>
+              Use the named <span class="underline">curve</span> for Ephemereal Elliptic Curve Diffie-Hellman
+              (ECDHE) cipher suites.  If <span class="bold">-G</span> is not given, a default curve
+              (<span class="bold">prime256v1</span>) is used automatically.  The <span class="bold">-G</span> option is only
+              available if SSLproxy was built against a version of OpenSSL
+              which supports Elliptic Curve Diffie-Hellman cipher suites.
+
+       <span class="bold">-h</span>     Display help on usage and exit.
+
+       <span class="bold">-i</span>     For each connection, find the local process owning the
+              connection.  This makes process information such as pid,
+              owner:group and executable path for connections originating on
+              the same system as SSLproxy available to the connect log and
+              enables the respective <span class="bold">-F</span> path specification directives.  <span class="bold">-i</span> is
+              available on Mac OS X and FreeBSD; support for other platforms
+              has not been implemented yet.
+
+       <span class="bold">-I</span> <span class="underline">if</span>  Mirror connection content as emulated packets to interface <span class="underline">if</span>
+              with destination address given by <span class="bold">-T</span>.  This option is not
+              available if SSLproxy was built without mirroring support. If <span class="bold">-T</span>
+              is omitted, the packets are blindly pushed to <span class="underline">if</span>.
+
+       <span class="bold">-j</span> <span class="underline">jaildir</span>
+              Change the root directory to <span class="underline">jaildir</span> using chroot(2) after
+              opening files.  Note that this has implications for <span class="bold">sni</span>
+              <span class="underline">proxyspecs</span>.  Depending on your operating system, you will need
+              to copy files such as <span class="bold">/etc/resolv.conf</span> to <span class="underline">jaildir</span> in order for
+              name resolution to work.  Using <span class="bold">sni</span> proxyspecs depends on name
+              resolution.  Some operating systems require special device nodes
+              such as <span class="bold">/dev/null</span> to be present within the jail.  Check your
+              system's documentation for details.
+
+       <span class="bold">-J</span>     Enable connection statistics logging.
+
+       <span class="bold">-k</span> <span class="underline">pemfile</span>
+              Use CA private key from <span class="underline">pemfile</span> to sign certificates forged on-
+              the-fly.  If <span class="underline">pemfile</span> also contains the matching CA certificate,
+              it is also loaded, otherwise it must be provided with <span class="bold">-c</span>.  If
+              <span class="underline">pemfile</span> also contains Diffie-Hellman group parameters, they are
+              also loaded, otherwise they can be provided with <span class="bold">-g</span>.  If <span class="bold">-t</span> is
+              also given, SSLproxy will only forge a certificate if there is
+              no matching certificate in the provided certificate directory.
+
+       <span class="bold">-K</span> <span class="underline">pemfile</span>
+              Use private key from <span class="underline">pemfile</span> for the leaf certificates forged
+              on-the-fly.  If <span class="bold">-K</span> is not given, SSLproxy will generate a random
+              2048-bit RSA key.
+
+       <span class="bold">-l</span> <span class="underline">logfile</span>
+              Log connections to <span class="underline">logfile</span> in a single line per connection
+              format, including addresses and ports and some HTTP and SSL
+              information, if available.  SIGHUP or SIGUSR1 will cause <span class="underline">logfile</span>
+              to be re-opened.
+
+       <span class="bold">-L</span> <span class="underline">logfile</span>
+              Log connection content to <span class="underline">logfile</span>.  The content log will contain
+              a parsable log format with transmitted data, prepended with
+              headers identifying the connection and the data length of each
+              logged segment.  SIGHUP or SIGUSR1 will cause <span class="underline">logfile</span> to be re-
+              opened.  Only one of <span class="bold">-F</span>, <span class="bold">-L</span> and <span class="bold">-S</span> may be used (last one wins).
+
+       <span class="bold">-m</span>     When dropping privileges using <span class="bold">-u</span>, override the target primary
+              group to be set to <span class="underline">group</span>.
+
+       <span class="bold">-M</span> <span class="underline">logfile</span>
+              Log master keys to <span class="underline">logfile</span> in SSLKEYLOGFILE format as defined by
+              Mozilla.  Logging master keys in this format allows for
+              decryption of SSL/TLS traffic using Wireshark.  Note that unlike
+              browsers implementing this feature, setting the SSLKEYLOGFILE
+              environment variable has no effect on SSLproxy.  SIGHUP or
+              SIGUSR1 will cause <span class="underline">logfile</span> to be re-opened.
+
+       <span class="bold">-O</span>     Deny all Online Certificate Status Protocol (OCSP) requests on
+              all <span class="underline">proxyspecs</span> and for all OCSP servers with an OCSP response of
+              <span class="bold">tryLater</span>, causing OCSP clients to temporarily accept even
+              revoked certificates.  HTTP requests are being treated as OCSP
+              requests if the method is <span class="bold">GET</span> and the URI contains a
+              syntactically valid OCSPRequest ASN.1 structure parsable by
+              OpenSSL, or if the method is <span class="bold">POST</span> and the <span class="bold">Content-Type</span> is
+              <span class="bold">application/ocsp-request</span>.  For this to be effective, SSLproxy
+              must be handling traffic destined to the port used by the OCSP
+              server.  In particular, SSLproxy must be configured to receive
+              traffic to all ports used by OCSP servers of targeted
+              certificates within the <span class="underline">certdir</span> specified by <span class="bold">-t</span>.
+
+       <span class="bold">-p</span> <span class="underline">pidfile</span>
+              Write the process ID to <span class="underline">pidfile</span> and refuse to run if the <span class="underline">pidfile</span>
+              is already in use by another process.
+
+       <span class="bold">-P</span>     Passthrough SSL/TLS connections which cannot be split instead of
+              dropping them.  Connections cannot be split if <span class="bold">-c</span> and <span class="bold">-k</span> are not
+              given and the site does not match any certificate loaded using
+              <span class="bold">-t</span>, or if the connection to the original server gives SSL/TLS
+              errors.  Specifically, this happens if the site requests a
+              client certificate.  In these situations, passthrough with <span class="bold">-P</span>
+              results in uninterrupted service for the clients, while dropping
+              is the more secure alternative if unmonitored connections must
+              be prevented.  Passthrough mode currently does not apply to
+              SSL/TLS errors in the connection from the client, since the
+              connection from the client cannot easily be retried.
+              Specifically, <span class="bold">-P</span> does not currently work for clients that do not
+              accept forged certificates.
+
+       <span class="bold">-Q</span>     Quit after loading and testing configuration.
+
+       <span class="bold">-q</span> <span class="underline">crlurl</span>
+              Set CRL distribution point (CDP) <span class="underline">crlurl</span> on forged leaf
+              certificates.  Some clients, such as some .NET applications,
+              reject certificates that do not carry a CDP.  When using <span class="bold">-q</span>, you
+              will need to generate an empty CRL signed by the CA certificate
+              and key provided with <span class="bold">-c</span> and <span class="bold">-k</span>, and make it available at
+              <span class="underline">crlurl</span>.
+
+       <span class="bold">-r</span> <span class="underline">proto</span>
+              Force SSL/TLS protocol version on both client and server side to
+              <span class="underline">proto</span> by selecting the respective OpenSSL method constructor
+              instead of the default SSLv23_method() which supports all
+              protocol versions.  This is useful when analyzing traffic to a
+              server that only supports a specific version of SSL/TLS and does
+              not implement proper protocol negotiation.  Depending on build
+              options and the version of OpenSSL that is used, the following
+              values for <span class="underline">proto</span> are accepted: <span class="bold">ssl2</span>, <span class="bold">ssl3</span>, <span class="bold">tls10</span>, <span class="bold">tls11</span>, <span class="bold">tls12</span>,
+              and <span class="bold">tls13</span>.  Note that SSL 2.0 support is not built in by default
+              because some servers don't handle SSL 2.0 Client Hello messages
+              gracefully.
+
+       <span class="bold">-R</span> <span class="underline">proto</span>
+              Disable the SSL/TLS protocol version <span class="underline">proto</span> on both client and
+              server side by disabling the respective protocols in OpenSSL.
+              To disable multiple protocol versions, <span class="bold">-R</span> can be given multiple
+              times.  If <span class="underline">-r</span> is also given, there will be no effect in
+              disabling other protocol versions.  Disabling protocol versions
+              is useful when analyzing traffic to a server that does not
+              handle some protocol versions well, or to test behaviour with
+              different protocol versions.  Depending on build options and the
+              version of OpenSSL that is used, the following values for <span class="underline">proto</span>
+              are accepted: <span class="bold">ssl2</span>, <span class="bold">ssl3</span>, <span class="bold">tls10</span>, <span class="bold">tls11</span>, <span class="bold">tls12</span>, and <span class="bold">tls13</span>.  Note
+              that SSL 2.0 support is not built in by default because some
+              servers don't handle SSL 2.0 Client Hello messages gracefully.
+
+       <span class="bold">-s</span> <span class="underline">ciphers</span>
+              Use OpenSSL <span class="underline">ciphers</span> specification for both server and client
+              SSL/TLS connections.  If <span class="bold">-s</span> is not given, a cipher list of
+              <span class="bold">ALL:-aNULL</span> is used.  Normally, SSL/TLS implementations choose
+              the most secure cipher suites, not the fastest ones.  By
+              specifying an appropriate OpenSSL cipher list, the set of cipher
+              suites can be limited to fast algorithms, or <span class="bold">eNULL</span> cipher suites
+              can be added.  Note that for connections to be successful, the
+              SSLproxy cipher suites must include at least one cipher suite
+              supported by both the client and the server of each connection.
+              See ciphers(1) for details on how to construct OpenSSL cipher
+              lists.
+
+       <span class="bold">-S</span> <span class="underline">logdir</span>
+              Log connection content to separate log files under <span class="underline">logdir</span>.  For
+              each connection, a log file will be written, which will contain
+              both directions of data as transmitted.  Information about the
+              connection will be contained in the filename only.  Only one of
+              <span class="bold">-F</span>, <span class="bold">-L</span> and <span class="bold">-S</span> may be used (last one wins).
+
+       <span class="bold">-t</span> <span class="underline">certdir</span>
+              Use private key, certificate and certificate chain from PEM
+              files in <span class="underline">certdir</span> for connections to hostnames matching the
+              respective certificates, instead of using certificates forged
+              on-the-fly.  A single PEM file must contain a single private
+              key, a single certificate and optionally intermediate and root
+              CA certificates to use as certificate chain.  When using <span class="bold">-t</span>,
+              SSLproxy will first attempt to use a matching certificate loaded
+              from <span class="underline">certdir</span>.  If <span class="bold">-c</span> and <span class="bold">-k</span> are also given, certificates will be
+              forged on-the-fly for sites matching none of the common names in
+              the certificates loaded from <span class="underline">certdir</span>.  Otherwise, connections
+              matching no certificate will be dropped, or if <span class="bold">-P</span> is given,
+              passed through without splitting SSL/TLS.
+
+       <span class="bold">-T</span> <span class="underline">addr</span>
+              Mirror connection content as emulated packets to destination
+              address <span class="underline">addr</span> on the interface given by <span class="bold">-I</span>.  Only IPv4 target
+              addresses are currently supported.  This option is not available
+              if SSLproxy was built without mirroring support.
+
+       <span class="bold">-u</span> <span class="underline">user</span>
+              Drop privileges after opening sockets and files by setting the
+              real, effective and stored user IDs to <span class="underline">user</span> and loading the
+              appropriate primary and ancillary groups.  If <span class="bold">-u</span> is not given,
+              SSLproxy will drop privileges to the stored UID if EUID != UID
+              (setuid bit scenario), or to <span class="bold">nobody</span> if running with full <span class="bold">root</span>
+              privileges (EUID == UID == 0).  User <span class="underline">user</span> needs to be allowed to
+              make outbound TCP connections, and in some configurations, to
+              also perform DNS resolution.  Dropping privileges enables
+              privilege separation, which incurs latency for certain options,
+              such as separate per-connection log files.  By using <span class="bold">-u</span> <span class="bold">root</span>,
+              SSLproxy can be run as root without dropping privileges.  Due to
+              an Apple bug, <span class="bold">-u</span> cannot be used with <span class="bold">pf</span> proxyspecs on Mac OS X.
+
+       <span class="bold">-x</span> <span class="underline">engine</span>
+              Use the OpenSSL engine with identifier <span class="underline">engine</span> as a default
+              engine.  The engine must be available within the OpenSSL
+              ecosystem under the specified identifier, that is, they must be
+              loaded from the global OpenSSL configuration.  If <span class="underline">engine</span> is an
+              absolute path, it will be interpreted as path to an engine
+              dynamically linked library and loaded by path, regardless of
+              global OpenSSL configuration.  This option is only available if
+              built against a version of OpenSSL with engine support.
+
+       <span class="bold">-X</span> <span class="underline">pcapfile</span>
+              Log connection content to <span class="underline">pcapfile</span> in PCAP format, with emulated
+              TCP, IP and Ethernet headers.  SIGHUP or SIGUSR1 will cause
+              <span class="underline">pcapfile</span> to be re-opened.  Only one of <span class="bold">-X</span>, <span class="bold">-Y</span> and <span class="bold">-y</span> may be used
+              (last one wins).
+
+       <span class="bold">-Y</span> <span class="underline">pcapdir</span>
+              Log connection content to separate PCAP files under <span class="underline">pcapdir</span>.
+              For each connection, a separate PCAP file will be written.  Only
+              one of <span class="bold">-X</span>, <span class="bold">-Y</span> and <span class="bold">-y</span> may be used (last one wins).
+
+       <span class="bold">-y</span> <span class="underline">pcapspec</span>
+              Log connection content to separate PCAP files with the given
+              path specification (see LOG SPECIFICATIONS below).  For each
+              connection, a separate PCAP file will be written.  Only one of
+              <span class="bold">-X</span>, <span class="bold">-Y</span> and <span class="bold">-y</span> may be used (last one wins).
+
+       <span class="bold">-n</span>     Enable split mode of operation for all proxyspecs, effectively
+              making sslproxy behave like sslsplit.
+
+       <span class="bold">-V</span>     Display version and compiled features information and exit.
+
+       <span class="bold">-w</span> <span class="underline">gendir</span>
+              Write generated keys and certificates to individual files in
+              <span class="underline">gendir</span>.  For keys, the key identifier is used as filename, which
+              consists of the SHA-1 hash of the ASN.1 bit string of the public
+              key, as referenced by the subjectKeyIdentifier extension in
+              certificates.  For certificates, the SHA-1 fingerprints of the
+              original and the used (forged) certificate are combined to form
+              the filename.  Note that only newly generated certificates are
+              written to disk.
+
+       <span class="bold">-W</span> <span class="underline">gendir</span>
+              Same as <span class="bold">-w</span>, but also write original certificates and
+              certificates not newly generated, such as those loaded from <span class="bold">-t</span>.
+
+       <span class="bold">-Z</span>     Disable SSL/TLS compression on all connections.  This is useful
+              if your limiting factor is CPU, not network bandwidth.  The <span class="bold">-Z</span>
+              option is only available if SSLproxy was built against a version
+              of OpenSSL which supports disabling compression.
+
+<span class="bold">PROXY</span> <span class="bold">SPECIFICATIONS</span>
+       SSLproxy supports two types of proxy specifications: one line and
+       structured.  The structured proxy specifications provide more
+       configuration options, but can only be defined in configuration files.
+       See sslproxy.conf(5) and the sample configuration file in the sources
+       for details.
+
+       One line proxy specifications (<span class="underline">proxyspecs</span>) consist of the connection
+       type, listen address and program port. You can also specify program and
+       return addresses, otherwise they default to the loopback address
+       127.0.0.1. The program and return address options help you divert
+       packets to remote locations. However, beware that the diverted traffic
+       is always unencrypted:
+
+       <span class="bold">https</span> <span class="underline">listenaddr</span> <span class="underline">port</span> <span class="underline">up:port</span>
+       <span class="bold">https</span> <span class="underline">listenaddr</span> <span class="underline">port</span> <span class="underline">up:port</span> <span class="underline">ua:addr</span> <span class="underline">ra:addr</span>
+       <span class="bold">pop3s</span> <span class="underline">listenaddr</span> <span class="underline">port</span> <span class="underline">up:port</span>
+       <span class="bold">smtps</span> <span class="underline">listenaddr</span> <span class="underline">port</span> <span class="underline">up:port</span>
+       <span class="bold">ssl</span>   <span class="underline">listenaddr</span> <span class="underline">port</span> <span class="underline">up:port</span>
+       <span class="bold">http</span>  <span class="underline">listenaddr</span> <span class="underline">port</span> <span class="underline">up:port</span>
+       <span class="bold">pop3</span>  <span class="underline">listenaddr</span> <span class="underline">port</span> <span class="underline">up:port</span>
+       <span class="bold">smtp</span>  <span class="underline">listenaddr</span> <span class="underline">port</span> <span class="underline">up:port</span>
+       <span class="bold">tcp</span>   <span class="underline">listenaddr</span> <span class="underline">port</span> <span class="underline">up:port</span>
+
+       <span class="bold">https</span>  SSL/TLS interception with HTTP protocol decoding, including the
+              removal of HPKP, HSTS, Upgrade and Alternate Protocol response
+              headers.  This mode currently suppresses WebSockets and HTTP/2.
+
+       <span class="bold">pop3s</span>  SSL/TLS interception with POP3 protocol decoding.
+
+       <span class="bold">smtps</span>  SSL/TLS interception with SMTP protocol decoding.
+
+       <span class="bold">ssl</span>    SSL/TLS interception without any lower level protocol decoding;
+              decrypted connection content is treated as opaque stream of
+              bytes and not modified.
+
+       <span class="bold">http</span>   Plain TCP connection without SSL/TLS, with HTTP protocol
+              decoding, including the removal of HPKP, HSTS, Upgrade and
+              Alternate Protocol response headers.  This mode currently
+              suppresses WebSockets and HTTP/2.
+
+       <span class="bold">pop3</span>   Plain POP3 connection without SSL/TLS and with POP3 protocol
+              decoding.
+
+       <span class="bold">smtp</span>   Plain SMTP connection without SSL/TLS and with SMTP protocol
+              decoding.
+
+       <span class="bold">tcp</span>    Plain TCP connection without SSL/TLS and without any lower level
+              protocol decoding; decrypted connection content is treated as
+              opaque stream of bytes and not modified.
+
+       <span class="bold">autossl</span>
+              Plain TCP connection until a Client Hello SSL/TLS message
+              appears in the byte stream, then automatic upgrade to SSL/TLS
+              interception.  This is generic, protocol-independent STARTTLS
+              support, that may erroneously trigger on byte sequences that
+              look like Client Hello messages even though there was no actual
+              STARTTLS command issued.
+
+       <span class="underline">listenaddr</span> <span class="underline">port</span>
+              IPv4 or IPv6 address and port or service name to listen on.
+              This is the address and port where the NAT engine should
+              redirect connections to.
+
+       <span class="underline">up:port</span>
+              Port or service name that the program is listening for
+              connections.  This is the port where the traffic should be
+              diverted to.
+
+       <span class="underline">ua:addr</span>
+              Address that the program is listening for connections.  This is
+              the address where the traffic should be diverted to.  If not
+              specified, defaults to 127.0.0.1.
+
+       <span class="underline">ra:addr</span>
+              Address that the program should return packets to.  This is the
+              address where SSLproxy is listening for returned packets from
+              the program.  This address is inserted into the SSLproxy header
+              line along with the dynamically assigned port number.  If not
+              specified, defaults to 127.0.0.1.
+
+<span class="bold">LOG</span> <span class="bold">SPECIFICATIONS</span>
+       Log specifications are composed of zero or more printf-style
+       directives; ordinary characters are included directly in the output
+       path.  SSLproxy current supports the following directives:
+
+       <span class="underline">%T</span>     The initial connection time as an ISO 8601 UTC timestamp.
+
+       <span class="underline">%d</span>     The destination host and port, separated by a comma, IPv6
+              addresses using underscore instead of colon.
+
+       <span class="underline">%D</span>     The destination host, IPv6 addresses using underscore instead of
+              colon.
+
+       <span class="underline">%p</span>     The destination port.
+
+       <span class="underline">%s</span>     The source host and port, separated by a comma, IPv6 addresses
+              using underscore instead of colon.
+
+       <span class="underline">%S</span>     The source host, IPv6 addresses using underscore instead of
+              colon.
+
+       <span class="underline">%q</span>     The source port.
+
+       <span class="underline">%x</span>     The name of the local process.  Requires <span class="bold">-i</span> to be used.  If
+              process information is unavailable, this directive will be
+              omitted from the output path.
+
+       <span class="underline">%X</span>     The full path of the local process.  Requires <span class="bold">-i</span> to be used.  If
+              process information is unavailable, this directive will be
+              omitted from the output path.
+
+       <span class="underline">%u</span>     The username or numeric uid of the local process.  Requires <span class="bold">-i</span>
+              to be used.  If process information is unavailable, this
+              directive will be omitted from the output path.
+
+       <span class="underline">%g</span>     The group name or numeric gid of the local process.  Requires <span class="bold">-i</span>
+              to be used.  If process information is unavailable, this
+              directive will be omitted from the output path.
+
+       <span class="underline">%%</span>     A literal '%' character.
+
+<span class="bold">NAT</span> <span class="bold">ENGINES</span>
+       SSLproxy currently supports the following NAT engines:
+
+       <span class="bold">pf</span>     OpenBSD packet filter (pf) <span class="bold">rdr</span>/<span class="bold">rdr-to</span> NAT redirects, also
+              available on FreeBSD, NetBSD and Mac OS X.  Fully supported,
+              including IPv6.  Note that SSLproxy needs permission to open
+              <span class="bold">/dev/pf</span> for reading, which by default means that it needs to run
+              under <span class="bold">root</span> privileges.  Assuming inbound interface <span class="bold">em0</span>, first in
+              old (FreeBSD, Mac OS X), then in new (OpenBSD 4.7+) syntax:
+
+              <span class="bold">rdr</span> <span class="bold">pass</span> <span class="bold">on</span> <span class="bold">em0</span> <span class="bold">proto</span> <span class="bold">tcp</span> <span class="bold">from</span> <span class="bold">2001:db8::/64</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">port</span>  <span class="bold">80</span> <span class="bold">\</span>
+                       <span class="bold">-&gt;</span>       <span class="bold">::1</span> <span class="bold">port</span> <span class="bold">10080</span>
+              <span class="bold">rdr</span> <span class="bold">pass</span> <span class="bold">on</span> <span class="bold">em0</span> <span class="bold">proto</span> <span class="bold">tcp</span> <span class="bold">from</span> <span class="bold">2001:db8::/64</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">port</span> <span class="bold">443</span> <span class="bold">\</span>
+                       <span class="bold">-&gt;</span>       <span class="bold">::1</span> <span class="bold">port</span> <span class="bold">10443</span>
+              <span class="bold">rdr</span> <span class="bold">pass</span> <span class="bold">on</span> <span class="bold">em0</span> <span class="bold">proto</span> <span class="bold">tcp</span> <span class="bold">from</span>  <span class="bold">192.0.2.0/24</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">port</span>  <span class="bold">80</span> <span class="bold">\</span>
+                       <span class="bold">-&gt;</span> <span class="bold">127.0.0.1</span> <span class="bold">port</span> <span class="bold">10080</span>
+              <span class="bold">rdr</span> <span class="bold">pass</span> <span class="bold">on</span> <span class="bold">em0</span> <span class="bold">proto</span> <span class="bold">tcp</span> <span class="bold">from</span>  <span class="bold">192.0.2.0/24</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">port</span> <span class="bold">443</span> <span class="bold">\</span>
+                       <span class="bold">-&gt;</span> <span class="bold">127.0.0.1</span> <span class="bold">port</span> <span class="bold">10443</span>
+
+              <span class="bold">pass</span> <span class="bold">in</span> <span class="bold">quick</span> <span class="bold">on</span> <span class="bold">em0</span> <span class="bold">proto</span> <span class="bold">tcp</span> <span class="bold">from</span> <span class="bold">2001:db8::/64</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">\</span>
+                       <span class="bold">port</span>  <span class="bold">80</span> <span class="bold">rdr-to</span>       <span class="bold">::1</span> <span class="bold">port</span> <span class="bold">10080</span>
+              <span class="bold">pass</span> <span class="bold">in</span> <span class="bold">quick</span> <span class="bold">on</span> <span class="bold">em0</span> <span class="bold">proto</span> <span class="bold">tcp</span> <span class="bold">from</span> <span class="bold">2001:db8::/64</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">\</span>
+                       <span class="bold">port</span> <span class="bold">443</span> <span class="bold">rdr-to</span>       <span class="bold">::1</span> <span class="bold">port</span> <span class="bold">10443</span>
+              <span class="bold">pass</span> <span class="bold">in</span> <span class="bold">quick</span> <span class="bold">on</span> <span class="bold">em0</span> <span class="bold">proto</span> <span class="bold">tcp</span> <span class="bold">from</span>  <span class="bold">192.0.2.0/24</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">\</span>
+                       <span class="bold">port</span>  <span class="bold">80</span> <span class="bold">rdr-to</span> <span class="bold">127.0.0.1</span> <span class="bold">port</span> <span class="bold">10080</span>
+              <span class="bold">pass</span> <span class="bold">in</span> <span class="bold">quick</span> <span class="bold">on</span> <span class="bold">em0</span> <span class="bold">proto</span> <span class="bold">tcp</span> <span class="bold">from</span>  <span class="bold">192.0.2.0/24</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">\</span>
+                       <span class="bold">port</span> <span class="bold">443</span> <span class="bold">rdr-to</span> <span class="bold">127.0.0.1</span> <span class="bold">port</span> <span class="bold">10443</span>
+
+       <span class="bold">ipfw</span>   FreeBSD IP firewall (IPFW) divert sockets, also available on Mac
+              OS X.  Available on FreeBSD and OpenBSD using pf <span class="bold">divert-to</span>.
+              Fully supported on FreeBSD and OpenBSD, including IPv6.  Only
+              supports IPv4 on Mac OS X due to the ancient version of IPFW
+              included.  First in IPFW, then in pf <span class="bold">divert-to</span> syntax:
+
+              <span class="bold">ipfw</span> <span class="bold">add</span> <span class="bold">fwd</span>       <span class="bold">::1,10080</span> <span class="bold">tcp</span> <span class="bold">from</span> <span class="bold">2001:db8::/64</span> <span class="bold">to</span> <span class="bold">any</span>  <span class="bold">80</span>
+              <span class="bold">ipfw</span> <span class="bold">add</span> <span class="bold">fwd</span>       <span class="bold">::1,10443</span> <span class="bold">tcp</span> <span class="bold">from</span> <span class="bold">2001:db8::/64</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">443</span>
+              <span class="bold">ipfw</span> <span class="bold">add</span> <span class="bold">fwd</span> <span class="bold">127.0.0.1,10080</span> <span class="bold">tcp</span> <span class="bold">from</span> <span class="bold">192.0.2.0/24</span>  <span class="bold">to</span> <span class="bold">any</span>  <span class="bold">80</span>
+              <span class="bold">ipfw</span> <span class="bold">add</span> <span class="bold">fwd</span> <span class="bold">127.0.0.1,10443</span> <span class="bold">tcp</span> <span class="bold">from</span> <span class="bold">192.0.2.0/24</span>  <span class="bold">to</span> <span class="bold">any</span> <span class="bold">443</span>
+
+              <span class="bold">pass</span> <span class="bold">in</span> <span class="bold">quick</span> <span class="bold">on</span> <span class="bold">em0</span> <span class="bold">proto</span> <span class="bold">tcp</span> <span class="bold">from</span> <span class="bold">2001:db8::/64</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">\</span>
+                       <span class="bold">port</span>  <span class="bold">80</span> <span class="bold">divert-to</span>       <span class="bold">::1</span> <span class="bold">port</span> <span class="bold">10080</span>
+              <span class="bold">pass</span> <span class="bold">in</span> <span class="bold">quick</span> <span class="bold">on</span> <span class="bold">em0</span> <span class="bold">proto</span> <span class="bold">tcp</span> <span class="bold">from</span> <span class="bold">2001:db8::/64</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">\</span>
+                       <span class="bold">port</span> <span class="bold">443</span> <span class="bold">divert-to</span>       <span class="bold">::1</span> <span class="bold">port</span> <span class="bold">10443</span>
+              <span class="bold">pass</span> <span class="bold">in</span> <span class="bold">quick</span> <span class="bold">on</span> <span class="bold">em0</span> <span class="bold">proto</span> <span class="bold">tcp</span> <span class="bold">from</span>  <span class="bold">192.0.2.0/24</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">\</span>
+                       <span class="bold">port</span>  <span class="bold">80</span> <span class="bold">divert-to</span> <span class="bold">127.0.0.1</span> <span class="bold">port</span> <span class="bold">10080</span>
+              <span class="bold">pass</span> <span class="bold">in</span> <span class="bold">quick</span> <span class="bold">on</span> <span class="bold">em0</span> <span class="bold">proto</span> <span class="bold">tcp</span> <span class="bold">from</span>  <span class="bold">192.0.2.0/24</span> <span class="bold">to</span> <span class="bold">any</span> <span class="bold">\</span>
+                       <span class="bold">port</span> <span class="bold">443</span> <span class="bold">divert-to</span> <span class="bold">127.0.0.1</span> <span class="bold">port</span> <span class="bold">10443</span>
+
+       <span class="bold">ipfilter</span>
+              IPFilter (ipfilter, ipf), available on many systems, including
+              FreeBSD, NetBSD, Linux and Solaris.  Note that SSLproxy needs
+              permission to open <span class="bold">/dev/ipnat</span> for reading, which by default
+              means that it needs to run under <span class="bold">root</span> privileges.  Only supports
+              IPv4 due to limitations in the SIOCGNATL ioctl(2) interface.
+              Assuming inbound interface <span class="bold">bge0</span>:
+
+              <span class="bold">rdr</span> <span class="bold">bge0</span> <span class="bold">0.0.0.0/0</span> <span class="bold">port</span>  <span class="bold">80</span> <span class="bold">-&gt;</span> <span class="bold">127.0.0.1</span> <span class="bold">port</span> <span class="bold">10080</span>
+              <span class="bold">rdr</span> <span class="bold">bge0</span> <span class="bold">0.0.0.0/0</span> <span class="bold">port</span> <span class="bold">443</span> <span class="bold">-&gt;</span> <span class="bold">127.0.0.1</span> <span class="bold">port</span> <span class="bold">10443</span>
+
+       <span class="bold">netfilter</span>
+              Linux netfilter using the iptables REDIRECT target.  Fully
+              supported including IPv6 since Linux v3.8-rc1; on older kernels
+              only supports IPv4 due to limitations in the SO_ORIGINAL_DST
+              getsockopt(2) interface.
+
+              <span class="bold">iptables</span> <span class="bold">-t</span> <span class="bold">nat</span> <span class="bold">-A</span> <span class="bold">PREROUTING</span> <span class="bold">-s</span> <span class="bold">192.0.2.0/24</span> <span class="bold">\</span>
+                       <span class="bold">-p</span> <span class="bold">tcp</span> <span class="bold">--dport</span>  <span class="bold">80</span> <span class="bold">\</span>
+                       <span class="bold">-j</span> <span class="bold">REDIRECT</span> <span class="bold">--to-ports</span> <span class="bold">10080</span>
+              <span class="bold">iptables</span> <span class="bold">-t</span> <span class="bold">nat</span> <span class="bold">-A</span> <span class="bold">PREROUTING</span> <span class="bold">-s</span> <span class="bold">192.0.2.0/24</span> <span class="bold">\</span>
+                       <span class="bold">-p</span> <span class="bold">tcp</span> <span class="bold">--dport</span> <span class="bold">443</span> <span class="bold">\</span>
+                       <span class="bold">-j</span> <span class="bold">REDIRECT</span> <span class="bold">--to-ports</span> <span class="bold">10443</span>
+              <span class="bold">#</span> <span class="bold">please</span> <span class="bold">contribute</span> <span class="bold">a</span> <span class="bold">tested</span> <span class="bold">ip6tables</span> <span class="bold">config</span>
+
+              Note that SSLproxy is only able to accept incoming connections
+              if it binds to the correct IP address (e.g. 192.0.2.1) or on all
+              interfaces (0.0.0.0).  REDIRECT uses the local interface address
+              of the incoming interface as target IP address, or 127.0.0.1 for
+              locally generated packets.
+
+       <span class="bold">tproxy</span> Linux netfilter using the iptables TPROXY target together with
+              routing table magic to allow non-local traffic to originate on
+              local sockets.  Fully supported, including IPv6.
+
+              <span class="bold">ip</span> <span class="bold">-f</span> <span class="bold">inet6</span> <span class="bold">rule</span> <span class="bold">add</span> <span class="bold">fwmark</span> <span class="bold">1</span> <span class="bold">lookup</span> <span class="bold">100</span>
+              <span class="bold">ip</span> <span class="bold">-f</span> <span class="bold">inet6</span> <span class="bold">route</span> <span class="bold">add</span> <span class="bold">local</span> <span class="bold">default</span> <span class="bold">dev</span> <span class="bold">lo</span> <span class="bold">table</span> <span class="bold">100</span>
+              <span class="bold">ip6tables</span> <span class="bold">-t</span> <span class="bold">mangle</span> <span class="bold">-N</span> <span class="bold">DIVERT</span>
+              <span class="bold">ip6tables</span> <span class="bold">-t</span> <span class="bold">mangle</span> <span class="bold">-A</span> <span class="bold">DIVERT</span> <span class="bold">-j</span> <span class="bold">MARK</span> <span class="bold">--set-mark</span> <span class="bold">1</span>
+              <span class="bold">ip6tables</span> <span class="bold">-t</span> <span class="bold">mangle</span> <span class="bold">-A</span> <span class="bold">DIVERT</span> <span class="bold">-j</span> <span class="bold">ACCEPT</span>
+              <span class="bold">ip6tables</span> <span class="bold">-t</span> <span class="bold">mangle</span> <span class="bold">-A</span> <span class="bold">PREROUTING</span> <span class="bold">-p</span> <span class="bold">tcp</span> <span class="bold">-m</span> <span class="bold">socket</span> <span class="bold">-j</span> <span class="bold">DIVERT</span>
+              <span class="bold">ip6tables</span> <span class="bold">-t</span> <span class="bold">mangle</span> <span class="bold">-A</span> <span class="bold">PREROUTING</span> <span class="bold">-s</span> <span class="bold">2001:db8::/64</span> <span class="bold">\</span>
+                        <span class="bold">-p</span> <span class="bold">tcp</span> <span class="bold">--dport</span> <span class="bold">80</span> <span class="bold">\</span>
+                        <span class="bold">-j</span> <span class="bold">TPROXY</span> <span class="bold">--tproxy-mark</span> <span class="bold">0x1/0x1</span> <span class="bold">--on-port</span> <span class="bold">10080</span>
+              <span class="bold">ip6tables</span> <span class="bold">-t</span> <span class="bold">mangle</span> <span class="bold">-A</span> <span class="bold">PREROUTING</span> <span class="bold">-s</span> <span class="bold">2001:db8::/64</span> <span class="bold">\</span>
+                        <span class="bold">-p</span> <span class="bold">tcp</span> <span class="bold">--dport</span> <span class="bold">443</span> <span class="bold">\</span>
+                        <span class="bold">-j</span> <span class="bold">TPROXY</span> <span class="bold">--tproxy-mark</span> <span class="bold">0x1/0x1</span> <span class="bold">--on-port</span> <span class="bold">10443</span>
+              <span class="bold">ip</span> <span class="bold">-f</span> <span class="bold">inet</span> <span class="bold">rule</span> <span class="bold">add</span> <span class="bold">fwmark</span> <span class="bold">1</span> <span class="bold">lookup</span> <span class="bold">100</span>
+              <span class="bold">ip</span> <span class="bold">-f</span> <span class="bold">inet</span> <span class="bold">route</span> <span class="bold">add</span> <span class="bold">local</span> <span class="bold">default</span> <span class="bold">dev</span> <span class="bold">lo</span> <span class="bold">table</span> <span class="bold">100</span>
+              <span class="bold">iptables</span> <span class="bold">-t</span> <span class="bold">mangle</span> <span class="bold">-N</span> <span class="bold">DIVERT</span>
+              <span class="bold">iptables</span> <span class="bold">-t</span> <span class="bold">mangle</span> <span class="bold">-A</span> <span class="bold">DIVERT</span> <span class="bold">-j</span> <span class="bold">MARK</span> <span class="bold">--set-mark</span> <span class="bold">1</span>
+              <span class="bold">iptables</span> <span class="bold">-t</span> <span class="bold">mangle</span> <span class="bold">-A</span> <span class="bold">DIVERT</span> <span class="bold">-j</span> <span class="bold">ACCEPT</span>
+              <span class="bold">iptables</span> <span class="bold">-t</span> <span class="bold">mangle</span> <span class="bold">-A</span> <span class="bold">PREROUTING</span> <span class="bold">-p</span> <span class="bold">tcp</span> <span class="bold">-m</span> <span class="bold">socket</span> <span class="bold">-j</span> <span class="bold">DIVERT</span>
+              <span class="bold">iptables</span> <span class="bold">-t</span> <span class="bold">mangle</span> <span class="bold">-A</span> <span class="bold">PREROUTING</span> <span class="bold">-s</span> <span class="bold">192.0.2.0/24</span> <span class="bold">\</span>
+                       <span class="bold">-p</span> <span class="bold">tcp</span> <span class="bold">--dport</span> <span class="bold">80</span> <span class="bold">\</span>
+                       <span class="bold">-j</span> <span class="bold">TPROXY</span> <span class="bold">--tproxy-mark</span> <span class="bold">0x1/0x1</span> <span class="bold">--on-port</span> <span class="bold">10080</span>
+              <span class="bold">iptables</span> <span class="bold">-t</span> <span class="bold">mangle</span> <span class="bold">-A</span> <span class="bold">PREROUTING</span> <span class="bold">-s</span> <span class="bold">192.0.2.0/24</span> <span class="bold">\</span>
+                       <span class="bold">-p</span> <span class="bold">tcp</span> <span class="bold">--dport</span> <span class="bold">443</span> <span class="bold">\</span>
+                       <span class="bold">-j</span> <span class="bold">TPROXY</span> <span class="bold">--tproxy-mark</span> <span class="bold">0x1/0x1</span> <span class="bold">--on-port</span> <span class="bold">10443</span>
+
+              Note that return path filtering (rp_filter) also needs to be
+              disabled on interfaces which handle TPROXY redirected traffic.
+
+<span class="bold">SIGNALS</span>
+       A running <span class="bold">sslproxy</span> accepts SIGINT and SIGTERM for a clean shutdown and
+       SIGUSR1 to re-open the single-file log files (such as <span class="bold">-l</span>, <span class="bold">-L</span> and <span class="bold">-X</span>).
+       The canonical way to rotate or post-process logs is to rename the
+       active log file, send SIGUSR1 to the PID in the PID file given by <span class="bold">-p</span>,
+       give SSLproxy some time to flush buffers after closing the old file,
+       and then post-process the renamed log file.  Per-connection log files
+       (such as <span class="bold">-S</span> and <span class="bold">-F</span>) are not re-opened because their filename is
+       specific to the connection.
+
+<span class="bold">EXIT</span> <span class="bold">STATUS</span>
+       The <span class="bold">sslproxy</span> process will exit with 0 on regular shutdown (SIGINT,
+       SIGTERM), and 128 + signal number on controlled shutdown based on
+       receiving a different signal such as SIGHUP.  Exit status in the range
+       1..127 indicates error conditions.
+
+<span class="bold">EXAMPLES</span>
+       With configuration similar to the above NAT engine samples, intercept
+       HTTPS and POP3S over IPv4 using forged certificates with CA private key
+       <span class="bold">ca.key</span> and certificate <span class="bold">ca.crt</span>, logging connections to <span class="bold">connect.log</span> and
+       connection data into separate files under <span class="bold">/tmp</span> (add <span class="bold">-e</span> <span class="underline">nat-engine</span> to
+       select the appropriate engine if multiple engines are available on your
+       system) and diverting packets to a program running on address 127.0.0.1
+       and port 8080 for HTTPS and to another program running on address
+       127.0.0.1 and port 8110 for POP3S:
+
+       <span class="bold">sslproxy</span> <span class="bold">-k</span> <span class="bold">ca.key</span> <span class="bold">-c</span> <span class="bold">ca.crt</span> <span class="bold">-l</span> <span class="bold">connect.log</span> <span class="bold">-L</span> <span class="bold">/tmp</span> <span class="bold">\</span>
+                <span class="bold">https</span> <span class="bold">127.0.0.1</span> <span class="bold">8443</span> <span class="bold">up:8080</span> <span class="bold">\</span>
+                <span class="bold">pop3s</span> <span class="bold">127.0.0.1</span> <span class="bold">8995</span> <span class="bold">up:8110</span>
+
+       To generate a CA private key <span class="bold">ca.key</span>  and certificate <span class="bold">ca.crt</span> using
+       OpenSSL:
+
+       <span class="bold">cat</span> <span class="bold">&gt;x509v3ca.cnf</span> <span class="bold">&lt;&lt;'EOF'</span>
+       [ req ]
+       distinguished_name = reqdn
+
+       [ reqdn ]
+
+       [ v3_ca ]
+       basicConstraints        = CA:TRUE
+       subjectKeyIdentifier    = hash
+       authorityKeyIdentifier  = keyid:always,issuer:always
+       <span class="bold">EOF</span>
+
+       <span class="bold">openssl</span> <span class="bold">genrsa</span> <span class="bold">-out</span> <span class="bold">ca.key</span> <span class="bold">2048</span>
+       <span class="bold">openssl</span> <span class="bold">req</span> <span class="bold">-new</span> <span class="bold">-nodes</span> <span class="bold">-x509</span> <span class="bold">-sha256</span> <span class="bold">-out</span> <span class="bold">ca.crt</span> <span class="bold">-key</span> <span class="bold">ca.key</span> <span class="bold">\</span>
+               <span class="bold">-config</span> <span class="bold">x509v3ca.cnf</span> <span class="bold">-extensions</span> <span class="bold">v3_ca</span> <span class="bold">\</span>
+               <span class="bold">-subj</span> <span class="bold">'/O=SSLproxy</span> <span class="bold">Root</span> <span class="bold">CA/CN=SSLproxy</span> <span class="bold">Root</span> <span class="bold">CA/'</span> <span class="bold">\</span>
+               <span class="bold">-set_serial</span> <span class="bold">0</span> <span class="bold">-days</span> <span class="bold">3650</span>
+
+<span class="bold">NOTES</span>
+       SSLproxy is able to handle a relatively high number of listeners and
+       connections due to a multithreaded, event based architecture based on
+       libevent, taking advantage of platform specific select() replacements
+       such as kqueue.  The main thread handles the listeners and signaling,
+       while a number of worker threads equal to twice the number of CPU cores
+       is used for handling the actual connections in separate event bases,
+       including the CPU-intensive SSL/TLS handling.
+
+       Care has been taken to choose well-performing data structures for
+       caching certificates and SSL sessions.  Logging is implemented in
+       separate disk writer threads to ensure that socket event handling
+       threads don't have to block on disk I/O.  DNS lookups are performed
+       asynchronously.  SSLproxy uses SSL session caching on both ends to
+       minimize the amount of full SSL handshakes, but even then, the limiting
+       factor in handling SSL connections are the actual bignum computations.
+
+       For high performance and low latency and when running SSLproxy as root
+       or otherwise in a privilege separation mode, avoid using options which
+       require a privileged operation to be invoked through privilege
+       separation for each connection.  These are currently all per-connection
+       log types: content log to per-stream file in dir or filespec (<span class="bold">-F</span>, <span class="bold">-S</span>),
+       content log to per-stream PCAP in dir or filespec (<span class="bold">-Y</span>, <span class="bold">-y</span>), and
+       generated or all certificates to files in directory (<span class="bold">-w</span>, <span class="bold">-W</span>).  Instead,
+       use the respective single-file variants where available.  It is
+       possible, albeit not recommended, to bypass the default privilege
+       separation when run as root by using <span class="bold">-u</span> <span class="bold">root</span>, thereby bypassing
+       privilege separation entirely.
+
+<span class="bold">SEE</span> <span class="bold">ALSO</span>
+       sslproxy.conf(5), openssl(1), ciphers(1), speed(1), pf(4), ipfw(8),
+       iptables(8), ip6tables(8), ip(8), hostapd(8), arpspoof(8),
+       parasite6(8), yersinia(8), <span class="underline">https://www.roe.ch/SSLsplit,</span>
+       <span class="underline">https://github.com/sonertari/SSLproxy</span>
+
+<span class="bold">AUTHORS</span>
+       SSLsplit was written by Daniel Roethlisberger &lt;daniel@roe.ch&gt;.
+       SSLsplit is currently maintained by Daniel Roethlisberger and Soner
+       Tari.
+
+       SSLproxy has been developed by Soner Tari &lt;sonertari@gmail.com&gt;.
+
+       The following individuals have contributed code or documentation, in
+       chronological order of their first contribution: Steve Wills, Landon
+       Fuller, Wayne Jensen, Rory McNamara, Alexander Neumann, Adam Jacob
+       Muller, Richard Poole, Maciej Kotowicz, Eun Soo Park, Christian
+       Groschupp, Alexander Savchenkov, Soner Tari, Petr Vanek, Hilko Bengen,
+       Philip Duldig, Levente Polyak, Nick French and Cihan Komecoglu.
+
+       SSLsplit contains work sponsored by HackerOne.
+
+<span class="bold">BUGS</span>
+       Use Github for submission of bug reports or patches:
+
+              <span class="underline">https://github.com/droe/sslsplit</span>
+
+              <span class="underline">https://github.com/sonertari/sslproxy</span>
+
+v0.8.7                          29 August 2021                     sslproxy(1)
+</pre>
+</body>
+</html>

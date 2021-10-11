@@ -30,7 +30,7 @@ class Route extends Filter
 
 	function display($ruleNumber, $count)
 	{
-		$this->dispHead($ruleNumber);
+		$this->dispHead($ruleNumber, $count);
 		$this->dispAction();
 		$this->dispValue('direction', _TITLE('Direction'));
 		$this->dispInterface();
@@ -40,7 +40,7 @@ class Route extends Filter
 		$this->dispSrcDest();
 		$this->dispValue('type', _TITLE('Type'));
 		$this->dispValues('routehost', _TITLE('Route Host'));
-		$this->dispTail($ruleNumber, $count);
+		$this->dispTail($ruleNumber);
 	}
 
 	function input()
