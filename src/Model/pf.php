@@ -28,6 +28,9 @@ require_once($MODEL_PATH.'/model.php');
 
 class Pf extends Model
 {
+	use Rules;
+	use IpLists;
+
 	public $Name= 'pf';
 
 	public $LogFile= '/var/log/pflog';
@@ -43,8 +46,6 @@ class Pf extends Model
 	public $ConfFile= '/etc/pf.conf';
 
 	public $ReloadCmd= "/sbin/pfctl -f <FILE> 2>&1";
-
-	public $IpListFile= '/etc/pf.restrictedips';
 
 	public $AfterHoursFile= '/etc/pfre/pf.conf.afterhours';
 
@@ -205,6 +206,11 @@ class Pf extends Model
 					),
 				)
 			);
+
+		$this->registerRulesCommands();
+
+		$this->IpListFile= '/etc/pf.restrictedips';
+		$this->registerIpListsCommands();
 	}
 
 	/**
@@ -548,19 +554,9 @@ class Pf extends Model
 		return $rules;
 	}
 
-	function getNamespace()
-	{
-		return 'Model\\';
-	}
-	
 	function getTestRulesCmd($rulesStr, &$tmpFile)
 	{
 		return "/bin/echo '$rulesStr' | /sbin/pfctl -nf - 2>&1";
-	}
-
-	function removeTmpTestFile($tmpFile)
-	{
-		return TRUE;
 	}
 
 	function ParseLogLine($logline, &$cols)

@@ -313,74 +313,9 @@ class Model
 					'desc'	=>	_('Disable config'),
 					),
 
-				'GetAllowedIps'	=>	array(
-					'argv'	=>	array(),
-					'desc'	=>	_('Get PF allowed'),
-					),
-
-				'AddAllowedIp'	=>	array(
-					'argv'	=>	array(IPADR|IPRANGE),
-					'desc'	=>	_('Set PF allowed'),
-					),
-
-				'DelAllowedIp'	=>	array(
-					'argv'	=>	array(IPADR|IPRANGE),
-					'desc'	=>	_('Delete PF allowed'),
-					),
-
-				'GetRestrictedIps'=>	array(
-					'argv'	=>	array(),
-					'desc'	=>	_('Get PF restricted'),
-					),
-
-				'AddRestrictedIp'=>	array(
-					'argv'	=>	array(IPADR|IPRANGE),
-					'desc'	=>	_('Set PF restricted'),
-					),
-
-				'DelRestrictedIp'=>	array(
-					'argv'	=>	array(IPADR|IPRANGE),
-					'desc'	=>	_('Delete PF restricted'),
-					),
-
 				'GetStatus'	=> array(
 					'argv'	=>	array(),
 					'desc'	=>	_('Get critical errors'),
-					),
-
-				'GetRules'=>	array(
-					'argv'	=>	array(FILEPATH, BOOL|NONE, BOOL|NONE),
-					'desc'	=>	_('Get rules'),
-					),
-
-				'GetRuleFiles'=>	array(
-					'argv'	=>	array(),
-					'desc'	=>	_('Get rule files'),
-					),
-
-				'DeleteRuleFile'=>	array(
-					'argv'	=>	array(FILEPATH),
-					'desc'	=>	_('Delete rule file'),
-					),
-
-				'InstallRules'=>	array(
-					'argv'	=>	array(JSON, SAVEFILEPATH|NONE, BOOL|NONE, BOOL|NONE),
-					'desc'	=>	_('Install rules'),
-					),
-
-				'GenerateRule'=>	array(
-					'argv'	=>	array(JSON, NUM, BOOL|NONE),
-					'desc'	=>	_('Generate rule'),
-					),
-
-				'GenerateRules'=>	array(
-					'argv'	=>	array(JSON, BOOL|NONE, BOOL|NONE),
-					'desc'	=>	_('Generate rules'),
-					),
-
-				'TestRules'=>	array(
-					'argv'	=>	array(JSON),
-					'desc'	=>	_('Test rules'),
 					),
 				)
 			);
@@ -3145,78 +3080,6 @@ class Model
 	}
 	
 	/**
-	 * Provides the list of allowed IPs.
-	 *
-	 * @return List of IPs.
-	 */
-	function GetAllowedIps()
-	{
-		global $Re_Ip, $Re_Net;
-		
-		return Output($this->SearchFileAll($this->IpListFile, "/^\h*!($Re_Ip|$Re_Net)\h*$/m"));
-	}
-
-	/**
-	 * Provides a list of restricted IPs.
-	 *
-	 * @return List of IPs.
-	 */
-	function GetRestrictedIps()
-	{
-		global $Re_Ip, $Re_Net;
-		
-		return Output($this->SearchFileAll($this->IpListFile, "/^\h*($Re_Ip|$Re_Net)\h*$/m"));
-	}
-
-	/**
-	 * Adds an IP or IP range to allowed list.
-	 *
-	 * @param string $ip IP or IP range.
-	 * @return bool TRUE on success, FALSE on fail.
-	 */
-	function AddAllowedIp($ip)
-	{
-		$this->DelAllowedIp($ip);
-		return $this->AppendToFile($this->IpListFile, "!$ip");
-	}
-
-	/**
-	 * Deletes an IP or IP range from allowed list.
-	 *
-	 * @param string $ip IP or IP range.
-	 * @return bool TRUE on success, FALSE on fail.
-	 */
-	function DelAllowedIp($ip)
-	{
-		$ip= Escape($ip, '/.');
-		return $this->ReplaceRegexp($this->IpListFile, "/^(\h*!$ip\b.*(\s|))/m", '');
-	}
-
-	/**
-	 * Adds an IP or IP range to restricted list.
-	 *
-	 * @param string $ip IP or IP range.
-	 * @return bool TRUE on success, FALSE on fail.
-	 */
-	function AddRestrictedIp($ip)
-	{
-		$this->DelRestrictedIp($ip);
-		return $this->AppendToFile($this->IpListFile, $ip);
-	}
-
-	/**
-	 * Deletes an IP or IP range from restricted list.
-	 *
-	 * @param string $ip IP or IP range.
-	 * @return bool TRUE on success, FALSE on fail.
-	 */
-	function DelRestrictedIp($ip)
-	{
-		$ip= Escape($ip, '/.');
-		return $this->ReplaceRegexp($this->IpListFile, "/^(\h*$ip\b.*(\s|))/m", '');
-	}
-
-	/**
 	 * Gets newsyslog configuration for log file.
 	 *
 	 * Certain log files do not have model classes, hence the $model param.
@@ -3341,6 +3204,52 @@ class Model
 			}
 		}
 		return FALSE;
+	}
+}
+
+trait Rules
+{
+	protected function registerRulesCommands()
+	{
+		$this->Commands= array_merge(
+			$this->Commands,
+			array(
+				'GetRules'=>	array(
+					'argv'	=>	array(FILEPATH, BOOL|NONE, BOOL|NONE),
+					'desc'	=>	_('Get rules'),
+					),
+
+				'GetRuleFiles'=>	array(
+					'argv'	=>	array(),
+					'desc'	=>	_('Get rule files'),
+					),
+
+				'DeleteRuleFile'=>	array(
+					'argv'	=>	array(FILEPATH),
+					'desc'	=>	_('Delete rule file'),
+					),
+
+				'InstallRules'=>	array(
+					'argv'	=>	array(JSON, SAVEFILEPATH|NONE, BOOL|NONE, BOOL|NONE),
+					'desc'	=>	_('Install rules'),
+					),
+
+				'GenerateRule'=>	array(
+					'argv'	=>	array(JSON, NUM, BOOL|NONE),
+					'desc'	=>	_('Generate rule'),
+					),
+
+				'GenerateRules'=>	array(
+					'argv'	=>	array(JSON, BOOL|NONE, BOOL|NONE),
+					'desc'	=>	_('Generate rules'),
+					),
+
+				'TestRules'=>	array(
+					'argv'	=>	array(JSON),
+					'desc'	=>	_('Test rules'),
+					),
+				)
+			);
 	}
 
 	/**
@@ -3797,6 +3706,133 @@ out:
 			// Child exits
 			exit;
 		}
+	}
+
+	protected function getNamespace()
+	{
+		return 'Model\\';
+	}
+
+	abstract protected function getTestRulesCmd($rulesStr, &$tmpFile);
+
+	protected function removeTmpTestFile($tmpFile)
+	{
+		return TRUE;
+	}
+}
+
+trait IpLists
+{
+	protected $IpListFile;
+
+	protected function registerIpListsCommands()
+	{
+		$this->Commands= array_merge(
+			$this->Commands,
+			array(
+				'GetAllowedIps'	=>	array(
+					'argv'	=>	array(),
+					'desc'	=>	_('Get allowed IPs'),
+					),
+
+				'AddAllowedIp'	=>	array(
+					'argv'	=>	array(IPADR|IPRANGE),
+					'desc'	=>	_('Set allowed IPs'),
+					),
+
+				'DelAllowedIp'	=>	array(
+					'argv'	=>	array(IPADR|IPRANGE),
+					'desc'	=>	_('Delete allowed IPs'),
+					),
+
+				'GetRestrictedIps'=>	array(
+					'argv'	=>	array(),
+					'desc'	=>	_('Get restricted IPs'),
+					),
+
+				'AddRestrictedIp'=>	array(
+					'argv'	=>	array(IPADR|IPRANGE),
+					'desc'	=>	_('Set restricted IPs'),
+					),
+
+				'DelRestrictedIp'=>	array(
+					'argv'	=>	array(IPADR|IPRANGE),
+					'desc'	=>	_('Delete restricted IPs'),
+					),
+				)
+			);
+	}
+
+	/**
+	 * Provides the list of allowed IPs.
+	 *
+	 * @return List of IPs.
+	 */
+	function GetAllowedIps()
+	{
+		global $Re_Ip, $Re_Net;
+
+		return Output($this->SearchFileAll($this->IpListFile, "/^\h*!($Re_Ip|$Re_Net)\h*$/m"));
+	}
+
+	/**
+	 * Provides a list of restricted IPs.
+	 *
+	 * @return List of IPs.
+	 */
+	function GetRestrictedIps()
+	{
+		global $Re_Ip, $Re_Net;
+
+		return Output($this->SearchFileAll($this->IpListFile, "/^\h*($Re_Ip|$Re_Net)\h*$/m"));
+	}
+
+	/**
+	 * Adds an IP or IP range to allowed list.
+	 *
+	 * @param string $ip IP or IP range.
+	 * @return bool TRUE on success, FALSE on fail.
+	 */
+	function AddAllowedIp($ip)
+	{
+		$this->DelAllowedIp($ip);
+		return $this->AppendToFile($this->IpListFile, "!$ip");
+	}
+
+	/**
+	 * Deletes an IP or IP range from allowed list.
+	 *
+	 * @param string $ip IP or IP range.
+	 * @return bool TRUE on success, FALSE on fail.
+	 */
+	function DelAllowedIp($ip)
+	{
+		$ip= Escape($ip, '/.');
+		return $this->ReplaceRegexp($this->IpListFile, "/^(\h*!$ip\b.*(\s|))/m", '');
+	}
+
+	/**
+	 * Adds an IP or IP range to restricted list.
+	 *
+	 * @param string $ip IP or IP range.
+	 * @return bool TRUE on success, FALSE on fail.
+	 */
+	function AddRestrictedIp($ip)
+	{
+		$this->DelRestrictedIp($ip);
+		return $this->AppendToFile($this->IpListFile, $ip);
+	}
+
+	/**
+	 * Deletes an IP or IP range from restricted list.
+	 *
+	 * @param string $ip IP or IP range.
+	 * @return bool TRUE on success, FALSE on fail.
+	 */
+	function DelRestrictedIp($ip)
+	{
+		$ip= Escape($ip, '/.');
+		return $this->ReplaceRegexp($this->IpListFile, "/^(\h*$ip\b.*(\s|))/m", '');
 	}
 }
 

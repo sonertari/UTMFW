@@ -24,6 +24,8 @@ require_once($MODEL_PATH.'/model.php');
 
 class Sslproxy extends Model
 {
+	use Rules;
+
 	public $Name= 'sslproxy';
 	public $User= 'root|_sslprox\w*';
 
@@ -60,6 +62,8 @@ class Sslproxy extends Model
 					),
 				)
 			);
+
+		$this->registerRulesCommands();
 	}
 
 	function GetVersion()

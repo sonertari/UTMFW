@@ -22,6 +22,8 @@ require_once($MODEL_PATH.'/model.php');
 
 class Snortips extends Model
 {
+	use IpLists;
+
 	public $Name= 'snortips';
 	public $User= 'root';
 
@@ -30,8 +32,6 @@ class Snortips extends Model
 	public $NVPS= '\h';
 	public $ConfFile= '/etc/snort/snortips.conf';
 	public $LogFile= '/var/log/snortips.log';
-
-	public $IpListFile= '/etc/snort/snortips.conf';
 
 	public $VersionCmd= 'unset LC_ALL; unset LANG; /usr/local/sbin/snortips -V';
 
@@ -99,6 +99,9 @@ class Snortips extends Model
 					),
 				)
 			);
+
+		$this->IpListFile= '/etc/snort/snortips.conf';
+		$this->registerIpListsCommands();
 	}
 
 	function Stop()
