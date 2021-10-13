@@ -42,6 +42,109 @@ $ruleType2Class= array(
 	'blank' => 'Blank',
 	);
 
+$Options= array(
+	'CACert',
+	'CAKey',
+	'ClientCert',
+	'ClientKey',
+	'CAChain',
+	'LeafKey',
+	'LeafCRLURL',
+	'LeafCertDir',
+	'DefaultLeafCert',
+	'WriteGenCertsDir',
+	'WriteAllCertsDir',
+	'DenyOCSP',
+	'Passthrough',
+	'DHGroupParams',
+	'ECDHCurve',
+	'SSLCompression',
+	'ForceSSLProto',
+	'DisableSSLProto',
+	'Ciphers',
+	'CipherSuites',
+	'LeafKeyRSABits',
+	'OpenSSLEngine',
+	'NATEngine',
+	'User',
+	'Group',
+	'Chroot',
+	'PidFile',
+	'ConnectLog',
+	'ContentLog',
+	'ContentLogDir',
+	'ContentLogPathSpec',
+	'LogProcInfo',
+	'PcapLog',
+	'PcapLogDir',
+	'PcapLogPathSpec',
+	'MirrorIf',
+	'MirrorTarget',
+	'MasterKeyLog',
+	'Daemon',
+	'Debug',
+	'DebugLevel',
+	'ConnIdleTimeout',
+	'ExpiredConnCheckPeriod',
+	'LogStats',
+	'StatsPeriod',
+	'RemoveHTTPAcceptEncoding',
+	'RemoveHTTPReferer',
+	'VerifyPeer',
+	'AllowWrongHost',
+	'UserAuth',
+	'DivertUsers',
+	'PassUsers',
+	'UserDBPath',
+	'UserTimeout',
+	'UserAuthURL',
+	'ValidateProto',
+	'MaxHTTPHeaderSize',
+	'OpenFilesLimit',
+	'Divert',
+	'PassSite',
+);
+
+$ProxySpecStructOptions= array(
+	'Proto',
+	'Addr',
+	'Port',
+	'Divert',
+	'DivertAddr',
+	'DivertPort',
+	'ReturnAddr',
+	'NatEngine',
+	'SNIPort',
+	'TargetAddr',
+	'TargetPort',
+	'DenyOCSP',
+	'Passthrough',
+	'CACert',
+	'CAKey',
+	'ClientCert',
+	'ClientKey',
+	'CAChain',
+	'DHGroupParams',
+	'ECDHCurve',
+	'SSLCompression',
+	'ForceSSLProto',
+	'DisableSSLProto',
+	'Ciphers',
+	'CipherSuites',
+	'RemoveHTTPAcceptEncoding',
+	'RemoveHTTPReferer',
+	'VerifyPeer',
+	'UserAuth',
+	'DivertUsers',
+	'PassUsers',
+	'UserTimeout',
+	'UserAuthURL',
+	'ValidateProto',
+	'PassSite',
+	'Define',
+	'Divert',
+);
+
 if (filter_has_var(INPUT_GET, 'sender') && array_key_exists(filter_input(INPUT_GET, 'sender'), $ruleCategoryNames)) {
 	$edit= filter_input(INPUT_GET, 'sender');
 	$ruleNumber= filter_input(INPUT_GET, 'rulenumber');
@@ -73,8 +176,8 @@ if (filter_has_var(INPUT_POST, 'ruleNumber') && filter_input(INPUT_POST, 'ruleNu
 		$action= 'add';
 	} elseif (filter_has_var(INPUT_POST, 'edit')) {
 		$ruleNumber= filter_input(INPUT_POST, 'ruleNumber');
-		if (array_key_exists($ruleNumber, $View->RuleSet->rules)) {
-			$edit= array_search($View->RuleSet->rules[$ruleNumber]->cat, $ruleType2Class);
+		if (array_key_exists($ruleNumber, $ruleSet->rules)) {
+			$edit= array_search($ruleSet->rules[$ruleNumber]->cat, $ruleType2Class);
 			$action= 'edit';
 		} else {
 			// Will add a new rule of category $edit otherwise
@@ -88,39 +191,77 @@ if (filter_has_var(INPUT_POST, 'ruleNumber') && filter_input(INPUT_POST, 'ruleNu
 	}
 }
 
-if (isset($edit)) {
-	require ('edit.php');
+$nested= FALSE;
+if (filter_has_var(INPUT_POST, 'nested') && (!filter_has_var(INPUT_POST, 'move') && !filter_has_var(INPUT_POST, 'delete') && !filter_has_var(INPUT_POST, 'deleteAll'))) {
+	$nested= TRUE;
+}
+if (filter_has_var(INPUT_GET, 'nested')) {
+	$nested= TRUE;
+}
+
+if (isset($edit) || isset($_SESSION['saved_edit'])) {
+	if (isset($edit)) {
+		$cat= $ruleType2Class[$edit];
+		if (($cat == 'ProxySpecStruct' || $cat == '_Include') && isset($_SESSION['saved_edit']) && !$nested) {
+			$mainRuleset= $_SESSION['saved_edit']['ruleset'];
+			$mainRuleNumber= $_SESSION['saved_edit']['ruleNumber'];
+			$mainRuleset->setupEditSession($cat, $mainRuleset, $action, $mainRuleNumber);
+		}
+		else {
+			$ruleSet->setupEditSession($cat, $ruleSet, $action, $ruleNumber);
+		}
+		$ruleObj= &$_SESSION['edit']['object'];
+	}
+	else {
+		$ruleObj= &$_SESSION['saved_edit']['object'];
+		$cat= $_SESSION['saved_edit']['cat'];
+		$ruleNumber= $_SESSION['saved_edit']['ruleNumber'];
+		$action= $_SESSION['saved_edit']['action'];
+	}
+
+	if ($cat == 'ProxySpecStruct' && !$nested) {
+		require('conf.proxyspec.php');
+	}
+	else if ($cat == '_Include' && !$nested) {
+		require('conf.include.php');
+	}
+	else {
+		if (isset($_SESSION['saved_edit']) && $_SESSION['saved_edit']['cat'] == 'ProxySpecStruct') {
+			$Options= $ProxySpecStructOptions;
+		}
+		require('edit.php');
+	}
 }
 
 if (filter_has_var(INPUT_GET, 'up')) {
-	$View->RuleSet->up(filter_input(INPUT_GET, 'up'));
+	$ruleSet->up(filter_input(INPUT_GET, 'up'));
 }
 
 if (filter_has_var(INPUT_GET, 'down')) {
-	$View->RuleSet->down(filter_input(INPUT_GET, 'down'));
+	$ruleSet->down(filter_input(INPUT_GET, 'down'));
 }
 
 if (filter_has_var(INPUT_GET, 'del')) {
-	$View->RuleSet->del(filter_input(INPUT_GET, 'del'));
+	$ruleSet->del(filter_input(INPUT_GET, 'del'));
 }
 
 if (filter_has_var(INPUT_POST, 'move')) {
 	if (filter_has_var(INPUT_POST, 'ruleNumber') && filter_input(INPUT_POST, 'ruleNumber') !== '' &&
 		filter_has_var(INPUT_POST, 'moveTo') && filter_input(INPUT_POST, 'moveTo') !== '') {
-		$View->RuleSet->move(filter_input(INPUT_POST, 'ruleNumber'), filter_input(INPUT_POST, 'moveTo'));
+		$ruleSet->move(filter_input(INPUT_POST, 'ruleNumber'), filter_input(INPUT_POST, 'moveTo'));
 	}
 }
 
 if (filter_has_var(INPUT_POST, 'delete')) {
-	$View->RuleSet->del(filter_input(INPUT_POST, 'ruleNumber'));
+	$ruleSet->del(filter_input(INPUT_POST, 'ruleNumber'));
 }
 
 if (filter_has_var(INPUT_POST, 'deleteAll')) {
-	$View->RuleSet->deleteRules();
+	$ruleSet->deleteRules();
 	PrintHelpWindow(_NOTICE('Ruleset deleted'));
 }
 
-$View->Controller($Output, 'TestRules', json_encode($View->RuleSet->rules));
+$View->Controller($Output, 'TestRules', json_encode($ruleSet->rules));
 
 require_once($VIEW_PATH.'/header.php');
 ?>
@@ -139,7 +280,7 @@ require_once($VIEW_PATH.'/header.php');
 		</select>
 		<input type="submit" name="add" value="<?php echo _CONTROL('Add') ?>" />
 		<label for="ruleNumber"><?php echo _CONTROL('as rule number') ?>:</label>
-		<input type="text" name="ruleNumber" id="ruleNumber" size="5" value="<?php echo $View->RuleSet->nextRuleNumber(); ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+		<input type="text" name="ruleNumber" id="ruleNumber" size="5" value="<?php echo $ruleSet->nextRuleNumber(); ?>" placeholder="<?php echo _CONTROL('number') ?>" />
 		<input type="submit" name="edit" value="<?php echo _CONTROL('Edit') ?>" />
 		<input type="submit" name="delete" value="<?php echo _CONTROL('Delete') ?>" onclick="return confirm('<?php echo _CONTROL('Are you sure you want to delete the rule?') ?>')"/>
 		<input type="text" name="moveTo" id="moveTo" size="5" value="<?php echo filter_input(INPUT_POST, 'moveTo') ?>" placeholder="<?php echo _CONTROL('move to') ?>" />
@@ -148,7 +289,7 @@ require_once($VIEW_PATH.'/header.php');
 	</form>
 </fieldset>
 <?php
-echo _TITLE('Rules file') . ': ' . $View->RuleSet->filename . ($View->RuleSet->uploaded ? ' (' . _TITLE('uploaded') . ')' : '');
+echo _TITLE('Rules file') . ': ' . $ruleSet->filename . ($ruleSet->uploaded ? ' (' . _TITLE('uploaded') . ')' : '');
 ?>
 <table id="logline">
 	<tr>
@@ -163,8 +304,8 @@ echo _TITLE('Rules file') . ': ' . $View->RuleSet->filename . ($View->RuleSet->u
 	$ruleNumber= 0;
 	// Passed as a global var.
 	$lineNumber= 1;
-	$count = count($View->RuleSet->rules) - 1;
-	foreach ($View->RuleSet->rules as $rule) {
+	$count = count($ruleSet->rules) - 1;
+	foreach ($ruleSet->rules as $rule) {
 		if ($show == 'all' || $ruleType2Class[$show] == $rule->cat) {
 			$rule->display($ruleNumber, $count);
 		}

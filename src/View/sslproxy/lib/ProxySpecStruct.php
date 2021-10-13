@@ -105,7 +105,7 @@ class ProxySpecStruct extends Rule
 				<?php echo _TITLE('Structured ProxySpec').':' ?>
 			</td>
 			<td>
-				<textarea cols="80" rows="25" id="inline" name="inline" placeholder="<?php echo _CONTROL('Enter proxy specifications here') ?>"><?php echo isset($this->rule['inline']) ? $this->rule['inline'] : ''; ?></textarea>
+				<textarea cols="80" rows="10" id="inline" name="inline" placeholder="<?php echo _CONTROL('Enter proxy specifications here') ?>"><?php echo isset($this->rule['inline']) ? $this->rule['inline'] : ''; ?></textarea>
 				<?php $this->editHelp('proxyspec') ?>
 			</td>
 		</tr>

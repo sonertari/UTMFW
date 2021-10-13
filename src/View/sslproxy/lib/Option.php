@@ -68,68 +68,7 @@ class Option extends Rule
 
 	function editOption()
 	{
-		$options= array(
-			'CACert',
-			'CAKey',
-			'ClientCert',
-			'ClientKey',
-			'CAChain',
-			'LeafKey',
-			'LeafCRLURL',
-			'LeafCertDir',
-			'DefaultLeafCert',
-			'WriteGenCertsDir',
-			'WriteAllCertsDir',
-			'DenyOCSP',
-			'Passthrough',
-			'DHGroupParams',
-			'ECDHCurve',
-			'SSLCompression',
-			'ForceSSLProto',
-			'DisableSSLProto',
-			'Ciphers',
-			'CipherSuites',
-			'LeafKeyRSABits',
-			'OpenSSLEngine',
-			'NATEngine',
-			'User',
-			'Group',
-			'Chroot',
-			'PidFile',
-			'ConnectLog',
-			'ContentLog',
-			'ContentLogDir',
-			'ContentLogPathSpec',
-			'LogProcInfo',
-			'PcapLog',
-			'PcapLogDir',
-			'PcapLogPathSpec',
-			'MirrorIf',
-			'MirrorTarget',
-			'MasterKeyLog',
-			'Daemon',
-			'Debug',
-			'DebugLevel',
-			'ConnIdleTimeout',
-			'ExpiredConnCheckPeriod',
-			'LogStats',
-			'StatsPeriod',
-			'RemoveHTTPAcceptEncoding',
-			'RemoveHTTPReferer',
-			'VerifyPeer',
-			'AllowWrongHost',
-			'UserAuth',
-			'DivertUsers',
-			'PassUsers',
-			'UserDBPath',
-			'UserTimeout',
-			'UserAuthURL',
-			'ValidateProto',
-			'MaxHTTPHeaderSize',
-			'OpenFilesLimit',
-			'Divert',
-			'PassSite',
-		);
+		global $Options;
 		?>
 		<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
 			<td class="title">
@@ -139,7 +78,7 @@ class Option extends Rule
 				<select id="option" name="option">
 					<option value=""></option>
 					<?php
-					foreach ($options as $o) {
+					foreach ($Options as $o) {
 						?>
 						<option value="<?php echo $o ?>" label="<?php echo $o ?>" <?php echo (isset($this->rule['option']) && $this->rule['option'] == $o ? 'selected' : ''); ?>><?php echo $o ?></option>
 						<?php

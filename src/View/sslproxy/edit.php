@@ -25,20 +25,30 @@
 require_once ('sslproxy.php');
 
 if (isset($edit) && array_key_exists($edit, $ruleType2Class)) {
-	$cat= $ruleType2Class[$edit];
-
-	$View->RuleSet->setupEditSession($cat, $action, $ruleNumber);
-
-	$ruleObj= &$_SESSION['edit']['object'];
 	$ruleObj->input();
 
-	$testResult= $View->RuleSet->test($ruleNumber, $ruleObj);
-	$View->RuleSet->cancel();
-	$View->RuleSet->save($action, $ruleNumber, $ruleObj, $testResult);
+	if (isset($_SESSION['saved_edit']) && $_SESSION['saved_edit']['cat'] == 'ProxySpecStruct') {
+		$mainRuleset= $_SESSION['saved_edit']['ruleset'];
+		$mainRuleNumber= $_SESSION['saved_edit']['ruleNumber'];
+		$mainRuleObj= $_SESSION['saved_edit']['object'];
+
+		$tmpRuleSet= clone $ruleSet;
+		$tmpRuleSet->rules[$ruleNumber]= $ruleObj;
+		$View->Controller($inline, 'GenerateRules', json_encode($tmpRuleSet->rules), 0, 1);
+
+		$mainRuleObj->rule['inline']= implode("\n", $inline);
+
+		$testResult= $mainRuleset->test($mainRuleNumber, $mainRuleObj);
+	} else {
+		$testResult= $ruleSet->test($ruleNumber, $ruleObj);
+	}
+
+	$ruleSet->cancel();
+	$ruleSet->save($action, $ruleNumber, $ruleObj, $testResult);
 
 	$modified= TRUE;
 	if ($action != 'create') {
-		$modified= $View->RuleSet->isModified($ruleNumber, $ruleObj);
+		$modified= $ruleSet->isModified($ruleNumber, $ruleObj);
 	}
 
 	$force= 0;

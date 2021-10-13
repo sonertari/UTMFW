@@ -118,7 +118,9 @@ class Rule
 	{
 		global $lineNumber, $ruleCategoryNames;
 
-		$ruleType= $ruleCategoryNames[$this->ref];
+		$ruleType= $this->cat;
+		if (isset($ruleCategoryNames[$this->ref]))
+			$ruleType= $ruleCategoryNames[$this->ref];
 		$lineCount= $this->countLines();
 		$title= _TITLE('<RULE_TYPE> rule');
 		$title= str_replace('<RULE_TYPE>', $ruleType, $title);
@@ -216,9 +218,14 @@ class Rule
 	 */
 	function dispEditLinks($ruleNumber, $count, $up= 'up', $down= 'down', $del= 'del')
 	{
-		global $ruleCategoryNames;
+		global $ruleCategoryNames, $baseCat;
+
+		$nested= '';
+		if (($this->cat == '_Include' || $this->cat == 'ProxySpecStruct') && isset($baseCat)) {
+			$nested= '&nested='.$baseCat;
+		}
 		?>
-		<a href="<?php echo $this->href . $ruleNumber ?>" title="<?php echo _TITLE('Edit') ?>">
+		<a href="<?php echo $this->href . $ruleNumber . $nested ?>" title="<?php echo _TITLE('Edit') ?>">
 			<input type="button" value="E" /></a>
 		<?php
 		if ($ruleNumber > 0) {
@@ -242,7 +249,9 @@ class Rule
 			<?php
 		}
 
-		$ruleType= $ruleCategoryNames[$this->ref];
+		$ruleType= $this->cat;
+		if (isset($ruleCategoryNames[$this->ref]))
+			$ruleType= $ruleCategoryNames[$this->ref];
 		$confirmMsg= _CONTROL('Are you sure you want to delete <RULE_TYPE> rule number <RULE_NUMBER>?');
 		$confirmMsg= str_replace('<RULE_TYPE>', $ruleType, $confirmMsg);
 		$confirmMsg= str_replace('<RULE_NUMBER>', $ruleNumber, $confirmMsg);
@@ -631,6 +640,12 @@ class Rule
 	{
 		global $ruleStr, $ruleCategoryNames;
 
+		if (filter_has_var(INPUT_POST, 'nested')) {
+			$nested= filter_input(INPUT_POST, 'nested');
+		}
+		if (filter_has_var(INPUT_GET, 'nested')) {
+			$nested= filter_input(INPUT_GET, 'nested');
+		}
 		$ruleType= $ruleCategoryNames[$this->ref];
 		$editHeader= _TITLE('Edit <RULE_TYPE> Rule <RULE_NUMBER>');
 		$editHeader= str_replace('<RULE_TYPE>', $ruleType, $editHeader);
@@ -648,6 +663,13 @@ class Rule
 				<input type="checkbox" id="forcegenerate" name="forcegenerate" <?php echo !$generateResult ? '' : 'disabled' ?> <?php echo filter_has_var(INPUT_POST, 'forcegenerate') ? 'checked' : '' ?> />
 				<label for="forcegenerate"><?php echo _CONTROL('Generate with errors') ?></label>
 				<input type="hidden" name="state" value="<?php echo $action ?>" />
+				<?php
+				if (isset($nested)) {
+					?>
+					<input type="hidden" name="nested" value="<?php echo $nested ?>" />
+					<?php
+				}
+				?>
 			</div>
 			<table id="nvp">
 			<?php

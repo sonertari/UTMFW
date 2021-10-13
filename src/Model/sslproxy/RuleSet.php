@@ -186,7 +186,7 @@ class RuleSet
 					$this->rules[]= new Macro($str);
 					break;
 				case 'Divert':
-					if (($words[1] == 'yes') || ($words[1] == 'no')) {
+					if (isset($words[1]) && (($words[1] == 'yes') || ($words[1] == 'no'))) {
 						$this->rules[]= new Option($str);
 						break;
 					}
@@ -198,7 +198,7 @@ class RuleSet
 					$this->rules[]= new Filter($str);
 					break;
 				case 'ProxySpec':
-					if ($words[1] == '{')
+					if (isset($words[1]) && ($words[1] == '{'))
 						$this->rules[]= new ProxySpecStruct($str);
 					else
 						$this->rules[]= new ProxySpecLine($str);
@@ -270,7 +270,7 @@ class RuleSet
 					$str.= "$line\n";
 					/// @todo Use recursion instead?
 					if (preg_match('/^.*{\s*$/', $line)) {
-						// Do not allow more than one structured proxyspecs
+						// Do not allow nested structured proxyspecs
 						if (++$nesting > 1) {
 							Error(_('Parse Error') . ': ' . _('Reached max nesting for structured proxyspecs') . ': <pre>' . htmlentities(print_r($line, TRUE)) . '</pre>');
 							ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Parse Error: Reached max nesting for structured proxyspecs: $line");
@@ -315,7 +315,7 @@ class RuleSet
 		// Do not merge this loop with the generate loop above, because there are rules which produce
 		// multiline string representations, such as comments and structured proxyspecs.
 		if ($printNumbers) {
-			$ruleNumber= 0;
+			$ruleNumber= 1;
 			$s= '';
 			foreach (explode("\n", $str) as $line) {
 				$s.= sprintf('% 4d', $ruleNumber++) . ": $line\n";

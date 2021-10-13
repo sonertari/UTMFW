@@ -281,12 +281,12 @@ class RuleSet
 	 * @param string $action Current state of the edit page.
 	 * @param int $ruleNumber Rule number.
 	 */
-	function setupEditSession($cat, &$action, &$ruleNumber)
+	function setupEditSession($cat, $ruleSet, &$action, &$ruleNumber)
 	{
 		global $View;
 
 		// Make sure we deal only with rule numbers possible in the current ruleset
-		if (!array_key_exists($ruleNumber, $View->RuleSet->rules)) {
+		if (!array_key_exists($ruleNumber, $ruleSet->rules)) {
 			$ruleNumber= $this->computeNewRuleNumber($ruleNumber);
 			if ($action == 'edit') {
 				$action= 'add';
@@ -301,9 +301,9 @@ class RuleSet
 
 		if ($action == 'edit') {
 			if (!isset($_SESSION['edit']['object']) || $_SESSION['edit']['object']->cat != $cat || $_SESSION['edit']['ruleNumber'] != $ruleNumber ||
-				$View->RuleSet->rules[$ruleNumber]->cat != $cat) {
+				$ruleSet->rules[$ruleNumber]->cat != $cat) {
 				// The rule being edited has changed, setup a new edit session
-				if (array_key_exists($ruleNumber, $View->RuleSet->rules)) {
+				if (array_key_exists($ruleNumber, $ruleSet->rules)) {
 					// Rule exists, so clone from the ruleset
 					unset($_SESSION['edit']);
 					$_SESSION['edit']['ruleNumber']= $ruleNumber;

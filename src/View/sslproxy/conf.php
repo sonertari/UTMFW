@@ -20,6 +20,15 @@
 
 require_once('sslproxy.php');
 
+$ruleSet= &$View->RuleSet;
+
 $Submenu= SetSubmenu('editor');
+
+if ($Submenu != 'editor' && isset($_SESSION['saved_edit'])) {
+	$_SESSION['sslproxy']['ruleset']= $_SESSION['saved_edit']['ruleset'];
+	$_SESSION['edit']['object']= $_SESSION['saved_edit']['object'];
+	unset($_SESSION['saved_edit']);
+}
+
 require_once("conf.$Submenu.php");
 ?>

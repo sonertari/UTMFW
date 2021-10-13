@@ -3219,6 +3219,11 @@ trait Rules
 					'desc'	=>	_('Get rules'),
 					),
 
+				'ParseRules'=>	array(
+					'argv'	=>	array(JSON, BOOL|NONE),
+					'desc'	=>	_('Parse rules'),
+					),
+
 				'GetRuleFiles'=>	array(
 					'argv'	=>	array(),
 					'desc'	=>	_('Get rule files'),
@@ -3283,15 +3288,28 @@ trait Rules
 			//	unlink($file);
 			//}
 
-			$class= $this->getNamespace().'RuleSet';
-			$ruleSet= new $class();
-			$retval= $ruleSet->parse($ruleStr, $force);
-
-			// Output ruleset, success or fail
-			Output(json_encode($ruleSet));
+			$retval= $this->_parseRules($ruleStr, $force);
 		} else {
 			$retval= FALSE;
 		}
+
+		return $retval;
+	}
+
+	function ParseRules($json, $force= FALSE)
+	{
+		$ruleStr= json_decode($json, TRUE);
+		return $this->_parseRules($ruleStr, $force);
+	}
+
+	function _parseRules($ruleStr, $force= FALSE)
+	{
+		$class= $this->getNamespace().'RuleSet';
+		$ruleSet= new $class();
+		$retval= $ruleSet->parse($ruleStr, $force);
+
+		// Output ruleset, success or fail
+		Output(json_encode($ruleSet));
 
 		return $retval;
 	}
@@ -3561,7 +3579,8 @@ trait Rules
 			}
 		}
 out:
-		return $rv && $this->removeTmpTestFile($tmpFile);
+		$rv&= $this->removeTmpTestFile($tmpFile);
+		return $rv;
 	}
 
 	/**

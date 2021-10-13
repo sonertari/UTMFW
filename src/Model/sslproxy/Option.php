@@ -63,10 +63,13 @@ class Option extends Rule
 
 	function generate()
 	{
-		$this->str= $this->rule['option'] . ' ';
-
-		$this->str.= $this->rule['value'];
-
+		$this->str= '';
+		if (isset($this->rule['option'])) {
+			$this->str.= $this->rule['option'] . ' ';
+		}
+		if (isset($this->rule['value'])) {
+			$this->str.= $this->rule['value'];
+		}
 		$this->genComment();
 		$this->str.= "\n";
 		return $this->str;
