@@ -134,6 +134,10 @@ class RuleSet
 
 		for ($index= 0; $index < count($ruleLines); $index++) {
 			$str= $ruleLines[$index];
+
+			// Insert a space after the first # in Comment, otherwise it is parsed as an Option name (the default) with a leading #
+			$str= preg_replace('/^#(.+)$/', '# ${1}', trim($str));
+
 			$words= preg_split('/[\s,\t]+/', trim($str), -1);
 			
 			$type= $words[0];
@@ -173,10 +177,11 @@ class RuleSet
 						$this->rules[]= new Blank($blank);
 						$blank= '';
 					}
+					$c= trim(substr(trim($str), 1));
 					if (!isset($comment)) {
-						$comment= trim(substr($str, 1));
+						$comment= $c;
 					} else {
-						$comment.= "\n" . trim(substr($str, 1));
+						$comment.= "\n$c";
 					}
 					break;
 				case 'Include':
