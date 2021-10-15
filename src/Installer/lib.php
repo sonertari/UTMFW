@@ -394,8 +394,8 @@ function PrintIfConfig($lanif, $wanif)
 		$warn= TRUE;
 	}
 
-	if (isset($Config['Ifs'][$lanif][0]) && $Config['Ifs'][$lanif][0] === 'dhcp') {
-		echo "WARNING: Internal interface is configured as dhcp\n";
+	if (isset($Config['Ifs'][$lanif][0]) && ($Config['Ifs'][$lanif][0] === 'dhcp' || $Config['Ifs'][$lanif][0] === 'autoconf')) {
+		echo "WARNING: Internal interface is configured as dhcp/autoconf\n";
 		$warn= TRUE;
 	}
 	return $warn;

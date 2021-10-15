@@ -1,5 +1,6 @@
---- icqprotocolplugin.cpp.orig	Mon Aug 11 00:36:23 2008
-+++ icqprotocolplugin.cpp	Mon Aug 11 00:36:32 2008
+Index: icqprotocolplugin.cpp
+--- icqprotocolplugin.cpp.orig
++++ icqprotocolplugin.cpp
 @@ -13,7 +13,7 @@
  #define PROTOCOL_NAME "ICQ-AIM"
  #define PROTOCOL_PORT 5190
@@ -9,3 +10,21 @@
  
  extern "C"
  {
+@@ -224,7 +224,7 @@ int loginpacket(GET_ARGS, bool outgoing, bool md5login
+ 
+ 	std::string roasted;	
+ 
+-	char xordata[] =
++	unsigned char xordata[] =
+ 	{ 
+ 		0xF3, 0x26, 0x81, 0xC4, 0x39, 0x86, 0xDB, 0x92,
+ 		0x71, 0xA3, 0xB9, 0xE6, 0x53, 0x7A, 0x95, 0x7C,
+@@ -505,7 +505,7 @@ int snacpacket(GET_ARGS, bool outgoing, std::vector<st
+ 									return 1;
+ 							}	
+ 
+-							char guid094613494C7F11D18222444553540000[] =
++							unsigned char guid094613494C7F11D18222444553540000[] =
+ 							{
+ 								0x09, 0x46, 0x13, 0x49, 0x4C, 0x7F, 0x11, 0xD1, 
+ 								0x82, 0x22, 0x44, 0x45, 0x53, 0x54, 0x00, 0x00

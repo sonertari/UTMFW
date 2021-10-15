@@ -1,4 +1,4 @@
-#	$OpenBSD: rc,v 1.549 2021/03/13 21:11:56 deraadt Exp $
+#	$OpenBSD: rc,v 1.554 2021/09/01 08:15:53 deraadt Exp $
 
 # System startup script run by init on autoboot or after single-user.
 # Output and error are redirected to console by init, and the console is the
@@ -498,12 +498,22 @@ sh /etc/netstart
 
 mount -s /usr >/dev/null 2>&1
 mount -s /var >/dev/null 2>&1
+mount -s /var/log >/dev/null 2>&1
 
 start_daemon dhcpleased unwind resolvd >/dev/null 2>&1
 
 random_seed
 
 reorder_libs
+
+# If interface autoconf exists, pause a little for at least one default route
+if ifconfig | grep -q ': flags=.*<.*AUTOCONF.*>'; then
+	count=0
+	while ((count++ < 20)); do
+		route -n show | grep -q ^default && break
+		sleep .5
+	done
+fi
 
 # Clean up left-over files.
 rm -f /etc/nologin /var/spool/lock/LCK.*

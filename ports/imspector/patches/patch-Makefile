@@ -1,6 +1,7 @@
---- Makefile.orig	Mon Dec 22 14:03:15 2008
-+++ Makefile	Mon Nov  2 19:11:26 2009
-@@ -1,32 +1,38 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -1,32 +1,36 @@
 -DESTDIR = /
 -PREFIX = /usr
 +#DESTDIR = /
@@ -33,8 +34,8 @@
 -endif
 +.endif
  
- CXX = g++
- 
+-CXX = g++
+-
  CXXFLAGS = -Wall -O2 -fPIC $(SSL_FLAGS)
  
 +# Add location of iconv headers for OpenBSD
@@ -46,7 +47,7 @@
  PLUGIN_FLAGS = $(LIBS) -fPIC -shared -Wl,-soname,$@ -o $@
  
  IMSPECTOR_OBJS = main.o protocolplugin.o loggingplugin.o filterplugin.o responderplugin.o $(SSL_OBJS)
-@@ -36,7 +42,7 @@ LIBIMSPECTOR_OBJS = socket.o options.o tools.o
+@@ -36,7 +40,7 @@ LIBIMSPECTOR_OBJS = socket.o options.o tools.o
  PROTOCOL_PLUGINS = msnprotocolplugin.so icqprotocolplugin.so yahooprotocolplugin.so ircprotocolplugin.so ggprotocolplugin.so jabberprotocolplugin.so httpsprotocolplugin.so
  LOGGING_PLUGINS = fileloggingplugin.so debugloggingplugin.so catsloggingplugin.so
  FILTER_PLUGINS = badwordsfilterplugin.so aclfilterplugin.so miscfilterplugin.so censordfilterplugin.so
@@ -55,7 +56,7 @@
  
  PLUGINS = $(PROTOCOL_PLUGINS) $(LOGGING_PLUGINS) $(CONTENT_PLUGINS) $(FILTER_PLUGINS) $(RESPONDER_PLUGINS) $(ADD_PLUGINS)
  
-@@ -160,33 +166,33 @@ dbresponderplugin.o: dbresponderplugin.cpp
+@@ -160,33 +164,33 @@ dbresponderplugin.o: dbresponderplugin.cpp
  	$(CXX) $(CXXFLAGS) dbresponderplugin.cpp -c -I$(PREFIX)/include
  	
  install: imspector libimspector.so $(PLUGINS)

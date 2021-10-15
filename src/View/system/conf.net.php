@@ -146,7 +146,7 @@ require_once($VIEW_PATH.'/header.php');
 		<td class="rowspanhelp">
 		</td>
 		<td class="rowspanhelp" rowspan="2">
-			<?php PrintHelpBox(_HELPBOX('Network interfaces are listed here. You can configure an interface as dhcp or inet. Changes made here do not take effect until you restart the network or reboot the system.')) ?>
+			<?php PrintHelpBox(_HELPBOX('Network interfaces are listed here. You can configure an interface as dhcp/autoconf or inet. Changes made here do not take effect until you restart the network or reboot the system.')) ?>
 		</td>
 	</tr>
 	<?php
@@ -365,6 +365,6 @@ PrintHelpWindow(_HELPWINDOW('<b>Make sure you have applied your changes to netwo
 
 If you change the IP address of the network interface over which you are connected to this web user interface, and use the network restart button on this page, do not forget to change the URL on your web browser accordingly.
 
-It is not advised to configure the internal interface as dhcp.'));
+It is not advised to configure the internal interface as dhcp/autoconf.'));
 require_once($VIEW_PATH.'/footer.php');
 ?>

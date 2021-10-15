@@ -2,7 +2,7 @@
 
 UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW), which can display the notifications sent from UTMFW, and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 6.9.3 comes with OpenBSD 6.9-stable including all updates until August 7th, 2021.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.0 comes with OpenBSD 7.0-stable including all updates until October 14th, 2021.
 
 UTMFW supports the deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -14,9 +14,9 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The UTMFW project releases two installation files:
 
-- The installation iso file for the amd64 arch is available for download at [utmfw69\_20210812\_amd64.iso](https://drive.google.com/file/d/1um6aknbVl56YUhQJZdI2b-p7-R5vGAGq/view?usp=sharing). Make sure the SHA256 checksum is correct: 5364989ced263405f837b76aff2b0386862f84bf51e5c672c87c027956cac9bf.
+- The installation iso file for the amd64 arch is available for download at [utmfw70\_20211014\_amd64.iso](https://drive.google.com/file/d/1um6aknbVl56YUhQJZdI2b-p7-R5vGAGq/view?usp=sharing). Make sure the SHA256 checksum is correct: 5364989ced263405f837b76aff2b0386862f84bf51e5c672c87c027956cac9bf.
 
-- The installation img file for the arm64 arch is available for download at [utmfw69\_20210812\_arm64.img](https://drive.google.com/file/d/1-Bvr571RmW1kZ4h_sgrnqI3x5P5DC068/view?usp=sharing). Make sure the SHA256 checksum is correct: 242f282a2862bad0c51dbe97b1a4d5f376fd4296ae59bc01f13ac84d7a506c15. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- The installation img file for the arm64 arch is available for download at [utmfw70\_20211014\_arm64.img](https://drive.google.com/file/d/1-Bvr571RmW1kZ4h_sgrnqI3x5P5DC068/view?usp=sharing). Make sure the SHA256 checksum is correct: 242f282a2862bad0c51dbe97b1a4d5f376fd4296ae59bc01f13ac84d7a506c15. The only arm64 platform supported is Raspberry Pi 4 Model B.
 
 You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file for the amd64 arch into a bootable image you can write on a USB drive or an SD card.
 
@@ -116,7 +116,7 @@ A few notes about UTMFW installation:
 
 ## How to build
 
-The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 6.9 and have installed git, gettext, and doxygen on it.
+The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 7.0 and have installed git, gettext, and doxygen on it.
 
 ### Build summary
 
@@ -226,7 +226,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ php, php-cgi, php-curl, php-pcntl, php-sqlite3
 
 	+ Build and create the UTMFW packages
-		+ Extract ports.tar.gz under /usr/
+		+ Extract ports.tar.gz under /usr/ports/
 		+ Copy the port folders of the UTMFW packages under ports to /usr/ports/{net,security,www,devel,sysutils}
 		+ Obtain the snort sources, apply the snort diff under ports/distfiles, compress as tarball with the same name as the original tarball of the sources
 		+ Copy the source tarballs of the UTMFW packages to /user/ports/distfiles

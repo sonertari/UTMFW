@@ -536,7 +536,7 @@ class System extends Model
 				$up= array('');
 
 				foreach ($contents as $line) {
-					if (preg_match("/^(inet|dhcp)\s*(\S*)\s*(\S*)\s*(\S*)\s*(\S*)$/", $line, $match)) {
+					if (preg_match("/^(inet|dhcp|autoconf)\s*(\S*)\s*(\S*)\s*(\S*)\s*(\S*)$/", $line, $match)) {
 						$inet= $match;
 						// OpenBSD 6.6 onwards uses hex if mask in hostname.if file
 						// Convert if mask from hex to ip: 0xffffff00 -> 255.255.255.0
@@ -798,7 +798,7 @@ class System extends Model
 	 * Sets system interface configuration.
 	 *
 	 * @param string $if Interface name.
-	 * @param string $type inet or dhcp only.
+	 * @param string $type inet or dhcp|autoconf only.
 	 * @param string $ip IP address.
 	 * @param string $mask Netmask.
 	 * @param string $bc Broadcast address.
@@ -836,9 +836,9 @@ class System extends Model
 
 		// @todo Args passed to this function are validated by the Controller, but we can implement some semantic validation too
 		if (preg_match("/^inet\s*$Re_Ip\s*[x0-9a-f]+\s*($Re_Ip|).*$/m", $ifconf)
-			|| preg_match('/^dhcp\s*NONE\s*NONE\s*NONE.*$/m', $ifconf)
-			|| preg_match('/^dhcp$/m', $ifconf)
-			|| preg_match('/dhcp/m', $ifconf) && ($hostap === '')) {
+			|| preg_match('/^(dhcp|autoconf)\s*NONE\s*NONE\s*NONE.*$/m', $ifconf)
+			|| preg_match('/^(dhcp|autoconf)/m', $ifconf)
+			|| preg_match('/(dhcp|autoconf)/m', $ifconf) && ($hostap === '')) {
 			/// @attention Need a new line char at the end of hostname.if, otherwise /etc/netstart fails
 			/// Since file_put_contents() removes the last new line char, we append a PHP_EOL.
 			return file_put_contents($this->confDir.'hostname.'.$if, $ifconf.PHP_EOL);
