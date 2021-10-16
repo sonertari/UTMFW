@@ -32,7 +32,9 @@ ISO_FILE=utmfw${VMAJ}${VMIN}${SUBVERSION}_${ARCH}.iso
 echo "Creating CD image: $ISO_FILE"
 
 cd $ROOT_PATH
-mkhybrid -f -l -T -r -L \
+# mkhybrid segfaults with -T, on OpenBSD 7.0
+# TODO: Add -T again after mkhybrid is fixed
+mkhybrid -f -l -r -L \
 	-c $BOOT_CATALOG \
 	-sysid "$SYS_ID" \
 	-p "$PREP_ID" \
