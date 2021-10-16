@@ -394,8 +394,8 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 
 <a name="icmp-type"></a>
 <a name="icmp6-type"></a>
-     <span class="bold">icmp-type</span> <span class="underline">type</span> <span class="bold">code</span> <span class="underline">code</span>
-     <span class="bold">icmp6-type</span> <span class="underline">type</span> <span class="bold">code</span> <span class="underline">code</span>
+     <span class="bold">icmp-type</span> <span class="underline">type</span> [<span class="bold">code</span> <span class="underline">code</span>]
+     <span class="bold">icmp6-type</span> <span class="underline">type</span> [<span class="bold">code</span> <span class="underline">code</span>]
              This rule only applies to ICMP or ICMP6 packets with the
              specified type and code.  Text names for ICMP types and codes are
              listed in icmp(4) and icmp6(4).  The protocol and the ICMP type
@@ -2284,7 +2284,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 <span class="bold">HISTORY</span>
      The <span class="bold">pf.conf</span> file format first appeared in OpenBSD 3.0.
 
-OpenBSD 6.9                    February 1, 2021                    OpenBSD 6.9
+OpenBSD 7.0                      July 19, 2021                     OpenBSD 7.0
 </pre>
 </body>
 </html>

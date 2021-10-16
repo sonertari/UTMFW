@@ -136,6 +136,14 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
               Disable SSL/TLS protocol version. Equivalent to -R command line
               option.
               Default: none
+<a name="MinSSLProto"></a>
+       <span class="bold">MinSSLProto</span> <span class="bold">STRING</span>
+              Min SSL/TLS protocol version.
+              Default: tls10
+<a name="MaxSSLProto"></a>
+       <span class="bold">MaxSSLProto</span> <span class="bold">STRING</span>
+              Max SSL/TLS protocol version.
+              Default: tls13
 <a name="Ciphers"></a>
        <span class="bold">Ciphers</span> <span class="bold">STRING</span>
               Use the given OpenSSL ciphers spec. Equivalent to -s command
@@ -420,6 +428,8 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
               SSLCompression
               ForceSSLProto
               DisableSSLProto
+              MinSSLProto
+              MaxSSLProto
               Ciphers
               CipherSuites
               RemoveHTTPAcceptEncoding
@@ -451,7 +461,7 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
 <span class="bold">SEE</span> <span class="bold">ALSO</span>
        sslproxy(1)
 
-v0.8.7                          29 August 2021                sslproxy.conf(5)
+v0.9.0                          16 October 2021               sslproxy.conf(5)
 </pre>
 </body>
 </html>

@@ -103,13 +103,14 @@ A few notes about UTMFW installation:
 - Thanks to a modified auto-partitioner of OpenBSD, the disk can be partitioned with a recommended layout for UTMFW, so most users don't need to use the label editor at all.
 - All install sets including siteXY.tgz are selected by default, so you cannot 'not' install UTMFW by mistake.
 - OpenBSD installation questions are modified according to the needs of UTMFW. For example, X11 related questions are never asked.
-- Make sure you have at least 2GB RAM. And an 8GB HD should be enough.
+- Make sure you have at least 2GB RAM, ideally 4GB if you enable MFS. And an 8GB HD should be enough.
 - If you install on an SD card, make sure it is fast enough. If you install on a slow disk, but you have enough RAM, you can enable memory-based file system (MFS), which is the default.
 - After installation:
 	+ When you first try to log in to the WUI, ignore the certificate warning issued by your web browser and proceed to the WUI.
 	+ Download the ca.crt from the SSLproxy Config page on the WUI, and install it on your web browser or other client application as a trusted CA certificate. You can install the ca.crt in the trust store on Android phones, but Android applications may not use that trust store. So you may need to use the PassSite option of SSLproxy for such applications.
 	+ Enable the pf rule for FCM ports (see /etc/pf.conf or go to the PFRE Editor page on the WUI), if you want to receive Firebase push notifications sent by UTMFW to your Android phone on the local network and on which you have installed and are running [A4PFFW](https://github.com/sonertari/A4PFFW).
-- Make sure the date and time of the system is correct, otherwise:
+- Make sure the date and time of the system is correct during both installation and normal operation, otherwise:
+	+ The "Not Valid Before" date of the CA certificate generated for SSLproxy during installation may be wrong, causing clients to reject the certificates forged by SSLproxy, at least until the start date. To fix the "Not Valid Before" date, you may need to regenerate the CA certificate on the WUI, after fixing the system date and time.
 	+ The certificates forged by SSLproxy will be rejected by client applications, hence the connections will fail.
 	+ SSLproxy will not verify server certificates with date and time in the future or in the past, hence the connections will fail.
 	+ After fixing the date and time of the system during normal operation, the system statistics and monitoring programs may stop updating the RRD files due to significant time difference since last update. So you may need to delete the statistics files and reinit the RRD files using the WUI, and restart either the statistics and monitoring programs or the system.
@@ -150,7 +151,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 
 - Install OpenBSD amd64:
 	+ Download installXY.iso from an OpenBSD mirror
-	+ Create a new VM with 60GB disk, choose a size based on your needs
+	+ Create a new VM with 60GB disk, or choose a size based on your needs
 	+ Start the VM and install OpenBSD
 
 - Install OpenBSD arm64:
@@ -250,7 +251,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 			+ collectd
 		+ Sign all of the UTMFW packages using signify, for example:
             ```
-            signify -Sz -s utmfw-XY.sec -m /usr/ports/packages/amd64/all/sslproxy-0.8.3.tgz -x ~/sslproxy-0.8.3.tgz
+            signify -Sz -s utmfw-XY.sec -m /usr/ports/packages/amd64/all/sslproxy-0.9.0.tgz -x ~/sslproxy-0.9.0.tgz
             ```
 	+ Update the links under cd/amd64/X.Y/packages/ with the UTMFW packages made above
 
@@ -315,11 +316,11 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 - Update the configuration files under config with the ones in the new versions of packages:
     + Also update Doxyfile if the doxygen version has changed
 
-- Update PFRE:
-    + Update PFRE to the current version, support changes in pf if any
+- Update PFRE and SPRE:
+    + Update PFRE and SPRE to their current versions, support changes in pf and sslproxy if any
     + Create and install the man2web package
-    + Produce pf.conf.html from pf.conf(5) using man2web
-    + Merge PFRE changes from the previous pf.conf.html, most importantly the anchors
+    + Produce pf.conf.html from pf.conf(5), sslproxy.html from sslproxy(1), and sslproxy.conf.html from sslproxy.conf(5) using man2web
+    + Merge the PFRE and SPRE changes from the previous html files, most importantly the anchors
 
 - Update phpseclib to its new version if any:
     + Merge the UTMFW changes from the previous version

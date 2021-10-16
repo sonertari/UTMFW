@@ -5,29 +5,11 @@ From: sonertari@gmail.com (Soner Tari)
 To: root
 Subject: Welcome to UTMFW 7.0!
 
-This release focuses on performance:
+The highlights of this release are:
 
-- Collectd as backend for status and statistics collection: We now use collectd 
-to continuously follow log files to collect all module status and statistics. 
-We use the collectd plugins tail and logparser, along with the notify_fifo 
-plugin specifically developed for UTMFW. This continuous data collection 
-greatly improves the performance of the Dashboard and the Info pages, compared 
-to intermittent access-based data collection.
-
-- Memory-based file system (MFS): Frequently used files such as logs, 
-statistics, status, rrd, graph, cache, socket, fifo, pid, and tmp files are now 
-moved to /var/log, which is mounted as MFS by default. MFS can be enabled, 
-disabled, and resized during installation and on the WUI. MFS greatly improves 
-the performance of the system, especially if the disk is slow.
-
-- Dnsmasq instead of isc-bind: Dnsmasq is a light-weight caching DNS forwarder. 
-Dnsmasq consumes very little system resources compared to isc-bind, especially 
-if the upstream DNS server or the external interface is unreachable or down.
-
-- Cache system status and info: We now cache overall system and individual 
-module status and info. Without such cache, the backend could be considerably 
-overloaded, if multiple users or Views (WUI, A4PFFW, W4PFFW) request system or 
-module status at the same time or frequently.
-
-And variety of other fixes and improvements.
+- TLS 1.3 support on SSLproxy, thanks to LibreSSL 3.4.1
+- Filtering rules on SSLproxy 0.9.0
+- SSLproxy Rule Editor (SPRE), to configure SSLproxy proxyspecs, filtering 
+rules, and options on the WUI, similar to PFRE for OpenBSD/pf
+- OpenBSD 7.0
 
