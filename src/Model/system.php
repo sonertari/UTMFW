@@ -1148,10 +1148,6 @@ class System extends Model
 			Error('Cannot get extif');
 		}
 
-		// Refresh pf rules too
-		// Pass $if as arg, passing empty string is fine
-		$cmd[]= "/bin/sh /etc/netstart $if 2>&1 && /sbin/pfctl -f $this->PfRulesFile 2>&1";
-
 		if ($if == '' || $if == $extif) {
 			// Delete the arp entry for the old gateway, in case the new gateway has the same IP address
 			// Otherwise, the system cannot reach the new gateway, continues to use the old ethernet address,
@@ -1162,17 +1158,60 @@ class System extends Model
 			}
 		}
 
+		// Pass $if as arg, passing empty string is fine
+		$cmd[]= "/bin/sh /etc/netstart $if 2>&1";
+
+		// /etc/netstart does not up (autoconf?) ifs on OpenBSD 7.0 anymore
+		if ($intif !== FALSE) {
+			if ($if == '' || $if == $intif) {
+				$cmd[]= "/sbin/ifconfig $intif up 2>&1";
+			}
+		}
+
+		if ($extif !== FALSE) {
+			if ($if == '' || $if == $extif) {
+				$cmd[]= "/sbin/ifconfig $extif up 2>&1";
+			}
+		}
+
 		$cmdline= implode(' && ', $cmd);
 
 		exec($cmdline, $output, $retval);
 		$errout= implode("\n", $output);
 		Error($errout);
 
+		// Refresh pf rules too
+		$retval&= $this->reloadPfRules();
+
 		if ($retval === 0) {
 			return TRUE;
 		}
 		ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Netstart failed: $errout");
 		return FALSE;
+	}
+
+	function reloadPfRules()
+	{
+		$cmd= "/sbin/route -n show | grep -q ^default";
+		$count= 0;
+		while ($count++ < 10) {
+			exec($cmd, $output, $retval);
+			if ($retval === 0) {
+				break;
+			}
+			exec('/bin/sleep ' . self::PROC_STAT_SLEEP_TIME);
+		}
+
+		if ($retval !== 0) {
+			Error(_('Cannot find default route'));
+		}
+
+		$cmd= "/sbin/pfctl -f $this->PfRulesFile 2>&1";
+
+		exec($cmd, $output, $retval);
+		$errout= implode("\n", $output);
+		Error($errout);
+		return $retval;
 	}
 
 	function IfUpDown($if, $updown)
