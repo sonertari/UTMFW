@@ -80,10 +80,16 @@ msgstr ""
 msgid "Cannot generate rule"
 msgstr ""
 
+msgid "Cannot generate rules"
+msgstr ""
+
 msgid "Cannot get ethernet address of IP"
 msgstr ""
 
 msgid "Cannot log user out"
+msgstr ""
+
+msgid "Cannot parse rules"
 msgstr ""
 
 msgid "Cannot update user"
@@ -104,10 +110,19 @@ msgstr ""
 msgid "Failed downloading, cannot generate pf rules"
 msgstr ""
 
+msgid "Failed downloading, cannot generate sslproxy rules"
+msgstr ""
+
 msgid "Failed loading"
 msgstr ""
 
+msgid "Failed loading Include rules"
+msgstr ""
+
 msgid "Failed loading main pf rules"
+msgstr ""
+
+msgid "Failed loading main sslproxy rules"
 msgstr ""
 
 msgid "Failed saving"
@@ -125,6 +140,9 @@ msgstr ""
 msgid "Filter group not found"
 msgstr ""
 
+msgid "Include rules loaded"
+msgstr ""
+
 msgid "Installed successfully"
 msgstr ""
 
@@ -135,6 +153,9 @@ msgid "Invalid rule number"
 msgstr ""
 
 msgid "Main pf rules reloaded"
+msgstr ""
+
+msgid "Main sslproxy rules reloaded"
 msgstr ""
 
 msgid "Need a login name for user"

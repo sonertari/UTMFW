@@ -181,7 +181,7 @@ msgid ""
 "connected to this web user interface, and use the network restart button on "
 "this page, do not forget to change the URL on your web browser accordingly.\n"
 "\n"
-"It is not advised to configure the internal interface as dhcp."
+"It is not advised to configure the internal interface as dhcp/autoconf."
 msgstr ""
 "<b>Otomatik yapılandırma tuşunu kullanarak ağ ayarlarını sistem geneline "
 "uygulayın.</b>\n"
@@ -190,7 +190,7 @@ msgstr ""
 "tekrar başlatırsanız web tarayıcınızın adres çubuğundaki URL'yi buna göre "
 "değiştirmeyi unutmayın.\n"
 "\n"
-"İç ağ arayüzünü dhcp olarak yapılandırmanız tavsiye edilmez."
+"İç ağ arayüzünü dhcp/autoconf olarak yapılandırmanız tavsiye edilmez."
 
 msgid "ACCEPTED"
 msgstr "BAŞARILI"
@@ -274,12 +274,6 @@ msgstr "Liste öğesi ekle"
 msgid "Add notifier user"
 msgstr "Uyarı kullanıcısı ekle"
 
-msgid "Add pass site"
-msgstr "Geçirilecek site ekle"
-
-msgid "Add proxy spec"
-msgstr "Vekil tanımını ekle"
-
 msgid "Add to IP list"
 msgstr "IP listesine ekle"
 
@@ -288,6 +282,9 @@ msgstr "Kullanıcı ekle"
 
 msgid "Additional mime types"
 msgstr "Ek mime türleri"
+
+msgid "Address"
+msgstr "Adres"
 
 msgid "Address Family"
 msgstr "Adres Ailesi"
@@ -905,14 +902,20 @@ msgstr "Eklenemiyor"
 msgid "Cannot determine the resolution in rrdfetch output"
 msgstr "rrdfetch komutunun çıktısından çözünürlük belirlenemedi"
 
+msgid "Cannot find default route"
+msgstr "Öndeğerli yönlendirme adresi bulunamadı"
+
 msgid "Cannot find group configuration file"
 msgstr "Grup yapılandırma dosyası bulunamıyor"
 
-msgid "Cannot fork pfctl process"
-msgstr "Pfctl süreci fork edilemedi"
+msgid "Cannot fork process"
+msgstr "Süreç fork edilemedi"
 
 msgid "Cannot generate rule"
 msgstr "Kural üretilemiyor"
+
+msgid "Cannot generate rules"
+msgstr "Kurallar üretilemiyor"
 
 msgid "Cannot get MFS configuration"
 msgstr "MFS ayarları alınamadı"
@@ -938,26 +941,35 @@ msgstr "Kalıcı MFS ayarı alınamadı"
 msgid "Cannot get pid"
 msgstr "Pid alınamadı"
 
-msgid "Cannot install pf rule file"
-msgstr "Pf kural dosyası kurulamadı"
+msgid "Cannot install rule file"
+msgstr "Kural dosyası kurulamadı"
 
-msgid "Cannot load pf rules"
-msgstr "Pf kuralları yüklenemedi"
+msgid "Cannot load rules"
+msgstr "Kurallar yüklenemedi"
 
 msgid "Cannot log user out"
 msgstr "Kullanıcı çıkışı yapılamıyor"
 
+msgid "Cannot parse rules"
+msgstr "Kurallar işlenemiyor"
+
 msgid "Cannot read config"
 msgstr "Yapılandırma okunamadı"
 
-msgid "Cannot remove tmp pf file"
-msgstr "Geçici pf dosyası silinemedi"
+msgid "Cannot remove tmp file"
+msgstr "Geçici dosyası silinemedi"
+
+msgid "Cannot remove tmp sslproxy file"
+msgstr "Geçici sslproxy dosyası silinemedi"
 
 msgid "Cannot update user"
 msgstr "Kullanıcı güncellenemiyor"
 
-msgid "Cannot write to tmp pf file"
-msgstr "Geçici pf dosyasına yazılamadı"
+msgid "Cannot write to tmp file"
+msgstr "Geçici dosyaya yazılamadı"
+
+msgid "Cannot write to tmp sslproxy file"
+msgstr "Geçici sslproxy dosyasına yazılamadı"
 
 msgid "Categories"
 msgstr "Sınıflar"
@@ -1391,14 +1403,11 @@ msgstr "IP adresini sil"
 msgid "Delete IP from list"
 msgstr "Listeden IP adresini sil"
 
-msgid "Delete PF allowed"
-msgstr "İzin verilen PF öğesini sil"
-
-msgid "Delete PF restricted"
-msgstr "Sınırlı PF öğesini sil"
-
 msgid "Delete alert keywords"
 msgstr "Uyarı anahtar kelimesini sil"
+
+msgid "Delete allowed IPs"
+msgstr "İzin verilen IP adreslerini sil"
 
 msgid "Delete badword"
 msgstr "Uygunsuz kelime sil"
@@ -1452,14 +1461,11 @@ msgstr "Liste öğesini sil"
 msgid "Delete notifier user"
 msgstr "Uyarı kullanıcısı sil"
 
-msgid "Delete pass site"
-msgstr "Geçirilecek site sil"
+msgid "Delete restricted IPs"
+msgstr "Sınırlı IP adresini sil"
 
-msgid "Delete pf rule file"
-msgstr "Pf kural dosyası silme"
-
-msgid "Delete proxy spec"
-msgstr "Vekil tanımını sil"
+msgid "Delete rule file"
+msgstr "Kural dosyasını sil"
 
 msgid "Delete rules file"
 msgstr "Kural dosyasını sil"
@@ -1653,6 +1659,9 @@ msgstr "Hatalara rağmen göster"
 msgid "Divert"
 msgstr "Yön Değiştirme"
 
+msgid "Divert Address"
+msgstr "Yön Değiştirme Adresi"
+
 msgid "Divert Host"
 msgstr "Yön Değiştirme Adresi"
 
@@ -1692,6 +1701,16 @@ msgstr "İndir"
 
 msgid "Download CA Cert"
 msgstr "CA Sertifikasını İndir"
+
+msgid "Download CA certificate"
+msgstr "CA sertifikasını indir"
+
+msgid ""
+"Download CA certificate to install on client web browsers, mail programs, or "
+"devices."
+msgstr ""
+"İstemci web tarayıcılara, e-posta programlara veya cihazlara kurmak için CA "
+"sertifikasını indir."
 
 msgid ""
 "Download Manager is responsible for downloading the content requested. The "
@@ -1924,6 +1943,9 @@ msgstr "Buraya yorum girin"
 msgid "Enter inline rules here"
 msgstr "Buraya satıriçi kuralları girin"
 
+msgid "Enter proxy specifications here"
+msgstr "Buraya vekil tanımlamasını girin"
+
 msgid "Erase statistics files"
 msgstr "İstatistik dosyalarını sil"
 
@@ -2017,17 +2039,26 @@ msgstr "Silme işlemli başarısız oldu"
 msgid "Failed downloading, cannot generate pf rules"
 msgstr "İndirme işlemi başarısız oldu, pf kuralları üretilemiyor"
 
+msgid "Failed downloading, cannot generate sslproxy rules"
+msgstr "İndirme işlemi başarısız oldu, sslproxy kuralları üretilemiyor"
+
 msgid "Failed executing rrdfetch"
 msgstr "rrdfetch komutu başarısız oldu"
 
 msgid "Failed loading"
 msgstr "Yükleme işlemi başarısız oldu"
 
+msgid "Failed loading Include rules"
+msgstr "Ek dosya yükleme işlemi başarısız oldu"
+
 msgid "Failed loading main pf rules"
 msgstr "Ana pf kurallarının yüklenmesi başarısız oldu"
 
-msgid "Failed loading pf rules"
-msgstr "Pf kural yüklemesi başarısız oldu"
+msgid "Failed loading main sslproxy rules"
+msgstr "Ana sslproxy kurallarının yüklenmesi başarısız oldu"
+
+msgid "Failed loading rules"
+msgstr "Kural yüklemesi başarısız oldu"
 
 msgid "Failed login attempts to the SSH Server"
 msgstr "SSH sunucuya yapılan başarısız giriş denemeleri"
@@ -2044,8 +2075,8 @@ msgstr "Pfctl komutu başarısız oldu"
 msgid "Failed saving"
 msgstr "Kayıt işlemi başarısız oldu"
 
-msgid "Failed testing pf rules"
-msgstr "Pf kurallarının testi başarısız oldu"
+msgid "Failed testing rules"
+msgstr "Kuralların testi başarısız oldu"
 
 msgid "Failed testing ruleset"
 msgstr "Kural listesinin testi başarısız oldu"
@@ -2278,11 +2309,11 @@ msgstr "Üret"
 msgid "Generate SSL key pairs"
 msgstr "SSL anahtarlarını üret"
 
-msgid "Generate pf rule"
-msgstr "Pf kural üretimi"
+msgid "Generate rule"
+msgstr "Kural üretimi"
 
-msgid "Generate pf rules"
-msgstr "Pf kural listesi üretimi"
+msgid "Generate rules"
+msgstr "Kural listesi üretimi"
 
 msgid "Generate with errors"
 msgstr "Hatalara rağmen üret"
@@ -2326,12 +2357,6 @@ msgstr "SES bilgisini getir"
 msgid "Get MFS config"
 msgstr "MFS ayarlarını getir"
 
-msgid "Get PF allowed"
-msgstr "İzin verilen PF öğelerini getir"
-
-msgid "Get PF restricted"
-msgstr "Sınırlı PF öğelerini getir"
-
 msgid "Get active cats"
 msgstr "Açık sınıflandırmaları getir"
 
@@ -2340,6 +2365,9 @@ msgstr "Uyarı anahtar kelimelerini getir"
 
 msgid "Get all stats"
 msgstr "Tüm istatistikleri getir"
+
+msgid "Get allowed IPs"
+msgstr "İzin verilen IP adresleri getir"
 
 msgid "Get arp table"
 msgstr "Arp tablosunu getir"
@@ -2461,9 +2489,6 @@ msgstr "Modül durumunu getir"
 msgid "Get partition list"
 msgstr "Disk bölümü listesini getir"
 
-msgid "Get pass sites"
-msgstr "Geçirilecek siteleri getir"
-
 msgid "Get pf info"
 msgstr "Pf bilgisini getir"
 
@@ -2475,12 +2500,6 @@ msgstr "Pf bellek bilgisini getir"
 
 msgid "Get pf queue info"
 msgstr "Pf kuyruk bilgisini getir"
-
-msgid "Get pf rule files"
-msgstr "Pf kural dosyalarını getir"
-
-msgid "Get pf rules"
-msgstr "Pf kurallarını getir"
 
 msgid "Get pf rules info"
 msgstr "Pf kural bilgisini getir"
@@ -2503,9 +2522,6 @@ msgstr "Süreç listesini getir"
 msgid "Get protocols"
 msgstr "Protokolleri getir"
 
-msgid "Get proxy specs"
-msgstr "Vekil tanımlarını getir"
-
 msgid "Get reload rate"
 msgstr "Tekrar yükleme süresini getir"
 
@@ -2514,6 +2530,12 @@ msgstr "Uzaktaki zamanı getir"
 
 msgid "Get remote users"
 msgstr "Uzak kullanıcıyı getir"
+
+msgid "Get restricted IPs"
+msgstr "Sınırlı IP adresleri getir"
+
+msgid "Get rule files"
+msgstr "Kural dosyalarını getir"
 
 msgid "Get rules"
 msgstr "Kuralları getir"
@@ -3356,6 +3378,9 @@ msgstr "Sınırlandırma ve öncelik ayarlarını ekle"
 msgid "Include reference systems"
 msgstr "İlgili sistemleri ekle"
 
+msgid "Include rules loaded"
+msgstr "Ek dosya kuralları yüklendi"
+
 msgid "Infected"
 msgstr "Virüslü"
 
@@ -3431,8 +3456,8 @@ msgstr "Kur"
 msgid "Install as main ruleset"
 msgstr "Ana kural listesi olarak kur"
 
-msgid "Install pf rules"
-msgstr "Pf kurallarını kurma"
+msgid "Install rules"
+msgstr "Kural kurulumu"
 
 msgid "Installed successfully"
 msgstr "Başarıyla kuruldu"
@@ -3495,6 +3520,9 @@ msgstr "Geçersiz satıriçi kurallar, işleme çıktısı"
 
 msgid "Invalid rule number"
 msgstr "Geçersiz kural numarası"
+
+msgid "Invalid structured proxyspec, parser output"
+msgstr "Geçersiz yapısal vekil tanımı, işleme çıktısı"
 
 msgid "Invalid value"
 msgstr "Geçersiz değer"
@@ -3879,6 +3907,9 @@ msgstr "Posta programı"
 msgid "Main pf rules reloaded"
 msgstr "Ana pf kuralları yeniden yüklendi"
 
+msgid "Main sslproxy rules reloaded"
+msgstr "Ana sslproxy kuralları yeniden yüklendi"
+
 msgid "Make Dynamic"
 msgstr "Dinamik Yap"
 
@@ -4180,6 +4211,9 @@ msgstr "Yntm"
 msgid "Multiple values not allowed for"
 msgstr "Birden fazla değer kullanılamaz"
 
+msgid "NAT Engine"
+msgstr "NAT Motoru"
+
 msgid "NAT header type"
 msgstr "NAT başlık türü"
 
@@ -4236,13 +4270,13 @@ msgid "Network Topology"
 msgstr "Ağ Topolojisi"
 
 msgid ""
-"Network interfaces are listed here. You can configure an interface as dhcp "
-"or inet. Changes made here do not take effect until you restart the network "
-"or reboot the system."
+"Network interfaces are listed here. You can configure an interface as dhcp/"
+"autoconf or inet. Changes made here do not take effect until you restart the "
+"network or reboot the system."
 msgstr ""
-"Burada ağ arayüzleri listelenmektedir. Arayüzleri dhcp veya inet olarak "
-"ayarlayabilirsiniz. Burada yaptığınız değişiklikler ağı veya sistemi tekrar "
-"başlatana kadar geçerli olmazlar."
+"Burada ağ arayüzleri listelenmektedir. Arayüzleri dhcp/autoconf veya inet "
+"olarak ayarlayabilirsiniz. Burada yaptığınız değişiklikler ağı veya sistemi "
+"tekrar başlatana kadar geçerli olmazlar."
 
 msgid "Network protocol usage"
 msgstr "Ağ protokol kullanımı"
@@ -4657,6 +4691,9 @@ msgstr "Veli"
 msgid "Parse Error"
 msgstr "İşleme Hatası"
 
+msgid "Parse rules"
+msgstr "Kuralları işle"
+
 msgid "Partitions"
 msgstr "Disk Bölümleri"
 
@@ -4957,6 +4994,12 @@ msgstr ""
 msgid "Proxy timeout"
 msgstr "Vekil zaman aşımı"
 
+msgid "ProxySpecLine"
+msgstr "Tek Satır Vekil Tanımı"
+
+msgid "ProxySpecStruct"
+msgstr "Yapısal Vekil Tanımı"
+
 msgid "Qlimit"
 msgstr "Kuyruk Boyu"
 
@@ -5017,6 +5060,9 @@ msgstr "Değiştirilen URL'leri tekrar kontrol et"
 
 msgid "Reached max nesting for inline anchors"
 msgstr "Satıriçi çapalar için en fazla içiçe sayıya ulaşıldı"
+
+msgid "Reached max nesting for structured proxyspecs"
+msgstr "Yapısal vekil tanımı için en fazla içiçe sayıya ulaşıldı"
 
 msgid "Read system gateway"
 msgstr "Sistem ağ geçidini getir"
@@ -5220,6 +5266,9 @@ msgstr ""
 "Sonuçlar sadece kullanıcı kimlik doğrulama yapılandırması ile tahmin "
 "edilebilir, açıksa ihlal veya eşik değeri sayısı kullanıcı tarafından tutulur"
 
+msgid "Return Address"
+msgstr "Geri Döndürme Adresi"
+
 msgid "Reverse address lookups"
 msgstr "Ters adres arama"
 
@@ -5350,6 +5399,9 @@ msgstr ""
 
 msgid "SMTP_SERVERS"
 msgstr "SMTP_SERVERS"
+
+msgid "SNI Port"
+msgstr "SNI Kapısı"
 
 msgid "SOCKS PROXY"
 msgstr "SOCKS VEKİL"
@@ -5641,17 +5693,14 @@ msgstr "MFS'i ayarla"
 msgid "Set MFS size"
 msgstr "MFS boyutunu ayarla"
 
-msgid "Set PF allowed"
-msgstr "İzinli PF öğesi ekle"
-
-msgid "Set PF restricted"
-msgstr "Sınırlı PF öğesi ekle"
-
 msgid "Set UserAuth URL"
 msgstr "Kullanıcı doğrulama URL'ini ayarla"
 
 msgid "Set afterhours if"
 msgstr "Mesaisonrası arayüzünü ayarla"
+
+msgid "Set allowed IPs"
+msgstr "İzinli IP adreslerini ekle"
 
 msgid "Set configuration"
 msgstr "Yapılandırmayı ayarla"
@@ -5737,6 +5786,9 @@ msgstr "Uzak ping hedefini ayarla"
 
 msgid "Set remote time"
 msgstr "Uzak zamanı ayarla"
+
+msgid "Set restricted IPs"
+msgstr "Sınırlı IP adreslerini ekle"
 
 msgid "Set session timeout"
 msgstr "Oturum zaman aşımını ayarla"
@@ -6510,6 +6562,9 @@ msgstr "Durmuş"
 msgid "String wrong"
 msgstr "Dizi hatalı"
 
+msgid "Structured ProxySpec"
+msgstr "Yapısal Vekil Tanımı"
+
 msgid "Subcat wrong"
 msgstr "Alt sınıf yanlış"
 
@@ -6625,8 +6680,14 @@ msgstr "Tablolar"
 msgid "Tail number wrong"
 msgstr "Kuyruk sayısı yanlış"
 
+msgid "Target Address"
+msgstr "Hedef Adresi"
+
 msgid "Target IPs"
 msgstr "Hedef IP'ler"
+
+msgid "Target Port"
+msgstr "Hedef Kapısı"
 
 msgid "Target Ports"
 msgstr "Hedef kapılar"
@@ -6644,8 +6705,8 @@ msgid "Temporary block duration in seconds on each alert."
 msgstr ""
 "Her uyarıda kullanılacak geçici engelleme süresini saniye cinsinden ayarlar."
 
-msgid "Test pf rules"
-msgstr "Pf kurallarını test et"
+msgid "Test rules"
+msgstr "Kuralları test et"
 
 msgid ""
 "Thanks to OpenSSH, remote root login to the system is permitted by default. "
@@ -7696,8 +7757,8 @@ msgstr ""
 "Kullanıcıları saniye cinsinden bu kadar durağan süre sonunda zaman aşımına "
 "uğrat."
 
-msgid "Timed out running pfctl command"
-msgstr "Pfctl komutu zaman aşımına uğradı"
+msgid "Timed out running command"
+msgstr "Komut zaman aşımına uğradı"
 
 msgid "Timeout"
 msgstr "Zaman Aşımları"
@@ -7928,6 +7989,9 @@ msgstr "Seçili öğelerin engellemelerini kaldır"
 
 msgid "Unblocked Hosts"
 msgstr "Engellemesi kaldırılanlar"
+
+msgid "Uncomment"
+msgstr "Yorumu Kaldır"
 
 msgid "Unconfigure an interface"
 msgstr "Arayüzünün yapılandırmasını kaldır"
@@ -8515,9 +8579,6 @@ msgstr ""
 msgid "You should restart the DNS forwarder for the changes to take effect."
 msgstr "Ayarları etkinleştirmek için DNS ileticiyi tekrar başlatmanız gerekir."
 
-msgid "You should restart the SSL proxy for the changes to take effect."
-msgstr "Değişikliklerin uygulanması için SSL vekili tekrar başlatmalısınız."
-
 msgid "You should select at least one conf file to start the process"
 msgstr "Süreci başlatmak için en az bir conf dosyası seçmelisiniz"
 
@@ -8546,6 +8607,9 @@ msgstr "adres veya ağ ekle"
 msgid "add value"
 msgstr "değer ekle"
 
+msgid "all"
+msgstr "hepsi"
+
 msgid "always"
 msgstr "her zaman"
 
@@ -8561,11 +8625,23 @@ msgstr "karalistelenmiş"
 msgid "blocked"
 msgstr "engellenmiş"
 
+msgid "common name"
+msgstr "ortak ad"
+
+msgid "common name, macro or *"
+msgstr "ortak ad, makro veya *"
+
 msgid "defaults to S/SA"
 msgstr "öntanım S/SA"
 
 msgid "delete"
 msgstr "sil"
+
+msgid "description"
+msgstr "tanım"
+
+msgid "description, macro or *"
+msgstr "tanım, makro veya *"
 
 msgid "disable"
 msgstr "devre dışı bırakmak"
@@ -8588,6 +8664,9 @@ msgstr "yorum girin, örneğin kural tanımı"
 msgid "filename"
 msgstr "dosya adı"
 
+msgid "from all"
+msgstr "tüm istemcilerden"
+
 msgid "groupname or groupid"
 msgstr "grup adı veya kimliği"
 
@@ -8596,6 +8675,12 @@ msgstr "s"
 
 msgid "height"
 msgstr "yükseklik"
+
+msgid "host"
+msgstr "sunucu"
+
+msgid "host name, macro or *"
+msgstr "sunucu adı, makro veya *"
 
 msgid "host or network"
 msgstr "bilgisayar veya ağ"
@@ -8614,6 +8699,15 @@ msgstr "arayüz veya makro"
 
 msgid "interface"
 msgstr "arayüz"
+
+msgid "ip address"
+msgstr "ip adresi"
+
+msgid "ip address or host name"
+msgstr "ip adresi veya sunucu adı"
+
+msgid "ip address, macro or *"
+msgstr "ip adresi, makro veya *"
 
 msgid "ip, host, table or macro"
 msgstr "ip, bilgisayar, tablo veya makro"
@@ -8705,6 +8799,15 @@ msgstr "sistem adı veya makro"
 msgid "persist mfs"
 msgstr "mfs kalıcı olsun"
 
+msgid "pf, ipfw, netfilter, or tproxy"
+msgstr "pf, ipfw, netfilter, veya tproxy"
+
+msgid "port number"
+msgstr "kapı numarası"
+
+msgid "port, macro or *"
+msgstr "kapı, makro veya *"
+
 msgid "primary"
 msgstr "birincil"
 
@@ -8738,6 +8841,15 @@ msgstr "seri numarası"
 msgid "size"
 msgstr "boyut"
 
+msgid "sni"
+msgstr "sni"
+
+msgid "sni, macro or *"
+msgstr "sni, makro veya *"
+
+msgid "source ip"
+msgstr "kaynak ip"
+
 msgid "start"
 msgstr "başlangıç"
 
@@ -8749,6 +8861,12 @@ msgstr "metin"
 
 msgid "string or number"
 msgstr "metin veya sayı"
+
+msgid "target ip"
+msgstr "hedef ip"
+
+msgid "target port"
+msgstr "hedef kapı"
 
 msgid "the ip of the proxy (default is the loopback - i.e. this server)"
 msgstr "Vekilin ip adresidir (öndeğer yerel arayüz, yani bu sunucudur)"
@@ -8765,6 +8883,9 @@ msgstr "zaman aralığı"
 msgid "to"
 msgstr "kaydet"
 
+msgid "to all"
+msgstr "tüm sunuculara"
+
 msgid "total"
 msgstr "toplam"
 
@@ -8776,6 +8897,18 @@ msgstr "yapılandırılmamış"
 
 msgid "uploaded"
 msgstr "yüklenen"
+
+msgid "uri"
+msgstr "uri"
+
+msgid "uri, macro or *"
+msgstr "uri, makro veya *"
+
+msgid "user"
+msgstr "kullanıcı"
+
+msgid "user name, macro or *"
+msgstr "kullanıcı adı, makro veya *"
 
 msgid "username or userid"
 msgstr "kullanıcı adı veya kimliği"

@@ -59,6 +59,9 @@ msgstr "İşlem"
 msgid "Adaptive Timeouts"
 msgstr "Değişken Zaman Aşımları"
 
+msgid "Address"
+msgstr "Adres"
+
 msgid "Address Family"
 msgstr "Adres Ailesi"
 
@@ -225,6 +228,9 @@ msgstr "Disk Yazma/Okuma"
 msgid "Disks"
 msgstr "Diskler"
 
+msgid "Divert Address"
+msgstr "Yön Değiştirme Adresi"
+
 msgid "Divert Host"
 msgstr "Yön Değiştirme Adresi"
 
@@ -236,6 +242,9 @@ msgstr "Yön Değiştirmeye Cevap"
 
 msgid "Domain"
 msgstr "Alanadı"
+
+msgid "Download CA certificate"
+msgstr "CA sertifikasını indir"
 
 msgid "Download ruleset"
 msgstr "Kural listesini indir"
@@ -573,6 +582,9 @@ msgstr "Yukarı taşı"
 msgid "Mtd"
 msgstr "Yntm"
 
+msgid "NAT Engine"
+msgstr "NAT Motoru"
+
 msgid "Name"
 msgstr "Ad"
 
@@ -693,6 +705,9 @@ msgstr "Ping Süreleri"
 msgid "Pmacct"
 msgstr "Pmacct"
 
+msgid "Port"
+msgstr "Kapı"
+
 msgid "Prio"
 msgstr "Önc"
 
@@ -777,6 +792,9 @@ msgstr "Ağı tekrar başlat"
 msgid "Restricted IPs"
 msgstr "Sınırlı IP'ler"
 
+msgid "Return Address"
+msgstr "Geri Döndürme Adresi"
+
 msgid "Rotate all log files"
 msgstr "Tüm kayıt dosyalarını döndür"
 
@@ -806,6 +824,9 @@ msgstr "Çalışıyor"
 
 msgid "SMTP Proxy"
 msgstr "SMTP Vekil"
+
+msgid "SNI Port"
+msgstr "SNI Kapısı"
 
 msgid "SOCKS Proxy"
 msgstr "SOCKS Vekil"
@@ -927,6 +948,9 @@ msgstr "Durum"
 msgid "Stopped"
 msgstr "Durmuş"
 
+msgid "Structured ProxySpec"
+msgstr "Yapısal Vekil Tanımı"
+
 msgid "Symon"
 msgstr "Symon"
 
@@ -950,6 +974,12 @@ msgstr "Tablo Girdileri"
 
 msgid "Tables"
 msgstr "Tablolar"
+
+msgid "Target Address"
+msgstr "Hedef Adresi"
+
+msgid "Target Port"
+msgstr "Hedef Kapısı"
 
 msgid "Temperature"
 msgstr "Sıcaklık"
@@ -983,6 +1013,9 @@ msgstr "SÜRE"
 
 msgid "USERS"
 msgstr "KULLNC"
+
+msgid "Uncomment"
+msgstr "Yorumu Kaldır"
 
 msgid "Unknown"
 msgstr "Bilinmeyen"
@@ -1053,11 +1086,26 @@ msgstr "dosya ekle"
 msgid "add host or network"
 msgstr "adres veya ağ ekle"
 
+msgid "all"
+msgstr "hepsi"
+
+msgid "common name"
+msgstr "ortak ad"
+
+msgid "description"
+msgstr "tanım"
+
 msgid "disabled"
 msgstr "kapalı"
 
 msgid "enabled"
 msgstr "açık"
+
+msgid "from all"
+msgstr "tüm istemcilerden"
+
+msgid "host"
+msgstr "sunucu"
 
 msgid "is not running"
 msgstr "çalışmıyor"
@@ -1092,11 +1140,32 @@ msgstr "mfs boyutunu ayarla"
 msgid "set serial to"
 msgstr "seri numarası"
 
+msgid "sni"
+msgstr "sni"
+
+msgid "source ip"
+msgstr "kaynak ip"
+
+msgid "target ip"
+msgstr "hedef ip"
+
+msgid "target port"
+msgstr "hedef kapı"
+
 msgid "to"
 msgstr "kaydet"
+
+msgid "to all"
+msgstr "tüm sunuculara"
 
 msgid "total"
 msgstr "toplam"
 
 msgid "uploaded"
 msgstr "yüklenen"
+
+msgid "uri"
+msgstr "uri"
+
+msgid "user"
+msgstr "kullanıcı"

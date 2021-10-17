@@ -123,6 +123,13 @@ msgstr "Kapat"
 msgid "Download"
 msgstr "İndir"
 
+msgid ""
+"Download CA certificate to install on client web browsers, mail programs, or "
+"devices."
+msgstr ""
+"İstemci web tarayıcılara, e-posta programlara veya cihazlara kurmak için CA "
+"sertifikasını indir."
+
 msgid "Download ruleset"
 msgstr "Kural listesini indir"
 
@@ -143,6 +150,9 @@ msgstr "Buraya yorum girin"
 
 msgid "Enter inline rules here"
 msgstr "Buraya satıriçi kuralları girin"
+
+msgid "Enter proxy specifications here"
+msgstr "Buraya vekil tanımlamasını girin"
 
 msgid "Filter"
 msgstr "Elek"
@@ -221,6 +231,12 @@ msgstr "Kuyruk tanımlanmamış"
 
 msgid "Option"
 msgstr "Seçenekler"
+
+msgid "ProxySpecLine"
+msgstr "Tek Satır Vekil Tanımı"
+
+msgid "ProxySpecStruct"
+msgstr "Yapısal Vekil Tanımı"
 
 msgid "Queue"
 msgstr "Kuyruk"
@@ -318,11 +334,17 @@ msgstr "her zaman"
 msgid "as rule number"
 msgstr "kural numarası"
 
+msgid "common name, macro or *"
+msgstr "ortak ad, makro veya *"
+
 msgid "defaults to S/SA"
 msgstr "öntanım S/SA"
 
 msgid "delete"
 msgstr "sil"
+
+msgid "description, macro or *"
+msgstr "tanım, makro veya *"
 
 msgid "enter comment, such as a description of the rule"
 msgstr "yorum girin, örneğin kural tanımı"
@@ -333,6 +355,9 @@ msgstr "dosya adı"
 msgid "groupname or groupid"
 msgstr "grup adı veya kimliği"
 
+msgid "host name, macro or *"
+msgstr "sunucu adı, makro veya *"
+
 msgid "host or network"
 msgstr "bilgisayar veya ağ"
 
@@ -341,6 +366,15 @@ msgstr "arayüz veya makro"
 
 msgid "interface"
 msgstr "arayüz"
+
+msgid "ip address"
+msgstr "ip adresi"
+
+msgid "ip address or host name"
+msgstr "ip adresi veya sunucu adı"
+
+msgid "ip address, macro or *"
+msgstr "ip adresi, makro veya *"
 
 msgid "ip, host, table or macro"
 msgstr "ip, bilgisayar, tablo veya makro"
@@ -402,14 +436,32 @@ msgstr "sayı[(K|M|G)]"
 msgid "os name or macro"
 msgstr "sistem adı veya makro"
 
+msgid "pf, ipfw, netfilter, or tproxy"
+msgstr "pf, ipfw, netfilter, veya tproxy"
+
+msgid "port number"
+msgstr "kapı numarası"
+
+msgid "port, macro or *"
+msgstr "kapı, makro veya *"
+
 msgid "protocol"
 msgstr "protokol"
+
+msgid "sni, macro or *"
+msgstr "sni, makro veya *"
 
 msgid "string"
 msgstr "metin"
 
 msgid "string or number"
 msgstr "metin veya sayı"
+
+msgid "uri, macro or *"
+msgstr "uri, makro veya *"
+
+msgid "user name, macro or *"
+msgstr "kullanıcı adı, makro veya *"
 
 msgid "username or userid"
 msgstr "kullanıcı adı veya kimliği"

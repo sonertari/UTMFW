@@ -6,7 +6,7 @@ msgid ""
 "connected to this web user interface, and use the network restart button on "
 "this page, do not forget to change the URL on your web browser accordingly.\n"
 "\n"
-"It is not advised to configure the internal interface as dhcp."
+"It is not advised to configure the internal interface as dhcp/autoconf."
 msgstr ""
 
 msgid "ACL gives you fine-grained control over who can access the IM proxy."
@@ -835,14 +835,6 @@ msgid ""
 "login.conf file (daemon class)."
 msgstr ""
 
-msgid "The SSL proxy is an event-driven multi-threaded program."
-msgstr ""
-
-msgid ""
-"The SSL proxy takes 2 different kinds of logs: (1) STATS for periodic "
-"statistics per thread and (2) CRITICAL, ERROR, WARNING, and INFO messages."
-msgstr ""
-
 msgid ""
 "The SSL proxy takes 3 different kinds of connection logs: (1) CONN for "
 "connection details at establisment time, (2) IDLE for slow connections, and "
@@ -1170,7 +1162,4 @@ msgid ""
 msgstr ""
 
 msgid "You should restart the DNS forwarder for the changes to take effect."
-msgstr ""
-
-msgid "You should restart the SSL proxy for the changes to take effect."
 msgstr ""

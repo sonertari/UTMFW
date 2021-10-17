@@ -31,9 +31,6 @@ msgstr ""
 msgid "Alerts issued by the IDS and Inline IPS"
 msgstr ""
 
-msgid "Allow Wrong Host"
-msgstr ""
-
 msgid "And Priority and Keyword"
 msgstr ""
 
@@ -62,9 +59,6 @@ msgid "Archive Max Files"
 msgstr ""
 
 msgid "Archive Max Recursion"
-msgstr ""
-
-msgid "Authenticate Users"
 msgstr ""
 
 msgid "Average ping time within last minute to the gateway"
@@ -124,12 +118,6 @@ msgstr ""
 msgid "Bytes Free"
 msgstr ""
 
-msgid "CA Cert"
-msgstr ""
-
-msgid "CA Key"
-msgstr ""
-
 msgid "CGI Server"
 msgstr ""
 
@@ -151,12 +139,6 @@ msgstr ""
 msgid "Cipher"
 msgstr ""
 
-msgid "Cipher Suites"
-msgstr ""
-
-msgid "Ciphers"
-msgstr ""
-
 msgid "Collectd System Statistics"
 msgstr ""
 
@@ -170,9 +152,6 @@ msgid "Connection Duration"
 msgstr ""
 
 msgid "Connection Idle Time"
-msgstr ""
-
-msgid "Connection Idle Timeout"
 msgstr ""
 
 msgid "Connections"
@@ -232,9 +211,6 @@ msgstr ""
 msgid "Delete downloaded temp files"
 msgstr ""
 
-msgid "Deny OCSP"
-msgstr ""
-
 msgid "Desc"
 msgstr ""
 
@@ -245,9 +221,6 @@ msgid "Device"
 msgstr ""
 
 msgid "Diffie-Hellman params"
-msgstr ""
-
-msgid "Disable SSL Protocol"
 msgstr ""
 
 msgid "Disable content scanning"
@@ -286,9 +259,6 @@ msgstr ""
 msgid "Disk partition usage"
 msgstr ""
 
-msgid "Download CA Cert"
-msgstr ""
-
 msgid "EXTERNAL_NET"
 msgstr ""
 
@@ -305,9 +275,6 @@ msgid "Enabled"
 msgstr ""
 
 msgid "Enabled Rules"
-msgstr ""
-
-msgid "Expired Connection Check Period"
 msgstr ""
 
 msgid "Ext"
@@ -347,9 +314,6 @@ msgid "Follow Directory Symlinks"
 msgstr ""
 
 msgid "Follow File Symlinks"
-msgstr ""
-
-msgid "Force SSL Protocol"
 msgstr ""
 
 msgid "Force quick search"
@@ -478,9 +442,6 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-msgid "Leaf Key RSA Bits"
-msgstr ""
-
 msgid "Leases"
 msgstr ""
 
@@ -521,9 +482,6 @@ msgid "Log Exception Hits"
 msgstr ""
 
 msgid "Log Level"
-msgstr ""
-
-msgid "Log Statistics"
 msgstr ""
 
 msgid "Log Verbose"
@@ -604,9 +562,6 @@ msgstr ""
 msgid "Max Log Item Length"
 msgstr ""
 
-msgid "Max SSL Protocol"
-msgstr ""
-
 msgid "Max Threads"
 msgstr ""
 
@@ -665,9 +620,6 @@ msgid "Memory usage"
 msgstr ""
 
 msgid "Mime"
-msgstr ""
-
-msgid "Min SSL Protocol"
 msgstr ""
 
 msgid "Min children"
@@ -742,9 +694,6 @@ msgstr ""
 msgid "Number of states"
 msgstr ""
 
-msgid "Open Files Limit"
-msgstr ""
-
 msgid "PHP FastCGI Server"
 msgstr ""
 
@@ -761,9 +710,6 @@ msgid "Packet Filter"
 msgstr ""
 
 msgid "Passive Intrusion Prevention"
-msgstr ""
-
-msgid "Passthrough Sites"
 msgstr ""
 
 msgid "Pconn timeout"
@@ -823,9 +769,6 @@ msgstr ""
 msgid "Proxy Port"
 msgstr ""
 
-msgid "Proxy Specifications"
-msgstr ""
-
 msgid "Proxy failure log interval"
 msgstr ""
 
@@ -851,12 +794,6 @@ msgid "Remote User"
 msgstr ""
 
 msgid "Remote ping host"
-msgstr ""
-
-msgid "Remove HTTP Accept-Encoding"
-msgstr ""
-
-msgid "Remove HTTP Referer"
 msgstr ""
 
 msgid "Report e-mail"
@@ -923,9 +860,6 @@ msgid "SQL_SERVERS"
 msgstr ""
 
 msgid "SSH_PORTS"
-msgstr ""
-
-msgid "SSL Compression"
 msgstr ""
 
 msgid "SSL Proxy"
@@ -1010,9 +944,6 @@ msgid "Start Servers"
 msgstr ""
 
 msgid "States and state searches on the Packet Filter"
-msgstr ""
-
-msgid "Statistics Period"
 msgstr ""
 
 msgid "Subnet mask"
@@ -1151,19 +1082,10 @@ msgstr ""
 msgid "Use xforwarded for"
 msgstr ""
 
-msgid "User Idle Timeout"
-msgstr ""
-
 msgid "User agent regexp"
 msgstr ""
 
-msgid "Validate Protocols"
-msgstr ""
-
 msgid "Verbosity"
-msgstr ""
-
-msgid "Verify Peer"
 msgstr ""
 
 msgid "Violations"

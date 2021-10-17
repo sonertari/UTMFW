@@ -40,6 +40,9 @@ msgstr ""
 msgid "Adaptive Timeouts"
 msgstr ""
 
+msgid "Address"
+msgstr ""
+
 msgid "Address Family"
 msgstr ""
 
@@ -204,6 +207,9 @@ msgstr ""
 msgid "Disks"
 msgstr ""
 
+msgid "Divert Address"
+msgstr ""
+
 msgid "Divert Host"
 msgstr ""
 
@@ -214,6 +220,9 @@ msgid "Divert Reply"
 msgstr ""
 
 msgid "Domain"
+msgstr ""
+
+msgid "Download CA certificate"
 msgstr ""
 
 msgid "Download ruleset"
@@ -552,6 +561,9 @@ msgstr ""
 msgid "Mtd"
 msgstr ""
 
+msgid "NAT Engine"
+msgstr ""
+
 msgid "Name"
 msgstr ""
 
@@ -672,6 +684,9 @@ msgstr ""
 msgid "Pmacct"
 msgstr ""
 
+msgid "Port"
+msgstr ""
+
 msgid "Prio"
 msgstr ""
 
@@ -756,6 +771,9 @@ msgstr ""
 msgid "Restricted IPs"
 msgstr ""
 
+msgid "Return Address"
+msgstr ""
+
 msgid "Rotate all log files"
 msgstr ""
 
@@ -784,6 +802,9 @@ msgid "Running"
 msgstr ""
 
 msgid "SMTP Proxy"
+msgstr ""
+
+msgid "SNI Port"
 msgstr ""
 
 msgid "SOCKS Proxy"
@@ -906,6 +927,9 @@ msgstr ""
 msgid "Stopped"
 msgstr ""
 
+msgid "Structured ProxySpec"
+msgstr ""
+
 msgid "Symon"
 msgstr ""
 
@@ -928,6 +952,12 @@ msgid "Table Entries"
 msgstr ""
 
 msgid "Tables"
+msgstr ""
+
+msgid "Target Address"
+msgstr ""
+
+msgid "Target Port"
 msgstr ""
 
 msgid "Temperature"
@@ -961,6 +991,9 @@ msgid "UPTIME"
 msgstr ""
 
 msgid "USERS"
+msgstr ""
+
+msgid "Uncomment"
 msgstr ""
 
 msgid "Unknown"
@@ -1032,10 +1065,25 @@ msgstr ""
 msgid "add host or network"
 msgstr ""
 
+msgid "all"
+msgstr ""
+
+msgid "common name"
+msgstr ""
+
+msgid "description"
+msgstr ""
+
 msgid "disabled"
 msgstr ""
 
 msgid "enabled"
+msgstr ""
+
+msgid "from all"
+msgstr ""
+
+msgid "host"
 msgstr ""
 
 msgid "is not running"
@@ -1071,11 +1119,32 @@ msgstr ""
 msgid "set serial to"
 msgstr ""
 
+msgid "sni"
+msgstr ""
+
+msgid "source ip"
+msgstr ""
+
+msgid "target ip"
+msgstr ""
+
+msgid "target port"
+msgstr ""
+
 msgid "to"
+msgstr ""
+
+msgid "to all"
 msgstr ""
 
 msgid "total"
 msgstr ""
 
 msgid "uploaded"
+msgstr ""
+
+msgid "uri"
+msgstr ""
+
+msgid "user"
 msgstr ""

@@ -102,11 +102,17 @@ msgstr "Otomatik yapılandırma başarısız oldu."
 msgid "Cannot generate rule"
 msgstr "Kural üretilemiyor"
 
+msgid "Cannot generate rules"
+msgstr "Kurallar üretilemiyor"
+
 msgid "Cannot get ethernet address of IP"
 msgstr "IP adresin ethernet adresi alınamıyor"
 
 msgid "Cannot log user out"
 msgstr "Kullanıcı çıkışı yapılamıyor"
+
+msgid "Cannot parse rules"
+msgstr "Kurallar işlenemiyor"
 
 msgid "Cannot update user"
 msgstr "Kullanıcı güncellenemiyor"
@@ -126,11 +132,20 @@ msgstr "Silme işlemli başarısız oldu"
 msgid "Failed downloading, cannot generate pf rules"
 msgstr "İndirme işlemi başarısız oldu, pf kuralları üretilemiyor"
 
+msgid "Failed downloading, cannot generate sslproxy rules"
+msgstr "İndirme işlemi başarısız oldu, sslproxy kuralları üretilemiyor"
+
 msgid "Failed loading"
 msgstr "Yükleme işlemi başarısız oldu"
 
+msgid "Failed loading Include rules"
+msgstr "Ek dosya yükleme işlemi başarısız oldu"
+
 msgid "Failed loading main pf rules"
 msgstr "Ana pf kurallarının yüklenmesi başarısız oldu"
+
+msgid "Failed loading main sslproxy rules"
+msgstr "Ana sslproxy kurallarının yüklenmesi başarısız oldu"
 
 msgid "Failed saving"
 msgstr "Kayıt işlemi başarısız oldu"
@@ -147,6 +162,9 @@ msgstr "Dosya karşıya yüklendi"
 msgid "Filter group not found"
 msgstr "Elek grubu bulunamadı"
 
+msgid "Include rules loaded"
+msgstr "Ek dosya kuralları yüklendi"
+
 msgid "Installed successfully"
 msgstr "Başarıyla kuruldu"
 
@@ -158,6 +176,9 @@ msgstr "Geçersiz kural numarası"
 
 msgid "Main pf rules reloaded"
 msgstr "Ana pf kuralları yeniden yüklendi"
+
+msgid "Main sslproxy rules reloaded"
+msgstr "Ana sslproxy kuralları yeniden yüklendi"
 
 msgid "Need a login name for user"
 msgstr "Kullanıcı için bir giriş adı gerekli"

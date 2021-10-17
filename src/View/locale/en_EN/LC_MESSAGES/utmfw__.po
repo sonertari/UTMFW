@@ -37,12 +37,6 @@ msgstr ""
 msgid "Add notifier user"
 msgstr ""
 
-msgid "Add pass site"
-msgstr ""
-
-msgid "Add proxy spec"
-msgstr ""
-
 msgid "Add to IP list"
 msgstr ""
 
@@ -79,10 +73,13 @@ msgstr ""
 msgid "Cannot determine the resolution in rrdfetch output"
 msgstr ""
 
+msgid "Cannot find default route"
+msgstr ""
+
 msgid "Cannot find group configuration file"
 msgstr ""
 
-msgid "Cannot fork pfctl process"
+msgid "Cannot fork process"
 msgstr ""
 
 msgid "Cannot get MFS size"
@@ -103,19 +100,25 @@ msgstr ""
 msgid "Cannot get pid"
 msgstr ""
 
-msgid "Cannot install pf rule file"
+msgid "Cannot install rule file"
 msgstr ""
 
-msgid "Cannot load pf rules"
+msgid "Cannot load rules"
 msgstr ""
 
 msgid "Cannot read config"
 msgstr ""
 
-msgid "Cannot remove tmp pf file"
+msgid "Cannot remove tmp file"
 msgstr ""
 
-msgid "Cannot write to tmp pf file"
+msgid "Cannot remove tmp sslproxy file"
+msgstr ""
+
+msgid "Cannot write to tmp file"
+msgstr ""
+
+msgid "Cannot write to tmp sslproxy file"
 msgstr ""
 
 msgid "Change p3scan report language"
@@ -163,13 +166,10 @@ msgstr ""
 msgid "Delete IP from list"
 msgstr ""
 
-msgid "Delete PF allowed"
-msgstr ""
-
-msgid "Delete PF restricted"
-msgstr ""
-
 msgid "Delete alert keywords"
+msgstr ""
+
+msgid "Delete allowed IPs"
 msgstr ""
 
 msgid "Delete badword"
@@ -202,13 +202,10 @@ msgstr ""
 msgid "Delete notifier user"
 msgstr ""
 
-msgid "Delete pass site"
+msgid "Delete restricted IPs"
 msgstr ""
 
-msgid "Delete pf rule file"
-msgstr ""
-
-msgid "Delete proxy spec"
+msgid "Delete rule file"
 msgstr ""
 
 msgid "Delete user"
@@ -322,7 +319,7 @@ msgstr ""
 msgid "Failed executing rrdfetch"
 msgstr ""
 
-msgid "Failed loading pf rules"
+msgid "Failed loading rules"
 msgstr ""
 
 msgid "Failed removing message queue"
@@ -331,7 +328,7 @@ msgstr ""
 msgid "Failed running pfctl command"
 msgstr ""
 
-msgid "Failed testing pf rules"
+msgid "Failed testing rules"
 msgstr ""
 
 msgid "Failed validating command line"
@@ -355,10 +352,10 @@ msgstr ""
 msgid "Generate SSL key pairs"
 msgstr ""
 
-msgid "Generate pf rule"
+msgid "Generate rule"
 msgstr ""
 
-msgid "Generate pf rules"
+msgid "Generate rules"
 msgstr ""
 
 msgid "Get ACL"
@@ -388,12 +385,6 @@ msgstr ""
 msgid "Get MFS config"
 msgstr ""
 
-msgid "Get PF allowed"
-msgstr ""
-
-msgid "Get PF restricted"
-msgstr ""
-
 msgid "Get active cats"
 msgstr ""
 
@@ -401,6 +392,9 @@ msgid "Get alert keywords"
 msgstr ""
 
 msgid "Get all stats"
+msgstr ""
+
+msgid "Get allowed IPs"
 msgstr ""
 
 msgid "Get arp table"
@@ -523,9 +517,6 @@ msgstr ""
 msgid "Get partition list"
 msgstr ""
 
-msgid "Get pass sites"
-msgstr ""
-
 msgid "Get pf info"
 msgstr ""
 
@@ -536,12 +527,6 @@ msgid "Get pf memory info"
 msgstr ""
 
 msgid "Get pf queue info"
-msgstr ""
-
-msgid "Get pf rule files"
-msgstr ""
-
-msgid "Get pf rules"
 msgstr ""
 
 msgid "Get pf rules info"
@@ -565,9 +550,6 @@ msgstr ""
 msgid "Get protocols"
 msgstr ""
 
-msgid "Get proxy specs"
-msgstr ""
-
 msgid "Get reload rate"
 msgstr ""
 
@@ -575,6 +557,12 @@ msgid "Get remote time"
 msgstr ""
 
 msgid "Get remote users"
+msgstr ""
+
+msgid "Get restricted IPs"
+msgstr ""
+
+msgid "Get rule files"
 msgstr ""
 
 msgid "Get rules"
@@ -676,7 +664,7 @@ msgstr ""
 msgid "Inserted"
 msgstr ""
 
-msgid "Install pf rules"
+msgid "Install rules"
 msgstr ""
 
 msgid "Interface up or down"
@@ -686,6 +674,9 @@ msgid "Intrusion Detection"
 msgstr ""
 
 msgid "Invalid inline rules, parser output"
+msgstr ""
+
+msgid "Invalid structured proxyspec, parser output"
 msgstr ""
 
 msgid "Invalid value"
@@ -825,6 +816,9 @@ msgstr ""
 msgid "Parse Error"
 msgstr ""
 
+msgid "Parse rules"
+msgstr ""
+
 msgid "Pfctl output does not match"
 msgstr ""
 
@@ -844,6 +838,9 @@ msgid "RSS"
 msgstr ""
 
 msgid "Reached max nesting for inline anchors"
+msgstr ""
+
+msgid "Reached max nesting for structured proxyspecs"
 msgstr ""
 
 msgid "Read system gateway"
@@ -909,16 +906,13 @@ msgstr ""
 msgid "Set MFS size"
 msgstr ""
 
-msgid "Set PF allowed"
-msgstr ""
-
-msgid "Set PF restricted"
-msgstr ""
-
 msgid "Set UserAuth URL"
 msgstr ""
 
 msgid "Set afterhours if"
+msgstr ""
+
+msgid "Set allowed IPs"
 msgstr ""
 
 msgid "Set configuration"
@@ -1000,6 +994,9 @@ msgid "Set remote ping host"
 msgstr ""
 
 msgid "Set remote time"
+msgstr ""
+
+msgid "Set restricted IPs"
 msgstr ""
 
 msgid "Set session timeout"
@@ -1107,13 +1104,13 @@ msgstr ""
 msgid "Tail number wrong"
 msgstr ""
 
-msgid "Test pf rules"
+msgid "Test rules"
 msgstr ""
 
 msgid "The process is taking too long, thus will run in the background."
 msgstr ""
 
-msgid "Timed out running pfctl command"
+msgid "Timed out running command"
 msgstr ""
 
 msgid "Too many args"

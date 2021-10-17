@@ -80,9 +80,9 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Network interfaces are listed here. You can configure an interface as dhcp "
-"or inet. Changes made here do not take effect until you restart the network "
-"or reboot the system."
+"Network interfaces are listed here. You can configure an interface as dhcp/"
+"autoconf or inet. Changes made here do not take effect until you restart the "
+"network or reboot the system."
 msgstr ""
 
 msgid ""

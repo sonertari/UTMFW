@@ -104,6 +104,11 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
+msgid ""
+"Download CA certificate to install on client web browsers, mail programs, or "
+"devices."
+msgstr ""
+
 msgid "Download ruleset"
 msgstr ""
 
@@ -123,6 +128,9 @@ msgid "Enter comment here"
 msgstr ""
 
 msgid "Enter inline rules here"
+msgstr ""
+
+msgid "Enter proxy specifications here"
 msgstr ""
 
 msgid "Filter"
@@ -201,6 +209,12 @@ msgid "No Queues defined"
 msgstr ""
 
 msgid "Option"
+msgstr ""
+
+msgid "ProxySpecLine"
+msgstr ""
+
+msgid "ProxySpecStruct"
 msgstr ""
 
 msgid "Queue"
@@ -299,10 +313,16 @@ msgstr ""
 msgid "as rule number"
 msgstr ""
 
+msgid "common name, macro or *"
+msgstr ""
+
 msgid "defaults to S/SA"
 msgstr ""
 
 msgid "delete"
+msgstr ""
+
+msgid "description, macro or *"
 msgstr ""
 
 msgid "enter comment, such as a description of the rule"
@@ -314,6 +334,9 @@ msgstr ""
 msgid "groupname or groupid"
 msgstr ""
 
+msgid "host name, macro or *"
+msgstr ""
+
 msgid "host or network"
 msgstr ""
 
@@ -321,6 +344,15 @@ msgid "if or macro"
 msgstr ""
 
 msgid "interface"
+msgstr ""
+
+msgid "ip address"
+msgstr ""
+
+msgid "ip address or host name"
+msgstr ""
+
+msgid "ip address, macro or *"
 msgstr ""
 
 msgid "ip, host, table or macro"
@@ -383,13 +415,31 @@ msgstr ""
 msgid "os name or macro"
 msgstr ""
 
+msgid "pf, ipfw, netfilter, or tproxy"
+msgstr ""
+
+msgid "port number"
+msgstr ""
+
+msgid "port, macro or *"
+msgstr ""
+
 msgid "protocol"
+msgstr ""
+
+msgid "sni, macro or *"
 msgstr ""
 
 msgid "string"
 msgstr ""
 
 msgid "string or number"
+msgstr ""
+
+msgid "uri, macro or *"
+msgstr ""
+
+msgid "user name, macro or *"
 msgstr ""
 
 msgid "username or userid"

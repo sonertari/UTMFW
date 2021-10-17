@@ -128,7 +128,7 @@ msgid ""
 "connected to this web user interface, and use the network restart button on "
 "this page, do not forget to change the URL on your web browser accordingly.\n"
 "\n"
-"It is not advised to configure the internal interface as dhcp."
+"It is not advised to configure the internal interface as dhcp/autoconf."
 msgstr ""
 
 msgid "ACCEPTED"
@@ -212,12 +212,6 @@ msgstr ""
 msgid "Add notifier user"
 msgstr ""
 
-msgid "Add pass site"
-msgstr ""
-
-msgid "Add proxy spec"
-msgstr ""
-
 msgid "Add to IP list"
 msgstr ""
 
@@ -225,6 +219,9 @@ msgid "Add user"
 msgstr ""
 
 msgid "Additional mime types"
+msgstr ""
+
+msgid "Address"
 msgstr ""
 
 msgid "Address Family"
@@ -337,12 +334,6 @@ msgid "All un/blocks and extensions"
 msgstr ""
 
 msgid "Allow Opts"
-msgstr ""
-
-msgid "Allow Wrong Host"
-msgstr ""
-
-msgid "Allow wrong host names in certificates."
 msgstr ""
 
 msgid "Allowed requests"
@@ -537,9 +528,6 @@ msgid "Assign Tag"
 msgstr ""
 
 msgid "Attack Types"
-msgstr ""
-
-msgid "Authenticate Users"
 msgstr ""
 
 msgid "Authentication failed"
@@ -740,12 +728,6 @@ msgstr ""
 msgid "Bytes Free"
 msgstr ""
 
-msgid "CA Cert"
-msgstr ""
-
-msgid "CA Key"
-msgstr ""
-
 msgid "CGI Server"
 msgstr ""
 
@@ -785,13 +767,19 @@ msgstr ""
 msgid "Cannot determine the resolution in rrdfetch output"
 msgstr ""
 
+msgid "Cannot find default route"
+msgstr ""
+
 msgid "Cannot find group configuration file"
 msgstr ""
 
-msgid "Cannot fork pfctl process"
+msgid "Cannot fork process"
 msgstr ""
 
 msgid "Cannot generate rule"
+msgstr ""
+
+msgid "Cannot generate rules"
 msgstr ""
 
 msgid "Cannot get MFS configuration"
@@ -818,25 +806,34 @@ msgstr ""
 msgid "Cannot get pid"
 msgstr ""
 
-msgid "Cannot install pf rule file"
+msgid "Cannot install rule file"
 msgstr ""
 
-msgid "Cannot load pf rules"
+msgid "Cannot load rules"
 msgstr ""
 
 msgid "Cannot log user out"
 msgstr ""
 
+msgid "Cannot parse rules"
+msgstr ""
+
 msgid "Cannot read config"
 msgstr ""
 
-msgid "Cannot remove tmp pf file"
+msgid "Cannot remove tmp file"
+msgstr ""
+
+msgid "Cannot remove tmp sslproxy file"
 msgstr ""
 
 msgid "Cannot update user"
 msgstr ""
 
-msgid "Cannot write to tmp pf file"
+msgid "Cannot write to tmp file"
+msgstr ""
+
+msgid "Cannot write to tmp sslproxy file"
 msgstr ""
 
 msgid "Categories"
@@ -875,9 +872,6 @@ msgid ""
 "filter configuration, i.e. int_if and ext_if macros."
 msgstr ""
 
-msgid "Check for expired connections every this many seconds."
-msgstr ""
-
 msgid "Check if process running"
 msgstr ""
 
@@ -885,20 +879,6 @@ msgid "Chinese simplified"
 msgstr ""
 
 msgid "Cipher"
-msgstr ""
-
-msgid "Cipher Suites"
-msgstr ""
-
-msgid "Cipher specification for both server and client SSL/TLS connections."
-msgstr ""
-
-msgid ""
-"Cipher suite specification for both server and client SSL/TLS connections. "
-"This is for TLS 1.3 only."
-msgstr ""
-
-msgid "Ciphers"
 msgstr ""
 
 msgid ""
@@ -945,9 +925,6 @@ msgid "Client deleted"
 msgstr ""
 
 msgid "Clients"
-msgstr ""
-
-msgid "Close connections after this many seconds of idle time."
 msgstr ""
 
 msgid "Closed by"
@@ -1021,9 +998,6 @@ msgid "Connection Duration"
 msgstr ""
 
 msgid "Connection Idle Time"
-msgstr ""
-
-msgid "Connection Idle Timeout"
 msgstr ""
 
 msgid "Connections"
@@ -1221,13 +1195,10 @@ msgstr ""
 msgid "Delete IP from list"
 msgstr ""
 
-msgid "Delete PF allowed"
-msgstr ""
-
-msgid "Delete PF restricted"
-msgstr ""
-
 msgid "Delete alert keywords"
+msgstr ""
+
+msgid "Delete allowed IPs"
 msgstr ""
 
 msgid "Delete badword"
@@ -1274,13 +1245,10 @@ msgstr ""
 msgid "Delete notifier user"
 msgstr ""
 
-msgid "Delete pass site"
+msgid "Delete restricted IPs"
 msgstr ""
 
-msgid "Delete pf rule file"
-msgstr ""
-
-msgid "Delete proxy spec"
+msgid "Delete rule file"
 msgstr ""
 
 msgid "Delete rules file"
@@ -1302,12 +1270,6 @@ msgid "Denied requests"
 msgstr ""
 
 msgid "Denied users"
-msgstr ""
-
-msgid "Deny OCSP"
-msgstr ""
-
-msgid "Deny all OCSP requests on all proxyspecs."
 msgstr ""
 
 msgid "Desc"
@@ -1373,12 +1335,6 @@ msgid "Disable AfterHours business days"
 msgstr ""
 
 msgid "Disable AfterHours holidays"
-msgstr ""
-
-msgid "Disable SSL Protocol"
-msgstr ""
-
-msgid "Disable SSL/TLS protocol version."
 msgstr ""
 
 msgid "Disable config"
@@ -1470,6 +1426,9 @@ msgstr ""
 msgid "Divert"
 msgstr ""
 
+msgid "Divert Address"
+msgstr ""
+
 msgid "Divert Host"
 msgstr ""
 
@@ -1505,7 +1464,12 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
-msgid "Download CA Cert"
+msgid "Download CA certificate"
+msgstr ""
+
+msgid ""
+"Download CA certificate to install on client web browsers, mail programs, or "
+"devices."
 msgstr ""
 
 msgid ""
@@ -1523,11 +1487,6 @@ msgid ""
 msgstr ""
 
 msgid "Download ruleset"
-msgstr ""
-
-msgid ""
-"Download the CA cert file to install on client web browsers and mail "
-"programs."
 msgstr ""
 
 msgid "Download with errors"
@@ -1679,9 +1638,6 @@ msgid ""
 "\t\tDefault: disabled"
 msgstr ""
 
-msgid "Enable/disable SSL/TLS compression on all connections."
-msgstr ""
-
 msgid "Enabled"
 msgstr ""
 
@@ -1707,6 +1663,9 @@ msgid "Enter comment here"
 msgstr ""
 
 msgid "Enter inline rules here"
+msgstr ""
+
+msgid "Enter proxy specifications here"
 msgstr ""
 
 msgid "Erase statistics files"
@@ -1740,9 +1699,6 @@ msgid "Exception users"
 msgstr ""
 
 msgid "Expire"
-msgstr ""
-
-msgid "Expired Connection Check Period"
 msgstr ""
 
 msgid "Expired connections"
@@ -1802,16 +1758,25 @@ msgstr ""
 msgid "Failed downloading, cannot generate pf rules"
 msgstr ""
 
+msgid "Failed downloading, cannot generate sslproxy rules"
+msgstr ""
+
 msgid "Failed executing rrdfetch"
 msgstr ""
 
 msgid "Failed loading"
 msgstr ""
 
+msgid "Failed loading Include rules"
+msgstr ""
+
 msgid "Failed loading main pf rules"
 msgstr ""
 
-msgid "Failed loading pf rules"
+msgid "Failed loading main sslproxy rules"
+msgstr ""
+
+msgid "Failed loading rules"
 msgstr ""
 
 msgid "Failed login attempts to the SSH Server"
@@ -1829,7 +1794,7 @@ msgstr ""
 msgid "Failed saving"
 msgstr ""
 
-msgid "Failed testing pf rules"
+msgid "Failed testing rules"
 msgstr ""
 
 msgid "Failed testing ruleset"
@@ -1973,12 +1938,6 @@ msgid ""
 "1 = on (Big5 compatible)"
 msgstr ""
 
-msgid "Force SSL Protocol"
-msgstr ""
-
-msgid "Force SSL/TLS protocol version only."
-msgstr ""
-
 msgid "Force quick search"
 msgstr ""
 
@@ -2038,10 +1997,10 @@ msgstr ""
 msgid "Generate SSL key pairs"
 msgstr ""
 
-msgid "Generate pf rule"
+msgid "Generate rule"
 msgstr ""
 
-msgid "Generate pf rules"
+msgid "Generate rules"
 msgstr ""
 
 msgid "Generate with errors"
@@ -2083,12 +2042,6 @@ msgstr ""
 msgid "Get MFS config"
 msgstr ""
 
-msgid "Get PF allowed"
-msgstr ""
-
-msgid "Get PF restricted"
-msgstr ""
-
 msgid "Get active cats"
 msgstr ""
 
@@ -2096,6 +2049,9 @@ msgid "Get alert keywords"
 msgstr ""
 
 msgid "Get all stats"
+msgstr ""
+
+msgid "Get allowed IPs"
 msgstr ""
 
 msgid "Get arp table"
@@ -2218,9 +2174,6 @@ msgstr ""
 msgid "Get partition list"
 msgstr ""
 
-msgid "Get pass sites"
-msgstr ""
-
 msgid "Get pf info"
 msgstr ""
 
@@ -2231,12 +2184,6 @@ msgid "Get pf memory info"
 msgstr ""
 
 msgid "Get pf queue info"
-msgstr ""
-
-msgid "Get pf rule files"
-msgstr ""
-
-msgid "Get pf rules"
 msgstr ""
 
 msgid "Get pf rules info"
@@ -2260,9 +2207,6 @@ msgstr ""
 msgid "Get protocols"
 msgstr ""
 
-msgid "Get proxy specs"
-msgstr ""
-
 msgid "Get reload rate"
 msgstr ""
 
@@ -2270,6 +2214,12 @@ msgid "Get remote time"
 msgstr ""
 
 msgid "Get remote users"
+msgstr ""
+
+msgid "Get restricted IPs"
+msgstr ""
+
+msgid "Get rule files"
 msgstr ""
 
 msgid "Get rules"
@@ -2905,6 +2855,9 @@ msgstr ""
 msgid "Include reference systems"
 msgstr ""
 
+msgid "Include rules loaded"
+msgstr ""
+
 msgid "Infected"
 msgstr ""
 
@@ -2974,7 +2927,7 @@ msgstr ""
 msgid "Install as main ruleset"
 msgstr ""
 
-msgid "Install pf rules"
+msgid "Install rules"
 msgstr ""
 
 msgid "Installed successfully"
@@ -3032,6 +2985,9 @@ msgstr ""
 msgid "Invalid rule number"
 msgstr ""
 
+msgid "Invalid structured proxyspec, parser output"
+msgstr ""
+
 msgid "Invalid value"
 msgstr ""
 
@@ -3066,12 +3022,6 @@ msgid "Last <INTERVAL>"
 msgstr ""
 
 msgid "Last >>"
-msgstr ""
-
-msgid "Leaf Key RSA Bits"
-msgstr ""
-
-msgid "Leaf key RSA keysize in bits, use 1024|2048|3072|4096."
 msgstr ""
 
 msgid "Leases"
@@ -3216,9 +3166,6 @@ msgstr ""
 msgid "Log Level"
 msgstr ""
 
-msgid "Log Statistics"
-msgstr ""
-
 msgid "Log Verbose"
 msgstr ""
 
@@ -3286,12 +3233,6 @@ msgid "Log out"
 msgstr ""
 
 msgid "Log rcpt to"
-msgstr ""
-
-msgid "Log statistics every this many ExpiredConnCheckPeriod periods."
-msgstr ""
-
-msgid "Log statistics to syslog."
 msgstr ""
 
 msgid "Log typing events"
@@ -3365,6 +3306,9 @@ msgid "Mail program"
 msgstr ""
 
 msgid "Main pf rules reloaded"
+msgstr ""
+
+msgid "Main sslproxy rules reloaded"
 msgstr ""
 
 msgid "Make Dynamic"
@@ -3458,12 +3402,6 @@ msgid "Max MSS"
 msgstr ""
 
 msgid "Max Packet Rate"
-msgstr ""
-
-msgid "Max SSL Protocol"
-msgstr ""
-
-msgid "Max SSL/TLS protocol version."
 msgstr ""
 
 msgid "Max Single Host States"
@@ -3587,12 +3525,6 @@ msgstr ""
 msgid "Min"
 msgstr ""
 
-msgid "Min SSL Protocol"
-msgstr ""
-
-msgid "Min SSL/TLS protocol version."
-msgstr ""
-
 msgid "Min TTL"
 msgstr ""
 
@@ -3658,6 +3590,9 @@ msgstr ""
 msgid "Multiple values not allowed for"
 msgstr ""
 
+msgid "NAT Engine"
+msgstr ""
+
 msgid "NAT header type"
 msgstr ""
 
@@ -3709,9 +3644,9 @@ msgid "Network Topology"
 msgstr ""
 
 msgid ""
-"Network interfaces are listed here. You can configure an interface as dhcp "
-"or inet. Changes made here do not take effect until you restart the network "
-"or reboot the system."
+"Network interfaces are listed here. You can configure an interface as dhcp/"
+"autoconf or inet. Changes made here do not take effect until you restart the "
+"network or reboot the system."
 msgstr ""
 
 msgid "Network protocol usage"
@@ -3934,12 +3869,6 @@ msgstr ""
 msgid "Only webcam sessions on Yahoo are recognized and blocked"
 msgstr ""
 
-msgid "Open Files Limit"
-msgstr ""
-
-msgid "Open files limit, use 50-10000."
-msgstr ""
-
 msgid ""
 "OpenBSD/spamd is a spam deferral daemon, a fake sendmail-like daemon which "
 "rejects false mail. You can run spamd if there is a mail server in the "
@@ -4072,6 +4001,9 @@ msgstr ""
 msgid "Parse Error"
 msgstr ""
 
+msgid "Parse rules"
+msgstr ""
+
 msgid "Partitions"
 msgstr ""
 
@@ -4082,15 +4014,6 @@ msgid "Passive IPS"
 msgstr ""
 
 msgid "Passive Intrusion Prevention"
-msgstr ""
-
-msgid "Passthrough Sites"
-msgstr ""
-
-msgid ""
-"Passthrough sites. The format is site [(clientaddr|(user|*) [description "
-"keyword])]. If the site matches SNI or common names in the SSL certificate, "
-"the connection is passed through the proxy."
 msgstr ""
 
 msgid "Password"
@@ -4310,9 +4233,6 @@ msgstr ""
 msgid "Proxy Port"
 msgstr ""
 
-msgid "Proxy Specifications"
-msgstr ""
-
 msgid "Proxy failure log interval"
 msgstr ""
 
@@ -4325,6 +4245,12 @@ msgid ""
 msgstr ""
 
 msgid "Proxy timeout"
+msgstr ""
+
+msgid "ProxySpecLine"
+msgstr ""
+
+msgid "ProxySpecStruct"
 msgstr ""
 
 msgid "Qlimit"
@@ -4379,6 +4305,9 @@ msgid "Re-check replaced URLs"
 msgstr ""
 
 msgid "Reached max nesting for inline anchors"
+msgstr ""
+
+msgid "Reached max nesting for structured proxyspecs"
 msgstr ""
 
 msgid "Read system gateway"
@@ -4472,23 +4401,6 @@ msgstr ""
 msgid "Remote ping host"
 msgstr ""
 
-msgid "Remove HTTP Accept-Encoding"
-msgstr ""
-
-msgid "Remove HTTP Referer"
-msgstr ""
-
-msgid ""
-"Remove HTTP header line for Accept-Encoding. HTTP compression and encodings "
-"are disabled to make the content logs more readable. You can turn this off "
-"if content logging is disabled."
-msgstr ""
-
-msgid ""
-"Remove HTTP header line for Referer. The OWASP considers it a vulnerabilty, "
-"and it may cause redirection errors with SSLproxy."
-msgstr ""
-
 msgid "Render layout"
 msgstr ""
 
@@ -4537,9 +4449,6 @@ msgstr ""
 msgid "Requests scanned"
 msgstr ""
 
-msgid "Require authentication for users to use SSLproxy."
-msgstr ""
-
 msgid "Required element missing"
 msgstr ""
 
@@ -4570,6 +4479,9 @@ msgstr ""
 msgid ""
 "Results are only predictable with user authenticated configs, if enabled the "
 "violation/threshold count is kept track of by the user"
+msgstr ""
+
+msgid "Return Address"
 msgstr ""
 
 msgid "Reverse address lookups"
@@ -4686,6 +4598,9 @@ msgstr ""
 msgid "SMTP_SERVERS"
 msgstr ""
 
+msgid "SNI Port"
+msgstr ""
+
 msgid "SOCKS PROXY"
 msgstr ""
 
@@ -4728,9 +4643,6 @@ msgid "SSH version"
 msgstr ""
 
 msgid "SSH_PORTS"
-msgstr ""
-
-msgid "SSL Compression"
 msgstr ""
 
 msgid "SSL Destination Protocols"
@@ -4947,16 +4859,13 @@ msgstr ""
 msgid "Set MFS size"
 msgstr ""
 
-msgid "Set PF allowed"
-msgstr ""
-
-msgid "Set PF restricted"
-msgstr ""
-
 msgid "Set UserAuth URL"
 msgstr ""
 
 msgid "Set afterhours if"
+msgstr ""
+
+msgid "Set allowed IPs"
 msgstr ""
 
 msgid "Set configuration"
@@ -5042,6 +4951,9 @@ msgid "Set remote ping host"
 msgstr ""
 
 msgid "Set remote time"
+msgstr ""
+
+msgid "Set restricted IPs"
 msgstr ""
 
 msgid "Set session timeout"
@@ -5667,9 +5579,6 @@ msgstr ""
 msgid "Statistics"
 msgstr ""
 
-msgid "Statistics Period"
-msgstr ""
-
 msgid "Statistics and uncompressed log files"
 msgstr ""
 
@@ -5714,6 +5623,9 @@ msgid "Stopped"
 msgstr ""
 
 msgid "String wrong"
+msgstr ""
+
+msgid "Structured ProxySpec"
 msgstr ""
 
 msgid "Subcat wrong"
@@ -5826,7 +5738,13 @@ msgstr ""
 msgid "Tail number wrong"
 msgstr ""
 
+msgid "Target Address"
+msgstr ""
+
 msgid "Target IPs"
+msgstr ""
+
+msgid "Target Port"
 msgstr ""
 
 msgid "Target Ports"
@@ -5844,7 +5762,7 @@ msgstr ""
 msgid "Temporary block duration in seconds on each alert."
 msgstr ""
 
-msgid "Test pf rules"
+msgid "Test rules"
 msgstr ""
 
 msgid ""
@@ -5918,14 +5836,6 @@ msgid ""
 "example, if the max number of file descriptors is too high, you might want "
 "to increase the open files limit, either in the SSLproxy configuration or in "
 "login.conf file (daemon class)."
-msgstr ""
-
-msgid "The SSL proxy is an event-driven multi-threaded program."
-msgstr ""
-
-msgid ""
-"The SSL proxy takes 2 different kinds of logs: (1) STATS for periodic "
-"statistics per thread and (2) CRITICAL, ERROR, WARNING, and INFO messages."
 msgstr ""
 
 msgid ""
@@ -6007,9 +5917,6 @@ msgid ""
 msgstr ""
 
 msgid "The process is taking too long, thus will run in the background."
-msgstr ""
-
-msgid "The proxy specification format is type listenaddr+port up:utmport."
 msgstr ""
 
 msgid "The second ping host is on the Internet."
@@ -6537,10 +6444,7 @@ msgstr ""
 msgid "Time to expire (secs)"
 msgstr ""
 
-msgid "Time users out after this many seconds of idle time."
-msgstr ""
-
-msgid "Timed out running pfctl command"
+msgid "Timed out running command"
 msgstr ""
 
 msgid "Timeout"
@@ -6739,6 +6643,9 @@ msgstr ""
 msgid "Unblocked Hosts"
 msgstr ""
 
+msgid "Uncomment"
+msgstr ""
+
 msgid "Unconfigure an interface"
 msgstr ""
 
@@ -6793,12 +6700,6 @@ msgstr ""
 msgid "Use Bayesian classifier (default: 1)"
 msgstr ""
 
-msgid "Use CA cert (and key) to sign forged certs."
-msgstr ""
-
-msgid "Use CA key (and cert) to sign forged certs."
-msgstr ""
-
 msgid "Use DNS"
 msgstr ""
 
@@ -6846,9 +6747,6 @@ msgid ""
 msgstr ""
 
 msgid "User"
-msgstr ""
-
-msgid "User Idle Timeout"
 msgstr ""
 
 msgid "User Name"
@@ -6902,12 +6800,6 @@ msgstr ""
 msgid "VSZ"
 msgstr ""
 
-msgid "Validate Protocols"
-msgstr ""
-
-msgid "Validate proxy spec protocols."
-msgstr ""
-
 msgid "Validation Error"
 msgstr ""
 
@@ -6921,12 +6813,6 @@ msgid "Verbosity"
 msgstr ""
 
 msgid "Verify Firebase SSL notification server."
-msgstr ""
-
-msgid "Verify Peer"
-msgstr ""
-
-msgid "Verify peer using default certificates."
 msgstr ""
 
 msgid "Version"
@@ -7219,9 +7105,6 @@ msgstr ""
 msgid "You should restart the DNS forwarder for the changes to take effect."
 msgstr ""
 
-msgid "You should restart the SSL proxy for the changes to take effect."
-msgstr ""
-
 msgid "You should select at least one conf file to start the process"
 msgstr ""
 
@@ -7248,6 +7131,9 @@ msgstr ""
 msgid "add value"
 msgstr ""
 
+msgid "all"
+msgstr ""
+
 msgid "always"
 msgstr ""
 
@@ -7263,10 +7149,22 @@ msgstr ""
 msgid "blocked"
 msgstr ""
 
+msgid "common name"
+msgstr ""
+
+msgid "common name, macro or *"
+msgstr ""
+
 msgid "defaults to S/SA"
 msgstr ""
 
 msgid "delete"
+msgstr ""
+
+msgid "description"
+msgstr ""
+
+msgid "description, macro or *"
 msgstr ""
 
 msgid "disable"
@@ -7290,6 +7188,9 @@ msgstr ""
 msgid "filename"
 msgstr ""
 
+msgid "from all"
+msgstr ""
+
 msgid "groupname or groupid"
 msgstr ""
 
@@ -7297,6 +7198,12 @@ msgid "h"
 msgstr ""
 
 msgid "height"
+msgstr ""
+
+msgid "host"
+msgstr ""
+
+msgid "host name, macro or *"
 msgstr ""
 
 msgid "host or network"
@@ -7312,6 +7219,15 @@ msgid "if or macro"
 msgstr ""
 
 msgid "interface"
+msgstr ""
+
+msgid "ip address"
+msgstr ""
+
+msgid "ip address or host name"
+msgstr ""
+
+msgid "ip address, macro or *"
 msgstr ""
 
 msgid "ip, host, table or macro"
@@ -7404,6 +7320,15 @@ msgstr ""
 msgid "persist mfs"
 msgstr ""
 
+msgid "pf, ipfw, netfilter, or tproxy"
+msgstr ""
+
+msgid "port number"
+msgstr ""
+
+msgid "port, macro or *"
+msgstr ""
+
 msgid "primary"
 msgstr ""
 
@@ -7437,6 +7362,15 @@ msgstr ""
 msgid "size"
 msgstr ""
 
+msgid "sni"
+msgstr ""
+
+msgid "sni, macro or *"
+msgstr ""
+
+msgid "source ip"
+msgstr ""
+
 msgid "start"
 msgstr ""
 
@@ -7447,6 +7381,12 @@ msgid "string"
 msgstr ""
 
 msgid "string or number"
+msgstr ""
+
+msgid "target ip"
+msgstr ""
+
+msgid "target port"
 msgstr ""
 
 msgid "the ip of the proxy (default is the loopback - i.e. this server)"
@@ -7464,6 +7404,9 @@ msgstr ""
 msgid "to"
 msgstr ""
 
+msgid "to all"
+msgstr ""
+
 msgid "total"
 msgstr ""
 
@@ -7474,6 +7417,18 @@ msgid "unconfigured"
 msgstr ""
 
 msgid "uploaded"
+msgstr ""
+
+msgid "uri"
+msgstr ""
+
+msgid "uri, macro or *"
+msgstr ""
+
+msgid "user"
+msgstr ""
+
+msgid "user name, macro or *"
 msgstr ""
 
 msgid "username or userid"

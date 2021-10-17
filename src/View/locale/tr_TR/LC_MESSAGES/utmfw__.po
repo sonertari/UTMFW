@@ -56,12 +56,6 @@ msgstr "Liste öğesi ekle"
 msgid "Add notifier user"
 msgstr "Uyarı kullanıcısı ekle"
 
-msgid "Add pass site"
-msgstr "Geçirilecek site ekle"
-
-msgid "Add proxy spec"
-msgstr "Vekil tanımını ekle"
-
 msgid "Add to IP list"
 msgstr "IP listesine ekle"
 
@@ -98,11 +92,14 @@ msgstr "Eklenemiyor"
 msgid "Cannot determine the resolution in rrdfetch output"
 msgstr "rrdfetch komutunun çıktısından çözünürlük belirlenemedi"
 
+msgid "Cannot find default route"
+msgstr "Öndeğerli yönlendirme adresi bulunamadı"
+
 msgid "Cannot find group configuration file"
 msgstr "Grup yapılandırma dosyası bulunamıyor"
 
-msgid "Cannot fork pfctl process"
-msgstr "Pfctl süreci fork edilemedi"
+msgid "Cannot fork process"
+msgstr "Süreç fork edilemedi"
 
 msgid "Cannot get MFS size"
 msgstr "MFS boyutu alınamadı"
@@ -122,20 +119,26 @@ msgstr "Kalıcı MFS ayarı alınamadı"
 msgid "Cannot get pid"
 msgstr "Pid alınamadı"
 
-msgid "Cannot install pf rule file"
-msgstr "Pf kural dosyası kurulamadı"
+msgid "Cannot install rule file"
+msgstr "Kural dosyası kurulamadı"
 
-msgid "Cannot load pf rules"
-msgstr "Pf kuralları yüklenemedi"
+msgid "Cannot load rules"
+msgstr "Kurallar yüklenemedi"
 
 msgid "Cannot read config"
 msgstr "Yapılandırma okunamadı"
 
-msgid "Cannot remove tmp pf file"
-msgstr "Geçici pf dosyası silinemedi"
+msgid "Cannot remove tmp file"
+msgstr "Geçici dosyası silinemedi"
 
-msgid "Cannot write to tmp pf file"
-msgstr "Geçici pf dosyasına yazılamadı"
+msgid "Cannot remove tmp sslproxy file"
+msgstr "Geçici sslproxy dosyası silinemedi"
+
+msgid "Cannot write to tmp file"
+msgstr "Geçici dosyaya yazılamadı"
+
+msgid "Cannot write to tmp sslproxy file"
+msgstr "Geçici sslproxy dosyasına yazılamadı"
 
 msgid "Change p3scan report language"
 msgstr "P3scan bildirim dilini değiştir"
@@ -182,14 +185,11 @@ msgstr "IP adresini sil"
 msgid "Delete IP from list"
 msgstr "Listeden IP adresini sil"
 
-msgid "Delete PF allowed"
-msgstr "İzin verilen PF öğesini sil"
-
-msgid "Delete PF restricted"
-msgstr "Sınırlı PF öğesini sil"
-
 msgid "Delete alert keywords"
 msgstr "Uyarı anahtar kelimesini sil"
+
+msgid "Delete allowed IPs"
+msgstr "İzin verilen IP adreslerini sil"
 
 msgid "Delete badword"
 msgstr "Uygunsuz kelime sil"
@@ -221,14 +221,11 @@ msgstr "Liste öğesini sil"
 msgid "Delete notifier user"
 msgstr "Uyarı kullanıcısı sil"
 
-msgid "Delete pass site"
-msgstr "Geçirilecek site sil"
+msgid "Delete restricted IPs"
+msgstr "Sınırlı IP adresini sil"
 
-msgid "Delete pf rule file"
-msgstr "Pf kural dosyası silme"
-
-msgid "Delete proxy spec"
-msgstr "Vekil tanımını sil"
+msgid "Delete rule file"
+msgstr "Kural dosyasını sil"
 
 msgid "Delete user"
 msgstr "Kullanıcıyı sil"
@@ -341,8 +338,8 @@ msgstr "Mesaj kuyruğu yaratılamadı veya bağlantı başarısız oldu"
 msgid "Failed executing rrdfetch"
 msgstr "rrdfetch komutu başarısız oldu"
 
-msgid "Failed loading pf rules"
-msgstr "Pf kural yüklemesi başarısız oldu"
+msgid "Failed loading rules"
+msgstr "Kural yüklemesi başarısız oldu"
 
 msgid "Failed removing message queue"
 msgstr "Mesaj kuyruğunun silinmesi başarısız oldu"
@@ -350,8 +347,8 @@ msgstr "Mesaj kuyruğunun silinmesi başarısız oldu"
 msgid "Failed running pfctl command"
 msgstr "Pfctl komutu başarısız oldu"
 
-msgid "Failed testing pf rules"
-msgstr "Pf kurallarının testi başarısız oldu"
+msgid "Failed testing rules"
+msgstr "Kuralların testi başarısız oldu"
 
 msgid "Failed validating command line"
 msgstr "Komut satırı doğrulaması başarısız oldu"
@@ -374,11 +371,11 @@ msgstr "Fransızca"
 msgid "Generate SSL key pairs"
 msgstr "SSL anahtarlarını üret"
 
-msgid "Generate pf rule"
-msgstr "Pf kural üretimi"
+msgid "Generate rule"
+msgstr "Kural üretimi"
 
-msgid "Generate pf rules"
-msgstr "Pf kural listesi üretimi"
+msgid "Generate rules"
+msgstr "Kural listesi üretimi"
 
 msgid "Get ACL"
 msgstr "ACL getir"
@@ -407,12 +404,6 @@ msgstr "SES bilgisini getir"
 msgid "Get MFS config"
 msgstr "MFS ayarlarını getir"
 
-msgid "Get PF allowed"
-msgstr "İzin verilen PF öğelerini getir"
-
-msgid "Get PF restricted"
-msgstr "Sınırlı PF öğelerini getir"
-
 msgid "Get active cats"
 msgstr "Açık sınıflandırmaları getir"
 
@@ -421,6 +412,9 @@ msgstr "Uyarı anahtar kelimelerini getir"
 
 msgid "Get all stats"
 msgstr "Tüm istatistikleri getir"
+
+msgid "Get allowed IPs"
+msgstr "İzin verilen IP adresleri getir"
 
 msgid "Get arp table"
 msgstr "Arp tablosunu getir"
@@ -542,9 +536,6 @@ msgstr "Modül durumunu getir"
 msgid "Get partition list"
 msgstr "Disk bölümü listesini getir"
 
-msgid "Get pass sites"
-msgstr "Geçirilecek siteleri getir"
-
 msgid "Get pf info"
 msgstr "Pf bilgisini getir"
 
@@ -556,12 +547,6 @@ msgstr "Pf bellek bilgisini getir"
 
 msgid "Get pf queue info"
 msgstr "Pf kuyruk bilgisini getir"
-
-msgid "Get pf rule files"
-msgstr "Pf kural dosyalarını getir"
-
-msgid "Get pf rules"
-msgstr "Pf kurallarını getir"
 
 msgid "Get pf rules info"
 msgstr "Pf kural bilgisini getir"
@@ -584,9 +569,6 @@ msgstr "Süreç listesini getir"
 msgid "Get protocols"
 msgstr "Protokolleri getir"
 
-msgid "Get proxy specs"
-msgstr "Vekil tanımlarını getir"
-
 msgid "Get reload rate"
 msgstr "Tekrar yükleme süresini getir"
 
@@ -595,6 +577,12 @@ msgstr "Uzaktaki zamanı getir"
 
 msgid "Get remote users"
 msgstr "Uzak kullanıcıyı getir"
+
+msgid "Get restricted IPs"
+msgstr "Sınırlı IP adresleri getir"
+
+msgid "Get rule files"
+msgstr "Kural dosyalarını getir"
 
 msgid "Get rules"
 msgstr "Kuralları getir"
@@ -695,8 +683,8 @@ msgstr "Grafikleri sıfırla"
 msgid "Inserted"
 msgstr "Eklenme"
 
-msgid "Install pf rules"
-msgstr "Pf kurallarını kurma"
+msgid "Install rules"
+msgstr "Kural kurulumu"
 
 msgid "Interface up or down"
 msgstr "Arayüzü aç veya kapat"
@@ -706,6 +694,9 @@ msgstr "Saldırı Tespit"
 
 msgid "Invalid inline rules, parser output"
 msgstr "Geçersiz satıriçi kurallar, işleme çıktısı"
+
+msgid "Invalid structured proxyspec, parser output"
+msgstr "Geçersiz yapısal vekil tanımı, işleme çıktısı"
 
 msgid "Invalid value"
 msgstr "Geçersiz değer"
@@ -847,6 +838,9 @@ msgstr "Paketler"
 msgid "Parse Error"
 msgstr "İşleme Hatası"
 
+msgid "Parse rules"
+msgstr "Kuralları işle"
+
 msgid "Pfctl output does not match"
 msgstr "Pfctl çıktısı uyuşmuyor"
 
@@ -867,6 +861,9 @@ msgstr "RSS"
 
 msgid "Reached max nesting for inline anchors"
 msgstr "Satıriçi çapalar için en fazla içiçe sayıya ulaşıldı"
+
+msgid "Reached max nesting for structured proxyspecs"
+msgstr "Yapısal vekil tanımı için en fazla içiçe sayıya ulaşıldı"
 
 msgid "Read system gateway"
 msgstr "Sistem ağ geçidini getir"
@@ -931,17 +928,14 @@ msgstr "MFS'i ayarla"
 msgid "Set MFS size"
 msgstr "MFS boyutunu ayarla"
 
-msgid "Set PF allowed"
-msgstr "İzinli PF öğesi ekle"
-
-msgid "Set PF restricted"
-msgstr "Sınırlı PF öğesi ekle"
-
 msgid "Set UserAuth URL"
 msgstr "Kullanıcı doğrulama URL'ini ayarla"
 
 msgid "Set afterhours if"
 msgstr "Mesaisonrası arayüzünü ayarla"
+
+msgid "Set allowed IPs"
+msgstr "İzinli IP adreslerini ekle"
 
 msgid "Set configuration"
 msgstr "Yapılandırmayı ayarla"
@@ -1023,6 +1017,9 @@ msgstr "Uzak ping hedefini ayarla"
 
 msgid "Set remote time"
 msgstr "Uzak zamanı ayarla"
+
+msgid "Set restricted IPs"
+msgstr "Sınırlı IP adreslerini ekle"
 
 msgid "Set session timeout"
 msgstr "Oturum zaman aşımını ayarla"
@@ -1129,14 +1126,14 @@ msgstr "Sistem kapatma"
 msgid "Tail number wrong"
 msgstr "Kuyruk sayısı yanlış"
 
-msgid "Test pf rules"
-msgstr "Pf kurallarını test et"
+msgid "Test rules"
+msgstr "Kuralları test et"
 
 msgid "The process is taking too long, thus will run in the background."
 msgstr "Sürecin işlemesi uzun zaman aldığından arka planda çalıştırılacaktır."
 
-msgid "Timed out running pfctl command"
-msgstr "Pfctl komutu zaman aşımına uğradı"
+msgid "Timed out running command"
+msgstr "Komut zaman aşımına uğradı"
 
 msgid "Too many args"
 msgstr "Argüman sayısı fazla"
