@@ -86,6 +86,14 @@ if (filter_has_var(INPUT_POST, 'deleteAll')) {
 	PrintHelpWindow(_NOTICE('Ruleset deleted'));
 }
 
+if (filter_has_var(INPUT_GET, 'comment')) {
+	$ruleSet->comment(filter_input(INPUT_GET, 'comment'));
+}
+
+if (filter_has_var(INPUT_GET, 'uncomment')) {
+	$ruleSet->uncomment(filter_input(INPUT_GET, 'uncomment'));
+}
+
 $mainRuleset= $_SESSION['saved_edit']['ruleset'];
 $mainRuleNumber= $_SESSION['saved_edit']['ruleNumber'];
 

@@ -52,7 +52,8 @@ class Option extends Rule
 		$this->split();
 
 		$this->index= 0;
-		$this->rule['option']= $this->words[$this->index++];
+		if (isset($this->words[$this->index]))
+			$this->rule['option']= $this->words[$this->index++];
 
 		$value= array();
 		while (!$this->isEndOfWords()) {

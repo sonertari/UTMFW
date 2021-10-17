@@ -225,6 +225,90 @@ class RuleSet
 		}
 	}
 
+	function comment($ruleNumber)
+	{
+		global $View;
+
+		$retval= $View->Controller($output, 'GenerateRule', json_encode($this->rules[$ruleNumber]), $ruleNumber, 1);
+		if (!$retval) {
+			PrintHelpWindow(_NOTICE('ERROR') . ': ' . _NOTICE('Cannot generate rule'), 'auto', 'ERROR');
+		}
+
+		/// @attention Inline rules are multi-line, hence implode.
+		$output= explode("\n", trim(implode("\n", $output)));
+		for ($i= 0; $i < count($output); $i++) {
+			$output[$i]= '# '.trim($output[$i]);
+		}
+		$ruleStr= implode("\n", $output);
+
+		unset($output);
+		$rulesArray= array();
+
+		$retval= $View->Controller($output, 'ParseRules', json_encode($ruleStr), 1);
+		if (!$retval) {
+			PrintHelpWindow(_NOTICE('ERROR') . ': ' . _NOTICE('Cannot parse rules'), 'auto', 'ERROR');
+		}
+
+		$rulesArray= json_decode($output[0], TRUE)['rules'];
+
+		$ruleSet= new RuleSet();
+		$ruleSet->loadArray($rulesArray);
+
+		unset($this->rules[$ruleNumber]);
+		// array_slice() takes care of possible off-by-one error due to unset above
+		$head= array_slice($this->rules, 0, $ruleNumber);
+		$tail= array_slice($this->rules, $ruleNumber);
+		$this->rules= array_merge($head, $ruleSet->rules, $tail);
+
+		// Merge comments by reloading rules
+		unset($output);
+		$retval= $View->Controller($output, 'GenerateRules', json_encode($this->rules), 0, 1);
+		if (!$retval) {
+			PrintHelpWindow(_NOTICE('ERROR') . ': ' . _NOTICE('Cannot generate rules'), 'auto', 'ERROR');
+		}
+
+		$ruleStr= trim(implode("\n", $output));
+
+		unset($output);
+		$retval= $View->Controller($output, 'ParseRules', json_encode($ruleStr), 1);
+		if (!$retval) {
+			PrintHelpWindow(_NOTICE('ERROR') . ': ' . _NOTICE('Cannot parse rules'), 'auto', 'ERROR');
+		}
+
+		$rulesArray= json_decode($output[0], TRUE)['rules'];
+		$this->loadArray($rulesArray);
+	}
+
+	function uncomment($ruleNumber)
+	{
+		global $View;
+
+		$rulesArray= array();
+		$retval= $View->Controller($output, 'ParseRules', json_encode($this->rules[$ruleNumber]->rule['comment']), 1);
+		if (!$retval) {
+			PrintHelpWindow(_NOTICE('ERROR') . ': ' . _NOTICE('Cannot parse rules'), 'auto', 'ERROR');
+		}
+
+		$rulesArray= json_decode($output[0], TRUE)['rules'];
+
+		$ruleSet= new RuleSet();
+		$ruleSet->loadArray($rulesArray);
+
+		unset($this->rules[$ruleNumber]);
+		// array_slice() takes care of possible off-by-one error due to unset above
+		$head= array_slice($this->rules, 0, $ruleNumber);
+		$tail= array_slice($this->rules, $ruleNumber);
+
+		if (count($ruleSet->rules)) {
+			$this->rules= array_merge($head, $ruleSet->rules, $tail);
+		}
+		else {
+			$blank= new Blank();
+			$blank->rule['blank']= "\n";
+			$this->rules= array_merge($head, array($blank), $tail);
+		}
+	}
+
 	/**
 	 * Computes the actual rule number which can be allocated.
 	 * 

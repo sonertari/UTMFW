@@ -88,8 +88,6 @@ class Rule
 	 * 
 	 * We also set the category or type of the rule.
 	 * 
-	 * Finally, we parse the given string, if not empty.
-	 *
 	 * @param string $str String to parse.
 	 */
 	function __construct($str)
@@ -99,9 +97,7 @@ class Rule
 
 		$this->cat= str_replace(__NAMESPACE__ . '\\', '', get_called_class());
 
-		if ($str != '') {
-			$this->parse($str);
-		}
+		$this->parse($str);
 	}
 
 	/**
