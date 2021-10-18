@@ -250,6 +250,23 @@ class Rule
 		<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?<?php echo $del ?>=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Delete') ?>" onclick="return confirm('<?php echo $confirmMsg ?>')">
 			<input type="button" value="X" /></a>
 		<?php
+		if ($this->cat != 'Comment') {
+			?>
+			<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?comment=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Comment') ?>">
+				<input type="button" value="C" /></a>
+			<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?separate=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Separate') ?>">
+				<input type="button" value="S"  disabled/></a>
+			<?php
+		} else {
+			// countLines() returns extra lines, hence > 0, not > 1
+			$disabled= $this->countLines() > 0 ? '' : 'disabled';
+			?>
+			<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?uncomment=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Uncomment') ?>">
+				<input type="button" value="N" /></a>
+			<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?separate=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Separate') ?>">
+				<input type="button" value="S" <?php echo $disabled ?>/></a>
+			<?php
+		}
 	}
 
 	/**

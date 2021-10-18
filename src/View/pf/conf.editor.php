@@ -148,6 +148,22 @@ if (filter_has_var(INPUT_POST, 'deleteAll')) {
 	PrintHelpWindow(_NOTICE('Ruleset deleted'));
 }
 
+if (filter_has_var(INPUT_GET, 'comment')) {
+	$View->RuleSet->comment(filter_input(INPUT_GET, 'comment'));
+}
+
+if (filter_has_var(INPUT_GET, 'uncomment')) {
+	$View->RuleSet->uncomment(filter_input(INPUT_GET, 'uncomment'));
+}
+
+if (filter_has_var(INPUT_GET, 'separate')) {
+	$View->RuleSet->separate(filter_input(INPUT_GET, 'separate'));
+}
+
+if (filter_has_var(INPUT_POST, 'parse')) {
+	$View->RuleSet->parse();
+}
+
 $View->Controller($Output, 'TestRules', json_encode($View->RuleSet->rules));
 
 require_once($VIEW_PATH.'/header.php');
@@ -173,6 +189,7 @@ require_once($VIEW_PATH.'/header.php');
 		<input type="text" name="moveTo" id="moveTo" size="5" value="<?php echo filter_input(INPUT_POST, 'moveTo') ?>" placeholder="<?php echo _CONTROL('move to') ?>" />
 		<input type="submit" name="move" value="<?php echo _CONTROL('Move') ?>" />
 		<input type="submit" id="deleteAll" name="deleteAll" value="<?php echo _CONTROL('Delete All') ?>" onclick="return confirm('<?php echo _CONTROL('Are you sure you want to delete the entire ruleset?') ?>')"/>
+		<input type="submit" name="parse" value="<?php echo _CONTROL('Parse') ?>"  title="<?php echo _TITLE('Merges separated comments') ?>"/>
 	</form>
 </fieldset>
 <?php
