@@ -3501,6 +3501,9 @@ msgstr ""
 msgid "Memory-based file system"
 msgstr ""
 
+msgid "Merges separated comments"
+msgstr ""
+
 msgid "Messages from all OpenVPN processes are recorded in the same log file."
 msgstr ""
 
@@ -3996,6 +3999,9 @@ msgid "Page start line"
 msgstr ""
 
 msgid "Parent"
+msgstr ""
+
+msgid "Parse"
 msgstr ""
 
 msgid "Parse Error"
@@ -4830,6 +4836,9 @@ msgid "Sensors"
 msgstr ""
 
 msgid "Sent messages"
+msgstr ""
+
+msgid "Separate"
 msgstr ""
 
 msgid "Serial Number"

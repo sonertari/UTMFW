@@ -534,6 +534,9 @@ msgstr ""
 msgid "Memory-based file system"
 msgstr ""
 
+msgid "Merges separated comments"
+msgstr ""
+
 msgid "Min"
 msgstr ""
 
@@ -847,6 +850,9 @@ msgid "Select Option Type"
 msgstr ""
 
 msgid "Selected"
+msgstr ""
+
+msgid "Separate"
 msgstr ""
 
 msgid "Serial Number"

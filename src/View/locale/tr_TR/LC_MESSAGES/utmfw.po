@@ -4115,6 +4115,9 @@ msgstr "Bellek kullanımı"
 msgid "Memory-based file system"
 msgstr "Bellek tabanlı dosya sistemi"
 
+msgid "Merges separated comments"
+msgstr "Ayrılmış yorumları birleştirir"
+
 msgid "Messages from all OpenVPN processes are recorded in the same log file."
 msgstr "Tüm OpenVPN süreçleri mesajlarını aynı kayıt dosyasına kaydeder."
 
@@ -4687,6 +4690,9 @@ msgstr "Sayfa başlangıç satırı"
 
 msgid "Parent"
 msgstr "Veli"
+
+msgid "Parse"
+msgstr "İşle"
 
 msgid "Parse Error"
 msgstr "İşleme Hatası"
@@ -5665,6 +5671,9 @@ msgstr "Sensörler"
 
 msgid "Sent messages"
 msgstr "Gönderilen mesajlar"
+
+msgid "Separate"
+msgstr "Ayır"
 
 msgid "Serial Number"
 msgstr "Seri Numarası"

@@ -555,6 +555,9 @@ msgstr "Bellek Kullanımı"
 msgid "Memory-based file system"
 msgstr "Bellek tabanlı dosya sistemi"
 
+msgid "Merges separated comments"
+msgstr "Ayrılmış yorumları birleştirir"
+
 msgid "Min"
 msgstr "En az"
 
@@ -869,6 +872,9 @@ msgstr "Seçenek Türünü Seçin"
 
 msgid "Selected"
 msgstr "Seçili"
+
+msgid "Separate"
+msgstr "Ayır"
 
 msgid "Serial Number"
 msgstr "Seri Numarası"

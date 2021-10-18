@@ -232,6 +232,9 @@ msgstr "Kuyruk tanımlanmamış"
 msgid "Option"
 msgstr "Seçenekler"
 
+msgid "Parse"
+msgstr "İşle"
+
 msgid "ProxySpecLine"
 msgstr "Tek Satır Vekil Tanımı"
 

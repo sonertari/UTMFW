@@ -263,11 +263,15 @@ class Rule
 			?>
 			<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?comment=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Comment') ?>">
 				<input type="button" value="C" /></a>
+			<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?separate=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Separate') ?>">
+				<input type="button" value="S"  disabled/></a>
 			<?php
 		} else {
 			?>
 			<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?uncomment=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Uncomment') ?>">
 				<input type="button" value="N" /></a>
+			<a href="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>?separate=<?php echo $ruleNumber ?>" title="<?php echo _TITLE('Separate') ?>">
+				<input type="button" value="S" /></a>
 			<?php
 		}
 		?>

@@ -94,6 +94,14 @@ if (filter_has_var(INPUT_GET, 'uncomment')) {
 	$ruleSet->uncomment(filter_input(INPUT_GET, 'uncomment'));
 }
 
+if (filter_has_var(INPUT_GET, 'separate')) {
+	$ruleSet->separate(filter_input(INPUT_GET, 'separate'));
+}
+
+if (filter_has_var(INPUT_POST, 'parse')) {
+	$ruleSet->parse();
+}
+
 $mainRuleset= $_SESSION['saved_edit']['ruleset'];
 $mainRuleNumber= $_SESSION['saved_edit']['ruleNumber'];
 
@@ -178,6 +186,7 @@ require_once($VIEW_PATH.'/header.php');
 		<input type="text" name="moveTo" id="moveTo" size="5" value="<?php echo filter_input(INPUT_POST, 'moveTo') ?>" placeholder="<?php echo _CONTROL('move to') ?>" />
 		<input type="submit" name="move" value="<?php echo _CONTROL('Move') ?>" />
 		<input type="submit" id="deleteAll" name="deleteAll" value="<?php echo _CONTROL('Delete All') ?>" onclick="return confirm('<?php echo _CONTROL('Are you sure you want to delete the entire ruleset?') ?>')"/>
+		<input type="submit" name="parse" value="<?php echo _CONTROL('Parse') ?>"  title="<?php echo _TITLE('Merges separated comments') ?>"/>
 		<input type="hidden" name="nested" value="include" />
 	</form>
 </fieldset>
