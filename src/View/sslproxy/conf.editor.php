@@ -196,9 +196,12 @@ if (filter_has_var(INPUT_POST, 'ruleNumber') && filter_input(INPUT_POST, 'ruleNu
 }
 
 $nested= FALSE;
-if (filter_has_var(INPUT_POST, 'nested') && (!filter_has_var(INPUT_POST, 'move') && !filter_has_var(INPUT_POST, 'delete') && !filter_has_var(INPUT_POST, 'deleteAll'))) {
+// Set the nested var for the edit and add buttons only, because they open a new edit page, hence nested editing
+// The other buttons stay on the same edit page, hence not nested editing
+if (filter_has_var(INPUT_POST, 'nested') && (filter_has_var(INPUT_POST, 'edit') || filter_has_var(INPUT_POST, 'add'))) {
 	$nested= TRUE;
 }
+// Only the edit button submits the nested field in dispEditLinks(), and only for the Include and ProxySpecStruct type of rules
 if (filter_has_var(INPUT_GET, 'nested')) {
 	$nested= TRUE;
 }

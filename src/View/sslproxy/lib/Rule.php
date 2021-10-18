@@ -657,11 +657,13 @@ class Rule
 	{
 		global $ruleStr, $ruleCategoryNames;
 
-		if (filter_has_var(INPUT_POST, 'nested')) {
-			$nested= filter_input(INPUT_POST, 'nested');
-		}
-		if (filter_has_var(INPUT_GET, 'nested')) {
-			$nested= filter_input(INPUT_GET, 'nested');
+		if ($this->cat == '_Include' || $this->cat == 'ProxySpecStruct') {
+			if (filter_has_var(INPUT_POST, 'nested')) {
+				$nested= filter_input(INPUT_POST, 'nested');
+			}
+			if (filter_has_var(INPUT_GET, 'nested')) {
+				$nested= filter_input(INPUT_GET, 'nested');
+			}
 		}
 		$ruleType= $ruleCategoryNames[$this->ref];
 		$editHeader= _TITLE('Edit <RULE_TYPE> Rule <RULE_NUMBER>');
