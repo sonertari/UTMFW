@@ -603,7 +603,7 @@ __EOT
 
 	for _f in $THESETS ; do
 		isin $_f $_get_sets || continue
-		echo "Installing $_f ..."
+		echo "Installing ${_f}..."
 		_installerror=0
 		case $_f in
 		*.tgz)
@@ -623,13 +623,13 @@ __EOT
 			#if [[ $MODE == upgrade ]] ;then
 			#fi
 
-			# Deleting partial-$_pkgshortname, if any...
+			# Deleting partial-$_pkgshortname, if any
 			pkg_delete partial-$_pkgshortname >/dev/null 2>&1
 
 			# Running: pkg_add $_pkgaddopts $_pkgname
 			pkg_add $_pkgaddopts $_pkgname || _installerror=1
 
-			# Again deleting partial-$_pkgshortname, if any...
+			# Again deleting partial-$_pkgshortname, if any
 			[[ $_installerror -eq 1 ]] && pkg_delete partial-$_pkgshortname >/dev/null 2>&1
 
 			# Running as last option: pkg_add $_pkgname
@@ -1051,7 +1051,7 @@ finish_up() {
 	fi
 
 	# Update mandoc.db to avoid bogus entry errors
-	echo "\nUpdating mandoc.db ..."
+	echo "\nUpdating mandoc.db..."
 	/usr/sbin/makewhatis /usr/share/man || INSTALL_ERROR=1
 
 	if [ $INSTALL_ERROR -eq 1 ]; then

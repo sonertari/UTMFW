@@ -87,7 +87,7 @@ sslproxy(1)                        SSLproxy                        sslproxy(1)
        deploying a rogue access point (e.g. using hostap mode), physical
        recabling, malicious VLAN reconfiguration or route injection,
        /etc/hosts modification and so on.
-
+<a name="proxyspec"></a>
      <span class="bold">Proxy</span> <span class="bold">specification</span>
        For example, given the following proxy specification:
 
@@ -105,8 +105,11 @@ sslproxy(1)                        SSLproxy                        sslproxy(1)
        The response from the Server follows the same path back to the Client
        in reverse order.
 
-       See the SSLsplit documentation for split style and structured
-       proxyspecs.
+       Along with one line proxyspecs above, SSLproxy supports structured
+       proxyspecs to configure further options per proxyspec. It also supports
+       split style proxyspecs for split mode of operation similar to SSLsplit.
+       See sslproxy.conf(5) for structured proxyspecs, and the SSLsplit
+       documentation for split style proxyspecs.
 
      <span class="bold">SSLproxy</span> <span class="bold">line</span>
        A sample line SSLproxy inserts into the first packet in the connection
@@ -159,7 +162,6 @@ sslproxy(1)                        SSLproxy                        sslproxy(1)
        So, the listening program can be running on a machine anywhere in the
        world.  Since the packets between SSLproxy and the listening program
        are always unencrypted, you should be careful while using such a setup.
-
 <a name="proto"></a>
 <span class="bold">Protocols</span>
      <span class="bold">Supported</span> <span class="bold">protocols</span>
@@ -299,7 +301,6 @@ sslproxy(1)                        SSLproxy                        sslproxy(1)
 
        The user authentication feature is currently available on OpenBSD and
        Linux only.
-
 <a name="Filter"></a>
 <span class="bold">Filtering</span> <span class="bold">rules</span>
        SSLproxy can divert, split, pass, block, or match connections based on
@@ -341,9 +342,7 @@ sslproxy(1)                        SSLproxy                        sslproxy(1)
        The definition of which connections the rule action will be applied to
        is achieved by the from and to parts of a filtering rule and by the
        proxyspec that the rule is defined for.
-
-<a name="from"></a>
-<a name="to"></a>
+<a name="from"></a><a name="to"></a>
         - The from part of a rule defines source filter based on client IP
        address, user and/or description, or * for all.
         - The to part defines destination filter based on server IP and/or
@@ -355,7 +354,6 @@ sslproxy(1)                        SSLproxy                        sslproxy(1)
            + All rule types can use the port field
         - The proxyspec handling the connection defines the protocol filter
        for the connection.
-
 <a name="log"></a>
        If and how a connection should be logged is specified using the log
        part of filtering rules:
@@ -1174,7 +1172,7 @@ sslproxy(1)                        SSLproxy                        sslproxy(1)
 
               <span class="underline">https://github.com/sonertari/sslproxy</span>
 
-v0.9.0                          16 October 2021                    sslproxy(1)
+v0.9.0                          21 October 2021                    sslproxy(1)
 </pre>
 </body>
 </html>

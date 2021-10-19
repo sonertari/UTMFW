@@ -1,14 +1,14 @@
-From sonertari@gmail.com Thu Oct 14 07:00:00 EET 2021
+From sonertari@gmail.com Thu Oct 21 07:00:00 EET 2021
 Return-Path: root
-Date: Oct 14 07:00:00 EET 2021
+Date: Oct 21 07:00:00 EET 2021
 From: sonertari@gmail.com (Soner Tari)
 To: root
 Subject: Welcome to UTMFW 7.0!
 
 The highlights of this release are:
 
-- TLS 1.3 support on SSLproxy, thanks to LibreSSL 3.4.1
-- Filtering rules on SSLproxy 0.9.0
+- TLS 1.3 support in SSLproxy, thanks to LibreSSL 3.4.1
+- Filtering rules in SSLproxy 0.9.0
 - SSLproxy Rule Editor (SPRE), to configure SSLproxy proxyspecs, filtering 
 rules, and options on the WUI, similar to PFRE for OpenBSD/pf
 - OpenBSD 7.0

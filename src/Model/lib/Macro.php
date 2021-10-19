@@ -53,12 +53,14 @@ class Macro extends Rule
 		$this->split();
 
 		$this->index= 0;
-		$this->rule['identifier']= $this->words[$this->index++];
-		if ($this->words[++$this->index] != '{') {
-			$this->rule['value']= $this->words[$this->index];
-		} else {
-			while (preg_replace('/,/', '', $this->words[++$this->index]) != '}' && !$this->isEndOfWords()) {
-				$this->rule['value'][]= $this->words[$this->index];
+		if (!$this->isEndOfWords()) {
+			$this->rule['identifier']= $this->words[$this->index++];
+			if ($this->words[++$this->index] != '{') {
+				$this->rule['value']= $this->words[$this->index];
+			} else {
+				while (preg_replace('/,/', '', $this->words[++$this->index]) != '}' && !$this->isEndOfWords()) {
+					$this->rule['value'][]= $this->words[$this->index];
+				}
 			}
 		}
 	}

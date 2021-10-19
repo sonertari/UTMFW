@@ -176,9 +176,7 @@ class Rule
 
 		$this->cat= str_replace(__NAMESPACE__ . '\\', '', get_called_class());
 
-		if ($str != '') {
-			$this->parse($str);
-		}
+		$this->parse($str);
 	}
 
 	/**

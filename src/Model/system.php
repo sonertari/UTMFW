@@ -837,7 +837,7 @@ class System extends Model
 		// @todo Args passed to this function are validated by the Controller, but we can implement some semantic validation too
 		if (preg_match("/^inet\s*$Re_Ip\s*[x0-9a-f]+\s*($Re_Ip|).*$/m", $ifconf)
 			|| preg_match('/^(dhcp|autoconf)\s*NONE\s*NONE\s*NONE.*$/m', $ifconf)
-			|| preg_match('/^(dhcp|autoconf)/m', $ifconf)
+			|| preg_match('/^(dhcp|autoconf)$/m', $ifconf)
 			|| preg_match('/(dhcp|autoconf)/m', $ifconf) && ($hostap === '')) {
 			/// @attention Need a new line char at the end of hostname.if, otherwise /etc/netstart fails
 			/// Since file_put_contents() removes the last new line char, we append a PHP_EOL.

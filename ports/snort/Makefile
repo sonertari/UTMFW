@@ -2,8 +2,8 @@
 
 COMMENT =		highly flexible sniffer/NIDS
 
-DISTNAME =		snort-2.9.17.1
-RULESV =		29171
+DISTNAME =		snort-2.9.18.1
+RULESV =		29181
 SUBST_VARS =		RULESV
 
 CATEGORIES =		net security

@@ -3078,7 +3078,7 @@ class Model
 		}
 		return FALSE;
 	}
-	
+
 	/**
 	 * Gets newsyslog configuration for log file.
 	 *

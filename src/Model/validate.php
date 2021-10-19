@@ -109,7 +109,7 @@ define('RE_BLANK', "^\n{0,10}$");
 /// @todo Should we disallow $ and ` chars in comments?
 /// For example, define('RE_COMMENT_INLINE', '^[^$`]{0,100}$');
 define('RE_COMMENT_INLINE', '^[\s\S]{0,100}$');
-define('RE_COMMENT', '^[\s\S]{0,1000}$');
+define('RE_COMMENT', '^[\s\S]{0,2000}$');
 
 define('RE_ACTION', '^(pass|match|block)$');
 define('RE_BLOCKOPTION', '^(drop|return|return-rst|return-icmp|return-icmp6)$');

@@ -52,10 +52,11 @@ class Macro extends Rule
 		$this->sanitize();
 		$this->split();
 
-		$this->index= 0;
-		$this->rule['identifier']= $this->words[++$this->index];
+		$this->index= 1;
+		$this->rule['identifier']= '';
+		if (!$this->isEndOfWords())
+			$this->rule['identifier']= $this->words[$this->index++];
 
-		$this->index++;
 		$this->rule['value']= array();
 		while (!$this->isEndOfWords()) {
 			$this->rule['value'][]= $this->words[$this->index++];

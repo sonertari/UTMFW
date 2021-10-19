@@ -129,7 +129,7 @@ msgid "Cannot read config"
 msgstr "Yapılandırma okunamadı"
 
 msgid "Cannot remove tmp file"
-msgstr "Geçici dosyası silinemedi"
+msgstr "Geçici dosya silinemedi"
 
 msgid "Cannot remove tmp sslproxy file"
 msgstr "Geçici sslproxy dosyası silinemedi"

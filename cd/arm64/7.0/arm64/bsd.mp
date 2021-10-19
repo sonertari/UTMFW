@@ -1,1 +1,1 @@
-../../../../openbsd/6.9/arm64/bsd.mp
+../../../../openbsd/7.0/arm64/bsd.mp
