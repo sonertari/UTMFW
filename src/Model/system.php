@@ -1128,7 +1128,7 @@ class System extends Model
 			$intif= trim($intif, '"');
 			if ($if == '' || $if == $intif) {
 				if ($this->isWifiIf($intif)) {
-					// Clear all wifi configuration, ifconfig down or /etc/netstart don't clear them
+					// Clear all wifi configuration, ifconfig down and /etc/netstart don't clear them
 					$cmd[]= "/sbin/ifconfig $intif -mediaopt hostap -nwid -wpakey -nwkey 2>&1";
 				}
 				$cmd[]= "/sbin/ifconfig $intif down 2>&1";
@@ -1142,6 +1142,10 @@ class System extends Model
 		if ($extif !== FALSE) {
 			$extif= trim($extif, '"');
 			if ($if == '' || $if == $extif) {
+				if ($this->isWifiIf($extif)) {
+					// Clear all wifi configuration, ifconfig down and /etc/netstart don't clear them
+					$cmd[]= "/sbin/ifconfig $extif -mediaopt hostap -nwid -wpakey -nwkey 2>&1";
+				}
 				$cmd[]= "/sbin/ifconfig $extif down 2>&1";
 			}
 		} else {
@@ -1156,6 +1160,8 @@ class System extends Model
 			if ($gateway !== '') {
 				$cmd[]= "/usr/sbin/arp -nd $gateway 2>&1";
 			}
+			// Delete the current default route, so we are sure we load the pf rules after the new default route is set
+			$cmd[]= "/sbin/route delete default 2>&1";
 		}
 
 		// Pass $if as arg, passing empty string is fine
@@ -1174,13 +1180,14 @@ class System extends Model
 			}
 		}
 
-		$cmdline= implode(' && ', $cmd);
+		// Implode with ';' not '&&', any of the commands can fail, but we should exec the others
+		$cmdline= implode(' ; ', $cmd);
 
 		exec($cmdline, $output, $retval);
 		$errout= implode("\n", $output);
 		Error($errout);
 
-		// Refresh pf rules too
+		// Refresh the pf rules too
 		$retval&= $this->reloadPfRules();
 
 		if ($retval === 0) {
@@ -1194,7 +1201,7 @@ class System extends Model
 	{
 		$cmd= "/sbin/route -n show | grep -q ^default";
 		$count= 0;
-		while ($count++ < 10) {
+		while ($count++ < 20) {
 			exec($cmd, $output, $retval);
 			if ($retval === 0) {
 				break;
