@@ -123,10 +123,12 @@ class ProxySpecLine extends Rule
 				case 1:
 					$this->rule['addr']= $word;
 					$state++;
+					$this->index++;
 					break;
 				case 2:
 					$this->rule['port']= $word;
 					$state++;
+					$this->index++;
 					break;
 				case 3:
 					$state++;
@@ -143,6 +145,7 @@ class ProxySpecLine extends Rule
 						if (!$this->isEndOfWords()) {
 							if (preg_match('/^ra:(.+)$/', $this->words[$this->index], $match)) {
 								$this->rule['returnaddress']= $match[1];
+								$this->index++;
 							}
 						}
 						break;
@@ -159,19 +162,19 @@ class ProxySpecLine extends Rule
 						$this->rule['targetaddress']= $word;
 						$state++;
 					}
+					$this->index++;
 					break;
 				case 5:
 					$this->rule['targetport']= $word;
 					$finished= TRUE;
+					$this->index++;
 					break;
 				case 6:
 					$this->rule['sniport']= $word;
 					$finished= TRUE;
-					break;
-				default:
+					$this->index++;
 					break;
 			}
-			$this->index++;
 		}
 	}
 
