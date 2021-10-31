@@ -24,6 +24,7 @@ $ruleCategoryNames = array(
 	'proxyspecline' => _CONTROL('ProxySpecLine'),
 	'proxyspecstruct' => _CONTROL('ProxySpecStruct'),
 	'filter' => _CONTROL('Filter'),
+	'filterstruct' => _CONTROL('FilterStruct'),
 	'macro' => _CONTROL('Macro'),
 	'option' => _CONTROL('Option'),
 	'include' => _CONTROL('Include'),
@@ -35,6 +36,7 @@ $ruleType2Class= array(
 	'proxyspecline' => 'ProxySpecLine',
 	'proxyspecstruct' => 'ProxySpecStruct',
 	'filter' => 'Filter',
+	'filterstruct' => 'FilterStruct',
 	'macro' => 'Macro',
 	'option' => 'Option',
 	'include' => '_Include',
@@ -61,6 +63,7 @@ $Options= array(
 	'SSLCompression',
 	'ForceSSLProto',
 	'DisableSSLProto',
+	'EnableSSLProto',
 	'MinSSLProto',
 	'MaxSSLProto',
 	'Ciphers',
@@ -126,11 +129,13 @@ $ProxySpecStructOptions= array(
 	'ClientCert',
 	'ClientKey',
 	'CAChain',
+	'LeafCRLURL',
 	'DHGroupParams',
 	'ECDHCurve',
 	'SSLCompression',
 	'ForceSSLProto',
 	'DisableSSLProto',
+	'EnableSSLProto',
 	'MinSSLProto',
 	'MaxSSLProto',
 	'Ciphers',
@@ -138,15 +143,58 @@ $ProxySpecStructOptions= array(
 	'RemoveHTTPAcceptEncoding',
 	'RemoveHTTPReferer',
 	'VerifyPeer',
+	'AllowWrongHost',
 	'UserAuth',
 	'DivertUsers',
 	'PassUsers',
 	'UserTimeout',
 	'UserAuthURL',
 	'ValidateProto',
+	'MaxHTTPHeaderSize',
 	'PassSite',
 	'Define',
-	'Divert',
+);
+
+$FilterStructOptions= array(
+	'Action',
+	'User',
+	'Desc',
+	'SrcIp',
+	'SNI',
+	'CN',
+	'Host',
+	'URI',
+	'DstIp',
+	'DstPort',
+	'LogAction',
+	'ReconnectSSL',
+	'DenyOCSP',
+	'Passthrough',
+	'CACert',
+	'CAKey',
+	'ClientCert',
+	'ClientKey',
+	'CAChain',
+	'LeafCRLURL',
+	'DHGroupParams',
+	'ECDHCurve',
+	'SSLCompression',
+	'ForceSSLProto',
+	'DisableSSLProto',
+	'EnableSSLProto',
+	'MinSSLProto',
+	'MaxSSLProto',
+	'Ciphers',
+	'CipherSuites',
+	'RemoveHTTPAcceptEncoding',
+	'RemoveHTTPReferer',
+	'VerifyPeer',
+	'AllowWrongHost',
+	'UserAuth',
+	'UserTimeout',
+	'UserAuthURL',
+	'ValidateProto',
+	'MaxHTTPHeaderSize',
 );
 
 if (filter_has_var(INPUT_GET, 'sender') && array_key_exists(filter_input(INPUT_GET, 'sender'), $ruleCategoryNames)) {
@@ -198,10 +246,11 @@ if (filter_has_var(INPUT_POST, 'ruleNumber') && filter_input(INPUT_POST, 'ruleNu
 $nested= FALSE;
 // Set the nested var for the edit and add buttons only, because they open a new edit page, hence nested editing
 // The other buttons stay on the same edit page, hence not nested editing
-if (filter_has_var(INPUT_POST, 'nested') && (filter_has_var(INPUT_POST, 'edit') || filter_has_var(INPUT_POST, 'add'))) {
+// Or set the nested var for all of the buttons on the plain edit page itself (editpage), if nested input is set
+if (filter_has_var(INPUT_POST, 'nested') && (filter_has_var(INPUT_POST, 'edit') || filter_has_var(INPUT_POST, 'add') || filter_has_var(INPUT_POST, 'editpage'))) {
 	$nested= TRUE;
 }
-// Only the edit button submits the nested field in dispEditLinks(), and only for the Include and ProxySpecStruct type of rules
+// Only the edit button submits the nested field in dispEditLinks(), and only for the Include, ProxySpecStruct, and FilterStruct type of rules
 if (filter_has_var(INPUT_GET, 'nested')) {
 	$nested= TRUE;
 }
@@ -209,7 +258,7 @@ if (filter_has_var(INPUT_GET, 'nested')) {
 if (isset($edit) || isset($_SESSION['saved_edit'])) {
 	if (isset($edit)) {
 		$cat= $ruleType2Class[$edit];
-		if (($cat == 'ProxySpecStruct' || $cat == '_Include') && isset($_SESSION['saved_edit']) && !$nested) {
+		if (($cat == 'ProxySpecStruct' || $cat == 'FilterStruct' || $cat == '_Include') && isset($_SESSION['saved_edit']) && !$nested) {
 			$mainRuleset= $_SESSION['saved_edit']['ruleset'];
 			$mainRuleNumber= $_SESSION['saved_edit']['ruleNumber'];
 			$mainRuleset->setupEditSession($cat, $mainRuleset, $action, $mainRuleNumber);
@@ -226,15 +275,36 @@ if (isset($edit) || isset($_SESSION['saved_edit'])) {
 		$action= $_SESSION['saved_edit']['action'];
 	}
 
-	if ($cat == 'ProxySpecStruct' && !$nested) {
-		require('conf.proxyspec.php');
+	if (($cat == 'ProxySpecStruct' || $cat == 'FilterStruct') && !$nested) {
+		unset($ruleCategoryNames['proxyspecline']);
+		unset($ruleCategoryNames['proxyspecstruct']);
+		unset($ruleCategoryNames['include']);
+
+		if ($cat == 'ProxySpecStruct') {
+			$baseCat= 'proxyspecstruct';
+			$ruleSetFilename= 'ProxySpecStruct';
+		}
+		else {
+			$baseCat= 'filterstruct';
+			$ruleSetFilename= 'FilterStruct';
+			unset($ruleCategoryNames['filter']);
+			unset($ruleCategoryNames['filterstruct']);
+		}
+
+		require('conf.rulestruct.php');
 	}
 	else if ($cat == '_Include' && !$nested) {
 		require('conf.include.php');
 	}
 	else {
-		if (isset($_SESSION['saved_edit']) && $_SESSION['saved_edit']['cat'] == 'ProxySpecStruct') {
-			$Options= $ProxySpecStructOptions;
+		$baseCat= 'none';
+		if (isset($_SESSION['saved_edit'])) {
+			if ($_SESSION['saved_edit']['cat'] == 'ProxySpecStruct') {
+				$Options= $ProxySpecStructOptions;
+			}
+			else if ($_SESSION['saved_edit']['cat'] == 'FilterStruct') {
+				$Options= $FilterStructOptions;
+			}
 		}
 		require('edit.php');
 	}

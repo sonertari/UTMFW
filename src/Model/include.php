@@ -60,9 +60,11 @@ require_once($MODEL_PATH.'/lib/Blank.php');
 
 require_once($MODEL_PATH.'/sslproxy/RuleSet.php');
 require_once($MODEL_PATH.'/sslproxy/Rule.php');
+require_once($MODEL_PATH.'/sslproxy/RuleStruct.php');
 require_once($MODEL_PATH.'/sslproxy/ProxySpecLine.php');
 require_once($MODEL_PATH.'/sslproxy/ProxySpecStruct.php');
 require_once($MODEL_PATH.'/sslproxy/Filter.php');
+require_once($MODEL_PATH.'/sslproxy/FilterStruct.php');
 require_once($MODEL_PATH.'/sslproxy/Macro.php');
 require_once($MODEL_PATH.'/sslproxy/Option.php');
 require_once($MODEL_PATH.'/sslproxy/Include.php');

@@ -151,7 +151,7 @@ class Rule
 	/**
 	 * Returns the number of extra lines.
 	 * 
-	 * Almost all rules occupy only one line, except possibly Blank, Comment, or ProxySpecStruct rules.
+	 * Almost all rules occupy only one line, except possibly Blank, Comment, ProxySpecStruct, or FilterStruct rules.
 	 * To compute the actual number of lines a rule occupy we need a method like this, which
 	 * those rule types override and return the extra number of lines they occupy.
 	 *
@@ -221,7 +221,7 @@ class Rule
 		global $ruleCategoryNames, $baseCat;
 
 		$nested= '';
-		if (($this->cat == '_Include' || $this->cat == 'ProxySpecStruct') && isset($baseCat)) {
+		if (($this->cat == '_Include' || $this->cat == 'ProxySpecStruct' || $this->cat == 'FilterStruct') && isset($baseCat)) {
 			$nested= '&nested='.$baseCat;
 		}
 		?>
@@ -655,9 +655,9 @@ class Rule
 	 */
 	function editHead($modified, $testResult, $generateResult, $action, $man= 'sslproxy')
 	{
-		global $ruleStr, $ruleCategoryNames;
+		global $ruleStr, $ruleCategoryNames, $baseCat;
 
-		if ($this->cat == '_Include' || $this->cat == 'ProxySpecStruct') {
+		if ($this->cat == '_Include' || $this->cat == 'ProxySpecStruct' || $this->cat == 'FilterStruct') {
 			if (filter_has_var(INPUT_POST, 'nested')) {
 				$nested= filter_input(INPUT_POST, 'nested');
 			}
@@ -686,6 +686,11 @@ class Rule
 				if (isset($nested)) {
 					?>
 					<input type="hidden" name="nested" value="<?php echo $nested ?>" />
+					<?php
+				}
+				if (isset($baseCat) && $baseCat == 'none') {
+					?>
+					<input type="hidden" name="editpage" value="<?php echo $nested ?>" />
 					<?php
 				}
 				?>

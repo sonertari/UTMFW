@@ -20,18 +20,18 @@
 
 namespace SSLproxy;
 
-class ProxySpecStruct extends RuleStruct
+class FilterStruct extends RuleStruct
 {
-	protected $name= 'ProxySpec';
+	protected $name= 'FilterRule';
 	protected $title;
 	protected $placeHolder;
-	protected $editHelp= 'proxyspec';
-	protected $cssClass= 'proxyspec';
+	protected $editHelp= 'Filter';
+	protected $cssClass= 'filterrule';
 
 	function __construct()
 	{
-		$this->title= _TITLE('Structured ProxySpec');
-		$this->placeHolder= _CONTROL('Enter proxy specifications here');
+		$this->title= _TITLE('Structured Filter Rule');
+		$this->placeHolder= _CONTROL('Enter filtering rule here');
 
 		parent::__construct($str);
 	}

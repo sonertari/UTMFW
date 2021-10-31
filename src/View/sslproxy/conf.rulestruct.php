@@ -22,7 +22,20 @@ use SSLproxy\RuleSet;
 
 require_once('sslproxy.php');
 
-$baseCat= 'proxyspecstruct';
+function indentLines(&$lines)
+{
+	$lines= explode("\n", trim(implode("\n", $lines)));
+	$nesting_count= 1;
+	for ($i= 0; $i < count($lines); $i++) {
+		if (preg_match('/^\s*}\s*$/', $lines[$i])) {
+			$nesting_count--;
+		}
+		$lines[$i]= str_repeat("\t", $nesting_count).trim($lines[$i]);
+		if (preg_match('/^\s*(ProxySpec|FilterRule)\s*{\s*$/', $lines[$i])) {
+			$nesting_count++;
+		}
+	}
+}
 
 if (!isset($_SESSION['saved_edit'])) {
 	$_SESSION['saved_edit']= array();
@@ -39,7 +52,7 @@ if (!isset($_SESSION['saved_edit'])) {
 	}
 
 	$ruleSet= new RuleSet();
-	$ruleSet->filename= 'ProxySpecStruct';
+	$ruleSet->filename= $ruleSetFilename;
 	$ruleSet->loadArray($rulesArray);
 
 	$_SESSION['sslproxy']['ruleset']= $ruleSet;
@@ -54,15 +67,12 @@ if (filter_has_var(INPUT_POST, 'inline')) {
 	$rulesArray= json_decode($Output[0], TRUE)['rules'];
 
 	$ruleSet= new RuleSet();
-	$ruleSet->filename= 'ProxySpecStruct';
+	$ruleSet->filename= $ruleSetFilename;
 	$ruleSet->loadArray($rulesArray);
 }
 else {
 	$generated= $View->Controller($inline, 'GenerateRules', json_encode($ruleSet->rules), 0, 1);
-	$inline= explode("\n", trim(implode("\n", $inline)));
-	for ($i= 0; $i < count($inline); $i++) {
-		$inline[$i]= "\t".trim($inline[$i]);
-	}
+	indentLines($inline);
 	$ruleObj->rule['inline']= implode("\n", $inline);
 }
 
@@ -124,10 +134,7 @@ $mainRuleset->cancel();
 $generateResult= $View->Controller($inline, 'GenerateRules', json_encode($ruleSet->rules), 0, 1);
 if ($generateResult) {
 	/// @attention Inline rules are multi-line, hence implode.
-	$inline= explode("\n", trim(implode("\n", $inline)));
-	for ($i= 0; $i < count($inline); $i++) {
-		$inline[$i]= "\t".trim($inline[$i]);
-	}
+	indentLines($inline);
 	$ruleObj->rule['inline']= implode("\n", $inline);
 }
 
@@ -184,9 +191,6 @@ require_once($VIEW_PATH.'/header.php');
 		<select id="category" name="category">
 			<option value="all"><?php echo _CONTROL('All') ?></option>
 			<?php
-			unset($ruleCategoryNames['proxyspecline']);
-			unset($ruleCategoryNames['proxyspecstruct']);
-			unset($ruleCategoryNames['include']);
 			foreach ($ruleCategoryNames as $category => $name) {
 				?>
 				<option value="<?php echo $category; ?>" <?php echo (filter_input(INPUT_POST, 'category') == $category || $show == $category ? 'selected' : ''); ?>><?php echo $name; ?></option>
@@ -203,7 +207,7 @@ require_once($VIEW_PATH.'/header.php');
 		<input type="submit" name="move" value="<?php echo _CONTROL('Move') ?>" />
 		<input type="submit" id="deleteAll" name="deleteAll" value="<?php echo _CONTROL('Delete All') ?>" onclick="return confirm('<?php echo _CONTROL('Are you sure you want to delete the entire ruleset?') ?>')"/>
 		<input type="submit" name="parse" value="<?php echo _CONTROL('Parse') ?>"  title="<?php echo _TITLE('Merges separated comments') ?>"/>
-		<input type="hidden" name="nested" value="proxyspecstruct" />
+		<input type="hidden" name="nested" value="<?php echo $$baseCat ?>" />
 	</form>
 </fieldset>
 <table id="logline">

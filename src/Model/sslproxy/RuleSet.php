@@ -160,7 +160,7 @@ class RuleSet
 				}
 			}
 
-			if ($type === 'ProxySpec' && preg_match('/^.*{\s*$/', $str)) {
+			if (($type === 'ProxySpec' || $type === 'FilterRule') && preg_match('/^.*{\s*$/', $str)) {
 				$this->parseInlineRules($ruleLines, $str, $index, $force);
 			}
 
@@ -201,6 +201,9 @@ class RuleSet
 				case 'Block':
 				case 'Match':
 					$this->rules[]= new Filter($str);
+					break;
+				case 'FilterRule':
+					$this->rules[]= new FilterStruct($str);
 					break;
 				case 'ProxySpec':
 					if (isset($words[1]) && ($words[1] == '{'))
@@ -270,15 +273,15 @@ class RuleSet
 			while ($index < count($ruleLines)) {
 				$line= $ruleLines[$index];
 
-				// proxyspec-close = "}", but there may be a comment after it, hence match
+				// rule-close = "}", but there may be a comment after it, hence match
 				if (!preg_match('/^\s*}(.*)$/', $line, $match)) {
 					$str.= "$line\n";
 					/// @todo Use recursion instead?
 					if (preg_match('/^.*{\s*$/', $line)) {
-						// Do not allow nested structured proxyspecs
-						if (++$nesting > 1) {
-							Error(_('Parse Error') . ': ' . _('Reached max nesting for structured proxyspecs') . ': <pre>' . htmlentities(print_r($line, TRUE)) . '</pre>');
-							ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Parse Error: Reached max nesting for structured proxyspecs: $line");
+						// Do not allow more than 2x nested structured rules, e.g. ProxySpec with FilterRule
+						if (++$nesting > 2) {
+							Error(_('Parse Error') . ': ' . _('Reached max nesting for structured rules') . ': <pre>' . htmlentities(print_r($line, TRUE)) . '</pre>');
+							ctlr_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Parse Error: Reached max nesting for structured rules: $line");
 							if (!$force) {
 								break;
 							}
@@ -286,11 +289,11 @@ class RuleSet
 					}
 				} else {
 					if (--$nesting == 0) {
-						// Discard the last proxyspec-close, keep the trailing text
+						// Discard the last rule-close, keep the trailing text
 						$str.= $match[1] . "\n";
 						break;
 					} else {
-						// Don't discard the proxyspec-close of structured proxyspecs
+						// Don't discard the rule-close of structured rules
 						$str.= "$line\n";
 					}
 				}

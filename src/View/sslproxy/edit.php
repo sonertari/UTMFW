@@ -27,7 +27,7 @@ require_once ('sslproxy.php');
 if (isset($edit) && array_key_exists($edit, $ruleType2Class)) {
 	$ruleObj->input();
 
-	if (isset($_SESSION['saved_edit']) && $_SESSION['saved_edit']['cat'] == 'ProxySpecStruct') {
+	if (isset($_SESSION['saved_edit']) && ($_SESSION['saved_edit']['cat'] == 'ProxySpecStruct' || $_SESSION['saved_edit']['cat'] == 'FilterStruct')) {
 		$mainRuleset= $_SESSION['saved_edit']['ruleset'];
 		$mainRuleNumber= $_SESSION['saved_edit']['ruleNumber'];
 		$mainRuleObj= $_SESSION['saved_edit']['object'];
