@@ -166,7 +166,7 @@ $FilterStructOptions= array(
 	'URI',
 	'DstIp',
 	'DstPort',
-	'LogAction',
+	'Log',
 	'ReconnectSSL',
 	'DenyOCSP',
 	'Passthrough',
