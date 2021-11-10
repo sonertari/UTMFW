@@ -33,8 +33,6 @@ class Sslproxy extends Model
 	public $ConfPath= '/etc/sslproxy';
 	public $ConfFile= '/etc/sslproxy/sslproxy.conf';
 
-	public $ReloadCmd= '/usr/bin/pkill -HUP sslproxy 2>&1';
-
 	public $LogFile= '/var/log/sslproxy/sslproxy.log';
 	
 	public $VersionCmd= '/usr/local/bin/sslproxy -V 2>&1';
@@ -47,6 +45,9 @@ class Sslproxy extends Model
 		
 		$this->Proc= 'sslproxy';
 		$this->StartCmd= "/usr/local/bin/sslproxy -f $this->ConfFile";
+		// sslproxy only restarts loggers upon receiving the HUP signal,
+		// so we have to stop and restart it to reload its configuration
+		$this->ReloadCmd= "/usr/bin/pkill sslproxy 2>&1; $this->StartCmd 2>&1";
 
 		$this->Commands= array_merge(
 			$this->Commands,
