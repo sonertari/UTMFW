@@ -1,0 +1,13 @@
+--- tree.c.orig	Mon Oct 18 02:47:25 2021
++++ tree.c	Mon Oct 18 10:34:29 2021
+@@ -409,8 +409,8 @@
+       table->filedir = this_dir;
+       table->de_flags    |= INHIBIT_JOLIET_ENTRY;
+       table->name = strdup("<translation table>");
+-      table->table = (char *) e_malloc(ROUND_UP(tablesize));
+-      memset(table->table, 0, ROUND_UP(tablesize));
++      table->table = (char *) e_malloc(ROUND_UP(tablesize + 1));
++      memset(table->table, 0, ROUND_UP(tablesize + 1));
+ #ifdef APPLE_HYB
+       iso9660_file_length  (trans_tbl, table, 0);
+ #else
