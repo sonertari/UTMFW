@@ -498,7 +498,7 @@ class System extends Model
 	 */
 	function GetNameServer()
 	{
-		return Output($this->SearchFile($this->confDir.'resolv.conf', "/^\h*nameserver\h*([^#]*)\h*$/m"));
+		return Output($this->SearchFile($this->confDir.'resolv.conf', "/^\h*nameserver\h*([^#]*)\h*/m"));
 	}
 
 	/**

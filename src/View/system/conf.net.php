@@ -351,7 +351,7 @@ require_once($VIEW_PATH.'/header.php');
 		</td>
 		<td class="none">
 			<?php
-			PrintHelpBox(_HELPBOX('This is the name server used by the system. You can use the DNS server on the system, i.e. enter 127.0.0.1 here.'));
+			PrintHelpBox(_HELPBOX('This is the name server used by the system. You can use the DNS server on the system, i.e. enter 127.0.0.1 here. Since resolvd rewrites this value if it is edited, you should stop the resolvd for your modification to persist.'));
 			?>
 		</td>
 	</tr>
