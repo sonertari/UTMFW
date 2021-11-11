@@ -3711,6 +3711,16 @@ out:
 			ctlr_syslog(LOG_DEBUG, __FILE__, __FUNCTION__, __LINE__, 'Running command');
 			exec($cmd, $output, $retval);
 
+			define('MAX_OUTPUT_SIZE', 20);
+			$count= count($output);
+			if (count($output) > MAX_OUTPUT_SIZE) {
+				$head= array_slice($output, 0, MAX_OUTPUT_SIZE / 2);
+				$tail= array_slice($output, $count - MAX_OUTPUT_SIZE / 2, MAX_OUTPUT_SIZE / 2);
+				$not_shown_count= $count - MAX_OUTPUT_SIZE;
+				$output= array_merge($head, array("... And $not_shown_count output lines not shown ..."), $tail);
+				ctlr_syslog(LOG_WARNING, __FILE__, __FUNCTION__, __LINE__, 'Output truncated: ' . print_r($output, TRUE));
+			}
+
 			$msg= array(
 				'retval' => $retval,
 				'output' => $output
