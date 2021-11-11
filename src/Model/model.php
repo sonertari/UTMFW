@@ -3713,7 +3713,7 @@ out:
 
 			define('MAX_OUTPUT_SIZE', 20);
 			$count= count($output);
-			if (count($output) > MAX_OUTPUT_SIZE) {
+			if ($count > MAX_OUTPUT_SIZE) {
 				$head= array_slice($output, 0, MAX_OUTPUT_SIZE / 2);
 				$tail= array_slice($output, $count - MAX_OUTPUT_SIZE / 2, MAX_OUTPUT_SIZE / 2);
 				$not_shown_count= $count - MAX_OUTPUT_SIZE;

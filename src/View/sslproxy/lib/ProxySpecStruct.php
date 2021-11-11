@@ -33,7 +33,7 @@ class ProxySpecStruct extends RuleStruct
 		$this->title= _TITLE('Structured ProxySpec');
 		$this->placeHolder= _CONTROL('Enter proxy specifications here');
 
-		parent::__construct($str);
+		parent::__construct();
 	}
 }
 ?>

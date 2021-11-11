@@ -33,7 +33,7 @@ class FilterStruct extends RuleStruct
 		$this->title= _TITLE('Structured Filter Rule');
 		$this->placeHolder= _CONTROL('Enter filtering rule here');
 
-		parent::__construct($str);
+		parent::__construct();
 	}
 }
 ?>
