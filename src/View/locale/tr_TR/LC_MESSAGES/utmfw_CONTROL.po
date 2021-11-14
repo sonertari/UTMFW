@@ -148,6 +148,9 @@ msgstr "Buraya boş satır girin"
 msgid "Enter comment here"
 msgstr "Buraya yorum girin"
 
+msgid "Enter filtering rule here"
+msgstr "Buraya elek kuralı girin"
+
 msgid "Enter inline rules here"
 msgstr "Buraya satıriçi kuralları girin"
 
@@ -156,6 +159,9 @@ msgstr "Buraya vekil tanımlamasını girin"
 
 msgid "Filter"
 msgstr "Elek"
+
+msgid "FilterStruct"
+msgstr "Yapısal Elek"
 
 msgid "Generate"
 msgstr "Üret"

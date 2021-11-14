@@ -1662,6 +1662,9 @@ msgstr ""
 msgid "Enter comment here"
 msgstr ""
 
+msgid "Enter filtering rule here"
+msgstr ""
+
 msgid "Enter inline rules here"
 msgstr ""
 
@@ -1868,6 +1871,9 @@ msgid "Filter group name"
 msgstr ""
 
 msgid "Filter group not found"
+msgstr ""
+
+msgid "FilterStruct"
 msgstr ""
 
 msgid "Filtered minutes"
@@ -2985,7 +2991,7 @@ msgstr ""
 msgid "Invalid rule number"
 msgstr ""
 
-msgid "Invalid structured proxyspec, parser output"
+msgid "Invalid structured rule, parser output"
 msgstr ""
 
 msgid "Invalid value"
@@ -4313,7 +4319,7 @@ msgstr ""
 msgid "Reached max nesting for inline anchors"
 msgstr ""
 
-msgid "Reached max nesting for structured proxyspecs"
+msgid "Reached max nesting for structured rules"
 msgstr ""
 
 msgid "Read system gateway"
@@ -5634,6 +5640,9 @@ msgstr ""
 msgid "String wrong"
 msgstr ""
 
+msgid "Structured Filter Rule"
+msgstr ""
+
 msgid "Structured ProxySpec"
 msgstr ""
 
@@ -6197,7 +6206,8 @@ msgstr ""
 
 msgid ""
 "This is the name server used by the system. You can use the DNS server on "
-"the system, i.e. enter 127.0.0.1 here."
+"the system, i.e. enter 127.0.0.1 here. Since resolvd rewrites this value if "
+"it is edited, you should stop the resolvd for your modification to persist."
 msgstr ""
 
 msgid ""

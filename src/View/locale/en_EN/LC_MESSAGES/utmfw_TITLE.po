@@ -933,6 +933,9 @@ msgstr ""
 msgid "Stopped"
 msgstr ""
 
+msgid "Structured Filter Rule"
+msgstr ""
+
 msgid "Structured ProxySpec"
 msgstr ""
 

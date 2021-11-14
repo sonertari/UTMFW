@@ -954,6 +954,9 @@ msgstr "Durum"
 msgid "Stopped"
 msgstr "Durmuş"
 
+msgid "Structured Filter Rule"
+msgstr "Yapısal Elek Kuralı"
+
 msgid "Structured ProxySpec"
 msgstr "Yapısal Vekil Tanımı"
 

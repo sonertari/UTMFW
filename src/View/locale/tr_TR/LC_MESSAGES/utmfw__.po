@@ -695,8 +695,8 @@ msgstr "Saldırı Tespit"
 msgid "Invalid inline rules, parser output"
 msgstr "Geçersiz satıriçi kurallar, işleme çıktısı"
 
-msgid "Invalid structured proxyspec, parser output"
-msgstr "Geçersiz yapısal vekil tanımı, işleme çıktısı"
+msgid "Invalid structured rule, parser output"
+msgstr "Geçersiz yapısal kural, işleme çıktısı"
 
 msgid "Invalid value"
 msgstr "Geçersiz değer"
@@ -862,8 +862,8 @@ msgstr "RSS"
 msgid "Reached max nesting for inline anchors"
 msgstr "Satıriçi çapalar için en fazla içiçe sayıya ulaşıldı"
 
-msgid "Reached max nesting for structured proxyspecs"
-msgstr "Yapısal vekil tanımı için en fazla içiçe sayıya ulaşıldı"
+msgid "Reached max nesting for structured rules"
+msgstr "Yapısal kural için en fazla içiçe sayıya ulaşıldı"
 
 msgid "Read system gateway"
 msgstr "Sistem ağ geçidini getir"

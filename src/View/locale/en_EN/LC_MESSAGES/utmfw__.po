@@ -676,7 +676,7 @@ msgstr ""
 msgid "Invalid inline rules, parser output"
 msgstr ""
 
-msgid "Invalid structured proxyspec, parser output"
+msgid "Invalid structured rule, parser output"
 msgstr ""
 
 msgid "Invalid value"
@@ -840,7 +840,7 @@ msgstr ""
 msgid "Reached max nesting for inline anchors"
 msgstr ""
 
-msgid "Reached max nesting for structured proxyspecs"
+msgid "Reached max nesting for structured rules"
 msgstr ""
 
 msgid "Read system gateway"
