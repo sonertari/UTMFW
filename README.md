@@ -251,7 +251,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 			+ collectd
 		+ Sign all of the UTMFW packages using signify, for example:
             ```
-            signify -Sz -s utmfw-XY.sec -m /usr/ports/packages/amd64/all/sslproxy-0.9.0.tgz -x ~/sslproxy-0.9.0.tgz
+            signify -Sz -s utmfw-XY.sec -m /usr/ports/packages/amd64/all/sslproxy-0.9.2.tgz -x ~/sslproxy-0.9.2.tgz
             ```
 	+ Update the links under cd/amd64/X.Y/packages/ with the UTMFW packages made above
 

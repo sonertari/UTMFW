@@ -136,6 +136,11 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
               Disable SSL/TLS protocol version. Equivalent to -R command line
               option.
               Default: none
+<a name="EnableSSLProto"></a>
+       <span class="bold">EnableSSLProto</span> <span class="bold">STRING</span>
+              Enable SSL/TLS protocol version. Equivalent to -B command line
+              option.
+              Default: all
 <a name="MinSSLProto"></a>
        <span class="bold">MinSSLProto</span> <span class="bold">STRING</span>
               Min SSL/TLS protocol version.
@@ -375,7 +380,7 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
               Match filtering rule specifies log actions for the connection
               without changing its filter action.
 
-              The syntax of filtering rules is as follows:
+              The syntax of one line filtering rules is as follows:
 
               (Divert|Split|Pass|Block|Match)
                ([from (
@@ -397,6 +402,54 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
                 |*) [# comment]
 
               See sslproxy(1) for the details.
+<a name="FilterStruct"></a>
+       <span class="bold">FilterRule</span> <span class="bold">{</span>
+              Action
+              User
+              Desc
+              SrcIp
+              SNI
+              CN
+              Host
+              URI
+              DstIp
+              DstPort
+              Log
+              ReconnectSSL
+              DenyOCSP
+              Passthrough
+              CACert
+              CAKey
+              ClientCert
+              ClientKey
+              CAChain
+              LeafCRLURL
+              DHGroupParams
+              ECDHCurve
+              SSLCompression (yes|no)
+              ForceSSLProto
+              DisableSSLProto
+              EnableSSLProto
+              MinSSLProto
+              MaxSSLProto
+              Ciphers
+              CipherSuites
+              RemoveHTTPAcceptEncoding
+              RemoveHTTPReferer
+              VerifyPeer
+              AllowWrongHost
+              UserAuth
+              UserTimeout
+              UserAuthURL
+              ValidateProto
+              MaxHTTPHeaderSize
+              <span class="bold">}</span>
+              Structured filtering rules can specify all possible connection
+              options to be selectively applied to matching connections, not
+              just per-proxyspec or globally. One line filtering rules cannot
+              specify connection options.
+
+              See sslproxy(1) for the details.
 <a name="ProxySpecLine"></a>
        <span class="bold">ProxySpec</span> <span class="bold">STRING</span>
               One line proxy specification: type listenaddr+port up:port
@@ -408,14 +461,14 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
               Proto
               Addr
               Port
-              Divert
-              DivertAddr
               DivertPort
+              DivertAddr
               ReturnAddr
-              NatEngine
-              SNIPort
               TargetAddr
               TargetPort
+              SNIPort
+              NatEngine
+              Divert
               DenyOCSP
               Passthrough
               CACert
@@ -423,11 +476,13 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
               ClientCert
               ClientKey
               CAChain
+              LeafCRLURL
               DHGroupParams
               ECDHCurve
               SSLCompression
               ForceSSLProto
               DisableSSLProto
+              EnableSSLProto
               MinSSLProto
               MaxSSLProto
               Ciphers
@@ -435,15 +490,18 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
               RemoveHTTPAcceptEncoding
               RemoveHTTPReferer
               VerifyPeer
+              AllowWrongHost
               UserAuth
-              DivertUsers
-              PassUsers
               UserTimeout
               UserAuthURL
               ValidateProto
+              MaxHTTPHeaderSize
+              DivertUsers
+              PassUsers
               PassSite
               Define
-              Divert|Split|Pass|Block|Match filtering rules
+              (Divert|Split|Pass|Block|Match) one line filtering rules
+              FilterRule {...} structured filtering rules
               <span class="bold">}</span>
 
               Structured proxy specifications may consist of the options
@@ -461,7 +519,7 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
 <span class="bold">SEE</span> <span class="bold">ALSO</span>
        sslproxy(1)
 
-v0.9.0                          21 October 2021               sslproxy.conf(5)
+v0.9.2                         13 November 2021               sslproxy.conf(5)
 </pre>
 </body>
 </html>
