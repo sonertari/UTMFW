@@ -148,7 +148,7 @@ define('SPRE_WORD', "^(${RE_ID}[*]{0,1}|$RE_MACRO_VAR|$SPRE_ALLNONE)$");
 define('SPRE_IP', "^(${RE_IP}[*]{0,1}|$RE_MACRO_VAR|$SPRE_ALLNONE)$");
 define('SPRE_PORT', "^(\d{1,5}[*]{0,1}|$RE_MACRO_VAR|$SPRE_ALLNONE)$");
 define('SPRE_HOST', "^([\w.\/_*]{1,100}|${RE_IP}[*]{0,1}|$RE_MACRO_VAR|$SPRE_ALLNONE)$");
-define('SPRE_LOG', "^([!]{0,1}(connect|master|cert|content|pcap|mirror)|$SPRE_ALLNONE)$");
+define('SPRE_LOG', "^([!]{0,1}(connect|master|cert|content|pcap|mirror)|$RE_MACRO_VAR|$SPRE_ALLNONE)$");
 define('SPRE_PROTO', "^(tcp|ssl|http|https|pop3|pop3s|smtp|smtps|autossl)$");
 define('SPRE_NATENGINE', "^(pf|ipfw|netfilter|tproxy)$");
 ?>
