@@ -18,9 +18,9 @@ touch /var/log/utmfw/.starting
 echo '\nStarting UTMFW services...'
 
 # Start PHP FastCGI server
-if [ -x /usr/local/sbin/php-fpm-8.0 ]; then
+if [ -x /usr/local/sbin/php-fpm-8.1 ]; then
 	echo 'PHP FastCGI server'
-	/usr/local/sbin/php-fpm-8.0
+	/usr/local/sbin/php-fpm-8.1
 fi
 
 if [ -x /usr/local/sbin/dnsmasq ]; then

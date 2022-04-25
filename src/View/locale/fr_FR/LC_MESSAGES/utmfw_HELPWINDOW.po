@@ -1,9 +1,9 @@
-# Copyright (C) 2004-2021 Soner Tari, The UTMFW project
+# Copyright (C) 2004-2022 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
 # AGASSE Baptiste <baptiste.agasse@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: UTMFW 7.0\n"
+"Project-Id-Version: UTMFW 7.1\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
 "PO-Revision-Date: 2009-12-07 19:47+0100\n"

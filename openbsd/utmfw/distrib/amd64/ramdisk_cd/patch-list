@@ -1,6 +1,6 @@
---- list.orig	Thu Nov 28 15:15:10 2019
-+++ list	Thu Nov 28 15:17:45 2019
-@@ -104,6 +104,7 @@
+--- list.orig	Mon Oct  4 04:34:29 2021
++++ list	Sat Apr 23 19:58:52 2022
+@@ -116,6 +116,7 @@
  COPY	${CURDIR}/../../miniroot/master.passwd	etc/master.passwd
  SPECIAL	pwd_mkdb -p -d etc master.passwd; rm etc/master.passwd
  COPY	${DESTDIR}/etc/signify/openbsd-${OSrev}-base.pub	etc/signify/openbsd-${OSrev}-base.pub

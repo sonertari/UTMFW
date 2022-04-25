@@ -1,12 +1,12 @@
-From sonertari@gmail.com Mon Nov 15 07:00:01 EET 2021
+From sonertari@gmail.com Sun Apr 24 07:01:00 EET 2022
 Return-Path: root
-Date: Nov 15 07:00:01 EET 2021
+Date: Apr 24 07:01:00 EET 2022
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 7.0.1!
+Subject: Welcome to UTMFW 7.1!
 
 The highlights of this release are:
 
-- Structured filtering rules in SSLproxy 0.9.2
-- OpenBSD 7.0-stable
+- OpenBSD 7.1-stable
+- SSLproxy 0.9.3
 

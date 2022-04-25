@@ -1,4 +1,4 @@
-#	$OpenBSD: rc,v 1.554 2021/09/01 08:15:53 deraadt Exp $
+#	$OpenBSD: rc,v 1.556 2022/01/17 04:12:15 jsg Exp $
 
 # System startup script run by init on autoboot or after single-user.
 # Output and error are redirected to console by init, and the console is the
@@ -185,7 +185,7 @@ reorder_libs() {
 
 	echo -n 'reordering libraries:'
 
-	# Remount the (read-only) filessystems in _ro_list as read-write.
+	# Remount the (read-only) filesystems in _ro_list as read-write.
 	for _mp in $_ro_list; do
 		if ! mount -u -w $_mp; then
 			echo ' failed.'
@@ -654,7 +654,7 @@ echo 'preserving editor files.'; /usr/libexec/vi.recover
 run_upgrade_script sysmerge
 
 echo -n 'starting network daemons:'
-start_daemon ldomd sshd switchd snmpd ldpd ripd ospfd ospf6d bgpd ifstated
+start_daemon ldomd sshd snmpd ldpd ripd ospfd ospf6d bgpd ifstated
 start_daemon relayd dhcpd dhcrelay mrouted dvmrpd radiusd eigrpd route6d
 start_daemon rad hostapd lpd smtpd slowcgi httpd ftpd
 start_daemon ftpproxy ftpproxy6 tftpd tftpproxy identd inetd rarpd bootparamd

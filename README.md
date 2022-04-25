@@ -2,7 +2,7 @@
 
 UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW), which can display the notifications sent from UTMFW, and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.0.1 comes with OpenBSD 7.0-stable including all updates until November 13th, 2021.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.1 comes with OpenBSD 7.1-stable including all updates until April 24th, 2022.
 
 UTMFW supports the deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -14,9 +14,9 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The UTMFW project releases two installation files:
 
-- The installation iso file for the amd64 arch is available for download at [utmfw70\_20211116\_amd64.iso](https://drive.google.com/file/d/1uII0qZOf7iJjHN3se05K0Q9GtDQ32LNQ/view?usp=sharing). Make sure the SHA256 checksum is correct: 9b2632eef3630f0847f7ca4d933ca9a8b7a1cc2550594d48e8e1d59d132005a2.
+- The installation iso file for the amd64 arch is available for download at [utmfw71\_20220422\_amd64.iso](https://drive.google.com/file/d/1uII0qZOf7iJjHN3se05K0Q9GtDQ32LNQ/view?usp=sharing). Make sure the SHA256 checksum is correct: 9b2632eef3630f0847f7ca4d933ca9a8b7a1cc2550594d48e8e1d59d132005a2.
 
-- The installation img file for the arm64 arch is available for download at [utmfw70\_20211116\_arm64.img](https://drive.google.com/file/d/1WHgTc1bng2MzEvMr1nYW690f3Mp6EHoF/view?usp=sharing). Make sure the SHA256 checksum is correct: 734ae36b6f3219b8a3ee2aac43ec2c56af3f2b64c5dbac6dc5eff71b43dfe4ef. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- The installation img file for the arm64 arch is available for download at [utmfw71\_20220422\_arm64.img](https://drive.google.com/file/d/1WHgTc1bng2MzEvMr1nYW690f3Mp6EHoF/view?usp=sharing). Make sure the SHA256 checksum is correct: 734ae36b6f3219b8a3ee2aac43ec2c56af3f2b64c5dbac6dc5eff71b43dfe4ef. The only arm64 platform supported is Raspberry Pi 4 Model B.
 
 You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file for the amd64 arch into a bootable image you can write on a USB drive or an SD card.
 
@@ -117,7 +117,7 @@ A few notes about UTMFW installation:
 
 ## How to build
 
-The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 7.0 and have installed git, gettext, and doxygen on it.
+The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 7.1 and have installed git, gettext, and doxygen on it.
 
 ### Build summary
 
@@ -163,8 +163,8 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Create a local user, after reboot add it to /etc/doas.conf
 	+ Create a separate partition mounted on /dest, which will be needed to make release(8)
 	+ Add noperm to /dest in /etc/fstab
-    + Make /dest owned by build:wobj and set its perms to 700
-    + Create /dest/dest/ and /dest/rel/ folders
+	+ Make /dest owned by build:wobj and set its perms to 700
+	+ Create /dest/dest/ and /dest/rel/ folders
 
 - Fetch the UTMFW sources and update if upgrading:
 	+ Install git
@@ -200,20 +200,20 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 
 - Generate the signify key pair:
 	+ `signify -G -p utmfw-XY.pub -s utmfw-XY.sec`
-    + Save utmfw-XY.pub and utmfw-XY.sec to docs/signify
-    + Copy utmfw-XY.pub to meta/etc/signify/
-    + Copy utmfw-XY.pub to /etc/signify/, the utmfw-XY.pub file is copied into the bsd.rd file while making release(8), to verify install sets during installation
+	+ Save utmfw-XY.pub and utmfw-XY.sec to docs/signify
+	+ Copy utmfw-XY.pub to meta/etc/signify/
+	+ Copy utmfw-XY.pub to /etc/signify/, the utmfw-XY.pub file is copied into the bsd.rd file while making release(8), to verify install sets during installation
 
 - Update the packages for the amd64 arch, then do the same for the arm64 arch replacing amd64 with arm64 below:
 	+ Install the OpenBSD packages
 		+ Set the download mirror, use the existing cache if any
-            ```
-            export PKG_PATH=/var/db/pkg_cache/:https://cdn.openbsd.org/pub/OpenBSD/X.Y/packages/amd64/
-            ```
+			```
+			export PKG_PATH=/var/db/pkg_cache/:https://cdn.openbsd.org/pub/OpenBSD/X.Y/packages/amd64/
+			```
 		+ Save the depends under PKG_CACHE, which will be used later on to update the packages in the iso and img files
-            ```
-            export PKG_CACHE=/var/db/pkg_utmfw/
-            ```
+			```
+			export PKG_CACHE=/var/db/pkg_utmfw/
+			```
 		+ dnsmasq
 		+ clamav
 		+ p5-Mail-SpamAssassin
@@ -225,22 +225,23 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ pmacct
 		+ pftop
 		+ php, php-cgi, php-curl, php-pcntl, php-sqlite3
+		+ rsync
 
 	+ Build and create the UTMFW packages
 		+ Extract ports.tar.gz under /usr/ports/
 		+ Copy the port folders of the UTMFW packages under ports to /usr/ports/{net,security,www,devel,sysutils}
 		+ Obtain the snort sources, apply the snort diff under ports/distfiles, compress as tarball with the same name as the original tarball of the sources
-		+ Copy the source tarballs of the UTMFW packages to /user/ports/distfiles
+		+ Copy the source tarballs of the UTMFW packages to /usr/ports/distfiles
 		+ Append the daemon users of UTMFW packages to /usr/ports/infrastructure/db/user.list, but note that bsd.port.mk does not like blank lines at the bottom of user.list
-            ```
-            900 _p3scan             _p3scan         net/p3scan
-            901 _smtp-gated         _smtp-gated     net/smtp-gated
-            903 _imspector          _imspector      net/imspector
-            904 _sslproxy           _sslproxy       security/sslproxy
-            ```
+			```
+			900 _p3scan             _p3scan         net/p3scan
+			901 _smtp-gated         _smtp-gated     net/smtp-gated
+			903 _imspector          _imspector      net/imspector
+			904 _sslproxy           _sslproxy       security/sslproxy
+			```
 		+ Install the pkg depends of each UTMFW package before making them, so that the ports system does not try to build and install them itself
 		+ Make the UTMFW packages
-		    + libevent, if not using the OpenBSD package
+			+ libevent, if not using the OpenBSD package
 			+ sslproxy
 			+ p3scan
 			+ smtp-gated: use the source tarball under ports/distfiles
@@ -250,16 +251,16 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 			+ snort: use the source tarball generated above
 			+ collectd
 		+ Sign all of the UTMFW packages using signify, for example:
-            ```
-            signify -Sz -s utmfw-XY.sec -m /usr/ports/packages/amd64/all/sslproxy-0.9.2.tgz -x ~/sslproxy-0.9.2.tgz
-            ```
+			```
+			signify -Sz -s utmfw-XY.sec -m /usr/ports/packages/amd64/all/sslproxy-0.9.3.tgz -x ~/sslproxy-0.9.3.tgz
+			```
 	+ Update the links under cd/amd64/X.Y/packages/ with the UTMFW packages made above
 
 	+ Install the UTMFW packages using their signed packages, to download their dependencies
 		+ Save the depends under PKG_CACHE
-            ```
-            export PKG_CACHE=/var/db/pkg_utmfw/
-            ```
+			```
+			export PKG_CACHE=/var/db/pkg_utmfw/
+			```
 		+ libevent, if not using the OpenBSD package
 		+ sslproxy
 		+ p3scan
@@ -287,20 +288,20 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ collectd
 
 - Update meta/install.sub:
-    + Update the versions of the packages listed in THESETS
+	+ Update the versions of the packages listed in THESETS
 
 - Make release(8) for the amd64 arch, then do the same for the arm64 arch replacing amd64 with arm64 below:
-    + Extract src.tar.gz and and sys.tar.gz under /usr/src/
-    + Apply the patches under openbsd/utmfw
+	+ Extract src.tar.gz and and sys.tar.gz under /usr/src/
+	+ Apply the patches under openbsd/utmfw
 	+ Update the sources with the stable branch changes if any
 	+ Follow the instructions in release(8), this step takes about 6 hours on a relatively fast amd64 computer and about 55 hours on a Raspberry Pi 4
 		+ Build the kernel and reboot
 		+ Build the base system
 		+ Make the release, use the dest and rel folders created above:
-            ```
+			```
 			export DESTDIR=/dest/dest/ RELEASEDIR=/dest/rel/
-            ```
-    + Copy the install sets under /dest/rel/ to ~/OpenBSD/X.Y/amd64/
+			```
+	+ Copy the install sets under /dest/rel/ to ~/OpenBSD/X.Y/amd64/
 
 - Update the install sets:
 	+ Update the links for install sets under cd/amd64/X.Y/amd64 using the install sets under ~/OpenBSD/X.Y/amd64/ made above
@@ -314,19 +315,30 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Download and copy [the Broadcom wifi drivers](https://github.com/pftf/RPi4/tree/master/firmware/brcm) for Raspberry Pi 4 to ~/OpenBSD/X.Y/arm64/firmware/
 
 - Update the configuration files under config with the ones in the new versions of packages:
-    + Also update Doxyfile if the doxygen version has changed
+	+ Also update Doxyfile if the doxygen version has changed
 
 - Update PFRE and SPRE:
-    + Update PFRE and SPRE to their current versions, support changes in pf and sslproxy if any
-    + Create and install the man2web package
-    + Produce pf.conf.html from pf.conf(5), sslproxy.html from sslproxy(1), and sslproxy.conf.html from sslproxy.conf(5) using man2web
-    + Merge the PFRE and SPRE changes from the previous html files, most importantly the anchors
+	+ Update PFRE and SPRE to their current versions, support changes in pf and sslproxy if any
+	+ Create and install the man2web package
+	+ Produce pf.conf.html from pf.conf(5), sslproxy.html from sslproxy(1), and sslproxy.conf.html from sslproxy.conf(5) using man2web
+	+ Merge the PFRE and SPRE changes from the previous html files, most importantly the anchors
+
+- Update the PHP version numbers in the sources, both php and php-fpm, if upgrading PHP:
+	+ config/etc/php-X.Y/
+	+ config/etc/php-X.Y.ini
+	+ config/utmfw.files
+	+ config/utmfw.mtree
+	+ meta/install.sub
+	+ config/etc/rc.local
+	+ config/etc/syslog.conf
+	+ src/Model/system.php
+	+ src/View/system/conf.startup.php
 
 - Update phpseclib to its new version if any:
-    + Merge the UTMFW changes from the previous version
+	+ Merge the UTMFW changes from the previous version
 
 - Update d3js to its new version if any:
-    + Fix any issues caused by any API changes
+	+ Fix any issues caused by any API changes
 
 - Update the registered snortrules.tar.gz:
 	+ Make sure the directory structure is the same as the one in the old snortrules.tar.gz

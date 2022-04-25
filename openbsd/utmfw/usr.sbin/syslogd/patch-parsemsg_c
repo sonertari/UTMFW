@@ -1,0 +1,66 @@
+--- parsemsg.c.orig	Sat Apr 23 23:02:55 2022
++++ parsemsg.c	Sat Apr 23 23:21:05 2022
+@@ -24,6 +24,7 @@
+ #include <string.h>
+ #include <syslog.h>
+ 
++#include "log.h"
+ #include "parsemsg.h"
+ #include "syslogd.h"
+ 
+@@ -31,6 +32,9 @@
+ size_t parsemsg_timestamp_v1(const char *, char *);
+ size_t parsemsg_prog(const char *, char *);
+ 
++// In the order of priorities defined in syslog.h, so that m_pri can be used as index
++char *priority_names[] = {"EMERGENCY", "ALERT", "CRITICAL", "ERROR", "WARNING", "NOTICE", "INFO", "DEBUG"};
++
+ struct msg *
+ parsemsg(const char *msgstr, struct msg *msg)
+ {
+@@ -48,9 +52,42 @@
+ 	while (isspace(msgstr[0]))
+ 		msgstr++;
+ 
+-	parsemsg_prog(msgstr, msg->m_prog);
++	int i = parsemsg_prog(msgstr, msg->m_prog);
+ 
+-	strlcpy(msg->m_msg, msgstr, sizeof(msg->m_msg));
++    int insert_pri_name = 0;
++    if (msg->m_pri != -1) {
++        for (int j = 0; j < 10; j++) {
++	        if (msgstr[i + j] == ':') {
++		        insert_pri_name = 1;
++                i += j;
++		        break;
++	        }
++        }
++    }
++
++    if (insert_pri_name) {
++	    char *pri_name = priority_names[LOG_PRI(msg->m_pri)];
++
++	    int head_len = i + 2;
++	    char head[head_len + 1];
++	    strlcpy(head, msgstr, head_len);
++	    head[head_len] = '\0';
++	    log_debug("head= %s\n", head);
++
++	    const char *tail = msgstr + head_len;
++	    log_debug("tail= %s\n", tail);
++
++	    // +2 for ": "
++	    int new_msgstrlen = strlen(msgstr) + strlen(pri_name) + 2;
++
++	    char new_msgstr[new_msgstrlen + 1];
++	    snprintf(new_msgstr, new_msgstrlen + 1, "%s %s: %s", head, pri_name, tail);
++	    log_debug("new_msgstr= %s\n", new_msgstr);
++
++    	strlcpy(msg->m_msg, new_msgstr, sizeof(msg->m_msg));
++    } else {
++    	strlcpy(msg->m_msg, msgstr, sizeof(msg->m_msg));
++    }
+ 
+ 	return msg;
+ }
+

@@ -350,9 +350,13 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 <a name="DivertTo"></a>
      <span class="bold">divert-to</span> <span class="underline">host</span> <span class="bold">port</span> <span class="underline">port</span>
              Used to redirect packets to a local socket bound to <span class="underline">host</span> and
-             <span class="underline">port</span>.  The packets will not be modified, so getsockname(2) on the
-             socket will return the original destination address of the
-             packet.
+             <span class="underline">port</span>.  The packets will not be modified, preserving the original
+             destination address for the application to access.  SOCK_STREAM
+             connections can access the original destination address using
+             getsockname(2).  SOCK_DGRAM sockets can be configured with the
+             ip(4) IP_RECVDSTADDR and IP_RECVDSTPORT socket options when
+             receiving IPv4 packets, or the ip6(4) IPV6_RECVPKTINFO and
+             IPV6_RECVDSTPORT socket options when receiving IPv6 packets.
 <a name="flags"></a>
      <span class="bold">flags</span> <span class="underline">a</span>/<span class="underline">b</span> | <span class="bold">any</span>
              This rule only applies to TCP packets that have the flags <span class="underline">a</span> set
@@ -631,7 +635,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                It is possible to embed a complete IPv4 address into an IPv6
                address using a network prefix of /96 or smaller.
 
-               When a destination address is not specified it is assumed that
+               When a destination address is not specified, it is assumed that
                the host part is 32-bit long.  For IPv6 to IPv4 translation
                this would mean using only the lower 32 bits of the original
                IPv6 destination address.  For IPv4 to IPv6 translation the
@@ -806,12 +810,12 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 <a name="reply-to"></a>
      <span class="bold">reply-to</span>  The <span class="bold">reply-to</span> option is similar to <span class="bold">route-to</span>, but routes packets
                that pass in the opposite direction (replies) to the specified
-               interface.  Opposite direction is only defined in the context
-               of a state entry, and <span class="bold">reply-to</span> is useful only in rules that
-               create state.  It can be used on systems with multiple external
-               connections to route all outgoing packets of a connection
-               through the interface the incoming connection arrived through
-               (symmetric routing enforcement).
+               address.  Opposite direction is only defined in the context of
+               a state entry, and <span class="bold">reply-to</span> is useful only in rules that create
+               state.  It can be used on systems with multiple paths to the
+               internet to ensure that replies to an incoming network
+               connection to a particular address are sent using the path
+               associated with that address (symmetric routing enforcement).
 
 <a name="route-to"></a>
      <span class="bold">route-to</span>  The <span class="bold">route-to</span> option routes the packet to the specified
@@ -1014,10 +1018,8 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              Packets passing in or out on such interfaces are passed as if pf
              was disabled, i.e. pf does not process them in any way.  This can
              be useful on loopback and other virtual interfaces, when packet
-             filtering is not desired and can have unexpected effects.  <span class="underline">ifspec</span>
-             is only evaluated when the ruleset is loaded; interfaces created
-             later will not be skipped.  PF filters traffic on all interfaces
-             by default.
+             filtering is not desired and can have unexpected effects.  PF
+             filters traffic on all interfaces by default.
 
 <a name="state-defaults"></a>
      <span class="bold">set</span> <span class="bold">state-defaults</span> <span class="underline">state-option</span>, <span class="underline">...</span>
@@ -1160,7 +1162,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
                    set timeout { adaptive.start 60000, adaptive.end 120000 }
                    set limit states 100000
 
-             With 9000 state table entries, the timeout values are scaled to
+             With 90000 state table entries, the timeout values are scaled to
              50% (tcp.first 60, tcp.established 43200).
 
      "pfctl -F Reset" restores default values for the following options:
@@ -1414,7 +1416,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      An anchor rule can also contain a filter ruleset in a brace-delimited
      block.  In that case, no separate loading of rules into the anchor is
      required.  Brace delimited blocks may contain rules or other brace-
-     delimited blocks.  When an anchor is populated this way the anchor name
+     delimited blocks.  When an anchor is populated this way, the anchor name
      becomes optional.  Since the parser specification for anchor names is a
      string, double quote characters (`"') should be placed around the anchor
      name.
@@ -1919,10 +1921,10 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
      currently established connection.
 
      Caveat: operating system fingerprints are occasionally wrong.  There are
-     three problems: an attacker can trivially craft his packets to appear as
-     any operating system he chooses; an operating system patch could change
-     the stack behavior and no fingerprints will match it until the database
-     is updated; and multiple operating systems may have the same fingerprint.
+     three problems: an attacker can trivially craft packets to appear as any
+     operating system; an operating system patch could change the stack
+     behavior and no fingerprints will match it until the database is updated;
+     and multiple operating systems may have the same fingerprint.
 
 <span class="bold">EXAMPLES</span>
      In this example, the external interface is <span class="underline">kue0</span>.  We use a macro for the
@@ -2284,7 +2286,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 <span class="bold">HISTORY</span>
      The <span class="bold">pf.conf</span> file format first appeared in OpenBSD 3.0.
 
-OpenBSD 7.0                      July 19, 2021                     OpenBSD 7.0
+OpenBSD 7.1                     March 31, 2022                     OpenBSD 7.1
 </pre>
 </body>
 </html>
