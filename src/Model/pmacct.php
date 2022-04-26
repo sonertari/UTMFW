@@ -76,7 +76,7 @@ class Pmacct extends Monitoring
 
 	function SetIf($if)
 	{
-		$re= '|^(\s*interface:\s*)(\w+\d+)(\s+)|ms';
+		$re= '|^(\s*pcap_interface:\s*)(\w+\d+)(\s+)|ms';
 		$retval=  $this->ReplaceRegexp('/etc/pmacct/pmacctd-pnrg.conf', $re, '${1}'.$if.'${3}');
 		$retval&= $this->ReplaceRegexp('/etc/pmacct/pmacctd-protograph.conf', $re, '${1}'.$if.'${3}');
 
