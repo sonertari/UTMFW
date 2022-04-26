@@ -237,7 +237,7 @@ class Math_BigInteger
      * ?>
      * </code>
      *
-     * @param $x base-10 number or base-$base number if $base set.
+     * @param int|string|resource $x base-10 number or base-$base number if $base set.
      * @param int $base
      * @return Math_BigInteger
      * @access public
@@ -257,7 +257,7 @@ class Math_BigInteger
             }
         }
 
-        if (extension_loaded('openssl') && !defined('MATH_BIGINTEGER_OPENSSL_DISABLE') && !defined('MATH_BIGINTEGER_OPENSSL_ENABLED')) {
+        if (function_exists('phpinfo') && extension_loaded('openssl') && !defined('MATH_BIGINTEGER_OPENSSL_DISABLE') && !defined('MATH_BIGINTEGER_OPENSSL_ENABLED')) {
             // some versions of XAMPP have mismatched versions of OpenSSL which causes it not to work
             ob_start();
             @phpinfo();
@@ -673,11 +673,11 @@ class Math_BigInteger
     {
         $hex = $this->toHex($twos_compliment);
         $bits = '';
-        for ($i = strlen($hex) - 8, $start = strlen($hex) & 7; $i >= $start; $i-=8) {
-            $bits = str_pad(decbin(hexdec(substr($hex, $i, 8))), 32, '0', STR_PAD_LEFT) . $bits;
+        for ($i = strlen($hex) - 6, $start = strlen($hex) % 6; $i >= $start; $i-=6) {
+            $bits = str_pad(decbin(hexdec(substr($hex, $i, 6))), 24, '0', STR_PAD_LEFT) . $bits;
         }
         if ($start) { // hexdec('') == 0
-            $bits = str_pad(decbin(hexdec(substr($hex, 0, $start))), 8, '0', STR_PAD_LEFT) . $bits;
+            $bits = str_pad(decbin(hexdec(substr($hex, 0, $start))), 8 * $start, '0', STR_PAD_LEFT) . $bits;
         }
         $result = $this->precision > 0 ? substr($bits, -$this->precision) : ltrim($bits, '0');
 
@@ -2021,7 +2021,7 @@ class Math_BigInteger
      *
      * @see self::_slidingWindow()
      * @access private
-     * @param Math_BigInteger
+     * @param Math_BigInteger $n
      * @return Math_BigInteger
      */
     function _mod2($n)
@@ -3136,7 +3136,7 @@ class Math_BigInteger
      *
      * Byte length is equal to $length. Uses crypt_random if it's loaded and mt_rand if it's not.
      *
-     * @param int $length
+     * @param int $size
      * @return Math_BigInteger
      * @access private
      */
@@ -3603,7 +3603,7 @@ class Math_BigInteger
      *
      * Removes leading zeros and truncates (if necessary) to maintain the appropriate precision
      *
-     * @param Math_BigInteger
+     * @param Math_BigInteger $result
      * @return Math_BigInteger
      * @see self::_trim()
      * @access private
@@ -3680,8 +3680,8 @@ class Math_BigInteger
     /**
      * Array Repeat
      *
-     * @param $input Array
-     * @param $multiplier mixed
+     * @param array $input
+     * @param mixed $multiplier
      * @return array
      * @access private
      */
@@ -3695,8 +3695,8 @@ class Math_BigInteger
      *
      * Shifts binary strings $shift bits, essentially multiplying by 2**$shift.
      *
-     * @param $x String
-     * @param $shift Integer
+     * @param string $x (by reference)
+     * @param int $shift
      * @return string
      * @access private
      */
@@ -3724,8 +3724,8 @@ class Math_BigInteger
      *
      * Shifts binary strings $shift bits, essentially dividing by 2**$shift and returning the remainder.
      *
-     * @param $x String
-     * @param $shift Integer
+     * @param string $x (by referenc)
+     * @param int $shift
      * @return string
      * @access private
      */
