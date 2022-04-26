@@ -98,7 +98,7 @@ if (!ValidateCommand($ArgV, $Locale, $View, $Command, TRUE, $Model)) {
 $cwd= dirname(__FILE__);
 
 // Run the ctlr using doas and passing -n for no arg validation, as we have already done that above
-exec("/usr/bin/doas $cwd/ctlr.php -n '$args' 2>&1", $encoded, $retval);
+exec("/usr/bin/doas $cwd/ctlr.php -n ".escapeshellarg($args)." 2>&1", $encoded, $retval);
 // There must be only one element in $encoded array, but do not miss the others if any
 $encoded= implode(' ', $encoded);
 echo $encoded;
