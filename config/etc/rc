@@ -532,6 +532,10 @@ if [[ -f /etc/rc.firsttime ]]; then
 	sh /etc/make.var
 fi
 
+# Make sure the run folder exists, for example needed by slowcgi
+# Creating it in rc.local is not enough, because this rc script starts slowcgi
+[[ ! -d /var/log/utmfw/run ]] && mkdir /var/log/utmfw/run
+
 # Set the pf debug level to warn (the default is err)
 echo -n "pf "
 pfctl -x warn
