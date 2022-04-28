@@ -1,1 +1,1 @@
-../../../../openbsd/7.0/arm64/bsd.rd
+../../../../openbsd/7.1/arm64/bsd.rd

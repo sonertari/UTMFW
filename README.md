@@ -204,7 +204,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Copy utmfw-XY.pub to meta/etc/signify/
 	+ Copy utmfw-XY.pub to /etc/signify/, the utmfw-XY.pub file is copied into the bsd.rd file while making release(8), to verify install sets during installation
 
-- Update the packages for the amd64 arch, then do the same for the arm64 arch replacing amd64 with arm64 below:
+- Update the packages for the amd64 arch, then do the same for the arm64 arch replacing amd64 with arm64 (or aarch64 for PKG_PATH) below:
 	+ Install the OpenBSD packages
 		+ Set the download mirror, use the existing cache if any
 			```
@@ -356,7 +356,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 
 - Strip xbase and xfont:
 	+ Make sure the contents are the same as in the files in the old iso and img files, except for the version numbers
-	+ SECURITY: Be very careful about the permissions of the directories and files in these install sets, they should be the same as the original files
+	+ SECURITY: Be very careful with the permissions of the directories and files in these install sets, they should be the same as the original files
 
 - Run the create script:
 	+ Install gettext-tools and doxygen for translations and documentation
