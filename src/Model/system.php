@@ -572,8 +572,8 @@ class System extends Model
 					// inet 192.168.0.1 0xffffff00
 					// nwid mynwid wpakey mykey
 					// mediaopt hostap
-					else if (preg_match('/nwid\s+(\S+)\s*(\S*)\s*(\S*)/', $line, $match)) {
-						$nwid= array($match[1], $match[2], $match[3]);
+					else if (preg_match('/(nwid|join)\s+(\S+)\s*(\S*)\s*(\S*)/', $line, $match)) {
+						$nwid= array($match[2], $match[3], $match[4]);
 					}
 					else if (preg_match('/mediaopt (hostap)/', $line, $match)) {
 						$hostap= array($match[1]);
