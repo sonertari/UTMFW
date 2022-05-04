@@ -422,6 +422,12 @@ function EnableHostap()
 				wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, $msg);
 				echo "\n$msg.\n";
 			} else {
+				exec("sed -i.orig 's/^join/nwid/' /etc/hostname.$intif", $output, $retval);
+				if ($retval !== 0) {
+					$msg= "Failed replacing join with nwid in /etc/hostname.$intif";
+					wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, $msg);
+					echo "\n$msg.\n";
+				}
 				echo "\nHostap enabled on $intif.\n";
 			}
 		}
