@@ -192,6 +192,9 @@ require_once($VIEW_PATH.'/header.php');
 			<option value="all"><?php echo _CONTROL('All') ?></option>
 			<?php
 			foreach ($ruleCategoryNames as $category => $name) {
+				if (in_array($category, $unsupportedRuleCategories)) {
+					continue;
+				}
 				?>
 				<option value="<?php echo $category; ?>" <?php echo (filter_input(INPUT_POST, 'category') == $category || $show == $category ? 'selected' : ''); ?>><?php echo $name; ?></option>
 				<?php
@@ -207,7 +210,7 @@ require_once($VIEW_PATH.'/header.php');
 		<input type="submit" name="move" value="<?php echo _CONTROL('Move') ?>" />
 		<input type="submit" id="deleteAll" name="deleteAll" value="<?php echo _CONTROL('Delete All') ?>" onclick="return confirm('<?php echo _CONTROL('Are you sure you want to delete the entire ruleset?') ?>')"/>
 		<input type="submit" name="parse" value="<?php echo _CONTROL('Parse') ?>"  title="<?php echo _TITLE('Merges separated comments') ?>"/>
-		<input type="hidden" name="nested" value="<?php echo $$baseCat ?>" />
+		<input type="hidden" name="nested" value="<?php echo $baseCat ?>" />
 	</form>
 </fieldset>
 <table id="logline">

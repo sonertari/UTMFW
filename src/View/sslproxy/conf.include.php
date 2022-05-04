@@ -170,8 +170,10 @@ require_once($VIEW_PATH.'/header.php');
 		<select id="category" name="category">
 			<option value="all"><?php echo _CONTROL('All') ?></option>
 			<?php
-			unset($ruleCategoryNames['include']);
 			foreach ($ruleCategoryNames as $category => $name) {
+				if (in_array($category, $unsupportedRuleCategories)) {
+					continue;
+				}
 				?>
 				<option value="<?php echo $category; ?>" <?php echo (filter_input(INPUT_POST, 'category') == $category || $show == $category ? 'selected' : ''); ?>><?php echo $name; ?></option>
 				<?php

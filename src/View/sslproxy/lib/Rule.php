@@ -119,8 +119,7 @@ class Rule
 		global $lineNumber, $ruleCategoryNames;
 
 		$ruleType= $this->cat;
-		if (isset($ruleCategoryNames[$this->ref]))
-			$ruleType= $ruleCategoryNames[$this->ref];
+		$ruleType= $ruleCategoryNames[$this->ref];
 		$lineCount= $this->countLines();
 		$title= _TITLE('<RULE_TYPE> rule');
 		$title= str_replace('<RULE_TYPE>', $ruleType, $title);
@@ -250,8 +249,7 @@ class Rule
 		}
 
 		$ruleType= $this->cat;
-		if (isset($ruleCategoryNames[$this->ref]))
-			$ruleType= $ruleCategoryNames[$this->ref];
+		$ruleType= $ruleCategoryNames[$this->ref];
 		$confirmMsg= _CONTROL('Are you sure you want to delete <RULE_TYPE> rule number <RULE_NUMBER>?');
 		$confirmMsg= str_replace('<RULE_TYPE>', $ruleType, $confirmMsg);
 		$confirmMsg= str_replace('<RULE_NUMBER>', $ruleNumber, $confirmMsg);
@@ -690,7 +688,7 @@ class Rule
 				}
 				if (isset($baseCat) && $baseCat == 'none') {
 					?>
-					<input type="hidden" name="editpage" value="<?php echo $nested ?>" />
+					<input type="hidden" name="editpage" value="<?php echo $baseCat ?>" />
 					<?php
 				}
 				?>

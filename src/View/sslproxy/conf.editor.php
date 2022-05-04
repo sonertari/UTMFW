@@ -20,7 +20,7 @@
 
 require_once('sslproxy.php');
 
-$ruleCategoryNames = array(
+$ruleCategoryNames= array(
 	'proxyspecline' => _CONTROL('ProxySpecLine'),
 	'proxyspecstruct' => _CONTROL('ProxySpecStruct'),
 	'filter' => _CONTROL('Filter'),
@@ -31,6 +31,8 @@ $ruleCategoryNames = array(
 	'comment' => _CONTROL('Comment'),
 	'blank' => _CONTROL('Blank Line'),
 	);
+
+$unsupportedRuleCategories= array();
 
 $ruleType2Class= array(
 	'proxyspecline' => 'ProxySpecLine',
@@ -276,9 +278,9 @@ if (isset($edit) || isset($_SESSION['saved_edit'])) {
 	}
 
 	if (($cat == 'ProxySpecStruct' || $cat == 'FilterStruct') && !$nested) {
-		unset($ruleCategoryNames['proxyspecline']);
-		unset($ruleCategoryNames['proxyspecstruct']);
-		unset($ruleCategoryNames['include']);
+		$unsupportedRuleCategories[]= 'proxyspecline';
+		$unsupportedRuleCategories[]= 'proxyspecstruct';
+		$unsupportedRuleCategories[]= 'include';
 
 		if ($cat == 'ProxySpecStruct') {
 			$baseCat= 'proxyspecstruct';
@@ -287,13 +289,14 @@ if (isset($edit) || isset($_SESSION['saved_edit'])) {
 		else {
 			$baseCat= 'filterstruct';
 			$ruleSetFilename= 'FilterStruct';
-			unset($ruleCategoryNames['filter']);
-			unset($ruleCategoryNames['filterstruct']);
+			$unsupportedRuleCategories[]= 'filter';
+			$unsupportedRuleCategories[]= 'filterstruct';
 		}
 
 		require('conf.rulestruct.php');
 	}
 	else if ($cat == '_Include' && !$nested) {
+		$unsupportedRuleCategories[]= 'include';
 		require('conf.include.php');
 	}
 	else {
@@ -365,6 +368,9 @@ require_once($VIEW_PATH.'/header.php');
 			<option value="all"><?php echo _CONTROL('All') ?></option>
 			<?php
 			foreach ($ruleCategoryNames as $category => $name) {
+				if (in_array($category, $unsupportedRuleCategories)) {
+					continue;
+				}
 				?>
 				<option value="<?php echo $category; ?>" <?php echo (filter_input(INPUT_POST, 'category') == $category || $show == $category ? 'selected' : ''); ?>><?php echo $name; ?></option>
 				<?php
