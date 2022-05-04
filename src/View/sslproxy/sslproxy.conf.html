@@ -212,25 +212,25 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
 <a name="PcapLog"></a>
        <span class="bold">PcapLog</span> <span class="bold">STRING</span>
               Pcap log: packets to pcapfile (excludes
-              PcapLogDir/PcapLogPathSpec). Equivalent to -X command line
+              PcapLogDir/PcapLogPathSpec).  Equivalent to -X command line
               option.
 <a name="PcapLogDir"></a>
        <span class="bold">PcapLogDir</span> <span class="bold">STRING</span>
               Pcap log: packets to separate files in dir (excludes
-              PcapLog/PcapLogPathSpec). Equivalent to -Y command line option.
+              PcapLog/PcapLogPathSpec).  Equivalent to -Y command line option.
 <a name="PcapLogPathSpec"></a>
        <span class="bold">PcapLogPathSpec</span> <span class="bold">STRING</span>
               Pcap log: packets to sep files with % subst (excludes
-              PcapLog/PcapLogDir). Equivalent to -y command line option.
+              PcapLog/PcapLogDir).  Equivalent to -y command line option.
 <a name="MirrorIf"></a>
        <span class="bold">MirrorIf</span> <span class="bold">STRING</span>
               Mirror packets to interface. Equivalent to -I command line
               option.
 <a name="MirrorTarget"></a>
        <span class="bold">MirrorTarget</span> <span class="bold">STRING</span>
-              Mirror packets to target address (used with MirrorIf).
-              Equivalent to -T command line option. Not used if the target is
-              irrelevant (e.g. mirror to dummy device)
+              Mirror packets to target address (used with MirrorIf). Not used
+              if the target is irrelevant (e.g. mirror to dummy device).
+              Equivalent to -T command line option.
 <a name="MasterKeyLog"></a>
        <span class="bold">MasterKeyLog</span> <span class="bold">STRING</span>
               Log master keys to logfile in SSLKEYLOGFILE format. Equivalent
@@ -321,7 +321,7 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
 <a name="Divert"></a>
        <span class="bold">Divert</span> <span class="bold">BOOL</span>
               Set divert or split mode of operation, globally or per-
-              proxyspec.  The Divert option is not equivalent to the command
+              proxyspec. The Divert option is not equivalent to the command
               line -n option.
               Default: yes
 <a name="PassSite"></a>
@@ -416,8 +416,8 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
               DstPort
               Log
               ReconnectSSL
-              DenyOCSP
               Passthrough
+              DenyOCSP
               CACert
               CAKey
               ClientCert
@@ -426,7 +426,7 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
               LeafCRLURL
               DHGroupParams
               ECDHCurve
-              SSLCompression (yes|no)
+              SSLCompression
               ForceSSLProto
               DisableSSLProto
               EnableSSLProto
@@ -434,20 +434,20 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
               MaxSSLProto
               Ciphers
               CipherSuites
-              RemoveHTTPAcceptEncoding
-              RemoveHTTPReferer
               VerifyPeer
               AllowWrongHost
+              RemoveHTTPAcceptEncoding
+              RemoveHTTPReferer
+              MaxHTTPHeaderSize
+              ValidateProto
               UserAuth
               UserTimeout
               UserAuthURL
-              ValidateProto
-              MaxHTTPHeaderSize
               <span class="bold">}</span>
-              Structured filtering rules can specify all possible connection
-              options to be selectively applied to matching connections, not
-              just per-proxyspec or globally. One line filtering rules cannot
-              specify connection options.
+              Structured filtering rules can specify connection options to be
+              selectively applied to matching connections, not just per-
+              proxyspec or globally. One line filtering rules cannot specify
+              connection options.
 
               See sslproxy(1) for the details.
 <a name="ProxySpecLine"></a>
@@ -469,8 +469,8 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
               SNIPort
               NatEngine
               Divert
-              DenyOCSP
               Passthrough
+              DenyOCSP
               CACert
               CAKey
               ClientCert
@@ -487,15 +487,15 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
               MaxSSLProto
               Ciphers
               CipherSuites
-              RemoveHTTPAcceptEncoding
-              RemoveHTTPReferer
               VerifyPeer
               AllowWrongHost
+              RemoveHTTPAcceptEncoding
+              RemoveHTTPReferer
+              MaxHTTPHeaderSize
+              ValidateProto
               UserAuth
               UserTimeout
               UserAuthURL
-              ValidateProto
-              MaxHTTPHeaderSize
               DivertUsers
               PassUsers
               PassSite
@@ -506,7 +506,7 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
 
               Structured proxy specifications may consist of the options
               listed above. The Addr and Port options are mandatory, and
-              equivalent to listenaddr and port options in one line
+              equivalent to the listenaddr and port options in one line
               proxyspecs, respectively. If an option is not specified, the
               global default value is used.
 
@@ -519,7 +519,7 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
 <span class="bold">SEE</span> <span class="bold">ALSO</span>
        sslproxy(1)
 
-v0.9.2                         13 November 2021               sslproxy.conf(5)
+v0.9.3                            02 May 2022                 sslproxy.conf(5)
 </pre>
 </body>
 </html>

@@ -4,9 +4,9 @@
  COPY    ${DESTDIR}/etc/firmware/urtwn-rtl8192cT	etc/firmware/urtwn-rtl8192cT
  COPY    ${DESTDIR}/etc/firmware/urtwn-rtl8192cU	etc/firmware/urtwn-rtl8192cU
  COPY    ${DESTDIR}/etc/firmware/urtwn-rtl8192eu	etc/firmware/urtwn-rtl8192eu
-+COPY	${DESTDIR}/etc/firmware/brcmfmac43455-sdio.bin etc/firmware/brcmfmac43455-sdio.bin
-+COPY	${DESTDIR}/etc/firmware/brcmfmac43455-sdio.clm_blob etc/firmware/brcmfmac43455-sdio.clm_blob
-+COPY	${DESTDIR}/etc/firmware/brcmfmac43455-sdio.txt etc/firmware/brcmfmac43455-sdio.txt
++COPY	/etc/firmware/brcmfmac43455-sdio.bin etc/firmware/brcmfmac43455-sdio.bin
++COPY	/etc/firmware/brcmfmac43455-sdio.clm_blob etc/firmware/brcmfmac43455-sdio.clm_blob
++COPY	/etc/firmware/brcmfmac43455-sdio.txt etc/firmware/brcmfmac43455-sdio.txt
  
  MKDIR	usr/mdec/rpi
  COPY	/usr/local/share/raspberrypi-firmware/boot/bcm2710-rpi-2-b.dtb usr/mdec/rpi/bcm2710-rpi-2-b.dtb

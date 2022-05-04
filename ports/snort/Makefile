@@ -2,8 +2,8 @@
 
 COMMENT =		highly flexible sniffer/NIDS
 
-DISTNAME =		snort-2.9.18.1
-RULESV =		29181
+DISTNAME =		snort-2.9.19
+RULESV =		29190
 SUBST_VARS =		RULESV
 
 CATEGORIES =		net security
@@ -15,7 +15,7 @@ MAINTAINER =		Markus Lude <markus.lude@gmx.de>
 # GPLv2
 PERMIT_PACKAGE =	Yes
 
-WANTLIB += c c++abi crypto daq dnet lzma m nghttp2
+WANTLIB += c crypto daq dnet lzma m nghttp2
 WANTLIB += pcap pcre pthread z
 
 MASTER_SITES =		https://www.snort.org/downloads/snort/
