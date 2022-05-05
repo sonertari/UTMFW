@@ -990,6 +990,11 @@ class System extends Model
 			$result= FALSE;
 		}
 
+		exec("/bin/rm -f {$this->UTMFWDIR}/cache/* 2>&1", $output, $retval);
+		if ($retval !== 0) {
+			$result= FALSE;
+		}
+
 		if (!$result) {
 			$errout= implode("\n", $output);
 			Error($errout);
