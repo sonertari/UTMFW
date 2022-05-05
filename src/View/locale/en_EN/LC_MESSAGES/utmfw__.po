@@ -478,6 +478,9 @@ msgstr ""
 msgid "Get interface DNS forwarder listens on"
 msgstr ""
 
+msgid "Get last logs"
+msgstr ""
+
 msgid "Get line count"
 msgstr ""
 

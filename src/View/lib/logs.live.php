@@ -66,6 +66,8 @@ PrintLiveLogHeaderForm($LinesPerPage, $SearchRegExp);
 	$Logs= array();
 	if ($View->Controller($Output, 'GetLiveLogs', $LogFile, $LinesPerPage, $SearchRegExp)) {
 		$Logs= json_decode($Output[0], TRUE);
+	} else if ($View->Controller($Output, 'GetLastLogs', $LogFile, $LinesPerPage)) {
+		$Logs= json_decode($Output[0], TRUE);
 	}
 
 	$LineCount= 1;

@@ -2456,6 +2456,9 @@ msgstr "int_if'i getir"
 msgid "Get interface DNS forwarder listens on"
 msgstr "DNS ileticinin dinlediği arayüzü getir"
 
+msgid "Get last logs"
+msgstr "Son kayıtları getir"
+
 msgid "Get line count"
 msgstr "Satır sayısını getir"
 

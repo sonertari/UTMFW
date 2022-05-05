@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2022 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
-# Soner Tari <sonertari@gmail.com>, 2009-2021.
+# Soner Tari <sonertari@gmail.com>, 2009-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: UTMFW 7.1\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
-"PO-Revision-Date: 2021-08-07 18:17+0300\n"
+"PO-Revision-Date: 2022-05-05 14:49+0300\n"
 "Last-Translator: Soner Tari <sonertari@gmail.com>\n"
 "Language: tr\n"
 "Language-Team: Turkish <>\n"
@@ -496,6 +496,9 @@ msgstr "int_if'i getir"
 
 msgid "Get interface DNS forwarder listens on"
 msgstr "DNS ileticinin dinlediği arayüzü getir"
+
+msgid "Get last logs"
+msgstr "Son kayıtları getir"
 
 msgid "Get line count"
 msgstr "Satır sayısını getir"

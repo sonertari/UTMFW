@@ -104,7 +104,7 @@ PrintLogHeaderForm($StartLine, $LogSize, $LinesPerPage, $SearchRegExp, $CustomHi
 	if ($LogFile !== FALSE && $View->Controller($Output, 'GetLogs', $LogFile, $HeadStart, $LinesPerPage, $SearchRegExp, $SearchNeedle, $DateArray['Month'], $DateArray['Day'], $DateArray['Hour'], $DateArray['Minute'])) {
 		$Logs= json_decode($Output[0], TRUE);
 	}
-	
+
 	$LineCount= $StartLine + 1;
 	$LastLineNum= $StartLine + min(array(count($Logs), $LinesPerPage));
 	foreach ($Logs as $Logline) {
