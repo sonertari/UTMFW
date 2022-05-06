@@ -58,7 +58,7 @@ install_file "server.key" "openvpn" "$PREFIX/openvpn" "400" "root:wheel"
 cd sslproxy
 openssl genrsa -out ca.key 2048
 openssl req -new -nodes -x509 -sha256 -out ca.crt -key ca.key -extensions v3_ca -set_serial $SET_SERIAL -days 365 \
-     -config sslproxy.cnf \
+    -config sslproxy.cnf \
     -subj "/C=TR/ST=Antalya/L=Serik/O=ComixWall/OU=SSLproxy/CN=example.org/emailAddress=sonertari@gmail.com"
 cd ..
 

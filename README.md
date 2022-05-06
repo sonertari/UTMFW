@@ -14,9 +14,9 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The UTMFW project releases two installation files:
 
-- The installation iso file for the amd64 arch is available for download at [utmfw71\_20220422\_amd64.iso](https://drive.google.com/file/d/1uII0qZOf7iJjHN3se05K0Q9GtDQ32LNQ/view?usp=sharing). Make sure the SHA256 checksum is correct: 9b2632eef3630f0847f7ca4d933ca9a8b7a1cc2550594d48e8e1d59d132005a2.
+- The installation iso file for the amd64 arch is available for download at [utmfw71\_20220506\_amd64.iso](https://drive.google.com/file/d/1uII0qZOf7iJjHN3se05K0Q9GtDQ32LNQ/view?usp=sharing). Make sure the SHA256 checksum is correct: 9b2632eef3630f0847f7ca4d933ca9a8b7a1cc2550594d48e8e1d59d132005a2.
 
-- The installation img file for the arm64 arch is available for download at [utmfw71\_20220422\_arm64.img](https://drive.google.com/file/d/1WHgTc1bng2MzEvMr1nYW690f3Mp6EHoF/view?usp=sharing). Make sure the SHA256 checksum is correct: 734ae36b6f3219b8a3ee2aac43ec2c56af3f2b64c5dbac6dc5eff71b43dfe4ef. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- The installation img file for the arm64 arch is available for download at [utmfw71\_20220506\_arm64.img](https://drive.google.com/file/d/1WHgTc1bng2MzEvMr1nYW690f3Mp6EHoF/view?usp=sharing). Make sure the SHA256 checksum is correct: 734ae36b6f3219b8a3ee2aac43ec2c56af3f2b64c5dbac6dc5eff71b43dfe4ef. The only arm64 platform supported is Raspberry Pi 4 Model B.
 
 You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file for the amd64 arch into a bootable image you can write on a USB drive or an SD card.
 
@@ -109,7 +109,7 @@ A few notes about UTMFW installation:
 	+ When you first try to log in to the WUI, ignore the certificate warning issued by your web browser and proceed to the WUI.
 	+ Download the ca.crt from the SSLproxy Config page on the WUI, and install it on your web browser or other client application as a trusted CA certificate. You can install the ca.crt in the trust store on Android phones, but Android applications may not use that trust store. So you may need to use the PassSite option of SSLproxy for such applications.
 	+ Enable the pf rule for FCM ports (see /etc/pf.conf or go to the PFRE Editor page on the WUI), if you want to receive Firebase push notifications sent by UTMFW to your Android phone on the local network and on which you have installed and are running [A4PFFW](https://github.com/sonertari/A4PFFW).
-- Make sure the date and time of the system is correct during both installation and normal operation, otherwise:
+- Make sure the date and time of the system is correct during both installation and normal operation. Set the system time to GMT time, not local time, before starting the installation, because the timezone of the system during installation is assumed to be GMT. Select the correct timezone during installation. For example, if your timezone is Turkey (GMT+3) and the current local time is 12:00 PM, then set the system time to 9:00 AM before starting the installation. Otherwise:
 	+ The "Not Valid Before" date of the CA certificate generated for SSLproxy during installation may be wrong, causing clients to reject the certificates forged by SSLproxy, at least until the start date. To fix the "Not Valid Before" date, you may need to regenerate the CA certificate on the WUI, after fixing the system date and time.
 	+ The certificates forged by SSLproxy will be rejected by client applications, hence the connections will fail.
 	+ SSLproxy will not verify server certificates with date and time in the future or in the past, hence the connections will fail.
