@@ -69,8 +69,6 @@ class Macro extends Rule
 	{
 		$this->str= preg_replace('/{/', ' { ', $this->str);
 		$this->str= preg_replace('/}/', ' } ', $this->str);
-		$this->str= preg_replace('/\(/', ' ( ', $this->str);
-		$this->str= preg_replace('/\)/', ' ) ', $this->str);
 		$this->str= preg_replace('/,/', ' , ', $this->str);
 		$this->str= preg_replace('/=/', ' = ', $this->str);
 		$this->str= preg_replace('/"/', '', $this->str);
