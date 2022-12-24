@@ -2,7 +2,7 @@
 
 UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW), which can display the notifications sent from UTMFW, and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.1 comes with OpenBSD 7.1-stable including all updates until April 24th, 2022.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.2 comes with OpenBSD 7.2-stable including all updates until December 31st, 2022.
 
 UTMFW supports the deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -14,9 +14,9 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The UTMFW project releases two installation files:
 
-- The installation iso file for the amd64 arch is available for download at [utmfw71\_20220508\_amd64.iso](https://drive.google.com/file/d/1eSxuIAS92TBbNOMEvqVZppFcbbrTbLlQ/view?usp=sharing). Make sure the SHA256 checksum is correct: 08360b7614bddfa1007b3beed9230662238ddc6240d072575df725088488fcd3.
+- The installation iso file for the amd64 arch is available for download at [utmfw72\_20221231\_amd64.iso](https://drive.google.com/file/d/1eSxuIAS92TBbNOMEvqVZppFcbbrTbLlQ/view?usp=sharing). Make sure the SHA256 checksum is correct: 08360b7614bddfa1007b3beed9230662238ddc6240d072575df725088488fcd3.
 
-- The installation img file for the arm64 arch is available for download at [utmfw71\_20220508\_arm64.img](https://drive.google.com/file/d/1gmpPERzISD2c9hbQvzGlOVfr26rQr8PQ/view?usp=sharing). Make sure the SHA256 checksum is correct: 87b271f977768fdb731bc9722b5487ebfd8f1342f5f39300e39db3a7a3fd78e7. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- The installation img file for the arm64 arch is available for download at [utmfw72\_20221231\_arm64.img](https://drive.google.com/file/d/1gmpPERzISD2c9hbQvzGlOVfr26rQr8PQ/view?usp=sharing). Make sure the SHA256 checksum is correct: 87b271f977768fdb731bc9722b5487ebfd8f1342f5f39300e39db3a7a3fd78e7. The only arm64 platform supported is Raspberry Pi 4 Model B.
 
 You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file for the amd64 arch into a bootable image you can write on a USB drive or an SD card.
 
@@ -117,7 +117,7 @@ A few notes about UTMFW installation:
 
 ## How to build
 
-The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 7.1 and have installed git, gettext, and doxygen on it.
+The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 7.2 and have installed git, gettext, and doxygen on it.
 
 ### Build summary
 
@@ -128,7 +128,7 @@ The create script:
 - Prepares the webif and config packages and the site install set.
 - And finally creates the iso file for the amd64 arch or the img file for the arm64 arch.
 
-However, the source tree has links to OpenBSD install sets and packages, which should be broken, hence need to be fixed when you first obtain the sources. Make sure you see those broken links now. So, before you can run the create scripts, you need to do a couple of things:
+However, the source tree has links to OpenBSD install sets and packages, which should be broken, hence need to be fixed when you first obtain the sources. Make sure you see those broken links now. So, before you can run the create script, you need to do a couple of things:
 
 - Install sets:
 	+ Obtain the sources of OpenBSD.
@@ -156,7 +156,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 
 - Install OpenBSD arm64:
 	+ Download installXY.img from an OpenBSD mirror
-	+ Use a 32GB SD card, or choose a size based on your needs
+	+ Use a 32GB SD card or USB flash memory, or choose a size based on your needs
 	+ Start the Raspberry Pi 4 or qemu-system-aarch64 and install OpenBSD
 
 - Configure OpenBSD:

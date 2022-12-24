@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "UTM Firewall"
-PROJECT_NUMBER         = 7.1
+PROJECT_NUMBER         = 7.2
 PROJECT_BRIEF          =
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = ./src/View/docs
