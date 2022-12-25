@@ -217,7 +217,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ dnsmasq
 		+ clamav
 		+ p5-Mail-SpamAssassin
-		+ snort, to download its dependencies
+		+ snort, to download its dependencies, otherwise we have our own patched version
 		+ openvpn
 		+ dante
 		+ symon

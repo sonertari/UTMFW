@@ -1,9 +1,7 @@
-$OpenBSD: patch-src_util_c,v 1.10 2019/06/02 02:07:44 lteo Exp $
-
 Index: src/util.c
 --- src/util.c.orig
 +++ src/util.c
-@@ -226,12 +226,13 @@ int DisplayBanner(void)
+@@ -227,12 +227,13 @@ int DisplayBanner(void)
   * Returns: void function
   *
   ****************************************************************************/
@@ -18,7 +16,7 @@ Index: src/util.c
      struct timezone tz;
      struct tm *lt;    /* place to stick the adjusted clock data */
  
-@@ -241,7 +242,9 @@ void ts_print(register const struct timeval *tvp, char
+@@ -242,7 +243,9 @@ void ts_print(register const struct timeval *tvp, char
          /* manual page (for linux) says tz is never used, so.. */
          memset((char *) &tz, 0, sizeof(tz));
          gettimeofday(&tv, &tz);
