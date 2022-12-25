@@ -1114,26 +1114,26 @@ CDDEVS=$(scan_dmesg "${MDCDDEVS:-/^cd[0-9][0-9]* /s/ .*//p}")
 [[ -z $CDDEVS ]] && CDDEVS="cd0,cd1,cd2"
 
 # Selected sets will be installed in the order they are listed in $THESETS.
-THESETS="dnsmasq-2.86.tgz \
-		sslproxy-0.9.3.tgz \
-		clamav-0.104.2.tgz \
+THESETS="dnsmasq-2.86p0.tgz \
+		sslproxy-0.9.4.tgz \
+		clamav-0.105.1p0.tgz \
 		clamavdb.tar.gz \
 		p5-Mail-SpamAssassin-3.4.6.tgz \
 		p3scan-2.3.2.tgz \
 		smtp-gated-1.4.20.0.tgz \
 		e2guardian-5.3.5.tgz \
 		blacklists.tar.gz \
-		snort-2.9.19.tgz \
+		snort-2.9.20p0.tgz \
 		snortrules.tar.gz \
 		snortips-6.2.2.tgz \
 		imspector-0.9.tgz \
-		openvpn-2.5.6.tgz \
-		dante-1.4.2p0.tgz \
+		openvpn-2.5.7.tgz \
+		dante-1.4.3.tgz \
 		symon-2.88p6.tgz \
 		pmacct-1.7.7.tgz \
 		collectd-5.12.0p0.tgz \
 		pftop-0.7p19.tgz \
-		php-8.1.4p1.tgz \
+		php-8.1.10p0.tgz \
 		$CW_WEBIF_TARFILE \
 		$CW_CONFIG_TARFILE"
 
