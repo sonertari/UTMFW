@@ -1,15 +1,15 @@
---- install.sub.orig	Mon Mar 28 21:53:40 2022
-+++ install.sub	Sat Apr 23 20:14:07 2022
-@@ -1292,7 +1292,7 @@
+--- install.sub.orig	Tue Sep 20 03:40:36 2022
++++ install.sub	Mon Dec 26 00:14:58 2022
+@@ -1291,7 +1291,7 @@
  
  # Set up IPv4 and IPv6 interface configuration.
  configure_ifs() {
--	local _first _hn _if _name _p _vi
-+	local _first _hn _if _name _p _vi _iflist
+-	local _first _hn _if _name _p _vi _vn
++	local _first _hn _if _name _p _vi _vn _iflist
  
  	# Always need lo0 configured.
  	ifconfig lo0 inet 127.0.0.1/8
-@@ -1300,6 +1300,8 @@
+@@ -1299,6 +1299,8 @@
  	# In case of restart, delete previous default gateway config.
  	rm -f /tmp/i/mygate
  
@@ -21,7 +21,7 @@
 @@ -1308,7 +1310,7 @@
  
  		ask_which "network interface" "do you wish to configure" \
- 			"\$(get_ifs) vlan${_vi:-0}" \
+ 			"\$(get_ifs) $_vn" \
 -			${_p:-'$( (get_ifs netboot; get_ifs) | sed q )'}
 +			${_p:-'$( (get_ifs netboot; echo $_iflist) | sed q )'}
  		[[ $resp == done ]] && break
@@ -101,7 +101,7 @@
  		[a-z]*([-a-z0-9_]))
  			((${#resp} <= 31)) && break
  			;;
-@@ -3021,7 +3015,6 @@
+@@ -3025,7 +3019,6 @@
  	questions
  
  	# Gather information for setting up the initial user account.
@@ -109,7 +109,7 @@
  	ask_root_sshd
  
  	# Set TZ variable based on zonefile and user selection.
-@@ -3428,7 +3421,7 @@
+@@ -3441,7 +3434,7 @@
  INSTALL_METHOD=
  NIFS=0
  export PS1="$MODE# "
@@ -118,7 +118,7 @@
  ROOTDEV=
  ROOTDISK=
  SETDIR="$VNAME/$ARCH"
-@@ -3467,14 +3460,14 @@
+@@ -3480,14 +3473,14 @@
  # Selected sets will be installed in the order they are listed in $ALLSETS.
  # Ensure that siteXX.tgz is the *last* set listed so its contents overwrite
  # the contents of the other sets, not the other way around.
