@@ -1,4 +1,4 @@
-#	$OpenBSD: rc,v 1.556 2022/01/17 04:12:15 jsg Exp $
+#	$OpenBSD: rc,v 1.564 2022/08/29 11:51:05 deraadt Exp $
 
 # System startup script run by init on autoboot or after single-user.
 # Output and error are redirected to console by init, and the console is the
@@ -139,7 +139,7 @@ make_keys() {
 	local _iked_pub=/etc/iked/local.pub
 
 	if [[ ! -f $_isakmpd_key ]]; then
-		echo -n "openssl: generating isakmpd/iked RSA keys... "
+		echo -n "openssl: generating isakmpd RSA keys... "
 		if openssl genrsa -out $_isakmpd_key 2048 >/dev/null 2>&1 &&
 			chmod 600 $_isakmpd_key &&
 			openssl rsa -out $_isakmpd_pub -in $_isakmpd_key \
@@ -151,10 +151,15 @@ make_keys() {
 	fi
 
 	if [[ ! -f $_iked_key ]]; then
-		# Just copy the generated isakmpd key
-		cp $_isakmpd_key $_iked_key
-		chmod 600 $_iked_key
-		cp $_isakmpd_pub $_iked_pub
+		echo -n "openssl: generating iked ECDSA keys... "
+		if openssl ecparam -genkey -name prime256v1 -out $_iked_key >/dev/null 2>&1 &&
+			chmod 600 $_iked_key &&
+			openssl ec -out $_iked_pub -in $_iked_key \
+			    -pubout >/dev/null 2>&1; then
+			echo done.
+		else
+			echo failed.
+		fi
 	fi
 
 	ssh-keygen -A
@@ -307,7 +312,7 @@ if [[ -f /etc/myname ]]; then
 fi
 
 # Must set the domainname before rc.conf, so YP startup choices can be made.
-if [[ -s /etc/defaultdomain ]]; then
+if [[ -s /etc/defaultdomain && -z "$(sysctl -n kern.domainname)" ]]; then
 	domainname "$(stripcom /etc/defaultdomain)"
 fi
 
@@ -486,7 +491,11 @@ fill_baddynamic tcp
 
 sysctl_conf
 
-start_daemon slaacd >/dev/null 2>&1
+mount -s /var >/dev/null 2>&1		# cannot be on NFS
+mount -s /var/log >/dev/null 2>&1	# cannot be on NFS
+mount -s /usr >/dev/null 2>&1		# if NFS, fstab must use IP address
+
+start_daemon slaacd dhcpleased resolvd >/dev/null 2>&1
 
 echo 'starting network'
 
@@ -496,24 +505,11 @@ ifconfig -g carp carpdemote 128
 
 sh /etc/netstart
 
-mount -s /usr >/dev/null 2>&1
-mount -s /var >/dev/null 2>&1
-mount -s /var/log >/dev/null 2>&1
-
-start_daemon dhcpleased unwind resolvd >/dev/null 2>&1
+start_daemon unwind >/dev/null 2>&1
 
 random_seed
 
 reorder_libs
-
-# If interface autoconf exists, pause a little for at least one default route
-if ifconfig | grep -q ': flags=.*<.*AUTOCONF.*>'; then
-	count=0
-	while ((count++ < 20)); do
-		route -n show | grep -q ^default && break
-		sleep .5
-	done
-fi
 
 # Clean up left-over files.
 rm -f /etc/nologin /var/spool/lock/LCK.*
@@ -563,10 +559,9 @@ if [[ $ipsec != NO && -f /etc/ipsec.conf ]]; then
 fi
 
 echo -n 'starting RPC daemons:'
-start_daemon portmap ypldap
-rm -f /var/run/ypbind.lock
+start_daemon portmap
 if [[ -n $(domainname) ]]; then
-	start_daemon ypserv ypbind
+	start_daemon ypldap ypserv ypbind
 fi
 start_daemon mountd nfsd lockd statd amd
 echo '.'
@@ -660,7 +655,7 @@ run_upgrade_script sysmerge
 echo -n 'starting network daemons:'
 start_daemon ldomd sshd snmpd ldpd ripd ospfd ospf6d bgpd ifstated
 start_daemon relayd dhcpd dhcrelay mrouted dvmrpd radiusd eigrpd route6d
-start_daemon rad hostapd lpd smtpd slowcgi httpd ftpd
+start_daemon rad hostapd lpd smtpd slowcgi bgplgd httpd ftpd
 start_daemon ftpproxy ftpproxy6 tftpd tftpproxy identd inetd rarpd bootparamd
 start_daemon rbootd mopd vmd spamd spamlogd sndiod
 echo '.'
