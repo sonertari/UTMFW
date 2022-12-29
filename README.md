@@ -103,7 +103,7 @@ A few notes about UTMFW installation:
 - Thanks to a modified auto-partitioner of OpenBSD, the disk can be partitioned with a recommended layout for UTMFW, so most users don't need to use the label editor at all.
 - All install sets including siteXY.tgz are selected by default, so you cannot 'not' install UTMFW by mistake.
 - OpenBSD installation questions are modified according to the needs of UTMFW. For example, X11 related questions are never asked.
-- Make sure you have at least 2GB RAM, ideally 4GB if you enable MFS. And an 8GB HD should be enough.
+- Make sure you have at least 2GB RAM, ideally 4GB if you enable MFS. And a 16GB HD should be enough.
 - If you install on an SD card, make sure it is fast enough. If you install on a slow disk, but you have enough RAM, you can enable memory-based file system (MFS), which is the default.
 - After installation:
 	+ When you first try to log in to the WUI, ignore the certificate warning issued by your web browser and proceed to the WUI.
