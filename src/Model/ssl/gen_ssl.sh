@@ -25,17 +25,26 @@ install_file() {
     chown $_own $_filepath
 }
 
+# This is a workaround in the absence of faketime
+origdate=$(date "+%Y%m%d%H%M")
+
+# -startdate is 2 years from now
+date "$(($(date "+%Y")-2))$(date "+%m%d%H%M")"
+
+# -enddate is 10 years from startdate (8 years from now)
+days=3650
+
 # httpd
 cd httpd
 openssl genrsa -out ca.key 2048
-openssl req -new -nodes -x509 -sha256 -out ca.crt -key ca.key -extensions v3_ca -set_serial $SET_SERIAL -days 365 \
+openssl req -new -nodes -x509 -sha256 -out ca.crt -key ca.key -extensions v3_ca -set_serial $SET_SERIAL -days $days \
     -config httpd_ca.cnf \
     -subj "/C=TR/ST=Antalya/L=Serik/O=ComixWall/OU=UTMFW/CN=example.org/emailAddress=sonertari@gmail.com"
 
 openssl req -new -nodes -sha256 -keyout server.key -out server.csr \
     -config httpd.cnf \
     -subj "/C=TR/ST=Antalya/L=Serik/O=ComixWall/OU=UTMFW/CN=example.org/emailAddress=sonertari@gmail.com"
-openssl x509 -req -CA ca.crt -CAkey ca.key -in server.csr -out server.crt -extensions server -set_serial $SET_SERIAL -days 365
+openssl x509 -req -CA ca.crt -CAkey ca.key -in server.csr -out server.crt -extensions server -set_serial $SET_SERIAL -days $days
 cd ..
 
 install_file "server.crt" "httpd" "$PREFIX/ssl" "644" "root:bin"
@@ -57,10 +66,13 @@ install_file "server.key" "openvpn" "$PREFIX/openvpn" "400" "root:wheel"
 # sslproxy
 cd sslproxy
 openssl genrsa -out ca.key 2048
-openssl req -new -nodes -x509 -sha256 -out ca.crt -key ca.key -extensions v3_ca -set_serial $SET_SERIAL -days 365 \
+openssl req -new -nodes -x509 -sha256 -out ca.crt -key ca.key -extensions v3_ca -set_serial $SET_SERIAL -days $days \
     -config sslproxy.cnf \
     -subj "/C=TR/ST=Antalya/L=Serik/O=ComixWall/OU=SSLproxy/CN=example.org/emailAddress=sonertari@gmail.com"
 cd ..
 
 install_file "ca.crt" "sslproxy" "$PREFIX/sslproxy" "644" "root:bin"
 install_file "ca.key" "sslproxy" "$PREFIX/sslproxy" "644" "root:bin"
+
+# restore orig date
+date $origdate

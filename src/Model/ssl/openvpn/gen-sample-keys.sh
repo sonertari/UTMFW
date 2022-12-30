@@ -24,8 +24,11 @@ touch sample-ca/index.txt
 # (?) Ideally, check the serial in the last crt and increment
 echo "01" > sample-ca/serial
 
+# -enddate is 10 years from startdate
+days=3650
+
 # Generate CA key and cert
-openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 \
+openssl req -new -newkey rsa:2048 -days $days -nodes -x509 \
     -extensions easyrsa_ca -keyout sample-ca/ca.key -out sample-ca/ca.crt \
     -subj "/C=TR/ST=Antalya/L=Serik/O=ComixWall/OU=OpenVPN/CN=example.org/emailAddress=sonertari@gmail.com" \
     -config openssl.cnf
@@ -47,4 +50,3 @@ openssl ca -batch -config openssl.cnf \
 # Copy keys and certs to working directory
 cp sample-ca/*.key .
 cp sample-ca/*.crt .
-
