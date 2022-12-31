@@ -2,7 +2,7 @@
 
 UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW), which can display the notifications sent from UTMFW, and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.2 comes with OpenBSD 7.2-stable including all updates until December 31st, 2022.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.2 comes with OpenBSD 7.2-stable including all updates until December 30th, 2022.
 
 UTMFW supports the deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -14,9 +14,9 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The UTMFW project releases two installation files:
 
-- The installation iso file for the amd64 arch is available for download at [utmfw72\_20221231\_amd64.iso](https://drive.google.com/file/d/1eSxuIAS92TBbNOMEvqVZppFcbbrTbLlQ/view?usp=sharing). Make sure the SHA256 checksum is correct: 08360b7614bddfa1007b3beed9230662238ddc6240d072575df725088488fcd3.
+- The installation iso file for the amd64 arch is available for download at [utmfw72\_20221230\_amd64.iso](https://drive.google.com/file/d/1E_ouaG6HhFbcugvnok0sUhywfkwEevNP/view?usp=share_link). Make sure the SHA256 checksum is correct: 08360b7614bddfa1007b3beed9230662238ddc6240d072575df725088488fcd3.
 
-- The installation img file for the arm64 arch is available for download at [utmfw72\_20221231\_arm64.img](https://drive.google.com/file/d/1gmpPERzISD2c9hbQvzGlOVfr26rQr8PQ/view?usp=sharing). Make sure the SHA256 checksum is correct: 87b271f977768fdb731bc9722b5487ebfd8f1342f5f39300e39db3a7a3fd78e7. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- The installation img file for the arm64 arch is available for download at [utmfw72\_20221230\_arm64.img](https://drive.google.com/file/d/1Z0qdAalNCJ_dQvXAdHwSQR8U_fG77lc8/view?usp=share_link). Make sure the SHA256 checksum is correct: 87b271f977768fdb731bc9722b5487ebfd8f1342f5f39300e39db3a7a3fd78e7. The only arm64 platform supported is Raspberry Pi 4 Model B.
 
 You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file for the amd64 arch into a bootable image you can write on a USB drive or an SD card.
 
@@ -109,7 +109,7 @@ A few notes about UTMFW installation:
 	+ When you first try to log in to the WUI, ignore the certificate warning issued by your web browser and proceed to the WUI.
 	+ Download the ca.crt from the SSLproxy Config page on the WUI, and install it on your web browser or other client application as a trusted CA certificate. You can install the ca.crt in the trust store on Android phones, but Android applications may not use that trust store. So you may need to use the PassSite option of SSLproxy for such applications.
 	+ Enable the pf rule for FCM ports (see /etc/pf.conf or go to the PFRE Editor page on the WUI), if you want to receive Firebase push notifications sent by UTMFW to your Android phone on the local network and on which you have installed and are running [A4PFFW](https://github.com/sonertari/A4PFFW).
-- Make sure the date and time of the system is correct during both installation and normal operation. Set the system time to GMT time, not local time, before starting the installation, because the timezone of the system during installation is assumed to be GMT. Select the correct timezone during installation. For example, if your timezone is Turkey (GMT+3) and the current local time is 12:00 PM, then set the system time to 9:00 AM before starting the installation. Otherwise:
+- Make sure the date and time of the system is correct during both installation and normal operation, and select the correct timezone during installation. Otherwise:
 	+ The "Not Valid Before" date of the CA certificate generated for SSLproxy during installation may be wrong, causing clients to reject the certificates forged by SSLproxy, at least until the start date. To fix the "Not Valid Before" date, you may need to regenerate the CA certificate on the WUI, after fixing the system date and time.
 	+ The certificates forged by SSLproxy will be rejected by client applications, hence the connections will fail.
 	+ SSLproxy will not verify server certificates with date and time in the future or in the past, hence the connections will fail.
