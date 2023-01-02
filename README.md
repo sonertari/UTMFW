@@ -4,7 +4,7 @@ UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on prod
 
 UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.2 comes with OpenBSD 7.2-stable including all updates until December 30th, 2022.
 
-UTMFW supports the deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
+UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
 ![Dashboard](https://github.com/sonertari/UTMFW/blob/master/screenshots/Dashboard.png)
 
@@ -14,9 +14,9 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The UTMFW project releases two installation files:
 
-- The installation iso file for the amd64 arch is available for download at [utmfw72\_20221230\_amd64.iso](https://drive.google.com/file/d/1E_ouaG6HhFbcugvnok0sUhywfkwEevNP/view?usp=share_link). Make sure the SHA256 checksum is correct: 08360b7614bddfa1007b3beed9230662238ddc6240d072575df725088488fcd3.
+- The installation iso file for the amd64 arch is available for download at [utmfw72\_20221230\_amd64.iso](https://drive.google.com/file/d/1E_ouaG6HhFbcugvnok0sUhywfkwEevNP/view?usp=share_link). Make sure the SHA256 checksum is correct: 9de3633d25a05a219305ac8b5479e4ba0d00add9383362dd93910feb86a013cd.
 
-- The installation img file for the arm64 arch is available for download at [utmfw72\_20221230\_arm64.img](https://drive.google.com/file/d/1Z0qdAalNCJ_dQvXAdHwSQR8U_fG77lc8/view?usp=share_link). Make sure the SHA256 checksum is correct: 87b271f977768fdb731bc9722b5487ebfd8f1342f5f39300e39db3a7a3fd78e7. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- The installation img file for the arm64 arch is available for download at [utmfw72\_20221230\_arm64.img](https://drive.google.com/file/d/1Z0qdAalNCJ_dQvXAdHwSQR8U_fG77lc8/view?usp=share_link). Make sure the SHA256 checksum is correct: aec4f588fe8a23308e3460796cca08c801a936023240c7e3738dc43b93aed95a. The only arm64 platform supported is Raspberry Pi 4 Model B.
 
 You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file for the amd64 arch into a bootable image you can write on a USB drive or an SD card.
 
