@@ -1,33 +1,33 @@
---- install.sub.orig	Tue Sep 20 03:40:36 2022
-+++ install.sub	Mon Dec 26 00:14:58 2022
-@@ -1291,7 +1291,7 @@
+--- install.sub.orig	Fri Mar 10 13:33:40 2023
++++ install.sub	Wed Apr 26 18:47:38 2023
+@@ -1319,7 +1319,7 @@
  
  # Set up IPv4 and IPv6 interface configuration.
  configure_ifs() {
--	local _first _hn _if _name _p _vi _vn
-+	local _first _hn _if _name _p _vi _vn _iflist
+-	local _first _hn _if _ifs _lladdr _name _p _q _vi _vn
++	local _first _hn _if _ifs _lladdr _name _p _q _vi _vn _iflist
+ 	resp=
  
  	# Always need lo0 configured.
- 	ifconfig lo0 inet 127.0.0.1/8
-@@ -1299,6 +1299,8 @@
+@@ -1328,6 +1328,8 @@
  	# In case of restart, delete previous default gateway config.
  	rm -f /tmp/i/mygate
  
 +	_iflist=$(get_ifs)
 +
  	while :; do
- 		# Discover last configured vlan interface and increment its
- 		# minor for the next offered vlan interface.
-@@ -1308,7 +1310,7 @@
+ 		set -sA _ifs -- $(get_ifs)
  
- 		ask_which "network interface" "do you wish to configure" \
- 			"\$(get_ifs) $_vn" \
--			${_p:-'$( (get_ifs netboot; get_ifs) | sed q )'}
-+			${_p:-'$( (get_ifs netboot; echo $_iflist) | sed q )'}
+@@ -1354,7 +1356,7 @@
+ 
+ 		_q="Network interface to configure?"
+ 		ask_until "$_q (name, lladdr, '?', or 'done')" \
+-		    ${_p:-$( (get_ifs netboot; get_ifs) | sed q )}
++		    ${_p:-$( (get_ifs netboot; echo $_iflist) | sed q )}
+ 
  		[[ $resp == done ]] && break
- 
- 		_if=$resp
-@@ -1338,10 +1340,12 @@
+ 		[[ $resp == '?'  ]] && continue
+@@ -1406,10 +1408,12 @@
  		if [[ -f $_hn ]]; then
  			chmod 640 $_hn
  			: ${_first:=$_if}
@@ -41,7 +41,7 @@
  	done
  }
  
-@@ -1599,8 +1603,9 @@
+@@ -1667,8 +1671,9 @@
  	# Try to prefetch and control checksum of the set files.
  	# Use dummy for loop as combined assignment and do { ... } while(0).
  	for _issue in ''; do
@@ -52,7 +52,7 @@
  
  		if ! $_srclocal; then
  			! _tmpfs_list=$(prefetcharea_fs_list) &&
-@@ -1643,7 +1648,7 @@
+@@ -1711,7 +1716,7 @@
  		# The bsd.rd only download/verify/install assumes the sets
  		# location of the next release. So use the right signature file.
  		$UPGRADE_BSDRD &&
@@ -61,7 +61,7 @@
  
  		# Verify signature file with public keys.
  		! unpriv -f "$_cfile" \
-@@ -1692,7 +1697,7 @@
+@@ -1760,7 +1765,7 @@
  
  	[[ -n $_unver ]] && : ${_issue:="Unverified sets:" ${_unver% }}
  	if [[ -n $_issue ]] &&
@@ -70,7 +70,7 @@
  		[[ -d $_tmpsrc ]] && rm -rf "$_tmpsrc"
  		$AI && exit 1
  		return
-@@ -2143,20 +2148,6 @@
+@@ -2213,20 +2218,6 @@
  	ask_yn "Start sshd(8) by default?" yes
  	START_SSHD=$resp
  
@@ -91,7 +91,7 @@
  	if [[ -n $CDEV ]]; then
  		_d=${CPROM:-$CDEV}
  		[[ -n $CONSOLE ]] && _cdef=yes
-@@ -2187,6 +2178,9 @@
+@@ -2257,6 +2248,9 @@
  			;;
  		root|daemon|operator|bin|build|sshd|www|nobody|ftp)
  			;;
@@ -101,7 +101,7 @@
  		[a-z]*([-a-z0-9_]))
  			((${#resp} <= 31)) && break
  			;;
-@@ -3025,7 +3019,6 @@
+@@ -3155,7 +3149,6 @@
  	questions
  
  	# Gather information for setting up the initial user account.
@@ -109,16 +109,15 @@
  	ask_root_sshd
  
  	# Set TZ variable based on zonefile and user selection.
-@@ -3441,7 +3434,7 @@
- INSTALL_METHOD=
+@@ -3579,6 +3572,7 @@
  NIFS=0
  export PS1="$MODE# "
--PUB_KEY=/etc/signify/openbsd-${VERSION}-base.pub
+ PUB_KEY=/etc/signify/openbsd-${VERSION}-base.pub
 +PUB_KEY=/etc/signify/utmfw-${VERSION}.pub
+ CRYPTODISK=
  ROOTDEV=
  ROOTDISK=
- SETDIR="$VNAME/$ARCH"
-@@ -3480,14 +3473,14 @@
+@@ -3618,14 +3612,14 @@
  # Selected sets will be installed in the order they are listed in $ALLSETS.
  # Ensure that siteXX.tgz is the *last* set listed so its contents overwrite
  # the contents of the other sets, not the other way around.
