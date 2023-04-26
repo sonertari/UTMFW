@@ -2,7 +2,7 @@
 
 UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW), which can display the notifications sent from UTMFW, and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.2 comes with OpenBSD 7.2-stable including all updates until December 30th, 2022.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.3 comes with OpenBSD 7.3-stable including all updates until April 26th, 2023.
 
 UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -14,9 +14,9 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The UTMFW project releases two installation files:
 
-- The installation iso file for the amd64 arch is available for download at [utmfw72\_20221230\_amd64.iso](https://drive.google.com/file/d/1E_ouaG6HhFbcugvnok0sUhywfkwEevNP/view?usp=share_link). Make sure the SHA256 checksum is correct: 9de3633d25a05a219305ac8b5479e4ba0d00add9383362dd93910feb86a013cd.
+- The installation iso file for the amd64 arch is available for download at [utmfw73\_20230430\_amd64.iso](https://drive.google.com/file/d/1E_ouaG6HhFbcugvnok0sUhywfkwEevNP/view?usp=share_link). Make sure the SHA256 checksum is correct: 9de3633d25a05a219305ac8b5479e4ba0d00add9383362dd93910feb86a013cd.
 
-- The installation img file for the arm64 arch is available for download at [utmfw72\_20221230\_arm64.img](https://drive.google.com/file/d/1Z0qdAalNCJ_dQvXAdHwSQR8U_fG77lc8/view?usp=share_link). Make sure the SHA256 checksum is correct: aec4f588fe8a23308e3460796cca08c801a936023240c7e3738dc43b93aed95a. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- The installation img file for the arm64 arch is available for download at [utmfw73\_20230430\_arm64.img](https://drive.google.com/file/d/1Z0qdAalNCJ_dQvXAdHwSQR8U_fG77lc8/view?usp=share_link). Make sure the SHA256 checksum is correct: aec4f588fe8a23308e3460796cca08c801a936023240c7e3738dc43b93aed95a. The only arm64 platform supported is Raspberry Pi 4 Model B.
 
 You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file for the amd64 arch into a bootable image you can write on a USB drive or an SD card.
 
@@ -117,7 +117,7 @@ A few notes about UTMFW installation:
 
 ## How to build
 
-The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 7.2 and have installed git, gettext, and doxygen on it.
+The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 7.3 and have installed git, gettext, and doxygen on it.
 
 ### Build summary
 
@@ -163,8 +163,12 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Create a local user, after reboot add it to /etc/doas.conf
 	+ Create a separate partition mounted on /dest, which will be needed to make release(8)
 	+ Add noperm to /dest in /etc/fstab
-	+ Make /dest owned by build:wobj and set its perms to 700
 	+ Create /dest/dest/ and /dest/rel/ folders
+	+ Make /dest owned by build:wobj and set its perms to 700
+		```
+		doas chown -R build:wobj /dest
+		doas chmod -R 700 /dest
+		```
 
 - Fetch the UTMFW sources and update if upgrading:
 	+ Install git
@@ -191,7 +195,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ openbsd/utmfw/fonts/amd64/xfontXY.tgz
 		+ openbsd/utmfw/fonts/arm64/xfontXY.tgz
 
-	+ Update based on the version number, release date, project changes, and news, if upgrading
+	+ Update the version number, release date, project changes, and news, if upgrading
 		+ config/etc/motd
 		+ meta/root.mail
 		+ README.md

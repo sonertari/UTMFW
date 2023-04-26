@@ -2,7 +2,7 @@
 #	$OpenBSD: install.sub,v 1.421 2007/08/02 03:23:37 david Exp $
 #	$NetBSD: install.sub,v 1.5.2.8 1996/09/02 23:25:02 pk Exp $
 #
-# Copyright (C) 2004-2022 Soner Tari.  All rights reserved.
+# Copyright (C) 2004-2023 Soner Tari.  All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -1083,7 +1083,7 @@ __EOT
 # #######################################################################
 # Initial actions common to both installs and upgrades.
 # #######################################################################
-VERSION='7.2'
+VERSION='7.3'
 ARCH=$(/usr/bin/machine)
 
 VMAJ=${VERSION%%\.*}

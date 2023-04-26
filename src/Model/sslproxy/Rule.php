@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) 2004-2022 Soner Tari
+ * Copyright (C) 2004-2023 Soner Tari
  *
  * This file is part of UTMFW.
  *

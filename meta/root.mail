@@ -1,12 +1,9 @@
-From sonertari@gmail.com Sat Dec 31 07:02:00 EET 2022
+From sonertari@gmail.com Sun Apr 30 07:03:00 EET 2023
 Return-Path: root
-Date: Dec 31 07:02:00 EET 2022
+Date: Apr 30 07:03:00 EET 2023
 From: sonertari@gmail.com (Soner Tari)
 To: root
-Subject: Welcome to UTMFW 7.2!
+Subject: Welcome to UTMFW 7.3!
 
-The highlights of this release are:
-
-- OpenBSD 7.2-stable
-- SSLproxy 0.9.4
+This release updates UTMFW to OpenBSD 7.3-stable.
 
