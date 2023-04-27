@@ -54,6 +54,8 @@ class Limit extends Rule
 		$this->inputKey('src-nodes', 'limit');
 		$this->inputKey('tables', 'limit');
 		$this->inputKey('table-entries', 'limit');
+		$this->inputKey('pktdelay_pkts', 'limit');
+		$this->inputKey('anchors', 'limit');
 
 		$this->inputKey('comment');
 		$this->inputDelEmpty();
@@ -118,6 +120,24 @@ class Limit extends Rule
 			<td>
 				<input type="text" size="10" id="table-entries" name="table-entries" value="<?php echo isset($this->rule['limit']['table-entries']) ? $this->rule['limit']['table-entries'] : ''; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
 				<?php $this->editHelp('table-entries') ?>
+			</td>
+		</tr>
+		<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
+			<td class="title">
+				<?php echo _TITLE('Pktdelay pkts').':' ?>
+			</td>
+			<td>
+				<input type="text" size="10" id="pktdelay_pkts" name="pktdelay_pkts" value="<?php echo isset($this->rule['limit']['pktdelay_pkts']) ? $this->rule['limit']['pktdelay_pkts'] : ''; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+				<?php $this->editHelp('pktdelay_pkts') ?>
+			</td>
+		</tr>
+		<tr class="<?php echo ($this->editIndex++ % 2 ? 'evenline' : 'oddline'); ?>">
+			<td class="title">
+				<?php echo _TITLE('Anchors').':' ?>
+			</td>
+			<td>
+				<input type="text" size="10" id="anchors" name="anchors" value="<?php echo isset($this->rule['limit']['anchors']) ? $this->rule['limit']['anchors'] : ''; ?>" placeholder="<?php echo _CONTROL('number') ?>" />
+				<?php $this->editHelp('anchors') ?>
 			</td>
 		</tr>
 		<?php
