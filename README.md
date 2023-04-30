@@ -12,13 +12,13 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 ## Download
 
-The UTMFW project releases two installation files:
+The UTMFW project releases three installation files:
 
-- The installation iso file for the amd64 arch is available for download at [utmfw73\_20230430\_amd64.iso](https://drive.google.com/file/d/1E_ouaG6HhFbcugvnok0sUhywfkwEevNP/view?usp=share_link). Make sure the SHA256 checksum is correct: 9de3633d25a05a219305ac8b5479e4ba0d00add9383362dd93910feb86a013cd.
+- The installation iso file for the amd64 arch is available for download at [utmfw73\_20230430\_amd64.iso](https://drive.google.com/file/d/1C4sesZsPeWsWUYcOJWlyn55AqFCRSbs5/view?usp=share_link). Make sure the SHA256 checksum is correct: 1a60d2d8cf8602ef8c924967e0d019389185e94221367baba08cd7da47d44756.
 
-- The installation img file for the arm64 arch is available for download at [utmfw73\_20230430\_arm64.img](https://drive.google.com/file/d/1Z0qdAalNCJ_dQvXAdHwSQR8U_fG77lc8/view?usp=share_link). Make sure the SHA256 checksum is correct: aec4f588fe8a23308e3460796cca08c801a936023240c7e3738dc43b93aed95a. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- The installation img file for the amd64 arch is available for download at [utmfw73\_20230430\_amd64.img](https://drive.google.com/file/d/1r_Iyi14EKXPcjr_ftihvznOxduf0noAt/view?usp=share_link). Make sure the SHA256 checksum is correct: 0e7b03c98c0c4fc30f36361a2dbb80d11e3af05ba283c8f32fd96e7c827ec1dd.
 
-You can follow the instructions on [this OpenBSD Journal article](https://undeadly.org/cgi?action=article;sid=20140225072408) to convert the installation iso file for the amd64 arch into a bootable image you can write on a USB drive or an SD card.
+- The installation img file for the arm64 arch is available for download at [utmfw73\_20230430\_arm64.img](https://drive.google.com/file/d/1X_Q9Zq2T7XZncg6iiOX6J7Z4zXnfTyW7/view?usp=share_link). Make sure the SHA256 checksum is correct: 08a2b0ed08128ccc745bb048d492a27891fe680482d2ef042862f648f3002bfa. The only arm64 platform supported is Raspberry Pi 4 Model B.
 
 ## Features
 
