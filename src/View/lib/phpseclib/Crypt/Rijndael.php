@@ -242,47 +242,6 @@ class Crypt_Rijndael extends Crypt_Base
     var $kl;
 
     /**
-     * Sets the key.
-     *
-     * Keys can be of any length.  Rijndael, itself, requires the use of a key that's between 128-bits and 256-bits long and
-     * whose length is a multiple of 32.  If the key is less than 256-bits and the key length isn't set, we round the length
-     * up to the closest valid key length, padding $key with null bytes.  If the key is more than 256-bits, we trim the
-     * excess bits.
-     *
-     * If the key is not explicitly set, it'll be assumed to be all null bytes.
-     *
-     * Note: 160/224-bit keys must explicitly set by setKeyLength(), otherwise they will be round/pad up to 192/256 bits.
-     *
-     * @see Crypt_Base:setKey()
-     * @see self::setKeyLength()
-     * @access public
-     * @param string $key
-     */
-    function setKey($key)
-    {
-        if (!$this->explicit_key_length) {
-            $length = strlen($key);
-            switch (true) {
-                case $length <= 16:
-                    $this->key_size = 16;
-                    break;
-                case $length <= 20:
-                    $this->key_size = 20;
-                    break;
-                case $length <= 24:
-                    $this->key_size = 24;
-                    break;
-                case $length <= 28:
-                    $this->key_size = 28;
-                    break;
-                default:
-                    $this->key_size = 32;
-            }
-        }
-        parent::setKey($key);
-    }
-
-    /**
      * Sets the key length
      *
      * Valid key lengths are 128, 160, 192, 224, and 256.  If the length is less than 128, it will be rounded up to
@@ -454,7 +413,7 @@ class Crypt_Rijndael extends Crypt_Base
         $k = $c[2];
         $l = $c[3];
         while ($i < $Nb) {
-            $temp[$i] = ($state[$i] & 0xFF000000) ^
+            $temp[$i] = ($state[$i] & intval(0xFF000000)) ^
                         ($state[$j] & 0x00FF0000) ^
                         ($state[$k] & 0x0000FF00) ^
                         ($state[$l] & 0x000000FF) ^
@@ -540,7 +499,7 @@ class Crypt_Rijndael extends Crypt_Base
         $l = $Nb - $c[3];
 
         while ($i < $Nb) {
-            $word = ($state[$i] & 0xFF000000) |
+            $word = ($state[$i] & intval(0xFF000000)) |
                     ($state[$j] & 0x00FF0000) |
                     ($state[$k] & 0x0000FF00) |
                     ($state[$l] & 0x000000FF);
@@ -579,14 +538,19 @@ class Crypt_Rijndael extends Crypt_Base
     {
         // Each number in $rcon is equal to the previous number multiplied by two in Rijndael's finite field.
         // See http://en.wikipedia.org/wiki/Finite_field_arithmetic#Multiplicative_inverse
-        static $rcon = array(0,
-            0x01000000, 0x02000000, 0x04000000, 0x08000000, 0x10000000,
-            0x20000000, 0x40000000, 0x80000000, 0x1B000000, 0x36000000,
-            0x6C000000, 0xD8000000, 0xAB000000, 0x4D000000, 0x9A000000,
-            0x2F000000, 0x5E000000, 0xBC000000, 0x63000000, 0xC6000000,
-            0x97000000, 0x35000000, 0x6A000000, 0xD4000000, 0xB3000000,
-            0x7D000000, 0xFA000000, 0xEF000000, 0xC5000000, 0x91000000
-        );
+        static $rcon;
+
+        if (!isset($rcon)) {
+            $rcon = array(0,
+                0x01000000, 0x02000000, 0x04000000, 0x08000000, 0x10000000,
+                0x20000000, 0x40000000, 0x80000000, 0x1B000000, 0x36000000,
+                0x6C000000, 0xD8000000, 0xAB000000, 0x4D000000, 0x9A000000,
+                0x2F000000, 0x5E000000, 0xBC000000, 0x63000000, 0xC6000000,
+                0x97000000, 0x35000000, 0x6A000000, 0xD4000000, 0xB3000000,
+                0x7D000000, 0xFA000000, 0xEF000000, 0xC5000000, 0x91000000
+            );
+            $rcon = array_map('intval', $rcon);
+        }
 
         if (isset($this->kl['key']) && $this->key === $this->kl['key'] && $this->key_length === $this->kl['key_length'] && $this->block_size === $this->kl['block_size']) {
             // already expanded
@@ -625,7 +589,7 @@ class Crypt_Rijndael extends Crypt_Base
                 // on a 32-bit machine, it's 32-bits, and on a 64-bit machine, it's 64-bits. on a 32-bit machine,
                 // 0xFFFFFFFF << 8 == 0xFFFFFF00, but on a 64-bit machine, it equals 0xFFFFFFFF00. as such, doing 'and'
                 // with 0xFFFFFFFF (or 0xFFFFFF00) on a 32-bit machine is unnecessary, but on a 64-bit machine, it is.
-                $temp = (($temp << 8) & 0xFFFFFF00) | (($temp >> 24) & 0x000000FF); // rotWord
+                $temp = (($temp << 8) & intval(0xFFFFFF00)) | (($temp >> 24) & 0x000000FF); // rotWord
                 $temp = $this->_subWord($temp) ^ $rcon[$i / $this->Nk];
             } elseif ($this->Nk > 6 && $i % $this->Nk == 4) {
                 $temp = $this->_subWord($temp);
@@ -755,9 +719,9 @@ class Crypt_Rijndael extends Crypt_Base
             ));
 
             foreach ($t3 as $t3i) {
-                $t0[] = (($t3i << 24) & 0xFF000000) | (($t3i >>  8) & 0x00FFFFFF);
-                $t1[] = (($t3i << 16) & 0xFFFF0000) | (($t3i >> 16) & 0x0000FFFF);
-                $t2[] = (($t3i <<  8) & 0xFFFFFF00) | (($t3i >> 24) & 0x000000FF);
+                $t0[] = (($t3i << 24) & intval(0xFF000000)) | (($t3i >>  8) & 0x00FFFFFF);
+                $t1[] = (($t3i << 16) & intval(0xFFFF0000)) | (($t3i >> 16) & 0x0000FFFF);
+                $t2[] = (($t3i <<  8) & intval(0xFFFFFF00)) | (($t3i >> 24) & 0x000000FF);
             }
 
             $tables = array(
@@ -839,9 +803,9 @@ class Crypt_Rijndael extends Crypt_Base
             ));
 
             foreach ($dt3 as $dt3i) {
-                $dt0[] = (($dt3i << 24) & 0xFF000000) | (($dt3i >>  8) & 0x00FFFFFF);
-                $dt1[] = (($dt3i << 16) & 0xFFFF0000) | (($dt3i >> 16) & 0x0000FFFF);
-                $dt2[] = (($dt3i <<  8) & 0xFFFFFF00) | (($dt3i >> 24) & 0x000000FF);
+                $dt0[] = (($dt3i << 24) & intval(0xFF000000)) | (($dt3i >>  8) & 0x00FFFFFF);
+                $dt1[] = (($dt3i << 16) & intval(0xFFFF0000)) | (($dt3i >> 16) & 0x0000FFFF);
+                $dt2[] = (($dt3i <<  8) & intval(0xFFFFFF00)) | (($dt3i >> 24) & 0x000000FF);
             };
 
             $tables = array(
@@ -923,7 +887,6 @@ class Crypt_Rijndael extends Crypt_Base
 
             // Generating encrypt code:
             $init_encrypt.= '
-                static $tables;
                 if (empty($tables)) {
                     $tables = &$self->_getTables();
                 }
@@ -980,7 +943,6 @@ class Crypt_Rijndael extends Crypt_Base
 
             // Generating decrypt code:
             $init_decrypt.= '
-                static $invtables;
                 if (empty($invtables)) {
                     $invtables = &$self->_getInvTables();
                 }
@@ -1037,7 +999,7 @@ class Crypt_Rijndael extends Crypt_Base
 
             $lambda_functions[$code_hash] = $this->_createInlineCryptFunction(
                 array(
-                   'init_crypt'    => '',
+                   'init_crypt'    => 'static $tables; static $invtables;',
                    'init_encrypt'  => $init_encrypt,
                    'init_decrypt'  => $init_decrypt,
                    'encrypt_block' => $encrypt_block,

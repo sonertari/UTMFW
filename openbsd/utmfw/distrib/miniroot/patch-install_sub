@@ -1,6 +1,6 @@
---- install.sub.orig	Fri Mar 10 13:33:40 2023
-+++ install.sub	Wed Apr 26 18:47:38 2023
-@@ -1319,7 +1319,7 @@
+--- install.sub.orig	Mon Aug 21 17:33:55 2023
++++ install.sub	Sun Feb 18 21:55:07 2024
+@@ -1324,7 +1324,7 @@
  
  # Set up IPv4 and IPv6 interface configuration.
  configure_ifs() {
@@ -9,7 +9,7 @@
  	resp=
  
  	# Always need lo0 configured.
-@@ -1328,6 +1328,8 @@
+@@ -1333,6 +1333,8 @@
  	# In case of restart, delete previous default gateway config.
  	rm -f /tmp/i/mygate
  
@@ -18,7 +18,7 @@
  	while :; do
  		set -sA _ifs -- $(get_ifs)
  
-@@ -1354,7 +1356,7 @@
+@@ -1359,7 +1361,7 @@
  
  		_q="Network interface to configure?"
  		ask_until "$_q (name, lladdr, '?', or 'done')" \
@@ -27,7 +27,7 @@
  
  		[[ $resp == done ]] && break
  		[[ $resp == '?'  ]] && continue
-@@ -1406,10 +1408,12 @@
+@@ -1411,10 +1413,12 @@
  		if [[ -f $_hn ]]; then
  			chmod 640 $_hn
  			: ${_first:=$_if}
@@ -41,7 +41,7 @@
  	done
  }
  
-@@ -1667,8 +1671,9 @@
+@@ -1672,8 +1676,9 @@
  	# Try to prefetch and control checksum of the set files.
  	# Use dummy for loop as combined assignment and do { ... } while(0).
  	for _issue in ''; do
@@ -52,7 +52,7 @@
  
  		if ! $_srclocal; then
  			! _tmpfs_list=$(prefetcharea_fs_list) &&
-@@ -1711,7 +1716,7 @@
+@@ -1716,7 +1721,7 @@
  		# The bsd.rd only download/verify/install assumes the sets
  		# location of the next release. So use the right signature file.
  		$UPGRADE_BSDRD &&
@@ -61,7 +61,7 @@
  
  		# Verify signature file with public keys.
  		! unpriv -f "$_cfile" \
-@@ -1760,7 +1765,7 @@
+@@ -1765,7 +1770,7 @@
  
  	[[ -n $_unver ]] && : ${_issue:="Unverified sets:" ${_unver% }}
  	if [[ -n $_issue ]] &&
@@ -70,7 +70,7 @@
  		[[ -d $_tmpsrc ]] && rm -rf "$_tmpsrc"
  		$AI && exit 1
  		return
-@@ -2213,20 +2218,6 @@
+@@ -2223,20 +2228,6 @@
  	ask_yn "Start sshd(8) by default?" yes
  	START_SSHD=$resp
  
@@ -91,7 +91,7 @@
  	if [[ -n $CDEV ]]; then
  		_d=${CPROM:-$CDEV}
  		[[ -n $CONSOLE ]] && _cdef=yes
-@@ -2257,6 +2248,9 @@
+@@ -2267,6 +2258,9 @@
  			;;
  		root|daemon|operator|bin|build|sshd|www|nobody|ftp)
  			;;
@@ -101,7 +101,7 @@
  		[a-z]*([-a-z0-9_]))
  			((${#resp} <= 31)) && break
  			;;
-@@ -3155,7 +3149,6 @@
+@@ -3148,7 +3142,6 @@
  	questions
  
  	# Gather information for setting up the initial user account.
@@ -109,15 +109,15 @@
  	ask_root_sshd
  
  	# Set TZ variable based on zonefile and user selection.
-@@ -3579,6 +3572,7 @@
+@@ -3572,6 +3565,7 @@
  NIFS=0
  export PS1="$MODE# "
  PUB_KEY=/etc/signify/openbsd-${VERSION}-base.pub
 +PUB_KEY=/etc/signify/utmfw-${VERSION}.pub
- CRYPTODISK=
  ROOTDEV=
  ROOTDISK=
-@@ -3618,14 +3612,14 @@
+ SETDIR="$VNAME/$ARCH"
+@@ -3610,14 +3604,14 @@
  # Selected sets will be installed in the order they are listed in $ALLSETS.
  # Ensure that siteXX.tgz is the *last* set listed so its contents overwrite
  # the contents of the other sets, not the other way around.

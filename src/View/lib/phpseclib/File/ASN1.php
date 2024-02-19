@@ -199,6 +199,16 @@ class File_ASN1
     var $filters;
 
     /**
+     * Current Location of most recent ASN.1 encode process
+     *
+     * Useful for debug purposes
+     *
+     * @var array
+     * @see self::encode_der()
+     */
+    var $location;
+
+    /**
      * Type mapping table for the ANY type.
      *
      * Structured or unknown types are mapped to a FILE_ASN1_Element.
@@ -1584,7 +1594,7 @@ class File_ASN1
                         return false;
                     }
                     break;
-                case ($c & 0x80000000) != 0:
+                case ($c & (PHP_INT_SIZE == 8 ? 0x80000000 : (1 << 31))) != 0:
                     return false;
                 case $c >= 0x04000000:
                     $v .= chr(0x80 | ($c & 0x3F));
