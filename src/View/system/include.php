@@ -149,7 +149,7 @@ class System extends View
 								</tr>
 							</table>
 						</td>
-						<td class="part" style="width: 100px;">/</td>
+						<td class="part" style="width: 100px;" nowrap>/</td>
 					</tr>
 				</table>
 				</a>
@@ -168,7 +168,7 @@ class System extends View
 								</tr>
 							</table>
 						</td>
-						<td class="part" style="width: 100px;">/tmp</td>
+						<td class="part" style="width: 100px;" nowrap>/tmp</td>
 					</tr>
 				</table>
 				</a>
@@ -187,7 +187,7 @@ class System extends View
 								</tr>
 							</table>
 						</td>
-						<td class="part" style="width: 100px;">/usr</td>
+						<td class="part" style="width: 100px;" nowrap>/usr</td>
 					</tr>
 				</table>
 				</a>
@@ -206,7 +206,7 @@ class System extends View
 								</tr>
 							</table>
 						</td>
-						<td class="part" style="width: 100px;">/var</td>
+						<td class="part" style="width: 100px;" nowrap>/var</td>
 					</tr>
 				</table>
 				</a>
@@ -228,7 +228,7 @@ class System extends View
 									</tr>
 								</table>
 							</td>
-							<td class="part" style="width: 100px;">/var/log</td>
+							<td class="part" style="width: 100px;" nowrap>/var/log</td>
 						</tr>
 					</table>
 					</a>
