@@ -38,6 +38,7 @@ class Lexer {
     var $lineno;
     var $lineitems;
     var $line;
+    var $eof;
     var $buffer;
     var $token;
     var $unget;

@@ -39,6 +39,7 @@ class RRDTool {
     var $cmdline;
     var $error;
     var $output;
+    var $method;
 
     function __construct() {
 	global $symon;
