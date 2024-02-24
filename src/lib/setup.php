@@ -65,5 +65,5 @@ $NotifierUsers= '[]';
 $NotifierFilters= '[]';
 
 /// Wait notifier for this many seconds before giving up.
-$NotifierTimeout= 10;
+$NotifierTimeout= 30;
 ?>
