@@ -298,7 +298,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Extract src.tar.gz and and sys.tar.gz under /usr/src/
 	+ Apply the patches under openbsd/utmfw
 	+ Update the sources with the stable branch changes if any
-	+ Follow the instructions in release(8), this step takes about 6 hours on a relatively fast amd64 computer and about 55 hours on a Raspberry Pi 4
+	+ Follow the instructions in release(8), this step takes about 6 hours on a relatively fast amd64 computer and longer than 60 hours on a Raspberry Pi 4
 		+ Build the kernel and reboot
 		+ Build the base system
 		+ Make the release, use the dest and rel folders created above:
@@ -315,6 +315,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Copy the xbaseXY.tgz install set from installXY.img to docs/expat/arm64/xbaseXY.tgz
 	+ Copy the xfontXY.tgz install set from installXY.iso to docs/fonts/amd64/xfontXY.tgz
 	+ Copy the xfontXY.tgz install set from installXY.img to docs/fonts/arm64/xfontXY.tgz
+	+ Copy the files under the BOOT partition of installXY.img for the amd64 arch to ~/OpenBSD/X.Y/amd64/BOOT/
 	+ Copy the files under the BOOT partition of installXY.img for the arm64 arch to ~/OpenBSD/X.Y/arm64/BOOT/
 	+ Download and copy [the Broadcom wifi drivers](https://github.com/pftf/RPi4/tree/master/firmware/brcm) for Raspberry Pi 4 to ~/OpenBSD/X.Y/arm64/firmware/
 

@@ -50,11 +50,12 @@ cd $ROOT_PATH/$CD_PATH
 if [ "$ARCH" = arm64 ]; then
 	MSDOSSTART=32768
 	MSDOSSIZE=16384
-	FFSSTART=$(($MSDOSSTART + $MSDOSSIZE))
 fi
 if [ "$ARCH" = amd64 ]; then
-	FFSSTART=0
+	MSDOSSTART=0
+	MSDOSSIZE=960
 fi
+FFSSTART=$(($MSDOSSTART + $MSDOSSIZE))
 
 # Size of cd/{arm64,amd64}, trim trailing white spaces by adding 0
 CD_SIZE=$(($(du -L -s . | cut -d . -f 1) + 0))
@@ -72,9 +73,7 @@ cd $ROOT_PATH
 rm $IMG_FILE
 
 doas umount ./img_ffs
-if [ "$ARCH" = arm64 ]; then
-	doas umount ./img_msdos
-fi
+doas umount ./img_msdos
 doas vnconfig -u vnd0
 
 # 1 sector = 512 bytes
@@ -85,42 +84,43 @@ dd if=/dev/zero of=$IMG_FILE bs=512 count=$IMG_SIZE
 doas vnconfig vnd0 $IMG_FILE
 
 if [ "$ARCH" = arm64 ]; then
-	echo "reinit\ne 0\nC\nn\n$MSDOSSTART\n$MSDOSSIZE\nf 0\ne 3\nA6\nn\n$FFSSTART\n*\nw\nq\n" | doas fdisk -e vnd0 >/dev/null
+	#echo "reinit\ne 0\nC\nn\n$MSDOSSTART\n$MSDOSSIZE\nf 0\ne 3\nA6\nn\n$FFSSTART\n*\nw\nq\n" | doas fdisk -e vnd0 >/dev/null
+	doas fdisk -yi -b "${MSDOSSIZE}@${MSDOSSTART}:c" vnd0
 fi
 if [ "$ARCH" = amd64 ]; then
-	echo "y\n" | doas fdisk -i vnd0 >/dev/null
+	doas fdisk -yi -l $FS_SIZE -b $MSDOSSIZE -f /usr/mdec/mbr vnd0
 fi
 doas fdisk vnd0
 
-echo "a a\n\n\n\nw\nq\n" | doas disklabel -E vnd0 >/dev/null
+echo '/ *' | doas disklabel -wAT- vnd0
 doas disklabel vnd0
 
-doas newfs -O 1 -m 0 -o space -i $FS_SIZE -c $CD_SIZE /dev/rvnd0a
+doas newfs -O 1 -m 0 -o space -i 524288 -c $CD_SIZE /dev/rvnd0a
 
 if [ "$ARCH" = arm64 ]; then
-	doas newfs_msdos -L boot -c 1 -F 16 /dev/rvnd0i
+	doas newfs -t msdos -L boot -c 1 -F 16 /dev/rvnd0i
+fi
+if [ "$ARCH" = amd64 ]; then
+	doas newfs -t msdos /dev/rvnd0i
 fi
 
 mkdir ./img_ffs
 doas mount /dev/vnd0a ./img_ffs
 
-if [ "$ARCH" = arm64 ]; then
-	mkdir ./img_msdos
-	doas mount -o-l /dev/vnd0i ./img_msdos
-fi
-
 doas cp -R -L -v $ROOT_PATH/$CD_PATH/* ./img_ffs/
 
-if [ "$ARCH" = arm64 ]; then
-	doas cp -R -v openbsd/$INSTALL_SETS_PATH/BOOT/* ./img_msdos
-	echo "$VOL_ID\n$SYS_ID\n$APP_ID\n$PUBLISH_ID\n$PREP_ID" > ./img_msdos/README.txt
-fi
+mkdir ./img_msdos
+doas mount -o-l /dev/vnd0i ./img_msdos
+
+doas cp -R -v openbsd/$INSTALL_SETS_PATH/BOOT/* ./img_msdos
+
 if [ "$ARCH" = amd64 ]; then
-	doas installboot -r ./img_ffs vnd0 /usr/mdec/biosboot /usr/mdec/boot
+	doas objcopy -S -R .comment /usr/mdec/boot ./img_ffs/boot
+	doas installboot -v -r ./img_ffs vnd0 /usr/mdec/biosboot ./img_ffs/boot
 fi
 
+echo "$VOL_ID\n$SYS_ID\n$APP_ID\n$PUBLISH_ID\n$PREP_ID" > ./img_msdos/README.txt
+
 doas umount ./img_ffs
-if [ "$ARCH" = arm64 ]; then
-	doas umount ./img_msdos
-fi
+doas umount ./img_msdos
 doas vnconfig -u vnd0
