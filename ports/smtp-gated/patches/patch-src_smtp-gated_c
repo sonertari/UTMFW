@@ -1,4 +1,3 @@
-$OpenBSD$
 Index: src/smtp-gated.c
 --- src/smtp-gated.c.orig
 +++ src/smtp-gated.c
@@ -11,6 +10,15 @@ Index: src/smtp-gated.c
   *
   *	This program is free software; you can redistribute it and/or 
   *	modify it under the terms of the GNU General Public License 
+@@ -479,7 +479,7 @@ void queue_commandp(smtp_command_t command, struct ses
+ 		pipeline_full(data);
+ } /* queue_commandp() */
+ 
+-inline void queue_command(smtp_command_t command, struct session_t *data)
++static inline void queue_command(smtp_command_t command, struct session_t *data)
+ {
+ 	return queue_commandp(command, data, arg_t_p(NULL), arg_t_p(NULL));
+ } /* queue_command() */
 @@ -964,8 +964,8 @@ void wait_for_quit(struct session_t* data, char* forma
  	va_end(ap);
  
@@ -22,6 +30,15 @@ Index: src/smtp-gated.c
  
  	cli_size = 0;
  	SET_TIMEOUT(config.timeout_session);
+@@ -1204,7 +1204,7 @@ void destroy_rcpt_to(struct session_t *data)
+ 	data->rcpts = 0;
+ } /* destroy_rcpt_to() */
+ 
+-inline void destroy_addresses(struct session_t *data)
++static inline void destroy_addresses(struct session_t *data)
+ {
+ 	destroy_mail_from(data);
+ 	destroy_rcpt_to(data);
 @@ -1220,8 +1220,8 @@ void flush_addresses(struct session_t *data)
  			data->mail_from_logged = 1;
  			return;
