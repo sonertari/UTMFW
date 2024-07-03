@@ -1,13 +1,14 @@
-# Doxyfile 1.9.8
+# Doxyfile 1.10.0
 
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "UTM Firewall"
-PROJECT_NUMBER         = 7.4
+PROJECT_NUMBER         = 7.5
 PROJECT_BRIEF          =
 PROJECT_LOGO           =
+PROJECT_ICON           =
 OUTPUT_DIRECTORY       = ./src/View/docs
 CREATE_SUBDIRS         = NO
 CREATE_SUBDIRS_LEVEL   = 8
@@ -180,6 +181,8 @@ HTML_COLORSTYLE_GAMMA  = 80
 HTML_DYNAMIC_MENUS     = YES
 HTML_DYNAMIC_SECTIONS  = NO
 HTML_CODE_FOLDING      = YES
+HTML_COPY_CLIPBOARD    = YES
+HTML_PROJECT_COOKIE    =
 HTML_INDEX_NUM_ENTRIES = 100
 GENERATE_DOCSET        = NO
 DOCSET_FEEDNAME        = "Doxygen generated docs"

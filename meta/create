@@ -17,7 +17,7 @@
 # along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
 
 ROOT_PATH=$(pwd)
-VERSION='7.4'
+VERSION='7.5'
 SUBVERSION=_$(date +%Y%m%d)
 VMAJ=${VERSION%%\.*}
 VMIN=${VERSION##*\.}
