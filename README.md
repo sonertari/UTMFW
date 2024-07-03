@@ -205,8 +205,10 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 - Generate the signify key pair:
 	+ `signify -G -p utmfw-XY.pub -s utmfw-XY.sec`
 	+ Save utmfw-XY.pub and utmfw-XY.sec to docs/signify
-	+ Copy utmfw-XY.pub to meta/etc/signify/
-	+ Copy utmfw-XY.pub to /etc/signify/, the utmfw-XY.pub file is copied into the bsd.rd file while making release(8), to verify install sets during installation
+	+ Copy utmfw-XY.pub to docs/signify/utmfw-XY-pkg.pub
+	+ Copy utmfw-XY.sec to docs/signify/utmfw-XY-pkg.sec
+	+ Copy utmfw-XY.pub and utmfw-XY-pkg.pub to meta/etc/signify/
+	+ Copy utmfw-XY.pub and utmfw-XY-pkg.pub to /etc/signify/, the utmfw-XY.pub file is copied into the bsd.rd file while making release(8), to verify install sets during installation
 
 - Update the packages for the amd64 arch, then do the same for the arm64 arch replacing amd64 with arm64 (or aarch64 for PKG_PATH) below:
 	+ Install the OpenBSD packages
@@ -256,7 +258,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 			+ collectd
 		+ Sign all of the UTMFW packages using signify, for example:
 			```
-			signify -Sz -s utmfw-XY.sec -m /usr/ports/packages/amd64/all/sslproxy-0.9.6.tgz -x ~/sslproxy-0.9.6.tgz
+			signify -Sz -s utmfw-XY-pkg.sec -m /usr/ports/packages/amd64/all/sslproxy-0.9.6.tgz -x ~/sslproxy-0.9.6.tgz
 			```
 	+ Update the links under cd/amd64/X.Y/packages/ with the UTMFW packages made above
 
