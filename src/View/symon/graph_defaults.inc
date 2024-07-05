@@ -434,7 +434,7 @@ GPRINT:rsssz:LAST:%6.2lf %s\n
 -h %heigth%
 -s %start%
 -e %end%
-DEF:totmbufs=%rrdfile%:totmbufs:AVERAGE
+DEF:totmbufsg=%rrdfile%:totmbufs:AVERAGE
 DEF:mt_data=%rrdfile%:mt_data:AVERAGE
 DEF:mt_oobdata=%rrdfile%:mt_oobdata:AVERAGE
 DEF:mt_control=%rrdfile%:mt_control:AVERAGE
@@ -449,6 +449,7 @@ DEF:totpct=%rrdfile%:totpct:AVERAGE
 DEF:m_drops=%rrdfile%:m_drops:AVERAGE
 DEF:m_wait=%rrdfile%:m_wait:AVERAGE
 DEF:m_drain=%rrdfile%:m_drain:AVERAGE
+CDEF:totmbufs=totmbufsg,1000000000,/
 CDEF:nodata=totmbufs,UN,0,*
 COMMENT:                   min       avg       max       last\n
 LINE1:nodata#FF0000
@@ -488,10 +489,10 @@ GPRINT:mt_soopts:AVERAGE:%6.2lf %s
 GPRINT:mt_soopts:MAX:%6.2lf %s
 GPRINT:mt_soopts:LAST:%6.2lf %s\n
 LINE1:totmbufs#000000:totmbufs  
-GPRINT:totmbufs:MIN:  %6.2lf %s
-GPRINT:totmbufs:AVERAGE:%6.2lf %s
-GPRINT:totmbufs:MAX:%6.2lf %s
-GPRINT:totmbufs:LAST:%6.2lf %s\n
+GPRINT:totmbufsg:MIN:  %6.2lf %s
+GPRINT:totmbufsg:AVERAGE:%6.2lf %s
+GPRINT:totmbufsg:MAX:%6.2lf %s
+GPRINT:totmbufsg:LAST:%6.2lf %s\n
 LINE1:m_drops#ff0000:m_drops   
 GPRINT:m_drops:MIN:  %6.2lf %s
 GPRINT:m_drops:AVERAGE:%6.2lf %s
