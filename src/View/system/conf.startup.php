@@ -59,9 +59,9 @@ $ServiceDescs= array(
 	'dhcpd_flags'					=> _TITLE2('DHCP Server'),
 	'ftpproxy_flags'				=> _TITLE2('FTP Proxy'),
 	'ntpd_flags'					=> _TITLE2('Network Time'),
-	'spamd_flags'					=> _TITLE2('Spamd Spam Deferral'),
-	'spamd_grey'					=> _TITLE2('Spamd Grey Listing'),
-	'spamlogd_flags'				=> _TITLE2('Spamd Logging'),
+	// 'spamd_flags'					=> _TITLE2('Spamd Spam Deferral'),
+	// 'spamd_grey'					=> _TITLE2('Spamd Grey Listing'),
+	// 'spamlogd_flags'				=> _TITLE2('Spamd Logging'),
 	'apmd_flags'					=> _TITLE2('Advanced Power Management'),
 	);
 

@@ -862,40 +862,40 @@ $StatsConf = array(
 				),
 			),
 		),
-    'spamd' => array(
-		'Total' => array(
-			'Title' => _STATS('All connections'),
-			'Cmd' => '/bin/cat <LF>',
-			'Needle' => '( spamd\[)',
-			'BriefStats' => array(
-				'List' => _STATS('Blacklists'),
-				'IP' => _STATS('Deferred IPs'),
-				),
-			'Counters' => array(
-				'Seconds' => array(
-					'Field' => 'Seconds',
-					'Title' => _STATS('Total deferred time (sec)'),
-					'Color' => 'Green',
-					'NVPs' => array(
-						'IP' => _STATS('IPs'),
-						'Seconds' => _STATS('Longest deferred (sec)'),
-						'Date' => _STATS('Connections by date'),
-						'List' => _STATS('Blacklists'),
-						),
-					),
-				),
-			),
-		'Requests' => array(
-			'Title' => _STATS('All connections'),
-			'Needle' => ' disconnected ',
-			'Color' => '#01466b',
-			'NVPs' => array(
-				'IP' => _STATS('IPs'),
-				'List' => _STATS('Blacklists'),
-				'Date' => _STATS('Connections by date'),
-				),
-			),
-		),
+    // 'spamd' => array(
+	// 	'Total' => array(
+	// 		'Title' => _STATS('All connections'),
+	// 		'Cmd' => '/bin/cat <LF>',
+	// 		'Needle' => '( spamd\[)',
+	// 		'BriefStats' => array(
+	// 			'List' => _STATS('Blacklists'),
+	// 			'IP' => _STATS('Deferred IPs'),
+	// 			),
+	// 		'Counters' => array(
+	// 			'Seconds' => array(
+	// 				'Field' => 'Seconds',
+	// 				'Title' => _STATS('Total deferred time (sec)'),
+	// 				'Color' => 'Green',
+	// 				'NVPs' => array(
+	// 					'IP' => _STATS('IPs'),
+	// 					'Seconds' => _STATS('Longest deferred (sec)'),
+	// 					'Date' => _STATS('Connections by date'),
+	// 					'List' => _STATS('Blacklists'),
+	// 					),
+	// 				),
+	// 			),
+	// 		),
+	// 	'Requests' => array(
+	// 		'Title' => _STATS('All connections'),
+	// 		'Needle' => ' disconnected ',
+	// 		'Color' => '#01466b',
+	// 		'NVPs' => array(
+	// 			'IP' => _STATS('IPs'),
+	// 			'List' => _STATS('Blacklists'),
+	// 			'Date' => _STATS('Connections by date'),
+	// 			),
+	// 		),
+	// 	),
     'sslproxy' => array(
 		'Total' => array(
 			'Cmd' => '/bin/cat <LF>',
@@ -1045,7 +1045,7 @@ $ModelsToStat= array(
 	'openssh' => _TITLE('OpenSSH'),
 	'ftp-proxy' => _TITLE('FTP Proxy'),
 	'dante' => _TITLE('SOCKS Proxy'),
-	'spamd' => _TITLE('SPAM Deferral'),
+	// 'spamd' => _TITLE('SPAM Deferral'),
 	'httpd' => _TITLE('Web User Interface'),
 	'symon' => _TITLE('Symon'),
 	'symux' => _TITLE('Symux'),

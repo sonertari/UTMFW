@@ -3918,7 +3918,7 @@ $ModelsToLogConfig= array(
 	'openssh',
 	'ftp-proxy',
 	'dante',
-	'spamd',
+	// 'spamd',
 	'httpd',
 	'httpdlogs',
 	'wui_syslog',

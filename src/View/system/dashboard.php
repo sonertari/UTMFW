@@ -37,7 +37,7 @@ require_once($VIEW_PATH.'/spamassassin/include.php');
 require_once($VIEW_PATH.'/imspector/imspector.php');
 require_once($VIEW_PATH.'/dante/include.php');
 require_once($VIEW_PATH.'/openvpn/include.php');
-require_once($VIEW_PATH.'/spamd/include.php');
+// require_once($VIEW_PATH.'/spamd/include.php');
 require_once($VIEW_PATH.'/snort/snort.php');
 require_once($VIEW_PATH.'/snortips/include.php');
 require_once($VIEW_PATH.'/p3scan/include.php');
@@ -339,7 +339,7 @@ function DisplayModuleStatus($Module, $DisplayDashboardExtrasFunc= FALSE)
 				DisplayModuleStatus('spamassassin', fn() => Spamassassin::DisplayDashboardExtras());
 				DisplayModuleStatus('openssh', fn() => Openssh::DisplayDashboardExtras());
 				DisplayModuleStatus('openvpn');
-				DisplayModuleStatus('spamd');
+				// DisplayModuleStatus('spamd');
 				?>
 			</table>
 		</td>

@@ -73,7 +73,7 @@ class System extends Model
 			'/usr/local/sbin/snortips',
 			'/usr/local/sbin/clamd',
 			'/usr/local/bin/freshclam',
-			'/usr/local/bin/spamd',
+			// '/usr/local/bin/spamd',
 			'/usr/local/sbin/p3scan',
 			'/usr/local/sbin/smtp-gated',
 			'/usr/local/sbin/imspector',
@@ -92,9 +92,9 @@ class System extends Model
 			'dhcpd_flags',
 			'ftpproxy_flags',
 			'ntpd_flags',
-			'spamd_flags',
-			'spamd_grey',
-			'spamlogd_flags',
+			// 'spamd_flags',
+			// 'spamd_grey',
+			// 'spamlogd_flags',
 			'apmd_flags',
 			);
 				

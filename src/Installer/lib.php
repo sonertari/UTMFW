@@ -106,10 +106,10 @@ function ApplyConfig()
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting snort interfaces: $lanif, $wanif");
 		}
 
-		$View->Model= 'spamd';
-		if (!$View->Controller($output, 'SetStartupIf', $wanif)) {
-			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting spamlogd interfaces: $wanif");
-		}
+		// $View->Model= 'spamd';
+		// if (!$View->Controller($output, 'SetStartupIf', $wanif)) {
+		// 	wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting spamlogd interfaces: $wanif");
+		// }
 
 		$View->Model= 'dante';
 		if (!$View->Controller($output, 'SetIfs', $lanif, $wanif)) {

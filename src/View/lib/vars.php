@@ -121,10 +121,10 @@ $UTMFW_MODULES = array(
 		'Name' => _MENU('SOCKS PROXY'),
 		'Perms' => $ALL_USERS,
 		),
-	'spamd' => array(
-		'Name' => _MENU('SPAMD'),
-		'Perms' => $ALL_USERS,
-		),
+	// 'spamd' => array(
+	// 	'Name' => _MENU('SPAMD'),
+	// 	'Perms' => $ALL_USERS,
+	// 	),
 	'httpd' => array(
 		'Name' => _MENU('WEB SERVER'),
 		'Perms' => $ALL_USERS,
