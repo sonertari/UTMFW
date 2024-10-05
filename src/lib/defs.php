@@ -56,37 +56,38 @@ $ALL_USERS= array_merge($ADMIN, $USER);
  * Locale definitions used by both View and Controller.
  *
  * It is recommended that all translations use UTF-8 codeset.
+ * @attention Do not translate the values for 'Name' here, we translate them when we use them in code
  *
  * @param string Name Title string
  * @param string Codeset Locale codeset
  */
 $LOCALES = array(
     'en_EN' => array(
-        'Name' => _('English'),
+        'Name' => 'English',
         'Codeset' => 'UTF-8'
 		),
     'tr_TR' => array(
-        'Name' => _('Turkish'),
+        'Name' => 'Turkish',
         'Codeset' => 'UTF-8'
 		),
     'sp_SP' => array(
-        'Name' => _('Spanish'),
+        'Name' => 'Spanish',
         'Codeset' => 'UTF-8'
 		),
     'ru_RU' => array(
-        'Name' => _('Russian'),
+        'Name' => 'Russian',
         'Codeset' => 'UTF-8'
 		),
     'zh_CN' => array(
-        'Name' => _('Chinese simplified'),
+        'Name' => 'Chinese simplified',
         'Codeset' => 'UTF-8'
 		),
     'nl_NL' => array(
-        'Name' => _('Dutch'),
+        'Name' => 'Dutch',
         'Codeset' => 'UTF-8'
 		),
     'fr_FR' => array(
-        'Name' => _('French'),
+        'Name' => 'French',
         'Codeset' => 'UTF-8'
 		),
 	);
