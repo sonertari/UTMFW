@@ -139,7 +139,7 @@ a:hover.transparent-white
 
 #menu a.menuwithimage
 {
-	padding: 4.2px;
+	padding: 6px;
 	margin: 0;
 	vertical-align: middle;
 }
@@ -193,7 +193,7 @@ ul#navigation li
 
 ul#navigation li a
 {
-	padding: 8px 5px;
+	padding: 6px;
 	color: black;
 	text-decoration: none;
 	display: inline-block;
@@ -226,6 +226,7 @@ ul#navigation ul, ul#navigation ul li ul
 {
 	list-style: none;
 	margin: 0;
+	margin-top: 3px;
 	padding: 0;
 	visibility: hidden;
 	position: absolute;

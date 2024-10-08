@@ -126,7 +126,7 @@ The create script:
 - Clones the git repo of the project to a tmp folder.
 - Generates gettext translations and doxygen documentation.
 - Prepares the webif and config packages and the site install set.
-- And finally creates the iso file for the amd64 arch or the img file for the arm64 arch.
+- And finally creates the iso or img file for the amd64 arch or the img file for the arm64 arch.
 
 However, the source tree has links to OpenBSD install sets and packages, which should be broken, hence need to be fixed when you first obtain the sources. Make sure you see those broken links now. So, before you can run the create script, you need to do a couple of things:
 
@@ -163,7 +163,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Create a local user, after reboot add it to /etc/doas.conf
 	+ Create a separate partition mounted on /dest, which will be needed to make release(8)
 	+ Add noperm to /dest in /etc/fstab
-	+ Create /dest/dest/ and /dest/rel/ folders
+	+ Create the /dest/dest/ and /dest/rel/ folders
 	+ Make /dest owned by build:wobj and set its perms to 700
 		```
 		doas chown -R build:wobj /dest

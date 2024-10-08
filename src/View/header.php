@@ -116,7 +116,11 @@ define('SELECTED_A_STYLE', ' style="color: white;"');
 								}
 								?>
 								<li<?php echo $LiStyle ?>>
-									<a href="<?php echo $TopMenuName ?>.php"<?php echo $AStyle ?>><?php echo _($TopMenuConf['Name']) ?></a>
+									<a href="<?php echo $TopMenuName ?>.php"<?php echo $AStyle ?>>
+										<span class="menuwithimage"><?php echo _($TopMenuConf['Name']) ?></span>
+										<!-- Add this invisible menu.png to set the height of top menu to the same height as the navigation menu -->
+										<img src="/images/menu.png" name="Menu" alt="Menu" align="absmiddle" width="0" height="22" style="visibility: hidden;">
+									</a>
 									<?php
 									if (isset($TopMenuConf['SubMenu'])) {
 										?>
