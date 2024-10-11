@@ -1,0 +1,353 @@
+diff -Nur src.orig/distrib/amd64/ramdisk_cd/list src/distrib/amd64/ramdisk_cd/list
+--- src.orig/distrib/amd64/ramdisk_cd/list	Sun Sep  1 07:39:23 2024
++++ src/distrib/amd64/ramdisk_cd/list	Fri Oct 11 16:46:18 2024
+@@ -117,6 +117,7 @@
+ COPY	${CURDIR}/../../miniroot/master.passwd	etc/master.passwd
+ SPECIAL	pwd_mkdb -p -d etc master.passwd; rm etc/master.passwd
+ COPY	${DESTDIR}/etc/signify/openbsd-${OSrev}-base.pub	etc/signify/openbsd-${OSrev}-base.pub
++COPY	/etc/signify/utmfw-${OSrev}.pub		etc/signify/utmfw-${OSrev}.pub
+ COPY	${CURDIR}/../../miniroot/protocols	etc/protocols
+ COPY	${CURDIR}/../../miniroot/services	etc/services
+ TERMCAP	vt100,vt220,dumb			usr/share/misc/termcap
+diff -Nur src.orig/distrib/arm64/ramdisk/list src/distrib/arm64/ramdisk/list
+--- src.orig/distrib/arm64/ramdisk/list	Sun Sep  1 07:39:23 2024
++++ src/distrib/arm64/ramdisk/list	Fri Oct 11 16:47:00 2024
+@@ -101,6 +101,9 @@
+ COPY    ${DESTDIR}/etc/firmware/urtwn-rtl8192cT	etc/firmware/urtwn-rtl8192cT
+ COPY    ${DESTDIR}/etc/firmware/urtwn-rtl8192cU	etc/firmware/urtwn-rtl8192cU
+ COPY    ${DESTDIR}/etc/firmware/urtwn-rtl8192eu	etc/firmware/urtwn-rtl8192eu
++COPY	/etc/firmware/brcmfmac43455-sdio.bin etc/firmware/brcmfmac43455-sdio.bin
++COPY	/etc/firmware/brcmfmac43455-sdio.clm_blob etc/firmware/brcmfmac43455-sdio.clm_blob
++COPY	/etc/firmware/brcmfmac43455-sdio.txt etc/firmware/brcmfmac43455-sdio.txt
+ 
+ MKDIR	usr/mdec/rpi
+ COPY	/usr/local/share/raspberrypi-firmware/boot/bcm2710-rpi-2-b.dtb usr/mdec/rpi/bcm2710-rpi-2-b.dtb
+@@ -127,6 +130,7 @@
+ COPY	${CURDIR}/../../miniroot/master.passwd	etc/master.passwd
+ SPECIAL	pwd_mkdb -p -d etc master.passwd; rm etc/master.passwd
+ COPY	${DESTDIR}/etc/signify/openbsd-${OSrev}-base.pub	etc/signify/openbsd-${OSrev}-base.pub
++COPY	/etc/signify/utmfw-${OSrev}.pub		etc/signify/utmfw-${OSrev}.pub
+ COPY	${CURDIR}/../../miniroot/protocols	etc/protocols
+ COPY	${CURDIR}/../../miniroot/services	etc/services
+ TERMCAP	vt100,vt220,dumb			usr/share/misc/termcap
+diff -Nur src.orig/distrib/miniroot/dot.profile src/distrib/miniroot/dot.profile
+--- src.orig/distrib/miniroot/dot.profile	Sun Sep  1 07:39:23 2024
++++ src/distrib/miniroot/dot.profile	Fri Oct 11 16:48:18 2024
+@@ -124,22 +124,20 @@
+ 	fi
+ 
+ 	while :; do
+-		read REPLY?'(I)nstall, (U)pgrade, (A)utoinstall or (S)hell? '
++		read REPLY?'(I)nstall or (S)hell? '
+ 
+-		# Begin the automatic installation if the timeout has expired.
++		# Begin the installation if the timeout has expired.
+ 		if $timeout; then
+ 			timeout=false
+ 			echo
+-			REPLY=a
++			REPLY=i
+ 		else
+ 			# User has made a choice; stop the read timeout.
+ 			stop_timeout
+ 		fi
+ 
+ 		case $REPLY in
+-		[aA]*)	/autoinstall && break;;
+ 		[iI]*)	/install && break;;
+-		[uU]*)	/upgrade && break;;
+ 		[sS]*)	break;;
+ 		esac
+ 	done
+diff -Nur src.orig/distrib/miniroot/install.sub src/distrib/miniroot/install.sub
+--- src.orig/distrib/miniroot/install.sub	Tue Sep 17 17:01:54 2024
++++ src/distrib/miniroot/install.sub	Fri Oct 11 16:48:38 2024
+@@ -1324,7 +1324,7 @@
+ 
+ # Set up IPv4 and IPv6 interface configuration.
+ configure_ifs() {
+-	local _first _hn _if _ifs _lladdr _name _p _q _vi _vn
++	local _first _hn _if _ifs _lladdr _name _p _q _vi _vn _iflist
+ 	resp=
+ 
+ 	# Always need lo0 configured.
+@@ -1333,6 +1333,8 @@
+ 	# In case of restart, delete previous default gateway config.
+ 	rm -f /tmp/i/mygate
+ 
++	_iflist=$(get_ifs)
++
+ 	while :; do
+ 		set -sA _ifs -- $(get_ifs)
+ 
+@@ -1359,7 +1361,7 @@
+ 
+ 		_q="Network interface to configure?"
+ 		ask_until "$_q (name, lladdr, '?', or 'done')" \
+-		    ${_p:-$( (get_ifs netboot; get_ifs) | sed q )}
++		    ${_p:-$( (get_ifs netboot; echo $_iflist) | sed q )}
+ 
+ 		[[ $resp == done ]] && break
+ 		[[ $resp == '?'  ]] && continue
+@@ -1411,10 +1413,12 @@
+ 		if [[ -f $_hn ]]; then
+ 			chmod 640 $_hn
+ 			: ${_first:=$_if}
++			_iflist=$(rmel "$_if" $_iflist)
+ 		fi
+ 
+ 		NIFS=$(ls -1 /tmp/i/hostname.* 2>/dev/null | grep -c ^)
+-		_p=done
++		# Need at least two interfaces configured for UTMFW
++		(( NIFS > 1 )) && _p=done
+ 	done
+ }
+ 
+@@ -1673,8 +1677,9 @@
+ 	# Try to prefetch and control checksum of the set files.
+ 	# Use dummy for loop as combined assignment and do { ... } while(0).
+ 	for _issue in ''; do
++		_utmfwv=no
+ 		! isin SHA256.sig $_files &&
+-			_issue="Directory does not contain SHA256.sig" && break
++			_issue="Directory does not contain SHA256.sig" && _utmfwv=yes && break
+ 
+ 		if ! $_srclocal; then
+ 			! _tmpfs_list=$(prefetcharea_fs_list) &&
+@@ -1717,7 +1722,7 @@
+ 		# The bsd.rd only download/verify/install assumes the sets
+ 		# location of the next release. So use the right signature file.
+ 		$UPGRADE_BSDRD &&
+-			PUB_KEY=/mnt/etc/signify/openbsd-$((VERSION + 1))-base.pub
++			PUB_KEY=/mnt/etc/signify/utmfw-$((VERSION + 1)).pub
+ 
+ 		# Verify signature file with public keys.
+ 		! unpriv -f "$_cfile" \
+@@ -1766,7 +1771,7 @@
+ 
+ 	[[ -n $_unver ]] && : ${_issue:="Unverified sets:" ${_unver% }}
+ 	if [[ -n $_issue ]] &&
+-		! ask_yn "$_issue. Continue without verification?"; then
++		! ask_yn "$_issue. Continue without verification?" $_utmfwv; then
+ 		[[ -d $_tmpsrc ]] && rm -rf "$_tmpsrc"
+ 		$AI && exit 1
+ 		return
+@@ -2229,20 +2234,6 @@
+ 	ask_yn "Start sshd(8) by default?" yes
+ 	START_SSHD=$resp
+ 
+-	APERTURE=
+-	resp=
+-	START_XDM=
+-	if [[ -n $(scan_dmesg '/^wsdisplay[0-9]* /s/ .*//p') ]]; then
+-		if [[ -n $(scan_dmesg '/^[a-z]*[01]: aperture needed/p') ]]; then
+-			ask_yn "Do you expect to run the X Window System?" yes &&
+-				APERTURE=$MDXAPERTURE
+-		fi
+-		if [[ -n $MDXDM && $resp != n ]]; then
+-			ask_yn "Do you want the X Window System to be started by xenodm(1)?"
+-			START_XDM=$resp
+-		fi
+-	fi
+-
+ 	if [[ -n $CDEV ]]; then
+ 		_d=${CPROM:-$CDEV}
+ 		[[ -n $CONSOLE ]] && _cdef=yes
+@@ -2273,6 +2264,9 @@
+ 			;;
+ 		root|daemon|operator|bin|build|sshd|www|nobody|ftp)
+ 			;;
++		admin|user)
++			# Reserved for UTMFW
++			;;
+ 		[a-z]*([-a-z0-9_]))
+ 			((${#resp} <= 31)) && break
+ 			;;
+@@ -3197,7 +3191,6 @@
+ 	questions
+ 
+ 	# Gather information for setting up the initial user account.
+-	user_setup
+ 	ask_root_sshd
+ 
+ 	# Set TZ variable based on zonefile and user selection.
+@@ -3622,6 +3615,7 @@
+ NIFS=0
+ export PS1="$MODE# "
+ PUB_KEY=/etc/signify/openbsd-${VERSION}-base.pub
++PUB_KEY=/etc/signify/utmfw-${VERSION}.pub
+ ROOTDEV=
+ ROOTDISK=
+ SETDIR="$VNAME/$ARCH"
+@@ -3660,14 +3654,14 @@
+ # Selected sets will be installed in the order they are listed in $ALLSETS.
+ # Ensure that siteXX.tgz is the *last* set listed so its contents overwrite
+ # the contents of the other sets, not the other way around.
+-SETS=$(echo {base,comp,man,game,xbase,xshare,xfont,xserv}$VERSION.tgz)
++SETS=$(echo {base,comp,man,game,xbase,xshare,xfont,xserv,site}$VERSION.tgz)
+ DEFAULTSETS="${MDSETS:-bsd bsd.rd} $SETS"
+-ALLSETS="${MDSETS:-bsd bsd.rd} $SETS site$VERSION.tgz"
+-SANESETS="${MDSANESETS:-bsd} base${VERSION}.tgz"
++ALLSETS="${MDSETS:-bsd bsd.rd} $SETS"
++SANESETS="${MDSANESETS:-bsd} base${VERSION}.tgz xbase${VERSION}.tgz xfont${VERSION}.tgz site${VERSION}.tgz"
+ if ((NCPU > 1)); then
+ 	DEFAULTSETS="${MDSETS:-bsd bsd.mp bsd.rd} $SETS"
+-	ALLSETS="${MDSETS:-bsd bsd.mp bsd.rd} $SETS site$VERSION.tgz"
+-	SANESETS="${MDSANESETS:-bsd bsd.mp} base${VERSION}.tgz"
++	ALLSETS="${MDSETS:-bsd bsd.mp bsd.rd} $SETS"
++	SANESETS="${MDSANESETS:-bsd bsd.mp} base${VERSION}.tgz xbase${VERSION}.tgz xfont${VERSION}.tgz site${VERSION}.tgz"
+ fi
+ 
+ # Prepare COLUMNS sanely.
+diff -Nur src.orig/gnu/usr.sbin/mkhybrid/src/tree.c src/gnu/usr.sbin/mkhybrid/src/tree.c
+--- src.orig/gnu/usr.sbin/mkhybrid/src/tree.c	Sun Sep  1 07:40:47 2024
++++ src/gnu/usr.sbin/mkhybrid/src/tree.c	Fri Oct 11 16:50:17 2024
+@@ -409,8 +409,8 @@
+       table->filedir = this_dir;
+       table->de_flags    |= INHIBIT_JOLIET_ENTRY;
+       table->name = strdup("<translation table>");
+-      table->table = (char *) e_malloc(ROUND_UP(tablesize));
+-      memset(table->table, 0, ROUND_UP(tablesize));
++      table->table = (char *) e_malloc(ROUND_UP(tablesize + 1));
++      memset(table->table, 0, ROUND_UP(tablesize + 1));
+ #ifdef APPLE_HYB
+       iso9660_file_length  (trans_tbl, table, 0);
+ #else
+diff -Nur src.orig/sbin/disklabel/editor.c src/sbin/disklabel/editor.c
+--- src.orig/sbin/disklabel/editor.c	Tue Sep 17 17:06:27 2024
++++ src/sbin/disklabel/editor.c	Fri Oct 11 17:00:29 2024
+@@ -90,24 +90,20 @@
+ 
+ /* entries for swap and var are changed by editor_allocspace() */
+ struct space_allocation alloc_big[] = {
+-	{  MEG(150),         GIG(1),   5, "/"		},
+-	{   MEG(80),       MEG(256),  10, "swap"	},
+-	{  MEG(120),         GIG(4),   8, "/tmp"	},
+-	{   MEG(80),         GIG(4),  13, "/var"	},
+-	{ MEG(1500),        GIG(30),  10, "/usr"	},
+-	{  MEG(384),         GIG(1),   3, "/usr/X11R6"	},
+-	{    GIG(1),        GIG(20),  15, "/usr/local"	},
+-	{    GIG(2),         GIG(5),   2, "/usr/src"	},
+-	{    GIG(5),         GIG(6),   4, "/usr/obj"	},
+-	{    GIG(1),       GIG(300),  30, "/home"	}
++	{    GIG(1),         GIG(2),  10, "/"		},
++	{    GIG(2),         GIG(8),  25, "swap"	},
++	{  MEG(500),         GIG(2),   5, "/tmp"	},
++	{ MEG(1500),         GIG(4),  20, "/usr"	},
++	{    GIG(2),       GIG(684),  40, "/var"	}
+ 	/* Anything beyond this leave for the user to decide */
+ };
+ 
+ struct space_allocation alloc_medium[] = {
+-	{  MEG(800),         GIG(2),   5, "/"		},
+-	{   MEG(80),       MEG(256),  10, "swap"	},
+-	{ MEG(1300),         GIG(3),  78, "/usr"	},
+-	{  MEG(256),         GIG(2),   7, "/home"	}
++	{  MEG(300),         GIG(1),  10, "/"		},
++	{  MEG(400),      MEG(2500),  25, "swap"	},
++	{  MEG(200),       MEG(500),   5, "/tmp"	},
++	{ MEG(1300),         GIG(2),  20, "/usr"	},
++	{  MEG(256),         GIG(2),  40, "/var"	}
+ };
+ 
+ struct space_allocation alloc_small[] = {
+diff -Nur src.orig/usr.bin/newsyslog/newsyslog.c src/usr.bin/newsyslog/newsyslog.c
+--- src.orig/usr.bin/newsyslog/newsyslog.c	Tue Sep 17 17:07:00 2024
++++ src/usr.bin/newsyslog/newsyslog.c	Fri Oct 11 17:42:06 2024
+@@ -144,7 +144,7 @@
+ char	*conf = CONF;		/* Configuration file to use */
+ time_t	timenow;
+ char	hostname[HOST_NAME_MAX+1]; /* Hostname */
+-char	daytime[33];		/* timenow in human readable form */
++char	*daytime;		/* timenow in human readable form */
+ char	*arcdir;		/* Dir to put archives in (if it exists) */
+ 
+ char   *lstat_log(char *, size_t, int);
+@@ -402,18 +402,12 @@
+ void
+ parse_args(int argc, char **argv)
+ {
+-	struct timeval now;
+-	struct tm *tm;
+-	size_t l;
+ 	char *p;
+ 	int ch;
+ 
+-	gettimeofday(&now, NULL);
+-	timenow = now.tv_sec;
+-	tm = gmtime(&now.tv_sec);
+-	l = strftime(daytime, sizeof(daytime), "%FT%T", tm);
+-	snprintf(daytime + l, sizeof(daytime) - l, ".%03ldZ",
+-	    now.tv_usec / 1000);
++	timenow = time(NULL);
++	daytime = ctime(&timenow) + 4;
++	daytime[15] = '\0';
+ 
+ 	/* Let's get our hostname */
+ 	(void)gethostname(hostname, sizeof(hostname));
+diff -Nur src.orig/usr.sbin/syslogd/parsemsg.c src/usr.sbin/syslogd/parsemsg.c
+--- src.orig/usr.sbin/syslogd/parsemsg.c	Sun Sep  1 07:41:55 2024
++++ src/usr.sbin/syslogd/parsemsg.c	Fri Oct 11 17:45:16 2024
+@@ -24,6 +24,7 @@
+ #include <string.h>
+ #include <syslog.h>
+ 
++#include "log.h"
+ #include "parsemsg.h"
+ #include "syslogd.h"
+ 
+@@ -31,6 +32,9 @@
+ size_t parsemsg_timestamp_v1(const char *, char *);
+ size_t parsemsg_prog(const char *, char *);
+ 
++// In the order of priorities defined in syslog.h, so that m_pri can be used as index
++char *priority_names[] = {"EMERGENCY", "ALERT", "CRITICAL", "ERROR", "WARNING", "NOTICE", "INFO", "DEBUG"};
++
+ struct msg *
+ parsemsg(const char *msgstr, struct msg *msg)
+ {
+@@ -48,9 +52,42 @@
+ 	while (isspace(msgstr[0]))
+ 		msgstr++;
+ 
+-	parsemsg_prog(msgstr, msg->m_prog);
++	int i = parsemsg_prog(msgstr, msg->m_prog);
+ 
+-	strlcpy(msg->m_msg, msgstr, sizeof(msg->m_msg));
++    int insert_pri_name = 0;
++    if (msg->m_pri != -1) {
++        for (int j = 0; j < 10; j++) {
++	        if (msgstr[i + j] == ':') {
++		        insert_pri_name = 1;
++                i += j;
++		        break;
++	        }
++        }
++    }
++
++    if (insert_pri_name) {
++	    char *pri_name = priority_names[LOG_PRI(msg->m_pri)];
++
++	    int head_len = i + 2;
++	    char head[head_len + 1];
++	    strlcpy(head, msgstr, head_len);
++	    head[head_len] = '\0';
++	    log_debug("head= %s\n", head);
++
++	    const char *tail = msgstr + head_len;
++	    log_debug("tail= %s\n", tail);
++
++	    // +2 for ": "
++	    int new_msgstrlen = strlen(msgstr) + strlen(pri_name) + 2;
++
++	    char new_msgstr[new_msgstrlen + 1];
++	    snprintf(new_msgstr, new_msgstrlen + 1, "%s %s: %s", head, pri_name, tail);
++	    log_debug("new_msgstr= %s\n", new_msgstr);
++
++    	strlcpy(msg->m_msg, new_msgstr, sizeof(msg->m_msg));
++    } else {
++    	strlcpy(msg->m_msg, msgstr, sizeof(msg->m_msg));
++    }
+ 
+ 	return msg;
+ }
