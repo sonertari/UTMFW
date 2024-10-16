@@ -1082,7 +1082,9 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              modifier which corresponds to the connection state.  Each packet
              which matches this state will reset the TTL.  Tuning these values
              may improve the performance of the firewall at the risk of
-             dropping valid idle connections.
+             dropping valid idle connections.  Alternatively, these values may
+             be adjusted collectively in a manner suitable for a specific
+             environment using <span class="bold">set</span> <span class="bold">optimization</span> (see above).
 
              <span class="bold">tcp.closed</span> (90 seconds by default)
                      The state after one endpoint sends an RST.
@@ -1101,6 +1103,9 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
              <span class="bold">tcp.opening</span> (30 seconds by default)
                      The state after the second packet but before both
                      endpoints have acknowledged the connection.
+             <span class="bold">tcp.tsdiff</span> (30 seconds by default)
+                     Maximum allowed time difference between RFC 1323
+                     compliant packet timestamps.
 
 <a name="icmp_timeout"></a>
 <a name="udp_timeout"></a>
@@ -2259,7 +2264,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 
      timeout-list   = timeout [ [ "," ] timeout-list ]
      timeout        = ( "tcp.first" | "tcp.opening" | "tcp.established" |
-                      "tcp.closing" | "tcp.finwait" | "tcp.closed" |
+                      "tcp.closing" | "tcp.finwait" | "tcp.closed" | "tcp.tsdiff" |
                       "udp.first" | "udp.single" | "udp.multiple" |
                       "icmp.first" | "icmp.error" |
                       "other.first" | "other.single" | "other.multiple" |
@@ -2291,7 +2296,7 @@ PF.CONF(5)                    File Formats Manual                   PF.CONF(5)
 <span class="bold">HISTORY</span>
      The <span class="bold">pf.conf</span> file format first appeared in OpenBSD 3.0.
 
-OpenBSD 7.5                    November 18, 2022                   OpenBSD 7.5
+OpenBSD 7.6                     April 15, 2024                     OpenBSD 7.6
 </pre>
 </body>
 </html>

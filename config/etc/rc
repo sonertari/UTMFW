@@ -1,4 +1,4 @@
-#	$OpenBSD: rc,v 1.572 2023/10/01 20:15:23 naddy Exp $
+#	$OpenBSD: rc,v 1.576 2024/06/03 10:06:35 florian Exp $
 
 # System startup script run by init on autoboot or after single-user.
 # Output and error are redirected to console by init, and the console is the
@@ -241,7 +241,8 @@ reorder_libs() {
 		) || { _error=true; break; }
 	done
 
-	for _bin in $_relink/usr/sbin/sshd; do
+	for _bin in $_relink/usr/sbin/sshd $_relink/usr/libexec/sshd-session \
+	    $_relink/usr/bin/ssh-agent ; do
 		_tmpdir=$(mktemp -dq $_relink/_rebuild.XXXXXXXXXXXX) &&
 		(
 		set -o errexit
@@ -251,7 +252,11 @@ reorder_libs() {
 		if [[ -f $_bint ]]; then
 			echo " $_binn"
 			tar xf $_bint
-			make -f Makefile.relink relink >/dev/null 2>&1
+			if [[ -f install.sh ]]; then
+				sh install.sh >/dev/null 2>&1
+			else
+				make -f Makefile.relink relink >/dev/null 2>&1
+			fi
 		fi
 		) || { _error=true; break; }
 	done
@@ -690,7 +695,7 @@ run_upgrade_script sysmerge
 echo -n 'starting network daemons:'
 start_daemon ldomd sshd snmpd ldpd ripd ospfd ospf6d bgpd ifstated
 start_daemon relayd dhcpd dhcrelay mrouted dvmrpd radiusd eigrpd route6d
-start_daemon rad hostapd lpd smtpd slowcgi bgplgd httpd ftpd
+start_daemon dhcp6leased rad hostapd lpd smtpd slowcgi bgplgd httpd ftpd
 start_daemon ftpproxy ftpproxy6 tftpd tftpproxy identd inetd rarpd bootparamd
 start_daemon rbootd mopd vmd spamd spamlogd sndiod
 echo '.'

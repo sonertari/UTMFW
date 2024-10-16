@@ -2,7 +2,7 @@
 
 UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW), which can display the notifications sent from UTMFW, and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.5 comes with OpenBSD 7.5-stable including all updates until July 2nd, 2024.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.6 comes with OpenBSD 7.6-stable including all updates until October 13th, 2024.
 
 UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -14,11 +14,11 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 The UTMFW project releases three installation files:
 
-- The installation iso file for the amd64 arch is available for download at [utmfw75\_20240705\_amd64.iso](https://drive.google.com/file/d/1AsKV8PawMyQhjknJ8Xs1XD8_8bPZ8nrE/view?usp=sharing). Make sure the SHA256 checksum is correct: c569e747005ce5c2bebcd10323b3db619801637b46aa355360c1bfa693525299.
+- The installation iso file for the amd64 arch is available for download at [utmfw76\_20240705\_amd64.iso](https://drive.google.com/file/d/1AsKV8PawMyQhjknJ8Xs1XD8_8bPZ8nrE/view?usp=sharing). Make sure the SHA256 checksum is correct: c569e747005ce5c2bebcd10323b3db619801637b46aa355360c1bfa693525299.
 
-- The installation img file for the amd64 arch is available for download at [utmfw75\_20240705\_amd64.img](https://drive.google.com/file/d/1XXm25N_7delc1VEoIkHUZ4sX1s6eYv44/view?usp=sharing). Make sure the SHA256 checksum is correct: c3de7c7dba98a149b07f47f4b9107366eeefa5014893da8449347cd89d4b7499.
+- The installation img file for the amd64 arch is available for download at [utmfw76\_20240705\_amd64.img](https://drive.google.com/file/d/1XXm25N_7delc1VEoIkHUZ4sX1s6eYv44/view?usp=sharing). Make sure the SHA256 checksum is correct: c3de7c7dba98a149b07f47f4b9107366eeefa5014893da8449347cd89d4b7499.
 
-- The installation img file for the arm64 arch is available for download at [utmfw75\_20240705\_arm64.img](https://drive.google.com/file/d/1qeyp5G0XXZ7rBvjKCnlgqs_eXrCaxtU8/view?usp=sharing). Make sure the SHA256 checksum is correct: e237eee2089cfad1d5900d2d2240ec5ec727ebe376dc751a56152fc7412bca9b. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- The installation img file for the arm64 arch is available for download at [utmfw76\_20240705\_arm64.img](https://drive.google.com/file/d/1qeyp5G0XXZ7rBvjKCnlgqs_eXrCaxtU8/view?usp=sharing). Make sure the SHA256 checksum is correct: e237eee2089cfad1d5900d2d2240ec5ec727ebe376dc751a56152fc7412bca9b. The only arm64 platform supported is Raspberry Pi 4 Model B.
 
 ## Features
 
@@ -117,7 +117,7 @@ A few notes about UTMFW installation:
 
 ## How to build
 
-The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 7.5 and have installed git, gettext, and doxygen on it.
+The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 7.6 and have installed git, gettext, and doxygen on it.
 
 ### Build summary
 
@@ -208,7 +208,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Copy utmfw-XY.pub to docs/signify/utmfw-XY-pkg.pub
 	+ Copy utmfw-XY.sec to docs/signify/utmfw-XY-pkg.sec
 	+ Copy utmfw-XY.pub and utmfw-XY-pkg.pub to meta/etc/signify/
-	+ Copy utmfw-XY.pub and utmfw-XY-pkg.pub to /etc/signify/, the utmfw-XY.pub file is copied into the bsd.rd file while making release(8), to verify install sets during installation
+	+ Copy utmfw-XY.pub and utmfw-XY-pkg.pub to /etc/signify/, the utmfw-XY.pub file is copied into the bsd.rd file while making release(8), which is used to verify the install sets during installation
 
 - Update the packages for the amd64 arch, then do the same for the arm64 arch replacing amd64 with arm64 (or aarch64 for PKG_PATH) below:
 	+ Install the OpenBSD packages
@@ -236,7 +236,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Build and create the UTMFW packages
 		+ Extract ports.tar.gz under /usr/ports/
 		+ Copy the port folders of the UTMFW packages under ports to /usr/ports/{net,security,www,devel,sysutils}
-		+ Obtain the snort sources, apply the snort diff under ports/distfiles, compress as tarball with the same name as the original tarball of the sources
+		+ Obtain the snort sources, apply the snort diff under ports/distfiles, and compress as tarball with the same name as the original tarball of the sources
 		+ Copy the source tarballs of the UTMFW packages to /usr/ports/distfiles
 		+ Append the daemon users of UTMFW packages to /usr/ports/infrastructure/db/user.list, but note that bsd.port.mk does not like blank lines at the bottom of user.list
 			```
@@ -258,7 +258,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 			+ collectd
 		+ Sign all of the UTMFW packages using signify, for example:
 			```
-			signify -Sz -s utmfw-XY-pkg.sec -m /usr/ports/packages/amd64/all/sslproxy-0.9.6.tgz -x ~/sslproxy-0.9.6.tgz
+			signify -Sz -s utmfw-XY-pkg.sec -m /usr/ports/packages/amd64/all/sslproxy-0.9.7.tgz -x ~/sslproxy-0.9.7.tgz
 			```
 	+ Update the links under cd/amd64/X.Y/packages/ with the UTMFW packages made above
 
@@ -298,7 +298,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 
 - Make release(8) for the amd64 arch, then do the same for the arm64 arch replacing amd64 with arm64 below:
 	+ Extract src.tar.gz and and sys.tar.gz under /usr/src/
-	+ Apply the patches under openbsd/utmfw
+	+ Apply the unified patch-src or the individual patches under openbsd/utmfw
 	+ Update the sources with the stable branch changes if any
 	+ Follow the instructions in release(8), this step takes about 6 hours on a relatively fast amd64 computer and longer than 60 hours on a Raspberry Pi 4
 		+ Build the kernel and reboot
@@ -353,7 +353,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Compress
 
 - Update blacklists.tar.gz:
-	+ Download the black list
+	+ Download the black list database, such as from https://dsi.ut-capitole.fr/blacklists/download/blacklists_for_dansguardian.tar.gz
 	+ Run the cats.php script to prepend category descriptions to each file
 	+ Compress
 

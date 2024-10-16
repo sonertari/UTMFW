@@ -1,7 +1,7 @@
 COMMENT =		highly flexible sniffer/NIDS
 
 DISTNAME =		snort-2.9.20
-REVISION =		0
+REVISION =		4
 RULESV =		29200
 
 CATEGORIES =		net security
