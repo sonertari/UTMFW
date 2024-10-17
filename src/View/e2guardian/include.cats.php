@@ -126,7 +126,7 @@ if (filter_has_var(INPUT_POST, 'Cats')) {
 		$Cat= $CatArray[0];
 		$Subcat= $CatArray[1];
 		if (isset($CatArray[2])) {
-			// shallalist has sub-subdirs now
+			// in case the dir has sub-subdirs
 			$Subcat.= '/'.$CatArray[2];
 		}
 		if (filter_has_var(INPUT_POST, 'Disable')) {

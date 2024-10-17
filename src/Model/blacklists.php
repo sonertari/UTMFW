@@ -88,7 +88,7 @@ class Blacklists extends E2guardian
 			$catArray= explode('/', $match[1], 2);
 			$cat= $catArray[0];
 			if (isset($catArray[1])) {
-				// shallalist has sub-subdirs now
+				// in case the dir has sub-subdirs
 				$cat.= ' '.$catArray[1];
 			}
 
