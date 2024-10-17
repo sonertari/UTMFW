@@ -16,6 +16,17 @@
 # You should have received a copy of the GNU General Public License
 # along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
 
+if [ $# -gt 0 ]; then
+	if [ "$1" = arm64 -o "$1" = amd64 ]; then
+		ARCH=$1
+	else
+		echo "Unsupported arch: $1"
+		exit 1
+	fi
+fi
+
+echo "ARCH= $ARCH"
+
 ROOT_PATH=$(pwd)
 VERSION='7.6'
 SUBVERSION=_$(date +%Y%m%d)

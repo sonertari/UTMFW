@@ -12,13 +12,30 @@ You can find a couple of screenshots on the [wiki](https://github.com/sonertari/
 
 ## Download
 
-The UTMFW project releases three installation files:
+UTMFW runs on amd64 and arm64 architectures. So, the UTMFW project releases installation files in iso and img formats for those architectures.
 
-- The installation iso file for the amd64 arch is available for download at [utmfw76\_20240705\_amd64.iso](https://drive.google.com/file/d/1AsKV8PawMyQhjknJ8Xs1XD8_8bPZ8nrE/view?usp=sharing). Make sure the SHA256 checksum is correct: c569e747005ce5c2bebcd10323b3db619801637b46aa355360c1bfa693525299.
+Amd64:
 
-- The installation img file for the amd64 arch is available for download at [utmfw76\_20240705\_amd64.img](https://drive.google.com/file/d/1XXm25N_7delc1VEoIkHUZ4sX1s6eYv44/view?usp=sharing). Make sure the SHA256 checksum is correct: c3de7c7dba98a149b07f47f4b9107366eeefa5014893da8449347cd89d4b7499.
+- [utmfw76\_20240705\_amd64.iso](https://drive.google.com/file/d/1AsKV8PawMyQhjknJ8Xs1XD8_8bPZ8nrE/view?usp=sharing)
+	- SHA256 checksum: c569e747005ce5c2bebcd10323b3db619801637b46aa355360c1bfa693525299
+	- Tested on VMware
 
-- The installation img file for the arm64 arch is available for download at [utmfw76\_20240705\_arm64.img](https://drive.google.com/file/d/1qeyp5G0XXZ7rBvjKCnlgqs_eXrCaxtU8/view?usp=sharing). Make sure the SHA256 checksum is correct: e237eee2089cfad1d5900d2d2240ec5ec727ebe376dc751a56152fc7412bca9b. The only arm64 platform supported is Raspberry Pi 4 Model B.
+- [utmfw76\_20240705\_amd64.img](https://drive.google.com/file/d/1XXm25N_7delc1VEoIkHUZ4sX1s6eYv44/view?usp=sharing)
+	- SHA256 checksum: c3de7c7dba98a149b07f47f4b9107366eeefa5014893da8449347cd89d4b7499
+	- Tested on bare hardware
+
+Arm64:
+
+- [utmfw76\_20240705\_arm64.iso](https://drive.google.com/file/d/1qeyp5G0XXZ7rBvjKCnlgqs_eXrCaxtU8/view?usp=sharing)
+	- SHA256 checksum: e237eee2089cfad1d5900d2d2240ec5ec727ebe376dc751a56152fc7412bca9b
+	- Tested on UTM for macOS
+
+- [utmfw76\_20240705\_arm64.img](https://drive.google.com/file/d/1qeyp5G0XXZ7rBvjKCnlgqs_eXrCaxtU8/view?usp=sharing)
+	- SHA256 checksum: e237eee2089cfad1d5900d2d2240ec5ec727ebe376dc751a56152fc7412bca9b
+	- Tested on Raspberry Pi 4 Model B
+	- Run `set tty fb0` at boot prompt, if you use serial port as console
+
+Make sure the SHA256 checksums are correct.
 
 ## Features
 
@@ -312,6 +329,8 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 - Update the install sets:
 	+ Update the links for install sets under cd/amd64/X.Y/amd64 using the install sets under ~/OpenBSD/X.Y/amd64/ made above
 	+ Update the links for install sets under cd/arm64/X.Y/arm64 using the install sets under ~/OpenBSD/X.Y/arm64/ made above
+	+ Copy eficdboot from installXY.iso or cdXY.iso for the amd64 arch and create a link to it in cd/amd64/X.Y/amd64
+	+ Copy cdbr from installXY.iso or cdXY.iso for the arm64 arch and create a link to it in cd/arm64/X.Y/arm64
 	+ Remove the old links
 	+ Copy the xbaseXY.tgz install set from installXY.iso to docs/expat/amd64/xbaseXY.tgz
 	+ Copy the xbaseXY.tgz install set from installXY.img to docs/expat/arm64/xbaseXY.tgz
