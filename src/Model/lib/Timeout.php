@@ -95,6 +95,9 @@ class Timeout extends Rule
 						'closed' => array(
 							'regex' => RE_NUM,
 							),
+						'tsdiff' => array(
+							'regex' => RE_NUM,
+							),
 						),
 					),
 				'udp' => array(

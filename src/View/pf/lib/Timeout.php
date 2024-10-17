@@ -76,6 +76,7 @@ class Timeout extends Rule
 		$this->inputTimeoutOpt('closing', 'tcp_closing', 'tcp');
 		$this->inputTimeoutOpt('finwait', 'tcp_finwait', 'tcp');
 		$this->inputTimeoutOpt('closed', 'tcp_closed', 'tcp');
+		$this->inputTimeoutOpt('tsdiff', 'tcp_tsdiff', 'tcp');
 
 		$this->inputTimeoutOpt('first', 'udp_first', 'udp');
 		$this->inputTimeoutOpt('single', 'udp_single', 'udp');
@@ -186,6 +187,7 @@ class Timeout extends Rule
 					$this->editTimeoutOpt('tcp', 'closing');
 					$this->editTimeoutOpt('tcp', 'finwait');
 					$this->editTimeoutOpt('tcp', 'closed');
+					$this->editTimeoutOpt('tcp', 'tsdiff');
 					?>
 				</table>
 			</td>
