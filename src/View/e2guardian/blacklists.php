@@ -132,7 +132,7 @@ if ($LogFile) {
 	<?php
 }
 
-$View->ConfHelpMsg.= ''._HELPWINDOW("Although this is called a 'blacklist', the categories can be used as white or grey lists also. Being listed does not infer that the site is bad, these are just lists of sites.\n\n");
+$View->ConfHelpMsg.= ' '._HELPWINDOW("Although this is called a 'blacklist', the categories can be used as white or grey lists also. Being listed does not infer that the site is bad, these are just lists of sites.\n\n");
 
 PrintHelpWindow($View->ConfHelpMsg);
 require_once($VIEW_PATH.'/footer.php');
