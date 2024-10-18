@@ -1505,7 +1505,7 @@ class Model
 		if (!preg_match('/.*\.gz$/', $file)) {
 			$logline= $this->GetFileFirstLine($file);
 			
-			if ($this->ParseLogLine($logline, $cols)) {
+			if ($this->ParseLogLine($logline, $cols) && isset($cols['Date']) && isset($cols['Time'])) {
 				return $cols['Date'].' '.$cols['Time'];
 			} else {
 				return _('Unknown');
