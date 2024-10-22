@@ -1,9 +1,15 @@
-From sonertari@gmail.com Thu Oct 31 07:06:00 EET 2024
+From sonertari@gmail.com Tue Oct 22 07:06:00 EET 2024
 Return-Path: root
-Date: Oct 31 07:06:00 EET 2024
+Date: Oct 22 07:06:00 EET 2024
 From: sonertari@gmail.com (Soner Tari)
 To: root
 Subject: Welcome to UTMFW 7.6!
 
-This release updates UTMFW to OpenBSD 7.6-stable.
+Highlights of this release are:
+- OpenBSD 7.6-stable
+- Iso installer for arm64 arch
+- New E2Guardian blacklists from https://dsi.ut-capitole.fr/blacklists/download/blacklists_for_dansguardian.tar.gz
+- SSLproxy 0.9.7
+- Spamd and deprecated legacy push notifications removed
+- Variety of fixes and improvements
 

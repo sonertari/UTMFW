@@ -1,8 +1,8 @@
 # UTMFW
 
-UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW), which can display the notifications sent from UTMFW, and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
+UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW) and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, Firebase push notifications, and network user authentication. Also note that UTMFW 7.6 comes with OpenBSD 7.6-stable including all updates until October 13th, 2024.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, and network user authentication. Also note that UTMFW 7.6 comes with OpenBSD 7.6-stable including all updates until October 18th, 2024.
 
 UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -16,24 +16,23 @@ UTMFW runs on amd64 and arm64 architectures. So, the UTMFW project releases inst
 
 Amd64:
 
-- [utmfw76\_20240705\_amd64.iso](https://drive.google.com/file/d/1AsKV8PawMyQhjknJ8Xs1XD8_8bPZ8nrE/view?usp=sharing)
-	- SHA256 checksum: c569e747005ce5c2bebcd10323b3db619801637b46aa355360c1bfa693525299
-	- Tested on VMware
+- [utmfw76\_20241022\_amd64.iso](https://drive.google.com/file/d/11heEKehSGvoGacotinlYL8wIFsdrApDn/view?usp=sharing)
+	+ SHA256 checksum: eeebfb075bb529b713f3363feb0a0c0d590372699dda4805cd2f995276d6a975
+	+ Tested on VMware
 
-- [utmfw76\_20240705\_amd64.img](https://drive.google.com/file/d/1XXm25N_7delc1VEoIkHUZ4sX1s6eYv44/view?usp=sharing)
-	- SHA256 checksum: c3de7c7dba98a149b07f47f4b9107366eeefa5014893da8449347cd89d4b7499
-	- Tested on bare hardware
+- [utmfw76\_20241022\_amd64.img](https://drive.google.com/file/d/1dJ741u3Hl20sXE743Jtq5F1TIv_rNLU3/view?usp=sharing)
+	+ SHA256 checksum: 0d86879d679876ba99d469befc8d60baf5a4e5f19bbaaf2d8cb3ef12b56f40db
+	+ Tested on bare hardware
 
 Arm64:
 
-- [utmfw76\_20240705\_arm64.iso](https://drive.google.com/file/d/1qeyp5G0XXZ7rBvjKCnlgqs_eXrCaxtU8/view?usp=sharing)
-	- SHA256 checksum: e237eee2089cfad1d5900d2d2240ec5ec727ebe376dc751a56152fc7412bca9b
-	- Tested on UTM for macOS
+- [utmfw76\_20241022\_arm64.iso](https://drive.google.com/file/d/1Toij1KigptUZq96Mj2wQ420Yworpu8UD/view?usp=sharing)
+	+ SHA256 checksum: e4116d42e956d50cb69042612f9f340811f091022ba6717c42ddc4219721b4dc
+	+ Tested on UTM for macOS
 
-- [utmfw76\_20240705\_arm64.img](https://drive.google.com/file/d/1qeyp5G0XXZ7rBvjKCnlgqs_eXrCaxtU8/view?usp=sharing)
-	- SHA256 checksum: e237eee2089cfad1d5900d2d2240ec5ec727ebe376dc751a56152fc7412bca9b
-	- Tested on Raspberry Pi 4 Model B
-	- Run `set tty fb0` at boot prompt, if you use serial port as console
+- [utmfw76\_20241022\_arm64.img](https://drive.google.com/file/d/1JtA0PRz9mwC9CgUJgt_bTGw6G7BoiBNB/view?usp=sharing)
+	+ SHA256 checksum: d564eee12d6584facbe9e35d7096c5ba634588138c943719ce04f71527a12d4a
+	+ Tested on Raspberry Pi 4 Model B
 
 Make sure the SHA256 checksums are correct.
 
@@ -143,7 +142,7 @@ The create script:
 - Clones the git repo of the project to a tmp folder.
 - Generates gettext translations and doxygen documentation.
 - Prepares the webif and config packages and the site install set.
-- And finally creates the iso or img file for the amd64 arch or the img file for the arm64 arch.
+- And finally creates the iso or img file for the amd64 or the arm64 arch.
 
 However, the source tree has links to OpenBSD install sets and packages, which should be broken, hence need to be fixed when you first obtain the sources. Make sure you see those broken links now. So, before you can run the create script, you need to do a couple of things:
 
