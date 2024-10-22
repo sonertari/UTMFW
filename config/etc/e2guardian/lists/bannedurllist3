@@ -31,7 +31,6 @@
 # The squidGuard advert domain/URL lists are now included by default.
 # To work with advanced ad blocking & the logadblocks option, advert
 # phrase/site/URL lists should have the string "ADs" in their listcategory.
-#.Include</etc/e2guardian/lists/blacklists/ads/urls>
 
 # Remove the # from the following and edit as needed to use a stock
 # blacklists collection.
@@ -61,7 +60,7 @@
 .Include</etc/e2guardian/lists/blacklists/drogue/urls>
 .Include</etc/e2guardian/lists/blacklists/educational_games/urls>
 .Include</etc/e2guardian/lists/blacklists/examen_pix/urls>
-.Include</etc/e2guardian/lists/blacklists/exceptions_liste_bu/urls>
+#.Include</etc/e2guardian/lists/blacklists/exceptions_liste_bu/urls>
 .Include</etc/e2guardian/lists/blacklists/fakenews/urls>
 .Include</etc/e2guardian/lists/blacklists/filehosting/urls>
 .Include</etc/e2guardian/lists/blacklists/financial/urls>
@@ -71,8 +70,8 @@
 .Include</etc/e2guardian/lists/blacklists/hacking/urls>
 .Include</etc/e2guardian/lists/blacklists/jobsearch/urls>
 .Include</etc/e2guardian/lists/blacklists/lingerie/urls>
-.Include</etc/e2guardian/lists/blacklists/liste_blanche/urls>
-.Include</etc/e2guardian/lists/blacklists/liste_bu/urls>
+#.Include</etc/e2guardian/lists/blacklists/liste_blanche/urls>
+#.Include</etc/e2guardian/lists/blacklists/liste_bu/urls>
 .Include</etc/e2guardian/lists/blacklists/malware/urls>
 .Include</etc/e2guardian/lists/blacklists/manga/urls>
 .Include</etc/e2guardian/lists/blacklists/marketingware/urls>
