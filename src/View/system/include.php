@@ -70,7 +70,7 @@ $Menu = array(
 			'logs' => _MENU('Logs'),
 			'wui' => _MENU('WUI'),
 			'users' => _MENU('Users'),
-			'notifier' => _MENU('Notifier'),
+			// 'notifier' => _MENU('Notifier'),
 			),
 		),
 	'procs' => array(
