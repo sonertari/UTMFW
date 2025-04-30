@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2004-2024 Soner Tari
+# Copyright (C) 2004-2025 Soner Tari
 #
 # This file is part of UTMFW.
 #
@@ -82,7 +82,7 @@ if ! xgettext -L "PHP" -s \
 		--copyright-holder="Soner Tari, The UTMFW project" \
 		--msgid-bugs-address="sonertari@gmail.com" \
 		--package-name="UTMFW" \
-		--package-version="7.6" \
+		--package-version="7.7" \
 		-j -o $LOCALE_FILE \
 		-f files.txt; then
 	echo "FAILED generating $LOCALE_FILE"

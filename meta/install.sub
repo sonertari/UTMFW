@@ -2,7 +2,7 @@
 #	$OpenBSD: install.sub,v 1.421 2007/08/02 03:23:37 david Exp $
 #	$NetBSD: install.sub,v 1.5.2.8 1996/09/02 23:25:02 pk Exp $
 #
-# Copyright (C) 2004-2024 Soner Tari.  All rights reserved.
+# Copyright (C) 2004-2025 Soner Tari.  All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -664,7 +664,7 @@ __EOT
 				pkg_add collectd-ping || _installerror=1
 				;;
 			php-*)
-				ln -s /usr/local/bin/php-8.3 /usr/local/bin/php
+				ln -s /usr/local/bin/php-8.4 /usr/local/bin/php
 				pkg_add php-pcntl || _installerror=1
 				pkg_add php-cgi || _installerror=1
 				pkg_add php-curl || _installerror=1
@@ -1083,7 +1083,7 @@ __EOT
 # #######################################################################
 # Initial actions common to both installs and upgrades.
 # #######################################################################
-VERSION='7.6'
+VERSION='7.7'
 ARCH=$(/usr/bin/machine)
 
 VMAJ=${VERSION%%\.*}
@@ -1114,11 +1114,11 @@ CDDEVS=$(scan_dmesg "${MDCDDEVS:-/^cd[0-9][0-9]* /s/ .*//p}")
 [[ -z $CDDEVS ]] && CDDEVS="cd0,cd1,cd2"
 
 # Selected sets will be installed in the order they are listed in $THESETS.
-THESETS="dnsmasq-2.90.tgz \
-		sslproxy-0.9.7.tgz \
-		clamav-1.4.1.tgz \
+THESETS="dnsmasq-2.91.tgz \
+		sslproxy-0.9.8.tgz \
+		clamav-1.4.2.tgz \
 		clamavdb.tar.gz \
-		p5-Mail-SpamAssassin-4.0.1.tgz \
+		p5-Mail-SpamAssassin-4.0.1p0.tgz \
 		p3scan-2.3.2.tgz \
 		smtp-gated-1.4.20.0.tgz \
 		e2guardian-5.3.5.tgz \
@@ -1127,13 +1127,13 @@ THESETS="dnsmasq-2.90.tgz \
 		snortrules.tar.gz \
 		snortips-6.2.2.tgz \
 		imspector-0.9.tgz \
-		openvpn-2.6.12.tgz \
-		dante-1.4.3p1.tgz \
-		symon-2.88p7.tgz \
+		openvpn-2.6.14.tgz \
+		dante-1.4.4.tgz \
+		symon-2.89p0.tgz \
 		pmacct-1.7.8.tgz \
 		collectd-5.12.0p0.tgz \
 		pftop-0.7p19.tgz \
-		php-8.3.11p1.tgz \
+		php-8.4.5.tgz \
 		$CW_WEBIF_TARFILE \
 		$CW_CONFIG_TARFILE"
 

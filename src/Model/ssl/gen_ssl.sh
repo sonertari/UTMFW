@@ -1,5 +1,5 @@
 # !/bin/sh
-# Copyright (C) 2020-2024 Soner Tari <sonertari@gmail.com>
+# Copyright (C) 2020-2025 Soner Tari <sonertari@gmail.com>
 
 # TODO: Handle errors
 

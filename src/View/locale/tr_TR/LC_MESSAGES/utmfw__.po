@@ -1,10 +1,10 @@
-# Copyright (C) 2004-2024 Soner Tari, The UTMFW project
+# Copyright (C) 2004-2025 Soner Tari, The UTMFW project
 # This file is distributed under the same license as UTMFW.
 # Soner Tari <sonertari@gmail.com>, 2009-2022.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: UTMFW 7.6\n"
+"Project-Id-Version: UTMFW 7.7\n"
 "Report-Msgid-Bugs-To: sonertari@gmail.com\n"
 "POT-Creation-Date: 2009-11-11 16:21+0200\n"
 "PO-Revision-Date: 2022-05-05 14:49+0300\n"

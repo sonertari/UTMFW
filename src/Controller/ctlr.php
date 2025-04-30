@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 /*
- * Copyright (C) 2004-2024 Soner Tari
+ * Copyright (C) 2004-2025 Soner Tari
  *
  * This file is part of UTMFW.
  *

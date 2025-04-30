@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) 2004-2024 Soner Tari
+ * Copyright (C) 2004-2025 Soner Tari
  *
  * This file is part of UTMFW.
  *
@@ -26,7 +26,7 @@ $InHelpRegion= TRUE;
 PrintHelpWindow('', 'auto', 'PRINT');
 ?>
 		<div>
-			<?php echo _TITLE('Copyright') ?> (C) 2024 Soner Tari. <?php echo _TITLE('All rights reserved.'); ?>
+			<?php echo _TITLE('Copyright') ?> (C) 2025 Soner Tari. <?php echo _TITLE('All rights reserved.'); ?>
 		</div>
 	</body>
 </html>

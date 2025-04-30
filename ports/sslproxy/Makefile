@@ -1,6 +1,6 @@
 COMMENT=	transparent SSL/TLS proxy to divert decrypted traffic
 
-DISTNAME=	sslproxy-0.9.7
+DISTNAME=	sslproxy-0.9.8
 EXTRACT_SUFX=	.tar.gz
 
 CATEGORIES=	security

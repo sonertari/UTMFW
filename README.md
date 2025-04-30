@@ -2,7 +2,7 @@
 
 UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW) and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, and network user authentication. Also note that UTMFW 7.6 comes with OpenBSD 7.6-stable including all updates until October 18th, 2024.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, and network user authentication. Also note that UTMFW 7.7 comes with OpenBSD 7.7-stable including all updates until May 7th, 2025.
 
 UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -16,21 +16,21 @@ UTMFW runs on amd64 and arm64 architectures. So, the UTMFW project releases inst
 
 Amd64:
 
-- [utmfw76\_20241022\_amd64.iso](https://drive.google.com/file/d/11heEKehSGvoGacotinlYL8wIFsdrApDn/view?usp=sharing)
+- [utmfw77\_20250507\_amd64.iso](https://drive.google.com/file/d/11heEKehSGvoGacotinlYL8wIFsdrApDn/view?usp=sharing)
 	+ SHA256 checksum: eeebfb075bb529b713f3363feb0a0c0d590372699dda4805cd2f995276d6a975
 	+ Tested on VMware
 
-- [utmfw76\_20241022\_amd64.img](https://drive.google.com/file/d/1dJ741u3Hl20sXE743Jtq5F1TIv_rNLU3/view?usp=sharing)
+- [utmfw77\_20250507\_amd64.img](https://drive.google.com/file/d/1dJ741u3Hl20sXE743Jtq5F1TIv_rNLU3/view?usp=sharing)
 	+ SHA256 checksum: 0d86879d679876ba99d469befc8d60baf5a4e5f19bbaaf2d8cb3ef12b56f40db
 	+ Tested on bare hardware
 
 Arm64:
 
-- [utmfw76\_20241022\_arm64.iso](https://drive.google.com/file/d/1Toij1KigptUZq96Mj2wQ420Yworpu8UD/view?usp=sharing)
+- [utmfw77\_20250507\_arm64.iso](https://drive.google.com/file/d/1Toij1KigptUZq96Mj2wQ420Yworpu8UD/view?usp=sharing)
 	+ SHA256 checksum: e4116d42e956d50cb69042612f9f340811f091022ba6717c42ddc4219721b4dc
 	+ Tested on UTM for macOS
 
-- [utmfw76\_20241022\_arm64.img](https://drive.google.com/file/d/1JtA0PRz9mwC9CgUJgt_bTGw6G7BoiBNB/view?usp=sharing)
+- [utmfw77\_20250507\_arm64.img](https://drive.google.com/file/d/1JtA0PRz9mwC9CgUJgt_bTGw6G7BoiBNB/view?usp=sharing)
 	+ SHA256 checksum: d564eee12d6584facbe9e35d7096c5ba634588138c943719ce04f71527a12d4a
 	+ Tested on Raspberry Pi 4 Model B
 
@@ -63,7 +63,6 @@ UTMFW includes the following software, alongside what is already available on a 
 The web user interface of UTMFW helps you manage your firewall:
 
 - Dashboard displays an overview of system status using graphs and statistics counters. You can click on those graphs and counters to go to their details on the web user interface.
-- Notifier sends the system status as Firebase push notifications to the Android application, [A4PFFW](https://github.com/sonertari/A4PFFW).
 - System, network, and service configuration can be achieved on the web user interface.
 - Pf rules are maintained using [PFRE](https://github.com/sonertari/PFRE).
 - Information on hosts, interfaces, pf rules, states, and queues are provided in tabular form.
@@ -133,7 +132,7 @@ A few notes about UTMFW installation:
 
 ## How to build
 
-The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 7.6 and have installed git, gettext, and doxygen on it.
+The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 7.7 and have installed git, gettext, and doxygen on it.
 
 ### Build summary
 
@@ -171,9 +170,9 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Start the VM and install OpenBSD
 
 - Install OpenBSD arm64:
-	+ Download installXY.img from an OpenBSD mirror
-	+ Use a 32GB SD card or USB flash memory, or choose a size based on your needs
-	+ Start the Raspberry Pi 4 or qemu-system-aarch64 and install OpenBSD
+	+ Download installXY.img or installXY.iso from an OpenBSD mirror
+	+ Use a 32GB SD card, USB flash memory, or disk, or choose a size based on your needs
+	+ Start the Raspberry Pi 4 or qemu-system-aarch64 or UTM for macOS, and install OpenBSD
 
 - Configure OpenBSD:
 	+ Create a local user, after reboot add it to /etc/doas.conf
@@ -216,15 +215,15 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ meta/root.mail
 		+ README.md
 
-	+ Update copyright year if necessary
+	+ Update the copyright year if necessary
 
 - Generate the signify key pair:
 	+ `signify -G -p utmfw-XY.pub -s utmfw-XY.sec`
 	+ Save utmfw-XY.pub and utmfw-XY.sec to docs/signify
-	+ Copy utmfw-XY.pub to docs/signify/utmfw-XY-pkg.pub
+	+ Copy utmfw-XY.pub to docs/signify/utmfw-XY-pkg.pub, note the new name with the pkg suffix, otherwise the pkg utility complains if we use the same file name for packages too
 	+ Copy utmfw-XY.sec to docs/signify/utmfw-XY-pkg.sec
 	+ Copy utmfw-XY.pub and utmfw-XY-pkg.pub to meta/etc/signify/
-	+ Copy utmfw-XY.pub and utmfw-XY-pkg.pub to /etc/signify/, the utmfw-XY.pub file is copied into the bsd.rd file while making release(8), which is used to verify the install sets during installation
+	+ Copy utmfw-XY.pub and utmfw-XY-pkg.pub to /etc/signify/, the utmfw-XY.pub file is copied into the bsd.rd file while making release(8), which is used to verify the install sets during installation, and the utmfw-XY-pkg.pub file is used to sign and verify the packages created below
 
 - Update the packages for the amd64 arch, then do the same for the arm64 arch replacing amd64 with arm64 (or aarch64 for PKG_PATH) below:
 	+ Install the OpenBSD packages
@@ -256,25 +255,25 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ Copy the source tarballs of the UTMFW packages to /usr/ports/distfiles
 		+ Append the daemon users of UTMFW packages to /usr/ports/infrastructure/db/user.list, but note that bsd.port.mk does not like blank lines at the bottom of user.list
 			```
-			900 _p3scan             _p3scan         net/p3scan
-			901 _smtp-gated         _smtp-gated     net/smtp-gated
-			903 _imspector          _imspector      net/imspector
-			904 _sslproxy           _sslproxy       security/sslproxy
+			950 _p3scan             _p3scan         net/p3scan
+			951 _smtp-gated         _smtp-gated     net/smtp-gated
+			953 _imspector          _imspector      net/imspector
+			954 _sslproxy           _sslproxy       security/sslproxy
 			```
-		+ Install the pkg depends of each UTMFW package before making them, so that the ports system does not try to build and install them itself
+		+ Install the pkg dependencies of each UTMFW package before making them, so that the ports system does not try to build and install them itself
 		+ Make the UTMFW packages
 			+ libevent, if not using the OpenBSD package
 			+ sslproxy
 			+ p3scan
 			+ smtp-gated: use the source tarball under ports/distfiles
-			+ imspector: use the source tarball under ports/distfiles
 			+ e2guardian
+			+ imspector: use the source tarball under ports/distfiles
 			+ snortips
 			+ snort: use the source tarball generated above
 			+ collectd
-		+ Sign all of the UTMFW packages using signify, for example:
+		+ Sign all of the UTMFW packages using signify, note that you should use the private key file utmfw-XY-pkg.sec for pkg, for example:
 			```
-			signify -Sz -s utmfw-XY-pkg.sec -m /usr/ports/packages/amd64/all/sslproxy-0.9.7.tgz -x ~/sslproxy-0.9.7.tgz
+			signify -Sz -s utmfw-XY-pkg.sec -m /usr/ports/packages/amd64/all/sslproxy-0.9.8.tgz -x ~/sslproxy-0.9.8.tgz
 			```
 	+ Update the links under cd/amd64/X.Y/packages/ with the UTMFW packages made above
 
@@ -288,14 +287,14 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ p3scan
 		+ smtp-gated
 		+ e2guardian
-		+ snortips
 		+ imspector
+		+ snortips
 		+ snort
 		+ collectd
 
 	+ Update the links under cd/amd64/X.Y/packages/ with the OpenBSD packages saved under PKG_CACHE
 
-	+ Keep the links for
+	+ Keep the links for the following packages, or update their versions
 		+ blacklists.tar.gz
 		+ clamavdb.tar.gz
 		+ snortrules.tar.gz
@@ -315,7 +314,14 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 - Make release(8) for the amd64 arch, then do the same for the arm64 arch replacing amd64 with arm64 below:
 	+ Extract src.tar.gz and and sys.tar.gz under /usr/src/
 	+ Apply the unified patch-src or the individual patches under openbsd/utmfw
+		```
+		patch -p1 <patch-src
+		```
 	+ Update the sources with the stable branch changes if any
+		```
+		cvs -d anoncvs@anoncvs.spacehopper.org:/cvs -q up -Pd -rOPENBSD_X_Y
+		```
+	+ Download and copy [the Broadcom wifi drivers](https://github.com/pftf/RPi4/tree/master/firmware/brcm) for Raspberry Pi 4 to /etc/firmware/
 	+ Follow the instructions in release(8), this step takes about 6 hours on a relatively fast amd64 computer and longer than 60 hours on a Raspberry Pi 4
 		+ Build the kernel and reboot
 		+ Build the base system
@@ -335,7 +341,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Copy the xbaseXY.tgz install set from installXY.img to docs/expat/arm64/xbaseXY.tgz
 	+ Copy the xfontXY.tgz install set from installXY.iso to docs/fonts/amd64/xfontXY.tgz
 	+ Copy the xfontXY.tgz install set from installXY.img to docs/fonts/arm64/xfontXY.tgz
-	+ Copy the files under the BOOT partition of installXY.img for the amd64 arch to ~/OpenBSD/X.Y/amd64/BOOT/
+	+ Copy BOOTIA32.EFI and BOOTX64.EFI for the amd64 arch to ~/OpenBSD/X.Y/amd64/BOOT/efi/boot/
 	+ Copy the files under the BOOT partition of installXY.img for the arm64 arch to ~/OpenBSD/X.Y/arm64/BOOT/
 	+ Download and copy [the Broadcom wifi drivers](https://github.com/pftf/RPi4/tree/master/firmware/brcm) for Raspberry Pi 4 to ~/OpenBSD/X.Y/arm64/firmware/
 

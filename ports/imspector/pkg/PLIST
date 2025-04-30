@@ -1,6 +1,5 @@
-@comment $OpenBSD$
-@newgroup _imspector:903
-@newuser _imspector:903:903:daemon:IM proxy:/nonexistent:/sbin/nologin
+@newgroup _imspector:953
+@newuser _imspector:953:953:daemon:IM proxy:/nonexistent:/sbin/nologin
 etc/
 etc/imspector/
 etc/imspector/acl.txt
