@@ -1,4 +1,4 @@
-#	$OpenBSD: rc,v 1.576 2024/06/03 10:06:35 florian Exp $
+#	$OpenBSD: rc,v 1.580 2025/04/07 14:49:26 deraadt Exp $
 
 # System startup script run by init on autoboot or after single-user.
 # Output and error are redirected to console by init, and the console is the
@@ -49,21 +49,9 @@ update_limit() {
 
 # Apply sysctl.conf(5) settings.
 sysctl_conf() {
-	# do not use a pipe as limits would only be applied to the subshell
-	set -- $(stripcom /etc/sysctl.conf)
-	while [[ $# > 0 ]] ; do
-		sysctl "$1"
-
-		case "$1" in
-		kern.maxproc=*)
-			update_limit -p maxproc
-			;;
-		kern.maxfiles=*)
-			update_limit -n openfiles
-			;;
-		esac
-		shift
-	done
+	[[ -s /etc/sysctl.conf ]] && sysctl -f /etc/sysctl.conf
+	update_limit -p maxproc   $(sysctl -n kern.maxproc)
+	update_limit -n openfiles $(sysctl -n kern.maxfiles)
 }
 
 # Apply mixerctl.conf(5) settings.
@@ -242,7 +230,7 @@ reorder_libs() {
 	done
 
 	for _bin in $_relink/usr/sbin/sshd $_relink/usr/libexec/sshd-session \
-	    $_relink/usr/bin/ssh-agent ; do
+	    $_relink/usr/libexec/sshd-auth $_relink/usr/bin/ssh-agent; do
 		_tmpdir=$(mktemp -dq $_relink/_rebuild.XXXXXXXXXXXX) &&
 		(
 		set -o errexit
