@@ -116,6 +116,7 @@ etc/pmacct/pmacctd-protograph.conf,644,root,wheel
 etc/snort/snort.conf,644,root,wheel
 etc/snort/snortinline.conf,644,root,wheel
 etc/snort/snortips.conf,644,root,wheel
+etc/ssh/sshd_config,644,root,wheel
 etc/sslproxy/sslproxy.conf,644,root,wheel
 etc/clamd.conf,644,root,wheel
 etc/collectd.conf,640,root,_collectd

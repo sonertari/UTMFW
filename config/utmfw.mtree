@@ -212,6 +212,9 @@ snort.conf		type=file mode=0644 uname=root gname=wheel
 snortinline.conf	type=file mode=0644 uname=root gname=wheel
 snortips.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/snort
+ssh		        type=dir mode=0755 uname=root gname=wheel
+sshd_config		type=file mode=0644 uname=root gname=wheel
+..	#etc/ssh
 sslproxy		type=dir mode=0755 uname=root gname=wheel
 sslproxy.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/sslproxy
