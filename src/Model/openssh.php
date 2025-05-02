@@ -93,7 +93,7 @@ class Openssh extends Model
 			return FALSE;
 		}
 
-		$cmd= "/usr/bin/grep -a ' sshd\[' $file";
+		$cmd= "/usr/bin/grep -a -E ' sshd(\[|-session\[)' $file";
 
 		if ($month != '' || $day != '' || $hour != '' || $minute != '') {
 			$cmd.= ' | /usr/bin/grep -a -E "' . $this->formatDateHourRegexp($month, $day, $hour, $minute) . '"';
@@ -121,7 +121,7 @@ class Openssh extends Model
 			return FALSE;
 		}
 
-		$cmd= "/usr/bin/grep -a ' sshd\[' $file";
+		$cmd= "/usr/bin/grep -a -E ' sshd(\[|-session\[)' $file";
 
 		if ($month != '' || $day != '' || $hour != '' || $minute != '') {
 			$cmd.= ' | /usr/bin/grep -a -E "' . $this->formatDateHourRegexp($month, $day, $hour, $minute) . '"';
@@ -157,7 +157,7 @@ class Openssh extends Model
 			return FALSE;
 		}
 
-		$cmd= "/usr/bin/grep -a ' sshd\[' $file";
+		$cmd= "/usr/bin/grep -a -E ' sshd(\[|-session\[)' $file";
 		if ($re !== '') {
 			$re= escapeshellarg($re);
 			$cmd.= " | /usr/bin/grep -a -E $re";
