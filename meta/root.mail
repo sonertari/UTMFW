@@ -1,11 +1,11 @@
-From sonertari@gmail.com Wed May 07 07:07:00 EET 2025
+From sonertari@gmail.com Wed May  7 07:07:00 EET 2025
 Return-Path: root
-Date: May 07 07:07:00 EET 2025
+Date: May  7 07:07:00 EET 2025
 From: sonertari@gmail.com (Soner Tari)
 To: root
 Subject: Welcome to UTMFW 7.7!
 
 Highlights of this release are:
-- OpenBSD 7.7-stable
+- SSLproxy 0.9.8
 - Variety of fixes and improvements
 
