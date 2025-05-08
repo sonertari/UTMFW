@@ -2,7 +2,7 @@
 
 UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW) and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, and network user authentication. Also note that UTMFW 7.7 comes with OpenBSD 7.7-stable including all updates until May 7th, 2025.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, and network user authentication. Also note that UTMFW 7.7 comes with OpenBSD 7.7-stable including all updates until April 30th, 2025.
 
 UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -16,22 +16,22 @@ UTMFW runs on amd64 and arm64 architectures. So, the UTMFW project releases inst
 
 Amd64:
 
-- [utmfw77\_20250507\_amd64.iso](https://drive.google.com/file/d/11heEKehSGvoGacotinlYL8wIFsdrApDn/view?usp=sharing)
-	+ SHA256 checksum: eeebfb075bb529b713f3363feb0a0c0d590372699dda4805cd2f995276d6a975
+- [utmfw77\_20250506\_amd64.iso](https://drive.google.com/file/d/1_QQ8vSY67pHcNDxoWTQQe6-dIh8Il-ir/view?usp=sharing)
+	+ SHA256 checksum: f67bf209998ee170ca4c8ea81bceb106cba243b6bf94205e9cc4bcb9a5f0658a
 	+ Tested on VMware
 
-- [utmfw77\_20250507\_amd64.img](https://drive.google.com/file/d/1dJ741u3Hl20sXE743Jtq5F1TIv_rNLU3/view?usp=sharing)
-	+ SHA256 checksum: 0d86879d679876ba99d469befc8d60baf5a4e5f19bbaaf2d8cb3ef12b56f40db
+- [utmfw77\_20250506\_amd64.img](https://drive.google.com/file/d/1h7ZkRFpvh6XTJ3FwGDFvxvn8m-VYNXoN/view?usp=sharing)
+	+ SHA256 checksum: 1157515287fff4c44211457686c2160b8adc83d9b5a7cb7f29913ccd235d6fce
 	+ Tested on bare hardware
 
 Arm64:
 
-- [utmfw77\_20250507\_arm64.iso](https://drive.google.com/file/d/1Toij1KigptUZq96Mj2wQ420Yworpu8UD/view?usp=sharing)
-	+ SHA256 checksum: e4116d42e956d50cb69042612f9f340811f091022ba6717c42ddc4219721b4dc
+- [utmfw77\_20250506\_arm64.iso](https://drive.google.com/file/d/1-z3NkoVpJ94sM1l-vIlD3-BoVjYjt7XS/view?usp=sharing)
+	+ SHA256 checksum: cd46760d53f4e8131bd14dfa5638e801cdf963a62f303919e83982f0ceeb0767
 	+ Tested on UTM for macOS
 
-- [utmfw77\_20250507\_arm64.img](https://drive.google.com/file/d/1JtA0PRz9mwC9CgUJgt_bTGw6G7BoiBNB/view?usp=sharing)
-	+ SHA256 checksum: d564eee12d6584facbe9e35d7096c5ba634588138c943719ce04f71527a12d4a
+- [utmfw77\_20250506\_arm64.img](https://drive.google.com/file/d/1Zj9-Du2vr6poTPIyGwrsLxfqQdzsdQkI/view?usp=sharing)
+	+ SHA256 checksum: 1649975a1f8a8745f70039fa38a97e0534ca108e75f5f4c7444d2b8271fd8063
 	+ Tested on Raspberry Pi 4 Model B
 
 Make sure the SHA256 checksums are correct.
@@ -118,12 +118,15 @@ A few notes about UTMFW installation:
 - Thanks to a modified auto-partitioner of OpenBSD, the disk can be partitioned with a recommended layout for UTMFW, so most users don't need to use the label editor at all.
 - All install sets including siteXY.tgz are selected by default, so you cannot 'not' install UTMFW by mistake.
 - OpenBSD installation questions are modified according to the needs of UTMFW. For example, X11 related questions are never asked.
-- Make sure you have at least 2GB RAM, ideally 4GB if you enable MFS. And a 16GB HD should be enough.
+- Make sure you have at least 2GB RAM, ideally 4GB if you enable MFS.
+- A 16GB disk should be enough.
 - If you install on an SD card, make sure it is fast enough. If you install on a slow disk, but you have enough RAM, you can enable memory-based file system (MFS), which is the default.
+- If the system fails to boot after intallation, try the following while partitioning the disk:
+	+ Choose GPT, not Whole or OpenBSD. For example, this may happen on amd64 bare hardware with a USB disk.
+	+ Reinit the disk to update its MBR. For example, this may happen on Raspberry Pi 4 with a USB disk previously partitioned with GPT.
 - After installation:
 	+ When you first try to log in to the WUI, ignore the certificate warning issued by your web browser and proceed to the WUI.
-	+ Download the ca.crt from the SSLproxy Config page on the WUI, and install it on your web browser or other client application as a trusted CA certificate. You can install the ca.crt in the trust store on Android phones, but Android applications may not use that trust store. So you may need to use the PassSite option of SSLproxy for such applications.
-	+ Enable the pf rule for FCM ports (see /etc/pf.conf or go to the PFRE Editor page on the WUI), if you want to receive Firebase push notifications sent by UTMFW to your Android phone on the local network and on which you have installed and are running [A4PFFW](https://github.com/sonertari/A4PFFW).
+	+ Download the ca.crt from the SSLproxy Config page on the WUI, and install it on your web browser or other client application as a trusted CA certificate. You can install the ca.crt in the trust store on Android phones, but Android applications may not use that trust store. So you may need to use Pass filter rules of SSLproxy to pass through connections from such applications.
 - Make sure the date and time of the system is correct during both installation and normal operation, and select the correct timezone during installation. Otherwise:
 	+ The "Not Valid Before" date of the CA certificate generated for SSLproxy during installation may be wrong, causing clients to reject the certificates forged by SSLproxy, at least until the start date. To fix the "Not Valid Before" date, you may need to regenerate the CA certificate on the WUI, after fixing the system date and time.
 	+ The certificates forged by SSLproxy will be rejected by client applications, hence the connections will fail.
@@ -378,6 +381,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 
 - Update blacklists.tar.gz:
 	+ Download the black list database, such as from https://dsi.ut-capitole.fr/blacklists/download/blacklists_for_dansguardian.tar.gz
+	+ Remove the symlinks to directories
 	+ Run the cats.php script to prepend category descriptions to each file
 	+ Compress
 
