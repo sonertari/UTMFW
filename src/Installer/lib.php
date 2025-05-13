@@ -125,11 +125,6 @@ function ApplyConfig()
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting smtp-gated proxy_name: $myname");
 		}
 
-		$View->Model= 'e2guardian';
-		if (!$View->Controller($output, 'SetTemplateIps', $lanip)) {
-			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting e2guardian template ips: $lanip");
-		}
-
 		if (!$View->Controller($output, 'SetUserFilterGrp', 'utmfw', '1')) {
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, 'Failed adding e2guardian network user utmfw to first group');
 		}

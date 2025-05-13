@@ -254,11 +254,6 @@ class E2guardian extends Model
 					'argv'	=>	array(NUM),
 					'desc'	=>	_('Group exists'),
 					),
-
-				'SetTemplateIps'	=>	array(
-					'argv'	=>	array(IPADR),
-					'desc'	=>	_('Set template ips'),
-					),
 				)
 			);
 	}
@@ -1013,39 +1008,6 @@ class E2guardian extends Model
 			Error("\n"._('FATAL ERRORS in creating new group'));
 		}
 		return !$fatal && $result;
-	}
-
-	/**
-	 * Updates template files with the given ip.
-	 *
-	 * Used by installer or when system interface configuration is modified.
-	 */
-	function SetTemplateIps($ip)
-	{
-		global $Re_Ip;
-		
-		$langpath= '/usr/local/share/e2guardian/languages/';
-	
-		$re= "|(http://)($Re_Ip)(/images/utmfw.png)|m";
-		$retval=  $this->ReplaceRegexp($langpath.'ukenglish/fancydmtemplate.html', $re, '${1}'.$ip.'${3}');
-		$retval&= $this->ReplaceRegexp($langpath.'ukenglish/template.html', $re, '${1}'.$ip.'${3}');
-		$retval&= $this->ReplaceRegexp($langpath.'ukenglish/template_nobypass.html', $re, '${1}'.$ip.'${3}');
-		$retval&= $this->ReplaceRegexp($langpath.'turkish/fancydmtemplate.html', $re, '${1}'.$ip.'${3}');
-		$retval&= $this->ReplaceRegexp($langpath.'turkish/template.html', $re, '${1}'.$ip.'${3}');
-		$retval&= $this->ReplaceRegexp($langpath.'turkish/template_nobypass.html', $re, '${1}'.$ip.'${3}');
-		
-		$re= "|(http://)($Re_Ip)(/images/info.png)|m";
-		$retval&= $this->ReplaceRegexp($langpath.'ukenglish/fancydmtemplate.html', $re, '${1}'.$ip.'${3}');
-		$retval&= $this->ReplaceRegexp($langpath.'turkish/fancydmtemplate.html', $re, '${1}'.$ip.'${3}');
-	
-		
-		$re= "|(http://)($Re_Ip)(/images/error.png)|m";
-		$retval&= $this->ReplaceRegexp($langpath.'ukenglish/template.html', $re, '${1}'.$ip.'${3}');
-		$retval&= $this->ReplaceRegexp($langpath.'ukenglish/template_nobypass.html', $re, '${1}'.$ip.'${3}');
-		$retval&= $this->ReplaceRegexp($langpath.'turkish/template.html', $re, '${1}'.$ip.'${3}');
-		$retval&= $this->ReplaceRegexp($langpath.'turkish/template_nobypass.html', $re, '${1}'.$ip.'${3}');
-
-		return $retval;
 	}
 }
 
