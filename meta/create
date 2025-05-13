@@ -58,7 +58,7 @@ CD_PATH=cd/${ARCH}
 INSTALL_SETS_PATH=${VERSION}/${ARCH}
 SYS_ID="OpenBSD ${VERSION} ${ARCH}"
 VOL_ID="UTMFW ${VERSION}${SUBVERSION} ${ARCH}"
-PREP_ID="Soner Tari <sonertari@gmail.org>"
+PREP_ID="Soner Tari <sonertari@gmail.com>"
 PUBLISH_ID="Copyright (C) 2025 Soner Tari, The UTMFW project"
 APP_ID="UTMFW is a UTM firewall running on OpenBSD ${VERSION}"
 

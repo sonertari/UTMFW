@@ -6,7 +6,7 @@ CATEGORIES=		net
 HOMEPAGE=		http://www.imspector.org
 MASTER_SITES=		${HOMEPAGE}/downloads/
 
-MAINTAINER=		Soner Tari <soner@comixwall.org>
+MAINTAINER=		Soner Tari <sonertari@gmail.com>
 
 # GPL
 PERMIT_PACKAGE=	Yes

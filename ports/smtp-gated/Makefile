@@ -7,7 +7,7 @@ CATEGORIES=		net mail
 HOMEPAGE=		http://smtp-proxy.klolik.org
 MASTER_SITES=		http://smtp-proxy.klolik.org/files/
 
-MAINTAINER=		Soner Tari <soner@comixwall.org>
+MAINTAINER=		Soner Tari <sonertari@gmail.com>
 
 # GPL
 PERMIT_PACKAGE=	Yes

@@ -5,7 +5,7 @@ CATEGORIES=		net mail
 HOMEPAGE=		http://p3scan.sourceforge.net/
 MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=p3scan/}
 
-MAINTAINER=		Soner Tari <soner@comixwall.org>
+MAINTAINER=		Soner Tari <sonertari@gmail.com>
 
 # GPL
 PERMIT_PACKAGE=	Yes
