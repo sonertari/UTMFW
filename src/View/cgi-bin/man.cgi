@@ -163,7 +163,7 @@ $sections = join("|", @sections);		# sections regexp
 # mailto - Author
 # webmaster - who run this service
 $mailto = 'sonertari@gmail.com';
-$mailtoURL = 'http://comixwall.org';
+$mailtoURL = 'https://github.com/sonertari/UTMFW';
 $mailtoURL = "mailto:$mailto" if !$mailtoURL;
 $webmaster = 'sonertari@gmail.com';
 $webmasterURL = 'mailto:sonertari@gmail.com';
