@@ -1115,15 +1115,15 @@ CDDEVS=$(scan_dmesg "${MDCDDEVS:-/^cd[0-9][0-9]* /s/ .*//p}")
 
 # Selected sets will be installed in the order they are listed in $THESETS.
 THESETS="dnsmasq-2.92.tgz \
-		sslproxy-0.9.11.tgz \
+		sslproxy-0.10.0-cw.tgz \
+		icapsuricata-0.1.0-cw.tgz \
 		clamav-1.5.2.tgz \
 		clamavdb.tar.gz \
 		p5-Mail-SpamAssassin-4.0.2.tgz \
 		p3scan-2.3.2.tgz \
 		smtp-gated-1.4.20.0.tgz \
-		e2guardian-5.3.5.tgz \
+		e2guardian-5.5.9.tgz \
 		blacklists.tar.gz \
-		snort-2.9.20p4.tgz \
 		snortrules.tar.gz \
 		snortips-6.2.2.tgz \
 		imspector-0.9.tgz \
