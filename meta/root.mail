@@ -1,11 +1,23 @@
-From sonertari@gmail.com Sun Aug 30 07:09:00 EET 2026
+From sonertari@gmail.com Sat Oct 10 07:09:00 EET 2026
 Return-Path: root
-Date: Aug 30 07:09:00 EET 2026
+Date: Oct 10 07:09:00 EET 2026
 From: sonertari@gmail.com (Soner Tari)
 To: root
 Subject: Welcome to UTMFW 7.9!
 
+This release showcases the new ICAP architecture, using SSLproxy with Icap 
+mode of operation, icapsuricata, c-icap, Suricata, and E2Guardian as ICAP 
+server.
+
 Highlights of this release are:
-- SSLproxy 0.9.11
-- Variety of fixes and improvements
+- SSLproxy 0.10.0
+- icapsuricata 0.1.0
+- Suricata 8.0.7
+- c-icap 0.6.5
+- E2Guardian 5.5.9
+- OpenSSL 3.5.7
+- libevent 2.1.13
+- nghttp2 1.69.0
+- nghttp3 1.18.0
+- ngtcp2 1.25.0
 

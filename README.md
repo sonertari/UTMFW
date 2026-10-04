@@ -2,9 +2,9 @@
 
 UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW) and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), Snort Inline IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, and network user authentication. Also note that UTMFW 7.9 comes with OpenBSD 7.9-stable including all updates until August 25th, 2026.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), [icapsuricata](https://github.com/sonertari/icapsuricata), Suricata IDS/IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, and network user authentication. Also note that UTMFW 7.9 comes with OpenBSD 7.9-stable including all updates until August 25th, 2026.
 
-UTMFW supports deep SSL inspection of HTTP, POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). These UTM software have been modified to support the mode of operation required by SSLproxy.
+UTMFW supports deep SSL inspection of HTTP/1.1, HTTP/2, HTTP/3 (QUIC), POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). Some of these UTM software have been modified to support the mode of operation required by SSLproxy.
 
 ![Dashboard](https://github.com/sonertari/UTMFW/blob/master/screenshots/Dashboard.png)
 
@@ -16,21 +16,21 @@ UTMFW runs on amd64 and arm64 architectures. So, the UTMFW project releases inst
 
 Amd64:
 
-- [utmfw79\_20260827\_amd64.iso](https://drive.google.com/file/d/10oEjeVnsGDOSHxnQVa3hg43ekXKxb36h/view?usp=sharing)
+- [utmfw79\_20261010\_amd64.iso](https://drive.google.com/file/d/10oEjeVnsGDOSHxnQVa3hg43ekXKxb36h/view?usp=sharing)
 	+ SHA256 checksum: 92879a6b594372fc1114def4b530379ec899045a1ff8dda9833bbff313c74326
 	+ Tested on VMware
 
-- [utmfw79\_20260827\_amd64.img](https://drive.google.com/file/d/1MTZ3HC7HB2L1yNqQf5uZhHjbCS71r2wb/view?usp=sharing)
+- [utmfw79\_20261010\_amd64.img](https://drive.google.com/file/d/1MTZ3HC7HB2L1yNqQf5uZhHjbCS71r2wb/view?usp=sharing)
 	+ SHA256 checksum: e43272764cd0a8a831daa23091cc871ec9e0632e56695aafa74b9664a4142956
 	+ Tested on bare hardware
 
 Arm64:
 
-- [utmfw79\_20260827\_arm64.iso](https://drive.google.com/file/d/10mbUmQJAlenf9mTkVE7QEi9SwiIFZNk-/view?usp=sharing)
+- [utmfw79\_20261010\_arm64.iso](https://drive.google.com/file/d/10mbUmQJAlenf9mTkVE7QEi9SwiIFZNk-/view?usp=sharing)
 	+ SHA256 checksum: 58d5b48955a1bf49596c45e614c7731e61d4ceb1d05a41ce53e7200fb05593c2
 	+ Tested on UTM for macOS
 
-- [utmfw79\_20260827\_arm64.img](https://drive.google.com/file/d/1pSdNMFonNUtfhWHI2o7u7D9DVSGFQkR5/view?usp=sharing)
+- [utmfw79\_20261010\_arm64.img](https://drive.google.com/file/d/1pSdNMFonNUtfhWHI2o7u7D9DVSGFQkR5/view?usp=sharing)
 	+ SHA256 checksum: 9b2cfd4c88f77d30769629be8c4c69090520612ce12438f238528c505464149f
 	+ Tested on Raspberry Pi 4 Model B
 
@@ -41,10 +41,11 @@ Make sure the SHA256 checksums are correct.
 UTMFW includes the following software, alongside what is already available on a basic OpenBSD installation:
 
 - [SSLproxy](https://github.com/sonertari/SSLproxy): Transparent SSL/TLS proxy for deep SSL inspection
-- [PFRE](https://github.com/sonertari/PFRE): Packet Filter Rule Editor
-- E2Guardian: Web filter, anti-virus using ClamAV, blacklists
-- Snort: Intrusion detection and inline prevention system, with the latest rules
+- [icapsuricata](https://github.com/sonertari/icapsuricata): Suricata ICAP service
+- Suricata: Intrusion detection and inline prevention system, with the latest rules
 - SnortIPS: Passive intrusion prevention software
+- E2Guardian: Web filter, anti-virus using ClamAV, blacklists
+- [PFRE](https://github.com/sonertari/PFRE): Packet Filter Rule Editor
 - ClamAV: Virus scanner with periodic virus signature updates
 - SpamAssassin: Spam scanner
 - P3scan: Anti-virus/anti-spam transparent POP3 proxy
@@ -155,7 +156,7 @@ However, the source tree has links to OpenBSD install sets and packages, which s
 	+ Copy the required install sets to the appropriate locations to fix the broken links in the sources.
 - Packages:
 	+ Download the required packages available on the OpenBSD mirrors.
-	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, e2guardian, p3scan, smtp-gated, snort, imspector, snortips, and collectd (see `ports` and `ports/distfiles`).
+	+ Create the packages which are not available on the OpenBSD mirrors and/or have been modified for UTMFW: sslproxy, icapsuricata, c-icap, suricata, p3scan, smtp-gated, imspector, snortips, and collectd (see `ports` and `ports/distfiles`).
 	+ Copy them to the appropriate locations to fix the broken links in the sources.
 
 Note that you can strip down xbase and xfont install sets to reduce the size of the iso and img files. Copy or link them to the appropriate locations under `openbsd/utmfw`.
@@ -244,7 +245,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ dnsmasq
 		+ clamav
 		+ p5-Mail-SpamAssassin
-		+ snort, to download its dependencies, otherwise we have our own patched version
+		+ suricata, to download its dependencies, otherwise we have our own patched version
 		+ openvpn
 		+ dante
 		+ symon
@@ -257,7 +258,6 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Build and create the UTMFW packages
 		+ Extract ports.tar.gz under /usr/ports/
 		+ Copy the port folders of the UTMFW packages under ports to /usr/ports/{net,security,www,devel,sysutils}
-		+ Obtain the snort sources, apply the snort diff under ports/distfiles, and compress as tarball with the same name as the original tarball of the sources
 		+ Copy the source tarballs of the UTMFW packages to /usr/ports/distfiles
 		+ Append the daemon users of UTMFW packages to /usr/ports/infrastructure/db/user.list, but note that bsd.port.mk does not like blank lines at the bottom of user.list
 			```
@@ -268,18 +268,23 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 			```
 		+ Install the pkg dependencies of each UTMFW package before making them, so that the ports system does not try to build and install them itself
 		+ Make the UTMFW packages
-			+ libevent, if not using the OpenBSD package
-			+ sslproxy
+			+ sslproxy-cw
+			+ icapsuricata-cw
+			+ suricata-cw
+			+ c-icap-cw
+			+ openssl-cw
+			+ nghttp2-cw
+			+ nghttp3-cw
+			+ ngtcp2-cw
+			+ libevent-cw
 			+ p3scan
 			+ smtp-gated: use the source tarball under ports/distfiles
-			+ e2guardian
 			+ imspector: use the source tarball under ports/distfiles
 			+ snortips
-			+ snort: use the source tarball generated above
 			+ collectd
 		+ Sign all of the UTMFW packages using signify, note that you should use the private key file utmfw-XY-pkg.sec for pkg, for example:
 			```
-			signify -Sz -s utmfw-XY-pkg.sec -m /usr/ports/packages/amd64/all/sslproxy-0.9.11.tgz -x ~/sslproxy-0.9.11.tgz
+			signify -Sz -s utmfw-XY-pkg.sec -m /usr/ports/packages/amd64/all/sslproxy-0.10.0.tgz -x ~/sslproxy-0.10.0.tgz
 			```
 	+ Update the links under cd/amd64/X.Y/packages/ with the UTMFW packages made above
 
@@ -288,14 +293,19 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 			```
 			export PKG_CACHE=/var/db/pkg_utmfw/
 			```
-		+ libevent, if not using the OpenBSD package
-		+ sslproxy
+		+ sslproxy-cw
+		+ icapsuricata-cw
+		+ suricata-cw
+		+ c-icap-cw
+		+ openssl-cw
+		+ nghttp2-cw
+		+ nghttp3-cw
+		+ ngtcp2-cw
+		+ libevent-cw
 		+ p3scan
 		+ smtp-gated
-		+ e2guardian
 		+ imspector
 		+ snortips
-		+ snort
 		+ collectd
 
 	+ Update the links under cd/amd64/X.Y/packages/ with the OpenBSD packages saved under PKG_CACHE
@@ -308,10 +318,6 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ p3scan
 		+ smtp-gated
 		+ snortips
-		+ sslproxy
-		+ snort
-		+ e2guardian
-		+ libevent, if not using the OpenBSD package
 		+ collectd
 
 - Update meta/install.sub:
