@@ -1,0 +1,12 @@
+Index: suricata-update/suricata/update/config.py
+--- suricata-update/suricata/update/config.py.orig
++++ suricata-update/suricata/update/config.py
+@@ -31,7 +31,7 @@ except:
+ 
+ logger = logging.getLogger()
+ 
+-DEFAULT_DATA_DIRECTORY = "/var/lib/suricata"
++DEFAULT_DATA_DIRECTORY = "${LOCALSTATEDIR}/suricata"
+ 
+ # Cache directory - relative to the data directory.
+ CACHE_DIRECTORY = os.path.join("update", "cache")

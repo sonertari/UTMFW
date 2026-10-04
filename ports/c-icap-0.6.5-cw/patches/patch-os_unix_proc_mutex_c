@@ -1,0 +1,11 @@
+Index: os/unix/proc_mutex.c
+--- os/unix/proc_mutex.c.orig
++++ os/unix/proc_mutex.c
+@@ -57,6 +57,7 @@ static struct sembuf op_unlock[1] = {
+     {0, -1, (IPC_NOWAIT | SEM_UNDO)}   /*decrement sem by 1   */
+ };
+ 
++#define HAVE_UNION_SEMUN
+ #ifndef HAVE_UNION_SEMUN
+ union semun {
+     int val;                   /* Value for SETVAL */

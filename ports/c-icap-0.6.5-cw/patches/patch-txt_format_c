@@ -1,0 +1,20 @@
+Index: txt_format.c
+--- txt_format.c.orig
++++ txt_format.c
+@@ -446,13 +446,13 @@ int fmt_seconds(ci_request_t *req, char *buf,int len, 
+     switch(pr) {
+     case 's':
+     case 'S':
+-        return  snprintf(buf, len, "%ld", tv.tv_sec);
++        return  snprintf(buf, len, "%lld", tv.tv_sec);
+     case 'm':
+     case 'M':
+-        return  snprintf(buf, len, "%ld.%ld", tv.tv_sec, (tv.tv_usec / 1000));
++        return  snprintf(buf, len, "%lld.%lld", tv.tv_sec, (tv.tv_usec / 1000));
+     case 'u':
+     case 'U':
+-        return  snprintf(buf, len, "%ld.%ld", tv.tv_sec, tv.tv_usec);
++        return  snprintf(buf, len, "%lld.%lld", tv.tv_sec, tv.tv_usec);
+     default:
+         return -1;
+     }

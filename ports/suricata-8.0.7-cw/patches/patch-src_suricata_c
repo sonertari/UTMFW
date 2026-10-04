@@ -1,0 +1,35 @@
+Use setresuid/gid() directly to change user and group.  Otherwise
+Suricata uses libcap-ng on Linux and runs as root elsewhere.
+
+Index: src/suricata.c
+--- src/suricata.c.orig
++++ src/suricata.c
+@@ -1695,7 +1695,7 @@ TmEcode SCParseCommandLine(int argc, char **argv)
+                 return TM_ECODE_FAILED;
+ #endif /* UNITTESTS */
+             } else if (strcmp((long_opts[option_index]).name, "user") == 0) {
+-#ifndef HAVE_LIBCAP_NG
++#if 0
+                 SCLogError("libcap-ng is required to"
+                            " drop privileges, but it was not compiled into Suricata.");
+                 return TM_ECODE_FAILED;
+@@ -1704,7 +1704,7 @@ TmEcode SCParseCommandLine(int argc, char **argv)
+                 suri->do_setuid = true;
+ #endif /* HAVE_LIBCAP_NG */
+             } else if (strcmp((long_opts[option_index]).name, "group") == 0) {
+-#ifndef HAVE_LIBCAP_NG
++#if 0
+                 SCLogError("libcap-ng is required to"
+                            " drop privileges, but it was not compiled into Suricata.");
+                 return TM_ECODE_FAILED;
+@@ -3202,5 +3202,9 @@ void SuricataPostInit(void)
+         SystemHugepageSnapshotDestroy(prerun_snap);
+         SystemHugepageSnapshotDestroy(postrun_snap);
+     }
+-    SCPledge();
++    /* Don't drop privileges if running as library */
++    if (SCRunmodeGet() != RUNMODE_LIB) {
++        SCPledge();
++        SCSetUserID(suricata.userid, suricata.groupid);
++    }
+ }

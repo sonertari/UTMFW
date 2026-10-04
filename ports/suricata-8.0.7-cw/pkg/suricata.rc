@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/suricata -D"
+
+. /etc/rc.d/rc.subr
+
+rc_pre() {
+	/usr/bin/install -d -o _suricata -g _suricata -m 0750 /var/run/suricata
+}
+
+rc_cmd $1

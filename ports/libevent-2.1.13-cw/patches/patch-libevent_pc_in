@@ -1,0 +1,13 @@
+Link against event_extra and event_core not event.
+
+--- libevent.pc.in.orig	Mon Sep 19 01:02:59 2011
++++ libevent.pc.in	Mon Sep 19 01:03:15 2011
+@@ -10,7 +10,7 @@ Description: libevent is an asynchronous notification 
+ Version: @VERSION@
+ Requires:
+ Conflicts:
+-Libs: -L${libdir} -levent
++Libs: -L${libdir} -levent_extra -levent_core
+ Libs.private: @LIBS@
+ Cflags: -I${includedir}
+ 

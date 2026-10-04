@@ -1,0 +1,22 @@
+Index: os/unix/proc_utils.c
+--- os/unix/proc_utils.c.orig
++++ os/unix/proc_utils.c
+@@ -109,14 +109,15 @@ int set_running_permissions(char *user, char *group)
+             return 0;
+         }
+ #if HAVE_SETGROUPS
+-        if (setgroups(1, &gid) != 0) {
+-            ci_debug_printf(1, "setggroups to %d failed!!!!\n", gid);
++        /* Only call setgroups if running as root or if GID actually needs changing */
++        if (getuid() == 0 && setgroups(1, &gid) != 0) {
++            ci_debug_printf(1, "setgroups to %d failed!!!!\n", gid);
+             perror("setgroups failure");
+             return 0;
+         }
+ #endif
+ 
+-        if (setgid(gid) != 0) {
++        if (getgid() != gid && setgid(gid) != 0) {
+             ci_debug_printf(1, "setgid to %d failed!!!!\n", gid);
+             perror("setgid failure");
+             return 0;

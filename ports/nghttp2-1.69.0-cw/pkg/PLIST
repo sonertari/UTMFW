@@ -1,0 +1,21 @@
+bin/
+include/
+include/nghttp2/
+include/nghttp2/nghttp2.h
+include/nghttp2/nghttp2ver.h
+lib/
+@static-lib lib/libnghttp2.a
+lib/libnghttp2.la
+@lib lib/libnghttp2.so.${LIBnghttp2_VERSION}
+lib/pkgconfig/
+lib/pkgconfig/libnghttp2.pc
+@mandir man/
+man/man1/
+@man man/man1/h2load.1
+@man man/man1/nghttp.1
+@man man/man1/nghttpd.1
+@man man/man1/nghttpx.1
+share/
+share/doc/
+share/doc/nghttp2/
+share/doc/nghttp2/README.rst

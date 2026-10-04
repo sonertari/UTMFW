@@ -1,0 +1,30 @@
+Index: docs/man/c-icap.8.in
+--- docs/man/c-icap.8.in.orig
++++ docs/man/c-icap.8.in
+@@ -46,11 +46,11 @@ The main configuration file
+ .RS
+  In this file defined the types of files and the groups of file types.
+ .RE
+-.I /var/run/c-icap.pid
++.I /var/run/c-icap/c-icap.pid
+ .RS
+ By default c-icap writes its pid in this file. The path of this file can changed using the PidFile configuration parameter in the c-icap.conf file
+ .RE
+-.I /var/run/c-icap.ctl
++.I /var/run/c-icap/c-icap.ctl
+ .RS
+ The commands socket. This file used to send commands to the icap server from command line. For information about implemented commands look below in the "Implemented commands" sub-section
+ .SH NOTES
+@@ -75,10 +75,10 @@ Services and modules can define their own commands.
+ .PP
+ \fBExamples:\fR
+ .IP "To reconfigure c-icap:"
+-      echo \-n "reconfigure" > /var/run/c-icap.ctl
++      echo \-n "reconfigure" > /var/run/c-icap/c-icap.ctl
+ .IP "To rotate access log:"
+       mv /var/log/c-icap/access.log /var/log/c-icap/access.log.1
+-      echo \-n "relog" > /var/run/c-icap.ctl
++      echo \-n "relog" > /var/run/c-icap/c-icap.ctl
+ .RE
+ .SS Lookup tables
+ Lookup tables are simple read-only databases.

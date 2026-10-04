@@ -1,0 +1,4 @@
+lib/c_icap/
+@so lib/c_icap/srv_suricata.so
+share/examples/c-icap/
+share/examples/c-icap/icapsuricata.conf

@@ -1,0 +1,12 @@
+Index: info.c
+--- info.c.orig
++++ info.c
+@@ -1501,7 +1501,7 @@ static void build_per_time_stats(struct per_time_stats
+         if (InfoTimeCountersId[i].per_time)
+             tr->kbs_per_sec[i].bytes = bytes / period;
+         if (InfoTimeCountersId[i].average)
+-            tr->uint64_average[i] = accumulated->uint64_average[i] / accumulated->children; /*Includes accumulated->snapshot*/
++            tr->uint64_average[i] = accumulated->children ? accumulated->uint64_average[i] / accumulated->children : 0; /*Includes accumulated->snapshot*/
+     }
+ }
+ 

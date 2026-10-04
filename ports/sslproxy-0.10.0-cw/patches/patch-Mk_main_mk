@@ -1,0 +1,12 @@
+Index: Mk/main.mk
+--- Mk/main.mk.orig
++++ Mk/main.mk
+@@ -104,7 +104,7 @@ endif
+ # With HTTP/3 enabled, SSLproxy can use QUIC for HTTP/3 connections.
+ # Note that this feature requires very recent versions of OpenSSL, libnghttp3, and libngtcp2.
+ # You may need to build with OPENSSL_BASE, LIBNGHTTP3_BASE, and LIBNGTCP2_BASE.
+-FEATURES+=	-DWITHOUT_HTTP3
++#FEATURES+=	-DWITHOUT_HTTP3
+ 
+ ### Debugging
+ 
