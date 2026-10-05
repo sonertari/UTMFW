@@ -113,11 +113,12 @@ etc/php-8.5/pcntl.ini,644,root,bin
 etc/php-8.5/sqlite.ini,644,root,bin
 etc/pmacct/pmacctd-pnrg.conf,644,root,wheel
 etc/pmacct/pmacctd-protograph.conf,644,root,wheel
-etc/snort/snort.conf,644,root,wheel
-etc/snort/snortinline.conf,644,root,wheel
 etc/snort/snortips.conf,644,root,wheel
 etc/ssh/sshd_config,644,root,wheel
 etc/sslproxy/sslproxy.conf,644,root,wheel
+etc/suricata/c-icap.conf,644,root,wheel
+etc/suricata/icapsuricata.conf,644,root,wheel
+etc/suricata/suricata.yaml,644,root,wheel
 etc/clamd.conf,644,root,wheel
 etc/collectd.conf,640,root,_collectd
 etc/dhcpd.conf,644,root,wheel
@@ -169,8 +170,10 @@ var/log/e2guardian/access.log,640,root,wheel
 var/log/e2guardian/e2guardian.log,640,root,wheel
 var/log/httpd/access.log,640,root,daemon
 var/log/httpd/error.log,640,root,daemon
-var/log/snort/snort.log,640,root,wheel
-var/log/snort/alert.log,640,root,wheel
+var/log/suricata/access.log,640,_suricata,_suricatal
+var/log/suricata/fast.log,640,_suricata,_suricatal
+var/log/suricata/server.log,640,_suricata,_suricatal
+var/log/suricata/suricata.log,640,_suricata,_suricata
 var/log/clamd.log,640,_clamav,wheel
 var/log/ctlr.log,640,root,wheel
 var/log/wui.log,640,root,wheel

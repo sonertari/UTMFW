@@ -28,10 +28,12 @@ error.log		type=file mode=0644 uname=root gname=daemon
 ..	#var/log/httpd
 imspector		type=dir mode=0755 uname=_imspector gname=_imspector flags=none
 ..	#var/log/imspector
-snort			type=dir mode=0755 uname=_snort gname=_snort flags=none
-snort.log		type=file mode=0640 uname=root gname=wheel
-alert.log		type=file mode=0640 uname=root gname=wheel
-..	#var/log/snort
+suricata		type=dir mode=0755 uname=_suricata gname=_suricata flags=none
+access.log		type=file mode=0640 uname=_suricata gname=_suricata
+fast.log		type=file mode=0640 uname=_suricata gname=_suricata
+server.log		type=file mode=0640 uname=_suricata gname=_suricata
+suricata.log		type=file mode=0640 uname=_suricata gname=_suricata
+..	#var/log/suricata
 clamd.log		type=file mode=0640 uname=_clamav gname=wheel
 ctlr.log		type=file mode=0640 uname=root gname=wheel
 wui.log			type=file mode=0640 uname=root gname=wheel
@@ -208,10 +210,13 @@ pmacctd-pnrg.conf	type=file mode=0644 uname=root gname=wheel
 pmacctd-protograph.conf	type=file mode=0644 uname=root gname=wheel
 ..	#etc/pmacct
 snort			type=dir mode=0755 uname=root gname=wheel
-snort.conf		type=file mode=0644 uname=root gname=wheel
-snortinline.conf	type=file mode=0644 uname=root gname=wheel
 snortips.conf		type=file mode=0644 uname=root gname=wheel
 ..	#etc/snort
+suricata			type=dir mode=0755 uname=root gname=wheel
+c-icap.conf	    type=file mode=0644 uname=root gname=wheel
+icapsuricata.conf		type=file mode=0644 uname=root gname=wheel
+suricata.yaml		type=file mode=0644 uname=root gname=wheel
+..	#etc/suricata
 ssh		        type=dir mode=0755 uname=root gname=wheel
 sshd_config		type=file mode=0644 uname=root gname=wheel
 ..	#etc/ssh

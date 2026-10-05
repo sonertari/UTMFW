@@ -72,15 +72,21 @@ if [ -x /usr/local/bin/spamd ]; then
 fi
 
 echo -n '\nIntrusion detection and prevention:'
-# Start Snort IDS for WAN and LAN, and Snort IPS inline
-if [ -x /usr/local/bin/snort ]; then
-	[[ ! -d /var/log/utmfw/run/snort ]] && mkdir /var/log/utmfw/run/snort
-	chown _snort /var/log/utmfw/run/snort
+# Start Suricata IDS for WAN and LAN
+if [ -x /opt/local/bin/suricata ]; then
+	[[ ! -d /var/log/utmfw/run/suricata ]] && mkdir /var/log/utmfw/run/suricata
+	chown _suricata /var/log/utmfw/run/suricata
 	echo -n ' ids'
-	/usr/local/bin/snort -i lan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/log/snort --pid-path /var/log/utmfw/run/snort >/dev/null 2>&1
-#	/usr/local/bin/snort -i wan0 -D -d -c /etc/snort/snort.conf -u _snort -g _snort -b -l /var/log/snort --pid-path /var/log/utmfw/run/snort >/dev/null 2>&1
-	echo -n ', inline ips'
-	/usr/local/bin/snort -D -d -Q -c /etc/snort/snortinline.conf -u _snort -g _snort -b -l /var/log/snort --pid-path /var/log/utmfw/run/snort >/dev/null 2>&1
+	/opt/local/bin/suricata -i lan0 -D -d -c /etc/suricata/suricata-ids.yaml -u _suricata -g _suricata -b -l /var/log/utmfw/suricata --pid-path /var/log/utmfw/run/suricata >/dev/null 2>&1
+#	/opt/local/bin/suricata -i wan0 -D -d -c /etc/suricata/suricata-ids.yaml -u _suricata -g _suricata -b -l /var/log/utmfw/suricata --pid-path /var/log/utmfw/run/suricata >/dev/null 2>&1
+fi
+
+# Start c-icap and icapsuricata
+if [ -x /opt/local/bin/c-icap ]; then
+	[[ ! -d /var/log/utmfw/run/suricata ]] && mkdir /var/log/utmfw/run/suricata
+	chown _suricata /var/log/utmfw/run/suricata
+	echo -n ', ips'
+	/opt/local/bin/c-icap -f /etc/suricata/c-icap.conf >/dev/null 2>&1
 fi
 
 # Start SnortIPS
