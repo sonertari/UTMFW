@@ -1083,7 +1083,7 @@ __EOT
 # #######################################################################
 # Initial actions common to both installs and upgrades.
 # #######################################################################
-VERSION='7.9'
+VERSION='8.0'
 ARCH=$(/usr/bin/machine)
 
 VMAJ=${VERSION%%\.*}

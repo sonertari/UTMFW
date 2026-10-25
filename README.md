@@ -2,7 +2,7 @@
 
 UTMFW is a UTM firewall running on OpenBSD. UTMFW is expected to be used on production systems. The UTMFW project provides a Web User Interface (WUI) for monitoring and configuration. You can also use the Android application [A4PFFW](https://github.com/sonertari/A4PFFW) and the Windows application [W4PFFW](https://github.com/sonertari/W4PFFW) for monitoring.
 
-UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy), [icapsuricata](https://github.com/sonertari/icapsuricata), Suricata IDS/IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, and network user authentication. Also note that UTMFW 7.9 comes with OpenBSD 7.9-stable including all updates until August 25th, 2026.
+UTMFW is an updated version of ComixWall. However, there are a few major changes, such as [SSLproxy](https://github.com/sonertari/SSLproxy),  [icapsuricata](https://github.com/sonertari/icapsuricata), Suricata IDS/IPS, [PFRE](https://github.com/sonertari/PFRE), E2Guardian, many fixes and improvements to the system and the WUI, and network user authentication. Also note that UTMFW 8.0 comes with OpenBSD 8.0-stable including all updates until October 24th, 2026.
 
 UTMFW supports deep SSL inspection of HTTP/1.1, HTTP/2, HTTP/3 (QUIC), POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). Some of these UTM software have been modified to support the mode of operation required by SSLproxy.
 
@@ -16,21 +16,21 @@ UTMFW runs on amd64 and arm64 architectures. So, the UTMFW project releases inst
 
 Amd64:
 
-- [utmfw79\_20261010\_amd64.iso](https://drive.google.com/file/d/10oEjeVnsGDOSHxnQVa3hg43ekXKxb36h/view?usp=sharing)
+- [utmfw80\_20261031\_amd64.iso](https://drive.google.com/file/d/10oEjeVnsGDOSHxnQVa3hg43ekXKxb36h/view?usp=sharing)
 	+ SHA256 checksum: 92879a6b594372fc1114def4b530379ec899045a1ff8dda9833bbff313c74326
 	+ Tested on VMware
 
-- [utmfw79\_20261010\_amd64.img](https://drive.google.com/file/d/1MTZ3HC7HB2L1yNqQf5uZhHjbCS71r2wb/view?usp=sharing)
+- [utmfw80\_20261031\_amd64.img](https://drive.google.com/file/d/1MTZ3HC7HB2L1yNqQf5uZhHjbCS71r2wb/view?usp=sharing)
 	+ SHA256 checksum: e43272764cd0a8a831daa23091cc871ec9e0632e56695aafa74b9664a4142956
 	+ Tested on bare hardware
 
 Arm64:
 
-- [utmfw79\_20261010\_arm64.iso](https://drive.google.com/file/d/10mbUmQJAlenf9mTkVE7QEi9SwiIFZNk-/view?usp=sharing)
+- [utmfw80\_20261031\_arm64.iso](https://drive.google.com/file/d/10mbUmQJAlenf9mTkVE7QEi9SwiIFZNk-/view?usp=sharing)
 	+ SHA256 checksum: 58d5b48955a1bf49596c45e614c7731e61d4ceb1d05a41ce53e7200fb05593c2
 	+ Tested on UTM for macOS
 
-- [utmfw79\_20261010\_arm64.img](https://drive.google.com/file/d/1pSdNMFonNUtfhWHI2o7u7D9DVSGFQkR5/view?usp=sharing)
+- [utmfw80\_20261031\_arm64.img](https://drive.google.com/file/d/1pSdNMFonNUtfhWHI2o7u7D9DVSGFQkR5/view?usp=sharing)
 	+ SHA256 checksum: 9b2cfd4c88f77d30769629be8c4c69090520612ce12438f238528c505464149f
 	+ Tested on Raspberry Pi 4 Model B
 
@@ -135,7 +135,7 @@ A few notes about UTMFW installation:
 
 ## How to build
 
-The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 7.9 and have installed git, gettext, and doxygen on it.
+The purpose in this section is to build the installation iso or img file using the createiso or createimg script, respectively, at the root of the project source tree. You are expected to be doing these on an OpenBSD 8.0 and have installed git, gettext, and doxygen on it.
 
 ### Build summary
 
@@ -250,7 +250,6 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ dante
 		+ symon
 		+ symux
-		+ pmacct
 		+ pftop
 		+ php, php-cgi, php-curl, php-pcntl, php-sqlite3
 		+ rsync
@@ -282,6 +281,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 			+ imspector: use the source tarball under ports/distfiles
 			+ snortips
 			+ collectd
+			+ pmacct
 		+ Sign all of the UTMFW packages using signify, note that you should use the private key file utmfw-XY-pkg.sec for pkg, for example:
 			```
 			signify -Sz -s utmfw-XY-pkg.sec -m /usr/ports/packages/amd64/all/sslproxy-0.10.0.tgz -x ~/sslproxy-0.10.0.tgz
@@ -307,6 +307,7 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 		+ imspector
 		+ snortips
 		+ collectd
+		+ pmacct
 
 	+ Update the links under cd/amd64/X.Y/packages/ with the OpenBSD packages saved under PKG_CACHE
 

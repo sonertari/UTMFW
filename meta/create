@@ -28,7 +28,7 @@ fi
 echo "ARCH= $ARCH"
 
 ROOT_PATH=$(pwd)
-VERSION='7.9'
+VERSION='8.0'
 SUBVERSION=_$(date +%Y%m%d)
 VMAJ=${VERSION%%\.*}
 VMIN=${VERSION##*\.}
