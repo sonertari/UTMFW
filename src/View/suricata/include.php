@@ -26,7 +26,7 @@ $Menu = array(
 		'Perms' => $ALL_USERS,
 		),
 	'stats' => array(
-		'Model' => 'snortalerts',
+		'Model' => 'suricataalerts',
 		'Name' => _MENU('Statistics'),
 		'Perms' => $ALL_USERS,
 		'SubMenu' => array(
@@ -49,7 +49,7 @@ $Menu = array(
 			),
 		),
 	'alerts' => array(
-		'Model' => 'snortalerts',
+		'Model' => 'suricataalerts',
 		'Name' => _MENU('Alerts'),
 		'Perms' => $ALL_USERS,
 		'SubMenu' => array(

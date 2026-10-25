@@ -168,7 +168,7 @@ class Symon extends Monitoring
 		$proclist= array(
 			'httpd',
 			'e2guardian',
-			'snort',
+			'suricata',
 			'clamd',
 			'p3scan',
 			'perl',

@@ -18,6 +18,6 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('snort.php');
+require_once('suricata.php');
 require_once('../lib/graphs.php');
 ?>

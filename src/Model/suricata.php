@@ -20,16 +20,16 @@
 
 require_once($MODEL_PATH.'/model.php');
 
-class Snort extends Model
+class Suricata extends Model
 {
-	public $Name= 'snort';
-	public $User= '_snort';
-	
+	public $Name= 'suricata';
+	public $User= '_suricata';
+
 	public $NVPS= '\h';
-	public $ConfFile= '/etc/snort/snort.conf';
-	public $LogFile= '/var/log/snort/snort.log';
-	
-	public $VersionCmd= '/usr/local/bin/snort -V 2>&1';
+	public $ConfFile= '/etc/suricata/suricata.yaml';
+	public $LogFile= '/var/log/suricata/suricata.log';
+
+	public $VersionCmd= '/opt/local/bin/suricata -V 2>&1';
 
 	private $re_RulePrefix= 'include\h*\$(RULE_PATH|PREPROC_RULE_PATH)\/';
 
@@ -38,7 +38,7 @@ class Snort extends Model
 	function __construct()
 	{
 		parent::__construct();
-		
+
 		$this->Commands= array_merge(
 			$this->Commands,
 			array(
@@ -56,7 +56,7 @@ class Snort extends Model
 					'argv'	=>	array(NUM),
 					'desc'	=>	_('Get rules'),
 					),
-				
+
 				'GetDisabledRules'=>	array(
 					'argv'	=>	array(NUM),
 					'desc'	=>	_('Get disabled rules'),
@@ -99,7 +99,7 @@ class Snort extends Model
 	{
 		global $TmpFile, $RetvalFile;
 
-		$startCmd= "/usr/local/bin/snort -i $if -D -d -c $this->ConfFile -u _snort -g _snort -b -l /var/log/snort --pid-path {$this->UTMFWDIR}/run/snort";
+		$startCmd= "/opt/local/bin/suricata -i $if -D -d -c $this->ConfFile -u _suricata -g _suricata -b -l /var/log/suricata --pid-path {$this->UTMFWDIR}/run/suricata";
 		exec("$startCmd > $TmpFile 2>&1 && echo -n '0' > $RetvalFile || echo -n '1' > $RetvalFile &", $output);
 		$retval= file_get_contents($RetvalFile);
 
@@ -122,7 +122,7 @@ class Snort extends Model
 	}
 
 	/**
-	 * Stops snort process started with the given interface.
+	 * Stops suricata process started with the given interface.
 	 *
 	 * @param string $if Interface name.
 	 * @return bool TRUE on success, FALSE on fail.
@@ -137,14 +137,14 @@ class Snort extends Model
 	}
 
 	/**
-	 * Finds the pid of snort process started with the given inf.
+	 * Finds the pid of suricata process started with the given inf.
 	 *
 	 * @param string $if Interface name.
 	 * @return int Pid or -1 if not running
 	 */
 	function FindInstancePid($if)
 	{
-		$pidcmd= "/bin/ps arwwx | /usr/bin/grep snort | /usr/bin/grep '$if' | /usr/bin/grep -v -e ctlr.php -e grep";
+		$pidcmd= "/bin/ps arwwx | /usr/bin/grep suricata | /usr/bin/grep '$if' | /usr/bin/grep -v -e ctlr.php -e grep";
 		exec($pidcmd, $output, $retval);
 
 		foreach ($output as $psline) {
@@ -171,9 +171,9 @@ class Snort extends Model
 	 */
 	function IsInstanceRunning($if)
 	{
-		$re= "\/usr\/local\/bin\/snort\s+[^\n]*-i\s+$if\s+[^\n]*";
+		$re= "\/opt\/local\/bin\/suricata\s+[^\n]*-i\s+$if\s+[^\n]*";
 
-		$output= $this->RunShellCommand('/bin/ps arwwx -U_snort');
+		$output= $this->RunShellCommand('/bin/ps arwwx -U_suricata');
 		if (preg_match("/$re/m", $output)) {
 			return TRUE;
 		}
@@ -195,7 +195,7 @@ class Snort extends Model
 	function GetConfFile($confname, $group)
 	{
 		if ($group == 1) {
-			return '/etc/snort/snortinline.conf';
+			return '/etc/suricata/suricatainline.yaml';
 		}
 		else {
 			return $this->ConfFile;
@@ -252,7 +252,7 @@ class Snort extends Model
 
 	function SetStartupIfs($lanif, $wanif)
 	{
-        $re= '|(\h*/usr/local/bin/snort\h+.*-i\h+)(\w+\d+)(\h+.*\h+/usr/local/bin/snort\h+.*-i\h+)(\w+\d+)(\h+.*)|ms';
+        $re= '|(\h*/opt/local/bin/suricata\h+.*-i\h+)(\w+\d+)(\h+.*\h+/opt/local/bin/suricata\h+.*-i\h+)(\w+\d+)(\h+.*)|ms';
 		return $this->ReplaceRegexp('/etc/rc.local', $re, '${1}'.$lanif.'${3}'.$wanif.'${5}');
 	}
 

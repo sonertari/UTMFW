@@ -69,7 +69,7 @@ else if (filter_has_var(INPUT_POST, 'Stop')) {
 		}
 	}
 	else {
-		// Snort inline IPS
+		// Suricata inline IPS
 		$View->Stop();
 	}
 	$generate_status= 1;

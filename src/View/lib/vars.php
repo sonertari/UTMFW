@@ -69,7 +69,7 @@ $UTMFW_MODULES = array(
 		'Name' => _MENU('WEB FILTER'),
 		'Perms' => $ALL_USERS,
 		),
-	'snort' => array(
+	'suricata' => array(
 		'Name' => _MENU('IDP'),
 		'Perms' => $ALL_USERS,
 		),

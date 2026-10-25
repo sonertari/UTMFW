@@ -21,7 +21,7 @@
 require_once('include.php');
 
 $LogConf = array(
-	'snortalerts' => array(
+	'suricataalerts' => array(
 		'Fields' => array(
 			'Date' => _TITLE('Date'),
 			'Time' => _TITLE('Time'),
@@ -37,9 +37,9 @@ $LogConf = array(
 		),
 	);
 
-class Snortalerts extends View
+class Suricataalerts extends View
 {
-	public $Model= 'snortalerts';
+	public $Model= 'suricataalerts';
 	public $LogsPage= 'alerts.php';
 
 	function __construct()
@@ -64,5 +64,5 @@ class Snortalerts extends View
 	}
 }
 
-$View= new Snortalerts();
+$View= new Suricataalerts();
 ?>

@@ -14,7 +14,7 @@ etc/collectd/openvpn.conf,644,root,wheel
 etc/collectd/p3scan.conf,644,root,wheel
 etc/collectd/pf.conf,644,root,wheel
 etc/collectd/smtp-gated.conf,644,root,wheel
-etc/collectd/snort.conf,644,root,wheel
+etc/collectd/suricata.conf,644,root,wheel
 etc/collectd/snortips.conf,644,root,wheel
 etc/collectd/spamassassin.conf,644,root,wheel
 etc/collectd/spamd.conf,644,root,wheel

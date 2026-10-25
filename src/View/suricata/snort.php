@@ -21,7 +21,7 @@
 require_once('include.php');
 
 $LogConf = array(
-	'snort' => array(
+	'suricata' => array(
 		'Fields' => array(
 			'Date' => _TITLE('Date'),
 			'Time' => _TITLE('Time'),
@@ -39,10 +39,10 @@ $LogConf = array(
 		),
 	);
 
-class Snort extends View
+class Suricata extends View
 {
-	public $Model= 'snort';
-	public $Layout= 'snort';
+	public $Model= 'suricata';
+	public $Layout= 'suricata';
 
 	function __construct()
 	{
@@ -164,17 +164,17 @@ class Snort extends View
 		?>
 		<tr>
 			<td colspan="4">
-				<a class="transparent" href="/snort/stats.php"><img src="/system/dashboard/snort.png" name="idp" alt="idp" title="<?php echo _TITLE2('Alerts issued by the IDS and Inline IPS') ?>"></a>
+				<a class="transparent" href="/suricata/stats.php"><img src="/system/dashboard/suricata.png" name="idp" alt="idp" title="<?php echo _TITLE2('Alerts issued by the IDS and Inline IPS') ?>"></a>
 			</td>
 		</tr>
 		<tr>
 			<td id="dashboard" colspan="4" title="<?php echo _TITLE2('Number of alerts issued by the IDS and Inline IPS') ?>">
-				<a class="transparent-white" href="/snort/alerts.php">
+				<a class="transparent-white" href="/suricata/alerts.php">
 				<div id="count" style="background-color: blueviolet">
 					<table>
 						<tr class="count">
 							<td class="count">
-							<?php echo $ServiceInfo['snort']['alerts'] ?>
+							<?php echo $ServiceInfo['suricata']['alerts'] ?>
 							</td>
 						</tr>
 						<tr>
@@ -191,7 +191,7 @@ class Snort extends View
 	}
 }
 
-$View= new Snort();
+$View= new Suricata();
 
 /**
  * Basic configuration.
@@ -207,7 +207,7 @@ $basicConfig = array(
 		),
 	'ipvar DNS_SERVERS' => array(
 		'title' => _TITLE2('DNS_SERVERS'),
-		'info' => _HELPBOX2('Configure your server lists.  This allows snort to only look for attacks to systems that have a service up.  Why look for HTTP attacks if you are not running a web server?  This allows quick filtering based on IP addresses. These configurations MUST follow the same configuration scheme as defined above for $HOME_NET.
+		'info' => _HELPBOX2('Configure your server lists.  This allows suricata to only look for attacks to systems that have a service up.  Why look for HTTP attacks if you are not running a web server?  This allows quick filtering based on IP addresses. These configurations MUST follow the same configuration scheme as defined above for $HOME_NET.
 List of DNS servers on your network'),
 		),
 	'ipvar SMTP_SERVERS' => array(

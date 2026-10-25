@@ -37,8 +37,7 @@ require_once($VIEW_PATH.'/spamassassin/include.php');
 require_once($VIEW_PATH.'/imspector/imspector.php');
 require_once($VIEW_PATH.'/dante/include.php');
 require_once($VIEW_PATH.'/openvpn/include.php');
-// require_once($VIEW_PATH.'/spamd/include.php');
-require_once($VIEW_PATH.'/snort/snort.php');
+require_once($VIEW_PATH.'/suricata/suricata.php');
 require_once($VIEW_PATH.'/snortips/include.php');
 require_once($VIEW_PATH.'/p3scan/include.php');
 require_once($VIEW_PATH.'/smtp-gated/include.php');
@@ -73,7 +72,7 @@ if ($View->Controller($Output, 'GetServiceStatus', 1, $LastDashboardInterval, $I
 }
 
 $ModuleNames= array(
-	'snortinline' => 'snort',
+	'suricatainline' => 'suricata',
 	'clamd' => 'clamav',
 	'freshclam' => 'clamav',
 	'symon' => 'monitoring',
@@ -346,8 +345,8 @@ function DisplayModuleStatus($Module, $DisplayDashboardExtrasFunc= FALSE)
 		<td>
 			<table id="modulestatus">
 				<?php
-				DisplayModuleStatus('snort', fn() => Snort::DisplayDashboardExtras());
-				DisplayModuleStatus('snortinline');
+				DisplayModuleStatus('suricata', fn() => Suricata::DisplayDashboardExtras());
+				DisplayModuleStatus('suricatainline');
 				DisplayModuleStatus('snortips');
 				DisplayModuleStatus('p3scan', fn() => P3scan::DisplayDashboardExtras());
 				DisplayModuleStatus('smtp-gated', fn() => Smtpgated::DisplayDashboardExtras());

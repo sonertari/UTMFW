@@ -447,9 +447,9 @@ $RRDTOOL graph spamassassin.png $GENERAL_OPTS $SIZE -s $START \
     AREA:ham#bf8700:ham >/dev/null
 
 # IDS
-$RRDTOOL graph snort.png $GENERAL_OPTS $SIZE -s $START \
+$RRDTOOL graph suricata.png $GENERAL_OPTS $SIZE -s $START \
     -t "Alerts" \
-    DEF:alert=$COLLECTD_RRD_ROOT/tail-snort/derive-alert.rrd:value:AVERAGE \
+    DEF:alert=$COLLECTD_RRD_ROOT/tail-suricata/derive-alert.rrd:value:AVERAGE \
     AREA:alert#da5400:alert >/dev/null
 
 # POP3 Proxy

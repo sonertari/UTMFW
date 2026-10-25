@@ -18,9 +18,9 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('snort.php');
+require_once('suricata.php');
 
-$generate_snort_status= 0;
+$generate_suricata_status= 0;
 
 if (filter_has_var(INPUT_POST, 'Model')) {
 	if (filter_input(INPUT_POST, 'Model') == $View->Model) {
@@ -30,7 +30,7 @@ if (filter_has_var(INPUT_POST, 'Model')) {
 					$View->Controller($Output, 'StopInstance', $If);
 					$View->Controller($Output, 'StartInstance', $If);
 				}
-				$generate_snort_status= 1;
+				$generate_suricata_status= 1;
 			}
 			else {
 				PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('You should select at least one interface to start IDS for'), 'auto', 'ERROR');
@@ -41,7 +41,7 @@ if (filter_has_var(INPUT_POST, 'Model')) {
 				foreach ($_POST['Interfaces'] as $If) {
 					$View->Controller($Output, 'StopInstance', $If);
 				}
-				$generate_snort_status= 1;
+				$generate_suricata_status= 1;
 			}
 			else {
 				PrintHelpWindow(_NOTICE('FAILED').': '._NOTICE('You should select at least one interface to stop IDS for'), 'auto', 'ERROR');
@@ -52,20 +52,20 @@ if (filter_has_var(INPUT_POST, 'Model')) {
 
 $View->Controller($Output, 'GetStatus');
 
-$View->Model= 'snortinline';
-$generate_snortinline_status= $View->ProcessStartStopRequests();
+$View->Model= 'suricatainline';
+$generate_suricatainline_status= $View->ProcessStartStopRequests();
 
 $Reload= TRUE;
 require_once($VIEW_PATH.'/header.php');
 		
-$View->Model= 'snort';
+$View->Model= 'suricata';
 $View->Caption= _('Intrusion Detection');
-$View->PrintStatusForm($generate_snort_status, FALSE, FALSE);
+$View->PrintStatusForm($generate_suricata_status, FALSE, FALSE);
 $View->PrintInterfaceSelectForm();
 
-$View->Model= 'snortinline';
+$View->Model= 'suricatainline';
 $View->Caption= _TITLE('Inline Intrusion Prevention');
-$View->PrintStatusForm($generate_snortinline_status);
+$View->PrintStatusForm($generate_suricatainline_status);
 
 PrintHelpWindow(_HELPWINDOW('You can run multiple Intrusion Detection processes, one for each network interface. The IDS listens to such interfaces in promiscuous mode.
 

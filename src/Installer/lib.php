@@ -101,9 +101,9 @@ function ApplyConfig()
 			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting dhcpd interface: $lanif");
 		}
 
-		$View->Model= 'snort';
+		$View->Model= 'suricata';
 		if (!$View->Controller($output, 'SetStartupIfs', $lanif, $wanif)) {
-			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting snort interfaces: $lanif, $wanif");
+			wui_syslog(LOG_ERR, __FILE__, __FUNCTION__, __LINE__, "Failed setting suricata interfaces: $lanif, $wanif");
 		}
 
 		// $View->Model= 'spamd';

@@ -1,4 +1,4 @@
-#	$OpenBSD: rc,v 1.588 2025/11/14 10:08:10 jca Exp $
+#	$OpenBSD: rc,v 1.596 2026/09/21 02:52:29 afresh1 Exp $
 
 # System startup script run by init on autoboot or after single-user.
 # Output and error are redirected to console by init, and the console is the
@@ -157,6 +157,12 @@ make_keys() {
 		fi
 	fi
 
+	# delete after OpenBSD 8.1
+	local _ssh_mldsa=/etc/ssh/ssh_host_mldsa44_ed25519_key
+	if grep -qs '^ssh-mldsa44-ed25519@openssh\.com' ${_ssh_mldsa}.pub; then
+		rm -f ${_ssh_mldsa} ${_ssh_mldsa}.pub
+	fi
+
 	[[ -f $_ssh_pub ]] || _show_ssh_fp=true
 	ssh-keygen -A
 	$_show_ssh_fp && ssh-keygen -lf $_ssh_pub |
@@ -233,8 +239,8 @@ reorder_libs() {
 		) || { _error=true; break; }
 	done
 
-	for _bin in $_relink/usr/sbin/sshd $_relink/usr/libexec/sshd-session \
-	    $_relink/usr/libexec/sshd-auth $_relink/usr/bin/ssh-agent; do
+	# Now relink selected important binaries
+	for _bin in $(find /usr/share/relink/ -name "*.tar" -execdir pwd \;); do
 		_tmpdir=$(mktemp -dq $_relink/_rebuild.XXXXXXXXXXXX) &&
 		(
 		set -o errexit
@@ -302,22 +308,27 @@ run_upgrade_script() {
 #   mount -uw /dev/rootdisk /
 #   cd /dev && ./MAKEDEV redodisks
 rootdisk_nodes() {
-	if [ $(sysctl -n kern.maxpartitions) = 16 ]; then
-		_rootdev=$(mount | grep ' / ' | cut -d' ' -f1)
-		_maj=$(stat -f "%Hr" $_rootdev)
-		_omin=$(stat -f "%Lr" $_rootdev)
-		_min=$((_omin / 16 * 64))
-		if [ -b /dev/rootdisk -a \
-		    "$(stat -qf %Hr,%Lr /dev/rootdisk)" = "$_maj,$_min" ]; then
-			return
-		fi
-		# does not exist or device changed, redo
-		_rrootdev=$(echo $_rootdev | sed -e 's,dev/,dev/r,')
-		_rmaj=$(stat -f "%Hr" $_rrootdev)
-		rm -f /dev/rrootdisk /dev/rootdisk
-		mknod -m 600 /dev/rrootdisk c $_rmaj $_min
-		mknod -m 600 /dev/rootdisk b $_maj $_min
-	fi
+	local _rootdev _rrootdev 
+	integer _maj _rmaj _omin _min
+	[[ $(sysctl -n kern.maxpartitions) = 16 ]] || return
+
+	# Find and use root device if we are not booting from NFS
+	_rootdev=$(mount | grep ' / ' | grep -v ':' | cut -d ' ' -f 1)
+	[[ -n $_rootdev ]] || return
+
+	_maj=$(stat -f %Hr $_rootdev)
+	_omin=$(stat -f %Lr $_rootdev)
+	_min=$((_omin / 16 * 64))
+	[[ -b /dev/rootdisk ]] &&
+	    [[ "$(stat -qf %Hr,%Lr /dev/rootdisk)" = "$_maj,$_min" ]] &&
+	    return
+
+	# does not exist or device changed, redo
+	_rrootdev=$(echo "$_rootdev" | sed -e 's,dev/,dev/r,')
+	_rmaj=$(stat -f %Hr $_rrootdev)
+	rm -f /dev/rrootdisk /dev/rootdisk
+	mknod -m 600 /dev/rrootdisk c $_rmaj $_min
+	mknod -m 600 /dev/rootdisk b $_maj $_min
 }
 
 # Check filesystems, optionally by using a fsck(8) flag.
@@ -547,6 +558,24 @@ sysctl_conf
 mount -s /var >/dev/null 2>&1		# cannot be on NFS
 mount -s /var/log >/dev/null 2>&1	# cannot be on NFS
 mount -s /usr >/dev/null 2>&1		# if NFS, fstab must use IP address
+mount -s /tmp >/dev/null 2>&1		# if NFS, fstab must use IP address
+
+# Prune /tmp before users can authenticate.  A few files are removed
+# immediately, but most of the deletion happens asynchronously while
+# daemons are being started
+( cd /tmp && {
+    echo clearing /tmp
+    skip="-mindepth 1 -maxdepth 1 ! -name lost+found ! -name quota.user 
+	! -name quota.group ! -name vi.recover"
+    find . $skip ! -perm -1000 -print0 |
+	xargs -r0J % find -d % -exec rm -rf -- {} \; -print |
+	    head -50 >/dev/null
+    tmpdir=$(mktemp -d .delXXXXXXXXXX) && {
+	find . $skip ! -name "$tmpdir" -print0 |
+	    xargs -r0J % mv -f -- % "$tmpdir"
+	rm -rf -- "$tmpdir" &
+    }
+} ) 2>/dev/null
 
 reorder_libs 2>&1 |&
 
@@ -605,7 +634,7 @@ fi
 
 echo -n 'starting early daemons:'
 start_daemon syslogd ldattach bpflogd pflogd nsd unbound ntpd
-start_daemon iscsid isakmpd iked sasyncd ldapd npppd
+start_daemon lldpd iscsid isakmpd iked sasyncd ldapd npppd
 echo '.'
 
 # Load IPsec rules.
@@ -659,15 +688,6 @@ if [[ -f /etc/ptmp ]]; then
 	    'password file may be incorrect -- /etc/ptmp exists'
 fi
 
-echo clearing /tmp
-
-# Prune quickly with one rm, then use find to clean up /tmp/[lqv]*
-# (not needed with mfs /tmp, but doesn't hurt there...).
-(cd /tmp && rm -rf [a-km-pr-uw-zA-Z]*)
-(cd /tmp &&
-    find . -maxdepth 1 ! -name . ! -name lost+found ! -name quota.user \
-	! -name quota.group ! -name vi.recover -execdir rm -rf -- {} \;)
-
 # Create Unix sockets directories for X if needed and make sure they have
 # correct permissions.
 [[ -d /usr/X11R6/lib ]] && mkdir -m 1777 /tmp/.{X11,ICE}-unix
@@ -715,7 +735,7 @@ start_daemon ldomd sshd snmpd ldpd ripd ospfd ospf6d bgpd ifstated
 start_daemon relayd dhcpd dhcrelay mrouted dvmrpd radiusd eigrpd route6d
 start_daemon dhcp6leased rad hostapd lpd smtpd slowcgi bgplgd httpd ftpd
 start_daemon ftpproxy ftpproxy6 tftpd tftpproxy identd inetd rarpd bootparamd
-start_daemon rbootd mopd vmd spamd spamlogd sndiod
+start_daemon rbootd mopd vmd spamd spamlogd sndiod rtrd
 echo '.'
 
 # If rc.firsttime exists, run it just once, and make sure it is deleted.

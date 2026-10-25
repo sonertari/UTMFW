@@ -18,25 +18,6 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('snort.php');
-
-$Submenu= SetSubmenu('basic');
-
-switch ($Submenu) {
-	case 'basic':
-		$View->ConfHelpMsg= _HELPWINDOW('You should configure the IDS based on the services running on your network.');
-		break;
-
-	case 'advanced':
-		break;
-
-	case 'rules':
-		require_once('conf.rules.php');
-		exit;
-}
-
-$ViewConfigName= $Submenu.'Config';
-$View->Config= ${$ViewConfigName};
-$PRINT_CONFOPT_FORM= TRUE;
-require_once('../lib/conf.php');
+require_once('suricata.php');
+require_once('../lib/logs.php');
 ?>

@@ -160,7 +160,7 @@ if (!isset($ViewConfigName)) {
 	$ViewConfigName= '';
 }
 
-// Reset to 0 for modules other than E2guardian and Snort, otherwise Controller complains about arg type of Group
+// Reset to 0 for modules other than E2guardian and Suricata, otherwise Controller complains about arg type of Group
 $Group= isset($_SESSION[$View->Model]['ConfOpt']) ? $_SESSION[$View->Model]['ConfOpt'] : 0;
 
 if (count($_POST)) {

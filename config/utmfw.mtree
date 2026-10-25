@@ -83,7 +83,7 @@ openvpn.conf		type=file mode=0644 uname=root gname=wheel
 p3scan.conf		type=file mode=0644 uname=root gname=wheel
 pf.conf			type=file mode=0644 uname=root gname=wheel
 smtp-gated.conf		type=file mode=0644 uname=root gname=wheel
-snort.conf		type=file mode=0644 uname=root gname=wheel
+suricata.conf		type=file mode=0644 uname=root gname=wheel
 snortips.conf		type=file mode=0644 uname=root gname=wheel
 spamassassin.conf	type=file mode=0644 uname=root gname=wheel
 spamd.conf		type=file mode=0644 uname=root gname=wheel

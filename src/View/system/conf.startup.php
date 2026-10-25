@@ -40,7 +40,8 @@ $ServiceDescs= array(
 	'/usr/local/sbin/dnsmasq'		=> _TITLE2('DNS Forwarder'),
 	'/usr/local/bin/sslproxy'		=> _TITLE2('SSL Proxy'),
 	'/usr/local/sbin/e2guardian'	=> _TITLE2('Web Filter'),
-	'/usr/local/bin/snort'			=> _TITLE2('Intrusion Detection and Prevention'),
+	'/opt/local/bin/suricata'		=> _TITLE2('Intrusion Detection and Prevention'),
+	'/opt/local/bin/c-icap'			=> _TITLE2('ICAP Server'),
 	'/usr/local/sbin/snortips'		=> _TITLE2('Passive Intrusion Prevention'),
 	'/usr/local/sbin/clamd'			=> _TITLE2('Virus Filter'),
 	'/usr/local/bin/freshclam'		=> _TITLE2('Virus DB Update'),
@@ -59,9 +60,6 @@ $ServiceDescs= array(
 	'dhcpd_flags'					=> _TITLE2('DHCP Server'),
 	'ftpproxy_flags'				=> _TITLE2('FTP Proxy'),
 	'ntpd_flags'					=> _TITLE2('Network Time'),
-	// 'spamd_flags'					=> _TITLE2('Spamd Spam Deferral'),
-	// 'spamd_grey'					=> _TITLE2('Spamd Grey Listing'),
-	// 'spamlogd_flags'				=> _TITLE2('Spamd Logging'),
 	'apmd_flags'					=> _TITLE2('Advanced Power Management'),
 	);
 

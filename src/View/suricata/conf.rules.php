@@ -18,10 +18,10 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once('snort.php');
+require_once('suricata.php');
 
 /**
- * Provides enabled/disabled snort rules in list boxes, and buttons to modify.
+ * Provides enabled/disabled rules in list boxes, and buttons to modify.
  */
 function PrintRulesForms()
 {
@@ -134,6 +134,6 @@ Some of rule sets are disabled by default. These rules are either site policy sp
 <?php
 PrintHelpWindow(_HELPWINDOW("The IDS uses rules categorized in different packages. Note that you cannot obtain a 'better' IDS by enabling all the rules. In fact, irrelevant rules may trigger false alarms.
 
-Updated Snort rules for your version of the software are released periodically. Make sure you have appropriate rules installed on your system."));
+Updated rules for your version of the software are released periodically. Make sure you have appropriate rules installed on your system."));
 require_once($VIEW_PATH.'/footer.php');
 ?>

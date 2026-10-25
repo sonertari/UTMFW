@@ -69,11 +69,11 @@ class System extends Model
 			'/usr/local/sbin/dnsmasq',
 			'/usr/local/bin/sslproxy',
 			'/usr/local/sbin/e2guardian',
-			'/usr/local/bin/snort',
+			'/opt/local/bin/suricata',
+			'/opt/local/bin/c-icap',
 			'/usr/local/sbin/snortips',
 			'/usr/local/sbin/clamd',
 			'/usr/local/bin/freshclam',
-			// '/usr/local/bin/spamd',
 			'/usr/local/sbin/p3scan',
 			'/usr/local/sbin/smtp-gated',
 			'/usr/local/sbin/imspector',
@@ -92,9 +92,6 @@ class System extends Model
 			'dhcpd_flags',
 			'ftpproxy_flags',
 			'ntpd_flags',
-			// 'spamd_flags',
-			// 'spamd_grey',
-			// 'spamlogd_flags',
 			'apmd_flags',
 			);
 				
@@ -1585,7 +1582,7 @@ class System extends Model
 		$count= 10;
 		$retval= FALSE;
 
-		/// @attention snort and pmacct have multiple lines in rc.local, hence the while loop
+		/// @attention suricata and pmacct have multiple lines in rc.local, hence the while loop
 		/// @attention $count should come first in the if condition to be decremented on each iteration of the loop
 		while ($count-- && $this->ReplaceRegexp($this->confDir.'rc.local', "/^(\h*$service\b.*)$/m", '#${1}')) {
 			$retval= TRUE;
