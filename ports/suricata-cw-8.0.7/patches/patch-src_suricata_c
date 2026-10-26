@@ -29,7 +29,7 @@ Index: src/suricata.c
 -    SCPledge();
 +    /* Don't drop privileges if running as library */
 +    if (SCRunmodeGet() != RUNMODE_LIB) {
-+        SCPledge();
 +        SCSetUserID(suricata.userid, suricata.groupid);
++        SCPledge();
 +    }
  }
