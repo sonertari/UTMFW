@@ -77,8 +77,8 @@ if [ -x /opt/local/bin/suricata ]; then
 	[[ ! -d /var/log/utmfw/run/suricata ]] && mkdir /var/log/utmfw/run/suricata
 	chown _suricata /var/log/utmfw/run/suricata
 	echo -n ' ids'
-	/opt/local/bin/suricata -i lan0 -D -d -c /etc/suricata/suricata-ids.yaml -u _suricata -g _suricata -b -l /var/log/utmfw/suricata --pid-path /var/log/utmfw/run/suricata >/dev/null 2>&1
-#	/opt/local/bin/suricata -i wan0 -D -d -c /etc/suricata/suricata-ids.yaml -u _suricata -g _suricata -b -l /var/log/utmfw/suricata --pid-path /var/log/utmfw/run/suricata >/dev/null 2>&1
+	/opt/local/bin/suricata -i lan0 -D -c /etc/suricata/suricata-ids.yaml --pidfile /var/log/utmfw/run/suricata/suricata-lan.pid >/dev/null 2>&1
+#	/opt/local/bin/suricata -i wan0 -D -c /etc/suricata/suricata-ids.yaml --pidfile /var/log/utmfw/run/suricata/suricata-wan.pid >/dev/null 2>&1
 fi
 
 # Start c-icap and icapsuricata
