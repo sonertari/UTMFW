@@ -396,7 +396,6 @@ GetPkgDesc() {
 		dnsmasq-*) 				pkgdesc="DNS Forwarder" ;;
 		sslproxy-*) 			pkgdesc="SSL Proxy" ;;
 		icapsuricata-*) 		pkgdesc="Suricata ICAP Service" ;;
-		snortrules.*)			pkgdesc="IDP Rules" ;;
 		snortips-*) 			pkgdesc="Passive IPS" ;;
 		e2guardian-*)			pkgdesc="Web Filter" ;;
 		blacklists.*) 			pkgdesc="Web Filter Blacklists" ;;
@@ -678,15 +677,6 @@ __EOT
 
 			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_clamavdbdir || _installerror=1
 			chown _clamav:_clamav $_clamavdbdir/* || _installerror=1
-			;;
-
-		snortrules.*)
-			_suricata=$ROOTDIR/etc/suricata
-			_listname=rules
-
-			[[ -d $_suricata/$_listname ]] && mv $_suricata/$_listname $_suricata/$_listname.orig
-			[[ -d $_suricata/$_listname ]] || mkdir -p $_suricata/$_listname
-			ftp $_ftp_active -o - -V -m "$_src/$_f" | tar zxf - -C $_suricata || _installerror=1
 			;;
 
 		blacklists.*)
@@ -1124,7 +1114,6 @@ THESETS="dnsmasq-2.93.tgz \
 		smtp-gated-1.4.20.0.tgz \
 		e2guardian-5.5.9.tgz \
 		blacklists.tar.gz \
-		snortrules.tar.gz \
 		snortips-6.2.2.tgz \
 		imspector-0.9.tgz \
 		openvpn-2.7.8.tgz \
