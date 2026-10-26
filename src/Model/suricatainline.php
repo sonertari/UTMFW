@@ -18,20 +18,20 @@
  * along with UTMFW.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once($MODEL_PATH.'/snort.php');
+require_once($MODEL_PATH.'/suricata.php');
 
-class Snortinline extends Snort
+class Suricatainline extends Suricata
 {
-	public $Name= 'snortinline';
+	public $Name= 'suricatainline';
 	
-	public $ConfFile= '/etc/snort/snortinline.conf';
+	public $ConfFile= '/etc/suricata/c-icap.conf';
 	
 	protected $psCmd= '/bin/ps arwwx -o pid,start,%cpu,time,%mem,rss,vsz,stat,pri,nice,tty,user,group,command | /usr/bin/grep "\-Q" | /usr/bin/grep -v -e grep | /usr/bin/grep -E <PROC>';
 
 	function __construct()
 	{
 		parent::__construct();
-		$this->CollectdName= 'snort';
+		$this->CollectdName= 'suricata';
 	}
 
 	function GetVersion()
@@ -41,7 +41,7 @@ class Snortinline extends Snort
 
 	function Start()
 	{
-		$this->StartCmd= "/usr/local/bin/snort -D -d -Q -c $this->ConfFile -u _snort -g _snort -b -l /var/log/snort --pid-path {$this->UTMFWDIR}/run/snort";
+		$this->StartCmd= "/opt/local/bin/c-icap -f $this->ConfFile";
 		return parent::Start();
 	}
 
@@ -55,13 +55,13 @@ class Snortinline extends Snort
 	}
 
 	/**
-	 * Finds the pid of snort process.
+	 * Finds the pid of c-icap process.
 	 *
 	 * @return int Pid or -1 if not running
 	 */
 	function FindPid()
 	{
-		$pidcmd= '/bin/ps arwwx | /usr/bin/grep snort | /usr/bin/grep "\-Q" | /usr/bin/grep -v -e ctlr.php -e grep';
+		$pidcmd= '/bin/ps arwwx | /usr/bin/grep c-icap | /usr/bin/grep "\-Q" | /usr/bin/grep -v -e ctlr.php -e grep';
 		exec($pidcmd, $output, $retval);
 
 		foreach ($output as $psline) {
@@ -87,9 +87,9 @@ class Snortinline extends Snort
 	 */
 	function IsRunning($proc= '')
 	{
-		$re= "/usr/local/bin/snort\s+[^\n]*-Q\s+[^\n]*";
+		$re= "/opt/local/bin/c-icap\s+[^\n]*-f\s+[^\n]*";
 
-		$output= $this->RunShellCommand('/bin/ps arwwx -U_snort');
+		$output= $this->RunShellCommand('/bin/ps arwwx -U_suricata');
 		if (preg_match("|$re|m", $output)) {
 			return TRUE;
 		}

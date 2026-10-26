@@ -385,11 +385,6 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 - Update d3js to its new version if any:
 	+ Fix any issues caused by any API changes
 
-- Update the registered snortrules.tar.gz:
-	+ Make sure the directory structure is the same as the one in the old snortrules.tar.gz
-	+ Add the black and white list files
-	+ Compress
-
 - Update blacklists.tar.gz:
 	+ Download the black list database, such as from https://dsi.ut-capitole.fr/blacklists/download/blacklists_for_dansguardian.tar.gz
 	+ Remove the symlinks to directories
