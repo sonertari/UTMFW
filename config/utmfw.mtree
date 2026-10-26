@@ -32,6 +32,7 @@ suricata		type=dir mode=0755 uname=_suricata gname=_suricata flags=none
 access.log		type=file mode=0640 uname=_suricata gname=_suricata
 fast.log		type=file mode=0640 uname=_suricata gname=_suricata
 server.log		type=file mode=0640 uname=_suricata gname=_suricata
+stats.log		type=file mode=0640 uname=_suricata gname=_suricata
 suricata.log		type=file mode=0640 uname=_suricata gname=_suricata
 ..	#var/log/suricata
 clamd.log		type=file mode=0640 uname=_clamav gname=wheel
@@ -216,6 +217,7 @@ suricata			type=dir mode=0755 uname=root gname=wheel
 c-icap.conf	    type=file mode=0644 uname=root gname=wheel
 icapsuricata.conf		type=file mode=0644 uname=root gname=wheel
 suricata.yaml		type=file mode=0644 uname=root gname=wheel
+suricata-ids.yaml		type=file mode=0644 uname=root gname=wheel
 ..	#etc/suricata
 ssh		        type=dir mode=0755 uname=root gname=wheel
 sshd_config		type=file mode=0644 uname=root gname=wheel

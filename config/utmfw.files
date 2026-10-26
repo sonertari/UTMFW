@@ -119,6 +119,7 @@ etc/sslproxy/sslproxy.conf,644,root,wheel
 etc/suricata/c-icap.conf,644,root,wheel
 etc/suricata/icapsuricata.conf,644,root,wheel
 etc/suricata/suricata.yaml,644,root,wheel
+etc/suricata/suricata-ids.yaml,644,root,wheel
 etc/clamd.conf,644,root,wheel
 etc/collectd.conf,640,root,_collectd
 etc/dhcpd.conf,644,root,wheel
@@ -173,6 +174,7 @@ var/log/httpd/error.log,640,root,daemon
 var/log/suricata/access.log,640,_suricata,_suricata
 var/log/suricata/fast.log,640,_suricata,_suricata
 var/log/suricata/server.log,640,_suricata,_suricata
+var/log/suricata/stats.log,640,_suricata,_suricata
 var/log/suricata/suricata.log,640,_suricata,_suricata
 var/log/clamd.log,640,_clamav,wheel
 var/log/ctlr.log,640,root,wheel

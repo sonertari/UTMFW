@@ -99,7 +99,7 @@ class Suricata extends Model
 	{
 		global $TmpFile, $RetvalFile;
 
-		$startCmd= "/opt/local/bin/suricata -i $if -D -d -c $this->ConfFile -u _suricata -g _suricata -b -l /var/log/suricata --pid-path {$this->UTMFWDIR}/run/suricata";
+		$startCmd= "/opt/local/bin/suricata -i $if -D -c $this->ConfFile --pidfile {$this->UTMFWDIR}/run/suricata/suricata-$if.pid";
 		exec("$startCmd > $TmpFile 2>&1 && echo -n '0' > $RetvalFile || echo -n '1' > $RetvalFile &", $output);
 		$retval= file_get_contents($RetvalFile);
 

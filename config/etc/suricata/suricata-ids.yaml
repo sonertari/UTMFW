@@ -2350,7 +2350,6 @@ rule-files:
  - app-layer-events.rules
  - decoder-events.rules
  - dhcp-events.rules
- - dnp3-events.rules
  - dns-events.rules
  - files.rules
  - ftp-events.rules
@@ -2358,7 +2357,6 @@ rule-files:
  - http2-events.rules
  - ipsec-events.rules
  - kerberos-events.rules
- - modbus-events.rules
  - mqtt-events.rules
  - nfs-events.rules
  - ntp-events.rules
@@ -2369,6 +2367,8 @@ rule-files:
  - ssh-events.rules
  - stream-events.rules
  - tls-events.rules
+# - dnp3-events.rules
+# - modbus-events.rules
 
 ##
 ## Auxiliary configuration files.
