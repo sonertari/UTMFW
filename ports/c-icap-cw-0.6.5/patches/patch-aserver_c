@@ -1,0 +1,18 @@
+Index: aserver.c
+--- aserver.c.orig
++++ aserver.c
+@@ -127,10 +127,10 @@ void run_as_daemon()
+         exit(-1);
+     }
+     /* Change the current working directory */
+-    if ((chdir("/")) < 0) {
+-        ci_debug_printf(1, "Unable to change the working directory. exiting...");
+-        exit(-1);
+-    }
++    //if ((chdir("/")) < 0) {
++    //    ci_debug_printf(1, "Unable to change the working directory. exiting...");
++    //    exit(-1);
++    //}
+ 
+     /* Direct standard file descriptors to "/dev/null"*/
+     fd = open("/dev/null", O_RDWR);
