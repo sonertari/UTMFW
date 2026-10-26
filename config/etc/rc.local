@@ -85,8 +85,12 @@ fi
 if [ -x /opt/local/bin/c-icap ]; then
 	[[ ! -d /var/log/utmfw/run/suricata ]] && mkdir /var/log/utmfw/run/suricata
 	chown _suricata /var/log/utmfw/run/suricata
+	[[ ! -d /var/log/suricata ]] && mkdir /var/log/suricata
+	chown _suricata /var/log/suricata
 	echo -n ', ips'
-	/opt/local/bin/c-icap -f /etc/suricata/c-icap.conf >/dev/null 2>&1
+	# Execute in a subshell to run c-icap in the context of /var/log/suricata
+	# Otherwise, Suricata in library mode cannot use the default-log-dir in suricata.yaml
+	(cd /var/log/suricata && /opt/local/bin/c-icap -f /etc/suricata/c-icap.conf >/dev/null 2>&1)
 fi
 
 # Start SnortIPS
