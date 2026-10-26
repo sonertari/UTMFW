@@ -172,10 +172,13 @@ var/log/e2guardian/e2guardian.log,640,root,wheel
 var/log/httpd/access.log,640,root,daemon
 var/log/httpd/error.log,640,root,daemon
 var/log/suricata/access.log,640,_suricata,_suricata
-var/log/suricata/fast.log,640,_suricata,_suricata
 var/log/suricata/server.log,640,_suricata,_suricata
+var/log/suricata/fast.log,640,_suricata,_suricata
 var/log/suricata/stats.log,640,_suricata,_suricata
 var/log/suricata/suricata.log,640,_suricata,_suricata
+var/log/suricata/fast-ids.log,640,_suricata,_suricata
+var/log/suricata/stats-ids.log,640,_suricata,_suricata
+var/log/suricata/suricata-ids.log,640,_suricata,_suricata
 var/log/clamd.log,640,_clamav,wheel
 var/log/ctlr.log,640,root,wheel
 var/log/wui.log,640,root,wheel

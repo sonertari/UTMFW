@@ -91,7 +91,7 @@ outputs:
   # a line based alerts log similar to Snort's fast.log
   - fast:
       enabled: yes
-      filename: fast.log
+      filename: fast-ids.log
       append: yes
       #filetype: regular # 'regular', 'unix_stream' or 'unix_dgram'
 
@@ -473,7 +473,7 @@ outputs:
   # Stats.log contains data from various counters of the Suricata engine.
   - stats:
       enabled: yes
-      filename: stats.log
+      filename: stats-ids.log
       append: yes       # append to file (yes) or overwrite it (no)
       totals: yes       # stats for all threads merged together
       threads: no       # per thread stats
@@ -642,7 +642,7 @@ logging:
   - file:
       enabled: yes
       level: info
-      filename: suricata.log
+      filename: suricata-ids.log
       # format: "[%i - %m] %z %d: %S: %M"
       # type: json
   - syslog:
