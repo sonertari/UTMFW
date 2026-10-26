@@ -254,7 +254,7 @@ We will add support for a real list of ports in the future.'),
 $advancedConfig = array(
 	'config disable_decode_alerts' => array(
 		'title' => _TITLE2('Disable decode alerts'),
-		'info' => _HELPBOX2('Snort\'s decoder will alert on lots of things such as header truncation or options of unusual length or infrequently used tcp options.
+		'info' => _HELPBOX2('Suricata\'s decoder will alert on lots of things such as header truncation or options of unusual length or infrequently used tcp options.
 Stop generic decode events:'),
 		),
 	'config disable_tcpopt_experimental_alerts' => array(
@@ -269,7 +269,7 @@ Stop generic decode events:'),
 		'title' => _TITLE2('Disable tcpopt ttcp alerts'),
 		'info' => _HELPBOX2('Stop Alerts on T/TCP alerts
 
-In snort 2.0.1 and above, this only alerts when a TCP option is detected that shows T/TCP being actively used on the network.  If this is normal behavior for your network, disable the next option.'),
+This only alerts when a TCP option is detected that shows T/TCP being actively used on the network.  If this is normal behavior for your network, disable the next option.'),
 		),
 	'config disable_tcpopt_alerts' => array(
 		'title' => _TITLE2('Disable tcpopt alerts'),
