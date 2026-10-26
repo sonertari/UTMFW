@@ -23,7 +23,7 @@ require_once($MODEL_PATH.'/monitoring.php');
 class Symux extends Monitoring
 {
 	public $Name= 'symux';
-	public $User= 'root';
+	public $User= '_symux';
 	
 	public $VersionCmd= '/usr/local/libexec/symux -v 2>&1';
 

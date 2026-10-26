@@ -654,6 +654,7 @@ __EOT
 				;;
 			symon-*)	echo "Installing symux..."
 				pkg_add symux || _installerror=1
+				useradd -c "symux daemon" -d /nonexistent -s /sbin/nologin _symux || _installerror=1
 				;;
 			pmacct-*)	echo "Installing rrdtool..."
 				pkg_add rrdtool || _installerror=1

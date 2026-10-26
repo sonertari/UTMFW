@@ -952,6 +952,7 @@ class System extends Model
 			if ($retval !== 0) {
 				$result= FALSE;
 			}
+			exec("/sbin/chown -R _symux:_symux {$this->UTMFWDIR}/symon/rrds/localhost/*.rrd 2>&1", $output, $retval);
 		}
 		else {
 			$result= FALSE;
