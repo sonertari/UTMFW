@@ -50,11 +50,13 @@ class E2guardianlogs extends E2guardian
 		if ($this->ParseSyslogLine($logline, $cols)) {
 			$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
 
+			// v5.5.9 adds date time to the front
+			// 2026.10.27 12:15:25 utmfw 192.168.210.2 http://slashdot.org *DENIED* Blocked site: slashdot.org GET 0 0 Social_networks Domains 1 403  192.168.210.2 group1   - -
 			// - 192.168.1.33 http://URL.com *DENIED* Banned site: URL.com GET 0 0 Cleaning Domains 1 403 -   -
 			// - 192.168.1.34 http://URL.com  GET 1632 0  1 404 text/html   -
 			// - 192.168.1.34 http://URL.com *SCANNED*  GET 5137 -20  1 200 text/html   -
 			// soner 192.168.1.34 http://URL.com *SCANNED*  GET 5137 -20  1 200 text/html   -
-			$re= "/^$re_user\s+$re_srcip\s+$re_link\s+$re_result\s+$re_mtd\s+$re_size\s+$re_ttl\s+$re_restorempty\s*$re_num\s+$re_num\s+$re_rest$/";
+			$re= "/^\S+\s+\S+\s+$re_user\s+$re_srcip\s+$re_link\s+$re_result\s+$re_mtd\s+$re_size\s+$re_ttl\s+$re_restorempty\s*$re_num\s+$re_num\s+$re_rest$/";
 			if (preg_match($re, $cols['Log'], $match)) {
 				$cols['User']= $match[1] == '-' ? _('Unknown') : $match[1];
 				$cols['IP']= $match[2];
