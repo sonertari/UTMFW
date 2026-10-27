@@ -1,0 +1,12 @@
+Index: configs/e2guardian.conf.in
+--- configs/e2guardian.conf.in.orig
++++ configs/e2guardian.conf.in
+@@ -1098,7 +1098,7 @@ weightedphrasemode = 2
+ ### TUNING section
+ ###
+ 
+-#httpworkers = 500
++httpworkers = 50
+ #
+ #sets the number of worker threads to use
+ #
