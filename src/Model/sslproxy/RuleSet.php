@@ -184,6 +184,9 @@ class RuleSet
 						$comment.= "\n$c";
 					}
 					break;
+				case 'Icap':
+					$this->rules[]= new Icap($str);
+					break;
 				case 'Include':
 					$this->rules[]= new _Include($str);
 					break;

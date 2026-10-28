@@ -67,6 +67,7 @@ require_once($MODEL_PATH.'/sslproxy/Filter.php');
 require_once($MODEL_PATH.'/sslproxy/FilterStruct.php');
 require_once($MODEL_PATH.'/sslproxy/Macro.php');
 require_once($MODEL_PATH.'/sslproxy/Option.php');
+require_once($MODEL_PATH.'/sslproxy/Icap.php');
 require_once($MODEL_PATH.'/sslproxy/Include.php');
 require_once($MODEL_PATH.'/sslproxy/Comment.php');
 require_once($MODEL_PATH.'/sslproxy/Blank.php');

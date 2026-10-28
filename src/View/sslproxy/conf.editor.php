@@ -25,6 +25,7 @@ $ruleCategoryNames= array(
 	'proxyspecstruct' => _CONTROL('ProxySpecStruct'),
 	'filter' => _CONTROL('Filter'),
 	'filterstruct' => _CONTROL('FilterStruct'),
+	'icap' => _CONTROL('Icap'),
 	'macro' => _CONTROL('Macro'),
 	'option' => _CONTROL('Option'),
 	'include' => _CONTROL('Include'),
@@ -39,6 +40,7 @@ $ruleType2Class= array(
 	'proxyspecstruct' => 'ProxySpecStruct',
 	'filter' => 'Filter',
 	'filterstruct' => 'FilterStruct',
+	'icap' => 'Icap',
 	'macro' => 'Macro',
 	'option' => 'Option',
 	'include' => '_Include',
@@ -110,6 +112,15 @@ $Options= array(
 	'OpenFilesLimit',
 	'Divert',
 	'PassSite',
+	'IcapFailOpen',
+	'IcapConnFailOpen',
+	'IcapTimeout',
+	'IcapPreviewSize',
+	'IcapMaxBodySize',
+	'IcapMaxInspectionSize',
+	'IcapAllow204',
+	'IcapAllow206',
+	'IcapSanitizeRequestLine',
 );
 
 $ProxySpecStructOptions= array(
@@ -155,6 +166,15 @@ $ProxySpecStructOptions= array(
 	'MaxHTTPHeaderSize',
 	'PassSite',
 	'Define',
+	'IcapFailOpen',
+	'IcapConnFailOpen',
+	'IcapTimeout',
+	'IcapPreviewSize',
+	'IcapMaxBodySize',
+	'IcapMaxInspectionSize',
+	'IcapAllow204',
+	'IcapAllow206',
+	'IcapSanitizeRequestLine',
 );
 
 $FilterStructOptions= array(
@@ -197,6 +217,15 @@ $FilterStructOptions= array(
 	'UserAuthURL',
 	'ValidateProto',
 	'MaxHTTPHeaderSize',
+	'IcapFailOpen',
+	'IcapConnFailOpen',
+	'IcapTimeout',
+	'IcapPreviewSize',
+	'IcapMaxBodySize',
+	'IcapMaxInspectionSize',
+	'IcapAllow204',
+	'IcapAllow206',
+	'IcapSanitizeRequestLine',
 );
 
 if (filter_has_var(INPUT_GET, 'sender') && array_key_exists(filter_input(INPUT_GET, 'sender'), $ruleCategoryNames)) {

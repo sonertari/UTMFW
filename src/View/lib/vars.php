@@ -47,6 +47,7 @@ require_once($SSLPROXY_PATH.'/lib/Filter.php');
 require_once($SSLPROXY_PATH.'/lib/FilterStruct.php');
 require_once($SSLPROXY_PATH.'/lib/Macro.php');
 require_once($SSLPROXY_PATH.'/lib/Option.php');
+require_once($SSLPROXY_PATH.'/lib/Icap.php');
 require_once($SSLPROXY_PATH.'/lib/Include.php');
 require_once($SSLPROXY_PATH.'/lib/Comment.php');
 require_once($SSLPROXY_PATH.'/lib/Blank.php');
