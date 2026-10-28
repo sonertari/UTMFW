@@ -923,7 +923,7 @@ $StatsConf = array(
 			),
 		'Connections' => array(
 			'Title' => _STATS('Connections'),
-			'Needle' => 'CONN:',
+			'Needle' => '(CONN|STREAM):',
 			'Color' => '#01466b',
 			'NVPs' => array(
 				'User' => _STATS('Users'),

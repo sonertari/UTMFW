@@ -48,24 +48,40 @@ class Sslproxyconns extends Sslproxy
 				$cols['SProto']= $match[7];
 				$cols['DProto']= $match[8];
 				$cols['User']= $match[10];
+				return TRUE;
+			}
+
+			// CONN: https [0,0] 192.168.210.2 39616 199.185.178.80 443 www.openbsd.org GET / 200 - 3622 sni:www.openbsd.org names:www.openbsd.org/ftplist1.openbsd.org/libressl.org/openbsd.org/openiked.org/openssh.com/openssh.org/www.libressl.org/www.openbsd.org/www.openiked.org/www.openrsync.org/www.openssh.com/www.openssh.org sproto:TLSv1.3:TLS_AES_128_GCM_SHA256 dproto:TLSv1.3:TLS_AES_256_GCM_SHA384 origcrt:6777392240B8976FECF86604CDE344EDB0473B2E usedcrt:8145965E0D22970381CACCC092E051D01005098C user:utmfw
+			// STREAM: h2 [29,0] 192.168.210.2 52990 104.18.4.215 443 slashdot.org GET / - - - sni:slashdot.org names:slashdot.org/*.p.slashdot.org/*.slashdot.org/slashdot.org sproto:TLSv1.3:TLS_AES_128_GCM_SHA256 dproto:TLSv1.3:TLS_AES_256_GCM_SHA384 origcrt:3744045EEA0DE82040BDF7D8177FE63AAF7846A1 usedcrt:706E256104C0D78817BEDBABD463E94D1398A1E0 user:utmfw
+			$re= "/^(CONN|STREAM):\s+(\S+)\s+\[\d+,\d+\]\s+(\S+)\s+(\d+)\s+(\S+)\s+(\d+)(\s+.*sproto:(\S+)\s+dproto:(\S+)|)(.*\s+user:(\S+|-))$/";
+			if (preg_match($re, $cols['Log'], $match)) {
+				$cols['Proto']= $match[2];
+				$cols['SrcAddr']= $match[3];
+				$cols['SrcPort']= $match[4];
+				$cols['DstAddr']= $match[5];
+				$cols['DstPort']= $match[6];
+				$cols['SProto']= $match[8];
+				$cols['DProto']= $match[9];
+				$cols['User']= $match[11];
+				return TRUE;
+			}
+
+			// IDLE: atime=114, ctime=114, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443, user=soner, valid=0
+			$re= "/^IDLE: atime=(\d+), ctime=(\d+), src_addr=(\S+|-):(\d+|-), dst_addr=(\S+|-):(\d+|-), user=(\S+|-), valid=\d+$/";
+			if (preg_match($re, $cols['Log'], $match)) {
+				$cols['IdleTime']= $match[1];
+				$cols['IdleDuration']= $match[2];
+				$cols['IdleSrcAddr']= $match[3];
+				$cols['IdleDstAddr']= $match[5];
+				$cols['IdleUser']= $match[7];
 			} else {
-				// IDLE: atime=114, ctime=114, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443, user=soner, valid=0
-				$re= "/^IDLE: atime=(\d+), ctime=(\d+), src_addr=(\S+|-):(\d+|-), dst_addr=(\S+|-):(\d+|-), user=(\S+|-), valid=\d+$/";
+				// EXPIRED: atime=124, ctime=124, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443, user=soner, valid=0
+				$re= "/^EXPIRED: atime=(\d+), ctime=\d+, src_addr=(\S+|-):(\d+|-), dst_addr=(\S+|-):(\d+|-), user=(\S+|-), valid=\d+$/";
 				if (preg_match($re, $cols['Log'], $match)) {
-					$cols['IdleTime']= $match[1];
-					$cols['IdleDuration']= $match[2];
-					$cols['IdleSrcAddr']= $match[3];
-					$cols['IdleDstAddr']= $match[5];
-					$cols['IdleUser']= $match[7];
-				} else {
-					// EXPIRED: atime=124, ctime=124, src_addr=192.168.3.24:56530, dst_addr=192.168.111.130:443, user=soner, valid=0
-					$re= "/^EXPIRED: atime=(\d+), ctime=\d+, src_addr=(\S+|-):(\d+|-), dst_addr=(\S+|-):(\d+|-), user=(\S+|-), valid=\d+$/";
-					if (preg_match($re, $cols['Log'], $match)) {
-						$cols['ExpiredIdleTime']= $match[1];
-						$cols['ExpiredSrcAddr']= $match[2];
-						$cols['ExpiredDstAddr']= $match[4];
-						$cols['ExpiredUser']= $match[6];
-					}
+					$cols['ExpiredIdleTime']= $match[1];
+					$cols['ExpiredSrcAddr']= $match[2];
+					$cols['ExpiredDstAddr']= $match[4];
+					$cols['ExpiredUser']= $match[6];
 				}
 			}
 			return TRUE;
