@@ -369,34 +369,34 @@ $GeneralbasicConfig= array(
 		'title' => _TITLE2('Language'),
 		'info' => _HELPBOX2('language to use from languagedir, e.g. \'ukenglish\''),
 		),
-	'filterip' => array(
-		'title' => _TITLE2('Filter IP'),
-		'info' => _HELPBOX2('The IP that E2Guardian listens on.  If left blank E2Guardian will listen on all IPs.  That would include all NICs, loopback, modem, etc.
-Normally you would have your firewall protecting this, but if you want you can limit it to a certain IP. To bind to multiple interfaces, specify each IP on an individual filterip line.'),
-		),
-	// @todo There may be more than one such port settings
-	'filterports' => array(
-		'title' => _TITLE2('Filter Port'),
-		'info' => _HELPBOX2('the port that E2Guardian listens to.'),
-		),
-	'proxyip' => array(
-		'title' => _TITLE2('Proxy IP'),
-		'info' => _HELPBOX2('the ip of the proxy (default is the loopback - i.e. this server)'),
-		),
-	'proxyport' => array(
-		'title' => _TITLE2('Proxy Port'),
-		'info' => _HELPBOX2('the port E2Guardian connects to proxy on'),
-		),
-	'reportinglevel' => array(
-		'title' => _TITLE2('Reporting level'),
-		'info' => _HELPBOX2('-1 = log, but do not block - Stealth mode
-0 = just say Access Denied
-1 = report why but not what denied phrase
-2 = report fully
-3 = use HTML template file (accessdeniedaddress ignored) - recommended
+// 	'filterip' => array(
+// 		'title' => _TITLE2('Filter IP'),
+// 		'info' => _HELPBOX2('The IP that E2Guardian listens on.  If left blank E2Guardian will listen on all IPs.  That would include all NICs, loopback, modem, etc.
+// Normally you would have your firewall protecting this, but if you want you can limit it to a certain IP. To bind to multiple interfaces, specify each IP on an individual filterip line.'),
+// 		),
+// 	// @todo There may be more than one such port settings
+// 	'filterports' => array(
+// 		'title' => _TITLE2('Filter Port'),
+// 		'info' => _HELPBOX2('the port that E2Guardian listens to.'),
+// 		),
+// 	'proxyip' => array(
+// 		'title' => _TITLE2('Proxy IP'),
+// 		'info' => _HELPBOX2('the ip of the proxy (default is the loopback - i.e. this server)'),
+// 		),
+// 	'proxyport' => array(
+// 		'title' => _TITLE2('Proxy Port'),
+// 		'info' => _HELPBOX2('the port E2Guardian connects to proxy on'),
+// 		),
+// 	'reportinglevel' => array(
+// 		'title' => _TITLE2('Reporting level'),
+// 		'info' => _HELPBOX2('-1 = log, but do not block - Stealth mode
+// 0 = just say Access Denied
+// 1 = report why but not what denied phrase
+// 2 = report fully
+// 3 = use HTML template file (accessdeniedaddress ignored) - recommended
 
-If defined, this overrides the global setting in e2guardian.conf for members of this filter group.'),
-		),
+// If defined, this overrides the global setting in e2guardian.conf for members of this filter group.'),
+// 		),
 	'usecustombannedimage' => array(
 		'title' => _TITLE2('Banned image replacement'),
 		'info' => _HELPBOX2('Images that are banned due to domain/url/etc reasons including those in the adverts blacklists can be replaced by an image.  This will, for example, hide images from advert sites and remove broken image icons from banned domains.
@@ -539,26 +539,26 @@ This is the max size file that E2 will download so that it can be scanned or vir
 This value must be greater or equal to maxcontentramcachescansize.
 The size is in Kibibytes - eg 10240 = 10Mb'),
 		),
-	'deletedownloadedtempfiles' => array(
-		'title' => _TITLE2('Delete downloaded temp files'),
-		'info' => _HELPBOX2('Delete file cache after user completes download
-When a file gets save to temp it stays there until it is deleted.
-You can choose to have the file deleted when the user makes a sucessful download. This will mean if they click on the link to download from the temp store a second time it will give a 404 error.
-You should configure something to delete old files in temp to stop it filling up.
-on|off ( defaults to on )'),
-		),
-	'initialtrickledelay' => array(
-		'title' => _TITLE2('Initial Trickle delay'),
-		'info' => _HELPBOX2('This is the number of seconds a browser connection is left waiting before first being sent *something* to keep it alive. The *something* depends on the download manager chosen.
-Do not choose a value too low or normal web pages will be affected.
-A value between 20 and 110 would be sensible.
-This may be ignored by the configured download manager.'),
-		),
-	'trickledelay' => array(
-		'title' => _TITLE2('Trickle delay'),
-		'info' => _HELPBOX2('This is the number of seconds a browser connection is left waiting before being sent more *something* to keep it alive. The *something* depends on the download manager chosen.
-This may be ignored by the configured download manager.'),
-		),
+// 	'deletedownloadedtempfiles' => array(
+// 		'title' => _TITLE2('Delete downloaded temp files'),
+// 		'info' => _HELPBOX2('Delete file cache after user completes download
+// When a file gets save to temp it stays there until it is deleted.
+// You can choose to have the file deleted when the user makes a sucessful download. This will mean if they click on the link to download from the temp store a second time it will give a 404 error.
+// You should configure something to delete old files in temp to stop it filling up.
+// on|off ( defaults to on )'),
+// 		),
+// 	'initialtrickledelay' => array(
+// 		'title' => _TITLE2('Initial Trickle delay'),
+// 		'info' => _HELPBOX2('This is the number of seconds a browser connection is left waiting before first being sent *something* to keep it alive. The *something* depends on the download manager chosen.
+// Do not choose a value too low or normal web pages will be affected.
+// A value between 20 and 110 would be sensible.
+// This may be ignored by the configured download manager.'),
+// 		),
+// 	'trickledelay' => array(
+// 		'title' => _TITLE2('Trickle delay'),
+// 		'info' => _HELPBOX2('This is the number of seconds a browser connection is left waiting before being sent more *something* to keep it alive. The *something* depends on the download manager chosen.
+// This may be ignored by the configured download manager.'),
+// 		),
 	'contentscannertimeout' => array(
 		'title' => _TITLE2('Content scanner timeout'),
 		'info' => _HELPBOX2('Some of the content scanners support using a timeout value to stop processing (eg AV scanning) the file if it takes too long.
@@ -577,18 +577,18 @@ Defaults to off.'),
  * General log configuration.
  */
 $GenerallogsConfig= array(
-	'reportinglevel' => array(
-		'title' => _TITLE2('Web Access Denied Reporting'),
-		'info' => _HELPBOX2('-1 = log, but do not block - Stealth mode
-0 = just say \'Access Denied\'
-1 = report why but not what denied phrase
-2 = report fully
-3 = use HTML template file (accessdeniedaddress ignored) - recommended'),
-		),
-	'loglevel' => array(
-		'title' => _TITLE2('Logging Settings'),
-		'info' => _HELPBOX2('0 = none  1 = just denied  2 = all text based  3 = all requests'),
-		),
+// 	'reportinglevel' => array(
+// 		'title' => _TITLE2('Web Access Denied Reporting'),
+// 		'info' => _HELPBOX2('-1 = log, but do not block - Stealth mode
+// 0 = just say \'Access Denied\'
+// 1 = report why but not what denied phrase
+// 2 = report fully
+// 3 = use HTML template file (accessdeniedaddress ignored) - recommended'),
+// 		),
+// 	'loglevel' => array(
+// 		'title' => _TITLE2('Logging Settings'),
+// 		'info' => _HELPBOX2('0 = none  1 = just denied  2 = all text based  3 = all requests'),
+// 		),
 	'logexceptionhits' => array(
 		'title' => _TITLE2('Log Exception Hits'),
 		'info' => _HELPBOX2('Log if an exception (user, ip, URL, phrase) is matched and so the page gets let through.  Can be useful for diagnosing why a site gets through the filter.  on | off'),
@@ -646,40 +646,40 @@ The size is in kibibytes (i.e. 10240 = 10Mb)'),
  * General advanced configuration.
  */
 $GeneraladvancedConfig= array(
-	'proxytimeout' => array(
-		'title' => _TITLE2('Proxy timeout'),
-		'info' => _HELPBOX2('Set tcp timeout between the Proxy and e2guardian 
-Min 5 - Max 100'),
-		),
-	'proxyfailureloginterval' => array(
-		'title' => _TITLE2('Proxy failure log interval'),
-		'info' => _HELPBOX2('The interval between log status entries when proxy is not responding minimum is proxytimeout - maximum 3600 (= 1 hour)
-default = 600  (= 10 mins)'),
-		),
-	'proxyexchange' => array(
-		'title' => _TITLE2('Proxy header exchange'),
-		'info' => _HELPBOX2('Set timeout between the Proxy and e2guardian 
-Min 20 - Max 300'),
-		),
-	'pcontimeout' => array(
-		'title' => _TITLE2('Pconn timeout'),
-		'info' => _HELPBOX2('How long a persistent connection will wait for other requests, squid apparently defaults to 1 minute (persistent_request_timeout), so wait slightly less than this to avoid duff pconns.
-Min 5 - Max 300'),
-		),
-	'forwardedfor' => array(
-		'title' => _TITLE2('Forwarded for'),
-		'info' => _HELPBOX2('If on it adds an X-Forwarded-For: <clientip> to the HTTP request header. This may help solve some problem sites that need to know the source ip. on | off'),
-		),
-	'usexforwardedfor' => array(
-		'title' => _TITLE2('Use xforwarded for'),
-		'info' => _HELPBOX2('If on it uses the X-Forwarded-For: <clientip> to determine the client IP. This is for when you have squid between the clients and E2Guardian.
-Warning - headers are easily spoofed. on | off'),
-		),
-	// @todo There may be more than one such ip settings
-	'xforwardedforfilterip' => array(
-		'title' => _TITLE2('Filter IP for xforwarded for'),
-		'info' => _HELPBOX2('The headers can be easily spoofed in order to fake the request origin by setting the X-Forwarded-For header. If you have the "usexforwardedfor" option enabled, you may want to specify the IPs from which this kind of header is allowed, such as another upstream proxy server for instance If you want authorize multiple IPs, specify each one on an individual xforwardedforfilterip line.'),
-		),
+// 	'proxytimeout' => array(
+// 		'title' => _TITLE2('Proxy timeout'),
+// 		'info' => _HELPBOX2('Set tcp timeout between the Proxy and e2guardian 
+// Min 5 - Max 100'),
+// 		),
+// 	'proxyfailureloginterval' => array(
+// 		'title' => _TITLE2('Proxy failure log interval'),
+// 		'info' => _HELPBOX2('The interval between log status entries when proxy is not responding minimum is proxytimeout - maximum 3600 (= 1 hour)
+// default = 600  (= 10 mins)'),
+// 		),
+// 	'proxyexchange' => array(
+// 		'title' => _TITLE2('Proxy header exchange'),
+// 		'info' => _HELPBOX2('Set timeout between the Proxy and e2guardian 
+// Min 20 - Max 300'),
+// 		),
+// 	'pcontimeout' => array(
+// 		'title' => _TITLE2('Pconn timeout'),
+// 		'info' => _HELPBOX2('How long a persistent connection will wait for other requests, squid apparently defaults to 1 minute (persistent_request_timeout), so wait slightly less than this to avoid duff pconns.
+// Min 5 - Max 300'),
+// 		),
+// 	'forwardedfor' => array(
+// 		'title' => _TITLE2('Forwarded for'),
+// 		'info' => _HELPBOX2('If on it adds an X-Forwarded-For: <clientip> to the HTTP request header. This may help solve some problem sites that need to know the source ip. on | off'),
+// 		),
+// 	'usexforwardedfor' => array(
+// 		'title' => _TITLE2('Use xforwarded for'),
+// 		'info' => _HELPBOX2('If on it uses the X-Forwarded-For: <clientip> to determine the client IP. This is for when you have squid between the clients and E2Guardian.
+// Warning - headers are easily spoofed. on | off'),
+// 		),
+// 	// @todo There may be more than one such ip settings
+// 	'xforwardedforfilterip' => array(
+// 		'title' => _TITLE2('Filter IP for xforwarded for'),
+// 		'info' => _HELPBOX2('The headers can be easily spoofed in order to fake the request origin by setting the X-Forwarded-For header. If you have the "usexforwardedfor" option enabled, you may want to specify the IPs from which this kind of header is allowed, such as another upstream proxy server for instance If you want authorize multiple IPs, specify each one on an individual xforwardedforfilterip line.'),
+// 		),
 	'httpworkers' => array(
 		'title' => _TITLE2('Max threads'),
 		'info' => _HELPBOX2('This is the maximum number of threads, i.e. concurrent connections. If more connections are made, connections will queue until a worker thread is free.
