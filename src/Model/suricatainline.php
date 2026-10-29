@@ -23,10 +23,16 @@ require_once($MODEL_PATH.'/suricata.php');
 class Suricatainline extends Suricata
 {
 	public $Name= 'suricatainline';
+	/// @attention Do not use the full user name '_suricata', ps reports the first 8 chars of user names
+	public $User= '_suricat';
+	public $Proc= 'c-icap';
 	
 	public $ConfFile= '/etc/suricata/c-icap.conf';
+	public $LogFile= '/var/log/suricata/server.log';
+
+	public $VersionCmd= '/opt/local/bin/c-icap -V 2>&1';
 	
-	protected $psCmd= '/bin/ps arwwx -o pid,start,%cpu,time,%mem,rss,vsz,stat,pri,nice,tty,user,group,command | /usr/bin/grep "\-Q" | /usr/bin/grep -v -e grep | /usr/bin/grep -E <PROC>';
+	protected $psCmd= '/bin/ps arwwx -o pid,start,%cpu,time,%mem,rss,vsz,stat,pri,nice,tty,user,group,command | /usr/bin/grep -v -e grep | /usr/bin/grep -E <PROC>';
 
 	function __construct()
 	{
@@ -36,12 +42,12 @@ class Suricatainline extends Suricata
 
 	function GetVersion()
 	{
-		return FALSE;
+		return Output($this->Proc.' '.$this->RunShellCommand($this->VersionCmd)."\nicapsuricata 0.1.0");
 	}
 
 	function Start()
 	{
-		$this->StartCmd= "/opt/local/bin/c-icap -f $this->ConfFile";
+		$this->StartCmd= "cd /var/log/suricata/ && /opt/local/bin/c-icap -f $this->ConfFile";
 		return parent::Start();
 	}
 
@@ -61,18 +67,13 @@ class Suricatainline extends Suricata
 	 */
 	function FindPid()
 	{
-		$pidcmd= '/bin/ps arwwx | /usr/bin/grep c-icap | /usr/bin/grep "\-Q" | /usr/bin/grep -v -e ctlr.php -e grep';
+		$pidcmd= "/bin/cat {$this->UTMFWDIR}/run/suricata/c-icap.pid";
 		exec($pidcmd, $output, $retval);
 
-		foreach ($output as $psline) {
-			$re= '/\h+-Q\h+/';
-			if (preg_match($re, $psline)) {
-				$re= '/^\s*(\d+)\s+/';
-				if (preg_match($re, $psline, $match)) {
-					if ($match[1] !== '') {
-						return $match[1];
-					}
-				}
+		$re= '/^\s*(\d+)\s*/';
+		if (preg_match($re, $output[0], $match)) {
+			if ($match[1] !== '') {
+				return $match[1];
 			}
 		}
 		return -1;

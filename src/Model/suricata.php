@@ -23,17 +23,19 @@ require_once($MODEL_PATH.'/model.php');
 class Suricata extends Model
 {
 	public $Name= 'suricata';
-	public $User= '_suricata';
+	/// @attention Do not use the full user name '_suricata', ps reports the first 8 chars of user names
+	public $User= '_suricat';
 
 	public $NVPS= '\h';
-	public $ConfFile= '/etc/suricata/suricata.yaml';
+	public $ConfFile= '/etc/suricata/suricata-ids.yaml';
 	public $LogFile= '/var/log/suricata/suricata.log';
 
 	public $VersionCmd= '/opt/local/bin/suricata -V 2>&1';
 
 	private $re_RulePrefix= 'include\h*\$(RULE_PATH|PREPROC_RULE_PATH)\/';
 
-	protected $psCmd= '/bin/ps arwwx -o pid,start,%cpu,time,%mem,rss,vsz,stat,pri,nice,tty,user,group,command | /usr/bin/grep "\-i" | /usr/bin/grep -v -e grep | /usr/bin/grep -E <PROC>';
+	// Add spaces around '-i' to differentiate the interface option from 'c-icap'
+	protected $psCmd= '/bin/ps arwwx -o pid,start,%cpu,time,%mem,rss,vsz,stat,pri,nice,tty,user,group,command | /usr/bin/grep " \-i " | /usr/bin/grep -v -e grep | /usr/bin/grep -E <PROC>';
 
 	function __construct()
 	{
@@ -92,7 +94,7 @@ class Suricata extends Model
 
 	function GetVersion()
 	{
-		return Output($this->RunShellCommand($this->VersionCmd.' | /usr/bin/head -3 | /usr/bin/tail -2'));
+		return Output($this->RunShellCommand($this->VersionCmd));
 	}
 
 	function StartInstance($if)
@@ -195,7 +197,7 @@ class Suricata extends Model
 	function GetConfFile($confname, $group)
 	{
 		if ($group == 1) {
-			return '/etc/suricata/suricatainline.yaml';
+			return '/etc/suricata/suricata.yaml';
 		}
 		else {
 			return $this->ConfFile;
@@ -252,8 +254,9 @@ class Suricata extends Model
 
 	function SetStartupIfs($lanif, $wanif)
 	{
-        $re= '|(\h*/opt/local/bin/suricata\h+.*-i\h+)(\w+\d+)(\h+.*\h+/opt/local/bin/suricata\h+.*-i\h+)(\w+\d+)(\h+.*)|ms';
-		return $this->ReplaceRegexp('/etc/rc.local', $re, '${1}'.$lanif.'${3}'.$wanif.'${5}');
+		// /opt/local/bin/suricata -i lan0 -D -c /etc/suricata/suricata-ids.yaml --pidfile /var/log/utmfw/run/suricata/suricata-lan0.pid
+        $re= "|(\h*/opt/local/bin/suricata\h+.*-i\h+)(\w+\d+)(.*--pidfile\h+{$this->UTMFWDIR}/run/suricata/suricata-)(\w+\d+)(\.pid\h+.*\h+/opt/local/bin/suricata\h+.*-i\h+)(\w+\d+)(.*--pidfile\h+{$this->UTMFWDIR}/run/suricata/suricata-)(\w+\d+)(\.pid\h+.*)|ms";
+		return $this->ReplaceRegexp('/etc/rc.local', $re, '${1}'.$lanif.'${3}'.$lanif.'${5}'.$wanif.'${7}'.$wanif.'${9}');
 	}
 
 	function isPrio($log, $prio)

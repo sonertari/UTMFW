@@ -91,7 +91,9 @@ class Model
 	{
 		global $ModelConfig;
 		
-		$this->Proc= $this->Name;
+		if ($this->Proc == '') {
+			$this->Proc= $this->Name;
+		}
 		$this->CollectdName= $this->Name;
 
 		$this->TmpLogsDir= UTMFWDIR.'/logs/'.get_class($this).'/';
