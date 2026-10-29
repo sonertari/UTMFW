@@ -26,13 +26,13 @@ class Suricata extends Model
 	/// @attention Do not use the full user name '_suricata', ps reports the first 8 chars of user names
 	public $User= '_suricat';
 
-	public $NVPS= '\h';
+	public $NVPS= ':';
 	public $ConfFile= '/etc/suricata/suricata-ids.yaml';
 	public $LogFile= '/var/log/suricata/suricata.log';
 
 	public $VersionCmd= '/opt/local/bin/suricata -V 2>&1';
 
-	private $re_RulePrefix= 'include\h*\$(RULE_PATH|PREPROC_RULE_PATH)\/';
+	private $re_RulePrefix= ' - ';
 
 	// Add spaces around '-i' to differentiate the interface option from 'c-icap'
 	protected $psCmd= '/bin/ps arwwx -o pid,start,%cpu,time,%mem,rss,vsz,stat,pri,nice,tty,user,group,command | /usr/bin/grep " \-i " | /usr/bin/grep -v -e grep | /usr/bin/grep -E <PROC>';
@@ -212,7 +212,7 @@ class Suricata extends Model
 	function GetRules($group)
 	{
 		$file= $this->GetConfFile('', $group);
-		return Output($this->SearchFileAll($file, "/^\h*$this->re_RulePrefix([^#\s]+)\h*$/m", 2));
+		return Output($this->SearchFileAll($file, "/^\h*$this->re_RulePrefix([^#\s]+)\.rules\h*$/m", 1));
 	}
 
 	/**
@@ -223,33 +223,33 @@ class Suricata extends Model
 	function GetDisabledRules($group)
 	{
 		$file= $this->GetConfFile('', $group);
-		return Output($this->SearchFileAll($file, "/^\h*$this->COMC\h*$this->re_RulePrefix([^#\s]+)\b\h*$/m", 2));
+		return Output($this->SearchFileAll($file, "/^\h*$this->COMC\h*$this->re_RulePrefix([^#\s]+)\.rules\b\h*$/m", 1));
 	}
 
 	function EnableRule($rule, $group)
 	{
 		$file= $this->GetConfFile('', $group);
-		return $this->EnableName($file, "$this->re_RulePrefix$rule");
+		return $this->EnableName($file, "$this->re_RulePrefix$rule.rules");
 	}
 
 	function DisableRule($rule, $group)
 	{
 		$file= $this->GetConfFile('', $group);
-		return $this->DisableName($file, "$this->re_RulePrefix$rule");
+		return $this->DisableName($file, "$this->re_RulePrefix$rule.rules");
 	}
 
 	function MoveRuleUp($rule, $group)
 	{
 		$file= $this->GetConfFile('', $group);
 		$rule= Escape($rule, '/.');
-		return $this->ReplaceRegexp($file, "/^\h*(($this->re_RulePrefix[^\n]+)\n+($this->COMC\h*$this->re_RulePrefix[^\n]+\n+)*)\h*($this->re_RulePrefix$rule)\n/m", '${6}'."\n".'${1}');
+		return $this->ReplaceRegexp($file, "/^\h*(($this->re_RulePrefix[^\n]+\.rules)\n+($this->COMC\h*$this->re_RulePrefix[^\n]+\.rules\n+)*)\h*($this->re_RulePrefix$rule\.rules)\n/m", '${4}'."\n".'${1}');
 	}
 
 	function MoveRuleDown($rule, $group)
 	{
 		$file= $this->GetConfFile('', $group);
 		$rule= Escape($rule, '/.');
-		return $this->ReplaceRegexp($file, "/^\h*($this->re_RulePrefix$rule)\n+\h*(($this->COMC\h*$this->re_RulePrefix[^\n]+\n+)*($this->re_RulePrefix[^\n]+)\n+)/m", '${3}'.'${1}'."\n");
+		return $this->ReplaceRegexp($file, "/^\h*($this->re_RulePrefix$rule\.rules)\n+\h*(($this->COMC\h*$this->re_RulePrefix[^\n]+\.rules\n+)*($this->re_RulePrefix[^\n]+\.rules)\n+)/m", '${2}'.'${1}'."\n");
 	}
 
 	function SetStartupIfs($lanif, $wanif)
@@ -270,29 +270,29 @@ class Suricata extends Model
  * Basic configuration.
  */
 $basicConfig = array(
-    'ipvar HOME_NET' => array(
+    'HOME_NET' => array(
 		),
-    'ipvar EXTERNAL_NET' => array(
+    'EXTERNAL_NET' => array(
 		),
-    'ipvar DNS_SERVERS' => array(
+    'DNS_SERVERS' => array(
 		),
-    'ipvar SMTP_SERVERS' => array(
+    'SMTP_SERVERS' => array(
 		),
-    'ipvar HTTP_SERVERS' => array(
+    'HTTP_SERVERS' => array(
 		),
-    'ipvar SQL_SERVERS' => array(
+    'SQL_SERVERS' => array(
 		),
-    'ipvar TELNET_SERVERS' => array(
+    'TELNET_SERVERS' => array(
 		),
-//    'ipvar SNMP_SERVERS' => array(
+//    'SNMP_SERVERS' => array(
 //		),
-    'portvar SSH_PORTS' => array(
+    'SSH_PORTS' => array(
 		),
-    'portvar HTTP_PORTS' => array(
+    'HTTP_PORTS' => array(
 		),
-    'portvar SHELLCODE_PORTS' => array(
+    'SHELLCODE_PORTS' => array(
 		),
-    'var RULE_PATH' => array(
+    'RULE_PATH' => array(
 		),
 	);
 
@@ -300,38 +300,9 @@ $basicConfig = array(
  * Advanced configuration.
  */
 $advancedConfig = array(
-    'config disable_decode_alerts' => array(
-        'type' => FALSE,
+    'classification-file' => array(
 		),
-    'config disable_tcpopt_experimental_alerts' => array(
-        'type' => FALSE,
-		),
-    'config disable_tcpopt_obsolete_alerts' => array(
-        'type' => FALSE,
-		),
-    'config disable_tcpopt_ttcp_alerts' => array(
-        'type' => FALSE,
-		),
-    'config disable_tcpopt_alerts' => array(
-        'type' => FALSE,
-		),
-    'config disable_ipopt_alerts' => array(
-        'type' => FALSE,
-		),
-    'preprocessor frag3_global: max_frags' => array(
-        'type' => UINT,
-		),
-    'preprocessor bo' => array(
-        'type' => FALSE,
-		),
-//    'preprocessor telnet_decode' => array(
-//        'type' => FALSE,
-//		),
-    'include classification.config' => array(
-        'type' => FALSE,
-		),
-    'include reference.config' => array(
-        'type' => FALSE,
+    'reference-config-file' => array(
 		),
 	);
 ?>
