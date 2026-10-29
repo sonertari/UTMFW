@@ -671,7 +671,7 @@ $StatsConf = array(
 		'Total' => array(
 			'Title' => _STATS('All alerts'),
 			'Cmd' => '/bin/cat <LF>',
-			'Needle' => '( -> )',
+			'Needle' => 'Priority:',
 			'Color' => '#01466b',
 			'NVPs' => array(
 				'SrcIP' => _STATS('Source IPs'),
@@ -689,7 +689,7 @@ $StatsConf = array(
 			),
 		'Priorities' => array(
 			'Title' => _STATS('Priorities'),
-			'Needle' => '( -> )',
+			'Needle' => 'Priority:',
 			'Color' => 'Red',
 			'NVPs' => array(
 				'Prio' => _STATS('Priority'),
@@ -697,7 +697,7 @@ $StatsConf = array(
 			),
 		'Names' => array(
 			'Title' => _STATS('Attack Types'),
-			'Needle' => '( -> )',
+			'Needle' => 'Priority:',
 			'Color' => 'Blue',
 			'NVPs' => array(
 				'Log' => _STATS('Type'),
