@@ -29,14 +29,8 @@ error.log		type=file mode=0644 uname=root gname=daemon
 imspector		type=dir mode=0755 uname=_imspector gname=_imspector flags=none
 ..	#var/log/imspector
 suricata		type=dir mode=0755 uname=_suricata gname=_suricata flags=none
-access.log		type=file mode=0640 uname=_suricata gname=_suricata
-server.log		type=file mode=0640 uname=_suricata gname=_suricata
 fast.log		type=file mode=0640 uname=_suricata gname=_suricata
-stats.log		type=file mode=0640 uname=_suricata gname=_suricata
 suricata.log		type=file mode=0640 uname=_suricata gname=_suricata
-fast-ids.log		type=file mode=0640 uname=_suricata gname=_suricata
-stats-ids.log		type=file mode=0640 uname=_suricata gname=_suricata
-suricata-ids.log		type=file mode=0640 uname=_suricata gname=_suricata
 ..	#var/log/suricata
 clamd.log		type=file mode=0640 uname=_clamav gname=wheel
 ctlr.log		type=file mode=0640 uname=root gname=wheel

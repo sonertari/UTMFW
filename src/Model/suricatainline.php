@@ -28,7 +28,6 @@ class Suricatainline extends Suricata
 	public $Proc= 'c-icap';
 	
 	public $ConfFile= '/etc/suricata/c-icap.conf';
-	public $LogFile= '/var/log/suricata/server.log';
 
 	public $VersionCmd= '/opt/local/bin/c-icap -V 2>&1';
 	

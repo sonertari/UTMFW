@@ -63,11 +63,10 @@ default-log-dir: /var/log/suricata
 
 # Global stats configuration
 stats:
-#  enabled: yes
+ enabled: no
   # The interval field (in seconds) controls the interval at
   # which stats are updated in the log.
 #  interval: 8
-  interval: 80
   # Add decode events to stats.
   #decoder-events: true
   # Decoder event prefix in stats. Has been 'decoder' before, but that leads
@@ -367,7 +366,7 @@ outputs:
                                        # If a password message is seen but this setting
                                        # is disabled, "password_redacted": true is logged
         - stats:
-            totals: yes       # stats for all threads merged together
+            totals: no       # stats for all threads merged together
             threads: no       # per thread stats
             deltas: no        # include delta values
             # Don't log stats counters that are zero. Default: true
@@ -472,7 +471,7 @@ outputs:
 
   # Stats.log contains data from various counters of the Suricata engine.
   - stats:
-      enabled: yes
+      enabled: no
       filename: stats.log
       append: yes       # append to file (yes) or overwrite it (no)
       totals: yes       # stats for all threads merged together
@@ -640,14 +639,14 @@ logging:
       enabled: yes
       # type: json
   - file:
-      enabled: yes
+      enabled: no
       level: info
       filename: suricata.log
       # format: "[%i - %m] %z %d: %S: %M"
       # type: json
   - syslog:
-      enabled: no
-      facility: local5
+      enabled: yes
+      facility: local0
       format: "[%i] <%d> -- "
       # type: json
 
