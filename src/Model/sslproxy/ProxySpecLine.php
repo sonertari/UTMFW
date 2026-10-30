@@ -39,6 +39,10 @@ class ProxySpecLine extends Rule
 			'method' => 'parsePSLine',
 			'params' => array(),
 			),
+		'http3' => array(
+			'method' => 'parsePSLine',
+			'params' => array(),
+			),
 		'pop3' => array(
 			'method' => 'parsePSLine',
 			'params' => array(),

@@ -137,6 +137,7 @@ class ProxySpecLine extends Rule
 					<option label="ssl" <?php echo isset($this->rule['proto']) && $this->rule['proto'] == 'ssl' ? 'selected' : ''; ?>>ssl</option>
 					<option label="http" <?php echo isset($this->rule['proto']) && $this->rule['proto'] == 'http' ? 'selected' : ''; ?>>http</option>
 					<option label="https" <?php echo isset($this->rule['proto']) && $this->rule['proto'] == 'https' ? 'selected' : ''; ?>>https</option>
+					<option label="http3" <?php echo isset($this->rule['proto']) && $this->rule['proto'] == 'http3' ? 'selected' : ''; ?>>http3</option>
 					<option label="pop3" <?php echo isset($this->rule['proto']) && $this->rule['proto'] == 'pop3' ? 'selected' : ''; ?>>pop3</option>
 					<option label="pop3s" <?php echo isset($this->rule['proto']) && $this->rule['proto'] == 'pop3s' ? 'selected' : ''; ?>>pop3s</option>
 					<option label="smtp" <?php echo isset($this->rule['proto']) && $this->rule['proto'] == 'smtp' ? 'selected' : ''; ?>>smtp</option>
