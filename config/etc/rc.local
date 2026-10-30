@@ -8,6 +8,17 @@
 # please see /etc/rc.securelevel.
 #
 
+prep_suricata() {
+	[[ ! -d /var/log/utmfw/run/suricata ]] && mkdir /var/log/utmfw/run/suricata
+	chown -R _suricata:_suricata /var/log/utmfw/run/suricata
+
+	# Otherwise, Suricata creates log files as root
+	[[ ! -d /var/log/suricata ]] && mkdir /var/log/suricata
+	[[ ! -f /var/log/suricata/suricata.log ]] && touch /var/log/suricata/suricata.log
+	[[ ! -f /var/log/suricata/fast.log ]] && touch /var/log/suricata/fast.log
+	chown -R _suricata:_suricata /var/log/suricata
+}
+
 START_TIME=$(date "+%s")
 
 # Make sure we always have a /var directory structure we can work on
@@ -74,8 +85,7 @@ fi
 echo -n '\nIntrusion detection and prevention:'
 # Start Suricata IDS for WAN and LAN
 if [ -x /opt/local/bin/suricata ]; then
-	[[ ! -d /var/log/utmfw/run/suricata ]] && mkdir /var/log/utmfw/run/suricata
-	chown _suricata /var/log/utmfw/run/suricata
+	prep_suricata
 	echo -n ' ids'
 	/opt/local/bin/suricata -i lan0 -D -c /etc/suricata/suricata-ids.yaml --pidfile /var/log/utmfw/run/suricata/suricata-lan0.pid >/dev/null 2>&1
 #	/opt/local/bin/suricata -i wan0 -D -c /etc/suricata/suricata-ids.yaml --pidfile /var/log/utmfw/run/suricata/suricata-wan0.pid >/dev/null 2>&1
@@ -83,10 +93,7 @@ fi
 
 # Start c-icap and icapsuricata
 if [ -x /opt/local/bin/c-icap ]; then
-	[[ ! -d /var/log/utmfw/run/suricata ]] && mkdir /var/log/utmfw/run/suricata
-	chown _suricata /var/log/utmfw/run/suricata
-	[[ ! -d /var/log/suricata ]] && mkdir /var/log/suricata
-	chown _suricata /var/log/suricata
+	prep_suricata
 	echo -n ', ips'
 	# Execute in a subshell to run c-icap in the context of /var/log/suricata
 	# Otherwise, Suricata in library mode cannot use the default-log-dir in suricata.yaml
