@@ -266,14 +266,10 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
      <span class="bold">RemoveHTTPReferer</span> <span class="bold">BOOL</span>
             Remove HTTP header line for Referer.
             Default: yes
-
-     <span class="bold">StripClientHello</span> <span class="bold">BOOL</span>
-            Strip ClientHello messages from content, PCAP, and mirror logs
-            during autossl mode.  When a connection is upgraded from plain TCP
-            to SSL/TLS in autossl mode, the initial cleartext ClientHello
-            message sent by the client is stripped from the logs to prevent
-            polluting them with the SSL handshake.
-            Default: no
+<a name="EnableHTTP2"></a>
+     <span class="bold">EnableHTTP2</span> <span class="bold">BOOL</span>
+            Enable HTTP/2 during ALPN negotiation.
+            Default: yes
 <a name="VerifyPeer"></a>
      <span class="bold">VerifyPeer</span> <span class="bold">BOOL</span>
             Verify peer using default certificates.
@@ -284,6 +280,14 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
             the SNI provided by the client does not match the server
             certificate's CN/SAN. Helps pass the wrong.host test at
             https://badssl.com.
+            Default: no
+<a name="StripClientHello"></a>
+     <span class="bold">StripClientHello</span> <span class="bold">BOOL</span>
+            Strip ClientHello messages from content, PCAP, and mirror logs
+            during autossl mode.  When a connection is upgraded from plain TCP
+            to SSL/TLS in autossl mode, the initial cleartext ClientHello
+            message sent by the client is stripped from the logs to prevent
+            polluting them with the SSL handshake.
             Default: no
 <a name="UserAuth"></a>
      <span class="bold">UserAuth</span> <span class="bold">BOOL</span>
@@ -350,6 +354,80 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
 
             Recursive include files are not allowed. The Include option cannot
             be used in include files.
+<a name="IcapFailOpen"></a>
+     <span class="bold">IcapFailOpen</span> <span class="bold">BOOL</span>
+            Set ICAP fail-open for services in ICAP chain, globally, per-
+            proxyspec, or per-filter rule.
+            Default: no
+<a name="IcapConnFailOpen"></a>
+     <span class="bold">IcapConnFailOpen</span> <span class="bold">BOOL</span>
+            Set ICAP connection fail-open for services in ICAP chain,
+            globally, per-proxyspec, or per-filter rule.
+            Default: no
+<a name="IcapTimeout"></a>
+     <span class="bold">IcapTimeout</span> <span class="bold">NUMBER</span>
+            Set timeout in seconds for ICAP services, globally, per-proxyspec,
+            or per-filter rule, use 0-60.
+            Default: 30
+<a name="IcapPreviewSize"></a>
+     <span class="bold">IcapPreviewSize</span> <span class="bold">NUMBER</span>
+            Set Preview size in bytes for ICAP services, globally, per-
+            proxyspec, or per-filter rule, use 0-16777216.  Set to 0 to
+            disable.
+            Default: 1024
+<a name="IcapMaxBodySize"></a>
+     <span class="bold">IcapMaxBodySize</span> <span class="bold">NUMBER</span>
+            Set max body size in bytes for ICAP services, globally, per-
+            proxyspec, or per-filter rule, use 0-16777216.  Set to 0 to
+            disable.
+            Default: 4096
+<a name="IcapMaxInspectionSize"></a>
+     <span class="bold">IcapMaxInspectionSize</span> <span class="bold">NUMBER</span>
+            Set max inspection size in bytes for ICAP services, globally, per-
+            proxyspec, or per-filter rule, use 0-16777216.  Set to 0 to
+            disable.
+            Default: 4096
+<a name="IcapAllow204"></a>
+     <span class="bold">IcapAllow204</span> <span class="bold">BOOL</span>
+            Allow 204 responses for services in ICAP chain, globally, per-
+            proxyspec, or per-filter rule.
+            Default: yes
+<a name="IcapAllow206"></a>
+     <span class="bold">IcapAllow206</span> <span class="bold">BOOL</span>
+            Allow 206 responses for services in ICAP chain, globally, per-
+            proxyspec, or per-filter rule.
+            Default: yes
+<a name="IcapSanitizeRequestLine"></a>
+     <span class="bold">IcapSanitizeRequestLine</span> <span class="bold">BOOL</span>
+            Sanitize request line for services in ICAP chain, globally, per-
+            proxyspec, or per-filter rule.
+            Default: no
+<a name="Icap"></a>
+     <span class="bold">Icap</span> <span class="bold">STRING</span>
+
+            The syntax of one line Icap specifications is as follows:
+            Icap
+            icap://host:port,reqmod,respmod,icap_fail_open,conn_fail_open,timeout,preview_size,max_body_size,max_inspection_size,allow_204,allow_206,echo_header,sanitize_request_line
+
+     <span class="bold">Icap</span> <span class="bold">{</span>
+            Proto
+            Server
+            Port
+            Reqmod
+            Respmod
+            FailOpen
+            ConnFailOpen
+            Timeout
+            PreviewSize
+            MaxBodySize
+            MaxInspectionSize
+            Allow204
+            Allow206
+            EchoHeader
+            SanitizeRequestLine
+            <span class="bold">}</span>
+
+            See sslproxy(1) for the details.
 <a name="Macro"></a>
      <span class="bold">Define</span> <span class="bold">STRING</span>
             Define macro to be used in filtering rules. Macro names must start
@@ -437,19 +515,31 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
             CipherSuites
             VerifyPeer
             AllowWrongHost
+            StripClientHello
             RemoveHTTPAcceptEncoding
             RemoveHTTPReferer
-            StripClientHello
+            EnableHTTP2
             MaxHTTPHeaderSize
             ValidateProto
             UserAuth
             UserTimeout
             UserAuthURL
+            IcapFailOpen
+            IcapConnFailOpen
+            IcapTimeout
+            IcapPreviewSize
+            IcapMaxBodySize
+            IcapMaxInspectionSize
+            IcapAllow204
+            IcapAllow206
+            IcapSanitizeRequestLine
+            Icap one line Icap specifications
+            Icap {...} structured Icap specifications
             <span class="bold">}</span>
-            Structured filtering rules can specify connection options to be
-            selectively applied to matching connections, not just per-
-            proxyspec or globally. One line filtering rules cannot specify
-            connection options.
+            Structured filtering rules can specify connection options and Icap
+            specifications to be selectively applied to matching connections,
+            not just per- proxyspec or globally. One line filtering rules
+            cannot specify connection options and Icap specifications.
 
             See sslproxy(1) for the details.
 <a name="ProxySpecLine"></a>
@@ -491,9 +581,10 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
             CipherSuites
             VerifyPeer
             AllowWrongHost
+            StripClientHello
             RemoveHTTPAcceptEncoding
             RemoveHTTPReferer
-            StripClientHello
+            EnableHTTP2
             MaxHTTPHeaderSize
             ValidateProto
             UserAuth
@@ -502,6 +593,17 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
             DivertUsers
             PassUsers
             PassSite
+            IcapFailOpen
+            IcapConnFailOpen
+            IcapTimeout
+            IcapPreviewSize
+            IcapMaxBodySize
+            IcapMaxInspectionSize
+            IcapAllow204
+            IcapAllow206
+            IcapSanitizeRequestLine
+            Icap one line Icap specifications
+            Icap {...} structured Icap specifications
             Define
             (Divert|Split|Pass|Block|Match) one line filtering rules
             FilterRule {...} structured filtering rules
@@ -522,7 +624,7 @@ sslproxy.conf(5)                   SSLproxy                   sslproxy.conf(5)
 <span class="bold">SEE</span> <span class="bold">ALSO</span>
      sslproxy(1)
 
-v0.9.11                           24 Aug 2026                 sslproxy.conf(5)
+v0.10.0                           23 Sep 2026                 sslproxy.conf(5)
 </pre>
 </body>
 </html>
