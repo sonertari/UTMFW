@@ -720,7 +720,7 @@ class E2guardian extends Model
 	{
 		global $Re_Ip, $Re_User;
 
-		return $this->SearchFileAll($file, "/^\h*($Re_Ip|$this->re_DgNet|$this->re_DgRange|$Re_User)\h*$this->NVPS\h*filter$group\b\h*(|$this->COMC.*)$/m");
+		return $this->SearchFileAll($file, "/^\h*($Re_Ip|$this->re_DgNet|$this->re_DgRange|$Re_User)\h*$this->NVPS\h*$group\b\h*(|$this->COMC.*)$/m");
 	}
 
 	/**
@@ -728,18 +728,7 @@ class E2guardian extends Model
 	 */
 	function GetIpgroupsFilePath()
 	{
-		if ($conffile= $this->GetFilterConfFilePath($this->confDir.'e2guardian.conf', 'authplugin')) {
-			if ($filepath= $this->GetFilterConfFilePath($conffile, 'ipgroups')) {
-				return $filepath;
-			}
-			else {
-				Error(_('Cannot read config').': ipgroups');
-			}
-		}
-		else {
-			Error(_('Cannot read config').': authplugin');
-		}
-		return FALSE;
+		return '/etc/e2guardian/lists/authplugins/filtergroupslist';
 	}
 
 	/**
@@ -754,7 +743,7 @@ class E2guardian extends Model
 		if ($file= $this->GetIpgroupsFilePath()) {
 			$this->DelUserFilterGrp($user, $group);
 			$this->DelUserFilterGrp($user, '.*');
-			return $this->AppendToFile($file, "$user = filter$group");
+			return $this->AppendToFile($file, "$user = $group");
 		}
 		return FALSE;
 	}
@@ -770,7 +759,7 @@ class E2guardian extends Model
 	{
 		if ($file= $this->GetIpgroupsFilePath()) {
 			$user= Escape($user, '/.');
-			return $this->ReplaceRegexp($file, "/^(\h*$user\b\h*$this->NVPS\h*filter$group\b\h*.*(\s|))/m", '');
+			return $this->ReplaceRegexp($file, "/^(\h*$user\b\h*$this->NVPS\h*$group\b\h*.*(\s|))/m", '');
 		}
 		return FALSE;
 	}
