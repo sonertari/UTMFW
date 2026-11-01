@@ -33,6 +33,7 @@ if [[ ! -d $BASEDIR/symon/rrds/localhost ]]; then
 	chmod 755 $BASEDIR/symon/rrds/localhost
 	echo "Creating symon rrd files..."
 	sh /usr/local/share/examples/symon/c_smrrds.sh all
+	chown -R _symux:_symux $BASEDIR/symon/rrds/localhost/*.rrd
 fi
 
 [[ ! -d $BASEDIR/pmacct ]] && mkdir $BASEDIR/pmacct
