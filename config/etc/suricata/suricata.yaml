@@ -1030,6 +1030,8 @@ app-layer:
       #compression-bomb-limit: 1MiB
     smtp:
       enabled: yes
+      detection-ports:
+        dp: 25, 465, 587
       raw-extraction: no
       # Maximum number of live SMTP transactions per flow
       # max-tx: 256
@@ -1070,7 +1072,7 @@ app-layer:
     pop3:
       enabled: yes
       detection-ports:
-        dp: 110
+        dp: 110, 995
       # Stream reassembly size for POP3. By default, track it completely.
       stream-depth: 0
       # Maximum number of live POP3 transactions per flow
