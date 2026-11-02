@@ -32,7 +32,7 @@ $LogConf = array(
 		'HighlightLogs' => array(
 			'Col' => 'Log',
 			'REs' => array(
-				'red' => array('failed', 'ERROR:'),
+				'red' => array('ERROR:'),
 				'yellow' => array('WARNING:'),
 				),
 			),

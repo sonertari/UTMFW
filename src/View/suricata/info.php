@@ -50,8 +50,6 @@ if (filter_has_var(INPUT_POST, 'Model')) {
 	}
 }
 
-$View->Controller($Output, 'GetStatus');
-
 $View->Model= 'suricatainline';
 $generate_suricatainline_status= $View->ProcessStartStopRequests();
 
