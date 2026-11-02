@@ -6,33 +6,23 @@ UTMFW is an updated version of ComixWall. However, there are a few major changes
 
 UTMFW supports deep SSL inspection of HTTP/1.1, HTTP/2, HTTP/3 (QUIC), POP3, and SMTP protocols. SSL/TLS encrypted traffic is decrypted by [SSLproxy](https://github.com/sonertari/SSLproxy) and fed into the UTM services: Web Filter, POP3 Proxy, SMTP Proxy, and Inline IPS (and indirectly into Virus Scanner and Spam Filter through those UTM software). Some of these UTM software have been modified to support the mode of operation required by SSLproxy.
 
-![Dashboard](https://github.com/sonertari/UTMFW/blob/master/screenshots/Dashboard.png)
+![Dashboard](screenshots/Dashboard.png)
 
 You can find a couple of screenshots on the [wiki](https://github.com/sonertari/UTMFW/wiki).
 
 ## Download
 
-UTMFW runs on amd64 and arm64 architectures. So, the UTMFW project releases installation files in iso and img formats for those architectures.
+UTMFW runs on amd64 and arm64 architectures. This version of UTMFW is released with the installation files in iso and img formats for the amd64 architecture.
 
 Amd64:
 
-- [utmfw80\_20261031\_amd64.iso](https://drive.google.com/file/d/10oEjeVnsGDOSHxnQVa3hg43ekXKxb36h/view?usp=sharing)
-	+ SHA256 checksum: 92879a6b594372fc1114def4b530379ec899045a1ff8dda9833bbff313c74326
+- [utmfw80\_20261102\_amd64.iso](https://drive.google.com/file/d/1v6bvvh6sie122Fd_N4lQHjp_kK1hyiUq/view?usp=sharing)
+	+ SHA256 checksum: 80785909cd9c4bbf7c52febf86203e1d0f119528c8089e099de208623b77da4b
 	+ Tested on VMware
 
-- [utmfw80\_20261031\_amd64.img](https://drive.google.com/file/d/1MTZ3HC7HB2L1yNqQf5uZhHjbCS71r2wb/view?usp=sharing)
-	+ SHA256 checksum: e43272764cd0a8a831daa23091cc871ec9e0632e56695aafa74b9664a4142956
+- [utmfw80\_20261102\_amd64.img](https://drive.google.com/file/d/1NRd9HCmtnrjIv2NkPp3Ng06YBjwbNDgG/view?usp=sharing)
+	+ SHA256 checksum: 36d0f70f94ea5eb6355b51752299aa02fe5c67dc8464e08352b64d94794557a7
 	+ Tested on bare hardware
-
-Arm64:
-
-- [utmfw80\_20261031\_arm64.iso](https://drive.google.com/file/d/10mbUmQJAlenf9mTkVE7QEi9SwiIFZNk-/view?usp=sharing)
-	+ SHA256 checksum: 58d5b48955a1bf49596c45e614c7731e61d4ceb1d05a41ce53e7200fb05593c2
-	+ Tested on UTM for macOS
-
-- [utmfw80\_20261031\_arm64.img](https://drive.google.com/file/d/1pSdNMFonNUtfhWHI2o7u7D9DVSGFQkR5/view?usp=sharing)
-	+ SHA256 checksum: 9b2cfd4c88f77d30769629be8c4c69090520612ce12438f238528c505464149f
-	+ Tested on Raspberry Pi 4 Model B
 
 Make sure the SHA256 checksums are correct.
 
@@ -42,7 +32,7 @@ UTMFW includes the following software, alongside what is already available on a 
 
 - [SSLproxy](https://github.com/sonertari/SSLproxy): Transparent SSL/TLS proxy for deep SSL inspection
 - [icapsuricata](https://github.com/sonertari/icapsuricata): Suricata ICAP service
-- Suricata: Intrusion detection and inline prevention system, with the latest rules
+- Suricata: Intrusion detection and inline prevention system
 - SnortIPS: Passive intrusion prevention software
 - E2Guardian: Web filter, anti-virus using ClamAV, blacklists
 - [PFRE](https://github.com/sonertari/PFRE): Packet Filter Rule Editor
@@ -59,7 +49,7 @@ UTMFW includes the following software, alongside what is already available on a 
 - Dnsmasq: DNS forwarder
 - PHP
 
-![Console](https://github.com/sonertari/UTMFW/blob/master/screenshots/Console.png)
+![Console](screenshots/Console.png)
 
 The web user interface of UTMFW helps you manage your firewall:
 
@@ -77,7 +67,7 @@ The web user interface of UTMFW helps you manage your firewall:
 
 UTMFW uses the same design decisions and implementation as the [PFRE](https://github.com/sonertari/PFRE) project. See its README for details.
 
-![UI Design](https://github.com/sonertari/UTMFW/blob/master/screenshots/UIDesign.png)
+![UI Design](screenshots/UIDesign.png)
 
 ## How to install
 
@@ -314,7 +304,6 @@ The following are steps you can follow to build UTMFW yourself. Some of these st
 	+ Keep the links for the following packages, or update their versions
 		+ blacklists.tar.gz
 		+ clamavdb.tar.gz
-		+ snortrules.tar.gz
 		+ imspector
 		+ p3scan
 		+ smtp-gated
