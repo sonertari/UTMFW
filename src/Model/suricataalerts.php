@@ -55,7 +55,9 @@ class Suricataalerts extends Suricata
 		if (preg_match($re, $logline, $match)) {
 			$dt= DateTime::createFromFormat($dateTimeFormat, $match[1]);
 			$ts= $dt->getTimestamp();
-			$cols['Date']= date('M j', $ts);
+			// Format the date as "Mon  d" with a space-padded day of the month,
+			// date() does not have a direct format for this, so we use sprintf to pad the day.
+			$cols['Date']= date('M', $ts).' '.sprintf('% 2d', date('j', $ts));
 			$cols['Time']= date("H:i:s", $ts);
 			$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
 
@@ -74,7 +76,7 @@ class Suricataalerts extends Suricata
 		if (preg_match($re, $logline, $match)) {
 			$dt= DateTime::createFromFormat($dateTimeFormat, $match[1]);
 			$ts= $dt->getTimestamp();
-			$cols['Date']= date('M j', $ts);
+			$cols['Date']= date('M', $ts).' '.sprintf('% 2d', date('j', $ts));
 			$cols['Time']= date("H:i:s", $ts);
 			$cols['DateTime']= $cols['Date'].' '.$cols['Time'];
 
@@ -106,6 +108,8 @@ class Suricataalerts extends Suricata
 			$reDay= '([[:digit:]][[:digit:]])';
 		}
 
+		$reYear= '([[:digit:]][[:digit:]][[:digit:]][[:digit:]])';
+
 		if ($hour != '') {
 			$reHour= sprintf('%02d', $hour);
 		} else {
@@ -117,8 +121,6 @@ class Suricataalerts extends Suricata
 		} else {
 			$reMinute= '([[:digit:]][[:digit:]])';
 		}
-
-		$reYear= '([[:digit:]][[:digit:]][[:digit:]][[:digit:]])';
 
 		return "^$reMonth/$reDay/$reYear-$reHour:$reMinute:";
 	}
