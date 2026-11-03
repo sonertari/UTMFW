@@ -391,10 +391,12 @@ $RRDTOOL graph loif.png $GENERAL_OPTS $SIZE -s $START \
 # SSL Proxy
 $RRDTOOL graph sslproxy.png $GENERAL_OPTS $SIZE -s $START \
     -t "Connections" \
-    DEF:all=$COLLECTD_RRD_ROOT/tail-sslproxy/derive-all.rrd:value:AVERAGE \
+    DEF:conn=$COLLECTD_RRD_ROOT/tail-sslproxy/derive-conn.rrd:value:AVERAGE \
+    DEF:stream=$COLLECTD_RRD_ROOT/tail-sslproxy/derive-stream.rrd:value:AVERAGE \
     DEF:idle=$COLLECTD_RRD_ROOT/tail-sslproxy/derive-idle.rrd:value:AVERAGE \
     DEF:expired=$COLLECTD_RRD_ROOT/tail-sslproxy/derive-expired.rrd:value:AVERAGE \
-    AREA:all#0039b1:all \
+    AREA:conn#0039b1:conn \
+    STACK:stream#da5400:stream \
     STACK:idle#bf8700:idle \
     STACK:expired#00b91e:expired >/dev/null
 
