@@ -82,8 +82,8 @@ class Openssh extends Model
 	function _getModuleInfo($start)
 	{
 		return array(
-			'accepted'	=>	$this->getRrdValue('derive-accepted.rrd', $start, $result),
-			'failed'	=>	$this->getRrdValue('derive-failed.rrd', $start, $result),
+			'accepted'	=>	$this->getRrdValue('derive-accepted.rrd', $result, $start),
+			'failed'	=>	$this->getRrdValue('derive-failed.rrd', $result, $start),
 			);
 	}
 

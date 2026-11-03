@@ -86,8 +86,8 @@ class Sslproxy extends Model
 	function _getModuleInfo($start)
 	{
 		return array(
-			'conns'	=> $this->getRrdValue('derive-mld.rrd', $start, $result),
-			'fds'	=> $this->getRrdValue('gauge-mfd.rrd', $start, $result, 'gauge'),
+			'conns'	=> $this->getRrdValue('derive-mld.rrd', $result, $start),
+			'fds'	=> $this->getRrdValue('gauge-mfd.rrd', $result, $start, 'gauge'),
 			);
 	}
 
@@ -136,12 +136,12 @@ class Sslproxy extends Model
 
 	function _getMaxStats($start)
 	{
-		$maxStats['Load']= $this->getRrdValue('derive-mld.rrd', $start, $result);
-		$maxStats['UploadKB']= round($this->getRrdValue('derive-iib.rrd', $start, $result) / 1000);
-		$maxStats['DownloadKB']= round($this->getRrdValue('derive-iob.rrd', $start, $result) / 1000);
-		$maxStats['Fd']= $this->getRrdValue('gauge-mfd.rrd', $start, $result, 'gauge');
-		$maxStats['AccessTime']= $this->getRrdValue('gauge-mat.rrd', $start, $result, 'gauge');
-		$maxStats['CreateTime']= $this->getRrdValue('gauge-mct.rrd', $start, $result, 'gauge');
+		$maxStats['Load']= $this->getRrdValue('derive-mld.rrd', $result, $start);
+		$maxStats['UploadKB']= round($this->getRrdValue('derive-iib.rrd', $result, $start) / 1000);
+		$maxStats['DownloadKB']= round($this->getRrdValue('derive-iob.rrd', $result, $start) / 1000);
+		$maxStats['Fd']= $this->getRrdValue('gauge-mfd.rrd', $result, $start, 'gauge');
+		$maxStats['AccessTime']= $this->getRrdValue('gauge-mat.rrd', $result, $start, 'gauge');
+		$maxStats['CreateTime']= $this->getRrdValue('gauge-mct.rrd', $result, $start, 'gauge');
 		return $maxStats;
 	}
 

@@ -260,7 +260,7 @@ class E2guardian extends Model
 
 	function _getModuleInfo($start)
 	{
-		return array('requests'	=>	$this->getRrdValue('derive-all.rrd', $start, $result));
+		return array('requests'	=>	$this->getRrdValue('derive-all.rrd', $result, $start));
 	}
 
 	function GetConfFile($confname, $group)

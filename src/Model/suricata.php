@@ -184,7 +184,7 @@ class Suricata extends Model
 
 	function _getModuleInfo($start)
 	{
-		return array('alerts'	=>	$this->getRrdValue('derive-alert.rrd', $start, $result));
+		return array('alerts'	=>	$this->getRrdValue('derive-alert.rrd', $result, $start));
 	}
 
 	function SetConfig($confname)

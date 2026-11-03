@@ -2857,7 +2857,7 @@ class Model
 				);
 
 			foreach (array('warning', 'error', 'critical') as $prio) {
-				$status[ucfirst($prio)]= $this->getRrdValue("derive-$prio.rrd", $start, $result[$prio]);
+				$status[ucfirst($prio)]= $this->getRrdValue("derive-$prio.rrd", $result[$prio], $start);
 			}
 
 			if ($status['Critical']) {
@@ -2930,7 +2930,7 @@ class Model
 		return $rv ? $lastLogs : FALSE;
 	}
 
-	function getRrdValue($rrd, $start= 60, &$result, $type= 'derive')
+	function getRrdValue($rrd, &$result, $start= 60, $type= 'derive')
 	{
 		$result= FALSE;
 
@@ -3046,7 +3046,7 @@ class Model
 				}
 
 				if ($shown) {
-					$total= $this->getRrdValue("derive-$prio.rrd", $StatusCheckInterval, $result);
+					$total= $this->getRrdValue("derive-$prio.rrd", $result, $StatusCheckInterval);
 					if ($total > $shown) {
 						$errorStr.= "\n" . str_replace('<COUNT>', $total - $shown, _TITLE('And <COUNT> others not shown.'));
 					}
