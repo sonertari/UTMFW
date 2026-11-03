@@ -396,9 +396,9 @@ $RRDTOOL graph sslproxy.png $GENERAL_OPTS $SIZE -s $START \
     DEF:idle=$COLLECTD_RRD_ROOT/tail-sslproxy/derive-idle.rrd:value:AVERAGE \
     DEF:expired=$COLLECTD_RRD_ROOT/tail-sslproxy/derive-expired.rrd:value:AVERAGE \
     AREA:conn#0039b1:conn \
-    STACK:stream#da5400:stream \
+    STACK:stream#00b91e:stream \
     STACK:idle#bf8700:idle \
-    STACK:expired#00b91e:expired >/dev/null
+    STACK:expired#da5400:expired >/dev/null
 
 # DNS Forwarder
 $RRDTOOL graph dns.png $GENERAL_OPTS $SIZE -s $START \
