@@ -1,5 +1,5 @@
 # static link, need bump on update:
-# security/sslproxy-cw-0.10.0 devel/libevent-cw-2.1.13
+# security/sslproxy-cw-0.10.1 devel/libevent-cw-2.1.13
 # www/nghttp2-cw-1.69.0 www/nghttp3-cw-1.18.0 net/ngtcp2-cw-1.25.0
 
 .if ${MACHINE_ARCH} != aarch64 && ${MACHINE_ARCH} != amd64 && ${MACHINE_ARCH} != riscv64

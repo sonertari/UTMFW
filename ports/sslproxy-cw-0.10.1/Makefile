@@ -1,6 +1,6 @@
 COMMENT=	transparent SSL/TLS proxy to divert decrypted traffic
 
-V=		0.10.0
+V=		0.10.1
 PKGNAME=	sslproxy-cw-${V}
 DISTNAME=	sslproxy-${V}
 EXTRACT_SUFX=	.tar.gz
