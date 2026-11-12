@@ -13,7 +13,7 @@ Highlights of this release are:
 - E2Guardian 5.5.9
 - OpenSSL 3.5.7
 - libevent 2.1.13
-- nghttp2 1.69.0
+- nghttp2 1.71.0
 - nghttp3 1.18.0
 - ngtcp2 1.25.0
 - Variety of fixes and improvements

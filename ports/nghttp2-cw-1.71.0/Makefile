@@ -1,6 +1,6 @@
 COMMENT=	library for HTTP/2
 
-V=		1.69.0
+V=		1.71.0
 PKGNAME=	nghttp2-cw-${V}
 DISTNAME=	nghttp2-${V}
 
