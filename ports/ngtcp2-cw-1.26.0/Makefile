@@ -1,6 +1,6 @@
 COMMENT=	implementation of the RFC 9000 QUIC protocol
 
-V=		1.25.0
+V=		1.26.0
 PKGNAME=	ngtcp2-cw-${V}
 DISTNAME=	ngtcp2-${V}
 
@@ -23,7 +23,7 @@ WANTLIB +=	crypto ssl
 
 SITES=		https://github.com/ngtcp2/ngtcp2/releases/download/v$V/
 
-PKGSPEC=	ngtcp2-cw->=1.25,<1.26
+PKGSPEC=	ngtcp2-cw->=1.26,<1.27
 
 SEPARATE_BUILD=		Yes
 DEBUG_PACKAGES=		${BUILD_PACKAGES}

@@ -1,6 +1,6 @@
 COMMENT=	implementation of HTTP/3
 
-V=		1.18.0
+V=		1.19.0
 PKGNAME=	nghttp3-cw-${V}
 DISTNAME=	nghttp3-${V}
 
@@ -15,8 +15,8 @@ HOMEPAGE=	https://nghttp2.org/nghttp3/
 # MIT
 PERMIT_PACKAGE=	Yes
 
-BUILD_DEPENDS=	net/ngtcp2-cw-1.25.0
-RUN_DEPENDS=	net/ngtcp2-cw-1.25.0
+BUILD_DEPENDS=	net/ngtcp2-cw-1.26.0
+RUN_DEPENDS=	net/ngtcp2-cw-1.26.0
 
 SITES=		https://github.com/ngtcp2/nghttp3/releases/download/v$V/
 

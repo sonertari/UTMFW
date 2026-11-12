@@ -25,13 +25,13 @@ MASTER_SITES=	https://github.com/sonertari/SSLproxy/
 
 BUILD_DEPENDS=	devel/libevent-cw-2.1.13 \
 		www/nghttp2-cw-1.71.0 \
-		www/nghttp3-cw-1.18.0 \
+		www/nghttp3-cw-1.19.0 \
 		net/libnet/1.1 \
 		databases/sqlite3
 
 RUN_DEPENDS=	devel/libevent-cw-2.1.13 \
 		www/nghttp2-cw-1.71.0 \
-		www/nghttp3-cw-1.18.0 \
+		www/nghttp3-cw-1.19.0 \
 		net/libnet/1.1 \
 		databases/sqlite3
 
