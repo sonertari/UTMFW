@@ -8,7 +8,7 @@ Subject: Welcome to UTMFW 8.0.1!
 Highlights of this release are:
 - SSLproxy 0.10.1, with HTTP/2 and HTTP/3 support, and ICAP subsystem
 - icapsuricata 0.1.0
-- Suricata 8.0.7
+- Suricata 8.0.8
 - c-icap 0.6.5
 - E2Guardian 5.5.9
 - OpenSSL 3.5.7

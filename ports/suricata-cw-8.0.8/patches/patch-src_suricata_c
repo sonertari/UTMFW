@@ -22,14 +22,24 @@ Index: src/suricata.c
                  SCLogError("libcap-ng is required to"
                             " drop privileges, but it was not compiled into Suricata.");
                  return TM_ECODE_FAILED;
-@@ -3202,5 +3202,9 @@ void SuricataPostInit(void)
-         SystemHugepageSnapshotDestroy(prerun_snap);
-         SystemHugepageSnapshotDestroy(postrun_snap);
-     }
+@@ -3184,7 +3184,11 @@ void SuricataPostInit(void)
+ 
+     /* pledge before allowing threads to continue to avoid an issue with pcap file directory mode,
+      * see ticket #8300. */
 -    SCPledge();
 +    /* Don't drop privileges if running as library */
 +    if (SCRunmodeGet() != RUNMODE_LIB) {
 +        SCSetUserID(suricata.userid, suricata.groupid);
 +        SCPledge();
 +    }
- }
+ 
+     /* Un-pause all the paused threads */
+     TmThreadContinueThreads();
+@@ -3194,7 +3198,6 @@ void SuricataPostInit(void)
+         SystemHugepageSnapshotDestroy(prerun_snap);
+         exit(EXIT_FAILURE);
+     }
+-
+     /* Print notice and send OS specific notification of threads in running state */
+     OnNotifyRunning();
+ 

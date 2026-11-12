@@ -68,7 +68,7 @@ Index: suricata.yaml.in
  
    # Lua Output Support - execute lua script to generate alert and event
    # output.
-@@ -1331,9 +1338,9 @@ datasets:
+@@ -1333,9 +1340,9 @@ datasets:
  ##
  
  # Run Suricata with a specific user-id and group-id:
@@ -81,7 +81,7 @@ Index: suricata.yaml.in
  
  security:
    # if true, prevents process creation from Suricata by calling
-@@ -1344,13 +1351,11 @@ security:
+@@ -1346,13 +1353,11 @@ security:
      enabled: no
      directories:
        #write:
@@ -95,7 +95,7 @@ Index: suricata.yaml.in
  
    lua:
      # Allow Lua rules. Enabled by default.
-@@ -1363,7 +1368,7 @@ security:
+@@ -1365,7 +1370,7 @@ security:
  # Default location of the pid file. The pid file is only used in
  # daemon mode (start Suricata with -D). If not running in daemon mode
  # the --pidfile command line option must be used to create a pid file.
@@ -104,7 +104,7 @@ Index: suricata.yaml.in
  
  # Daemon working directory
  # Suricata will change directory to this one if provided
-@@ -1431,8 +1436,7 @@ unix-command:
+@@ -1433,8 +1438,7 @@ unix-command:
    #filename: custom.socket
  
  # Magic file. The extension .mgc is added to the value here.
@@ -114,7 +114,7 @@ Index: suricata.yaml.in
  
  # GeoIP2 database file. Specify path and filename of GeoIP2 database
  # if using rules with "geoip" rule option.
-@@ -1470,8 +1474,8 @@ legacy:
+@@ -1472,8 +1476,8 @@ legacy:
  exception-policy: auto
  
  # IP Reputation
@@ -125,7 +125,7 @@ Index: suricata.yaml.in
  #reputation-files:
  # - reputation.list
  
-@@ -2000,7 +2004,7 @@ profiling:
+@@ -2002,7 +2006,7 @@ profiling:
      limit: 10
  
      # output to json
@@ -134,7 +134,7 @@ Index: suricata.yaml.in
  
    # per keyword profiling
    keywords:
-@@ -2330,22 +2334,44 @@ napatech:
+@@ -2332,22 +2336,44 @@ napatech:
      #
      hashmode: hash5tuplesorted
  
@@ -184,4 +184,4 @@ Index: suricata.yaml.in
 +# threshold-file: ${SYSCONFDIR}/suricata/threshold.config
  
  ##
- ## Suricata as a Firewall options (experimental)
+ ## Suricata as a Firewall options

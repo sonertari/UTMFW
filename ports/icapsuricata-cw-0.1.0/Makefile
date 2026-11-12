@@ -20,9 +20,9 @@ SITES=		https://github.com/sonertari/icapsuricata/releases/download/v${V}/
 #LIB_DEPENDS +=	devel/pcre2
 
 BUILD_DEPENDS=	www/c-icap-cw-0.6.5 \
-		security/suricata-cw-8.0.7
+		security/suricata-cw-8.0.8
 RUN_DEPENDS=	www/c-icap-cw-0.6.5 \
-		security/suricata-cw-8.0.7
+		security/suricata-cw-8.0.8
 
 # disable dwz
 DWZ =:

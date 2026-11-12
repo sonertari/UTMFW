@@ -3,7 +3,7 @@ NOT_FOR_ARCHS =	powerpc64 riscv64
 
 COMMENT =	high performance network IDS, IPS and security monitoring
 
-SURICATA_V =	8.0.7
+SURICATA_V =	8.0.8
 SUPDATE_V =	1.3.3
 
 PKGNAME=	suricata-cw-${SURICATA_V}
