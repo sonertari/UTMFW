@@ -40,7 +40,7 @@ RUN_DEPENDS=	devel/libevent-cw-2.1.13 \
 # the test deliberately does a use-after-free
 TEST_DEPENDS=	devel/check
 MAKE_FLAGS=	MANDIR=man PREFIX=${TRUEPREFIX} \
-		OPENSSL_BASE="/opt/openssl-3.5.7" \
+		OPENSSL_BASE="/opt/openssl-3.5.9" \
 		LIBNGHTTP2_BASE="/opt/local" \
 		LIBNGHTTP3_BASE="/opt/local" \
 		LIBNGTCP2_BASE="/opt/local" \

@@ -16,11 +16,11 @@ UTMFW runs on amd64 and arm64 architectures. This version of UTMFW is released w
 
 Amd64:
 
-- [utmfw80\_20261112\_amd64.iso](https://drive.google.com/file/d/1v6bvvh6sie122Fd_N4lQHjp_kK1hyiUq/view?usp=sharing)
+- [utmfw80\_20261113\_amd64.iso](https://drive.google.com/file/d/1v6bvvh6sie122Fd_N4lQHjp_kK1hyiUq/view?usp=sharing)
 	+ SHA256 checksum: 80785909cd9c4bbf7c52febf86203e1d0f119528c8089e099de208623b77da4b
 	+ Tested on VMware
 
-- [utmfw80\_20261112\_amd64.img](https://drive.google.com/file/d/1NRd9HCmtnrjIv2NkPp3Ng06YBjwbNDgG/view?usp=sharing)
+- [utmfw80\_20261113\_amd64.img](https://drive.google.com/file/d/1NRd9HCmtnrjIv2NkPp3Ng06YBjwbNDgG/view?usp=sharing)
 	+ SHA256 checksum: 36d0f70f94ea5eb6355b51752299aa02fe5c67dc8464e08352b64d94794557a7
 	+ Tested on bare hardware
 

@@ -1,6 +1,6 @@
-From sonertari@gmail.com Thu Nov 12 08:00:01 EET 2026
+From sonertari@gmail.com Fri Nov 13 08:00:01 EET 2026
 Return-Path: root
-Date: Nov 12 08:00:01 EET 2026
+Date: Nov 13 08:00:01 EET 2026
 From: sonertari@gmail.com (Soner Tari)
 To: root
 Subject: Welcome to UTMFW 8.0.1!
@@ -11,7 +11,7 @@ Highlights of this release are:
 - Suricata 8.0.8
 - c-icap 0.6.5
 - E2Guardian 5.5.9
-- OpenSSL 3.5.7
+- OpenSSL 3.5.9
 - libevent 2.1.13
 - nghttp2 1.71.0
 - nghttp3 1.19.0

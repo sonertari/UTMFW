@@ -18,8 +18,8 @@ SHARED_LIBS+=	event_pthreads	0.0	# 7.2
 # BSD
 PERMIT_PACKAGE=	Yes
 
-BUILD_DEPENDS=	security/openssl-cw-3.5.7
-RUN_DEPENDS=	security/openssl-cw-3.5.7
+BUILD_DEPENDS=	security/openssl-cw-3.5.9
+RUN_DEPENDS=	security/openssl-cw-3.5.9
 
 SITES=		https://github.com/libevent/libevent/releases/download/release-$V-stable/
 
@@ -35,9 +35,9 @@ DWZ =:
 PREFIX = /opt/local
 
 CONFIGURE_STYLE=gnu
-CONFIGURE_ENV +=	CPPFLAGS="-I/opt/openssl-3.5.7/include" \
-			PKG_CONFIG_PATH="/opt/openssl-3.5.7/lib/pkgconfig" \
-			LDFLAGS="-L/opt/openssl-3.5.7/lib -Wl,-rpath,/opt/openssl-3.5.7/lib"
+CONFIGURE_ENV +=	CPPFLAGS="-I/opt/openssl-3.5.9/include" \
+			PKG_CONFIG_PATH="/opt/openssl-3.5.9/lib/pkgconfig" \
+			LDFLAGS="-L/opt/openssl-3.5.9/lib -Wl,-rpath,/opt/openssl-3.5.9/lib"
 
 # linker gives errors for samples and regress
 CONFIGURE_ARGS+=	--prefix=${PREFIX} \

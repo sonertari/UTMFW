@@ -1,6 +1,6 @@
 # static link, need bump on update:
 # security/sslproxy-cw-0.10.1 devel/libevent-cw-2.1.13
-# www/nghttp2-cw-1.69.0 www/nghttp3-cw-1.18.0 net/ngtcp2-cw-1.25.0
+# www/nghttp2-cw-1.71.0 www/nghttp3-cw-1.19.0 net/ngtcp2-cw-1.26.0
 
 .if ${MACHINE_ARCH} != aarch64 && ${MACHINE_ARCH} != amd64 && ${MACHINE_ARCH} != riscv64
 USE_NOEXECONLY =	Yes
@@ -10,7 +10,7 @@ COMMENT=    TLS/SSL library and tools
 
 # skip PORTROACH limit for newest version
 #PORTROACH=	limit:^3\.2
-V=		    3.5.7
+V=		    3.5.9
 PKGNAME=	openssl-cw-${V}
 DISTNAME=   openssl-${V}
 
@@ -46,7 +46,7 @@ DEBUG_PACKAGES = ${BUILD_PACKAGES}
 CONFIGURE_STYLE=	simple
 CONFIGURE_SCRIPT=	config
 
-PREFIX = /opt/openssl-3.5.7
+PREFIX = /opt/openssl-3.5.9
 
 # install to /opt - this port is *not* intended to be
 # picked up by configure scripts without explicitly CPPFLAGS/LDFLAGS.
