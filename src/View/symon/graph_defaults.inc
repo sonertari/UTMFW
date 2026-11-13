@@ -50,12 +50,11 @@ function get_template(&$vars) {
 function get_single_template($graph_type) {
     global $symon;
 
-    switch (strtolower($graph_type)) {
-    case "cpu0":
-    case "cpu1":
-    case "cpu2":
-    case "cpu3":
-	return '
+	$gt= strtolower($graph_type);
+
+	// Support upto 1000 CPUs
+	if (preg_match('/^cpu\d{1,3}$/', $gt)) {
+		return '
 -u 100
 --rigid
 -v % cpu
@@ -98,8 +97,9 @@ GPRINT:E:AVERAGE:%6.2lf %%
 GPRINT:E:MAX:%6.2lf %%
 GPRINT:E:LAST:%6.2lf %%\n
 ';
-	break;
+	}
 
+    switch ($gt) {
     case 'io1':
 	return '
 -v bytes/s
