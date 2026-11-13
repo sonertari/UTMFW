@@ -16,12 +16,12 @@ UTMFW runs on amd64 and arm64 architectures. This version of UTMFW is released w
 
 Amd64:
 
-- [utmfw80\_20261113\_amd64.iso](https://drive.google.com/file/d/1v6bvvh6sie122Fd_N4lQHjp_kK1hyiUq/view?usp=sharing)
-	+ SHA256 checksum: 80785909cd9c4bbf7c52febf86203e1d0f119528c8089e099de208623b77da4b
+- [utmfw80\_20261113\_amd64.iso](https://drive.google.com/file/d/1l6Qq2c79IqnqSrS7N6_-YY182ySclP--/view?usp=sharing)
+	+ SHA256 checksum: 607b3b0a409446f4df5c771dfa602feecffd01b436072ae6b1a4b7441cff5bdb
 	+ Tested on VMware
 
-- [utmfw80\_20261113\_amd64.img](https://drive.google.com/file/d/1NRd9HCmtnrjIv2NkPp3Ng06YBjwbNDgG/view?usp=sharing)
-	+ SHA256 checksum: 36d0f70f94ea5eb6355b51752299aa02fe5c67dc8464e08352b64d94794557a7
+- [utmfw80\_20261113\_amd64.img](https://drive.google.com/file/d/1YX5S0MyCLGAc2dbbTUWMPHOUFeR9FVSM/view?usp=sharing)
+	+ SHA256 checksum: 2b3b4a842cb84b86c0a726bca69cc0c3ba6ce0a3b4f247e755cc2fedbcd2c25e
 	+ Tested on bare hardware
 
 Make sure the SHA256 checksums are correct.
